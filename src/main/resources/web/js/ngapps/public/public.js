@@ -14,7 +14,7 @@ angular.module('public', ['publicSignup', 'ngRoute', 'publicRestAPI', 'reCAPTCHA
     .config(function ($routeProvider) {
         $routeProvider.when('/', {
             controller: 'WelcomeCtrl',
-            templateUrl: 'templates/public/inprogress.html'
+            templateUrl: 'templates/public/home.html'
         }).when('/welcome', {
             controller: 'WelcomeCtrl',
             templateUrl: 'templates/public/welcome.html'

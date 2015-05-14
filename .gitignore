@@ -7,3 +7,5 @@
 src/main/resources/web/index.html
 
 src/main/resources/web/index.tmp
+/src/main/resources/web/fonts/
+/src/main/resources/web/js/libs/

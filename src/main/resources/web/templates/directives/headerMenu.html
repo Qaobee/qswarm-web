@@ -1,0 +1,51 @@
+
+<!-- Not connected -->
+<nav class="top-nav white" role="navigation" ng-hide="user">
+    <div class="container" >
+        <div class="nav-wrapper" >
+            
+            <a href="#" class="brand-logo"><img src="img/logo-mini.png"/></a>
+            
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#" class="grey-text text-lighten-1"><i class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}</a></li>
+            </ul>
+            
+            <a href="#" data-activates="nav-mobileHC" class="button-collapse grey-text text-lighten-1"><i class="mdi-navigation-menu"></i></a>
+            
+            <ul id="nav-mobileHC" class="side-nav">
+                <li><a href="#"class="grey-text text-lighten-1"><i class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<!-- Connected -->
+<nav class="top-nav grey lighten-3" role="navigation" ng-show="user">    
+    <div class="container-fluid">
+        <div class="nav-wrapper" >
+            <form class="left">
+                <div class="input-field  pink">
+                    <input id="search" type="search" required>
+                    <label for="search"><i class="mdi-action-search"></i></label>
+                    <i class="mdi-navigation-close"></i>
+                </div>
+            </form>
+
+            <a href="#" class="brand-logo">{{structure.label}}</a>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#/private/profil">{{user.firstname}} {{user.name}}</li>
+                <li><a ng-click="logoff()"><span class="fa fa-power-off"></span></a></li>
+            </ul>
+            
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+            
+            <ul id="nav-mobile" class="side-nav">
+                <li><a ng-click="logoff()"><span class="fa fa-power-off"></span></a></li>
+            </ul>
+            
+        </div>
+    </div>
+</nav>

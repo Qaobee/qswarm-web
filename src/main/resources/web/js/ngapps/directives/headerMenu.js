@@ -16,7 +16,7 @@
  *
  */
 angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI'])
-    .directive("headerMenu", function (eventbus, $modal, userInfosAPI, userMetaAPI, $rootScope, $cookieStore, $location, $window, $log, $translatePartialLoader) {
+    .directive("headerMenu", function (eventbus, userInfosAPI, userMetaAPI, $rootScope, $cookieStore, $location, $window, $log, $translatePartialLoader) {
         'use strict';
         return {
             restrict: 'AE',
@@ -25,6 +25,7 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
                 $translatePartialLoader.addPart('main');
                 $translatePartialLoader.addPart('ui');
                 $scope.signin = {};
+                
                 /**
                  * @name $scope.loadMetaInfos
                  * @function
@@ -39,6 +40,7 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
                         }
                     });
                 };
+                
                 /**
                  * @name $scope.$on
                  * @function
@@ -88,6 +90,7 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
 
                 };
 
+                /*
                 ModalInstanceCtrl = function ($scope, $modalInstance, signin, $location, $rootScope, $filter, $log) {
                     $scope.signin = signin;
                     /**
@@ -95,7 +98,7 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
                      * @function
                      * @memberOf qaobee.QaobeeSwarnApp.ModalInstanceCtrl
                      * @description Close the popin
-                     */
+                     
                     $scope.cancel = function () {
                         $modalInstance.dismiss('cancel');
                     };
@@ -105,7 +108,7 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
                      * @function
                      * @memberOf qaobee.QaobeeSwarnApp.ModalInstanceCtrl
                      * @description Fergotten password management
-                     */
+                     
                     $scope.forgotPasswd = function () {
                         userInfosAPI.forgotPasswd($scope.signin.login).success(function () {
                             $location.path('/');
@@ -119,7 +122,7 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
                      * @function
                      * @memberOf qaobee.QaobeeSwarnApp.ModalInstanceCtrl
                      * @description Validate login form
-                     */
+                     
                     $scope.login = function () {
                         userInfosAPI.logon($scope.signin.login, $scope.signin.passwd).success(function (data) {
                             $modalInstance.close(data);
@@ -178,7 +181,7 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
                  * @memberOf qaobee.directives.headerMenu
                  * @param {String} size Modal window size
                  * @description open the login popin
-                 */
+                 
                 $scope.openLoginModal = function (size) {
                     $modal.open({
                         templateUrl: 'templates/public/login.html',
@@ -193,7 +196,7 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
                             }
                         }
                     });
-                };
+                };*/
             },
             templateUrl: 'templates/directives/headerMenu.html'
         };
