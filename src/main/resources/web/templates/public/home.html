@@ -33,7 +33,7 @@
 
             <div class="col s12 m4">
                 <div class="icon-block">
-                    <h2 class="center red-text text-lighten-1"><i class="fa fa-bell"></i></h2>
+                    <a href="#modalSubMailingList" class="modal-trigger"><h2 class="center red-text text-lighten-1"><i class="fa fa-bell"></i></h2></a>
                     <h5 class="center">Stay tuned</h5>
                 </div>
             </div>
@@ -75,6 +75,44 @@
         </div>
     </div>
     <div class="parallax"><img src="img/background2.jpg" alt="Unsplashed background img 3"></div>
+</div>
+
+
+<!-- Modal -->
+<div id="modalSubMailingList" class="modal">
+    <div class="modal-header center-align ">
+        <h5>
+            <span class="fa fa-sign-in"></span> 
+            <span translate="content.login.label.title"></span>
+        </h5>
+    </div>
+    
+    <form name="subMailingListForm" action="http://www.mailinglist.fr/controller/form_ctrl.php?ID=49" target="_blank" method="post">
+        <div class="modal-content grey lighten-3 ">
+            <div class="row">
+                <input type="hidden" Name="lid" Value="201405251813531029623">
+                <div class="input-field col s12">
+                    <input id="email" type="email" placeholder="Email" class="validate" required/>
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input class="with-gap" name="group1" type="radio" id="test1" checked />
+                    <label for="test1">Subscribe</label>
+                </div>
+                <div class="input-field col s6">
+                    <input class="with-gap" name="group1" type="radio" id="test2" />
+                    <label for="test2">Unsubscribe</label>
+                </div>
+            </div>    
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="waves-effect waves-red btn teal"  translate="popup.buttons.submit"/>
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn red">{{'popup.buttons.cancel' | translate}}</a>
+        </div>
+    </form>
 </div>
 
 

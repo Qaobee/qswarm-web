@@ -15,6 +15,9 @@ angular.module('public', ['publicSignup', 'ngRoute', 'publicRestAPI', 'reCAPTCHA
         $routeProvider.when('/', {
             controller: 'WelcomeCtrl',
             templateUrl: 'templates/public/home.html'
+        }).when('/!', {
+            controller: 'WelcomeCtrl',
+            templateUrl: 'templates/public/home.html'
         }).when('/welcome', {
             controller: 'WelcomeCtrl',
             templateUrl: 'templates/public/welcome.html'
@@ -97,19 +100,24 @@ angular.module('public', ['publicSignup', 'ngRoute', 'publicRestAPI', 'reCAPTCHA
  * @class qaobee.public.public.WelcomeCtrl
  * @description Contrôleur de la page d'accueil
  */
-    .controller('WelcomeCtrl', function ($scope, $translatePartialLoader) {
+    .controller('WelcomeCtrl', function ($scope, $rootScope,  $translatePartialLoader) {
         $translatePartialLoader.addPart('landing');
-        $scope.jumpTo = function (i) {
-            var j = 0;
-            $scope.slides.forEach(function(a) {
-                if(j === i) {
-                    a.active = true;
-                } else {
-                    a.active = false;
-                }
-                j++;
+        $translatePartialLoader.addPart('ui');
+        $translatePartialLoader.addPart('main');
+    
+        /**
+         * @description initialization materialize components
+         */
+        $rootScope.$on('$viewContentLoaded', function () {
+            $('.modal-trigger').leanModal({
+                dismissible: true, // Modal can be dismissed by clicking outside of the modal
+                opacity: .7, // Opacity of modal background
+                in_duration: 600, // Transition in duration
+                out_duration: 200, // Transition out duration
+                //ready: function() { alert('Ready'); }, // Callback for Modal open
+                //complete: function() { alert('Closed'); } // Callback for Modal close
             });
-        };
+        });
     })
 
 /**

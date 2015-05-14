@@ -7,13 +7,13 @@
             <a href="#" class="brand-logo"><img src="img/logo-mini.png"/></a>
             
             <ul class="right hide-on-med-and-down">
-                <li><a href="#" class="grey-text text-lighten-1"><i class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}</a></li>
+                <li><a href="#modalLogin" class="grey-text text-lighten-1 modal-trigger"><i class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}</a></li>
             </ul>
             
             <a href="#" data-activates="nav-mobileHC" class="button-collapse grey-text text-lighten-1"><i class="mdi-navigation-menu"></i></a>
             
             <ul id="nav-mobileHC" class="side-nav">
-                <li><a href="#"class="grey-text text-lighten-1"><i class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}</a></li>
+                <li><a href="#modalLogin" class="grey-text text-lighten-1 modal-trigger"><i class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}</a></li>
             </ul>
         </div>
     </div>
@@ -49,3 +49,33 @@
         </div>
     </div>
 </nav>
+
+<!-- Modal -->
+<div id="modalLogin" class="modal">
+    <div class="modal-header center-align ">
+        <h5>
+            <span class="fa fa-sign-in"></span> 
+            <span translate="content.login.label.title"></span>
+        </h5>
+    </div>
+    
+    <div class="modal-content grey lighten-3 ">
+        <div class="row">
+            <form class="col s12">
+                <div class="input-field col s12">
+                    <input placeholder="{{'content.login.ph.login' | translate }}" id="login" type="text" class="validate" ng-model="signin.login">
+                    <label for="login">{{'content.login.ph.login' | translate }}</label>
+                </div>
+                <div class="input-field col s12">
+                  <input placeholder="{{'content.login.ph.password' | translate }}" id="password" type="password" class="validate" ng-model="signin.passwd">
+                  <label for="password">{{'content.login.ph.password' | translate }}</label>
+                </div>
+            </form>
+        </div>    
+    </div>
+    
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-red btn teal">{{'popup.buttons.submit' | translate}}</a>&nbsp;
+        <a href="#!" class="modal-action modal-close waves-effect waves-red btn red">{{'popup.buttons.cancel' | translate}}</a>    
+    </div>
+</div>

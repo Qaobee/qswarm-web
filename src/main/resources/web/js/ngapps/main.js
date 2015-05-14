@@ -47,19 +47,13 @@ angular.module(
         $rootScope.$on('$translatePartialLoaderStructureChanged', function () {
             $translate.refresh();
         });
-        $rootScope.$on('$viewContentLoaded', function () {
-            $('.button-collapse').sideNav();
-            $('.parallax').parallax();
-        //    $.material.init();
-        //    $("select").dropdown();
-        });
     })
 
 /**
  * @class qaobee.QaobeeSwarnApp.MainCtrl
  * @description Contrôleur principal
  */
-    .controller('MainCtrl', function ($scope, $translatePartialLoader, eventbus) {
+    .controller('MainCtrl', function ($rootScope, $scope, $translatePartialLoader, eventbus) {
         'use strict';
         $translatePartialLoader.addPart('legacy');
         
@@ -69,6 +63,21 @@ angular.module(
             } else if ("login" === eventbus.message) {
                 $scope.user = eventbus.data;
             }
+        });
+    
+        /**
+         * @description initialization materialize components
+         */
+        $rootScope.$on('$viewContentLoaded', function () {
+            $('.parallax').parallax();
+            $('.modal-trigger').leanModal({
+                dismissible: true, // Modal can be dismissed by clicking outside of the modal
+                opacity: .5, // Opacity of modal background
+                in_duration: 300, // Transition in duration
+                out_duration: 200, // Transition out duration
+                //ready: function() { alert('Ready'); }, // Callback for Modal open
+                //complete: function() { alert('Closed'); } // Callback for Modal close
+            });
         });
 
     });

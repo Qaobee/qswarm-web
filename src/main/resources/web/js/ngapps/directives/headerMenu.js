@@ -21,10 +21,44 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
         return {
             restrict: 'AE',
             controller: function ($scope) {
-                var ModalInstanceCtrl;
                 $translatePartialLoader.addPart('main');
                 $translatePartialLoader.addPart('ui');
                 $scope.signin = {};
+                
+                /**
+                 * @description initialization materialize components
+                 */
+                $rootScope.$on('$viewContentLoaded', function () {
+                    // Detect touch screen and enable scrollbar if necessary
+                    function is_touch_device() {
+                      try {
+                        document.createEvent("TouchEvent");
+                        return true;
+                      } catch (e) {
+                        return false;
+                      }
+                    }
+                    if (is_touch_device()) {
+                      $('#nav-mobile').css({ overflow: 'auto'})
+                    }
+
+                    $('.parallax').parallax();
+                    $('.button-collapse').sideNav({
+                        menuWidth: 200, // Default is 240
+                        edge: 'left', // Choose the horizontal origin
+                        closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                    });
+                    
+                    $('.modal-trigger').leanModal({
+                        dismissible: true, // Modal can be dismissed by clicking outside of the modal
+                        opacity: .7, // Opacity of modal background
+                        in_duration: 600, // Transition in duration
+                        out_duration: 200, // Transition out duration
+                        //ready: function() { alert('Ready'); }, // Callback for Modal open
+                        //complete: function() { alert('Closed'); } // Callback for Modal close
+                    });
+                });
+
                 
                 /**
                  * @name $scope.loadMetaInfos
