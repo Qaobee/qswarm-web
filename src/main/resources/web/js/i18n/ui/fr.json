@@ -1,0 +1,9 @@
+{
+  "popup": {
+    "buttons": {
+      "ok": "Ok",
+      "cancel": "Annuler",
+      "submit": "Valider"
+    }
+  }
+}

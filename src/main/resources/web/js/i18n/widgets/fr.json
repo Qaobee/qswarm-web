@@ -1,0 +1,39 @@
+{
+  "statWidget": {
+    "prefs": {
+      "color": "Couleur",
+      "colors": {
+        "muted": "Gris",
+        "primary": "Bleu foncé",
+        "info": "Bleu clair",
+        "success": "Vert",
+        "warning": "Orange",
+        "danger": "Rouge"
+      },
+      "family": "Type",
+      "families": {
+        "line": "Ligne",
+        "bar": "Histogramme",
+        "pie": "Camembert",
+        "radar": "Radar",
+        "polar": "Polaire",
+        "doughnut": "Doughnut"
+      },
+      "indicator": "Indicateur"
+    }
+  },
+"unavailableEffective" : {
+  "title" : "Indisponibilités"
+ },
+ "palmaresEffective" : {
+  "title" : "Palmarès",
+   "stat" : {
+     "goalscored" : "Meilleur buteur",
+     "playtime" : "Temps de jeu",
+     "pass" : "Meilleur passeur",
+     "attendance" : "Meilleure assiduité",
+     "eventNotePerson" : "Meilleur note"
+   }
+ }
+
+}

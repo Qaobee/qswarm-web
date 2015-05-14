@@ -1,0 +1,313 @@
+{
+  "effective": {
+    "simplesearch": {
+      "title": "Recherche simple",
+      "label": {
+        "openadvancedsearch": "Ouvrir la recherche avancée"
+      }
+    },
+    "advancedsearch": {
+      "title": "Recherche avancée",
+      "label": {
+        "closeadvancedsearch": "Retour à la recherche simple",
+        "yearbirth": "Année de naissance",
+        "season": "Saison",
+        "weight": "Poids",
+        "height": "Taille",
+        "age": "Age",
+        "laterality":"Latéralité",
+        "righthanded": "Droitier",
+        "lefthanded": "Gaucher",
+        "ambidextrous": "Ambidextre"
+      }
+    },
+    "dashboard": {
+      "maintitle": "Tableau de bord effectif",
+      "title": "Effectif",
+      "savePrefs": "Sauvegarder les préférences",
+      "showDetail": "Voir le détail",
+      "showhistory": "Voir l'historique",
+      "name": "Nom",
+      "firstName": "Prénom",
+      "prefSaved": "Préférences sauvegardées",
+      "selectionLimit": "La sélection est limitée à 3 personnes",
+      "selectionMin": "Vous devez sélectionner au moins un joueur",
+      "download": "Télécharger le CSV",
+      "compare": "Comparer",
+      "role": "Rôle",
+      "addPlayer": "Ajouter un joueur",
+      "search": "Rechercher",
+      "groups": "Gestion des groupes",
+      "moreData": "Données additionnelles",
+      "graph": "Graphiques"
+    },
+    "addPlayer": {
+      "maintitle": "Ajouter un joueur",
+      "next": "Suivant",
+      "previous": "Précédent",
+      "label": {
+        "gender": "Genre",
+        "name": "Nom",
+        "firstname": "Prénom",
+        "email": "E-mail",
+        "birthdate": "Date de naissance",
+        "birthcity": "Ville de naissance",
+        "address": "Adresse",
+        "phonenumber": "N° de téléphone fixe",
+        "mobilephonenumber": "N° de téléphone mobile",
+        "nationality": "Nationalité",
+        "birthcountry": "Pays de naissance",
+        "squadNumber": "Numéro de maillot",
+        "licencenumber": "Numéro de licence",
+        "positionType": "Poste",
+        "category": "Catégorie",
+        "dateQualification": "Date de qualification",
+        "dateInscription": "Date d'inscription",
+        "tarif": "Tarif",
+        "typeLicence": "Type de licence",
+        "weight": "Poids",
+        "height": "Taille",
+        "laterality": "Latéralité",
+        "stateForm": "Etat de forme"
+      },
+      "message": {
+        "email": {
+          "required": "L'adresse e-mail est obligatoire"
+        }
+      },
+      "ph": {
+        "name": "Saisissez son nom",
+        "firstname": "Saisissez son prénom",
+        "email": "Saisissez son adresse e-mail",
+        "birthcity": "Saisissez sa ville de naissance",
+        "address": "Saisissez son adresse"
+      },
+      "step1": {
+        "title": "Etat civil"
+      },
+      "step2": {
+        "title": "Contact"
+      },
+      "step3": {
+        "title": "Affectation"
+      },
+      "step4": {
+        "title": "Critères physiques"
+      },
+      "success": "{{firstname}} {{name}} a été ajouté à la catégorie {{cat}}."
+    }
+  },
+  "playerSheet": {
+    "title": "Fiche du joueur",
+    "nodata": "Aucune donnée disponible",
+    "updated": "Données modifiées",
+    "label": {
+      "modify": "Modifier",
+      "validate": "Valider",
+      "cancel": "Annuler",
+      "notes": "Consulter les remarques",
+      "writenote": "Rediger une note",
+      "showresume": "Consulter la fiche résumé",
+      "born": "Né(e) le ",
+      "to": " à ",
+      "in": " en ",
+      "ofnationality": ", de nationalité ",
+      "age": "ans",
+      "inClubSince": "Dans le club depuis le",
+      "licenceNo": "Licence",
+      "righthanded": "Droitier",
+      "lefthanded": "Gaucher",
+      "ambidextrous": "Ambidextre",
+      "availability": "Disponibilité",
+      "stateForm": "Etat de forme",
+      "positionType": "Poste",
+      "squadNumber": "Numéro de maillot",
+      "weight": "Poids",
+      "height": "Taille",
+      "imc": "IMC",
+      "laterality": "Latéralité"
+    },
+    "stat": {
+      "goalscored": {
+        "title": "Buts marqués",
+        "sub": "Moyenne de but par match {{avg | number : 2}}<h3>1 but tous les {{freq | number : 0}}'</h3>",
+        "avg": "Moyenne but",
+        "freq": "But toutes les x minutes"
+      },
+      "goalconceded": {
+        "title": "Buts encaissés",
+        "sub": "Moyenne de but par match {{avg | number : 2}}<h3>1 but tous les {{freq | number : 0}}'</h3>",
+        "avg": "Moyenne but",
+        "freq": "But toutes les x minutes"
+      },
+      "holder": {
+        "title": "Titulaire",
+        "sub": "{{holder}} titulaire / {{substitue}} remplaçant",
+        "global": "Titulaire / matchs joués"
+      },
+      "substitue": {
+        "title": "Remplaçant"
+      },
+      "cards": {
+        "title": "Cartons"
+      },
+      "playtime": {
+        "title": "Temps de jeu moyen",
+        "sub": "Temps de jeu cumulé<br /><h3>{{total}}'</h3>",
+        "avg": "Temps moyen / match"
+      },
+      "audience": "spectateurs pour un match",
+      "attendance": "d'assiduité"
+    },
+    "slider": {
+      "verypoor": "Faible",
+      "poor": "Moyen",
+      "middling": "Bon",
+      "good": "Très bon",
+      "excellent": "Excellent"
+    },
+    "rubrics": {
+      "synthesis": "Synthèse",
+      "personaldata": "Données personnelles",
+      "sportscriteria": "Dossier sportif",
+      "career" : "Carrière",
+      "licenses": {
+        "title": "Licences",
+        "club": "Club",
+        "season": "Saison",
+        "typeLicence": "Type licence",
+        "category": "Catégorie",
+        "registrationdate": "Inscription",
+        "qualificationdate": "Qualification",
+        "price": "Tarif"
+      },
+      "formation": {
+        "title": "Formation",
+        "club": "Club",
+        "season": "Season",
+        "label": "Libellé"
+      },
+      "detection": {
+        "title": "Detection",
+        "club": "Club",
+        "season": "Season",
+        "label": "Niveau"
+      },
+      "contact": {
+        "title": "Contact",
+        "label": {
+          "home": "Tel Maison",
+          "office": "Tel Bureau",
+          "email": "E-mail",
+          "cellphone": " Tel Portable"
+        }
+      },
+      "other": {
+        "title": "Autre",
+        "label": {
+          "squadnumber": "Numéro de maillot"
+        }
+      },
+      "physical": {
+        "title": "Physique",
+        "label": {
+          "explosive": "Explosivité",
+          "speed": "Vitesse",
+          "traction": "Motricité",
+          "verticaljump": "Détente",
+          "endurance": "Endurance",
+          "equilibrium": "Equilibre",
+          "strenght": "Puissance",
+          "nimbleness": "Agilité"
+        }
+      },
+      "mental": {
+        "title": "Mental",
+        "label": {
+          "aggressiveness": "Agressivité",
+          "anticipation": "Anticipation",
+          "concentration": "Concentration",
+          "altruism": "Altruisme",
+          "courage": "Courage",
+          "creativity": "Créativité",
+          "motivation": "Motivation",
+          "self-control": "Sang-froid",
+          "leadership": "Charisme",
+          "professionalism": "Professionnalisme"
+        }
+      },
+      "technical": {
+        "title": "Technique",
+        "label": {
+          "pass": "Passe",
+          "center": "Centre",
+          "corner": "Corner",
+          "freekick": "Coup franc",
+          "penalty": "Penalty",
+          "shoot": "Tir",
+          "dribble": "Dribble",
+          "tacle": "Tacle"
+        }
+      },
+      "comportemental": {
+        "title": "Comportement en jeu",
+        "label": {
+          "anticipation": "Anticipation",
+          "creativity": "Créativité",
+          "decisions": "Décisions",
+          "positioning": "Placement",
+          "leadership": "Leadership"
+        }
+      },
+      "medicalrecord": {
+        "title": "Dossier médical",
+        "label": {
+          "title": "Dossier médical du joueur",
+          "againstmedicatedindication": "Contre-indications médical",
+          "bloodpessure": "Tension artérielle",
+          "fatMass": "Masse graisseuse",
+          "allergies": "Allergies"
+        },
+        "wound": {
+          "title": "Blessures",
+          "label": {
+            "cramp": "Crampe",
+            "contracture": "Contracture",
+            "elongation": "Élongation",
+            "breakdown": "Claquage",
+            "tear": "Déchirure",
+            "strain": "Foulure",
+            "sprain": "Entorse",
+            "fracture": "Fracture",
+            "nbdays": "Nb de jours",
+            "addwound": "Ajouter une blessure",
+            "typewound": "Type de blessure",
+            "description": "Description",
+            "convalescence": "Convalescence",
+            "validateaddition": "Valider l'ajout",
+            "canceladding": "Annuler l'ajout",
+            "daysconvalescence": "jours de convalescence"
+          }
+        }
+      },
+      "career": {
+        "title": "Carrière"
+      },
+      "notes": {
+        "title": "Notes"
+      },
+      "civilstatus": {
+        "title": "État civil",
+        "label": {
+          "forname": "Prénom",
+          "name": "Nom",
+          "birthdate": "Date de naissance",
+          "birthcity": "Ville de naissance",
+          "nationality": "Nationalité",
+          "bornonman": "Né le",
+          "bornonwoman": "Née le"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1405 @@
+{
+  "date": {
+    "format": "DD/MM/YYYY",
+    "label": "jj/mm/aaaa"
+  },
+  "phone": {
+    "format": "99-99-99-99-99"
+  },
+  "breadcrumb": {
+    "home": "Accueil",
+    "administration": "Administration",
+    "userlist": "Liste des utilisateurs",
+    "newuser": "Nouvel utilisateur",
+    "userdetail": "Détail",
+    "blogpostlist": "Liste des billets",
+    "newblogpost": "Nouveau billet",
+    "blogpostdetail": "Détail",
+    "register": "S'inscrire",
+    "contact": "Contactez nous",
+    "legalmentions": "Mentions légales",
+    "about": "A propos de nous",
+    "blog": "Blog",
+    "pricing": "Tarifs"
+  },
+  "navbar": {
+    "home": "Accueil",
+    "profile": "Mon profil",
+    "login": "E-mail",
+    "passwd": "Mot de passe",
+    "about": "A propos",
+    "contact": "Nous contacter",
+    "product": "Notre produit",
+    "blog": "Blog",
+    "pricing": "Tarifs",
+    "readall": "Afficher tout",
+    "events": "Mon agenda",
+    "dashboard": "Mon tableau de bord"
+  },
+  "popup": {
+    "title": {
+      "delete": {
+        "user": "Supprimer l'utilisateur",
+        "blogpost": "Supprimer le billet",
+        "habilit": "Supprimer l'habilitation",
+        "parameter": "Supprimer le parametre",
+        "notification": "Supprimer la notification"
+      }
+    },
+    "message": {
+      "delete": "Vous allez supprimer "
+    },
+    "confirm": {
+      "ask": "Êtes vous sûr?"
+    },
+    "success": {
+      "delete": "suprimé avec succès!",
+      "added": " ajouté avec succès!",
+      "updated": " mis à jour avec succès!",
+      "newpasswd": "Votre mot de passe a été mis à jour"
+    },
+    "error": {
+      "CAPTCHA_EXCEPTION": "Le code de vérification est erroné.",
+      "passwdurl": "Mauvaise url de changement de mot de passe, vérifier votre email."
+    }
+  },
+  "message": {
+    "anonymous": "Annonyme",
+    "untitled": "Sans titre",
+    "account": {
+      "ko": {
+        "title": "Bienvenue chez <b>QaoBee</b>",
+        "message": "Il semble que votre confirmation d'enregistrement ne fonctionne pas, vérifiez votre e-mail."
+      },
+      "ok": {
+        "title": "Bienvenue chez <b>QaoBee</b>",
+        "message": "Bien joué, vous pouvez vous authentifier."
+      }
+    }
+  },
+  "content": {
+    "welcome": {
+      "mailing": {
+        "title": "Inscrivez vous à notre liste de diffusion",
+        "desc": "Soyez le premier à être des mises à jours de nos produits et des dernières avancées en <b>Management d'Equipe</b> et d'<b>Analyse de la Performance</b>",
+        "subscribe": "S'inscrire",
+        "unsubscribe": "Se désinscrire",
+        "register": "Valider"
+      }
+    },
+    "recoverpasswd": {
+      "title": "Mettez à jour votre mot de passe"
+    },
+    "myspace": "Mon espace",
+    "notification": {
+      "title": "Mes notifications",
+      "markasread": "Marquer comme lu",
+      "delete": "Supprimer",
+      "new": "Vous avez {{unreadcount}} nouvelle(s) notification(s)"
+    },
+    "calendar": {
+      "title": "Mes événements",
+      "titleformat": {
+        "month": "MMMM yyyy",
+        "week": "d MMM[ yyyy]{ '&#8212;' d[ MMM] yyyy}",
+        "day": "dddd, d MMM yyyy"
+      },
+      "columnformat": {
+        "month": "ddd",
+        "week": "ddd dd/MM",
+        "day": "dddd dd/MM"
+      },
+      "buttontext": {
+        "today": "Aujourd'hui",
+        "month": "Mois",
+        "week": "Semaine",
+        "day": "Jour"
+      },
+      "firstday": "1"
+    },
+    "wizzard": {
+      "firstconnection": {
+        "title": "Première connexion",
+        "desc": {
+          "sport": "Choisissez votre sport",
+          "club": "Choisissez votre club.",
+          "categories": "Choisissez votre catégorie",
+          "staff": "Gérez votre encadrement",
+          "members": "Gérez votre effectifs",
+          "teams": "Gérez vos équipes",
+          "done": "Validation"
+        },
+        "new": "Nouveau",
+        "club": "Club",
+        "addcategory": "Ajouter",
+        "addstaff": "Ajouter",
+        "addmember": "Ajouter",
+        "category": "Categorie",
+        "staff": "Encadrement",
+        "members": "Effectifs",
+        "teams": "Equipes",
+        "newmember": {
+          "title": "Nouveau membre",
+          "add": "Ajouter"
+        }
+      }
+    },
+    "about": {
+      "title": "Nous sommes <b>QaoBee</b>",
+      "company": {
+        "title": "La société",
+        "h1": "Nous sommes <b>QaoBee</b>",
+        "h2": "Qui et ce que nous sommes",
+        "p1": {
+          "title": "Nous sommes <b>QaoBee</b>",
+          "content": "<b>QaoBee</b> est une société de logiciels qui développe et édite des solutions numériques pour la communauté sportive. Nous sommes un groupe de bretons qui apprécient le sport, les nouvelles technologies, l'innovation, le travail d'équipe et de construire des choses dont nous pouvons être fiers. Pendant la semaine, nous nous réunissons pour créer des solutions innovantes pour simplifier et optimiser l'activité des directeurs sportifs.",
+          "contentq": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+          "contenta": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+          "contento": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna."
+        },
+        "p2": {
+          "title": "Titre 2",
+          "content": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+          "title1": "Lorem ipsum",
+          "content1": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+          "title2": "Lorem ipsum",
+          "content2": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+          "title3": "Lorem ipsum",
+          "content3": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna."
+        }
+      },
+      "xavier": {
+        "title": "Xavier MARIN<br /><small>Co-founder & CTO</small>",
+        "desc": "Je suis le geek de la bande, un amoureux des nouvelles technologies et un développeur passionné.",
+        "email": "xavier.marin@qaobee.com",
+        "twitter": "XavMarin",
+        "github": "giwi"
+      },
+      "christophe": {
+        "title": "Christophe KERVELLA<br /><small>Co-founder & CPIO</small>",
+        "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        "email": "christophe.kervella@qaobee.com",
+        "twitter": "ChrisKrvla",
+        "github": ""
+      },
+      "pascal": {
+        "title": "Pascal PELERIN<br /><small>Co-founder & CEO</small>",
+        "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        "email": "pascal.pelerin@qaobee.com",
+        "twitter": "",
+        "github": ""
+      },
+      "mathieu": {
+        "title": "Mathieu GARZUEL<br /><small>Co-founder & CMO</small>",
+        "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        "email": "mathieu.garzuel@qaobee.com",
+        "twitter": "",
+        "github": ""
+      },
+      "jerome": {
+        "title": "Jérôme ROU&Eacute;<br /><small>Co-founder & CDO</small>",
+        "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        "email": "jerome.roue@qaobee.com",
+        "twitter": "JeromeRoue",
+        "github": ""
+      },
+      "you": {
+        "title": "Vous<br /><small>Serez vous le prochain?</small>",
+        "desc": "<a href='/#hiring'>Rejoignez nous</a>",
+        "email": "contact@qaobee.com",
+        "twitter": "Qaobee",
+        "github": ""
+      },
+      "team": {
+        "title": "L'équipe",
+        "h2": "Faites connaissance avec nous"
+      }
+    },
+    "blog": {
+      "title": "Notre actualité.",
+      "readmore": "lire la suite",
+      "date": "Date",
+      "by": "Par"
+    },
+    "legalmentions": {
+      "title": "Mentions légales"
+    },
+    "profile": {
+      "title": "Profile",
+      "desc": "Modifiez votre profil <b>QaoBee</b>.",
+      "label": {
+        "name": "Nom",
+        "forname": "Prénom",
+        "nick": "Pseudonme",
+        "address": "Adresse",
+        "zipcode": "Code postal",
+        "city": "Ville",
+        "email": "E-mail",
+        "birthdate": "Date de naissance",
+        "passwd1": "Mot de passe",
+        "passwd2": "Mot de passe à nouveau",
+        "avatar": "Votre photo de profile",
+        "mandatory": "Les champs en rouge sont obligatoires",
+        "clubadmin": "Administrateur du club",
+        "billingdate": "Date de paiement : ",
+        "billingnumber": "Numéro de facture : ",
+        "product": "Produit",
+        "price": "Prix"
+      },
+      "ph": {
+        "name": "Saisissez votre nom",
+        "forname": "Saisissez votre prénom",
+        "nick": "Choisissez un pseudonyme",
+        "address": "Saisissez votre adresse",
+        "zipcode": "Saisissez votre code postal",
+        "city": "Saisissez votre ville",
+        "email": "Saisissez votre adresse e-mail",
+        "birthdate": "Saisissez votre date de naisssance",
+        "passwd1": "Saisissez le si vous souhaitez le modifier"
+      },
+      "message": {
+        "passwd": {
+          "strength": "Robustesse du mot de passe",
+          "ko": "Les mots de passe ne correspondent pas",
+          "ok": "Mot de passe OK"
+        },
+        "email": {
+          "ok": "Email vérifié",
+          "ko": "Mauvaise adresse email",
+          "required": "Email obligatoire",
+          "exists": "Cette adresse email existe déjà"
+        }
+      }
+    },
+    "signup": {
+      "title": "Bienvenue",
+      "title2": "Bienvenue chez <b>QaoBee</b>",
+      "desc": "C'est le bon endroit pour vous créer un compte <b>QaoBee</b>.",
+      "end": "Vous allez recevoir un email de confirmation afin de valider votre inscription.",
+      "transaction": "Transaction en cours, vous allez être redirigé vers le site de notre partenaire pour le rêglement.",
+      "label": {
+        "name": "Nom",
+        "forname": "Prénom",
+        "nick": "Pseudonme",
+        "address": "Adresse",
+        "zipcode": "Code postal",
+        "city": "Ville",
+        "email": "E-mail",
+        "birthdate": "Date de naissance",
+        "passwd1": "Mot de passe",
+        "passwd2": "Mot de passe à nouveau",
+        "avatar": "Votre photo de profile",
+        "mandatory": "Les champs en rouge sont obligatoires",
+        "username": "Identifiant de connexion",
+        "offer": "Offre",
+        "readmore": "En savoir plus sur les offres",
+        "validationcode": "Code de validation",
+        "mobilephonenumber": "Mobile",
+        "phonenumber": "Fixe"
+      },
+      "ph": {
+        "name": "Saisissez votre nom",
+        "forname": "Saisissez votre prénom",
+        "nick": "Choisissez un pseudonyme",
+        "address": "Saisissez votre adresse",
+        "zipcode": "Saisissez votre code postal",
+        "city": "Saisissez votre ville",
+        "email": "Saisissez votre adresse e-mail",
+        "birthdate": "Saisissez votre date de naisssance",
+        "mandatory": "Les champs en rouge sont obligatoires",
+        "username": "Nom d'utilisateur",
+        "passwd1": "Saisissez le si vous souhaitez le modifier",
+        "offer": {
+          "player": "Joueur",
+          "coach": "Coach",
+          "club": "Club"
+        }
+      },
+      "message": {
+        "passwd": {
+          "strength": "Robustesse du mot de passe",
+          "ko": "Les mots de passe ne correspondent pas",
+          "ok": "Mot de passe OK"
+        },
+        "email": {
+          "ok": "Email vérifié",
+          "ko": "Mauvaise adresse email",
+          "required": "Email obligatoire",
+          "exists": "Cette adresse email existe déjà"
+        },
+        "username": {
+          "required": "Ce champs est obligatoire",
+          "exists": "Ce nom d'utilisateur est déjà pris"
+        }
+      }
+    },
+    "personsheet": {
+      "title": "Fiche du joueur",
+      "label": {
+        "modify": "Modifier",
+        "validate": "Enregistrer les modifications",
+        "cancel": "Annuler les modifications",
+        "notes": "Consulter les remarques",
+        "writenote": "Rediger une note",
+        "showresume": "Consulter la fiche résumé",
+        "born": "Né(e) le ",
+        "to": " à ",
+        "in": " en ",
+        "ofnationality": ", de nationnalité "
+      },
+      "rubrics": {
+        "personaldata": "Données personnelles",
+        "sportscriteria": "Dossier sportif",
+        "licenses": {
+          "title": "Licences",
+          "season": "Saison",
+          "typeLicence": "Type licence",
+          "category": "Catégorie",
+          "registrationdate": "Inscription",
+          "qualificationdate": "Qualification",
+          "price": "Tarif"
+        },
+        "contact": {
+          "title": "Contact",
+          "label": {
+            "home": "Tel Maison",
+            "office": "Tel Bureau",
+            "email": "E-mail",
+            "cellphone": " Tel Portable"
+          }
+        },
+        "other": {
+          "title": "Autre",
+          "label": {
+            "squadnumber": "Numéro de maillot"
+          }
+        },
+        "physical": {
+          "title": "Physique",
+          "label": {
+            "height": "Taille",
+            "weight": "Poids",
+            "size": "Pointure",
+            "speed": "Vitesse",
+            "power": "Puissance",
+            "acceleration": "Accélération",
+            "agility": "Agilité",
+            "endurance": "Endurance",
+            "verticalelasticity": "Détente verticale"
+          }
+        },
+        "mental": {
+          "title": "Mental",
+          "label": {
+            "aggresivity": "Agressivité",
+            "concentration": "Concentration",
+            "confidence": "Confiance",
+            "courage": "Courage",
+            "motivation": "Motivation",
+            "composure": "Sang-froid"
+          }
+        },
+        "technical": {
+          "title": "Technique",
+          "label": {
+            "position": "Poste",
+            "laterality": "Lattéralité",
+            "dribble": "Dribble"
+          }
+        },
+        "comportemental": {
+          "title": "Comportement en jeu",
+          "label": {
+            "anticipation": "Anticipation",
+            "creativity": "Créativité",
+            "decisions": "Décisions",
+            "positioning": "Placement",
+            "leadership": "Leadership"
+          }
+        },
+        "medicalrecord": {
+          "title": "Dossier médical",
+          "label": {
+            "title": "Dossier médical du joueur",
+            "againstmedicatedindication": "Contre-indications médical",
+            "bloodpessure": "Tension artérielle",
+            "fatMass": "Masse graisseuse",
+            "allergies": "Allergies"
+          },
+          "wound": {
+            "title": "Blessures",
+            "label": {
+              "cramp": "Crampe",
+              "contracture": "Contracture",
+              "elongation": "Élongation",
+              "breakdown": "Claquage",
+              "tear": "Déchirure",
+              "strain": "Foulure",
+              "sprain": "Entorse",
+              "fracture": "Fracture",
+              "nbdays": "Nb de jours",
+              "addwound": "Ajouter une blessure",
+              "typewound": "Type de blessure",
+              "description": "Description",
+              "convalescence": "Convalescence",
+              "validateaddition": "Valider l'ajout",
+              "canceladding": "Annuler l'ajout",
+              "daysconvalescence": "jours de convalescence"
+            }
+          }
+        },
+        "career": {
+          "title": "Carrière"
+        },
+        "notes": {
+          "title": "Notes"
+        },
+        "civilstatus": {
+          "title": "État civil",
+          "label": {
+            "forname": "Prénom",
+            "name": "Nom",
+            "birthdate": "Date de naissance",
+            "birthcity": "Ville de naissance",
+            "nationality": "Nationalité",
+            "bornonman": "Né le",
+            "bornonwoman": "Née le"
+          }
+        }
+      }
+    },
+    "summarysheet": {
+      "title": "Fiche de synthèse",
+      "label": {
+        "showpersonsheet": "Voir la fiche joueur",
+        "unit": {
+          "weight": "kg",
+          "height": "cm"
+        }
+      },
+      "statistics": {
+        "title": "Statistiques"
+      },
+      "career": {
+        "title": "Carrière",
+        "season": "Saison",
+        "club": "Club",
+        "level": "Niveau",
+        "matches": "Matchs",
+        "goals": "Buts"
+      },
+      "year": "ans"
+    },
+    "summarysheetmodal": {
+      "title": "Résumé"
+    },
+    "effective": {
+      "addPersonButton": "Ajouter un joueur",
+      "clearSorting": "Tri par défaut",
+      "clearFilter": "Enlever les filtres",
+      "exportPdf": "Exporter au format PDF",
+      "exportCsv": "Exporter au format CSV",
+      "showpersonsheet": "Voir la fiche joueur",
+      "avatar": "Avatar",
+      "person": "Joueur",
+      "name": "Nom",
+      "firstname": "Prénom",
+      "positionType": "Poste",
+      "size": "Taille",
+      "weight": "Poids",
+      "games": "Matchs",
+      "goals": "Buts",
+      "attendance": "Assiduité",
+      "availability": "Disponibilité",
+      "shapeCondition": "Etat de forme"
+    },
+    "addperson": {
+      "title": "Ajouter un joueur",
+      "label": {
+        "group": "Groupe",
+        "category": "Catégorie d'âge",
+        "civilstatus": "État civil",
+        "forname": "Prénom",
+        "name": "Nom",
+        "birthdate": "Date de naissance",
+        "birthcity": "Ville de naissance",
+        "birthcountry": "Pays de naissance",
+        "city": "Ville",
+        "address": "Adresse",
+        "place": "Place",
+        "zipcode": "Code postal",
+        "contact": "Contact",
+        "home": "Tel Maison",
+        "office": "Tel Bureau",
+        "cellphone": "Tel Portable",
+        "email": "E-mail",
+        "cancel": "Annuler",
+        "validate": "Valider"
+      }
+    },
+    "mygroups": {
+      "label": {
+        "category": "Catégorie",
+        "categoryall": "Toutes les catégories",
+        "group": "Groupe",
+        "historic": "Historique",
+        "createdon": "Version du",
+        "filterCategorie": "Filtre par catégorie",
+        "groupselection": "Sélectionner un groupe",
+        "creategroup": "Créer un groupe",
+        "groupname": "Nom du groupe",
+        "modify": "Modifier le groupe courant",
+        "niveaujeu": "Niveau de jeu",
+        "validate": "Valider",
+        "cancel": "Annuler",
+        "actions": "Actions"
+      },
+      "message": {
+        "grouplabelerror": "Le nom de groupe que vous avez renseigné existe déjà.",
+        "addgroupsuccess": "Le groupe a été ajouté avec succès.",
+        "updatesuccess": "Le groupe à bien été mis à jour.",
+        "updateerror": "Échec lors de la modification du groupe."
+      }
+    },
+    "searchperson": {
+      "label": {
+        "title": "Recherche de joueur",
+        "forname": "Prénom",
+        "name": "Nom",
+        "birthdate": "Date de naissance",
+        "category": "Catégorie",
+        "placeholder": {
+          "forname": "Choisir un prénom",
+          "name": "Choisir un nom",
+          "category": "Sélectionner une catégorie"
+        }
+      },
+      "button": {
+        "add": "Ajouter",
+        "select": "Sélectionner",
+        "cancel": "Annuler"
+      }
+    },
+    "advancedsearch": {
+      "title": "Recherche avancée",
+      "label": {
+        "closeadvancedsearch": "Fermer la recherche avancée",
+        "category": "Catégorie",
+        "yearbirth": "Année de naissance",
+        "season": "Saison"
+      },
+      "placeholders": {
+        "name": "Nom Prénom",
+        "weight": "Poids",
+        "age": "Age",
+        "size": "Taille"
+      }
+    },
+    "simplesearch": {
+      "title": "Recherche simple",
+      "label": {
+        "openadvancedsearch": "Ouvrir la recherche avancée",
+        "category": "Catégorie"
+      }
+    },
+    "searchpersonbutton": {
+      "title": "Rechercher joueur",
+      "selectedPerson": "Joueurs sélectionnés"
+    },
+    "address": {
+      "title": "Adresse",
+      "label": {
+        "place": "Place",
+        "zipcode": "Code postal",
+        "city": "Ville",
+        "country": "Pays"
+      }
+    },
+    "person": {
+      "contact": {
+        "title": "Contact",
+        "label": {
+          "home": "Tel Maison",
+          "office": "Tel Bureau",
+          "cellphone": "Tel Portable",
+          "email": "E-mail"
+        }
+      }
+    }
+  },
+  "format": {
+    "date": "dd/MM/yyyy"
+  },
+  "nationality": {
+    "label": "Nationalité",
+    "american": "Américaine",
+    "belgium": "Belge",
+    "colombian": "Colombienne",
+    "french": "Française",
+    "german": "Allemande"
+  },
+  "country": {
+    "label": "Pays",
+    "germany": "Allemagne",
+    "belgium": "Belgique",
+    "colombia": "Colombie",
+    "usa": "États-Unis",
+    "france": "France"
+  },
+  "gender": {
+    "label": "Genre",
+    "male": "Homme",
+    "female": "Femme"
+  },
+  "settings": {
+    "country": {
+      "AF": {
+        "name": "Afghanistan"
+      },
+      "AL": {
+        "name": "Albanie"
+      },
+      "AQ": {
+        "name": "Antarctique"
+      },
+      "DZ": {
+        "name": "Algérie"
+      },
+      "AS": {
+        "name": "Samoa Américaines"
+      },
+      "AD": {
+        "name": "Andorre"
+      },
+      "AO": {
+        "name": "Angola"
+      },
+      "AG": {
+        "name": "Antigua-et-Barbuda"
+      },
+      "AZ": {
+        "name": "Azerbaïdjan"
+      },
+      "AR": {
+        "name": "Argentine"
+      },
+      "AU": {
+        "name": "Australie"
+      },
+      "AT": {
+        "name": "Autriche"
+      },
+      "BS": {
+        "name": "Bahamas"
+      },
+      "BH": {
+        "name": "Bahreïn"
+      },
+      "BD": {
+        "name": "Bangladesh"
+      },
+      "AM": {
+        "name": "Arménie"
+      },
+      "BB": {
+        "name": "Barbade"
+      },
+      "BE": {
+        "name": "Belgique"
+      },
+      "BM": {
+        "name": "Bermudes"
+      },
+      "BT": {
+        "name": "Bhoutan"
+      },
+      "BO": {
+        "name": "Bolivie"
+      },
+      "BA": {
+        "name": "Bosnie-Herzégovine"
+      },
+      "BW": {
+        "name": "Botswana"
+      },
+      "BV": {
+        "name": "Île Bouvet"
+      },
+      "BR": {
+        "name": "Brésil"
+      },
+      "BZ": {
+        "name": "Belize"
+      },
+      "IO": {
+        "name": "Territoire Britannique de l'Océan Indien"
+      },
+      "SB": {
+        "name": "Îles Salomon"
+      },
+      "VG": {
+        "name": "Îles Vierges Britanniques"
+      },
+      "BN": {
+        "name": "Brunéi Darussalam"
+      },
+      "BG": {
+        "name": "Bulgarie"
+      },
+      "MM": {
+        "name": "Myanmar"
+      },
+      "BI": {
+        "name": "Burundi"
+      },
+      "BY": {
+        "name": "Bélarus"
+      },
+      "KH": {
+        "name": "Cambodge"
+      },
+      "CM": {
+        "name": "Cameroun"
+      },
+      "CA": {
+        "name": "Canada"
+      },
+      "CV": {
+        "name": "Cap-vert"
+      },
+      "KY": {
+        "name": "Îles Caïmanes"
+      },
+      "CF": {
+        "name": "République Centrafricaine"
+      },
+      "LK": {
+        "name": "Sri Lanka"
+      },
+      "TD": {
+        "name": "Tchad"
+      },
+      "CL": {
+        "name": "Chili"
+      },
+      "CN": {
+        "name": "Chine"
+      },
+      "TW": {
+        "name": "Taïwan"
+      },
+      "CX": {
+        "name": "Île Christmas"
+      },
+      "CC": {
+        "name": "Îles Cocos (Keeling)"
+      },
+      "CO": {
+        "name": "Colombie"
+      },
+      "KM": {
+        "name": "Comores"
+      },
+      "YT": {
+        "name": "Mayotte"
+      },
+      "CG": {
+        "name": "République du Congo"
+      },
+      "CD": {
+        "name": "République Démocratique du Congo"
+      },
+      "CK": {
+        "name": "Îles Cook"
+      },
+      "CR": {
+        "name": "Costa Rica"
+      },
+      "HR": {
+        "name": "Croatie"
+      },
+      "CU": {
+        "name": "Cuba"
+      },
+      "CY": {
+        "name": "Chypre"
+      },
+      "CZ": {
+        "name": "République Tchèque"
+      },
+      "BJ": {
+        "name": "Bénin"
+      },
+      "DK": {
+        "name": "Danemark"
+      },
+      "DM": {
+        "name": "Dominique"
+      },
+      "DO": {
+        "name": "République Dominicaine"
+      },
+      "EC": {
+        "name": "Équateur"
+      },
+      "SV": {
+        "name": "El Salvador"
+      },
+      "GQ": {
+        "name": "Guinée Équatoriale"
+      },
+      "ET": {
+        "name": "Éthiopie"
+      },
+      "ER": {
+        "name": "Érythrée"
+      },
+      "EE": {
+        "name": "Estonie"
+      },
+      "FO": {
+        "name": "Îles Féroé"
+      },
+      "FK": {
+        "name": "Îles (malvinas) Falkland"
+      },
+      "GS": {
+        "name": "Géorgie du Sud et les Îles Sandwich du Sud"
+      },
+      "FJ": {
+        "name": "Fidji"
+      },
+      "FI": {
+        "name": "Finlande"
+      },
+      "AX": {
+        "name": "Îles Åland"
+      },
+      "FR": {
+        "name": "France"
+      },
+      "GF": {
+        "name": "Guyane Française"
+      },
+      "PF": {
+        "name": "Polynésie Française"
+      },
+      "TF": {
+        "name": "Terres Australes Françaises"
+      },
+      "DJ": {
+        "name": "Djibouti"
+      },
+      "GA": {
+        "name": "Gabon"
+      },
+      "GE": {
+        "name": "Géorgie"
+      },
+      "GM": {
+        "name": "Gambie"
+      },
+      "PS": {
+        "name": "Territoire Palestinien Occupé"
+      },
+      "DE": {
+        "name": "Allemagne"
+      },
+      "GH": {
+        "name": "Ghana"
+      },
+      "GI": {
+        "name": "Gibraltar"
+      },
+      "KI": {
+        "name": "Kiribati"
+      },
+      "GR": {
+        "name": "Grèce"
+      },
+      "GL": {
+        "name": "Groenland"
+      },
+      "GD": {
+        "name": "Grenade"
+      },
+      "GP": {
+        "name": "Guadeloupe"
+      },
+      "GU": {
+        "name": "Guam"
+      },
+      "GT": {
+        "name": "Guatemala"
+      },
+      "GN": {
+        "name": "Guinée"
+      },
+      "GY": {
+        "name": "Guyana"
+      },
+      "HT": {
+        "name": "Haïti"
+      },
+      "HM": {
+        "name": "Îles Heard et Mcdonald"
+      },
+      "VA": {
+        "name": "Saint-Siège (état de la Cité du Vatican)"
+      },
+      "HN": {
+        "name": "Honduras"
+      },
+      "HK": {
+        "name": "Hong-Kong"
+      },
+      "HU": {
+        "name": "Hongrie"
+      },
+      "IS": {
+        "name": "Islande"
+      },
+      "IN": {
+        "name": "Inde"
+      },
+      "ID": {
+        "name": "Indonésie"
+      },
+      "IR": {
+        "name": "République Islamique d'Iran"
+      },
+      "IQ": {
+        "name": "Iraq"
+      },
+      "IE": {
+        "name": "Irlande"
+      },
+      "IL": {
+        "name": "Israël"
+      },
+      "IT": {
+        "name": "Italie"
+      },
+      "CI": {
+        "name": "Côte d'Ivoire"
+      },
+      "JM": {
+        "name": "Jamaïque"
+      },
+      "JP": {
+        "name": "Japon"
+      },
+      "KZ": {
+        "name": "Kazakhstan"
+      },
+      "JO": {
+        "name": "Jordanie"
+      },
+      "KE": {
+        "name": "Kenya"
+      },
+      "KP": {
+        "name": "République Populaire Démocratique de Corée"
+      },
+      "KR": {
+        "name": "République de Corée"
+      },
+      "KW": {
+        "name": "Koweït"
+      },
+      "KG": {
+        "name": "Kirghizistan"
+      },
+      "LA": {
+        "name": "République Démocratique Populaire Lao"
+      },
+      "LB": {
+        "name": "Liban"
+      },
+      "LS": {
+        "name": "Lesotho"
+      },
+      "LV": {
+        "name": "Lettonie"
+      },
+      "LR": {
+        "name": "Libéria"
+      },
+      "LY": {
+        "name": "Jamahiriya Arabe Libyenne"
+      },
+      "LI": {
+        "name": "Liechtenstein"
+      },
+      "LT": {
+        "name": "Lituanie"
+      },
+      "LU": {
+        "name": "Luxembourg"
+      },
+      "MO": {
+        "name": "Macao"
+      },
+      "MG": {
+        "name": "Madagascar"
+      },
+      "MW": {
+        "name": "Malawi"
+      },
+      "MY": {
+        "name": "Malaisie"
+      },
+      "MV": {
+        "name": "Maldives"
+      },
+      "ML": {
+        "name": "Mali"
+      },
+      "MT": {
+        "name": "Malte"
+      },
+      "MQ": {
+        "name": "Martinique"
+      },
+      "MR": {
+        "name": "Mauritanie"
+      },
+      "MU": {
+        "name": "Maurice"
+      },
+      "MX": {
+        "name": "Mexique"
+      },
+      "MC": {
+        "name": "Monaco"
+      },
+      "MN": {
+        "name": "Mongolie"
+      },
+      "MD": {
+        "name": "République de Moldova"
+      },
+      "MS": {
+        "name": "Montserrat"
+      },
+      "MA": {
+        "name": "Maroc"
+      },
+      "MZ": {
+        "name": "Mozambique"
+      },
+      "OM": {
+        "name": "Oman"
+      },
+      "NA": {
+        "name": "Namibie"
+      },
+      "NR": {
+        "name": "Nauru"
+      },
+      "NP": {
+        "name": "Népal"
+      },
+      "NL": {
+        "name": "Pays-Bas"
+      },
+      "AN": {
+        "name": "Antilles Néerlandaises"
+      },
+      "AW": {
+        "name": "Aruba"
+      },
+      "NC": {
+        "name": "Nouvelle-Calédonie"
+      },
+      "VU": {
+        "name": "Vanuatu"
+      },
+      "NZ": {
+        "name": "Nouvelle-Zélande"
+      },
+      "NI": {
+        "name": "Nicaragua"
+      },
+      "NE": {
+        "name": "Niger"
+      },
+      "NG": {
+        "name": "Nigéria"
+      },
+      "NU": {
+        "name": "Niué"
+      },
+      "NF": {
+        "name": "Île Norfolk"
+      },
+      "NO": {
+        "name": "Norvège"
+      },
+      "MP": {
+        "name": "Îles Mariannes du Nord"
+      },
+      "UM": {
+        "name": "Îles Mineures Éloignées des États-Unis"
+      },
+      "FM": {
+        "name": "États Fédérés de Micronésie"
+      },
+      "MH": {
+        "name": "Îles Marshall"
+      },
+      "PW": {
+        "name": "Palaos"
+      },
+      "PK": {
+        "name": "Pakistan"
+      },
+      "PA": {
+        "name": "Panama"
+      },
+      "PG": {
+        "name": "Papouasie-Nouvelle-Guinée"
+      },
+      "PY": {
+        "name": "Paraguay"
+      },
+      "PE": {
+        "name": "Pérou"
+      },
+      "PH": {
+        "name": "Philippines"
+      },
+      "PN": {
+        "name": "Pitcairn"
+      },
+      "PL": {
+        "name": "Pologne"
+      },
+      "PT": {
+        "name": "Portugal"
+      },
+      "GW": {
+        "name": "Guinée-Bissau"
+      },
+      "TL": {
+        "name": "Timor-Leste"
+      },
+      "PR": {
+        "name": "Porto Rico"
+      },
+      "QA": {
+        "name": "Qatar"
+      },
+      "RE": {
+        "name": "Réunion"
+      },
+      "RO": {
+        "name": "Roumanie"
+      },
+      "RU": {
+        "name": "Fédération de Russie"
+      },
+      "RW": {
+        "name": "Rwanda"
+      },
+      "SH": {
+        "name": "Sainte-Hélène"
+      },
+      "KN": {
+        "name": "Saint-Kitts-et-Nevis"
+      },
+      "AI": {
+        "name": "Anguilla"
+      },
+      "LC": {
+        "name": "Sainte-Lucie"
+      },
+      "PM": {
+        "name": "Saint-Pierre-et-Miquelon"
+      },
+      "VC": {
+        "name": "Saint-Vincent-et-les Grenadines"
+      },
+      "SM": {
+        "name": "Saint-Marin"
+      },
+      "ST": {
+        "name": "Sao Tomé-et-Principe"
+      },
+      "SA": {
+        "name": "Arabie Saoudite"
+      },
+      "SN": {
+        "name": "Sénégal"
+      },
+      "SC": {
+        "name": "Seychelles"
+      },
+      "SL": {
+        "name": "Sierra Leone"
+      },
+      "SG": {
+        "name": "Singapour"
+      },
+      "SK": {
+        "name": "Slovaquie"
+      },
+      "VN": {
+        "name": "Viet Nam"
+      },
+      "SI": {
+        "name": "Slovénie"
+      },
+      "SO": {
+        "name": "Somalie"
+      },
+      "ZA": {
+        "name": "Afrique du Sud"
+      },
+      "ZW": {
+        "name": "Zimbabwe"
+      },
+      "ES": {
+        "name": "Espagne"
+      },
+      "EH": {
+        "name": "Sahara Occidental"
+      },
+      "SD": {
+        "name": "Soudan"
+      },
+      "SR": {
+        "name": "Suriname"
+      },
+      "SJ": {
+        "name": "Svalbard et Île Jan Mayen"
+      },
+      "SZ": {
+        "name": "Swaziland"
+      },
+      "SE": {
+        "name": "Suède"
+      },
+      "CH": {
+        "name": "Suisse"
+      },
+      "SY": {
+        "name": "République Arabe Syrienne"
+      },
+      "TJ": {
+        "name": "Tadjikistan"
+      },
+      "TH": {
+        "name": "Thaïlande"
+      },
+      "TG": {
+        "name": "Togo"
+      },
+      "TK": {
+        "name": "Tokelau"
+      },
+      "TO": {
+        "name": "Tonga"
+      },
+      "TT": {
+        "name": "Trinité-et-Tobago"
+      },
+      "AE": {
+        "name": "Émirats Arabes Unis"
+      },
+      "TN": {
+        "name": "Tunisie"
+      },
+      "TR": {
+        "name": "Turquie"
+      },
+      "TM": {
+        "name": "Turkménistan"
+      },
+      "TC": {
+        "name": "Îles Turks et Caïques"
+      },
+      "TV": {
+        "name": "Tuvalu"
+      },
+      "UG": {
+        "name": "Ouganda"
+      },
+      "UA": {
+        "name": "Ukraine"
+      },
+      "MK": {
+        "name": "L'ex-République Yougoslave de Macédoine"
+      },
+      "EG": {
+        "name": "Égypte"
+      },
+      "GB": {
+        "name": "Royaume-Uni"
+      },
+      "IM": {
+        "name": "Île de Man"
+      },
+      "TZ": {
+        "name": "République-Unie de Tanzanie"
+      },
+      "US": {
+        "name": "États-Unis"
+      },
+      "VI": {
+        "name": "Îles Vierges des États-Unis"
+      },
+      "BF": {
+        "name": "Burkina Faso"
+      },
+      "UY": {
+        "name": "Uruguay"
+      },
+      "UZ": {
+        "name": "Ouzbékistan"
+      },
+      "VE": {
+        "name": "Venezuela"
+      },
+      "WF": {
+        "name": "Wallis et Futuna"
+      },
+      "WS": {
+        "name": "Samoa"
+      },
+      "YE": {
+        "name": "Yémen"
+      },
+      "RS": {
+        "name": "République de Serbie"
+      },
+      "ME": {
+        "name": "Monténégro"
+      },
+      "ZM": {
+        "name": "Zambie"
+      }
+    },
+    "activityType": {
+      "team": "Sport Collectif",
+      "individual": "Sport Individuel",
+      "education": "Enseignement"
+    },
+    "season": "Saison"
+  },
+  "admin": {
+    "settings": {
+      "activity": {
+        "football": {
+          "label": "Football"
+        },
+        "handball": {
+          "label": "Handball"
+        },
+        "fencing": {
+          "label": "Escrime"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "prive" : {
+    "dashboard" : {
+      "title" : "My space"
+    }
+  },
+  "navbar": {
+    "welcome": "Welcome",
+    "connect": "Connection",
+    "disconnect": "Logout",
+    "administration": "Administration",
+    "signup": "Create an account",
+    "param" : "Settings"
+  },
+  "footer": {
+    "link": {
+      "about": "About",
+      "contact": "Contact us",
+      "legalmentions": "Terms of use"
+    }
+  },
+  "content": {
+    "setAvatarPerson": {
+      "label": {
+        "title": "Photo",
+        "selectphoto": "Select a photo",
+        "cancel": "Cancel",
+        "upload": "Upload"
+      }
+    },
+    "login": {
+      "label": {
+        "login": "Login",
+        "password": "Password",
+        "signin": "Login",
+        "forgotpasswd": "Forgot password?",
+        "forgotpasswdmess": "These are things that happen, give us your login and we will reset it for you!",
+        "title": "Log on to <b>Qaobee</b>",
+        "forgotpasswdcancel": "Wait, I remember now!"
+      },
+      "ph": {
+        "login": "Login",
+        "password": "Password"
+      }
+    }
+  },
+  "popup": {
+    "warning": {
+      "unregistreduser": "You have not verified your e-mail."
+    }
+  },
+  "toolBar": {
+    "share": "Share",
+    "pdfExport": "Export to PDF"
+  },
+  "buttons": {
+    "validate": "Validate",
+    "cancel": "Cancel",
+    "close" : "Close",
+    "back" : "Return"
+  }
+}

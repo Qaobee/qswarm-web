@@ -1,0 +1,62 @@
+{
+  "prive" : {
+    "dashboard" : {
+      "title" : "Mon espace"
+    }
+  },
+  "navbar": {
+    "welcome": "Bienvenue",
+    "connect": "Connexion",
+    "disconnect": "Déconnexion",
+    "administration": "Administration",
+    "signup": "S'inscrire",
+    "param" : "Paramétrage"
+  },
+  "footer": {
+    "link": {
+      "about": "A propos",
+      "contact": "Nous contacter",
+      "legalmentions": "Mentions légales"
+    }
+  },
+  "content": {
+    "setAvatarPerson": {
+      "label": {
+        "title": "Photo de",
+        "selectphoto": "Sélectionner une photo",
+        "cancel": "Annuler",
+        "upload": "Uploader"
+      }
+    },
+    "login": {
+      "label": {
+        "login": "Login",
+        "password": "Mot de passe",
+        "signin": "Se connecter",
+        "forgotpasswd": "Mot de passe oublié?",
+        "forgotpasswdmess": "Ce sont des choses qui arrivent, donnez-nous votre identifiant de connexion, nous le réinitialiserons pour vous!",
+        "title": "Connectez vous sur <b>Qaobee</b>",
+        "forgotpasswdcancel": "Attendez, je m'en rappelle à présent!"
+      },
+      "ph": {
+        "login": "Login",
+        "password": "Mot de passe"
+      }
+    }
+  },
+  "popup": {
+    "warning": {
+      "unregistreduser": "Vous n'avez pas validé votre e-mail."
+    }
+  },
+  "toolBar": {
+    "share": "Partager",
+    "pdfExport": "Exporter en PDF"
+  },
+  "buttons": {
+    "validate": "Valider",
+    "cancel": "Annuler",
+    "close" : "Fermer",
+    "back" : "Retour"
+  }
+}

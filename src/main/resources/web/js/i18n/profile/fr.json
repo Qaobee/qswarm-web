@@ -1,0 +1,52 @@
+{
+  "profile": {
+    "stats": "Mes statistiques",
+    "info": "Mes informations",
+    "account": "Mon abonnement",
+    "title": "Profile",
+    "desc": "Modifiez votre profil <b>Qaobee</b>.",
+    "label": {
+      "name": "Nom",
+      "forname": "Prénom",
+      "nick": "Pseudonme",
+      "address": "Adresse",
+      "zipcode": "Code postal",
+      "city": "Ville",
+      "email": "E-mail",
+      "birthdate": "Date de naissance",
+      "passwd1": "Mot de passe",
+      "passwd2": "Mot de passe à nouveau",
+      "avatar": "Votre photo de profile",
+      "mandatory": "Les champs en rouge sont obligatoires",
+      "clubadmin": "Administrateur du club",
+      "billingdate": "Date de paiement : ",
+      "billingnumber": "Numéro de facture : ",
+      "product": "Produit",
+      "price": "Prix"
+    },
+    "ph": {
+      "name": "Saisissez votre nom",
+      "forname": "Saisissez votre prénom",
+      "nick": "Choisissez un pseudonyme",
+      "address": "Saisissez votre adresse",
+      "zipcode": "Saisissez votre code postal",
+      "city": "Saisissez votre ville",
+      "email": "Saisissez votre adresse e-mail",
+      "birthdate": "Saisissez votre date de naissance",
+      "passwd1": "Saisissez le si vous souhaitez le modifier"
+    },
+    "message": {
+      "passwd": {
+        "strength": "Robustesse du mot de passe",
+        "ko": "Les mots de passe ne correspondent pas",
+        "ok": "Mot de passe OK"
+      },
+      "email": {
+        "ok": "Email vérifié",
+        "ko": "Mauvaise adresse email",
+        "required": "Email obligatoire",
+        "exists": "Cette adresse email existe déjà"
+      }
+    }
+  }
+}

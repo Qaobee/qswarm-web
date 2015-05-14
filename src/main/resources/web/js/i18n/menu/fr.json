@@ -1,0 +1,20 @@
+{
+  "leftMenu": {
+    "mainTitle": "Menu",
+    "dashboard": "Home",
+    "effective": "Effectif",
+    "groups": "Groupes",
+    "player": "Joueur",
+    "training": "Entraînements",
+    "calendar" : "Agenda",
+    "championship" : "Compétition",
+    "composition" : "Composition d'équipe",
+    "collectPreparation" :"Préparation de la collecte",
+    "matchPreparation" : "Préparation match",
+    "matchEnding" : "Bilan du match",
+    "stats" : "Statistiques",
+    "optimize" : "Optimiser",
+    "profile" : "Profile",
+    "param" : "Paramétrage"
+  }
+}

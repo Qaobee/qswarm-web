@@ -1,0 +1,9 @@
+{
+  "date": {
+    "format": "MM/DD/YYYY",
+    "label": "mm/dd/yyyy"
+  },
+  "phone": {
+    "format": "(999) 999-9999"
+  }
+}

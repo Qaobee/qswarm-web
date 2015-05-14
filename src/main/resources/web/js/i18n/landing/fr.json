@@ -1,0 +1,114 @@
+{
+  "landing": {
+    "screen0": {
+      "maintitle": "Entraînez plus intensément",
+      "subtitle": "Espace de travail en ligne conçu pour et par les entraîneurs sportifs du monde entier."
+    },
+    "screen1": {
+      "maintitle": "Une idée simple",
+      "subtitle": "Simplifiez le quotidien de chaque entraîneur",
+      "sections": {
+        "p1": "Le sport est en perpétuel évolution depuis des décennies et le développement des nouvelles technologies n’a fait qu’accélérer ce phénomène. Les possibilités offertes par ces dernières ont décuplé l’importance accordée à la donnée sportive.",
+        "p2": "La Mannschaft s’est pleinement engagée dans la data révolution dès 2004 en promouvant les méthodes de travail scientifiques autant que sportives. Depuis, de plus en plus d’équipes lui emboîtent le pas et dissèquent les performances de leurs joueurs à l’aide de données physiques et techniques",
+        "p3": "Le projet Qaobee est né de ce constat et résulte d’une ambition affirmée : créer un espace de travail puissant, complet et intuitif, qui soit le terrain de jeu personnel de tous les entraîneurs, pour le management au quotidien et l’accompagnement dans l’amélioration de la performance.",
+        "p4": "Le trait d’union entre l’observation, l’intuition et  l’analyse scientifique."
+      }
+    },
+    "screen2": {
+      "maintitle": "Votre terrain de jeu",
+      "link": "Découvrez les fonctionnalités",
+      "sections": {
+        "p1": "Qaobee est l’espace idéal pour développer votre passion du sport.",
+        "p2": "Retrouvez toutes les données concernant vos joueurs, votre staff et votre club. Rassemblez vos observations, analysez la progression de votre effectif et mesurez l’évolution de vos performances. Votre espace de travail Qaobee vous accompagne dans une logique de choix raisonnés.",
+        "p3": "Qaobee c’est également une communauté d’entraîneurs passionnés avec laquelle vous pouvez échanger et collaborer."
+      }
+    },
+    "screen3": {
+      "maintitle": "Une foule de possibilités",
+      "slide1": {
+        "maintitle": "Managez",
+        "subtitle": "Managez sereinement",
+        "p1": "Qaobee est un espace de travail unique pour piloter votre activité, planifier votre saison et avoir une vue globale sur les performances de votre équipe.",
+        "p2": "Toutes les informations sportives, médicales ou administratives de votre effectif sont réunies au même endroit. Vos données sont sécurisées, valorisées et accessibles indéfiniment dans votre espace de travail.",
+        "p3": "Gagnez du temps et managez plus efficacement.",
+        "link": "Découvrez Qaobee"
+      },
+      "slide2": {
+        "maintitle": "Collectez",
+        "subtitle": "Collectez l’information sportive en temps réel",
+        "p1": "Nous nous sommes inspirés de vos besoins pour créer Q.Swarm, une application mobile qui vous permet de capter en temps réel et de manière cohérente toutes les données issues de vos observations.",
+        "p2": "Q.Swarm vous permet de centraliser facilement dans votre espace de travail tous les éléments qui vous semblent pertinents à analyser.",
+        "p3": "Collectez un maximum de détails.",
+        "link": "Découvrez Q.Swarm"
+      },
+      "slide3": {
+        "maintitle": "Analysez",
+        "subtitle": "Analysez vos données",
+        "p1": "Il est crucial pour un entraîneur de bénéficier d’informations précises et exhaustives sur son activité.",
+        "p2": "Avec Q.Analytics, accédez à des statistiques approfondies vous permettant d’analyser et de déterminer rapidement les axes d’amélioration.",
+        "p3": "Augmentez la valeur de vos données.",
+        "link": "Découvrez Q.Analytics"
+      },
+      "slide4": {
+        "maintitle": "Optimisez",
+        "subtitle": "Optimisez vos performances",
+        "p1": "L’entraîneur est perpétuellement à la recherche de la performance individuelle et collective.",
+        "p2": "Q.Lab vous aide à interpréter et décider différemment. Son moteur d’analyse prédictive permet d’imaginer les scénarios à venir et bouscule vos habitudes. Confrontez vos représentations avec les analyses élaborés par Q.Lab et maximiser vos résultats.",
+        "p3": "Anticipez vos succès futurs.",
+        "link": "Découvrez Q.Lab"
+      },
+      "slide5": {
+        "maintitle": "Collaborez",
+        "subtitle": "Collaborez avec une communauté passionnée",
+        "p1": "Q.Link met en relation les entraîneurs et permet de collaborer au delà des frontières.",
+        "p2": "Adhérez et bénéficiez d’un espace de travail collaboratif dans lequel vous pouvez construire, partager et capitaliser.",
+        "p3": "Rejoignez la communauté.",
+        "link": "Découvrez Q.Link"
+      }
+    },
+    "screen4": {
+      "maintitle": "Simplifiez vous la vie"
+    },
+    "screen5": {
+      "maintitle": "Avec vous, quelle que soit la situation !",
+      "link": "En savoir plus"
+    },
+    "screen6": {
+      "maintitle": "Inscrivez-vous",
+      "subtitle": "Restez en contact",
+      "form": {
+        "submit": "Valider",
+        "subscribe": "S'inscrire",
+        "unsubscribe": "Se désabonner",
+        "email": "Adresse e-mail"
+      }
+    }
+  },
+  "contact": {
+    "title": "Contactez nous",
+    "title2": "N'hésitez pas à nous contacter",
+    "label": {
+      "name": "Nom",
+      "email": "E-mail",
+      "subject": "Sujet",
+      "message": "Message",
+      "office": "Nos bureaux",
+      "support": "Service client",
+      "success": "Votre message a été envoyé."
+    },
+    "ph": {
+      "name": "Saisissez votre nom",
+      "email": "Saisissez votre email",
+      "subject": {
+        "line1": "Choisissez :",
+        "line2": "Service client",
+        "line3": "Suggestions",
+        "line4": "Support utilisateur"
+      },
+      "message": "Message"
+    },
+    "button": {
+      "send": "Envoyer"
+    }
+  }
+}

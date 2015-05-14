@@ -1,0 +1,38 @@
+{
+  "statWidget": {
+    "prefs": {
+      "color": "Color",
+      "colors": {
+        "muted": "Gray",
+        "primary": "Dark blue",
+        "info": "Light blue",
+        "success": "Green",
+        "warning": "Orange",
+        "danger": "Red"
+      },
+      "family": "Type",
+      "families": {
+        "line": "Line",
+        "bar": "Bar chart",
+        "pie": "Pie chart",
+        "radar": "Radar chart",
+        "polar": "Polar chart",
+        "doughnut": "Doughnut chart"
+      },
+      "indicator": "Indicator"
+    }
+  },
+"unavailableEffective" : {
+  "title" : "Outages"
+ },
+  "palmaresEffective" : {
+  "title" : "Prize list",
+  "stat" : {
+     "goalscored" : "Top scorer",
+     "playtime" : "Playtime",
+     "pass" : "Top passer",
+     "attendance" : "Best attendance",
+     "eventNotePerson" : "Best rating"
+   }
+ }
+}
