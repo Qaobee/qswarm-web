@@ -39,7 +39,7 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
                       }
                     }
                     if (is_touch_device()) {
-                      $('#nav-mobile').css({ overflow: 'auto'})
+                      $('#nav-mobile').css({ overflow: 'auto'});
                     }
 
                     $('.parallax').parallax();
@@ -51,7 +51,7 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
                     
                     $('.modal-trigger').leanModal({
                         dismissible: true, // Modal can be dismissed by clicking outside of the modal
-                        opacity: .7, // Opacity of modal background
+                        opacity: 0.7, // Opacity of modal background
                         in_duration: 600, // Transition in duration
                         out_duration: 200, // Transition out duration
                         //ready: function() { alert('Ready'); }, // Callback for Modal open
@@ -126,17 +126,7 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
 
                 /*
                 ModalInstanceCtrl = function ($scope, $modalInstance, signin, $location, $rootScope, $filter, $log) {
-                    $scope.signin = signin;
-                    /**
-                     * @name $scope.cancel
-                     * @function
-                     * @memberOf qaobee.QaobeeSwarnApp.ModalInstanceCtrl
-                     * @description Close the popin
-                     
-                    $scope.cancel = function () {
-                        $modalInstance.dismiss('cancel');
-                    };
-
+                    
                     /**
                      * @name $scope.forgotPasswd
                      * @function
@@ -156,10 +146,10 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
                      * @function
                      * @memberOf qaobee.QaobeeSwarnApp.ModalInstanceCtrl
                      * @description Validate login form
-                     
+                     */
                     $scope.login = function () {
                         userInfosAPI.logon($scope.signin.login, $scope.signin.passwd).success(function (data) {
-                            $modalInstance.close(data);
+                            $('#modalLogin').closeModal();
                             if (data.account.active) {
                                 var paid = true;
                                 // Let's verify if our user as paid
@@ -207,7 +197,6 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
                             $log.error(error);
                         });
                     };
-                };
 
                 /**
                  * @name $scope.openLoginModal
