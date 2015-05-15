@@ -43,8 +43,11 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
                     }
 
                     $('.parallax').parallax();
+                    
+                    $(".dropdown-button").dropdown();
+                    
                     $('.button-collapse').sideNav({
-                        menuWidth: 200, // Default is 240
+                        menuWidth: 300, // Default is 240
                         edge: 'left', // Choose the horizontal origin
                         closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
                     });
@@ -57,6 +60,8 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
                         //ready: function() { alert('Ready'); }, // Callback for Modal open
                         //complete: function() { alert('Closed'); } // Callback for Modal close
                     });
+                    
+                    $('.tooltipped').tooltip({delay: 50});
                 });
 
                 

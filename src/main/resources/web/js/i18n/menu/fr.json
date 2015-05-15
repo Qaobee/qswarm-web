@@ -1,22 +1,16 @@
 {
     "headerMenu": {
-        "mainTitle": "Menu",
         "dashboard": "Accueil",
-        "effective": "Effectif",
-        "groups": "Groupes",
-        "player": "Joueur",
-        "training": "Entraînements",
-        "calendar" : "Agenda",
-        "championship" : "Compétition",
-        "composition" : "Composition d'équipe",
-        "collectPreparation" :"Préparation de la collecte",
-        "matchPreparation" : "Préparation match",
-        "matchEnding" : "Bilan du match",
         "stats" : "Statistiques",
-        "optimize" : "Optimiser",
-        "profile" : "Profile",
-        "param" : "Paramétrage"
-  },
+        "effective": "Effectif",
+        "training": "Entraînements",
+        "championship" : "Compétition",
+        "calendar" : "Agenda",
+        "notification" : "Messages",
+        "search" : "Rechercher",
+        "search-event" : "Evènement",
+        "search-player" : "Joueur"
+    },
     "navbar": {
         "welcome": "Bienvenue",
         "connect": "Connexion",
@@ -24,7 +18,7 @@
         "administration": "Administration",
         "signup": "S'inscrire",
         "param" : "Paramétrage"
-  },
+    },
     "content": {
         "login": {
             "label": {
