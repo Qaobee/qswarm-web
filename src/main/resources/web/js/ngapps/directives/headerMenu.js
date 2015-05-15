@@ -47,7 +47,7 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
                     $(".dropdown-button").dropdown();
                     
                     $('.button-collapse').sideNav({
-                        menuWidth: 300, // Default is 240
+                        menuWidth: 240, // Default is 240
                         edge: 'left', // Choose the horizontal origin
                         closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
                     });
@@ -193,7 +193,6 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
                             if (error) {
                                 $rootScope.errMessSend = true;
                                 if (error.code && error.code === 'NON_ACTIVE') {
-                                    $modalInstance.dismiss('cancel');
                                     toastr.warning($filter('translate')('popup.warning.unregistreduser'));
                                 } else {
                                     toastr.error(error.message);

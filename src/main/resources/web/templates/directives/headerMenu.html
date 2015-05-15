@@ -95,18 +95,18 @@
         <div class="modal-content grey lighten-3 ">
             <div class="row">
                 <div class="input-field col s12">
-                    <input placeholder="{{'content.login.label.login' | translate }}" id="login" type="text" class="validate" ng-model="signin.login">
+                    <input placeholder="{{'content.login.label.login' | translate }}" id="login" type="text" class="validate" ng-model="signin.login" required>
                     <label for="login">{{'content.login.label.login' | translate }}</label>
                 </div>
                 <div class="input-field col s12">
-                  <input placeholder="{{'content.login.label.password' | translate }}" id="password" type="password" class="validate" ng-model="signin.passwd">
+                  <input placeholder="{{'content.login.label.password' | translate }}" id="password" type="password" class="validate" ng-model="signin.passwd" required>
                   <label for="password">{{'content.login.label.password' | translate }}</label>
                 </div>
             </div>    
         </div>
     
         <div class="modal-footer">
-            <input type="submit" class="modal-action modal-close waves-effect waves-red btn teal" translate="popup.buttons.submit" />
+            <button type="submit" class="waves-effect waves-red btn teal"  translate="popup.buttons.submit"/>
             <a href="#!" class="modal-action modal-close waves-effect waves-red btn red">{{'popup.buttons.cancel' | translate}}</a>    
         </div>
     </form>
