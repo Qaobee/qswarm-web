@@ -8,9 +8,8 @@
  * @copyright <b>QaoBee</b>.
  */
 angular.module('effectiveMod',
-    ['common-config', 'labelsAPI', 'structureCfgRestAPI', 'summarysheet', 'effectiveRestAPI', 'ngTable', 'ngTableExport',
-        'statWidget', 'userMetaAPI', 'staffListWidget', 'unavailableEffectiveWidget', 'palmaresEffectiveWidget',
-        'profileRestAPI', 'groupAPI', 'labelsAPI', 'statAPI', 'activityCfgRestAPI' ,'effectiveSearch', 'locationAPI', 'ui.utils', 'personRestAPI'])
+    ['common-config', 'labelsAPI', 'structureCfgRestAPI', 'effectiveRestAPI', 'statWidget', 'userMetaAPI', 
+        'profileRestAPI', 'groupAPI', 'statAPI', 'activityCfgRestAPI' ,'locationAPI', 'personRestAPI'])
 //      ,'ui.select'
 
     .config(function ($routeProvider, metaDatasProvider) {

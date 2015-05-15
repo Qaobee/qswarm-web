@@ -9,7 +9,7 @@
  *
  * @copyright <b>QaoBee</b>.
  */
-angular.module('firstConnectWizzard', ['widget.structure', 'structureCfgRestAPI', 'userMetaAPI' ])
+angular.module('firstConnectWizzard', ['structureCfgRestAPI', 'userMetaAPI' ])
 
     .config(function ($routeProvider) {
         $routeProvider.when('/firstconnection', {

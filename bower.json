@@ -19,6 +19,7 @@
     "angular": "1.4.0-rc.2",
     "angular-animate": "1.4.0-rc.2",
     "angular-audio": "*",
+    "angular-chart.js": "0.7.1",
     "angular-cookies": "1.4.0-rc.2",
     "angular-dynamic-locale": "0.1.27",
     "angular-file-upload": "1.1.5",

@@ -4,7 +4,7 @@
     <div class="container" >
         <div class="nav-wrapper" >
             
-            <a href="#" class="brand-logo"><img src="img/logo-mini.png"/></a>
+            <a href="#/" class="brand-logo"><img src="img/logo-mini.png"/></a>
             
             <ul class="right hide-on-med-and-down">
                 <li><a href="#modalLogin" class="grey-text text-lighten-1 modal-trigger"><i class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}</a></li>
@@ -22,66 +22,67 @@
 
 
 <!-- Connected Fisrt header-->
-<nav class="top-nav grey lighten-3" role="navigation" ng-show="user">    
-    <div class="container">
-        <div class="nav-wrapper">
-            
-            <!-- Dropdown Structure -->
-            <ul id="dropdownSearch" class="dropdown-content">
-                <li><a href="#/private/" class="red-text text-lighten-1 tooltipped" data-position="right" data-delay="30" data-tooltip="{{'headerMenu.search-event' | translate }}">
-                    <i class="fa fa-calendar center"></i></a>
-                </li>
-                <li class="divider red darken-4" ></li>
-                <li><a href="#/private/" class="red-text text-lighten-1 tooltipped" data-position="right" data-delay="30" data-tooltip="{{'headerMenu.search-player' | translate }}">
-                    <i class="mdi-social-person center"></i></a>
-                </li>
-            </ul>
+<div class="navbar-fixed" ng-show="user">
+    <nav class="top-nav grey lighten-3" role="navigation">    
+        <div class="container">
+            <div class="nav-wrapper">
 
-            <a href="#" class="brand-logo red-text text-lighten-1 center"><small>{{structure.label}}</small></a>
+                <!-- Dropdown Structure -->
+                <ul id="dropdownSearch" class="dropdown-content">
+                    <li><a href="#/private/" class="red-text text-lighten-1 tooltipped" data-position="right" data-delay="30" data-tooltip="{{'headerMenu.search-event' | translate }}">
+                        <i class="fa fa-calendar center"></i></a>
+                    </li>
+                    <li class="divider red darken-4" ></li>
+                    <li><a href="#/private/" class="red-text text-lighten-1 tooltipped" data-position="right" data-delay="30" data-tooltip="{{'headerMenu.search-player' | translate }}">
+                        <i class="mdi-social-person center"></i></a>
+                    </li>
+                </ul>
 
-            <ul class="left hide-on-med-and-down red">
-                <li><a class="dropdown-button white-text light" href="#/private/" data-activates="dropdownSearch"><i class="mdi-action-search left"></i>{{'headerMenu.search' | translate }}</a></li>
-            </ul>
-            <ul class="right hide-on-med-and-down">
-                <li><a ng-click="logoff()"><i class="grey-text text-lighten-1 fa fa-power-off right"></i></a></li>
-            </ul>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="#/private/profil" class="grey-text text-lighten-1">{{user.firstname}} {{user.name}}</li>
-            </ul>
-            
-            <a href="#" data-activates="nav-mobile" class="button-collapse grey-text text-lighten-1"><i class="mdi-navigation-menu left"></i></a>
+                <a href="#/private/" class="brand-logo blue-grey-text text-lighten-1 center"><small><i class="fa fa-home left"></i><span class="hide-on-med-and-down">{{structure.label}}</span></small></a>
 
-            <ul id="nav-mobile" class="side-nav grey">
-                <li><a href="#/private/" class="white-text light"><i class="fa fa-home left"></i>{{'headerMenu.dashboard' | translate }}</a></li>
-                <li><a href="#/private/" class="white-text light"><i class="fa fa-envelope left"></i>{{'headerMenu.notification' | translate }}</a></li>
-                <li><a href="#/private/" class="white-text light"><i class="fa fa-bar-chart left"></i>{{'headerMenu.stats' | translate }}</a></li>
-                <li><a href="#/private/" class="white-text light"><i class="mdi-social-people left"></i>{{'headerMenu.effective' | translate }}</a></li>
-                <li><a href="#/private/" class="white-text light"><i class="mdi-av-timer left"></i>{{'headerMenu.training' | translate }}</a></li>
-                <li><a href="#/private/" class="white-text light"><i class="fa fa-trophy left"></i>{{'headerMenu.championship' | translate }}</a></li>
-                <li><a href="#/private/" class="white-text light"><i class="fa fa-calendar left"></i>{{'headerMenu.calendar' | translate }}</a></li>
-                <li class="divider"></li>
-                <li><a ng-click="logoff()" class="white-text light"><i class="fa fa-power-off left"></i>{{'navbar.disconnect' | translate}}</a></li>
-            </ul>
-        </div>  
-    </div>
-</nav>
+                <ul class="left hide-on-med-and-down red lighten-1">
+                    <li><a class="dropdown-button white-text light" href="#/private/" data-activates="dropdownSearch"><i class="mdi-action-search left"></i>{{'headerMenu.search' | translate }}</a></li>
+                </ul>
+                <ul class="right hide-on-med-and-down">
+                    <li><a ng-click="logoff()"><i class="blue-grey-text text-lighten-1 fa fa-power-off right"></i></a></li>
+                </ul>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#/private/profil" class="blue-grey-text text-lighten-1">{{user.firstname}} {{user.name}}</li>
+                </ul>
 
-<!-- Connected second header-->
-<nav class="grey hide-on-med-and-down" role="navigation" ng-show="user">    
-    <div class="nav-wrapper center">
-        <ul>
-            <li><a href="#/private/" class="light"><i class="fa fa-home left"></i>{{'headerMenu.dashboard' | translate }}</a></li>
-            <li><a href="#/private/" class="light"><i class="fa fa-envelope left"></i>{{'headerMenu.notification' | translate }}</a></li>
-            <li><a href="#/private/" class="light"><i class="fa fa-bar-chart left"></i>{{'headerMenu.stats' | translate }}</a></li>
-            <li><a href="#/private/" class="light"><i class="mdi-social-people left"></i>{{'headerMenu.effective' | translate }}</a></li>
-            <li><a href="#/private/" class="light"><i class="mdi-av-timer left"></i>{{'headerMenu.training' | translate }}</a></li>
-            <li><a href="#/private/" class="light"><i class="fa fa-trophy left"></i>{{'headerMenu.championship' | translate }}</a></li>
-            <li class="divider"></li>
-            <li><a href="#/private/" class="light"><i class="fa fa-calendar left"></i>{{'headerMenu.calendar' | translate }}</a></li>
-        </ul>
-    </div>
-</nav>
+                <a href="#" data-activates="nav-mobile" class="button-collapse grey-text text-lighten-1"><i class="mdi-navigation-menu left"></i></a>
 
+                <ul id="nav-mobile" class="side-nav blue-grey">
+                    <li><a href="#/private/" class="white-text light"><i class="fa fa-envelope left"></i>{{'headerMenu.notification' | translate }}</a></li>
+                    <li><a href="#/private/" class="white-text light"><i class="fa fa-bar-chart left"></i>{{'headerMenu.stats' | translate }}</a></li>
+                    <li><a href="#/private/" class="white-text light"><i class="mdi-social-people left"></i>{{'headerMenu.effective' | translate }}</a></li>
+                    <li><a href="#/private/" class="white-text light"><i class="mdi-av-timer left"></i>{{'headerMenu.training' | translate }}</a></li>
+                    <li><a href="#/private/" class="white-text light"><i class="fa fa-trophy left"></i>{{'headerMenu.championship' | translate }}</a></li>
+                    <li><a href="#/private/" class="white-text light"><i class="fa fa-calendar left"></i>{{'headerMenu.calendar' | translate }}</a></li>
+                    <li class="divider"></li>
+                    <li><a ng-click="logoff()" class="white-text light"><i class="fa fa-power-off left"></i>{{'navbar.disconnect' | translate}}</a></li>
+                </ul>
+            </div>  
+        </div>
+    </nav>
+</div>
+<div class="navbar-fixed" ng-show="user">
+    <!-- Connected second header-->
+    <nav class="blue-grey hide-on-med-and-down" role="navigation">
+        <div class="container">
+            <div class="nav-wrapper">
+                <ul>
+                    <li><a href="#/private/" class="light"><i class="fa fa-envelope left"></i><span class="hide-on-med-and-down">{{'headerMenu.notification' | translate }}</span></a></li>
+                    <li><a href="#/private/" class="light"><i class="fa fa-bar-chart left"></i><span class="hide-on-med-and-down">{{'headerMenu.stats' | translate }}</span></a></li>
+                    <li><a href="#/private/" class="light"><i class="mdi-social-people left"></i><span class="hide-on-med-and-down">{{'headerMenu.effective' | translate }}</span></a></li>
+                    <li><a href="#/private/" class="light"><i class="mdi-av-timer left"></i><span class="hide-on-med-and-down">{{'headerMenu.training' | translate }}</span></a></li>
+                    <li><a href="#/private/" class="light"><i class="fa fa-trophy left"></i><span class="hide-on-med-and-down">{{'headerMenu.championship' | translate }}</span></a></li>
+                    <li><a href="#/private/" class="light"><i class="fa fa-calendar left"></i><span class="hide-on-med-and-down">{{'headerMenu.calendar' | translate }}</span></a></li>
+                </ul>
+            </div>
+        </div>    
+    </nav>
+</div>
 
 <!-- Modal -->
 <div id="modalLogin" class="modal">
@@ -107,7 +108,7 @@
     
         <div class="modal-footer">
             <button type="submit" class="waves-effect waves-red btn teal"  translate="popup.buttons.submit"/>
-            <a href="#!" class="modal-action modal-close waves-effect waves-red btn red">{{'popup.buttons.cancel' | translate}}</a>    
+            <a href="#/" class="modal-action modal-close waves-effect waves-red btn red">{{'popup.buttons.cancel' | translate}}</a>    
         </div>
     </form>
 </div>

@@ -20,9 +20,7 @@
  * @copyright <b>QaoBee</b>.
  */
 angular.module(
-    'prive',    ['common-config', 'profile', 'firstConnectWizzard','fileread' , 'playersheet', 'composition', 'publicRestAPI', 'profileRestAPI', 'notificationsRestAPI', 'eventbus', 'widget.calendar',
-        'widget.weather', 'widget.notifications', 'widget.news', 'widget.structure', 'effectiveMod','cycleMod','categoryTeamsMod', 'categoryTeamsSheetMod','trainingMod','themeMod', 'organizationMod', 'groupMod', 'groupSheetMod', 'exerciseMod',
-        'citizenModule','sessionMod', 'ui.sortable', 'themeService','flow'])
+    'prive',    ['common-config', 'effectiveRestAPI'])
 
 
     .config(function ($routeProvider, metaDatasProvider) {
@@ -34,7 +32,7 @@ angular.module(
                 user: metaDatasProvider.checkUser,
                 meta: metaDatasProvider.getMeta
             },
-            templateUrl: 'templates/prive/welcome.html'
+            templateUrl: 'templates/prive/home.html'
         }).when('/private/notifications', {
             controller: 'NotificationsCtrl',
             resolve: {
@@ -60,15 +58,7 @@ angular.module(
         'use strict';
         var structureprom = $q.defer();
         var placeprom = $q.defer();
-        eventbus.prepForBroadcast("left-menu", 'user.dashboard');
-        $scope.$watch(
-            function () {
-                return $filter('translate')('prive.dashboard.title');
-            },
-            function (newval) {
-                eventbus.prepForBroadcast("title", newval);
-            }
-        );
+
         $scope.structureprom = structureprom.promise;
         $scope.placeprom = placeprom.promise;
 
@@ -83,234 +73,7 @@ angular.module(
         $scope.user = user;
         placeprom.resolve(user.address);
         $scope.limit = 5;
-        $scope.events = [
-            {
-                title: 'All Day Event',
-                start: new Date(y, m, 1)
-            },
-            {
-                title: 'Long Event',
-                start: new Date(y, m, d - 5),
-                end: new Date(y, m, d - 2),
-                color: "orange"
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: new Date(y, m, d - 3, 16, 0),
-                allDay: false
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: new Date(y, m, d + 4, 16, 0),
-                allDay: false
-            },
-            {
-                title: 'Birthday Party',
-                start: new Date(y, m, d + 1, 19, 0),
-                end: new Date(y, m, d + 1, 22, 30),
-                allDay: false,
-                color: "red"
-            },
-            {
-                title: 'Click for Google',
-                start: new Date(y, m, 28),
-                end: new Date(y, m, 29),
-                color: "green"
-            }
-        ];
-
-    })
-
-/**
- * @class qaobee.prive.prive.NotificationsCtrl
- * @description Contrôleur principal de la page
- *              templates/prive/profile/notifications.html
- */
-    .controller('NotificationsCtrl', function ($scope, notificationsRestAPI, $location, $rootScope, eventbus, $filter, user, meta) {
-        'use strict';
-        $scope.notifications = [];
-        $scope.unreadNum = 0;
-        $scope.$on('eventbus', function () {
-            if ("refreshNotifications" === eventbus.message) {
-                $scope.getNotifications();
-            }
-        });
-        /**
-         * @name $scope.getNotifications
-         * @function
-         * @memberOf qaobee.prive.prive.NotificationsCtrl
-         * @description Récupère les notifications d'un user
-         */
-//        $scope.getNotifications = function () {
-//            notificationsRestAPI.getuserNotifications(5).success(function (data) {
-//                $scope.unreadNum = data.count(function (n) {
-//                    return n.read === false;
-//                });
-//                $scope.notifications = data;
-//            });
-//        };
-//
-//        $scope.getNotifications();
-
-        /**
-         * @name $scope.markRead
-         * @function
-         * @param {String} id id de la notification
-         * @memberOf qaobee.prive.prive.NotificationsCtrl
-         * @description Marquer la notification comme lue
-         */
-        $scope.markRead = function (id) {
-            var notif = $scope.notifications.find(function (n) {
-                return n._id === id;
-            });
-            notificationsRestAPI.markAsRead(id).success(function (data) {
-                notif.read = !notif.read;
-                eventbus.prepForBroadcast("refreshNotifications", "");
-            });
-        };
-        /**
-         * @name $scope.del
-         * @function
-         * @param {String} id id de la notification
-         * @memberOf qaobee.prive.prive.NotificationsCtrl
-         * @description Suppression de la notification
-         */
-        $scope.del = function (id) {
-            var notif = $scope.notifications.find(function (n) {
-                return n._id === id;
-            });
-            modalConfirm($filter('translate')('popup.title.delete.notification'), $filter('translate')('popup.message.delete') + ".<br />" + $filter('translate')('popup.confirm.ask'), function () {
-                notificationsRestAPI.del(id).success(function (data) {
-                    $scope.notifications.remove(notif);
-                    eventbus.prepForBroadcast("refreshNotifications", data);
-                    toastr.success(notif.title + $filter('translate')('popup.success.delete'));
-                });
-            });
-        };
-
-    })
-
-/**
- * @class qaobee.prive.prive.CalendarCtrl
- * @description Controller of templates/prive/calendar.html
- */
-    .controller('CalendarCtrl', function ($scope, $filter, user, meta) {
-        'use strict';
-        var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getFullYear();
-        $scope.events = [
-            {
-                title: 'All Day Event',
-                start: new Date(y, m, 1)
-            },
-            {
-                title: 'Long Event',
-                start: new Date(y, m, d - 5),
-                end: new Date(y, m, d - 2),
-                color: "orange"
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: new Date(y, m, d - 3, 16, 0),
-                allDay: false
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: new Date(y, m, d + 4, 16, 0),
-                allDay: false
-            },
-            {
-                title: 'Birthday Party',
-                start: new Date(y, m, d + 1, 19, 0),
-                end: new Date(y, m, d + 1, 22, 30),
-                allDay: false,
-                color: "red"
-            },
-            {
-                title: 'Click for Google',
-                start: new Date(y, m, 28),
-                end: new Date(y, m, 29),
-                color: "green"
-            }
-        ];
-        $scope.eventSources = [$scope.events];
-
-        /* alert on eventClick */
-        $scope.alertOnEventClick = function (event, allDay, jsEvent, view) {
-            $scope.alertMessage = event.title + ' was clicked ';
-        };
-        /* alert on Drop */
-        $scope.alertOnDrop = function (event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view) {
-            $scope.alertMessage = 'Event Droped to make dayDelta ' + dayDelta;
-        };
-        /* alert on Resize */
-        $scope.alertOnResize = function (event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view) {
-            $scope.alertMessage = 'Event Resized to make dayDelta ' + minuteDelta;
-        };
-        /* remove event */
-        $scope.remove = function (index) {
-            $scope.events.splice(index, 1);
-        };
-        /* Change View */
-        $scope.changeView = function (view, calendar) {
-            calendar.fullCalendar('changeView', view);
-        };
-        /* Change View */
-        $scope.renderCalender = function (calendar) {
-            calendar.fullCalendar('render');
-        };
-
-        /* config object */
-        $scope.uiConfig = {
-            calendar: {
-                height: 450,
-                editable: true,
-                weekNumbers: true,
-                weekNumberTitle: '',
-                header: {
-                    left: 'month agendaWeek agendaDay',
-                    center: 'title',
-                    right: 'today prev,next'
-                },
-                titleFormat: {
-                    month: 'MMMM yyyy',
-                    week: "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}",
-                    day: 'dddd, MMM d, yyyy'
-                },
-                columnFormat: {
-                    month: 'ddd',
-                    week: 'ddd M/d',
-                    day: 'dddd M/d'
-                },
-                buttonText: {
-                    today: 'today',
-                    month: 'month',
-                    week: 'week',
-                    day: 'day'
-                },
-                firstDay: 0,
-                eventClick: $scope.alertOnEventClick,
-                eventDrop: $scope.alertOnDrop,
-                eventResize: $scope.alertOnResize
-            }
-        };
-        $scope.uiConfig.calendar.titleFormat.month = $filter('translate')('content.calendar.titleformat.month');
-        $scope.uiConfig.calendar.titleFormat.week = $filter('translate')('content.calendar.titleformat.week');
-        $scope.uiConfig.calendar.titleFormat.day = $filter('translate')();
-        $scope.uiConfig.calendar.columnFormat.month = $filter('translate')('content.calendar.columnformat.month');
-        $scope.uiConfig.calendar.columnFormat.week = $filter('translate')('content.calendar.columnformat.week');
-        $scope.uiConfig.calendar.columnFormat.day = $filter('translate')('content.calendar.columnformat.day');
-        $scope.uiConfig.calendar.firstDay = $filter('translate')('content.calendar.firstday');
-        $scope.uiConfig.calendar.buttonText.today = $filter('translate')('content.calendar.buttontext.today');
-        $scope.uiConfig.calendar.buttonText.month = $filter('translate')('content.calendar.buttontext.month');
-        $scope.uiConfig.calendar.buttonText.week = $filter('translate')('content.calendar.buttontext.week');
-        $scope.uiConfig.calendar.buttonText.day = $filter('translate')('content.calendar.buttontext.day');
+        
 
     })
 //

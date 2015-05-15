@@ -8,8 +8,7 @@
  * @copyright <b>QaoBee</b>.
  */
 angular.module('playersheet', ['statWidget', 'labelsAPI', 'noteAPI', 'personRestAPI',
-    'structureCfgRestAPI', 'medicalfolder', 'statAPI', 'chart.js', 'structureAPI', 'summarySheetModal', 'seasonsAPI','activityCfgRestAPI',
-    'qaobee.slider-indicator', 'userMetaAPI'])
+    'structureCfgRestAPI', 'statAPI', 'chart.js', 'structureAPI', 'summarySheetModal', 'seasonsAPI','activityCfgRestAPI', 'userMetaAPI'])
 
     .config(function ($routeProvider, metaDatasProvider) {
         'use strict';
