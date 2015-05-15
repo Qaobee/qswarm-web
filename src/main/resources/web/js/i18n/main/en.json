@@ -4,14 +4,6 @@
       "title" : "My space"
     }
   },
-  "navbar": {
-    "welcome": "Welcome",
-    "connect": "Connection",
-    "disconnect": "Logout",
-    "administration": "Administration",
-    "signup": "Create an account",
-    "param" : "Settings"
-  },
   "footer": {
     "link": {
       "about": "About",
@@ -26,21 +18,6 @@
         "selectphoto": "Select a photo",
         "cancel": "Cancel",
         "upload": "Upload"
-      }
-    },
-    "login": {
-      "label": {
-        "login": "Login",
-        "password": "Password",
-        "signin": "Login",
-        "forgotpasswd": "Forgot password?",
-        "forgotpasswdmess": "These are things that happen, give us your login and we will reset it for you!",
-        "title": "Log on to <b>Qaobee</b>",
-        "forgotpasswdcancel": "Wait, I remember now!"
-      },
-      "ph": {
-        "login": "Login",
-        "password": "Password"
       }
     }
   },

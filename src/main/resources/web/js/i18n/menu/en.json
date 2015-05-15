@@ -1,20 +1,45 @@
 {
-  "leftMenu": {
-    "mainTitle": "Menu",
-    "dashboard": "Home",
-    "effective": "Effective",
-    "groups": "Groups",
-    "player": "Player",
-    "training": "Workout",
-    "calendar" : "Events",
-    "championship" : "Championship",
-    "composition" : "Team composition",
-    "collectPreparation" :"Gathering preparation",
-    "matchPreparation" : "Match preparation",
-    "matchEnding" : "Match appraisal",
-    "stats" : "Statistics",
-    "optimize" : "Optimize",
-    "profile" : "Profile",
-    "param" : "Settings"
-  }
+    "headerMenu": {
+        "mainTitle": "Menu",
+        "dashboard": "Home",
+        "effective": "Effective",
+        "groups": "Groups",
+        "player": "Player",
+        "training": "Workout",
+        "calendar" : "Events",
+        "championship" : "Championship",
+        "composition" : "Team composition",
+        "collectPreparation" :"Gathering preparation",
+        "matchPreparation" : "Match preparation",
+        "matchEnding" : "Match appraisal",
+        "stats" : "Statistics",
+        "optimize" : "Optimize",
+        "profile" : "Profile",
+        "param" : "Settings"
+    },
+    "navbar": {
+        "welcome": "Welcome",
+        "connect": "Connection",
+        "disconnect": "Logout",
+        "administration": "Administration",
+        "signup": "Create an account",
+        "param" : "Settings"
+    },
+    "content": {
+        "login": {
+            "label": {
+                "login": "Login",
+                "password": "Password",
+                "signin": "Login",
+                "forgotpasswd": "Forgot password?",
+                "forgotpasswdmess": "These are things that happen, give us your login and we will reset it for you!",
+                "title": "Log on to <b>Qaobee</b>",
+                "forgotpasswdcancel": "Wait, I remember now!"
+            },
+            "ph": {
+                "login": "Login",
+                "password": "Password"
+            }
+        }
+    }    
 }

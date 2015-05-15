@@ -21,8 +21,8 @@ angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI']
         return {
             restrict: 'AE',
             controller: function ($scope) {
-                $translatePartialLoader.addPart('main');
                 $translatePartialLoader.addPart('ui');
+                $translatePartialLoader.addPart('menu');
                 $scope.signin = {};
                 
                 /**

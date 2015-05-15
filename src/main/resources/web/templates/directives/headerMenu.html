@@ -21,27 +21,23 @@
 
 
 
-<!-- Connected -->
+<!-- Connected Fisrt header-->
 <nav class="top-nav grey lighten-3" role="navigation" ng-show="user">    
     <div class="container">
-        <div class="nav-wrapper" >
+        <div class="nav-wrapper">
             
-            <a href="#" class="brand-logo grey-text text-lighten-1 center">{{structure.label}}</a>
+            <a href="#" class="brand-logo orange-text text-accent-4 center s12">{{structure.label}}</a>
 
-            <ul class="hide-on-med-and-down">
-                <li><a href="#/private/profil"><span class="grey-text text-lighten-1">{{user.firstname}} {{user.name}}</span></li>
+            <ul class="right s6">
                 <li><a ng-click="logoff()"><i class="grey-text text-lighten-1 fa fa-power-off right"></i></a></li>
             </ul>
-            
-            <a href="#" data-activates="nav-mobile" class="button-collapse grey-text text-lighten-1"><i class="mdi-navigation-menu"></i></a>
-            
-            <ul id="nav-mobile" class="side-nav">
-                <li><a ng-click="logoff()"><i class="grey-text text-lighten-1 fa fa-power-off"></i></a></li>
+            <ul class="right s6">
+                <li><a href="#/private/profil" class="grey-text text-lighten-1">{{user.firstname}} {{user.name}}</li>
             </ul>
             
         </div>
-        <form class="right">
-            <div class="input-field  pink">
+        <form class="left s12">
+            <div class="input-field  red">
                 <input id="search" type="search" required>
                 <label for="search"><i class="mdi-action-search"></i></label>
                 <i class="mdi-navigation-close"></i>
@@ -49,6 +45,29 @@
         </form>
     </div>
 </nav>
+<!-- Connected second header-->
+<nav class="top-nav grey" role="navigation" ng-show="user">    
+    <div class="container">
+        <div class="nav-wrapper" >
+                
+            <ul class="right hide-on-med-and-down">
+                <li><a ng-click="logoff()"><i class="light fa fa-power-off right"></i></a></li>
+            </ul>
+            <ul class="left hide-on-med-and-down">
+                <li><a href="#/private/profil" class="light"><i class="fa fa-home"></i>{{'headerMenu.dashboard' | translate }}</li>
+            </ul>
+            
+        </div>
+        <a href="#" data-activates="nav-mobile" class="button-collapse grey-text text-lighten-1"><i class="mdi-navigation-menu left"></i></a>
+            
+            <ul id="nav-mobile" class="side-nav">
+                <li><a ng-click="logoff()"><i class="grey-text text-lighten-1 fa fa-power-off"></i></a></li>
+            </ul>
+    </div>
+</nav>
+
+
+
 
 <!-- Modal -->
 <div id="modalLogin" class="modal">
@@ -62,12 +81,12 @@
         <div class="modal-content grey lighten-3 ">
             <div class="row">
                 <div class="input-field col s12">
-                    <input placeholder="{{'content.login.ph.login' | translate }}" id="login" type="text" class="validate" ng-model="signin.login">
-                    <label for="login">{{'content.login.ph.login' | translate }}</label>
+                    <input placeholder="{{'content.login.label.login' | translate }}" id="login" type="text" class="validate" ng-model="signin.login">
+                    <label for="login">{{'content.login.label.login' | translate }}</label>
                 </div>
                 <div class="input-field col s12">
-                  <input placeholder="{{'content.login.ph.password' | translate }}" id="password" type="password" class="validate" ng-model="signin.passwd">
-                  <label for="password">{{'content.login.ph.password' | translate }}</label>
+                  <input placeholder="{{'content.login.label.password' | translate }}" id="password" type="password" class="validate" ng-model="signin.passwd">
+                  <label for="password">{{'content.login.label.password' | translate }}</label>
                 </div>
             </div>    
         </div>
