@@ -1,9 +1,12 @@
 {
-  "prive" : {
-    "dashboard" : {
-      "title" : "Mon espace"
-    }
-  },
+    "prive" : {
+        "dashboard" : {
+            "event" : "Prochain événement",
+            "stats" : "Statistiques événement",
+            "player" : "Statistiques joueur",
+            "topplayer" : "Top 3"
+        }   
+    },
   "footer": {
     "link": {
       "about": "A propos",

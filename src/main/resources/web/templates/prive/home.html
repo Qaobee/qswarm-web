@@ -6,53 +6,52 @@
 <!-- body start-->
 <div class="row">
     <div class="col s12 m6 l8">
+        
         <!-- Event -->
+        <div><h5 class="header light-green-text text-darken-1"><i class="fa fa-calendar left"></i>{{'prive.dashboard.event' | translate }}</h5></div>
+
         <div>
-            <div class="card small teal lighten-2">
+            <div class="card small white">
                 <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="img/office.jpg">
-                    <h5 class="card-title">CRMHB Rennes - USDK Dunkerque</h5>
+                    <img class="activator" src="img/ACT-HAND-EVENT.jpg">
+                    <span class="card-title white-text flow-text">CRMHB Rennes - USDK Dunkerque</span>
                 </div>
                 <div class="card-content">
-                    <span class="card-title blue-grey-text text-darken-1">Mercredi 15 avril 2015, à 20h30, Salle arena Brest</span>
+                    <span class="card-title activator blue-grey-text ">Mercredi 15 avril 2015 <i class="mdi-navigation-more-vert right"></i></span>
                 </div>
-                <div class="card-action blue-grey lighten-1">
+                <div class="card-reveal">
+                    <span class="card-title blue-grey-text text-darken-1">Card Title <i class="mdi-navigation-close right"></i></span>
+                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                </div>
+                <div class="card-action blue-grey darken-1">
                     <a href='#' class="hide-on-med-and-down left waves-effect waves-light white-text"><i class="fa fa-calendar left"></i>{{'headerMenu.calendar' | translate }}</a>
                     <a href='#' class="right white-text"><i class="mdi-navigation-chevron-right right"></i>Suivant</a>
                     <a href="#" class="right white-text"><i class="mdi-navigation-chevron-left left"></i>Précédent</a>
                 </div>
             </div>
         </div>
+        <br>
         
         <!-- Collecte-->
+        <div class="divider"></div>
+        <div><h5 class="header light-green-text text-darken-1"><i class="fa fa-bar-chart"></i> {{'prive.dashboard.stats' | translate }}</h5></div>
         <div>
-            <div class="card">
-                <div class="waves-effect waves-block waves-light red accent-1">
-                    <h5 class="card-title">&nbsp;&nbsp;<i class="fa fa-bar-chart"></i> CRMHB Rennes - USDK Dunkerque</h5>
+            <div class="card small">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="img/ACT-HAND-STAT.jpg">
+                    <span class="card-title white-text flow-text">CRMHB Rennes - USDK Dunkerque, le 15/04/2015</span>
                 </div>
-                <div class="card-content grey lighten-3">
-                    <span class="card-title activator blue-grey-text text-darken-1">le 15/04/2015 <i class="mdi-navigation-more-vert right"></i></span>
-                    <p><a href="#!" class="blue-grey-text text-darken-1">Détail</a></p>
+                <div class="card-content">
+                    <span class="card-title activator blue-grey-text text-darken-1">Défaite 21 - 20 <i class="mdi-navigation-more-vert right"></i></span>
                 </div>
                 <div class="card-reveal">
                     <span class="card-title blue-grey-text text-darken-1">Card Title <i class="mdi-navigation-close right"></i></span>
                     <p>Here is some more information about this product that is only revealed once clicked on.</p>
                 </div>
-            </div>
-        </div>
-        
-        <div>
-            <div class="card">
-                <div class="waves-effect waves-block waves-light red accent-1">
-                    <h5 class="card-title">&nbsp;&nbsp;<i class="fa fa-bar-chart"></i> Chambéry HB - CRMHB Rennes</h5>
-                </div>
-                <div class="card-content grey lighten-3">
-                    <span class="card-title activator blue-grey-text text-darken-1">le 08/04/2015 <i class="mdi-navigation-more-vert right"></i></span>
-                    <p><a href="#!" class="blue-grey-text text-darken-1">Détail</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Card Title <i class="mdi-navigation-close right"></i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                <div class="card-action blue-grey darken-1">
+                    <a href='#' class="hide-on-med-and-down left waves-effect waves-light white-text"><i class="fa fa-calendar left"></i>{{'headerMenu.calendar' | translate }}</a>
+                    <a href='#' class="right white-text"><i class="mdi-navigation-chevron-right right"></i>Suivant</a>
+                    <a href="#" class="right white-text"><i class="mdi-navigation-chevron-left left"></i>Précédent</a>
                 </div>
             </div>
         </div>
@@ -60,14 +59,30 @@
 
     <!-- player list-->
     <div class="col s12 m6 l4">
+        <div><h5 class="header red-text text-lighten-1"><i class="fa fa-trophy"></i> {{'prive.dashboard.topplayer' | translate }}</h5></div>
+        
+        <ul class="collapsible popout" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>1 - {{user.firstname}} {{user.name}}</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="mdi-maps-place"></i>2 - {{user.firstname}} {{user.name}}</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="mdi-social-whatshot"></i>3 - {{user.firstname}} {{user.name}}</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+        </ul>
+        <div class="divider"></div>
+        <div><h5 class="header lime-text text-darken-1"><i class="fa fa-bar-chart"></i> {{'prive.dashboard.player' | translate }}</h5></div>
         <ul class="collection">
             <li class="collection-item avatar">
               <img src="img/user.png" alt="" class="circle responsive-img">
-              <span class="title blue-grey-text text-lighten-1">Title</span>
-              <p>First Line <br>
-                 Second Line
-              </p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light blue lighten-1"><i class="fa fa-bar-chart"></i></a>
+              <span class="title blue-text text-lighten-1">{{user.firstname}} {{user.name}}</span>
+              <p>Attaquant</p>
+              <a href="#!" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
             </li>
             <li class="collection-item avatar">
               <img src="img/user.png" alt="" class="circle responsive-img">
@@ -75,7 +90,7 @@
               <p>First Line <br>
                  Second Line
               </p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light blue lighten-1"><i class="fa fa-bar-chart"></i></a>
+              <a href="#!" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
             </li>
             <li class="collection-item avatar">
               <img src="img/user.png" alt="" class="circle responsive-img">
@@ -83,7 +98,7 @@
               <p>First Line <br>
                  Second Line
               </p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light blue lighten-1"><i class="fa fa-bar-chart"></i></a>
+              <a href="#!" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
             </li>
             <li class="collection-item avatar">
               <img src="img/user.png" alt="" class="circle responsive-img">
@@ -91,7 +106,7 @@
               <p>First Line <br>
                  Second Line
               </p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light blue lighten-1"><i class="fa fa-bar-chart"></i></a>
+              <a href="#!" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
             </li>
             <li class="collection-item avatar">
               <img src="img/user.png" alt="" class="circle responsive-img">
@@ -99,7 +114,7 @@
               <p>First Line <br>
                  Second Line
               </p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light blue lighten-1"><i class="fa fa-bar-chart"></i></a>
+              <a href="#!" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
             </li>
             <li class="collection-item avatar">
               <img src="img/user.png" alt="" class="circle responsive-img">
@@ -107,7 +122,7 @@
               <p>First Line <br>
                  Second Line
               </p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light blue lighten-1"><i class="fa fa-bar-chart"></i></a>
+              <a href="#!" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
             </li>
             <li class="collection-item avatar">
               <img src="img/user.png" alt="" class="circle responsive-img">
@@ -115,47 +130,7 @@
               <p>First Line <br>
                  Second Line
               </p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light blue lighten-1"><i class="fa fa-bar-chart"></i></a>
-            </li>
-            <li class="collection-item avatar">
-              <img src="img/user.png" alt="" class="circle responsive-img">
-              <span class="title blue-grey-text text-lighten-1">Title</span>
-              <p>First Line <br>
-                 Second Line
-              </p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light blue lighten-1"><i class="fa fa-bar-chart"></i></a>
-            </li>
-            <li class="collection-item avatar">
-              <img src="img/user.png" alt="" class="circle responsive-img">
-              <span class="title blue-grey-text text-lighten-1">Title</span>
-              <p>First Line <br>
-                 Second Line
-              </p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light blue lighten-1"><i class="fa fa-bar-chart"></i></a>
-            </li>
-            <li class="collection-item avatar">
-              <img src="img/user.png" alt="" class="circle responsive-img">
-              <span class="title blue-grey-text text-lighten-1">Title</span>
-              <p>First Line <br>
-                 Second Line
-              </p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light blue lighten-1"><i class="fa fa-bar-chart"></i></a>
-            </li>
-            <li class="collection-item avatar">
-              <img src="img/user.png" alt="" class="circle responsive-img">
-              <span class="title blue-grey-text text-lighten-1">Title</span>
-              <p>First Line <br>
-                 Second Line
-              </p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light blue lighten-1"><i class="fa fa-bar-chart"></i></a>
-            </li>
-            <li class="collection-item avatar">
-              <img src="img/user.png" alt="" class="circle responsive-img">
-              <span class="title blue-grey-text text-lighten-1">Title</span>
-              <p>First Line <br>
-                 Second Line
-              </p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light blue lighten-1"><i class="fa fa-bar-chart"></i></a>
+              <a href="#!" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
             </li>
         </ul>
     

@@ -54,8 +54,11 @@ angular.module(
  * @class qaobee.prive.prive.PrivateCtrl
  * @description Main controller of templates/prive/welcome.html
  */
-    .controller('PrivateCtrl', function ($scope, userInfosAPI, $location, $rootScope, $q, $filter, eventbus, user, meta) {
+    .controller('PrivateCtrl', function ($scope, userInfosAPI, $location, $rootScope, $q, $filter, eventbus, user, meta, $translatePartialLoader) {
         'use strict';
+        
+        $translatePartialLoader.addPart('main');
+    
         var structureprom = $q.defer();
         var placeprom = $q.defer();
 
@@ -73,6 +76,8 @@ angular.module(
         $scope.user = user;
         placeprom.resolve(user.address);
         $scope.limit = 5;
+    
+        $('.collapsible').collapsible({accordion : false});
         
 
     })
