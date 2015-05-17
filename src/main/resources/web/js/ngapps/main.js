@@ -10,7 +10,7 @@ try { angular.module("templates-main"); } catch(err) { /* failed to require */
 angular.module('templates-main', []);}
 angular.module(
     'QaobeeSwarnApp',
-    ['ngRoute', 'commonsDirectives', 'config', 'prive','public', 'headerMenu', 'eventbus', 'ngSanitize', 'ngCookies', 'pascalprecht.translate', 'reCAPTCHA', 'ngAudio', 'templates-main', 'httpModule',
+    ['ngRoute', 'commonsDirectives', 'config', 'prive','public', 'headerMenu', 'eventbus', 'playerList', 'ngSanitize', 'ngCookies', 'pascalprecht.translate', 'reCAPTCHA', 'ngAudio', 'templates-main', 'httpModule',
      'tmh.dynamicLocale'])
 
     .config(function ($translateProvider, $translatePartialLoaderProvider, reCAPTCHAProvider, $httpProvider, $logProvider, ENV, tmhDynamicLocaleProvider) {

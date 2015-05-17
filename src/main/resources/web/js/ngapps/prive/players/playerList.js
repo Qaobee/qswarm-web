@@ -1,7 +1,7 @@
 /**
- * Module partie privée du site
+ * Module Player
  *
- * @author Xavier MARIN
+ * @author Christophe Kervella
  * @class qaobee.prive.prive
  * @namespace qaobee.prive
  *
@@ -11,35 +11,20 @@
  * @copyright <b>QaoBee</b>.
  */
 angular.module(
-    'prive',    ['common-config', 'effectiveRestAPI', 'personRestAPI', 'structureCfgRestAPI'])
+    'playerList',    ['common-config', 'effectiveRestAPI', 'personRestAPI', 'structureCfgRestAPI'])
 
 
     .config(function ($routeProvider, metaDatasProvider) {
         'use strict';
 
-        $routeProvider.when('/private', {
-            controller: 'HomeControler',
+        $routeProvider.when('/private/playerlist', {
+            controller: 'PlayerListControler',
             resolve: {
                 user: metaDatasProvider.checkUser,
                 meta: metaDatasProvider.getMeta
             },
-            templateUrl: 'templates/prive/home.html'
+            templateUrl: 'templates/prive/players/playerList.html'
             
-        }).when('/private/notifications', {
-            controller: 'NotificationsCtrl',
-            resolve: {
-                user: metaDatasProvider.checkUser,
-                meta: metaDatasProvider.getMeta
-            },
-            templateUrl: 'templates/prive/profile/notifications.html'
-            
-        }).when('/private/calendar', {
-            controller: 'CalendarCtrl',
-            resolve: {
-                user: metaDatasProvider.checkUser,
-                meta: metaDatasProvider.getMeta
-            },
-            templateUrl: 'templates/prive/calendar.html'
         });
     })
 
@@ -47,7 +32,7 @@ angular.module(
  * @class qaobee.prive.prive.PrivateCtrl
  * @description Main controller of templates/prive/home.html
  */
-    .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, eventbus, user, meta, effectiveRestAPI, personRestAPI, structureCfgRestAPI) {
+    .controller('PlayerListControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, eventbus, user, meta, effectiveRestAPI, personRestAPI, structureCfgRestAPI) {
     'use strict';
 
     $translatePartialLoader.addPart('main');
@@ -89,7 +74,7 @@ angular.module(
                 listId = a.members;
             });
 
-            var listField = new Array("_id", "name", "firstname", "avatar", "status");
+            var listField = new Array("_id", "name", "firstname", "avatar", "status", "birthdate");
 
             /* retrieve person information */
             personRestAPI.getListPerson(listId, listField).success(function (data) {
@@ -100,6 +85,15 @@ angular.module(
                     } else {
                         e.positionType = '';
                     }
+                    
+                    if (angular.isDefined(e.status.stateForm)) {
+                        e.stateForm = $filter('translate')('stat.stateForm.value.' + e.status.stateForm);
+                    } else {
+                        e.stateForm = '';
+                    }
+                    
+                    e.birthdate = $filter('date')(e.birthdate, 'yyyy');
+                    e.age = moment().format("YYYY") - e.birthdate;
                 });
                 
                 $scope.effective = data;
@@ -107,8 +101,6 @@ angular.module(
         });
         
     };
-
-
 })
 //
 ;
