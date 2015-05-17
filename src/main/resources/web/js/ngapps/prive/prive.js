@@ -20,14 +20,14 @@
  * @copyright <b>QaoBee</b>.
  */
 angular.module(
-    'prive',    ['common-config', 'effectiveRestAPI'])
+    'prive',    ['common-config', 'effectiveRestAPI', 'personRestAPI', 'structureCfgRestAPI'])
 
 
     .config(function ($routeProvider, metaDatasProvider) {
         'use strict';
 
         $routeProvider.when('/private', {
-            controller: 'PrivateCtrl',
+            controller: 'HomeControler',
             resolve: {
                 user: metaDatasProvider.checkUser,
                 meta: metaDatasProvider.getMeta
@@ -54,33 +54,70 @@ angular.module(
  * @class qaobee.prive.prive.PrivateCtrl
  * @description Main controller of templates/prive/welcome.html
  */
-    .controller('PrivateCtrl', function ($scope, userInfosAPI, $location, $rootScope, $q, $filter, eventbus, user, meta, $translatePartialLoader) {
-        'use strict';
-        
-        $translatePartialLoader.addPart('main');
+    .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, eventbus, user, meta, effectiveRestAPI, personRestAPI, structureCfgRestAPI) {
+    'use strict';
+
+    $translatePartialLoader.addPart('main');
+    $translatePartialLoader.addPart('stats');
     
-        var structureprom = $q.defer();
-        var placeprom = $q.defer();
+    $scope.user = user;
+    $scope.meta = meta;
+    $scope.effective = [];
+    $scope.currentCategory = {};
 
-        $scope.structureprom = structureprom.promise;
-        $scope.placeprom = placeprom.promise;
-
-
-        var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getFullYear();
-
-
-        structureprom.resolve(meta.structure);
-        $scope.user = user;
-        placeprom.resolve(user.address);
-        $scope.limit = 5;
+    $('.collapsible').collapsible({accordion : false});
     
-        $('.collapsible').collapsible({accordion : false});
-        
+    /* Retrieve list of category for structure */
+    structureCfgRestAPI.getCategoriesAgeStrList($scope.meta.season.code, $scope.meta.structure._id).success(function (data) {
+        $scope.categories = data;
+        var found = false;
+        data.forEach(function (b) {
+            b.listStaffMember.forEach(function (c) {
+                if (c.personId === $scope.user._id) {
+                    $scope.currentCategory = b;
+                    found = true;
+                }
+            });
+        });
+        if (!found) {
+            $scope.currentCategory = data[0];
+        }
 
-    })
+        $scope.getEffective();
+    });
+
+    /* Retrieve list player */
+    $scope.getEffective = function () {
+    
+        effectiveRestAPI.getListMemberEffective($scope.meta.season.code, $scope.meta.structure._id, $scope.currentCategory.code).success(function (data) {
+            /* build list id for request API person */    
+            var listId = [];
+            data.forEach(function (a) {
+                listId = a.members;
+            });
+
+            var listField = new Array("_id", "name", "firstname", "avatar", "status");
+
+            /* retrieve person information */
+            personRestAPI.getListPerson(listId, listField).success(function (data) {
+                    
+                data.forEach(function (e) {
+                    if (angular.isDefined(e.status.positionType)) {
+                        e.positionType = $filter('translate')('stat.positionType.value.' + e.status.positionType);
+                    } else {
+                        e.positionType = '';
+                    }
+                    $log.log(e);
+                });
+                
+                $scope.effective = data;
+            });
+        });
+        
+    };
+
+
+})
 //
 ;
 

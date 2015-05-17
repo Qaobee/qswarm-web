@@ -30,10 +30,9 @@
                 </div>
             </div>
         </div>
-        <br>
+        <br/>
         
         <!-- Collecte-->
-        <div class="divider"></div>
         <div><h5 class="header light-green-text text-darken-1"><i class="fa fa-bar-chart"></i> {{'prive.dashboard.stats' | translate }}</h5></div>
         <div>
             <div class="card small">
@@ -59,11 +58,11 @@
 
     <!-- player list-->
     <div class="col s12 m6 l4">
+        <!-- TOP 3 -->
         <div><h5 class="header red-text text-lighten-1"><i class="fa fa-trophy"></i> {{'prive.dashboard.topplayer' | translate }}</h5></div>
-        
         <ul class="collapsible popout" data-collapsible="accordion">
             <li>
-              <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>1 - {{user.firstname}} {{user.name}}</div>
+              <div class="collapsible-header tooltipped" data-position="right" data-delay="30" data-tooltip="{{'headerMenu.search-player' | translate }}"><i class="fa fa-futbol-o"></i>1 - {{user.firstname}} {{user.name}}</div>
               <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
             </li>
             <li>
@@ -75,61 +74,15 @@
               <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
             </li>
         </ul>
-        <div class="divider"></div>
+        <br/>
+        
+        <!-- List Player -->
         <div><h5 class="header lime-text text-darken-1"><i class="fa fa-bar-chart"></i> {{'prive.dashboard.player' | translate }}</h5></div>
         <ul class="collection">
-            <li class="collection-item avatar">
+            <li class="collection-item avatar" ng-repeat="player in effective">
               <img src="img/user.png" alt="" class="circle responsive-img">
-              <span class="title blue-text text-lighten-1">{{user.firstname}} {{user.name}}</span>
-              <p>Attaquant</p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
-            </li>
-            <li class="collection-item avatar">
-              <img src="img/user.png" alt="" class="circle responsive-img">
-              <span class="title blue-grey-text text-lighten-1">Title</span>
-              <p>First Line <br>
-                 Second Line
-              </p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
-            </li>
-            <li class="collection-item avatar">
-              <img src="img/user.png" alt="" class="circle responsive-img">
-              <span class="title blue-grey-text text-lighten-1">Title</span>
-              <p>First Line <br>
-                 Second Line
-              </p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
-            </li>
-            <li class="collection-item avatar">
-              <img src="img/user.png" alt="" class="circle responsive-img">
-              <span class="title blue-grey-text text-lighten-1">Title</span>
-              <p>First Line <br>
-                 Second Line
-              </p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
-            </li>
-            <li class="collection-item avatar">
-              <img src="img/user.png" alt="" class="circle responsive-img">
-              <span class="title blue-grey-text text-lighten-1">Title</span>
-              <p>First Line <br>
-                 Second Line
-              </p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
-            </li>
-            <li class="collection-item avatar">
-              <img src="img/user.png" alt="" class="circle responsive-img">
-              <span class="title blue-grey-text text-lighten-1">Title</span>
-              <p>First Line <br>
-                 Second Line
-              </p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
-            </li>
-            <li class="collection-item avatar">
-              <img src="img/user.png" alt="" class="circle responsive-img">
-              <span class="title blue-grey-text text-lighten-1">Title</span>
-              <p>First Line <br>
-                 Second Line
-              </p>
+              <span class="title blue-text text-lighten-1">{{player.firstname}} {{player.name}}</span>
+              <p>{{player.positionType}}</p>
               <a href="#!" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
             </li>
         </ul>
