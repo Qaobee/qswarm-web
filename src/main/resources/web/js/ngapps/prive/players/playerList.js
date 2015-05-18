@@ -36,6 +36,7 @@ angular.module(
     'use strict';
 
     $translatePartialLoader.addPart('main');
+    $translatePartialLoader.addPart('players');
     $translatePartialLoader.addPart('stats');
     
     $scope.user = user;
