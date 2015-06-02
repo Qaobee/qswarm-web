@@ -1,5 +1,5 @@
 angular.module('config', [])
 
-.constant('ENV', {name:'development',apiEndPoint:'http://localhost:8080',useLoaderCache:false,debugEnabled:true})
+.constant('ENV', {name:'production',apiEndPoint:'http://www.qaobee.com',useLoaderCache:true,debugEnabled:false})
 
 ;

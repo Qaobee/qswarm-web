@@ -8,7 +8,7 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        
+
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
@@ -282,17 +282,19 @@ module.exports = function (grunt) {
                 constants: {
                     ENV: {
                         name: 'production',
-                        apiEndPoint: '',
+                        apiEndPoint: 'http://www.qaobee.com',
                         useLoaderCache: true,
                         debugEnabled: false
                     }
                 }
             }
-        }, changelog: {
+        },
+        changelog: {
             options: {
                 // Task-specific options go here.
             }
-        }, bump: {
+        },
+        bump: {
             options: {
                 files: ['package.json'],
                 updateConfigs: [],
@@ -308,13 +310,23 @@ module.exports = function (grunt) {
                 globalReplace: false
             }
         },
-        apidoc2swagger : {
-            testAPI : {
-                options : {
-                    apiProject : 'target/site/restAPI/api_project.json',
-                    apiData : 'target/site/restAPI/api_data.json',
-                    swagger : 'target/site/swagger',
+        apidoc2swagger: {
+            testAPI: {
+                options: {
+                    apiProject: 'target/site/restAPI/api_project.json',
+                    apiData: 'target/site/restAPI/api_data.json',
+                    swagger: 'target/site/swagger',
                     basePath: 'http://localhost:8080'
+                }
+            }
+        },
+        surge: {
+            'QSwarm-web': {
+                options: {
+                    // The path or directory to your compiled project
+                    project: root,
+                    // The domain or subdomain to deploy to
+                    domain: 'qswarm-web.surge.sh'
                 }
             }
         }
@@ -328,7 +340,8 @@ module.exports = function (grunt) {
         'wiredep', 'html2js', 'scriptlinker:dev', 'copy:dist', 'copy:dev', 'useminPrepare', 'concat:generated', 'cssmin:generated',
         'ngAnnotate', 'uglify:app', 'uglify:templates', 'rev', 'usemin:html', 'scriptlinker:prod',
         'scriptlinker:prodcss', 'htmlmin:prod']);
-//*, 'changelog', 'bump'
+    grunt.registerTask('deploy', ['prod', 'surge']);
+    //*, 'changelog', 'bump'
     /* grunt.registerTask('prod', ['clean', 'ngconstant:production', 'copy:prepare', 'jshint', 'bower:install', 'scriptlinker', 'wiredep', 'html2js', 'copy:dist', 'useminPrepare', 'concat:generated', 'cssmin:generated',
      'ngAnnotate','uglify:generated', 'uglify:app', 'uglify:templates', 'rev', 'usemin:html', 'scriptlinker:prod', 'scriptlinker:prodcss', 'htmlmin:prod']);*/ //, 'apidoc', 'jsdoc', 'plato'
     grunt.registerTask('ci', ['jshint', 'bower:install', 'wiredep', 'scriptlinker:dev', 'copy']);
