@@ -8,3 +8,16 @@
 + sudo npm install -g generator-gulp-angular
 + npm install 
 + bower install 
+
+# Run local 
+
++ gulp serve
+
+# Deploy into production
+
++ First test in local env :
+    + gulp serve:dist
++ if fine deploy
+    + gulp 
+    + cd dist
+    + surge
