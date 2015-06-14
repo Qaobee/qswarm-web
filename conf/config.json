@@ -1,0 +1,18 @@
+{
+  "local": {
+    "EnvironmentConfig": {
+      "name": "development",
+      "apiEndPoint": "http://localhost:8080",
+      "useLoaderCache": false,
+      "debugEnabled": true
+    }
+  },
+  "production": {
+    "EnvironmentConfig": {
+      "name": "production",
+      "apiEndPoint": "http://hive.qaobee.com",
+      "useLoaderCache": true,
+      "debugEnabled": false
+    }
+  }
+}

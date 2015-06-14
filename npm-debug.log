@@ -1,1583 +1,202 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install' ]
-2 info using npm@1.4.28
-3 info using node@v0.10.38
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--save-dev',
+1 verbose cli   'gulp-surge' ]
+2 info using npm@2.11.2
+3 info using node@v0.12.4
 4 verbose node symlink /usr/bin/node
-5 verbose readDependencies using package.json deps
-6 verbose install where, deps [ '/home/xavier/Dropbox/Eclipse/QSwarm-Web',
-6 verbose install   [ 'assert-plus',
-6 verbose install     'bower',
-6 verbose install     'delayed-stream',
-6 verbose install     'grunt',
-6 verbose install     'grunt-angular-architecture-graph',
-6 verbose install     'grunt-angular-templates',
-6 verbose install     'grunt-apidoc',
-6 verbose install     'grunt-apidoc2swagger',
-6 verbose install     'grunt-bower-task',
-6 verbose install     'grunt-bowercopy',
-6 verbose install     'grunt-bump',
-6 verbose install     'grunt-contrib-clean',
-6 verbose install     'grunt-contrib-concat',
-6 verbose install     'grunt-contrib-copy',
-6 verbose install     'grunt-contrib-cssmin',
-6 verbose install     'grunt-contrib-htmlmin',
-6 verbose install     'grunt-contrib-jshint',
-6 verbose install     'grunt-contrib-nodeunit',
-6 verbose install     'grunt-contrib-uglify',
-6 verbose install     'grunt-conventional-changelog',
-6 verbose install     'grunt-graphviz',
-6 verbose install     'grunt-html2js',
-6 verbose install     'grunt-jsdoc',
-6 verbose install     'grunt-ng-annotate',
-6 verbose install     'grunt-ng-constant',
-6 verbose install     'grunt-rev',
-6 verbose install     'grunt-run',
-6 verbose install     'grunt-scriptlinker',
-6 verbose install     'grunt-usemin',
-6 verbose install     'grunt-wiredep',
-6 verbose install     'matchdep' ] ]
-7 info preinstall QSwarm-Web@0.0.1
-8 verbose readDependencies using package.json deps
-9 verbose cache add [ 'delayed-stream@0.0.6', null ]
-10 verbose cache add name=undefined spec="delayed-stream@0.0.6" args=["delayed-stream@0.0.6",null]
-11 verbose parsed url { protocol: null,
-11 verbose parsed url   slashes: null,
-11 verbose parsed url   auth: null,
-11 verbose parsed url   host: null,
-11 verbose parsed url   port: null,
-11 verbose parsed url   hostname: null,
-11 verbose parsed url   hash: null,
-11 verbose parsed url   search: null,
-11 verbose parsed url   query: null,
-11 verbose parsed url   pathname: 'delayed-stream@0.0.6',
-11 verbose parsed url   path: 'delayed-stream@0.0.6',
-11 verbose parsed url   href: 'delayed-stream@0.0.6' }
-12 verbose cache add [ 'grunt@^0.4.5', null ]
-13 verbose cache add name=undefined spec="grunt@^0.4.5" args=["grunt@^0.4.5",null]
-14 verbose parsed url { protocol: null,
-14 verbose parsed url   slashes: null,
-14 verbose parsed url   auth: null,
-14 verbose parsed url   host: null,
-14 verbose parsed url   port: null,
-14 verbose parsed url   hostname: null,
-14 verbose parsed url   hash: null,
-14 verbose parsed url   search: null,
-14 verbose parsed url   query: null,
-14 verbose parsed url   pathname: 'grunt@^0.4.5',
-14 verbose parsed url   path: 'grunt@^0.4.5',
-14 verbose parsed url   href: 'grunt@^0.4.5' }
-15 verbose cache add [ 'grunt-angular-architecture-graph@^0.2.5', null ]
-16 verbose cache add name=undefined spec="grunt-angular-architecture-graph@^0.2.5" args=["grunt-angular-architecture-graph@^0.2.5",null]
-17 verbose parsed url { protocol: null,
-17 verbose parsed url   slashes: null,
-17 verbose parsed url   auth: null,
-17 verbose parsed url   host: null,
-17 verbose parsed url   port: null,
-17 verbose parsed url   hostname: null,
-17 verbose parsed url   hash: null,
-17 verbose parsed url   search: null,
-17 verbose parsed url   query: null,
-17 verbose parsed url   pathname: 'grunt-angular-architecture-graph@^0.2.5',
-17 verbose parsed url   path: 'grunt-angular-architecture-graph@^0.2.5',
-17 verbose parsed url   href: 'grunt-angular-architecture-graph@^0.2.5' }
-18 verbose cache add name="delayed-stream" spec="0.0.6" args=["delayed-stream","0.0.6"]
-19 verbose parsed url { protocol: null,
-19 verbose parsed url   slashes: null,
-19 verbose parsed url   auth: null,
-19 verbose parsed url   host: null,
-19 verbose parsed url   port: null,
-19 verbose parsed url   hostname: null,
-19 verbose parsed url   hash: null,
-19 verbose parsed url   search: null,
-19 verbose parsed url   query: null,
-19 verbose parsed url   pathname: '0.0.6',
-19 verbose parsed url   path: '0.0.6',
-19 verbose parsed url   href: '0.0.6' }
-20 verbose addNamed [ 'delayed-stream', '0.0.6' ]
-21 verbose addNamed [ '0.0.6', '0.0.6' ]
-22 verbose cache add name="grunt" spec="^0.4.5" args=["grunt","^0.4.5"]
-23 verbose parsed url { protocol: null,
-23 verbose parsed url   slashes: null,
-23 verbose parsed url   auth: null,
-23 verbose parsed url   host: null,
-23 verbose parsed url   port: null,
-23 verbose parsed url   hostname: null,
-23 verbose parsed url   hash: null,
-23 verbose parsed url   search: null,
-23 verbose parsed url   query: null,
-23 verbose parsed url   pathname: '^0.4.5',
-23 verbose parsed url   path: '^0.4.5',
-23 verbose parsed url   href: '^0.4.5' }
-24 verbose addNamed [ 'grunt', '^0.4.5' ]
-25 verbose addNamed [ null, '>=0.4.5-0 <0.5.0-0' ]
-26 verbose cache add [ 'grunt-angular-templates@0.5.7', null ]
-27 verbose cache add name=undefined spec="grunt-angular-templates@0.5.7" args=["grunt-angular-templates@0.5.7",null]
-28 verbose parsed url { protocol: null,
-28 verbose parsed url   slashes: null,
-28 verbose parsed url   auth: null,
-28 verbose parsed url   host: null,
-28 verbose parsed url   port: null,
-28 verbose parsed url   hostname: null,
-28 verbose parsed url   hash: null,
-28 verbose parsed url   search: null,
-28 verbose parsed url   query: null,
-28 verbose parsed url   pathname: 'grunt-angular-templates@0.5.7',
-28 verbose parsed url   path: 'grunt-angular-templates@0.5.7',
-28 verbose parsed url   href: 'grunt-angular-templates@0.5.7' }
-29 verbose cache add name="grunt-angular-architecture-graph" spec="^0.2.5" args=["grunt-angular-architecture-graph","^0.2.5"]
-30 verbose parsed url { protocol: null,
-30 verbose parsed url   slashes: null,
-30 verbose parsed url   auth: null,
-30 verbose parsed url   host: null,
-30 verbose parsed url   port: null,
-30 verbose parsed url   hostname: null,
-30 verbose parsed url   hash: null,
-30 verbose parsed url   search: null,
-30 verbose parsed url   query: null,
-30 verbose parsed url   pathname: '^0.2.5',
-30 verbose parsed url   path: '^0.2.5',
-30 verbose parsed url   href: '^0.2.5' }
-31 verbose addNamed [ 'grunt-angular-architecture-graph', '^0.2.5' ]
-32 verbose addNamed [ null, '>=0.2.5-0 <0.3.0-0' ]
-33 silly lockFile 9b30798e-delayed-stream-0-0-6 delayed-stream@0.0.6
-34 verbose lock delayed-stream@0.0.6 /home/xavier/.npm/9b30798e-delayed-stream-0-0-6.lock
-35 silly lockFile 73541f84-grunt-0-4-5 grunt@^0.4.5
-36 verbose lock grunt@^0.4.5 /home/xavier/.npm/73541f84-grunt-0-4-5.lock
-37 silly lockFile 332d136b-angular-architecture-graph-0-2-5 grunt-angular-architecture-graph@^0.2.5
-38 verbose lock grunt-angular-architecture-graph@^0.2.5 /home/xavier/.npm/332d136b-angular-architecture-graph-0-2-5.lock
-39 verbose cache add name="grunt-angular-templates" spec="0.5.7" args=["grunt-angular-templates","0.5.7"]
-40 verbose parsed url { protocol: null,
-40 verbose parsed url   slashes: null,
-40 verbose parsed url   auth: null,
-40 verbose parsed url   host: null,
-40 verbose parsed url   port: null,
-40 verbose parsed url   hostname: null,
-40 verbose parsed url   hash: null,
-40 verbose parsed url   search: null,
-40 verbose parsed url   query: null,
-40 verbose parsed url   pathname: '0.5.7',
-40 verbose parsed url   path: '0.5.7',
-40 verbose parsed url   href: '0.5.7' }
-41 verbose addNamed [ 'grunt-angular-templates', '0.5.7' ]
-42 verbose addNamed [ '0.5.7', '0.5.7' ]
-43 silly lockFile 4a767ae4-grunt-angular-templates-0-5-7 grunt-angular-templates@0.5.7
-44 verbose lock grunt-angular-templates@0.5.7 /home/xavier/.npm/4a767ae4-grunt-angular-templates-0-5-7.lock
-45 verbose cache add [ 'grunt-apidoc@0.10.0', null ]
-46 verbose cache add name=undefined spec="grunt-apidoc@0.10.0" args=["grunt-apidoc@0.10.0",null]
-47 verbose parsed url { protocol: null,
-47 verbose parsed url   slashes: null,
-47 verbose parsed url   auth: null,
-47 verbose parsed url   host: null,
-47 verbose parsed url   port: null,
-47 verbose parsed url   hostname: null,
-47 verbose parsed url   hash: null,
-47 verbose parsed url   search: null,
-47 verbose parsed url   query: null,
-47 verbose parsed url   pathname: 'grunt-apidoc@0.10.0',
-47 verbose parsed url   path: 'grunt-apidoc@0.10.0',
-47 verbose parsed url   href: 'grunt-apidoc@0.10.0' }
-48 verbose cache add [ 'grunt-apidoc2swagger@^0.1.10', null ]
-49 verbose cache add name=undefined spec="grunt-apidoc2swagger@^0.1.10" args=["grunt-apidoc2swagger@^0.1.10",null]
-50 verbose parsed url { protocol: null,
-50 verbose parsed url   slashes: null,
-50 verbose parsed url   auth: null,
-50 verbose parsed url   host: null,
-50 verbose parsed url   port: null,
-50 verbose parsed url   hostname: null,
-50 verbose parsed url   hash: null,
-50 verbose parsed url   search: null,
-50 verbose parsed url   query: null,
-50 verbose parsed url   pathname: 'grunt-apidoc2swagger@^0.1.10',
-50 verbose parsed url   path: 'grunt-apidoc2swagger@^0.1.10',
-50 verbose parsed url   href: 'grunt-apidoc2swagger@^0.1.10' }
-51 verbose cache add [ 'grunt-bower-task@0.4.0', null ]
-52 verbose cache add name=undefined spec="grunt-bower-task@0.4.0" args=["grunt-bower-task@0.4.0",null]
-53 verbose parsed url { protocol: null,
-53 verbose parsed url   slashes: null,
-53 verbose parsed url   auth: null,
-53 verbose parsed url   host: null,
-53 verbose parsed url   port: null,
-53 verbose parsed url   hostname: null,
-53 verbose parsed url   hash: null,
-53 verbose parsed url   search: null,
-53 verbose parsed url   query: null,
-53 verbose parsed url   pathname: 'grunt-bower-task@0.4.0',
-53 verbose parsed url   path: 'grunt-bower-task@0.4.0',
-53 verbose parsed url   href: 'grunt-bower-task@0.4.0' }
-54 verbose cache add [ 'grunt-bowercopy@~1.2.0', null ]
-55 verbose cache add name=undefined spec="grunt-bowercopy@~1.2.0" args=["grunt-bowercopy@~1.2.0",null]
-56 verbose parsed url { protocol: null,
-56 verbose parsed url   slashes: null,
-56 verbose parsed url   auth: null,
-56 verbose parsed url   host: null,
-56 verbose parsed url   port: null,
-56 verbose parsed url   hostname: null,
-56 verbose parsed url   hash: null,
-56 verbose parsed url   search: null,
-56 verbose parsed url   query: null,
-56 verbose parsed url   pathname: 'grunt-bowercopy@~1.2.0',
-56 verbose parsed url   path: 'grunt-bowercopy@~1.2.0',
-56 verbose parsed url   href: 'grunt-bowercopy@~1.2.0' }
-57 verbose cache add name="grunt-apidoc" spec="0.10.0" args=["grunt-apidoc","0.10.0"]
-58 verbose parsed url { protocol: null,
-58 verbose parsed url   slashes: null,
-58 verbose parsed url   auth: null,
-58 verbose parsed url   host: null,
-58 verbose parsed url   port: null,
-58 verbose parsed url   hostname: null,
-58 verbose parsed url   hash: null,
-58 verbose parsed url   search: null,
-58 verbose parsed url   query: null,
-58 verbose parsed url   pathname: '0.10.0',
-58 verbose parsed url   path: '0.10.0',
-58 verbose parsed url   href: '0.10.0' }
-59 verbose addNamed [ 'grunt-apidoc', '0.10.0' ]
-60 verbose addNamed [ '0.10.0', '0.10.0' ]
-61 silly lockFile a879b1ec-grunt-apidoc-0-10-0 grunt-apidoc@0.10.0
-62 verbose lock grunt-apidoc@0.10.0 /home/xavier/.npm/a879b1ec-grunt-apidoc-0-10-0.lock
-63 verbose cache add name="grunt-apidoc2swagger" spec="^0.1.10" args=["grunt-apidoc2swagger","^0.1.10"]
-64 verbose parsed url { protocol: null,
-64 verbose parsed url   slashes: null,
-64 verbose parsed url   auth: null,
-64 verbose parsed url   host: null,
-64 verbose parsed url   port: null,
-64 verbose parsed url   hostname: null,
-64 verbose parsed url   hash: null,
-64 verbose parsed url   search: null,
-64 verbose parsed url   query: null,
-64 verbose parsed url   pathname: '^0.1.10',
-64 verbose parsed url   path: '^0.1.10',
-64 verbose parsed url   href: '^0.1.10' }
-65 verbose addNamed [ 'grunt-apidoc2swagger', '^0.1.10' ]
-66 verbose addNamed [ null, '>=0.1.10-0 <0.2.0-0' ]
-67 silly lockFile 39eb7ac7-grunt-apidoc2swagger-0-1-10 grunt-apidoc2swagger@^0.1.10
-68 verbose lock grunt-apidoc2swagger@^0.1.10 /home/xavier/.npm/39eb7ac7-grunt-apidoc2swagger-0-1-10.lock
-69 verbose cache add name="grunt-bower-task" spec="0.4.0" args=["grunt-bower-task","0.4.0"]
-70 verbose parsed url { protocol: null,
-70 verbose parsed url   slashes: null,
-70 verbose parsed url   auth: null,
-70 verbose parsed url   host: null,
-70 verbose parsed url   port: null,
-70 verbose parsed url   hostname: null,
-70 verbose parsed url   hash: null,
-70 verbose parsed url   search: null,
-70 verbose parsed url   query: null,
-70 verbose parsed url   pathname: '0.4.0',
-70 verbose parsed url   path: '0.4.0',
-70 verbose parsed url   href: '0.4.0' }
-71 verbose addNamed [ 'grunt-bower-task', '0.4.0' ]
-72 verbose addNamed [ '0.4.0', '0.4.0' ]
-73 silly lockFile a85864e3-grunt-bower-task-0-4-0 grunt-bower-task@0.4.0
-74 verbose lock grunt-bower-task@0.4.0 /home/xavier/.npm/a85864e3-grunt-bower-task-0-4-0.lock
-75 verbose cache add [ 'grunt-bump@0.0.16', null ]
-76 verbose cache add name=undefined spec="grunt-bump@0.0.16" args=["grunt-bump@0.0.16",null]
-77 verbose parsed url { protocol: null,
-77 verbose parsed url   slashes: null,
-77 verbose parsed url   auth: null,
-77 verbose parsed url   host: null,
-77 verbose parsed url   port: null,
-77 verbose parsed url   hostname: null,
-77 verbose parsed url   hash: null,
-77 verbose parsed url   search: null,
-77 verbose parsed url   query: null,
-77 verbose parsed url   pathname: 'grunt-bump@0.0.16',
-77 verbose parsed url   path: 'grunt-bump@0.0.16',
-77 verbose parsed url   href: 'grunt-bump@0.0.16' }
-78 verbose cache add [ 'grunt-contrib-clean@~0.6.0', null ]
-79 verbose cache add name=undefined spec="grunt-contrib-clean@~0.6.0" args=["grunt-contrib-clean@~0.6.0",null]
-80 verbose parsed url { protocol: null,
-80 verbose parsed url   slashes: null,
-80 verbose parsed url   auth: null,
-80 verbose parsed url   host: null,
-80 verbose parsed url   port: null,
-80 verbose parsed url   hostname: null,
-80 verbose parsed url   hash: null,
-80 verbose parsed url   search: null,
-80 verbose parsed url   query: null,
-80 verbose parsed url   pathname: 'grunt-contrib-clean@~0.6.0',
-80 verbose parsed url   path: 'grunt-contrib-clean@~0.6.0',
-80 verbose parsed url   href: 'grunt-contrib-clean@~0.6.0' }
-81 verbose cache add [ 'grunt-contrib-concat@~0.5.0', null ]
-82 verbose cache add name=undefined spec="grunt-contrib-concat@~0.5.0" args=["grunt-contrib-concat@~0.5.0",null]
-83 verbose parsed url { protocol: null,
-83 verbose parsed url   slashes: null,
-83 verbose parsed url   auth: null,
-83 verbose parsed url   host: null,
-83 verbose parsed url   port: null,
-83 verbose parsed url   hostname: null,
-83 verbose parsed url   hash: null,
-83 verbose parsed url   search: null,
-83 verbose parsed url   query: null,
-83 verbose parsed url   pathname: 'grunt-contrib-concat@~0.5.0',
-83 verbose parsed url   path: 'grunt-contrib-concat@~0.5.0',
-83 verbose parsed url   href: 'grunt-contrib-concat@~0.5.0' }
-84 verbose cache add [ 'grunt-contrib-copy@~0.7.0', null ]
-85 verbose cache add name=undefined spec="grunt-contrib-copy@~0.7.0" args=["grunt-contrib-copy@~0.7.0",null]
-86 verbose parsed url { protocol: null,
-86 verbose parsed url   slashes: null,
-86 verbose parsed url   auth: null,
-86 verbose parsed url   host: null,
-86 verbose parsed url   port: null,
-86 verbose parsed url   hostname: null,
-86 verbose parsed url   hash: null,
-86 verbose parsed url   search: null,
-86 verbose parsed url   query: null,
-86 verbose parsed url   pathname: 'grunt-contrib-copy@~0.7.0',
-86 verbose parsed url   path: 'grunt-contrib-copy@~0.7.0',
-86 verbose parsed url   href: 'grunt-contrib-copy@~0.7.0' }
-87 verbose cache add [ 'grunt-contrib-cssmin@~0.11.0', null ]
-88 verbose cache add name=undefined spec="grunt-contrib-cssmin@~0.11.0" args=["grunt-contrib-cssmin@~0.11.0",null]
-89 verbose parsed url { protocol: null,
-89 verbose parsed url   slashes: null,
-89 verbose parsed url   auth: null,
-89 verbose parsed url   host: null,
-89 verbose parsed url   port: null,
-89 verbose parsed url   hostname: null,
-89 verbose parsed url   hash: null,
-89 verbose parsed url   search: null,
-89 verbose parsed url   query: null,
-89 verbose parsed url   pathname: 'grunt-contrib-cssmin@~0.11.0',
-89 verbose parsed url   path: 'grunt-contrib-cssmin@~0.11.0',
-89 verbose parsed url   href: 'grunt-contrib-cssmin@~0.11.0' }
-90 verbose cache add [ 'grunt-contrib-htmlmin@0.3.0', null ]
-91 verbose cache add name=undefined spec="grunt-contrib-htmlmin@0.3.0" args=["grunt-contrib-htmlmin@0.3.0",null]
-92 verbose parsed url { protocol: null,
-92 verbose parsed url   slashes: null,
-92 verbose parsed url   auth: null,
-92 verbose parsed url   host: null,
-92 verbose parsed url   port: null,
-92 verbose parsed url   hostname: null,
-92 verbose parsed url   hash: null,
-92 verbose parsed url   search: null,
-92 verbose parsed url   query: null,
-92 verbose parsed url   pathname: 'grunt-contrib-htmlmin@0.3.0',
-92 verbose parsed url   path: 'grunt-contrib-htmlmin@0.3.0',
-92 verbose parsed url   href: 'grunt-contrib-htmlmin@0.3.0' }
-93 verbose cache add name="grunt-bowercopy" spec="~1.2.0" args=["grunt-bowercopy","~1.2.0"]
-94 verbose parsed url { protocol: null,
-94 verbose parsed url   slashes: null,
-94 verbose parsed url   auth: null,
-94 verbose parsed url   host: null,
-94 verbose parsed url   port: null,
-94 verbose parsed url   hostname: null,
-94 verbose parsed url   hash: null,
-94 verbose parsed url   search: null,
-94 verbose parsed url   query: null,
-94 verbose parsed url   pathname: '~1.2.0',
-94 verbose parsed url   path: '~1.2.0',
-94 verbose parsed url   href: '~1.2.0' }
-95 verbose addNamed [ 'grunt-bowercopy', '~1.2.0' ]
-96 verbose addNamed [ null, '>=1.2.0-0 <1.3.0-0' ]
-97 silly lockFile 93de7b36-grunt-bowercopy-1-2-0 grunt-bowercopy@~1.2.0
-98 verbose lock grunt-bowercopy@~1.2.0 /home/xavier/.npm/93de7b36-grunt-bowercopy-1-2-0.lock
-99 silly addNameRange { name: 'grunt', range: '>=0.4.5-0 <0.5.0-0', hasData: false }
-100 silly addNameRange { name: 'grunt-angular-architecture-graph',
-100 silly addNameRange   range: '>=0.2.5-0 <0.3.0-0',
-100 silly addNameRange   hasData: false }
-101 verbose cache add name="grunt-bump" spec="0.0.16" args=["grunt-bump","0.0.16"]
-102 verbose parsed url { protocol: null,
-102 verbose parsed url   slashes: null,
-102 verbose parsed url   auth: null,
-102 verbose parsed url   host: null,
-102 verbose parsed url   port: null,
-102 verbose parsed url   hostname: null,
-102 verbose parsed url   hash: null,
-102 verbose parsed url   search: null,
-102 verbose parsed url   query: null,
-102 verbose parsed url   pathname: '0.0.16',
-102 verbose parsed url   path: '0.0.16',
-102 verbose parsed url   href: '0.0.16' }
-103 verbose addNamed [ 'grunt-bump', '0.0.16' ]
-104 verbose addNamed [ '0.0.16', '0.0.16' ]
-105 silly lockFile 61187e8c-grunt-bump-0-0-16 grunt-bump@0.0.16
-106 verbose lock grunt-bump@0.0.16 /home/xavier/.npm/61187e8c-grunt-bump-0-0-16.lock
-107 verbose cache add name="grunt-contrib-clean" spec="~0.6.0" args=["grunt-contrib-clean","~0.6.0"]
-108 verbose parsed url { protocol: null,
-108 verbose parsed url   slashes: null,
-108 verbose parsed url   auth: null,
-108 verbose parsed url   host: null,
-108 verbose parsed url   port: null,
-108 verbose parsed url   hostname: null,
-108 verbose parsed url   hash: null,
-108 verbose parsed url   search: null,
-108 verbose parsed url   query: null,
-108 verbose parsed url   pathname: '~0.6.0',
-108 verbose parsed url   path: '~0.6.0',
-108 verbose parsed url   href: '~0.6.0' }
-109 verbose addNamed [ 'grunt-contrib-clean', '~0.6.0' ]
-110 verbose addNamed [ null, '>=0.6.0-0 <0.7.0-0' ]
-111 silly lockFile 944867a7-grunt-contrib-clean-0-6-0 grunt-contrib-clean@~0.6.0
-112 verbose lock grunt-contrib-clean@~0.6.0 /home/xavier/.npm/944867a7-grunt-contrib-clean-0-6-0.lock
-113 verbose cache add name="grunt-contrib-concat" spec="~0.5.0" args=["grunt-contrib-concat","~0.5.0"]
-114 verbose parsed url { protocol: null,
-114 verbose parsed url   slashes: null,
-114 verbose parsed url   auth: null,
-114 verbose parsed url   host: null,
-114 verbose parsed url   port: null,
-114 verbose parsed url   hostname: null,
-114 verbose parsed url   hash: null,
-114 verbose parsed url   search: null,
-114 verbose parsed url   query: null,
-114 verbose parsed url   pathname: '~0.5.0',
-114 verbose parsed url   path: '~0.5.0',
-114 verbose parsed url   href: '~0.5.0' }
-115 verbose addNamed [ 'grunt-contrib-concat', '~0.5.0' ]
-116 verbose addNamed [ null, '>=0.5.0-0 <0.6.0-0' ]
-117 silly lockFile ab641ed0-grunt-contrib-concat-0-5-0 grunt-contrib-concat@~0.5.0
-118 verbose lock grunt-contrib-concat@~0.5.0 /home/xavier/.npm/ab641ed0-grunt-contrib-concat-0-5-0.lock
-119 verbose cache add name="grunt-contrib-copy" spec="~0.7.0" args=["grunt-contrib-copy","~0.7.0"]
-120 verbose parsed url { protocol: null,
-120 verbose parsed url   slashes: null,
-120 verbose parsed url   auth: null,
-120 verbose parsed url   host: null,
-120 verbose parsed url   port: null,
-120 verbose parsed url   hostname: null,
-120 verbose parsed url   hash: null,
-120 verbose parsed url   search: null,
-120 verbose parsed url   query: null,
-120 verbose parsed url   pathname: '~0.7.0',
-120 verbose parsed url   path: '~0.7.0',
-120 verbose parsed url   href: '~0.7.0' }
-121 verbose addNamed [ 'grunt-contrib-copy', '~0.7.0' ]
-122 verbose addNamed [ null, '>=0.7.0-0 <0.8.0-0' ]
-123 silly lockFile 20e4a8d9-grunt-contrib-copy-0-7-0 grunt-contrib-copy@~0.7.0
-124 verbose lock grunt-contrib-copy@~0.7.0 /home/xavier/.npm/20e4a8d9-grunt-contrib-copy-0-7-0.lock
-125 verbose cache add name="grunt-contrib-cssmin" spec="~0.11.0" args=["grunt-contrib-cssmin","~0.11.0"]
-126 verbose parsed url { protocol: null,
-126 verbose parsed url   slashes: null,
-126 verbose parsed url   auth: null,
-126 verbose parsed url   host: null,
-126 verbose parsed url   port: null,
-126 verbose parsed url   hostname: null,
-126 verbose parsed url   hash: null,
-126 verbose parsed url   search: null,
-126 verbose parsed url   query: null,
-126 verbose parsed url   pathname: '~0.11.0',
-126 verbose parsed url   path: '~0.11.0',
-126 verbose parsed url   href: '~0.11.0' }
-127 verbose addNamed [ 'grunt-contrib-cssmin', '~0.11.0' ]
-128 verbose addNamed [ null, '>=0.11.0-0 <0.12.0-0' ]
-129 silly lockFile 111e7fd0-grunt-contrib-cssmin-0-11-0 grunt-contrib-cssmin@~0.11.0
-130 verbose lock grunt-contrib-cssmin@~0.11.0 /home/xavier/.npm/111e7fd0-grunt-contrib-cssmin-0-11-0.lock
-131 verbose cache add name="grunt-contrib-htmlmin" spec="0.3.0" args=["grunt-contrib-htmlmin","0.3.0"]
-132 verbose parsed url { protocol: null,
-132 verbose parsed url   slashes: null,
-132 verbose parsed url   auth: null,
-132 verbose parsed url   host: null,
-132 verbose parsed url   port: null,
-132 verbose parsed url   hostname: null,
-132 verbose parsed url   hash: null,
-132 verbose parsed url   search: null,
-132 verbose parsed url   query: null,
-132 verbose parsed url   pathname: '0.3.0',
-132 verbose parsed url   path: '0.3.0',
-132 verbose parsed url   href: '0.3.0' }
-133 verbose addNamed [ 'grunt-contrib-htmlmin', '0.3.0' ]
-134 verbose addNamed [ '0.3.0', '0.3.0' ]
-135 silly lockFile b253161d-grunt-contrib-htmlmin-0-3-0 grunt-contrib-htmlmin@0.3.0
-136 verbose lock grunt-contrib-htmlmin@0.3.0 /home/xavier/.npm/b253161d-grunt-contrib-htmlmin-0-3-0.lock
-137 verbose cache add [ 'grunt-contrib-jshint@0.10.0', null ]
-138 verbose cache add name=undefined spec="grunt-contrib-jshint@0.10.0" args=["grunt-contrib-jshint@0.10.0",null]
-139 verbose parsed url { protocol: null,
-139 verbose parsed url   slashes: null,
-139 verbose parsed url   auth: null,
-139 verbose parsed url   host: null,
-139 verbose parsed url   port: null,
-139 verbose parsed url   hostname: null,
-139 verbose parsed url   hash: null,
-139 verbose parsed url   search: null,
-139 verbose parsed url   query: null,
-139 verbose parsed url   pathname: 'grunt-contrib-jshint@0.10.0',
-139 verbose parsed url   path: 'grunt-contrib-jshint@0.10.0',
-139 verbose parsed url   href: 'grunt-contrib-jshint@0.10.0' }
-140 verbose cache add [ 'grunt-contrib-nodeunit@0.4.1', null ]
-141 verbose cache add name=undefined spec="grunt-contrib-nodeunit@0.4.1" args=["grunt-contrib-nodeunit@0.4.1",null]
-142 verbose parsed url { protocol: null,
-142 verbose parsed url   slashes: null,
-142 verbose parsed url   auth: null,
-142 verbose parsed url   host: null,
-142 verbose parsed url   port: null,
-142 verbose parsed url   hostname: null,
-142 verbose parsed url   hash: null,
-142 verbose parsed url   search: null,
-142 verbose parsed url   query: null,
-142 verbose parsed url   pathname: 'grunt-contrib-nodeunit@0.4.1',
-142 verbose parsed url   path: 'grunt-contrib-nodeunit@0.4.1',
-142 verbose parsed url   href: 'grunt-contrib-nodeunit@0.4.1' }
-143 verbose cache add [ 'grunt-contrib-uglify@~0.7.0', null ]
-144 verbose cache add name=undefined spec="grunt-contrib-uglify@~0.7.0" args=["grunt-contrib-uglify@~0.7.0",null]
-145 verbose parsed url { protocol: null,
-145 verbose parsed url   slashes: null,
-145 verbose parsed url   auth: null,
-145 verbose parsed url   host: null,
-145 verbose parsed url   port: null,
-145 verbose parsed url   hostname: null,
-145 verbose parsed url   hash: null,
-145 verbose parsed url   search: null,
-145 verbose parsed url   query: null,
-145 verbose parsed url   pathname: 'grunt-contrib-uglify@~0.7.0',
-145 verbose parsed url   path: 'grunt-contrib-uglify@~0.7.0',
-145 verbose parsed url   href: 'grunt-contrib-uglify@~0.7.0' }
-146 verbose cache add [ 'grunt-conventional-changelog@^1.1.0', null ]
-147 verbose cache add name=undefined spec="grunt-conventional-changelog@^1.1.0" args=["grunt-conventional-changelog@^1.1.0",null]
-148 verbose parsed url { protocol: null,
-148 verbose parsed url   slashes: null,
-148 verbose parsed url   auth: null,
-148 verbose parsed url   host: null,
-148 verbose parsed url   port: null,
-148 verbose parsed url   hostname: null,
-148 verbose parsed url   hash: null,
-148 verbose parsed url   search: null,
-148 verbose parsed url   query: null,
-148 verbose parsed url   pathname: 'grunt-conventional-changelog@^1.1.0',
-148 verbose parsed url   path: 'grunt-conventional-changelog@^1.1.0',
-148 verbose parsed url   href: 'grunt-conventional-changelog@^1.1.0' }
-149 verbose cache add [ 'grunt-graphviz@^0.1.1', null ]
-150 verbose cache add name=undefined spec="grunt-graphviz@^0.1.1" args=["grunt-graphviz@^0.1.1",null]
-151 verbose parsed url { protocol: null,
-151 verbose parsed url   slashes: null,
-151 verbose parsed url   auth: null,
-151 verbose parsed url   host: null,
-151 verbose parsed url   port: null,
-151 verbose parsed url   hostname: null,
-151 verbose parsed url   hash: null,
-151 verbose parsed url   search: null,
-151 verbose parsed url   query: null,
-151 verbose parsed url   pathname: 'grunt-graphviz@^0.1.1',
-151 verbose parsed url   path: 'grunt-graphviz@^0.1.1',
-151 verbose parsed url   href: 'grunt-graphviz@^0.1.1' }
-152 verbose cache add [ 'grunt-html2js@0.3.0', null ]
-153 verbose cache add name=undefined spec="grunt-html2js@0.3.0" args=["grunt-html2js@0.3.0",null]
-154 verbose parsed url { protocol: null,
-154 verbose parsed url   slashes: null,
-154 verbose parsed url   auth: null,
-154 verbose parsed url   host: null,
-154 verbose parsed url   port: null,
-154 verbose parsed url   hostname: null,
-154 verbose parsed url   hash: null,
-154 verbose parsed url   search: null,
-154 verbose parsed url   query: null,
-154 verbose parsed url   pathname: 'grunt-html2js@0.3.0',
-154 verbose parsed url   path: 'grunt-html2js@0.3.0',
-154 verbose parsed url   href: 'grunt-html2js@0.3.0' }
-155 verbose cache add [ 'grunt-jsdoc@0.5.7', null ]
-156 verbose cache add name=undefined spec="grunt-jsdoc@0.5.7" args=["grunt-jsdoc@0.5.7",null]
-157 verbose parsed url { protocol: null,
-157 verbose parsed url   slashes: null,
-157 verbose parsed url   auth: null,
-157 verbose parsed url   host: null,
-157 verbose parsed url   port: null,
-157 verbose parsed url   hostname: null,
-157 verbose parsed url   hash: null,
-157 verbose parsed url   search: null,
-157 verbose parsed url   query: null,
-157 verbose parsed url   pathname: 'grunt-jsdoc@0.5.7',
-157 verbose parsed url   path: 'grunt-jsdoc@0.5.7',
-157 verbose parsed url   href: 'grunt-jsdoc@0.5.7' }
-158 verbose cache add [ 'grunt-ng-annotate@~0.9.2', null ]
-159 verbose cache add name=undefined spec="grunt-ng-annotate@~0.9.2" args=["grunt-ng-annotate@~0.9.2",null]
-160 verbose parsed url { protocol: null,
-160 verbose parsed url   slashes: null,
-160 verbose parsed url   auth: null,
-160 verbose parsed url   host: null,
-160 verbose parsed url   port: null,
-160 verbose parsed url   hostname: null,
-160 verbose parsed url   hash: null,
-160 verbose parsed url   search: null,
-160 verbose parsed url   query: null,
-160 verbose parsed url   pathname: 'grunt-ng-annotate@~0.9.2',
-160 verbose parsed url   path: 'grunt-ng-annotate@~0.9.2',
-160 verbose parsed url   href: 'grunt-ng-annotate@~0.9.2' }
-161 verbose cache add [ 'grunt-ng-constant@^1.0.0', null ]
-162 verbose cache add name=undefined spec="grunt-ng-constant@^1.0.0" args=["grunt-ng-constant@^1.0.0",null]
-163 verbose parsed url { protocol: null,
-163 verbose parsed url   slashes: null,
-163 verbose parsed url   auth: null,
-163 verbose parsed url   host: null,
-163 verbose parsed url   port: null,
-163 verbose parsed url   hostname: null,
-163 verbose parsed url   hash: null,
-163 verbose parsed url   search: null,
-163 verbose parsed url   query: null,
-163 verbose parsed url   pathname: 'grunt-ng-constant@^1.0.0',
-163 verbose parsed url   path: 'grunt-ng-constant@^1.0.0',
-163 verbose parsed url   href: 'grunt-ng-constant@^1.0.0' }
-164 verbose cache add [ 'grunt-rev@~0.1.0', null ]
-165 verbose cache add name=undefined spec="grunt-rev@~0.1.0" args=["grunt-rev@~0.1.0",null]
-166 verbose parsed url { protocol: null,
-166 verbose parsed url   slashes: null,
-166 verbose parsed url   auth: null,
-166 verbose parsed url   host: null,
-166 verbose parsed url   port: null,
-166 verbose parsed url   hostname: null,
-166 verbose parsed url   hash: null,
-166 verbose parsed url   search: null,
-166 verbose parsed url   query: null,
-166 verbose parsed url   pathname: 'grunt-rev@~0.1.0',
-166 verbose parsed url   path: 'grunt-rev@~0.1.0',
-166 verbose parsed url   href: 'grunt-rev@~0.1.0' }
-167 verbose cache add [ 'grunt-run@^0.3.0', null ]
-168 verbose cache add name=undefined spec="grunt-run@^0.3.0" args=["grunt-run@^0.3.0",null]
-169 verbose parsed url { protocol: null,
-169 verbose parsed url   slashes: null,
-169 verbose parsed url   auth: null,
-169 verbose parsed url   host: null,
-169 verbose parsed url   port: null,
-169 verbose parsed url   hostname: null,
-169 verbose parsed url   hash: null,
-169 verbose parsed url   search: null,
-169 verbose parsed url   query: null,
-169 verbose parsed url   pathname: 'grunt-run@^0.3.0',
-169 verbose parsed url   path: 'grunt-run@^0.3.0',
-169 verbose parsed url   href: 'grunt-run@^0.3.0' }
-170 verbose cache add [ 'grunt-scriptlinker@0.1.1', null ]
-171 verbose cache add name=undefined spec="grunt-scriptlinker@0.1.1" args=["grunt-scriptlinker@0.1.1",null]
-172 verbose parsed url { protocol: null,
-172 verbose parsed url   slashes: null,
-172 verbose parsed url   auth: null,
-172 verbose parsed url   host: null,
-172 verbose parsed url   port: null,
-172 verbose parsed url   hostname: null,
-172 verbose parsed url   hash: null,
-172 verbose parsed url   search: null,
-172 verbose parsed url   query: null,
-172 verbose parsed url   pathname: 'grunt-scriptlinker@0.1.1',
-172 verbose parsed url   path: 'grunt-scriptlinker@0.1.1',
-172 verbose parsed url   href: 'grunt-scriptlinker@0.1.1' }
-173 verbose cache add [ 'grunt-usemin@~3.0.0', null ]
-174 verbose cache add name=undefined spec="grunt-usemin@~3.0.0" args=["grunt-usemin@~3.0.0",null]
-175 verbose parsed url { protocol: null,
-175 verbose parsed url   slashes: null,
-175 verbose parsed url   auth: null,
-175 verbose parsed url   host: null,
-175 verbose parsed url   port: null,
-175 verbose parsed url   hostname: null,
-175 verbose parsed url   hash: null,
-175 verbose parsed url   search: null,
-175 verbose parsed url   query: null,
-175 verbose parsed url   pathname: 'grunt-usemin@~3.0.0',
-175 verbose parsed url   path: 'grunt-usemin@~3.0.0',
-175 verbose parsed url   href: 'grunt-usemin@~3.0.0' }
-176 verbose cache add [ 'grunt-wiredep@2.0.0', null ]
-177 verbose cache add name=undefined spec="grunt-wiredep@2.0.0" args=["grunt-wiredep@2.0.0",null]
-178 verbose parsed url { protocol: null,
-178 verbose parsed url   slashes: null,
-178 verbose parsed url   auth: null,
-178 verbose parsed url   host: null,
-178 verbose parsed url   port: null,
-178 verbose parsed url   hostname: null,
-178 verbose parsed url   hash: null,
-178 verbose parsed url   search: null,
-178 verbose parsed url   query: null,
-178 verbose parsed url   pathname: 'grunt-wiredep@2.0.0',
-178 verbose parsed url   path: 'grunt-wiredep@2.0.0',
-178 verbose parsed url   href: 'grunt-wiredep@2.0.0' }
-179 verbose cache add [ 'matchdep@^0.3.0', null ]
-180 verbose cache add name=undefined spec="matchdep@^0.3.0" args=["matchdep@^0.3.0",null]
-181 verbose parsed url { protocol: null,
-181 verbose parsed url   slashes: null,
-181 verbose parsed url   auth: null,
-181 verbose parsed url   host: null,
-181 verbose parsed url   port: null,
-181 verbose parsed url   hostname: null,
-181 verbose parsed url   hash: null,
-181 verbose parsed url   search: null,
-181 verbose parsed url   query: null,
-181 verbose parsed url   pathname: 'matchdep@^0.3.0',
-181 verbose parsed url   path: 'matchdep@^0.3.0',
-181 verbose parsed url   href: 'matchdep@^0.3.0' }
-182 verbose cache add [ 'assert-plus@0.1.5', null ]
-183 verbose cache add name=undefined spec="assert-plus@0.1.5" args=["assert-plus@0.1.5",null]
-184 verbose parsed url { protocol: null,
-184 verbose parsed url   slashes: null,
-184 verbose parsed url   auth: null,
-184 verbose parsed url   host: null,
-184 verbose parsed url   port: null,
-184 verbose parsed url   hostname: null,
-184 verbose parsed url   hash: null,
-184 verbose parsed url   search: null,
-184 verbose parsed url   query: null,
-184 verbose parsed url   pathname: 'assert-plus@0.1.5',
-184 verbose parsed url   path: 'assert-plus@0.1.5',
-184 verbose parsed url   href: 'assert-plus@0.1.5' }
-185 verbose cache add [ 'bower@1.3.12', null ]
-186 verbose cache add name=undefined spec="bower@1.3.12" args=["bower@1.3.12",null]
-187 verbose parsed url { protocol: null,
-187 verbose parsed url   slashes: null,
-187 verbose parsed url   auth: null,
-187 verbose parsed url   host: null,
-187 verbose parsed url   port: null,
-187 verbose parsed url   hostname: null,
-187 verbose parsed url   hash: null,
-187 verbose parsed url   search: null,
-187 verbose parsed url   query: null,
-187 verbose parsed url   pathname: 'bower@1.3.12',
-187 verbose parsed url   path: 'bower@1.3.12',
-187 verbose parsed url   href: 'bower@1.3.12' }
-188 silly addNameRange { name: 'grunt-apidoc2swagger',
-188 silly addNameRange   range: '>=0.1.10-0 <0.2.0-0',
-188 silly addNameRange   hasData: false }
-189 verbose cache add name="grunt-contrib-jshint" spec="0.10.0" args=["grunt-contrib-jshint","0.10.0"]
-190 verbose parsed url { protocol: null,
-190 verbose parsed url   slashes: null,
-190 verbose parsed url   auth: null,
-190 verbose parsed url   host: null,
-190 verbose parsed url   port: null,
-190 verbose parsed url   hostname: null,
-190 verbose parsed url   hash: null,
-190 verbose parsed url   search: null,
-190 verbose parsed url   query: null,
-190 verbose parsed url   pathname: '0.10.0',
-190 verbose parsed url   path: '0.10.0',
-190 verbose parsed url   href: '0.10.0' }
-191 verbose addNamed [ 'grunt-contrib-jshint', '0.10.0' ]
-192 verbose addNamed [ '0.10.0', '0.10.0' ]
-193 silly lockFile af8d4102-grunt-contrib-jshint-0-10-0 grunt-contrib-jshint@0.10.0
-194 verbose lock grunt-contrib-jshint@0.10.0 /home/xavier/.npm/af8d4102-grunt-contrib-jshint-0-10-0.lock
-195 verbose cache add name="grunt-contrib-nodeunit" spec="0.4.1" args=["grunt-contrib-nodeunit","0.4.1"]
-196 verbose parsed url { protocol: null,
-196 verbose parsed url   slashes: null,
-196 verbose parsed url   auth: null,
-196 verbose parsed url   host: null,
-196 verbose parsed url   port: null,
-196 verbose parsed url   hostname: null,
-196 verbose parsed url   hash: null,
-196 verbose parsed url   search: null,
-196 verbose parsed url   query: null,
-196 verbose parsed url   pathname: '0.4.1',
-196 verbose parsed url   path: '0.4.1',
-196 verbose parsed url   href: '0.4.1' }
-197 verbose addNamed [ 'grunt-contrib-nodeunit', '0.4.1' ]
-198 verbose addNamed [ '0.4.1', '0.4.1' ]
-199 silly lockFile 3261ce55-grunt-contrib-nodeunit-0-4-1 grunt-contrib-nodeunit@0.4.1
-200 verbose lock grunt-contrib-nodeunit@0.4.1 /home/xavier/.npm/3261ce55-grunt-contrib-nodeunit-0-4-1.lock
-201 verbose cache add name="grunt-contrib-uglify" spec="~0.7.0" args=["grunt-contrib-uglify","~0.7.0"]
-202 verbose parsed url { protocol: null,
-202 verbose parsed url   slashes: null,
-202 verbose parsed url   auth: null,
-202 verbose parsed url   host: null,
-202 verbose parsed url   port: null,
-202 verbose parsed url   hostname: null,
-202 verbose parsed url   hash: null,
-202 verbose parsed url   search: null,
-202 verbose parsed url   query: null,
-202 verbose parsed url   pathname: '~0.7.0',
-202 verbose parsed url   path: '~0.7.0',
-202 verbose parsed url   href: '~0.7.0' }
-203 verbose addNamed [ 'grunt-contrib-uglify', '~0.7.0' ]
-204 verbose addNamed [ null, '>=0.7.0-0 <0.8.0-0' ]
-205 silly lockFile ed126bab-grunt-contrib-uglify-0-7-0 grunt-contrib-uglify@~0.7.0
-206 verbose lock grunt-contrib-uglify@~0.7.0 /home/xavier/.npm/ed126bab-grunt-contrib-uglify-0-7-0.lock
-207 verbose cache add name="grunt-conventional-changelog" spec="^1.1.0" args=["grunt-conventional-changelog","^1.1.0"]
-208 verbose parsed url { protocol: null,
-208 verbose parsed url   slashes: null,
-208 verbose parsed url   auth: null,
-208 verbose parsed url   host: null,
-208 verbose parsed url   port: null,
-208 verbose parsed url   hostname: null,
-208 verbose parsed url   hash: null,
-208 verbose parsed url   search: null,
-208 verbose parsed url   query: null,
-208 verbose parsed url   pathname: '^1.1.0',
-208 verbose parsed url   path: '^1.1.0',
-208 verbose parsed url   href: '^1.1.0' }
-209 verbose addNamed [ 'grunt-conventional-changelog', '^1.1.0' ]
-210 verbose addNamed [ null, '>=1.1.0-0 <2.0.0-0' ]
-211 silly lockFile cbefcb9b-unt-conventional-changelog-1-1-0 grunt-conventional-changelog@^1.1.0
-212 verbose lock grunt-conventional-changelog@^1.1.0 /home/xavier/.npm/cbefcb9b-unt-conventional-changelog-1-1-0.lock
-213 verbose cache add name="grunt-graphviz" spec="^0.1.1" args=["grunt-graphviz","^0.1.1"]
-214 verbose parsed url { protocol: null,
-214 verbose parsed url   slashes: null,
-214 verbose parsed url   auth: null,
-214 verbose parsed url   host: null,
-214 verbose parsed url   port: null,
-214 verbose parsed url   hostname: null,
-214 verbose parsed url   hash: null,
-214 verbose parsed url   search: null,
-214 verbose parsed url   query: null,
-214 verbose parsed url   pathname: '^0.1.1',
-214 verbose parsed url   path: '^0.1.1',
-214 verbose parsed url   href: '^0.1.1' }
-215 verbose addNamed [ 'grunt-graphviz', '^0.1.1' ]
-216 verbose addNamed [ null, '>=0.1.1-0 <0.2.0-0' ]
-217 silly lockFile 1b7438f6-grunt-graphviz-0-1-1 grunt-graphviz@^0.1.1
-218 verbose lock grunt-graphviz@^0.1.1 /home/xavier/.npm/1b7438f6-grunt-graphviz-0-1-1.lock
-219 verbose cache add name="grunt-html2js" spec="0.3.0" args=["grunt-html2js","0.3.0"]
-220 verbose parsed url { protocol: null,
-220 verbose parsed url   slashes: null,
-220 verbose parsed url   auth: null,
-220 verbose parsed url   host: null,
-220 verbose parsed url   port: null,
-220 verbose parsed url   hostname: null,
-220 verbose parsed url   hash: null,
-220 verbose parsed url   search: null,
-220 verbose parsed url   query: null,
-220 verbose parsed url   pathname: '0.3.0',
-220 verbose parsed url   path: '0.3.0',
-220 verbose parsed url   href: '0.3.0' }
-221 verbose addNamed [ 'grunt-html2js', '0.3.0' ]
-222 verbose addNamed [ '0.3.0', '0.3.0' ]
-223 silly lockFile ba80b677-grunt-html2js-0-3-0 grunt-html2js@0.3.0
-224 verbose lock grunt-html2js@0.3.0 /home/xavier/.npm/ba80b677-grunt-html2js-0-3-0.lock
-225 verbose cache add name="grunt-jsdoc" spec="0.5.7" args=["grunt-jsdoc","0.5.7"]
-226 verbose parsed url { protocol: null,
-226 verbose parsed url   slashes: null,
-226 verbose parsed url   auth: null,
-226 verbose parsed url   host: null,
-226 verbose parsed url   port: null,
-226 verbose parsed url   hostname: null,
-226 verbose parsed url   hash: null,
-226 verbose parsed url   search: null,
-226 verbose parsed url   query: null,
-226 verbose parsed url   pathname: '0.5.7',
-226 verbose parsed url   path: '0.5.7',
-226 verbose parsed url   href: '0.5.7' }
-227 verbose addNamed [ 'grunt-jsdoc', '0.5.7' ]
-228 verbose addNamed [ '0.5.7', '0.5.7' ]
-229 silly lockFile ff6f9f1c-grunt-jsdoc-0-5-7 grunt-jsdoc@0.5.7
-230 verbose lock grunt-jsdoc@0.5.7 /home/xavier/.npm/ff6f9f1c-grunt-jsdoc-0-5-7.lock
-231 verbose cache add name="grunt-ng-annotate" spec="~0.9.2" args=["grunt-ng-annotate","~0.9.2"]
-232 verbose parsed url { protocol: null,
-232 verbose parsed url   slashes: null,
-232 verbose parsed url   auth: null,
-232 verbose parsed url   host: null,
-232 verbose parsed url   port: null,
-232 verbose parsed url   hostname: null,
-232 verbose parsed url   hash: null,
-232 verbose parsed url   search: null,
-232 verbose parsed url   query: null,
-232 verbose parsed url   pathname: '~0.9.2',
-232 verbose parsed url   path: '~0.9.2',
-232 verbose parsed url   href: '~0.9.2' }
-233 verbose addNamed [ 'grunt-ng-annotate', '~0.9.2' ]
-234 verbose addNamed [ null, '>=0.9.2-0 <0.10.0-0' ]
-235 silly lockFile be7e285e-grunt-ng-annotate-0-9-2 grunt-ng-annotate@~0.9.2
-236 verbose lock grunt-ng-annotate@~0.9.2 /home/xavier/.npm/be7e285e-grunt-ng-annotate-0-9-2.lock
-237 verbose cache add name="grunt-ng-constant" spec="^1.0.0" args=["grunt-ng-constant","^1.0.0"]
-238 verbose parsed url { protocol: null,
-238 verbose parsed url   slashes: null,
-238 verbose parsed url   auth: null,
-238 verbose parsed url   host: null,
-238 verbose parsed url   port: null,
-238 verbose parsed url   hostname: null,
-238 verbose parsed url   hash: null,
-238 verbose parsed url   search: null,
-238 verbose parsed url   query: null,
-238 verbose parsed url   pathname: '^1.0.0',
-238 verbose parsed url   path: '^1.0.0',
-238 verbose parsed url   href: '^1.0.0' }
-239 verbose addNamed [ 'grunt-ng-constant', '^1.0.0' ]
-240 verbose addNamed [ null, '>=1.0.0-0 <2.0.0-0' ]
-241 silly lockFile 8d9074a6-grunt-ng-constant-1-0-0 grunt-ng-constant@^1.0.0
-242 verbose lock grunt-ng-constant@^1.0.0 /home/xavier/.npm/8d9074a6-grunt-ng-constant-1-0-0.lock
-243 verbose cache add name="grunt-rev" spec="~0.1.0" args=["grunt-rev","~0.1.0"]
-244 verbose parsed url { protocol: null,
-244 verbose parsed url   slashes: null,
-244 verbose parsed url   auth: null,
-244 verbose parsed url   host: null,
-244 verbose parsed url   port: null,
-244 verbose parsed url   hostname: null,
-244 verbose parsed url   hash: null,
-244 verbose parsed url   search: null,
-244 verbose parsed url   query: null,
-244 verbose parsed url   pathname: '~0.1.0',
-244 verbose parsed url   path: '~0.1.0',
-244 verbose parsed url   href: '~0.1.0' }
-245 verbose addNamed [ 'grunt-rev', '~0.1.0' ]
-246 verbose addNamed [ null, '>=0.1.0-0 <0.2.0-0' ]
-247 silly lockFile a3a49760-grunt-rev-0-1-0 grunt-rev@~0.1.0
-248 verbose lock grunt-rev@~0.1.0 /home/xavier/.npm/a3a49760-grunt-rev-0-1-0.lock
-249 verbose cache add name="grunt-run" spec="^0.3.0" args=["grunt-run","^0.3.0"]
-250 verbose parsed url { protocol: null,
-250 verbose parsed url   slashes: null,
-250 verbose parsed url   auth: null,
-250 verbose parsed url   host: null,
-250 verbose parsed url   port: null,
-250 verbose parsed url   hostname: null,
-250 verbose parsed url   hash: null,
-250 verbose parsed url   search: null,
-250 verbose parsed url   query: null,
-250 verbose parsed url   pathname: '^0.3.0',
-250 verbose parsed url   path: '^0.3.0',
-250 verbose parsed url   href: '^0.3.0' }
-251 verbose addNamed [ 'grunt-run', '^0.3.0' ]
-252 verbose addNamed [ null, '>=0.3.0-0 <0.4.0-0' ]
-253 silly lockFile 3c2267c0-grunt-run-0-3-0 grunt-run@^0.3.0
-254 verbose lock grunt-run@^0.3.0 /home/xavier/.npm/3c2267c0-grunt-run-0-3-0.lock
-255 verbose cache add name="grunt-scriptlinker" spec="0.1.1" args=["grunt-scriptlinker","0.1.1"]
-256 verbose parsed url { protocol: null,
-256 verbose parsed url   slashes: null,
-256 verbose parsed url   auth: null,
-256 verbose parsed url   host: null,
-256 verbose parsed url   port: null,
-256 verbose parsed url   hostname: null,
-256 verbose parsed url   hash: null,
-256 verbose parsed url   search: null,
-256 verbose parsed url   query: null,
-256 verbose parsed url   pathname: '0.1.1',
-256 verbose parsed url   path: '0.1.1',
-256 verbose parsed url   href: '0.1.1' }
-257 verbose addNamed [ 'grunt-scriptlinker', '0.1.1' ]
-258 verbose addNamed [ '0.1.1', '0.1.1' ]
-259 silly lockFile b66a51c6-grunt-scriptlinker-0-1-1 grunt-scriptlinker@0.1.1
-260 verbose lock grunt-scriptlinker@0.1.1 /home/xavier/.npm/b66a51c6-grunt-scriptlinker-0-1-1.lock
-261 verbose cache add name="grunt-usemin" spec="~3.0.0" args=["grunt-usemin","~3.0.0"]
-262 verbose parsed url { protocol: null,
-262 verbose parsed url   slashes: null,
-262 verbose parsed url   auth: null,
-262 verbose parsed url   host: null,
-262 verbose parsed url   port: null,
-262 verbose parsed url   hostname: null,
-262 verbose parsed url   hash: null,
-262 verbose parsed url   search: null,
-262 verbose parsed url   query: null,
-262 verbose parsed url   pathname: '~3.0.0',
-262 verbose parsed url   path: '~3.0.0',
-262 verbose parsed url   href: '~3.0.0' }
-263 verbose addNamed [ 'grunt-usemin', '~3.0.0' ]
-264 verbose addNamed [ null, '>=3.0.0-0 <3.1.0-0' ]
-265 silly lockFile 10b1f4cf-grunt-usemin-3-0-0 grunt-usemin@~3.0.0
-266 verbose lock grunt-usemin@~3.0.0 /home/xavier/.npm/10b1f4cf-grunt-usemin-3-0-0.lock
-267 verbose cache add name="grunt-wiredep" spec="2.0.0" args=["grunt-wiredep","2.0.0"]
-268 verbose parsed url { protocol: null,
-268 verbose parsed url   slashes: null,
-268 verbose parsed url   auth: null,
-268 verbose parsed url   host: null,
-268 verbose parsed url   port: null,
-268 verbose parsed url   hostname: null,
-268 verbose parsed url   hash: null,
-268 verbose parsed url   search: null,
-268 verbose parsed url   query: null,
-268 verbose parsed url   pathname: '2.0.0',
-268 verbose parsed url   path: '2.0.0',
-268 verbose parsed url   href: '2.0.0' }
-269 verbose addNamed [ 'grunt-wiredep', '2.0.0' ]
-270 verbose addNamed [ '2.0.0', '2.0.0' ]
-271 silly lockFile f58faed5-grunt-wiredep-2-0-0 grunt-wiredep@2.0.0
-272 verbose lock grunt-wiredep@2.0.0 /home/xavier/.npm/f58faed5-grunt-wiredep-2-0-0.lock
-273 verbose cache add name="matchdep" spec="^0.3.0" args=["matchdep","^0.3.0"]
-274 verbose parsed url { protocol: null,
-274 verbose parsed url   slashes: null,
-274 verbose parsed url   auth: null,
-274 verbose parsed url   host: null,
-274 verbose parsed url   port: null,
-274 verbose parsed url   hostname: null,
-274 verbose parsed url   hash: null,
-274 verbose parsed url   search: null,
-274 verbose parsed url   query: null,
-274 verbose parsed url   pathname: '^0.3.0',
-274 verbose parsed url   path: '^0.3.0',
-274 verbose parsed url   href: '^0.3.0' }
-275 verbose addNamed [ 'matchdep', '^0.3.0' ]
-276 verbose addNamed [ null, '>=0.3.0-0 <0.4.0-0' ]
-277 silly lockFile 929cf857-matchdep-0-3-0 matchdep@^0.3.0
-278 verbose lock matchdep@^0.3.0 /home/xavier/.npm/929cf857-matchdep-0-3-0.lock
-279 verbose cache add name="assert-plus" spec="0.1.5" args=["assert-plus","0.1.5"]
-280 verbose parsed url { protocol: null,
-280 verbose parsed url   slashes: null,
-280 verbose parsed url   auth: null,
-280 verbose parsed url   host: null,
-280 verbose parsed url   port: null,
-280 verbose parsed url   hostname: null,
-280 verbose parsed url   hash: null,
-280 verbose parsed url   search: null,
-280 verbose parsed url   query: null,
-280 verbose parsed url   pathname: '0.1.5',
-280 verbose parsed url   path: '0.1.5',
-280 verbose parsed url   href: '0.1.5' }
-281 verbose addNamed [ 'assert-plus', '0.1.5' ]
-282 verbose addNamed [ '0.1.5', '0.1.5' ]
-283 silly lockFile b8965882-assert-plus-0-1-5 assert-plus@0.1.5
-284 verbose lock assert-plus@0.1.5 /home/xavier/.npm/b8965882-assert-plus-0-1-5.lock
-285 verbose cache add name="bower" spec="1.3.12" args=["bower","1.3.12"]
-286 verbose parsed url { protocol: null,
-286 verbose parsed url   slashes: null,
-286 verbose parsed url   auth: null,
-286 verbose parsed url   host: null,
-286 verbose parsed url   port: null,
-286 verbose parsed url   hostname: null,
-286 verbose parsed url   hash: null,
-286 verbose parsed url   search: null,
-286 verbose parsed url   query: null,
-286 verbose parsed url   pathname: '1.3.12',
-286 verbose parsed url   path: '1.3.12',
-286 verbose parsed url   href: '1.3.12' }
-287 verbose addNamed [ 'bower', '1.3.12' ]
-288 verbose addNamed [ '1.3.12', '1.3.12' ]
-289 silly lockFile 9819431c-bower-1-3-12 bower@1.3.12
-290 verbose lock bower@1.3.12 /home/xavier/.npm/9819431c-bower-1-3-12.lock
-291 silly addNameRange { name: 'grunt-bowercopy',
-291 silly addNameRange   range: '>=1.2.0-0 <1.3.0-0',
-291 silly addNameRange   hasData: false }
-292 silly addNameRange { name: 'grunt-contrib-clean',
-292 silly addNameRange   range: '>=0.6.0-0 <0.7.0-0',
-292 silly addNameRange   hasData: false }
-293 silly addNameRange { name: 'grunt-contrib-concat',
-293 silly addNameRange   range: '>=0.5.0-0 <0.6.0-0',
-293 silly addNameRange   hasData: false }
-294 silly addNameRange { name: 'grunt-contrib-copy',
-294 silly addNameRange   range: '>=0.7.0-0 <0.8.0-0',
-294 silly addNameRange   hasData: false }
-295 silly addNameRange { name: 'grunt-contrib-cssmin',
-295 silly addNameRange   range: '>=0.11.0-0 <0.12.0-0',
-295 silly addNameRange   hasData: false }
-296 silly addNameRange { name: 'grunt-contrib-uglify',
-296 silly addNameRange   range: '>=0.7.0-0 <0.8.0-0',
-296 silly addNameRange   hasData: false }
-297 silly addNameRange { name: 'grunt-conventional-changelog',
-297 silly addNameRange   range: '>=1.1.0-0 <2.0.0-0',
-297 silly addNameRange   hasData: false }
-298 silly addNameRange { name: 'grunt-graphviz',
-298 silly addNameRange   range: '>=0.1.1-0 <0.2.0-0',
-298 silly addNameRange   hasData: false }
-299 silly addNameRange { name: 'grunt-ng-annotate',
-299 silly addNameRange   range: '>=0.9.2-0 <0.10.0-0',
-299 silly addNameRange   hasData: false }
-300 silly addNameRange { name: 'grunt-ng-constant',
-300 silly addNameRange   range: '>=1.0.0-0 <2.0.0-0',
-300 silly addNameRange   hasData: false }
-301 silly addNameRange { name: 'grunt-rev',
-301 silly addNameRange   range: '>=0.1.0-0 <0.2.0-0',
-301 silly addNameRange   hasData: false }
-302 silly addNameRange { name: 'grunt-run',
-302 silly addNameRange   range: '>=0.3.0-0 <0.4.0-0',
-302 silly addNameRange   hasData: false }
-303 silly addNameRange { name: 'grunt-usemin',
-303 silly addNameRange   range: '>=3.0.0-0 <3.1.0-0',
-303 silly addNameRange   hasData: false }
-304 silly addNameRange { name: 'matchdep', range: '>=0.3.0-0 <0.4.0-0', hasData: false }
-305 verbose registry.get https://registry.npmjs.org/delayed-stream not expired, no request
-306 verbose registry.get https://registry.npmjs.org/grunt not expired, no request
-307 silly addNameRange number 2 { name: 'grunt', range: '>=0.4.5-0 <0.5.0-0', hasData: true }
-308 silly addNameRange versions [ 'grunt',
-308 silly addNameRange   [ '0.1.0',
-308 silly addNameRange     '0.1.1',
-308 silly addNameRange     '0.1.2',
-308 silly addNameRange     '0.2.0',
-308 silly addNameRange     '0.2.1',
-308 silly addNameRange     '0.2.2',
-308 silly addNameRange     '0.2.3',
-308 silly addNameRange     '0.2.4',
-308 silly addNameRange     '0.2.5',
-308 silly addNameRange     '0.2.6',
-308 silly addNameRange     '0.2.7',
-308 silly addNameRange     '0.2.8',
-308 silly addNameRange     '0.2.9',
-308 silly addNameRange     '0.2.10',
-308 silly addNameRange     '0.2.11',
-308 silly addNameRange     '0.2.12',
-308 silly addNameRange     '0.2.13',
-308 silly addNameRange     '0.2.14',
-308 silly addNameRange     '0.2.15',
-308 silly addNameRange     '0.3.0',
-308 silly addNameRange     '0.3.1',
-308 silly addNameRange     '0.3.2',
-308 silly addNameRange     '0.3.3',
-308 silly addNameRange     '0.3.4',
-308 silly addNameRange     '0.3.5',
-308 silly addNameRange     '0.3.6',
-308 silly addNameRange     '0.3.7',
-308 silly addNameRange     '0.3.8',
-308 silly addNameRange     '0.3.9',
-308 silly addNameRange     '0.3.10',
-308 silly addNameRange     '0.3.11',
-308 silly addNameRange     '0.3.12',
-308 silly addNameRange     '0.3.13',
-308 silly addNameRange     '0.3.14',
-308 silly addNameRange     '0.3.15',
-308 silly addNameRange     '0.3.16',
-308 silly addNameRange     '0.3.17',
-308 silly addNameRange     '0.4.0',
-308 silly addNameRange     '0.4.1',
-308 silly addNameRange     '0.4.2',
-308 silly addNameRange     '0.4.3',
-308 silly addNameRange     '0.4.4',
-308 silly addNameRange     '0.4.5',
-308 silly addNameRange     '0.3.13-a',
-308 silly addNameRange     '0.4.0-a',
-308 silly addNameRange     '0.4.0-rc1',
-308 silly addNameRange     '0.4.0-rc2',
-308 silly addNameRange     '0.4.0-rc3',
-308 silly addNameRange     '0.4.0-rc4',
-308 silly addNameRange     '0.4.0-rc5',
-308 silly addNameRange     '0.4.0-rc6',
-308 silly addNameRange     '0.4.0-rc7',
-308 silly addNameRange     '0.4.0-rc8' ] ]
-309 verbose addNamed [ 'grunt', '0.4.5' ]
-310 verbose addNamed [ '0.4.5', '0.4.5' ]
-311 silly lockFile 81abf7ad-grunt-0-4-5 grunt@0.4.5
-312 verbose lock grunt@0.4.5 /home/xavier/.npm/81abf7ad-grunt-0-4-5.lock
-313 verbose registry.get https://registry.npmjs.org/grunt-angular-architecture-graph not expired, no request
-314 silly addNameRange number 2 { name: 'grunt-angular-architecture-graph',
-314 silly addNameRange   range: '>=0.2.5-0 <0.3.0-0',
-314 silly addNameRange   hasData: true }
-315 silly addNameRange versions [ 'grunt-angular-architecture-graph',
-315 silly addNameRange   [ '0.2.0', '0.2.1', '0.2.2', '0.2.3', '0.2.4', '0.2.5', '0.2.6' ] ]
-316 verbose addNamed [ 'grunt-angular-architecture-graph', '0.2.6' ]
-317 verbose addNamed [ '0.2.6', '0.2.6' ]
-318 silly lockFile f7ac29b9-angular-architecture-graph-0-2-6 grunt-angular-architecture-graph@0.2.6
-319 verbose lock grunt-angular-architecture-graph@0.2.6 /home/xavier/.npm/f7ac29b9-angular-architecture-graph-0-2-6.lock
-320 verbose registry.get https://registry.npmjs.org/grunt-angular-templates not expired, no request
-321 silly lockFile dc5eb509--stream-delayed-stream-0-0-6-tgz https://registry.npmjs.org/delayed-stream/-/delayed-stream-0.0.6.tgz
-322 verbose lock https://registry.npmjs.org/delayed-stream/-/delayed-stream-0.0.6.tgz /home/xavier/.npm/dc5eb509--stream-delayed-stream-0-0-6-tgz.lock
-323 verbose registry.get https://registry.npmjs.org/grunt-apidoc not expired, no request
-324 verbose registry.get https://registry.npmjs.org/grunt-apidoc2swagger not expired, no request
-325 silly addNameRange number 2 { name: 'grunt-apidoc2swagger',
-325 silly addNameRange   range: '>=0.1.10-0 <0.2.0-0',
-325 silly addNameRange   hasData: true }
-326 silly addNameRange versions [ 'grunt-apidoc2swagger',
-326 silly addNameRange   [ '0.1.0',
-326 silly addNameRange     '0.1.1',
-326 silly addNameRange     '0.1.2',
-326 silly addNameRange     '0.1.7',
-326 silly addNameRange     '0.1.9',
-326 silly addNameRange     '0.1.10',
-326 silly addNameRange     '0.2.0',
-326 silly addNameRange     '0.2.1' ] ]
-327 verbose addNamed [ 'grunt-apidoc2swagger', '0.1.10' ]
-328 verbose addNamed [ '0.1.10', '0.1.10' ]
-329 silly lockFile a2b97eb7-grunt-apidoc2swagger-0-1-10 grunt-apidoc2swagger@0.1.10
-330 verbose lock grunt-apidoc2swagger@0.1.10 /home/xavier/.npm/a2b97eb7-grunt-apidoc2swagger-0-1-10.lock
-331 verbose registry.get https://registry.npmjs.org/grunt-bower-task not expired, no request
-332 verbose registry.get https://registry.npmjs.org/grunt-bowercopy not expired, no request
-333 silly addNameRange number 2 { name: 'grunt-bowercopy',
-333 silly addNameRange   range: '>=1.2.0-0 <1.3.0-0',
-333 silly addNameRange   hasData: true }
-334 silly addNameRange versions [ 'grunt-bowercopy',
-334 silly addNameRange   [ '0.1.0',
-334 silly addNameRange     '0.2.0',
-334 silly addNameRange     '0.3.0',
-334 silly addNameRange     '0.4.0',
-334 silly addNameRange     '0.4.1',
-334 silly addNameRange     '0.5.0',
-334 silly addNameRange     '0.6.0',
-334 silly addNameRange     '0.7.0',
-334 silly addNameRange     '0.7.1',
-334 silly addNameRange     '0.8.0',
-334 silly addNameRange     '0.9.0',
-334 silly addNameRange     '1.0.0',
-334 silly addNameRange     '1.0.1',
-334 silly addNameRange     '1.1.0',
-334 silly addNameRange     '1.2.0' ] ]
-335 verbose addNamed [ 'grunt-bowercopy', '1.2.0' ]
-336 verbose addNamed [ '1.2.0', '1.2.0' ]
-337 silly lockFile 5a9f9fbd-grunt-bowercopy-1-2-0 grunt-bowercopy@1.2.0
-338 verbose lock grunt-bowercopy@1.2.0 /home/xavier/.npm/5a9f9fbd-grunt-bowercopy-1-2-0.lock
-339 verbose registry.get https://registry.npmjs.org/grunt-bump not expired, no request
-340 verbose registry.get https://registry.npmjs.org/grunt-contrib-clean not expired, no request
-341 silly addNameRange number 2 { name: 'grunt-contrib-clean',
-341 silly addNameRange   range: '>=0.6.0-0 <0.7.0-0',
-341 silly addNameRange   hasData: true }
-342 silly addNameRange versions [ 'grunt-contrib-clean',
-342 silly addNameRange   [ '0.1.0',
-342 silly addNameRange     '0.2.0',
-342 silly addNameRange     '0.3.0',
-342 silly addNameRange     '0.3.1',
-342 silly addNameRange     '0.3.2',
-342 silly addNameRange     '0.4.0',
-342 silly addNameRange     '0.4.1',
-342 silly addNameRange     '0.5.0',
-342 silly addNameRange     '0.6.0',
-342 silly addNameRange     '0.4.0-a',
-342 silly addNameRange     '0.4.0-rc5',
-342 silly addNameRange     '0.4.0-rc6' ] ]
-343 verbose addNamed [ 'grunt-contrib-clean', '0.6.0' ]
-344 verbose addNamed [ '0.6.0', '0.6.0' ]
-345 silly lockFile 0a668ef6-grunt-contrib-clean-0-6-0 grunt-contrib-clean@0.6.0
-346 verbose lock grunt-contrib-clean@0.6.0 /home/xavier/.npm/0a668ef6-grunt-contrib-clean-0-6-0.lock
-347 verbose registry.get https://registry.npmjs.org/grunt-contrib-concat not expired, no request
-348 silly addNameRange number 2 { name: 'grunt-contrib-concat',
-348 silly addNameRange   range: '>=0.5.0-0 <0.6.0-0',
-348 silly addNameRange   hasData: true }
-349 silly addNameRange versions [ 'grunt-contrib-concat',
-349 silly addNameRange   [ '0.1.0',
-349 silly addNameRange     '0.1.1',
-349 silly addNameRange     '0.1.2',
-349 silly addNameRange     '0.1.3',
-349 silly addNameRange     '0.2.0',
-349 silly addNameRange     '0.3.0',
-349 silly addNameRange     '0.4.0',
-349 silly addNameRange     '0.5.0',
-349 silly addNameRange     '0.5.1',
-349 silly addNameRange     '0.1.2-rc5',
-349 silly addNameRange     '0.1.2-rc6' ] ]
-350 verbose addNamed [ 'grunt-contrib-concat', '0.5.1' ]
-351 verbose addNamed [ '0.5.1', '0.5.1' ]
-352 silly lockFile 63a362d5-grunt-contrib-concat-0-5-1 grunt-contrib-concat@0.5.1
-353 verbose lock grunt-contrib-concat@0.5.1 /home/xavier/.npm/63a362d5-grunt-contrib-concat-0-5-1.lock
-354 verbose registry.get https://registry.npmjs.org/grunt-contrib-copy not expired, no request
-355 silly addNameRange number 2 { name: 'grunt-contrib-copy',
-355 silly addNameRange   range: '>=0.7.0-0 <0.8.0-0',
-355 silly addNameRange   hasData: true }
-356 silly addNameRange versions [ 'grunt-contrib-copy',
-356 silly addNameRange   [ '0.2.0',
-356 silly addNameRange     '0.2.1',
-356 silly addNameRange     '0.2.2',
-356 silly addNameRange     '0.2.3',
-356 silly addNameRange     '0.2.4',
-356 silly addNameRange     '0.3.0',
-356 silly addNameRange     '0.3.1',
-356 silly addNameRange     '0.3.2',
-356 silly addNameRange     '0.4.0',
-356 silly addNameRange     '0.4.1',
-356 silly addNameRange     '0.5.0',
-356 silly addNameRange     '0.6.0',
-356 silly addNameRange     '0.7.0',
-356 silly addNameRange     '0.8.0',
-356 silly addNameRange     '0.4.0-rc7' ] ]
-357 verbose addNamed [ 'grunt-contrib-copy', '0.7.0' ]
-358 verbose addNamed [ '0.7.0', '0.7.0' ]
-359 silly lockFile 4a53bbfa-grunt-contrib-copy-0-7-0 grunt-contrib-copy@0.7.0
-360 verbose lock grunt-contrib-copy@0.7.0 /home/xavier/.npm/4a53bbfa-grunt-contrib-copy-0-7-0.lock
-361 verbose registry.get https://registry.npmjs.org/grunt-contrib-cssmin not expired, no request
-362 silly addNameRange number 2 { name: 'grunt-contrib-cssmin',
-362 silly addNameRange   range: '>=0.11.0-0 <0.12.0-0',
-362 silly addNameRange   hasData: true }
-363 silly addNameRange versions [ 'grunt-contrib-cssmin',
-363 silly addNameRange   [ '0.4.0',
-363 silly addNameRange     '0.4.1',
-363 silly addNameRange     '0.4.2',
-363 silly addNameRange     '0.5.0',
-363 silly addNameRange     '0.6.0',
-363 silly addNameRange     '0.6.1',
-363 silly addNameRange     '0.6.2',
-363 silly addNameRange     '0.7.0',
-363 silly addNameRange     '0.8.0',
-363 silly addNameRange     '0.9.0',
-363 silly addNameRange     '0.10.0',
-363 silly addNameRange     '0.11.0',
-363 silly addNameRange     '0.12.0',
-363 silly addNameRange     '0.12.1',
-363 silly addNameRange     '0.12.2',
-363 silly addNameRange     '0.12.3' ] ]
-364 verbose addNamed [ 'grunt-contrib-cssmin', '0.11.0' ]
-365 verbose addNamed [ '0.11.0', '0.11.0' ]
-366 silly lockFile 2cdfccb3-grunt-contrib-cssmin-0-11-0 grunt-contrib-cssmin@0.11.0
-367 verbose lock grunt-contrib-cssmin@0.11.0 /home/xavier/.npm/2cdfccb3-grunt-contrib-cssmin-0-11-0.lock
-368 verbose registry.get https://registry.npmjs.org/grunt-contrib-htmlmin not expired, no request
-369 verbose addRemoteTarball [ 'https://registry.npmjs.org/delayed-stream/-/delayed-stream-0.0.6.tgz',
-369 verbose addRemoteTarball   'a2646cb7ec3d5d7774614670a7a65de0c173edbc' ]
-370 verbose registry.get https://registry.npmjs.org/grunt-contrib-jshint not expired, no request
-371 verbose registry.get https://registry.npmjs.org/grunt-contrib-nodeunit not expired, no request
-372 verbose registry.get https://registry.npmjs.org/grunt-contrib-uglify not expired, no request
-373 silly addNameRange number 2 { name: 'grunt-contrib-uglify',
-373 silly addNameRange   range: '>=0.7.0-0 <0.8.0-0',
-373 silly addNameRange   hasData: true }
-374 silly addNameRange versions [ 'grunt-contrib-uglify',
-374 silly addNameRange   [ '0.1.0',
-374 silly addNameRange     '0.1.1',
-374 silly addNameRange     '0.1.2',
-374 silly addNameRange     '0.2.0',
-374 silly addNameRange     '0.2.1',
-374 silly addNameRange     '0.2.2',
-374 silly addNameRange     '0.2.3',
-374 silly addNameRange     '0.2.4',
-374 silly addNameRange     '0.2.5',
-374 silly addNameRange     '0.2.6',
-374 silly addNameRange     '0.2.7',
-374 silly addNameRange     '0.3.0',
-374 silly addNameRange     '0.3.1',
-374 silly addNameRange     '0.1.1-rc5',
-374 silly addNameRange     '0.1.1-rc6',
-374 silly addNameRange     '0.3.2',
-374 silly addNameRange     '0.3.3',
-374 silly addNameRange     '0.4.0',
-374 silly addNameRange     '0.5.0',
-374 silly addNameRange     '0.4.1',
-374 silly addNameRange     '0.5.1',
-374 silly addNameRange     '0.6.0',
-374 silly addNameRange     '0.7.0',
-374 silly addNameRange     '0.8.0',
-374 silly addNameRange     '0.8.1',
-374 silly addNameRange     '0.9.0',
-374 silly addNameRange     '0.9.1' ] ]
-375 verbose addNamed [ 'grunt-contrib-uglify', '0.7.0' ]
-376 verbose addNamed [ '0.7.0', '0.7.0' ]
-377 silly lockFile 0707808c-grunt-contrib-uglify-0-7-0 grunt-contrib-uglify@0.7.0
-378 verbose lock grunt-contrib-uglify@0.7.0 /home/xavier/.npm/0707808c-grunt-contrib-uglify-0-7-0.lock
-379 verbose registry.get https://registry.npmjs.org/grunt-conventional-changelog not expired, no request
-380 silly addNameRange number 2 { name: 'grunt-conventional-changelog',
-380 silly addNameRange   range: '>=1.1.0-0 <2.0.0-0',
-380 silly addNameRange   hasData: true }
-381 silly addNameRange versions [ 'grunt-conventional-changelog',
-381 silly addNameRange   [ '0.0.11',
-381 silly addNameRange     '0.0.12',
-381 silly addNameRange     '0.1.0',
-381 silly addNameRange     '0.1.1',
-381 silly addNameRange     '0.1.2',
-381 silly addNameRange     '1.0.0',
-381 silly addNameRange     '1.1.0',
-381 silly addNameRange     '1.2.0',
-381 silly addNameRange     '1.2.1',
-381 silly addNameRange     '1.2.2' ] ]
-382 verbose addNamed [ 'grunt-conventional-changelog', '1.2.2' ]
-383 verbose addNamed [ '1.2.2', '1.2.2' ]
-384 silly lockFile 412abfba-unt-conventional-changelog-1-2-2 grunt-conventional-changelog@1.2.2
-385 verbose lock grunt-conventional-changelog@1.2.2 /home/xavier/.npm/412abfba-unt-conventional-changelog-1-2-2.lock
-386 verbose registry.get https://registry.npmjs.org/grunt-graphviz not expired, no request
-387 silly addNameRange number 2 { name: 'grunt-graphviz',
-387 silly addNameRange   range: '>=0.1.1-0 <0.2.0-0',
-387 silly addNameRange   hasData: true }
-388 silly addNameRange versions [ 'grunt-graphviz', [ '0.1.0', '0.1.1' ] ]
-389 verbose addNamed [ 'grunt-graphviz', '0.1.1' ]
-390 verbose addNamed [ '0.1.1', '0.1.1' ]
-391 silly lockFile 5cd8810c-grunt-graphviz-0-1-1 grunt-graphviz@0.1.1
-392 verbose lock grunt-graphviz@0.1.1 /home/xavier/.npm/5cd8810c-grunt-graphviz-0-1-1.lock
-393 verbose registry.get https://registry.npmjs.org/grunt-html2js not expired, no request
-394 verbose registry.get https://registry.npmjs.org/grunt-jsdoc not expired, no request
-395 verbose registry.get https://registry.npmjs.org/grunt-ng-annotate not expired, no request
-396 silly addNameRange number 2 { name: 'grunt-ng-annotate',
-396 silly addNameRange   range: '>=0.9.2-0 <0.10.0-0',
-396 silly addNameRange   hasData: true }
-397 silly addNameRange versions [ 'grunt-ng-annotate',
-397 silly addNameRange   [ '0.0.1',
-397 silly addNameRange     '0.0.2',
-397 silly addNameRange     '0.0.4',
-397 silly addNameRange     '0.0.5',
-397 silly addNameRange     '0.0.6',
-397 silly addNameRange     '0.0.7',
-397 silly addNameRange     '0.0.8',
-397 silly addNameRange     '0.1.0',
-397 silly addNameRange     '0.2.0',
-397 silly addNameRange     '0.2.1',
-397 silly addNameRange     '0.2.2',
-397 silly addNameRange     '0.2.3',
-397 silly addNameRange     '0.3.0',
-397 silly addNameRange     '0.3.1',
-397 silly addNameRange     '0.3.2',
-397 silly addNameRange     '0.4.0',
-397 silly addNameRange     '0.5.0',
-397 silly addNameRange     '0.6.0',
-397 silly addNameRange     '0.7.0',
-397 silly addNameRange     '0.8.0',
-397 silly addNameRange     '0.9.0',
-397 silly addNameRange     '0.9.1',
-397 silly addNameRange     '0.9.2',
-397 silly addNameRange     '0.10.0',
-397 silly addNameRange     '1.0.0',
-397 silly addNameRange     '1.0.1' ] ]
-398 verbose addNamed [ 'grunt-ng-annotate', '0.9.2' ]
-399 verbose addNamed [ '0.9.2', '0.9.2' ]
-400 silly lockFile 8d6da9cd-grunt-ng-annotate-0-9-2 grunt-ng-annotate@0.9.2
-401 verbose lock grunt-ng-annotate@0.9.2 /home/xavier/.npm/8d6da9cd-grunt-ng-annotate-0-9-2.lock
-402 verbose registry.get https://registry.npmjs.org/grunt-ng-constant not expired, no request
-403 silly addNameRange number 2 { name: 'grunt-ng-constant',
-403 silly addNameRange   range: '>=1.0.0-0 <2.0.0-0',
-403 silly addNameRange   hasData: true }
-404 silly addNameRange versions [ 'grunt-ng-constant',
-404 silly addNameRange   [ '0.4.0',
-404 silly addNameRange     '0.4.1',
-404 silly addNameRange     '0.4.2',
-404 silly addNameRange     '0.4.3',
-404 silly addNameRange     '0.4.4',
-404 silly addNameRange     '0.4.5',
-404 silly addNameRange     '0.4.6',
-404 silly addNameRange     '0.4.7',
-404 silly addNameRange     '0.4.8',
-404 silly addNameRange     '0.5.0',
-404 silly addNameRange     '1.0.0',
-404 silly addNameRange     '1.1.0' ] ]
-405 verbose addNamed [ 'grunt-ng-constant', '1.1.0' ]
-406 verbose addNamed [ '1.1.0', '1.1.0' ]
-407 silly lockFile 310845be-grunt-ng-constant-1-1-0 grunt-ng-constant@1.1.0
-408 verbose lock grunt-ng-constant@1.1.0 /home/xavier/.npm/310845be-grunt-ng-constant-1-1-0.lock
-409 verbose registry.get https://registry.npmjs.org/grunt-rev not expired, no request
-410 silly addNameRange number 2 { name: 'grunt-rev', range: '>=0.1.0-0 <0.2.0-0', hasData: true }
-411 silly addNameRange versions [ 'grunt-rev', [ '0.1.0' ] ]
-412 verbose addNamed [ 'grunt-rev', '0.1.0' ]
-413 verbose addNamed [ '0.1.0', '0.1.0' ]
-414 silly lockFile bef6ca8e-grunt-rev-0-1-0 grunt-rev@0.1.0
-415 verbose lock grunt-rev@0.1.0 /home/xavier/.npm/bef6ca8e-grunt-rev-0-1-0.lock
-416 verbose registry.get https://registry.npmjs.org/grunt-run not expired, no request
-417 silly addNameRange number 2 { name: 'grunt-run', range: '>=0.3.0-0 <0.4.0-0', hasData: true }
-418 silly addNameRange versions [ 'grunt-run',
-418 silly addNameRange   [ '0.1.0',
-418 silly addNameRange     '0.1.1',
-418 silly addNameRange     '0.1.2',
-418 silly addNameRange     '0.1.3',
-418 silly addNameRange     '0.1.5',
-418 silly addNameRange     '0.1.6',
-418 silly addNameRange     '0.1.7',
-418 silly addNameRange     '0.1.8',
-418 silly addNameRange     '0.1.9',
-418 silly addNameRange     '0.1.10',
-418 silly addNameRange     '0.1.11',
-418 silly addNameRange     '0.1.12',
-418 silly addNameRange     '0.1.13',
-418 silly addNameRange     '0.1.14',
-418 silly addNameRange     '0.2.0',
-418 silly addNameRange     '0.2.1',
-418 silly addNameRange     '0.2.2',
-418 silly addNameRange     '0.2.3',
-418 silly addNameRange     '0.2.4',
-418 silly addNameRange     '0.3.0' ] ]
-419 verbose addNamed [ 'grunt-run', '0.3.0' ]
-420 verbose addNamed [ '0.3.0', '0.3.0' ]
-421 silly lockFile 90695d59-grunt-run-0-3-0 grunt-run@0.3.0
-422 verbose lock grunt-run@0.3.0 /home/xavier/.npm/90695d59-grunt-run-0-3-0.lock
-423 verbose registry.get https://registry.npmjs.org/grunt-scriptlinker not expired, no request
-424 verbose registry.get https://registry.npmjs.org/grunt-usemin not expired, no request
-425 silly addNameRange number 2 { name: 'grunt-usemin',
-425 silly addNameRange   range: '>=3.0.0-0 <3.1.0-0',
-425 silly addNameRange   hasData: true }
-426 silly addNameRange versions [ 'grunt-usemin',
-426 silly addNameRange   [ '0.1.0',
-426 silly addNameRange     '0.1.1',
-426 silly addNameRange     '0.1.2',
-426 silly addNameRange     '0.1.5',
-426 silly addNameRange     '0.1.6',
-426 silly addNameRange     '0.1.7',
-426 silly addNameRange     '0.1.8',
-426 silly addNameRange     '0.1.9',
-426 silly addNameRange     '0.1.4',
-426 silly addNameRange     '0.1.10',
-426 silly addNameRange     '0.1.11',
-426 silly addNameRange     '0.1.12',
-426 silly addNameRange     '0.1.13',
-426 silly addNameRange     '2.0.0',
-426 silly addNameRange     '2.0.1',
-426 silly addNameRange     '2.0.2',
-426 silly addNameRange     '2.1.0',
-426 silly addNameRange     '2.1.1',
-426 silly addNameRange     '2.2.0',
-426 silly addNameRange     '2.3.0',
-426 silly addNameRange     '2.4.0',
-426 silly addNameRange     '2.5.0',
-426 silly addNameRange     '2.5.1',
-426 silly addNameRange     '2.6.0',
-426 silly addNameRange     '2.6.1',
-426 silly addNameRange     '2.6.2',
-426 silly addNameRange     '3.0.0' ] ]
-427 verbose addNamed [ 'grunt-usemin', '3.0.0' ]
-428 verbose addNamed [ '3.0.0', '3.0.0' ]
-429 silly lockFile 21f60fae-grunt-usemin-3-0-0 grunt-usemin@3.0.0
-430 verbose lock grunt-usemin@3.0.0 /home/xavier/.npm/21f60fae-grunt-usemin-3-0-0.lock
-431 verbose registry.get https://registry.npmjs.org/grunt-wiredep not expired, no request
-432 verbose registry.get https://registry.npmjs.org/matchdep not expired, no request
-433 silly addNameRange number 2 { name: 'matchdep', range: '>=0.3.0-0 <0.4.0-0', hasData: true }
-434 silly addNameRange versions [ 'matchdep', [ '0.1.0', '0.1.1', '0.1.2', '0.2.0', '0.3.0' ] ]
-435 verbose addNamed [ 'matchdep', '0.3.0' ]
-436 verbose addNamed [ '0.3.0', '0.3.0' ]
-437 silly lockFile a9c62364-matchdep-0-3-0 matchdep@0.3.0
-438 verbose lock matchdep@0.3.0 /home/xavier/.npm/a9c62364-matchdep-0-3-0.lock
-439 verbose registry.get https://registry.npmjs.org/assert-plus not expired, no request
-440 verbose registry.get https://registry.npmjs.org/bower not expired, no request
-441 silly lockFile 4a767ae4-grunt-angular-templates-0-5-7 grunt-angular-templates@0.5.7
-442 silly lockFile 4a767ae4-grunt-angular-templates-0-5-7 grunt-angular-templates@0.5.7
-443 silly lockFile a879b1ec-grunt-apidoc-0-10-0 grunt-apidoc@0.10.0
-444 silly lockFile a879b1ec-grunt-apidoc-0-10-0 grunt-apidoc@0.10.0
-445 silly lockFile a85864e3-grunt-bower-task-0-4-0 grunt-bower-task@0.4.0
-446 silly lockFile a85864e3-grunt-bower-task-0-4-0 grunt-bower-task@0.4.0
-447 silly lockFile 81abf7ad-grunt-0-4-5 grunt@0.4.5
-448 silly lockFile 81abf7ad-grunt-0-4-5 grunt@0.4.5
-449 silly lockFile f7ac29b9-angular-architecture-graph-0-2-6 grunt-angular-architecture-graph@0.2.6
-450 silly lockFile f7ac29b9-angular-architecture-graph-0-2-6 grunt-angular-architecture-graph@0.2.6
-451 silly lockFile 61187e8c-grunt-bump-0-0-16 grunt-bump@0.0.16
-452 silly lockFile 61187e8c-grunt-bump-0-0-16 grunt-bump@0.0.16
-453 silly lockFile b253161d-grunt-contrib-htmlmin-0-3-0 grunt-contrib-htmlmin@0.3.0
-454 silly lockFile b253161d-grunt-contrib-htmlmin-0-3-0 grunt-contrib-htmlmin@0.3.0
-455 silly lockFile 73541f84-grunt-0-4-5 grunt@^0.4.5
-456 silly lockFile 73541f84-grunt-0-4-5 grunt@^0.4.5
-457 silly lockFile 332d136b-angular-architecture-graph-0-2-5 grunt-angular-architecture-graph@^0.2.5
-458 silly lockFile 332d136b-angular-architecture-graph-0-2-5 grunt-angular-architecture-graph@^0.2.5
-459 silly lockFile a2b97eb7-grunt-apidoc2swagger-0-1-10 grunt-apidoc2swagger@0.1.10
-460 silly lockFile a2b97eb7-grunt-apidoc2swagger-0-1-10 grunt-apidoc2swagger@0.1.10
-461 silly lockFile af8d4102-grunt-contrib-jshint-0-10-0 grunt-contrib-jshint@0.10.0
-462 silly lockFile af8d4102-grunt-contrib-jshint-0-10-0 grunt-contrib-jshint@0.10.0
-463 silly lockFile 3261ce55-grunt-contrib-nodeunit-0-4-1 grunt-contrib-nodeunit@0.4.1
-464 silly lockFile 3261ce55-grunt-contrib-nodeunit-0-4-1 grunt-contrib-nodeunit@0.4.1
-465 silly lockFile ff6f9f1c-grunt-jsdoc-0-5-7 grunt-jsdoc@0.5.7
-466 silly lockFile ff6f9f1c-grunt-jsdoc-0-5-7 grunt-jsdoc@0.5.7
-467 silly lockFile ba80b677-grunt-html2js-0-3-0 grunt-html2js@0.3.0
-468 silly lockFile ba80b677-grunt-html2js-0-3-0 grunt-html2js@0.3.0
-469 silly lockFile b66a51c6-grunt-scriptlinker-0-1-1 grunt-scriptlinker@0.1.1
-470 silly lockFile b66a51c6-grunt-scriptlinker-0-1-1 grunt-scriptlinker@0.1.1
-471 silly lockFile f58faed5-grunt-wiredep-2-0-0 grunt-wiredep@2.0.0
-472 silly lockFile f58faed5-grunt-wiredep-2-0-0 grunt-wiredep@2.0.0
-473 silly lockFile b8965882-assert-plus-0-1-5 assert-plus@0.1.5
-474 silly lockFile b8965882-assert-plus-0-1-5 assert-plus@0.1.5
-475 silly lockFile 9819431c-bower-1-3-12 bower@1.3.12
-476 silly lockFile 9819431c-bower-1-3-12 bower@1.3.12
-477 silly lockFile 5a9f9fbd-grunt-bowercopy-1-2-0 grunt-bowercopy@1.2.0
-478 silly lockFile 5a9f9fbd-grunt-bowercopy-1-2-0 grunt-bowercopy@1.2.0
-479 info retry fetch attempt 1 at 22:37:53
-480 verbose fetch to= /tmp/npm-13321-o82zMpbC/registry.npmjs.org/delayed-stream/-/delayed-stream-0.0.6.tgz
-481 silly lockFile 39eb7ac7-grunt-apidoc2swagger-0-1-10 grunt-apidoc2swagger@^0.1.10
-482 silly lockFile 39eb7ac7-grunt-apidoc2swagger-0-1-10 grunt-apidoc2swagger@^0.1.10
-483 silly lockFile 0a668ef6-grunt-contrib-clean-0-6-0 grunt-contrib-clean@0.6.0
-484 silly lockFile 0a668ef6-grunt-contrib-clean-0-6-0 grunt-contrib-clean@0.6.0
-485 silly lockFile 63a362d5-grunt-contrib-concat-0-5-1 grunt-contrib-concat@0.5.1
-486 silly lockFile 63a362d5-grunt-contrib-concat-0-5-1 grunt-contrib-concat@0.5.1
-487 silly lockFile 4a53bbfa-grunt-contrib-copy-0-7-0 grunt-contrib-copy@0.7.0
-488 silly lockFile 4a53bbfa-grunt-contrib-copy-0-7-0 grunt-contrib-copy@0.7.0
-489 silly lockFile 2cdfccb3-grunt-contrib-cssmin-0-11-0 grunt-contrib-cssmin@0.11.0
-490 silly lockFile 2cdfccb3-grunt-contrib-cssmin-0-11-0 grunt-contrib-cssmin@0.11.0
-491 silly lockFile 93de7b36-grunt-bowercopy-1-2-0 grunt-bowercopy@~1.2.0
-492 silly lockFile 93de7b36-grunt-bowercopy-1-2-0 grunt-bowercopy@~1.2.0
-493 silly lockFile 944867a7-grunt-contrib-clean-0-6-0 grunt-contrib-clean@~0.6.0
-494 silly lockFile 944867a7-grunt-contrib-clean-0-6-0 grunt-contrib-clean@~0.6.0
-495 silly lockFile ab641ed0-grunt-contrib-concat-0-5-0 grunt-contrib-concat@~0.5.0
-496 silly lockFile ab641ed0-grunt-contrib-concat-0-5-0 grunt-contrib-concat@~0.5.0
-497 silly lockFile 20e4a8d9-grunt-contrib-copy-0-7-0 grunt-contrib-copy@~0.7.0
-498 silly lockFile 20e4a8d9-grunt-contrib-copy-0-7-0 grunt-contrib-copy@~0.7.0
-499 silly lockFile 111e7fd0-grunt-contrib-cssmin-0-11-0 grunt-contrib-cssmin@~0.11.0
-500 silly lockFile 111e7fd0-grunt-contrib-cssmin-0-11-0 grunt-contrib-cssmin@~0.11.0
-501 silly lockFile 0707808c-grunt-contrib-uglify-0-7-0 grunt-contrib-uglify@0.7.0
-502 silly lockFile 0707808c-grunt-contrib-uglify-0-7-0 grunt-contrib-uglify@0.7.0
-503 silly lockFile 412abfba-unt-conventional-changelog-1-2-2 grunt-conventional-changelog@1.2.2
-504 silly lockFile 412abfba-unt-conventional-changelog-1-2-2 grunt-conventional-changelog@1.2.2
-505 silly lockFile 5cd8810c-grunt-graphviz-0-1-1 grunt-graphviz@0.1.1
-506 silly lockFile 5cd8810c-grunt-graphviz-0-1-1 grunt-graphviz@0.1.1
-507 silly lockFile 8d6da9cd-grunt-ng-annotate-0-9-2 grunt-ng-annotate@0.9.2
-508 silly lockFile 8d6da9cd-grunt-ng-annotate-0-9-2 grunt-ng-annotate@0.9.2
-509 silly lockFile 310845be-grunt-ng-constant-1-1-0 grunt-ng-constant@1.1.0
-510 silly lockFile 310845be-grunt-ng-constant-1-1-0 grunt-ng-constant@1.1.0
-511 silly lockFile bef6ca8e-grunt-rev-0-1-0 grunt-rev@0.1.0
-512 silly lockFile bef6ca8e-grunt-rev-0-1-0 grunt-rev@0.1.0
-513 silly lockFile 90695d59-grunt-run-0-3-0 grunt-run@0.3.0
-514 silly lockFile 90695d59-grunt-run-0-3-0 grunt-run@0.3.0
-515 silly lockFile 21f60fae-grunt-usemin-3-0-0 grunt-usemin@3.0.0
-516 silly lockFile 21f60fae-grunt-usemin-3-0-0 grunt-usemin@3.0.0
-517 silly lockFile a9c62364-matchdep-0-3-0 matchdep@0.3.0
-518 silly lockFile a9c62364-matchdep-0-3-0 matchdep@0.3.0
-519 http GET https://registry.npmjs.org/delayed-stream/-/delayed-stream-0.0.6.tgz
-520 silly lockFile ed126bab-grunt-contrib-uglify-0-7-0 grunt-contrib-uglify@~0.7.0
-521 silly lockFile ed126bab-grunt-contrib-uglify-0-7-0 grunt-contrib-uglify@~0.7.0
-522 silly lockFile cbefcb9b-unt-conventional-changelog-1-1-0 grunt-conventional-changelog@^1.1.0
-523 silly lockFile cbefcb9b-unt-conventional-changelog-1-1-0 grunt-conventional-changelog@^1.1.0
-524 silly lockFile 1b7438f6-grunt-graphviz-0-1-1 grunt-graphviz@^0.1.1
-525 silly lockFile 1b7438f6-grunt-graphviz-0-1-1 grunt-graphviz@^0.1.1
-526 silly lockFile be7e285e-grunt-ng-annotate-0-9-2 grunt-ng-annotate@~0.9.2
-527 silly lockFile be7e285e-grunt-ng-annotate-0-9-2 grunt-ng-annotate@~0.9.2
-528 silly lockFile 8d9074a6-grunt-ng-constant-1-0-0 grunt-ng-constant@^1.0.0
-529 silly lockFile 8d9074a6-grunt-ng-constant-1-0-0 grunt-ng-constant@^1.0.0
-530 silly lockFile a3a49760-grunt-rev-0-1-0 grunt-rev@~0.1.0
-531 silly lockFile a3a49760-grunt-rev-0-1-0 grunt-rev@~0.1.0
-532 silly lockFile 3c2267c0-grunt-run-0-3-0 grunt-run@^0.3.0
-533 silly lockFile 3c2267c0-grunt-run-0-3-0 grunt-run@^0.3.0
-534 silly lockFile 10b1f4cf-grunt-usemin-3-0-0 grunt-usemin@~3.0.0
-535 silly lockFile 10b1f4cf-grunt-usemin-3-0-0 grunt-usemin@~3.0.0
-536 silly lockFile 929cf857-matchdep-0-3-0 matchdep@^0.3.0
-537 silly lockFile 929cf857-matchdep-0-3-0 matchdep@^0.3.0
-538 http 200 https://registry.npmjs.org/delayed-stream/-/delayed-stream-0.0.6.tgz
-539 silly lockFile dc5eb509--stream-delayed-stream-0-0-6-tgz https://registry.npmjs.org/delayed-stream/-/delayed-stream-0.0.6.tgz
-540 silly lockFile dc5eb509--stream-delayed-stream-0-0-6-tgz https://registry.npmjs.org/delayed-stream/-/delayed-stream-0.0.6.tgz
-541 silly lockFile 9b30798e-delayed-stream-0-0-6 delayed-stream@0.0.6
-542 silly lockFile 9b30798e-delayed-stream-0-0-6 delayed-stream@0.0.6
-543 error Error: EACCES, mkdir '/home/xavier/.npm/delayed-stream/0.0.6'
-543 error  { [Error: EACCES, mkdir '/home/xavier/.npm/delayed-stream/0.0.6']
-543 error   errno: 3,
-543 error   code: 'EACCES',
-543 error   path: '/home/xavier/.npm/delayed-stream/0.0.6',
-543 error   parent: 'QSwarm-Web' }
-544 error Please try running this command again as root/Administrator.
-545 error System Linux 3.19.0-18-generic
-546 error command "/usr/bin/node" "/usr/bin/npm" "install"
-547 error cwd /home/xavier/Dropbox/Eclipse/QSwarm-Web
-548 error node -v v0.10.38
-549 error npm -v 1.4.28
-550 error path /home/xavier/.npm/delayed-stream/0.0.6
-551 error code EACCES
-552 error errno 3
-553 error stack Error: EACCES, mkdir '/home/xavier/.npm/delayed-stream/0.0.6'
-554 verbose exit [ 3, true ]
+5 verbose install initial load of /home/xavier/Dropbox/Eclipse/QSwarm-Web/package.json
+6 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/assert-plus/package.json
+7 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/bower/package.json
+8 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/browser-sync/package.json
+9 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/browser-sync-spa/package.json
+10 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/chalk/package.json
+11 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/concat-stream/package.json
+12 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/del/package.json
+13 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/delayed-stream/package.json
+14 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt/package.json
+15 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-angular-architecture-graph/package.json
+16 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-angular-templates/package.json
+17 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-apidoc/package.json
+18 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-apidoc2swagger/package.json
+19 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-bower-task/package.json
+20 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-bowercopy/package.json
+21 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-bump/package.json
+22 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-contrib-clean/package.json
+23 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-contrib-concat/package.json
+24 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-contrib-copy/package.json
+25 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-contrib-cssmin/package.json
+26 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-contrib-htmlmin/package.json
+27 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-contrib-jshint/package.json
+28 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-contrib-nodeunit/package.json
+29 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-contrib-uglify/package.json
+30 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-conventional-changelog/package.json
+31 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-graphviz/package.json
+32 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-html2js/package.json
+33 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-jsdoc/package.json
+34 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-ng-annotate/package.json
+35 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-ng-constant/package.json
+36 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-rev/package.json
+37 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-run/package.json
+38 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-scriptlinker/package.json
+39 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-surge/package.json
+40 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-usemin/package.json
+41 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/grunt-wiredep/package.json
+42 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp/package.json
+43 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-angular-filesort/package.json
+44 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-angular-templatecache/package.json
+45 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-autoprefixer/package.json
+46 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-csso/package.json
+47 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-filter/package.json
+48 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-flatten/package.json
+49 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-inject/package.json
+50 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-jshint/package.json
+51 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-load-plugins/package.json
+52 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-minify-html/package.json
+53 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-ng-annotate/package.json
+54 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-ng-config/package.json
+55 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-protractor/package.json
+56 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-rename/package.json
+57 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-replace/package.json
+58 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-rev/package.json
+59 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-rev-replace/package.json
+60 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-size/package.json
+61 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-sourcemaps/package.json
+62 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-uglify/package.json
+63 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-useref/package.json
+64 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/gulp-util/package.json
+65 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/http-proxy/package.json
+66 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/jasmine-core/package.json
+67 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/jshint-stylish/package.json
+68 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/karma/package.json
+69 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/karma-jasmine/package.json
+70 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/karma-ng-html2js-preprocessor/package.json
+71 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/karma-phantomjs-launcher/package.json
+72 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/lodash/package.json
+73 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/main-bower-files/package.json
+74 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/matchdep/package.json
+75 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/merge-stream/package.json
+76 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/protractor/package.json
+77 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/require-dir/package.json
+78 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/uglify-save-license/package.json
+79 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/wiredep/package.json
+80 verbose installManyTop reading scoped package data from /home/xavier/Dropbox/Eclipse/QSwarm-Web/node_modules/wrench/package.json
+81 info package.json assert-plus@0.1.5 No license field.
+82 info package.json bower@1.3.12 No license field.
+83 info package.json browser-sync@2.1.6 No license field.
+84 info package.json delayed-stream@0.0.6 No license field.
+85 info package.json grunt@0.4.5 No license field.
+86 info package.json grunt-angular-architecture-graph@0.2.6 No license field.
+87 info package.json grunt-angular-templates@0.5.7 No license field.
+88 info package.json grunt-apidoc@0.10.0 license should be a valid SPDX license expression
+89 info package.json grunt-apidoc2swagger@0.1.10 No license field.
+90 info package.json grunt-bower-task@0.4.0 No license field.
+91 info package.json grunt-bowercopy@1.2.0 No license field.
+92 info package.json grunt-contrib-clean@0.6.0 No license field.
+93 info package.json grunt-contrib-concat@0.5.1 No license field.
+94 info package.json grunt-contrib-copy@0.7.0 No license field.
+95 info package.json grunt-contrib-cssmin@0.11.0 No license field.
+96 info package.json grunt-contrib-htmlmin@0.3.0 No license field.
+97 info package.json grunt-contrib-jshint@0.10.0 No license field.
+98 info package.json grunt-contrib-nodeunit@0.4.1 No license field.
+99 info package.json grunt-contrib-uglify@0.7.0 No license field.
+100 info package.json grunt-conventional-changelog@1.2.2 license should be a valid SPDX license expression
+101 info package.json grunt-graphviz@0.1.1 No license field.
+102 info package.json grunt-html2js@0.3.0 No license field.
+103 info package.json grunt-jsdoc@0.5.7 No license field.
+104 info package.json grunt-ng-constant@1.1.0 No license field.
+105 info package.json grunt-rev@0.1.0 No license field.
+106 info package.json grunt-run@0.3.0 No license field.
+107 info package.json grunt-scriptlinker@0.1.1 No license field.
+108 info package.json grunt-wiredep@2.0.0 No license field.
+109 info package.json gulp-inject@1.1.1 No license field.
+110 info package.json gulp-jshint@1.9.4 No license field.
+111 info package.json gulp-minify-html@0.1.8 No license field.
+112 info package.json gulp-ng-annotate@0.5.3 license should be a valid SPDX license expression
+113 info package.json gulp-protractor@0.0.12 No license field.
+114 info package.json gulp-rename@1.2.2 No license field.
+115 info package.json matchdep@0.3.0 No license field.
+116 info package.json require-dir@0.1.0 No license field.
+117 info package.json uglify-save-license@0.4.1 No license field.
+118 info package.json wiredep@2.2.2 No license field.
+119 info package.json wrench@1.5.8 No license field.
+120 verbose readDependencies loading dependencies from /home/xavier/Dropbox/Eclipse/QSwarm-Web/package.json
+121 silly cache add args [ 'gulp-surge', null ]
+122 verbose cache add spec gulp-surge
+123 silly cache add parsed spec { raw: 'gulp-surge',
+123 silly cache add   scope: null,
+123 silly cache add   name: 'gulp-surge',
+123 silly cache add   rawSpec: '',
+123 silly cache add   spec: '*',
+123 silly cache add   type: 'range' }
+124 silly addNamed gulp-surge@*
+125 verbose addNamed "*" is a valid semver range for gulp-surge
+126 silly addNameRange { name: 'gulp-surge', range: '*', hasData: false }
+127 silly mapToRegistry name gulp-surge
+128 silly mapToRegistry using default registry
+129 silly mapToRegistry registry https://registry.npmjs.org/
+130 silly mapToRegistry uri https://registry.npmjs.org/gulp-surge
+131 verbose addNameRange registry:https://registry.npmjs.org/gulp-surge not in flight; fetching
+132 verbose request uri https://registry.npmjs.org/gulp-surge
+133 verbose request no auth needed
+134 info attempt registry request try #1 at 23:05:20
+135 verbose request id 23ccadce234f25e9
+136 http request GET https://registry.npmjs.org/gulp-surge
+137 http 404 https://registry.npmjs.org/gulp-surge
+138 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+138 verbose headers   'content-type': 'application/json',
+138 verbose headers   'cache-control': 'max-age=0',
+138 verbose headers   'content-length': '51',
+138 verbose headers   'accept-ranges': 'bytes',
+138 verbose headers   date: 'Sun, 14 Jun 2015 21:05:20 GMT',
+138 verbose headers   via: '1.1 varnish',
+138 verbose headers   age: '0',
+138 verbose headers   connection: 'keep-alive',
+138 verbose headers   'x-served-by': 'cache-fra1236-FRA',
+138 verbose headers   'x-cache': 'MISS',
+138 verbose headers   'x-cache-hits': '0',
+138 verbose headers   'x-timer': 'S1434315920.799091,VS0,VE182' }
+139 silly get cb [ 404,
+139 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+139 silly get     'content-type': 'application/json',
+139 silly get     'cache-control': 'max-age=0',
+139 silly get     'content-length': '51',
+139 silly get     'accept-ranges': 'bytes',
+139 silly get     date: 'Sun, 14 Jun 2015 21:05:20 GMT',
+139 silly get     via: '1.1 varnish',
+139 silly get     age: '0',
+139 silly get     connection: 'keep-alive',
+139 silly get     'x-served-by': 'cache-fra1236-FRA',
+139 silly get     'x-cache': 'MISS',
+139 silly get     'x-cache-hits': '0',
+139 silly get     'x-timer': 'S1434315920.799091,VS0,VE182' } ]
+140 verbose stack Error: 404 Not Found: gulp-surge
+140 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:245:14)
+140 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+140 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:354:22)
+140 verbose stack     at Request.emit (events.js:110:17)
+140 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1207:14)
+140 verbose stack     at Request.emit (events.js:129:20)
+140 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1153:12)
+140 verbose stack     at IncomingMessage.emit (events.js:129:20)
+140 verbose stack     at _stream_readable.js:908:16
+140 verbose stack     at process._tickCallback (node.js:355:11)
+141 verbose statusCode 404
+142 verbose pkgid gulp-surge
+143 verbose cwd /home/xavier/Dropbox/Eclipse/QSwarm-Web
+144 error Linux 3.19.0-20-generic
+145 error argv "node" "/usr/local/bin/npm" "install" "--save-dev" "gulp-surge"
+146 error node v0.12.4
+147 error npm  v2.11.2
+148 error code E404
+149 error 404 Not Found: gulp-surge
+149 error 404
+149 error 404 'gulp-surge' is not in the npm registry.
+149 error 404 You should bug the author to publish it (or use the name yourself!)
+149 error 404 It was specified as a dependency of 'QSwarm-Web'
+149 error 404
+149 error 404 Note that you can also install from a
+149 error 404 tarball, folder, http url, or git url.
+150 verbose exit [ 1, true ]
