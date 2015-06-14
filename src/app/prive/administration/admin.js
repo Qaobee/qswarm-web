@@ -20,7 +20,7 @@ angular.module('admin',
 .config(function($routeProvider) {
     $routeProvider.when('/admin', {
         controller : 'AdminCtrl',
-        templateUrl : 'templates/admin/admin.html'
+        templateUrl : 'app/prive/admin/admin.html'
     });
 })
 

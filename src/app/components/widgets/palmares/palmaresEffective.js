@@ -141,6 +141,6 @@ angular.module('palmaresEffectiveWidget', ['structureCfgRestAPI', 'personRestAPI
                     $location.path('/private/playersheet/' + id);
                 };
             },
-            templateUrl: 'templates/directives/widgets/palmaresEffective.html'
+            templateUrl: 'app/components/widgets/palmeres/palmaresEffective.html'
         };
     });

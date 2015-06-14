@@ -225,7 +225,7 @@ angular.module('statWidget', ['chart.js', 'statAPI', 'eventbus'])
                     delete $scope.myChart;
                 });
             },
-            templateUrl: 'templates/directives/widgets/statWidget.html'
+            templateUrl: 'app/components/widgets/stat/statWidget.html'
         };
     })
 ;

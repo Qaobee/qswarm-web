@@ -93,7 +93,7 @@ angular.module('widget.calendar', ['ui.calendar'])
                 $scope.uiConfig.calendar.buttonText.week = $filter('translate')('content.calendar.buttontext.week');
                 $scope.uiConfig.calendar.buttonText.day = $filter('translate')('content.calendar.buttontext.day');
             },
-            templateUrl: 'components/widgets/calendar/calendar.html'
+            templateUrl: 'app/components/widgets/calendar/calendar.html'
         };
     });
 }());

@@ -35,24 +35,6 @@
             $httpProvider.defaults.useXDomain = true;
             delete $httpProvider.defaults.headers.common['X-Requested-With'];
             $httpProvider.interceptors.push('httpInterceptor');
-
-
-        })
-        .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale) {
-            $locale.id = $translate.proposedLanguage();
-            tmhDynamicLocale.set($locale.id);
-            $rootScope.$on('$translatePartialLoaderStructureChanged', function () {
-                $translate.refresh();
-            });
-        })
-
-    /**
-     * @class qaobee.QaobeeSwarnApp.MainCtrl
-     * @description Contrôleur principal
-     */
-        .controller('MainCtrl', function ($rootScope, $scope, $translatePartialLoader, eventbus) {
-            $translatePartialLoader.addPart('legacy');
-
             toastr.options = {
                 closeButton: true,
                 debug: false,
@@ -71,6 +53,21 @@
                 hideMethod: 'fadeOut'
             };
 
+        })
+        .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale) {
+            $locale.id = $translate.proposedLanguage();
+            tmhDynamicLocale.set($locale.id);
+            $rootScope.$on('$translatePartialLoaderStructureChanged', function () {
+                $translate.refresh();
+            });
+        })
+
+    /**
+     * @class qaobee.QaobeeSwarnApp.MainCtrl
+     * @description Contrôleur principal
+     */
+        .controller('MainCtrl', function ($rootScope, $scope, $translatePartialLoader, eventbus) {
+            $translatePartialLoader.addPart('legacy');
             $scope.$on('eventbus', function () {
                 if ('logoff' === eventbus.message) {
                     delete  $scope.user;

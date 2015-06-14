@@ -98,7 +98,7 @@ angular.module('widget.weather', [])
                     $scope.flipped = true;
                 };
             },
-            templateUrl: 'templates/directives/widgets/meteo.html'
+            templateUrl: 'app/components/widgets/meteo/meteo.html'
         };
     });
 

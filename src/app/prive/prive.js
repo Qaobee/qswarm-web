@@ -20,7 +20,7 @@
                     user: metaDatasProvider.checkUser,
                     meta: metaDatasProvider.getMeta
                 },
-                templateUrl: 'prive/home.html'
+                templateUrl: 'app/prive/home.html'
 
             }).when('/private/notifications', {
                 controller: 'NotificationsCtrl',
@@ -28,7 +28,7 @@
                     user: metaDatasProvider.checkUser,
                     meta: metaDatasProvider.getMeta
                 },
-                templateUrl: 'prive/profile/notifications.html'
+                templateUrl: 'app/prive/profile/notifications.html'
 
             }).when('/private/calendar', {
                 controller: 'CalendarCtrl',
@@ -36,7 +36,7 @@
                     user: metaDatasProvider.checkUser,
                     meta: metaDatasProvider.getMeta
                 },
-                templateUrl: 'prive/calendar.html'
+                templateUrl: 'app/prive/calendar.html'
             });
         })
 

@@ -34,7 +34,7 @@
                     $scope.modifyAvatar = function () {
                         modalOpened = true;
                         modal = $modal.open({
-                            templateUrl: 'components/avatar/setAvatarIndividuModal.html',
+                            templateUrl: 'app/components/avatar/setAvatarIndividuModal.html',
                             controller: 'setAvatarIndividuModalCtrl',
                             backdrop: 'true',
                             scope: $scope,
@@ -79,7 +79,7 @@
                         //  $scope.showSpinner = false;
                     };
                 },
-                templateUrl: 'components/avatar/avatar.html'
+                templateUrl: 'app/components/avatar/avatar.html'
             };
         })
         .controller('setAvatarIndividuModalCtrl', function ($scope, $modalInstance) {
@@ -101,7 +101,7 @@
                         return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/Person/' + avatar : 'imgs/user.png';
                     };
                 },
-                templateUrl: 'components/avatar/simpleAvatar.html'
+                templateUrl: 'app/components/avatar/simpleAvatar.html'
             };
         });
 }());

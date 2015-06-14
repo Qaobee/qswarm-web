@@ -105,6 +105,6 @@ angular.module('widget.notifications', ['notificationsRestAPI', 'eventbus'])
                     $scope.flipped = true;
                 };
             },
-            templateUrl: 'templates/directives/widgets/notifications.html'
+            templateUrl: 'app/components/widgets/notifications/notifications.html'
         };
     });

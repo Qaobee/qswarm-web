@@ -105,6 +105,6 @@ angular.module('staffListWidget', ['structureCfgRestAPI', 'userMetaAPI', 'ngTabl
                     $location.path('/private/playersheet/' + id);
                 };
             },
-            templateUrl: 'templates/directives/widgets/staffList.html'
+            templateUrl: 'app/components/widgets/staff/staffList.html'
         };
     }]);

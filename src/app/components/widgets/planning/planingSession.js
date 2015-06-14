@@ -46,6 +46,6 @@ angular.module('planingSessionWidget', ['sessionRestAPI'])
               
           },
      
-      templateUrl: 'templates/directives/widgets/planingSession.html'
+      templateUrl: 'app/components/widgets/planning/planingSession.html'
   };
 });

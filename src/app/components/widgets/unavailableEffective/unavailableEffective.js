@@ -66,6 +66,6 @@ angular.module('unavailableEffectiveWidget', ['structureCfgRestAPI', 'userMetaAP
                     $location.path('/private/playersheet/' + id);
                 };
             },
-            templateUrl: 'templates/directives/widgets/unavailableEffective.html'
+            templateUrl: 'app/components/widgets/unavailableEffective/unavailableEffective.html'
         };
     });

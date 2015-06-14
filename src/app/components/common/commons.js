@@ -259,7 +259,7 @@
                             });
                     }
                 },
-                templateUrl: 'components/common/aboutPhotos.html'
+                templateUrl: 'app/components/common/aboutPhotos.html'
             };
         })
 

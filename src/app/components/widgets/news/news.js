@@ -29,6 +29,6 @@ angular.module('widget.news', ['publicRestAPI'])
                     $scope.blogs = data;
                 });
             },
-            templateUrl: 'templates/directives/widgets/news.html'
+            templateUrl: 'app/components/widgets/news/news.html'
         };
     });

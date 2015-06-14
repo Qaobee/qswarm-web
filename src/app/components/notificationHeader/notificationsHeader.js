@@ -165,7 +165,7 @@
                         };
                     };
                 },
-                templateUrl: 'components/notificationHeader/headerNotifications.html'
+                templateUrl: 'app/components/notificationHeader/headerNotifications.html'
             };
         });
 }());

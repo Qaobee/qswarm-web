@@ -88,7 +88,7 @@ angular.module('widget.structure', ['angular-flip', 'leaflet-directive'])
                     $scope.flipped = true;
                 };
             },
-            templateUrl: 'templates/directives/widgets/structure.html'
+            templateUrl: 'app/components/widgets/structure/structure.html'
         };
     });
 function JSON_CALLBACK() { // Nothing

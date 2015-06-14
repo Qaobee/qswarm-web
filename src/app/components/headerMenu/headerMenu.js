@@ -224,7 +224,7 @@
                     });
                 };*/
                 },
-                templateUrl: 'components/headerMenu/headerMenu.html'
+                templateUrl: 'app/components/headerMenu/headerMenu.html'
             };
         });
 }());

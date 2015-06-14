@@ -17,7 +17,7 @@
                 $scope.isopen = [false, false, false];
                 $scope.isopen[$scope.level] = true;
             },
-            templateUrl: 'components/adminMenu/adminmenu.html'
+            templateUrl: 'app/components/adminMenu/adminmenu.html'
         };
     });
 }());
