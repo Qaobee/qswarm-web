@@ -35,6 +35,14 @@ gulp.task('conf-dev', function () {
       .pipe(gulp.dest('./src/app'))
 });
 
-gulp.task('default', ['clean', 'conf-dev'], function () {
+gulp.task('conf-prod', function () {
+    gulp.src('conf/config.json')
+        .pipe(gulpNgConfig('qaobee.config', {
+            environment: 'production'
+        }))
+        .pipe(gulp.dest('./src/app'))
+});
+
+gulp.task('default', ['clean', 'conf-prod'], function () {
     gulp.start('build');
 });
