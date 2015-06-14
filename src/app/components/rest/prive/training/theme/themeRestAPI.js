@@ -85,6 +85,6 @@ angular.module('themeRestAPI', []).value('themeAPIURL', '/rest/prive/training')
                 url : themeAPIURL + '/theme/delete?idTheme=' + idTheme,
                 method : "DELETE"
             });
-        },
+        }
     };
 });

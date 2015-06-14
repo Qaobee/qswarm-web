@@ -41,7 +41,9 @@
     "momentjs": "2.8.1",
     "materialize": "0.96.1",
     "sugar": "1.4.1",
-    "toastr": "2.1.0"
+    "toastr": "2.1.0",
+    "html5shiv": "~3.7.2",
+    "respond": "~1.4.2"
   },
   "resolutions": {
     "angular": "1.4.0-rc.2",

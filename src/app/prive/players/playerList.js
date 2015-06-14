@@ -75,7 +75,7 @@ angular.module(
                 listId = a.members;
             });
 
-            var listField = new Array("_id", "name", "firstname", "avatar", "status", "birthdate");
+            var listField = ['_id', 'name', 'firstname', 'avatar', 'status', 'birthdate'];
 
             /* retrieve person information */
             personRestAPI.getListPerson(listId, listField).success(function (data) {

@@ -167,7 +167,7 @@ angular.module(
                     listId = a.members;
                 });
                 
-                var listField = new Array("_id", "name", "firstname", "avatar", "status" );
+                var listField = ['_id', 'name', 'firstname', 'avatar', 'status'];
                 
                 /* retrieve person information */
                 personRestAPI.getListPerson(listId, listField).success(function (data) {
@@ -336,7 +336,7 @@ angular.module(
                     listId = a.members;
                 });
                 
-                var listField = new Array("_id", "name", "firstname", "avatar", "status" );
+                var listField = ['_id', 'name', 'firstname', 'avatar', 'status'];
                 
                 /* retrieve person information */
                 personRestAPI.getListPerson(listId, listField).success(function (data) {

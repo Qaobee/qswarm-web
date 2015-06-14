@@ -88,6 +88,6 @@ angular.module('exerciseRestAPI', []).value('exerciseAPIURL', '/rest/prive/train
                 url : exerciseAPIURL + '/exercise/delete?idExercise=' + idExercise,
                 method : "DELETE"
             });
-        },
+        }
     };
 });

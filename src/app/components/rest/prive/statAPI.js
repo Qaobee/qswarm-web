@@ -1,7 +1,4 @@
 /**
- * Created by xavier on 05/11/14.
- */
-/**
  * REST Module dealing with the user connection
  * 
  * @class qaobee.rest.prive.statAPI

@@ -1,7 +1,4 @@
 /**
- * Created by xavier on 26/10/14.
- */
-/**
  * REST Module dealing with the user connection
  *
  * @class qaobee.rest.public.userMetaAPI

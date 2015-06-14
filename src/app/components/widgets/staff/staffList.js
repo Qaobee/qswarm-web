@@ -1,6 +1,4 @@
-/**
- * Created by b3605 on 31/10/14.
- */
+
 /**
  * Staff list directive<br />
  *

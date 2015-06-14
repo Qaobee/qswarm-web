@@ -107,6 +107,6 @@ angular.module('sessionRestAPI', []).value('sessionAPIURL', '/rest/prive/trainin
                 method : "PUT",
                 data : exercise
             });
-        },
+        }
     };
 });

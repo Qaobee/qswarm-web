@@ -8,8 +8,8 @@
  * @copyright <b>QaoBee</b>.
  */
 angular.module('effectiveMod',
-    ['common-config', 'labelsAPI', 'structureCfgRestAPI', 'effectiveRestAPI', 'statWidget', 'userMetaAPI', 
-        'profileRestAPI', 'groupAPI', 'statAPI', 'activityCfgRestAPI' ,'locationAPI', 'personRestAPI'])
+    ['common-config', 'labelsAPI', 'structureCfgRestAPI', 'effectiveRestAPI', 'statWidget', 'userMetaAPI',
+        'profileRestAPI', 'groupAPI', 'statAPI', 'activityCfgRestAPI', 'locationAPI', 'personRestAPI'])
 //      ,'ui.select'
 
     .config(function ($routeProvider, metaDatasProvider) {
@@ -80,8 +80,8 @@ angular.module('effectiveMod',
                 aggregat: 'AVG',
                 listFieldsGroupBy: ['code', 'timer'],
                 listFieldsSortBy: [{"fieldName": "_id.timer", "sortOrder": -1}],
-                limitResult : 5,
-                inverseSort : true
+                limitResult: 5,
+                inverseSort: true
             },
             1: {
                 type: 'Doughnut',
@@ -205,7 +205,7 @@ angular.module('effectiveMod',
                 }, 500);
             }
         });
-        
+
         function fetchGroups() {
 
             groupAPI.getActiveGroupsCategory($scope.meta.structure._id, $scope.currentCategory.code).success(function (data) {
@@ -284,17 +284,17 @@ angular.module('effectiveMod',
         /* Retrieve members of effective*/
         $scope.getEffective = function (refreshGraphs) {
             effectiveRestAPI.getListMemberEffective($scope.meta.season.code, $scope.meta.structure._id, $scope.currentCategory.code).success(function (data) {
-                
+
                 var listId = [];
                 data.forEach(function (a) {
                     listId = a.members;
                 });
-                
-                var listField = new Array("_id", "name", "firstname", "avatar", "status", "physicalFolder", "technicalFolder", "mentalFolder" );
-                
+
+                var listField = ['_id', 'name', 'firstname', 'avatar', 'status', 'physicalFolder', 'technicalFolder', 'mentalFolder'];
+
                 /* retrieve person information */
                 personRestAPI.getListPerson(listId, listField).success(function (data) {
-                    
+
                     effectiveprom.resolve(data);
                     data.forEach(function (e) {
                         if (angular.isDefined(e.status.positionType)) {
@@ -343,7 +343,7 @@ angular.module('effectiveMod',
                             }
                         });
                     });
-                    
+
                     //Add playtime in table effective
                     search = {
                         listIndicators: ['playtime'],
@@ -353,7 +353,7 @@ angular.module('effectiveMod',
                         aggregat: 'SUM',
                         listFieldsGroupBy: ['owner', 'code']
                     };
-                    
+
                     statAPI.getStatGroupBy(search).success(function (data) {
                         if (angular.isUndefined(data) || data === null) {
                             return;
@@ -363,12 +363,12 @@ angular.module('effectiveMod',
                                 return n._id === a._id.owner;
                             });
                             $scope.effective[i].stats.playtime = a.value;
-                            
+
                         });
                     });
 
                     $scope.effectiveSave = $scope.effective;
-                    
+
                 });
             });
         };
@@ -716,18 +716,18 @@ angular.module('effectiveMod',
                 });
             }
         };
-        
+
         $scope.address = {};
-        $scope.refreshAddresses = function(address) {
-          var params = {address: address, sensor: false};
-          return $http.get(
-            'http://maps.googleapis.com/maps/api/geocode/json',
-            {params: params}
-          ).then(function(response) {
-            $scope.addresses = response.data.results;
-          });
+        $scope.refreshAddresses = function (address) {
+            var params = {address: address, sensor: false};
+            return $http.get(
+                'http://maps.googleapis.com/maps/api/geocode/json',
+                {params: params}
+            ).then(function (response) {
+                    $scope.addresses = response.data.results;
+                });
         };
-        
+
 
         $scope.getPostalAddress = function () {
             if (angular.isDefined($scope.newPlayer.address.formatedAddress) && !$scope.newPlayer.address.formatedAddress.isBlank()) {
@@ -777,11 +777,11 @@ angular.module('effectiveMod',
             };
 
             personRestAPI.addPerson(dataContainer).success(function (person) {
-                
+
                 /* add person in effective*/
                 effectiveRestAPI.getListMemberEffective($scope.meta.season.code, $scope.meta.structure._id, person.listLicenses[0].listHistoLicense[0].categoryAgeCode).success(function (effective) {
-                        
-                    if(angular.isDefined(effective[0])){
+
+                    if (angular.isDefined(effective[0])) {
                         effective[0].members.push(person._id);
                         effectiveRestAPI.update(effective[0]).success(function (data) {
                             var cat = '';
@@ -795,40 +795,40 @@ angular.module('effectiveMod',
                                 name: person.name,
                                 cat: cat
                             }));
-                            $location.path('private/effective/dashboard/' + $scope.licence.categoryAgeCode + '/-1'); 
+                            $location.path('private/effective/dashboard/' + $scope.licence.categoryAgeCode + '/-1');
                         });
                     } else {
                         /* Effective not found so create new effective with new person as member */
-                        
+
                         var cat = '';
                         var category = {};
-                        activityCfgRestAPI.getCategoriesAgeList(moment().valueOf(), meta.activity.code, meta.structure.country._id).success(function(ageCategories) {
-                            
+                        activityCfgRestAPI.getCategoriesAgeList(moment().valueOf(), meta.activity.code, meta.structure.country._id).success(function (ageCategories) {
+
                             ageCategories.forEach(function (c) {
                                 if (c.code === person.listLicenses[0].listHistoLicense[0].categoryAgeCode) {
                                     cat = c.label;
                                     category = c;
                                 }
                             });
-                            
+
                             var newEffective = {
-                                "_id" : null,
-                                "structureId" : $scope.meta.structure._id,
-                                "seasonCode" : $scope.meta.season.code,
-                                "categoryAge" : category,
-                                "members" : [person._id]
+                                "_id": null,
+                                "structureId": $scope.meta.structure._id,
+                                "seasonCode": $scope.meta.season.code,
+                                "categoryAge": category,
+                                "members": [person._id]
                             };
                             $log.log(newEffective);
-                            
+
                             effectiveRestAPI.add(newEffective).success(function (data) {
-                                
+
                                 toastr.success($filter('translate')('effective.addPlayer.success', {
                                     firstname: person.firstname,
                                     name: person.name,
                                     cat: cat
                                 }));
-                                $location.path('private/effective/dashboard/' + $scope.licence.categoryAgeCode + '/-1'); 
-                            }); 
+                                $location.path('private/effective/dashboard/' + $scope.licence.categoryAgeCode + '/-1');
+                            });
                         });
                     }
                 });

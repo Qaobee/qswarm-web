@@ -1,7 +1,4 @@
 /**
- * Created by xavier on 05/11/14.
- */
-/**
  *
  * @class qaobee.servivces.statisticsConfig
  * @author Xavier MARIN

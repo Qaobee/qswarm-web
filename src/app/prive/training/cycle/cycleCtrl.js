@@ -496,8 +496,8 @@ angular.module(
               $scope.cyclesList=[];
               $scope.cycle={};
               $scope.cycle.categoryAge={};
-              exits=0;
-              listTempCycle=[];
+              var exits=0;
+              var listTempCycle=[];
               $scope.searchCycle = function() {
 
                   cycleRestAPI.getListCycle($scope.cycle.categoryAge.label,$scope.cycle.author,$scope.cycle.theme,$scope.cycle.subTheme,$scope.cycle.label).success(function(data) {

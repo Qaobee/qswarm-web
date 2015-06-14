@@ -119,7 +119,7 @@ angular.module('groupSheetMod', [ 'labelsAPI', 'structureCfgRestAPI', 'effective
                         });
                     });
                     
-                    var listField = new Array("_id", "name", "firstname", "avatar", "status");
+                    var listField = ['_id', 'name', 'firstname', 'avatar', 'status'];
                     
                     /* retrieve person information */
                     personRestAPI.getListPerson(listId, listField).success(function (data) {
@@ -306,7 +306,7 @@ angular.module('groupSheetMod', [ 'labelsAPI', 'structureCfgRestAPI', 'effective
                         $scope.groups.push(g);
                     });
                    
-                    var listField = new Array("_id", "name", "firstname", "avatar", "status");
+                    var listField = ['_id', 'name', 'firstname', 'avatar', 'status'];
                     /* retrieve person information */
                     personRestAPI.getListPerson(listId, listField).success(function(data) {
                         var userById = {};
@@ -433,8 +433,7 @@ angular.module('groupSheetMod', [ 'labelsAPI', 'structureCfgRestAPI', 'effective
                 });
             });
             return groupBoard;
-        },
-
+        }
     };
 } ])
 

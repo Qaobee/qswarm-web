@@ -1,7 +1,4 @@
 /**
- * Created by xavier on 12/07/14.
- */
-/**
  * Directive widget notifications<br />
  *
  * Usage :

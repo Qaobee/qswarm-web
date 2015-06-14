@@ -63,6 +63,6 @@ angular.module('structureCfgRestAPI', []).value('structureCfgApiURL', '/rest/pri
                 url : structureCfgApiURL + '/params?paramFieldList=listTeams&seasonCode='+ seasonCode +'&structureId=' + structureId,
                 method : "GET"
             });
-        },
+        }
     };
 });

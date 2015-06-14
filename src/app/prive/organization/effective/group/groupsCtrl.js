@@ -70,9 +70,8 @@ function($log, $window, $scope, $route, $routeParams, $rootScope, $modal, activi
             data.forEach(function(a) {
                 $scope.groupsEmpty = false;
                 a.listMember = [];
-                var listId = [];
-                listId = a.members;
-                var listField = new Array("_id", "name", "firstname", "avatar", "status");
+                var listId =  a.members;
+                var listField = ['_id', 'name', 'firstname', 'avatar', 'status'];
 
                 /* retrieve person information */
                 personRestAPI.getListPerson(listId, listField).success(function(data) {

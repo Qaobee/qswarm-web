@@ -1,8 +1,4 @@
 /**
- * Created by xavier on 29/10/14.
- */
-
-/**
  * Header menu and auth directive<br />
  *
  * @author Xavier MARIN

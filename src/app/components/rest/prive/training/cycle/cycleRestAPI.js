@@ -104,6 +104,6 @@ angular.module('cycleRestAPI', []).value('cycleAPIURL', '/rest/prive/training')
                 method : "PUT",
                 data : session
             });
-        },
+        }
     };
 });

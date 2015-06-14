@@ -1,7 +1,4 @@
 /**
- * Created by xavier on 03/11/14.
- */
-/**
  * Unavailable effective directive<br />
  *
  * @author Xavier MARIN

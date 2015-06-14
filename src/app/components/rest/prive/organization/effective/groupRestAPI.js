@@ -1,6 +1,3 @@
-/**
- * Created by xavier on 17/11/14.
- */
 angular.module('groupAPI', []).value('groupURL', '/rest/prive/groups')
 
     .factory('groupAPI', function ($http, groupURL) {
@@ -68,7 +65,7 @@ angular.module('groupAPI', []).value('groupURL', '/rest/prive/groups')
                     method : 'PUT',
                     data : group
                 });
-            },
+            }
         };
     }
 )
