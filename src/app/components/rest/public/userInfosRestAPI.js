@@ -7,7 +7,7 @@
      * @author Xavier MARIN
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('userInfosAPI', []).value('userInfosURL', '/rest/api/v1')
+    angular.module('userInfosAPI', []).value('userInfosURL', '/api/1/commons/user')
 
         .factory('userInfosAPI', function ($http, userInfosURL, $rootScope) {
             return {
@@ -15,10 +15,8 @@
                  * @memberOf qaobee.rest.public.userInfosAPI
                  * @function logon
                  * @description user login
-                 * @param {String}
-                 *            login login (user.account.login)
-                 * @param {String}
-                 *            passwd password
+                 * @param {String} login login (user.account.login)
+                 * @param {String} passwd password
                  * @returns {Object} Person com.qaobee.swarn.business.model.tranversal.person.Person
                  */
                 logon: function (login, passwd) {
@@ -60,8 +58,7 @@
                  * @memberOf qaobee.rest.public.userInfosAPI
                  * @function usernameTest
                  * @description Login unicity test
-                 * @param {String}
-                 *            login
+                 * @param {String} login
                  * @returns {Object} {"status", true} ou {"status", false}
                  */
                 usernameTest: function (login) {
@@ -77,8 +74,7 @@
                  * @memberOf qaobee.rest.public.userInfosAPI
                  * @function forgotPasswd
                  * @description New password request
-                 * @param {String}
-                 *            login
+                 * @param {String}        login
                  * @returns {Object} {"status", "ok"} ou {"status", "ko"}
                  */
                 forgotPasswd: function (login) {

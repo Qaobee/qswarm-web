@@ -1,44 +1,59 @@
 <!-- Not connected -->
 <nav class="top-nav white" role="navigation" ng-hide="user">
-    <div class="container" >
-        <div class="nav-wrapper" >
-            
+    <div class="container">
+        <div class="nav-wrapper">
+
             <a href="#/" class="brand-logo"><img src="assets/images/logo-mini.png"/></a>
-            
             <ul class="right hide-on-med-and-down">
-                <li><a href="#modalLogin" class="grey-text text-lighten-1 modal-trigger"><i class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}</a></li>
+                <li><a href="https://twitter.com/Qaobee"
+                       target="_blank"
+                       class="white-text"><i
+                        class="fa fa-twitter-square fa-2x"></i></a></li>
             </ul>
-            
-            <a href="#" data-activates="nav-mobileHC" class="button-collapse grey-text text-lighten-1"><i class="mdi-navigation-menu"></i></a>
-            
+         <!--   <ul class="right hide-on-med-and-down">
+                <li><a href="#modalLogin" class="grey-text text-lighten-1 modal-trigger"><i
+                        class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}</a></li>
+            </ul>
+-->
+            <a href="#" data-activates="nav-mobileHC" class="button-collapse grey-text text-lighten-1"><i
+                    class="mdi-navigation-menu"></i></a>
+
             <ul id="nav-mobileHC" class="side-nav">
-                <li><a href="#modalLogin" class="grey-text text-lighten-1 modal-trigger"><i class="fa fa-sign-in left"></i>{{'navbar.connect' | translate}}</a></li>
+                <li><a href="#modalLogin" class="grey-text text-lighten-1 modal-trigger"><i
+                        class="fa fa-sign-in left"></i>{{'navbar.connect' | translate}}</a></li>
             </ul>
+
         </div>
     </div>
 </nav>
 
 <!-- Connected Fisrt header-->
 <div class="navbar-fixed" ng-show="user">
-    <nav class="top-nav light-green lighten-1" role="navigation">    
+    <nav class="top-nav light-green lighten-1" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
 
                 <!-- Dropdown Structure -->
                 <ul id="dropdownSearch" class="dropdown-content">
-                    <li><a href="#/private/" class="red-text text-lighten-1 tooltipped" data-position="right" data-delay="30" data-tooltip="{{'headerMenu.search-event' | translate }}">
+                    <li><a href="#/private/" class="red-text text-lighten-1 tooltipped" data-position="right"
+                           data-delay="30" data-tooltip="{{'headerMenu.search-event' | translate }}">
                         <i class="fa fa-calendar center"></i></a>
                     </li>
-                    <li class="divider red lighten-1" ></li>
-                    <li><a href="#/private/" class="red-text text-lighten-1 tooltipped" data-position="right" data-delay="30" data-tooltip="{{'headerMenu.search-player' | translate }}">
+                    <li class="divider red lighten-1"></li>
+                    <li><a href="#/private/" class="red-text text-lighten-1 tooltipped" data-position="right"
+                           data-delay="30" data-tooltip="{{'headerMenu.search-player' | translate }}">
                         <i class="mdi-social-person center"></i></a>
                     </li>
                 </ul>
 
-                <a href="#/private/" class="brand-logo white-text center"><small><i class="fa fa-home left"></i><span class="hide-on-med-and-down">{{structure.label}}</span></small></a>
+                <a href="#/private/" class="brand-logo white-text center">
+                    <small><i class="fa fa-home left"></i><span class="hide-on-med-and-down">{{structure.label}}</span>
+                    </small>
+                </a>
 
                 <ul class="left hide-on-med-and-down red lighten-1 ">
-                    <li><a class="dropdown-button white-text light" href="#/private/" data-activates="dropdownSearch"><i class="mdi-action-search left"></i>{{'headerMenu.search' | translate }}</a></li>
+                    <li><a class="dropdown-button white-text light" href="#/private/" data-activates="dropdownSearch"><i
+                            class="mdi-action-search left"></i>{{'headerMenu.search' | translate }}</a></li>
                 </ul>
                 <ul class="right hide-on-med-and-down">
                     <li><a ng-click="logoff()"><i class="white-text fa fa-power-off right"></i></a></li>
@@ -47,37 +62,51 @@
                     <li><a href="#/private/profil" class="white-text">{{user.firstname}} {{user.name}}</a></li>
                 </ul>
 
-                <a href="#" data-activates="nav-mobile" class="button-collapse white-text"><i class="mdi-navigation-menu left"></i></a>
+                <a href="#" data-activates="nav-mobile" class="button-collapse white-text"><i
+                        class="mdi-navigation-menu left"></i></a>
 
                 <ul id="nav-mobile" class="side-nav blue-grey darken-3">
-                    <li><a href="#/private/" class="white-text light"><i class="fa fa-envelope left"></i>{{'headerMenu.notification' | translate }}</a></li>
-                    <li><a href="#/private/" class="white-text light"><i class="fa fa-bar-chart left"></i>{{'headerMenu.stats' | translate }}</a></li>
-                    <li><a href="#/private/playerlist" class="white-text light"><i class="mdi-social-people left"></i>{{'headerMenu.effective' | translate }}</a></li>
-                    <li><a href="#/private/" class="white-text light"><i class="mdi-image-timer left"></i>{{'headerMenu.training' | translate }}</a></li>
-                    <li><a href="#/private/" class="white-text light"><i class="fa fa-trophy left"></i>{{'headerMenu.championship' | translate }}</a></li>
-                    <li><a href="#/private/" class="white-text light"><i class="fa fa-calendar left"></i>{{'headerMenu.calendar' | translate }}</a></li>
+                    <li><a href="#/private/" class="white-text light"><i class="fa fa-envelope left"></i>{{'headerMenu.notification'
+                        | translate }}</a></li>
+                    <li><a href="#/private/" class="white-text light"><i class="fa fa-bar-chart left"></i>{{'headerMenu.stats'
+                        | translate }}</a></li>
+                    <li><a href="#/private/playerlist" class="white-text light"><i class="mdi-social-people left"></i>{{'headerMenu.effective'
+                        | translate }}</a></li>
+                    <li><a href="#/private/" class="white-text light"><i class="mdi-image-timer left"></i>{{'headerMenu.training'
+                        | translate }}</a></li>
+                    <li><a href="#/private/" class="white-text light"><i class="fa fa-trophy left"></i>{{'headerMenu.championship'
+                        | translate }}</a></li>
+                    <li><a href="#/private/" class="white-text light"><i class="fa fa-calendar left"></i>{{'headerMenu.calendar'
+                        | translate }}</a></li>
                     <li class="divider"></li>
-                    <li><a ng-click="logoff()" class="white-text light"><i class="fa fa-power-off left"></i>{{'navbar.disconnect' | translate}}</a></li>
+                    <li><a ng-click="logoff()" class="white-text light"><i class="fa fa-power-off left"></i>{{'navbar.disconnect'
+                        | translate}}</a></li>
                 </ul>
-            </div>  
+            </div>
         </div>
     </nav>
 </div>
-<div  ng-show="user">
+<div ng-show="user">
     <!-- Connected second header-->
     <nav class="green darken-1 hide-on-med-and-down" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
                 <ul>
-                    <li><a href="#/private/" class="light"><i class="fa fa-envelope left"></i><span class="hide-on-med-and-down">{{'headerMenu.notification' | translate }}</span></a></li>
-                    <li><a href="#/private/" class="light"><i class="fa fa-bar-chart left"></i><span class="hide-on-med-and-down">{{'headerMenu.stats' | translate }}</span></a></li>
-                    <li><a href="#/private/playerlist" class="light"><i class="mdi-social-people left"></i><span class="hide-on-med-and-down">{{'headerMenu.effective' | translate }}</span></a></li>
-                    <li><a href="#/private/" class="light"><i class="mdi-image-timer left"></i><span class="hide-on-med-and-down">{{'headerMenu.training' | translate }}</span></a></li>
-                    <li><a href="#/private/" class="light"><i class="fa fa-trophy left"></i><span class="hide-on-med-and-down">{{'headerMenu.championship' | translate }}</span></a></li>
-                    <li><a href="#/private/" class="light"><i class="fa fa-calendar left"></i><span class="hide-on-med-and-down">{{'headerMenu.calendar' | translate }}</span></a></li>
+                    <li><a href="#/private/" class="light"><i class="fa fa-envelope left"></i><span
+                            class="hide-on-med-and-down">{{'headerMenu.notification' | translate }}</span></a></li>
+                    <li><a href="#/private/" class="light"><i class="fa fa-bar-chart left"></i><span
+                            class="hide-on-med-and-down">{{'headerMenu.stats' | translate }}</span></a></li>
+                    <li><a href="#/private/playerlist" class="light"><i class="mdi-social-people left"></i><span
+                            class="hide-on-med-and-down">{{'headerMenu.effective' | translate }}</span></a></li>
+                    <li><a href="#/private/" class="light"><i class="mdi-image-timer left"></i><span
+                            class="hide-on-med-and-down">{{'headerMenu.training' | translate }}</span></a></li>
+                    <li><a href="#/private/" class="light"><i class="fa fa-trophy left"></i><span
+                            class="hide-on-med-and-down">{{'headerMenu.championship' | translate }}</span></a></li>
+                    <li><a href="#/private/" class="light"><i class="fa fa-calendar left"></i><span
+                            class="hide-on-med-and-down">{{'headerMenu.calendar' | translate }}</span></a></li>
                 </ul>
             </div>
-        </div>    
+        </div>
     </nav>
 </div>
 
@@ -85,7 +114,7 @@
 <div id="modalLogin" class="modal">
     <div class="modal-header center-align ">
         <h5>
-            <span class="fa fa-sign-in"></span> 
+            <span class="fa fa-sign-in"></span>
             <span translate="content.login.label.title"></span>
         </h5>
     </div>
@@ -93,19 +122,22 @@
         <div class="modal-content grey lighten-3 ">
             <div class="row">
                 <div class="input-field col s12">
-                    <input placeholder="{{'content.login.label.login' | translate }}" id="login" type="text" class="validate" ng-model="signin.login" required>
+                    <input placeholder="{{'content.login.label.login' | translate }}" id="login" type="text"
+                           class="validate" ng-model="signin.login" required>
                     <label for="login">{{'content.login.label.login' | translate }}</label>
                 </div>
                 <div class="input-field col s12">
-                  <input placeholder="{{'content.login.label.password' | translate }}" id="password" type="password" class="validate" ng-model="signin.passwd" required>
-                  <label for="password">{{'content.login.label.password' | translate }}</label>
+                    <input placeholder="{{'content.login.label.password' | translate }}" id="password" type="password"
+                           class="validate" ng-model="signin.passwd" required>
+                    <label for="password">{{'content.login.label.password' | translate }}</label>
                 </div>
-            </div>    
+            </div>
         </div>
-    
+
         <div class="modal-footer">
-            <button type="submit" class="waves-effect waves-red btn teal"  translate="popup.buttons.submit"/>
-            <a href="#/" class="modal-action modal-close waves-effect waves-red btn red">{{'popup.buttons.cancel' | translate}}</a>    
+            <button type="submit" class="waves-effect waves-red btn teal" translate="popup.buttons.submit"/>
+            <a href="#/" class="modal-action modal-close waves-effect waves-red btn red">{{'popup.buttons.cancel' |
+                translate}}</a>
         </div>
     </form>
 </div>
