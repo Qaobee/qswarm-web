@@ -47,7 +47,8 @@
                 </ul>
 
                 <a href="#/private/" class="brand-logo white-text center">
-                    <small><i class="fa fa-home left"></i><span class="hide-on-med-and-down">{{structure.label}}</span>
+                    <small><i class="fa fa-home left"></i>
+                        <span class="hide-on-med-and-down" data-ng-bind="structure.label"></span>
                     </small>
                 </a>
 
@@ -56,7 +57,7 @@
                             class="mdi-action-search left"></i>{{'headerMenu.search' | translate }}</a></li>
                 </ul>
                 <ul class="right hide-on-med-and-down">
-                    <li><a ng-click="logoff()"><i class="white-text fa fa-power-off right"></i></a></li>
+                    <li><a ng-click="logoff()" href="!#"><i class="white-text fa fa-power-off right"></i></a></li>
                 </ul>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="#/private/profil" class="white-text">{{user.firstname}} {{user.name}}</a></li>
@@ -66,21 +67,22 @@
                         class="mdi-navigation-menu left"></i></a>
 
                 <ul id="nav-mobile" class="side-nav blue-grey darken-3">
-                    <li><a href="#/private/" class="white-text light"><i class="fa fa-envelope left"></i>{{'headerMenu.notification'
-                        | translate }}</a></li>
-                    <li><a href="#/private/" class="white-text light"><i class="fa fa-bar-chart left"></i>{{'headerMenu.stats'
-                        | translate }}</a></li>
-                    <li><a href="#/private/playerlist" class="white-text light"><i class="mdi-social-people left"></i>{{'headerMenu.effective'
-                        | translate }}</a></li>
-                    <li><a href="#/private/" class="white-text light"><i class="mdi-image-timer left"></i>{{'headerMenu.training'
-                        | translate }}</a></li>
-                    <li><a href="#/private/" class="white-text light"><i class="fa fa-trophy left"></i>{{'headerMenu.championship'
-                        | translate }}</a></li>
-                    <li><a href="#/private/" class="white-text light"><i class="fa fa-calendar left"></i>{{'headerMenu.calendar'
-                        | translate }}</a></li>
+                    <li><a href="#/private/" class="white-text light"><i class="fa fa-envelope left"></i>
+                        {{'headerMenu.notification' | translate }}</a></li>
+                    <li><a href="#/private/" class="white-text light"><i class="fa fa-bar-chart left"></i>
+                        {{'headerMenu.stats' | translate }}</a></li>
+                    <li><a href="#/private/playerlist" class="white-text light"><span
+                            class="mdi-social-people left"></span>
+                        {{'headerMenu.effective' | translate }}</a></li>
+                    <li><a href="#/private/" class="white-text light"><i class="mdi-image-timer left"></i>
+                        {{'headerMenu.training' | translate }}</a></li>
+                    <li><a href="#/private/" class="white-text light"><i class="fa fa-trophy left"></i>
+                        {{'headerMenu.championship' | translate }}</a></li>
+                    <li><a href="#/private/" class="white-text light"><i class="fa fa-calendar left"></i>
+                        {{'headerMenu.calendar' | translate }}</a></li>
                     <li class="divider"></li>
-                    <li><a ng-click="logoff()" class="white-text light"><i class="fa fa-power-off left"></i>{{'navbar.disconnect'
-                        | translate}}</a></li>
+                    <li><a ng-click="logoff()" class="white-text light"><i class="fa fa-power-off left"></i>
+                        {{'navbar.disconnect' | translate}}</a></li>
                 </ul>
             </div>
         </div>
@@ -92,18 +94,24 @@
         <div class="container">
             <div class="nav-wrapper">
                 <ul>
-                    <li><a href="#/private/" class="light"><i class="fa fa-envelope left"></i><span
-                            class="hide-on-med-and-down">{{'headerMenu.notification' | translate }}</span></a></li>
-                    <li><a href="#/private/" class="light"><i class="fa fa-bar-chart left"></i><span
-                            class="hide-on-med-and-down">{{'headerMenu.stats' | translate }}</span></a></li>
-                    <li><a href="#/private/playerlist" class="light"><i class="mdi-social-people left"></i><span
-                            class="hide-on-med-and-down">{{'headerMenu.effective' | translate }}</span></a></li>
-                    <li><a href="#/private/" class="light"><i class="mdi-image-timer left"></i><span
-                            class="hide-on-med-and-down">{{'headerMenu.training' | translate }}</span></a></li>
-                    <li><a href="#/private/" class="light"><i class="fa fa-trophy left"></i><span
-                            class="hide-on-med-and-down">{{'headerMenu.championship' | translate }}</span></a></li>
-                    <li><a href="#/private/" class="light"><i class="fa fa-calendar left"></i><span
-                            class="hide-on-med-and-down">{{'headerMenu.calendar' | translate }}</span></a></li>
+                    <li><a href="#/private/" class="light"><i class="fa fa-envelope left"></i>
+                        <span class="hide-on-med-and-down" translate="headerMenu.notification"></span>
+                    </a></li>
+                    <li><a href="#/private/" class="light"><i class="fa fa-bar-chart left"></i>
+                        <span class="hide-on-med-and-down" translate="headerMenu.stats"></span></a>
+                    </li>
+                    <li><a href="#/private/playerlist" class="light"><i class="mdi-social-people left"></i>
+                        <span class="hide-on-med-and-down" translate="headerMenu.effective"></span></a>
+                    </li>
+                    <li><a href="#/private/" class="light"><i class="mdi-image-timer left"></i>
+                        <span class="hide-on-med-and-down" translate="headerMenu.training"></span></a>
+                    </li>
+                    <li><a href="#/private/" class="light"><i class="fa fa-trophy left"></i>
+                        <span class="hide-on-med-and-down" translate="headerMenu.championship"></span></a>
+                    </li>
+                    <li><a href="#/private/" class="light"><i class="fa fa-calendar left"></i>
+                        <span class="hide-on-med-and-down" translate="headerMenu.calendar"></span></a>
+                    </li>
                 </ul>
             </div>
         </div>
