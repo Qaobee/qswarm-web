@@ -23,7 +23,7 @@
                     return $http({
                         url: userInfosURL + '/login',
                         method: 'POST',
-                        data: {login: login, passwd: passwd}
+                        data: {login: login, password: passwd}
                     });
                 },
                 /**

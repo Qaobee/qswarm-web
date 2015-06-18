@@ -25,7 +25,7 @@
                         config.headers['Content-Type'] = 'application/json';
                         config.responseType = 'json';
                     }
-                    if (config.url.startsWith('/rest/prive') || config.url.startsWith('/rest/admin') || config.url.startsWith('/rest/logout') || config.url.startsWith('/rest/current')) {
+                    if (config.url.startsWith('/api')) {
                         config.headers.token = $window.sessionStorage.qaobeesession;
                     }
                     if (!config.url.startsWith('app') && !config.url.startsWith('http') && !config.url.startsWith('ngTagsInput') && !config.url.startsWith('ng-table')) {

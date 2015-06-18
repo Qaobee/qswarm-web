@@ -25,12 +25,11 @@
     "$" : false,
     "moment" : false,
     "Materialize" : false,
+    "toastr" : false,
     "setTimeout" : false,
     "document" : false,
-    // Angular Mocks
     "inject": false,
     "module": false,
-    // JASMINE
     "describe": false,
     "it": false,
     "before": false,

@@ -166,6 +166,7 @@
                                 if (!paid) {
                                     $location.path('/notPaid');
                                 } else {
+                                    $log.debug(data);
                                     $window.sessionStorage.qaobeesession = data.account.token;
                                     $rootScope.user = data;
                                     $scope.user = data;

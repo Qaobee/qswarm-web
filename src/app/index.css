@@ -90,10 +90,23 @@ footer.page-footer {
     background-color: transparent !important;
     box-shadow: none;
 }
+.visible-nav {
+    z-index: 30 !important;
+    position: relative;
+}
 #sidenav-overlay {
     z-index: 20;
 }
 
 .scrollfire-hidden {
     opacity: 0;
+}
+.toast-message {
+    line-height: normal;
+    font-size: 1em;
+    font-weight: normal;
+}
+#toast-container  .toast {
+    display: block;
+    height: auto;
 }

@@ -55,7 +55,7 @@
 
             $('.collapsible').collapsible({accordion: false});
 
-            /* Retrieve list of category for structure */
+            /* Retrieve list of category for structure
             structureCfgRestAPI.getCategoriesAgeStrList($scope.meta.season.code, $scope.meta.structure._id).success(function (data) {
                 $scope.categories = data;
                 var found = false;
@@ -72,8 +72,9 @@
                 }
 
                 $scope.getEffective();
-            });
 
+            });
+             */
             /* Retrieve list player */
             $scope.getEffective = function () {
                 effectiveRestAPI.getListMemberEffective($scope.meta.season.code, $scope.meta.structure._id, $scope.currentCategory.code).success(function (data) {
