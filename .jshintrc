@@ -24,6 +24,7 @@
     "jQuery" : false,
     "$" : false,
     "moment" : false,
+    "Materialize" : false,
     "setTimeout" : false,
     "document" : false,
     // Angular Mocks
