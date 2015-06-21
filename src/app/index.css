@@ -57,7 +57,7 @@ footer.page-footer {
 }
 
 .hero {
-    background: url("../assets/images/background1.jpg") center center;
+    background: url("../assets/images/background1.jpg") center 40%;
     background-size: cover;
     width: 100%;
     margin-top: -65px;
@@ -84,7 +84,15 @@ footer.page-footer {
     text-transform: uppercase;
     font-weight: bold;
 }
-.top-nav {
+.hero h4.title {
+     text-transform: uppercase;
+     font-weight: bold;
+ }
+.hero a.btn {
+    background-color: rgba(158,158,158, 0.5);
+    color: #fff;
+}
+.top-nav-trans {
     position: relative;
     z-index: 30;
     background-color: transparent !important;
@@ -109,4 +117,15 @@ footer.page-footer {
 #toast-container  .toast {
     display: block;
     height: auto;
+}
+
+.justify {
+    text-align: justify;
+}
+.small {
+    font-size: small;
+}
+.how {
+    background-color: #B4C8BD;
+    color: #fff;
 }

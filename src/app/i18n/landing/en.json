@@ -1,87 +1,33 @@
 {
   "landing": {
-    "screen0": {
-      "maintitle": "Train more intensely",
-      "subtitle": "Online workspace designed by and for sport coaches worldwide."
+    "main-title" : "Collect everything",
+    "sub-title" : "The first sports data collection tool in real time",
+    "manual-btn" : "Mode d'emploi",
+    "area-2" : {
+      "title" : "Exploitez la donnée sportive",
+      "content" : "Qaobee vous accompagne dans la collecte et l'analyse des données sportives."
     },
-    "screen1": {
-      "maintitle": "A simple idea",
-      "subtitle": "Simplify the daily life of every coach",
-      "sections": {
-        "p1": "For decades, sport is constantly evolving and the development of new technologies has only accelerated this phenomenon. The possibilities offered by them has increased tenfold the importance given to sports.",
-        "p2": "The Mannschaft is fully committed in the data revolution from 2004 by promoting scientific methods as much as sport ones'. Since then, more and more teams follow their example and dissect the performance of their players with physical and technical data.",
-        "p3": "The Qaobee project was born of this and is the result of a stated ambition: to create a powerful, complete and intuitive workspace which is the personal playground of all coaches for the daily management and support in the improvment of performance.",
-        "p4": "The link between observation, intuition and scientific analysis."
+    "area-3" : {
+      "item-0" : {
+        "title" : "Téléchargement gratuit",
+        "content" : "disponible dans l'App Store et Google play, Qaobee est la solution idéale pour la gestion des données sportives. Elle fonctionne aussi bien sur téléphone que sur tablette, à l'entraînement qu'en compétition."
+      },
+      "item-1" :{
+        "title" : "Gestion des données",
+        "content" : "Qaobee transforme les données sportives en informations stratégiques et s'intègre facilement à votre activité afin de vous simplifier la vie."
+      },
+      "item-2" : {
+        "title" : "Espace de travail",
+        "content" : "Tableau de bord personnalisé, gestion de l'effectif, calendrier sportif, rapports et analyse des rencontres, Qaobee s'occupe de tout pour vous permettre de vous concentrer sur l'essentiel : la performance de votre groupe."
+      },
+      "item-3" : {
+        "title" : "Mises à jour automatique",
+        "content" : "Les mises à jour gratuites proposées régulièrement vous offrent des fonctionnalités toujours plus pratiques pour optimiser la gestion de votre équipe."
       }
     },
-    "screen2": {
-      "maintitle": "Your playground",
-      "link": "Explore the features",
-      "sections": {
-        "p1": "Qaobee is the ideal space to develop your passion for sport.",
-        "p2": "Find all the data about your players, your staff and your club. Gather your observations, analyze the progress of your effective and measure changes in your performance. Your Qaobee workspace accompanies you in a logic of reasoned choices.",
-        "p3": "Qaobee is also a passionate coaching community where you can share and collaborate."
-      }
-    },
-    "screen3": {
-      "maintitle": "Plenty of opportunities",
-      "slide1": {
-        "maintitle": "Lead",
-        "subtitle": "Lead serenely",
-        "p1": "Qaobee is a unique workspace to drive your activity, plan your season and have an overall view of the performance of your team.",
-        "p2": "All sports informations (medical or administrative) of your effective are met in one place. Your data are secure, valued and available indefinitely in your workspace.",
-        "p3": "Save time and lead more effectively.",
-        "link": "Discover Qaobee"
-      },
-      "slide2": {
-        "maintitle": "Collect",
-        "subtitle": "Collect sports information in real time",
-        "p1": "We were inspired by your needs to create Q.Swarm, a mobile application that allows you to capture all the data from your observations, consistently in real-time.",
-        "p2": "Q.Swarm allows you to centralize into your workspace easily all the elements that seem relevant for you to analyze.",
-        "p3": "Collect maximum of details.",
-        "link": "Discover Q.Swarm"
-      },
-      "slide3": {
-        "maintitle": "Analyze",
-        "subtitle": "Analyze your data",
-        "p1": "It is crucial for a coach to receive accurate and complete information about his activity.",
-        "p2": "With Q.Analytics, access to advanced statistics allowing you to quickly analyze and identify areas for improvement.",
-        "p3": "Increase your data value.",
-        "link": "Discover Q.Analytics"
-      },
-      "slide4": {
-        "maintitle": "Optimize",
-        "subtitle": "Optimize your performance",
-        "p1": "The coach is perpetually in search of individual and collective performance.",
-        "p2": "Q.Lab help you interpret and decide differently. Its predictive analytics engine allows you to imagine future scenarios and hustle your habits. Compare your performances with the analyzes developed by Q.Lab and maximize your results.",
-        "p3": "Anticipate your future success.",
-        "link": "Discover Q.Lab"
-      },
-      "slide5": {
-        "maintitle": "Collaborate",
-        "subtitle": "Collaborate with passionate community",
-        "p1": "Q.Link connects and allows coaches to collaborate across borders.",
-        "p2": "Join and benefit from a collaborative workspace where you can build, share and capitalize.",
-        "p3": "Join the community.",
-        "link": "Discover Q.Link"
-      }
-    },
-    "screen4": {
-      "maintitle": "Simplify your life"
-    },
-    "screen5": {
-      "maintitle": "With you, no matter the situation !",
-      "link": "Read more"
-    },
-    "screen6": {
-      "maintitle": "Sign up",
-      "subtitle": "Stay in touch",
-      "form": {
-        "submit": "Submit",
-        "subscribe": "Subscribe",
-        "unsubscribe": "Unsubscribe",
-        "email": "Email address"
-      }
+    "area-4" : {
+      "title" : "Prochainement disponible.",
+      "content" : "Qaobee sera téléchargeable sur l'App Store et sur Google Play."
     }
   },
   "contact": {

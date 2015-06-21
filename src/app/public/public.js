@@ -17,6 +17,9 @@
             $routeProvider.when('/', {
                 controller: 'WelcomeCtrl',
                 templateUrl: 'app/public/home.html'
+            }).when('/how', {
+                controller: 'HowCtrl',
+                templateUrl: 'app/public/how.html'
             }).when('/!', {
                 controller: 'WelcomeCtrl',
                 templateUrl: 'app/public/home.html'
@@ -85,7 +88,9 @@
         .controller('FeaturesCtrl', function () {
 
         })
+        .controller('HowCtrl', function () {
 
+        })
         .controller('DiscoveryOfferCtrl', function () {
 
         })
@@ -119,18 +124,6 @@
                     //ready: function() { alert('Ready'); }, // Callback for Modal open
                     //complete: function() { alert('Closed'); } // Callback for Modal close
                 });
-                (function ($) {
-                    $(function () {
-                        $('.button-collapse').sideNav();
-                        $('.parallax').parallax();
-                        var options = [
-                            {selector: '#landing-demo-01', offset: 500, callback: 'Materialize.fadeInImage("#landing-demo-01")'},
-                            {selector: '#landing-demo-02', offset: 500, callback: 'Materialize.fadeInImage("#landing-demo-02")'},
-                            {selector: '#landing-demo-03', offset: 500, callback: 'Materialize.fadeInImage("#landing-demo-03")'}
-                        ];
-                        Materialize.scrollFire(options);
-                    }); // end of document ready
-                })(jQuery); // end of jQuery name space
             });
         })
 

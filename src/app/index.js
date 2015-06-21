@@ -71,6 +71,8 @@
             $scope.$on('eventbus', function () {
                 if ('logoff' === eventbus.message) {
                     delete  $scope.user;
+                }  if ('bg-color' === eventbus.message) {
+                    $scope.bgColor = eventbus.data;
                 } else if ('login' === eventbus.message) {
                     $scope.user = eventbus.data;
                 }
