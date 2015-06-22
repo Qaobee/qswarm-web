@@ -26,25 +26,53 @@ p {
 }
 
 @media only screen and (max-width: 992px) {
-    .parallax-container .section {
-        position: absolute;
-        top: 40%;
+    .hero {
+        min-height: calc(100vh - 150px) !important;
     }
-
-    #index-banner .section {
-        top: 10%;
-    }
-}
-
-@media only screen and (max-width: 600px) {
     #index-banner .section {
         top: 0;
     }
     .hero h1.title {
-        font-size: 2.5em;
+        font-size: 3em;
     }
     .hero-overlay + .container {
         padding: 0;
+    }
+    .hero h4.title {
+        font-size: 1.5em;
+    }
+    .hero-overlay {
+        min-height: calc(100vh - 150px) !important;
+    }
+    .hero a.btn {
+        margin-bottom: 10px;
+    }
+    .describe .col {
+        min-height: 200px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .hero {
+        min-height: calc(100vh - 50px) !important;
+    }
+    #index-banner .section {
+        top: 0;
+    }
+    .hero h1.title {
+        font-size: 3em;
+    }
+    .hero-overlay + .container {
+        padding: 0;
+    }
+    .hero h4.title {
+        font-size: 1.5em;
+    }
+    .hero-overlay {
+        min-height: calc(100vh - 58px) !important;
+    }
+    .hero a.btn {
+        margin-bottom: 10px;
     }
 }
 
@@ -76,8 +104,8 @@ footer.page-footer {
 }
 .hero-overlay + .container {
     position: relative;
+    padding-top: 5px;
     z-index: 10;
-    padding: 0;
 }
 
 .hero h1.title {
