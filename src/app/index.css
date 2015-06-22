@@ -160,9 +160,15 @@ footer.page-footer {
     margin-top: -300px !important;
     padding-top: 300px;
     width: 100%;
+    margin-bottom: -30px;
+    padding-bottom: 30px;
+
 }
 .how .container {
     width: 90%;
+}
+.how h5 {
+    min-height: 50px;
 }
 .pad-10 {
     padding-left: 50px !important;
