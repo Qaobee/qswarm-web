@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 gulp
-surge dist
+surge dist www.qaobee.com
