@@ -9,7 +9,7 @@
                 <h4 class="col s12 white-text title" translate="landing.sub-title"
                     style="margin-bottom: 50px"></h4>
 
-                <a class="waves-effect waves-light btn" translate="landing.manual-btn" href="#/how"></a>
+                <!-- <a class="waves-effect waves-light btn" translate="landing.manual-btn" href="#/how"></a>-->
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
                     <div class="center icon-block">
                         <a href="mailto:contact@qaobee.com"><h2 class="center red-text text-lighten-1"><i
                                 class="fa fa-envelope-square"></i></h2></a>
-                        <h5>Contact us</h5>
+                        <h5 class="center" translate="landing.contact.email"></h5>
                     </div>
                 </div>
 
@@ -31,7 +31,7 @@
                     <div class="icon-block">
                         <a href="https://goo.gl/maps/3Fjoz" target="_blank"><h2 class="center red-text text-lighten-1">
                             <i class="fa fa-map-marker"></i></h2></a>
-                        <h5 class="center">Visit us</h5>
+                        <h5 class="center" translate="landing.contact.visit"></h5>
                     </div>
                 </div>
 
@@ -39,13 +39,17 @@
                     <div class="icon-block">
                         <a href="#modalSubMailingList" class="modal-trigger"><h2 class="center red-text text-lighten-1">
                             <i class="fa fa-bell"></i></h2></a>
-                        <h5 class="center">Stay tuned</h5>
+                        <h5 class="center" translate="landing.contact.newsletter">/h5>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <div class="container">
+        <div class="section">
+            <div class="divider"/>
+        </div>
+    </div>
     <div class="container">
         <div class="section">
             <h4 class="center-align" translate="landing.area-2.title"></h4>
@@ -59,18 +63,6 @@
             <div class="col s12 m6 l3">
                 <div class="center">
                     <div class="btn-floating btn-large blue lighten-2">
-                        <i class="fa fa-cloud-download fa-3x"></i>
-                    </div>
-
-                    <h6 translate="landing.area-3.item-0.title"></h6>
-
-                    <p class="light justify small" translate="landing.area-3.item-0.content"></p>
-                </div>
-            </div>
-
-            <div class="col s12 m6 l3">
-                <div class="center">
-                    <div class="btn-floating btn-large blue lighten-2">
                         <i class="fa fa-cogs fa-3x"></i>
                     </div>
                     <h6 translate="landing.area-3.item-1.title"></h6>
@@ -78,7 +70,7 @@
                     <p class="light justify small" translate="landing.area-3.item-1.content"></p>
                 </div>
             </div>
-<div class="s12">&nbsp;</div>
+
             <div class="col s12 m6 l3">
                 <div class="center">
                     <div class="btn-floating btn-large blue lighten-2">
@@ -87,6 +79,21 @@
                     <h6 translate="landing.area-3.item-2.title"></h6>
 
                     <p class="light justify small" translate="landing.area-3.item-2.content"></p>
+                </div>
+            </div>
+
+
+            <div class="s12 hide-on-large-only hide-on-small-only">&nbsp;</div>
+
+            <div class="col s12 m6 l3">
+                <div class="center">
+                    <div class="btn-floating btn-large blue lighten-2">
+                        <i class="fa fa-cloud-download fa-3x"></i>
+                    </div>
+
+                    <h6 translate="landing.area-3.item-0.title"></h6>
+
+                    <p class="light justify small" translate="landing.area-3.item-0.content"></p>
                 </div>
             </div>
 
@@ -128,7 +135,7 @@
         <div class="modal-header center-align ">
             <h5>
                 <span class="fa fa-sign-in"></span>
-                <span translate="content.login.label.title"></span>
+                <span translate="landing.contact.popin.title"></span>
             </h5>
         </div>
 
@@ -140,17 +147,17 @@
 
                     <div class="input-field col s12">
                         <input id="email" type="email" placeholder="Email" class="validate" required/>
-                        <label for="email">Email</label>
+                        <label for="email" translate="landing.contact.popin.email"></label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <input class="with-gap" name="group1" type="radio" id="test1" checked/>
-                        <label for="test1">Subscribe</label>
+                        <label for="test1" translate="landing.contact.popin.subscribe"></label>
                     </div>
                     <div class="input-field col s6">
                         <input class="with-gap" name="group1" type="radio" id="test2"/>
-                        <label for="test2">Unsubscribe</label>
+                        <label for="test2" translate="landing.contact.popin.unsubscribe"></label>
                     </div>
                 </div>
             </div>

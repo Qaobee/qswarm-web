@@ -2,32 +2,45 @@
   "landing": {
     "main-title" : "Collect everything",
     "sub-title" : "The first sports data collection tool in real time",
-    "manual-btn" : "Mode d'emploi",
+    "manual-btn" : "How it works",
+    "connect" : "Stay connected",
+    "legals" : "Legal information",
     "area-2" : {
-      "title" : "Exploitez la donnée sportive",
-      "content" : "Qaobee vous accompagne dans la collecte et l'analyse des données sportives."
+      "title" : "Operate on sports data",
+      "content" : "Qaobee accompanies you in the collection and analysis of sports data."
+    },
+    "contact" : {
+      "email" : "Contact us",
+      "visit" : "Visit us",
+      "newsletter" : "Stay tuned",
+      "popin" : {
+        "title": "Subscribe to the newsletter",
+        "email": "E-mail",
+        "subscribe": "Subscribe",
+        "unsubscribe": "Unsubscribe"
+      }
     },
     "area-3" : {
       "item-0" : {
-        "title" : "Téléchargement gratuit",
-        "content" : "disponible dans l'App Store et Google play, Qaobee est la solution idéale pour la gestion des données sportives. Elle fonctionne aussi bien sur téléphone que sur tablette, à l'entraînement qu'en compétition."
+        "title" : "Free download",
+        "content" : "Available in the App Store and Google Play, Qaobee is the ideal solution for the management of sports data. It works on both phones and tablets, in training and competition."
       },
       "item-1" :{
-        "title" : "Gestion des données",
-        "content" : "Qaobee transforme les données sportives en informations stratégiques et s'intègre facilement à votre activité afin de vous simplifier la vie."
+        "title" : "Data management",
+        "content" : "Qaobee converts sports data into strategic informations and integrates easily with your business to simplify your life."
       },
       "item-2" : {
-        "title" : "Espace de travail",
-        "content" : "Tableau de bord personnalisé, gestion de l'effectif, calendrier sportif, rapports et analyse des rencontres, Qaobee s'occupe de tout pour vous permettre de vous concentrer sur l'essentiel : la performance de votre groupe."
+        "title" : "Workspace",
+        "content" : "Personalized dashboard, effective management, sporting calendar, reports and analysis meetings, Qaobee takes care of everything to enable you to focus on the essential: the performance of your group."
       },
       "item-3" : {
-        "title" : "Mises à jour automatique",
-        "content" : "Les mises à jour gratuites proposées régulièrement vous offrent des fonctionnalités toujours plus pratiques pour optimiser la gestion de votre équipe."
+        "title" : "Automatic updates",
+        "content" : "The proposed regular free updates give you the most convenient features to optimize the management of your team."
       }
     },
     "area-4" : {
-      "title" : "Prochainement disponible.",
-      "content" : "Qaobee sera téléchargeable sur l'App Store et sur Google Play."
+      "title" : "Soon available.",
+      "content" : "Qaobee will be downloaded from the App Store and Google Play."
     }
   },
   "contact": {

@@ -29,9 +29,9 @@
             }).when('/about', {
                 controller: 'AboutCtrl',
                 templateUrl: 'app/public/about.html'
-            }).when('/mentionslegales', {
+            }).when('/legals', {
                 controller: 'MentionslegalesCtrl',
-                templateUrl: 'app/public/mentionslegales.html'
+                templateUrl: 'app/public/legal.html'
             }).when('/contact', {
                 controller: 'ContactCtrl',
                 templateUrl: 'app/public/contact.html'

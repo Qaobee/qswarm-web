@@ -22,7 +22,9 @@
                     $translatePartialLoader.addPart('ui');
                     $translatePartialLoader.addPart('menu');
                     $scope.signin = {};
-
+                        $scope.isActive = function(viewLocation) {
+                        return viewLocation === $location.path();
+                    };
                     /**
                      * @description initialization materialize components
                      */

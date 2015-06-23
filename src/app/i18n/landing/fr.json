@@ -1,28 +1,41 @@
 {
   "landing": {
-    "main-title" : "Collect everything",
-    "sub-title" : "The first sports data collection tool in real time",
+    "main-title" : "Captez l'instant",
+    "sub-title" : "Le premier assistant personnel de collecte et d'analyse en temps réel de données sportives",
     "manual-btn" : "Mode d'emploi",
+    "connect" : "Restons connectés",
+    "legals" : "Mentions légales",
+    "contact" : {
+      "email" : "Contactez nous",
+      "visit" : "Rendez nous visite",
+      "newsletter" : "Restez connecté",
+      "popin" : {
+        "title": "Inscrivez vous à la newsletter",
+        "email": "E-mail",
+        "subscribe": "S'inscrire",
+        "unsubscribe": "Se désinscrire"
+      }
+    },
     "area-2" : {
-      "title" : "Exploitez la donnée sportive",
-      "content" : "Qaobee vous accompagne dans la collecte et l'analyse des données sportives."
+      "title" : "Améliorez vos performances",
+      "content" : "Qaobee facilite l'acquisition et l'analyse des statistiques sportives."
     },
     "area-3" : {
       "item-0" : {
         "title" : "Téléchargement gratuit",
-        "content" : "disponible dans l'App Store et Google play, Qaobee est la solution idéale pour la gestion des données sportives. Elle fonctionne aussi bien sur téléphone que sur tablette, à l'entraînement qu'en compétition."
+        "content" : "Disponible dans l'App Store et Google play, Qaobee est la solution idéale pour la gestion des données sportives. Elle fonctionne aussi bien sur téléphone que sur tablette, à l'entraînement comme en compétition."
       },
       "item-1" :{
-        "title" : "Gestion des données",
-        "content" : "Qaobee transforme les données sportives en informations stratégiques et s'intègre facilement à votre activité afin de vous simplifier la vie."
+        "title" : "Valorisation des données",
+        "content" : "Qaobee transforme les données sportives en informations stratégiques et vous aide dans la prise de décision."
       },
       "item-2" : {
         "title" : "Espace de travail",
         "content" : "Tableau de bord personnalisé, gestion de l'effectif, calendrier sportif, rapports et analyse des rencontres, Qaobee s'occupe de tout pour vous permettre de vous concentrer sur l'essentiel : la performance de votre groupe."
       },
       "item-3" : {
-        "title" : "Mises à jour automatique",
-        "content" : "Les mises à jour gratuites proposées régulièrement vous offrent des fonctionnalités toujours plus pratiques pour optimiser la gestion de votre équipe."
+        "title" : "Amélioration continue",
+        "content" : "Les mises à jour proposées régulièrement vous offrent des fonctionnalités toujours plus riches pour optimiser la gestion de votre équipe."
       }
     },
     "area-4" : {

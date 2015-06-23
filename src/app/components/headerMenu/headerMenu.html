@@ -1,5 +1,5 @@
 <!-- Not connected -->
-<nav class="top-nav white top-nav-trans" role="navigation" ng-hide="user" >
+<nav class="top-nav " ng-class="{ 'white top-nav-trans': isActive('/'), 'green darken-1': !isActive('/')}" role="navigation" ng-hide="user" >
     <div class="container">
         <div class="nav-wrapper">
 
@@ -10,24 +10,28 @@
                        class="white-text"><i
                         class="fa fa-twitter-square fa-2x"></i></a></li>
             </ul>
-            <ul class="right hide-on-med-and-down">
+           <!-- <ul class="right hide-on-med-and-down">
                 <li><a href="#modalLogin" class="white-text modal-trigger"><i
                         class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}</a></li>
-            </ul>
+            </ul>-->
+            <!--
+                        <a href="#" data-activates="nav-mobileHC" class="button-collapse grey-text text-lighten-1"><i
+                                class="mdi-navigation-menu"></i></a>
 
-            <a href="#" data-activates="nav-mobileHC" class="button-collapse grey-text text-lighten-1"><i
-                    class="mdi-navigation-menu"></i></a>
+                       <ul id="nav-mobileHC" class="side-nav">
+                            <li><a href="#modalLogin" class="grey-text text-lighten-1 modal-trigger"><span
+                                    class="fa fa-sign-in"></span> {{'navbar.connect' | translate}}</a></li>
+                           <li><a href="https://twitter.com/Qaobee"
+                                  target="_blank"
+                                  class="black-text"><i
+                                   class="fa fa-twitter-square fa-2x"></i></a></li>
+                        </ul>
+            -->
+                    </div>
+                </div>
+            </nav>
 
-            <ul id="nav-mobileHC" class="side-nav">
-                <li><a href="#modalLogin" class="grey-text text-lighten-1 modal-trigger"><span
-                        class="fa fa-sign-in"></span> {{'navbar.connect' | translate}}</a></li>
-            </ul>
-
-        </div>
-    </div>
-</nav>
-
-<!-- Connected Fisrt header-->
+            <!-- Connected Fisrt header-->
 <div class="navbar-fixed" ng-show="user">
     <nav class="top-nav light-green lighten-1 visible-nav" role="navigation">
         <div class="container">

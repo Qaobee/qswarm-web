@@ -56,7 +56,7 @@ angular.module(
     .controller('MainCtrl', function ($rootScope, $scope, $translatePartialLoader, eventbus) {
         'use strict';
         $translatePartialLoader.addPart('legacy');
-    
+
         toastr.options = {
             "closeButton": true,
             "debug": false,
