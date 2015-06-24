@@ -9,7 +9,9 @@
 p {
     line-height: 2rem;
 }
-
+.container {
+    width: 85%;
+}
 .button-collapse {
     color: #26a69a;
 }
@@ -50,6 +52,9 @@ p {
     .describe .col {
         min-height: 200px;
     }
+    .container {
+        width: 90%;
+    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -73,6 +78,9 @@ p {
     }
     .hero a.btn {
         margin-bottom: 10px;
+    }
+    .container {
+        width: 100%;
     }
 }
 
@@ -173,7 +181,4 @@ footer.page-footer {
 .pad-10 {
     padding-left: 50px !important;
     padding-right: 50px !important;
-}
-.container {
-    width: 85%;
 }
