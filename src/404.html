@@ -1,0 +1,119 @@
+<!doctype html>
+<html ng-app="qswarmWeb" ng-cloak translate-cloak>
+<head>
+    <!--
+
+     _____                       _____
+  __|__   |__  ____    _____  __|___  |__  ______  ______
+ /     \     ||    \  /     \|   _  >    ||   ___||   ___|
+ |  +  |     ||     \ |     ||   _ <     ||   ___||   ___|
+ \___/\_\  __||__|\__\\_____/|______>  __||______||______|
+    |_____|                     |_____|
+
+
+2014
+
+ -->
+    <meta charset="utf-8">
+    <title>Gestion of sports data | Qaobee</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="favicon.ico"/>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp/serve,src}) styles/app.css -->
+    <!-- inject:css -->
+    <!-- css files will be automatically insert here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+</head>
+<body ng-controller="MainCtrl">
+<!--[if lt IE 10]>
+<p class="browsehappy">You are using an <strong>outdated</strong>
+    browser. Please <a href="http://browsehappy.com/">upgrade
+        your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- Header Menu -->
+<header>
+    <div header-menu user="user"></div>
+</header>
+<main>
+    <div id="main-container">
+        <div id="404-container">
+            <div class="section no-pad-bot lost">
+                <div class="lost-overlay"></div>
+                <div class="container">
+
+                    <div class="center-align">
+                        <h1 class="header center white-text text-accent-2 title" >Nothing here</h1>
+                        <a class="waves-effect waves-light btn" href="/#/">Back to home</a>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+<footer class="page-footer grey" ng-hide="user">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="red-text text-lighten-1" translate="landing.connect"></h5>
+                <a href="https://twitter.com/Qaobee" target="_blank" class="white-text"><i
+                        class="fa fa-twitter-square fa-2x"></i></a>
+                <a href="https://www.facebook.com/qaobee" target="_blank" class="white-text"><i
+                        class="fa fa-facebook-square fa-2x"></i></a>
+                <a href="https://www.google.com/+QaobeeSARL" target="_blank" class="white-text"><i
+                        class="fa fa-google-plus-square fa-2x"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container"><span class="white-text light">Copyright &copy; <b>Qaobee</b> 2015
+         | <a href="#/legals" class="white-text" translate="landing.legals"></a></span></div>
+    </div>
+</footer>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-51340399-2', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+<!-- build:js(src) scripts/vendor.js -->
+<!-- bower:js -->
+<!-- run `gulp inject` to automatically populate bower script dependencies -->
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+<!-- inject:js -->
+<!-- js files will be automatically insert here -->
+<!-- endinject -->
+
+<!-- inject:partials -->
+<!-- angular templates will be automatically converted in js and inserted here -->
+<!-- endinject -->
+<!-- endbuild -->
+
+</body>
+</html>

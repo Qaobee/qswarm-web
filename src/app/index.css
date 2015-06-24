@@ -27,69 +27,30 @@ p {
     width: 100%;
 }
 
-@media only screen and (max-width: 992px) {
-    .hero {
-        min-height: calc(100vh - 150px) !important;
-    }
-    #index-banner .section {
-        top: 0;
-    }
-    .hero h1.title {
-        font-size: 3em;
-    }
-    .hero-overlay + .container {
-        padding: 0;
-    }
-    .hero h4.title {
-        font-size: 1.5em;
-    }
-    .hero-overlay {
-        min-height: calc(100vh - 150px) !important;
-    }
-    .hero a.btn {
-        margin-bottom: 10px;
-    }
-    .describe .col {
-        min-height: 200px;
-    }
-    .container {
-        width: 90%;
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    .hero {
-        min-height: calc(100vh - 50px) !important;
-    }
-    #index-banner .section {
-        top: 0;
-    }
-    .hero h1.title {
-        font-size: 3em;
-    }
-    .hero-overlay + .container {
-        padding: 0;
-    }
-    .hero h4.title {
-        font-size: 1.5em;
-    }
-    .hero-overlay {
-        min-height: calc(100vh - 58px) !important;
-    }
-    .hero a.btn {
-        margin-bottom: 10px;
-    }
-    .container {
-        width: 100%;
-    }
-}
-
 .icon-block {
     padding: 0 15px;
 }
 
 footer.page-footer {
     margin: 0;
+}
+.lost {
+    background: url("../assets/images/404-bg.jpg") center 0%;
+    background-size: cover;
+    width: 100%;
+    margin-top: -65px;
+    padding-top: 10%;
+    min-height: 100vh !important;
+    height: 100%;
+}
+.lost-overlay {
+    background-color: #000000;
+    width: 100%;
+    min-height: 100vh !important;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    opacity: 0.5;
 }
 
 .hero {
@@ -110,21 +71,21 @@ footer.page-footer {
     top: 0;
     opacity: 0.5;
 }
-.hero-overlay + .container {
+.hero-overlay + .container, .lost-overlay + .container {
     position: relative;
     padding-top: 5px;
     z-index: 10;
 }
 
-.hero h1.title {
+.hero h1.title, .lost h1.title {
     text-transform: uppercase;
     font-weight: bold;
 }
-.hero h4.title {
+.hero h4.title, .lost h4.title {
      text-transform: uppercase;
      font-weight: bold;
  }
-.hero a.btn {
+.hero a.btn, .lost a.btn {
     background-color: rgba(158,158,158, 0.5);
     color: #fff;
 }
@@ -181,4 +142,74 @@ footer.page-footer {
 .pad-10 {
     padding-left: 50px !important;
     padding-right: 50px !important;
+}
+
+@media only screen and (max-width: 992px) {
+    .hero {
+        min-height: calc(100vh - 150px) !important;
+    }
+    #index-banner .section {
+        top: 0;
+    }
+    .hero h1.title {
+        font-size: 3em;
+    }
+    .hero-overlay + .container {
+        padding: 0;
+    }
+    .hero h4.title {
+        font-size: 1.5em;
+    }
+
+    .hero-overlay {
+        min-height: calc(100vh - 150px);
+    }
+    .hero a.btn {
+        margin-bottom: 10px;
+    }
+    .describe .col {
+        min-height: 200px;
+    }
+    .container {
+        width: 90%;
+    }
+    .lost {
+        min-height: 100vh;
+    }
+    .lost-overlay {
+        min-height: 100vh;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .hero {
+        min-height: calc(100vh - 50px);
+    }
+    .lost {
+        min-height: 100vh;
+    }
+    #index-banner .section {
+        top: 0;
+    }
+    .hero h1.title {
+        font-size: 3em;
+    }
+    .hero-overlay + .container {
+        padding: 0;
+    }
+    .hero h4.title {
+        font-size: 1.5em;
+    }
+    .hero-overlay {
+        min-height: calc(100vh - 58px);
+    }
+    .lost-overlay {
+        min-height: 100vh;
+    }
+    .hero a.btn {
+        margin-bottom: 10px;
+    }
+    .container {
+        width: 100%;
+    }
 }

@@ -68,6 +68,7 @@
      */
         .controller('MainCtrl', function ($rootScope, $scope, $translatePartialLoader, eventbus) {
             $translatePartialLoader.addPart('legacy');
+            $translatePartialLoader.addPart('landing');
             $scope.$on('eventbus', function () {
                 if ('logoff' === eventbus.message) {
                     delete  $scope.user;
