@@ -6,8 +6,8 @@
     "connect" : "Restons connectés",
     "legals" : "Mentions légales",
     "contact" : {
-      "email" : "Contactez nous",
-      "visit" : "Rendez nous visite",
+      "email" : "Contactez-nous",
+      "visit" : "Rendez-nous visite",
       "newsletter" : "Restez connecté",
       "popin" : {
         "title": "Inscrivez vous à la newsletter",
@@ -23,7 +23,7 @@
     "area-3" : {
       "item-0" : {
         "title" : "Téléchargement gratuit",
-        "content" : "Disponible dans l'App Store et Google play, Qaobee est la solution idéale pour la gestion des données sportives. Elle fonctionne aussi bien sur téléphone que sur tablette, à l'entraînement comme en compétition."
+        "content" : "Disponible dans l'App Store et Google Play, Qaobee est la solution idéale pour la gestion des données sportives. Elle fonctionne aussi bien sur téléphone que sur tablette, à l'entraînement comme en compétition."
       },
       "item-1" :{
         "title" : "Valorisation des données",
