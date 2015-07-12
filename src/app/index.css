@@ -82,9 +82,11 @@ footer.page-footer {
     font-weight: bold;
 }
 .hero h4.title, .lost h4.title {
-     text-transform: uppercase;
-     font-weight: bold;
  }
+
+h6.title {
+    font-weight: bold;
+}
 .hero a.btn, .lost a.btn {
     background-color: rgba(158,158,158, 0.5);
     color: #fff;
@@ -121,6 +123,7 @@ footer.page-footer {
 }
 .small {
     font-size: small;
+    line-height: 2em;
 }
 .how {
     background-color: #B4C8BD;
