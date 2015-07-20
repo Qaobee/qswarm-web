@@ -24,9 +24,6 @@ angular.module('qaobee.home', ['widget.nextEvent'])
         $scope.meta = meta;
         $scope.effective = [];
         $scope.currentCategory = {};
-    
-    $log.log(user);    
-    $log.log(meta);
 
         $('.collapsible').collapsible({accordion: false});
 
@@ -56,11 +53,17 @@ angular.module('qaobee.home', ['widget.nextEvent'])
         /* Retrieve list player */
         $scope.getEffective = function () {
             effectiveRestAPI.getListMemberEffective($scope.meta._id, $scope.currentCategory.code).success(function (data) {
-                /* build list id for request API person */
+                
+                /* build list id for request API person */   
                 var listId = [];
                 data.forEach(function (a) {
-                    listId = a.members;
+                    a.members.forEach(function (b) {
+                        if (b.role.code==='player') {
+                            listId.push(b.personId);
+                        };    
+                    });
                 });
+                
                 var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status');
                 /* retrieve person information */
                 personRestAPI.getListPerson(listId, listField).success(function (data) {
