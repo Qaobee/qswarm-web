@@ -1,24 +1,24 @@
 /**
  * Services REST Person API
  * 
- * @class qaobee.rest.prive.transversal.PersonRestAPI
+ * @class app.components.rest.prive.sandbox.effective.PersonRestAPI
  * @author Christophe Kervella
  * @copyright <b>QaoBee</b>.
  */
 
-angular.module('personRestAPI', []).value('personAPIURL', '/rest/prive/transversal/person')
+angular.module('personRestAPI', []).value('personAPIURL', '/api/1/sandbox/effective/person')
 
 .factory('personRestAPI', function($http, personAPIURL) {
     return {
         /**
-         * @memberOf qaobee.rest.prive.transversal.PersonRestAPI
+         * @memberOf app.components.rest.prive.sandbox.effective.PersonRestAPI
          * @function getListMemberEffective()
          * @description retrieve list of person
          * @param {String}
          *            listId : list of id person
          * @param {String}
          *            listField : list of field for one person
-         * @returns {Array} com.qaobee.swarn.business.model.transversal.person.Person
+         * @returns {Array} com.qaobee.hive.business.model.sandbox.effective.SB_Person
          */
         getListPerson : function(listId, listField) {
             return $http({
@@ -29,14 +29,14 @@ angular.module('personRestAPI', []).value('personAPIURL', '/rest/prive/transvers
         },
         
         /**
-         * @memberOf qaobee.rest.prive.transversal.PersonRestAPI
+         * @memberOf app.components.rest.prive.sandbox.effective.PersonRestAPI
          * @function getListPersonStructure()
          * @description retrieve list of person for a structure
          * @param {String}
          *            seasonCode : the code season
          * @param {String}
          *            structureId : structure id
-         * @returns {Array} com.qaobee.swarn.business.model.transversal.person.Person
+         * @returns {Array} com.qaobee.hive.business.model.sandbox.effective.SB_Person
          */
         getListPersonStructure : function(seasonCode, structureId) {
             return $http({
@@ -47,12 +47,12 @@ angular.module('personRestAPI', []).value('personAPIURL', '/rest/prive/transvers
         },
         
         /**
-         * @memberOf qaobee.rest.prive.transversal.PersonRestAPI
+         * @memberOf app.components.rest.prive.sandbox.effective.PersonRestAPI
          * @function addPerson()
          * @description add person for a structure
          * @param {Person}
          *            person : person to add
-         * @returns {person} com.qaobee.swarn.business.model.transversal.person.Person
+         * @returns {person} com.qaobee.hive.business.model.sandbox.effective.SB_Person
          */
         addPerson : function(person) {
             return $http({
@@ -63,27 +63,27 @@ angular.module('personRestAPI', []).value('personAPIURL', '/rest/prive/transvers
         },
         
         /**
-         * @memberOf qaobee.rest.prive.transversal.PersonRestAPI
+         * @memberOf app.components.rest.prive.sandbox.effective.PersonRestAPI
          * @function getPerson()
          * @description retrieve one person by this Id
          * @param {id}
          *            id : person id
-         * @returns {person} com.qaobee.swarn.business.model.transversal.person.Person
+         * @returns {person} com.qaobee.hive.business.model.sandbox.effective.SB_Person
          */
         getPerson : function(id) {
             return $http({
-                url : personAPIURL + '/get' + '/?id=' + id,
+                url : personAPIURL + '/get' + '/?_id=' + id,
                 method : 'GET'
             });
         },
         
         /**
-         * @memberOf qaobee.rest.prive.transversal.PersonRestAPI
+         * @memberOf app.components.rest.prive.sandbox.effective.PersonRestAPI
          * @function updatePerson()
          * @description update a person
          * @param {Person}
          *            person : person to update
-         * @returns {person} com.qaobee.swarn.business.model.transversal.person.Person
+         * @returns {person} com.qaobee.hive.business.model.sandbox.effective.SB_Person
          */
         updatePerson : function(person) {
             return $http({
@@ -91,31 +91,7 @@ angular.module('personRestAPI', []).value('personAPIURL', '/rest/prive/transvers
                 method : 'PUT',
                 data : person
             });
-        },
-        
-        /**
-         * @memberOf qaobee.rest.prive.transversal.PersonRestAPI
-         * @function updateEffectiveFeature()
-         * @description update a Feature od person
-         * @param id
-         * @param featureFolderName
-         * @param featureKey
-         * @param featureValue
-         * @returns
-         */
-        updateEffectiveFeature: function(id, featureFolderName, featureKey, featureValue) {
-            return $http({
-                url : personAPIURL + '/feature/update',
-                method : 'PUT',
-                data : {
-                    id : id,
-                    featureFolderName : featureFolderName,
-                    featureKey : featureKey,
-                    featureValue : featureValue
-                }
-            });
         }
-        
     };
 });
     

@@ -43,8 +43,6 @@
                             $('#nav-mobile').css({overflow: 'auto'});
                         }
 
-                        $('.parallax').parallax();
-
                         $('.dropdown-button').dropdown();
 
                         $('.button-collapse').sideNav({

@@ -7,37 +7,34 @@
  * @author Christophe Kervella
  * @copyright <b>QaoBee</b>.
  */
-angular.module('effectiveRestAPI', []).value('effectiveAPIURL', '/rest/prive/organization/effective/effective')
+angular.module('effectiveRestAPI', []).value('effectiveAPIURL', '/api/1/sandbox/effective/effective')
 
 .factory('effectiveRestAPI', function($http, effectiveAPIURL) {
     return {
         /**
-         * @memberOf qaobee.rest.prive.organization.effective.EffectiveRestAPI
+         * @memberOf app.rest.prive.sandbox.effective.EffectiveRestAPI
          * @function getListMemberEffective()
-         * @description retrieve list of person for a structure and a category age
+         * @description retrieve list of member for a sandbox Config and a category age
          * @param {String}
-         *            seasonCode : the code season
-         * @param {String}
-         *            cat : structure id
+         *            sandboxCfgId : id of sandbox config
          * @param {String}
          *            categoryAgeCode : the code of category age
-         * @returns {Object} com.qaobee.swarn.business.model.organisation.effective.Effective
+         * @returns {Array} com.qaobee.hive.business.model.sandbox.effective.SB_Effective
          */
-        getListMemberEffective : function(seasonCode, structureId, categoryAgeCode) {
+        getListMemberEffective : function(sandBoxCfgId, categoryAgeCode) {
             return $http({
-                url : effectiveAPIURL + '/list',
-                method: "POST",
-                data: {structureId: structureId, categoryAgeCode: categoryAgeCode, seasonCode:seasonCode}
+                url: effectiveAPIURL + '/getList?sandBoxCfgId=' + sandBoxCfgId + '&categoryAgeCode=' +categoryAgeCode,
+                method: "GET"
             });
         },
         
         /**
-         * @memberOf qaobee.rest.prive.organization.effective.EffectiveRestAPI
+         * @memberOf app.rest.prive.sandbox.effective.EffectiveRestAPI
          * @function add()
          * @description add effective
-         * @param {Effective}
+         * @param {SB_Effective}
          *            effective : effective to add
-         * @returns {Effective} com.qaobee.swarn.business.model.organisation.effective.Effective
+         * @returns {SB_Effective} com.qaobee.hive.business.model.sandbox.effective.SB_Effective
          */
         add : function(effective) {
             return $http({
@@ -48,12 +45,12 @@ angular.module('effectiveRestAPI', []).value('effectiveAPIURL', '/rest/prive/org
         },
         
         /**
-         * @memberOf qaobee.rest.prive.organization.effective.EffectiveRestAPI
+         * @memberOf app.rest.prive.sandbox.effective.EffectiveRestAPI
          * @function update()
          * @description update a effective
-         * @param {Effective}
+         * @param {SB_Effective}
          *            effective : effective to update
-         * @returns {person} com.qaobee.swarn.business.model.organisation.effective.Effective
+         * @returns {SB_Effective} com.qaobee.hive.business.model.sandbox.effective.SB_Effective
          */
         update : function(effective) {
             return $http({

@@ -16,7 +16,7 @@ angular.module('qaobee.home', ['widget.nextEvent'])
 /**
  * @class qaobee.prive.prive.PrivateCtrl
  */
-    .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, eventbus, user, meta, effectiveRestAPI, personRestAPI, structureCfgRestAPI) {
+    .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, eventbus, user, meta, effectiveRestAPI, personRestAPI) {
         $translatePartialLoader.addPart('main');
         $translatePartialLoader.addPart('stats');
 
@@ -24,6 +24,9 @@ angular.module('qaobee.home', ['widget.nextEvent'])
         $scope.meta = meta;
         $scope.effective = [];
         $scope.currentCategory = {};
+    
+    $log.log(user);    
+    $log.log(meta);
 
         $('.collapsible').collapsible({accordion: false});
 
@@ -47,9 +50,12 @@ angular.module('qaobee.home', ['widget.nextEvent'])
 
          });
          */
+    
+        
+    
         /* Retrieve list player */
         $scope.getEffective = function () {
-            effectiveRestAPI.getListMemberEffective($scope.meta.season.code, $scope.meta.structure._id, $scope.currentCategory.code).success(function (data) {
+            effectiveRestAPI.getListMemberEffective($scope.meta._id, $scope.currentCategory.code).success(function (data) {
                 /* build list id for request API person */
                 var listId = [];
                 data.forEach(function (a) {
@@ -70,5 +76,7 @@ angular.module('qaobee.home', ['widget.nextEvent'])
                 });
             });
         };
+    
+        $scope.getEffective();
     });
 }());
