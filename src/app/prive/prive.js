@@ -12,7 +12,7 @@
      * @requires {@link qaobee.rest.prive.notificationsRestAPI|qaobee.rest.prive.structureCfgRestAPI}
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('prive', ['common-config', 'qaobee.home', 'effectiveRestAPI', 'personRestAPI', 'structureCfgRestAPI'])
+    angular.module('qaobee.prive', ['common-config', 'qaobee.home', 'effectiveRestAPI', 'personRestAPI', 'structureCfgRestAPI'])
         .config(function ($routeProvider, metaDatasProvider) {
             $routeProvider.when('/private/notifications', {
                 controller: 'NotificationsCtrl',

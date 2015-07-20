@@ -14,7 +14,7 @@
      * @copyright &lt;b&gt;QaoBee&lt;/b&gt;.
      *
      */
-    angular.module('headerMenu', ['header.notifications', 'eventbus', 'userMetaAPI'])
+    angular.module('qaobee.headerMenu', ['qaobee.header.notifications', 'eventbus', 'userMetaAPI'])
         .directive('headerMenu', function (eventbus, userInfosAPI, userMetaAPI, $rootScope, $cookieStore, $location, $window, $log, $translatePartialLoader, $filter) {
             return {
                 restrict: 'AE',

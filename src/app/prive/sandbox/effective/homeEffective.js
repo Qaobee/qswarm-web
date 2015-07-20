@@ -1,17 +1,18 @@
+(function () {
+    'use strict';
 /**
- * Module Player
+ * Module dashboard effective
  *
  * @author Christophe Kervella
  * @class qaobee.prive.prive
- * @namespace qaobee.prive
+ * @namespace qaobee.prive.sandbox.effective
  *
  * @requires {@link qaobee.rest.prive.profileRestAPI|qaobee.rest.prive.effectiveRestAPI}
  * @requires {@link qaobee.rest.prive.notificationsRestAPI|qaobee.rest.prive.personRestAPI}
  * @requires {@link qaobee.rest.prive.notificationsRestAPI|qaobee.rest.prive.structureCfgRestAPI}
  * @copyright <b>QaoBee</b>.
  */
-angular.module(
-    'playerList',    ['common-config', 'effectiveRestAPI', 'personRestAPI', 'structureCfgRestAPI'])
+angular.module('qaobee.homeEffective',    ['common-config', 'effectiveRestAPI', 'personRestAPI', 'structureCfgRestAPI'])
 
 
     .config(function ($routeProvider, metaDatasProvider) {
@@ -32,7 +33,7 @@ angular.module(
  * @class qaobee.prive.prive.PrivateCtrl
  * @description Main controller of templates/prive/home.html
  */
-    .controller('PlayerListControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, eventbus, user, meta, effectiveRestAPI, personRestAPI, structureCfgRestAPI) {
+    .controller('HomeEffectiveControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, eventbus, user, meta, effectiveRestAPI, personRestAPI, structureCfgRestAPI) {
     'use strict';
 
     $translatePartialLoader.addPart('main');
@@ -104,5 +105,6 @@ angular.module(
     };
 })
 //
-;
+    ;
+}());
 

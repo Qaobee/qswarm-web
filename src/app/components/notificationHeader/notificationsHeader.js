@@ -13,7 +13,7 @@
      * @copyright &lt;b&gt;QaoBee&lt;/b&gt;.
      *
      */
-    angular.module('header.notifications', ['notificationsRestAPI', 'eventbus'])
+    angular.module('qaobee.header.notifications', ['notificationsRestAPI', 'eventbus'])
 
         .directive('headerNotifications', function ($modal, $rootScope, $interval, ngAudio, notificationsRestAPI, eventbus, $timeout, $window, $filter, $log) {
             return {

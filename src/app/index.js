@@ -10,7 +10,7 @@
      */
     angular.module(
         'qswarmWeb',
-        ['ngRoute', 'commonsDirectives', 'qaobee.config', 'prive', 'public', 'headerMenu', 'eventbus', 'playerList',
+        ['ngRoute', 'commonsDirectives', 'qaobee.config', 'qaobee.prive', 'qaobee.public', 'qaobee.headerMenu', 'eventbus', 'playerList',
             'ngSanitize', 'ngCookies', 'pascalprecht.translate', 'reCAPTCHA', 'ngAudio', 'httpModule', 'tmh.dynamicLocale'])
 
         .config(function ($translateProvider, $translatePartialLoaderProvider, reCAPTCHAProvider, $httpProvider, $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider) {

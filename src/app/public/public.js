@@ -11,7 +11,7 @@
      * @requires {@link qaobee.rest.public.publicRestAPI|qaobee.rest.public.publicRestAPI}
      * @requires {@link https://github.com/mllrsohn/angular-re-captcha|reCAPTCHA}
      */
-    angular.module('public', ['publicSignup', 'ngRoute', 'publicRestAPI', 'reCAPTCHA'])
+    angular.module('qaobee.public', ['qaobee.signup', 'ngRoute', 'publicRestAPI', 'reCAPTCHA'])
 
         .config(function ($routeProvider) {
             $routeProvider.when('/', {
