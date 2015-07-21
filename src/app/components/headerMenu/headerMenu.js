@@ -10,12 +10,12 @@
      * @author Xavier MARIN
      * @class qaobee.directives.headerMenu
      * @requires {@link qaobee.directives.notifications|qaobee.directives.notifications}
-     * @requires {@link qaobee.rest.public.userMetaAPI|qaobee.rest.public.userMetaAPI}
+     * @requires {@link qaobee.rest.public.userMetaRestAPI|qaobee.rest.public.userMetaRestAPI}
      * @copyright &lt;b&gt;QaoBee&lt;/b&gt;.
      *
      */
-    angular.module('qaobee.headerMenu', ['qaobee.header.notifications', 'eventbus', 'userMetaAPI'])
-        .directive('headerMenu', function (eventbus, userInfosAPI, userMetaAPI, $rootScope, $cookieStore, $location, $window, $log, $translatePartialLoader, $filter) {
+    angular.module('qaobee.headerMenu', ['qaobee.header.notifications', 'eventbus', 'userMetaRestAPI'])
+        .directive('headerMenu', function (eventbus, userRestAPI, userMetaRestAPI, $rootScope, $cookieStore, $location, $window, $log, $translatePartialLoader, $filter) {
             return {
                 restrict: 'AE',
                 controller: function ($scope) {
@@ -71,7 +71,7 @@
                      * @description Load meta information such as current season, current structure and current activity
                      */
                     $scope.loadMetaInfos = function () {
-                        userMetaAPI.getMetas().success(function (data) {
+                        userMetaRestAPI.getMetas().success(function (data) {
                             if (angular.isDefined(data) && data !== null) {
                                 $rootScope.meta = data;
                                 $scope.structure = data.structure;
@@ -119,7 +119,7 @@
                      * @description Disconnection
                      */
                     $scope.logoff = function () {
-                        userInfosAPI.logoff().success(function (data) {
+                        userRestAPI.logoff().success(function (data) {
                             eventbus.prepForBroadcast('logoff', data);
                             delete $rootScope.user;
                             delete $rootScope.meta;
@@ -138,7 +138,7 @@
                      * @description Fergotten password management
 
                      $scope.forgotPasswd = function () {
-                     userInfosAPI.forgotPasswd($scope.signin.login).success(function () {
+                     userRestAPI.forgotPasswd($scope.signin.login).success(function () {
                      $location.path('/');
                      $modalInstance.dismiss('cancel');
                      });
@@ -152,7 +152,7 @@
                      * @description Validate login form
                      */
                     $scope.login = function () {
-                        userInfosAPI.logon($scope.signin.login, $scope.signin.passwd).success(function (data) {
+                        userRestAPI.logon($scope.signin.login, $scope.signin.passwd).success(function (data) {
                             $('#modalLogin').closeModal();
                             if (data.account.active) {
                                 var paid = true;

@@ -1,4 +1,4 @@
-angular.module('common-config', ['eventbus', 'userMetaAPI'])
+angular.module('common-config', ['eventbus', 'userMetaRestAPI'])
 
     .provider('metaDatas', function metaDatasProvider() {
         'use strict';
@@ -18,7 +18,7 @@ angular.module('common-config', ['eventbus', 'userMetaAPI'])
             return data;
         }
 
-        this.checkUser = function ($rootScope, userMetaAPI, eventbus, $location, $q, $window) {
+        this.checkUser = function ($rootScope, userMetaRestAPI, eventbus, $location, $q, $window) {
             var deferred = $q.defer();
             if (angular.isDefined($rootScope.user)) {
                 deferred.resolve($rootScope.user);
@@ -27,7 +27,7 @@ angular.module('common-config', ['eventbus', 'userMetaAPI'])
                 var token = $window.sessionStorage.qaobeesession;
 
                 if (token !== null && angular.isDefined(token)) {
-                    userMetaAPI.getCurrentUser().success(function (data) {
+                    userMetaRestAPI.getCurrentUser().success(function (data) {
                         $rootScope.user = loadAdmin(data);
                         eventbus.prepForBroadcast("login", $rootScope.user);
                         deferred.resolve($rootScope.user);
@@ -39,7 +39,7 @@ angular.module('common-config', ['eventbus', 'userMetaAPI'])
             return deferred.promise;
         };
 
-        this.getMeta = function ($rootScope, userMetaAPI, $location, $q, $window) {
+        this.getMeta = function ($rootScope, userMetaRestAPI, $location, $q, $window) {
             var deferred = $q.defer();
             if (angular.isDefined($rootScope.meta)) {
                 deferred.resolve($rootScope.meta);
@@ -48,7 +48,7 @@ angular.module('common-config', ['eventbus', 'userMetaAPI'])
                 var token = $window.sessionStorage.qaobeesession;
 
                 if (token !== null && angular.isDefined(token)) {
-                    userMetaAPI.getMetas().success(function (data) {
+                    userMetaRestAPI.getMetas().success(function (data) {
                         if (angular.isDefined(data) && data !== null) {
                             deferred.resolve(data);
                         }

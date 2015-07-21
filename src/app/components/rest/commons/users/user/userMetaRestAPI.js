@@ -3,15 +3,15 @@
     /**
      * REST Module dealing with the user connection
      *
-     * @class qaobee.rest.public.userMetaAPI
+     * @class qaobee.rest.public.userMetaRestAPI
      * @author Xavier MARIN
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('userMetaAPI', []).value('userMetaURL', '/api/1/commons/user')
-        .factory('userMetaAPI', function ($http, userMetaURL) {
+    angular.module('userMetaRestAPI', []).value('userMetaURL', '/api/1/commons/users/user')
+        .factory('userMetaRestAPI', function ($http, userMetaURL) {
             return {
                 /**
-                 * @memberOf qaobee.rest.public.userMetaAPI
+                 * @memberOf qaobee.rest.public.userMetaRestAPI
                  * @function getCurrentUser
                  * @description Fetch the current user
                  * @returns {Object} Person com.qaobee.swarn.business.model.tranversal.person.Person
@@ -23,7 +23,7 @@
                     });
                 },
                 /**
-                 * @memberOf qaobee.rest.public.userMetaAPI
+                 * @memberOf qaobee.rest.public.userMetaRestAPI
                  * @function getMetas
                  * @description Fetch meta informations
                  * @returns {Object} metas
@@ -35,7 +35,7 @@
                     });
                 },
                 /**
-                 * @memberOf qaobee.rest.public.userMetaAPI
+                 * @memberOf qaobee.rest.public.userMetaRestAPI
                  * @function getUserById
                  * @param {String} user id
                  * @description Fetch uer informations
@@ -48,7 +48,7 @@
                     });
                 },
                 /**
-                 * @memberOf qaobee.rest.public.userMetaAPI
+                 * @memberOf qaobee.rest.public.userMetaRestAPI
                  * @function getSeasonsInfo
                  * @param {String} activityId
                  * @param {String} structureId

@@ -46,16 +46,6 @@
             }).when('/pricing', {
                 controller: 'PricingCtrl',
                 templateUrl: 'public/pricing.html'
-            }).when('/verifyaccount/:id/:code', {
-                controller: 'AccountCtrl',
-                templateUrl: 'app/public/welcome.html'
-            }).when('/accountko', {
-                templateUrl: 'app/public/accountKo.html'
-            }).when('/accountok', {
-                templateUrl: 'app/public/accountOk.html'
-            }).when('/recoverpasswd/:id/:code', {
-                controller: 'RecoverPasswdCtrl',
-                templateUrl: 'app/public/recoverpasswd.html'
             }).when('/features', {
                 controller: 'FeaturesCtrl',
                 templateUrl: 'app/public/features.html'
@@ -146,64 +136,6 @@
      */
         .controller('PricingCtrl', function () {
 
-        })
-    /**
-     * @class qaobee.public.public.RecoverPasswdCtrl
-     * @description Contrôleur de la page templates/public/recoverpasswd.html
-     */
-        .controller('RecoverPasswdCtrl', function ($scope, publicRestAPI, $routeParams, $location, $rootScope, $window, $filter) {
-            $scope.user = {};
-            // vérification de l'id et du code d'activation
-            publicRestAPI.passwdCheck($routeParams.code, $routeParams.id).success(function (data) {
-                if (true === data.status) {
-                    $scope.show = true;
-                    $scope.id = $routeParams.id;
-                    $scope.user = data.user;
-                } else {
-                    toastr.error($filter('translate')('popup.error.passwdurl'));
-                }
-            });
-
-            $scope.updatePasswd = function () {
-                if ($scope.id === undefined) {
-                    return;
-                }
-                if ($scope.passwdForm.$valid) {
-                    var data = {};
-                    data.code = $routeParams.code;
-                    data.id = $routeParams.id;
-                    data.passwd = $scope.passwd;
-                    data.captcha = $scope.captcha;
-                    publicRestAPI.resetPasswd(data).success(function () {
-                        toastr.success($filter('translate')('popup.success.newpasswd'));
-                        $location.path('/');
-                    }).error(function (error) {
-                        if (error) {
-                            if (error.code && error.code === 'CAPTCHA_EXCEPTION') {
-                                $window.Recaptcha.reload();
-                                toastr.error($filter('translate')('popup.error.' + error.code));
-                            } else {
-                                toastr.error(error.message);
-                            }
-                        }
-                    });
-                }
-            };
-        })
-
-    /**
-     * @class qaobee.public.public.AccountCtrl
-     * @description Contrôleur de la page de validation de l'adresse email
-     */
-        .controller('AccountCtrl', function ($scope, publicRestAPI, $routeParams, $location) {
-            // vérification de l'id et du code d'activation
-            publicRestAPI.accountCheck($routeParams.code, $routeParams.id).success(function (data) {
-                if (true === data.status) {
-                    $location.path('/accountok');
-                } else {
-                    $location.path('/accountko');
-                }
-            });
         })
 
     /**

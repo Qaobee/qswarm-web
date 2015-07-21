@@ -6,10 +6,10 @@
      * @class qaobee.public.publicSignup
      * @author Xavier MARIN
      * @copyright <b>QaoBee</b>.
-     * @requires {@link qaobee.rest.public.userInfosAPI|qaobee.rest.public.userInfosAPI}
-     * @requires {@link qaobee.rest.public.paymentAPI|qaobee.rest.public.paymentAPI}
+     * @requires {@link qaobee.rest.commons.users.user.userRestAPI|qaobee.rest.commons.users.user.userRestAPI}
+     * @requires {@link qaobee.rest.commons.users.user.paymentRestAPI|qaobee.rest.commons.users.user.paymentRestAPI}
      */
-    angular.module('qaobee.signup', ['paymentRestAPI', 'userInfosRestAPI', 'locationAPI', 'publicRestAPI'])
+    angular.module('qaobee.signup', ['paymentRestAPI', 'userRestAPI', 'locationAPI', 'publicRestAPI'])
 
         .config(function ($routeProvider) {
             $routeProvider.when('/signup/:plan?', {

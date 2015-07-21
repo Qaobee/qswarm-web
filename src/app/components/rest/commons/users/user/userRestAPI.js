@@ -3,16 +3,16 @@
     /**
      * REST Module dealing with the user connection
      *
-     * @class qaobee.rest.public.userInfosAPI
+     * @class qaobee.rest.commons.users.user.userRestAPI
      * @author Xavier MARIN
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('userInfosRestAPI', []).value('userInfosURL', '/api/1/commons/user')
+    angular.module('userRestAPI', []).value('userInfosURL', '/api/1/commons/users/user')
 
-        .factory('userInfosAPI', function ($http, userInfosURL, $rootScope) {
+        .factory('userRestAPI', function ($http, userInfosURL, $rootScope) {
             return {
                 /**
-                 * @memberOf qaobee.rest.public.userInfosAPI
+                 * @memberOf qaobee.rest.commons.users.user.userRestAPI
                  * @function logon
                  * @description user login
                  * @param {String} login login (user.account.login)
@@ -27,7 +27,7 @@
                     });
                 },
                 /**
-                 * @memberOf qaobee.rest.public.userInfosAPI
+                 * @memberOf qaobee.rest.commons.users.user.userRestAPI
                  * @function logoff
                  * @description user logoff
                  * @returns {Object} {"status", "ok"} ou {"status", "ko"}
@@ -40,7 +40,7 @@
                 },
 
                 /**
-                 * @memberOf qaobee.rest.public.userInfosAPI
+                 * @memberOf qaobee.rest.commons.users.user.userRestAPI
                  * @function registerUser
                  * @description register a new user
                  * @param u
@@ -55,7 +55,7 @@
                     });
                 },
                 /**
-                 * @memberOf qaobee.rest.public.userInfosAPI
+                 * @memberOf qaobee.rest.commons.users.user.userRestAPI
                  * @function usernameTest
                  * @description Login unicity test
                  * @param {String} login
@@ -71,7 +71,7 @@
                     });
                 },
                 /**
-                 * @memberOf qaobee.rest.public.userInfosAPI
+                 * @memberOf qaobee.rest.commons.users.user.userRestAPI
                  * @function forgotPasswd
                  * @description New password request
                  * @param {String}        login
@@ -87,7 +87,7 @@
                     });
                 },
                 /**
-                 * @memberOf qaobee.rest.public.userInfosAPI
+                 * @memberOf qaobee.rest.commons.users.user.userRestAPI
                  * @function accountCheck
                  * @description Vérification du code d'activation de l'utilisateur
                  * @param {String}
@@ -103,7 +103,7 @@
                     });
                 },
                 /**
-                 * @memberOf qaobee.rest.public.userInfosAPI
+                 * @memberOf qaobee.rest.commons.users.user.userRestAPI
                  * @function passwdCheck
                  * @description Vérification du code d'activation mot de passe de
                  *              l'utilisateur
@@ -120,7 +120,7 @@
                     });
                 },
                 /**
-                 * @memberOf qaobee.rest.public.userInfosAPI
+                 * @memberOf qaobee.rest.commons.users.user.userRestAPI
                  * @function resetPasswd
                  * @description Suppression du mot de passe
                  * @returns {Object} {"status", true} ou {"status", false}
