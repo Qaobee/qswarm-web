@@ -1,6 +1,12 @@
 (function () {
     'use strict';
-angular.module('qaobee.home', ['widget.nextEvent'])
+angular.module(
+    'qaobee.home', [
+        
+        /* qaobee Rest API*/
+        'effectiveRestAPI',
+        'personRestAPI',
+        'widget.nextEvent'])
 
     .config(function ($routeProvider, metaDatasProvider) {
         $routeProvider.when('/private', {
@@ -9,14 +15,14 @@ angular.module('qaobee.home', ['widget.nextEvent'])
                 user: metaDatasProvider.checkUser,
                 meta: metaDatasProvider.getMeta
             },
-            templateUrl: 'app/prive/home/home.html'
+            templateUrl: 'app/modules/home/home.html'
 
         })
     })
 /**
  * @class qaobee.prive.prive.PrivateCtrl
  */
-    .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, eventbus, user, meta, effectiveRestAPI, personRestAPI) {
+    .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, effectiveRestAPI, personRestAPI) {
         $translatePartialLoader.addPart('main');
         $translatePartialLoader.addPart('stats');
 

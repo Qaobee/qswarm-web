@@ -19,7 +19,7 @@
         /* qaobee modules */
         'qaobee.signup',  
         
-        /* qaobee API REST */
+        /* qaobee Rest API */
         'publicRestAPI' 
     
     ])
@@ -27,40 +27,40 @@
         .config(function ($routeProvider) {
             $routeProvider.when('/', {
                 controller: 'PublicCtrl',
-                templateUrl: 'app/public/public.html'
+                templateUrl: 'app/modules/public/public.html'
             }).when('/!', {
                 controller: 'PublicCtrl',
-                templateUrl: 'app/public/home.html'
+                templateUrl: 'app/modules/public/home.html'
             }).when('/how', {
                 controller: 'HowCtrl',
-                templateUrl: 'app/public/how.html'
+                templateUrl: 'app/modules/public/how.html'
             }).when('/legals', {
                 controller: 'MentionslegalesCtrl',
-                templateUrl: 'app/public/legal.html'
+                templateUrl: 'app/modules/public/legal.html'
             }).when('/contact', {
                 controller: 'ContactCtrl',
-                templateUrl: 'app/public/contact.html'
+                templateUrl: 'app/modules/public/contact.html'
             }).when('/blog', {
                 controller: 'BlogCtrl',
-                templateUrl: 'app/public/blog.html'
+                templateUrl: 'app/modules/public/blog.html'
             }).when('/pricing', {
                 controller: 'PricingCtrl',
-                templateUrl: 'public/pricing.html'
+                templateUrl: 'app/modules/public/pricing.html'
             }).when('/features', {
                 controller: 'FeaturesCtrl',
-                templateUrl: 'app/public/features.html'
+                templateUrl: 'app/modules/public/features.html'
             }).when('/offer/DISCOVERY', {
                 controller: 'DiscoveryOfferCtrl',
-                templateUrl: 'app/public/offers/discovery.html'
+                templateUrl: 'app/modules/ublic/offers/discovery.html'
             }).when('/offer/PREMIUM', {
                 controller: 'PremiumOfferCtrl',
-                templateUrl: 'app/public/offers/premium.html'
+                templateUrl: 'app/modules/public/offers/premium.html'
             }).when('/offer/TEAM_PLUS', {
                 controller: 'TeamPlusOfferCtrl',
-                templateUrl: 'app/public/offers/teamplus.html'
+                templateUrl: 'app/modules/public/offers/teamplus.html'
             }).when('/notPaid', {
                 controller: 'NotPaidCtrl',
-                templateUrl: 'app/public/notPaid.html'
+                templateUrl: 'app/modules/public/notPaid.html'
             });
         })
 

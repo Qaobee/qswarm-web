@@ -1,18 +1,18 @@
 /**
  * Module EventBus
  *
- * @class qaobee.tools.eventbus
+ * @class qaobee.components.tools.qeventbus
  * @author Xavier MARIN
  * @copyright <b>QaoBee</b>.
  */
-angular.module('eventbus', [])
+angular.module('qaobee.eventbus', [])
 
-    .factory('eventbus', function ($rootScope) {
+    .factory('qeventbus', function ($rootScope) {
         'use strict';
         var sharedService = {message : '', data : {}};
 
         /**
-         * @memberOf qaobee.tools.eventbus
+         * @memberOf qaobee.components.tools.qeventbus
          * @function prepForBroadcast
          * @description Poste d'un message sur le bus
          * @param {String} msg nom du topic
@@ -24,13 +24,13 @@ angular.module('eventbus', [])
             this.broadcastItem();
         };
         /**
-         * @memberOf qaobee.tools.eventbus
+         * @memberOf qaobee.components.tools.qeventbus
          * @function broadcastItem
          * @description Propagation du message
          * @private
          */
         sharedService.broadcastItem = function () {
-            $rootScope.$broadcast('eventbus');
+            $rootScope.$broadcast('qeventbus');
         };
 
         return sharedService;

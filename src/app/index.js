@@ -20,7 +20,8 @@
             'tmh.dynamicLocale',
             
             /* qaobee directives */
-            'qaobee.commonsDirectives', 
+            'qaobee.commonsDirectives',
+            'qaobee.headerMenu',
             
             /* qaobee services */
             'qaobee.commonsConfig',
@@ -36,7 +37,7 @@
         .config(function ($translateProvider, $translatePartialLoaderProvider, reCAPTCHAProvider, $httpProvider, $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider) {
             tmhDynamicLocaleProvider.localeLocationPattern('js/libs/angular-i18n/angular-locale_{{locale}}.js');
             $translateProvider.useLoader('$translatePartialLoader', {
-                urlTemplate: 'app/i18n/{part}/{lang}.json'
+                urlTemplate: 'app/components/i18n/{part}/{lang}.json'
             });
             $translateProvider.useLoaderCache(EnvironmentConfig.useLoaderCache);
             $logProvider.debugEnabled(EnvironmentConfig.debugEnabled);

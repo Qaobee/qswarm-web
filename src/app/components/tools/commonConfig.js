@@ -1,4 +1,10 @@
-angular.module('qaobee.common-config', ['eventbus', 'userMetaRestAPI'])
+angular.module(
+    'qaobee.commonsConfig', [
+        /* qaobee services */
+        'qaobee.eventbus', 
+        
+        /* qaobee Rest API */
+        'userMetaRestAPI'])
 
     .provider('metaDatas', function metaDatasProvider() {
         'use strict';
@@ -18,7 +24,7 @@ angular.module('qaobee.common-config', ['eventbus', 'userMetaRestAPI'])
             return data;
         }
 
-        this.checkUser = function ($rootScope, userMetaRestAPI, eventbus, $location, $q, $window) {
+        this.checkUser = function ($rootScope, userMetaRestAPI, qeventbus, $location, $q, $window) {
             var deferred = $q.defer();
             if (angular.isDefined($rootScope.user)) {
                 deferred.resolve($rootScope.user);
@@ -29,7 +35,7 @@ angular.module('qaobee.common-config', ['eventbus', 'userMetaRestAPI'])
                 if (token !== null && angular.isDefined(token)) {
                     userMetaRestAPI.getCurrentUser().success(function (data) {
                         $rootScope.user = loadAdmin(data);
-                        eventbus.prepForBroadcast("login", $rootScope.user);
+                        qeventbus.prepForBroadcast("login", $rootScope.user);
                         deferred.resolve($rootScope.user);
                     });
                 } else {

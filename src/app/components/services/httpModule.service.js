@@ -9,14 +9,22 @@
      * @requires {@link https://github.com/chieffancypants/angular-loading-bar|chieffancypants.loadingBar}
      * @requires {@link https://docs.angularjs.org/api/ngAnimate|ngAnimate}
      */
-    angular.module('httpModule', ['eventbus', 'chieffancypants.loadingBar', 'ngAnimate'])
-
+    angular.module(
+        'qaobee.httpModule', [
+            
+            /* qaobee services */ 
+            'qaobee.eventbus', 
+            
+            /* angular module */
+            'chieffancypants.loadingBar', 
+            'ngAnimate'
+        ])
         .config(function (cfpLoadingBarProvider) {
             'use strict';
             cfpLoadingBarProvider.includeSpinner = true;
         })
 
-        .factory('httpInterceptor', function ($q, $rootScope, eventbus, $window, EnvironmentConfig, $log) {
+        .factory('httpInterceptor', function ($q, $rootScope, qeventbus, $window, EnvironmentConfig, $log) {
             'use strict';
             return {
                 // Everytime a request starts
@@ -51,7 +59,7 @@
                         if ('NOT_LOGGED' === response.data.code) {
                             // TODO avoir un liste de messages sans doublons avec toastr
                             toastr.error(response.data.message);
-                            eventbus.prepForBroadcast('logoff', '');
+                            qeventbus.prepForBroadcast('logoff', '');
                         }
                     }
                     return $q.reject(response);

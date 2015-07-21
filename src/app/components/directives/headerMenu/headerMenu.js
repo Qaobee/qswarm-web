@@ -27,7 +27,7 @@
             /* qaobee Rest API */
             'userMetaRestAPI'
         ])
-        .directive('qheaderMenu', function (qeventbus, userRestAPI, userMetaRestAPI, $rootScope, $cookieStore, $location, $window, $log, $translatePartialLoader, $filter) {
+        .directive('headerMenu', function (qeventbus, userRestAPI, userMetaRestAPI, $rootScope, $cookieStore, $location, $window, $log, $translatePartialLoader, $filter) {
             return {
                 restrict: 'AE',
                 controller: function ($scope) {
@@ -95,10 +95,10 @@
                      * @name $scope.$on
                      * @function
                      * @memberOf qaobee.directives.headerMenu
-                     * @description Intercept eventbus
+                     * @description Intercept qeventbus
                      */
                     $scope.$on('qeventbus', function () {
-                        if ('logoff' === eventbus.message) {
+                        if ('logoff' === qeventbus.message) {
                             $log.debug('logoff');
                             delete $scope.user;
                             delete $window.sessionStorage.qaobeesession;
