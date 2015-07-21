@@ -7,7 +7,7 @@
      * @author Xavier MARIN
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('userInfosAPI', []).value('userInfosURL', '/api/1/commons/user')
+    angular.module('userInfosRestAPI', []).value('userInfosURL', '/api/1/commons/user')
 
         .factory('userInfosAPI', function ($http, userInfosURL, $rootScope) {
             return {
@@ -85,7 +85,52 @@
                             login: login
                         }
                     });
-                }
+                },
+                /**
+                 * @memberOf qaobee.rest.public.userInfosAPI
+                 * @function accountCheck
+                 * @description Vérification du code d'activation de l'utilisateur
+                 * @param {String}
+                 *            code Code d'activation
+                 * @param {String}
+                 *            id Identifiant Mongo de l'utilisateur
+                 * @returns {Object} {"status", true} ou {"status", false}
+                 */
+                accountCheck: function (code, id) {
+                    return $http({
+                        url: publicURL + '/accountcheck/?code=' + code + '&id=' + id,
+                        method: 'GET'
+                    });
+                },
+                /**
+                 * @memberOf qaobee.rest.public.userInfosAPI
+                 * @function passwdCheck
+                 * @description Vérification du code d'activation mot de passe de
+                 *              l'utilisateur
+                 * @param {String}
+                 *            code Code d'activation
+                 * @param {String}
+                 *            id Identifiant Mongo de l'utilisateur
+                 * @returns {Object} {"status", true} ou {"status", false}
+                 */
+                passwdCheck: function (code, id) {
+                    return $http({
+                        url: publicURL + '/passwdcheck/?code=' + code + '&id=' + id,
+                        method: 'GET'
+                    });
+                },
+                /**
+                 * @memberOf qaobee.rest.public.userInfosAPI
+                 * @function resetPasswd
+                 * @description Suppression du mot de passe
+                 * @returns {Object} {"status", true} ou {"status", false}
+                 */
+                resetPasswd: function () {
+                    return $http({
+                        url: publicURL + '/resetPasswd/',
+                        method: 'POST'
+                    });
+                },
             };
         });
 }());

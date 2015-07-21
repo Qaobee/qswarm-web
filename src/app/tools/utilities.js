@@ -69,34 +69,3 @@ function dateDiff(timestamp) {
     'use strict';
     return Math.floor((new Date().getTime() - timestamp) / (365.25 * 24 * 3600 * 1000));
 }
-
-function Board(name, numberOfColumns) {
-    return {
-      name: name,
-      numberOfColumns: numberOfColumns,
-      columns: []
-    };
-  }
-
-  function Column(name) {
-    return {
-      name: name,
-      cards: []
-    };
-  }
-
-  function Phase(name) {
-    return {
-      name: name,
-      cards: []
-    };
-  }
-
-  function Card(personId, firstname, name, positionType, avatar) {
-    this.personId = personId;
-    this.firstname = firstname;
-    this.name = name;
-    this.positionType = positionType;
-    this.avatar = avatar;
-    return this;
-  }

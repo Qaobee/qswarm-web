@@ -11,24 +11,29 @@
      * @requires {@link qaobee.rest.public.publicRestAPI|qaobee.rest.public.publicRestAPI}
      * @requires {@link https://github.com/mllrsohn/angular-re-captcha|reCAPTCHA}
      */
-    angular.module('qaobee.public', ['qaobee.signup', 'ngRoute', 'publicRestAPI', 'reCAPTCHA'])
+    angular.module('qaobee.public', [
+        /* angular module */
+        'ngRoute',
+        'reCAPTCHA',
+    
+        /* qaobee modules */
+        'qaobee.signup',  
+        
+        /* qaobee API REST */
+        'publicRestAPI' 
+    
+    ])
 
         .config(function ($routeProvider) {
             $routeProvider.when('/', {
-                controller: 'WelcomeCtrl',
+                controller: 'PublicCtrl',
+                templateUrl: 'app/public/public.html'
+            }).when('/!', {
+                controller: 'PublicCtrl',
                 templateUrl: 'app/public/home.html'
             }).when('/how', {
                 controller: 'HowCtrl',
                 templateUrl: 'app/public/how.html'
-            }).when('/!', {
-                controller: 'WelcomeCtrl',
-                templateUrl: 'app/public/home.html'
-            }).when('/welcome', {
-                controller: 'WelcomeCtrl',
-                templateUrl: 'app/public/welcome.html'
-            }).when('/about', {
-                controller: 'AboutCtrl',
-                templateUrl: 'app/public/about.html'
             }).when('/legals', {
                 controller: 'MentionslegalesCtrl',
                 templateUrl: 'app/public/legal.html'
@@ -104,10 +109,10 @@
         })
 
     /**
-     * @class qaobee.public.public.WelcomeCtrl
-     * @description Contrôleur de la page d'accueil
+     * @class qaobee.public.public.PublicCtrl
+     * @description Contrôleur de la page d'accueil publique
      */
-        .controller('WelcomeCtrl', function ($scope, $rootScope, $translatePartialLoader) {
+        .controller('PublicCtrl', function ($scope, $rootScope, $translatePartialLoader) {
             $translatePartialLoader.addPart('landing');
             $translatePartialLoader.addPart('ui');
             $translatePartialLoader.addPart('main');

@@ -9,9 +9,30 @@
      *
      */
     angular.module(
-        'qswarmWeb',
-        ['ngRoute', 'commonsDirectives', 'qaobee.config', 'qaobee.prive', 'qaobee.public', 'qaobee.headerMenu', 'eventbus',
-            'ngSanitize', 'ngCookies', 'pascalprecht.translate', 'reCAPTCHA', 'ngAudio', 'httpModule', 'tmh.dynamicLocale'])
+        'qswarmWeb', [
+            /* angular module */
+            'ngRoute', 
+            'ngSanitize', 
+            'ngCookies', 
+            'ngAudio',
+            'pascalprecht.translate', 
+            'reCAPTCHA',  
+            'httpModule', 
+            'tmh.dynamicLocale',
+            
+            /* qaobee tools*/
+            'commonsDirectives', 
+            
+            /* qaobee services */
+            'eventbus',
+            
+            /* qaobee shared modules */
+            'qaobee.config',  
+            'qaobee.public',
+            'qaobee.prive',
+            'qaobee.headerMenu'
+        
+        ])
 
         .config(function ($translateProvider, $translatePartialLoaderProvider, reCAPTCHAProvider, $httpProvider, $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider) {
             tmhDynamicLocaleProvider.localeLocationPattern('js/libs/angular-i18n/angular-locale_{{locale}}.js');

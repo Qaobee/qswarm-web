@@ -7,7 +7,7 @@
      * @author Xavier MARIN
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('paymentAPI', []).value('paymentURL', '/rest/api/v1/payment')
+    angular.module('paymentRestAPI', []).value('paymentURL', '/rest/api/v1/payment')
 
         .factory('paymentAPI', function ($http, paymentURL) {
             return {

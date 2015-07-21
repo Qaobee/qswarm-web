@@ -9,7 +9,7 @@
      * @requires {@link qaobee.rest.public.userInfosAPI|qaobee.rest.public.userInfosAPI}
      * @requires {@link qaobee.rest.public.paymentAPI|qaobee.rest.public.paymentAPI}
      */
-    angular.module('qaobee.signup', ['paymentAPI', 'userInfosAPI', 'locationAPI', 'publicRestAPI'])
+    angular.module('qaobee.signup', ['paymentRestAPI', 'userInfosRestAPI', 'locationAPI', 'publicRestAPI'])
 
         .config(function ($routeProvider) {
             $routeProvider.when('/signup/:plan?', {
