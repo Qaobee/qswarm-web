@@ -17,21 +17,20 @@
             'ngAudio',
             'pascalprecht.translate', 
             'reCAPTCHA',  
-            'httpModule', 
             'tmh.dynamicLocale',
             
-            /* qaobee tools*/
-            'commonsDirectives', 
+            /* qaobee directives */
+            'qaobee.commonsDirectives', 
             
             /* qaobee services */
-            'eventbus',
+            'qaobee.commonsConfig',
+            'qaobee.config', 
+            'qaobee.eventbus',
+            'qaobee.httpModule',
             
-            /* qaobee shared modules */
-            'qaobee.config',  
+            /* qaobee modules */ 
             'qaobee.public',
-            'qaobee.prive',
-            'qaobee.headerMenu'
-        
+            'qaobee.home'
         ])
 
         .config(function ($translateProvider, $translatePartialLoaderProvider, reCAPTCHAProvider, $httpProvider, $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider) {
@@ -84,19 +83,19 @@
         })
 
     /**
-     * @class qaobee.QaobeeSwarnApp.MainCtrl
+     * @class qaobee.qswarmweb
      * @description Contrôleur principal
      */
-        .controller('MainCtrl', function ($rootScope, $scope, $translatePartialLoader, eventbus) {
+        .controller('MainCtrl', function ($rootScope, $scope, $translatePartialLoader, qeventbus) {
             $translatePartialLoader.addPart('legacy');
             $translatePartialLoader.addPart('landing');
-            $scope.$on('eventbus', function () {
-                if ('logoff' === eventbus.message) {
+            $scope.$on('qeventbus', function () {
+                if ('logoff' === qeventbus.message) {
                     delete  $scope.user;
-                }  if ('bg-color' === eventbus.message) {
-                    $scope.bgColor = eventbus.data;
-                } else if ('login' === eventbus.message) {
-                    $scope.user = eventbus.data;
+                }  if ('bg-color' === qeventbus.message) {
+                    $scope.bgColor = qeventbus.data;
+                } else if ('login' === qeventbus.message) {
+                    $scope.user = qeventbus.data;
                 }
             });
         });
