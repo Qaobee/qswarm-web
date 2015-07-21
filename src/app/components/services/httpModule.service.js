@@ -3,7 +3,7 @@
     /**
      * Module gérant les appels synchrones
      *
-     * @class qaobee.rest.httpModule
+     * @class qaobee.components.services.httpModule
      * @author Xavier MARIN
      * @copyright <b>QaoBee</b>.
      * @requires {@link https://github.com/chieffancypants/angular-loading-bar|chieffancypants.loadingBar}
