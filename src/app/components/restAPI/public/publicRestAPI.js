@@ -8,7 +8,7 @@
      * @author Xavier MARIN
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('publicRestAPI', []).value('publicURL', '/rest/api/v1')
+    angular.module('publicRestAPI', []).value('publicURL', '/api/1/commons/settings/public')
 
         .factory('publicRestAPI', function ($http, publicURL) {
             return {
@@ -18,7 +18,7 @@
                  * @param {int}
                  *            limit limite de blogs à retourner
                  * @description Récupération de la liste des blogs
-                 * @returns {Array} com.qaobee.swarn.model.communication.BlogPost
+                 * @returns {Array} com.qaobee.hive.business.model.commons.public.BlogPost
                  */
                 getBlogs: function (limit) {
                     return $http({

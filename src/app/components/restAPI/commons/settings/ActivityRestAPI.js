@@ -7,9 +7,9 @@
      * @author Xavier MARIN
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('activityAPI', []).value('activityApiURL', '/rest/prive/administration/settings/activity')
+    angular.module('activityRestAPI', []).value('activityApiURL', '/api/1/commons/settings/activity')
 
-    .factory('activityAPI', function($http, activityApiURL, $rootScope) {
+    .factory('activityRestAPI', function($http, activityApiURL) {
         return {
             /**
              * @memberOf qaobee.components.restAPI.commons.settings.ActivityRestAPI
@@ -20,7 +20,7 @@
             getList : function() {
                 return $http({
                     url : activityApiURL + '/list',
-                    method : "GET"
+                    method : 'GET'
                 });
             },
 
@@ -33,7 +33,7 @@
             getListActive : function() {
                 return $http({
                     url : activityApiURL + '/listActive',
-                    method : "GET"
+                    method : 'GET'
                 });
             },
 
@@ -48,7 +48,7 @@
             getDetail : function(id) {
                 return $http({
                     url : activityApiURL + '/get/?id=' + id,
-                    method : "GET"
+                    method : 'GET'
                 });
             },
 
@@ -63,7 +63,7 @@
             del : function(id) {
                 return $http({
                     url : activityApiURL + '/del/?id=' + id,
-                    method : "DELETE"
+                    method : 'DELETE'
                 });
             },
 
@@ -77,8 +77,8 @@
              */
             add : function(activity) {
                 return $http({
-                    url : activityApiURL + "/add",
-                    method : "PUT",
+                    url : activityApiURL + '/add',
+                    method : 'PUT',
                     data : activity
                 });
             }

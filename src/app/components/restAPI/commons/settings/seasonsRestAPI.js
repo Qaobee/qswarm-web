@@ -7,7 +7,7 @@
      * @author Christophe Kervella
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('seasonsRestAPI', []).value('seasonsApiURL', '/rest/prive/administration/settings/season')
+    angular.module('seasonsRestAPI', []).value('seasonsApiURL', '/api/1/commons/settings/season')
 
     .factory('seasonsAPI', function($http, seasonsApiURL) {
         return {
@@ -24,7 +24,7 @@
             getSeasonCurrent : function(activityId, countryId) {
                 return $http({
                     url : seasonsApiURL + '/getseasoncurrent/?activityId=' + activityId + '&countryId=' + countryId,
-                    method : "GET"
+                    method : 'GET'
                 });
             },
             /**
@@ -40,7 +40,7 @@
             getList : function(activityId, countryId) {
                 return $http({
                     url : seasonsApiURL + '/list?activityId=' + activityId + '&countryId=' + countryId,
-                    method : "GET"
+                    method : 'GET'
                 });
             },
             /**
@@ -54,7 +54,7 @@
             getDetail : function(id) {
                 return $http({
                     url : seasonsApiURL + '/get/?id=' + id,
-                    method : "GET"
+                    method : 'GET'
                 });
             },
             
@@ -68,8 +68,8 @@
              */
             add : function(season) {
                 return $http({
-                    url : seasonsApiURL + "/add",
-                    method : "PUT",
+                    url : seasonsApiURL + '/add',
+                    method : 'PUT',
                     data : season
                 });
             }

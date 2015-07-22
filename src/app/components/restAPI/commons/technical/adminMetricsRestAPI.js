@@ -10,7 +10,7 @@
      */
     angular.module('adminMetricsRestAPI', []).value('adminMetricsURL', '/api/1/admin/metrics')
 
-    .factory('adminMetricsAPI', function($http, adminMetricsURL, $rootScope) {
+    .factory('adminMetricsAPI', function($http, adminMetricsURL) {
         return {
             /**
              * @memberOf qaobee.components.restAPI.commons.technical.adminMetricsRestAPI
@@ -21,7 +21,7 @@
             getMeters : function() {
                 return $http({
                     url : adminMetricsURL + '/meters',
-                    method : "GET"
+                    method : 'GET'
                 });
             },
             /**
@@ -30,10 +30,10 @@
              * @description Récupération des métriques de type timers
              * @returns {Array}
              */
-            getTimers : function(key) {
+            getTimers : function() {
                 return $http({
                     url : adminMetricsURL + '/timers',
-                    method : "GET"
+                    method : 'GET'
                 });
             }
         };

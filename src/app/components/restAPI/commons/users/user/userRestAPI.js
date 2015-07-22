@@ -7,9 +7,9 @@
      * @author Xavier MARIN
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('userRestAPI', []).value('userInfosURL', '/api/1/commons/users/user')
+    angular.module('userRestAPI', []).value('userURL', '/api/1/commons/users/user')
 
-        .factory('userRestAPI', function ($http, userInfosURL, $rootScope) {
+        .factory('userRestAPI', function ($http, userURL) {
             return {
                 /**
                  * @memberOf qaobee.components.restAPI.commons.users.user.userRestAPI
@@ -21,7 +21,7 @@
                  */
                 logon: function (login, passwd) {
                     return $http({
-                        url: userInfosURL + '/login',
+                        url: userURL + '/login',
                         method: 'POST',
                         data: {login: login, password: passwd}
                     });
@@ -34,7 +34,7 @@
                  */
                 logoff: function () {
                     return $http({
-                        url: userInfosURL + '/logout',
+                        url: userURL + '/logout',
                         method: 'GET'
                     });
                 },
@@ -49,7 +49,7 @@
                  */
                 registerUser: function (u) {
                     return $http({
-                        url: userInfosURL + '/register',
+                        url: userURL + '/register',
                         method: 'PUT',
                         data: u
                     });
@@ -63,7 +63,7 @@
                  */
                 usernameTest: function (login) {
                     return $http({
-                        url: userInfosURL + '/logintest',
+                        url: userURL + '/logintest',
                         method: 'POST',
                         data: {
                             login: login
@@ -79,7 +79,7 @@
                  */
                 forgotPasswd: function (login) {
                     return $http({
-                        url: userInfosURL + '/newpasswd',
+                        url: userURL + '/newpasswd',
                         method: 'POST',
                         data: {
                             login: login
@@ -98,7 +98,7 @@
                  */
                 accountCheck: function (code, id) {
                     return $http({
-                        url: publicURL + '/accountcheck/?code=' + code + '&id=' + id,
+                        url: userURL + '/accountcheck/?code=' + code + '&id=' + id,
                         method: 'GET'
                     });
                 },
@@ -115,7 +115,7 @@
                  */
                 passwdCheck: function (code, id) {
                     return $http({
-                        url: publicURL + '/passwdcheck/?code=' + code + '&id=' + id,
+                        url: userURL + '/passwdcheck/?code=' + code + '&id=' + id,
                         method: 'GET'
                     });
                 },
@@ -127,7 +127,7 @@
                  */
                 resetPasswd: function () {
                     return $http({
-                        url: publicURL + '/resetPasswd/',
+                        url: userURL + '/resetPasswd/',
                         method: 'POST'
                     });
                 },

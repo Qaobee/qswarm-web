@@ -9,7 +9,7 @@
      */
     angular.module('adminindicatorRestAPI', []).value('adminIndicatorURL', '/api/1/admin/indicator')
 
-    .factory('adminIndicatorAPI', function($http, adminIndicatorURL, $rootScope) {
+    .factory('adminIndicatorAPI', function($http, adminIndicatorURL) {
         return {
             /**
              * @memberOf qaobee.components.restAPI.commons.technical.adminIndicatorRestAPI
@@ -20,7 +20,7 @@
             get : function() {
                 return $http({
                     url : adminIndicatorURL,
-                    method : "GET"
+                    method : 'GET'
                 });
             },
             /**
@@ -33,8 +33,8 @@
              */
             getByKey : function(libelleKey) {
                 return $http({
-                    url : adminIndicatorURL + '/getkey/?libelleKey=' + key,
-                    method : "GET"
+                    url : adminIndicatorURL + '/getkey/?libelleKey=' + libelleKey,
+                    method : 'GET'
                 });
             },
             /**
@@ -48,7 +48,7 @@
             getDetail : function(id) {
                 return $http({
                     url : adminIndicatorURL + '/get/?id=' + id,
-                    method : "GET"
+                    method : 'GET'
                 });
             },
             /**
@@ -57,12 +57,12 @@
              * @description Suppression d'un indicateur
              * @param {String}
              *            id
-             * @returns {Object} {"status": "ok","number": number}
+             * @returns {Object} {'status': 'ok','number': number}
              */
             del : function(id) {
                 return $http({
                     url : adminIndicatorURL + '/del/?id=' + id,
-                    method : "DELETE"
+                    method : 'DELETE'
                 });
             },
             /**
@@ -75,8 +75,8 @@
              */
             add : function(indicator) {
                 return $http({
-                    url : adminIndicatorURL + "/add",
-                    method : "PUT",
+                    url : adminIndicatorURL + '/add',
+                    method : 'PUT',
                     data : indicator
                 });
             }

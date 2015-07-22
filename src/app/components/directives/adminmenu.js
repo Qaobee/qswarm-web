@@ -22,4 +22,5 @@
             templateUrl: 'app/components/directives/adminmenu.html'
         };
     });
+    
 }());

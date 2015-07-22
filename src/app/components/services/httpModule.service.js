@@ -20,12 +20,10 @@
             'ngAnimate'
         ])
         .config(function (cfpLoadingBarProvider) {
-            'use strict';
             cfpLoadingBarProvider.includeSpinner = true;
         })
 
         .factory('httpInterceptor', function ($q, $rootScope, qeventbus, $window, EnvironmentConfig, $log) {
-            'use strict';
             return {
                 // Everytime a request starts
                 request: function (config) {

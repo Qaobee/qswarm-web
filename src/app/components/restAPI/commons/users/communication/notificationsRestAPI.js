@@ -7,9 +7,9 @@
      * @author Xavier MARIN
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('notificationsRestAPI', []).value('notificationsURL', '/rest/prive/notifications')
+    angular.module('notificationsRestAPI', []).value('notificationsURL', '/api/1/commons/communication/notifications')
 
-    .factory('notificationsRestAPI', function($http, notificationsURL, $rootScope) {
+    .factory('notificationsRestAPI', function($http, notificationsURL) {
         return {
             /**
              * @memberOf qaobee.components.restAPI.commons.users.communication.notificationsRestAPI
@@ -22,7 +22,7 @@
             getUserNotifications : function(limit) {
                 return $http({
                     url : notificationsURL + '?limit='+limit,
-                    method : "GET"
+                    method : 'GET'
                 });
             },
             /**
@@ -31,12 +31,12 @@
              * @description Suppression d'une notification
              * @param {String}
              *            id
-             * @returns {Object} {"status": "ok","number": number}
+             * @returns {Object} {'status': 'ok','number': number}
              */
             del : function(id) {
                 return $http({
                     url : notificationsURL + '/del/?id=' + id,
-                    method : "DELETE"
+                    method : 'DELETE'
                 });
             },
             /**
@@ -45,12 +45,12 @@
              * @description Marquer une notification comme lue
              * @param {String}
              *            id
-             * @returns {Object} {"status": "ok","number": number}
+             * @returns {Object} {'status': 'ok','number': number}
              */
             markAsRead : function(id) {
                 return $http({
-                    url : notificationsURL + "/read?id=" + id,
-                    method : "POST"
+                    url : notificationsURL + '/read?id=' + id,
+                    method : 'POST'
                 });
             }
         };

@@ -39,7 +39,7 @@ angular.module('themeRestAPI', []).value('themeAPIURL', '/rest/prive/training')
         getTheme : function(idTheme) {
             return $http({
                 url : themeAPIURL + '/theme/get?_id=' + idTheme,
-                method : "GET"
+                method : 'GET'
             });
         },
         /**
@@ -54,7 +54,7 @@ angular.module('themeRestAPI', []).value('themeAPIURL', '/rest/prive/training')
 
             return $http({
                 url : themeAPIURL + '/theme/list?activityId='+activityId,
-                method : "GET"
+                method : 'GET'
             });
         },
         /**
@@ -78,12 +78,12 @@ angular.module('themeRestAPI', []).value('themeAPIURL', '/rest/prive/training')
          * @description delete a theme
          * @param {String}
          *            idTheme : id of theme to delete
-         * @returns {Object} {"status": "ok","number": number}
+         * @returns {Object} {'status': 'ok','number': number}
          */
         deleteTheme : function(idTheme) {
             return $http({
                 url : themeAPIURL + '/theme/delete?idTheme=' + idTheme,
-                method : "DELETE"
+                method : 'DELETE'
             });
         }
     };

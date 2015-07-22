@@ -9,7 +9,7 @@
      */
     angular.module('structureCfgRestAPI', []).value('structureCfgApiURL', '/api/1/commons/referencial/structureCfg')
 
-    .factory('structureCfgRestAPI', function($http, structureCfgApiURL, $rootScope) {
+    .factory('structureCfgRestAPI', function($http, structureCfgApiURL) {
         return {
             /**
              * @memberOf qaobee.components.restAPI.commons.referencial.StructureCfgRestAPI
@@ -25,7 +25,7 @@
             getCategoriesAgeStrList : function(seasonCode, structureId) {
                 return $http({
                     url : structureCfgApiURL + '/params?paramFieldList=listCategoryAge&seasonCode='+ seasonCode +'&structureId=' + structureId,
-                    method : "GET"
+                    method : 'GET'
                 });
             },
 
@@ -45,7 +45,7 @@
             getCategoryAge : function(seasonCode, structureId, fieldCode) {
                 return $http({
                     url : structureCfgApiURL + '/param',
-                    method : "POST",
+                    method : 'POST',
                     data: {paramField:'listCategoryAge', structureId: structureId, fieldCode: fieldCode, seasonCode:seasonCode}
                 });
             },
@@ -63,7 +63,7 @@
             getTeamsStrList : function(seasonCode, structureId) {
                 return $http({
                     url : structureCfgApiURL + '/params?paramFieldList=listTeams&seasonCode='+ seasonCode +'&structureId=' + structureId,
-                    method : "GET"
+                    method : 'GET'
                 });
             }
         };

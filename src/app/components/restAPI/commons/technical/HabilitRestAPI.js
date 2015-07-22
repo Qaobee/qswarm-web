@@ -9,7 +9,7 @@
      */
     angular.module('adminHabilitRestAPI', []).value('adminHabilitURL', '/api/1/admin/habilitations')
 
-    .factory('adminHabilitAPI', function($http, adminHabilitURL, $rootScope) {
+    .factory('adminHabilitAPI', function($http, adminHabilitURL) {
         return {
             /**
              * @memberOf qaobee.components.restAPI.commons.technical.adminHabilitRestAPI
@@ -20,7 +20,7 @@
             get : function() {
                 return $http({
                     url : adminHabilitURL,
-                    method : "GET"
+                    method : 'GET'
                 });
             },
             /**
@@ -34,7 +34,7 @@
             getByKey : function(key) {
                 return $http({
                     url : adminHabilitURL + '/getkey/?key=' + key,
-                    method : "GET"
+                    method : 'GET'
                 });
             },
             /**
@@ -48,7 +48,7 @@
             getDetail : function(id) {
                 return $http({
                     url : adminHabilitURL + '/get/?id=' + id,
-                    method : "GET"
+                    method : 'GET'
                 });
             },
             /**
@@ -57,12 +57,12 @@
              * @description Suppression d'une habilitation
              * @param {String}
              *            id
-             * @returns {Object} {"status": "ok","number": number}
+             * @returns {Object} {'status': 'ok','number': number}
              */
             del : function(id) {
                 return $http({
                     url : adminHabilitURL + '/del/?id=' + id,
-                    method : "DELETE"
+                    method : 'DELETE'
                 });
             },
             /**
@@ -75,8 +75,8 @@
              */
             add : function(habilit) {
                 return $http({
-                    url : adminHabilitURL + "/add",
-                    method : "PUT",
+                    url : adminHabilitURL + '/add',
+                    method : 'PUT',
                     data : habilit
                 });
             }

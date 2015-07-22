@@ -17,7 +17,7 @@ angular.module(
             },
             templateUrl: 'app/modules/home/home.html'
 
-        })
+        });
     })
 /**
  * @class qaobee.prive.prive.PrivateCtrl
@@ -66,7 +66,7 @@ angular.module(
                     a.members.forEach(function (b) {
                         if (b.role.code==='player') {
                             listId.push(b.personId);
-                        };    
+                        }    
                     });
                 });
                 

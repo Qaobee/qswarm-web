@@ -9,7 +9,7 @@
      */
     angular.module('structureRestAPI', []).value('structureURL', '/api/1/commons/referencial/structure')
 
-    .factory('structureAPI', function($http, structureURL, $rootScope) {
+    .factory('structureAPI', function($http, structureURL) {
         return {
             get : function(id) {
                 return $http({

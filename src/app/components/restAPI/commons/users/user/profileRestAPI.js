@@ -3,16 +3,16 @@
     /**
      * Module REST gérant la gestion du profil utilisateur
      * 
-     * @class qaobee.components.restAPI.commons.usersprofileRestAPI
+     * @class qaobee.components.restAPI.commons.users.profileRestAPI
      * @author Xavier MARIN
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('profileRestAPI', []).value('profileURL', '/rest/prive/profile')
+    angular.module('profileRestAPI', []).value('profileURL', '/api/1/commons/users/profile')
 
-    .factory('profileRestAPI', function($http, profileURL, $rootScope) {
+    .factory('profileRestAPI', function($http, profileURL) {
         return {
             /**
-             * @memberOf qaobee.components.restAPI.commons.usersprofileRestAPI
+             * @memberOf qaobee.components.restAPI.commons.users.profileRestAPI
              * @function update
              * @description Mise à jour du profil utilisateur
              * @param {Object}
@@ -22,12 +22,12 @@
             update : function(u) {
                 return $http({
                     url : profileURL,
-                    method : "POST",
+                    method : 'POST',
                     data : u
                 });
             },
             /**
-             * @memberOf qaobee.components.restAPI.commons.usersprofileRestAPI
+             * @memberOf qaobee.components.restAPI.commons.users.profileRestAPI
              * @function uploadAvatar
              * @description Mise à jour de l'avatar de l'utilisateur
              * @param {String}
@@ -37,14 +37,11 @@
             uploadAvatar : function(uid) {
                 return $http({
                     url : '/file/avatar/' + uid,
-                    method : "POST",
-                    headers : {
-                        'token' : $rootScope.token
-                    }
+                    method : 'POST'
                 });
             },
             /**
-             * @memberOf qaobee.components.restAPI.commons.usersprofileRestAPI
+             * @memberOf qaobee.components.restAPI.commons.users.profileRestAPI
              * @function getPrefDetails
              * @description Get user preferences
              * @param {String}
@@ -54,12 +51,12 @@
              */
             getPrefDetails : function(key, id) {
                 return $http({
-                    url : profileURL + '/preference/getPrefDetails?idPerson='+id+ "&preferenceCode=" + key,
+                    url : profileURL + '/preference/getPrefDetails?idPerson='+id+ '&preferenceCode=' + key,
                     method : 'GET'
                 });
             },
             /**
-             * @memberOf qaobee.components.restAPI.commons.usersprofileRestAPI
+             * @memberOf qaobee.components.restAPI.commons.users.profileRestAPI
              * @function setPreference
              * @description Store user preferences
              * @param {String}

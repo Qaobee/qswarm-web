@@ -7,9 +7,9 @@
      * @author Christophe Kervella
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('activityCfgRestAPI', []).value('activityCfgApiURL', '/rest/prive/administration/settings/activitycfg')
+    angular.module('activityCfgRestAPI', []).value('activityCfgApiURL', '/api/1/commons/settings/activitycfg')
 
-    .factory('activityCfgRestAPI', function ($http, activityCfgApiURL, $rootScope) {
+    .factory('activityCfgRestAPI', function ($http, activityCfgApiURL) {
         return {
             /**
              * @memberOf qaobee.components.restAPI.commons.settings.ActivityCfgRestAPI
@@ -26,7 +26,7 @@
             getCategoriesAgeList: function (date, activityId, countryId) {
                 return $http({
                     url: activityCfgApiURL + '/params?paramFieldList=listCategoryAge&date=' + date + '&activityId=' + activityId + '&countryId=' + countryId,
-                    method: "GET"
+                    method: 'GET'
                 });
             },
             
@@ -47,7 +47,7 @@
             getCategoryAge: function (date, activityId, countryId, fieldCode) {
                 return $http({
                     url : activityCfgApiURL + '/param',
-                    method : "POST",
+                    method : 'POST',
                     data: {paramField:'listCategoryAge', date: date, activityId: activityId, countryId: countryId, fieldCode: fieldCode}
                     
 
@@ -69,7 +69,7 @@
             getLevelGameList: function (date, activityId, countryId) {
                 return $http({
                     url: activityCfgApiURL + '/params?paramFieldList=listLevelGame&date=' + date + '&activityId=' + activityId + '&countryId=' + countryId,
-                    method: "GET"
+                    method: 'GET'
                 });
             },
 
@@ -88,7 +88,7 @@
             getRoleList: function (date, activityId, countryId) {
                 return $http({
                     url: activityCfgApiURL + '/params?paramFieldList=listRoleStr&date=' + date + '&activityId=' + activityId + '&countryId=' + countryId,
-                    method: "GET"
+                    method: 'GET'
                 });
             },
 
@@ -107,7 +107,7 @@
             getGenderList: function (date, seasonCode, activityId, countryId) {
                 return $http({
                     url: activityCfgApiURL + '/params?paramFieldList=listGender&seasonCode=' + seasonCode + '&activityId=' + activityId + '&countryId=' + countryId + '&date=' + date,
-                    method: "GET"
+                    method: 'GET'
                 });
             },
 
@@ -126,7 +126,7 @@
             getLicenseTypeList: function (date, seasonCode, activityId, countryId) {
                 return $http({
                     url: activityCfgApiURL + '/params?paramFieldList=listTypeLicense&seasonCode=' + seasonCode + '&activityId=' + activityId + '&countryId=' + countryId + '&date=' + date,
-                    method: "GET"
+                    method: 'GET'
                 });
             },
 
@@ -150,7 +150,7 @@
             getCaracteristicPlayer: function (seasonCode, activityId, countryId, positionType, typeCarac) {
                 return $http({
                     url: activityCfgApiURL + '/caracteristicPlayer?=seasonCode=' + seasonCode + '&activityId=' + activityId + '&countryId=' + countryId + '&positionType=' + positionType + '&typeCarac=' + typeCarac,
-                    method: "GET"
+                    method: 'GET'
                 });
             }
 

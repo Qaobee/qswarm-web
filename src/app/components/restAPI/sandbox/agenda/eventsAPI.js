@@ -2,13 +2,13 @@
   'use strict';
   /**
    * Created by xavier on 22/03/15.
-   * @class qaobee.QSwarn.services.eventsAPI
+   * @class qaobee.components.restAPI.sandbox.agenda.eventsRestAPI
    * @author Xavier MARIN
    * @copyright <b>QaoBee</b>.
    */
-  angular.module('QSwarn.eventsAPI', []).value('eventsAPIURL', '/api/1/commons/referencial/event')
+  angular.module('eventsRestAPI', []).value('eventsAPIURL', '/api/1/sandbox/agenda/event')
 
-    .factory('eventsAPI', function ($http, eventsAPIURL) {
+    .factory('eventsRestAPI', function ($http, eventsAPIURL) {
       return {
 
         /**
@@ -42,7 +42,7 @@
          * @function
          * @memberOf qaobee.QSwarn.services.eventsAPI
          * @param   {String} id Event id
-         * @returns {Object} event com.qaobee.swarn.business.model.tranversal.event.event;
+         * @returns {Object} event com.qaobee.hive.business.model.sandbox.agenda.event;
          */
         getEventdetail: function (id) {
           return $http({

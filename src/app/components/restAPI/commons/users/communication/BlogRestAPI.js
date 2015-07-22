@@ -7,9 +7,9 @@
      * @author Xavier MARIN
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('adminBlogRestAPI', []).value('adminBlogURL', '/rest/admin/blogposts')
+    angular.module('adminBlogRestAPI', []).value('adminBlogURL', '/api/1/commons/users/communication/blogposts')
 
-    .factory('adminBlogRestAPI', function($http, adminBlogURL, $rootScope) {
+    .factory('adminBlogRestAPI', function($http, adminBlogURL) {
         return {
             /**
              * @memberOf qaobee.components.restAPI.commons.users.communication.adminBlogRestAPI
@@ -20,7 +20,7 @@
             get : function() {
                 return $http({
                     url : adminBlogURL,
-                    method : "GET"
+                    method : 'GET'
                 });
             },
             /**
@@ -34,7 +34,7 @@
             getDetail : function(id) {
                 return $http({
                     url : adminBlogURL + '/get/?id=' + id,
-                    method : "GET"
+                    method : 'GET'
                 });
             },
             /**
@@ -43,12 +43,12 @@
              * @description Suppression d'un blog
              * @param {String}
              *            id
-             * @returns {Object} {"status": "ok","number": number}
+             * @returns {Object} {'status': 'ok','number': number}
              */
             del : function(id) {
                 return $http({
                     url : adminBlogURL + '/del/?id=' + id,
-                    method : "DELETE"
+                    method : 'DELETE'
                 });
             },
             /**
@@ -61,8 +61,8 @@
              */
             add : function(blog) {
                 return $http({
-                    url : adminBlogURL + "/add",
-                    method : "PUT",
+                    url : adminBlogURL + '/add',
+                    method : 'PUT',
                     data : blog
                 });
             }
