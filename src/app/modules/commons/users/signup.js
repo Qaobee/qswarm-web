@@ -6,10 +6,18 @@
      * @class qaobee.public.publicSignup
      * @author Xavier MARIN
      * @copyright <b>QaoBee</b>.
-     * @requires {@link qaobee.rest.commons.users.user.userRestAPI|qaobee.rest.commons.users.user.userRestAPI}
-     * @requires {@link qaobee.rest.commons.users.user.paymentRestAPI|qaobee.rest.commons.users.user.paymentRestAPI}
+     * @requires {@link qaobee.components.restAPI.commons.users.user.signupRestAPI|qaobee.components.restAPI.commons.users.user.signupRestAPI}
+     * @requires {@link qaobee.components.restAPI.commons.users.user.paymentRestAPI|qaobee.components.restAPI.commons.users.user.paymentRestAPI}
      */
-    angular.module('qaobee.signup', ['paymentRestAPI', 'userRestAPI', 'locationAPI', 'publicRestAPI'])
+    angular.module('qaobee.signup', [
+        
+        /* qaobee Rest API */
+        'paymentRestAPI', 
+        'signupRestAPI',
+        'publicRestAPI',
+        
+        /* qaobee Services */
+        'locationAPI' ])
 
         .config(function ($routeProvider) {
             $routeProvider.when('/signup/:plan?', {
@@ -54,7 +62,7 @@
      * @class qaobee.public.publicSignup.SignupCtrl
      * @description Begining of the registration process
      */
-        .controller('SignupCtrl', function ($scope, $http, eventbus, userInfosAPI, paymentAPI, $routeParams, $filter, $location, reCAPTCHA, $window, $log, locationAPI, publicRestAPI) {
+        .controller('SignupCtrl', function ($scope, $http, signupRestAPI, paymentAPI, $routeParams, $filter, $location, reCAPTCHA, $window, $log, locationAPI, publicRestAPI) {
             $scope.signup = {
                 address: {}
             };
@@ -84,7 +92,7 @@
              * @description register user
              */
             $scope.registerUser = function () {
-                userInfosAPI.registerUser($scope.signup).success(function (data) {
+                signupRestAPI.registerUser($scope.signup).success(function (data) {
                     $log.debug(data);
                     paymentAPI.getPaymentURL(data.planId, data.person._id).success(function (data) {
                         $window.location.href = data.url;

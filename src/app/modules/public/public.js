@@ -16,8 +16,10 @@
         'ngRoute',
         'reCAPTCHA',
     
-        /* qaobee modules */
-        'qaobee.signup',  
+        /* qaobee modules 
+        'qaobee.signin', 
+        'qaobee.signup', 
+        */
         
         /* qaobee Rest API */
         'publicRestAPI' 
@@ -30,7 +32,7 @@
                 templateUrl: 'app/modules/public/public.html'
             }).when('/!', {
                 controller: 'PublicCtrl',
-                templateUrl: 'app/modules/public/home.html'
+                templateUrl: 'app/modules/public/public.html'
             }).when('/how', {
                 controller: 'HowCtrl',
                 templateUrl: 'app/modules/public/how.html'

@@ -11,7 +11,7 @@
      * @class qaobee.components.directives.qheaderMenu
      * @requires {@link qaobee.components.services.qaobee.eventbus|qaobee.components.services.qaobee.eventbus}
      * @requires {@link qaobee.components.directives.notifications|qaobee.components.directives.notifications}
-     * @requires {@link qaobee.components.restAPI.commons.users.user.userMetaRestAPI|qaobee.components.restAPI.commons.users.user.userMetaRestAPI}
+     * @requires {@link qaobee.components.restAPI.commons.users.user.userRestAPI|qaobee.components.restAPI.commons.users.user.userRestAPI}
      * @copyright &lt;b&gt;QaoBee&lt;/b&gt;.
      *
      */
@@ -25,9 +25,9 @@
             'qaobee.notifications',
             
             /* qaobee Rest API */
-            'userMetaRestAPI'
+            'userRestAPI'
         ])
-        .directive('headerMenu', function (qeventbus, userRestAPI, userMetaRestAPI, $rootScope, $cookieStore, $location, $window, $log, $translatePartialLoader, $filter) {
+        .directive('headerMenu', function (qeventbus, userRestAPI, $rootScope, $cookieStore, $location, $window, $log, $translatePartialLoader, $filter) {
             return {
                 restrict: 'AE',
                 controller: function ($scope) {
@@ -83,7 +83,7 @@
                      * @description Load meta information such as current season, current structure and current activity
                      */
                     $scope.loadMetaInfos = function () {
-                        userMetaRestAPI.getMetas().success(function (data) {
+                        userRestAPI.getMetas().success(function (data) {
                             if (angular.isDefined(data) && data !== null) {
                                 $rootScope.meta = data;
                                 $scope.structure = data.structure;

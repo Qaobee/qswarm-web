@@ -38,38 +38,6 @@
                         method: 'GET'
                     });
                 },
-
-                /**
-                 * @memberOf qaobee.components.restAPI.commons.users.user.userRestAPI
-                 * @function registerUser
-                 * @description register a new user
-                 * @param u
-                 *            {Object} Person com.qaobee.hive.business.model.commons.users.User
-                 * @returns {Object} Person com.qaobee.hive.business.model.commons.users.User
-                 */
-                registerUser: function (u) {
-                    return $http({
-                        url: userURL + '/register',
-                        method: 'PUT',
-                        data: u
-                    });
-                },
-                /**
-                 * @memberOf qaobee.components.restAPI.commons.users.user.userRestAPI
-                 * @function usernameTest
-                 * @description Login unicity test
-                 * @param {String} login
-                 * @returns {Object} {"status", true} ou {"status", false}
-                 */
-                usernameTest: function (login) {
-                    return $http({
-                        url: userURL + '/logintest',
-                        method: 'POST',
-                        data: {
-                            login: login
-                        }
-                    });
-                },
                 /**
                  * @memberOf qaobee.components.restAPI.commons.users.user.userRestAPI
                  * @function forgotPasswd
@@ -84,22 +52,6 @@
                         data: {
                             login: login
                         }
-                    });
-                },
-                /**
-                 * @memberOf qaobee.components.restAPI.commons.users.user.userRestAPI
-                 * @function accountCheck
-                 * @description Vérification du code d'activation de l'utilisateur
-                 * @param {String}
-                 *            code Code d'activation
-                 * @param {String}
-                 *            id Identifiant Mongo de l'utilisateur
-                 * @returns {Object} {"status", true} ou {"status", false}
-                 */
-                accountCheck: function (code, id) {
-                    return $http({
-                        url: userURL + '/accountcheck/?code=' + code + '&id=' + id,
-                        method: 'GET'
                     });
                 },
                 /**
@@ -131,6 +83,43 @@
                         method: 'POST'
                     });
                 },
+                /**
+                 * @memberOf qaobee.components.restAPI.commons.users.userRestAPI
+                 * @function getCurrentUser
+                 * @description Fetch the current user
+                 * @returns {Object} Person com.qaobee.hive.business.model.commons.users.User
+                 */
+                getCurrentUser: function () {
+                    return $http({
+                        url: userURL + '/current',
+                        method: 'GET'
+                    });
+                },
+                /**
+                 * @memberOf qaobee.components.restAPI.commons.users.userRestAPI
+                 * @function getMetas
+                 * @description Fetch meta informations
+                 * @returns {Object} metas
+                 */
+                getMetas: function () {
+                    return $http({
+                        url: userURL + '/meta',
+                        method: 'GET'
+                    });
+                },
+                /**
+                 * @memberOf qaobee.components.restAPI.commons.users.userRestAPI
+                 * @function getUserById
+                 * @param {String} user id
+                 * @description Fetch uer informations
+                 * @returns {Object} Person com.qaobee.hive.business.model.commons.users.User
+                 */
+                getUserById: function (id) {
+                    return $http({
+                        url: userURL + '/user?id=' + id,
+                        method: 'GET'
+                    });
+                }
             };
         });
 }());
