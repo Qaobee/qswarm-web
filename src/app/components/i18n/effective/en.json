@@ -1,6 +1,10 @@
 {
     "main": {
-        "title": "Effective"
+        "title": "Effective",
+        "buttons" : {
+            "addEffective": "Add effective",
+            "addPlayer": "Add player"
+        }
     },
     "group": {
         "dashboard": {

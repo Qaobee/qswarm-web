@@ -26,13 +26,11 @@
         .factory('httpInterceptor', function ($q, $rootScope, qeventbus, $window, EnvironmentConfig, $log) {
             return {
                 // Everytime a request starts
-                request: function (config) {
-                    if (config.url.startsWith('/rest')) {
-                        config.headers['Content-Type'] = 'application/json';
-                        config.responseType = 'json';
-                    }
+                request: function (config) {                    
                     if (config.url.startsWith('/api')) {
                         config.headers.token = $window.sessionStorage.qaobeesession;
+                        config.headers['Content-Type'] = 'application/json';
+                        config.responseType = 'json';
                     }
                     if (!config.url.startsWith('app') && !config.url.startsWith('http') && !config.url.startsWith('ngTagsInput') && !config.url.startsWith('ng-table')) {
                         if (config.url.startsWith('/')) {

@@ -1,6 +1,10 @@
 {
     "mainEffective": {
-        "title": "Effectif"
+        "title": "Effectif",
+        "buttons" : {
+            "addEffective": "Ajouter un effectif",
+            "addPlayer": "Ajouter une joueur"
+        }
     },
     "group": {
         "dashboard": {
