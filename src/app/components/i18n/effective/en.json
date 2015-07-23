@@ -1,11 +1,35 @@
 {
-    "main": {
+    "mainEffective": {
         "title": "Effective",
         "buttons" : {
             "addEffective": "Add effective",
-            "addPlayer": "Add player"
+            "updateEffective": "Edit effective",
+            "addPlayer": "Add player",
+            "viewPlayer": "View player sheet",
+            "viewStatsEffective": "View stats of effective"
         }
     },
+    "addEffective": {
+        "title": "Add an effectif"
+    },
+    "updateEffective": {
+        "title": "Update effective"
+    },
+    
+    "addPlayer": {
+        "title": "Add a person"
+    },
+    "updatePlayer": {
+        "title": "Update player"
+    },
+    "viewPlayer": {
+        "title": "Player sheet of",
+        "buttons" : {
+            "updatePlayer": "Edit player",
+            "viewStatsPlayer": "View player's stats"
+        }
+    },
+    
     "group": {
         "dashboard": {
           "maintitle": "Groups Management",

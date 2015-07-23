@@ -4,18 +4,42 @@
 
     <!-- action bar -->
     <div class="row">
-        <div class="col s10">
-            <div><h5 class="header light-green-text text-lighten-1">{{'mainEffective.title' | translate }} {{currentCategory.label}}</h5></div>
-        </div>
         <div class="col s1">
-            <a class="btn-floating btn-large red tooltipped" data-position="down" data-delay="30" data-tooltip="{{'mainEffective.buttons.addEffective' | translate }}">
-                <i class="large material-icons">playlist_add</i>
+            <a href="#/private" class="btn-floating red lighten-1 tooltipped" 
+               data-position="bottom" data-delay="30" data-tooltip="{{'mainEffective.buttons.viewStatsEffective' | translate }}">
+                <i class="fa fa-bar-chart" ></i>
             </a>
         </div>
-        <div class="col s1">
-            <a class="btn-floating btn-large blue tooltipped" data-position="down" data-delay="30" data-tooltip="{{'mainEffective.buttons.addPlayer' | translate }}">
-                <i class="large material-icons">person_add</i>
-            </a>
+        <div class="col s9">
+            <div><h5 class="header light-green-text text-lighten-1">{{'mainEffective.title' | translate }} {{currentCategory.label}} </h5></div>
+        </div>
+        
+        <div class="col s2">
+            <a class="dropdown-button red-text text-lighten-1" href="#!" data-activates="actionsEffective"><i class="material-icons right">mode_edit</i></a>
+            
+            <!-- Dropdown Structure -->
+            <ul id="actionsEffective" class="dropdown-content">
+                <li>
+                    <a href="#/private/addEffective" class="red-text text-lighten-1 center tooltipped" 
+                        data-position="right" data-delay="20" data-tooltip="{{'mainEffective.buttons.addEffective' | translate }}">
+                            <i class="material-icons center">playlist_add</i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/private/updateEffective" class="red-text text-lighten-1 center tooltipped" 
+                        data-position="right" data-delay="20" data-tooltip="{{'mainEffective.buttons.updateEffective' | translate }}">
+                            <i class="material-icons center">mode_edit</i>
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="#/private/addPlayer" class="red-text text-lighten-1 center tooltipped" 
+                       data-position="right" data-delay="20" data-tooltip="{{'mainEffective.buttons.addPlayer' | translate }}">
+                            <i class="material-icons center">person_add</i>
+                    </a>
+                </li>
+            </ul>
+        
         </div>
     </div>
 
@@ -24,13 +48,18 @@
         <div class="col s12">    
             <ul class="collection">
                 <li class="collection-item avatar" ng-repeat="player in effective">
-                  <img src="assets/images/user.png" alt="" class="circle responsive-img">
-                  <span class="title blue-text text-lighten-1">{{player.firstname}} {{player.name}} - {{player.positionType}}</span>
+                    <a href="#/private/viewPlayer" class="red-text text-lighten-1 tooltipped" 
+                       data-position="right" data-delay="30" data-tooltip="{{'mainEffective.buttons.viewPlayer' | translate }}">
+                        <img src="assets/images/user.png" alt="" class="circle responsive-img">
+                    </a>
+                    <span class="title blue-text text-lighten-1">{{player.firstname}} {{player.name}} - {{player.positionType}}</span>
                     <p>{{player.age}} ans - {{player.status.height}} cm / {{player.status.weight}} kg
                         <br/>
                         {{player.stateForm}}
                     </p>
-                  <a href="#!" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
+                    <a href="#!" class="secondary-content btn-floating waves-effect waves-light light-green darken-1">
+                        <i class="fa fa-bar-chart" ></i>
+                    </a>
                 </li>
             </ul>
 

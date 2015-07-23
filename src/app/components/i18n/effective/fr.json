@@ -3,9 +3,33 @@
         "title": "Effectif",
         "buttons" : {
             "addEffective": "Ajouter un effectif",
-            "addPlayer": "Ajouter une joueur"
+            "updateEffective": "Editer un effectif",
+            "addPlayer": "Ajouter un joueur",
+            "viewPlayer": "Voir la fiche du joueur",
+            "viewStatsEffective": "Voir les stats de l'effectif"
         }
     },
+    "addEffective": {
+        "title": "Ajout d'un effectif"
+    },
+    "updateEffective": {
+        "title": "Modification d'un effectif"
+    },
+    
+    "addPlayer": {
+        "title": "Ajout d'un joueur"
+    },
+    "updatePlayer": {
+        "title": "Modification du joueur"
+    },
+    "viewPlayer": {
+        "title": "Fiche joueur de",
+        "buttons" : {
+            "updatePlayer": "Editer le joueur" ,
+            "viewStatsPlayer": "Voir les stats du joueur"     
+        }
+    },
+    
     "group": {
         "dashboard": {
           "maintitle": "Gestion des groupes",

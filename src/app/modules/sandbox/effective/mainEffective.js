@@ -5,13 +5,25 @@
      *
      * @author Christophe Kervella
      * @class qaobee.modules.sandbox.effective.mainEffective
-     * @namespace qaobee.prive.sandbox.effective
+     * @namespace qaobee.modules.sandbox.effective
      *
      * @requires {@link qaobee.components.restAPI.sandbox.effective.effectiveRestAPI|qaobee.components.restAPI.sandbox.effective.effectiveRestAPI}
      * @requires {@link qaobee.components.restAPI.sandbox.effective.personRestAPI|qaobee.components.restAPI.sandbox.effective.personRestAPI}
+     * @requires {@link qaobee.modules.sandbox.effective.addEffective|qaobee.modules.sandbox.effective.addEffective}
+     * @requires {@link qaobee.modules.sandbox.effective.updateEffective|qaobee.modules.sandbox.effective.updateEffective}
+     * @requires {@link qaobee.modules.sandbox.effective.players.addPlayer|qaobee.modules.sandbox.effective.players.addPlayer}
+     * @requires {@link qaobee.modules.sandbox.effective.players.updatePlayer|qaobee.modules.sandbox.effective.players.updatePlayer}
+     * @requires {@link qaobee.modules.sandbox.effective.players.viewPlayer|qaobee.modules.sandbox.effective.players.viewPlayer}
      * @copyright <b>QaoBee</b>.
      */
     angular.module('qaobee.effective', [
+        
+        /* qaobee modules */
+        'qaobee.addEffective',
+        'qaobee.updateEffective',
+        'qaobee.addPlayer',
+        'qaobee.updatePlayer',
+        'qaobee.viewPlayer',
         
         /* qaobee Rest API */
         'effectiveRestAPI', 
