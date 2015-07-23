@@ -56,6 +56,7 @@
                 /* build list id for request API person */   
                 var listId = [];
                 data.forEach(function (a) {
+                    $scope.currentCategory = a.categoryAge;
                     a.members.forEach(function (b) {
                         if (b.role.code==='player') {
                             listId.push(b.personId);

@@ -15,22 +15,21 @@
                         class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}</a></li>
             </ul>
             
-                        <a href="#" data-activates="nav-mobileHC" class="button-collapse grey-text text-lighten-1"><i
-                                class="mdi-navigation-menu"></i></a>
+            <a href="#" data-activates="nav-mobileHC" class="button-collapse grey-text text-lighten-1"><i
+                    class="mdi-navigation-menu"></i></a>
 
-                       <ul id="nav-mobileHC" class="side-nav">
-                            <li><a href="#modalLogin" class="grey-text text-lighten-1 modal-trigger"><span
-                                    class="fa fa-sign-in"></span> {{'navbar.connect' | translate}}</a></li>
-                           <li><a href="https://twitter.com/Qaobee"
-                                  target="_blank"
-                                  class="black-text"><i
-                                   class="fa fa-twitter-square fa-2x"></i></a></li>
-                        </ul>
-            
-                    </div>
-                </div>
-            </nav>
+            <ul id="nav-mobileHC" class="side-nav">
+                <li><a href="#modalLogin" class="grey-text text-lighten-1 modal-trigger"><span
+                        class="fa fa-sign-in"></span> {{'navbar.connect' | translate}}</a></li>
+               <li><a href="https://twitter.com/Qaobee"
+                      target="_blank"
+                      class="black-text"><i
+                       class="fa fa-twitter-square fa-2x"></i></a></li>
+            </ul>
 
+        </div>
+    </div>
+</nav>
             <!-- Connected Fisrt header-->
 <div class="navbar-fixed" ng-show="user">
     <nav class="top-nav light-green lighten-1 visible-nav" role="navigation">
@@ -50,9 +49,9 @@
                     </li>
                 </ul>
 
-                <a href="#/private/" class="brand-logo white-text center">
+                <a href="#/private/" class="hide-on-med-and-down brand-logo white-text center">
                     <small><i class="fa fa-home left"></i>
-                        <span class="hide-on-med-and-down" data-ng-bind="structure.label"></span>
+                        <span data-ng-bind="structure.label"></span>
                     </small>
                 </a>
 
@@ -70,13 +69,16 @@
                 <a href="#" data-activates="nav-mobile" class="button-collapse white-text"><i
                         class="mdi-navigation-menu left"></i></a>
 
+                <!-- Mobile navigation -->
                 <ul id="nav-mobile" class="side-nav blue-grey darken-3">
+                    <li><a href="#/private/" class="white-text light"><i class="fa fa-home left"></i>
+                        {{'headerMenu.dashboard' | translate }}</a></li>
+                    <li class="divider"></li>
                     <li><a href="#/private/" class="white-text light"><i class="fa fa-envelope left"></i>
                         {{'headerMenu.notification' | translate }}</a></li>
                     <li><a href="#/private/" class="white-text light"><i class="fa fa-bar-chart left"></i>
                         {{'headerMenu.stats' | translate }}</a></li>
-                    <li><a href="#/private/effective" class="white-text light"><span
-                            class="mdi-social-people left"></span>
+                    <li><a href="#/private/effective" class="white-text light"><i class="mdi-social-people left"></i>
                         {{'headerMenu.effective' | translate }}</a></li>
                     <li><a href="#/private/" class="white-text light"><i class="mdi-image-timer left"></i>
                         {{'headerMenu.training' | translate }}</a></li>
@@ -122,7 +124,7 @@
     </nav>
 </div>
 
-<!-- Modal -->
+<!-- Modal login -->
 <div id="modalLogin" class="modal">
     <div class="modal-header center-align ">
         <h5>
