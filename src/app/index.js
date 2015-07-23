@@ -19,11 +19,11 @@
             'reCAPTCHA',  
             'tmh.dynamicLocale',
             
-            /* qaobee directives */
+            /* qaobee shared directives */
             'qaobee.commonsDirectives',
             'qaobee.headerMenu',
             
-            /* qaobee services */
+            /* qaobee shared services */
             'qaobee.commonsConfig',
             'qaobee.config', 
             'qaobee.eventbus',

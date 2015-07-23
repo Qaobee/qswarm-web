@@ -1,11 +1,23 @@
 (function () {
     'use strict';
-angular.module(
-    'qaobee.home', [
+    /**
+     * Module Gérant la partie publique du site
+     *
+     * @class qaobee.modules.home.mainHome.js
+     * @author Christophe Kervella
+     * @copyright <b>QaoBee</b>.
+     * @requires {@link https://docs.angularjs.org/api/ngRoute|ngRoute}
+     * @requires {@link qaobee.components.restAPI.sandbox.effective.effectiveRestAPI|qaobee.components.restAPI.sandbox.effective.effectiveRestAPI}
+     * @requires {@link qaobee.components.restAPI.sandbox.effective.effectiveRestAPI|qaobee.components.restAPI.sandbox.effective.effectiveRestAPI}
+     * @requires {@link qaobee.components.widgets.event.widget.nextEvent|qaobee.components.widgets.event.widget.nextEvent}
+     */
+    angular.module('qaobee.home', [
         
-        /* qaobee Rest API*/
+        /* qaobee Rest API */
         'effectiveRestAPI',
         'personRestAPI',
+        
+        /* qaobee widget */
         'widget.nextEvent'])
 
     .config(function ($routeProvider, metaDatasProvider) {
@@ -15,7 +27,7 @@ angular.module(
                 user: metaDatasProvider.checkUser,
                 meta: metaDatasProvider.getMeta
             },
-            templateUrl: 'app/modules/home/home.html'
+            templateUrl: 'app/modules/home/mainHome.html'
 
         });
     })
@@ -32,29 +44,6 @@ angular.module(
         $scope.currentCategory = {};
 
         $('.collapsible').collapsible({accordion: false});
-
-        /* Retrieve list of category for structure
-         structureCfgRestAPI.getCategoriesAgeStrList($scope.meta.season.code, $scope.meta.structure._id).success(function (data) {
-         $scope.categories = data;
-         var found = false;
-         data.forEach(function (b) {
-         b.listStaffMember.forEach(function (c) {
-         if (c.personId === $scope.user._id) {
-         $scope.currentCategory = b;
-         found = true;
-         }
-         });
-         });
-         if (!found) {
-         $scope.currentCategory = data[0];
-         }
-
-         $scope.getEffective();
-
-         });
-         */
-    
-        
     
         /* Retrieve list player */
         $scope.getEffective = function () {

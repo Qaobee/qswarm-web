@@ -15,7 +15,7 @@
                 controller: function ($scope) {
 
                 },
-                templateUrl: 'app/components/widgets/nextEvent/nextEvent.html'
+                templateUrl: 'app/components/widgets/event/nextEvent.html'
             };
         });
 }());

@@ -15,12 +15,13 @@
         /* angular module */
         'ngRoute',
         'reCAPTCHA',
-    
-        /* qaobee modules 
-        'qaobee.signin', 
-        'qaobee.signup', 
-        */
         
+        /* qaobee shared directives */
+        'qaobee.headerMenu',
+    
+        /* qaobee modules */ 
+        'qaobee.signup', 
+            
         /* qaobee Rest API */
         'publicRestAPI' 
     
@@ -29,10 +30,10 @@
         .config(function ($routeProvider) {
             $routeProvider.when('/', {
                 controller: 'PublicCtrl',
-                templateUrl: 'app/modules/public/public.html'
+                templateUrl: 'app/modules/public/mainPublic.html'
             }).when('/!', {
                 controller: 'PublicCtrl',
-                templateUrl: 'app/modules/public/public.html'
+                templateUrl: 'app/modules/public/mainPublic.html'
             }).when('/how', {
                 controller: 'HowCtrl',
                 templateUrl: 'app/modules/public/how.html'
@@ -60,25 +61,6 @@
             }).when('/offer/TEAM_PLUS', {
                 controller: 'TeamPlusOfferCtrl',
                 templateUrl: 'app/modules/public/offers/teamplus.html'
-            }).when('/notPaid', {
-                controller: 'NotPaidCtrl',
-                templateUrl: 'app/modules/public/notPaid.html'
-            });
-        })
-
-        .controller('NotPaidCtrl', function ($scope, $rootScope) {
-            $scope.user = $rootScope.user;
-            delete $rootScope.user;
-            $scope.unpaid = [];
-            angular.forEach($scope.user.account.listPlan, function (plan) {
-                if (plan.status === 'open') {
-                    this.push(plan);
-                }
-            }, $scope.unpaid);
-
-            $scope.$on('$destroy', function () {
-                delete $scope.user;
-                delete $scope.unpaid;
             });
         })
 

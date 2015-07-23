@@ -6,7 +6,7 @@
      * @class qaobee.components.directives.quniqueusername
      * @description Directive de test de l'unicité du username
      */
-    .directive('quniqueusername', function (userInfosAPI, $log) {
+    .directive('uniqueusername', function (userInfosAPI, $log) {
         return {
             require: 'ngModel',
             restrict: 'A',
@@ -36,7 +36,7 @@
      * @class qaobee.components.directives.qcheckStrength
      * @copyright <b>QaoBee</b>.
      */
-        .directive('qcheckStrength', function () {
+        .directive('checkStrength', function () {
             return {
                 restrict: 'EAC',
                 scope: {
@@ -114,7 +114,7 @@
             };
         })
 
-        .directive('quiDateNoValidate', function ($filter) {
+        .directive('uiDateNoValidate', function ($filter) {
             return {
                 require: 'ngModel',
                 scope: {
@@ -179,7 +179,7 @@
      * @class qaobee.components.directives.qpasswdCheck
      * @copyright <b>QaoBee</b>.
      */
-        .directive('qpasswdCheck', function () {
+        .directive('passwdCheck', function () {
             return {
                 require: 'ngModel',
                 link: function (scope, elem, attrs, ctrl) {
@@ -200,7 +200,7 @@
      * @class qaobee.components.directives.qaboutPhotos
      * @copyright <b>QaoBee</b>.
      */
-        .directive('qaboutPhotos', function () {
+        .directive('aboutPhotos', function () {
             return {
                 restrict: 'AE',
                 scope: {
