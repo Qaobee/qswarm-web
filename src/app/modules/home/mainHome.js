@@ -3,12 +3,12 @@
     /**
      * Module Gérant la partie publique du site
      *
-     * @class qaobee.modules.home.mainHome.js
+     * @class qaobee.modules.home.mainHome
      * @author Christophe Kervella
      * @copyright <b>QaoBee</b>.
      * @requires {@link https://docs.angularjs.org/api/ngRoute|ngRoute}
      * @requires {@link qaobee.components.restAPI.sandbox.effective.effectiveRestAPI|qaobee.components.restAPI.sandbox.effective.effectiveRestAPI}
-     * @requires {@link qaobee.components.restAPI.sandbox.effective.effectiveRestAPI|qaobee.components.restAPI.sandbox.effective.effectiveRestAPI}
+     * @requires {@link qaobee.components.restAPI.sandbox.effective.personRestAPI|qaobee.components.restAPI.sandbox.effective.personRestAPI}
      * @requires {@link qaobee.components.widgets.event.widget.nextEvent|qaobee.components.widgets.event.widget.nextEvent}
      */
     angular.module('qaobee.home', [
@@ -32,7 +32,7 @@
         });
     })
 /**
- * @class qaobee.prive.prive.PrivateCtrl
+ * @class qaobee.modules.home.HomeControler
  */
     .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, effectiveRestAPI, personRestAPI) {
         $translatePartialLoader.addPart('main');
