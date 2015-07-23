@@ -1,0 +1,23 @@
+{
+    "main": {
+        "title": "Effective"
+    },
+    "group": {
+        "dashboard": {
+          "maintitle": "Groups Management",
+          "addPlayer": "Add group",
+          "editGroup": "Edit group",
+          "name": "Name",
+          "firstName": "Firstname",
+          "groupsEmpty": "There is no group for this category"
+        },
+        "form": {
+          "maintitle": "Management group",
+          "label": "Label",
+          "level": "Level Game",
+          "category": "Category age",
+          "defaultCard": "Drag and drop player here",
+          "columName": "Members group"
+        } 
+    }
+}

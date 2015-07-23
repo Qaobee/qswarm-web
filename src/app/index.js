@@ -89,8 +89,7 @@
      * @description Contrôleur principal
      */
         .controller('MainCtrl', function ($rootScope, $scope, $translatePartialLoader, qeventbus) {
-            $translatePartialLoader.addPart('legacy');
-            $translatePartialLoader.addPart('landing');
+            $translatePartialLoader.addPart('public');
             $scope.$on('qeventbus', function () {
                 if ('logoff' === qeventbus.message) {
                     delete  $scope.user;

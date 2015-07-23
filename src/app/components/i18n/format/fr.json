@@ -1,9 +1,0 @@
-{
-  "date": {
-    "format": "DD/MM/YYYY",
-    "label": "jj/mm/aaaa"
-  },
-  "phone": {
-    "format": "99-99-99-99-99"
-  }
-}

@@ -1,0 +1,31 @@
+{
+    "date": {
+      "format": "DD/MM/YYYY",
+      "label": "jj/mm/aaaa"
+    },
+    "phone": {
+        "format": "99-99-99-99-99"
+    },
+    "footer": {
+        "link": {
+          "about": "A propos",
+          "contact": "Nous contacter",
+          "legalmentions": "Mentions légales"
+        }
+    },
+    "popup": {
+        "warning": {
+            "unregistreduser": "Vous n'avez pas validé votre e-mail."
+        }
+    },
+    "toolBar": {
+        "share": "Partager",
+        "pdfExport": "Exporter en PDF"
+    },
+    "buttons": {
+        "validate": "Valider",
+        "cancel": "Annuler",
+        "close" : "Fermer",
+        "back" : "Retour"
+    }
+}

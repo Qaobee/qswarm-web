@@ -35,7 +35,7 @@
  * @class qaobee.modules.home.HomeControler
  */
     .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, effectiveRestAPI, personRestAPI) {
-        $translatePartialLoader.addPart('main');
+        $translatePartialLoader.addPart('home');
         $translatePartialLoader.addPart('stats');
 
         $scope.user = user;

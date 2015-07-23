@@ -1,0 +1,8 @@
+{
+    "dashboard" : {
+        "event" : "Prochain événement",
+        "stats" : "Statistiques événement",
+        "player" : "Statistiques joueur",
+        "topplayer" : "Top 3"
+    }   
+}

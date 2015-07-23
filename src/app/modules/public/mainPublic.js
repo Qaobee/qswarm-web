@@ -87,9 +87,9 @@
      * @description Contrôleur de la page d'accueil publique
      */
         .controller('PublicCtrl', function ($scope, $rootScope, $translatePartialLoader) {
-            $translatePartialLoader.addPart('landing');
+            $translatePartialLoader.addPart('public');
             $translatePartialLoader.addPart('ui');
-            $translatePartialLoader.addPart('main');
+            $translatePartialLoader.addPart('commons');
 
             /**
              * @description initialization materialize components

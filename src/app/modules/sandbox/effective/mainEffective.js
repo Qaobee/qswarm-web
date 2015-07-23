@@ -37,8 +37,7 @@
      */
         .controller('MainEffectiveControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, effectiveRestAPI, personRestAPI) {
 
-        $translatePartialLoader.addPart('main');
-        $translatePartialLoader.addPart('players');
+        $translatePartialLoader.addPart('effective');
         $translatePartialLoader.addPart('stats');
 
         $scope.user = user;
