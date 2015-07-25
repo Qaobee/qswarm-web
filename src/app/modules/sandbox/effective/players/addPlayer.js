@@ -14,6 +14,7 @@
     angular.module('qaobee.addPlayer', [
         /* angular modules*/
         'mgo-angular-wizard',
+        'ui.select',
         
         /* qaobee Rest API */
         'effectiveRestAPI', 
@@ -37,7 +38,7 @@
      * @class qaobee.modules.sandbox.effective.AddPlayerControler
      * @description Main controller for view addPlayer.html
      */
-        .controller('AddPlayerControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, effectiveRestAPI, personRestAPI) {
+        .controller('AddPlayerControler', function ($log, $http, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, effectiveRestAPI, personRestAPI) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('effective');
@@ -74,6 +75,17 @@
         $scope.dateOption3 = {
             minDate: new Date(1900, 0, 1, 1, 0, 1),
             maxDate: new Date(2999, 0, 0, 0, 0, 0)
+        };
+        
+        $scope.address = {};
+        $scope.refreshAddresses = function(address) {
+        var params = {address: address, sensor: false};
+        return $http.get(
+          'http://maps.googleapis.com/maps/api/geocode/json',
+          {params: params}
+        ).then(function(response) {
+          $scope.addresses = response.data.results;
+        });
         };
 
 
