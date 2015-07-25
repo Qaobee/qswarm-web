@@ -26,6 +26,8 @@
         "validate": "Valider",
         "cancel": "Annuler",
         "close" : "Fermer",
-        "back" : "Retour"
+        "back" : "Retour",
+        "next" : "Suivant",
+        "previous" : "Précédent"
     }
 }

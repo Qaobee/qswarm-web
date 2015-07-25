@@ -17,7 +17,36 @@
     },
     
     "addPlayer": {
-        "title": "Ajout d'un joueur"
+        "title": "Ajout d'un joueur",
+        "labelsfield": {
+            "playerCivilSection": "Etat civil",
+            "playerAvatar": "Avatar" ,
+            "playerName": "Nom" ,
+            "playerFirstname": "Prénom",
+            "playerGender": "Genre" ,
+            "playerGenderM": "Homme" ,
+            "playerGenderF": "Femme" ,
+            "playerBirthdate": "Date de naissance" ,
+            "playerBirthCity": "Ville de naissance" ,
+            "playerNationality": "Nationalité" ,
+            
+            "playerCaracterSection": "Caractéristiques",
+            "playerPositionType": "Poste" ,
+            "playerWeight": "Poids (kg)",
+            "playerHeight": "Taille (cm)",
+            "playerLaterality": "Latéralité",
+            "playerLateralityL": "Gaucher",
+            "playerLateralityR": "Droitier",
+            "playerLateralityA": "Ambidextre",
+            "playerSquadNumber": "Numéro de maillot",
+            
+            "playerContactSection": "Contact",
+            "playerPhoneNumber": "Numéro téléphone",
+            "playerTelMobile": "Mobile",
+            "playerTelHome": "Maison",
+            "playerAddress": "Adresse",
+            "playerMail": "Email"
+        }
     },
     "updatePlayer": {
         "title": "Modification du joueur"

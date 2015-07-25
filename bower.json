@@ -36,6 +36,7 @@
     "angular-translate-storage-cookie": "2.7.0",
     "angular-translate-storage-local": "2.7.0",
     "angular-touch": "1.4.0-rc.2",
+    "angular-wizard": "0.5.3",
     "font-awesome": "4.3.0",
     "jquery": "2.1.4",
     "momentjs": "2.8.1",
