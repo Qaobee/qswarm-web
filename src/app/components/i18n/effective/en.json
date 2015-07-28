@@ -46,7 +46,8 @@
             "playerTelHome": "Home",
             "playerAddress": "Address",
             "playerMail": "E-mail"
-        }
+        },
+        "toastSuccess":"{{firstname}} {{name}} was added to the effective"
     },
     "updatePlayer": {
         "title": "Update player"

@@ -46,7 +46,8 @@
             "playerTelHome": "Maison",
             "playerAddress": "Adresse",
             "playerMail": "Email"
-        }
+        },
+        "toastSuccess":"{{firstname}} {{name}} a été ajouté à l'effectif"
     },
     "updatePlayer": {
         "title": "Modification du joueur"

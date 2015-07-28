@@ -13,7 +13,7 @@
     </div>
     
     <div class="row">
-        <wizard on-finish="finishedWizard()" template="app/components/directives/wizard/wizard.html"> 
+        <wizard on-finish="addPerson()" template="app/components/directives/wizard/wizard.html"> 
             
             <!-- step etat civil -->
             <wz-step title="{{'addPlayer.labelsfield.playerCivilSection' | translate }}" template="app/components/directives/wizard/step.html">
@@ -178,7 +178,7 @@
                         <div class="row col s3">&nbsp;</div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix">smartphone</i>
-                            <input id="playerTelMobile" type="number" class="validate" min="0" ng-model="player.contact.cellphone">
+                            <input id="playerTelMobile" type="tel" class="validate" min="0" ng-model="player.contact.cellphone">
                             <label for="playerTelMobile">{{'addPlayer.labelsfield.playerTelMobile' | translate }}</label>
                         </div>
                         <div class="row col s3">&nbsp;</div>

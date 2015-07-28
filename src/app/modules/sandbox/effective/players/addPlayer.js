@@ -22,7 +22,7 @@
 
         .config(function ($routeProvider, metaDatasProvider) {
 
-            $routeProvider.when('/private/addPlayer', {
+            $routeProvider.when('/private/addPlayer/:sandBoxCfgId', {
                 controller: 'AddPlayerControler',
                 resolve: {
                     user: metaDatasProvider.checkUser,
@@ -54,7 +54,7 @@
                     value : 'available',
                     cause : 'available'
                 },
-                squadnumber: 0,
+                squadnumber: '',
                 weight: '',
                 height: '',
                 laterality: '',
@@ -81,8 +81,51 @@
         $scope.detailsAdr = '';
         
         $scope.finishedWizard = function () {
-            $log.log($scope.player);
-            toastr.success($filter('translate')('addPlayer.labelsfield.playerLateralityA'));
+            
+            
+        };
+        
+        $scope.addPerson = function () {
+            
+            $scope.player.name = $scope.player.name.capitalize(true);
+            $scope.player.firstname = $scope.player.firstname.capitalize(true);
+            $log.debug($scope.player);
+            
+            var dataContainer = {
+                person: $scope.player
+            };
+
+            /* add person */
+            personRestAPI.addPerson(dataContainer).success(function (person) {
+                $log.debug(person);
+                
+                /* add player in effective*/
+                effectiveRestAPI.getListMemberEffective($scope.meta._id, $scope.currentCategory.code).success(function (data) {
+                    
+                    var effective = {};
+                    data.forEach(function (a) {
+                        $log.debug(a);
+                        effective = a;                        
+                    });
+                    
+                    if(angular.isDefined(effective)) {
+                        var roleMember = {code : 'player', label: 'Joueur'};
+                        var member = {personId : person._id,
+                                     role: roleMember};
+                        effective.members.push(member);
+                        
+                        /* Update effective members list */
+                        effectiveRestAPI.update(effective).success(function (data) {
+                            toastr.success($filter('translate')('addPlayer.toastSuccess', {
+                            firstname: person.firstname,
+                            name: person.name
+                        }));
+
+                        $location.path('private/effective');
+                        });
+                    }
+                });
+            });
         };
     })
     
