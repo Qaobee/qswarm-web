@@ -22,11 +22,11 @@
                     <div class="row">
                         <div class="row col s3">&nbsp;</div>
                         <div class="input-field col s3">
-                          <input ng-model="player.firstname" id="playerFirstname" type="text" class="validate">
+                          <input ng-model="player.firstname" id="playerFirstname" type="text" class="validate form-control" required>
                           <label for="playerFirstname">{{'addPlayer.labelsfield.playerFirstname' | translate }}</label>
                         </div>
                         <div class="input-field col s3">
-                          <input ng-model="player.name" id="playerName" type="text" class="validate">
+                          <input ng-model="player.name" id="playerName" type="text" class="validate form-control" required>
                           <label for="playerName">{{'addPlayer.labelsfield.playerName' | translate }}</label>
                         </div>
                         <div class="row col s3">&nbsp;</div>
@@ -37,11 +37,13 @@
                             <label>{{'addPlayer.labelsfield.playerGender' | translate }}</label>
                             <p>&nbsp;</p>
                             <p>
-                                <input name="gender" class="with-gap" type="radio" id="playerGenderF" ng-model="player.gender" />
+                                <input name="gender" class="with-gap" type="radio" id="playerGenderF" value="{{'addPlayer.labelsfield.playerGenderF' | translate }}"
+                                       ng-model="player.gender" />
                                 <label for="playerGenderF">{{'addPlayer.labelsfield.playerGenderF' | translate }}</label>
                             </p>
                             <p>
-                                <input name="gender" class="with-gap" type="radio" id="playerGenderM" ng-model="player.gender" />
+                                <input name="gender" class="with-gap" type="radio" id="playerGenderM" value="{{'addPlayer.labelsfield.playerGenderM' | translate }}"
+                                       ng-model="player.gender" />
                                 <label for="playerGenderM">{{'addPlayer.labelsfield.playerGenderM' | translate }}</label>
                             </p>
                         </div>
@@ -58,11 +60,14 @@
                     <div class="row">
                         <div class="row col s3">&nbsp;</div>
                         <div class="input-field col s3">
-                          <input ng-model="player.nationality" id="playerNationality" type="text" class="validate">
+                          <input type="text" id="playerNationality" class="form-control" ng-autocomplete ng-model="player.nationality" details="detailsCountry" options="optionsCountry"/>
+                          <!--<input ng-model="player.nationality" id="playerNationality" type="text" class="validate">-->
                           <label for="playerNationality">{{'addPlayer.labelsfield.playerNationality' | translate }}</label>
+                          <br/>{{player.nationality}}
                         </div>
                         <div class="input-field col s3">
-                          <input ng-model="player.birthCity" id="playerBirthCity" type="text" class="validate">
+                          <input type="text" id="playerBirthCity" class="form-control" ng-autocomplete ng-model="player.birthCity" details="detailsCity" options="optionsCity"/>
+                          <!--<input ng-model="player.birthCity" id="playerBirthCity" type="text" class="validate">-->
                           <label for="playerBirthCity">{{'addPlayer.labelsfield.playerBirthCity' | translate }}</label>
                         </div>
                         <div class="row col s3">&nbsp;</div>
@@ -93,7 +98,7 @@
                             <label for="playerPositionType">{{'addPlayer.labelsfield.playerPositionType' | translate }}</label>
                         </div>
                         <div class="input-field col s3">
-                            <input id="playerSquadNumber" type="number" class="validate" min="0" ng-model="player.squadnumber">
+                            <input id="playerSquadNumber" type="number" class="validate" min="0" ng-model="player.status.squadnumber">
                             <label for="playerSquadNumber">{{'addPlayer.labelsfield.playerSquadNumber' | translate }}</label>
                         </div>
                         <div class="row col s3">&nbsp;</div>
@@ -115,15 +120,18 @@
                         <div class="input-field col s3"><label>{{'addPlayer.labelsfield.playerLaterality' | translate }}</label></div>
                         <div class="input-field col s3"> 
                             <p>
-                                <input name="laterality" class="with-gap" type="radio" id="playerLateralityA" ng-model="player.status.laterality" />
+                                <input name="laterality" class="with-gap" type="radio" id="playerLateralityA" value="{{'addPlayer.labelsfield.playerLateralityA' | translate }}" 
+                                       ng-model="player.status.laterality" />
                                 <label for="playerLateralityA">{{'addPlayer.labelsfield.playerLateralityA' | translate }}</label>
                             </p>
                             <p>
-                                <input name="laterality" class="with-gap" type="radio" id="playerLateralityL" ng-model="player.status.laterality" />
+                                <input name="laterality" class="with-gap" type="radio" id="playerLateralityL" value="{{'addPlayer.labelsfield.playerLateralityL' | translate }}" 
+                                       ng-model="player.status.laterality" />
                                 <label for="playerLateralityL">{{'addPlayer.labelsfield.playerLateralityL' | translate }}</label>
                             </p>
                             <p>
-                               <input name="laterality" class="with-gap" type="radio" id="playerLateralityR" ng-model="player.status.laterality"/>
+                               <input name="laterality" class="with-gap" type="radio" id="playerLateralityR" value="{{'addPlayer.labelsfield.playerLateralityR' | translate }}" 
+                                      ng-model="player.status.laterality" />
                                 <label for="playerLateralityR">{{'addPlayer.labelsfield.playerLateralityR' | translate }}</label>
                             </p>
                         </div>
@@ -176,42 +184,22 @@
                         <div class="row col s3">&nbsp;</div>
                     </div>
                     
-                    
-                    <!-- 
                      <div class="row">
                         <div class="row col s3">&nbsp;</div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix">home</i>
-                            <input id="playerAddress" type="text" class="validate" min="0" ng-model="player.address.formatedAddress">
+                            <input type="text" id="Autocomplete" class="form-control" ng-autocomplete ng-model="player.address.formatedAddress" details="detailsAdr" options="optionsAdr"/>
+                            <!--
+                            <input type="text" class="validate" name="address"
+                                   ng-model="player.address.formatedAddress"
+                                   typeahead="address for address in getLocation($viewValue)"/>
+                            -->
                             <label for="playerAddress">{{'addPlayer.labelsfield.playerAddress' | translate }}</label>
                         </div>
                         <div class="row col s3">&nbsp;</div>
                     </div>
-                    -->
-                    <div class="row">
-                        <div class="row col s3"></div>
-                        <div class="input-field col s1">
-                            <i class="material-icons prefix">home</i>
-                        </div>
-                        <div class="input-field col s5">
-                            <ui-select ng-model="address.selected"
-                                     theme="selectize"
-                                     ng-disabled="disabled"
-                                     reset-search-input="false">
-                            
-                            <ui-select-choices repeat="address in addresses track by $index"
-                                     refresh="refreshAddresses($select.search)"
-                                     refresh-delay="0">
-                              <div ng-bind-html="address.formatted_address | highlight: $select.search"></div>
-                            </ui-select-choices>
-                            <ui-select-match placeholder="{{'addPlayer.labelsfield.playerAddress' | translate }}">
-                               {{$select.selected.formatted_address}}
-                            </ui-select-match> 
-                          </ui-select>
-                           
-                        </div>
-                        <div class="row col s3">&nbsp;</div>
-                    </div>
+                    
+                    
                     <!-- actions buttons -->
                     <div class="row">
                         <div class="row col s12">&nbsp;</div>
@@ -219,7 +207,7 @@
                         <div class="row col s6 center">
                             <a href="#/private/effective" class="btn red lighteen-1 white-text">{{'buttons.cancel' | translate }}</a>&nbsp;
                             <button class="btn white-text blue-grey darken-3" wz-previous type="submit" name="previous">{{'buttons.previous' | translate }}</button>&nbsp;
-                            <a wz-next="" class="btn white-text green darken-1">{{'buttons.validate' | translate }}</a>
+                            <a wz-next class="btn white-text green darken-1">{{'buttons.validate' | translate }}</a>
                         </div>
                         
                         <div class="row col s3">&nbsp;</div>

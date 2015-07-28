@@ -14,7 +14,6 @@
     angular.module('qaobee.addPlayer', [
         /* angular modules*/
         'mgo-angular-wizard',
-        'ui.select',
         
         /* qaobee Rest API */
         'effectiveRestAPI', 
@@ -51,45 +50,42 @@
         //Initialisation du nouveau joueur
         $scope.player = {
             status: {
-                squadnumber: 0, availability: {
-                    value: "available",
-                    cause: "available"
+                availability : {
+                    value : 'available',
+                    cause : 'available'
                 },
+                squadnumber: 0,
                 weight: '',
                 height: '',
-                laterality: "right-footed",
-                stateForm: "good"
-            }, address: {}, contact: {}
-        };
-        $scope.licence = {};
-        $scope.birthcityFormatedAddress = '';
-
-        $scope.dateOption = {
-            minDate: new Date(1900, 0, 1, 1, 0, 1),
-            maxDate: new Date()
-        };
-        $scope.dateOption2 = {
-            minDate: new Date(1900, 0, 1, 1, 0, 1),
-            maxDate: new Date(2999, 0, 0, 0, 0, 0)
-        };
-        $scope.dateOption3 = {
-            minDate: new Date(1900, 0, 1, 1, 0, 1),
-            maxDate: new Date(2999, 0, 0, 0, 0, 0)
+                laterality: '',
+                stateForm: 'good'
+            }, 
+            address: {}, 
+            contact: {}
         };
         
-        $scope.address = {};
-        $scope.refreshAddresses = function(address) {
-        var params = {address: address, sensor: false};
-        return $http.get(
-          'http://maps.googleapis.com/maps/api/geocode/json',
-          {params: params}
-        ).then(function(response) {
-          $scope.addresses = response.data.results;
-        });
+        /* init ngAutocomplete*/
+        $scope.options = {};
+        $scope.options.watchEnter = true;
+        $scope.optionsCountry = {
+            types: 'geocode'
         };
-
-
+        $scope.detailsCountry = '';
+        
+        $scope.optionsCity = {
+            types: '(cities)'
+        };
+        $scope.detailsCity = '';
+        
+        $scope.optionsAdr = null;
+        $scope.detailsAdr = '';
+        
+        $scope.finishedWizard = function () {
+            $log.log($scope.player);
+            toastr.success($filter('translate')('addPlayer.labelsfield.playerLateralityA'));
+        };
     })
+    
     //
     ;
 }());

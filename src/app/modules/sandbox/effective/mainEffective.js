@@ -17,6 +17,8 @@
      * @copyright <b>QaoBee</b>.
      */
     angular.module('qaobee.effective', [
+        /* angular qaobee */
+        'ngAutocomplete',
         
         /* qaobee modules */
         'qaobee.addEffective',
