@@ -60,13 +60,12 @@
                     <div class="row">
                         <div class="row col s3">&nbsp;</div>
                         <div class="input-field col s3">
-                          <input type="text" id="playerNationality" class="form-control" ng-autocomplete ng-model="player.nationality" details="detailsCountry" options="optionsCountry"/>
+                          <input type="text" id="playerNationality" class="form-control" ng-autocomplete ng-model="player.nationality" details="detailsCountry" options="optionsCountry" placeholder="" />
                           <!--<input ng-model="player.nationality" id="playerNationality" type="text" class="validate">-->
                           <label for="playerNationality">{{'addPlayer.labelsfield.playerNationality' | translate }}</label>
-                          <br/>{{player.nationality}}
                         </div>
                         <div class="input-field col s3">
-                          <input type="text" id="playerBirthCity" class="form-control" ng-autocomplete ng-model="player.birthCity" details="detailsCity" options="optionsCity"/>
+                          <input type="text" id="playerBirthCity" class="form-control" ng-autocomplete ng-model="player.birthCity" details="detailsCity" options="optionsCity" placeholder="" />
                           <!--<input ng-model="player.birthCity" id="playerBirthCity" type="text" class="validate">-->
                           <label for="playerBirthCity">{{'addPlayer.labelsfield.playerBirthCity' | translate }}</label>
                         </div>
@@ -77,9 +76,9 @@
                     <div class="row">
                         <div class="row col s3">&nbsp;</div>
                         <div class="row col s6 center">
-                            <a href="#/private/effective" class="btn red lighteen-1 white-text">{{'buttons.cancel' | translate }}</a>
+                            <a href="#/private/effective" class="btn red lighteen-1 white-text">{{'commons.buttons.cancel' | translate }}</a>
                             &nbsp;
-                            <button class="btn white-text blue-grey darken-3" wz-next type="submit" name="next">{{'buttons.next' | translate }}</button>
+                            <button class="btn white-text blue-grey darken-3" wz-next type="submit" name="next">{{'commons.buttons.next' | translate }}</button>
                         </div>
                         
                         <div class="row col s3">&nbsp;</div>
@@ -95,8 +94,7 @@
                         <div class="row col s3">&nbsp;</div>
                         <div class="input-field col s3">
                             <label>{{'addPlayer.labelsfield.playerPositionType' | translate }}</label>
-                            <select class="browser-default" ng-model="player.status.positionType" required
-                                    id="playerPositionType"
+                            <select class="browser-default" ng-model="player.status.positionType" required id="playerPositionType"
                                     ng-options="p.code as p.label for p in positionsType">
                             </select>
                         </div>
@@ -145,9 +143,9 @@
                     <div class="row">
                         <div class="row col s3">&nbsp;</div>
                         <div class="row col s6 center">
-                            <a href="#/private/effective" class="btn red lighteen-1 white-text">{{'buttons.cancel' | translate }}</a>&nbsp;
-                            <button class="btn white-text blue-grey darken-3" wz-previous type="submit" name="previous">{{'buttons.previous' | translate }}</button>&nbsp;
-                            <button class="btn white-text blue-grey darken-3" wz-next type="submit" name="next">{{'buttons.next' | translate }}</button>
+                            <a href="#/private/effective" class="btn red lighteen-1 white-text">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
+                            <button class="btn white-text blue-grey darken-3" wz-previous type="submit" name="previous">{{'commons.buttons.previous' | translate }}</button>&nbsp;
+                            <button class="btn white-text blue-grey darken-3" wz-next type="submit" name="next">{{'commons.buttons.next' | translate }}</button>
                         </div>
                         
                         <div class="row col s3">&nbsp;</div>
@@ -208,9 +206,9 @@
                         <div class="row col s12">&nbsp;</div>
                         <div class="row col s3">&nbsp;</div>
                         <div class="row col s6 center">
-                            <a href="#/private/effective" class="btn red lighteen-1 white-text">{{'buttons.cancel' | translate }}</a>&nbsp;
-                            <button class="btn white-text blue-grey darken-3" wz-previous type="submit" name="previous">{{'buttons.previous' | translate }}</button>&nbsp;
-                            <a wz-next class="btn white-text green darken-1">{{'buttons.validate' | translate }}</a>
+                            <a href="#/private/effective" class="btn red lighteen-1 white-text">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
+                            <button class="btn white-text blue-grey darken-3" wz-previous type="submit" name="previous">{{'commons.buttons.previous' | translate }}</button>&nbsp;
+                            <a wz-next class="btn white-text green darken-1">{{'commons.buttons.validate' | translate }}</a>
                         </div>
                         
                         <div class="row col s3">&nbsp;</div>

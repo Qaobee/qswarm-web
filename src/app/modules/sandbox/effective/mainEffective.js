@@ -53,6 +53,7 @@
 
         $translatePartialLoader.addPart('effective');
         $translatePartialLoader.addPart('stats');
+        $translatePartialLoader.addPart('commons');
 
         $scope.user = user;
         $scope.meta = meta;
