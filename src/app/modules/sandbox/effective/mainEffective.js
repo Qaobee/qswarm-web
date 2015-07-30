@@ -109,6 +109,10 @@
         };
         
         $scope.getEffective();
+        $scope.modalDetails = function(player){
+            $scope.player = player;
+            $('#modalDetails').openModal();
+        };
     })
     //
     ;

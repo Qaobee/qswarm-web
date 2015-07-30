@@ -83,7 +83,7 @@
                        data-position="right" data-delay="30" data-tooltip="{{'mainEffective.buttons.viewPlayer' | translate }}">
                         <img src="assets/images/user.png" alt="" class="circle responsive-img">
                     </a>
-                    <span class="title red-text text-lighten-1">{{player.firstname}} {{player.name}} - {{player.positionType}}</span>
+                    <a href="" ng-click="modalDetails(player)" class="modal-trigger title">{{player.firstname}} {{player.name}}</a> - <span class="title red-text text-lighten-1">{{player.positionType}}</span>
                     <p>{{player.age}} {{'commons.format.ageYear' | translate }} - {{player.status.height}} {{'commons.format.height' | translate }} / {{player.status.weight}} {{'commons.format.weight' | translate }}
                         <br/>
                         {{player.stateForm}}
@@ -94,6 +94,35 @@
                 </li>
             </ul>
 
+        </div>
+    </div>
+    
+    <!-- modal bottoom sheet-->
+    <div id="modalDetails" class="modal bottom-sheet">
+        <div class="modal-content">
+            <div class="row">
+                <div class="l2 col">
+                    <img ng-src="assets/images/user.png" alt="" class="align-right circle">
+                </div>
+                <div class="l8 col">
+                    <h2 class>{{player.firstname}} {{player.name}}</h2>
+                    <label>Email</label> {{player.contact.email}} <br/>
+                    <label>Password</label> {{player.positionType}}
+                    <hr>
+                    <label>Phone</label> {{player.contact.phone}} <br/>
+                    <label>Location</label> {{player.address.formatedAddress}} <br/>
+                </div>
+                <div class="l2 col">
+                    <a href="#/private/updatePlayer/{{player._id}}">
+                        <i class="red-text text-lighten-1 small material-icons tooltipped" 
+                        data-position="down" data-delay="20" data-tooltip="{{'viewPlayer.buttons.updatePlayer' | translate }}">mode_edit</i>
+                    </a>
+                    <a href="#/private/statPlayer/{{player._id}}">
+                        <i class="red-text text-lighten-1 small fa fa-bar-chart tooltipped" 
+                        data-position="down" data-delay="20" data-tooltip="{{'viewPlayer.buttons.viewStatsPlayer' | translate }}"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
     
