@@ -4,13 +4,13 @@
 
     <!-- action bar for tablet and phone -->
     <div class="row hide-on-large-only">
-        <div class="col s1">
+        <div class="col s2">
             <a href="#/private" class="btn-floating red lighten-1 tooltipped" 
                data-position="bottom" data-delay="30" data-tooltip="{{'mainEffective.buttons.viewStatsEffective' | translate }}">
                 <i class="fa fa-bar-chart" ></i>
             </a>
         </div>
-        <div class="col s9">
+        <div class="col s8">
             <div><h5 class="header light-green-text text-lighten-1">{{'mainEffective.title' | translate }} {{currentCategory.label}} </h5></div>
         </div>
         
@@ -76,19 +76,30 @@
 
     <!-- player list-->
     <div class="row">
+        <div class="col s12">
+            <form class="forms forms-inline input-field ">
+                <input type="text" class="input-big width-50" id="query" ng-model="query">
+                <label for="query">Filter</label>
+            </form>
+        </div>
+    </div>
+    <div class="row">
         <div class="col s12">    
             <ul class="collection">
-                <li class="collection-item avatar" ng-repeat="player in effective">
+                <li class="collection-item avatar" ng-repeat="player in effective | filter:query">
                     <a href="#/private/viewPlayer/{{player._id}}" class="red-text text-lighten-1 tooltipped" 
                        data-position="right" data-delay="30" data-tooltip="{{'mainEffective.buttons.viewPlayer' | translate }}">
                         <img src="assets/images/user.png" alt="" class="circle responsive-img">
                     </a>
-                    <a href="" ng-click="modalDetails(player)" class="modal-trigger title">{{player.firstname}} {{player.name}}</a> - <span class="title red-text text-lighten-1">{{player.positionType}}</span>
-                    <p>{{player.age}} {{'commons.format.ageYear' | translate }} - {{player.status.height}} {{'commons.format.height' | translate }} / {{player.status.weight}} {{'commons.format.weight' | translate }}
+                    <a href="" ng-click="modalDetails(player)" class="modal-trigger title red-text text-lighten-1">{{player.firstname}} {{player.name}}</a> 
+                    <span class="title  hide-on-small-only">{{player.positionType}}</span>
+                    <p>
+                        {{player.age}} {{'commons.format.ageYear' | translate }} - 
+                        {{player.status.height}} {{'commons.format.height' | translate }} / {{player.status.weight}} {{'commons.format.weight' | translate }}
                         <br/>
-                        {{player.stateForm}}
+                        <span class="hide-on-small-only">{{player.stateForm}}</span>
                     </p>
-                    <a href="#/private/statPlayer/{{player._id}}" class="secondary-content btn-floating waves-effect waves-light light-green darken-1">
+                    <a href="#/private/statPlayer/{{player._id}}" class="secondary-content btn-floating waves-effect waves-light red lighten-1">
                         <i class="fa fa-bar-chart" ></i>
                     </a>
                 </li>
@@ -101,26 +112,60 @@
     <div id="modalDetails" class="modal bottom-sheet">
         <div class="modal-content">
             <div class="row">
-                <div class="l2 col">
-                    <img ng-src="assets/images/user.png" alt="" class="align-right circle">
-                </div>
-                <div class="l8 col">
-                    <h2 class>{{player.firstname}} {{player.name}}</h2>
-                    <label>Email</label> {{player.contact.email}} <br/>
-                    <label>Password</label> {{player.positionType}}
-                    <hr>
-                    <label>Phone</label> {{player.contact.phone}} <br/>
-                    <label>Location</label> {{player.address.formatedAddress}} <br/>
-                </div>
-                <div class="l2 col">
-                    <a href="#/private/updatePlayer/{{player._id}}">
-                        <i class="red-text text-lighten-1 small material-icons tooltipped" 
-                        data-position="down" data-delay="20" data-tooltip="{{'viewPlayer.buttons.updatePlayer' | translate }}">mode_edit</i>
-                    </a>
-                    <a href="#/private/statPlayer/{{player._id}}">
-                        <i class="red-text text-lighten-1 small fa fa-bar-chart tooltipped" 
-                        data-position="down" data-delay="20" data-tooltip="{{'viewPlayer.buttons.viewStatsPlayer' | translate }}"></i>
-                    </a>
+                <div class="card white lighten-1">
+                    <div class="card-content center-align">
+                        
+                        <div class="row">
+                            <div class="col m3 s12">
+                                <div class="card-title red-text text-lighten-1"><h4>{{player.firstname}} {{player.name}}</h4></div>
+                                <img class="circle responsive-img" src="assets/images/user.png">
+                                <div class="blue-grey-text text-darken-2"><h3>{{player.status.squadnumber}}</h3></div>
+                            </div>
+                            <div class="col m9 s12">
+                                <div class="row">
+                                    <div class="col m10 s12 center-align">&nbsp;</div>
+                                    <div class="col m1 s12 center-align">
+                                        <a href="#/private/updatePlayer/{{player._id}}">
+                                            <i class="red-text text-lighten-1 small material-icons tooltipped" 
+                                            data-position="top" data-delay="20" data-tooltip="{{'viewPlayer.buttons.updatePlayer' | translate }}">mode_edit</i>
+                                        </a>
+                                    </div>
+                                    <div class="col m1 s12 center-align">
+                                        <a href="#/private/statPlayer/{{player._id}}">
+                                            <i class="red-text text-lighten-1 small fa fa-bar-chart tooltipped" 
+                                            data-position="top" data-delay="20" data-tooltip="{{'viewPlayer.buttons.viewStatsPlayer' | translate }}"></i>
+                                        </a>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col m4 s12">
+                                        <div class="row blue-grey-text text-darken-2 left-align"><h5>{{'playerLabels.playerCivilSection' | translate }}</h5></div>
+                                        <div class="row"><div class="divider red lighten-1"></div></div>
+                                        <div class="row blue-grey-text text-darken-2 left-align">{{player.age}} {{'commons.format.ageYear' | translate }} - {{player.nationality.label}}</div>
+                                    </div>
+
+                                    <div class="col m4 s12">
+                                        <div class="row blue-grey-text text-darken-2 left-align"><h5>{{'playerLabels.playerCaracterSection' | translate }}</h5></div>
+                                        <div class="row"><div class="divider red lighten-1"></div></div>                            
+                                        <div class="row blue-grey-text text-darken-2 left-align">{{'playerLabels.playerWeight' | translate }} : {{player.status.weight}}</div>
+                                        <div class="row blue-grey-text text-darken-2 left-align">{{'playerLabels.playerHeight' | translate }} : {{player.status.height}}</div>
+                                        <div class="row blue-grey-text text-darken-2 left-align">{{'playerLabels.playerLaterality' | translate }} : {{player.status.laterality}}</div>
+                                        <div class="row blue-grey-text text-darken-2 left-align">{{'playerLabels.playerPositionType' | translate }} : {{player.positionType}}</div>
+                                    </div>
+
+                                    <div class="col m4 s12">
+                                        <div class="row blue-grey-text text-darken-2 left-align"><h5>{{'playerLabels.playerContactSection' | translate }}</h5></div>
+                                        <div class="row"><div class="divider red lighten-1"></div></div>                            
+                                        <div class="row blue-grey-text text-darken-2 left-align"><i class="material-icons">mail</i> {{player.contact.email}}</div>
+                                        <div class="row blue-grey-text text-darken-2 left-align"><i class="material-icons">phone</i> {{player.contact.home}}</div>
+                                        <div class="row blue-grey-text text-darken-2 left-align"><i class="material-icons">smartphone</i> {{player.contact.cellphone}}</div>
+                                        <div class="row blue-grey-text text-darken-2 left-align"><i class="material-icons">home</i> {{player.address.formatedAddress}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
                 </div>
             </div>
         </div>
