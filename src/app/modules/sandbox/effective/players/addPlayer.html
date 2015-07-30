@@ -94,8 +94,11 @@
                     <div class="row">
                         <div class="row col s3">&nbsp;</div>
                         <div class="input-field col s3">
-                            <input id="playerPositionType" type="text" class="validate" ng-model="player.status.positionType">
-                            <label for="playerPositionType">{{'addPlayer.labelsfield.playerPositionType' | translate }}</label>
+                            <label>{{'addPlayer.labelsfield.playerPositionType' | translate }}</label>
+                            <select class="browser-default" ng-model="player.status.positionType" required
+                                    id="playerPositionType"
+                                    ng-options="p.code as p.label for p in positionsType">
+                            </select>
                         </div>
                         <div class="input-field col s3">
                             <input id="playerSquadNumber" type="number" class="validate" min="0" ng-model="player.status.squadnumber">
