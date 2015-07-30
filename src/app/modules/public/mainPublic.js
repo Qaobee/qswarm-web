@@ -88,7 +88,6 @@
      */
         .controller('PublicCtrl', function ($scope, $rootScope, $translatePartialLoader) {
             $translatePartialLoader.addPart('public');
-            $translatePartialLoader.addPart('ui');
             $translatePartialLoader.addPart('commons');
 
             /**

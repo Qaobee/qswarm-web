@@ -1,33 +1,40 @@
 {
-    "date": {
-        "format": "MM/DD/YYYY",
-        "label": "mm/dd/yyyy"
-    },
-    "phone": {
-        "format": "(999) 999-9999"
-    },
-    "footer": {
-        "link": {
-            "about": "About",
-            "contact": "Contact us",
-            "legalmentions": "Terms of use"
+    "commons": {
+        "format": {
+            "weight": "lb",
+            "height": "in",
+            "ageYear": "years",
+            "date": {
+                "pattern": "MM/DD/YYYY",
+                "label": "mm/dd/yyyy"
+            },
+            "phone": {
+                "pattern": "(999) 999-9999"
+            }
+        },
+        "footer": {
+            "link": {
+                "about": "About",
+                "contact": "Contact us",
+                "legalmentions": "Terms of use"
+            }
+        },
+        "popup": {
+            "warning": {
+                "unregistreduser": "You have not verified your e-mail."
+            }
+        },
+        "toolBar": {
+            "share": "Share",
+            "pdfExport": "Export to PDF"
+        },
+        "buttons": {
+            "validate": "Validate",
+            "cancel": "Cancel",
+            "close" : "Close",
+            "back" : "Return",
+            "next" : "Next",
+            "previous" : "Previous"
         }
-    },
-    "popup": {
-        "warning": {
-            "unregistreduser": "You have not verified your e-mail."
-        }
-    },
-    "toolBar": {
-        "share": "Share",
-        "pdfExport": "Export to PDF"
-    },
-    "buttons": {
-        "validate": "Validate",
-        "cancel": "Cancel",
-        "close" : "Close",
-        "back" : "Return",
-        "next" : "Next",
-        "previous" : "Previous"
     }
 }

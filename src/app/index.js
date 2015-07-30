@@ -80,7 +80,7 @@
             $locale.id = $translate.proposedLanguage();
             tmhDynamicLocale.set($locale.id);
             $rootScope.$on('$translatePartialLoaderStructureChanged', function () {
-                $translate.refresh();
+                $translate.refresh();                
             });
         })
 

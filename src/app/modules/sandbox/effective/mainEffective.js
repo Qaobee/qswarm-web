@@ -53,6 +53,7 @@
 
         $translatePartialLoader.addPart('effective');
         $translatePartialLoader.addPart('stats');
+        $translatePartialLoader.addPart('commons');
 
         $scope.user = user;
         $scope.meta = meta;
@@ -63,6 +64,7 @@
 
 
         /* Retrieve list player */
+        //TODO - CKE : A revoir si pls effectifs
         $scope.getEffective = function () {
 
             effectiveRestAPI.getListMemberEffective($scope.meta._id, $scope.currentCategory.code).success(function (data) {

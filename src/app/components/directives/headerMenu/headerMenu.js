@@ -31,7 +31,7 @@
             return {
                 restrict: 'AE',
                 controller: function ($scope) {
-                    $translatePartialLoader.addPart('ui');
+                    $translatePartialLoader.addPart('commons');
                     $translatePartialLoader.addPart('menu');
                     $scope.signin = {};
                         $scope.isActive = function(viewLocation) {

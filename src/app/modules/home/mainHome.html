@@ -59,10 +59,13 @@
         <div><h5 class="header light-green-text text-lighten-1"><i class="fa fa-bar-chart"></i> {{'dashboard.player' | translate }}</h5></div>
         <ul class="collection">
             <li class="collection-item avatar" ng-repeat="player in effective">
-              <img src="assets/images/user.png" alt="" class="circle responsive-img">
-              <span class="title blue-text text-lighten-1">{{player.firstname}} {{player.name}}</span>
+                <a href="#/private/viewPlayer/{{player._id}}" class="red-text text-lighten-1 tooltipped" 
+                       data-position="right" data-delay="30" data-tooltip="{{'mainEffective.buttons.viewPlayer' | translate }}">
+                    <img src="assets/images/user.png" alt="" class="circle responsive-img">
+                </a>
+              <span class="title red-text text-lighten-1">{{player.firstname}} {{player.name}}</span>
               <p>{{player.positionType}}</p>
-              <a href="#!" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
+              <a href="#/private/statPlayer/{{player._id}}" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
             </li>
         </ul>
     

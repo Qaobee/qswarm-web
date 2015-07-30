@@ -16,13 +16,14 @@
         'mgo-angular-wizard',
         
         /* qaobee Rest API */
+        'activityCfgRestAPI',
         'effectiveRestAPI', 
         'personRestAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
 
-            $routeProvider.when('/private/addPlayer/:sandBoxCfgId', {
+            $routeProvider.when('/private/addPlayer/:effectiveId', {
                 controller: 'AddPlayerControler',
                 resolve: {
                     user: metaDatasProvider.checkUser,
@@ -37,15 +38,18 @@
      * @class qaobee.modules.sandbox.effective.AddPlayerControler
      * @description Main controller for view addPlayer.html
      */
-        .controller('AddPlayerControler', function ($log, $http, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, effectiveRestAPI, personRestAPI) {
+        .controller('AddPlayerControler', function ($log, $http, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, activityCfgRestAPI, effectiveRestAPI, personRestAPI) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('effective');
+        
+        $scope.effectiveId = $routeParams.effectiveId;
 
         $scope.user = user;
         $scope.meta = meta;
         $scope.effective = [];
         $scope.currentCategory = {};
+        $scope.positionsType = {};
         
         //Initialisation du nouveau joueur
         $scope.player = {
@@ -80,11 +84,15 @@
         $scope.optionsAdr = null;
         $scope.detailsAdr = '';
         
-        $scope.finishedWizard = function () {
-            
-            
-        };
+        $log.debug($scope.meta);
+        $log.debug($scope.user);
         
+        /* Retrieve list of positions type */
+        activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listPositionType').success(function (data) {
+            $scope.positionsType = data;
+        });
+        
+        /* Create a new person and add to effective */
         $scope.addPerson = function () {
             
             $scope.player.name = $scope.player.name.capitalize(true);
