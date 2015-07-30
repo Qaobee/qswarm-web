@@ -35,7 +35,7 @@
      * @class qaobee.modules.sandbox.effective.ViewPlayerControler
      * @description Main controller for view viewPlayer.html
      */
-        .controller('ViewPlayerControler', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, effectiveRestAPI, personRestAPI) {
+        .controller('ViewPlayerControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, effectiveRestAPI, personRestAPI) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('effective');
@@ -50,7 +50,11 @@
         $(document).ready(function(){
             $('ul.tabs').tabs();
         });
-
+        
+        // return button
+        $scope.doTheBack = function() {
+            $window.history.back();
+        };
         
         /* get person */
         personRestAPI.getPerson($scope.playerId).success(function (person) {

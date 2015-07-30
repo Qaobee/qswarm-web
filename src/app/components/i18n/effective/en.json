@@ -28,7 +28,8 @@
         "title": "Player sheet of",
         "buttons" : {
             "updatePlayer": "Edit player",
-            "viewStatsPlayer": "View player's stats"
+            "viewStatsPlayer": "View player's stats",
+            "returnViewPlayer": "Return"
         }
     },
     "playerLabels": {

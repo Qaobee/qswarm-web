@@ -5,7 +5,7 @@
     <!-- action bar -->
     <div class="row">
         <!--card-->
-        <div class="col m4 s12 animated fadeInUp" style="-webkit-animation-duration:{{$index * 300}}ms">
+        <div class="col m4 s12 animated fadeInUp" style="-webkit-animation-duration:{{$index * 100}}ms">
             <div class="card white lighten-1">
                 <div class="card-content center-align">
                     <div class="card-title red-text text-lighten-1 truncate"><h4>{{player.firstname}} {{player.name}}</h4></div>
@@ -14,9 +14,24 @@
                     <br>
                     <div class="row">
                         <div class="col m1 hide-on-small-only">&nbsp;</div>
-                        <div class="col m3 s12 center-align"><a href="#/private/viewPlayer/{{player._id}}"><i class="red-text text-lighten-1 small mdi-action-face-unlock"></i></a></div>
-                        <div class="col m4 s12 center-align"><a href="#/private/updatePlayer/{{player._id}}"><i class="red-text text-lighten-1 small material-icons">mode_edit</i></a></div>
-                        <div class="col m3 s12 center-align"><a href="#/private/statPlayer/{{player._id}}"><i class="red-text text-lighten-1 small fa fa-bar-chart" ></i></a></div>
+                        <div class="col m3 s12 center-align">
+                            <a href="">
+                                <i class="material-icons red-text text-lighten-1 small tooltipped" ng-click="doTheBack()" 
+                                   data-position="down" data-delay="20" data-tooltip="{{'viewPlayer.buttons.returnViewPlayer' | translate }}">undo</i>
+                            </a>
+                        </div>
+                        <div class="col m4 s12 center-align">
+                            <a href="#/private/updatePlayer/{{player._id}}">
+                                <i class="red-text text-lighten-1 small material-icons tooltipped" 
+                                data-position="down" data-delay="20" data-tooltip="{{'viewPlayer.buttons.updatePlayer' | translate }}">mode_edit</i>
+                            </a>
+                        </div>
+                        <div class="col m3 s12 center-align">
+                            <a href="#/private/statPlayer/{{player._id}}">
+                                <i class="red-text text-lighten-1 small fa fa-bar-chart tooltipped" 
+                                data-position="down" data-delay="20" data-tooltip="{{'viewPlayer.buttons.viewStatsPlayer' | translate }}"></i>
+                            </a>
+                        </div>
                         <div class="col m1 .hide-on-small-only">&nbsp;</div>
                     </div>
                     <div class="row blue-grey darken-2">
@@ -29,7 +44,7 @@
         </div>
         
         <!--Tabs-->
-        <div class="col m8 s12 animated fadeInUp " style="-webkit-animation-duration:{{$index * 300}}ms">
+        <div class="col m8 s12 animated fadeInUp " style="-webkit-animation-duration:{{$index * 100}}ms">
             <div class="col m8 s12">
                 <ul class="tabs">
                     <li class="tab"><a href="#test1" class="active blue-grey-text text-darken-2">{{'playerLabels.playerCaracterSection' | translate }}</a></li>

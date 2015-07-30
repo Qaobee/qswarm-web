@@ -28,7 +28,8 @@
         "title": "Fiche joueur de",
         "buttons" : {
             "updatePlayer": "Editer le joueur" ,
-            "viewStatsPlayer": "Voir les stats du joueur"     
+            "viewStatsPlayer": "Voir les stats du joueur",
+            "returnViewPlayer": "Retour"
         }
     },
     "playerLabels": {
