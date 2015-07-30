@@ -16,37 +16,9 @@
         "title": "Update effective"
     },
     
+    
     "addPlayer": {
         "title": "Add a person",
-        "labelsfield": {
-            "playerCivilSection": "Vital sheet",
-            "playerAvatar": "Avatar" ,
-            "playerName": "Name" ,
-            "playerFirstname": "Firstname",
-            "playerGender": "Gender" ,,
-            "playerGenderM": "Male" ,
-            "playerGenderF": "Female" ,
-            "playerBirthdate": "Birthdate" ,
-            "playerBirthCity": "BirthCity" ,
-            "playerNationality": "Nationality" ,
-            
-            "playerCaracterSection": "Player characteristics",
-            "playerPositionType": "Position" ,
-            "playerWeight": "Weight (lb)",
-            "playerHeight": "Height (in)",
-            "playerLaterality": "Laterality",
-            "playerLateralityL": "Left-handed",
-            "playerLateralityR": "Right-handed",
-            "playerLateralityA": "Ambidextrous",
-            "playerSquadNumber": "Squad number",
-            
-            "playerContactSection": "Contact",
-            "playerPhoneNumber": "Phone number",
-            "playerTelMobile": "Mobile",
-            "playerTelHome": "Home",
-            "playerAddress": "Address",
-            "playerMail": "E-mail"
-        },
         "toastSuccess":"{{firstname}} {{name}} was added to the effective"
     },
     "updatePlayer": {
@@ -58,6 +30,35 @@
             "updatePlayer": "Edit player",
             "viewStatsPlayer": "View player's stats"
         }
+    },
+    "playerLabels": {
+        "playerCivilSection": "Vital sheet",
+        "playerAvatar": "Avatar" ,
+        "playerName": "Name" ,
+        "playerFirstname": "Firstname",
+        "playerGender": "Gender" ,,
+        "playerGenderM": "Male" ,
+        "playerGenderF": "Female" ,
+        "playerBirthdate": "Birthdate" ,
+        "playerBirthCity": "BirthCity" ,
+        "playerNationality": "Nationality" ,
+
+        "playerCaracterSection": "Player characteristics",
+        "playerPositionType": "Position" ,
+        "playerWeight": "Weight (lb)",
+        "playerHeight": "Height (in)",
+        "playerLaterality": "Laterality",
+        "playerLateralityL": "Left-handed",
+        "playerLateralityR": "Right-handed",
+        "playerLateralityA": "Ambidextrous",
+        "playerSquadNumber": "Squad number",
+
+        "playerContactSection": "Contact",
+        "playerPhoneNumber": "Phone number",
+        "playerTelMobile": "Mobile",
+        "playerTelHome": "Home",
+        "playerAddress": "Address",
+        "playerMail": "E-mail"
     },
     
     "group": {

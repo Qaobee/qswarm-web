@@ -16,39 +16,39 @@
         <wizard on-finish="addPerson()" template="app/components/directives/wizard/wizard.html"> 
             
             <!-- step etat civil -->
-            <wz-step title="{{'addPlayer.labelsfield.playerCivilSection' | translate }}" template="app/components/directives/wizard/step.html">
+            <wz-step title="{{'playerLabels.playerCivilSection' | translate }}" template="app/components/directives/wizard/step.html">
                 <div class="row col s12"></div>
                 <form class="col s12" name="playerCivilSection">
                     <div class="row">
                         <div class="row col s3">&nbsp;</div>
                         <div class="input-field col s3">
                           <input ng-model="player.firstname" id="playerFirstname" type="text" class="validate form-control" required>
-                          <label for="playerFirstname">{{'addPlayer.labelsfield.playerFirstname' | translate }}</label>
+                          <label for="playerFirstname">{{'playerLabels.playerFirstname' | translate }}</label>
                         </div>
                         <div class="input-field col s3">
                           <input ng-model="player.name" id="playerName" type="text" class="validate form-control" required>
-                          <label for="playerName">{{'addPlayer.labelsfield.playerName' | translate }}</label>
+                          <label for="playerName">{{'playerLabels.playerName' | translate }}</label>
                         </div>
                         <div class="row col s3">&nbsp;</div>
                     </div>
                     <div class="row">
                         <div class="row col s3">&nbsp;</div>
                         <div class="input-field col s3">
-                            <label>{{'addPlayer.labelsfield.playerGender' | translate }}</label>
+                            <label>{{'playerLabels.playerGender' | translate }}</label>
                             <p>&nbsp;</p>
                             <p>
-                                <input name="gender" class="with-gap" type="radio" id="playerGenderF" value="{{'addPlayer.labelsfield.playerGenderF' | translate }}"
+                                <input name="gender" class="with-gap" type="radio" id="playerGenderF" value="{{'playerLabels.playerGenderF' | translate }}"
                                        ng-model="player.gender" />
-                                <label for="playerGenderF">{{'addPlayer.labelsfield.playerGenderF' | translate }}</label>
+                                <label for="playerGenderF">{{'playerLabels.playerGenderF' | translate }}</label>
                             </p>
                             <p>
-                                <input name="gender" class="with-gap" type="radio" id="playerGenderM" value="{{'addPlayer.labelsfield.playerGenderM' | translate }}"
+                                <input name="gender" class="with-gap" type="radio" id="playerGenderM" value="{{'playerLabels.playerGenderM' | translate }}"
                                        ng-model="player.gender" />
-                                <label for="playerGenderM">{{'addPlayer.labelsfield.playerGenderM' | translate }}</label>
+                                <label for="playerGenderM">{{'playerLabels.playerGenderM' | translate }}</label>
                             </p>
                         </div>
                         <div class="input-field col s3">
-                            <label>{{'addPlayer.labelsfield.playerBirthdate' | translate }}</label>
+                            <label>{{'playerLabels.playerBirthdate' | translate }}</label>
                             <p>&nbsp;</p>
                             <p>
                                 <input ng-model="player.birthdate" id="playerBirthdate" type="date" class="validate">
@@ -62,12 +62,12 @@
                         <div class="input-field col s3">
                           <input type="text" id="playerNationality" class="form-control" ng-autocomplete ng-model="player.nationality" details="detailsCountry" options="optionsCountry" placeholder="" />
                           <!--<input ng-model="player.nationality" id="playerNationality" type="text" class="validate">-->
-                          <label for="playerNationality">{{'addPlayer.labelsfield.playerNationality' | translate }}</label>
+                          <label for="playerNationality">{{'playerLabels.playerNationality' | translate }}</label>
                         </div>
                         <div class="input-field col s3">
                           <input type="text" id="playerBirthCity" class="form-control" ng-autocomplete ng-model="player.birthCity" details="detailsCity" options="optionsCity" placeholder="" />
                           <!--<input ng-model="player.birthCity" id="playerBirthCity" type="text" class="validate">-->
-                          <label for="playerBirthCity">{{'addPlayer.labelsfield.playerBirthCity' | translate }}</label>
+                          <label for="playerBirthCity">{{'playerLabels.playerBirthCity' | translate }}</label>
                         </div>
                         <div class="row col s3">&nbsp;</div>
                     </div>
@@ -87,20 +87,20 @@
             </wz-step>
             
             <!-- step caracteristiques -->
-            <wz-step title="{{'addPlayer.labelsfield.playerCaracterSection' | translate }}" template="app/components/directives/wizard/step.html">
+            <wz-step title="{{'playerLabels.playerCaracterSection' | translate }}" template="app/components/directives/wizard/step.html">
                 <div class="row col s12"></div>
                 <form class="col s12" name="playerCaracterSection">
                     <div class="row">
                         <div class="row col s3">&nbsp;</div>
                         <div class="input-field col s3">
-                            <label>{{'addPlayer.labelsfield.playerPositionType' | translate }}</label>
+                            <label>{{'playerLabels.playerPositionType' | translate }}</label>
                             <select class="browser-default" ng-model="player.status.positionType" required id="playerPositionType"
                                     ng-options="p.code as p.label for p in positionsType">
                             </select>
                         </div>
                         <div class="input-field col s3">
                             <input id="playerSquadNumber" type="number" class="validate" min="0" ng-model="player.status.squadnumber">
-                            <label for="playerSquadNumber">{{'addPlayer.labelsfield.playerSquadNumber' | translate }}</label>
+                            <label for="playerSquadNumber">{{'playerLabels.playerSquadNumber' | translate }}</label>
                         </div>
                         <div class="row col s3">&nbsp;</div>
                     </div>
@@ -108,32 +108,32 @@
                         <div class="row col s3">&nbsp;</div>
                         <div class="input-field col s3">
                             <input id="playerWeight" type="number" class="validate" min="0" ng-model="player.status.weight" value="player.status.weight">
-                            <label for="playerWeight">{{'addPlayer.labelsfield.playerWeight' | translate }}</label>
+                            <label for="playerWeight">{{'playerLabels.playerWeight' | translate }}</label>
                         </div>
                         <div class="input-field col s3">
                             <input id="playerHeight" type="number" class="validate" min="0" ng-model="player.status.height">
-                            <label for="playerHeight">{{'addPlayer.labelsfield.playerHeight' | translate }}</label>
+                            <label for="playerHeight">{{'playerLabels.playerHeight' | translate }}</label>
                         </div>
                         <div class="row col s3">&nbsp;</div>
                     </div>
                     <div class="row">
                         <div class="row col s3">&nbsp;</div>
-                        <div class="input-field col s3"><label>{{'addPlayer.labelsfield.playerLaterality' | translate }}</label></div>
+                        <div class="input-field col s3"><label>{{'playerLabels.playerLaterality' | translate }}</label></div>
                         <div class="input-field col s3"> 
                             <p>
-                                <input name="laterality" class="with-gap" type="radio" id="playerLateralityA" value="{{'addPlayer.labelsfield.playerLateralityA' | translate }}" 
+                                <input name="laterality" class="with-gap" type="radio" id="playerLateralityA" value="{{'playerLabels.playerLateralityA' | translate }}" 
                                        ng-model="player.status.laterality" />
-                                <label for="playerLateralityA">{{'addPlayer.labelsfield.playerLateralityA' | translate }}</label>
+                                <label for="playerLateralityA">{{'playerLabels.playerLateralityA' | translate }}</label>
                             </p>
                             <p>
-                                <input name="laterality" class="with-gap" type="radio" id="playerLateralityL" value="{{'addPlayer.labelsfield.playerLateralityL' | translate }}" 
+                                <input name="laterality" class="with-gap" type="radio" id="playerLateralityL" value="{{'playerLabels.playerLateralityL' | translate }}" 
                                        ng-model="player.status.laterality" />
-                                <label for="playerLateralityL">{{'addPlayer.labelsfield.playerLateralityL' | translate }}</label>
+                                <label for="playerLateralityL">{{'playerLabels.playerLateralityL' | translate }}</label>
                             </p>
                             <p>
-                               <input name="laterality" class="with-gap" type="radio" id="playerLateralityR" value="{{'addPlayer.labelsfield.playerLateralityR' | translate }}" 
+                               <input name="laterality" class="with-gap" type="radio" id="playerLateralityR" value="{{'playerLabels.playerLateralityR' | translate }}" 
                                       ng-model="player.status.laterality" />
-                                <label for="playerLateralityR">{{'addPlayer.labelsfield.playerLateralityR' | translate }}</label>
+                                <label for="playerLateralityR">{{'playerLabels.playerLateralityR' | translate }}</label>
                             </p>
                         </div>
                         <div class="row col s3">&nbsp;</div>
@@ -154,7 +154,7 @@
             </wz-step>
             
             <!-- step contact -->
-            <wz-step title="{{'addPlayer.labelsfield.playerContactSection' | translate }}" template="app/components/directives/wizard/step.html">
+            <wz-step title="{{'playerLabels.playerContactSection' | translate }}" template="app/components/directives/wizard/step.html">
                 <div class="row col s12"></div>
                 <form class="col s12" name="playerContactSection">
                     <div class="row">
@@ -162,7 +162,7 @@
                         <div class="input-field col s6">
                             <i class="material-icons prefix">mail</i>
                             <input id="playerMail" type="email" class="validate" ng-model="player.contact.email">
-                            <label for="playerMail">{{'addPlayer.labelsfield.playerMail' | translate }}</label>
+                            <label for="playerMail">{{'playerLabels.playerMail' | translate }}</label>
                         </div>
                         <div class="row col s3">&nbsp;</div>
                     </div>
@@ -171,7 +171,7 @@
                         <div class="input-field col s6">
                             <i class="material-icons prefix">phone</i>
                             <input id="playerTelMobile" type="number" class="validate" min="0" ng-model="player.contact.home">
-                            <label for="playerTelHome">{{'addPlayer.labelsfield.playerTelHome' | translate }}</label>
+                            <label for="playerTelHome">{{'playerLabels.playerTelHome' | translate }}</label>
                         </div>
                         <div class="row col s3">&nbsp;</div>
                     </div>
@@ -180,7 +180,7 @@
                         <div class="input-field col s6">
                             <i class="material-icons prefix">smartphone</i>
                             <input id="playerTelMobile" type="tel" class="validate" min="0" ng-model="player.contact.cellphone">
-                            <label for="playerTelMobile">{{'addPlayer.labelsfield.playerTelMobile' | translate }}</label>
+                            <label for="playerTelMobile">{{'playerLabels.playerTelMobile' | translate }}</label>
                         </div>
                         <div class="row col s3">&nbsp;</div>
                     </div>
@@ -189,13 +189,13 @@
                         <div class="row col s3">&nbsp;</div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix">home</i>
-                            <input type="text" id="Autocomplete" class="form-control" ng-autocomplete ng-model="player.address.formatedAddress" details="detailsAdr" options="optionsAdr"/>
+                            <input type="text" id="Autocomplete" class="form-control" ng-autocomplete ng-model="player.address.formatedAddress" details="detailsAdr" options="optionsAdr" placeholder=""/>
                             <!--
                             <input type="text" class="validate" name="address"
                                    ng-model="player.address.formatedAddress"
                                    typeahead="address for address in getLocation($viewValue)"/>
                             -->
-                            <label for="playerAddress">{{'addPlayer.labelsfield.playerAddress' | translate }}</label>
+                            <label for="playerAddress">{{'playerLabels.playerAddress' | translate }}</label>
                         </div>
                         <div class="row col s3">&nbsp;</div>
                     </div>

@@ -2,8 +2,8 @@
 <!-- body start-->
     <div class="row"> <div class="col s10"></div></div>   
 
-    <!-- action bar -->
-    <div class="row">
+    <!-- action bar for tablet and phone -->
+    <div class="row hide-on-large-only">
         <div class="col s1">
             <a href="#/private" class="btn-floating red lighten-1 tooltipped" 
                data-position="bottom" data-delay="30" data-tooltip="{{'mainEffective.buttons.viewStatsEffective' | translate }}">
@@ -20,7 +20,7 @@
             <!-- Dropdown Structure -->
             <ul id="actionsEffective" class="dropdown-content">
                 <li>
-                    <a href="#/private/addEffective" class="red-text text-lighten-1 center tooltipped" 
+                    <a href="#/private/addEffective/{{meta._id}}" class="red-text text-lighten-1 center tooltipped" 
                         data-position="right" data-delay="20" data-tooltip="{{'mainEffective.buttons.addEffective' | translate }}">
                             <i class="material-icons center">playlist_add</i>
                     </a>
@@ -42,48 +42,53 @@
         
         </div>
     </div>
-
-    <!-- player list-->
-    <div class="row">
-        <div class="col m3 animated fadeInUp" style="-webkit-animation-duration:{{$index * 300}}ms" ng-repeat="player in effective">
-            <div class="card blue lighten-1">
-                <div class="card-content center-align">
-                    <div class="card-title truncate">{{player.firstname}} {{player.name}}</div>
-                    <img class="circle responsive-img" src="assets/images/user.png">
-                    <p class="blue-text text-darken-4">{{player.age}} {{'commons.format.ageYear' | translate }} - {{player.status.height}} {{'commons.format.height' | translate }} / {{player.status.weight}} {{'commons.format.weight' | translate }}</p>
-                    <br>
-                    <div class="row">
-                        <div class="col m1 hide-on-small-only">&nbsp;</div>
-                        <div class="col m3 s12 center-align"><a href="#/private/viewPlayer"><i class="white-text small mdi-action-face-unlock"></i></a></div>
-                        <div class="col m4 s12 center-align"><a href=""><i class="white-text small mdi-action-highlight-remove"></i></a></div>
-                        <div class="col m3 s12 center-align"><a href=""><i class="white-text small fa fa-bar-chart" ></i></a></div>
-                        <div class="col m1 .hide-on-small-only">&nbsp;</div>
-                    </div>
-                    <div class="row">
-                        <div class="col m2 hide-on-small-only">&nbsp;</div>
-                        <div class="col m8 s12 center-align truncate">
-                            <a href="#" class="white-text"><h5>{{player.positionType}}</h5></a>
-                        </div>
-                        <div class="col m2 .hide-on-small-only">&nbsp;</div>
-                    </div>
-                </div>
-            </div><!--/card-->
+    <!-- action bar for desktop -->
+    <div class="row hide-on-med-and-down">
+        <div class="col s1">
+            <a href="#/private" class="btn-floating red lighten-1 tooltipped" 
+               data-position="bottom" data-delay="30" data-tooltip="{{'mainEffective.buttons.viewStatsEffective' | translate }}">
+                <i class="fa fa-bar-chart" ></i>
+            </a>
+        </div>
+        <div class="col s8">
+            <div><h5 class="header light-green-text text-lighten-1">{{'mainEffective.title' | translate }} {{currentCategory.label}} </h5></div>
+        </div>
+        
+        <div class="col s1 right-align">    
+            <a href="#/private/addEffective/{{meta._id}}" class="red-text text-lighten-1 center tooltipped" 
+                data-position="down" data-delay="20" data-tooltip="{{'mainEffective.buttons.addEffective' | translate }}">
+                    <i class="material-icons small">playlist_add</i>
+            </a>
+        </div>
+        <div class="col s1 right-align">
+            <a href="#/private/updateEffective" class="red-text text-lighten-1 center tooltipped" 
+                data-position="down" data-delay="20" data-tooltip="{{'mainEffective.buttons.updateEffective' | translate }}">
+                    <i class="material-icons small">mode_edit</i>
+            </a>
+        </div>
+        <div class="col s1 right-align">
+            <a href="#/private/addPlayer/{{meta._id}}" class="red-text text-lighten-1 center tooltipped" 
+               data-position="down" data-delay="20" data-tooltip="{{'mainEffective.buttons.addPlayer' | translate }}">
+                    <i class="material-icons small">person_add</i>
+            </a>
         </div>
     </div>
+
+    <!-- player list-->
     <div class="row">
         <div class="col s12">    
             <ul class="collection">
                 <li class="collection-item avatar" ng-repeat="player in effective">
-                    <a href="#/private/viewPlayer" class="red-text text-lighten-1 tooltipped" 
+                    <a href="#/private/viewPlayer/{{player._id}}" class="red-text text-lighten-1 tooltipped" 
                        data-position="right" data-delay="30" data-tooltip="{{'mainEffective.buttons.viewPlayer' | translate }}">
                         <img src="assets/images/user.png" alt="" class="circle responsive-img">
                     </a>
-                    <span class="title blue-text text-lighten-1">{{player.firstname}} {{player.name}} - {{player.positionType}}</span>
-                    <p>{{player.age}} {{'commons.format.ageYear' | translate }} - {{player.status.height}} {{'commons.format.ageYear' | translate }} / {{player.status.weight}} {{'commons.format.ageYear' | translate }}
+                    <span class="title red-text text-lighten-1">{{player.firstname}} {{player.name}} - {{player.positionType}}</span>
+                    <p>{{player.age}} {{'commons.format.ageYear' | translate }} - {{player.status.height}} {{'commons.format.height' | translate }} / {{player.status.weight}} {{'commons.format.weight' | translate }}
                         <br/>
                         {{player.stateForm}}
                     </p>
-                    <a href="#!" class="secondary-content btn-floating waves-effect waves-light light-green darken-1">
+                    <a href="#/private/statPlayer/{{player._id}}" class="secondary-content btn-floating waves-effect waves-light light-green darken-1">
                         <i class="fa fa-bar-chart" ></i>
                     </a>
                 </li>

@@ -20,7 +20,7 @@
 
         .config(function ($routeProvider, metaDatasProvider) {
 
-            $routeProvider.when('/private/viewPlayer', {
+            $routeProvider.when('/private/viewPlayer/:playerId', {
                 controller: 'ViewPlayerControler',
                 resolve: {
                     user: metaDatasProvider.checkUser,
@@ -35,16 +35,43 @@
      * @class qaobee.modules.sandbox.effective.ViewPlayerControler
      * @description Main controller for view viewPlayer.html
      */
-        .controller('ViewPlayerControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, effectiveRestAPI, personRestAPI) {
+        .controller('ViewPlayerControler', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, effectiveRestAPI, personRestAPI) {
 
+        $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('effective');
+        $translatePartialLoader.addPart('stats');
+        
+        $scope.playerId = $routeParams.playerId;
 
         $scope.user = user;
         $scope.meta = meta;
-        $scope.effective = [];
-        $scope.currentCategory = {};
+        $scope.player = {};
+        
+        $(document).ready(function(){
+            $('ul.tabs').tabs();
+        });
 
+        
+        /* get person */
+        personRestAPI.getPerson($scope.playerId).success(function (person) {
+            $log.debug(person);
+            $scope.player = person;
 
+            if (angular.isDefined($scope.player.status.positionType)) {
+                    $scope.player.positionType = $filter('translate')('stat.positionType.value.' + $scope.player.status.positionType);
+            } else {
+                $scope.player.positionType = '';
+            }
+
+            if (angular.isDefined($scope.player.status.stateForm)) {
+                $scope.player.stateForm = $filter('translate')('stat.stateForm.value.' + $scope.player.status.stateForm);
+            } else {
+                $scope.player.stateForm = '';
+            }
+
+            $scope.player.birthdate = $filter('date')($scope.player.birthdate, 'yyyy');
+            $scope.player.age = moment().format("YYYY") - $scope.player.birthdate;
+        });
     })
     //
     ;

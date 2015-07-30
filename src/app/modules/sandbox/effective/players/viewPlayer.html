@@ -4,23 +4,73 @@
 
     <!-- action bar -->
     <div class="row">
-        <div class="col s1">
-            <a href="#/private" class="btn-floating red lighten-1 tooltipped" 
-               data-position="bottom" data-delay="30" data-tooltip="{{'viewPlayer.buttons.viewStatsPlayer' | translate }}">
-                <i class="fa fa-bar-chart" ></i>
-            </a>
+        <!--card-->
+        <div class="col m4 s12 animated fadeInUp" style="-webkit-animation-duration:{{$index * 300}}ms">
+            <div class="card white lighten-1">
+                <div class="card-content center-align">
+                    <div class="card-title red-text text-lighten-1 truncate"><h4>{{player.firstname}} {{player.name}}</h4></div>
+                    <img class="circle responsive-img" src="assets/images/user.png">
+                    <p class="blue-grey-text text-darken-2">{{player.age}} {{'commons.format.ageYear' | translate }} - {{player.nationality.label}}</p>
+                    <br>
+                    <div class="row">
+                        <div class="col m1 hide-on-small-only">&nbsp;</div>
+                        <div class="col m3 s12 center-align"><a href="#/private/viewPlayer/{{player._id}}"><i class="red-text text-lighten-1 small mdi-action-face-unlock"></i></a></div>
+                        <div class="col m4 s12 center-align"><a href="#/private/updatePlayer/{{player._id}}"><i class="red-text text-lighten-1 small material-icons">mode_edit</i></a></div>
+                        <div class="col m3 s12 center-align"><a href="#/private/statPlayer/{{player._id}}"><i class="red-text text-lighten-1 small fa fa-bar-chart" ></i></a></div>
+                        <div class="col m1 .hide-on-small-only">&nbsp;</div>
+                    </div>
+                    <div class="row blue-grey darken-2">
+                        <div class="col m2 hide-on-small-only">&nbsp;</div>
+                        <div class="col m8 s12 center-align truncate white-text"><h5>{{player.positionType}}</h5></div>
+                        <div class="col m2 .hide-on-small-only">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col s10">
-            <div><h5 class="header light-green-text text-lighten-1">{{'viewPlayer.title' | translate }}</h5></div>
-        </div>
-        <div class="col s1">
-            <a href="#/private/updatePlayer" class="btn-floating red lighten-1 tooltipped" 
-               data-position="bottom" data-delay="30" data-tooltip="{{'viewPlayer.buttons.updatePlayer' | translate }}">
-                <i class="material-icons right">mode_edit</i>
-            </a>
+        
+        <!--Tabs-->
+        <div class="col m8 s12 animated fadeInUp " style="-webkit-animation-duration:{{$index * 300}}ms">
+            <div class="col m8 s12">
+                <ul class="tabs">
+                    <li class="tab"><a href="#test1" class="active blue-grey-text text-darken-2">{{'playerLabels.playerCaracterSection' | translate }}</a></li>
+                    <li class="tab"><a href="#test2" class="blue-grey-text text-darken-2">{{'playerLabels.playerContactSection' | translate }}</a></li>
+                </ul>
+            </div>
+            <div id="test1" class=" blue-grey-text text-darken-2">
+                <div class="row">
+                    <div>&nbsp;</div>
+                </div>
+                <div class="row">
+                    <div>{{'playerLabels.playerSquadNumber' | translate }} : {{player.status.squadnumber}}</div>
+                </div>
+                <div class="row">
+                    <div>{{'playerLabels.playerWeight' | translate }} : {{player.status.weight}}</div>
+                </div>
+                <div class="row">
+                    <div>{{'playerLabels.playerHeight' | translate }} : {{player.status.height}}</div>
+                </div>
+                <div class="row">
+                    <div>{{'playerLabels.playerLaterality' | translate }} : {{player.status.laterality}}</div>
+                </div>
+            </div>
+            <div id="test2" class="blue-grey-text text-darken-2">
+                <div class="row">
+                    <div>&nbsp;</div>
+                </div>
+                <div class="row">
+                    <div><i class="material-icons prefix">mail</i> : {{player.contact.email}}</div>
+                </div>
+                <div class="row">
+                    <div ><i class="material-icons prefix">phone</i> : {{player.contact.home}}</div>
+                </div>
+                <div class="row">
+                    <div ><i class="material-icons prefix">smartphone</i> : {{player.contact.cellphone}}</div>
+                </div>
+                <div class="row">
+                    <div ><i class="material-icons">home</i> : {{player.address.formatedAddress}}</div>
+                </div>
+            </div>
         </div>
     </div>
-
-   
 <!-- body end-->
 </div>
