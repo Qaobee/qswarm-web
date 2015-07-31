@@ -83,7 +83,7 @@
                 },
                 controller: function ($scope) {
                     $scope.getAvatar = function (avatar) {
-                        return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/Person/' + avatar : 'assets/images/user.png';
+                        return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/SB_Person/' + avatar : 'assets/images/user.png';
                     };
                 },
                 templateUrl: 'app/components/directives/avatar/simpleAvatar.html'
