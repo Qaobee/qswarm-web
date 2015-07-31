@@ -87,10 +87,7 @@
         <div class="col s12">    
             <ul class="collection">
                 <li class="collection-item avatar" ng-repeat="player in effective | filter:query">
-                    <a href="#/private/viewPlayer/{{player._id}}" class="red-text text-lighten-1 tooltipped" 
-                       data-position="right" data-delay="30" data-tooltip="{{'mainEffective.buttons.viewPlayer' | translate }}">
-                        <img src="assets/images/user.png" alt="" class="circle responsive-img">
-                    </a>
+                    <simple-avatar person="player" link="('#/private/viewPlayer/' + player._id)"></simple-avatar>
                     <a href="" ng-click="modalDetails(player)" class="modal-trigger title red-text text-lighten-1">{{player.firstname}} {{player.name}}</a> 
                     <span class="title  hide-on-small-only">{{player.positionType}}</span>
                     <p>
@@ -118,7 +115,7 @@
                         <div class="row">
                             <div class="col m3 s12">
                                 <div class="card-title red-text text-lighten-1"><h4>{{player.firstname}} {{player.name}}</h4></div>
-                                <img class="circle responsive-img" src="assets/images/user.png">
+                                <simple-avatar person="player" width="'200px'" link="('#/private/viewPlayer/' + player._id)"></simple-avatar>
                                 <div class="blue-grey-text text-darken-2"><h3>{{player.status.squadnumber}}</h3></div>
                             </div>
                             <div class="col m9 s12">

@@ -14,16 +14,14 @@
             /* angular module */
             'angularFileUpload'
         ])
-        .directive('qavatar', function (FileUploader, $window, $rootScope, $log, EnvironmentConfig) {
+        .directive('avatar', function (FileUploader, $window, $rootScope, $log, EnvironmentConfig) {
             return {
                 restrict: 'AE',
                 scope: {
                     person: '=',
                     width: '='
                 },
-                controller: function ($scope, FileUploader, $modal) {
-                    var modal;
-                    var modalOpened = false;
+                controller: function ($scope, FileUploader) {
                     $scope.showSpinner = false;
                     $scope.uploader = new FileUploader({
                         headers: {
@@ -34,25 +32,12 @@
 
                     });
                     $scope.getAvatar = function (avatar) {
-                        return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/Person/' + avatar : 'imgs/user.png';
+                        return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/SB_Person/' + avatar : 'assets/images/user.png';
                     };
-                    $scope.modifyAvatar = function () {
-                        modalOpened = true;
-                        modal = $modal.open({
-                            templateUrl: 'app/components/directives/setAvatarIndividuModal.html',
-                            controller: 'setAvatarIndividuModalCtrl',
-                            backdrop: 'true',
-                            scope: $scope,
-                            size: 'md'
-                        }).result.then(function () {
-                                modalOpened = false;
-                            }, function () {
-                                modalOpened = false;
-                            });
-                    };
+                    
                     $scope.$watch('person', function (newValue, oldValue) {
                         if (angular.isDefined(newValue) && !angular.equals(oldValue, newValue)) {
-                            $scope.uploader.url = EnvironmentConfig.apiEndPoint + '/file/Person/avatar/' + newValue._id;
+                            $scope.uploader.url = EnvironmentConfig.apiEndPoint + '/file/SB_Person/avatar/' + newValue._id;
                         }
                     });
 
@@ -84,12 +69,7 @@
                         //  $scope.showSpinner = false;
                     };
                 },
-                templateUrl: 'app/components/directives/avatar.html'
-            };
-        })
-        .controller('setAvatarIndividuModalCtrl', function ($scope, $modalInstance) {
-            $scope.cancel = function () {
-                $modalInstance.dismiss('cancel');
+                templateUrl: 'app/components/directives/avatar/avatar.html'
             };
         })
 
@@ -103,10 +83,10 @@
                 },
                 controller: function ($scope) {
                     $scope.getAvatar = function (avatar) {
-                        return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/Person/' + avatar : 'imgs/user.png';
+                        return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/Person/' + avatar : 'assets/images/user.png';
                     };
                 },
-                templateUrl: 'app/components/directives/simpleAvatar.html'
+                templateUrl: 'app/components/directives/avatar/simpleAvatar.html'
             };
         });
 }());
