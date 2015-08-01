@@ -47,10 +47,6 @@
         $scope.meta = meta;
         $scope.player = {};
         
-        $(document).ready(function(){
-            $('ul.tabs').tabs();
-        });
-        
         // return button
         $scope.doTheBack = function() {
             $window.history.back();

@@ -5,15 +5,19 @@
     <!-- action bar -->
     <div class="row">
         <div class="col s12">
-            <div>
+            <div ng-hide="addPlayerTitle">
                 <h5 class="header light-green-text text-lighten-1">
                     <i class="material-icons btn-floating white-text red lighten-1 center">mode_edit</i> {{'updatePlayer.title' | translate }}</h5>
+            </div>
+            <div ng-show="addPlayerTitle">
+                <h5 class="header light-green-text text-lighten-1">
+                    <i class="material-icons btn-floating white-text red lighten-1 center">mode_edit</i> {{'addPlayer.title' | translate }}</h5>
             </div>
         </div>
     </div>
     
     <div class="row">
-        <wizard on-finish="addPerson()" template="app/components/directives/wizard/wizard.html"> 
+        <wizard on-finish="writePerson()" template="app/components/directives/wizard/wizard.html"> 
             
             <!-- step etat civil -->
             <wz-step title="{{'playerLabels.playerCivilSection' | translate }}" template="app/components/directives/wizard/step.html">

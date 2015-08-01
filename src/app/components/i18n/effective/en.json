@@ -19,10 +19,11 @@
     
     "addPlayer": {
         "title": "Add a person",
-        "toastSuccess":"{{firstname}} {{name}} was added to the effective"
+        "toastSuccess":"{{firstname}} {{name}} was added to the effective {{effective}}"
     },
     "updatePlayer": {
         "title": "Update player"
+        "toastSuccess":"{{firstname}} {{name}} was updated"
     },
     "viewPlayer": {
         "title": "Player sheet of",

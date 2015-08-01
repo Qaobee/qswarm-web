@@ -26,7 +26,7 @@
                     user: metaDatasProvider.checkUser,
                     meta: metaDatasProvider.getMeta
                 },
-                templateUrl: 'app/modules/sandbox/effective/players/updatePlayer.html'
+                templateUrl: 'app/modules/sandbox/effective/players/writePlayer.html'
 
             });
         })
@@ -48,6 +48,8 @@
         $scope.player = {};
         $scope.currentCategory = {};
         $scope.positionsType = {};
+        
+        $scope.addPlayerTitle = false;
         
         // return button
         $scope.doTheBack = function() {
@@ -77,7 +79,6 @@
         
         /* get person */
         personRestAPI.getPerson($scope.playerId).success(function (person) {
-            $log.debug(person);
             $scope.player = person;
 
             if (angular.isDefined($scope.player.status.positionType)) {
@@ -92,9 +93,21 @@
                 $scope.player.stateForm = '';
             }
 
-            $scope.player.birthdate = $filter('date')($scope.player.birthdate, 'yyyy');
-            $scope.player.age = moment().format("YYYY") - $scope.player.birthdate;
+            $scope.player.birthdate = new Date(moment($scope.player.birthdate));
         });
+        
+        /* update person */
+        $scope.writePerson = function () {
+            personRestAPI.updatePerson($scope.player).success(function (person) {
+
+                toastr.success($filter('translate')('updatePlayer.toastSuccess', {
+                    firstname: person.firstname,
+                    name: person.name
+                }));
+
+                $window.history.back();
+            });
+        };
     })
     //
     ;

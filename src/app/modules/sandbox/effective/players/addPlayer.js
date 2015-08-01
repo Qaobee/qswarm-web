@@ -29,7 +29,7 @@
                     user: metaDatasProvider.checkUser,
                     meta: metaDatasProvider.getMeta
                 },
-                templateUrl: 'app/modules/sandbox/effective/players/addPlayer.html'
+                templateUrl: 'app/modules/sandbox/effective/players/writePlayer.html'
 
             });
         })
@@ -50,6 +50,8 @@
         $scope.effective = [];
         $scope.currentCategory = {};
         $scope.positionsType = {};
+        
+        $scope.addPlayerTitle = true;
         
         //Initialisation du nouveau joueur
         $scope.player = {
@@ -90,8 +92,9 @@
         });
         
         /* Create a new person and add to effective */
-        $scope.addPerson = function () {
+        $scope.writePerson = function () {
             
+            $log.log($scope.player);
             $scope.player.name = $scope.player.name.capitalize(true);
             $scope.player.firstname = $scope.player.firstname.capitalize(true);
             $log.debug($scope.player);
