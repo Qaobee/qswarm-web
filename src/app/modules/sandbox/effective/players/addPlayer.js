@@ -84,9 +84,6 @@
         $scope.optionsAdr = null;
         $scope.detailsAdr = '';
         
-        $log.debug($scope.meta);
-        $log.debug($scope.user);
-        
         /* Retrieve list of positions type */
         activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listPositionType').success(function (data) {
             $scope.positionsType = data;
@@ -105,7 +102,6 @@
 
             /* add person */
             personRestAPI.addPerson(dataContainer).success(function (person) {
-                $log.debug(person);
                 
                 /* add player in effective*/
                 effectiveRestAPI.getListMemberEffective($scope.meta._id, $scope.currentCategory.code).success(function (data) {
@@ -126,7 +122,8 @@
                         effectiveRestAPI.update(effective).success(function (data) {
                             toastr.success($filter('translate')('addPlayer.toastSuccess', {
                             firstname: person.firstname,
-                            name: person.name
+                            name: person.name,
+                            effective: effective.categoryAge.label
                         }));
 
                         $location.path('private/effective');

@@ -19,6 +19,7 @@
             'reCAPTCHA',  
             'tmh.dynamicLocale',
             'angularFileUpload',
+            'ui.mask',
             
             /* qaobee shared directives */
             'qaobee.commonsDirectives',

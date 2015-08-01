@@ -5,8 +5,224 @@
     <!-- action bar -->
     <div class="row">
         <div class="col s12">
-            <div><h5 class="header light-green-text text-lighten-1">{{'updatePlayer.title' | translate }}</h5></div>
+            <div>
+                <h5 class="header light-green-text text-lighten-1">
+                    <i class="material-icons btn-floating white-text red lighten-1 center">mode_edit</i> {{'updatePlayer.title' | translate }}</h5>
+            </div>
         </div>
+    </div>
+    
+    <div class="row">
+        <wizard on-finish="addPerson()" template="app/components/directives/wizard/wizard.html"> 
+            
+            <!-- step etat civil -->
+            <wz-step title="{{'playerLabels.playerCivilSection' | translate }}" template="app/components/directives/wizard/step.html">
+                <div class="row"></div>
+                <form novalidate class="col s12" name="playerCivilSection">
+                    
+                    <div class="row">
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        <div class="input-field col m3 s6">
+                          <input ng-model="player.firstname" id="playerFirstname" type="text" class="validate form-control" required>
+                          <label for="playerFirstname">{{'playerLabels.playerFirstname' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                        </div>
+                        <div class="input-field col m3 s6">
+                          <input ng-model="player.name" id="playerName" type="text" class="validate form-control" required>
+                          <label for="playerName">{{'playerLabels.playerName' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                        </div>
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        <div class="col m3 s12">
+                            <div class="row">
+                                <div class="input-field col m12 s6">
+                                    <label>{{'playerLabels.playerGender' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                                </div>
+                                <div class="input-field col m12 s6 center-align">
+                                    <div class="hide-on-med-and-down"><br/></div>
+                                    <input name="gender" class="with-gap" type="radio" id="playerGenderF" value="{{'playerLabels.playerGenderF' | translate }}"
+                                               ng-model="player.gender" required/>
+                                    <label for="playerGenderF">{{'playerLabels.playerGenderF' | translate }}</label>
+                        
+                                    <input name="gender" class="with-gap" type="radio" id="playerGenderM" value="{{'playerLabels.playerGenderM' | translate }}"
+                                       ng-model="player.gender" required/>
+                                    <label for="playerGenderM">{{'playerLabels.playerGenderM' | translate }}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col m3 s12">
+                            <div class="row">
+                                <div class="input-field col m12 s6">
+                                    <label>{{'playerLabels.playerBirthdate' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                                </div>
+                                <div class="input-field col m12 s6">
+                                    <div class="hide-on-med-and-down"><br/></div>
+                                    <input ng-model="player.birthdate" id="playerBirthdate" type="date" class="validate" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
+                        
+                    <div class="row">
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        <div class="input-field col m3 s6">
+                          <input type="text" id="playerNationality" class="form-control" ng-autocomplete ng-model="player.nationality" details="detailsCountry" options="optionsCountry" placeholder="" />
+                          <label for="playerNationality">{{'playerLabels.playerNationality' | translate }}</label>
+                        </div>
+                        <div class="input-field col m3 s6">
+                          <input type="text" id="playerBirthCity" class="form-control" ng-autocomplete ng-model="player.birthCity" details="detailsCity" options="optionsCity" placeholder="" />
+                          <label for="playerBirthCity">{{'playerLabels.playerBirthCity' | translate }}</label>
+                        </div>
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
+                    
+                    <!-- actions buttons -->
+                    <div class="row">&nbsp;</div>
+                    <div class="row">
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        <div class="col m6 s12 center">
+                            <a href="#/private/effective" class="btn red lighteen-1 white-text">{{'commons.buttons.cancel' | translate }}</a>
+                            &nbsp;
+                            <button class="btn white-text blue-grey darken-3" wz-next type="submit" name="next" ng-hide="playerCivilSection.$invalid">{{'commons.buttons.next' | translate }}</button>
+                        </div>
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
+                </form>
+            </wz-step>
+            
+            <!-- step caracteristiques -->
+            <wz-step title="{{'playerLabels.playerCaracterSection' | translate }}" template="app/components/directives/wizard/step.html">
+                <div class="row"></div>
+                <form novalidate name="playerCaracterSection">
+                    <div class="row">
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        <div class="input-field col m3 s6">
+                            <label>{{'playerLabels.playerPositionType' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                            <select class="browser-default" ng-model="player.status.positionType" required id="playerPositionType"
+                                    ng-options="p.code as p.label for p in positionsType">
+                            </select>
+                        </div>
+                        <div class="input-field col m3 s6">
+                            <input id="playerSquadNumber" type="number" class="validate" min="0" ng-model="player.status.squadnumber">
+                            <label for="playerSquadNumber">{{'playerLabels.playerSquadNumber' | translate }}</label>
+                        </div>
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
+                    <div class="row">
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        <div class="input-field col m3 s6">
+                            <input id="playerWeight" type="number" class="validate" min="0" ng-model="player.status.weight" value="player.status.weight">
+                            <label for="playerWeight">{{'playerLabels.playerWeight' | translate }}</label>
+                        </div>
+                        <div class="input-field col m3 s6">
+                            <input id="playerHeight" type="number" class="validate" min="0" ng-model="player.status.height">
+                            <label for="playerHeight">{{'playerLabels.playerHeight' | translate }}</label>
+                        </div>
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
+                    <div class="row">
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        <div class="input-field col m6 s12"><label>{{'playerLabels.playerLaterality' | translate }}</label></div>
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        <div class="input-field col m6 s12 center-align"> 
+                            <input name="laterality" class="with-gap" type="radio" id="playerLateralityA" value="{{'playerLabels.playerLateralityA' | translate }}" ng-model="player.status.laterality" />
+                            <label for="playerLateralityA">{{'playerLabels.playerLateralityA' | translate }}</label>
+                        
+                            <input name="laterality" class="with-gap" type="radio" id="playerLateralityL" value="{{'playerLabels.playerLateralityL' | translate }}" ng-model="player.status.laterality" />
+                            <label for="playerLateralityL">{{'playerLabels.playerLateralityL' | translate }}</label>
+                        
+                            <input name="laterality" class="with-gap" type="radio" id="playerLateralityR" value="{{'playerLabels.playerLateralityR' | translate }}" ng-model="player.status.laterality" />
+                            <label for="playerLateralityR">{{'playerLabels.playerLateralityR' | translate }}</label>
+                        </div>
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
+                    
+                    <!-- actions buttons -->
+                    <div class="row">&nbsp;</div>
+                    <div class="row">
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        <div class="col m6 s12 center-align">
+                            <a href="#/private/effective" class="btn red lighteen-1 white-text">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
+                            <button class="btn white-text blue-grey darken-3" wz-previous type="submit" name="previous">{{'commons.buttons.previous' | translate }}</button>&nbsp;
+                            <button class="btn white-text blue-grey darken-3" wz-next type="submit" name="next" ng-hide="playerCaracterSection.$invalid">{{'commons.buttons.next' | translate }}</button>
+                        </div>
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
+                </form>
+            </wz-step>
+            
+            <!-- step contact -->
+            <wz-step title="{{'playerLabels.playerContactSection' | translate }}" template="app/components/directives/wizard/step.html">
+                <div class="row"></div>
+                <form novalidate name="playerContactSection">
+                    <div class="row">
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        <div class="input-field col m2 s4">
+                            <i class="material-icons prefix">mail</i>
+                            <label for="playerMail">{{'playerLabels.playerMail' | translate }}</label>
+                        </div>
+                        <div class="input-field col m4 s8">
+                            <input id="playerMail" type="email" class="validate" ng-model="player.contact.email">                            
+                        </div>
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
+                    <div class="row">
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        <div class="input-field col m2 s4">
+                            <i class="material-icons prefix">phone</i>
+                            <label for="playerTelHome">{{'playerLabels.playerTelHome' | translate }}</label>
+                        </div>
+                        <div class="input-field col m4 s8">
+                            <input id="playerTelMobile" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" 
+                                   class="validate" min="0" ng-model="player.contact.home">
+                        </div>
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
+                     <div class="row">
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        <div class="input-field col m2 s4">
+                            <i class="material-icons prefix">smartphone</i>
+                            <label for="playerTelMobile">{{'playerLabels.playerTelMobile' | translate }}</label>
+                        </div>
+                        <div class="input-field col m4 s8">
+                            <input id="playerTelMobile" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}"
+                                   class="validate" min="0" ng-model="player.contact.cellphone">
+                        </div>
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
+                    
+                     <div class="row">
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        <div class="input-field col m2 s4">
+                            <i class="material-icons prefix">home</i>
+                            <label for="playerAddress">{{'playerLabels.playerAddress' | translate }}</label>
+                        </div>
+                        <div class="input-field col m4 s8">
+                            <input type="text" id="Autocomplete" class="form-control" ng-autocomplete ng-model="player.address.formatedAddress" details="detailsAdr" options="optionsAdr" placeholder=""/>
+                        </div>
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
+                    
+                    
+                    <!-- actions buttons -->
+                    <div class="row">&nbsp;</div>
+                    <div class="row">
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        <div class="col m6 s12 center-align">
+                            <a href="#/private/effective" class="btn red lighteen-1 white-text">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
+                            <button class="btn white-text blue-grey darken-3" wz-previous type="submit" name="previous">{{'commons.buttons.previous' | translate }}</button>&nbsp;
+                            <a wz-next class="btn white-text green darken-1">{{'commons.buttons.validate' | translate }}</a>
+                        </div>
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
+                </form>
+            </wz-step>
+        </wizard>
     </div>
 
    

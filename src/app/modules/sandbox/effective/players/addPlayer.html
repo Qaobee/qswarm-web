@@ -162,38 +162,48 @@
                 <form novalidate name="playerContactSection">
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="input-field col m6 s12">
+                        <div class="input-field col m2 s4">
                             <i class="material-icons prefix">mail</i>
-                            <input id="playerMail" type="email" class="validate" ng-model="player.contact.email">
                             <label for="playerMail">{{'playerLabels.playerMail' | translate }}</label>
+                        </div>
+                        <div class="input-field col m4 s8">
+                            <input id="playerMail" type="email" class="validate" ng-model="player.contact.email">                            
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="input-field col m6 s12">
+                        <div class="input-field col m2 s4">
                             <i class="material-icons prefix">phone</i>
-                            <input id="playerTelMobile" type="number" class="validate" min="0" ng-model="player.contact.home">
                             <label for="playerTelHome">{{'playerLabels.playerTelHome' | translate }}</label>
+                        </div>
+                        <div class="input-field col m4 s8">
+                            <input id="playerTelMobile" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" 
+                                   class="validate" min="0" ng-model="player.contact.home">
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
                      <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="input-field col m6 s12">
+                        <div class="input-field col m2 s4">
                             <i class="material-icons prefix">smartphone</i>
-                            <input id="playerTelMobile" type="tel" class="validate" min="0" ng-model="player.contact.cellphone">
                             <label for="playerTelMobile">{{'playerLabels.playerTelMobile' | translate }}</label>
+                        </div>
+                        <div class="input-field col m4 s8">
+                            <input id="playerTelMobile" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}"
+                                   class="validate" min="0" ng-model="player.contact.cellphone">
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
                     
                      <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="input-field col m6 s12">
+                        <div class="input-field col m2 s4">
                             <i class="material-icons prefix">home</i>
-                            <input type="text" id="Autocomplete" class="form-control" ng-autocomplete ng-model="player.address.formatedAddress" details="detailsAdr" options="optionsAdr" placeholder=""/>
                             <label for="playerAddress">{{'playerLabels.playerAddress' | translate }}</label>
+                        </div>
+                        <div class="input-field col m4 s8">
+                            <input type="text" id="Autocomplete" class="form-control" ng-autocomplete ng-model="player.address.formatedAddress" details="detailsAdr" options="optionsAdr" placeholder=""/>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -206,7 +216,7 @@
                         <div class="col m6 s12 center-align">
                             <a href="#/private/effective" class="btn red lighteen-1 white-text">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
                             <button class="btn white-text blue-grey darken-3" wz-previous type="submit" name="previous">{{'commons.buttons.previous' | translate }}</button>&nbsp;
-                            <a wz-next class="btn white-text green darken-1" ng-hide="playerContactSection.$invalid">{{'commons.buttons.validate' | translate }}</a>
+                            <a wz-next class="btn white-text green darken-1">{{'commons.buttons.validate' | translate }}</a>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
