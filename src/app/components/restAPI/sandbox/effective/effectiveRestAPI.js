@@ -13,6 +13,21 @@
         return {
             /**
              * @memberOf qaobee.components.restAPI.sandbox.effective.EffectiveRestAPI
+             * @function getEffective()
+             * @description retrieve an effective by this Id
+             * @param {String}
+             *            effectiveId : id of effective
+             * @returns {String} com.qaobee.hive.business.model.sandbox.effective.SB_Effective
+             */
+            getEffective : function(effectiveId) {
+                return $http({
+                    url: effectiveAPIURL + '/get?_id=' + effectiveId,
+                    method: 'GET'
+                });
+            },
+            
+            /**
+             * @memberOf qaobee.components.restAPI.sandbox.effective.EffectiveRestAPI
              * @function getListMemberEffective()
              * @description retrieve list of member for a sandbox Config and a category age
              * @param {String}

@@ -32,19 +32,16 @@
 
             /**
              * @memberOf qaobee.components.restAPI.sandbox.effective.PersonRestAPI
-             * @function getListPersonStructure()
-             * @description retrieve list of person for a structure
+             * @function getListPersonSandbox()
+             * @description retrieve list of person for sandbox's user
              * @param {String}
-             *            seasonCode : the code season
-             * @param {String}
-             *            structureId : structure id
+             *            sandboxId : the sandbox id
              * @returns {Array} com.qaobee.hive.business.model.sandbox.effective.SB_Person
              */
-            getListPersonStructure : function(seasonCode, structureId) {
+            getListPersonSandbox : function(sandboxId) {
                 return $http({
-                    url : personAPIURL + 'listStructure',
-                    method : 'POST',
-                    data: {seasonCode: seasonCode, structureId: structureId}
+                    url : personAPIURL + '/listSandbox/?sandboxId=' + sandboxId,
+                    method : 'get'
                 });
             },
 
@@ -74,7 +71,7 @@
              */
             getPerson : function(id) {
                 return $http({
-                    url : personAPIURL + '/get' + '/?_id=' + id,
+                    url : personAPIURL + '/get/?_id=' + id,
                     method : 'GET'
                 });
             },

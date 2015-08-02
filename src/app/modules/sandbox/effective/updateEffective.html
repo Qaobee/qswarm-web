@@ -8,6 +8,46 @@
             <div><h5 class="header light-green-text text-lighten-1">{{'updateEffective.title' | translate }}</h5></div>
         </div>
     </div>
+    
+    <div class="row">
+        <div class="col s6">
+            <tags-input ng-model="members" display-property="name" placeholder="Add a player" 
+                replace-spaces-with-dashes="false" template="ngTagsInput/tag-template">
+                <auto-complete source="loadPerson($query)" min-length="0" load-on-focus="true" load-on-empty="true"
+                    max-results-to-show="32" template="ngTagsInput/autocomplete-template"></auto-complete
+            </tags-input>
+        </div>
+    
+        <div class="col s6">
+            <p>Model: {{members}}</p>
+        </div>
+    </div>
+    
+    
+    
+    <!-- TEMPLATE FOR TAGS-INPUTS -->
+    <script type="text/ng-template" id="ngTagsInput/tag-template">
+      <div class="tag-template">
+        <simple-avatar person="player" width="'25px'" link="('#/private/viewPlayer/' + player._id)"></simple-avatar>
+                &nbsp;
+                <small>{{data.name}}</small>
+                <a ng-click="$removeTag()" href=""><i class="material-icons circle red ligthen-1 white-text">clear</i></a>
+            
+      </div>
+    </script>
+    
+    <script type="text/ng-template" id="ngTagsInput/autocomplete-template">
+      <div class="autocomplete-template">
+        <div class="left-panel">
+          <simple-avatar person="player" width="'50px'" link=""></simple-avatar>
+        </div>
+        <div class="right-panel">
+          <span ng-bind-html="$highlight($getDisplayText())"></span>
+          <span>({{data.name}})</span>
+          <span>{{data.firstname}}</span>
+        </div>
+      </div>
+    </script>
 
    
 <!-- body end-->

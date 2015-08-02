@@ -70,7 +70,7 @@
             }
 
             $scope.player.birthdate = $filter('date')($scope.player.birthdate, 'yyyy');
-            $scope.player.age = moment().format("YYYY") - $scope.player.birthdate;
+            $scope.player.age = moment().format('YYYY') - $scope.player.birthdate;
         });
     })
     //

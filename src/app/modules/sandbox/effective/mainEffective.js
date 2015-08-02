@@ -58,6 +58,7 @@
         $scope.user = user;
         $scope.meta = meta;
         $scope.effective = [];
+        $scope.currentEffective = {};
         $scope.currentCategory = {};
 
         $('.collapsible').collapsible({accordion : false});
@@ -69,6 +70,7 @@
 
             effectiveRestAPI.getListMemberEffective($scope.meta._id, $scope.currentCategory.code).success(function (data) {
                 
+                $scope.currentEffective = data[0];
                 /* build list id for request API person */   
                 var listId = [];
                 data.forEach(function (a) {
