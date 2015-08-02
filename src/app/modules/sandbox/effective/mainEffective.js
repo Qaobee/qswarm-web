@@ -80,7 +80,7 @@
                     });
                 });
 
-                var listField = ['_id', 'name', 'firstname', 'avatar', 'status', 'birthdate'];
+                var listField = ['_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact'];
 
                 /* retrieve person information */
                 personRestAPI.getListPerson(listId, listField).success(function (data) {
@@ -109,6 +109,10 @@
         };
         
         $scope.getEffective();
+        $scope.modalDetails = function(player){
+            $scope.player = player;
+            $('#modalDetails').openModal();
+        };
     })
     //
     ;

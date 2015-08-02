@@ -5,87 +5,67 @@
     <!-- action bar -->
     <div class="row">
         <!--card-->
-        <div class="col m4 s12 animated fadeInUp" style="-webkit-animation-duration:{{$index * 100}}ms">
+        <div class="col m12 s12 animated fadeInUp" style="-webkit-animation-duration:{{$index * 100}}ms">
             <div class="card white lighten-1">
                 <div class="card-content center-align">
-                    <div class="card-title red-text text-lighten-1 truncate"><h4>{{player.firstname}} {{player.name}}</h4></div>
-                    <img class="circle responsive-img" src="assets/images/user.png">
-                    <p class="blue-grey-text text-darken-2">{{player.age}} {{'commons.format.ageYear' | translate }} - {{player.nationality.label}}</p>
-                    <br>
                     <div class="row">
+                        <div class="col m4 s12">
+                            <div class="card-title red-text text-lighten-1"><h4>{{player.firstname}} {{player.name}}</h4></div>
+                            <avatar person="player" width="'200px'"></avatar>
+                            <div class="blue-grey-text text-darken-2"><h3># {{player.status.squadnumber}}</h3></div>
+                        </div>
                         <div class="col m1 hide-on-small-only">&nbsp;</div>
-                        <div class="col m3 s12 center-align">
-                            <a href="">
-                                <i class="material-icons red-text text-lighten-1 small tooltipped" ng-click="doTheBack()" 
-                                   data-position="down" data-delay="20" data-tooltip="{{'viewPlayer.buttons.returnViewPlayer' | translate }}">undo</i>
-                            </a>
+                        <div class="col m3 s12">
+                            <div class="row blue-grey-text text-darken-2 left-align"><h5>{{'playerLabels.playerCivilSection' | translate }}</h5></div>
+                            <div class="row"><div class="divider red lighten-1"></div></div>
+                            <div class="row blue-grey-text text-darken-2 left-align">{{player.age}} {{'commons.format.ageYear' | translate }} - {{player.nationality.label}}</div>
                         </div>
-                        <div class="col m4 s12 center-align">
-                            <a href="#/private/updatePlayer/{{player._id}}">
-                                <i class="red-text text-lighten-1 small material-icons tooltipped" 
-                                data-position="down" data-delay="20" data-tooltip="{{'viewPlayer.buttons.updatePlayer' | translate }}">mode_edit</i>
-                            </a>
-                        </div>
-                        <div class="col m3 s12 center-align">
-                            <a href="#/private/statPlayer/{{player._id}}">
-                                <i class="red-text text-lighten-1 small fa fa-bar-chart tooltipped" 
-                                data-position="down" data-delay="20" data-tooltip="{{'viewPlayer.buttons.viewStatsPlayer' | translate }}"></i>
-                            </a>
-                        </div>
-                        <div class="col m1 .hide-on-small-only">&nbsp;</div>
-                    </div>
-                    <div class="row blue-grey darken-2">
-                        <div class="col m2 hide-on-small-only">&nbsp;</div>
-                        <div class="col m8 s12 center-align truncate white-text"><h5>{{player.positionType}}</h5></div>
-                        <div class="col m2 .hide-on-small-only">&nbsp;</div>
+                        <div class="col m1 hide-on-small-only">&nbsp;</div>
+                        <div class="col m3 s12">
+                            <div class="row blue-grey-text text-darken-2 left-align"><h5>{{'playerLabels.playerCaracterSection' | translate }}</h5></div>
+                            <div class="row"><div class="divider red lighten-1"></div></div>                            
+                            <div class="row blue-grey-text text-darken-2 left-align">{{'playerLabels.playerWeight' | translate }} : {{player.status.weight}}</div>
+                            <div class="row blue-grey-text text-darken-2 left-align">{{'playerLabels.playerHeight' | translate }} : {{player.status.height}}</div>
+                            <div class="row blue-grey-text text-darken-2 left-align">{{'playerLabels.playerLaterality' | translate }} : {{player.status.laterality}}</div>
+                            <div class="row blue-grey-text text-darken-2 left-align">{{'playerLabels.playerPositionType' | translate }} : {{player.positionType}}</div>
+                        </div> 
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <!--Tabs-->
-        <div class="col m8 s12 animated fadeInUp " style="-webkit-animation-duration:{{$index * 100}}ms">
-            <div class="col m8 s12">
-                <ul class="tabs">
-                    <li class="tab"><a href="#test1" class="active blue-grey-text text-darken-2">{{'playerLabels.playerCaracterSection' | translate }}</a></li>
-                    <li class="tab"><a href="#test2" class="blue-grey-text text-darken-2">{{'playerLabels.playerContactSection' | translate }}</a></li>
-                </ul>
-            </div>
-            <div id="test1" class=" blue-grey-text text-darken-2">
+                    
+                <div class="row m12 s12"><div class="divider red lighten-1"></div></div>
                 <div class="row">
-                    <div>&nbsp;</div>
+                    <div class="col m4 s12 center-align">
+                        <a href="">
+                            <i class="material-icons red-text text-lighten-1 small tooltipped" ng-click="doTheBack()" 
+                               data-position="top" data-delay="20" data-tooltip="{{'viewPlayer.buttons.returnViewPlayer' | translate }}">undo</i>
+                        </a>
+                    </div>
+                    <div class="col m4 s12 center-align">
+                        <a href="#/private/updatePlayer/{{player._id}}">
+                            <i class="red-text text-lighten-1 small material-icons tooltipped" 
+                            data-position="top" data-delay="20" data-tooltip="{{'viewPlayer.buttons.updatePlayer' | translate }}">mode_edit</i>
+                        </a>
+                    </div>
+                    <div class="col m4 s12 center-align">
+                        <a href="#/private/statPlayer/{{player._id}}">
+                            <i class="red-text text-lighten-1 small fa fa-bar-chart tooltipped" 
+                            data-position="top" data-delay="20" data-tooltip="{{'viewPlayer.buttons.viewStatsPlayer' | translate }}"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="row">
-                    <div>{{'playerLabels.playerSquadNumber' | translate }} : {{player.status.squadnumber}}</div>
+                    
+                <div class="row blue-grey darken-2 white-text center-align">
+                    <div class="col m12 s12"><h5>{{'playerLabels.playerContactSection' | translate }}</h5></div>
                 </div>
-                <div class="row">
-                    <div>{{'playerLabels.playerWeight' | translate }} : {{player.status.weight}}</div>
-                </div>
-                <div class="row">
-                    <div>{{'playerLabels.playerHeight' | translate }} : {{player.status.height}}</div>
-                </div>
-                <div class="row">
-                    <div>{{'playerLabels.playerLaterality' | translate }} : {{player.status.laterality}}</div>
-                </div>
-            </div>
-            <div id="test2" class="blue-grey-text text-darken-2">
-                <div class="row">
-                    <div>&nbsp;</div>
-                </div>
-                <div class="row">
-                    <div><i class="material-icons prefix">mail</i> : {{player.contact.email}}</div>
-                </div>
-                <div class="row">
-                    <div ><i class="material-icons prefix">phone</i> : {{player.contact.home}}</div>
-                </div>
-                <div class="row">
-                    <div ><i class="material-icons prefix">smartphone</i> : {{player.contact.cellphone}}</div>
-                </div>
-                <div class="row">
-                    <div ><i class="material-icons">home</i> : {{player.address.formatedAddress}}</div>
+                <div class="row m12 s12 center-align">
+                    <div class="col m3 s12"><i class="material-icons">mail</i> <br/> {{player.contact.email}}</div>
+                    <div class="col m3 s12"><i class="material-icons">phone</i> <br/> {{player.contact.home}}</div>
+                    <div class="col m3 s12"><i class="material-icons">smartphone</i> <br/> {{player.contact.cellphone}}</div>
+                    <div class="col m3 s12"><i class="material-icons">home</i> <br/> {{player.address.formatedAddress}}</div>
                 </div>
             </div>
         </div>
     </div>
+    
 <!-- body end-->
 </div>

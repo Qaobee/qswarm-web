@@ -19,10 +19,11 @@
     
     "addPlayer": {
         "title": "Ajout d'un joueur",
-        "toastSuccess":"{{firstname}} {{name}} a été ajouté à l'effectif"
+        "toastSuccess":"{{firstname}} {{name}} a été ajouté à l'effectif {{effective}}"
     },
     "updatePlayer": {
-        "title": "Modification du joueur"
+        "title": "Modification du joueur",
+        "toastSuccess":"{{firstname}} {{name}} a bien été modifié"
     },
     "viewPlayer": {
         "title": "Fiche joueur de",

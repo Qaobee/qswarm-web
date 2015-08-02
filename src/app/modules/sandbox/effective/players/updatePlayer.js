@@ -20,13 +20,13 @@
 
         .config(function ($routeProvider, metaDatasProvider) {
 
-            $routeProvider.when('/private/updatePlayer', {
+            $routeProvider.when('/private/updatePlayer/:playerId', {
                 controller: 'UpdatePlayerControler',
                 resolve: {
                     user: metaDatasProvider.checkUser,
                     meta: metaDatasProvider.getMeta
                 },
-                templateUrl: 'app/modules/sandbox/effective/players/updatePlayer.html'
+                templateUrl: 'app/modules/sandbox/effective/players/writePlayer.html'
 
             });
         })
@@ -35,16 +35,79 @@
      * @class qaobee.modules.sandbox.effective.UpdatePlayerControler
      * @description Main controller for view updatePlayer.html
      */
-        .controller('UpdatePlayerControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, effectiveRestAPI, personRestAPI) {
+        .controller('UpdatePlayerControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, activityCfgRestAPI, personRestAPI) {
 
+        $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('effective');
+        $translatePartialLoader.addPart('stats');
+        
+        $scope.playerId = $routeParams.playerId;
 
         $scope.user = user;
         $scope.meta = meta;
-        $scope.effective = [];
+        $scope.player = {};
         $scope.currentCategory = {};
+        $scope.positionsType = {};
+        
+        $scope.addPlayerTitle = false;
+        
+        // return button
+        $scope.doTheBack = function() {
+            $window.history.back();
+        };
+        
+        /* init ngAutocomplete*/
+        $scope.options = {};
+        $scope.options.watchEnter = true;
+        $scope.optionsCountry = {
+            types: 'geocode'
+        };
+        $scope.detailsCountry = '';
+        
+        $scope.optionsCity = {
+            types: '(cities)'
+        };
+        $scope.detailsCity = '';
+        
+        $scope.optionsAdr = null;
+        $scope.detailsAdr = '';
+        
+        /* Retrieve list of positions type */
+        activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listPositionType').success(function (data) {
+            $scope.positionsType = data;
+        });
+        
+        /* get person */
+        personRestAPI.getPerson($scope.playerId).success(function (person) {
+            $scope.player = person;
 
+            if (angular.isDefined($scope.player.status.positionType)) {
+                    $scope.player.positionType = $filter('translate')('stat.positionType.value.' + $scope.player.status.positionType);
+            } else {
+                $scope.player.positionType = '';
+            }
 
+            if (angular.isDefined($scope.player.status.stateForm)) {
+                $scope.player.stateForm = $filter('translate')('stat.stateForm.value.' + $scope.player.status.stateForm);
+            } else {
+                $scope.player.stateForm = '';
+            }
+
+            $scope.player.birthdate = new Date(moment($scope.player.birthdate));
+        });
+        
+        /* update person */
+        $scope.writePerson = function () {
+            personRestAPI.updatePerson($scope.player).success(function (person) {
+
+                toastr.success($filter('translate')('updatePlayer.toastSuccess', {
+                    firstname: person.firstname,
+                    name: person.name
+                }));
+
+                $window.history.back();
+            });
+        };
     })
     //
     ;

@@ -57,15 +57,18 @@
         
         <!-- List Player -->
         <div><h5 class="header light-green-text text-lighten-1"><i class="fa fa-bar-chart"></i> {{'dashboard.player' | translate }}</h5></div>
+        <div>
+            <form class="forms forms-inline input-field ">
+                <input type="text" class="input-big width-50" id="query" ng-model="query">
+                <label for="query">Filter</label>
+            </form>
+        </div>
         <ul class="collection">
-            <li class="collection-item avatar" ng-repeat="player in effective">
-                <a href="#/private/viewPlayer/{{player._id}}" class="red-text text-lighten-1 tooltipped" 
-                       data-position="right" data-delay="30" data-tooltip="{{'mainEffective.buttons.viewPlayer' | translate }}">
-                    <img src="assets/images/user.png" alt="" class="circle responsive-img">
-                </a>
-              <span class="title red-text text-lighten-1">{{player.firstname}} {{player.name}}</span>
-              <p>{{player.positionType}}</p>
-              <a href="#/private/statPlayer/{{player._id}}" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
+            <li class="collection-item avatar" ng-repeat="player in effective | filter:query">
+                <simple-avatar width="'30px'" person="player" link="('#/private/viewPlayer/' + player._id)"></simple-avatar>
+                <span class="title red-text text-lighten-1">{{player.firstname}} {{player.name}}</span>
+                <p>{{player.positionType}}</p>
+                <a href="#/private/statPlayer/{{player._id}}" class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i class="fa fa-bar-chart"></i></a>
             </li>
         </ul>
     

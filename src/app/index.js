@@ -18,10 +18,13 @@
             'pascalprecht.translate', 
             'reCAPTCHA',  
             'tmh.dynamicLocale',
+            'angularFileUpload',
+            'ui.mask',
             
             /* qaobee shared directives */
             'qaobee.commonsDirectives',
             'qaobee.headerMenu',
+            'qaobee.avatar',
             
             /* qaobee shared services */
             'qaobee.commonsConfig',

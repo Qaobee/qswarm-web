@@ -29,7 +29,7 @@
                     user: metaDatasProvider.checkUser,
                     meta: metaDatasProvider.getMeta
                 },
-                templateUrl: 'app/modules/sandbox/effective/players/addPlayer.html'
+                templateUrl: 'app/modules/sandbox/effective/players/writePlayer.html'
 
             });
         })
@@ -50,6 +50,8 @@
         $scope.effective = [];
         $scope.currentCategory = {};
         $scope.positionsType = {};
+        
+        $scope.addPlayerTitle = true;
         
         //Initialisation du nouveau joueur
         $scope.player = {
@@ -84,17 +86,15 @@
         $scope.optionsAdr = null;
         $scope.detailsAdr = '';
         
-        $log.debug($scope.meta);
-        $log.debug($scope.user);
-        
         /* Retrieve list of positions type */
         activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listPositionType').success(function (data) {
             $scope.positionsType = data;
         });
         
         /* Create a new person and add to effective */
-        $scope.addPerson = function () {
+        $scope.writePerson = function () {
             
+            $log.log($scope.player);
             $scope.player.name = $scope.player.name.capitalize(true);
             $scope.player.firstname = $scope.player.firstname.capitalize(true);
             $log.debug($scope.player);
@@ -105,7 +105,6 @@
 
             /* add person */
             personRestAPI.addPerson(dataContainer).success(function (person) {
-                $log.debug(person);
                 
                 /* add player in effective*/
                 effectiveRestAPI.getListMemberEffective($scope.meta._id, $scope.currentCategory.code).success(function (data) {
@@ -126,7 +125,8 @@
                         effectiveRestAPI.update(effective).success(function (data) {
                             toastr.success($filter('translate')('addPlayer.toastSuccess', {
                             firstname: person.firstname,
-                            name: person.name
+                            name: person.name,
+                            effective: effective.categoryAge.label
                         }));
 
                         $location.path('private/effective');

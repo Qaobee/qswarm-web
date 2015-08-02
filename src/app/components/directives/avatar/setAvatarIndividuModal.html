@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">{{'content.setAvatarPerson.label.title' | translate}} {{person.firstname}}
+        {{person.name}}</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-5 text-center">
+            <div nv-file-over="" nv-file-drop="" uploader="uploader" class="my-drop-zone">
+                <img ng-src="{{getAvatar(person.avatar)}}" class="img-thumbnail img-responsive" />
+
+                <div ng-show="showSpinner" class="text-center overlayed-spinner">
+                    <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
+                </div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-info" style="width: {{uploader.progress}}%"></div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="form-group">
+                <label class="control-label" translate="content.setAvatarPerson.label.selectphoto"></label>
+                <input type="file" nv-file-select uploader="uploader"/>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="cancel()" translate="buttons.close"></button>
+</div>
