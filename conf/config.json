@@ -12,7 +12,7 @@
       "name": "production",
       "apiEndPoint": "http://hive.qaobee.com",
       "useLoaderCache": true,
-      "debugEnabled": false
+      "debugEnabled": true
     }
   }
 }
