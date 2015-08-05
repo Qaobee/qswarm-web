@@ -1,4 +1,6 @@
 job1:
   script:
+    - npm install
+    - bower install
     - rm -rf dist/*
     - gulp
