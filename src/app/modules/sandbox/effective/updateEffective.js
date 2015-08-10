@@ -27,7 +27,7 @@
                     user: metaDatasProvider.checkUser,
                     meta: metaDatasProvider.getMeta
                 },
-                templateUrl: 'app/modules/sandbox/effective/updateEffective.html'
+                templateUrl: 'app/modules/sandbox/effective/writeEffective.html'
 
             });
         })
@@ -44,6 +44,7 @@
         $translatePartialLoader.addPart('stats');
 
         $scope.effectiveId = $routeParams.effectiveId;
+        $scope.addEffectiveTitle = false;
         
         $scope.user = user;
         $scope.meta = meta;
@@ -66,6 +67,7 @@
                 } else {
                     e.positionType = '';
                 }
+                e.ticket = false;
             });
             $scope.persons = data;
         });
@@ -94,6 +96,7 @@
                     } else {
                         e.positionType = '';
                     }
+                    e.ticked = true;
                 });
 
                 $scope.members = persons;

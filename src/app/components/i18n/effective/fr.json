@@ -20,7 +20,9 @@
     "effectiveLabels": {
         "effectiveCategoryAge": "Categorie d'âge",
         "effectiveMembers": "Liste des joueurs",
-        "effectivePlaceHolderMembers": "Ajouter un joueur"
+        "effectiveTeams": "Liste des équipes",
+        "effectivePlaceHolderMembers": "Ajouter un joueur",
+        "effectiveLabel": "Libellé"
     },
     
     

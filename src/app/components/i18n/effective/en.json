@@ -20,7 +20,9 @@
     "effectiveLabels": {
         "effectiveCategoryAge": "Category Age",
         "effectiveMembers": "Player list",
-        "effectivePlaceHolderMembers": "Add a player"
+        "effectiveTeams": "Team list",
+        "effectivePlaceHolderMembers": "Add a player",
+        "effectiveLabel": "Label"
     },
     
     "addPlayer": {

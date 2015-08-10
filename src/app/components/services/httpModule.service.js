@@ -32,7 +32,7 @@
                         config.headers['Content-Type'] = 'application/json';
                         config.responseType = 'json';
                     }
-                    if (!config.url.startsWith('app') && !config.url.startsWith('http') && !config.url.startsWith('ngTagsInput') && !config.url.startsWith('ng-table')) {
+                    if (!config.url.startsWith('app') && !config.url.startsWith('http') && !config.url.startsWith('isteven-multi-select') && !config.url.startsWith('ng-table')) {
                         if (config.url.startsWith('/')) {
                             config.url = EnvironmentConfig.apiEndPoint + config.url;
                         } else {

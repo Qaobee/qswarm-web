@@ -20,7 +20,7 @@
             'tmh.dynamicLocale',
             'angularFileUpload',
             'ui.mask',
-            'ngTagsInput',
+            'isteven-multi-select',
             
             /* qaobee shared directives */
             'qaobee.commonsDirectives',
