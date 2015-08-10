@@ -94,7 +94,7 @@
         /* Create a new person and add to effective */
         $scope.writePerson = function () {
             
-            $log.log($scope.player);
+            $log.debug($scope.player);
             $scope.player.name = $scope.player.name.capitalize(true);
             $scope.player.firstname = $scope.player.firstname.capitalize(true);
             $log.debug($scope.player);

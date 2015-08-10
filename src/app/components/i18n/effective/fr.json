@@ -10,10 +10,17 @@
         }
     },
     "addEffective": {
-        "title": "Ajout d'un effectif"
+        "title": "Ajout d'un effectif",
+        "toastSuccess":"L'effective {{effective}} a été ajouté"
     },
     "updateEffective": {
-        "title": "Modification d'un effectif"
+        "title": "Modification d'un effective",
+        "toastSuccess":"L'effective {{effective}} a bien été modifié"
+    },
+    "effectiveLabels": {
+        "effectiveCategoryAge": "Categorie d'âge",
+        "effectiveMembers": "Liste des joueurs",
+        "effectivePlaceHolderMembers": "Ajouter un joueur"
     },
     
     

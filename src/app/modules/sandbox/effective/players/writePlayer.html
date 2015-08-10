@@ -28,11 +28,11 @@
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col m3 s6">
                           <input ng-model="player.firstname" id="playerFirstname" type="text" class="validate form-control" required>
-                          <label for="playerFirstname">{{'playerLabels.playerFirstname' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                          <label class="active" for="playerFirstname">{{'playerLabels.playerFirstname' | translate }} <span class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="input-field col m3 s6">
                           <input ng-model="player.name" id="playerName" type="text" class="validate form-control" required>
-                          <label for="playerName">{{'playerLabels.playerName' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                          <label class="active" for="playerName">{{'playerLabels.playerName' | translate }} <span class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -74,11 +74,11 @@
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col m3 s6">
                           <input type="text" id="playerNationality" class="form-control" ng-autocomplete ng-model="player.nationality" details="detailsCountry" options="optionsCountry" placeholder="" />
-                          <label for="playerNationality">{{'playerLabels.playerNationality' | translate }}</label>
+                          <label class="active" for="playerNationality">{{'playerLabels.playerNationality' | translate }}</label>
                         </div>
                         <div class="input-field col m3 s6">
                           <input type="text" id="playerBirthCity" class="form-control" ng-autocomplete ng-model="player.birthCity" details="detailsCity" options="optionsCity" placeholder="" />
-                          <label for="playerBirthCity">{{'playerLabels.playerBirthCity' | translate }}</label>
+                          <label class="active" for="playerBirthCity">{{'playerLabels.playerBirthCity' | translate }}</label>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -104,14 +104,14 @@
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col m3 s6">
-                            <label>{{'playerLabels.playerPositionType' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                            <label class="active" >{{'playerLabels.playerPositionType' | translate }} <span class="red-text text-lighten-1">*</span></label>
                             <select class="browser-default" ng-model="player.status.positionType" required id="playerPositionType"
                                     ng-options="p.code as p.label for p in positionsType">
                             </select>
                         </div>
                         <div class="input-field col m3 s6">
                             <input id="playerSquadNumber" type="number" class="validate" min="0" ng-model="player.status.squadnumber">
-                            <label for="playerSquadNumber">{{'playerLabels.playerSquadNumber' | translate }}</label>
+                            <label class="active" for="playerSquadNumber">{{'playerLabels.playerSquadNumber' | translate }}</label>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -119,11 +119,11 @@
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col m3 s6">
                             <input id="playerWeight" type="number" class="validate" min="0" ng-model="player.status.weight" value="player.status.weight">
-                            <label for="playerWeight">{{'playerLabels.playerWeight' | translate }}</label>
+                            <label class="active" for="playerWeight">{{'playerLabels.playerWeight' | translate }}</label>
                         </div>
                         <div class="input-field col m3 s6">
                             <input id="playerHeight" type="number" class="validate" min="0" ng-model="player.status.height">
-                            <label for="playerHeight">{{'playerLabels.playerHeight' | translate }}</label>
+                            <label class="active" for="playerHeight">{{'playerLabels.playerHeight' | translate }}</label>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>

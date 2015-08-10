@@ -10,12 +10,18 @@
         }
     },
     "addEffective": {
-        "title": "Add an effectif"
+        "title": "Add an effectif",
+        "toastSuccess":"Effective {{effective}} was added"
     },
     "updateEffective": {
-        "title": "Update effective"
+        "title": "Update effective",
+        "toastSuccess":"Effective {{effective}} was updated"
     },
-    
+    "effectiveLabels": {
+        "effectiveCategoryAge": "Category Age",
+        "effectiveMembers": "Player list",
+        "effectivePlaceHolderMembers": "Add a player"
+    },
     
     "addPlayer": {
         "title": "Add a person",
