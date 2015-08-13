@@ -20,9 +20,13 @@
     "effectiveLabels": {
         "effectiveCategoryAge": "Category Age",
         "effectiveMembers": "Player list",
+        "effectiveCoachs": "Coachs",
         "effectiveTeams": "Team list",
         "effectivePlaceHolderMembers": "Add a player",
-        "effectiveLabel": "Label"
+        "effectiveLabel": "Label",
+        "effectiveNbPlayers":"Player(s) selected",
+        "effectiveTabPlayerColPlayer":"Player",
+        "effectiveTabPlayerColPosition":"Position"
     },
     
     "addPlayer": {

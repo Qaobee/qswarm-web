@@ -231,3 +231,29 @@ canvas {
     height: 100px;
     margin: 6px 0 0 6px;
 }
+
+/* Custom style for angular-selection-model */
+/* Selection Model Styles */
+ul.fancy {
+  padding: 0;
+  list-style-type: none;
+}
+
+ul.fancy li {
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+ul.fancy li.selected {
+  color: lavenderblush;
+  background-color: #428BCA;
+}
+
+table.super-fancy td {
+  cursor: pointer;
+}
+
+table.super-fancy tr.foobar {
+  color: white;
+  background-image: url('img/29.png'), url('img/53.png'), url('img/79.png');
+}

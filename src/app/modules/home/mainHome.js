@@ -49,14 +49,16 @@
         $scope.getEffective = function () {
             effectiveRestAPI.getListMemberEffective($scope.meta._id, $scope.currentCategory.code).success(function (data) {
                 
+                //TODO - CKE : A revoir si pls effectifs
+                $scope.currentEffective = data[0];
                 /* build list id for request API person */   
                 var listId = [];
-                data.forEach(function (a) {
-                    a.members.forEach(function (b) {
-                        if (b.role.code==='player') {
-                            listId.push(b.personId);
-                        }    
-                    });
+                
+                $scope.currentCategory = $scope.currentEffective.categoryAge;
+                $scope.currentEffective.members.forEach(function (b) {
+                    if (b.role.code==='player') {
+                        listId.push(b.personId);
+                    }    
                 });
                 
                 var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status');

@@ -20,11 +20,14 @@
     "effectiveLabels": {
         "effectiveCategoryAge": "Categorie d'âge",
         "effectiveMembers": "Liste des joueurs",
+        "effectiveCoachs": "Coachs",
         "effectiveTeams": "Liste des équipes",
         "effectivePlaceHolderMembers": "Ajouter un joueur",
-        "effectiveLabel": "Libellé"
+        "effectiveLabel": "Libellé",
+        "effectiveNbPlayers":"Joueurs sélectionné(s)",
+        "effectiveTabPlayerColPlayer":"Joueur",
+        "effectiveTabPlayerColPosition":"Poste"
     },
-    
     
     "addPlayer": {
         "title": "Ajout d'un joueur",

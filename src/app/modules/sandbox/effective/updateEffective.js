@@ -49,78 +49,63 @@
         $scope.user = user;
         $scope.meta = meta;
         $scope.effective = {};
-        $scope.members = [];
         $scope.listCategory = [];
+        $scope.coachs = [];
         $scope.persons = [];
-        
-        /* Retrieve list of categoryAge */
-        activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listCategoryAge').success(function (data) {
-            $scope.listCategory = data;
-            $log.log($scope.listCategory);
-        });
-            
-        /* get SB_Person */
-        personRestAPI.getListPersonSandbox($scope.meta.sandbox._id).success(function (data) {
-            data.forEach(function (e) {
-                if (angular.isDefined(e.status.positionType)) {
-                    e.positionType = $filter('translate')('stat.positionType.value.' + e.status.positionType);
-                } else {
-                    e.positionType = '';
-                }
-                e.ticket = false;
-            });
-            $scope.persons = data;
-        });
+        $scope.selectedPlayers = []; 
         
         /* get SB_Effective */
         effectiveRestAPI.getEffective($scope.effectiveId).success(function (data) {
             $scope.effective = data;
-            $log.log($scope.effective);
-            
-            var listId = [];
-            
-            $scope.effective.members.forEach(function (b) {
+            /*
+            $scope.effective.members.forEach(function (a) {
                 if (b.role.code==='player') {
-                    listId.push(b.personId);
+                    $scope.coachs.push(b.personId);
                 }    
             });
-
-            var listField = ['_id', 'name', 'firstname', 'avatar', 'status.positionType'];
-
-            /* retrieve person information */
-            personRestAPI.getListPerson(listId, listField).success(function (persons) {
-
-                persons.forEach(function (e) {
-                    if (angular.isDefined(e.status.positionType)) {
-                        e.positionType = $filter('translate')('stat.positionType.value.' + e.status.positionType);
-                    } else {
-                        e.positionType = '';
-                    }
-                    e.ticked = true;
-                });
-
-                $scope.members = persons;
-            });
+            */
+            
+            $scope.getPersonSandBox();
         });
         
-        $scope.loadPerson = function($query) {
-            return $scope.persons.filter(function(person) {
-                return person.name.toLowerCase().indexOf($query.toLowerCase()) != -1;
-            });
+        /* Retrieve list of categoryAge */
+        activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listCategoryAge').success(function (data) {
+            $scope.listCategory = data;
+        });
+            
+        /* get SB_Person */
+        $scope.getPersonSandBox = function () {
+            personRestAPI.getListPersonSandbox($scope.meta.sandbox._id).success(function (data) {
+                data.forEach(function (a) {
+                    if (angular.isDefined(a.status.positionType)) {
+                        a.positionType = $filter('translate')('stat.positionType.value.' + a.status.positionType);
+                    } else {
+                        a.positionType = '';
+                    }
+
+                    a.checked=false;
+                    var trouve = $scope.effective.members.find(function(n) {
+                        return n['personId'] == a._id; 
+                    });
+                    
+                    if(angular.isDefined(trouve)) {
+                        a.checked=true;
+                    }
+                });
+                $scope.persons = data.sortBy(function(n) {
+                    return n.name; 
+                });
+            });            
         };
-        
+
         /* update effective */
         $scope.writeEffective = function () {
-            
-            $log.debug($scope.effective);
-            var category = {};
             $scope.listCategory.forEach(function (c) {
                 if (c.code===$scope.effective.categoryAge.code) {
-                    category = c;
+                    $scope.effective.categoryAge =  c;
                 }    
             });
             
-            $scope.effective.categoryAge = category;
             effectiveRestAPI.update($scope.effective).success(function (person) {
                 toastr.success($filter('translate')('updateEffective.toastSuccess', {
                     effective: $scope.effective.categoryAge.label
@@ -128,6 +113,19 @@
 
                 $location.path('private/effective');
             });
+        };
+        
+        /* Update effective list member*/
+        $scope.changed = function(item) {
+            if(item.checked) {
+                var roleMember = {code : 'player', label: 'Joueur'};
+                var member = {personId : item._id, role: roleMember};
+                $scope.effective.members.push(member);
+            } else {
+                $scope.effective.members.remove(function(n) {
+                    return n['personId'] == item._id; 
+                });
+            }
         };
     })
     //

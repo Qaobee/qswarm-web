@@ -48,10 +48,9 @@
         $scope.user = user;
         $scope.meta = meta;
         $scope.effective = {};
-        $scope.members = [];
         $scope.listCategory = [];
-        $scope.positionsType = [];
         $scope.persons = [];
+        $scope.selectedPlayers = []; 
         
         $scope.addEffectiveTitle = true;
         
@@ -59,42 +58,20 @@
         activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listCategoryAge').success(function (data) {
             $scope.listCategory = data;
         });
-        
-        /* Retrieve list of positions type */
-        activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listPositionType').success(function (data) {
-            $scope.positionsType = data.sortBy(function(n) {
-              return n.order; 
-            });
-        });
             
         /* get SB_Person */
         personRestAPI.getListPersonSandbox($scope.meta.sandbox._id).success(function (data) {
-            var listP = data.groupBy(function(a) {
-              return a.status.positionType; 
+            data.forEach(function (e) {
+                if (angular.isDefined(e.status.positionType)) {
+                    e.positionType = $filter('translate')('stat.positionType.value.' + e.status.positionType);
+                } else {
+                    e.positionType = '';
+                }
+                e.ticket = false;
             });
+            $scope.persons = data;
+        });       
             
-            $scope.positionsType.forEach(function (a) {
-                $scope.persons.add({
-                    name: '<span class=" row red lighten-1 white-text">'+a.label+'</span>',
-                    msGroup: true
-                });
-                var membres = listP[a.code];
-                membres.forEach(function (b) {
-                    $scope.persons.add({
-                        name: b.name,
-                        firstname: b.firstname,
-                        ticked: false
-                    });
-                });
-            });
-        });
-        
-        $scope.loadPerson = function($query) {
-            return $scope.persons.filter(function(person) {
-                return person.name.toLowerCase().indexOf($query.toLowerCase()) != -1;
-            });
-        };
-        
         /* add effective */
         $scope.writeEffective = function () {
             
@@ -115,8 +92,22 @@
                 $location.path('private/effective');
             });
         };
-
-
+        
+        /* Update effective list member*/
+        $scope.changed = function(item) {
+            if (!angular.isDefined($scope.effective.members)) {
+               $scope.effective.members = [];
+            }
+            if(item.checked) {
+                var roleMember = {code : 'player', label: 'Joueur'};
+                var member = {personId : item._id, role: roleMember};
+                $scope.effective.members.push(member);
+            } else {
+                $scope.effective.members.remove(function(n) {
+                    return n['personId'] == item._id; 
+                });
+            }
+        };
     })
     //
     ;
