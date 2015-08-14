@@ -47,10 +47,9 @@
     
         /* Retrieve list player */
         $scope.getEffective = function () {
-            effectiveRestAPI.getListMemberEffective($scope.meta._id, $scope.currentCategory.code).success(function (data) {
+            effectiveRestAPI.getEffective($scope.user.effectiveDefault).success(function (data) {
                 
-                //TODO - CKE : A revoir si pls effectifs
-                $scope.currentEffective = data[0];
+                $scope.currentEffective = data;
                 /* build list id for request API person */   
                 var listId = [];
                 

@@ -97,6 +97,7 @@
             $log.debug($scope.player);
             $scope.player.name = $scope.player.name.capitalize(true);
             $scope.player.firstname = $scope.player.firstname.capitalize(true);
+            $scope.player.sandboxId = $scope.meta.sandbox._id ;
             $log.debug($scope.player);
             
             var dataContainer = {

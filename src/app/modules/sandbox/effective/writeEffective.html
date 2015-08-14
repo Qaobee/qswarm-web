@@ -1,8 +1,7 @@
 <div class="container">
 <!-- body start-->
-    <div class="row"> <div class="col s10"></div></div>   
+    <div class="row"><div class="col s12"></div></div>   
 
-    <!-- action bar -->
     <!-- action bar -->
     <div class="row">
         <div class="col s12">
@@ -21,33 +20,33 @@
         <form novalidate name="effectiveCaracterSection">
             
             <div class="row">
-                <!-- input field -->
-                <div class="input-field col m2 s6">
-                    <label for="effectiveLabel">{{'effectiveLabels.effectiveLabel' | translate }} <span class="red-text text-lighten-1">*</span></label>
-                </div>
-                <div class="input-field col m4 s6">
-                  <input ng-model="effective.label" id="effectiveLabel" type="text" class="validate left-align" required>
-                </div>
+                <div class="col s12">
+                    <!-- input field -->
+                    <div class="input-field col m2 s6">
+                        <label for="effectiveLabel">{{'effectiveLabels.effectiveLabel' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                    </div>
+                    <div class="input-field col m4 s6">
+                      <input ng-model="effective.label" id="effectiveLabel" type="text" class="validate left-align" required>
+                    </div>
 
-                <div class="input-field col m2 s6">
-                    <label for="effectiveCategoryAge">{{'effectiveLabels.effectiveCategoryAge' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                    <div class="input-field col m2 s6">
+                        <label for="effectiveCategoryAge">{{'effectiveLabels.effectiveCategoryAge' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                    </div>
+                    <div class="input-field col m4 s6">
+                        <select class="browser-default" ng-model="effective.categoryAge.code" required id="effectiveCategoryAge"
+                                ng-options="p.code as p.label for p in listCategory">
+                        </select>
+                    </div>
                 </div>
-                <div class="input-field col m4 s6">
-                    <select class="browser-default" ng-model="effective.categoryAge.code" required id="effectiveCategoryAge"
-                            ng-options="p.code as p.label for p in listCategory">
-                    </select>
-                </div>
-            </div>
-            
-            <div class="row">
+                <!-- List coachs 
                 <div class="col m6 s12">
                     <div class="col s12">    
-                        <!-- List coachs -->
-                        <div class="white-text blue-grey darken-2">
-                            <h5>
-                                <i class="material-icons btn-floating white blue-grey-text text-darken-2 center">group</i> {{'effectiveLabels.effectiveCoachs' | translate }} 
-                            </h5>
-                        </div>
+                        
+                        <ul class="collection with-header">
+                            <li class="collection-header blue-grey-text text-darken-2 grey lighten-3">
+                                <h5 class="task-card-title">{{'effectiveLabels.effectiveCoachs' | translate }}</h5>
+                            </li>
+                        </ul>
                     </div>
                     <div class="col s12">
                         <div class="input-field">
@@ -56,31 +55,30 @@
                         </div>
                     </div>
                 </div>
-                <div class="col m6 s12">
+                -->
+            </div>
+            
+            <div class="row">
+                <div class="col s12">
                     <!-- List players -->
                     <div class="col s12">
-                        <div class="white-text blue-grey darken-2">
-                            <h5>
-                                <i class="material-icons btn-floating white blue-grey-text text-darken-2 center">group</i> {{'effectiveLabels.effectiveMembers' | translate }} 
-                                <span class="right small">{{selectedPlayers.length}} {{'effectiveLabels.effectiveNbPlayers' | translate }}</span>
-                            </h5>
-                        </div>
+                        <ul class="collection with-header">
+                            <li class="collection-header blue-grey-text text-darken-2">
+                                <h5 class="task-card-title"> 
+                                    {{'effectiveLabels.effectiveMembers' | translate }}
+                                </h5>
+                                <span class="small right-align">{{selectedPlayers.length}} {{'effectiveLabels.effectiveNbPlayers' | translate }}</span>
+                                <div class="input-field grey lighten-5 ">
+                                    <label for="query">Filter</label>
+                                    <input type="text" id="query" ng-model="query">
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="col s12">
-                        <div class="input-field">
-                            <label for="query">Filter</label>
-                            <input type="text" id="query" ng-model="query" class="validate form-control">
-                        </div>
-                    </div>
+                    
+                    
                     <div class="col s12">
                         <table class="hoverable bordered">
-                            <thead>
-                                <tr class>
-                                    <th></th>
-                                    <th class="white blue-grey-text text-darken-2">{{'effectiveLabels.effectiveTabPlayerColPlayer' | translate }}</th>
-                                    <th class="white blue-grey-text text-darken-2">{{'effectiveLabels.effectiveTabPlayerColPosition' | translate }}</th>
-                                </tr>
-                            </thead>
                             <body>
                                 <tr ng-repeat="player in persons | filter:query"
                                     selection-model
@@ -88,13 +86,14 @@
                                     selection-model-mode="multiple-additive"
                                     selection-model-selected-attribute="checked"
                                     selection-model-selected-items="selectedPlayers"
-                                    selection-model-on-change="changed(player)">
+                                    selection-model-on-change="changed(player)"
+                                    class="col m4 s12">
                                     <td><simple-avatar person="player" width="'40px'" link="('#/private/viewPlayer/' + player._id)"></simple-avatar></td>
                                     <td>                                    
                                         <input type="checkbox" id="{{$index + 1}}"/> 
-                                        <label for="{{$index + 1}}">{{player.name}} {{player.firstname}}</label>
+                                        <label for="{{$index + 1}}"><span class="red-text text-lighten-1">{{player.name}} {{player.firstname}}</span></label>
+                                        <p class="blue-grey-text text-darken-2" style="margin-left:35px">{{player.positionType}}</p>
                                     </td>
-                                    <td>{{player.positionType}}</td>
                                 </tr>
                             </body>
                         </table>

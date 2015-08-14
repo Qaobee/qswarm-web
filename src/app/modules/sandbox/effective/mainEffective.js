@@ -34,7 +34,7 @@
 
         .config(function ($routeProvider, metaDatasProvider) {
 
-            $routeProvider.when('/private/effective', {
+            $routeProvider.when('/private/effective/:effectiveId', {
                 controller: 'MainEffectiveControler',
                 resolve: {
                     user: metaDatasProvider.checkUser,
@@ -49,28 +49,28 @@
      * @class qaobee.modules.sandbox.effective.MainEffectiveControler
      * @description Main controller for view mainEffective.html
      */
-        .controller('MainEffectiveControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, effectiveRestAPI, personRestAPI) {
+        .controller('MainEffectiveControler', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
+                                                         effectiveRestAPI, personRestAPI) {
 
         $translatePartialLoader.addPart('effective');
         $translatePartialLoader.addPart('stats');
         $translatePartialLoader.addPart('commons');
+        
+        $scope.effectiveId = $routeParams.effectiveId;
+        $scope.user.effectiveDefault = '46be56b5-0f9a-4e79-87ec-88ca8a20d8e1';
 
         $scope.user = user;
         $scope.meta = meta;
-        $scope.effective = [];
+        $scope.players = [];
         $scope.currentEffective = {};
-        $scope.currentCategory = {};
-
-        $('.collapsible').collapsible({accordion : false});
-
+        $scope.currentCategory = {};        
 
         /* Retrieve list player */
         $scope.getEffective = function () {
 
-            effectiveRestAPI.getListMemberEffective($scope.meta._id, $scope.currentCategory.code).success(function (data) {
+            effectiveRestAPI.getEffective($scope.effectiveId).success(function (data) {
                 
-                //TODO - CKE : A revoir si pls effectifs
-                $scope.currentEffective = data[0];
+                $scope.currentEffective = data;
                 /* build list id for request API person */   
                 var listId = [];
                 
@@ -104,7 +104,7 @@
                         e.age = moment().format("YYYY") - e.birthdate;
                     });
 
-                    $scope.effective = data;
+                    $scope.players = data;
                 });
             });
 
