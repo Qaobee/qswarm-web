@@ -4,19 +4,23 @@
 
     <!-- action bar -->
     <div class="row">
-        <div class="col s12">
-            <div ng-hide="addEffectiveTitle">
-                <h5 class="header blue-grey-text text-darken-2 left">
-                    <i class="material-icons btn-floating white-text red lighten-1 center">mode_edit</i> {{'updateEffective.title' | translate }}</h5>
+        <div ng-hide="addEffectiveTitle">
+            <div class="col s1">    
+                <i class="material-icons red-text text-lighten-1 center medium">mode_edit</i>
             </div>
-            <div ng-show="addEffectiveTitle">
-                <h5 class="header blue-grey-text text-darken-2 left">
-                    <i class="material-icons btn-floating white-text red lighten-1 center">person_add</i> {{'addEffective.title' | translate }}</h5>
+            <div class="col s11">
+                <h5 class="light-green-text text-lighten-1">{{'updateEffective.title' | translate }}</h5>
             </div>
         </div>
-    </div>
+        <div ng-show="addEffectiveTitle">
+            <div class="col s1">    
+                <i class="material-icons red-text text-lighten-1 center medium">group_add</i>
+            </div>
+            <div class="col s11">
+                <h5 class="light-green-text text-lighten-1">{{'addEffective.title' | translate }}</h5>
+            </div>
+        </div>
     
-    <div class="row">
         <form novalidate name="effectiveCaracterSection">
             
             <div class="row">
@@ -50,9 +54,9 @@
                                     {{'effectiveLabels.effectiveMembers' | translate }}
                                 </h5>
                                 <span class="small right-align">{{selectedPlayers.length}} {{'effectiveLabels.effectiveNbPlayers' | translate }}</span>
-                                <div class="input-field grey lighten-5 ">
+                                <div class="input-field">
                                     <label for="query">Filter</label>
-                                    <input type="text" id="query" ng-model="query">
+                                    <input type="text" class="grey lighten-4" id="query" ng-model="query">
                                 </div>
                             </li>
                         </ul>
