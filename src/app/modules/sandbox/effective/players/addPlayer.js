@@ -38,7 +38,7 @@
      * @class qaobee.modules.sandbox.effective.AddPlayerControler
      * @description Main controller for view addPlayer.html
      */
-        .controller('AddPlayerControler', function ($log, $http, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, activityCfgRestAPI, effectiveRestAPI, personRestAPI) {
+        .controller('AddPlayerControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, activityCfgRestAPI, effectiveRestAPI, personRestAPI) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('effective');
@@ -52,6 +52,11 @@
         $scope.positionsType = {};
         
         $scope.addPlayerTitle = true;
+        
+        // return button
+        $scope.doTheBack = function() {
+            $window.history.back();
+        };
         
         //Initialisation du nouveau joueur
         $scope.player = {
@@ -94,11 +99,9 @@
         /* Create a new person and add to effective */
         $scope.writePerson = function () {
             
-            $log.debug($scope.player);
             $scope.player.name = $scope.player.name.capitalize(true);
             $scope.player.firstname = $scope.player.firstname.capitalize(true);
             $scope.player.sandboxId = $scope.meta.sandbox._id ;
-            $log.debug($scope.player);
             
             var dataContainer = {
                 person: $scope.player
@@ -108,13 +111,9 @@
             personRestAPI.addPerson(dataContainer).success(function (person) {
                 
                 /* add player in effective*/
-                effectiveRestAPI.getListMemberEffective($scope.meta._id, $scope.currentCategory.code).success(function (data) {
+                effectiveRestAPI.getEffective($scope.user.effectiveDefault).success(function (data) {
                     
-                    var effective = {};
-                    data.forEach(function (a) {
-                        $log.debug(a);
-                        effective = a;                        
-                    });
+                    var effective = data;
                     
                     if(angular.isDefined(effective)) {
                         var roleMember = {code : 'player', label: 'Joueur'};
@@ -130,7 +129,7 @@
                             effective: effective.categoryAge.label
                         }));
 
-                        $location.path('private/effective');
+                        $window.history.back();
                         });
                     }
                 });

@@ -50,21 +50,12 @@
         $scope.meta = meta;
         $scope.effective = {};
         $scope.listCategory = [];
-        $scope.coachs = [];
         $scope.persons = [];
         $scope.selectedPlayers = []; 
         
         /* get SB_Effective */
         effectiveRestAPI.getEffective($scope.effectiveId).success(function (data) {
             $scope.effective = data;
-            /*
-            $scope.effective.members.forEach(function (a) {
-                if (b.role.code==='player') {
-                    $scope.coachs.push(b.personId);
-                }    
-            });
-            */
-            
             $scope.getPersonSandBox();
         });
         
@@ -111,7 +102,7 @@
                     effective: $scope.effective.categoryAge.label
                 }));
 
-                $location.path('private/effective');
+                $location.path('private/effective/'+$scope.user.effectiveDefault);
             });
         };
         

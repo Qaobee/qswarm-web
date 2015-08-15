@@ -38,24 +38,6 @@
                         </select>
                     </div>
                 </div>
-                <!-- List coachs 
-                <div class="col m6 s12">
-                    <div class="col s12">    
-                        
-                        <ul class="collection with-header">
-                            <li class="collection-header blue-grey-text text-darken-2 grey lighten-3">
-                                <h5 class="task-card-title">{{'effectiveLabels.effectiveCoachs' | translate }}</h5>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col s12">
-                        <div class="input-field">
-                            <label for="query">Filter</label>
-                            <input type="text" id="query2" ng-model="query2" class="validate form-control">
-                        </div>
-                    </div>
-                </div>
-                -->
             </div>
             
             <div class="row">
@@ -106,7 +88,7 @@
             <div class="row">
                 <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                 <div class="col m6 s12 center-align">
-                    <a href="#/private/effective" class="btn red lighteen-1 white-text">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
+                    <a href="#/private/effective/{{user.effectiveDefault}}" class="btn red lighteen-1 white-text">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
                     <a href="" ng-click="writeEffective()" class="btn green darken-1 white-text">{{'commons.buttons.validate' | translate }}</a>&nbsp;
                 </div>
                 <div class="col m3 hide-on-med-and-down">&nbsp;</div>

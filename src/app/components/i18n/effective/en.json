@@ -6,7 +6,8 @@
             "updateEffective": "Edit effective",
             "addPlayer": "Add player",
             "viewPlayer": "View player sheet",
-            "viewStatsEffective": "View stats of effective"
+            "viewStatsEffective": "View stats of effective",
+            "dropdownEffective": "Change effective"
         }
     },
     "addEffective": {

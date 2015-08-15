@@ -6,7 +6,8 @@
             "updateEffective": "Editer un effectif",
             "addPlayer": "Ajouter un joueur",
             "viewPlayer": "Voir la fiche du joueur",
-            "viewStatsEffective": "Voir les stats de l'effectif"
+            "viewStatsEffective": "Voir les stats de l'effectif",
+            "dropdownEffective": "Changer d'effectif"
         }
     },
     "addEffective": {

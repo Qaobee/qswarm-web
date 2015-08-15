@@ -11,7 +11,7 @@
             </a>
         </div>
         <div class="col s8">
-            <div><h5 class="header light-green-text text-lighten-1">{{'mainEffective.title' | translate }} : {{currentEffective.label}} - {{currentCategory.label}} </h5></div>
+            <div class="light-green-text text-lighten-1 x-small">{{'mainEffective.title' | translate }} : {{currentEffective.label}} - {{currentEffective.categoryAge.label}} </div>
         </div>
         
         <div class="col s2">
@@ -42,6 +42,23 @@
         
         </div>
     </div>
+    <div class="row hide-on-large-only">
+        <!-- effective list -->
+        <ul id="effectiveListSmall" class="dropdown-content">
+            <li ng-repeat="effective in effectives">
+                <a href="#/private/effective/{{effective._id}}"><h6 class="red-text text-lighten-1">{{effective.label}} - {{effective.categoryAge.label}}</h6></a>
+            </li>
+        </ul>
+        <div class="col s12">
+            <p ng-show="effectives.length > 1">
+            <a class="dropdown-button waves-effect waves-light withe-text red ligthen-1 btn" style="font-size: x-small;" href="#!" data-activates="effectiveListSmall">
+                {{'mainEffective.buttons.dropdownEffective' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="material-icons right">arrow_drop_down</i>
+            </a>
+            </p>
+            <p ng-show="effectives.length < 2">&nbsp;</p>
+        </div>
+    </div>
     <!-- action bar for desktop -->
     <div class="row hide-on-med-and-down">
         <div class="col s1">
@@ -50,8 +67,25 @@
                 <i class="fa fa-bar-chart" ></i>
             </a>
         </div>
-        <div class="col s8">
-            <div><h5 class="header light-green-text text-lighten-1">{{'mainEffective.title' | translate }} : {{currentEffective.label}} - {{currentCategory.label}} </h5></div>
+        <div class="col s5">
+            <div><h5 class="light-green-text text-lighten-1">{{currentEffective.label}} - {{currentEffective.categoryAge.label}} </h5></div>
+        </div>
+        
+        <!-- effective list -->
+        <ul id="effectiveList" class="dropdown-content">
+            <li ng-repeat="effective in effectives">
+                <a href="#/private/effective/{{effective._id}}"><h6 class="red-text text-lighten-1">{{effective.label}} - {{effective.categoryAge.label}}</h6></a>
+            </li>
+        </ul>
+        
+        <div class="col s3">
+            <p ng-show="effectives.length > 1">
+            <a class="dropdown-button waves-effect waves-light withe-text red ligthen-1 btn" style="font-size: x-small;" href="#!" data-activates="effectiveList">
+                {{'mainEffective.buttons.dropdownEffective' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="material-icons right">arrow_drop_down</i>
+            </a>
+            </p>
+            <p ng-show="effectives.length < 2">&nbsp;</p>
         </div>
         
         <div class="col s1 right-align">    
@@ -73,20 +107,19 @@
             </a>
         </div>
     </div>
-
+    
     <!-- player list-->
     <div class="row">
+        <!-- filter -->
         <div class="col s12">
-            <form class="forms forms-inline input-field ">
-                <input type="text" class="grey lighten-4" id="query" ng-model="query">
+            <form class="forms forms-inline input-field">
+                <input type="text" id="query" class="grey lighten-5" ng-model="query">
                 <label for="query">Filter</label>
             </form>
-        </div>
-    </div>
-    <div class="row">
+        </div>   
         <div class="col s12">    
             <ul class="collection">
-                <li class="collection-item avatar col m4 s12" ng-repeat="player in players | filter:query">
+                <li class="collection-item avatar col s12" ng-repeat="player in players | filter:query">
                     <simple-avatar person="player" link="('#/private/viewPlayer/' + player._id)"></simple-avatar>
                     <a href="#/private/viewPlayer/{{player._id}}" class="modal-trigger title red-text text-lighten-1">{{player.firstname}} {{player.name}}</a> 
                     <span class="title  hide-on-small-only">{{player.positionType}}</span>
@@ -99,7 +132,6 @@
                     </a>
                 </li>
             </ul>
-
         </div>
     </div>
     

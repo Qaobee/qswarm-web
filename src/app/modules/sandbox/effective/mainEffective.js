@@ -33,6 +33,8 @@
 
 
         .config(function ($routeProvider, metaDatasProvider) {
+        
+            $(".dropdown-button").dropdown();
 
             $routeProvider.when('/private/effective/:effectiveId', {
                 controller: 'MainEffectiveControler',
@@ -57,30 +59,46 @@
         $translatePartialLoader.addPart('commons');
         
         $scope.effectiveId = $routeParams.effectiveId;
-        $scope.user.effectiveDefault = '46be56b5-0f9a-4e79-87ec-88ca8a20d8e1';
+        $scope.user.effectiveDefault = $scope.effectiveId;
 
         $scope.user = user;
         $scope.meta = meta;
         $scope.players = [];
+        $scope.effectives = [];
         $scope.currentEffective = {};
-        $scope.currentCategory = {};        
-
-        /* Retrieve list player */
-        $scope.getEffective = function () {
-
-            effectiveRestAPI.getEffective($scope.effectiveId).success(function (data) {
+        $scope.currentCategory = null;
+        
+        /* Retrieve list effective */
+        $scope.getEffectives = function () {
+            
+            effectiveRestAPI.getListMemberEffective($scope.meta._id, $scope.currentCategory).success(function (data) {
+                $scope.effectives = data.sortBy(function(n) {
+                    return n.label; 
+                });
                 
-                $scope.currentEffective = data;
+                /* retrieve the current effective */ 
+                data.forEach(function (a) {
+                    if(a._id===$scope.effectiveId) {
+                        $scope.currentEffective = a;
+                    } 
+                });
+                
+                $scope.getEffective();
+            });
+        };                                                                                                
+
+        /* Retrieve current effective and list player */
+        $scope.getEffective = function () {
+                
+            if(angular.isDefined($scope.currentCategory)) {
                 /* build list id for request API person */   
                 var listId = [];
                 
-                $scope.currentCategory = $scope.currentEffective.categoryAge;
                 $scope.currentEffective.members.forEach(function (b) {
                     if (b.role.code==='player') {
                         listId.push(b.personId);
                     }    
                 });
-
 
                 var listField = ['_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact'];
 
@@ -106,15 +124,10 @@
 
                     $scope.players = data;
                 });
-            });
-
+            }
         };
         
-        $scope.getEffective();
-        $scope.modalDetails = function(player){
-            $scope.player = player;
-            $('#modalDetails').openModal();
-        };
+        $scope.getEffectives();
     })
     //
     ;

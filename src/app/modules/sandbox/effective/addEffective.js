@@ -84,12 +84,12 @@
             
             $scope.effective.categoryAge = category;
             $scope.effective.sandBoxCfgId = $scope.sandBoxCfgId;
-            effectiveRestAPI.add($scope.effective).success(function (person) {
+            effectiveRestAPI.add($scope.effective).success(function (effective) {
                 toastr.success($filter('translate')('addEffective.toastSuccess', {
                     effective: $scope.effective.categoryAge.label
                 }));
 
-                $location.path('private/effective');
+                $location.path('private/effective/'+effective._id);
             });
         };
         
