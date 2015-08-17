@@ -18,7 +18,8 @@
         /* qaobee Rest API */
         'activityCfgRestAPI',
         'effectiveRestAPI', 
-        'personRestAPI'])
+        'personRestAPI',
+        'locationAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
@@ -38,7 +39,7 @@
      * @class qaobee.modules.sandbox.effective.AddPlayerControler
      * @description Main controller for view addPlayer.html
      */
-        .controller('AddPlayerControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, activityCfgRestAPI, effectiveRestAPI, personRestAPI) {
+        .controller('AddPlayerControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, activityCfgRestAPI, effectiveRestAPI, personRestAPI, locationAPI) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('effective');
@@ -102,6 +103,7 @@
             $scope.player.name = $scope.player.name.capitalize(true);
             $scope.player.firstname = $scope.player.firstname.capitalize(true);
             $scope.player.sandboxId = $scope.meta.sandbox._id ;
+            $scope.player.birthdate = Date.parse($scope.player.birthdate);
             
             var dataContainer = {
                 person: $scope.player
@@ -134,6 +136,37 @@
                     }
                 });
             });
+        };
+        
+        /* Format address */
+        $scope.checkAndformatPerson = function () {
+            if (angular.isDefined($scope.player.address.formatedAddress) && !$scope.player.address.formatedAddress.isBlank()) {
+                locationAPI.get($scope.player.address.formatedAddress).then(function (adr) {
+                    $scope.player.address.lat = adr.data.results[0].geometry.location.lat;
+                    $scope.player.address.lng = adr.data.results[0].geometry.location.lng;
+                    angular.forEach(adr.data.results[0].address_components, function (item) {
+                        if (item.types.count('street_number') > 0) {
+                            $scope.player.address.place = item.long_name + ' ';
+                        }
+                        if (item.types.count('route') > 0) {
+                            $scope.player.address.place += item.long_name;
+                        }
+                        if (item.types.count('locality') > 0) {
+                            $scope.player.address.city = item.long_name;
+                        }
+                        if (item.types.count('postal_code') > 0) {
+                            $scope.player.address.zipcode = item.long_name;
+                        }
+                        if (item.types.count('country') > 0) {
+                            $scope.player.address.country = item.long_name;
+                        }
+                    });
+                    
+                    $scope.writePerson();
+                });
+            } else {
+                $scope.writePerson();
+            }
         };
     })
     

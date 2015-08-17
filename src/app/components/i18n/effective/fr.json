@@ -12,11 +12,13 @@
     },
     "addEffective": {
         "title": "Ajout d'un effectif",
-        "toastSuccess":"L'effective {{effective}} a été ajouté"
+        "toastSuccess":"L'effective {{effective}} a été ajouté",
+        "toastError":"Erreur, l'effectif n'a pas été créé"
     },
     "updateEffective": {
         "title": "Modification d'un effective",
-        "toastSuccess":"L'effective {{effective}} a bien été modifié"
+        "toastSuccess":"L'effective {{effective}} a bien été modifié",
+        "toastError":"Erreur, l'effectif n'a pas été mis à jour"
     },
     "effectiveLabels": {
         "effectiveCategoryAge": "Categorie d'âge",
@@ -32,11 +34,13 @@
     
     "addPlayer": {
         "title": "Ajout d'un joueur",
-        "toastSuccess":"{{firstname}} {{name}} a été ajouté à l'effectif {{effective}}"
+        "toastSuccess":"{{firstname}} {{name}} a été ajouté à l'effectif {{effective}}",
+        "toastError":"Erreur, le joueur {{firstname}} {{name}} n'a pas été créé"
     },
     "updatePlayer": {
         "title": "Modification du joueur",
-        "toastSuccess":"{{firstname}} {{name}} a bien été modifié"
+        "toastSuccess":"{{firstname}} {{name}} a bien été modifié",
+        "toastError":"Erreur, le joueur {{firstname}} {{name}} n'a pas été modifié"
     },
     "viewPlayer": {
         "title": "Fiche joueur de",

@@ -12,11 +12,13 @@
     },
     "addEffective": {
         "title": "Add an effectif",
-        "toastSuccess":"Effective {{effective}} was added"
+        "toastSuccess":"Effective {{effective}} was added",
+        "toastError":"Error, effective can't be create"
     },
     "updateEffective": {
         "title": "Update effective",
-        "toastSuccess":"Effective {{effective}} was updated"
+        "toastSuccess":"Effective {{effective}} was updated",
+        "toastError":"Error, effective can't be update"
     },
     "effectiveLabels": {
         "effectiveCategoryAge": "Category Age",
@@ -32,11 +34,13 @@
     
     "addPlayer": {
         "title": "Add a person",
-        "toastSuccess":"{{firstname}} {{name}} was added to the effective {{effective}}"
+        "toastSuccess":"{{firstname}} {{name}} was added to the effective {{effective}}",
+        "toastError":"Error, player {{firstname}} {{name}} can't be create"
     },
     "updatePlayer": {
-        "title": "Update player"
-        "toastSuccess":"{{firstname}} {{name}} was updated"
+        "title": "Update player",
+        "toastSuccess":"{{firstname}} {{name}} was updated",
+        "toastError":"Error, player {{firstname}} {{name}} can't be update"
     },
     "viewPlayer": {
         "title": "Player sheet of",
