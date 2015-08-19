@@ -43,7 +43,7 @@ module.exports = function (options) {
             .pipe($.rev())
             .pipe(jsFilter)
             .pipe($.ngAnnotate())
-            .pipe($.uglify({preserveComments: $.uglifySaveLicense, mangle: false})).on('error', options.errorHandler('Uglify'))
+            .pipe($.uglify({preserveComments: false, mangle: false})).on('error', options.errorHandler('Uglify'))
             .pipe(jsFilter.restore())
             .pipe(cssFilter)
             .pipe(replace(/font\/[^\/]+\/([^\/]+)/g, 'fonts/$1'))
@@ -80,10 +80,16 @@ module.exports = function (options) {
         ])
             .pipe(gulp.dest(options.dist + '/'));
     });
+    gulp.task('i18n', function () {
+        return gulp.src([
+            'bower_components/angular-i18n/*'
+        ])
+            .pipe(gulp.dest(options.dist + '/i18n/'));
+    });
 
     gulp.task('clean', function (done) {
         $.del([options.dist + '/', options.tmp + '/'], done);
     });
 
-    gulp.task('build', ['html', 'fonts', 'other']);
+    gulp.task('build', ['html', 'fonts', 'other', 'i18n']);
 };

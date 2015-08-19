@@ -30,7 +30,8 @@ wrench.readdirSyncRecursive('./gulp').filter(function(file) {
 gulp.task('conf-dev', function () {
   gulp.src('conf/config.json')
       .pipe(gulpNgConfig('qaobee.config', {
-          environment: 'local'
+          environment: 'local',
+          wrap: true
       }))
       .pipe(gulp.dest('./src/app'))
 });
@@ -38,7 +39,8 @@ gulp.task('conf-dev', function () {
 gulp.task('conf-prod', function () {
     gulp.src('conf/config.json')
         .pipe(gulpNgConfig('qaobee.config', {
-            environment: 'production'
+            environment: 'production',
+            wrap: true
         }))
         .pipe(gulp.dest('./src/app'))
 });
