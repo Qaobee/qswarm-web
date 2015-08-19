@@ -4,3 +4,6 @@ job1:
     - bower install
     - rm -rf dist/*
     - gulp
+    - gulp plato
+    - gulp jsdoc
+    - lftp ftp://heber_15054748:zaza666@ftp.hebergratuit.net -e "mirror -e -R --parallel=20 --only-newer --verbose docs /htdocs/qswarm-web/docs; quit"
