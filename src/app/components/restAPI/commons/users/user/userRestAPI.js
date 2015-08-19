@@ -59,10 +59,8 @@
                  * @function passwdCheck
                  * @description Vérification du code d'activation mot de passe de
                  *              l'utilisateur
-                 * @param {String}
-                 *            code Code d'activation
-                 * @param {String}
-                 *            id Identifiant Mongo de l'utilisateur
+                 * @param {String} code Code d'activation
+                 * @param {String} id Identifiant Mongo de l'utilisateur
                  * @returns {Object} {"status", true} ou {"status", false}
                  */
                 passwdCheck: function (code, id) {
