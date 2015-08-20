@@ -82,9 +82,11 @@
                         {{'headerMenu.effective' | translate }}</a></li>
                     <li><a href="#/private/" class="white-text light"><i class="mdi-image-timer left"></i>
                         {{'headerMenu.training' | translate }}</a></li>
+                    <!--
                     <li><a href="#/private/" class="white-text light"><i class="fa fa-trophy left"></i>
                         {{'headerMenu.championship' | translate }}</a></li>
-                    <li><a href="#/private/" class="white-text light"><i class="fa fa-calendar left"></i>
+                    -->
+                    <li><a href="#/private/agenda/{{meta.sandbox._id}}" class="white-text light"><i class="fa fa-calendar left"></i>
                         {{'headerMenu.calendar' | translate }}</a></li>
                     <li class="divider"></li>
                     <li><a ng-click="logoff()" class="white-text light"><i class="fa fa-power-off left"></i>
@@ -112,10 +114,12 @@
                     <li><a href="#/private/" class="light"><i class="mdi-image-timer left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.training"></span></a>
                     </li>
+                    <!--
                     <li><a href="#/private/" class="light"><i class="fa fa-trophy left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.championship"></span></a>
                     </li>
-                    <li><a href="#/private/" class="light"><i class="fa fa-calendar left"></i>
+                    -->
+                    <li><a href="#/private/agenda/{{meta.sandbox._id}}" class="light"><i class="fa fa-calendar left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.calendar"></span></a>
                     </li>
                 </ul>

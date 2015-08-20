@@ -1,0 +1,27 @@
+<div class="container">
+<!-- body start-->
+    <div class="row"> &nbsp;</div>   
+
+    <!-- view for tablet and phone -->
+    <div class="row hide-on-large-only">
+        <div> AGENDA Mobile </div>
+    </div>
+    
+    
+    <!-- view for desktop -->
+    <div class="row hide-on-med-and-down">
+        <div class="col s12">    
+            <ul class="collection">
+                <li class="collection-item avatar col s12" ng-repeat="event in events">
+                    <a href="#/private/viewEvent/{{event._id}}" class="title red-text text-lighten-1" style="font-size:15px;">{{event.label}}</a>
+                    <a href="#/private/statEvent/{{event._id}}" class="waves-effect waves-light white red-text text-lighten-1 right"><i class="material-icons small">insert_chart</i></a>
+                    <p style="font-size:10px;">
+                        {{event.startDate}} - {{event.endDate}} 
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+<!-- body end-->
+</div>

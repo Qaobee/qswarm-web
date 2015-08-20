@@ -36,7 +36,8 @@
             /* qaobee modules */ 
             'qaobee.public',
             'qaobee.home',
-            'qaobee.effective'
+            'qaobee.effective',
+            'qaobee.agenda'
         ])
 
         .config(function ($translateProvider, $translatePartialLoaderProvider, reCAPTCHAProvider, $httpProvider, $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider) {
