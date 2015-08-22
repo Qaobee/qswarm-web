@@ -6,7 +6,7 @@
             "ageYear": "ans",
             "date": {
               "pattern": "DD/MM/YYYY",
-              "label": "jj/mm/aaaa"
+              "label": "dd/MM/yyyy"
             },
             "phone": {
                 "pattern": "99-99-99-99-99"

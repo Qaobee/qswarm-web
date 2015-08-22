@@ -55,8 +55,14 @@
             $scope.owners.push($scope.user.effectiveDefault);
             eventsRestAPI.getListEvents($scope.meta.season.startDate, $scope.meta.season.endDate, 'championship', $scope.meta.activity._id, $scope.owners).success(function (data) {
                 $scope.events = data.sortBy(function(n) {
-                    return n.startDate; 
+                    return n.participants.startdate; 
                 });
+                
+                $scope.events.forEach(function (a) {
+                    a.startdate = moment(a.startdate).format('LLLL');
+                });
+                
+
                 
                 $log.debug($scope.events);
             });

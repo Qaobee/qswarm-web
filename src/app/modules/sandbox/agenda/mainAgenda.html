@@ -11,13 +11,51 @@
     <!-- view for desktop -->
     <div class="row hide-on-med-and-down">
         <div class="col s12">    
-            <ul class="collection">
-                <li class="collection-item avatar col s12" ng-repeat="event in events">
-                    <a href="#/private/viewEvent/{{event._id}}" class="title red-text text-lighten-1" style="font-size:15px;">{{event.label}}</a>
-                    <a href="#/private/statEvent/{{event._id}}" class="waves-effect waves-light white red-text text-lighten-1 right"><i class="material-icons small">insert_chart</i></a>
-                    <p style="font-size:10px;">
-                        {{event.startDate}} - {{event.endDate}} 
-                    </p>
+            <ul>
+                <li class="blue-grey-text text-darken-2 col s12">
+                    <div class="blue-grey-text text-darken-2"><h3>Septembre 2015</h3></div>
+                </li>
+                <li class="col s12 m6" ng-repeat="event in events">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title blue-grey-text text-darken-2 flow-text">{{event.participants.teamHome}} - {{event.participants.teamVisitor}}</span>
+                            <span class="blue-grey-text text-darken-2 flow-text activator">{{event.startDate |  date : 'dd/MM/yyyy HH:mm'}} <i class="mdi-navigation-more-vert right"></i></span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title blue-grey-text text-darken-1">Card Title <i class="mdi-navigation-close right"></i></span>
+                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        </div>
+                        <div class="card-action blue-grey darken-1">
+                            <span class="card-title white-text flow-text">{{event.label}}</span>
+                            <a href='#' class="right white-text"><i class="mdi-navigation-chevron-right right"></i>Suivant</a>
+                            <a href="#" class="right white-text"><i class="mdi-navigation-chevron-left left"></i>Précédent</a>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="collection blue-grey-text text-darken-2 col s12">
+                    <div class="red-text -text-lighteen-1"><h3>&nbsp;</h3></div>
+                </li>
+                
+                <li class="collection blue-grey-text text-darken-2 col s12">
+                    <div class="amber lighten-2 blue-grey-text text-darken-2"><h3>Octobre 2015</h3></div>
+                </li>
+                <li class="collection col s12 m6" ng-repeat="event in events">
+                    <div class="card small">
+                        <div class="card-content">
+                            <span class="card-title blue-grey-text flow-text">{{event.participants.teamHome}} - {{event.participants.teamVisitor}}</span>
+                            <span class="card-title activator blue-grey-text flow-text">{{event.startDate |  date : 'dd/MM/yyyy HH:mm'}} <i class="mdi-navigation-more-vert right"></i></span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title blue-grey-text text-darken-1">Card Title <i class="mdi-navigation-close right"></i></span>
+                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        </div>
+                        <div class="card-action blue-grey darken-1">
+                            <span class="card-title white-text flow-text">{{event.label}}</span>
+                            <a href='#' class="right white-text"><i class="mdi-navigation-chevron-right right"></i>Suivant</a>
+                            <a href="#" class="right white-text"><i class="mdi-navigation-chevron-left left"></i>Précédent</a>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>

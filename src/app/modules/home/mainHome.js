@@ -16,6 +16,7 @@
         /* qaobee Rest API */
         'effectiveRestAPI',
         'personRestAPI',
+        'eventsRestAPI',
         
         /* qaobee widget */
         'widget.nextEvent'])
@@ -34,7 +35,8 @@
 /**
  * @class qaobee.modules.home.HomeControler
  */
-    .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, effectiveRestAPI, personRestAPI) {
+    .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
+                                            effectiveRestAPI, personRestAPI, eventsRestAPI) {
         $translatePartialLoader.addPart('home');
         $translatePartialLoader.addPart('stats');
 
@@ -42,6 +44,12 @@
         $scope.meta = meta;
         $scope.effective = [];
         $scope.currentCategory = {};
+        
+        /* Events */
+        $scope.events = []; 
+        $scope.owners = [];
+        $scope.indexEvent = 0;
+        $scope.currentEvent = {};
 
         $('.collapsible').collapsible({accordion: false});
     
@@ -75,7 +83,43 @@
                 });
             });
         };
-    
+        
+        /* Retrieve list events */
+        $scope.getEvents = function () {
+            
+            $scope.owners.push($scope.user.effectiveDefault);
+            eventsRestAPI.getListEvents(moment().unix(), $scope.meta.season.endDate, 'championship', $scope.meta.activity._id, $scope.owners).success(function (data) {
+                $scope.events = data.sortBy(function(n) {
+                    return n.startDate; 
+                });
+                
+                $scope.currentEvent = $scope.events[$scope.indexEvent];
+                
+                $log.debug($scope.currentEvent);
+            });
+        };
+        
+        /* Next event */
+        $scope.nextEvent = function () {
+            
+            if($scope.indexEvent < $scope.events.length){
+                $scope.indexEvent++;
+            }
+            $scope.currentEvent = $scope.events[$scope.indexEvent];
+            $log.debug($scope.currentEvent);
+        };
+        
+        /* Previous event */
+        $scope.previousEvent = function () {
+            
+            if($scope.indexEvent > 0){
+                $scope.indexEvent--;
+            }
+            $scope.currentEvent = $scope.events[$scope.indexEvent];
+            $log.debug($scope.currentEvent);
+        };
+        
+        $scope.getEvents();
         $scope.getEffective();
     });
 }());

@@ -5,7 +5,7 @@
             "height": "in",
             "ageYear": "years",
             "date": {
-                "pattern": "MM/DD/YYYY",
+                "pattern": "MM/dd/yyyy",
                 "label": "mm/dd/yyyy"
             },
             "phone": {
