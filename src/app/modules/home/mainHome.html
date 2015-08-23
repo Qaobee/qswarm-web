@@ -12,26 +12,26 @@
                 {{'dashboard.event' | translate }}</h5></div>
 
             <div>
-                <div class="card small white">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="assets/images/ACT-HAND-EVENT.jpg">
-                        <span class="card-title white-text flow-text">{{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}</span>
+                <div class="card white">
+                    <div class="card-content blue-grey darken-1 white-text flow-text">
+                        <span class="card-title">{{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}</span>
+                        <hr class="white" />
+                        <h5 class="small blue-grey-text text-lighten-3">{{currentEvent.startDate |  date : 'dd MMMM yyyy HH:mm'}}</h5>
+                        <h6>{{currentEvent.address.formatedAddress}}</h6>
+                        <div map-lazy-load="https://maps.google.com/maps/api/js" ng-if="mapShow">
+                            <map center="{{currentEvent.address.lat}}, {{currentEvent.address.lng}}" zoom="16"></map>
+                        </div>
+                        
                     </div>
-                    <div class="card-content">
-                        <span class="activator blue-grey-text flow-text">{{currentEvent.startDate |  date : 'dd MMMM yyyy HH:mm'}}<i class="mdi-navigation-more-vert right"></i></span>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title blue-grey-text text-darken-1">{{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}<i class="mdi-navigation-close right"></i></span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                    </div>
-                    <div class="card-action blue-grey darken-1">
-                        <a href='#/private/agenda/{{meta.sandbox._id}}' class="hide-on-med-and-down left waves-effect waves-light white-text">
+                    <div class="card-action white">
+                        <a href='#/private/agenda/{{meta.sandbox._id}}' class="hide-on-med-and-down left waves-effect waves-light blue-grey-text text-darken-1">
                             <i class="fa fa-calendar left"></i>{{'headerMenu.calendar' | translate }}
                         </a>
                         <a href="" ng-show="indexEvent < events.length -1" ng-click="nextEvent()" class="btn-floating blue-grey darken-1 right white-text">
                             <i class="mdi-navigation-chevron-right right"></i></a>
                         <a href="" ng-show="indexEvent > 0" ng-click="previousEvent()" class="btn-floating blue-grey darken-1 right white-text">
                             <i class="mdi-navigation-chevron-left left"></i></a>
+                        <div>&nbsp;</div>
                     </div>
                 </div>
             </div>

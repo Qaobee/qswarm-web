@@ -50,6 +50,7 @@
         $scope.owners = [];
         $scope.indexEvent = 0;
         $scope.currentEvent = {};
+        $scope.mapShow = false;
 
         $('.collapsible').collapsible({accordion: false});
     
@@ -93,10 +94,20 @@
                     return n.startDate; 
                 });
                 
-                $scope.currentEvent = $scope.events[$scope.indexEvent];
-                
-                $log.debug($scope.currentEvent);
+                $scope.getCurrentEvent();
             });
+        };
+        
+        /* get currentEvent */
+        $scope.getCurrentEvent = function () {
+            $scope.mapShow = false;
+            $scope.currentEvent = {};
+            
+            $scope.currentEvent = $scope.events[$scope.indexEvent];
+            if(angular.isDefined($scope.currentEvent.address)) {
+                $scope.mapShow = true;
+            }  
+            $log.debug($scope.currentEvent);
         };
         
         /* Next event */
@@ -105,8 +116,7 @@
             if($scope.indexEvent < $scope.events.length){
                 $scope.indexEvent++;
             }
-            $scope.currentEvent = $scope.events[$scope.indexEvent];
-            $log.debug($scope.currentEvent);
+            $scope.getCurrentEvent();
         };
         
         /* Previous event */
@@ -115,8 +125,7 @@
             if($scope.indexEvent > 0){
                 $scope.indexEvent--;
             }
-            $scope.currentEvent = $scope.events[$scope.indexEvent];
-            $log.debug($scope.currentEvent);
+            $scope.getCurrentEvent();
         };
         
         $scope.getEvents();

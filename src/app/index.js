@@ -21,6 +21,7 @@
             'angularFileUpload',
             'ui.mask',
             'selectionModel',
+            'ngMap',
             
             /* qaobee shared directives */
             'qaobee.commonsDirectives',
