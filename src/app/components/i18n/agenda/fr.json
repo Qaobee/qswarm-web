@@ -1,0 +1,10 @@
+{
+    "mainAgenda": {
+        "title": "Agenda",
+        "buttons" : {
+            "addEvent": "Ajouter un évènement",
+            "updateEvent": "Editer un évènement",
+            "dropdownEffective": "Changer d'effectif"
+        }
+    }
+}

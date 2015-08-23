@@ -46,7 +46,8 @@
         $scope.currentCategory = {};
         
         /* Events */
-        $scope.events = []; 
+        $scope.events = [];
+        $scope.eventTypes = []; 
         $scope.owners = [];
         $scope.indexEvent = 0;
         $scope.currentEvent = {};
@@ -89,7 +90,9 @@
         $scope.getEvents = function () {
             
             $scope.owners.push($scope.user.effectiveDefault);
-            eventsRestAPI.getListEvents(moment().unix(), $scope.meta.season.endDate, 'championship', $scope.meta.activity._id, $scope.owners).success(function (data) {
+            $scope.eventTypes = ['cup', 'friendlyGame','championship'];
+            
+            eventsRestAPI.getListEvents(moment().unix(), $scope.meta.season.endDate, $scope.eventTypes, $scope.meta.activity._id, $scope.owners).success(function (data) {
                 $scope.events = data.sortBy(function(n) {
                     return n.startDate; 
                 });

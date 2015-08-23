@@ -41,6 +41,7 @@
                                                      eventsRestAPI) {
 
         $translatePartialLoader.addPart('commons');
+        $translatePartialLoader.addPart('agenda');
         
         $scope.sandBoxId = $routeParams.sandBoxId;
         
@@ -53,7 +54,8 @@
         $scope.getEvents = function () {
             
             $scope.owners.push($scope.user.effectiveDefault);
-            eventsRestAPI.getListEvents($scope.meta.season.startDate, $scope.meta.season.endDate, 'championship', $scope.meta.activity._id, $scope.owners).success(function (data) {
+            var eventTypes = ['cup', 'friendlyGame','championship'];
+            eventsRestAPI.getListEvents($scope.meta.season.startDate, $scope.meta.season.endDate, eventTypes, $scope.meta.activity._id, $scope.owners).success(function (data) {
                 $scope.events = data.sortBy(function(n) {
                     return n.participants.startdate; 
                 });

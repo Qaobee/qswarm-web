@@ -1,0 +1,10 @@
+{
+    "mainAgenda": {
+        "title": "Planning",
+        "buttons" : {
+            "addEvent": "Add event",
+            "updateEvent": "Update event",
+            "dropdownEffective": "Change effective"
+        }
+    }
+}
