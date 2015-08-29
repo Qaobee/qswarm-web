@@ -103,7 +103,7 @@
             $scope.player.name = $scope.player.name.capitalize(true);
             $scope.player.firstname = $scope.player.firstname.capitalize(true);
             $scope.player.sandboxId = $scope.meta.sandbox._id ;
-            $scope.player.birthdate = Date.parse($scope.player.birthdate);
+            $scope.player.birthdate = moment($scope.player.birthdate).valueOf();
             
             var dataContainer = {
                 person: $scope.player

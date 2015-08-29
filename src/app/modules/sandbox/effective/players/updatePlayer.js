@@ -102,7 +102,7 @@
             
             $scope.player.name = $scope.player.name.capitalize(true);
             $scope.player.firstname = $scope.player.firstname.capitalize(true);
-            $scope.player.birthdate = Date.parse($scope.player.birthdate);
+            $scope.player.birthdate = moment($scope.player.birthdate).valueOf();
             
             personRestAPI.updatePerson($scope.player).success(function (person) {
                 toastr.success($filter('translate')('updatePlayer.toastSuccess', {

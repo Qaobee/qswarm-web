@@ -69,8 +69,8 @@
                 $scope.player.stateForm = '';
             }
 
-            $scope.player.birthdate = $filter('date')($scope.player.birthdate, 'yyyy');
-            $scope.player.age = moment().format('YYYY') - $scope.player.birthdate;
+            //$scope.player.birthdate = $filter('date')($scope.player.birthdate, 'yyyy');
+            $scope.player.age = moment().format('YYYY') - moment($scope.player.birthdate).format('YYYY');
         });
     })
     //

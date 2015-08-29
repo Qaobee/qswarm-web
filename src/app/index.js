@@ -94,8 +94,12 @@
      * @class qaobee.qswarmweb
      * @description Contrôleur principal
      */
-        .controller('MainCtrl', function ($rootScope, $scope, $translatePartialLoader, qeventbus) {
+        .controller('MainCtrl', function ($rootScope, $scope, $window, $translatePartialLoader, qeventbus) {
+            /* i18n pour les formats de date, voir changement de la locale dans index.html */
+            moment.locale($window.navigator.language);
+            
             $translatePartialLoader.addPart('public');
+            
             $scope.$on('qeventbus', function () {
                 if ('logoff' === qeventbus.message) {
                     delete  $scope.user;
