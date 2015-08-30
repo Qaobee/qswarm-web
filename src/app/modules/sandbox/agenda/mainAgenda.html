@@ -8,21 +8,11 @@
     </div>
     
     
-    <!-- view for desktop -->
+    <!-- view for desktop Action button bar -->
     <div class="row hide-on-med-and-down">
-        <div class="col s1 red-text text-lighten-1 center"><i class="fa fa-calendar small left"></i></div>
-        <div class="col s3">
-            <div><h5 class="light-green-text text-lighten-1">{{'mainAgenda.title' | translate }}</h5></div>
-        </div>
-        
-        <div class="col s1 center">
-            <div><a ng-click="getCalendarMonths()" class="btn white-text red lighten-1">Mois</a></div>
-        </div>
-        <div class="col s2 center">
-            <div><a ng-click="getCalendarQuarters()" class="btn white-text red lighten-1">Trimestre</a></div>
-        </div>
-        <div class="col s1 center">
-            <div><a ng-click="getCalendarSeason()" class="btn white-text red lighten-1">Saison</a></div>
+        <div class="col s1 red-text text-lighten-1"><i class="fa fa-calendar fa-3x left"></i></div>
+        <div class="col s3 left-align">
+            <h5 class="light-green-text text-lighten-1">{{'mainAgenda.title' | translate }} {{currentEffective.label}}</h5>
         </div>
         
         <!-- effective list -->
@@ -33,7 +23,7 @@
             </li>
         </ul>
         
-        <div class="col s3">
+        <div class="col s7">
             <p ng-show="effectives.length > 1">
             <a class="dropdown-button waves-effect waves-light grey-text grey lighten-4 btn" style="font-size: small;" href="#!" data-activates="effectiveList">
                 {{'mainAgenda.buttons.dropdownEffective' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;
@@ -46,10 +36,25 @@
         <div class="col s1 right-align">    
             <a href="#/private/addEvent/{{meta._id}}" class="red-text text-lighten-1 center tooltipped" 
                 data-position="down" data-delay="20" data-tooltip="{{'mainAgenda.buttons.addEvent' | translate }}">
-                    <i class="material-icons small">add</i>
+                    <i class="fa fa-plus-square-o fa-3x"></i>
             </a>
+        </div>  
+    </div>
+    
+    <!-- Periodicity selector -->
+    <div class="row">
+        <div class="col s3">&nbsp;</div>
+        <div class="col s2 center">
+            <a ng-click="getCalendarMonths()" class="btn-flat blue-grey darken-2 white-text waves-effect waves-light ">Mois</a>
         </div>
-        
+        <div class="col s2 center">
+            <a ng-click="getCalendarQuarters()" class="btn-flat blue-grey darken-2 white-text waves-effect waves-light ">Trimestre</a>
+        </div>
+        <div class="col s2 center">
+            <a ng-click="getCalendarSeason()" class="btn-flat blue-grey darken-2 white-text waves-effect waves-light ">Saison</a>
+        </div>
+        <div class="col s3">&nbsp;</div>
+
         <!-- filter -->
         <div class="col s12">
             <form class="forms forms-inline input-field">
@@ -57,38 +62,42 @@
                 <label for="query">Filter</label>
             </form>
         </div>
-        <!-- filter -->
-        <div class="col s1 center small" ng-repeat="month in months" ng-show="periodicity === 'month'">
-            <a ng-click="getEventMonth(month.index)" class="waves-effect waves-light btn blue-grey darken-2 white-text" ng-hide="month.active">{{month.label}}</a>
-            <a ng-click="getEventMonth(month.index)" class="waves-effect waves-light btn red lighten-2 white-text" ng-show="month.active">{{month.label}}</a>
+        
+        <!-- filter Month-->
+        <div class="col s1" ng-repeat="month in months" ng-show="periodicity === 'month'">
+            <a ng-click="getEventMonth(month.index)" class="waves-effect waves-light center blue-grey-text text-darken-2 white" ng-hide="month.active">{{month.label}}</a>
+            <a ng-click="getEventMonth(month.index)" class="waves-effect waves-light center white red-text text-lighten-1" ng-show="month.active">{{month.label}}</a>
         </div>
+    </div>
+    
+    <div class="row">    
         <div class="col s12">    
-            <ul class="collection">
-                <li class="blue-grey-text text-darken-2 col s12">
-                    <div class="blue-grey-text text-darken-2"><h5>{{periodicityActive.label}}</h5></div>
-                </li>
-                <li class="col s12" ng-repeat="currentEvent in events | filter:query">
+            <ul>
+                <li class="col s12 m3" ng-repeat="currentEvent in events | filter:query">
                     <div class="card white">
                         <!-- cup -->
-                        <div class="card-content blue-grey darken-1 white-text flow-text" ng-show="currentEvent.link.type=='cup'">
-                            <span class="card-title">
-                                <i class="material-icons small">album</i> {{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}</span>
+                        <div class="card-content cyan darken-1 white-text flow-text" ng-show="currentEvent.link.type=='cup'">
+                            <h5><i class="material-icons">album</i> Coupe</h5>
+                            <br />
+                            <h6>{{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}</h6>
                             <hr class="white" />
-                            <h5 class="small blue-grey-text text-lighten-3">{{currentEvent.startDate}}</h5>
+                            <h5 class="small blue-grey-text text-darken-2">{{currentEvent.startDate}}</h5>
                         </div>
                         <!-- friendlyGame -->
-                        <div class="card-content green darken-2 white-text flow-text" ng-show="currentEvent.link.type=='friendlyGame'">
-                            <span class="card-title">
-                                <i  class="material-icons small">flare</i> {{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}</span>
+                        <div class="card-content light-green lighten-1 white-text flow-text" ng-show="currentEvent.link.type=='friendlyGame'">
+                            <h5><i  class="material-icons">flare</i> Match amical</h5>
+                            <br />
+                            <h6>{{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}</h6>
                             <hr class="white" />
-                            <h5 class="small blue-grey-text text-lighten-3">{{currentEvent.startDate}}</h5>
+                            <h5 class="small blue-grey-text text-darken-2">{{currentEvent.startDate}}</h5>
                         </div>
                         <!-- championship -->
-                        <div class="card-content  light-blue darken-3 white-text flow-text" ng-show="currentEvent.link.type=='championship'">
-                            <span class="card-title">
-                                <i class="material-icons small">stars</i> {{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}</span>
+                        <div class="card-content  red lighten-2 white-text flow-text" ng-show="currentEvent.link.type=='championship'">
+                            <h5><i class="material-icons">stars</i> Championnat</h5>
+                            <br />
+                            <h6>{{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}</h6>
                             <hr class="white" />
-                            <h5 class="small blue-grey-text text-lighten-3">{{currentEvent.startDate}}</h5>
+                            <h5 class="small blue-grey-text text-darken-2">{{currentEvent.startDate}}</h5>
                         </div>
                         
                         <div class="card-action white">

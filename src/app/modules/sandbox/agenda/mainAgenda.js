@@ -55,6 +55,7 @@
         $scope.events = [];
         $scope.owners = [];
         $scope.effectives = [];
+        $scope.currentEffective = {};
         
         /* Retrieve list effective */
         $scope.getEvents = function (startDate, endDate) {
@@ -80,6 +81,13 @@
                 $scope.effectives = data.sortBy(function(n) {
                     return n.label; 
                 });
+                
+                /* retrieve the current effective */ 
+                data.forEach(function (a) {
+                    if(a._id===$scope.effectiveId) {
+                        $scope.currentEffective = a;
+                    } 
+                });
             });
         };
         
@@ -97,7 +105,7 @@
 
                 month = {
                     index: i,
-                    label: moment(startDate).format('MMM'),
+                    label: moment(startDate).format('MMMM'),
                     startDate: moment(startDate).format('L'),
                     endDate: moment(endDate).format('L'),
                     active: (moment(startDate).format('L') === moment(currentMonth).format('L') ? true : false)
