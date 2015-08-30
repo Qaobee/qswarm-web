@@ -48,8 +48,6 @@
         
         $scope.user = user;
         $scope.meta = meta;
-        $scope.months = [];
-        $scope.quarters = [];
         $scope.periodicity = 'month';
         $scope.periodicityActive = {};
         $scope.events = [];
@@ -57,7 +55,7 @@
         $scope.effectives = [];
         $scope.currentEffective = {};
         
-        /* Retrieve list effective */
+        /* Retrieve list events */
         $scope.getEvents = function (startDate, endDate) {
             $log.debug(startDate);
             $log.debug(endDate);
@@ -92,92 +90,132 @@
         };
         
         /* generate calendar by month */
-        $scope.getCalendarMonths = function () {
-            $scope.months = [];
+        $scope.getCurrentMonth = function () {
             $scope.periodicity = 'month';
-            var month = {};
-            var start = moment('01/'+moment($scope.meta.season.startDate).format('MM/YYYY'),'DD/MM/YYYY');
-            var currentMonth = moment().date(1);
-              
-            for(var i=0; i<12; i++) {
-                var startDate = moment(start).add(i,'months');
-                var endDate =  moment(startDate).add(1,'months').subtract(1,'seconds');
-
-                month = {
-                    index: i,
-                    label: moment(startDate).format('MMMM'),
-                    startDate: moment(startDate).format('L'),
-                    endDate: moment(endDate).format('L'),
-                    active: (moment(startDate).format('L') === moment(currentMonth).format('L') ? true : false)
-                };
-                
-                /* Current month */
-                if(month.active) {
-                    $scope.periodicityActive = {
-                        index: i,
-                        label: moment(month.startDate,'DD/MM/YYYY').format('MMMM YYYY'),
-                        startDate: moment(month.startDate,'DD/MM/YYYY'),
-                        endDate: moment(month.endDate,'DD/MM/YYYY'),
-                    };
-                }  
-                
-                $scope.months.push(month);
+            var start = moment('01/'+moment().format('MM/YYYY'),'DD/MM/YYYY');
+            var end = moment(start).add(1,'months').subtract(1,'seconds');
+            
+            $scope.periodicityActive = {
+                label: moment(start,'DD/MM/YYYY').format('MMMM YYYY'),
+                startDate: start,
+                endDate: end,
             };
             
             $scope.getEvents(moment($scope.periodicityActive.startDate,'DD/MM/YYYY').valueOf(), moment($scope.periodicityActive.endDate,'DD/MM/YYYY').valueOf());
         };
         
-        /* generate calendar by month */
-        $scope.getEventMonth = function (index) {
+        /* Previous month */
+        $scope.previousMonth = function (index) {
             $scope.periodicity = 'month';
+            var start = moment($scope.periodicityActive.startDate,'DD/MM/YYYY').subtract(1,'month');
+            var end = moment($scope.periodicityActive.endDate,'DD/MM/YYYY').subtract(1,'month');
             
-            for(var i=0; i<$scope.months.length; i++) {
-                $scope.months[i].active = false;
-                if(i === index) {
-                    $scope.months[index].active = true;
-                    $scope.periodicityActive = {
-                        index: i,
-                        label: moment($scope.months[index].startDate,'DD/MM/YYYY').format('MMMM YYYY'),
-                        startDate: moment($scope.months[index].startDate,'DD/MM/YYYY'),
-                        endDate: moment($scope.months[index].endDate,'DD/MM/YYYY'),
-                    };
-                }
+            $scope.periodicityActive = {
+                label: moment(start,'DD/MM/YYYY').format('MMMM YYYY'),
+                startDate: start,
+                endDate: end,
+            };
+            
+            $scope.getEvents(moment($scope.periodicityActive.startDate,'DD/MM/YYYY').valueOf(), moment($scope.periodicityActive.endDate,'DD/MM/YYYY').valueOf());
+        };
+        
+        /* Next month */
+        $scope.nextMonth = function (index) {
+            $scope.periodicity = 'month';
+            var start = moment($scope.periodicityActive.startDate,'DD/MM/YYYY').add(1,'month');
+            var end = moment($scope.periodicityActive.endDate,'DD/MM/YYYY').add(1,'month');
+            
+            $scope.periodicityActive = {
+                label: moment(start,'DD/MM/YYYY').format('MMMM YYYY'),
+                startDate: start,
+                endDate: end,
             };
             
             $scope.getEvents(moment($scope.periodicityActive.startDate,'DD/MM/YYYY').valueOf(), moment($scope.periodicityActive.endDate,'DD/MM/YYYY').valueOf());
         };
         
         /* generate calendar by quarter */
-        $scope.getCalendarQuarters = function () {
+        $scope.getCurrentQuarter = function () {
             $scope.periodicity = 'quarter';
             var quarter = {};
-            var start = moment('01/'+moment($scope.meta.season.startDate).format('MM/YYYY'),'DD/MM/YYYY');
-            var currentMonth = moment().date(1);
-              
-            for(var i=0; i<12; i++) {
-                var startDate = moment(start).add(i,'months');
-                var endDate =  moment(startDate).add(1,'months').subtract(1,'seconds');
-
-                quarter = {
-                    label: moment(startDate).format('MMM'),
-                    startDate: moment(startDate).format('L'),
-                    endDate: moment(endDate).format('L'),
-                    active: (moment(startDate).format('L') === moment(currentMonth).format('L') ? true : false)
-                };
-                
-                /* Current month */
-                if(month.active) {
-                    $scope.periodicityActive = quarter;
-                }  
-                
-                $scope.quarters.push(quarter);
-            };            
+            var currentQuarter = moment().quarter();
+            var year = moment().year();
+            
+            switch(currentQuarter) {
+                case 1:
+                    quarter = {
+                        label: '1',
+                        startDate: moment(year+'/01/01','YYYY/MM/DD').format('L'),
+                        endDate: moment(year+'/04/01','YYYY/MM/DD').subtract(1, 'ms').format('L')
+                    };
+                    break;
+                case 2:
+                    quarter = {
+                        label: '2',
+                        startDate: moment(year+'/04/01','YYYY/MM/DD').format('L'),
+                        endDate: moment(year+'/07/01','YYYY/MM/DD').subtract(1, 'ms').format('L')
+                    };
+                    break;
+                case 3:
+                    quarter = {
+                        label: '3',
+                        startDate: moment(year+'/07/01','YYYY/MM/DD').format('L'),
+                        endDate: moment(year+'/10/01','YYYY/MM/DD').subtract(1, 'ms').format('L')
+                    };
+                    break;
+                case 4:
+                    quarter = {
+                        label: '4',
+                        startDate: moment(year+'/10/01','YYYY/MM/DD').format('L'),
+                        endDate: moment((year+1)+'/01/01','YYYY/MM/DD').subtract(1, 'ms').format('L')
+                    };
+                    break;
+                default:
+                    quarter = {
+                        label: '1',
+                        startDate: moment(year+'/01/01','YYYY/MM/DD').format('L'),
+                        endDate: moment(year+'/04/01','YYYY/MM/DD').subtract(1, 'ms').format('L')
+                    };
+            }
+            
+            /* Current quarter */
+            $scope.periodicityActive = quarter;
+            
+            $scope.getEvents(moment($scope.periodicityActive.startDate,'DD/MM/YYYY').valueOf(), moment($scope.periodicityActive.endDate,'DD/MM/YYYY').valueOf());
+        };
+        
+        /* Previous quarter */
+        $scope.previousQuarter = function () {
+            $scope.periodicity = 'quarter';
+            var start = moment($scope.periodicityActive.startDate,'DD/MM/YYYY').subtract(3,'month');
+            var end = moment($scope.periodicityActive.endDate,'DD/MM/YYYY').subtract(3,'month');
+            
+            $scope.periodicityActive = {
+                label: moment(start,'DD/MM/YYYY').format('MMMM YYYY'),
+                startDate: start,
+                endDate: end,
+            };
+            
+            $scope.getEvents(moment($scope.periodicityActive.startDate,'DD/MM/YYYY').valueOf(), moment($scope.periodicityActive.endDate,'DD/MM/YYYY').valueOf());
+        };
+        
+        /* Next quarter */
+        $scope.nextQuarter = function () {
+            $scope.periodicity = 'quarter';
+            var start = moment($scope.periodicityActive.startDate,'DD/MM/YYYY').add(3,'month');
+            var end = moment($scope.periodicityActive.endDate,'DD/MM/YYYY').add(3,'month');
+            
+            $scope.periodicityActive = {
+                label: moment(start,'DD/MM/YYYY').format('MMMM YYYY'),
+                startDate: start,
+                endDate: end,
+            };
             
             $scope.getEvents(moment($scope.periodicityActive.startDate,'DD/MM/YYYY').valueOf(), moment($scope.periodicityActive.endDate,'DD/MM/YYYY').valueOf());
         };
         
         /* generate calendar by season */
-        $scope.getCalendarSeason = function () {
+        $scope.getCurrentSeason = function () {
             $scope.periodicity = 'season';
             $scope.periodicityActive = {
                 index: 1,
@@ -191,7 +229,7 @@
         };
 
         $scope.getEffectives();
-        $scope.getCalendarMonths();
+        $scope.getCurrentMonth();
     })
     //
     ;

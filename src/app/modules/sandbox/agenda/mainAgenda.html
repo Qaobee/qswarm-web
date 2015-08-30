@@ -45,13 +45,13 @@
     <div class="row">
         <div class="col s3">&nbsp;</div>
         <div class="col s2 center">
-            <a ng-click="getCalendarMonths()" class="btn-flat blue-grey darken-2 white-text waves-effect waves-light ">Mois</a>
+            <a ng-click="getCurrentMonth()" class="btn-flat blue-grey darken-2 white-text waves-effect waves-light ">Mois</a>
         </div>
         <div class="col s2 center">
-            <a ng-click="getCalendarQuarters()" class="btn-flat blue-grey darken-2 white-text waves-effect waves-light ">Trimestre</a>
+            <a ng-click="getCurrentQuarter()" class="btn-flat blue-grey darken-2 white-text waves-effect waves-light ">Trimestre</a>
         </div>
         <div class="col s2 center">
-            <a ng-click="getCalendarSeason()" class="btn-flat blue-grey darken-2 white-text waves-effect waves-light ">Saison</a>
+            <a ng-click="getCurrentSeason()" class="btn-flat blue-grey darken-2 white-text waves-effect waves-light ">Saison</a>
         </div>
         <div class="col s3">&nbsp;</div>
 
@@ -63,22 +63,61 @@
             </form>
         </div>
         
-        <!-- filter Month-->
-        <div class="col s1" ng-repeat="month in months" ng-show="periodicity === 'month'">
-            <a ng-click="getEventMonth(month.index)" class="waves-effect waves-light center blue-grey-text text-darken-2 white" ng-hide="month.active">{{month.label}}</a>
-            <a ng-click="getEventMonth(month.index)" class="waves-effect waves-light center white red-text text-lighten-1" ng-show="month.active">{{month.label}}</a>
+        <!-- Month Navigation-->
+        <div class="col s1 center" ng-if="periodicity=='month'">
+            <a href="" ng-click="previousMonth()" class="btn-floating red lighten-1 left white-text">
+                <i class="mdi-navigation-chevron-left"></i>
+            </a>
+        </div>
+        <div class="col s10 center" ng-if="periodicity=='month'">
+            <h5 class="red-text text-lighten-1">{{periodicityActive.label}}</h5>
+        </div>
+        <div class="col s1 center" ng-if="periodicity=='month'">
+            <a href="" ng-click="nextMonth()" class="btn-floating red lighten-1 right white-text">
+                <i class="mdi-navigation-chevron-right"></i>
+            </a>
+        </div>
+        
+        <!-- Quarter Navigation-->
+        <div class="col s1 center" ng-if="periodicity=='quarter'">
+            <a href="" ng-click="previousQuarter()" class="btn-floating red lighten-1 left white-text">
+                <i class="mdi-navigation-chevron-left"></i>
+            </a>
+        </div>
+        <div class="col s10 center" ng-if="periodicity=='quarter'">
+            <h5 class="red-text text-lighten-1">{{periodicityActive.startDate}} - {{periodicityActive.endDate}}</h5>
+        </div>
+        <div class="col s1 center" ng-if="periodicity=='quarter'">
+            <a href="" ng-click="nextQuarter()" class="btn-floating red lighten-1 right white-text">
+                <i class="mdi-navigation-chevron-right"></i>
+            </a>
+        </div>
+        
+        <!-- Season Navigation-->
+        <div class="col s1 center" ng-if="periodicity=='season'">
+            <a href="" ng-click="previousSeason()" class="btn-floating red lighten-1 left white-text">
+                <i class="mdi-navigation-chevron-left"></i>
+            </a>
+        </div>
+        <div class="col s10 center" ng-if="periodicity=='season'">
+            <h5 class="red-text text-lighten-1">{{periodicityActive.label}}</h5>
+        </div>
+        <div class="col s1 center" ng-if="periodicity=='season'">
+            <a href="" ng-click="nextSeason()" class="btn-floating red lighten-1 right white-text">
+                <i class="mdi-navigation-chevron-right"></i>
+            </a>
         </div>
     </div>
     
     <div class="row">    
         <div class="col s12">    
-            <ul>
+            <ul>                
                 <li class="col s12 m3" ng-repeat="currentEvent in events | filter:query">
                     <div class="card white">
                         <!-- cup -->
                         <div class="card-content cyan darken-1 white-text flow-text" ng-show="currentEvent.link.type=='cup'">
                             <h5><i class="material-icons">album</i> Coupe</h5>
-                            <br />
+
                             <h6>{{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}</h6>
                             <hr class="white" />
                             <h5 class="small blue-grey-text text-darken-2">{{currentEvent.startDate}}</h5>
@@ -86,7 +125,7 @@
                         <!-- friendlyGame -->
                         <div class="card-content light-green lighten-1 white-text flow-text" ng-show="currentEvent.link.type=='friendlyGame'">
                             <h5><i  class="material-icons">flare</i> Match amical</h5>
-                            <br />
+                   
                             <h6>{{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}</h6>
                             <hr class="white" />
                             <h5 class="small blue-grey-text text-darken-2">{{currentEvent.startDate}}</h5>
@@ -94,7 +133,7 @@
                         <!-- championship -->
                         <div class="card-content  red lighten-2 white-text flow-text" ng-show="currentEvent.link.type=='championship'">
                             <h5><i class="material-icons">stars</i> Championnat</h5>
-                            <br />
+                         
                             <h6>{{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}</h6>
                             <hr class="white" />
                             <h5 class="small blue-grey-text text-darken-2">{{currentEvent.startDate}}</h5>
