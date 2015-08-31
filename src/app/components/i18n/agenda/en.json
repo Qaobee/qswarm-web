@@ -5,6 +5,18 @@
             "addEvent": "Add event",
             "updateEvent": "Update event",
             "dropdownEffective": "Change effective"
+        },
+        "periodicity" : {
+            "month": "Month",
+            "quarter": "Quarter",
+            "season": "Season"
+        },
+        "eventType" : {
+            "cup": "Cup",
+            "championship": "Championship",
+            "friendlyGame": "Friendly Game",
+            "training": "Training",
+            "other": "Other"
         }
     }
 }

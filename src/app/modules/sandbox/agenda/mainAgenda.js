@@ -59,7 +59,7 @@
         $scope.getEvents = function (startDate, endDate) {
 
             $scope.owners.push($scope.effectiveId);
-            var eventTypes = ['cup', 'friendlyGame','championship'];
+            var eventTypes = ['cup', 'friendlyGame','championship','training'];
             eventsRestAPI.getListEvents(startDate, endDate, eventTypes, $scope.meta.activity._id, $scope.owners).success(function (data) {
                 $scope.events = data.sortBy(function(n) {
                     return n.participants.startdate; 

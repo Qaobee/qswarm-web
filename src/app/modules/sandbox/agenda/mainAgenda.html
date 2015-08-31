@@ -1,18 +1,10 @@
 <div class="container">
 <!-- body start-->
-    <div class="row"> &nbsp;</div>   
 
     <!-- view for tablet and phone -->
     <div class="row hide-on-large-only">
-        <div> AGENDA Mobile </div>
-    </div>
-    
-    
-    <!-- view for desktop Action button bar -->
-    <div class="row hide-on-med-and-down">
-        <div class="col s1 red-text text-lighten-1"><i class="fa fa-calendar fa-3x left"></i></div>
-        <div class="col s3 left-align">
-            <h5 class="light-green-text text-lighten-1">{{'mainAgenda.title' | translate }} {{currentEffective.label}}</h5>
+        <div class="col s12 center">
+            <h5 class="red-text text-lighten-1">{{'mainAgenda.title' | translate }} {{currentEffective.label}}</h5>
         </div>
         
         <!-- effective list -->
@@ -23,40 +15,120 @@
             </li>
         </ul>
         
-        <div class="col s7">
-            <p ng-show="effectives.length > 1">
+        <div class="col s12" ng-if="effectives.length > 1">
             <a class="dropdown-button waves-effect waves-light grey-text grey lighten-4 btn" style="font-size: small;" href="#!" data-activates="effectiveList">
                 {{'mainAgenda.buttons.dropdownEffective' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;
                 <i class="material-icons right">arrow_drop_down</i>
             </a>
-            </p>
-            <p ng-show="effectives.length < 2">&nbsp;</p>
+        </div>
+    
+        <!-- Periodicity selector -->
+        <div class="col s12 center blue-grey darken-2" style="margin:1px">
+            <a ng-click="getCurrentMonth()" class="btn-flat white-text waves-effect waves-light"><h6 class="small">{{'mainAgenda.periodicity.month' | translate }}</h6></a>
+        </div>
+        <div class="col s12 center blue-grey darken-2" style="margin:1px">
+            <a ng-click="getCurrentQuarter()" class="btn-flat white-text waves-effect waves-light"><h6 class="small">{{'mainAgenda.periodicity.quarter' | translate }}</h6></a>
+        </div>
+        <div class="col s12 center blue-grey darken-2" style="margin:1px">
+            <a ng-click="getCurrentSeason()" class="btn-flat white-text waves-effect waves-light"><h6 class="small">{{'mainAgenda.periodicity.season' | translate }}</h6></a>
         </div>
         
-        <div class="col s1 right-align">    
-            <a href="#/private/addEvent/{{meta._id}}" class="red-text text-lighten-1 center tooltipped" 
+        <!-- filter -->
+        <div class="col s12 center">
+            <form class="forms forms-inline input-field">
+                <input type="text" id="query" class="grey lighten-4" ng-model="query">
+                <label for="query">Filter</label>
+            </form>
+        </div>
+        
+        <!-- Month Navigation  -->
+        <div class="col s2 center" ng-if="periodicity=='month'">
+            <a href="" ng-click="previousMonth()" class="btn-floating red lighten-1 left white-text">
+                <i class="mdi-navigation-chevron-left"></i>
+            </a>
+        </div>
+        <div class="col s8 center" ng-if="periodicity=='month'">
+            <h6 class="red-text text-lighten-1">{{periodicityActive.label}}</h6>
+        </div>
+        <div class="col s2 center" ng-if="periodicity=='month'">
+            <a href="" ng-click="nextMonth()" class="btn-floating red lighten-1 right white-text">
+                <i class="mdi-navigation-chevron-right"></i>
+            </a>
+        </div>
+
+        <!-- Quarter Navigation-->
+        <div class="col s2 center" ng-if="periodicity=='quarter'">
+            <a href="" ng-click="previousQuarter()" class="btn-floating red lighten-1 left white-text">
+                <i class="mdi-navigation-chevron-left"></i>
+            </a>
+        </div>
+        <div class="col s8 center" ng-if="periodicity=='quarter'">
+            <h6 class="red-text text-lighten-1">{{periodicityActive.label}}</h6>
+        </div>
+        <div class="col s2 center" ng-if="periodicity=='quarter'">
+            <a href="" ng-click="nextQuarter()" class="btn-floating red lighten-1 right white-text">
+                <i class="mdi-navigation-chevron-right"></i>
+            </a>
+        </div>
+
+        <!-- Season Navigation-->
+        <div class="col s2 center" ng-if="periodicity=='season'">
+            <a href="" ng-click="previousSeason()" class="btn-floating red lighten-1 left white-text">
+                <i class="mdi-navigation-chevron-left"></i>
+            </a>
+        </div>
+        <div class="col s8 center" ng-if="periodicity=='season'">
+            <h6 class="red-text text-lighten-1">{{periodicityActive.label}}</h6>
+        </div>
+        <div class="col s2 center" ng-if="periodicity=='season'">
+            <a href="" ng-click="nextSeason()" class="btn-floating red lighten-1 right white-text">
+                <i class="mdi-navigation-chevron-right"></i>
+            </a>
+        </div>
+    </div>
+    
+    
+    <!-- view desktop -->
+    <div class="row hide-on-med-and-down">
+        <div class="row s12"></div>
+
+        <!-- Periodicity selector -->
+        <div class="col m4 center-align">
+            <h5 class="red-text text-lighten-1">{{'mainAgenda.title' | translate }} {{currentEffective.label}}</h5>
+        </div>
+        <div class="col m2 center blue-grey darken-2" style="margin:1px">
+            <a ng-click="getCurrentMonth()" class="btn-flat white-text waves-effect waves-light">{{'mainAgenda.periodicity.month' | translate }}</a>
+        </div>
+        <div class="col m2 center blue-grey darken-2" style="margin:1px">
+            <a ng-click="getCurrentQuarter()" class="btn-flat white-text waves-effect waves-light">{{'mainAgenda.periodicity.quarter' | translate }}</a>
+        </div>
+        <div class="col m2 center blue-grey darken-2" style="margin:1px">
+            <a ng-click="getCurrentSeason()" class="btn-flat white-text waves-effect waves-light">{{'mainAgenda.periodicity.season' | translate }}</a>
+        </div>
+        <div class="col m1 right">
+            <a href="#/private/addEvent/{{meta._id}}" class="red-text text-lighten-1 tooltipped" 
                 data-position="down" data-delay="20" data-tooltip="{{'mainAgenda.buttons.addEvent' | translate }}">
                     <i class="fa fa-plus-square-o fa-3x"></i>
             </a>
-        </div>  
-    </div>
-    
-    <!-- Periodicity selector -->
-    <div class="row">
-        <div class="col s3">&nbsp;</div>
-        <div class="col s2 center">
-            <a ng-click="getCurrentMonth()" class="btn-flat blue-grey darken-2 white-text waves-effect waves-light ">Mois</a>
         </div>
-        <div class="col s2 center">
-            <a ng-click="getCurrentQuarter()" class="btn-flat blue-grey darken-2 white-text waves-effect waves-light ">Trimestre</a>
+        
+        <!-- effective list -->
+        <ul id="effectiveList" class="dropdown-content">
+            <li ng-repeat="effective in effectives">
+                <a href="#/private/agenda/{{effective._id}}"><h6 class="blue-grey-text text-darken-2">{{effective.label}} - {{effective.categoryAge.label}}</h6></a>
+                <div class="divider"></div>
+            </li>
+        </ul>
+        
+        <div class="col s12" ng-if="effectives.length > 1">
+            <a class="dropdown-button waves-effect waves-light grey-text grey lighten-4 btn" style="font-size: small;" href="#!" data-activates="effectiveList">
+                {{'mainAgenda.buttons.dropdownEffective' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="material-icons right">arrow_drop_down</i>
+            </a>
         </div>
-        <div class="col s2 center">
-            <a ng-click="getCurrentSeason()" class="btn-flat blue-grey darken-2 white-text waves-effect waves-light ">Saison</a>
-        </div>
-        <div class="col s3">&nbsp;</div>
-
+        
         <!-- filter -->
-        <div class="col s12">
+        <div class="col s12 center">
             <form class="forms forms-inline input-field">
                 <input type="text" id="query" class="grey lighten-4" ng-model="query">
                 <label for="query">Filter</label>
@@ -77,7 +149,7 @@
                 <i class="mdi-navigation-chevron-right"></i>
             </a>
         </div>
-        
+
         <!-- Quarter Navigation-->
         <div class="col s1 center" ng-if="periodicity=='quarter'">
             <a href="" ng-click="previousQuarter()" class="btn-floating red lighten-1 left white-text">
@@ -92,7 +164,7 @@
                 <i class="mdi-navigation-chevron-right"></i>
             </a>
         </div>
-        
+
         <!-- Season Navigation-->
         <div class="col s1 center" ng-if="periodicity=='season'">
             <a href="" ng-click="previousSeason()" class="btn-floating red lighten-1 left white-text">
@@ -116,7 +188,7 @@
                     <div class="card white">
                         <!-- cup -->
                         <div class="card-content cyan darken-1 white-text flow-text" ng-show="currentEvent.link.type=='cup'">
-                            <h5><i class="material-icons">album</i> Coupe</h5>
+                            <h5><i class="material-icons">album</i> {{'mainAgenda.eventType.cup' | translate }}</h5>
 
                             <h6>{{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}</h6>
                             <hr class="white" />
@@ -124,7 +196,7 @@
                         </div>
                         <!-- friendlyGame -->
                         <div class="card-content light-green lighten-1 white-text flow-text" ng-show="currentEvent.link.type=='friendlyGame'">
-                            <h5><i  class="material-icons">flare</i> Match amical</h5>
+                            <h5><i  class="material-icons">flare</i> {{'mainAgenda.eventType.friendlyGame' | translate }}</h5>
                    
                             <h6>{{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}</h6>
                             <hr class="white" />
@@ -132,9 +204,17 @@
                         </div>
                         <!-- championship -->
                         <div class="card-content  red lighten-2 white-text flow-text" ng-show="currentEvent.link.type=='championship'">
-                            <h5><i class="material-icons">stars</i> Championnat</h5>
+                            <h5><i class="material-icons">stars</i> {{'mainAgenda.eventType.championship' | translate }}</h5>
                          
                             <h6>{{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}</h6>
+                            <hr class="white" />
+                            <h5 class="small blue-grey-text text-darken-2">{{currentEvent.startDate}}</h5>
+                        </div>
+                        <!-- training -->
+                        <div class="card-content  blue lighten-2 white-text flow-text" ng-show="currentEvent.link.type=='training'">
+                            <h5><i class="material-icons">timer</i>{{'mainAgenda.eventType.training' | translate }}</h5>
+                         
+                            <h6>{{currentEvent.address.formatedAddress}}</h6>
                             <hr class="white" />
                             <h5 class="small blue-grey-text text-darken-2">{{currentEvent.startDate}}</h5>
                         </div>

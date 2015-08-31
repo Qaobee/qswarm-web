@@ -5,6 +5,18 @@
             "addEvent": "Ajouter un évènement",
             "updateEvent": "Editer un évènement",
             "dropdownEffective": "Changer d'effectif"
+        },
+        "periodicity" : {
+            "month": "Mois",
+            "quarter": "Trimestre",
+            "season": "Saison"
+        },
+        "eventType" : {
+            "cup": "Coupe",
+            "championship": "Championnat",
+            "friendlyGame": "Match amical",
+            "training": "Entraînement",
+            "other": "Autre"
         }
     }
 }
