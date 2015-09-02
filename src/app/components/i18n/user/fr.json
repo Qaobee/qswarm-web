@@ -1,0 +1,29 @@
+{
+    
+    "userLabels" : {
+        "userSignupCivilSection" : "Informations personnelles",
+        "userName" : "Nom",
+        "userFirstname" : "Prénom",
+        "userGender" : "Civilité",
+        "userGenderM" : "Monsieur",
+        "userGenderF" : "Madame",
+        "userBirthDate" : "Date de naissance",
+        "userNationality" : "Nationalité",
+        "userEMail" : "e-Mail",
+        "userPhoneNumber" : "Numéros de téléphone",
+        "userPhoneHome" : "Domicile",
+        "userPhoneOffice" : "Bureau",
+        "userCellPhone" : "Portable",
+        
+        "userSignupSportSection" : "Choix du sport",
+        "userSportChoice" : "Veuillez choisir le sport",
+        
+        
+        "userSignupStructureSection" : "Choix du club",
+        
+        
+        "userSignupSumup" : "Résumé"
+        
+        
+    }
+}

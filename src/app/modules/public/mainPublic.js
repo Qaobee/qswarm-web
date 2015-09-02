@@ -20,7 +20,6 @@
         'qaobee.headerMenu',
     
         /* qaobee modules */ 
-        'qaobee.signup', 
             
         /* qaobee Rest API */
         'publicRestAPI' 
@@ -54,7 +53,7 @@
                 templateUrl: 'app/modules/public/features.html'
             }).when('/offer/DISCOVERY', {
                 controller: 'DiscoveryOfferCtrl',
-                templateUrl: 'app/modules/ublic/offers/discovery.html'
+                templateUrl: 'app/modules/public/offers/discovery.html'
             }).when('/offer/PREMIUM', {
                 controller: 'PremiumOfferCtrl',
                 templateUrl: 'app/modules/public/offers/premium.html'

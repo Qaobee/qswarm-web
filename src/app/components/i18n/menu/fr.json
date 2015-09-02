@@ -30,6 +30,15 @@
                 "title": "Connectez vous sur <b>Qaobee</b>",
                 "forgotpasswdcancel": "Attendez, je m'en rappelle à présent!"
             }
+        },
+        "signup": {
+            "label": {
+                "login": "Login",
+                "email" : "e-Mail",
+                "password": "Mot de passe",
+                "passwordConfirm" : "Confirmation mot de passe",
+                "title": "Inscrivez-vous sur <b>Qaobee</b>"
+            }
         }
     }
 }
