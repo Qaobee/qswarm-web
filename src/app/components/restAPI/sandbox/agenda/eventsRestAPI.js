@@ -23,17 +23,11 @@
              * @param   {String}   eventOwner Event Owner
              * @returns {Array}    list of events
              */
-                getListEvents: function (startDate, endDate, type, activityId, owner) {
+                getListEvents: function (request) {
                     return $http({
                         url: eventsAPIURL + '/list',
                         method: 'POST',
-                        data: {
-                            startDate: startDate,
-                            endDate: endDate,
-                            linkType: type,
-                            activityId: activityId,
-                            owner: owner
-                        }
+                        data: request
                     });
                 },
           
