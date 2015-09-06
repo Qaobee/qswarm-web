@@ -34,7 +34,7 @@
 
         .config(function ($routeProvider, metaDatasProvider) {
         
-            $(".dropdown-button").dropdown();
+            $('.dropdown-button').dropdown();
 
             $routeProvider.when('/private/effective/:effectiveId', {
                 controller: 'MainEffectiveControler',

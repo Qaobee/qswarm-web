@@ -15,6 +15,7 @@
         'ngAutocomplete',
         
         /* qaobee modules */
+        'qaobee.addEvent',
         
         /* qaobee Rest API */
         'eventsRestAPI',
@@ -22,6 +23,8 @@
 
 
         .config(function ($routeProvider, metaDatasProvider) {
+        
+            $('.dropdown-button').dropdown();
         
             $routeProvider.when('/private/agenda/:effectiveId', {
                 controller: 'MainAgendaControler',
@@ -45,6 +48,7 @@
         $translatePartialLoader.addPart('agenda');
         
         $scope.effectiveId = $routeParams.effectiveId;
+        $scope.user.effectiveDefault = $scope.effectiveId;
         
         $scope.user = user;
         $scope.meta = meta;
@@ -67,7 +71,7 @@
                 type : ['cup', 'friendlyGame','championship','training']
                 
             };
-
+            $log.debug(requestEvent);
             eventsRestAPI.getListEvents(requestEvent).success(function (data) {
                 $scope.events = data.sortBy(function(n) {
                     return n.startDate; 

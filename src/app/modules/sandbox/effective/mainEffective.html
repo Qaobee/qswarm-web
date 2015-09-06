@@ -12,7 +12,7 @@
         </div>
         
         <div class="col s2">
-            <a class="dropdown-button red-text text-lighten-1" href="#!" data-activates="actionsEffective"><i class="material-icons right">more_vert</i></a>            
+            <a class="dropdown-button red-text text-lighten-1" href="#" data-activates="actionsEffective"><i class="material-icons right">more_vert</i></a>            
             <!-- Dropdown Structure -->
             <ul id="actionsEffective" class="dropdown-content">
                 <li><a href="#/private/addEffective/{{meta._id}}" class="red-text text-lighten-1 center"><i class="material-icons center">group_add</i></a></li>
@@ -74,7 +74,7 @@
         </div>
         
         <!-- effective list -->
-        <ul id="effectiveList" class="dropdown-content">
+        <ul id="mainEffectiveList" class="dropdown-content">
             <li ng-repeat="effective in effectives">
                 <a href="#/private/effective/{{effective._id}}"><h6 class="blue-grey-text text-darken-2">{{effective.label}} - {{effective.categoryAge.label}}</h6></a>
                 <div class="divider"></div>
@@ -83,7 +83,7 @@
         
         <div class="col s3">
             <p ng-show="effectives.length > 1">
-            <a class="dropdown-button waves-effect waves-light grey-text grey lighten-4 btn" style="font-size: small;" href="#!" data-activates="effectiveList">
+            <a class="dropdown-button waves-effect waves-light grey-text grey lighten-4 btn" style="font-size: small;" href="#!" data-activates="mainEffectiveList">
                 {{'mainEffective.buttons.dropdownEffective' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;
                 <i class="material-icons right">arrow_drop_down</i>
             </a>

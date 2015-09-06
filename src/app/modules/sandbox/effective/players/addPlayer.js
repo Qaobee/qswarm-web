@@ -126,12 +126,12 @@
                         /* Update effective members list */
                         effectiveRestAPI.update(effective).success(function (data) {
                             toastr.success($filter('translate')('addPlayer.toastSuccess', {
-                            firstname: person.firstname,
-                            name: person.name,
-                            effective: effective.categoryAge.label
-                        }));
+                                firstname: person.firstname,
+                                name: person.name,
+                                effective: effective.categoryAge.label
+                            }));
 
-                        $window.history.back();
+                            $window.history.back();
                         });
                     }
                 });

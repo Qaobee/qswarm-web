@@ -18,5 +18,29 @@
             "training": "Training",
             "other": "Other"
         }
+    },
+    "addEvent": {
+        "title": "create event",
+        "toastSuccess":"Event {{label}} has been created",
+        "toastError":"Error, event can't create"
+    },
+    "updateEvent": {
+        "title": "Update event",
+        "toastSuccess":"Event {{label}} was updated",
+        "toastError":"Error, event can't update"
+    },
+    "eventLabels": {
+        "Type": "Type",
+        "Label": "Label",
+        "LabelPlaceHolder": "1st journey... League Cup...",
+        "StartDate": "Start date",
+        "EndDate": "End date",
+        "StartHour": "Start hour",
+        "EndHour": "End hour",
+        "Address": "Address",
+        "Home": "Home",
+        "Visitor":"Outside",
+        "SectionPlaning":"Planning",
+        "SectionPlace":"Location"
     }
 }

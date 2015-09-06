@@ -18,5 +18,29 @@
             "training": "Entraînement",
             "other": "Autre"
         }
+    },
+    "addEvent": {
+        "title": "Ajout d'un évènement",
+        "toastSuccess":"L'évènement {{label}} a été ajouté",
+        "toastError":"Erreur, l'évènement n'a pas été créé"
+    },
+    "updateEvent": {
+        "title": "Mise à jour d'un évènement",
+        "toastSuccess":"L'évènement {{label}} a été modifié",
+        "toastError":"Erreur, l'évènement n'a pas été modifié"
+    },
+    "eventLabels": {
+        "Type": "Type",
+        "Label": "Libellé",
+        "LabelPlaceHolder": "1ére journée... Coupe de France...",
+        "StartDate": "Date début",
+        "EndDate": "Date fin",
+        "StartHour": "Heure début",
+        "EndHour": "Heure fin",
+        "Address": "Adresse",
+        "Home": "A domicile",
+        "Visitor":"A l'extérieur",
+        "SectionPlaning":"Planification",
+        "SectionPlace":"Localisation"
     }
 }
