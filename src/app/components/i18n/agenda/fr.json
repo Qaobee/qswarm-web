@@ -30,6 +30,8 @@
         "toastError":"Erreur, l'évènement n'a pas été modifié"
     },
     "eventLabels": {
+        "Team": "Equipe",
+        "Adversary": "Adversaire",
         "Type": "Type",
         "Label": "Libellé",
         "LabelPlaceHolder": "1ére journée... Coupe de France...",

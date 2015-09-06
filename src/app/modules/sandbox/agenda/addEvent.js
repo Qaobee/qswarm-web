@@ -19,7 +19,8 @@
         /* qaobee Rest API */
         'activityCfgRestAPI',
         'eventsRestAPI',
-        'effectiveRestAPI'])
+        'effectiveRestAPI',
+        'teamRestAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
@@ -40,7 +41,7 @@
      * @description Main controller for view mainAgenda.html
      */
         .controller('AddEventControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                                     eventsRestAPI, effectiveRestAPI, activityCfgRestAPI) {
+                                                     eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('agenda');
@@ -50,6 +51,9 @@
         $scope.user = user;
         $scope.meta = meta;
         $scope.listEventType = {};
+        $scope.listTeamHome = {};
+        $scope.listTeamAdversary = {};
+        $scope.chooseAdversary = false;
         
         $scope.addEventTitle = true;
         
@@ -75,6 +79,19 @@
         $scope.optionsAdr = null;
         $scope.detailsAdr = '';
         
+        /* Retrieve list of team of effective */
+        teamRestAPI.getListTeam($scope.meta.sandbox._id, $scope.effectiveId, 'true', 'false').success(function (data) {
+            $scope.listTeamHome = data.sortBy(function(n) {
+                    return n.label; 
+                });
+        });
+        
+        /* Retrieve list of adversary of effective */
+       teamRestAPI.getListTeam($scope.meta.sandbox._id, $scope.effectiveId, 'true', 'true').success(function (data) {
+            $scope.listTeamAdversary = data.sortBy(function(n) {
+                    return n.label; 
+                });
+        });
         
         /* Retrieve list of event type */
         activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listEventType').success(function (data) {

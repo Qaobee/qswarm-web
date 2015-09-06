@@ -30,6 +30,8 @@
         "toastError":"Error, event can't update"
     },
     "eventLabels": {
+        "Team": "Team",
+        "Adversary": "Adversary",
         "Type": "Type",
         "Label": "Label",
         "LabelPlaceHolder": "1st journey... League Cup...",

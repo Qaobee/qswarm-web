@@ -26,6 +26,19 @@
         <div class="row">
             <div class="col m3 hide-on-med-and-down">&nbsp;</div>
             <div class="input-field col m2 s4">
+                <label for="team" class="active" >{{'eventLabels.Team' | translate }} <span class="red-text text-lighten-1">*</span></label>
+            </div>
+            <div class="input-field col m4 s8">
+                <select class="browser-default" ng-model="team" required id="team"
+                        ng-options="p.code as p.label for p in listTeamHome">
+                </select>
+            </div>
+            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+        </div>
+        
+        <div class="row">
+            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+            <div class="input-field col m2 s4">
                 <label for="EventType" class="active" >{{'eventLabels.Type' | translate }} <span class="red-text text-lighten-1">*</span></label>
             </div>
             <div class="input-field col m4 s8">
@@ -43,6 +56,19 @@
             </div>
             <div class="input-field col m4 s8">
                <input id="eventLabel" type="text" class="validate" ng-model="event.Label" placeholder="{{'eventLabels.LabelPlaceHolder' | translate }}">
+            </div>
+            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+        </div>
+        
+        <div class="row" ng-if="chooseAdversary">
+            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+            <div class="input-field col m2 s4">
+                <label for="adversary" class="active" >{{'eventLabels.Adversary' | translate }} <span class="red-text text-lighten-1">*</span></label>
+            </div>
+            <div class="input-field col m4 s8">
+                <select class="browser-default" ng-model="adversary" required id="adversary"
+                        ng-options="p.code as p.label for p in listTeamAdversary">
+                </select>
             </div>
             <div class="col m3 hide-on-med-and-down">&nbsp;</div>
         </div>
@@ -79,6 +105,22 @@
                 <input type="text" id="Autocomplete" class="form-control" ng-autocomplete ng-model="event.address.formatedAddress" details="detailsAdr" options="optionsAdr" placeholder=""/>
             </div>
             <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+        </div>
+        
+        <div class="row">
+            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+            <div class="input-field col m12 s12 center-align">
+                <div class="hide-on-med-and-down"><br/></div>
+                <input name="gender" class="with-gap" type="radio" id="playerGenderF" value="{{'playerLabels.playerGenderF' | translate }}"
+                           ng-model="player.gender" required/>
+                <label for="playerGenderF">{{'eventLabels.Home' | translate }}</label>
+
+                <input name="gender" class="with-gap" type="radio" id="playerGenderM" value="{{'playerLabels.playerGenderM' | translate }}"
+                   ng-model="player.gender" required/>
+                <label for="playerGenderM">{{'eventLabels.Visitor' | translate }}</label>
+            </div>
+            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+        
         </div>
 
         <!-- actions buttons -->
