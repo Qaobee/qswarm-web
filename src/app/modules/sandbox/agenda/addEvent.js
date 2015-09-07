@@ -20,7 +20,8 @@
         'activityCfgRestAPI',
         'eventsRestAPI',
         'effectiveRestAPI',
-        'teamRestAPI'])
+        'teamRestAPI',
+        'locationAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
@@ -41,7 +42,7 @@
      * @description Main controller for view mainAgenda.html
      */
         .controller('AddEventControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                                     eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI) {
+                                                     eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('agenda');
@@ -53,6 +54,7 @@
         $scope.listEventType = {};
         $scope.listTeamHome = {};
         $scope.teamId = '';
+        $scope.listTeamAdversary = {};
         $scope.adversaryId = '';
         $scope.chooseAdversary = false;
         $scope.startDate = '';
@@ -70,6 +72,7 @@
         
         //Initialization new event
         $scope.event = {
+            activityId: $scope.meta.activity._id,
             owner: {
                 sandboxId : $scope.meta.sandbox._id,
                 effectiveId : $scope.effectiveId
@@ -157,21 +160,35 @@
             
             /* add participants event */
             var participants = {};
+            var team = {};
+            var adversary = {};
+            
+            angular.forEach($scope.listTeamHome, function (item) {
+                if(item._id === $scope.teamId) {
+                    team = item;
+                }   
+            });
+            
+            angular.forEach($scope.listTeamAdversary, function (item) {
+                if(item._id === $scope.adversaryId) {
+                    adversary = item;
+                }   
+            });
+            
             if ($scope.location === 'home') {
                 participants = { 
-                    teamHome: {id:$scope.teamId, "label":"CRMHB Cesson-Sévigné"},
-                    teamVisitor: {id:$scope.adversaryId, "label":"USDK Dunkerque"}
+                    teamHome: {id:team._id, label:team.label},
+                    teamVisitor: {id:adversary._id, label:adversary.label}
                 };
             } else {
                 participants = { 
-                    teamVisitor: {id:$scope.teamId, "label":"CRMHB Cesson-Sévigné"},
-                    teamHome: {id:$scope.adversaryId, "label":"USDK Dunkerque"}
+                    teamVisitor: {id:team._id, label:team.label},
+                    teamHome: {id:adversary._id, label:adversary.label}
                 };
             }
                 
             $scope.event.participants = participants ;
 
-            $log.debug($scope.event);
             
             if (angular.isDefined($scope.event.address.formatedAddress) && !$scope.event.address.formatedAddress.isBlank()) {
                 locationAPI.get($scope.event.address.formatedAddress).then(function (adr) {

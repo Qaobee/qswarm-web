@@ -47,32 +47,32 @@
           
             /**
              * @memberOf qaobee.components.restAPI.sandbox.agenda.eventRestAPI
-             * @function add()
+             * @function addEvent()
              * @description add event
              * @param {SB_Event}
              *            event : event to add
              * @returns {SB_Event} com.qaobee.hive.business.model.sandbox.agenda.SB_Event
              */
-                add : function(event) {
+                addEvent : function(event) {
                     return $http({
                         url : eventsAPIURL + '/add',
-                        method : 'PUT',
+                        method : 'POST',
                         data : event
                     });
                 },
 
             /**
              * @memberOf qaobee.components.restAPI.sandbox.agenda.eventRestAPI
-             * @function update()
+             * @function updateEvent()
              * @description update a event
              * @param {SB_Event}
              *            event : event to update
              * @returns {SB_Event} com.qaobee.hive.business.model.sandbox.agenda.SB_Event
              */
-                update : function(event) {
+                updateEvent : function(event) {
                     return $http({
                         url : eventsAPIURL + '/update',
-                        method : 'PUT',
+                        method : 'POST',
                         data : event
                     });
                 }
