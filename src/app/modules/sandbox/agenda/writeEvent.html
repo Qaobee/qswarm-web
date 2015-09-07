@@ -13,8 +13,8 @@
             </div>
         </div>
         <div ng-show="addEventTitle">
-            <div class="col s1">    
-                <i class="material-icons red-text text-lighten-1 center medium">group_add</i>
+            <div class="col s1 red-text text-lighten-1">    
+                <i class="fa fa-plus-square-o fa-3x"></i>
             </div>
             <div class="col s11">
                 <h5 class="light-green-text text-lighten-1">{{'addEvent.title' | translate }}</h5>
@@ -22,118 +22,110 @@
         </div>
     </div>
     
-    <form novalidate name="eventForm">
-        <div class="row">
-            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-            <div class="input-field col m2 s4">
-                <label for="team" class="active" >{{'eventLabels.Team' | translate }} <span class="red-text text-lighten-1">*</span></label>
+    <div class="row">
+        <form class="col s12" ng-submit="checkAndformatEvent()" name="eventForm">
+            <div class="card-panel">
+                <div class="row">
+                    <h6 class="red-text text-lighten-1 col s12">{{'eventLabels.SectionIdentity' | translate }}</h6>
+                    <div class="input-field col s12 m6">
+                        <select class="browser-default blue-grey-text text-darken-1" ng-model="event.link.type" required id="EventType" ng-change="changeEventType()">
+                            <option value="" disabled selected>{{'eventLabels.Type' | translate }}</option>
+                            <option ng-repeat="p in listEventType" value="{{p.code}}">{{p.label}}</option>
+                        </select>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <input id="eventLabel" type="text" ng-model="event.Label" required>
+                        <label for="eventLabel">{{'eventLabels.Label' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                    </div>
+                </div>
             </div>
-            <div class="input-field col m4 s8">
-                <select class="browser-default" ng-model="team" required id="team"
-                        ng-options="p.code as p.label for p in listTeamHome">
-                </select>
-            </div>
-            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-        </div>
-        
-        <div class="row">
-            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-            <div class="input-field col m2 s4">
-                <label for="EventType" class="active" >{{'eventLabels.Type' | translate }} <span class="red-text text-lighten-1">*</span></label>
-            </div>
-            <div class="input-field col m4 s8">
-                <select class="browser-default" ng-model="link" required id="EventType"
-                        ng-options="p.code as p.label for p in listEventType">
-                </select>
-            </div>
-            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-        </div>
-        
-        <div class="row">
-            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-            <div class="input-field col m2 s4">
-                <label for="EventType" class="eventLabel" >{{'eventLabels.Label' | translate }} <span class="red-text text-lighten-1">*</span></label>
-            </div>
-            <div class="input-field col m4 s8">
-               <input id="eventLabel" type="text" class="validate" ng-model="event.Label" placeholder="{{'eventLabels.LabelPlaceHolder' | translate }}">
-            </div>
-            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-        </div>
-        
-        <div class="row" ng-if="chooseAdversary">
-            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-            <div class="input-field col m2 s4">
-                <label for="adversary" class="active" >{{'eventLabels.Adversary' | translate }} <span class="red-text text-lighten-1">*</span></label>
-            </div>
-            <div class="input-field col m4 s8">
-                <select class="browser-default" ng-model="adversary" required id="adversary"
-                        ng-options="p.code as p.label for p in listTeamAdversary">
-                </select>
-            </div>
-            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-        </div>
-        
-        <div class="row">
-            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-            <div class="input-field col m2 s4">
-                <label for="EventStartDate">{{'eventLabels.StartDate' | translate }} <span class="red-text text-lighten-1">*</span></label>
-            </div>
-            <div class="input-field col m4 s8">
-               <input ng-model="event.startDate" id="EventStartDate" type="date" class="validate" required>
-            </div>
-            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-        </div>
-        
-        <div class="row">
-            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-            <div class="input-field col m2 s4">
-                <label>{{'eventLabels.EndDate' | translate }} <span class="red-text text-lighten-1">*</span></label>
-            </div>
-            <div class="input-field col m4 s8">
-               <input ng-model="event.endDate" id="EventEndDate" type="date" class="validate" required>
-            </div>
-            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-        </div>
-        
-        <div class="row">
-            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-            <div class="input-field col m2 s4">
-                <i class="material-icons prefix">home</i>
-                <label>{{'eventLabels.Address' | translate }}</label>
-            </div>
-            <div class="input-field col m4 s8">
-                <input type="text" id="Autocomplete" class="form-control" ng-autocomplete ng-model="event.address.formatedAddress" details="detailsAdr" options="optionsAdr" placeholder=""/>
-            </div>
-            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-        </div>
-        
-        <div class="row">
-            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-            <div class="input-field col m12 s12 center-align">
-                <div class="hide-on-med-and-down"><br/></div>
-                <input name="gender" class="with-gap" type="radio" id="playerGenderF" value="{{'playerLabels.playerGenderF' | translate }}"
-                           ng-model="player.gender" required/>
-                <label for="playerGenderF">{{'eventLabels.Home' | translate }}</label>
+            
+            <div class="card-panel">                        
+                <div class="row">
+                    <h6 class="red-text text-lighten-1 col s12">{{'eventLabels.SectionActors' | translate }}</h6>
+                    <div class="input-field col s12 m6">
+                        <select class="browser-default blue-grey-text text-darken-1" ng-model="teamId" required id="team">
+                            <option value="" disabled selected>{{'eventLabels.Team' | translate }}</option>
+                            <option ng-repeat="p in listTeamHome" value="{{p._id}}">{{p.label}}</option>
+                        </select>
+                    </div>
 
-                <input name="gender" class="with-gap" type="radio" id="playerGenderM" value="{{'playerLabels.playerGenderM' | translate }}"
-                   ng-model="player.gender" required/>
-                <label for="playerGenderM">{{'eventLabels.Visitor' | translate }}</label>
+                    <div class="input-field col s12 m6" ng-if="chooseAdversary">
+                        <select class="browser-default blue-grey-text text-darken-1" ng-model="adversaryId" required id="adversary">
+                            <option value="" disabled selected>{{'eventLabels.Adversary' | translate }}</option>
+                            <option ng-repeat="p in listTeamAdversary" value="{{p._id}}">{{p.label}}</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-        
-        </div>
+            
+            <div class="card-panel"> 
+                <div class="row">
+                    <h6 class="red-text text-lighten-1 col s12">{{'eventLabels.SectionPlaning' | translate }}</h6>
+                    <div class="input-field col s4 m2">
+                        <label>{{'eventLabels.StartDate' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                    </div>
+                    <div class="input-field col s8 m4">
+                       <input ng-model="startDate" id="EventStartDate" type="date" class="datepicker" required>
+                    </div>
 
-        <!-- actions buttons -->
-        <div class="row">&nbsp;</div>
-        <div class="row">
-            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-            <div class="col m6 s12 center-align">
-                <a href="" ng-click="doTheBack()" class="btn red lighteen-1 white-text" translate="commons.buttons.cancel"></a>&nbsp;
-                <a href="" ng-click="checkAndformatAddress()" class="btn green darken-1 white-text" translate="commons.buttons.validate"></a>&nbsp;
+                    <div class="input-field col s4 m2">
+                        <label>{{'eventLabels.StartHour' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                    </div>
+                    <div class="input-field col s8 m4">
+                       <input ng-model="startHours" id="EventStartHours" type="time" required>
+                    </div>
+
+                    <div class="input-field col s4 m2">
+                        <label>{{'eventLabels.EndDate' | translate }}</label>
+                    </div>
+                    <div class="input-field col s8 m4">
+                       <input ng-model="endDate" id="EventEndDate" type="date">
+                    </div>
+
+                    <div class="input-field col s4 m2">
+                        <label>{{'eventLabels.EndHour' | translate }}</label>
+                    </div>
+                    <div class="input-field col s8 m4">
+                       <input ng-model="endHours" id="EventEndHours" type="time">
+                    </div>
+                </div>
             </div>
-            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-        </div>
-    </form>
+            
+            <div class="card-panel"> 
+                <div class="row">
+                    <h6 class="red-text text-lighten-1 col s12">{{'eventLabels.SectionPlace' | translate }}</h6>
+                    <div class="input-field col m2 s4">
+                        <i class="material-icons prefix">home</i>
+                        <label for="formatedAddress">{{'eventLabels.Address' | translate }}</label>
+                    </div>
+                    <div class="input-field col m4 s8">
+                        <input type="text" id="formatedAddress" ng-autocomplete ng-model="event.address.formatedAddress" details="detailsAdr" options="optionsAdr" placeholder=""/>
+                    </div>
+                    
+                    <div class="input-field col m6 s12 center-align">
+                        <input name="location" class="with-gap" checked="checked" type="radio" id="home" 
+                               value="home" ng-model="location"/>
+                        <label for="home">{{'eventLabels.Home' | translate }}</label>
+
+                        <input name="location" class="with-gap" type="radio" id="outside" 
+                               value="outside" ng-model="location"/>
+                        <label for="outside">{{'eventLabels.Visitor' | translate }}</label>
+                    </div>
+                </div>
+
+                <!-- actions buttons -->
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <a class="btn red lighteen-1 white-text waves-effect waves-light center" ng-click="doTheBack()" translate="commons.buttons.cancel"></a>
+                        <button class="btn green darken-1 waves-effect waves-light center" type="submit" name="action" translate="commons.buttons.validate">
+                            <i class="mdi-content-send right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
     
     
 <!-- body end-->

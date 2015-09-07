@@ -30,9 +30,9 @@
         "toastError":"Error, event can't update"
     },
     "eventLabels": {
-        "Team": "Team",
-        "Adversary": "Adversary",
-        "Type": "Type",
+        "Team": "Choice team",
+        "Adversary": "Choice adversary",
+        "Type": "Choice Event Type",
         "Label": "Label",
         "LabelPlaceHolder": "1st journey... League Cup...",
         "StartDate": "Start date",
@@ -42,6 +42,8 @@
         "Address": "Address",
         "Home": "Home",
         "Visitor":"Outside",
+        "SectionIdentity":"Event",
+        "SectionActors":"Participants",
         "SectionPlaning":"Planning",
         "SectionPlace":"Location"
     }

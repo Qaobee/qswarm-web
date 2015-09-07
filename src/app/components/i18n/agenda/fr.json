@@ -30,9 +30,9 @@
         "toastError":"Erreur, l'évènement n'a pas été modifié"
     },
     "eventLabels": {
-        "Team": "Equipe",
-        "Adversary": "Adversaire",
-        "Type": "Type",
+        "Team": "Choix équipe...",
+        "Adversary": "Choix adversaire...",
+        "Type": "Choix type évènnement...",
         "Label": "Libellé",
         "LabelPlaceHolder": "1ére journée... Coupe de France...",
         "StartDate": "Date début",
@@ -42,6 +42,8 @@
         "Address": "Adresse",
         "Home": "A domicile",
         "Visitor":"A l'extérieur",
+        "SectionIdentity":"Evènnement",
+        "SectionActors":"Participants",
         "SectionPlaning":"Planification",
         "SectionPlace":"Localisation"
     }
