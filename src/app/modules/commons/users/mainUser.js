@@ -9,7 +9,7 @@
         /*'qaobee.signup',*/
         
         /* qaobee Rest API */
-        'publicRestAPI' 
+        'activityRestAPI' 
         ])
 
 
@@ -20,8 +20,17 @@
             });
         })
 
-        .controller('SignupCtrl', function ($translatePartialLoader) {
+        .controller('SignupCtrl', function ($scope, $translatePartialLoader, $log, activityRestAPI) {
             $translatePartialLoader.addPart('user');
+            $translatePartialLoader.addPart('commons');
+            $scope.activities = Array.create();
+            activityRestAPI.getListActive().success(function (data) {
+                $log.debug(data);
+                $scope.activities = data.sortBy(function(n) {
+                    return n.label; 
+                });
+            });
+            
         });
 }());
 

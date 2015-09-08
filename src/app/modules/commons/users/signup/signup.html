@@ -145,25 +145,12 @@
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="col m6 s12">
-                            <div class="col m3">
-                                <img  src="assets/images/activity/handball.jpg"/><br/>
-                                <input name="user.activity" class="with-gap" type="radio" id="activity.handball" value="{{'commons.settings.activity.handball' | translate }}"
-                                       ng-model="user.activity" required/>
-                                <label for="activity.handball">{{'commons.settings.activity.handball' | translate }}</label>
+                            <div class="col m3" ng-repeat="activity in activities">
+                                <img  src="assets/images/activity/{{activity.code}}.jpg"/><br/>
+                                <input name="user.activity" class="with-gap" type="radio" id="activity.{{activity._id}}" value="{{activity.label | translate }}"
+                                       ng-model="user.activity" required ng-disabled="{{activity.enable==false}}"/>
+                                <label for="activity.{{activity._id}}">{{activity.label | translate }}</label>
                             </div>
-                            <div class="col m3">
-                                <img  src="assets/images/activity/football.jpg"/><br/>
-                                <input name="user.activity" class="with-gap" type="radio" id="activity.football" value="{{'commons.settings.activity.football' | translate }}"
-                                       ng-model="user.activity" required disabled/>
-                                <label for="activity.football">{{'commons.settings.activity.football' | translate }}</label>
-                            </div>
-                            <div class="col m3">
-                                <img  src="assets/images/activity/fencing.jpg"/><br/>
-                                <input name="user.activity" class="with-gap" type="radio" id="activity.fencing" value="{{'commons.settings.activity.fencing' | translate }}"
-                                       ng-model="user.activity" required disabled/>
-                                <label for="activity.fencing">{{'commons.settings.activity.fencing' | translate }}</label>
-                            </div>
-                            
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>

@@ -40,7 +40,10 @@
             "activity": {
                 "handball" : "Handball",
                 "football" : "Football",
-                "fencing" : "Escrime"
+                "fencing" : "Escrime",
+                "basketball" : "Basketball",
+                "volleyball" : "Volleyball",
+                "rugbyball" : "Rugby"
             }
         }
     }
