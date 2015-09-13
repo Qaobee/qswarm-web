@@ -1,6 +1,6 @@
 {
     "mainAgenda": {
-        "title": "Agenda",
+        "title": "Agenda effectif",
         "buttons" : {
             "addEvent": "Ajouter un évènement",
             "updateEvent": "Editer un évènement",
