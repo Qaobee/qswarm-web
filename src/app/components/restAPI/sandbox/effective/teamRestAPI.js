@@ -44,7 +44,7 @@
             addTeam : function(team) {
                 return $http({
                     url : teamAPIURL + '/add',
-                    method : 'PUT',
+                    method : 'POST',
                     data : team
                 });
             },

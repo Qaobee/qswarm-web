@@ -26,6 +26,8 @@
         'qaobee.addPlayer',
         'qaobee.updatePlayer',
         'qaobee.viewPlayer',
+        'qaobee.addTeam',
+        'qaobee.updateTeam',
         
         /* qaobee Rest API */
         'effectiveRestAPI', 

@@ -134,7 +134,7 @@
                 <h5>{{'effectiveLabels.effectiveTeamsHome' | translate }}</h5>
             </div>
             <div class="col s1 grey lighten-4">
-                <a href="#/private/addPlayer/{{meta._id}}" class="red-text text-lighten-1 left-align tooltipped" data-position="left" data-delay="20" data-tooltip="{{'mainEffective.buttons.addTeamHome' | translate }}">
+                <a href="#/private/addTeam/{{false}}" class="red-text text-lighten-1 left-align tooltipped" data-position="left" data-delay="20" data-tooltip="{{'mainEffective.buttons.addTeamHome' | translate }}">
                     <h5><i class="fa fa-plus-square-o"></i></h5>
                 </a>
             </div>
@@ -144,7 +144,7 @@
                     <li class="col m3 s12" ng-repeat="team in listTeamHome">
                         <!-- enable -->
                         <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===true">
-                            <div class="card-content red lighten-1 white-text center">
+                            <div class="card-content red lighten-2 white-text center">
                                 <span class="card-title">{{team.label}}</span>
                             </div>
                             <div class="card-content">
@@ -157,7 +157,7 @@
                         </div>
                         <!-- disable -->
                         <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===false">
-                            <div class="card-content grey lighten-1 blue-grey-text text-darken-2 center">
+                            <div class="card-content grey lighten-4 blue-grey-text text-darken-2 center">
                                 <span class="card-title">{{team.label}}</span>
                             </div>
                             <div class="card-content">
@@ -177,7 +177,7 @@
                 <h5>{{'effectiveLabels.effectiveTeamsAdversary' | translate }}</h5>
             </div>
             <div class="col s1 grey lighten-4">
-                <a href="#/private/addPlayer/{{meta._id}}" class="red-text text-lighten-1 left-align tooltipped" data-position="left" data-delay="20" data-tooltip="{{'mainEffective.buttons.addTeamAdversary' | translate }}">
+                <a href="#/private/addTeam/{{true}}" class="red-text text-lighten-1 left-align tooltipped" data-position="left" data-delay="20" data-tooltip="{{'mainEffective.buttons.addTeamAdversary' | translate }}">
                     <h5><i class="fa fa-plus-square-o"></i></h5>
                 </a>
             </div>
@@ -186,7 +186,7 @@
                 <ul>
                     <li class="col m3 s12" ng-repeat="team in listTeamAdversary">
                         <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===true">
-                            <div class="card-content blue lighten-2 white-text center">
+                            <div class="card-content light-green lighten-1 white-text center">
                                 <span class="card-title samll">{{team.label}}</span>
                             </div>
                             <div class="card-content">
@@ -198,7 +198,7 @@
                             </div>
                         </div>
                         <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===false">
-                            <div class="card-content grey lighten-1 blue-grey-text text-darken-2 center">
+                            <div class="card-content grey lighten-2 blue-grey-text text-darken-2 center">
                                 <span class="card-title">{{team.label}}</span>
                             </div>
                             <div class="card-content">
