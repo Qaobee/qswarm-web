@@ -6,6 +6,8 @@
             "updateEffective": "Editer un effectif",
             "addPlayer": "Ajouter un joueur",
             "viewPlayer": "Voir la fiche du joueur",
+            "addTeamHome": "Ajouter une équipe",
+            "addTeamAdversary": "Ajouter un adversaire",
             "viewStatsEffective": "Voir les stats de l'effectif",
             "dropdownEffective": "Changer d'effectif"
         }
@@ -22,9 +24,13 @@
     },
     "effectiveLabels": {
         "effectiveCategoryAge": "Categorie d'âge",
-        "effectiveMembers": "Liste des joueurs",
-        "effectiveCoachs": "Coachs",
-        "effectiveTeams": "Liste des équipes",
+        "effectiveTabMembers": "Liste des joueurs",
+        "effectiveTabCoachs": "Coachs",
+        "effectiveTabTeams": "Liste des équipes",
+        "effectiveTeamsHome": "Equipes de l'effectif",
+        "effectiveTeamsAdversary": "Adversaires",
+        "effectiveTeamEnable": "Equipe activée",
+        "effectiveTeamNotEnable": "Equipe désactivée",
         "effectivePlaceHolderMembers": "Ajouter un joueur",
         "effectiveLabel": "Libellé",
         "effectiveNbPlayers":"Joueurs sélectionné(s)",

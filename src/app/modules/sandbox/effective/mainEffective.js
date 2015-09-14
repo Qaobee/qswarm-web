@@ -29,12 +29,13 @@
         
         /* qaobee Rest API */
         'effectiveRestAPI', 
-        'personRestAPI'])
+        'personRestAPI',
+        'teamRestAPI',])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
         
-            $(".dropdown-button").dropdown();
+            $('.dropdown-button').dropdown();
 
             $routeProvider.when('/private/effective/:effectiveId', {
                 controller: 'MainEffectiveControler',
@@ -52,7 +53,7 @@
      * @description Main controller for view mainEffective.html
      */
         .controller('MainEffectiveControler', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                                         effectiveRestAPI, personRestAPI) {
+                                                         effectiveRestAPI, personRestAPI, teamRestAPI) {
 
         $translatePartialLoader.addPart('effective');
         $translatePartialLoader.addPart('stats');
@@ -67,6 +68,22 @@
         $scope.effectives = [];
         $scope.currentEffective = {};
         $scope.currentCategory = null;
+        $scope.listEventType = {};
+        $scope.listTeamHome = {};
+        
+        /* Retrieve list of team of effective */
+        teamRestAPI.getListTeam($scope.meta.sandbox._id, $scope.effectiveId, 'all', 'false').success(function (data) {
+            $scope.listTeamHome = data.sortBy(function(n) {
+                    return n.label; 
+                });
+        });
+        
+        /* Retrieve list of adversary of effective */
+       teamRestAPI.getListTeam($scope.meta.sandbox._id, $scope.effectiveId, 'all', 'true').success(function (data) {
+            $scope.listTeamAdversary = data.sortBy(function(n) {
+                    return n.label; 
+                });
+        });
         
         /* Retrieve list effective */
         $scope.getEffectives = function () {

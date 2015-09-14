@@ -1,10 +1,11 @@
 (function () {
     'use strict';
     (function($){
-        $(function(){
-            $('.button-collapse').sideNav();
-            $('.parallax').parallax();
+        $(document).ready(function() {
+            var window_width = $(window).width();
             
+            // Plugin initialization
+           
       }); // end of document ready
     })(jQuery); // end of jQuery name space
     

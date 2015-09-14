@@ -11,7 +11,38 @@
 
         .factory('signupRestAPI', function ($http, signupURL) {
             return {
+            	/**
+                 * @memberOf qaobee.components.restAPI.commons.users.user.signupRestAPI
+                 * @function registerUser
+                 * @description register a new user
+                 * @param u
+                 *            {Object} Person com.qaobee.hive.business.model.commons.users.user.User
+                 * @returns {Object} Person com.qaobee.hive.business.model.commons.users.user.User
+                 */
+                registerUser: function (u) {
+                    return $http({
+                        url: signupURL + '/register',
+                        method: 'PUT',
+                        data: u
+                    });
+                },
                 
+            	/**
+                 * @memberOf qaobee.components.restAPI.commons.users.user.signupRestAPI
+                 * @function usernameTest
+                 * @description Login unicity test
+                 * @param {String} login
+                 * @returns {Object} {"status", true} ou {"status", false}
+                 */
+                usernameTest: function (login) {
+                    return $http({
+                        url: signupURL + '/logintest',
+                        method: 'POST',
+                        data: {
+                            login: login
+                        }
+                    });
+                }
             };
         });
 }());

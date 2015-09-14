@@ -4,19 +4,19 @@
     <!-- view for tablet and phone -->
     <div class="row hide-on-large-only">
         <div class="col s12 center">
-            <h5 class="red-text text-lighten-1">{{'mainAgenda.title' | translate }} {{currentEffective.label}}</h5>
+            <h5 class="light-green-text text-lighten-1">{{'mainAgenda.title' | translate }} {{currentEffective.label}}</h5>
         </div>
         
         <!-- effective list -->
-        <ul id="effectiveList" class="dropdown-content">
+        <ul id="mainAgendaEffectiveListSmall" class="dropdown-content">
             <li ng-repeat="effective in effectives">
                 <a href="#/private/agenda/{{effective._id}}"><h6 class="blue-grey-text text-darken-2">{{effective.label}} - {{effective.categoryAge.label}}</h6></a>
                 <div class="divider"></div>
             </li>
         </ul>
         
-        <div class="col s12" ng-if="effectives.length > 1">
-            <a class="dropdown-button waves-effect waves-light grey-text grey lighten-4 btn" style="font-size: small;" href="#!" data-activates="effectiveList">
+        <div class="col s12" ng-show="effectives.length > 1">
+            <a class="dropdown-button waves-effect waves-light grey-text grey lighten-4 btn" style="font-size: small;" href="#!" data-activates="mainAgendaEffectiveListSmall">
                 {{'mainAgenda.buttons.dropdownEffective' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;
                 <i class="material-icons right">arrow_drop_down</i>
             </a>
@@ -94,34 +94,34 @@
 
         <!-- Periodicity selector -->
         <div class="col m4 center-align">
-            <h5 class="red-text text-lighten-1">{{'mainAgenda.title' | translate }} {{currentEffective.label}}</h5>
+            <h5 class="light-green-text text-lighten-1">{{'mainAgenda.title' | translate }} {{currentEffective.label}}</h5>
         </div>
         <div class="col m2 center blue-grey darken-2" style="margin:1px">
-            <a ng-click="getCurrentMonth()" class="btn-flat white-text waves-effect waves-light">{{'mainAgenda.periodicity.month' | translate }}</a>
+            <a ng-click="getCurrentMonth()" class="btn-flat white-text">{{'mainAgenda.periodicity.month' | translate }}</a>
         </div>
         <div class="col m2 center blue-grey darken-2" style="margin:1px">
-            <a ng-click="getCurrentQuarter()" class="btn-flat white-text waves-effect waves-light">{{'mainAgenda.periodicity.quarter' | translate }}</a>
+            <a ng-click="getCurrentQuarter()" class="btn-flat white-text">{{'mainAgenda.periodicity.quarter' | translate }}</a>
         </div>
         <div class="col m2 center blue-grey darken-2" style="margin:1px">
-            <a ng-click="getCurrentSeason()" class="btn-flat white-text waves-effect waves-light">{{'mainAgenda.periodicity.season' | translate }}</a>
+            <a ng-click="getCurrentSeason()" class="btn-flat white-text">{{'mainAgenda.periodicity.season' | translate }}</a>
         </div>
         <div class="col m1 right">
-            <a href="#/private/addEvent/{{meta._id}}" class="red-text text-lighten-1 tooltipped" 
+            <a href="#/private/addEvent/{{effectiveId}}" class="red-text text-lighten-1 tooltipped" 
                 data-position="down" data-delay="20" data-tooltip="{{'mainAgenda.buttons.addEvent' | translate }}">
                     <i class="fa fa-plus-square-o fa-3x"></i>
             </a>
         </div>
         
         <!-- effective list -->
-        <ul id="effectiveList" class="dropdown-content">
+        <ul id="mainAgendaEffectiveList" class="dropdown-content">
             <li ng-repeat="effective in effectives">
                 <a href="#/private/agenda/{{effective._id}}"><h6 class="blue-grey-text text-darken-2">{{effective.label}} - {{effective.categoryAge.label}}</h6></a>
                 <div class="divider"></div>
             </li>
         </ul>
         
-        <div class="col s12" ng-if="effectives.length > 1">
-            <a class="dropdown-button waves-effect waves-light grey-text grey lighten-4 btn" style="font-size: small;" href="#!" data-activates="effectiveList">
+        <div class="col s12" ng-show="effectives.length > 1">
+            <a class="dropdown-button waves-effect waves-light grey-text grey lighten-4 btn" style="font-size: small;" href="#!" data-activates="mainAgendaEffectiveList">
                 {{'mainAgenda.buttons.dropdownEffective' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;
                 <i class="material-icons right">arrow_drop_down</i>
             </a>
@@ -181,54 +181,97 @@
         </div>
     </div>
     
-    <div class="row">    
-        <div class="col s12">    
-            <ul>                
-                <li class="col s12 m3" ng-repeat="currentEvent in events | filter:query">
-                    <div class="card white">
-                        <!-- cup -->
-                        <div class="card-content cyan darken-1 white-text flow-text" ng-show="currentEvent.link.type=='cup'">
-                            <h5><i class="material-icons">album</i> {{'mainAgenda.eventType.cup' | translate }}</h5>
-
-                            <h6>{{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}</h6>
-                            <hr class="white" />
-                            <h5 class="small blue-grey-text text-darken-2">{{currentEvent.startDate}}</h5>
-                        </div>
-                        <!-- friendlyGame -->
-                        <div class="card-content light-green lighten-1 white-text flow-text" ng-show="currentEvent.link.type=='friendlyGame'">
-                            <h5><i  class="material-icons">flare</i> {{'mainAgenda.eventType.friendlyGame' | translate }}</h5>
-                   
-                            <h6>{{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}</h6>
-                            <hr class="white" />
-                            <h5 class="small blue-grey-text text-darken-2">{{currentEvent.startDate}}</h5>
-                        </div>
-                        <!-- championship -->
-                        <div class="card-content  red lighten-2 white-text flow-text" ng-show="currentEvent.link.type=='championship'">
-                            <h5><i class="material-icons">stars</i> {{'mainAgenda.eventType.championship' | translate }}</h5>
-                         
-                            <h6>{{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}</h6>
-                            <hr class="white" />
-                            <h5 class="small blue-grey-text text-darken-2">{{currentEvent.startDate}}</h5>
-                        </div>
-                        <!-- training -->
-                        <div class="card-content  blue lighten-2 white-text flow-text" ng-show="currentEvent.link.type=='training'">
-                            <h5><i class="material-icons">timer</i>{{'mainAgenda.eventType.training' | translate }}</h5>
-                         
-                            <h6>{{currentEvent.address.formatedAddress}}</h6>
-                            <hr class="white" />
-                            <h5 class="small blue-grey-text text-darken-2">{{currentEvent.startDate}}</h5>
-                        </div>
-                        
-                        <div class="card-action white">
-                            <a href="#/private/updateEvent/{{currentEvent._id}}" class="red-text text-lighten-1 center tooltipped" 
-                                data-position="down" data-delay="20" data-tooltip="{{'mainAgenda.buttons.updateEvent' | translate }}">
-                                <i class="material-icons">mode_edit</i>
-                            </a>
-                        </div>
+    <div class="row" ng-show="events.length > 0">      
+        <ul>                
+            <li class="col s12 m6 l3" ng-repeat="currentEvent in events | filter:query">
+                
+                <!-- cup -->
+                <div class="card white blue-grey-text text-darken-2" ng-show="currentEvent.link.type=='cup'">
+                    <div class="card-content cyan lighten-1 white-text">
+                        <span class="card-title"><i class="material-icons">album</i> {{'mainAgenda.eventType.cup' | translate }}</span>
+                        <h6 class="">{{currentEvent.startDate}}</h6>
                     </div>
-                </li>
-            </ul>
+                    <div class="card-content grey lighten-4">
+                        <p>{{currentEvent.participants.teamHome.label}} <br/> {{currentEvent.participants.teamVisitor.label}}</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="#/private/updateEvent/{{currentEvent._id}}" class="red-text text-lighten-1 center tooltipped" 
+                            data-position="down" data-delay="20" data-tooltip="{{'mainAgenda.buttons.updateEvent' | translate }}">
+                            <i class="material-icons">mode_edit</i>
+                        </a>
+                        <a href="#/private/statEvent/{{currentEvent._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
+                    </div>
+                </div>
+
+                <!-- friendlyGame -->
+                <div class="card white blue-grey-text text-darken-2" ng-show="currentEvent.link.type=='friendlyGame'">
+                    <div class="card-content light-green lighten-1 white-text">
+                        <span class="card-title"><i  class="material-icons">flare</i> {{'mainAgenda.eventType.friendlyGame' | translate }}</span>
+                        <h6 class="">{{currentEvent.startDate}}</h6>
+                    </div>
+                    <div class="card-content grey lighten-4">
+                        <p>{{currentEvent.participants.teamHome.label}} <br/> {{currentEvent.participants.teamVisitor.label}}</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="#/private/updateEvent/{{currentEvent._id}}" class="red-text text-lighten-1 center tooltipped" 
+                            data-position="down" data-delay="20" data-tooltip="{{'mainAgenda.buttons.updateEvent' | translate }}">
+                            <i class="material-icons">mode_edit</i>
+                        </a>
+                        <a href="#/private/statEvent/{{currentEvent._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
+                    </div>
+                </div>
+
+                <!-- championship -->
+                <div class="card white blue-grey-text text-darken-2" ng-show="currentEvent.link.type=='championship'">
+                    <div class="card-content red lighten-2 white-text">
+                        <span class="card-title"><i class="material-icons">stars</i> {{'mainAgenda.eventType.championship ' | translate }}</span>
+                        <h6 class="">{{currentEvent.startDate}}</h6>
+                    </div>
+                    <div class="card-content grey lighten-4">
+                        <p>{{currentEvent.participants.teamHome.label}} <br/> {{currentEvent.participants.teamVisitor.label}}</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="#/private/updateEvent/{{currentEvent._id}}" class="red-text text-lighten-1 center tooltipped" 
+                            data-position="down" data-delay="20" data-tooltip="{{'mainAgenda.buttons.updateEvent' | translate }}">
+                            <i class="material-icons">mode_edit</i>
+                        </a>
+                        <a href="#/private/statEvent/{{currentEvent._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
+                    </div>
+                </div>
+
+                <!-- training -->
+                <div class="card white blue-grey-text text-darken-2" ng-show="currentEvent.link.type=='training'">
+                    <div class="card-content blue-grey lighten-3 white-text">
+                        <span class="card-title"><i class="material-icons">timer</i>{{'mainAgenda.eventType.training' | translate }}</span>
+                        <h6 class="">{{currentEvent.startDate}}</h6>
+                    </div>
+                    <div class="card-content grey lighten-4">
+                        <p>{{currentEvent.address.formatedAddress}}</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="#/private/updateEvent/{{currentEvent._id}}" class="red-text text-lighten-1 center tooltipped" 
+                            data-position="down" data-delay="20" data-tooltip="{{'mainAgenda.buttons.updateEvent' | translate }}">
+                            <i class="material-icons">mode_edit</i>
+                        </a>
+                        <a href="#/private/statEvent/{{currentEvent._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="row" ng-show="events.length === 0">
+        <div class="col s12">
+            <div class="card">                        
+                <div class="row center">
+                    <a href="#/private/addEvent/{{effectiveId}}" class="blue-grey-text text-darken-1">
+                        <i class="fa fa-plus-square-o fa-5x"></i> 
+                        <h3>{{'mainAgenda.buttons.addEvent' | translate }}</h3>
+                    </a>
+                </div>
+            </div>
         </div>
+            
     </div>
     
 <!-- body end-->

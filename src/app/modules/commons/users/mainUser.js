@@ -24,6 +24,7 @@
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
             $scope.activities = Array.create();
+            
             activityRestAPI.getListActive().success(function (data) {
                 $log.debug(data);
                 $scope.activities = data.sortBy(function(n) {

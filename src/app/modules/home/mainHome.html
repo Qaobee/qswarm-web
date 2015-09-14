@@ -14,7 +14,7 @@
             <div>
                 <div class="card white">
                     <div class="card-content blue-grey darken-1 white-text flow-text">
-                        <span class="card-title">{{currentEvent.participants.teamHome}} - {{currentEvent.participants.teamVisitor}}</span>
+                        <span class="card-title">{{currentEvent.participants.teamHome.label}} - {{currentEvent.participants.teamVisitor.label}}</span>
                         <hr class="white" />
                         <h5 class="small blue-grey-text text-lighten-3">{{currentEvent.startDate |  date : 'dd MMMM yyyy HH:mm'}}</h5>
                         <h6>{{currentEvent.address.formatedAddress}}</h6>

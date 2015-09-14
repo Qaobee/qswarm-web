@@ -47,7 +47,6 @@
         
         /* Events */
         $scope.events = [];
-        $scope.eventTypes = []; 
         $scope.owners = [];
         $scope.indexEvent = 0;
         $scope.currentEvent = {};
@@ -88,11 +87,17 @@
         
         /* Retrieve list events */
         $scope.getEvents = function () {
-            
-            $scope.owners.push($scope.user.effectiveDefault);
-            $scope.eventTypes = ['cup', 'friendlyGame','championship'];
-            
-            eventsRestAPI.getListEvents(moment().unix(), $scope.meta.season.endDate, $scope.eventTypes, $scope.meta.activity._id, $scope.owners).success(function (data) {
+            var requestEvent = {
+                activityId : $scope.meta.activity._id,
+                startDate : moment().valueOf(),
+                endDate : $scope.meta.season.endDate,
+                ownersandboxId : $scope.meta.sandbox._id,
+                ownereffectiveId : $scope.user.effectiveDefault,
+                type : ['cup', 'friendlyGame','championship']
+                
+            };
+
+            eventsRestAPI.getListEvents(requestEvent).success(function (data) {
                 $scope.events = data.sortBy(function(n) {
                     return n.startDate; 
                 });
@@ -106,11 +111,14 @@
             $scope.mapShow = false;
             $scope.currentEvent = {};
             
-            $scope.currentEvent = $scope.events[$scope.indexEvent];
-            if(angular.isDefined($scope.currentEvent.address)) {
-                $scope.mapShow = true;
-            }  
-            $log.debug($scope.currentEvent);
+            if(angular.isDefined($scope.events[$scope.indexEvent])) {
+                
+                $scope.currentEvent = $scope.events[$scope.indexEvent];
+                if(angular.isDefined($scope.currentEvent.address)) {
+                    $scope.mapShow = true;
+                }  
+                $log.debug($scope.currentEvent);
+            }
         };
         
         /* Next event */

@@ -25,9 +25,10 @@
             'qaobee.notifications',
             
             /* qaobee Rest API */
-            'userRestAPI'
+            'userRestAPI',
+            'signupRestAPI'
         ])
-        .directive('headerMenu', function (qeventbus, userRestAPI, $rootScope, $cookieStore, $location, $window, $log, $translatePartialLoader, $filter) {
+        .directive('headerMenu', function (qeventbus, userRestAPI, signupRestAPI, $rootScope, $cookieStore, $location, $window, $log, $translatePartialLoader, $filter) {
             return {
                 restrict: 'AE',
                 controller: function ($scope) {
@@ -61,15 +62,6 @@
                             menuWidth: 240, // Default is 240
                             edge: 'left', // Choose the horizontal origin
                             closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                        });
-
-                        $('.modal-trigger').leanModal({
-                            dismissible: true, // Modal can be dismissed by clicking outside of the modal
-                            opacity: 0.7, // Opacity of modal background
-                            in_duration: 600, // Transition in duration
-                            out_duration: 200 // Transition out duration
-                            //ready: function() { alert('Ready'); }, // Callback for Modal open
-                            //complete: function() { alert('Closed'); } // Callback for Modal close
                         });
 
                         $('.tooltipped').tooltip({delay: 50});
@@ -195,6 +187,29 @@
                             }
                             $log.error(error);
                         });
+                    };
+                    
+                    
+                    $scope.usernameTest = function() {
+                    	signupRestAPI.usernameTest($scope.signup.login).success(function (data) {
+                    		if(data.status==true) {
+                    			toastr.warning($filter('translate')('error.signup.nonunique'));
+                    		} else {
+                    			$scope.signup.junit=true;
+                    			$scope.signup.plan= new Object();
+                    			$scope.signup.plan.levelPlan='FREEMIUM';
+                    			signupRestAPI.registerUser($scope.signup).success(function (data2) {
+                    				$('#modalSignup').closeModal();
+                          			toastr.info('Register c est bon!');
+                    			}).error(function (error) {
+                                    if (error) {
+                                        $rootScope.errMessSend = true;
+                                        toastr.error(error.message);
+                                    }
+                                    $log.error(error);
+                                });
+                    		}
+                    	});
                     };
                 },
                 templateUrl: 'app/components/directives/headerMenu/headerMenu.html'

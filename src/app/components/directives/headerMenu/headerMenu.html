@@ -14,7 +14,8 @@
                 <li><a href="#modalLogin" class="white-text modal-trigger"><i
                         class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}</a></li>
             </ul>
-            <ul class="right hide-on-med-and-down">
+            
+            <ul class="right hide-on-med-and-down" ng-show="signupAvailable">
                 <li><a href="#modalSignup" class="white-text modal-trigger"><i
                         class="fa fa-sign-in right"></i>{{'navbar.signup' | translate}}</a></li>
             </ul>
@@ -23,7 +24,7 @@
                     class="mdi-navigation-menu"></i></a>
 
             <ul id="nav-mobileHC" class="side-nav">
-            	<li><a href="#modalSignup" class="grey-text text-lighten-1 modal-trigger"><span
+            	<li ng-show="signupAvailable"><a href="#modalSignup" class="grey-text text-lighten-1 modal-trigger"><span
                         class="fa fa-sign-in"></span> {{'navbar.signup' | translate}}</a></li>
                 <li><a href="#modalLogin" class="grey-text text-lighten-1 modal-trigger"><span
                         class="fa fa-sign-in"></span> {{'navbar.connect' | translate}}</a></li>
@@ -80,19 +81,22 @@
                     <li><a href="#/private/" class="white-text light"><i class="fa fa-home left"></i>
                         {{'headerMenu.dashboard' | translate }}</a></li>
                     <li class="divider"></li>
+                    <!--
                     <li><a href="#/private/" class="white-text light"><i class="fa fa-envelope left"></i>
                         {{'headerMenu.notification' | translate }}</a></li>
+                    -->
                     <li><a href="#/private/" class="white-text light"><i class="fa fa-bar-chart left"></i>
                         {{'headerMenu.stats' | translate }}</a></li>
                     <li><a href="#/private/effective/{{user.effectiveDefault}}" class="white-text light"><i class="mdi-social-people left"></i>
                         {{'headerMenu.effective' | translate }}</a></li>
+                    <!--
                     <li><a href="#/private/" class="white-text light"><i class="mdi-image-timer left"></i>
                         {{'headerMenu.training' | translate }}</a></li>
-                    <!--
+                    
                     <li><a href="#/private/" class="white-text light"><i class="fa fa-trophy left"></i>
                         {{'headerMenu.championship' | translate }}</a></li>
                     -->
-                    <li><a href="#/private/agenda/{{meta.sandbox._id}}" class="white-text light"><i class="fa fa-calendar left"></i>
+                    <li><a href="#/private/agenda/{{user.effectiveDefault}}" class="white-text light"><i class="fa fa-calendar left"></i>
                         {{'headerMenu.calendar' | translate }}</a></li>
                     <li class="divider"></li>
                     <li><a ng-click="logoff()" class="white-text light"><i class="fa fa-power-off left"></i>
@@ -107,25 +111,28 @@
     <nav class="green darken-1 hide-on-med-and-down visible-nav" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
-                <ul>
+                <ul class="center">
+                    <!--
                     <li><a href="#/private/" class="light"><i class="fa fa-envelope left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.notification"></span>
                     </a></li>
+                    -->
                     <li><a href="#/private/" class="light"><i class="fa fa-bar-chart left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.stats"></span></a>
                     </li>
                     <li><a href="#/private/effective/{{user.effectiveDefault}}" class="light"><i class="mdi-social-people left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.effective"></span></a>
                     </li>
+                    <!--
                     <li><a href="#/private/" class="light"><i class="mdi-image-timer left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.training"></span></a>
                     </li>
-                    <!--
+                    
                     <li><a href="#/private/" class="light"><i class="fa fa-trophy left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.championship"></span></a>
                     </li>
                     -->
-                    <li><a href="#/private/agenda/{{meta.sandbox._id}}" class="light"><i class="fa fa-calendar left"></i>
+                    <li><a href="#/private/agenda/{{user.effectiveDefault}}" class="light"><i class="fa fa-calendar left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.calendar"></span></a>
                     </li>
                 </ul>
@@ -158,10 +165,11 @@
             </div>
         </div>
 
-        <div class="modal-footer">
-            <button type="submit" class="waves-effect waves-red btn green darken-1" translate="commons.buttons.validate"/>
-            <a href="#/" class="modal-action modal-close waves-effect waves-red btn red">{{'commons.buttons.cancel' |
-                translate}}</a>
+        <div class="row center">
+            <div class="col s12">
+                <a href="#/" class="modal-action modal-close waves-effect waves-red btn red" translate="commons.buttons.cancel"></a>
+                <button type="submit" class="btn waves-effect waves-red  green darken-1" translate="commons.buttons.validate"/>
+            </div>
         </div>
     </form>
 </div>
@@ -179,22 +187,22 @@
             <div class="row">
                 <div class="input-field col s12">
                     <input placeholder="{{'content.signup.label.login' | translate }}" id="login" type="text"
-                           class="validate" ng-model="signup.login" required>
+                           class="validate" ng-model="signup.account.login" required>
                     <label for="login">{{'content.signup.label.login' | translate }}</label>
                 </div>
                 <div class="input-field col s12">
                     <input placeholder="{{'content.signup.label.email' | translate }}" id="email" type="email"
-                           class="validate" ng-model="signup.email" required>
+                           class="validate" ng-model="signup.contact.email" required>
                     <label for="email">{{'content.signup.label.email' | translate }}</label>
                 </div>
                 <div class="input-field col s6">
                     <input placeholder="{{'content.signup.label.password' | translate }}" id="password" type="password"
-                           class="validate" ng-model="signup.passwd" required>
+                           class="validate" ng-model="signup.account.passwd" required>
                     <label for="password">{{'content.signup.label.password' | translate }}</label>
                 </div>
                 <div class="input-field col s6">
                     <input placeholder="{{'content.signup.label.passwordConfirm' | translate }}" id="passwordConfirm" type="password"
-                           class="validate" ng-model="signup.passwdConfirm" required>
+                           class="validate" ng-model="passwdConfirm" required>
                     <label for="password">{{'content.signup.label.passwordConfirm' | translate }}</label>
                 </div>
             </div>

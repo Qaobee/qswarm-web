@@ -85,9 +85,13 @@
      * @class qaobee.public.public.PublicCtrl
      * @description Contrôleur de la page d'accueil publique
      */
-        .controller('PublicCtrl', function ($scope, $rootScope, $translatePartialLoader) {
+        .controller('PublicCtrl', function ($scope, $rootScope, $translatePartialLoader, $log, $routeParams) {
             $translatePartialLoader.addPart('public');
             $translatePartialLoader.addPart('commons');
+            
+            // asu = Allow SignUp
+            $rootScope.signupAvailable=($routeParams.asu=='true');
+            delete $rootScope.user;
 
             /**
              * @description initialization materialize components

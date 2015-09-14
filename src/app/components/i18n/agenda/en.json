@@ -1,6 +1,6 @@
 {
     "mainAgenda": {
-        "title": "Planning",
+        "title": "Effective planning",
         "buttons" : {
             "addEvent": "Add event",
             "updateEvent": "Update event",
@@ -18,5 +18,33 @@
             "training": "Training",
             "other": "Other"
         }
+    },
+    "addEvent": {
+        "title": "create event",
+        "toastSuccess":"Event {{label}} has been created",
+        "toastError":"Error, event can't create"
+    },
+    "updateEvent": {
+        "title": "Update event",
+        "toastSuccess":"Event {{label}} was updated",
+        "toastError":"Error, event can't update"
+    },
+    "eventLabels": {
+        "Team": "Choice team",
+        "Adversary": "Choice adversary",
+        "Type": "Choice Event Type",
+        "Label": "Label",
+        "LabelPlaceHolder": "1st journey... League Cup...",
+        "StartDate": "Start date",
+        "EndDate": "End date",
+        "StartHour": "Start hour",
+        "EndHour": "End hour",
+        "Address": "Address",
+        "Home": "Home",
+        "Visitor":"Outside",
+        "SectionIdentity":"Event",
+        "SectionActors":"Participants",
+        "SectionPlaning":"Planning",
+        "SectionPlace":"Location"
     }
 }

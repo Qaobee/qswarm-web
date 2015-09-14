@@ -22,6 +22,7 @@
             'ui.mask',
             'selectionModel',
             'ngMap',
+            'ui.materialize',
             
             /* qaobee shared directives */
             'qaobee.commonsDirectives',
