@@ -16,6 +16,7 @@
         
         /* qaobee modules */
         'qaobee.addEvent',
+        'qaobee.updateEvent',
         
         /* qaobee Rest API */
         'eventsRestAPI',
