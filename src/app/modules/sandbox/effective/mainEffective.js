@@ -32,7 +32,8 @@
         /* qaobee Rest API */
         'effectiveRestAPI', 
         'personRestAPI',
-        'teamRestAPI',])
+        'teamRestAPI',
+        'userRestAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
@@ -55,7 +56,7 @@
      * @description Main controller for view mainEffective.html
      */
         .controller('MainEffectiveControler', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                                         effectiveRestAPI, personRestAPI, teamRestAPI) {
+                                                         effectiveRestAPI, personRestAPI, teamRestAPI, userRestAPI) {
 
         $translatePartialLoader.addPart('effective');
         $translatePartialLoader.addPart('stats');
@@ -74,18 +75,22 @@
         $scope.listTeamHome = {};
         
         /* Retrieve list of team of effective */
-        teamRestAPI.getListTeam($scope.meta.sandbox._id, $scope.effectiveId, 'all', 'false').success(function (data) {
-            $scope.listTeamHome = data.sortBy(function(n) {
-                    return n.label; 
-                });
-        });
+        $scope.getListTeamHome = function () {
+            teamRestAPI.getListTeam($scope.meta.sandbox._id, $scope.effectiveId, 'all', 'false').success(function (data) {
+                $scope.listTeamHome = data.sortBy(function(n) {
+                        return n.label; 
+                    });
+            });
+        }; 
         
         /* Retrieve list of adversary of effective */
-       teamRestAPI.getListTeam($scope.meta.sandbox._id, $scope.effectiveId, 'all', 'true').success(function (data) {
-            $scope.listTeamAdversary = data.sortBy(function(n) {
+        $scope.getListTeamAdversary = function () {
+            teamRestAPI.getListTeam($scope.meta.sandbox._id, $scope.effectiveId, 'all', 'true').success(function (data) {
+                $scope.listTeamAdversary = data.sortBy(function(n) {
                     return n.label; 
                 });
-        });
+            });
+        }; 
         
         /* Retrieve list effective */
         $scope.getEffectives = function () {
@@ -146,7 +151,22 @@
             }
         };
         
-        $scope.getEffectives();
+        /* check user connected */
+        $scope.checkUserConnected = function () {
+            
+            userRestAPI.getUserById(user._id).success(function (data) {
+                $scope.getEffectives();
+                $scope.getListTeamHome();
+                $scope.getListTeamAdversary();
+            }).error(function (data) {
+                $log.error('MainEffectiveControler : User not Connected')
+            });
+        }; 
+        
+        /* Primary, check if user connected */
+        $scope.checkUserConnected();
+        
+        
     })
     //
     ;

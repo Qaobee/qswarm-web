@@ -104,6 +104,9 @@
             $scope.$on('qeventbus', function () {
                 if ('logoff' === qeventbus.message) {
                     delete  $scope.user;
+                    delete $rootScope.user;
+                    delete $rootScope.meta;
+                    delete $window.sessionStorage.qaobeesession;
                 }  if ('bg-color' === qeventbus.message) {
                     $scope.bgColor = qeventbus.data;
                 } else if ('login' === qeventbus.message) {

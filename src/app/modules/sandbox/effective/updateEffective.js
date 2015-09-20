@@ -16,7 +16,8 @@
         /* qaobee Rest API */
         'activityCfgRestAPI',
         'effectiveRestAPI', 
-        'personRestAPI'])
+        'personRestAPI',
+        'userRestAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
@@ -37,7 +38,7 @@
      * @description Main controller for view updateEffective.html
      */
         .controller('UpdateEffectiveControler', function ($log, $scope, $routeParams, $http, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                                           activityCfgRestAPI, effectiveRestAPI, personRestAPI) {
+                                                           activityCfgRestAPI, effectiveRestAPI, personRestAPI, userRestAPI) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('effective');
@@ -54,15 +55,21 @@
         $scope.selectedPlayers = []; 
         
         /* get SB_Effective */
-        effectiveRestAPI.getEffective($scope.effectiveId).success(function (data) {
-            $scope.effective = data;
-            $scope.getPersonSandBox();
-        });
+        $scope.getEffective = function () {
+            effectiveRestAPI.getEffective($scope.effectiveId).success(function (data) {
+                $scope.effective = data;
+                $scope.getPersonSandBox();
+            });
+        };
         
         /* Retrieve list of categoryAge */
-        activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listCategoryAge').success(function (data) {
-            $scope.listCategory = data;
-        });
+        $scope.getListCategoryAge = function () {
+            activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listCategoryAge').success(function (data) {
+                $scope.listCategory = data.sortBy(function(n) {
+                    return n.order; 
+                });
+            });
+        };
             
         /* get SB_Person */
         $scope.getPersonSandBox = function () {
@@ -118,6 +125,20 @@
                 });
             }
         };
+        
+        /* check user connected */
+        $scope.checkUserConnected = function () {
+            
+            userRestAPI.getUserById(user._id).success(function (data) {
+                $scope.getListCategoryAge();
+                $scope.getEffective();
+            }).error(function (data) {
+                $log.error('UpdateEffectiveControler : User not Connected')
+            });
+        }; 
+        
+        /* Primary, check if user connected */
+        $scope.checkUserConnected();
     })
     //
     ;

@@ -15,7 +15,8 @@
         
         /* qaobee Rest API */
         'effectiveRestAPI', 
-        'personRestAPI'])
+        'personRestAPI',
+        'userRestAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
@@ -35,7 +36,8 @@
      * @class qaobee.modules.sandbox.effective.ViewPlayerControler
      * @description Main controller for view viewPlayer.html
      */
-        .controller('ViewPlayerControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, effectiveRestAPI, personRestAPI) {
+        .controller('ViewPlayerControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
+                                                      effectiveRestAPI, personRestAPI, userRestAPI) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('effective');
@@ -53,25 +55,40 @@
         };
         
         /* get person */
-        personRestAPI.getPerson($scope.playerId).success(function (person) {
-            $log.debug(person);
-            $scope.player = person;
+        $scope.getPerson = function () {
+            personRestAPI.getPerson($scope.playerId).success(function (person) {
+                $log.debug(person);
+                $scope.player = person;
 
-            if (angular.isDefined($scope.player.status.positionType)) {
-                    $scope.player.positionType = $filter('translate')('stat.positionType.value.' + $scope.player.status.positionType);
-            } else {
-                $scope.player.positionType = '';
-            }
+                if (angular.isDefined($scope.player.status.positionType)) {
+                        $scope.player.positionType = $filter('translate')('stat.positionType.value.' + $scope.player.status.positionType);
+                } else {
+                    $scope.player.positionType = '';
+                }
 
-            if (angular.isDefined($scope.player.status.stateForm)) {
-                $scope.player.stateForm = $filter('translate')('stat.stateForm.value.' + $scope.player.status.stateForm);
-            } else {
-                $scope.player.stateForm = '';
-            }
+                if (angular.isDefined($scope.player.status.stateForm)) {
+                    $scope.player.stateForm = $filter('translate')('stat.stateForm.value.' + $scope.player.status.stateForm);
+                } else {
+                    $scope.player.stateForm = '';
+                }
 
-            //$scope.player.birthdate = $filter('date')($scope.player.birthdate, 'yyyy');
-            $scope.player.age = moment().format('YYYY') - moment($scope.player.birthdate).format('YYYY');
-        });
+                //$scope.player.birthdate = $filter('date')($scope.player.birthdate, 'yyyy');
+                $scope.player.age = moment().format('YYYY') - moment($scope.player.birthdate).format('YYYY');
+            });
+        };
+        
+        /* check user connected */
+        $scope.checkUserConnected = function () {
+            
+            userRestAPI.getUserById(user._id).success(function (data) {
+                $scope.getPerson();
+            }).error(function (data) {
+                $log.error('ViewPlayerControler : User not Connected')
+            });
+        }; 
+        
+        /* Primary, check if user connected */
+        $scope.checkUserConnected();
     })
     //
     ;

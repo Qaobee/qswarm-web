@@ -16,7 +16,8 @@
         /* qaobee Rest API */
         'effectiveRestAPI', 
         'personRestAPI',
-        'locationAPI'])
+        'locationAPI',
+        'userRestAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
@@ -36,7 +37,8 @@
      * @class qaobee.modules.sandbox.effective.UpdatePlayerControler
      * @description Main controller for view updatePlayer.html
      */
-        .controller('UpdatePlayerControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, activityCfgRestAPI, personRestAPI, locationAPI) {
+        .controller('UpdatePlayerControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
+                                                        activityCfgRestAPI, personRestAPI, locationAPI, userRestAPI) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('effective');
@@ -74,28 +76,32 @@
         $scope.detailsAdr = '';
         
         /* Retrieve list of positions type */
-        activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listPositionType').success(function (data) {
-            $scope.positionsType = data;
-        });
+        $scope.getListPositionType = function () {
+            activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listPositionType').success(function (data) {
+                $scope.positionsType = data;
+            });
+        };
         
         /* get person */
-        personRestAPI.getPerson($scope.playerId).success(function (person) {
-            $scope.player = person;
+        $scope.getPerson = function () {
+            personRestAPI.getPerson($scope.playerId).success(function (person) {
+                $scope.player = person;
 
-            if (angular.isDefined($scope.player.status.positionType)) {
-                    $scope.player.positionType = $filter('translate')('stat.positionType.value.' + $scope.player.status.positionType);
-            } else {
-                $scope.player.positionType = '';
-            }
+                if (angular.isDefined($scope.player.status.positionType)) {
+                        $scope.player.positionType = $filter('translate')('stat.positionType.value.' + $scope.player.status.positionType);
+                } else {
+                    $scope.player.positionType = '';
+                }
 
-            if (angular.isDefined($scope.player.status.stateForm)) {
-                $scope.player.stateForm = $filter('translate')('stat.stateForm.value.' + $scope.player.status.stateForm);
-            } else {
-                $scope.player.stateForm = '';
-            }
+                if (angular.isDefined($scope.player.status.stateForm)) {
+                    $scope.player.stateForm = $filter('translate')('stat.stateForm.value.' + $scope.player.status.stateForm);
+                } else {
+                    $scope.player.stateForm = '';
+                }
 
-            $scope.player.birthdate = new Date(moment($scope.player.birthdate));
-        });
+                $scope.player.birthdate = new Date(moment($scope.player.birthdate));
+            });
+        };    
         
         /* update person */
         $scope.writePerson = function () {
@@ -146,6 +152,20 @@
                 $scope.writePerson();
             }
         };
+        
+        /* check user connected */
+        $scope.checkUserConnected = function () {
+            
+            userRestAPI.getUserById(user._id).success(function (data) {
+                $scope.getListPositionType();
+                $scope.getPerson();
+            }).error(function (data) {
+                $log.error('UpdatePlayerControler : User not Connected')
+            });
+        }; 
+        
+        /* Primary, check if user connected */
+        $scope.checkUserConnected();
     })
     //
     ;

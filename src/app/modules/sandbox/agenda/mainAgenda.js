@@ -20,7 +20,8 @@
         
         /* qaobee Rest API */
         'eventsRestAPI',
-        'effectiveRestAPI'])
+        'effectiveRestAPI',
+        'userRestAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
@@ -43,7 +44,7 @@
      * @description Main controller for view mainAgenda.html
      */
         .controller('MainAgendaControler', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                                     eventsRestAPI, effectiveRestAPI) {
+                                                     eventsRestAPI, effectiveRestAPI, userRestAPI) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('agenda');
@@ -72,7 +73,7 @@
                 type : ['cup', 'friendlyGame','championship','training']
                 
             };
-            $log.debug(requestEvent);
+   
             eventsRestAPI.getListEvents(requestEvent).success(function (data) {
                 $scope.events = data.sortBy(function(n) {
                     return n.startDate; 
@@ -269,9 +270,21 @@
             
             $scope.getEvents(moment($scope.periodicityActive.startDate,'DD/MM/YYYY').valueOf(), moment($scope.periodicityActive.endDate,'DD/MM/YYYY').valueOf());
         };
+        
+        /* check user connected */
+        $scope.checkUserConnected = function () {
+            
+            userRestAPI.getUserById(user._id).success(function (data) {
+                $scope.getEffectives();
+                $scope.getCurrentMonth();
+            }).error(function (data) {
+                $log.error('MainAgendaControler : User not Connected')
+            });
+        }; 
+        
+        /* Primary, check if user connected */
+        $scope.checkUserConnected();
 
-        $scope.getEffectives();
-        $scope.getCurrentMonth();
     })
     //
     ;

@@ -15,8 +15,9 @@
         
         /* qaobee Rest API */
         'effectiveRestAPI',
-        'personRestAPI',
         'eventsRestAPI',
+        'personRestAPI',
+        'userRestAPI',
         
         /* qaobee widget */
         'widget.nextEvent'])
@@ -36,7 +37,7 @@
  * @class qaobee.modules.home.HomeControler
  */
     .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                            effectiveRestAPI, personRestAPI, eventsRestAPI) {
+                                            effectiveRestAPI, personRestAPI, eventsRestAPI, userRestAPI) {
         $translatePartialLoader.addPart('home');
         $translatePartialLoader.addPart('stats');
 
@@ -139,7 +140,18 @@
             $scope.getCurrentEvent();
         };
         
-        $scope.getEvents();
-        $scope.getEffective();
+        /* check user connected */
+        $scope.checkUserConnected = function () {
+            
+            userRestAPI.getUserById(user._id).success(function (data) {
+                $scope.getEvents();
+                $scope.getEffective();
+            }).error(function (data) {
+                $log.error('HomeControler : User not Connected')
+            });
+        }; 
+        
+        /* Primary, check if user connected */
+        $scope.checkUserConnected();
     });
 }());

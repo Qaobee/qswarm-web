@@ -19,7 +19,8 @@
         'activityCfgRestAPI',
         'effectiveRestAPI', 
         'personRestAPI',
-        'locationAPI'])
+        'locationAPI',
+        'userRestAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
@@ -39,7 +40,8 @@
      * @class qaobee.modules.sandbox.effective.AddPlayerControler
      * @description Main controller for view addPlayer.html
      */
-        .controller('AddPlayerControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, activityCfgRestAPI, effectiveRestAPI, personRestAPI, locationAPI) {
+        .controller('AddPlayerControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
+                                                     activityCfgRestAPI, effectiveRestAPI, personRestAPI, locationAPI, userRestAPI) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('effective');
@@ -93,9 +95,11 @@
         $scope.detailsAdr = '';
         
         /* Retrieve list of positions type */
-        activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listPositionType').success(function (data) {
-            $scope.positionsType = data;
-        });
+        $scope.getListPositionType = function () {
+            activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listPositionType').success(function (data) {
+                $scope.positionsType = data;
+            });
+        };
         
         /* Create a new person and add to effective */
         $scope.writePerson = function () {
@@ -168,6 +172,19 @@
                 $scope.writePerson();
             }
         };
+        
+        /* check user connected */
+        $scope.checkUserConnected = function () {
+            
+            userRestAPI.getUserById(user._id).success(function (data) {
+                $scope.getListPositionType();
+            }).error(function (data) {
+                $log.error('AddPlayerControler : User not Connected')
+            });
+        }; 
+        
+        /* Primary, check if user connected */
+        $scope.checkUserConnected();
     })
     
     //
