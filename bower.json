@@ -53,6 +53,7 @@
   },
   "resolutions": {
     "angular": "1.4.0-rc.2",
-    "angular-cookies": "1.4.0-rc.2"
+    "angular-cookies": "1.4.0-rc.2",
+    "materialize": "~0.97.0"
   }
 }
