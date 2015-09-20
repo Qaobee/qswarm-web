@@ -47,6 +47,7 @@
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('agenda');
+        $translatePartialLoader.addPart('effective');
         
         $scope.eventId = $routeParams.eventId;
         

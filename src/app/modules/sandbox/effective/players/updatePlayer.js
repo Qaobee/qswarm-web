@@ -86,19 +86,6 @@
         $scope.getPerson = function () {
             personRestAPI.getPerson($scope.playerId).success(function (person) {
                 $scope.player = person;
-
-                if (angular.isDefined($scope.player.status.positionType)) {
-                        $scope.player.positionType = $filter('translate')('stat.positionType.value.' + $scope.player.status.positionType);
-                } else {
-                    $scope.player.positionType = '';
-                }
-
-                if (angular.isDefined($scope.player.status.stateForm)) {
-                    $scope.player.stateForm = $filter('translate')('stat.stateForm.value.' + $scope.player.status.stateForm);
-                } else {
-                    $scope.player.stateForm = '';
-                }
-
                 $scope.player.birthdate = new Date(moment($scope.player.birthdate));
             });
         };    

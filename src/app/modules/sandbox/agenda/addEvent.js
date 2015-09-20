@@ -47,6 +47,7 @@
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('agenda');
+        $translatePartialLoader.addPart('effective');
         
         $scope.effectiveId = $routeParams.effectiveId;
         
@@ -111,8 +112,8 @@
         $scope.getListEventType = function () {
             activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listEventType').success(function (data) {
                 $scope.listEventType = data.sortBy(function(n) {
-                        return n.order; 
-                    });
+                    return n.order; 
+                });
             });
         };
         
