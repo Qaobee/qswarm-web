@@ -5,7 +5,7 @@
     <!-- view for tablet and phone -->
     <div class="row hide-on-large-only">
         <div class="col s2">
-            <a href="#/private" class="red-text text-lighten-1"><i class="material-icons">people</i></a>
+            <a href="#/private/effectiveStats/{{currentEffective._id}}" class="red-text text-lighten-1"><i class="material-icons">people</i></a>
         </div>
         <div class="col s8 center-align">
             <div><h5 class="light-green-text text-lighten-1" style="font-size:18px;">{{'mainEffective.title' | translate }} {{currentEffective.label}}</h5></div>
@@ -43,7 +43,7 @@
     <!-- view for desktop -->
     <div class="row hide-on-med-and-down">
         <div class="col s1">
-            <a href="#/private" class="red-text text-lighten-1 center tooltipped" 
+            <a href="#/private/effectiveStats/{{currentEffective._id}}" class="red-text text-lighten-1 center tooltipped" 
                data-position="down" data-delay="20" data-tooltip="{{'mainEffective.buttons.viewStatsEffective' | translate }}">
                 <i class="material-icons medium">people</i>
             </a>
@@ -117,7 +117,7 @@
                             {{player.age}} {{'commons.format.ageYear' | translate }} - 
                             {{player.status.height}} {{'commons.format.height' | translate }} / {{player.status.weight}} {{'commons.format.weight' | translate }}
                         </p>
-                        <a href="#/private/statPlayer/{{player._id}}" class="secondary-content btn-floating waves-effect waves-light red lighten-1">
+                        <a href="#/private/playerStats/{{player._id}}" class="secondary-content btn-floating waves-effect waves-light red lighten-1">
                             <i class="fa fa-bar-chart" ></i>
                         </a>
                     </li>
@@ -152,7 +152,7 @@
                             </div>
                             <div class="card-action">
                                 <a href="#/private/updateTeam/{{team._id}}" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
-                                <a href="#/private/statTeam/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
+                                <a href="#/private/teamStats/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
                             </div>
                         </div>
                         <!-- disable -->
@@ -165,7 +165,7 @@
                             </div>
                             <div class="card-action">
                                 <a href="#/private/updateTeam/{{team._id}}" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
-                                <a href="#/private/statTeam/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
+                                <a href="#/private/teamStats/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
                             </div>
                         </div>
                     </li>
@@ -194,7 +194,7 @@
                             </div>
                             <div class="card-action">
                                 <a href="#/private/updateTeam/{{team._id}}" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
-                                <a href="#/private/statTeam/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
+                                <a href="#/private/teamStats/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
                             </div>
                         </div>
                         <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===false">
@@ -206,7 +206,7 @@
                             </div>
                             <div class="card-action">
                                 <a href="#/private/updateTeam/{{team._id}}" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
-                                <a href="#/private/statTeam/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
+                                <a href="#/private/teamStats/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
                             </div>
                         </div>
                     </li>

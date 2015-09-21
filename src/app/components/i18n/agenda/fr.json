@@ -32,7 +32,7 @@
     "eventLabels": {
         "Team": "Choix équipe...",
         "Adversary": "Choix adversaire...",
-        "Type": "Choix type évènnement...",
+        "Type": "Choix type évènement...",
         "Label": "Libellé",
         "LabelPlaceHolder": "1ére journée... Coupe de France...",
         "StartDate": "Date début",
@@ -42,7 +42,7 @@
         "Address": "Adresse",
         "Home": "A domicile",
         "Visitor":"A l'extérieur",
-        "SectionIdentity":"Evènnement",
+        "SectionIdentity":"Evènement",
         "SectionActors":"Participants",
         "SectionPlaning":"Planification",
         "SectionPlace":"Localisation"

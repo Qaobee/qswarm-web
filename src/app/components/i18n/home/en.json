@@ -3,6 +3,6 @@
         "event" : "Next event",
         "stats" : "Statistics event",
         "player" : "Statistics player",
-        "topplayer" : "Top 3"
+        "teams" : "Statistics team"
     }
 }

@@ -17,6 +17,7 @@
         'effectiveRestAPI',
         'eventsRestAPI',
         'personRestAPI',
+        'teamRestAPI',
         'userRestAPI',
         
         /* qaobee widget */
@@ -37,7 +38,7 @@
  * @class qaobee.modules.home.HomeControler
  */
     .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                            effectiveRestAPI, personRestAPI, eventsRestAPI, userRestAPI) {
+                                            effectiveRestAPI, personRestAPI, eventsRestAPI, teamRestAPI, userRestAPI) {
         $translatePartialLoader.addPart('home');
         $translatePartialLoader.addPart('stats');
 
@@ -52,8 +53,18 @@
         $scope.indexEvent = 0;
         $scope.currentEvent = {};
         $scope.mapShow = false;
+        $scope.listTeamHome = {};
 
-        $('.collapsible').collapsible({accordion: false});
+        
+        /* Retrieve list of team of effective */
+        $scope.getListTeamHome = function () {
+            teamRestAPI.getListTeam($scope.meta.sandbox._id, user.effectiveDefault, 'all', 'false').success(function (data) {
+                $scope.listTeamHome = data.sortBy(function(n) {
+                    return n.label; 
+                });
+                $log.debug($scope.listTeamHome);
+            });
+        }; 
     
         /* Retrieve list player */
         $scope.getEffective = function () {
@@ -146,6 +157,7 @@
             userRestAPI.getUserById(user._id).success(function (data) {
                 $scope.getEvents();
                 $scope.getEffective();
+                $scope.getListTeamHome();
             }).error(function (data) {
                 $log.error('HomeControler : User not Connected')
             });
