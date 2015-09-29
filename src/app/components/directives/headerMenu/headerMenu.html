@@ -185,6 +185,16 @@
     <form class="col s12" ng-submit="usernameTest()">
         <div class="modal-content grey lighten-3 ">
             <div class="row">
+            	<div class="input-field col s6">
+                    <input placeholder="{{'content.signup.label.firstname' | translate }}" id="firstname" type="text"
+                           class="validate" ng-model="signup.firstname" required>
+                    <label for="firstname">{{'content.signup.label.firstname' | translate }}</label>
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="{{'content.signup.label.name' | translate }}" id="name" type="text"
+                           class="validate" ng-model="signup.name" required>
+                    <label for="name">{{'content.signup.label.name' | translate }}</label>
+                </div>
                 <div class="input-field col s12">
                     <input placeholder="{{'content.signup.label.login' | translate }}" id="login" type="text"
                            class="validate" ng-model="signup.account.login" required>

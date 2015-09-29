@@ -1,0 +1,53 @@
+<div class="container">
+<!-- body start-->
+    <div class="row"> <div class="col s10"></div></div>   
+
+    <!-- action bar -->
+    <div class="row">
+        <div class="col s12">
+            <div ng-hide="addTeamTitle">
+                <h5 class="header light-green-text text-lighten-1">
+                    <i class="material-icons btn-floating white-text red lighten-1 center">mode_edit</i> {{'updateTeam.title' | translate }}</h5>
+            </div>
+            <div ng-show="addTeamTitle">
+                <h5 class="header light-green-text text-lighten-1">
+                    <i class="material-icons btn-floating white-text red lighten-1 center">person_add</i> {{'addTeam.title' | translate }}</h5>
+            </div>
+        </div>
+    </div>
+    
+    <!-- form-->
+    <div class="row">
+        <form class="col s12" ng-submit="writeTeam()" name="teamForm">
+            <div class="card-panel"> 
+                <div class="row center">
+                    <div class="col s12">
+                        <div class="col s12" input-field>
+                            <input id="teamLabel" type="text" ng-model="team.label" required>
+                            <label for="teamLabel">{{'teamLabels.label' | translate }}</label>
+                        </div>
+                        <div class="col s12">
+                            <select material-select class="blue-grey-text text-darken-1" ng-model="team.enable" required id="teamStatus">
+                                <option value="">{{'teamLabels.status' | translate }}</option>
+                                <option value="true">{{'teamLabels.enable' | translate }}</option>
+                                <option value="false">{{'teamLabels.disable' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- actions buttons -->
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <a class="btn red lighteen-1 white-text waves-effect waves-light center" ng-click="doTheBack()" translate="commons.buttons.cancel"></a>
+                        <button class="btn green darken-1 waves-effect waves-light center" type="submit" name="action" translate="commons.buttons.validate">
+                            <i class="mdi-content-send right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    
+<!-- body end-->
+</div>

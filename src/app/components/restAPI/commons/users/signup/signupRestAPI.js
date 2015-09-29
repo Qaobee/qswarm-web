@@ -42,6 +42,17 @@
                             login: login
                         }
                     });
+                },
+                
+                finalizeSignup: function (id, captcha) {
+                	return $http({
+                		url: signupURL + '/finalize',
+                		method: 'POST',
+                		data: {
+                			id: id,
+                			code: captcha
+                		}
+                	});
                 }
             };
         });

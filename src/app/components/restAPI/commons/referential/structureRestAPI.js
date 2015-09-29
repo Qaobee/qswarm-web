@@ -9,13 +9,20 @@
      */
     angular.module('structureRestAPI', []).value('structureURL', '/api/1/commons/referencial/structure')
 
-    .factory('structureAPI', function($http, structureURL) {
+    .factory('structureRestAPI', function($http, structureURL) {
         return {
             get : function(id) {
                 return $http({
                     url : structureURL + '/get' + '/?id=' + id,
                     method : 'GET'
                 });
+            },
+            
+            getList : function(activity, country, addressCity) {
+            	return $http({
+            		url : structureURL + '/getList' + '/?activity=' + activity + '&country=' + country + '&addressCity=' + addressCity,
+            		method : 'GET'
+            	});
             }
         };
     });

@@ -20,6 +20,8 @@
         
         
         "userSignupStructureSection" : "Choix du club",
+        "userStructureCity" : "Ville du club",
+        "userStructureName" : "Nom du club",
         
         
         "userSignupSumup" : "Résumé"

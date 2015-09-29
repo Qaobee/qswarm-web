@@ -40,7 +40,7 @@
              */
                 getEvent: function (id) {
                     return $http({
-                        url: eventsAPIURL + '/get?id=' + id,
+                        url: eventsAPIURL + '/get?_id=' + id,
                         method: 'GET'
                     });
                 },

@@ -33,7 +33,9 @@
         },
         "signup": {
             "label": {
-                "login": "Login",
+                "name": "Nom",
+                "firstname": "Prénom",
+				"login": "Login",
                 "email" : "e-Mail",
                 "password": "Mot de passe",
                 "passwordConfirm" : "Confirmation mot de passe",
