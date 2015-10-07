@@ -1,5 +1,9 @@
-{
-    
+{	
+	"modalSignupOk" : {
+		"line1" : "Votre inscription est presque terminée !",
+		"line2" : "Vous allez recevoir d'ici quelques minutes un e-mail pour valider votre compte Qaobee.",
+		"line3" : "A très vite sur qaobee.com !"
+	},
     "userLabels" : {
         "userSignupCivilSection" : "Informations personnelles",
         "userName" : "Nom",

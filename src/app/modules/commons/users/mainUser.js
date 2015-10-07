@@ -50,9 +50,32 @@
             });
             
             
+            /* init ngAutocomplete*/
+            $scope.options = {};
+            $scope.options.watchEnter = true;
+            $scope.optionsCountry = {
+                types: 'geocode'
+            };
+            $scope.detailsCountry = '';
+            
+            $scope.optionsCity = {
+                types: '(cities)'
+            };
+            $scope.detailsCity = '';
+            
+            $scope.optionsAdr = null;
+            $scope.detailsAdr = '';
+            
+            
+            
             $scope.changeCityName = function() {
             	$scope.isStructureCityChanged = true
             };
+            
+            
+            $scope.$watch('testGoogle', function() {
+            	$log.debug("ca passe");
+            });
             
             $scope.resetStructure = function() {
             	if($scope.isStructureCityChanged) {
