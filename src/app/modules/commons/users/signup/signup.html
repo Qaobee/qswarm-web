@@ -12,23 +12,23 @@
         <wizard on-finish="createSandBox()" template="app/components/directives/wizard/wizard.html"> 
             
             <!-- step infos personnes -->
-            <wz-step title="{{'userLabels.userSignupCivilSection' | translate }}" template="app/components/directives/wizard/step.html">
+            <wz-step title="{{'civilSection.label.userSignupCivilSection' | translate }}" template="app/components/directives/wizard/step.html">
                 <div class="row"></div>
                 <form novalidate class="col s12" name="userCivilSection">
                     
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col m1 s6">
-                            <label>{{'userLabels.userGender' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                            <label>{{'civilSection.label.userGender' | translate }} <span class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="input-field col m5 s6">
-                            <input name="signup.gender" class="with-gap" type="radio" id="userGenderF" value="{{'userLabels.userGenderF' | translate }}"
+                            <input name="signup.gender" class="with-gap" type="radio" id="userGenderF" value="{{'civilSection.label.userGenderF' | translate }}"
                                        ng-model="signup.gender" required/>
-                            <label for="userGenderF">{{'userLabels.userGenderF' | translate }}</label>
+                            <label for="userGenderF">{{'civilSection.label.userGenderF' | translate }}</label>
 
-                            <input name="signup.gender" class="with-gap" type="radio" id="userGenderM" value="{{'userLabels.userGenderM' | translate }}"
+                            <input name="signup.gender" class="with-gap" type="radio" id="userGenderM" value="{{'civilSection.label.userGenderM' | translate }}"
                                ng-model="signup.gender" required/>
-                            <label for="userGenderM">{{'userLabels.userGenderM' | translate }}</label>
+                            <label for="userGenderM">{{'civilSection.label.userGenderM' | translate }}</label>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -37,11 +37,11 @@
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col m3 s6">
                           <input placeholder="{{'userLabels.userFirstname' | translate }}" ng-model="signup.firstname" id="userFirstname" type="text" class="validate" required>
-                          <label for="userFirstname">{{'userLabels.userFirstname' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                          <label for="userFirstname">{{'civilSection.label.userFirstname' | translate }} <span class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="input-field col m3 s6">
                           <input placeholder="{{'userLabels.userName' | translate }}" ng-model="signup.name" id="userName" type="text" class="validate" required>
-                          <label for="userName">{{'userLabels.userName' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                          <label for="userName">{{'civilSection.label.userName' | translate }} <span class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -50,11 +50,11 @@
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col m4 s6">
                             <input type="text" id="userNationality" class="form-control" ng-autocomplete ng-model="signup.nationality" details="detailsCountry" options="optionsCountry" placeholder="" />
-                            <label for="userNationality">{{'userLabels.userNationality' | translate }}</label>
+                            <label for="userNationality">{{'civilSection.label.userNationality' | translate }}</label>
                         </div>
                         <div class="input-field col m2 s6">
                             <div class="input-field col s12">
-                                <label for="userBirthDate">{{'userLabels.userBirthDate' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                                <label for="userBirthDate">{{'civilSection.label.userBirthDate' | translate }} <span class="red-text text-lighten-1">*</span></label>
                             </div>
                             <div class="input-field col s12">
                                 <input placeholder="{{'userLabels.userBirthDate' | translate }}" ng-model="signup.birthdate" id="userBirthDate" type="date" class="validate" required>
@@ -67,10 +67,10 @@
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col m2 s4">
                             <i class="material-icons prefix">mail</i>
-                            <label for="playerMail">{{'userLabels.userEMail' | translate }}</label>
+                            <label for="playerMail">{{'civilSection.label.userEMail' | translate }}</label>
                         </div>
                         <div class="input-field col m4 s8">
-                            <input id="userEMail" type="email" class="validate" ng-model="signup.contact.email">                            
+                            {{signup.contact.email}}                            
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -78,7 +78,7 @@
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col m6 s12">
-                            <label>{{'userLabels.userPhoneNumber' | translate }}</label>
+                            <label>{{'civilSection.label.userPhoneNumber' | translate }} <span class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -87,7 +87,7 @@
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col m2 s4">
                             <i class="material-icons prefix">phone</i>
-                            <label for="userPhoneHome">{{'userLabels.userPhoneHome' | translate }}</label>
+                            <label for="userPhoneHome">{{'civilSection.label.userPhoneHome' | translate }}</label>
                         </div>
                         <div class="input-field col m4 s8">
                             <input id="userPhoneHome" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" 
@@ -99,7 +99,7 @@
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col m2 s4">
                             <i class="material-icons prefix">phone</i>
-                            <label for="userPhoneOffice">{{'userLabels.userPhoneOffice' | translate }}</label>
+                            <label for="userPhoneOffice">{{'civilSection.label.userPhoneOffice' | translate }}</label>
                         </div>
                         <div class="input-field col m4 s8">
                             <input id="userPhoneOffice" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" 
@@ -111,7 +111,7 @@
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col m2 s4">
                             <i class="material-icons prefix">smartphone</i>
-                            <label for="userCellPhone">{{'userLabels.userCellPhone' | translate }}</label>
+                            <label for="userCellPhone">{{'civilSection.label.userCellPhone' | translate }}</label>
                         </div>
                         <div class="input-field col m4 s8">
                             <input id="userCellPhone" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}"
@@ -125,7 +125,7 @@
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="col m6 s12 center">
                             <a href="" class="btn red lighteen-1 white-text" ng-click="doTheBack()">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
-                            <button class="btn white-text green darken-1" wz-next type="submit" ng-click="infos()" name="next" ng-hide="playerCivilSection.$invalid">{{'commons.buttons.next' | translate }}</button>
+                            <button class="btn white-text green darken-1" type="submit" ng-click="validateUserCivilSection()" name="next">{{'commons.buttons.next' | translate }}</button>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -134,12 +134,12 @@
             
             
             <!-- step choix du sport -->
-            <wz-step title="{{'userLabels.userSignupSportSection' | translate }}" template="app/components/directives/wizard/step.html">
+            <wz-step title="{{'sportSection.label.userSignupSportSection' | translate }}" template="app/components/directives/wizard/step.html">
                 <div class="row"></div>
                 <form novalidate class="col s12" name="userSportSection">
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="col m6 s12"><label>{{'userLabels.userSportChoice' | translate }}</label></div>
+                        <div class="col m6 s12"><label>{{'sportSection.label.userSportChoice' | translate }}</label></div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
                     <div class="row">
@@ -163,7 +163,7 @@
                         <div class="col m6 s12 center">
                             <a href="" class="btn red lighteen-1 white-text" ng-click="doTheBack()">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
                             <button class="btn white-text blue-grey darken-3" wz-previous type="submit" name="previous">{{'commons.buttons.previous' | translate }}</button>&nbsp;
-                            <button class="btn white-text green darken-1" wz-next type="submit" name="next" ng-hide="playerCivilSection.$invalid">{{'commons.buttons.next' | translate }}</button>
+                            <button class="btn white-text green darken-1" type="submit" ng-click="validateSportSection()" name="next">{{'commons.buttons.next' | translate }}</button>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -171,17 +171,17 @@
             </wz-step>
             
              <!-- step choix du club -->
-            <wz-step title="{{'userLabels.userSignupStructureSection' | translate }}" template="app/components/directives/wizard/step.html">
+            <wz-step title="{{'structureSection.label.userSignupStructureSection' | translate }}" template="app/components/directives/wizard/step.html">
                 <div class="row"></div>
                 <form novalidate class="col s12" name="userStructureSection">
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col s3">
-                            <label for="userStructure">{{'userLabels.userStructureCity' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                            <label for="userStructure">{{'structureSection.label.userStructureCity' | translate }} <span class="red-text text-lighten-1">*</span></label>
                        </div>
                         <div class="input-field col s3">
-                            <input type="text" id="userStructureCity" ng-autocomplete ng-model="signup.structureCity" details="signup.detailsStructureCity" placeholder="" ng-change="changeCityName();" ng-blur="resetStructure();" />
-                            <label for="userStructureCity">{{'userLabels.userStructureCity' | translate }}</label>
+                            <input type="text" id="userStructureCity" ng-autocomplete ng-model="structureCity" details="signup.detailsStructureCity" placeholder="" ng-change="changeCityName();" ng-blur="resetStructure();" />
+                            <label for="userStructureCity">{{'structureSection.label.userStructureCity' | translate }}</label>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -189,36 +189,13 @@
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col s3">
-                            <label for="userStructure">{{'userLabels.userStructureCity' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                            <label for="userStructure">{{'structureSection.label.userStructureName' | translate }} <span class="red-text text-lighten-1">*</span></label>
                        </div>
                         <div class="input-field col s3">
-                            <input type="text" id="testGoogle" ng-autocomplete ng-model="signup.structureCity2" details="signup.detailsStructureCity2" placeholder="" />
-                            <label for="userStructureCity2">{{'userLabels.userStructureCity' | translate }}</label>
-                        </div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="input-field col s3">
-                            <label for="userStructure">{{'userLabels.userStructureName' | translate }} <span class="red-text text-lighten-1">*</span></label>
-                       </div>
-                        <div class="input-field col s3">
-                            <input placeholder="{{'userLabels.userStructureName' | translate }}" ng-model="signup.structure" id="userStructure" 
-                            	type="text" class="validate" required ng-focus="loadStructures()">
-                        </div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                    <div class="row">
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="input-field col s3">
-                            <label for="userStructure">{{'userLabels.userStructureName' | translate }} <span class="red-text text-lighten-1">*</span></label>
-                       </div>
-                        <div class="input-field col s3">
-                            <select name="userStructureSelect" ng-model="signup.structureTruc" id="userStructureSelect" class="browser-default blue-grey-text text-darken-1" 
-                            	ng-options="struct.labelAddress as (struct.label + struct.address) for struct in valuesStructures | orderBy:'label' track by struct._id" ng-change="applyChangeStructure()" ng-blur="applyChangeStructure()">
+                            <select name="userStructureSelect" ng-model="structure" id="userStructureSelect" class="browser-default blue-grey-text text-darken-1" ng-focus="loadStructures()"
+                            	ng-options="struct.labelAddress as (struct.label + struct.address) for struct in valuesStructures | orderBy:'label' track by struct._id" ng-focus="resetStructure();" ng-change="applyChangeStructure()" ng-blur="applyChangeStructure()">
                             </select>
-                            <input type="hidden" ng-model="signup.structure2" />
+                            <input type="hidden" ng-model="structure.referencialId" value="-1" />
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -231,7 +208,7 @@
                         <div class="col m6 s12 center">
                             <a href="" class="btn red lighteen-1 white-text" ng-click="doTheBack()">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
                             <button class="btn white-text blue-grey darken-3" wz-previous type="submit" name="previous">{{'commons.buttons.previous' | translate }}</button>&nbsp;
-                            <button class="btn white-text green darken-1" wz-next type="submit" name="next" ng-hide="playerCivilSection.$invalid">{{'commons.buttons.next' | translate }}</button>
+                            <button class="btn white-text green darken-1" type="submit" ng-click="validateStructureSection()" name="next">{{'commons.buttons.next' | translate }}</button>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -240,20 +217,18 @@
             
             
             <!-- step Résumé -->
-            <wz-step title="{{'userLabels.userSignupSumup' | translate }}" template="app/components/directives/wizard/step.html">
+            <wz-step title="{{'sumupSection.label.userSignupSumup' | translate }}" template="app/components/directives/wizard/step.html">
                 <div class="row"></div>
                 <form class="col s12" name="userSumup">
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="input-field col s6">
-                            {{signup.gender}} {{signup.name}} {{signup.firstname}}
-                       </div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                    <div class="row">
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="input-field col s6">
-                            {{signup.email}}
+                        <div class="input-field col s1"></div>
+                        <div class="input-field col s5">
+                            {{'' + signup.gender + '' | translate}} {{signup.name}} {{signup.firstname}}<br>
+                            {{signup.contact.email}}<br>
+                            <span ng-hide="signup.contact.home===null || angular.isUndefined(signup.contact.home)">{{'civilSection.label.userPhoneHome' | translate}} : {{signup.contact.home}}<br></span> 
+                            <span ng-hide="signup.contact.office===null || angular.isUndefined(signup.contact.office)">{{'civilSection.label.userPhoneOffice' | translate}} : {{signup.contact.office}}<br></span>
+                            <span ng-hide="signup.contact.cellphone===null || angular.isUndefined(signup.contact.cellphone)">{{'civilSection.label.userCellPhone' | translate}} : {{signup.contact.cellphone}}<br></span>
                        </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -263,8 +238,11 @@
                             <img  src="assets/images/activity/{{signup.activity}}.jpg"/><br/>
                        </div>
                         <div class="input-field col s5">
-                        	{{signup.detailsStructureCity.name}}<br>
-                        	{{signup.structure2}}
+                        	<div ng-repeat="data in structuresResult" ng-show="data._id==structure.referencialId">
+							     {{data.label}}<br>
+							     {{data.address.place}}<br>
+							     {{data.address.zipcode}} {{data.address.city}}
+							</div> 
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>

@@ -21,7 +21,8 @@
         'eventsRestAPI',
         'effectiveRestAPI',
         'teamRestAPI',
-        'locationAPI'])
+        'locationAPI',
+        'userRestAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
@@ -42,10 +43,11 @@
      * @description Main controller for view mainAgenda.html
      */
         .controller('AddEventControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                                     eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI) {
+                                                     eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, userRestAPI) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('agenda');
+        $translatePartialLoader.addPart('effective');
         
         $scope.effectiveId = $routeParams.effectiveId;
         
@@ -89,25 +91,31 @@
         $scope.detailsAdr = '';
         
         /* Retrieve list of team of effective */
-        teamRestAPI.getListTeam($scope.meta.sandbox._id, $scope.effectiveId, 'true', 'false').success(function (data) {
-            $scope.listTeamHome = data.sortBy(function(n) {
+        $scope.getListTeamHome = function () {
+            teamRestAPI.getListTeam($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true', 'false').success(function (data) {
+                $scope.listTeamHome = data.sortBy(function(n) {
                     return n.label; 
                 });
-        });
+            });
+        }; 
         
         /* Retrieve list of adversary of effective */
-       teamRestAPI.getListTeam($scope.meta.sandbox._id, $scope.effectiveId, 'true', 'true').success(function (data) {
-            $scope.listTeamAdversary = data.sortBy(function(n) {
+        $scope.getListTeamAdversary = function () {
+            teamRestAPI.getListTeam($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true', 'true').success(function (data) {
+                $scope.listTeamAdversary = data.sortBy(function(n) {
                     return n.label; 
                 });
-        });
+            });
+        };
         
         /* Retrieve list of event type */
-        activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listEventType').success(function (data) {
-            $scope.listEventType = data.sortBy(function(n) {
+        $scope.getListEventType = function () {
+            activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listEventType').success(function (data) {
+                $scope.listEventType = data.sortBy(function(n) {
                     return n.order; 
                 });
-        });
+            });
+        };
         
         /* on change event type, calculate the value for chooseAdversary */
         $scope.changeEventType = function () {
@@ -218,6 +226,21 @@
                 $scope.writeEvent();
             }
         };
+        
+        /* check user connected */
+        $scope.checkUserConnected = function () {
+            
+            userRestAPI.getUserById(user._id).success(function (data) {
+                $scope.getListTeamHome();
+                $scope.getListTeamAdversary();
+                $scope.getListEventType();
+            }).error(function (data) {
+                $log.error('AddEventControler : User not Connected')
+            });
+        }; 
+        
+        /* Primary, check if user connected */
+        $scope.checkUserConnected();
     })
     //
     ;

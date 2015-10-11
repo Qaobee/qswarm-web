@@ -5,7 +5,7 @@
     <!-- view for tablet and phone -->
     <div class="row hide-on-large-only">
         <div class="col s2">
-            <a href="#/private" class="red-text text-lighten-1"><i class="material-icons">people</i></a>
+            <a href="#/private/effectiveStats/{{currentEffective._id}}" class="red-text text-lighten-1"><i class="material-icons">people</i></a>
         </div>
         <div class="col s8 center-align">
             <div><h5 class="light-green-text text-lighten-1" style="font-size:18px;">{{'mainEffective.title' | translate }} {{currentEffective.label}}</h5></div>
@@ -43,7 +43,7 @@
     <!-- view for desktop -->
     <div class="row hide-on-med-and-down">
         <div class="col s1">
-            <a href="#/private" class="red-text text-lighten-1 center tooltipped" 
+            <a href="#/private/effectiveStats/{{currentEffective._id}}" class="red-text text-lighten-1 center tooltipped" 
                data-position="down" data-delay="20" data-tooltip="{{'mainEffective.buttons.viewStatsEffective' | translate }}">
                 <i class="material-icons medium">people</i>
             </a>
@@ -73,13 +73,13 @@
         <div class="col s1 right-align">    
             <a href="#/private/addEffective/{{meta._id}}" class="red-text text-lighten-1 tooltipped" 
                 data-position="down" data-delay="20" data-tooltip="{{'mainEffective.buttons.addEffective' | translate }}">
-                    <i class="material-icons small">group_add</i>
+                    <i class="fa fa-plus-square-o fa-3x"></i>
             </a>
         </div>
         <div class="col s1 right-align">
             <a href="#/private/updateEffective/{{currentEffective._id}}" class="red-text text-lighten-1 tooltipped" 
                 data-position="down" data-delay="20" data-tooltip="{{'mainEffective.buttons.updateEffective' | translate }}">
-                    <i class="material-icons small">mode_edit</i>
+                    <i class="fa fa-pencil-square-o  fa-3x"></i>
             </a>
         </div>
     </div>
@@ -117,129 +117,7 @@
                             {{player.age}} {{'commons.format.ageYear' | translate }} - 
                             {{player.status.height}} {{'commons.format.height' | translate }} / {{player.status.weight}} {{'commons.format.weight' | translate }}
                         </p>
-                        <a href="#/private/statPlayer/{{player._id}}" class="secondary-content btn-floating waves-effect waves-light red lighten-1">
-                            <i class="fa fa-bar-chart" ></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- List team -->
-        <div id="teamList" class="col s12">
-            <div class="col s12">&nbsp;</div>
-            
-            <!-- List team home -->
-            <div class="col s11 grey lighten-4 blue-grey-text text-darken-2">
-                <h5>{{'effectiveLabels.effectiveTeamsHome' | translate }}</h5>
-            </div>
-            <div class="col s1 grey lighten-4">
-                <a href="#/private/addPlayer/{{meta._id}}" class="red-text text-lighten-1 left-align tooltipped" data-position="left" data-delay="20" data-tooltip="{{'mainEffective.buttons.addTeamHome' | translate }}">
-                    <h5><i class="fa fa-plus-square-o"></i></h5>
-                </a>
-            </div>
-            
-            <div class="col s12">    
-                <ul>
-                    <li class="col m3 s12" ng-repeat="team in listTeamHome">
-                        <!-- enable -->
-                        <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===true">
-                            <div class="card-content red lighten-1 white-text center">
-                                <span class="card-title">{{team.label}}</span>
-                            </div>
-                            <div class="card-content">
-                                <p>{{'effectiveLabels.effectiveTeamEnable' | translate }}</p>
-                            </div>
-                            <div class="card-action">
-                                <a href="#/private/updateTeam/{{team._id}}" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
-                                <a href="#/private/statTeam/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
-                            </div>
-                        </div>
-                        <!-- disable -->
-                        <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===false">
-                            <div class="card-content grey lighten-1 blue-grey-text text-darken-2 center">
-                                <span class="card-title">{{team.label}}</span>
-                            </div>
-                            <div class="card-content">
-                                <p>{{'effectiveLabels.effectiveTeamNotEnable' | translate }}</p>
-                            </div>
-                            <div class="card-action">
-                                <a href="#/private/updateTeam/{{team._id}}" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
-                                <a href="#/private/statTeam/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- List team adversary -->
-            <div class="col s11 grey lighten-4 blue-grey-text text-darken-2">
-                <h5>{{'effectiveLabels.effectiveTeamsAdversary' | translate }}</h5>
-            </div>
-            <div class="col s1 grey lighten-4">
-                <a href="#/private/addPlayer/{{meta._id}}" class="red-text text-lighten-1 left-align tooltipped" data-position="left" data-delay="20" data-tooltip="{{'mainEffective.buttons.addTeamAdversary' | translate }}">
-                    <h5><i class="fa fa-plus-square-o"></i></h5>
-                </a>
-            </div>
-            
-            <div class="col s12">    
-                <ul>
-                    <li class="col m3 s12" ng-repeat="team in listTeamAdversary">
-                        <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===true">
-                            <div class="card-content blue lighten-2 white-text center">
-                                <span class="card-title samll">{{team.label}}</span>
-                            </div>
-                            <div class="card-content">
-                                <p>{{'effectiveLabels.effectiveTeamEnable' | translate }}</p>
-                            </div>
-                            <div class="card-action">
-                                <a href="#/private/updateTeam/{{team._id}}" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
-                                <a href="#/private/statTeam/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
-                            </div>
-                        </div>
-                        <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===false">
-                            <div class="card-content grey lighten-1 blue-grey-text text-darken-2 center">
-                                <span class="card-title">{{team.label}}</span>
-                            </div>
-                            <div class="card-content">
-                                <p>{{'effectiveLabels.effectiveTeamNotEnable' | translate }}</p>
-                            </div>
-                            <div class="card-action">
-                                <a href="#/private/updateTeam/{{team._id}}" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
-                                <a href="#/private/statTeam/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- List player -->
-        <div id="playerList" class="col s12">
-
-            <!-- filter -->
-            <div class="col s12">
-                <form class="forms forms-inline input-field">
-                    <input type="text" id="queryPlayer" class="grey lighten-4" ng-model="queryPlayer">
-                    <label for="queryPlayer">Filter</label>
-                </form>
-            </div>
-            <div class="col s12 left-align">
-                <a href="#/private/addPlayer/{{meta._id}}" class="red-text text-lighten-1 tooltipped" data-position="down" data-delay="20" data-tooltip="{{'mainEffective.buttons.addPlayer' | translate }}">
-                    <i class="fa fa-user-plus fa-2x"></i>
-                </a>
-            </div>
-            <div class="col s12">    
-                <ul class="collection">
-                    <li class="collection-item avatar col s12" ng-repeat="player in players | filter:queryPlayer">
-                        <simple-avatar person="player" link="('#/private/viewPlayer/' + player._id)"></simple-avatar>
-                        <a href="#/private/viewPlayer/{{player._id}}" class="title red-text text-lighten-1">{{player.firstname}} {{player.name}}</a> 
-                        <span class="title  hide-on-small-only">{{player.positionType}}</span>
-                        <p>
-                            {{player.age}} {{'commons.format.ageYear' | translate }} - 
-                            {{player.status.height}} {{'commons.format.height' | translate }} / {{player.status.weight}} {{'commons.format.weight' | translate }}
-                        </p>
-                        <a href="#/private/statPlayer/{{player._id}}" class="secondary-content btn-floating waves-effect waves-light red lighten-1">
+                        <a href="#/private/playerStats/{{player._id}}" class="secondary-content btn-floating waves-effect waves-light red lighten-1">
                             <i class="fa fa-bar-chart" ></i>
                         </a>
                     </li>
@@ -274,7 +152,7 @@
                             </div>
                             <div class="card-action">
                                 <a href="#/private/updateTeam/{{team._id}}" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
-                                <a href="#/private/statTeam/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
+                                <a href="#/private/teamStats/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
                             </div>
                         </div>
                         <!-- disable -->
@@ -287,7 +165,7 @@
                             </div>
                             <div class="card-action">
                                 <a href="#/private/updateTeam/{{team._id}}" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
-                                <a href="#/private/statTeam/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
+                                <a href="#/private/teamStats/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
                             </div>
                         </div>
                     </li>
@@ -316,7 +194,7 @@
                             </div>
                             <div class="card-action">
                                 <a href="#/private/updateTeam/{{team._id}}" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
-                                <a href="#/private/statTeam/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
+                                <a href="#/private/teamStats/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
                             </div>
                         </div>
                         <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===false">
@@ -328,7 +206,7 @@
                             </div>
                             <div class="card-action">
                                 <a href="#/private/updateTeam/{{team._id}}" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
-                                <a href="#/private/statTeam/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
+                                <a href="#/private/teamStats/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
                             </div>
                         </div>
                     </li>

@@ -16,7 +16,8 @@
         /* qaobee Rest API */
         'activityCfgRestAPI',
         'effectiveRestAPI', 
-        'personRestAPI'])
+        'personRestAPI',
+        'userRestAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
@@ -37,7 +38,7 @@
      * @description Main controller for view addEffective.html
      */
         .controller('AddEffectiveControler', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                                        activityCfgRestAPI, effectiveRestAPI, personRestAPI) {
+                                                        activityCfgRestAPI, effectiveRestAPI, personRestAPI, userRestAPI) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('effective');
@@ -55,22 +56,28 @@
         $scope.addEffectiveTitle = true;
         
         /* Retrieve list of categoryAge */
-        activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listCategoryAge').success(function (data) {
-            $scope.listCategory = data;
-        });
+        $scope.getListCategoryAge = function () {
+            activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listCategoryAge').success(function (data) {
+                $scope.listCategory = data.sortBy(function(n) {
+                        return n.order; 
+                    });
+            });
+        };
             
         /* get SB_Person */
-        personRestAPI.getListPersonSandbox($scope.meta.sandbox._id).success(function (data) {
-            data.forEach(function (e) {
-                if (angular.isDefined(e.status.positionType)) {
-                    e.positionType = $filter('translate')('stat.positionType.value.' + e.status.positionType);
-                } else {
-                    e.positionType = '';
-                }
-                e.ticket = false;
-            });
-            $scope.persons = data;
-        });       
+        $scope.getListPersonSandbox = function () {
+            personRestAPI.getListPersonSandbox($scope.meta.sandbox._id).success(function (data) {
+                data.forEach(function (e) {
+                    if (angular.isDefined(e.status.positionType)) {
+                        e.positionType = $filter('translate')('stat.positionType.value.' + e.status.positionType);
+                    } else {
+                        e.positionType = '';
+                    }
+                    e.ticket = false;
+                });
+                $scope.persons = data;
+            }); 
+        };
             
         /* add effective */
         $scope.writeEffective = function () {
@@ -108,6 +115,20 @@
                 });
             }
         };
+        
+        /* check user connected */
+        $scope.checkUserConnected = function () {
+            
+            userRestAPI.getUserById(user._id).success(function (data) {
+                $scope.getListCategoryAge();
+                $scope.getListPersonSandbox();
+            }).error(function (data) {
+                $log.error('AddEffectiveControler : User not Connected')
+            });
+        }; 
+        
+        /* Primary, check if user connected */
+        $scope.checkUserConnected();
     })
     //
     ;

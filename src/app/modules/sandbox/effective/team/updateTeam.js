@@ -60,6 +60,7 @@
             /* get team */
             teamRestAPI.getTeam($scope.teamId).success(function (team) {
                 $scope.team = team;
+                $scope.team.enable = $scope.team.enable?'true':'false';
             });
         };
         

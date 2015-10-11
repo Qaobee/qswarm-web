@@ -35,6 +35,16 @@
             "back" : "Return",
             "next" : "Next",
             "previous" : "Previous"
+        },
+        "settings" : {
+            "activity": {
+                "handball" : "Handball",
+                "football" : "Football",
+                "fencing" : "Fencing",
+                "basketball" : "Basketball",
+                "volleyball" : "Volleyball",
+                "rugbyball" : "Rugby"
+            }
         }
     }
 }

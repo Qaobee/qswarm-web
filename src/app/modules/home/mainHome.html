@@ -71,30 +71,18 @@
         <!-- player list-->
         <div class="col s12 m6 l4">
             <!-- TOP 3 -->
-            <!--
-            <div><h5 class="header red-text text-lighten-1"><i class="mdi-action-stars"></i> {{'dashboard.topplayer' |
+            <div><h5 class="header red-text text-lighten-1"><i class="mdi-action-stars"></i> {{'dashboard.teams' |
                 translate }}</h5></div>
-            <ul class="collapsible popout" data-collapsible="accordion">
-                <li>
-                    <div class="collapsible-header tooltipped" data-position="right" data-delay="30"
-                         data-tooltip="{{'headerMenu.search-player' | translate }}"><i class="fa fa-futbol-o"></i>
-                        {{user.firstname}} {{user.name}}
-                    </div>
-                    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-                </li>
-                <li>
-                    <div class="collapsible-header"><i class="mdi-image-timer"></i> {{user.firstname}} {{user.name}}
-                    </div>
-                    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-                </li>
-                <li>
-                    <div class="collapsible-header"><i class="mdi-social-whatshot"></i> {{user.firstname}} {{user.name}}
-                    </div>
-                    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            <ul class="collection">
+                <li class="collection-item" ng-repeat="team in listTeamHome">
+                    <span class="title blue-grey-text text-darken-1">{{team.label}}</span>
+                    <a href="#/private/teamStats/{{team._id}}"
+                       class="waves-effect waves-light red lighten-1  white-text right"><i
+                            class="fa fa-bar-chart fa-2x"></i></a>
                 </li>
             </ul>
             <br/>
-            -->
+
             
             <!-- List Player -->
             <div><h5 class="header light-green-text text-lighten-1"><i class="fa fa-bar-chart"></i> {{'dashboard.player'
@@ -112,7 +100,7 @@
                     <span class="title red-text text-lighten-1">{{player.firstname}} {{player.name}}</span>
 
                     <p>{{player.positionType}}</p>
-                    <a href="#/private/statPlayer/{{player._id}}"
+                    <a href="#/private/playerStats/{{player._id}}"
                        class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i
                             class="fa fa-bar-chart"></i></a>
                 </li>

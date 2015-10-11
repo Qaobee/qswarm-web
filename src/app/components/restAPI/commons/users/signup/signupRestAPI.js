@@ -44,13 +44,22 @@
                     });
                 },
                 
-                finalizeSignup: function (id, captcha) {
+                firstConnectionCheck: function (id, code) {
+                	return $http({
+                		url: signupURL + '/firstconnectioncheck?id=' + id + '&code=' + code,
+                		method: 'GET'
+                	});
+                },
+                
+                finalizeSignup: function (user, captcha, structure, activity) {
                 	return $http({
                 		url: signupURL + '/finalize',
                 		method: 'POST',
                 		data: {
-                			id: id,
-                			code: captcha
+                			user: user,
+                			code: captcha,
+                			structure: structure,
+                			activity : activity
                 		}
                 	});
                 }

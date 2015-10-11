@@ -9,6 +9,8 @@ rm -rf dist/*
 echo -e "${green}****************************************************"
 echo -e "Running build"
 echo -e "****************************************************${NC}"
+npm install
+bower install
 gulp
 STATUS=$?
     if [ $STATUS -eq 0 ]; then
