@@ -1,0 +1,53 @@
+{	
+	"modalSignupOk" : {
+		"line1" : "Votre inscription est presque terminée !",
+		"line2" : "Vous allez recevoir d'ici quelques minutes un e-mail pour valider votre compte Qaobee.",
+		"line3" : "A très vite sur qaobee.com !"
+	},
+    "civilSection" : {
+    	"label" : {
+	        "userSignupCivilSection" : "Informations personnelles",
+	        "userName" : "Nom",
+	        "userFirstname" : "Prénom",
+	        "userGender" : "Civilité",
+	        "userGenderM" : "Monsieur",
+	        "userGenderF" : "Madame",
+	        "userBirthDate" : "Date de naissance",
+	        "userNationality" : "Nationalité",
+	        "userEMail" : "e-Mail",
+	        "userPhoneNumber" : "Numéros de téléphone",
+	        "userPhoneHome" : "Domicile",
+	        "userPhoneOffice" : "Bureau",
+	        "userCellPhone" : "Portable"
+	    },
+	    "ph" : {
+	    	"genderMandatory" : "Civilité non renseignée",
+	    	"birthdateMandatory" : "Date de naissance non renseignée",
+	    	"phoneNumberMandatory" : "Au moins un numéro de téléphone doit être renseigné"
+	    }
+	},
+	"sportSection" : {
+		"label" : {
+			"userSignupSportSection" : "Choix du sport",
+	        "userSportChoice" : "Veuillez choisir le sport"
+	    },
+	    "ph" : {
+	    	"sportMandatory" : "Sport non renseigné"
+	    }
+	},
+	"structureSection" : {
+		"label" : {
+			"userSignupStructureSection" : "Choix du club",
+	        "userStructureCity" : "Ville du club",
+	        "userStructureName" : "Nom du club"
+	    }, 
+	    "ph" : {
+	    	"structureMandatory" : "Un club doit être choisi"
+	    }
+	},
+	"sumupSection" : {
+		"label" : {
+		 	"userSignupSumup" : "Résumé"
+		 }
+	}
+}

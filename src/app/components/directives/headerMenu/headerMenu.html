@@ -15,10 +15,17 @@
                         class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}</a></li>
             </ul>
             
+            <ul class="right hide-on-med-and-down" ng-show="signupAvailable">
+                <li><a href="#modalSignup" class="white-text modal-trigger"><i
+                        class="fa fa-sign-in right"></i>{{'navbar.signup' | translate}}</a></li>
+            </ul>
+            
             <a href="#" data-activates="nav-mobileHC" class="button-collapse grey-text text-lighten-1"><i
                     class="mdi-navigation-menu"></i></a>
 
             <ul id="nav-mobileHC" class="side-nav">
+            	<li ng-show="signupAvailable"><a href="#modalSignup" class="grey-text text-lighten-1 modal-trigger"><span
+                        class="fa fa-sign-in"></span> {{'navbar.signup' | translate}}</a></li>
                 <li><a href="#modalLogin" class="grey-text text-lighten-1 modal-trigger"><span
                         class="fa fa-sign-in"></span> {{'navbar.connect' | translate}}</a></li>
                <li><a href="https://twitter.com/Qaobee"
@@ -165,4 +172,78 @@
             </div>
         </div>
     </form>
+</div>
+
+<!-- Modal SignUp -->
+<div id="modalSignup" class="modal">
+    <div class="modal-header center-align ">
+        <h5>
+            <span class="fa fa-sign-in"></span>
+            <span translate="content.signup.label.title"></span>
+        </h5>
+    </div>
+    <form class="col s12" ng-submit="usernameTest()">
+        <div class="modal-content grey lighten-3 ">
+            <div class="row">
+            	<div class="input-field col s6">
+                    <input placeholder="{{'content.signup.label.firstname' | translate }}" id="firstname" type="text"
+                           class="validate" ng-model="signup.firstname" required>
+                    <label for="firstname">{{'content.signup.label.firstname' | translate }}</label>
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="{{'content.signup.label.name' | translate }}" id="name" type="text"
+                           class="validate" ng-model="signup.name" required>
+                    <label for="name">{{'content.signup.label.name' | translate }}</label>
+                </div>
+                <div class="input-field col s12">
+                    <input placeholder="{{'content.signup.label.login' | translate }}" id="login" type="text"
+                           class="validate" ng-model="signup.account.login" required>
+                    <label for="login">{{'content.signup.label.login' | translate }}</label>
+                </div>
+                <div class="input-field col s12">
+                    <input placeholder="{{'content.signup.label.email' | translate }}" id="email" type="email"
+                           class="validate" ng-model="signup.contact.email" required>
+                    <label for="email">{{'content.signup.label.email' | translate }}</label>
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="{{'content.signup.label.password' | translate }}" id="password" type="password"
+                           class="validate" ng-model="signup.account.passwd" required>
+                    <label for="password">{{'content.signup.label.password' | translate }}</label>
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="{{'content.signup.label.passwordConfirm' | translate }}" id="passwordConfirm" type="password"
+                           class="validate" ng-model="passwdConfirm" required>
+                    <label for="password">{{'content.signup.label.passwordConfirm' | translate }}</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="waves-effect waves-red btn green darken-1" translate="commons.buttons.validate"/>
+            <a href="" ng-click="cancelSignup()" class="modal-action modal-close waves-effect waves-red btn red">{{'commons.buttons.cancel' |
+                translate}}</a>
+        </div>
+    </form>
+</div>
+
+<!-- Modal SignUp OK ! -->
+<div id="modalSignupOK" class="modal">
+	<div class="modal-header center-align ">
+        <h5>
+            <span class="fa fa-sign-in"></span>
+            <span translate="content.signup.label.title"></span>
+        </h5>
+    </div>
+    <div class="modal-content grey lighten-3 ">
+		<div class="row">
+			<div class="col s12">
+			{{'modalSignupOk.line1' | translate}}<br>
+			{{'modalSignupOk.line2' | translate}}<br>
+			{{'modalSignupOk.line3' | translate}}<br>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<a href="" ng-click="closeSignupOk()" class="modal-action modal-closewaves-effect waves-red btn green darken-1">{{'commons.buttons.close' | translate}}</a>
+	</div>
 </div>

@@ -11,8 +11,7 @@
 
         .factory('signupRestAPI', function ($http, signupURL) {
             return {
-                
-                /**
+            	/**
                  * @memberOf qaobee.components.restAPI.commons.users.user.signupRestAPI
                  * @function registerUser
                  * @description register a new user
@@ -27,7 +26,8 @@
                         data: u
                     });
                 },
-                /**
+                
+            	/**
                  * @memberOf qaobee.components.restAPI.commons.users.user.signupRestAPI
                  * @function usernameTest
                  * @description Login unicity test
@@ -43,21 +43,25 @@
                         }
                     });
                 },
-                /**
-                 * @memberOf qaobee.components.restAPI.commons.users.user.signupRestAPI
-                 * @function accountCheck
-                 * @description Vérification du code d'activation de l'utilisateur
-                 * @param {String}
-                 *            code Code d'activation
-                 * @param {String}
-                 *            id Identifiant Mongo de l'utilisateur
-                 * @returns {Object} {"status", true} ou {"status", false}
-                 */
-                accountCheck: function (code, id) {
-                    return $http({
-                        url: signupURL + '/accountcheck/?code=' + code + '&id=' + id,
-                        method: 'GET'
-                    });
+                
+                firstConnectionCheck: function (id, code) {
+                	return $http({
+                		url: signupURL + '/firstconnectioncheck?id=' + id + '&code=' + code,
+                		method: 'GET'
+                	});
+                },
+                
+                finalizeSignup: function (user, captcha, structure, activity) {
+                	return $http({
+                		url: signupURL + '/finalize',
+                		method: 'POST',
+                		data: {
+                			user: user,
+                			code: captcha,
+                			structure: structure,
+                			activity : activity
+                		}
+                	});
                 }
             };
         });

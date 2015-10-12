@@ -32,7 +32,7 @@
              */
             getListActive : function() {
                 return $http({
-                    url : activityApiURL + '/listActive',
+                    url : activityApiURL + '/listEnable',
                     method : 'GET'
                 });
             },

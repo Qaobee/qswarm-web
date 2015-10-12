@@ -30,6 +30,26 @@
                 "title": "Log on to <b>Qaobee</b>",
                 "forgotpasswdcancel": "Wait, I remember now!"
             }
+        },
+        "signup": {
+            "label": {
+                "name": "Nom",
+                "firstname": "Prénom",
+				"login": "Login",
+                "email" : "e-Mail",
+                "password": "Mot de passe",
+                "passwordConfirm" : "Confirmation mot de passe",
+                "title": "Inscrivez-vous sur <b>Qaobee</b>"
+            }
         }
-    }    
+    },
+    "error": {
+    	"signup" : {
+		   	"nonunique": "Le nom d'utilisateur que vous avez choisi existe déjà",
+        	"password": {
+        		"short" : "Le mot de passe que vous avez choisi est trop court",
+        		"different" : "Le mot de passe et sa confirmation sont différents"
+        	}
+    	}
+    }
 }

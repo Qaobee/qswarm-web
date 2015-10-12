@@ -25,14 +25,16 @@
             'qaobee.notifications',
             
             /* qaobee Rest API */
-            'userRestAPI'
+            'userRestAPI',
+            'signupRestAPI'
         ])
-        .directive('headerMenu', function (qeventbus, userRestAPI, $rootScope, $cookieStore, $location, $window, $log, $translatePartialLoader, $filter) {
+        .directive('headerMenu', function (qeventbus, userRestAPI, signupRestAPI, $rootScope, $cookieStore, $location, $window, $log, $translatePartialLoader, $filter) {
             return {
                 restrict: 'AE',
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('commons');
                     $translatePartialLoader.addPart('menu');
+                    $translatePartialLoader.addPart('user');
                     $scope.signin = {};
                         $scope.isActive = function(viewLocation) {
                         return viewLocation === $location.path();
@@ -186,6 +188,58 @@
                             }
                             $log.error(error);
                         });
+                    };
+                    
+                    /**
+                     * @name $qcope.cancelSignup
+                     * @function
+                     * @memberOf qaobee.directives.headerMenu
+                     * @description Cancel user signup
+                     */
+                    $scope.cancelSignup = function() {
+                    	delete $scope.signup;
+                    	$('#modalSignup').closeModal();
+                    }
+                    
+                    /**
+                     * @name $scope.usernameTest
+                     * @function
+                     * @memberOf qaobee.directives.headerMenu
+                     * @description Test login and create account 
+                     */
+                    $scope.usernameTest = function() {
+                    	signupRestAPI.usernameTest($scope.signup.login).success(function (data) {
+                    		if(data.status==true) {
+                    			toastr.warning($filter('translate')('error.signup.nonunique'));
+                    		} else {
+                    			$scope.signup.junit = true;
+                    			$scope.signup.plan = new Object();
+                    			$scope.signup.plan.levelPlan='FREEMIUM';
+                    			$log.error($scope.signup);
+                    			signupRestAPI.registerUser($scope.signup).success(function (data2) {
+                    				$('#modalSignup').closeModal();
+                          			delete $scope.signup;
+                          			delete $scope.passwdConfirm;
+                          			$('#modalSignupOK').openModal();
+                    			}).error(function (error) {
+                                    if (error) {
+                                        $rootScope.errMessSend = true;
+                                        toastr.error(error.message);
+                                    }
+                                    $log.error(error);
+                                });
+                    		}
+                    	});
+                    	
+                    	/**
+                         * @name $scope.logoff
+                         * @function
+                         * @memberOf qaobee.directives.headerMenu
+                         * @description Disconnection
+                         */
+                    	$scope.closeSignupOk = function() {
+                        	$('#modalSignupOK').closeModal();
+                        }
                     };
                 },
                 templateUrl: 'app/components/directives/headerMenu/headerMenu.html'

@@ -20,7 +20,6 @@
         'qaobee.headerMenu',
     
         /* qaobee modules */ 
-        'qaobee.signup', 
             
         /* qaobee Rest API */
         'publicRestAPI' 
@@ -54,7 +53,7 @@
                 templateUrl: 'app/modules/public/features.html'
             }).when('/offer/DISCOVERY', {
                 controller: 'DiscoveryOfferCtrl',
-                templateUrl: 'app/modules/ublic/offers/discovery.html'
+                templateUrl: 'app/modules/public/offers/discovery.html'
             }).when('/offer/PREMIUM', {
                 controller: 'PremiumOfferCtrl',
                 templateUrl: 'app/modules/public/offers/premium.html'
@@ -86,9 +85,13 @@
      * @class qaobee.public.public.PublicCtrl
      * @description Contrôleur de la page d'accueil publique
      */
-        .controller('PublicCtrl', function ($scope, $rootScope, $translatePartialLoader) {
+        .controller('PublicCtrl', function ($scope, $rootScope, $translatePartialLoader, $log, $routeParams) {
             $translatePartialLoader.addPart('public');
             $translatePartialLoader.addPart('commons');
+            
+            // asu = Allow SignUp
+            $rootScope.signupAvailable=($routeParams.asu=='true');
+            delete $rootScope.user;
 
             /**
              * @description initialization materialize components
