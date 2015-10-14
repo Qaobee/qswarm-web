@@ -16,7 +16,16 @@
 
 
         .config(function ($routeProvider) {
-            $routeProvider.when('/signup/:id/:code?', {
+            $routeProvider.when('/signup/end', {
+                controller: 'SignupEndCtrl',
+                templateUrl: 'app/modules/commons/users/signup/signupDone.html'
+            }).when('/signup/cancel', {
+                controller: 'SignupCancelCtrl',
+                templateUrl: 'app/modules/commons/users/signup/signupCancel.html'
+            }).when('/signup/error', {
+                controller: 'SignupErrorCtrl',
+                templateUrl: 'app/modules/commons/users/signup/signupError.html'
+            }).when('/signup/:id/:code?', {
                 controller: 'SignupCtrl',
                 templateUrl: 'app/modules/commons/users/signup/signup.html'
             });
@@ -32,13 +41,14 @@
                        
             signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function(data) {
             	if (false === data.status) {           		
-            		toastr.error('Pb');
+            		$scope.messageErreur = data.message;
+            		$window.location.href = '/#/signup/error';
             	} else {
             		$scope.signup = data;
             	}
             }).error(function(data) {
-//            	$location.path() = 'app/modules/commons/users/signup/signupDone.html';
-        		toastr.error(data.message);
+            	$scope.messageErreur = data.message;
+            	$window.location.href = '/#/signup/error';
             });
             
             
@@ -176,14 +186,26 @@
             			$log.debug(data);
                 		toastr.error('Pb');
                 	} else {
-                		toastr.info('Compte créé');
+                		$window.location.href = '/#/signup/end';
                 	}
             	}).error(function(data) {
-//                	$location.path() = 'app/modules/commons/users/signup/signupDone.html';
-            		toastr.error(data.message);
+                	$scope.messageErreur = data.message;
+                	$window.location.href = '/#/signup/error';
                 });
             };
             
+        })
+        
+        .controller('SignupEndCtrl', function ($scope, $translatePartialLoader, $log) {
+        	toastr.info('Compte créé');
+        })
+        
+        .controller('SignupCancelCtrl', function ($scope, $translatePartialLoader, $log) {
+        })
+        
+        .controller('SignupErrorCtrl', function ($scope, $translatePartialLoader, $log) {
+        	toastr.error($scope.messageErreur);
         });
+        
 }());
 
