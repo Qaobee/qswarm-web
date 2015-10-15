@@ -6,7 +6,6 @@
         'ngAutocomplete',
         
         /* qaobee modules */
-        /*'qaobee.signup',*/
         
         /* qaobee Rest API */
         'activityRestAPI',
@@ -31,7 +30,7 @@
             });
         })
 
-        .controller('SignupCtrl', function ($rootScope, $scope, $translatePartialLoader, $log, $routeParams, $window, $filter, WizardHandler, activityRestAPI, structureRestAPI, signupRestAPI) {
+        .controller('SignupCtrl', function ($rootScope, $scope, $translatePartialLoader, $log, $routeParams, $window, $location, $filter, WizardHandler, activityRestAPI, structureRestAPI, signupRestAPI) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
             
@@ -40,27 +39,20 @@
             $scope.valuesStructures = [{_id : -1, label : 'Aucune donnée trouvée', address:''}];
                        
             signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function(data) {
-            	$log.debug('1');
-            	if (false === data.status) {
-            		$log.debug('2');
+            	if (true === data.error) {
             		$rootScope.messageErreur = data.message;
-            		$window.location.href = '/#/signup/error';
+            		$location.path('/signup/error');
             		return;
             	} else {
-            		$log.debug('3');
             		$scope.signup = data;
             	}
             }).error(function(error, status) {
-            	$log.debug('4');
             	if(error != null) {
-            		$log.debug('5');
-            		$log.debug(error.message);
             		$rootScope.messageErreur = error.message;
             	} else {
-            		$log.debug('6');
             		$rootScope.messageErreur = $filter('translate')('errorPage.ph.unknown');
             	}
-            	$window.location.href = '/#/signup/error';
+            	$location.path('/signup/error');
             	return;
             });
             
@@ -132,7 +124,7 @@
             // User blurs city name input
             $scope.resetStructure = function() {
             	if($scope.isStructureCityChanged) {
-            		$scope.valuesStructures = [{_id : -1, label : 'Aucune donnée trouvée', address:''}];
+            		$scope.valuesStructures = [{_id : -1, label : $filter('translate')('structureSection.list.empty'), address:''}];
             		$scope.isStructureCityChanged = false;
             		$scope.isStructureReload = true;
             	}
@@ -145,11 +137,13 @@
 
             		var addressCity = $scope.signup.detailsStructureCity.name;
             		
+            		$scope.valuesStructures = [{_id : -1, label : $filter('translate')('structureSection.list.inProgress'), address:''}];
+            		
             		structureRestAPI.getList($scope.signup.activity, 'CNTR-250-FR-FRA', addressCity).success(function(data) {
                     	$scope.valuesStructures = [];
                     	$scope.structure2 = "";
                     	if(data.status===false) {
-                    		$scope.valuesStructures = [{_id : -2, label : 'Aucune donnée trouvée', address:''}];
+                    		$scope.valuesStructures = [{_id : -2, label : $filter('translate')('structureSection.list.empty'), address:''}];
                     	} else {
                     		if(data.length > 0) {
                     			$scope.structuresResult = data;
@@ -157,7 +151,7 @@
 	                        		$scope.valuesStructures.push({_id : data[i]._id, label : data[i].label, address: ' (' + data[i].address.place + ')'});
 	                        	}
                     		} else {
-                    			$scope.valuesStructures = [{_id : -3, label : 'Aucune donnée trouvée', address:''}];
+                    			$scope.valuesStructures = [{_id : -3, label : $filter('translate')('structureSection.list.empty'), address:''}];
                     		}
                     	}
                     });
@@ -207,16 +201,35 @@
                 });
             };
             
+            $scope.openCancelModal = function() {
+            	$('#modalCancel').openModal();
+            }
+            
+            $scope.closeCancelModal = function() {
+            	$('#modalCancel').closeModal();
+            }
+            
+            $scope.cancelSignup = function() {
+            	$('#modalCancel').closeModal();
+            	delete($scope.signup);
+            	toastr.info('A bientôt !');
+            	$location.path('/');
+            }
+            
         })
         
-        .controller('SignupEndCtrl', function ($scope, $translatePartialLoader, $log) {
-        	toastr.info('Compte créé');
+        .controller('SignupEndCtrl', function ($scope, $translatePartialLoader, $location) {
+        	$translatePartialLoader.addPart('user');
+        	
+        	$scope.goHome = function() {
+        		$location.path('/');
+        	};
         })
         
         .controller('SignupCancelCtrl', function ($scope, $translatePartialLoader, $log) {
         })
         
-        .controller('SignupErrorCtrl', function ($rootScope, $scope, $window, $translatePartialLoader, $log, $filter) {
+        .controller('SignupErrorCtrl', function ($rootScope, $scope, $location, $translatePartialLoader, $log, $filter) {
         	$translatePartialLoader.addPart('user');
         	
         	$scope.message = $rootScope.messageErreur;
@@ -226,7 +239,7 @@
         	delete $rootScope.messageErreur;
         	
         	$scope.goHome = function() {
-        		$window.location.href = '/#/';
+        		$location.path('/');
         	};
         });
         

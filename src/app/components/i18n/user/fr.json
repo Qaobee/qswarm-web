@@ -4,6 +4,14 @@
 		"line2" : "Vous allez recevoir d'ici quelques minutes un e-mail pour valider votre compte Qaobee.",
 		"line3" : "A très vite sur qaobee.com !"
 	},
+	"modalSignupCancel" : {
+		"title" : "Abandon",
+		"question" : "Etes-vous certain de vouloir interrompre votre inscription ?",
+		"button" : {
+			"yes" : "Oui",
+			"no"  : "Non"
+		}
+	},
     "civilSection" : {
     	"label" : {
 	        "userSignupCivilSection" : "Informations personnelles",
@@ -41,6 +49,10 @@
 	        "userStructureCity" : "Ville du club",
 	        "userStructureName" : "Nom du club"
 	    }, 
+	    "list" : {
+	    	"empty" : "Aucune donnée trouvée",
+	    	"inProgress" : "Recherche en cours..."
+	    },
 	    "ph" : {
 	    	"structureMandatory" : "Un club doit être choisi"
 	    }
@@ -58,5 +70,16 @@
 			"unknown" : "Erreur inconnue",
 			"noMessage" : "Pas de message"
 		}
+	},
+	"endPage" : {
+		"title" : "Compte créé !",
+		"text" : {
+			"1" : "Félicitations !",
+			"2" : "Vous venez de finaliser la création de votre compte Qaobee !",
+			"3" : "Pour vous aider à débuter, nous vous avons créé une équipe et un effectif.",
+			"4" : "Connectez-vous dès à présent pour découvrir votre nouvel espace de travail !",
+			"signature" : "L'équipe Qaobbe."
+		}, 
+		"buttonHome" : "Accueil" 
 	}
 }

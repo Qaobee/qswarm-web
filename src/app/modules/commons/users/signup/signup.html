@@ -124,7 +124,7 @@
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="col m6 s12 center">
-                            <a href="" class="btn red lighteen-1 white-text" ng-click="doTheBack()">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
+                            <a ng-click="openCancelModal()" class="btn red lighteen-1 white-text" >{{'commons.buttons.cancel' | translate }}</a>&nbsp;
                             <button class="btn white-text green darken-1" type="submit" ng-click="validateUserCivilSection()" name="next">{{'commons.buttons.next' | translate }}</button>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
@@ -161,7 +161,7 @@
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="col m6 s12 center">
-                            <a href="" class="btn red lighteen-1 white-text" ng-click="doTheBack()">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
+                            <a ng-click="openCancelModal()" class="btn red lighteen-1 white-text">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
                             <button class="btn white-text blue-grey darken-3" wz-previous type="submit" name="previous">{{'commons.buttons.previous' | translate }}</button>&nbsp;
                             <button class="btn white-text green darken-1" type="submit" ng-click="validateSportSection()" name="next">{{'commons.buttons.next' | translate }}</button>
                         </div>
@@ -206,7 +206,7 @@
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="col m6 s12 center">
-                            <a href="" class="btn red lighteen-1 white-text" ng-click="doTheBack()">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
+                            <a ng-click="openCancelModal()" class="btn red lighteen-1 white-text">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
                             <button class="btn white-text blue-grey darken-3" wz-previous type="submit" name="previous">{{'commons.buttons.previous' | translate }}</button>&nbsp;
                             <button class="btn white-text green darken-1" type="submit" ng-click="validateStructureSection()" name="next">{{'commons.buttons.next' | translate }}</button>
                         </div>
@@ -253,7 +253,7 @@
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="col m6 s12 center-align">
-                            <a href="" class="btn red lighteen-1 white-text" ng-click="doTheBack()">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
+                            <a ng-click="openCancelModal()" class="btn red lighteen-1 white-text">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
                             <button class="btn white-text blue-grey darken-3" wz-previous type="submit" name="previous">{{'commons.buttons.previous' | translate }}</button>&nbsp;
                             <a wz-next class="btn white-text green darken-1">{{'commons.buttons.validate' | translate }}</a>
                         </div>
@@ -264,6 +264,25 @@
          </wizard>
     </div>
 
-   
+   <!-- Modal Cancel SignUp -->
+<div id="modalCancel" class="modal">
+	<div class="modal-header center-align ">
+        <h5>
+            <span class="fa fa-sign-in"></span>
+            <span translate="modalSignupCancel.title"></span>
+        </h5>
+    </div>
+    <div class="modal-content grey lighten-3 ">
+		<div class="row">
+			<div class="col s12">
+			{{'modalSignupCancel.question' | translate}}
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<a href="" ng-click="cancelSignup()"   class="modal-action modal-close waves-effect waves-red btn green darken-1">{{'modalSignupCancel.button.yes' | translate}}</a>&nbsp; 
+        <a href="" ng-click="closeCancelModal()" class="modal-action modal-close waves-effect waves-red btn red">{{'modalSignupCancel.button.no' | translate}}</a>
+	</div>
+</div>
 <!-- body end-->
 </div>
