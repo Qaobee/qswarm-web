@@ -49,5 +49,14 @@
 		"label" : {
 		 	"userSignupSumup" : "Résumé"
 		 }
+	},
+	"errorPage" : {
+		"title" : "Erreur !",
+		"text" : "La validation de votre inscription n'a pu aboutir pour la raison suivante : ",
+		"buttonHome" : "Accueil",
+		"ph" : {
+			"unknown" : "Erreur inconnue",
+			"noMessage" : "Pas de message"
+		}
 	}
 }

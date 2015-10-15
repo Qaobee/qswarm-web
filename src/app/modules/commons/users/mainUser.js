@@ -31,7 +31,7 @@
             });
         })
 
-        .controller('SignupCtrl', function ($scope, $translatePartialLoader, $log, $routeParams, $window, $filter, WizardHandler, activityRestAPI, structureRestAPI, signupRestAPI) {
+        .controller('SignupCtrl', function ($rootScope, $scope, $translatePartialLoader, $log, $routeParams, $window, $filter, WizardHandler, activityRestAPI, structureRestAPI, signupRestAPI) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
             
@@ -40,15 +40,28 @@
             $scope.valuesStructures = [{_id : -1, label : 'Aucune donnée trouvée', address:''}];
                        
             signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function(data) {
-            	if (false === data.status) {           		
-            		$scope.messageErreur = data.message;
+            	$log.debug('1');
+            	if (false === data.status) {
+            		$log.debug('2');
+            		$rootScope.messageErreur = data.message;
             		$window.location.href = '/#/signup/error';
+            		return;
             	} else {
+            		$log.debug('3');
             		$scope.signup = data;
             	}
-            }).error(function(data) {
-            	$scope.messageErreur = data.message;
+            }).error(function(error, status) {
+            	$log.debug('4');
+            	if(error != null) {
+            		$log.debug('5');
+            		$log.debug(error.message);
+            		$rootScope.messageErreur = error.message;
+            	} else {
+            		$log.debug('6');
+            		$rootScope.messageErreur = $filter('translate')('errorPage.ph.unknown');
+            	}
             	$window.location.href = '/#/signup/error';
+            	return;
             });
             
             
@@ -203,8 +216,18 @@
         .controller('SignupCancelCtrl', function ($scope, $translatePartialLoader, $log) {
         })
         
-        .controller('SignupErrorCtrl', function ($scope, $translatePartialLoader, $log) {
-        	toastr.error($scope.messageErreur);
+        .controller('SignupErrorCtrl', function ($rootScope, $scope, $window, $translatePartialLoader, $log, $filter) {
+        	$translatePartialLoader.addPart('user');
+        	
+        	$scope.message = $rootScope.messageErreur;
+        	if(angular.isUndefined($rootScope.messageErreur) || $scope.message === null || "" === $scope.message) {
+        		$scope.message = $filter('translate')('errorPage.ph.noMessage');
+        	}
+        	delete $rootScope.messageErreur;
+        	
+        	$scope.goHome = function() {
+        		$window.location.href = '/#/';
+        	};
         });
         
 }());
