@@ -41,6 +41,8 @@
                                             effectiveRestAPI, personRestAPI, eventsRestAPI, teamRestAPI, userRestAPI) {
         $translatePartialLoader.addPart('home');
         $translatePartialLoader.addPart('stats');
+        $translatePartialLoader.addPart('agenda');
+        $translatePartialLoader.addPart('effective');
 
         $scope.user = user;
         $scope.meta = meta;
@@ -53,7 +55,12 @@
         $scope.indexEvent = 0;
         $scope.currentEvent = {};
         $scope.mapShow = false;
+        
+        /* teams */
         $scope.listTeamHome = {};
+        
+        /* Collecte */
+        $scope.collecte = {};
 
         
         /* Retrieve list of team of effective */
@@ -62,7 +69,6 @@
                 $scope.listTeamHome = data.sortBy(function(n) {
                     return n.label; 
                 });
-                $log.debug($scope.listTeamHome);
             });
         }; 
     
@@ -75,25 +81,27 @@
                 var listId = [];
                 
                 $scope.currentCategory = $scope.currentEffective.categoryAge;
-                $scope.currentEffective.members.forEach(function (b) {
-                    if (b.role.code==='player') {
-                        listId.push(b.personId);
-                    }    
-                });
-                
-                var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status');
-                /* retrieve person information */
-                personRestAPI.getListPerson(listId, listField).success(function (data) {
-
-                    data.forEach(function (e) {
-                        if (angular.isDefined(e.status.positionType)) {
-                            e.positionType = $filter('translate')('stat.positionType.value.' + e.status.positionType);
-                        } else {
-                            e.positionType = '';
-                        }
+                if(angular.isDefined($scope.currentEffective.members) && $scope.currentEffective.members.length>0) {
+                    $scope.currentEffective.members.forEach(function (b) {
+                        if (b.role.code==='player') {
+                            listId.push(b.personId);
+                        }    
                     });
-                    $scope.effective = data;
-                });
+
+                    var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status');
+                    /* retrieve person information */
+                    personRestAPI.getListPerson(listId, listField).success(function (data) {
+
+                        data.forEach(function (e) {
+                            if (angular.isDefined(e.status.positionType)) {
+                                e.positionType = $filter('translate')('stat.positionType.value.' + e.status.positionType);
+                            } else {
+                                e.positionType = '';
+                            }
+                        });
+                        $scope.effective = data;
+                    });
+                }
             });
         };
         

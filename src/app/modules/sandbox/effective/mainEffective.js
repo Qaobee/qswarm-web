@@ -118,36 +118,38 @@
                 /* build list id for request API person */   
                 var listId = [];
                 
-                $scope.currentEffective.members.forEach(function (b) {
-                    if (b.role.code==='player') {
-                        listId.push(b.personId);
-                    }    
-                });
-
-                var listField = ['_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact'];
-
-                /* retrieve person information */
-                personRestAPI.getListPerson(listId, listField).success(function (data) {
-
-                    data.forEach(function (e) {
-                        if (angular.isDefined(e.status.positionType)) {
-                            e.positionType = $filter('translate')('stat.positionType.value.' + e.status.positionType);
-                        } else {
-                            e.positionType = '';
-                        }
-
-                        if (angular.isDefined(e.status.stateForm)) {
-                            e.stateForm = $filter('translate')('stat.stateForm.value.' + e.status.stateForm);
-                        } else {
-                            e.stateForm = '';
-                        }
-
-                        e.birthdate = $filter('date')(e.birthdate, 'yyyy');
-                        e.age = moment().format("YYYY") - e.birthdate;
+                if(angular.isDefined($scope.currentEffective.members) && $scope.currentEffective.members.length>0) {
+                    $scope.currentEffective.members.forEach(function (b) {
+                        if (b.role.code==='player') {
+                            listId.push(b.personId);
+                        }    
                     });
 
-                    $scope.players = data;
-                });
+                    var listField = ['_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact'];
+
+                    /* retrieve person information */
+                    personRestAPI.getListPerson(listId, listField).success(function (data) {
+
+                        data.forEach(function (e) {
+                            if (angular.isDefined(e.status.positionType)) {
+                                e.positionType = $filter('translate')('stat.positionType.value.' + e.status.positionType);
+                            } else {
+                                e.positionType = '';
+                            }
+
+                            if (angular.isDefined(e.status.stateForm)) {
+                                e.stateForm = $filter('translate')('stat.stateForm.value.' + e.status.stateForm);
+                            } else {
+                                e.stateForm = '';
+                            }
+
+                            e.birthdate = $filter('date')(e.birthdate, 'yyyy');
+                            e.age = moment().format("YYYY") - e.birthdate;
+                        });
+
+                        $scope.players = data;
+                    });
+                }
             }
         };
         
