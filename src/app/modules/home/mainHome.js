@@ -13,10 +13,11 @@
      */
     angular.module('qaobee.home', [
         
+        /* qaobee services */
+        'sandboxSRV',
+        
         /* qaobee Rest API */
-        'effectiveRestAPI',
         'eventsRestAPI',
-        'personRestAPI',
         'teamRestAPI',
         'userRestAPI',
         
@@ -38,7 +39,7 @@
  * @class qaobee.modules.home.HomeControler
  */
     .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                            effectiveRestAPI, personRestAPI, eventsRestAPI, teamRestAPI, userRestAPI) {
+                                            effectiveSrv, eventsRestAPI, teamRestAPI, userRestAPI) {
         $translatePartialLoader.addPart('home');
         $translatePartialLoader.addPart('stats');
         $translatePartialLoader.addPart('agenda');
@@ -74,35 +75,18 @@
     
         /* Retrieve list player */
         $scope.getEffective = function () {
-            effectiveRestAPI.getEffective($scope.user.effectiveDefault).success(function (data) {
-                
-                $scope.currentEffective = data;
-                /* build list id for request API person */   
-                var listId = [];
-                
-                $scope.currentCategory = $scope.currentEffective.categoryAge;
-                if(angular.isDefined($scope.currentEffective.members) && $scope.currentEffective.members.length>0) {
-                    $scope.currentEffective.members.forEach(function (b) {
-                        if (b.role.code==='player') {
-                            listId.push(b.personId);
-                        }    
-                    });
-
-                    var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status');
-                    /* retrieve person information */
-                    personRestAPI.getListPerson(listId, listField).success(function (data) {
-
-                        data.forEach(function (e) {
-                            if (angular.isDefined(e.status.positionType)) {
-                                e.positionType = $filter('translate')('stat.positionType.value.' + e.status.positionType);
-                            } else {
-                                e.positionType = '';
-                            }
-                        });
-                        $scope.effective = data;
-                    });
-                }
+            var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status');
+            effectiveSrv.members($scope.user.effectiveDefault, listField, 'player').then(function(data){
+                $scope.effective = data;
+                $scope.effective.forEach(function (e) {
+                    if (angular.isDefined(e.status.positionType)) {
+                        e.positionType = $filter('translate')('stat.positionType.value.' + e.status.positionType);
+                    } else {
+                        e.positionType = '';
+                    }
+                });    
             });
+                                                                                                           
         };
         
         /* Retrieve list events */
