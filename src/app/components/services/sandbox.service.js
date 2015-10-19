@@ -1,3 +1,4 @@
+
 (function () {
     'use strict';
     /**
@@ -17,60 +18,51 @@
         'userRestAPI',])
 
     .factory('effectiveSrv', function($log, $q, effectiveRestAPI, personRestAPI) {
-        
-        var currentEffective = {};
-        var listMember = [];
-        var listId = [];
-       
-        /* sequenceur */  
-        var getMembers = function(effectiveId, listField, roleMember) {
-            var deferred = $q.defer(); 
-            
-            getEffective(effectiveId, roleMember).then(function(){
-                getPersons(listId, listField).then(function(){
-                    deferred.resolve(listMember);
-                });
-            });
-            
-            return deferred.promise;
-        };
-        
+
         /* get Effective */  
-        var getEffective = function (effectiveId, roleMember) {
+        var getEffective = function (effectiveId) {
             var deferred = $q.defer(); 
+            
             effectiveRestAPI.getEffective(effectiveId).success(function (data) {
-
-                currentEffective = data;
-                if(angular.isDefined(currentEffective.members) && currentEffective.members.length>0) {
-                    currentEffective.members.forEach(function (b) {
-                        if (b.role.code===roleMember) {
-                            listId.push(b.personId);
-                        }    
-                    });
-                }
-                deferred.resolve(listId);
-
+                deferred.resolve(data);
             })
             return deferred.promise;
         };
         
-        
+        /* get listId */  
+        var getListId = function (effective, roleMember) {
+            var deferred = $q.defer(); 
+            var listId = [];
+            
+            if(angular.isDefined(effective.members) && effective.members.length>0) {
+                effective.members.forEach(function (b) {
+                    if (b.role.code===roleMember) {
+                        listId.push(b.personId);
+                    }
+                    deferred.resolve(listId);
+                });
+            } else {
+                deferred.reject('');
+            }
+            return deferred.promise;
+        };
+          
         /* get persons */  
         var getPersons = function (listId, listField) {
-            var deferred = $q.defer(); 
+            var deferred = $q.defer();
 
             personRestAPI.getListPerson(listId, listField).success(function (data) {
-                listMember = data;
                 deferred.resolve(data);
             }).error(function (error) {
                 deferred.reject(error);
             });
-            
             return deferred.promise;
         };
              
         return {
-            members : getMembers
+            getEffective : getEffective,
+            getListId : getListId,
+            getPersons : getPersons
         }
     });
 

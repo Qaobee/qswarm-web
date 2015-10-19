@@ -8,7 +8,7 @@
         <div class="col s12 m6 l8">
 
             <!-- Event -->
-            <div ng-show="events.length > 0">
+            <div ng-if="events.length > 0">
                 <div><h5 class="header light-green-text text-lighten-1"><i class="fa fa-calendar left"></i>{{'dashboard.event' | translate }}</h5></div>
                 <div>
                     <div class="card white">
@@ -26,16 +26,16 @@
                             <a href='#/private/agenda/{{currentEffective._id}}' class="hide-on-med-and-down left waves-effect waves-light blue-grey-text text-darken-1">
                                 <i class="fa fa-calendar left"></i>{{'headerMenu.calendar' | translate }}
                             </a>
-                            <a href="" ng-show="indexEvent < events.length -1" ng-click="nextEvent()" class="btn-floating blue-grey darken-1 right white-text">
+                            <a href="" ng-if="indexEvent < events.length -1" ng-click="nextEvent()" class="btn-floating blue-grey darken-1 right white-text">
                                 <i class="mdi-navigation-chevron-right right"></i></a>
-                            <a href="" ng-show="indexEvent > 0" ng-click="previousEvent()" class="btn-floating blue-grey darken-1 right white-text">
+                            <a href="" ng-if="indexEvent > 0" ng-click="previousEvent()" class="btn-floating blue-grey darken-1 right white-text">
                                 <i class="mdi-navigation-chevron-left left"></i></a>
                             <div>&nbsp;</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row" ng-show="events.length === 0">
+            <div class="row" ng-if="events.length === 0">
                 <div class="col s12">
                     <div class="card">                        
                         <div class="row center">
@@ -50,7 +50,7 @@
             <br/>
 
             <!-- Collecte-->
-            <div ng-show="collecte._id!=null">
+            <div ng-if="collecte._id!=null">
                 <div><h5 class="header light-green-text text-lighten-1"><i class="fa fa-bar-chart"></i> {{'dashboard.stats'
                     | translate }}</h5></div>
                 <div>
@@ -85,7 +85,7 @@
         <!-- Right column-->
         <div class="col s12 m6 l4">
             <!-- team list -->
-            <div ng-show="listTeamHome.length > 0">
+            <div ng-if="listTeamHome.length > 0">
                 <div><h5 class="header red-text text-lighten-1"><i class="mdi-action-stars"></i> {{'dashboard.teams' | translate }}</h5></div>
                 <ul class="collection">
                     <li class="collection-item" ng-repeat="team in listTeamHome">
@@ -97,7 +97,7 @@
                 </ul>
                 <br/>
             </div>
-            <div ng-show="listTeamHome.length === 0">
+            <div ng-if="listTeamHome.length === 0">
                 <div class="card blue lighten-2">                        
                     <div class="row center">
                         <a href="#/private/addTeam/{{false}}" class="blue-grey-text text-darken-1">
@@ -110,7 +110,7 @@
 
             
             <!-- Player -->
-            <div ng-show="effective.length > 0">
+            <div ng-if="effective.length > 0">
                 <div><h5 class="header light-green-text text-lighten-1"><i class="fa fa-bar-chart"></i> {{'dashboard.player' | translate }}</h5></div>
                 <div>
                     <form class="forms forms-inline input-field ">
@@ -131,7 +131,7 @@
                     </li>
                 </ul>
             </div>
-            <div ng-show="effective.length === 0">
+            <div ng-if="effective.length === 0">
                 <div class="card orange lighten-1">                        
                     <div class="row center">
                         <a href="#/private/addPlayer/{{meta._id}}" class="blue-grey-text text-darken-1">

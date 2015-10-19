@@ -47,6 +47,7 @@
 
         $scope.user = user;
         $scope.meta = meta;
+        $scope.currentEffective = {};
         $scope.effective = [];
         $scope.currentCategory = {};
         
@@ -74,19 +75,25 @@
         }; 
     
         /* Retrieve list player */
-        $scope.getEffective = function () {
-            var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status');
-            effectiveSrv.members($scope.user.effectiveDefault, listField, 'player').then(function(data){
-                $scope.effective = data;
-                $scope.effective.forEach(function (e) {
-                    if (angular.isDefined(e.status.positionType)) {
-                        e.positionType = $filter('translate')('stat.positionType.value.' + e.status.positionType);
-                    } else {
-                        e.positionType = '';
-                    }
-                });    
-            });
-                                                                                                           
+        $scope.getEffective = function () { 
+            effectiveSrv.getEffective($scope.user.effectiveDefault).then(function(data){
+                $scope.currentEffective = data;
+                
+                effectiveSrv.getListId($scope.currentEffective, 'player').then(function(listId){
+                    var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status');
+                    
+                    effectiveSrv.getPersons(listId, listField).then(function(players){
+                        $scope.effective = players;
+                        $scope.effective.forEach(function (e) {
+                            if (angular.isDefined(e.status.positionType)) {
+                                e.positionType = $filter('translate')('stat.positionType.value.' + e.status.positionType);
+                            } else {
+                                e.positionType = '';
+                            }
+                        });    
+                    });
+                });  
+            });                                                                                      
         };
         
         /* Retrieve list events */
