@@ -28,7 +28,7 @@
              */
             getListTeam : function(sandboxId, effectiveId, enable, adversary) {
                 return $http({
-                    url : teamAPIURL + '/List/?sandboxId=' +sandboxId+'&effectiveId='+effectiveId+'&enable='+enable+'&adversary='+adversary,
+                    url : teamAPIURL + '/list/?sandboxId=' +sandboxId+'&effectiveId='+effectiveId+'&enable='+enable+'&adversary='+adversary,
                     method : 'GET'
                 });
             },
