@@ -67,7 +67,7 @@
             userRestAPI.getUserById(user._id).success(function (data) {
                 $scope.getPlayer();
             }).error(function (data) {
-                $log.error('PlayerStats : User not Connected')
+                $log.error('PlayerStats : User not Connected');
             });
         }; 
         

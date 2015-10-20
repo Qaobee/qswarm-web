@@ -20,10 +20,7 @@
             
             /* qaobee services */ 
             'qaobee.eventbus', 
-            
-            /* qaobee directives */
-            'qaobee.notifications',
-            
+
             /* qaobee Rest API */
             'userRestAPI',
             'signupRestAPI'
@@ -199,7 +196,7 @@
                     $scope.cancelSignup = function() {
                     	delete $scope.signup;
                     	$('#modalSignup').closeModal();
-                    }
+                    };
                     
                     /**
                      * @name $scope.usernameTest
@@ -209,7 +206,7 @@
                      */
                     $scope.usernameTest = function() {
                     	signupRestAPI.usernameTest($scope.signup.login).success(function (data) {
-                    		if(data.status==true) {
+                    		if(data.status===true) {
                     			toastr.warning($filter('translate')('error.signup.nonunique'));
                     		} else {
                     			$scope.signup.junit = true;
@@ -239,7 +236,7 @@
                          */
                     	$scope.closeSignupOk = function() {
                         	$('#modalSignupOK').closeModal();
-                        }
+                        };
                     };
                 },
                 templateUrl: 'app/components/directives/headerMenu/headerMenu.html'

@@ -113,7 +113,7 @@
                 $scope.getListPositionType();
                 $scope.getPerson();
             }).error(function (data) {
-                $log.error('UpdatePlayerControler : User not Connected')
+                $log.error('UpdatePlayerControler : User not Connected');
             });
         }; 
         

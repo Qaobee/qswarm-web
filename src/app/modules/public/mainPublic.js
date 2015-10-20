@@ -90,7 +90,7 @@
             $translatePartialLoader.addPart('commons');
             
             // asu = Allow SignUp
-            $rootScope.signupAvailable=($routeParams.asu=='true');
+            $rootScope.signupAvailable=($routeParams.asu==='true');
             delete $rootScope.user;
 
             /**

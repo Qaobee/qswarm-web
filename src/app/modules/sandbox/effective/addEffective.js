@@ -111,7 +111,7 @@
                 $scope.effective.members.push(member);
             } else {
                 $scope.effective.members.remove(function(n) {
-                    return n['personId'] == item._id; 
+                    return n.personId === item._id; 
                 });
             }
         };
@@ -123,7 +123,7 @@
                 $scope.getListCategoryAge();
                 $scope.getListPersonSandbox();
             }).error(function (data) {
-                $log.error('AddEffectiveControler : User not Connected')
+                $log.error('AddEffectiveControler : User not Connected');
             });
         }; 
         

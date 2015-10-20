@@ -119,7 +119,7 @@
                 $scope.currentEffective = data;
                 
                 effectiveSrv.getListId($scope.currentEffective, 'player').then(function(listId){
-                    var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status');
+                    var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact');
                     
                     effectiveSrv.getPersons(listId, listField).then(function(players){
                         $scope.players = players;
@@ -129,6 +129,9 @@
                             } else {
                                 e.positionType = '';
                             }
+                            
+                            e.birthdate = $filter('date')(e.birthdate, 'yyyy');
+                            e.age = moment().format('YYYY') - e.birthdate;
                         });    
                     });
                 });  
@@ -143,7 +146,7 @@
                 $scope.getListTeamHome();
                 $scope.getListTeamAdversary();
             }).error(function (data) {
-                $log.error('MainEffectiveControler : User not Connected')
+                $log.error('MainEffectiveControler : User not Connected');
             });
         }; 
         

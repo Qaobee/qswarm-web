@@ -83,7 +83,7 @@
             userRestAPI.getUserById(user._id).success(function (data) {
                 $scope.getPerson();
             }).error(function (data) {
-                $log.error('ViewPlayerControler : User not Connected')
+                $log.error('ViewPlayerControler : User not Connected');
             });
         }; 
         

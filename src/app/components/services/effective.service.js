@@ -22,7 +22,7 @@
             
             effectiveRestAPI.getEffective(effectiveId).success(function (data) {
                 deferred.resolve(data);
-            })
+            });
             return deferred.promise;
         };
         
@@ -60,7 +60,7 @@
             getEffective : getEffective,
             getListId : getListId,
             getPersons : getPersons
-        }
+        };
     });
 
 }());

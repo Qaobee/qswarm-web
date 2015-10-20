@@ -19,10 +19,7 @@
         /* qaobee Rest API */
         'eventsRestAPI',
         'teamRestAPI',
-        'userRestAPI',
-        
-        /* qaobee widget */
-        'widget.nextEvent'])
+        'userRestAPI'])
 
     .config(function ($routeProvider, metaDatasProvider) {
         $routeProvider.when('/private', {
@@ -158,7 +155,7 @@
                 $scope.getEffective();
                 $scope.getListTeamHome();
             }).error(function (data) {
-                $log.error('HomeControler : User not Connected')
+                $log.error('HomeControler : User not Connected');
             });
         }; 
         

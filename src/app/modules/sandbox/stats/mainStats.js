@@ -54,7 +54,7 @@
             userRestAPI.getUserById(user._id).success(function (data) {
                 $log.debug('ok');
             }).error(function (data) {
-                $log.error('MainStats : User not Connected')
+                $log.error('MainStats : User not Connected');
             });
         }; 
         

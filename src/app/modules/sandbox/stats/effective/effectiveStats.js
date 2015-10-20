@@ -64,7 +64,7 @@
             userRestAPI.getUserById(user._id).success(function (data) {
                 $scope.getEffective();
             }).error(function (data) {
-                $log.error('EffectiveStats : User not Connected')
+                $log.error('EffectiveStats : User not Connected');
             });
         }; 
         

@@ -45,13 +45,13 @@ function ensureP(txt) {
  */
 function modalConfirm(heading, question, callback) {
     'use strict';
-    $("#modal-title").html(heading);
-    $("#modal-body").html(question);
-    $("#modal-ok-btn").click(function(event) {
+    $('#modal-title').html(heading);
+    $('#modal-body').html(question);
+    $('#modal-ok-btn').click(function(event) {
         callback();
-        $("#myModal").modal('hide');
+        $('#myModal').modal('hide');
     });
-    $("#myModal").modal('show');
+    $('#myModal').modal('show');
 }
 /**
  * Calcule le nombre d'années entre le timestamp actuel et un timestamp

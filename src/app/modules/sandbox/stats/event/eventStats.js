@@ -74,7 +74,7 @@
             userRestAPI.getUserById(user._id).success(function (data) {
                 $scope.getEvent();
             }).error(function (data) {
-                $log.error('EventStats : User not Connected')
+                $log.error('EventStats : User not Connected');
             });
         }; 
         

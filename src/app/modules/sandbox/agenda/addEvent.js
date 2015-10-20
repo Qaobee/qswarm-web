@@ -137,7 +137,8 @@
 
                 if(angular.isDefined(effective)) {
                     /* add event */
-                    eventsRestAPI.addEvent($scope.event).success(function (person) {
+                    eventsRestAPI.addEvent($scope.event).success(function (event) {
+                        $scope.event = event;
                         toastr.success($filter('translate')('addEvent.toastSuccess', {
                             label: $scope.event.label,
                             effective: effective.categoryAge.label
@@ -156,14 +157,14 @@
             $scope.event.startDate = moment(start).valueOf();
             
             /* Convert end event to long */
-            if (angular.isDefined($scope.endDate) && $scope.endDate!=null && $scope.endDate.isBlank() && angular.isDefined($scope.endHours) && $scope.endHours!=null && !$scope.endHours.isBlank()) {
+            if (angular.isDefined($scope.endDate) && $scope.endDate!==null && $scope.endDate.isBlank() && angular.isDefined($scope.endHours) && $scope.endHours!==null && !$scope.endHours.isBlank()) {
                 var end = moment($scope.endDate).add(((moment($scope.endHours).hour()*60)+moment($scope.endHours).minute()),'m');
                 $scope.event.endDate = moment(end).valueOf();
             }
             
             /* add team Id to owner */
             if (angular.isDefined($scope.teamId)) {
-                $scope.event.owner['teamId'] = $scope.teamId ;
+                $scope.event.owner.teamId = $scope.teamId ;
             }
             
             /* add participants event */
@@ -235,7 +236,7 @@
                 $scope.getListTeamAdversary();
                 $scope.getListEventType();
             }).error(function (data) {
-                $log.error('AddEventControler : User not Connected')
+                $log.error('AddEventControler : User not Connected');
             });
         }; 
         

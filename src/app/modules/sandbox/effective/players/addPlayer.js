@@ -104,7 +104,6 @@
                 
                 /* Write player*/
                 personSrv.addPlayer($scope.player, $scope.meta.sandbox._id, $scope.user.effectiveDefault).then(function(person){
-                    var person = person;
                     
                     /* add member*/
                     personSrv.addEffectiveMember(person, $scope.user.effectiveDefault).then(function(effective){
@@ -126,7 +125,7 @@
             userRestAPI.getUserById(user._id).success(function (data) {
                 $scope.getListPositionType();
             }).error(function (data) {
-                $log.error('AddPlayerControler : User not Connected')
+                $log.error('AddPlayerControler : User not Connected');
             });
         }; 
         

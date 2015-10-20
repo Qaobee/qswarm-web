@@ -278,7 +278,7 @@
                 $scope.getEffectives();
                 $scope.getCurrentMonth();
             }).error(function (data) {
-                $log.error('MainAgendaControler : User not Connected')
+                $log.error('MainAgendaControler : User not Connected');
             });
         }; 
         

@@ -115,7 +115,7 @@
             addPlayer : addPlayer,
             updatePlayer : updatePlayer,
             addEffectiveMember : addEffectiveMember
-        }
+        };
     });
 
 }());

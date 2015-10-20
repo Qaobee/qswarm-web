@@ -83,7 +83,7 @@
 
                     a.checked=false;
                     var trouve = $scope.effective.members.find(function(n) {
-                        return n['personId'] == a._id; 
+                        return n.personId === a._id; 
                     });
                     
                     if(angular.isDefined(trouve)) {
@@ -104,9 +104,9 @@
                 }    
             });
             
-            effectiveRestAPI.update($scope.effective).success(function (person) {
+            effectiveRestAPI.update($scope.effective).success(function (effective) {
                 toastr.success($filter('translate')('updateEffective.toastSuccess', {
-                    effective: $scope.effective.categoryAge.label
+                    effective: effective.categoryAge.label
                 }));
 
                 $location.path('private/effective/'+$scope.user.effectiveDefault);
@@ -121,7 +121,7 @@
                 $scope.effective.members.push(member);
             } else {
                 $scope.effective.members.remove(function(n) {
-                    return n['personId'] == item._id; 
+                    return n.personId === item._id; 
                 });
             }
         };
@@ -133,7 +133,7 @@
                 $scope.getListCategoryAge();
                 $scope.getEffective();
             }).error(function (data) {
-                $log.error('UpdateEffectiveControler : User not Connected')
+                $log.error('UpdateEffectiveControler : User not Connected');
             });
         }; 
         
