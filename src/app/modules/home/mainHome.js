@@ -14,7 +14,7 @@
     angular.module('qaobee.home', [
         
         /* qaobee services */
-        'sandboxSRV',
+        'effectifSRV',
         
         /* qaobee Rest API */
         'eventsRestAPI',

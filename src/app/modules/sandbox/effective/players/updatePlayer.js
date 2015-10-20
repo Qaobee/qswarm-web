@@ -7,8 +7,9 @@
      * @class qaobee.modules.sandbox.effective.player.updatePlayer
      * @namespace qaobee.modules.sandbox.effective.player
      *
-     * @requires {@link qaobee.components.restAPI.sandbox.effective.effectiveRestAPI|qaobee.components.restAPI.sandbox.effective.effectiveRestAPI}
-     * @requires {@link qaobee.components.restAPI.sandbox.effective.personRestAPI|qaobee.components.restAPI.sandbox.effective.personRestAPI}
+     * @requires {@link qaobee.components.restAPI.commons.settings.activityCfgRestAPI|qaobee.components.restAPI.commons.settings.activityCfgRestAPI}
+     * @requires {@link qaobee.components.restAPI.commons.users.userRestAPI|qaobee.components.restAPI.commons.users.userRestAPI}
+     * @requires {@link qaobee.components.services.personSRV|qaobee.components.services.personSRV}
      * @copyright <b>QaoBee</b>.
      */
     angular.module('qaobee.updatePlayer', [
@@ -16,7 +17,6 @@
         /* qaobee Rest API */
         'effectiveRestAPI', 
         'personRestAPI',
-        'locationAPI',
         'userRestAPI'])
 
 
@@ -38,7 +38,7 @@
      * @description Main controller for view updatePlayer.html
      */
         .controller('UpdatePlayerControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                                        activityCfgRestAPI, personRestAPI, locationAPI, userRestAPI) {
+                                                        activityCfgRestAPI, personRestAPI, personSrv, userRestAPI) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('effective');
@@ -49,7 +49,6 @@
         $scope.user = user;
         $scope.meta = meta;
         $scope.player = {};
-        $scope.currentCategory = {};
         $scope.positionsType = {};
         
         $scope.addPlayerTitle = false;
@@ -91,53 +90,20 @@
         };    
         
         /* update person */
-        $scope.writePerson = function () {
-            
-            $scope.player.name = $scope.player.name.capitalize(true);
-            $scope.player.firstname = $scope.player.firstname.capitalize(true);
-            $scope.player.birthdate = moment($scope.player.birthdate).valueOf();
-            
-            personRestAPI.updatePerson($scope.player).success(function (person) {
-                toastr.success($filter('translate')('updatePlayer.toastSuccess', {
-                    firstname: person.firstname,
-                    name: person.name
-                }));
+        $scope.checkAndformatPerson = function () { 
+            personSrv.formatAddress($scope.player.address).then(function(adr){
+                $scope.player.address = adr;
+                
+                /* update player*/
+                personSrv.updatePlayer($scope.player).then(function(person){
+                    toastr.success($filter('translate')('updatePlayer.toastSuccess', {
+                        firstname: person.firstname,
+                        name: person.name
+                    }));
 
-                $window.history.back();
-            });
-        };
-        
-        /* Format address */
-        $scope.checkAndformatPerson = function () {
-            
-            if (angular.isDefined($scope.player.address.formatedAddress) && !$scope.player.address.formatedAddress.isBlank()) {
-                locationAPI.get($scope.player.address.formatedAddress).then(function (adr) {
-
-                    $scope.player.address.lat = adr.data.results[0].geometry.location.lat;
-                    $scope.player.address.lng = adr.data.results[0].geometry.location.lng;
-                    angular.forEach(adr.data.results[0].address_components, function (item) {
-                        if (item.types.count('street_number') > 0) {
-                            $scope.player.address.place = item.long_name + ' ';
-                        }
-                        if (item.types.count('route') > 0) {
-                            $scope.player.address.place += item.long_name;
-                        }
-                        if (item.types.count('locality') > 0) {
-                            $scope.player.address.city = item.long_name;
-                        }
-                        if (item.types.count('postal_code') > 0) {
-                            $scope.player.address.zipcode = item.long_name;
-                        }
-                        if (item.types.count('country') > 0) {
-                            $scope.player.address.country = item.long_name;
-                        }
-                    });
-                    
-                    $scope.writePerson();
+                    $window.history.back();
                 });
-            } else {
-                $scope.writePerson();
-            }
+            });
         };
         
         /* check user connected */

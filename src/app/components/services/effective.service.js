@@ -4,18 +4,15 @@
     /**
      * Module qaobee services
      * 
-     * @class app.components.services.sandbox
+     * @class app.components.services.effective
      * @author Christophe Kervella
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('sandboxSRV', [
+    angular.module('effectifSRV', [
         
         /* qaobee Rest API */
         'effectiveRestAPI',
-        'eventsRestAPI',
-        'personRestAPI',
-        'teamRestAPI',
-        'userRestAPI',])
+        'personRestAPI'])
 
     .factory('effectiveSrv', function($log, $q, effectiveRestAPI, personRestAPI) {
 

@@ -30,7 +30,7 @@
         'qaobee.updateTeam',
         
         /* qaobee services */
-        'sandboxSRV',
+        'effectifSRV',
         
         /* qaobee Rest API */
         'effectiveRestAPI',
