@@ -158,11 +158,12 @@
                         } else {
                             if (data.length > 0) {
                                 $scope.structuresResult = data;
+                                $log.debug(data);
                                 data.forEach(function(i) {
                                     $scope.valuesStructures.push({
-                                        _id: data[i]._id,
-                                        label: data[i].label,
-                                        address: ' (' + data[i].address.place + ')'
+                                        _id: i._id,
+                                        label: i.label,
+                                        address: ' (' +i.address.place + ')'
                                     });
                                 });
                             } else {
