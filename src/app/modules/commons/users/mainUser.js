@@ -208,7 +208,7 @@
                 var user = $scope.signup;
                 delete(user.detailsStructureCity);
 
-                signupRestAPI.finalizeSignup(user, $routeParams.code, $scope.structure, $scope.signup.activity).success(function (data) {
+                signupRestAPI.finalizeSignup(user, $routeParams.code, $scope.structure, $scope.signup.account.listPlan[0].activity._id).success(function (data) {
                     if (false === data.status) {
                         $log.debug(data);
                         toastr.error('Pb');
