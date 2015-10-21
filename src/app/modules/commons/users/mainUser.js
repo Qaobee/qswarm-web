@@ -36,25 +36,23 @@
 
             $scope.isStructureCityChanged = false;
             $scope.isStructureReload = false;
-            $scope.valuesStructures = [{_id: -1, label: 'Aucune donnée trouvée', address: ''}];
+            $scope.valuesStructures = [{'_id': -1, label: 'Aucune donnée trouvée', address: ''}];
             signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function (data) {
                 if (true === data.error) {
                     $rootScope.messageErreur = data.message;
                     $location.path('/signup/error');
-                    return;
                 } else {
                     $scope.signup = data;
                     $log.debug(data);
                     $scope.signup.birthdate = new Date($scope.signup.birthdate);
                 }
-            }).error(function (error, status) {
+            }).error(function (error) {
                 if (error != null) {
                     $rootScope.messageErreur = error.message;
                 } else {
                     $rootScope.messageErreur = $filter('translate')('errorPage.ph.unknown');
                 }
                 $location.path('/signup/error');
-                return;
             });
 
 
@@ -87,7 +85,7 @@
                 if (validateOk) {
                     WizardHandler.wizard().next();
                 }
-            }
+            };
 
             /* Validate sportSection */
             $scope.validateSportSection = function () {
@@ -99,7 +97,7 @@
                 if (validateOk) {
                     WizardHandler.wizard().next();
                 }
-            }
+            };
 
             /* init ngAutocomplete*/
             $scope.options = {};
@@ -160,13 +158,13 @@
                         } else {
                             if (data.length > 0) {
                                 $scope.structuresResult = data;
-                                for (var i in data) {
+                                data.forEach(function(i) {
                                     $scope.valuesStructures.push({
                                         _id: data[i]._id,
                                         label: data[i].label,
                                         address: ' (' + data[i].address.place + ')'
                                     });
-                                }
+                                });
                             } else {
                                 $scope.valuesStructures = [{
                                     _id: -3,
@@ -182,7 +180,7 @@
             // Puts structure selected in a hidden input 
             $scope.applyChangeStructure = function () {
                 if (angular.isUndefined($scope.structure)) {
-                    $scope.structure = new Object();
+                    $scope.structure = {};
                 }
                 $scope.structure.referencialId = $window.document.getElementById('userStructureSelect').value;
             };
@@ -199,7 +197,7 @@
                 if (validateOk) {
                     WizardHandler.wizard().next();
                 }
-            }
+            };
 
             /* Creates sandbox */
             $scope.createSandBox = function () {
@@ -224,11 +222,11 @@
 
             $scope.openCancelModal = function () {
                 $('#modalCancel').openModal();
-            }
+            };
 
             $scope.closeCancelModal = function () {
                 $('#modalCancel').closeModal();
-            }
+            };
 
             $scope.cancelSignup = function () {
                 $('#modalCancel').closeModal();
