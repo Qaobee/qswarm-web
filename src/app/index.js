@@ -42,6 +42,9 @@
             'qaobee.agenda',
             'qaobee.stats',
             'qaobee.user'
+            
+            /* A SUPPRIMER */
+            ,'qaobee.test'
         ])
 
         .config(function ($translateProvider, $translatePartialLoaderProvider, reCAPTCHAProvider, $httpProvider, $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider) {

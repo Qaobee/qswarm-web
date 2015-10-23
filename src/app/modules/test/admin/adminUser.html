@@ -1,0 +1,439 @@
+<div class="container">
+<!-- body start-->
+	<div class="row"><div class="col s12"></div></div>
+	
+    <div class="row">
+    	<div class="col s12">
+    		<ul class="tabs">
+    			<li class="tab col s2"><a class="active" href="#infosUser">User</a></li>
+    			<li class="tab col s2"><a href="#infosSB">SandBox</a></li>
+    			<li class="tab col s2"><a href="#infosSBCfg">SandBox Cfg</a></li>
+    			<li class="tab col s2"><a href="#infosSBPerson">SandBox Person</a></li>
+    			<li class="tab col s2"><a href="#infosSBEffective">SandBox Effective</a></li>
+    			<li class="tab col s2"><a href="#infosSBTeam">SandBox Team</a></li>
+    		</ul>
+    	</div>
+   
+    
+	    <!-- USER -->
+	    <div id="infosUser" class="row">
+	    	<div class="row">
+				<div class="col s8"><h3>Infos USER</h3></div>
+				<div class="col s4"><input size="40" value="db.getCollection('User').find({'_id': '{{user._id}}'})"/></div>
+			</div>
+			<div class="row">
+				<!-- Infos personne -->
+				<div class="col s6">
+					<div class="row card-panel">
+						<div class="col s12"><b><u>Infos personnelles</u></b></div>
+						<div class="col s6">ID</div><div class="col s6">: {{user._id}}</div>
+						<div class="col s6">gender</div><div class="col s6">: {{user.gender}}</div>
+						<div class="col s6">name</div><div class="col s6">: {{user.name}}</div>
+						<div class="col s6">firstname</div><div class="col s6">: {{user.firstname}}</div>
+						<div class="col s6">birthdate</div><div class="col s6">: {{user.birthdate}}</div>
+						<div class="col s6">effectiveDefault</div><div class="col s6">: {{user.effectiveDefault}}</div>
+					</div>
+				</div>
+				<!-- Contact -->
+				<div class="col s6">
+					<div class="row card-panel">
+						<div class="col s12"><b><u>Contact</u></b></div>
+						<div class="col s6">contact.home</div><div class="col s6">: {{user.contact.home}}</div>
+						<div class="col s6">contact.office</div><div class="col s6">: {{user.contact.office}}</div>
+						<div class="col s6">contact.cellphone</div><div class="col s6">: {{user.contact.cellphone}}</div>
+						<div class="col s6">contact.email</div><div class="col s6">: {{user.contact.email}}</div>
+						<div class="col s6">contact.fax</div><div class="col s6">: {{user.contact.fax}}</div>
+						<div class="col s6">contact.webSite</div><div class="col s6">: {{user.contact.webSite}}</div>
+						<div class="col s6">contact.facebook</div><div class="col s6">: {{user.contact.facebook}}</div>
+						<div class="col s6">contact.googleplus</div><div class="col s6">: {{user.contact.googleplus}}</div>
+						<div class="col s6">contact.twitter</div><div class="col s6">: {{user.contact.twitter}}</div>
+					</div>
+				</div>
+				<!-- Adresse -->
+				<div class="col s6">
+					<div class="row card-panel">
+						<div class="col s12"><b><u>Adresse</u></b></div>
+						<div class="col s12 center"><i><u>User.Address</u></i></div>
+						<div class="col s6">formatedAddress</div><div class="col s6">: {{user.address.formatedAddress}}</div>
+						<div class="col s6">place</div><div class="col s6">: {{user.address.place}}</div>
+						<div class="col s6">zipcode</div><div class="col s6">: {{user.address.zipcode}}</div>
+						<div class="col s6">city</div><div class="col s6">: {{user.address.city}}</div>
+						<div class="col s6">country</div><div class="col s6">: {{user.address.country}}</div>
+						<div class="col s12 center"><i><u>User.country</u></i></div>
+						<div class="col s6">_id</div><div class="col s6">: {{user.country._id}}</div>
+						<div class="col s6">codeOSCE</div><div class="col s6">: {{user.country.codeOSCE}}</div>
+						<div class="col s6">label</div><div class="col s6">: {{user.country.label}}</div>
+						<div class="col s6">local</div><div class="col s6">: {{user.country.local}}</div>
+						<div class="col s12 center"><i><u>User.nationality</u></i></div>
+						<div class="col s6">_id</div><div class="col s6">: {{user.nationality._id}}</div>
+						<div class="col s6">codeOSCE</div><div class="col s6">: {{user.nationality.codeOSCE}}</div>
+						<div class="col s6">label</div><div class="col s6">: {{user.nationality.label}}</div>
+						<div class="col s6">local</div><div class="col s6">: {{user.nationality.local}}</div>
+					</div>
+				</div>
+			</div>
+			<!-- SEPARATEUR -->
+			<div class="row">
+				<div class="col s12"><hr></hr></div>
+			</div>
+			<div class="row">
+				<!-- Infos account -->
+				<div class="col s6">
+					<div class="row card-panel">
+						<div class="col s12"><b><u>Account Identifiers</u></b></div>
+						<div class="col s6">account._id</div><div class="col s6">: {{user.account._id}}</div>
+						<div class="col s6">account.login</div><div class="col s6">: {{user.account.login}}</div>
+						<div class="col s6">account.passwd</div><div class="col s6">: {{user.account.passwd}}</div>
+						<div class="col s6">account.password</div><div class="col s6">: {{user.account.password}}</div>
+						<div class="col s6">account.habilitations</div><div class="col s6">: {{user.account.habilitations}}</div>
+					</div>
+				</div>
+				<div class="col s6">
+					<div class="row card-panel">
+						<div class="col s12"><b><u>Account Activation</u></b></div>
+						<div class="col s6">account.activationCode</div><div class="col s6">: {{user.account.activationCode}}</div>
+						<div class="col s6">account.activationPasswd</div><div class="col s6">: {{user.account.activationPasswd}}</div>
+						<div class="col s6">account.salt</div><div class="col s6">: {{user.account.salt}}</div>
+						<div class="col s6">account.active</div><div class="col s6">: {{user.account.active}}</div>
+						<div class="col s6">account.firstConnexion</div><div class="col s6">: {{user.account.firstConnexion}}</div>
+					</div>
+				</div>
+				<div class="col s6">
+					<div class="row card-panel">
+						<div class="col s12"><b><u>Account Dates/Token</u></b></div>
+						<div class="col s6">account.expirationDate</div><div class="col s6">: {{user.account.expirationDate}}</div>
+						<div class="col s6">account.timestamp</div><div class="col s6">: {{user.account.timestamp}}</div>
+						<div class="col s6">account.token</div><div class="col s6">: {{user.account.token}}</div>
+						<div class="col s6">account.tokenRenewDate</div><div class="col s6">: {{user.account.tokenRenewDate}}</div>
+						<div class="col s6">account.mobileToken</div><div class="col s6">: {{user.account.mobileToken}}</div>
+					</div>
+				</div>
+			</div>
+			<!-- SEPARATEUR -->
+			<div class="row">
+				<div class="col s12"><hr></hr></div>
+			</div>
+			<!-- Infos Plans -->
+			<div class="row">
+				<!-- Infos account -->
+				<div class="col s12">
+					<div class="row card-panel">
+						<div class="col s2">account.listPlan :</div>
+						<div class="col s4">
+							<select name="planSelect" id="planSelect" ng-model="planSelected" class="browser-default blue-grey-text text-darken-1" 
+	                            	ng-options="plan.levelPlan for plan in user.account.listPlan" ng-change="changePlan();">
+	                        </select>
+						</div>
+					</div>
+				</div>
+				<div class="col s4">
+					<div class="row card-panel">
+						<div class="col s12"><b><u>Plan infos</u></b></div>
+						<div class="col s6">paymentId</div><div class="col s6">: {{currentPlan.paymentId}}</div>
+						<div class="col s6">levelPlan</div><div class="col s6">: {{currentPlan.levelPlan}}</div>
+						<div class="col s6">amount</div><div class="col s6">: {{currentPlan.amount}}</div>
+						<div class="col s6">status</div><div class="col s6">: {{currentPlan.status}}</div>
+						<div class="col s6">periodicity</div><div class="col s6">: {{currentPlan.periodicity}}</div>
+						<div class="col s6">paymentURL</div><div class="col s6">: {{currentPlan.paymentURL}}</div>
+					</div>
+				</div>
+				<div class="col s4">
+					<div class="row card-panel">
+						<div class="col s12"><b><u>Plan Dates</u></b></div>
+						<div class="col s6">paidDate</div><div class="col s6">: {{currentPlan.paidDate}}</div>
+						<div class="col s6">startPeriodeDate</div><div class="col s6">: {{currentPlan.startPeriodeDate}}</div>
+						<div class="col s6">endPeriodeDate</div><div class="col s6">: {{currentPlan.endPeriodeDate}}</div>
+					</div>
+				</div>
+				<div class="col s4">
+					<div class="row card-panel">
+						<div class="col s12"><b><u>Plan activity</u></b></div>
+						<div class="col s6">activity._id</div><div class="col s6">: {{currentPlan.activity._id}}</div>
+						<div class="col s6">activity.code</div><div class="col s6">: {{currentPlan.activity.code}}</div>
+						<div class="col s6">activity.label</div><div class="col s6">: {{currentPlan.activity.label}}</div>
+						<div class="col s6">activity.enable</div><div class="col s6">: {{currentPlan.activity.enable}}</div>
+						<div class="col s6">activity.activityType</div><div class="col s6">: {{currentPlan.activity.activiyType}}</div>
+					</div>
+				</div>
+			</div>
+		<!-- Fin USER -->
+	    </div>
+
+		
+		<!-- Infos SANDBOX -->
+		<div id="infosSB" class="row">
+			<div class="col s12">
+		    	<div class="row">
+					<div class="col s8"><h3>Infos SANDBOX</h3></div>
+					<div class="col s4"><input size="40" value="db.getCollection('SB_SandBox').find({'_id' : '{{currentSB._id}}'})"/></div>
+				</div>
+				<div class="row card-panel">
+					<div class="col s2">Change SandBox : </div>
+					<div class="col s4">
+						<select name="sandboxSelect" id="sandboxSelect" ng-model="sandboxSelected" class="browser-default blue-grey-text text-darken-1" 
+		                    	ng-options="sb.activityId for sb in sandboxes" ng-change="changeSandbox();">
+		                </select>
+					</div>
+				</div>
+				<div class="row card-panel">
+					<div class="col s12"><b><u>Sandbox information</u></b></div>
+					<div class="col s4">_id</div><div class="col s4">: {{currentSB._id}}</div><div class="col s4">&nbsp;</div>
+					<div class="col s4">activityId</div><div class="col s4">: {{currentSB.activityId}}</div><div class="col s4">&nbsp;</div>
+					<div class="col s4">owner</div><div class="col s4">: {{currentSB.owner}}</div><div class="col s4">&nbsp;</div>
+					<div class="col s4">sandboxCfgId (active)</div><div class="col s4">: {{currentSB.sandboxCfgId}}</div><div class="col s4">&nbsp;</div>
+				</div>
+			</div>
+		</div>
+	    
+		
+	    <!-- Infos SANDBOX CFG -->
+		<div id="infosSBCfg" class="row">
+	    	<div class="row">
+				<div class="col s8"><h3>Infos SANDBOX CFG</h3></div>
+				<div class="col s4"><input size="40" value="db.getCollection('SB_SandBoxCfg').find({'_id' : '{{currentSBCfg._id}}'})"/></div>
+			</div>
+			<div class="row card-panel">
+				<div class="col s2">Change SandBox Cfg : </div>
+				<div class="col s4">
+					<select name="sandboxCfgSelect" id="sandboxCfgSelect" ng-model="sandboxCfgSelected" class="browser-default blue-grey-text text-darken-1" 
+	                    	ng-options="sbCfg._id for sbCfg in sandboxCfgs" ng-change="changeSandboxCfg();">
+	                </select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s6">
+					<div class="row card-panel">
+						<div class="col s12"><b><u>Sandbox Config Activity</u></b></div>
+						<div class="col s6">_id</div><div class="col s6">: {{currentSBCfg.activity._id}}</div>
+						<div class="col s6">code</div><div class="col s6">: {{currentSBCfg.activity.code}}</div>
+						<div class="col s6">label</div><div class="col s6">: {{currentSBCfg.activity.label}}</div>
+						<div class="col s6">enable</div><div class="col s6">: {{currentSBCfg.activity.enable}}</div>
+						<div class="col s6">activityType</div><div class="col s6">: {{currentSBCfg.activity.activityType}}</div>
+					</div>
+				</div>
+				<div class="col s6">
+					<div class="row card-panel">
+						<div class="col s12"><b><u>Sandbox Config SB</u></b></div>
+						<div class="col s6">_id</div><div class="col s6">: {{currentSBCfg.sandbox._id}}</div>
+						<div class="col s6">activityId</div><div class="col s6">: {{currentSBCfg.sandbox.activityId}}</div>
+						<div class="col s6">owner</div><div class="col s6">: {{currentSBCfg.sandbox.owner}}</div>
+						<div class="col s6">SB Cfg Id</div><div class="col s6">: {{currentSBCfg.sandbox.sandboxCfgId}}</div>
+					</div>
+				</div>
+				<div class="col s6">
+					<div class="row card-panel">
+						<div class="col s12"><b><u>Sandbox Config Season</u></b></div>
+						<div class="col s6">_id</div><div class="col s6">: {{currentSBCfg.season._id}}</div>
+						<div class="col s6">code</div><div class="col s6">: {{currentSBCfg.season.code}}</div>
+						<div class="col s6">label</div><div class="col s6">: {{currentSBCfg.season.label}}</div>
+						<div class="col s6">startDate</div><div class="col s6">: {{currentSBCfg.season.startDate}}</div>
+						<div class="col s6">endDate</div><div class="col s6">: {{currentSBCfg.season.endDate}}</div>
+						<div class="col s6">activityId</div><div class="col s6">: {{currentSBCfg.season.activityId}}</div>
+						<div class="col s6">countryId</div><div class="col s6">: {{currentSBCfg.season.countryId}}</div>
+					</div>
+				</div>
+				<div class="col s6">
+					<div class="row card-panel">
+						<div class="col s12"><b><u>Sandbox Config Structure</u></b></div>
+						<div class="col s6">_id</div><div class="col s6">: {{currentSBCfg.structure._id}}</div>
+						<div class="col s6">label</div><div class="col s6">: {{currentSBCfg.structure.label}}</div>
+						<div class="col s6">acronym</div><div class="col s6">: {{currentSBCfg.structure.acronym}}</div>
+						<div class="col s6">avatar</div><div class="col s6">: {{currentSBCfg.structure.avatar}}</div>
+						<div class="col s12 center"><i><u>Structure.Activity</u></i></div>
+						<div class="col s6">_id</div><div class="col s6">: {{currentSBCfg.structure.activity._id}}</div>
+						<div class="col s6">code</div><div class="col s6">: {{currentSBCfg.structure.activity.code}}</div>
+						<div class="col s6">label</div><div class="col s6">: {{currentSBCfg.structure.activity.label}}</div>
+						<div class="col s6">activated</div><div class="col s6">: {{currentSBCfg.structure.activity.activated}}</div>
+						<div class="col s6">activityType</div><div class="col s6">: {{currentSBCfg.structure.activity.activityType}}</div>
+						<div class="col s12 center"><i><u>Structure.Address</u></i></div>
+						<div class="col s6">place</div><div class="col s6">: {{currentSBCfg.structure.address.place}}</div>
+						<div class="col s6">zipcode</div><div class="col s6">: {{currentSBCfg.structure.address.zipcode}}</div>
+						<div class="col s6">city</div><div class="col s6">: {{currentSBCfg.structure.address.city}}</div>
+						<div class="col s6">country</div><div class="col s6">: {{currentSBCfg.structure.address.country}}</div>
+						<div class="col s12 center"><i><u>Structure.Contact</u></i></div>
+						<div class="col s6">home</div><div class="col s6">: {{currentSBCfg.structure.contact.home}}</div>
+						<div class="col s6">office</div><div class="col s6">: {{currentSBCfg.structure.contact.office}}</div>
+						<div class="col s6">cellphone</div><div class="col s6">: {{currentSBCfg.structure.contact.cellphone}}</div>
+						<div class="col s6">fax</div><div class="col s6">: {{currentSBCfg.structure.contact.fax}}</div>
+						<div class="col s6">email</div><div class="col s6">: {{currentSBCfg.structure.contact.email}}</div>
+						<div class="col s12 center"><i><u>Structure.Country</u></i></div>
+						<div class="col s6">_id</div><div class="col s6">: {{currentSBCfg.structure.country._id}}</div>
+						<div class="col s6">codeOSCE</div><div class="col s6">: {{currentSBCfg.structure.country.codeOSCE}}</div>
+						<div class="col s6">label</div><div class="col s6">: {{currentSBCfg.structure.country.label}}</div>
+						<div class="col s6">local</div><div class="col s6">: {{currentSBCfg.structure.country.local}}</div>
+					</div>
+				</div>
+				<div class="col s12">
+					<div class="row card-panel">
+						<div class="col s12"><b><u>Sandbox Config Members</u></b></div>
+						<div class="col s12">
+							<table class="bordered highlight">
+								<tr>
+									<th rowspan="2">personId</th>
+									<th rowspan="2"><i>SB Personn</i></th>
+									<th colspan="2">role.*</th>
+								</tr>
+								<tr>
+									<th>code</th>
+									<th>label</th>
+								</tr>
+								<tr ng-repeat="member in currentSBCfg.members">
+									<td>{{member.personId}}</td>
+									<td><input size="40" value="db.getCollection('SB_Person').find({'_id':'{{member.personId}}'})"></td>
+									<td>{{member.role.code}}</td>
+									<td>{{member.role.label}}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<!-- SB Person -->
+	    <div id="infosSBPerson" class="row">
+	    	<div class="row">
+				<div class="col s8"><h3>Infos Sandbox Person</h3></div>
+				<div class="col s4"><input size="40" value="db.getCollection('SB_Person').find({'sandboxId': '{{currentSB._id}}'})"/></div>
+			</div>
+			<div class="row card-panel" ng-repeat="person in SBPersons">
+				<div class="col s4 card-panel">
+					<div class="col s12"><input size="30" value="db.getCollection('SB_Person').find({'_id': '{{person._id}}'})"></div>
+					<div class="col s3">_id</div><div class="col s9">: {{person._id}}</div>
+					<div class="col s3">name</div><div class="col s9">: {{person.name}}</div>
+					<div class="col s3">firstname</div><div class="col s9">: {{person.firstname}}</div>
+					<div class="col s3">gender</div><div class="col s9">: {{person.gender}}</div>
+					<div class="col s3">birthdate</div><div class="col s9">: {{person.birthdate}}</div>
+					<div class="col s3">birthcity</div><div class="col s9">: {{person.birthcity}}</div>
+					<div class="col s3">nationality</div><div class="col s9">: {{person.nationality}}</div>
+				</div>
+				<div class="col s4 card-panel">
+					<div class="col s3">formated-Address</div><div class="col s9">: {{person.address.formatedAddress}}</div>
+					<div class="col s3">lat</div><div class="col s9">: {{person.address.lat}}</div>
+					<div class="col s3">lng</div><div class="col s9">: {{person.address.lng}}</div>
+					<div class="col s3">place</div><div class="col s9">: {{person.address.place}}</div>
+					<div class="col s3">city</div><div class="col s9">: {{person.address.city}}</div>
+					<div class="col s3">country</div><div class="col s9">: {{person.address.country}}</div>
+					<div class="col s3">zipcode</div><div class="col s9">: {{person.address.zipcode}}</div>
+				</div>
+				<div class="col s4 card-panel">
+					<div class="col s6">home</div><div class="col s6">: {{person.contact.home}}</div>
+					<div class="col s6">office</div><div class="col s6">: {{person.contact.office}}</div>
+					<div class="col s6">cellphone</div><div class="col s6">: {{person.contact.cellphone}}</div>
+					<div class="col s6">email</div><div class="col s6">: {{person.contact.email}}</div>
+					<div class="col s6">avail...value</div><div class="col s6">: {{person.status.availability.value}}</div>
+					<div class="col s6">avail...cause</div><div class="col s6">: {{person.status.availability.cause}}</div>
+					<div class="col s6">stateForm</div><div class="col s6">: {{person.status.stateForm}}</div>
+					<div class="col s6">weight</div><div class="col s6">: {{person.status.weight}}</div>
+					<div class="col s6">height</div><div class="col s6">: {{person.status.height}}</div>
+					<div class="col s6">squadnumber</div><div class="col s6">: {{person.status.squadnumber}}</div>
+					<div class="col s6">positionType</div><div class="col s6">: {{person.status.positionType}}</div>
+					<div class="col s6">laterality</div><div class="col s6">: {{person.status.laterality}}</div>
+				</div>
+			</div>
+		</div>
+
+	
+		<!-- SB Effective -->
+	    <div id="infosSBEffective" class="row">
+	    	<div class="row">
+				<div class="col s8"><h3>Infos Sandbox Effective</h3></div>
+				<div class="col s4"><input size="40" value="db.getCollection('SB_Effective').find({'sandBoxCfgId': '{{currentSBCfg._id}}'})"/></div>
+			</div>
+			<div class="row card-panel">
+				<div class="col s4">Change SandBox Effective : </div>
+				<div class="col s4">
+					<select name="sandboxEffectiveSelect" id="sandboxEffectiveSelect" ng-model="sandboxEffectiveSelected" class="browser-default blue-grey-text text-darken-1" 
+	                    	ng-options="sbEffective.label for sbEffective in SBListEffectives" ng-change="changeSandboxEffective();">
+	                </select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s6">
+					<div class="row card-panel">
+						<div class="col s12"><b><u>Infos</u></b></div>
+						<div class="col s6">_id</div><div class="col s6">: {{currentSBEffective._id}}</div>
+						<div class="col s6">sandBoxCfgId</div><div class="col s6">: {{currentSBEffective.sandBoxCfgId}}</div>
+						<div class="col s6">label</div><div class="col s6">: {{currentSBEffective.label}}</div>
+					</div>
+				</div>
+				<div class="col s6">
+					<div class="row card-panel">
+						<div class="col s12"><b><u>CategoryAge</u></b></div>
+						<div class="col s6">code</div><div class="col s6">: {{currentSBEffective.categoryAge.code}}</div>
+						<div class="col s6">label</div><div class="col s6">: {{currentSBEffective.categoryAge.label}}</div>
+						<div class="col s6">ageMax</div><div class="col s6">: {{currentSBEffective.categoryAge.ageMax}}</div>
+						<div class="col s6">ageMin</div><div class="col s6">: {{currentSBEffective.categoryAge.ageMin}}</div>
+						<div class="col s6">genre</div><div class="col s6">: {{currentSBEffective.categoryAge.genre}}</div>
+						<div class="col s6">order</div><div class="col s6">: {{currentSBEffective.categoryAge.order}}</div>
+					</div>
+				</div>
+				<div class="col s12">
+					<div class="row card-panel">
+						<div class="col s12"><b><u>Sandbox Effective Members</u></b></div>
+						<div class="col s12">
+							<table class="bordered highlight">
+								<tr>
+									<th rowspan="2">personId</th>
+									<th rowspan="2"><i>SB Personn</i></th>
+									<th colspan="2">role.*</th>
+								</tr>
+								<tr>
+									<th>code</th>
+									<th>label</th>
+								</tr>
+								<tr ng-repeat="member in currentSBEffective.members">
+									<td>{{member.personId}}</td>
+									<td><input size="40" value="db.getCollection('SB_Person').find({'_id':'{{member.personId}}'})"></td>
+									<td>{{member.role.code}}</td>
+									<td>{{member.role.label}}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<!-- SB Effective -->
+	    <div id="infosSBTeam" class="row">
+	    	<div class="row">
+				<div class="col s8"><h3>Infos Sandbox Team</h3></div>
+				<div class="col s4"><input size="40" value="db.getCollection('SB_Team').find({'sandboxId': '{{currentSB._id}}', 'effectiveId': '{{currentSBEffective._id}}'})"/></div>
+			</div>
+			<div class="row card-panel">
+				<div class="col s2">sandboxId</div><div class="col s4">: {{currentSB._id}}</div>
+				<div class="col s2">effectiveId</div><div class="col s4">: {{currentSBEffective._id}}</div>
+			</div>
+			<div class="row card-panel">
+				<div class="col s12">
+					<table class="bordered highlight">
+						<tr>
+							<th>_id</th>
+							<th>label</th>
+							<th>enable</th>
+							<th>adversary</th>
+							<th>Mongo</th>
+						</tr>
+						<tr ng-repeat="team in SBListTeams | orderBy : ['-enable', '+adversary', '+label']">
+							<td>{{team._id}}</td>
+							<td>{{team.label}}</td>
+							<td>{{team.enable}}</td>
+							<td>{{team.adversary}}</td>
+							<td><input size="10" value="db.getCollection('SB_Team').find({'_id': '{{team._id}}'})"/></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</div>	
+	<script>
+      $(document).ready(function () {
+    	$('ul.tabs').tabs();
+	});
+    </script>
+<!-- body end-->
+</div>

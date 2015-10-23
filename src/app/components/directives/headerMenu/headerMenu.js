@@ -89,7 +89,6 @@
                      */
                     $scope.$on('qeventbus', function () {
                         if ('logoff' === qeventbus.message) {
-                            $log.debug('logoff');
                             delete $scope.user;
                             delete $window.sessionStorage.qaobeesession;
                             if ($location.path().startsWith('/private') || $location.path().startsWith('/admin') || $location.path().startsWith('/firstconnection')) {
@@ -151,7 +150,6 @@
                                 if (!paid) {
                                     $location.path('/notPaid');
                                 } else {
-                                    $log.debug(data);
                                     $window.sessionStorage.qaobeesession = data.account.token;
                                     $rootScope.user = data;
                                     $scope.user = data;
@@ -183,7 +181,6 @@
                                     toastr.error(error.message);
                                 }
                             }
-                            $log.error(error);
                         });
                     };
                     
@@ -212,18 +209,20 @@
                     			$scope.signup.junit = true;
                     			$scope.signup.plan = new Object();
                     			$scope.signup.plan.levelPlan='FREEMIUM';
-                    			$log.error($scope.signup);
                     			signupRestAPI.registerUser($scope.signup).success(function (data2) {
-                    				$('#modalSignup').closeModal();
-                          			delete $scope.signup;
-                          			delete $scope.passwdConfirm;
-                          			$('#modalSignupOK').openModal();
+                    				if(data2===null) {
+                    					toastr.error($filter('translate')('error.signup.unknown'));
+                    				} else {
+	                    				$('#modalSignup').closeModal();
+	                          			delete $scope.signup;
+	                          			delete $scope.passwdConfirm;
+	                          			$('#modalSignupOK').openModal();
+                    				}
                     			}).error(function (error) {
                                     if (error) {
                                         $rootScope.errMessSend = true;
                                         toastr.error(error.message);
                                     }
-                                    $log.error(error);
                                 });
                     		}
                     	});
