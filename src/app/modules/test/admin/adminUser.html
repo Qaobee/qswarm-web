@@ -18,8 +18,17 @@
 	    <!-- USER -->
 	    <div id="infosUser" class="row">
 	    	<div class="row">
-				<div class="col s8"><h3>Infos USER</h3></div>
-				<div class="col s4"><input size="40" value="db.getCollection('User').find({'_id': '{{user._id}}'})"/></div>
+				<div class="col s4"><h3>Infos USER</h3></div>
+				<div class="col s1"><a href="" ng-click="refreshUser();"><i class="green-text small material-icons">autorenew</i></a></div>
+				<div class="col s2">
+					<div class="col s3"><i class="red-text small material-icons">undo</i></div>
+					<div class="col s5"><ul><li>--</li></ul></div>
+				</div>
+				<div class="col s2">
+					<div class="col s3"><i class="green-text small material-icons">redo</i></div>
+					<div class="col s5"><ul><li>Sandbox</li></ul></div>
+				</div>
+				<div class="col s3"><input size="30" value="db.getCollection('User').find({'_id': '{{user._id}}'})"/></div>
 			</div>
 			<div class="row">
 				<!-- Infos personne -->
@@ -164,8 +173,21 @@
 		<div id="infosSB" class="row">
 			<div class="col s12">
 		    	<div class="row">
-					<div class="col s8"><h3>Infos SANDBOX</h3></div>
-					<div class="col s4"><input size="40" value="db.getCollection('SB_SandBox').find({'_id' : '{{currentSB._id}}'})"/></div>
+					<div class="col s5"><h3>Infos SANDBOX</h3></div>
+					<div class="col s2">
+						<div class="col s3"><i class="red-text small material-icons">undo</i></div>
+						<div class="col s5"><ul><li>User</li></ul></div>
+					</div>
+					<div class="col s2">
+						<div class="col s3"><i class="green-text small material-icons">redo</i></div>
+						<div class="col s5">
+							<ul>
+								<li>SandboxCfg</li>
+								<li>SandboxPerson</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col s3"><input size="30" value="db.getCollection('SB_SandBox').find({'_id' : '{{currentSB._id}}'})"/></div>
 				</div>
 				<div class="row card-panel">
 					<div class="col s2">Change SandBox : </div>
@@ -174,6 +196,7 @@
 		                    	ng-options="sb.activityId for sb in sandboxes" ng-change="changeSandbox();">
 		                </select>
 					</div>
+					<div class="col s1"><a href="" ng-click="changeSandbox();"><i class="green-text small material-icons">autorenew</i></a></div>
 				</div>
 				<div class="row card-panel">
 					<div class="col s12"><b><u>Sandbox information</u></b></div>
@@ -189,8 +212,16 @@
 	    <!-- Infos SANDBOX CFG -->
 		<div id="infosSBCfg" class="row">
 	    	<div class="row">
-				<div class="col s8"><h3>Infos SANDBOX CFG</h3></div>
-				<div class="col s4"><input size="40" value="db.getCollection('SB_SandBoxCfg').find({'_id' : '{{currentSBCfg._id}}'})"/></div>
+				<div class="col s5"><h3>Infos SANDBOX CFG</h3></div>
+				<div class="col s2">
+					<div class="col s3"><i class="red-text small material-icons">undo</i></div>
+					<div class="col s5"><ul><li>Sandbox</li></ul></div>
+				</div>
+				<div class="col s2">
+					<div class="col s3"><i class="green-text small material-icons">redo</i></div>
+					<div class="col s5"><ul><li>SandboxEffective</li></ul></div>
+				</div>
+				<div class="col s3"><input size="30" value="db.getCollection('SB_SandBoxCfg').find({'_id' : '{{currentSBCfg._id}}'})"/></div>
 			</div>
 			<div class="row card-panel">
 				<div class="col s2">Change SandBox Cfg : </div>
@@ -199,6 +230,7 @@
 	                    	ng-options="sbCfg._id for sbCfg in sandboxCfgs" ng-change="changeSandboxCfg();">
 	                </select>
 				</div>
+				<div class="col s1"><a href="" ng-click="changeSandboxCfg();"><i class="green-text small material-icons">autorenew</i></a></div>
 			</div>
 			<div class="row">
 				<div class="col s6">
@@ -294,8 +326,16 @@
 		<!-- SB Person -->
 	    <div id="infosSBPerson" class="row">
 	    	<div class="row">
-				<div class="col s8"><h3>Infos Sandbox Person</h3></div>
-				<div class="col s4"><input size="40" value="db.getCollection('SB_Person').find({'sandboxId': '{{currentSB._id}}'})"/></div>
+				<div class="col s5"><h3>Infos Sandbox Person</h3></div>
+				<div class="col s2">
+					<div class="col s3"><i class="red-text small material-icons">undo</i></div>
+					<div class="col s5"><ul><li>Sandbox</li></ul></div>
+				</div>
+				<div class="col s2">
+					<div class="col s3"><i class="green-text small material-icons">redo</i></div>
+					<div class="col s5"><ul><li>--</li></ul></div>
+				</div>
+				<div class="col s3"><input size="30" value="db.getCollection('SB_Person').find({'sandboxId': '{{currentSB._id}}'})"/></div>
 			</div>
 			<div class="row card-panel" ng-repeat="person in SBPersons">
 				<div class="col s4 card-panel">
@@ -338,8 +378,16 @@
 		<!-- SB Effective -->
 	    <div id="infosSBEffective" class="row">
 	    	<div class="row">
-				<div class="col s8"><h3>Infos Sandbox Effective</h3></div>
-				<div class="col s4"><input size="40" value="db.getCollection('SB_Effective').find({'sandBoxCfgId': '{{currentSBCfg._id}}'})"/></div>
+				<div class="col s5"><h3>Infos Sandbox Effective</h3></div>
+				<div class="col s2">
+					<div class="col s3"><i class="red-text small material-icons">undo</i></div>
+					<div class="col s5"><ul><li>SandboxCfg</li></ul></div>
+				</div>
+				<div class="col s2">
+					<div class="col s3"><i class="green-text small material-icons">redo</i></div>
+					<div class="col s5"><ul><li>SandboxTeam</li></ul></div>
+				</div>
+				<div class="col s3"><input size="30" value="db.getCollection('SB_Effective').find({'sandBoxCfgId': '{{currentSBCfg._id}}'})"/></div>
 			</div>
 			<div class="row card-panel">
 				<div class="col s4">Change SandBox Effective : </div>
@@ -348,6 +396,7 @@
 	                    	ng-options="sbEffective.label for sbEffective in SBListEffectives" ng-change="changeSandboxEffective();">
 	                </select>
 				</div>
+				<div class="col s1"><a href="" ng-click="changeSandboxEffective();"><i class="green-text small material-icons">autorenew</i></a></div>
 			</div>
 			<div class="row">
 				<div class="col s6">
@@ -400,8 +449,21 @@
 		<!-- SB Effective -->
 	    <div id="infosSBTeam" class="row">
 	    	<div class="row">
-				<div class="col s8"><h3>Infos Sandbox Team</h3></div>
-				<div class="col s4"><input size="40" value="db.getCollection('SB_Team').find({'sandboxId': '{{currentSB._id}}', 'effectiveId': '{{currentSBEffective._id}}'})"/></div>
+				<div class="col s5"><h3>Infos Sandbox Team</h3></div>
+				<div class="col s2">
+					<div class="col s3"><i class="red-text small material-icons">undo</i></div>
+					<div class="col s5">
+						<ul>
+							<li>Sandbox</li>
+							<li>SandboxEffective</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col s2">
+					<div class="col s3"><i class="green-text small material-icons">redo</i></div>
+					<div class="col s5"><ul><li>--</li></ul></div>
+				</div>
+				<div class="col s3"><input size="30" value="db.getCollection('SB_Team').find({'sandboxId': '{{currentSB._id}}', 'effectiveId': '{{currentSBEffective._id}}'})"/></div>
 			</div>
 			<div class="row card-panel">
 				<div class="col s2">sandboxId</div><div class="col s4">: {{currentSB._id}}</div>

@@ -36,6 +36,9 @@
 
             $scope.isStructureCityChanged = false;
             $scope.isStructureReload = false;
+            $scope.temp = {};
+            $scope.temp.detailsCountry = {};
+            
             $scope.valuesStructures = [{'_id': -1, label: 'Aucune donnée trouvée', address: ''}];
             signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function (data) {
                 if (true === data.error) {
@@ -43,7 +46,6 @@
                     $location.path('/signup/error');
                 } else {
                     $scope.signup = data;
-                    $log.debug(data);
                     $scope.signup.birthdate = new Date($scope.signup.birthdate);
                 }
             }).error(function (error) {
@@ -81,8 +83,21 @@
                     toastr.warning($filter('translate')('civilSection.ph.phoneNumberMandatory'));
                     validateOk = false;
                 }
+                
+                if($scope.temp.detailsCountry === null || $scope.temp.detailsCountry === '') {
+                	if(!angular.isUndefined($scope.signup.nationality) && $scope.signup.nationality !== null) {
+                		$scope.signup.nationality.alpha2 = null;
+                	}
+                } else {
+                	angular.forEach($scope.temp.detailsCountry.address_components, function (item) {
+                        if (item.types.count('country') > 0) {
+                        	$scope.signup.nationality.alpha2 = item.short_name;
+                        }
+                    });
+                }
 
                 if (validateOk) {
+                	$log.debug($scope.signup.nationality);
                     WizardHandler.wizard().next();
                 }
             };
@@ -137,7 +152,6 @@
             $scope.loadStructures = function () {
                 if ($scope.isStructureReload) {
                     $scope.isStructureReload = false;
-
                     var addressCity = $scope.signup.detailsStructureCity.name;
 
                     $scope.valuesStructures = [{

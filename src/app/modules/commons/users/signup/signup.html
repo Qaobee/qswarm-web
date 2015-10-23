@@ -49,7 +49,7 @@
                      <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col m4 s6">
-                            <input type="text" id="userNationality" class="form-control" ng-autocomplete ng-model="signup.nationality" details="detailsCountry" options="optionsCountry" placeholder="" />
+                            <input type="text" id="userNationality" class="form-control" ng-autocomplete ng-model="signup.nationality.label" details="temp.detailsCountry" options="optionsCountry" placeholder="" />
                             <label for="userNationality">{{'civilSection.label.userNationality' | translate }}</label>
                         </div>
                         <div class="input-field col m2 s6">
@@ -237,7 +237,7 @@
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col s1">
-                            <img ng-src="assets/images/activity/{{signup.activity}}.jpg"/><br/>
+                            <img ng-src="assets/images/activity/{{signup.account.listPlan[0].activity._id}}.jpg"/><br/>
                        </div>
                         <div class="input-field col s5">
                         	<div ng-repeat="data in structuresResult" ng-show="data._id==structure.referencialId">
