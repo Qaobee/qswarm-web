@@ -97,7 +97,7 @@
         /* Retrieve list effective */
         $scope.getEffectives = function () {
             
-            effectiveRestAPI.getListMemberEffective($scope.meta._id, $scope.currentCategory).success(function (data) {
+            effectiveRestAPI.getListEffective($scope.meta._id, $scope.currentCategory).success(function (data) {
                 $scope.effectives = data.sortBy(function(n) {
                     return n.label; 
                 });

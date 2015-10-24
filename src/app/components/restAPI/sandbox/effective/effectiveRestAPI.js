@@ -28,15 +28,15 @@
             
             /**
              * @memberOf qaobee.components.restAPI.sandbox.effective.EffectiveRestAPI
-             * @function getListMemberEffective()
-             * @description retrieve list of member for a sandbox Config and a category age
+             * @function getListEffective()
+             * @description retrieve list of effective for a sandbox Config and a category age
              * @param {String}
              *            sandboxCfgId : id of sandbox config
              * @param {String}
              *            categoryAgeCode : the code of category age
              * @returns {Array} com.qaobee.hive.business.model.sandbox.effective.SB_Effective
              */
-            getListMemberEffective : function(sandBoxCfgId, categoryAgeCode) {
+            getListEffective : function(sandBoxCfgId, categoryAgeCode) {
                 return $http({
                     url: effectiveAPIURL + '/getList?sandBoxCfgId=' + sandBoxCfgId + '&categoryAgeCode=' +categoryAgeCode,
                     method: 'GET'
