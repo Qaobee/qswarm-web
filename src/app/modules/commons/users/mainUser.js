@@ -47,6 +47,12 @@
                 } else {
                     $scope.signup = data;
                     $scope.signup.birthdate = new Date($scope.signup.birthdate);
+                    
+                    // Déclaration du user en mode connecté
+                    $window.sessionStorage.qaobeesession = data.account.token;
+                    $rootScope.user = data;
+                    $scope.user = data;
+                    qeventbus.prepForBroadcast('login', data);
                 }
             }).error(function (error) {
                 if (error != null) {
