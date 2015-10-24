@@ -22,13 +22,13 @@
                             <label>{{'civilSection.label.userGender' | translate }} <span class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="input-field col m5 s6">
-                            <input name="signup.gender" class="with-gap" type="radio" id="userGenderF" value="{{'civilSection.label.userGenderF' | translate }}"
+                            <input name="signup.gender" class="with-gap" type="radio" id="userGenderF" value="gender.female"
                                        ng-model="signup.gender" required/>
-                            <label for="userGenderF">{{'civilSection.label.userGenderF' | translate }}</label>
+                            <label for="userGenderF">{{'civilSection.label.gender.female' | translate }}</label>
 
-                            <input name="signup.gender" class="with-gap" type="radio" id="userGenderM" value="{{'civilSection.label.userGenderM' | translate }}"
+                            <input name="signup.gender" class="with-gap" type="radio" id="userGenderM" value="gender.male"
                                ng-model="signup.gender" required/>
-                            <label for="userGenderM">{{'civilSection.label.userGenderM' | translate }}</label>
+                            <label for="userGenderM">{{'civilSection.label.gender.male' | translate }}</label>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -226,7 +226,7 @@
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col s1"></div>
                         <div class="input-field col s5">
-                            {{'' + signup.gender + '' | translate}} {{signup.name}} {{signup.firstname}}<br>
+                            {{'civilSection.label.' + signup.gender + '' | translate}} {{signup.name}} {{signup.firstname}}<br>
                             {{signup.contact.email}}<br>
                             <span ng-hide="signup.contact.home===null || angular.isUndefined(signup.contact.home)">{{'civilSection.label.userPhoneHome' | translate}} : {{signup.contact.home}}<br></span> 
                             <span ng-hide="signup.contact.office===null || angular.isUndefined(signup.contact.office)">{{'civilSection.label.userPhoneOffice' | translate}} : {{signup.contact.office}}<br></span>

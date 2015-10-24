@@ -97,7 +97,7 @@
                 }
 
                 if (validateOk) {
-                	$log.debug($scope.signup.nationality);
+                	$scope.signup.birthdate = Date.parse($scope.signup.birthdate);
                     WizardHandler.wizard().next();
                 }
             };
@@ -110,6 +110,7 @@
                     validateOk = false;
                 }
                 if (validateOk) {
+                	$log.debug($scope.signup.account);
                     WizardHandler.wizard().next();
                 }
             };

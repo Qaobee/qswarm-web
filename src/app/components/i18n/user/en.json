@@ -18,8 +18,10 @@
 	        "userName" : "Nom",
 	        "userFirstname" : "Prénom",
 	        "userGender" : "Civilité",
-	        "userGenderM" : "Monsieur",
-	        "userGenderF" : "Madame",
+	        "gender" : {
+	        	"male" : "Mister",
+	        	"female" : "Madam"
+	        },
 	        "userBirthDate" : "Date de naissance",
 	        "userNationality" : "Nationalité",
 	        "userEMail" : "e-Mail",
