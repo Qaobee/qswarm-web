@@ -47,6 +47,12 @@
                 } else {
                     $scope.signup = data;
                     $scope.signup.birthdate = new Date($scope.signup.birthdate);
+                    
+                    // Déclaration du user en mode connecté
+                    $window.sessionStorage.qaobeesession = data.account.token;
+                    $rootScope.user = data;
+                    $scope.user = data;
+                    qeventbus.prepForBroadcast('login', data);
                 }
             }).error(function (error) {
                 if (error != null) {
@@ -97,7 +103,7 @@
                 }
 
                 if (validateOk) {
-                	$log.debug($scope.signup.nationality);
+                	$scope.signup.birthdate = Date.parse($scope.signup.birthdate);
                     WizardHandler.wizard().next();
                 }
             };
@@ -110,6 +116,7 @@
                     validateOk = false;
                 }
                 if (validateOk) {
+                	$log.debug($scope.signup.account);
                     WizardHandler.wizard().next();
                 }
             };

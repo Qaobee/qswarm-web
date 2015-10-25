@@ -161,7 +161,7 @@
 						<div class="col s6">activity.code</div><div class="col s6">: {{currentPlan.activity.code}}</div>
 						<div class="col s6">activity.label</div><div class="col s6">: {{currentPlan.activity.label}}</div>
 						<div class="col s6">activity.enable</div><div class="col s6">: {{currentPlan.activity.enable}}</div>
-						<div class="col s6">activity.activityType</div><div class="col s6">: {{currentPlan.activity.activiyType}}</div>
+						<div class="col s6">activity.activityType</div><div class="col s6">: {{currentPlan.activity.activityType}}</div>
 					</div>
 				</div>
 			</div>
@@ -187,7 +187,7 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col s3"><input size="30" value="db.getCollection('SB_SandBox').find({'_id' : '{{currentSB._id}}'})"/></div>
+					<div class="col s3"><input size="30" value="db.getCollection('SB_SandBox').find({'owner' : '{{user._id}}'})"/></div>
 				</div>
 				<div class="row card-panel">
 					<div class="col s2">Change SandBox : </div>
@@ -197,6 +197,8 @@
 		                </select>
 					</div>
 					<div class="col s1"><a href="" ng-click="changeSandbox();"><i class="green-text small material-icons">autorenew</i></a></div>
+					<div class="col s2">&nbsp;</div>
+					<div class="col s3"><input size="30" value="db.getCollection('SB_SandBox').find({'_id' : '{{currentSB._id}}'})"/></div>
 				</div>
 				<div class="row card-panel">
 					<div class="col s12"><b><u>Sandbox information</u></b></div>
