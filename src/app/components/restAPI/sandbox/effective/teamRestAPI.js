@@ -26,12 +26,36 @@
              *            adversary : true or false
              * @returns {Array} com.qaobee.hive.business.model.sandbox.effective.SB_Team
              */
-            getListTeam : function(sandboxId, effectiveId, enable, adversary) {
+            getListTeamHome : function(sandboxId, effectiveId, enable, adversary) {
                 return $http({
                     url : teamAPIURL + '/list/?sandboxId=' +sandboxId+'&effectiveId='+effectiveId+'&enable='+enable+'&adversary='+adversary,
                     method : 'GET'
                 });
             },
+            
+            /**
+             * @memberOf qaobee.components.restAPI.sandbox.effective.TeamRestAPI
+             * @function getListMemberEffective()
+             * @description retrieve list of team
+             * @param {String}
+             *            sandboxId : sandbox Id
+             * @param {String}
+             *            effectiveId : effective Id
+             * @param {String}
+             *            enable : true or false
+             * @param {String}
+             *            adversary : true or false
+             * @param {String}
+             *            linkTeamId : id team home
+             * @returns {Array} com.qaobee.hive.business.model.sandbox.effective.SB_Team
+             */
+            getListTeamAdversary : function(sandboxId, effectiveId, enable, adversary, linkTeamId) {
+                return $http({
+                    url : teamAPIURL + '/list/?sandboxId=' +sandboxId+'&effectiveId='+effectiveId+'&enable='+enable+'&adversary='+adversary+'&linkTeamId='+linkTeamId,
+                    method : 'GET'
+                });
+            },
+
 
             /**
              * @memberOf qaobee.components.restAPI.sandbox.effective.TeamRestAPI
