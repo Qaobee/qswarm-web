@@ -91,6 +91,13 @@
         "toastSuccess":"{{label}} was added",
         "toastError":"Error, team {{label}} can't be create"
     },
+    
+    "updateTeam": {
+        "title": "Update team",
+        "toastSuccess":"{{label}} was updated",
+        "toastError":"Error, the team {{label}} can't be update"
+    },
+    
     "teamLabels" : {
         "label" : "Label",
         "enable": "Activate",

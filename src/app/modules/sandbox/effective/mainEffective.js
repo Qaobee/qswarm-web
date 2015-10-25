@@ -73,7 +73,6 @@
         $scope.effectives = [];
         $scope.currentEffective = {};
         $scope.currentCategory = null;
-        $scope.listEventType = {};
         $scope.listTeamHome = {};
         
         /* Retrieve list of team of effective */
@@ -82,15 +81,6 @@
                 $scope.listTeamHome = data.sortBy(function(n) {
                         return n.label; 
                     });
-            });
-        }; 
-        
-        /* Retrieve list of adversary of effective */
-        $scope.getListTeamAdversary = function () {
-            teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.effectiveId, 'all', 'true', '552d5e08644a77b3a20afdfe').success(function (data) {
-                $scope.listTeamAdversary = data.sortBy(function(n) {
-                    return n.label; 
-                });
             });
         }; 
         

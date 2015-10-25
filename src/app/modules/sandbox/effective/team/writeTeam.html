@@ -19,7 +19,8 @@
     <!-- form-->
     <div class="row">
         <form class="col s12" ng-submit="writeTeam()" name="teamForm">
-            <div class="card-panel"> 
+            <div class="card-panel">
+                <!-- Team home -->
                 <div class="row center">
                     <div class="col s12">
                         <div class="col s12" input-field>
@@ -35,6 +36,38 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <div class="card-panel">
+                <!-- List team adversary -->
+                <div class="col s11 grey lighten-4 blue-grey-text text-darken-2" ng-if="adversary==='false'">
+                    <h5>{{'effectiveLabels.effectiveTeamsAdversary' | translate }}</h5>
+                </div>
+                <div class="col s1 grey lighten-4" ng-if="adversary==='false'">
+                    <a href="#/private/addTeam/{{true}}" class="red-text text-lighten-1 left-align tooltipped" data-position="left" data-delay="20" data-tooltip="{{'mainEffective.buttons.addTeamAdversary' | translate }}">
+                        <h5><i class="fa fa-plus-square-o"></i></h5>
+                    </a>
+                </div>
+
+                <div class="col s12" ng-if="adversary==='false'">
+                    <form class="forms forms-inline input-field ">
+                        <input type="text" id="query" ng-model="query">
+                        <label for="query">Filter</label>
+                    </form>
+                </div>
+                <div class="col s12 center-align" ng-if="adversary==='false'">  
+                    <ul class="collection" ng-show="listTeamAdversary.length > 0">
+                        <li class="collection-item col s6" ng-repeat="adversary in listTeamAdversary | filter:query">
+                            
+                            <span class="title light-green-text text-lighten-1" ng-show="adversary.enable===true">{{adversary.label}}</span>
+                            <span class="title blue-grey-text text-darken-2" ng-show="adversary.enable===false">{{adversary.label}}</span>
+
+                            <p>{{player.positionType}}</p>
+                            <a href="#/private/updateTeam/{{adversary._id}}/true" class="secondary-content btn-floating waves-effect waves-light"><i class="material-icons red lighten-1">mode_edit</i></a>
+                        </li>
+                    </ul>
+                </div>
+                
                 <!-- actions buttons -->
                 <div class="row">
                     <div class="col s12 center-align">

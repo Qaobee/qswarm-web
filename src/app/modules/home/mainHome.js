@@ -64,7 +64,7 @@
         
         /* Retrieve list of team of effective */
         $scope.getListTeamHome = function () {
-            teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.effectiveId, 'all', 'false').success(function (data) {
+            teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'all', 'false').success(function (data) {
                 $scope.listTeamHome = data.sortBy(function(n) {
                     return n.label; 
                 });

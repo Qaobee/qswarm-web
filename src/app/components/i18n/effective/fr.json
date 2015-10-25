@@ -91,6 +91,13 @@
         "toastSuccess":"L'équipe {{label}} a été ajoutée",
         "toastError":"Erreur, l'équipe {{label}} n'a pas été créée"
     },
+    
+    "updateTeam": {
+        "title": "Modification d'une équipe",
+        "toastSuccess":"L'équipe {{label}} a été modifiée",
+        "toastError":"Erreur, l'équipe {{label}} n'a pas été modifiée"
+    },
+    
     "teamLabels" : {
         "label" : "Libellé",
         "enable": "Activer",
