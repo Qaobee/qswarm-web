@@ -171,6 +171,47 @@
                     </li>
                 </ul>
             </div>
+            <!-- List team adversary -->
+            <div class="col s11 grey lighten-4 blue-grey-text text-darken-2">
+                <h5>{{'effectiveLabels.effectiveTeamsAdversary' | translate }}</h5>
+            </div>
+            <div class="col s1 grey lighten-4">
+                <a href="#/private/addTeam/{{true}}" class="red-text text-lighten-1 left-align tooltipped" data-position="left" data-delay="20" data-tooltip="{{'mainEffective.buttons.addTeamAdversary' | translate }}">
+                    <h5><i class="fa fa-plus-square-o"></i></h5>
+                </a>
+            </div>
+            
+            <div class="col s12">    
+                <ul>
+                    <li class="col m3 s12" ng-repeat="team in listTeamAdversary">
+                        <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===true">
+                            <div class="card-content light-green lighten-1 white-text center">
+                                <span class="card-title samll">{{team.label}}</span>
+                            </div>
+                            <div class="card-content">
+                                <p>{{'effectiveLabels.effectiveTeamEnable' | translate }}</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="#/private/updateTeam/{{team._id}}" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
+                                <a href="#/private/teamStats/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
+                            </div>
+                        </div>
+                        <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===false">
+                            <div class="card-content grey lighten-2 blue-grey-text text-darken-2 center">
+                                <span class="card-title">{{team.label}}</span>
+                            </div>
+                            <div class="card-content">
+                                <p>{{'effectiveLabels.effectiveTeamNotEnable' | translate }}</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="#/private/updateTeam/{{team._id}}" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
+                                <a href="#/private/updateTeam/{{team._id}}/false" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
+                                <a href="#/private/teamStats/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     

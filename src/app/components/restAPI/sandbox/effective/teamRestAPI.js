@@ -50,8 +50,14 @@
              * @returns {Array} com.qaobee.hive.business.model.sandbox.effective.SB_Team
              */
             getListTeamAdversary : function(sandboxId, effectiveId, enable, adversary, linkTeamId) {
+                var url;
+                if(linkTeamId===null) {
+                    url = teamAPIURL + '/list/?sandboxId=' +sandboxId+'&effectiveId='+effectiveId+'&enable='+enable+'&adversary='+adversary
+                } else {
+                    url = teamAPIURL + '/list/?sandboxId=' +sandboxId+'&effectiveId='+effectiveId+'&enable='+enable+'&adversary='+adversary+'&linkTeamId='+linkTeamId
+                }
                 return $http({
-                    url : teamAPIURL + '/list/?sandboxId=' +sandboxId+'&effectiveId='+effectiveId+'&enable='+enable+'&adversary='+adversary+'&linkTeamId='+linkTeamId,
+                    url : url,
                     method : 'GET'
                 });
             },

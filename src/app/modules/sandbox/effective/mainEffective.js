@@ -82,6 +82,16 @@
                         return n.label; 
                     });
             });
+        };
+        
+        /* Retrieve list of adversary of effective */
+        $scope.getListTeamAdversary = function () {
+            teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.effectiveId, 'all', 'true', null).success(function (data) {
+                $scope.listTeamAdversary = data.sortBy(function(n) {
+                    return n.label; 
+                });
+                $log.debug($scope.listTeamAdversary);
+            });
         }; 
         
         /* Retrieve list effective */
