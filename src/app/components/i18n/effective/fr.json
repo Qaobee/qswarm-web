@@ -100,8 +100,8 @@
     
     "teamLabels" : {
         "label" : "Libellé",
-        "enable": "Activer",
-        "disable":"Désactiver",
+        "enable": "Activé",
+        "disable":"Désactivé",
         "status" : "Choisir un statut"
     }
 }

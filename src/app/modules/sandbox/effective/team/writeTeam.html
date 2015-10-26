@@ -49,15 +49,9 @@
                     </a>
                 </div>
 
-                <div class="col s12" ng-if="adversary==='false'">
-                    <form class="forms forms-inline input-field ">
-                        <input type="text" id="query" ng-model="query">
-                        <label for="query">Filter</label>
-                    </form>
-                </div>
                 <div class="col s12 center-align" ng-if="adversary==='false'">  
                     <ul class="collection" ng-show="listTeamAdversary.length > 0">
-                        <li class="collection-item col s6" ng-repeat="adversary in listTeamAdversary | filter:query">
+                        <li class="collection-item col s6" ng-repeat="adversary in listTeamAdversary">
                             
                             <span class="title light-green-text text-lighten-1" ng-show="adversary.enable===true">{{adversary.label}}</span>
                             <span class="title blue-grey-text text-darken-2" ng-show="adversary.enable===false">{{adversary.label}}</span>
@@ -66,6 +60,26 @@
                             <a href="#/private/updateTeam/{{adversary._id}}/true" class="secondary-content btn-floating waves-effect waves-light"><i class="material-icons red lighten-1">mode_edit</i></a>
                         </li>
                     </ul>
+                </div>
+                
+                <div class="col s12 center-align" ng-if="adversary==='true'">  
+                    <table>
+                        <body>
+                            <tr ng-repeat="teamHome in listTeamHome"
+                                selection-model
+                                selection-model-type="checkbox"
+                                selection-model-mode="multiple-additive"
+                                selection-model-selected-attribute="checked"
+                                selection-model-selected-items="selectedPlayers"
+                                selection-model-on-change="changed(teamHome)"
+                                class="col m4 s12">
+                                <td>                                    
+                                    <input type="checkbox" id="{{$index + 1}}"/> 
+                                    <label for="{{$index + 1}}"><span class="red-text text-lighten-1">{{teamHome.label}}</span></label>
+                                </td>
+                            </tr>
+                        </body>
+                    </table>
                 </div>
                 
                 <!-- actions buttons -->

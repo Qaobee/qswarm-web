@@ -85,19 +85,22 @@
         
         /* Retrieve list of team of effective */
         $scope.getListTeamHome = function () {
-            teamRestAPI.getListTeam($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true', 'false').success(function (data) {
+            teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true', 'false').success(function (data) {
                 $scope.listTeamHome = data.sortBy(function(n) {
                     return n.label; 
                 });
+                $scope.getEvent();
+                
             });
         }; 
         
         /* Retrieve list of adversary of effective */
-        $scope.getListTeamAdversary = function () {
-            teamRestAPI.getListTeam($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true', 'true').success(function (data) {
+        $scope.getListTeamAdversary = function (teamId) {
+            teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true', 'true', teamId).success(function (data) {
                 $scope.listTeamAdversary = data.sortBy(function(n) {
                     return n.label; 
                 });
+                $scope.changeTeamHome();
             });
         };
         
@@ -107,6 +110,16 @@
                 $scope.listEventType = data.sortBy(function(n) {
                         return n.order; 
                     });
+            });
+        };
+        
+        /* on change event type, calculate the value for chooseAdversary */
+        $scope.changeTeamHome = function () {
+            
+            teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true', 'true', $scope.teamId).success(function (data) {
+                $scope.listTeamAdversary = data.sortBy(function(n) {
+                    return n.label; 
+                });
             });
         };
         
@@ -149,6 +162,7 @@
                         $scope.teamId = $scope.event.participants.teamVisitor.id;
                         $scope.adversaryId = $scope.event.participants.teamHome.id;
                     }
+                    $scope.getListTeamAdversary($scope.teamId);
                 }
                 
                 $scope.changeEventType();
@@ -266,9 +280,7 @@
         $scope.checkUserConnected = function () {
             
             userRestAPI.getUserById(user._id).success(function (data) {
-                $scope.getEvent();
                 $scope.getListTeamHome();
-                $scope.getListTeamAdversary();
                 $scope.getListEventType();
             }).error(function (data) {
                 $log.error('UpdateEventControler : User not Connected');

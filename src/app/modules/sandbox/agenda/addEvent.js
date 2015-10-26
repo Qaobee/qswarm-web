@@ -99,15 +99,6 @@
             });
         }; 
         
-        /* Retrieve list of adversary of effective */
-        $scope.getListTeamAdversary = function () {
-            teamRestAPI.getListTeam($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true', 'true').success(function (data) {
-                $scope.listTeamAdversary = data.sortBy(function(n) {
-                    return n.label; 
-                });
-            });
-        };
-        
         /* Retrieve list of event type */
         $scope.getListEventType = function () {
             activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listEventType').success(function (data) {
@@ -116,6 +107,17 @@
                 });
             });
         };
+        
+        /* on change event type, calculate the value for chooseAdversary */
+        $scope.changeTeamHome = function () {
+            
+            teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true', 'true', $scope.teamId).success(function (data) {
+                $scope.listTeamAdversary = data.sortBy(function(n) {
+                    return n.label; 
+                });
+            });
+        };
+
         
         /* on change event type, calculate the value for chooseAdversary */
         $scope.changeEventType = function () {
@@ -233,7 +235,6 @@
             
             userRestAPI.getUserById(user._id).success(function (data) {
                 $scope.getListTeamHome();
-                $scope.getListTeamAdversary();
                 $scope.getListEventType();
             }).error(function (data) {
                 $log.error('AddEventControler : User not Connected');

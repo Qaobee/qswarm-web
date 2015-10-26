@@ -90,7 +90,6 @@
                 $scope.listTeamAdversary = data.sortBy(function(n) {
                     return n.label; 
                 });
-                $log.debug($scope.listTeamAdversary);
             });
         }; 
         

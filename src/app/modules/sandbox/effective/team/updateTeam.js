@@ -56,7 +56,8 @@
         
         //Initialization team
         $scope.team = {};
-        $scope.listTeamAdversary
+        $scope.listTeamAdversary = {};
+        $scope.listTeamHome = {};
         
         /* get team */
         $scope.getTeam = function () {
@@ -65,15 +66,51 @@
             teamRestAPI.getTeam($scope.teamId).success(function (team) {
                 $scope.team = team;
                 $scope.team.enable = $scope.team.enable?'true':'false';
-                
-                /* Retrieve list of adversary of effective */
-                teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'all', 'true', $scope.teamId).success(function (data) {
-                    $scope.listTeamAdversary = data.sortBy(function(n) {
-                        return n.label; 
+
+                if($scope.adversary==='false') {
+                    /* Retrieve list of adversary of effective */
+                    teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'all', 'true', $scope.team._id).success(function (data) {
+                        $scope.listTeamAdversary = data.sortBy(function(n) {
+                            return n.label; 
+                        });
+                        $log.debug($scope.listTeamAdversary);
+                    }); 
+                } else {
+                    /* Retrieve list of team of effective */
+                    teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true', 'false').success(function (data) {
+                        $scope.listTeamHome = data.sortBy(function(n) {
+                            return n.label; 
+                        });
+                        
+                        if(angular.isDefined($scope.team.linkTeamId)) {
+                            data.forEach(function (a) {
+                                a.checked=false;
+                                var trouve = $scope.team.linkTeamId.find(function(n) {
+                                    return n === a._id; 
+                                });
+
+                                if(angular.isDefined(trouve)) {
+                                    a.checked=true;
+                                }
+                            });
+                        } else {
+                            $scope.team.linkTeamId = [];
+                        }
                     });
-                    $log.debug($scope.listTeamAdversary);
-                });
+                }
             });
+        };
+        
+        /* Update effective list member*/
+        $scope.changed = function(item) {
+            if(item.checked) {
+                $scope.team.linkTeamId.push(item._id);
+            } else {
+                $scope.team.linkTeamId.remove(function(n) {
+                    return n === item._id; 
+                });
+            }
+            $log.debug($scope.team.linkTeamId);
         };
         
         /* Create a new team */
