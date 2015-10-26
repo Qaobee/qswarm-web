@@ -20,6 +20,7 @@
             
             /* qaobee services */ 
             'qaobee.eventbus', 
+            'reCAPTCHA',
 
             /* qaobee Rest API */
             'userRestAPI',
@@ -206,7 +207,6 @@
                     		if(data.status===true) {
                     			toastr.warning($filter('translate')('error.signup.nonunique'));
                     		} else {
-                    			$scope.signup.junit = true;
                     			$scope.signup.plan = new Object();
                     			$scope.signup.plan.levelPlan='FREEMIUM';
                     			signupRestAPI.registerUser($scope.signup).success(function (data2) {
@@ -220,8 +220,13 @@
                     				}
                     			}).error(function (error) {
                                     if (error) {
-                                        $rootScope.errMessSend = true;
-                                        toastr.error(error.message);
+                                        if (error.code && error.code === 'CAPTCHA_EXCEPTION') {
+                                            $window.Recaptcha.reload();
+                                            toastr.error($filter('translate')('error.signup.' + error.code));
+                                        } else {
+                                        	$rootScope.errMessSend = true;
+                                            toastr.error(error.message);
+                                        }
                                     }
                                 });
                     		}
