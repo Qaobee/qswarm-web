@@ -50,7 +50,8 @@
         		"short" : "Le mot de passe que vous avez choisi est trop court",
         		"different" : "Le mot de passe et sa confirmation sont différents"
         	},
-        	"unknown" : "Erreur inconnue"
+        	"unknown" : "Erreur inconnue",
+        	"CAPTCHA_EXCEPTION": "Le code de vérification est erroné."
     	}
     }
 }

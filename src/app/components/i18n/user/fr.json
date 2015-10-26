@@ -49,11 +49,13 @@
 		"label" : {
 			"userSignupStructureSection" : "Choix du club",
 	        "userStructureCity" : "Ville du club",
+	        "userZipcode" : "Code postal",
 	        "userStructureName" : "Nom du club"
 	    }, 
 	    "list" : {
 	    	"empty" : "Aucune donnée trouvée",
-	    	"inProgress" : "Recherche en cours..."
+	    	"inProgress" : "Recherche en cours...",
+	    	"create" : "Créer un club"
 	    },
 	    "ph" : {
 	    	"structureMandatory" : "Un club doit être choisi"

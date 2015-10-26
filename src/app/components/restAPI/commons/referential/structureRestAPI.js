@@ -18,10 +18,11 @@
                 });
             },
             
-            getList : function(activity, country, addressCity) {
+            getList : function(activity, address) {
             	return $http({
-            		url : structureURL + '/getList' + '/?activity=' + activity + '&country=' + country + '&addressCity=' + addressCity,
-            		method : 'GET'
+            		url : structureURL + '/getList',
+            		method : 'POST',
+            		data : {'activity': activity, 'address': address}
             	});
             }
         };

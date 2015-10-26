@@ -24,6 +24,21 @@
                         sensor : false
                     }
                 });
+            },
+            
+            /**
+             * @memberOf qaobee.components.services.locationAPI
+             * @function getFrom
+             * @description Récupération de l'adresse via les services Google
+             * @see {@link https://developers.google.com/maps/documentation/geocoding/}
+             */
+            getLatLng : function(lat, lng) {
+                return $http.get('http://maps.googleapis.com/maps/api/geocode/json', {
+                    params : {
+                    	latlng : lat + ',' + lng,
+                        sensor : false
+                    }
+                });
             }
 
         };
