@@ -22,7 +22,10 @@
         'qaobee.effectiveStats',
         'qaobee.eventStats',
         'qaobee.playerStats',
-        'qaobee.teamStats'
+        'qaobee.teamStats',
+        
+        /* c3 angular directive */
+        'gridshore.c3js.chart'
     ])
 
     .config(function ($routeProvider, metaDatasProvider) {
@@ -47,12 +50,24 @@
         $scope.user = user;
         $scope.meta = meta;
         
+        $scope.showGraph = function() {
+            $scope.chart = c3.generate({
+                    bindto: '#chart',
+                    data: {
+                      columns: [
+                        ['data1', 30, 200, 100, 400, 150, 250],
+                        ['data2', 50, 20, 10, 40, 15, 25]
+                      ]
+                    }
+                });     
+        }
+        
         
         /* check user connected */
         $scope.checkUserConnected = function () {
             
             userRestAPI.getUserById(user._id).success(function (data) {
-                $log.debug('ok');
+                $scope.showGraph();
             }).error(function (data) {
                 $log.error('MainStats : User not Connected');
             });

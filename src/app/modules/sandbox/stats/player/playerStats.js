@@ -43,6 +43,8 @@
         $scope.user = user;
         $scope.meta = meta;
         $scope.playerId = $routeParams.playerId;
+        $scope.periodicity = 'month';
+        $scope.periodicityActive = {};
         
         // return button
         $scope.doTheBack = function() {
@@ -58,7 +60,158 @@
                 $scope.player = person;
                 $scope.player.birthdate = new Date(moment($scope.player.birthdate));
             });
-        };    
+        };
+        
+        
+        /* generate calendar by month */
+        $scope.getCurrentMonth = function () {
+            $scope.periodicity = 'month';
+            var start = moment('01/'+moment().format('MM/YYYY'),'DD/MM/YYYY');
+            var end = moment(start).add(1,'months').subtract(1, 'ms');
+            
+            $scope.periodicityActive = {
+                label: moment(start,'DD/MM/YYYY').format('MMMM YYYY'),
+                startDate: start,
+                endDate: end,
+            };
+        };
+        
+        /* Previous month */
+        $scope.previousMonth = function (index) {
+            $scope.periodicity = 'month';
+            var start = moment($scope.periodicityActive.startDate,'DD/MM/YYYY').subtract(1, 'month');
+            var end = moment($scope.periodicityActive.endDate,'DD/MM/YYYY').subtract(1, 'month');
+            
+            $scope.periodicityActive = {
+                label: moment(start,'DD/MM/YYYY').format('MMMM YYYY'),
+                startDate: start,
+                endDate: end,
+            };
+        };
+        
+        /* Next month */
+        $scope.nextMonth = function (index) {
+            $scope.periodicity = 'month';
+            var start = moment($scope.periodicityActive.startDate,'DD/MM/YYYY').add(1,'month');
+            var end = moment($scope.periodicityActive.endDate,'DD/MM/YYYY').add(1,'month');
+            
+            $scope.periodicityActive = {
+                label: moment(start,'DD/MM/YYYY').format('MMMM YYYY'),
+                startDate: start,
+                endDate: end,
+            };
+        };
+        
+        /* generate calendar by quarter */
+        $scope.getCurrentQuarter = function () {
+            $scope.periodicity = 'quarter';
+            var quarter = {};
+            var currentQuarter = moment().quarter();
+            var year = moment().year();
+            
+            switch(currentQuarter) {
+                case 1:
+                    quarter = {
+                        label: moment('01/01/'+year,'DD/MM/YYYY').format('MMMM YYYY') +' - ' +moment('01/04/'+year,'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
+                        startDate: moment('01/01/'+year,'DD/MM/YYYY').format('MMMM YYYY'),
+                        endDate: moment('/01/04/'+year,'DD/MM/YYYY').subtract(1, 'ms')
+                    };
+                    break;
+                case 2:
+                    quarter = {
+                        label: moment('01/04/'+year,'DD/MM/YYYY').format('MMMM YYYY') +' - ' +moment('/01/07/'+year,'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
+                        startDate: moment('/01/04/'+year,'DD/MM/YYYY'),
+                        endDate: moment('/01/07/'+year,'DD/MM/YYYY').subtract(1, 'ms')
+                    };
+                    break;
+                case 3:
+                    quarter = {
+                        label: moment('/01/07/'+year,'DD/MM/YYYY').format('MMMM YYYY') +' - ' +moment('/01/10/'+year,'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
+                        startDate: moment('/01/07/'+year,'DD/MM/YYYY'),
+                        endDate: moment('/01/10/'+year,'DD/MM/YYYY').subtract(1, 'ms')
+                    };
+                    break;
+                case 4:
+                    quarter = {
+                        label: moment('/01/10/'+year,'DD/MM/YYYY').format('MMMM YYYY') +' - ' +moment('/01/01/'+(year+1),'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
+                        startDate: moment('/01/10/'+year,'DD/MM/YYYY'),
+                        endDate: moment('/01/01/'+(year+1),'DD/MM/YYYY').subtract(1, 'ms')
+                    };
+                    break;
+                default:
+                    quarter = {
+                        label: moment('01/01/'+year,'DD/MM/YYYY').format('MMMM YYYY') +' - ' +moment('01/04/'+year,'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
+                        startDate: moment('01/01/'+year,'DD/MM/YYYY'),
+                        endDate: moment('/01/04/'+year,'DD/MM/YYYY').subtract(1, 'ms')
+                    };
+            }
+            
+            /* Current quarter */
+            $scope.periodicityActive = quarter;
+        };
+        
+        /* Previous quarter */
+        $scope.previousQuarter = function () {
+            $scope.periodicity = 'quarter';
+            var start = moment($scope.periodicityActive.startDate,'DD/MM/YYYY').subtract(3,'month');
+            var end = moment($scope.periodicityActive.endDate,'DD/MM/YYYY').subtract(3,'month');
+            
+            $scope.periodicityActive = {
+                label: moment(start,'DD/MM/YYYY').format('MMMM YYYY')+' - ' +moment(end,'DD/MM/YYYY').format('MMMM YYYY'),
+                startDate: start,
+                endDate: end,
+            };
+        };
+        
+        /* Next quarter */
+        $scope.nextQuarter = function () {
+            $scope.periodicity = 'quarter';
+            var start = moment($scope.periodicityActive.startDate,'DD/MM/YYYY').add(3,'month');
+            var end = moment($scope.periodicityActive.endDate,'DD/MM/YYYY').add(3,'month');
+            
+            $scope.periodicityActive = {
+                label: moment(start,'DD/MM/YYYY').format('MMMM YYYY')+' - ' +moment(end,'DD/MM/YYYY').format('MMMM YYYY'),
+                startDate: start,
+                endDate: end,
+            };
+        };
+        
+        /* generate calendar by season */
+        $scope.getCurrentSeason = function () {
+            $scope.periodicity = 'season';
+            $scope.periodicityActive = {
+                index: 1,
+                label: moment($scope.meta.season.startDate).format('MMMM YYYY') +' - '+ moment($scope.meta.season.endDate).format('MMMM YYYY'),
+                startDate: moment($scope.meta.season.startDate),
+                endDate: moment($scope.meta.season.endDate)                   
+            };
+        };
+        
+        /* Previous season */
+        $scope.previousSeason = function () {
+            $scope.periodicity = 'season';
+            var start = moment($scope.periodicityActive.startDate,'DD/MM/YYYY').subtract(1,'year');
+            var end = moment($scope.periodicityActive.endDate,'DD/MM/YYYY').subtract(1,'year');
+            
+            $scope.periodicityActive = {
+                label: moment(start,'DD/MM/YYYY').format('MMMM YYYY') +' - '+ moment(end,'DD/MM/YYYY').format('MMMM YYYY'),
+                startDate: start,
+                endDate: end,
+            };            
+        };
+        
+        /* Next season */
+        $scope.nextSeason = function () {
+            $scope.periodicity = 'season';
+            var start = moment($scope.periodicityActive.startDate,'DD/MM/YYYY').add(1,'year');
+            var end = moment($scope.periodicityActive.endDate,'DD/MM/YYYY').add(1,'year');
+            
+            $scope.periodicityActive = {
+                label: moment(start,'DD/MM/YYYY').format('MMMM YYYY') +' - '+ moment(end,'DD/MM/YYYY').format('MMMM YYYY'),
+                startDate: start,
+                endDate: end,
+            };
+        };
         
         
         /* check user connected */
@@ -66,6 +219,7 @@
             
             userRestAPI.getUserById(user._id).success(function (data) {
                 $scope.getPlayer();
+                $scope.getCurrentMonth();
             }).error(function (data) {
                 $log.error('PlayerStats : User not Connected');
             });

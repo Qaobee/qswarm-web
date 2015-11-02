@@ -3,11 +3,176 @@
     <!-- space between header menu and body-->
     <div class="row s12"></div>
 
-    <!-- body start-->
+    <!-- Filter Zone start-->
     <div class="row">
-        
-        <h1>{{player.firstname}} {{player.name}}</h1>
-        
+        <div class="card">
+            <div class="col s12 center">&nbsp;</div>
+            
+            <!-- Periodicity selector -->
+            <div class="col m3 s1 center"><h5 class="red-text text-lighten-1">{{player.firstname}} {{player.name}}</h5></div>
+
+            <div class="col m1 s4 center red lighten-1" style="margin:1px">
+                <a ng-click="getCurrentMonth()" class="white-text"><h6 class="small">{{'stats.periodicity.month' | translate }}</h6></a>
+            </div>
+            <div class="col m1 s4 center red lighten-1" style="margin:1px">
+                <a ng-click="getCurrentQuarter()" class="white-text"><h6 class="small">{{'stats.periodicity.quarter' | translate }}</h6></a>
+            </div>
+            <div class="col m1 s4 center red lighten-1" style="margin:1px">
+                <a ng-click="getCurrentSeason()" class="white-text"><h6 class="small">{{'stats.periodicity.season' | translate }}</h6></a>
+            </div>
+
+            <div class="col m1 s1 center">&nbsp;</div>
+
+            <!-- Month Navigation-->
+            <div class="col m1 s1 center" ng-if="periodicity=='month'">
+                <a href="" ng-click="previousMonth()" class="btn-floating red lighten-1 left white-text">
+                    <i class="mdi-navigation-chevron-left"></i>
+                </a>
+            </div>
+            <div class="col m2 s10 center" ng-if="periodicity=='month'">
+                <h6 class="red-text text-lighten-1">{{periodicityActive.label}}</h6>
+            </div>
+            <div class="col m1 s1 center" ng-if="periodicity=='month'">
+                <a href="" ng-click="nextMonth()" class="btn-floating red lighten-1 right white-text">
+                    <i class="mdi-navigation-chevron-right"></i>
+                </a>
+            </div>
+
+            <!-- Quarter Navigation-->
+            <div class="col m1 s1 center" ng-if="periodicity=='quarter'">
+                <a href="" ng-click="previousQuarter()" class="btn-floating red lighten-1 left white-text">
+                    <i class="mdi-navigation-chevron-left"></i>
+                </a>
+            </div>
+            <div class="col m2 s10 center" ng-if="periodicity=='quarter'">
+                <h6 class="red-text text-lighten-1">{{periodicityActive.label}}</h6>
+            </div>
+            <div class="col m1 s1 center" ng-if="periodicity=='quarter'">
+                <a href="" ng-click="nextQuarter()" class="btn-floating red lighten-1 right white-text">
+                    <i class="mdi-navigation-chevron-right"></i>
+                </a>
+            </div>
+
+            <!-- Season Navigation-->
+            <div class="col m1 s1 center" ng-if="periodicity=='season'">
+                <a href="" ng-click="previousSeason()" class="btn-floating red lighten-1 left white-text">
+                    <i class="mdi-navigation-chevron-left"></i>
+                </a>
+            </div>
+            <div class="col m2 s10 center" ng-if="periodicity=='season'">
+                <h6 class="red-text text-lighten-1">{{periodicityActive.label}}</h6>
+            </div>
+            <div class="col m1 s1 center" ng-if="periodicity=='season'">
+                <a href="" ng-click="nextSeason()" class="btn-floating red lighten-1 right white-text">
+                    <i class="mdi-navigation-chevron-right"></i>
+                </a>
+            </div>
+
+            <div class="col m1 s1 center">&nbsp;</div>
+            
+        </div>
     </div>
-    <!-- body end-->
+    <!-- Filter Zone end-->
+    
+    <div class="row grey lighten-4">
+        <div class="col s12">
+            <ul class="tabs" tabs>
+                <li class="tab col s4 "><a href="#shoot" class="blue-grey darken-2 white-text">{{'stats.labelTab.shoot' | translate }}</a></li>
+                <li class="tab col s4 "><a href="#actions" class="blue-grey darken-2 white-text">{{'stats.labelTab.actions' | translate }}</a></li>
+                <li class="tab col s4 "><a href="#sanctions" class="blue-grey darken-2 white-text">{{'stats.labelTab.sanctions' | translate }}</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Stats shoot Start -->
+    <div class="row" id="shoot">
+        <!-- Stats shoot efficacite Start -->
+        <div class="col s12 red-text text-lighten-1 left"><h5>Efficacité au tir</h5></div>
+        <div class="col m3 s6">
+            <div class="card-panel blue-grey-text text-darken-2">
+                <div class="card-content center">
+                    <span class="card-title"><h5>Globale</h5></span>
+                </div>
+                <div class="card-content">
+                    <c3chart bindto-id="gauge-plot1-chart">
+                        <chart-column column-id="Data 1" column-values="70" column-type="gauge" column-color="#66bb6a"/>
+                        <chart-gauge min="0" max="100" width="39"/>
+                    </c3chart>
+                </div>
+            </div>
+        </div>
+        <div class="col m3 s6">
+            <div class="card-panel blue-grey-text text-darken-2">
+                <div class="card-content center">
+                    <span class="card-title"><h5>9 mètres</h5></span>
+                </div>
+                <div class="card-content">
+                    <c3chart bindto-id="gauge-plot2-chart">
+                        <chart-column column-id="Data 1" column-values="45" column-type="gauge" column-color="#ef5350"/>
+                        <chart-gauge min="0" max="100" width="39"/>
+                    </c3chart>
+                </div>
+            </div>
+        </div>
+        <div class="col m3 s6">
+            <div class="card-panel blue-grey-text text-darken-2">
+                <div class="card-content center">
+                    <span class="card-title"><h5>6 mètres</h5></span>
+                </div>
+                <div class="card-content">
+                    <c3chart bindto-id="gauge-plot3-chart">
+                        <chart-column column-id="Data 1" column-values="90" column-type="gauge" column-color="#66bb6a"/>
+                        <chart-gauge min="0" max="100" width="39"/>
+                    </c3chart>
+                </div>
+            </div>
+        </div>
+        <div class="col m3 s6">
+            <div class="card-panel blue-grey-text text-darken-2">
+                <div class="card-content center">
+                    <span class="card-title"><h5>7 mètres</h5></span>
+                </div>
+                <div class="card-content">
+                    <c3chart bindto-id="gauge-plot4-chart">
+                        <chart-column column-id="Data 1" column-values="85" column-type="gauge" column-color="#66bb6a"/>
+                        <chart-gauge min="0" max="100" width="39"/>
+                    </c3chart>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <div class="card-panel blue-grey-text text-darken-2">
+                <div class="card-content center">
+                    <span class="card-title"><h5>Typologie des buts</h5></span>
+                </div>
+                <div class="card-content">
+                    <c3chart bindto-id="donut-plot1-chart">
+                        <chart-column column-id="9 mètres" column-values="35" column-type="donut" column-color="#66bb6a"/>
+                        <chart-column column-id="6 mètres" column-values="75" column-type="donut" column-color="#ffb74d"/>
+                        <chart-column column-id="7 mètres" column-values="50" column-type="donut" column-color="#42a5f5"/>
+                        
+                    </c3chart>
+                </div>
+            </div>
+        </div>
+        <!-- Stats shoot efficacite end -->
+        
+        <!-- Stats shoot origine Start -->
+        <div class="blue-grey-text text-darken-2 center"><h5>répartition origine shoot</h5></div>
+        
+       
+        <!-- Stats shoot origine End -->
+    </div>
+    <!-- Stats shoot end -->
+    
+    <!-- Stats actions Start -->
+    <div class="row" id="actions">
+        <div class="blue-grey-text text-darken-2 center"><h5>Actions offensives</h5></div>
+    </div>
+    <!-- Stats actions end -->
+    
+    <!-- Stats actions Start -->
+    <div class="row" id="sanctions">
+        <div class="blue-grey-text text-darken-2 center"><h5>Sanctions</h5></div>
+    </div>
+    <!-- Stats actions end -->
 </div>

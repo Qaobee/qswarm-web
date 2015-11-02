@@ -100,7 +100,7 @@
                 $scope.listTeamAdversary = data.sortBy(function(n) {
                     return n.label; 
                 });
-                $scope.changeTeamHome();
+
             });
         };
         
