@@ -61,13 +61,13 @@
                 $scope.player = person;
 
                 if (angular.isDefined($scope.player.status.positionType)) {
-                        $scope.player.positionType = $filter('translate')('stat.positionType.value.' + $scope.player.status.positionType);
+                        $scope.player.positionType = $filter('translate')('stats.positionType.value.' + $scope.player.status.positionType);
                 } else {
                     $scope.player.positionType = '';
                 }
 
                 if (angular.isDefined($scope.player.status.stateForm)) {
-                    $scope.player.stateForm = $filter('translate')('stat.stateForm.value.' + $scope.player.status.stateForm);
+                    $scope.player.stateForm = $filter('translate')('stats.stateForm.value.' + $scope.player.status.stateForm);
                 } else {
                     $scope.player.stateForm = '';
                 }

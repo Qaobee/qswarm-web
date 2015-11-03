@@ -9,6 +9,21 @@
 			"shoot" : "Shoot", 
 			"actions" : "Game actions", 
 			"sanctions" : "Discipline"
-		}
+		},
+        "positionType": {
+            "libelle": "Poste",
+            "value": {
+                "midfielder": "Midfielder",
+                "defender": "Defender",
+                "forward": "Forward",
+                "goalkeeper": "Goalkeeper",
+                "pivot": "Pivot",
+                "center-backcourt": "Center-backcourt",
+                "right-backcourt": "Right-backcourt",
+                "left-backcourt": "Left-backcourt",
+                "right-wingman": "Right-wingman",
+                "left-wingman": "Left-wingman"
+            }
+        }
     }
 }

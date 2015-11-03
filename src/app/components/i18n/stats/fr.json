@@ -9,6 +9,21 @@
 			"shoot" : "Tir", 
 			"actions" : "Actions de jeu", 
 			"sanctions" : "Discipline"
-		}
+		},
+        "positionType": {
+            "libelle": "Poste",
+            "value": {
+                "midfielder": "Milieu",
+                "defender": "Défenseur",
+                "forward": "Attaquant",
+                "goalkeeper": "Gardien",
+                "pivot": "Pivot",
+                "center-backcourt": "Demi-centre",
+                "right-backcourt": "Arrière Droit",
+                "left-backcourt": "Arrière Gauche",
+                "right-wingman": "Ailier Droit",
+                "left-wingman": "Ailier Gauche"
+            }
+        }
     }
 }
