@@ -48,7 +48,11 @@
             $scope.temp.detailsCountry = {};
             $scope.temp.createStructure = false;
             
-            $scope.valuesStructures = [{'_id': -1, label: 'Aucune donnée trouvée', address: ''}];
+            $scope.valuesStructures = [{
+            	'_id': -1, 
+            	label: $filter('translate')('structureSection.list.empty'), 
+            	address: ''}];
+            
             signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function (data) {
                 if (true === data.error) {
                     $rootScope.messageErreur = data.message;
