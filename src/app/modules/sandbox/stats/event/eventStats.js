@@ -13,6 +13,7 @@
     angular.module('qaobee.eventStats', [
         
         /* qaobee Rest API */
+        'collecteRestAPI',
         'effectiveRestAPI',
         'eventsRestAPI',
         'personRestAPI',
@@ -22,7 +23,7 @@
     ])
 
     .config(function ($routeProvider, metaDatasProvider) {
-        $routeProvider.when('/private/eventStats/:eventId', {
+        $routeProvider.when('/private/eventStats/:collecteId', {
             controller: 'EventStats',
             resolve: {
                 user: metaDatasProvider.checkUser,
@@ -36,13 +37,13 @@
  * @class qaobee.modules.home.HomeControler
  */
     .controller('EventStats', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                            effectiveRestAPI, personRestAPI, eventsRestAPI, userRestAPI) {
+                                            collecteRestAPI, effectiveRestAPI, personRestAPI, eventsRestAPI, userRestAPI) {
         $translatePartialLoader.addPart('home');
         $translatePartialLoader.addPart('stats');
 
         $scope.user = user;
         $scope.meta = meta;
-        $scope.eventId = $routeParams.eventId;
+        $scope.collecteId = $routeParams.collecteId;
         
         // return button
         $scope.doTheBack = function() {
@@ -51,18 +52,20 @@
         
         //Initialization event
         $scope.event = {};
+        $scope.collecte = {};
         
         /* Retrieve current event */
-        $scope.getEvent = function () {
-            
-            eventsRestAPI.getEvent($scope.eventId).success(function (data) {
-                $scope.event = data;
+        $scope.getCollecte = function () {
+            $log.debug($scope.collecteId);
+            collecteRestAPI.getCollecte($scope.collecteId).success(function (data) {
+                $scope.collecte = data;
                 
                 /* Formatage des dates et heures */
-                if(angular.isDefined($scope.event.startDate)) {
+                if(angular.isDefined($scope.collecte.startDate)) {
                     
                     $scope.startDate = new Date(moment($scope.event.startDate));
                     $scope.startHours = $scope.startDate;
+                    $scope.event = $scope.collecte.eventRef;
                 }
             });
         };    
@@ -72,7 +75,7 @@
         $scope.checkUserConnected = function () {
             
             userRestAPI.getUserById(user._id).success(function (data) {
-                $scope.getEvent();
+                $scope.getCollecte();
             }).error(function (data) {
                 $log.error('EventStats : User not Connected');
             });

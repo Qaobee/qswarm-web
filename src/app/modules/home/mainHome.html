@@ -50,35 +50,18 @@
             <br/>
 
             <!-- Collecte-->
-            <div ng-if="collecte._id!=null">
-                <div><h5 class="header light-green-text text-lighten-1"><i class="fa fa-bar-chart"></i> {{'dashboard.stats'
-                    | translate }}</h5></div>
-                <div>
-                    <div class="card small">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="assets/images/ACT-HAND-STAT.jpg">
-                            <span class="card-title white-text flow-text">CRMHB Rennes - USDK Dunkerque, le 15/04/2015</span>
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title activator blue-grey-text text-darken-1">Défaite 21 - 20 <i
-                                    class="mdi-navigation-more-vert right"></i></span>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title blue-grey-text text-darken-1">Card Title <i
-                                    class="mdi-navigation-close right"></i></span>
-
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                        </div>
-                        <div class="card-action blue-grey darken-1">
-                            <a href='#' class="hide-on-med-and-down left waves-effect waves-light white-text"><i
-                                    class="fa fa-calendar left"></i>{{'headerMenu.calendar' | translate }}</a>
-                            <a href='#' class="right white-text"><i
-                                    class="mdi-navigation-chevron-right right"></i>Suivant</a>
-                            <a href="#" class="right white-text"><i
-                                    class="mdi-navigation-chevron-left left"></i>Précédent</a>
-                        </div>
-                    </div>
-                </div>
+            <div ng-if="collectes.length > 0">
+                <div><h5 class="header light-green-text text-lighten-1"><i class="fa fa-bar-chart"></i> {{'dashboard.stats' | translate }}</h5></div>
+                <ul class="collection">
+                    <li class="collection-item avatar blue-grey darken-1 white-text" ng-repeat="collecte in collectes">
+                        <h5><i class="material-icons center">stars</i> {{collecte.eventRef.label}}</h5>
+                        <br/>
+                        <span class="title white-text">{{collecte.eventRef.participants.teamHome.label}} - {{collecte.eventRef.participants.teamVisitor.label}}</span>
+                        <a href="#/private/eventStats/{{collecte._id}}"
+                           class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i
+                                class="fa fa-bar-chart"></i></a>
+                    </li>
+                </ul>
             </div>
         </div>
 

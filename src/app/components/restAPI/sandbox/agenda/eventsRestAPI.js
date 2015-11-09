@@ -15,12 +15,7 @@
              * @description Retrieve all events match to parameters filter
              * @function
              * @memberOf qaobee.components.restAPI.sandbox.agenda.eventRestAPI
-             * @param   {long}     startDate  Event Start date
-             * @param   {long}     endDate    Event End date
-             * @param   {String}   type       Event Type
-             * @param   {String}   activityId Event activity id
-             * @param   {String}   seasonCode Event Season code
-             * @param   {String}   eventOwner Event Owner
+             * @param   {jsonObject}     request  request
              * @returns {Array}    list of events
              */
                 getListEvents: function (request) {

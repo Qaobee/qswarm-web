@@ -70,11 +70,8 @@
             var ownersId = [];
             ownersId.push(playerId);
             
-            $log.debug(startDate.valueOf());
-            $log.debug(endDate.valueOf());
-            
             var search = {
-                listIndicators: ['goalScored'],
+                listIndicators: ['goalScored', 'originShootAtt'],
                 listOwners: ownersId,
                 startDate: startDate.valueOf(),
                 endDate: endDate.valueOf(),
@@ -83,10 +80,11 @@
             };
 
             statsRestAPI.getStatGroupBy(search).success(function (data) {
-                if (angular.isUndefined(data) || data === null) {
+                if (angular.isDefined(data[0]) && data !== null) {
+                    $log.debug(data[0].value/data[1].value);
+                } else {
                     return;
                 }
-                $log.debug(data);
             });
         };
         

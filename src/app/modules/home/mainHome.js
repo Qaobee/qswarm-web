@@ -17,6 +17,7 @@
         'effectifSRV',
         
         /* qaobee Rest API */
+        'collecteRestAPI',
         'eventsRestAPI',
         'teamRestAPI',
         'userRestAPI'])
@@ -36,7 +37,7 @@
  * @class qaobee.modules.home.HomeControler
  */
     .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                            effectiveSrv, eventsRestAPI, teamRestAPI, userRestAPI) {
+                                            effectiveSrv, collecteRestAPI, eventsRestAPI, teamRestAPI, userRestAPI) {
         $translatePartialLoader.addPart('home');
         $translatePartialLoader.addPart('stats');
         $translatePartialLoader.addPart('agenda');
@@ -55,11 +56,11 @@
         $scope.currentEvent = {};
         $scope.mapShow = false;
         
+        /* Collectes */
+        $scope.collectes = [];
+        
         /* teams */
         $scope.listTeamHome = {};
-        
-        /* Collecte */
-        $scope.collecte = {};
 
         
         /* Retrieve list of team of effective */
@@ -114,6 +115,24 @@
             });
         };
         
+        /* Retrieve list collectes */
+        $scope.getCollectes = function () {
+            var requestCollecte = {
+                startDate : $scope.meta.season.startDate,
+                endDate : moment().valueOf(),
+                sandboxId : $scope.meta.sandbox._id,
+                effectiveId : $scope.user.effectiveDefault
+            };
+
+            collecteRestAPI.getListCollectes(requestCollecte).success(function (data) {
+                $scope.collectes = data.sortBy(function(n) {
+                    return n.endDate; 
+                });
+                
+                $log.debug($scope.collectes);
+            });
+        };
+        
         /* get currentEvent */
         $scope.getCurrentEvent = function () {
             $scope.mapShow = false;
@@ -152,6 +171,7 @@
             
             userRestAPI.getUserById(user._id).success(function (data) {
                 $scope.getEvents();
+                $scope.getCollectes();
                 $scope.getEffective();
                 $scope.getListTeamHome();
             }).error(function (data) {
