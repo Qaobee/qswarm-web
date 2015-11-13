@@ -84,13 +84,12 @@
         </div>
     </div>
     <!-- Stats shoot Start -->
-    <div class="row" id="shoot">
+    <div class="row grey lighten-5" id="shoot">
         <!-- Stats shoot efficacite Start -->
-        <div class="col s12 red-text text-lighten-1 left"><h5>Efficacité au tir</h5></div>
-        <div class="col m3 s6">
+        <div class="col m6 s12">
             <div class="card-panel blue-grey-text text-darken-2">
                 <div class="card-content center">
-                    <span class="card-title"><h5>Globale</h5></span>
+                    <span class="card-title"><h5>Efficacité Globale</h5></span>
                 </div>
                 <div class="card-content">
                     <c3chart bindto-id="gauge-plot1-chart">
@@ -100,7 +99,7 @@
                 </div>
             </div>
         </div>
-        <div class="col m3 s6">
+        <div class="col m2 s12">
             <div class="card-panel blue-grey-text text-darken-2">
                 <div class="card-content center">
                     <span class="card-title"><h5>9 mètres</h5></span>
@@ -108,12 +107,12 @@
                 <div class="card-content">
                     <c3chart bindto-id="gauge-plot2-chart">
                         <chart-column column-id="Data 1" column-values="45" column-type="gauge" column-color="#ef5350"/>
-                        <chart-gauge min="0" max="100" width="39"/>
+                        <chart-gauge min="0" max="100" width="30"/>
                     </c3chart>
                 </div>
             </div>
         </div>
-        <div class="col m3 s6">
+        <div class="col m2 s12">
             <div class="card-panel blue-grey-text text-darken-2">
                 <div class="card-content center">
                     <span class="card-title"><h5>6 mètres</h5></span>
@@ -121,12 +120,12 @@
                 <div class="card-content">
                     <c3chart bindto-id="gauge-plot3-chart">
                         <chart-column column-id="Data 1" column-values="90" column-type="gauge" column-color="#66bb6a"/>
-                        <chart-gauge min="0" max="100" width="39"/>
+                        <chart-gauge min="0" max="100" width="30"/>
                     </c3chart>
                 </div>
             </div>
         </div>
-        <div class="col m3 s6">
+        <div class="col m2 s12">
             <div class="card-panel blue-grey-text text-darken-2">
                 <div class="card-content center">
                     <span class="card-title"><h5>7 mètres</h5></span>
@@ -134,22 +133,7 @@
                 <div class="card-content">
                     <c3chart bindto-id="gauge-plot4-chart">
                         <chart-column column-id="Data 1" column-values="85" column-type="gauge" column-color="#66bb6a"/>
-                        <chart-gauge min="0" max="100" width="39"/>
-                    </c3chart>
-                </div>
-            </div>
-        </div>
-        <div class="col s12">
-            <div class="card-panel blue-grey-text text-darken-2">
-                <div class="card-content center">
-                    <span class="card-title"><h5>Typologie des buts</h5></span>
-                </div>
-                <div class="card-content">
-                    <c3chart bindto-id="donut-plot1-chart">
-                        <chart-column column-id="9 mètres" column-values="35" column-type="donut" column-color="#66bb6a"/>
-                        <chart-column column-id="6 mètres" column-values="75" column-type="donut" column-color="#ffb74d"/>
-                        <chart-column column-id="7 mètres" column-values="50" column-type="donut" column-color="#42a5f5"/>
-                        
+                        <chart-gauge min="0" max="100" width="30"/>
                     </c3chart>
                 </div>
             </div>
@@ -157,9 +141,74 @@
         <!-- Stats shoot efficacite end -->
         
         <!-- Stats shoot origine Start -->
-        <div class="blue-grey-text text-darken-2 center"><h5>répartition origine shoot</h5></div>
+            <div class="col m4 s12">
+                <div class="card-panel blue-grey-text text-darken-2">
+                    <div class="card-content center">
+                        <span class="card-title"><h5>Typologie des buts</h5></span>
+                    </div>
+                    <div class="card-content">
+                        <c3chart bindto-id="donut-plot1-chart">
+                            <chart-column column-id="9 mètres" column-values="35" column-type="donut" column-color="#66bb6a"/>
+                            <chart-column column-id="6 mètres" column-values="75" column-type="donut" column-color="#ffb74d"/>
+                            <chart-column column-id="7 mètres" column-values="50" column-type="donut" column-color="#42a5f5"/>
+
+                        </c3chart>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col m4 s12">
+                <div class="card-panel blue-grey-text text-darken-2">
+                    <div class="card-content center">
+                        <span class="card-title"><h5>Origine des shoots</h5></span>
+                    </div>
+                    <div class="card-content">
+                        <c3chart bindto-id="originShoot" show-labels="true" enable-zoom="true">
+                            <chart-column column-id="data1" column-name="data1" column-color="#66bb6a" column-values="30,200,100,400,150,250,45,2" column-type="bar"/>
+                        </c3chart>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col m4 s12">
+                <div class="card-panel blue-grey-text text-darken-2">
+                    <div class="card-content center">
+                        <span class="card-title"><h5>Impact des shoots</h5></span>
+                    </div>
+                    <div class="card-content">
+                        <c3chart bindto-id="impactShoot">
+
+                            <chart-column column-id="Haut Gauche" column-values="35" column-type="donut" column-color="#66bb6a"/>
+                            <chart-column column-id="Haut Centre" column-values="75" column-type="donut" column-color="#ffb74d"/>
+                            <chart-column column-id="Haut Droite" column-values="50" column-type="donut" column-color="#42a5f5"/>
+                            <chart-column column-id="Milieu Gauche" column-values="45" column-type="donut" column-color="#66bb6a"/>
+                            <chart-column column-id="Milieu Centre" column-values="100" column-type="donut" column-color="#ffb74d"/>
+                            <chart-column column-id="Milieu Droite" column-values="35" column-type="donut" column-color="#42a5f5"/>
+                            <chart-column column-id="Bas Gauche" column-values="5" column-type="donut" column-color="#66bb6a"/>
+                            <chart-column column-id="Bas Centre" column-values="10" column-type="donut" column-color="#ffb74d"/>
+                            <chart-column column-id="Bas Droite" column-values="25" column-type="donut" column-color="#42a5f5"/>
+                        </c3chart>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Stats shoot origine End -->
         
-       
+        <!-- Stats shoot origine Start -->
+        <div class="col s12">
+            <div class="card-panel blue-grey-text text-darken-2">
+                <div class="card-content center">
+                    <span class="card-title"><h5>Répartition des buts</h5></span>
+                </div>
+                <div class="card-content">
+                    <div class="card-content">
+                    <c3chart bindto-id="time" show-labels="true">
+                        <chart-column column-id="data1" column-name="data1" column-color="#42a5f5" column-values="30,20,10,40,15,25" column-type="bar"/>
+                    </c3chart>
+                </div>
+                </div>
+            </div>
+        </div>
         <!-- Stats shoot origine End -->
     </div>
     <!-- Stats shoot end -->
