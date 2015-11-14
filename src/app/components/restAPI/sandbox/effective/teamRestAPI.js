@@ -26,9 +26,9 @@
              *            adversary : true or false
              * @returns {Array} com.qaobee.hive.business.model.sandbox.effective.SB_Team
              */
-            getListTeamHome : function(sandboxId, effectiveId, enable, adversary) {
+            getListTeamHome : function(sandboxId, effectiveId, enable) {
                 return $http({
-                    url : teamAPIURL + '/list/?sandboxId=' +sandboxId+'&effectiveId='+effectiveId+'&enable='+enable+'&adversary='+adversary,
+                    url : teamAPIURL + '/list/?sandboxId=' +sandboxId+'&effectiveId='+effectiveId+'&enable='+enable+'&adversary=false',
                     method : 'GET'
                 });
             },
@@ -44,17 +44,15 @@
              * @param {String}
              *            enable : true or false
              * @param {String}
-             *            adversary : true or false
-             * @param {String}
              *            linkTeamId : id team home
              * @returns {Array} com.qaobee.hive.business.model.sandbox.effective.SB_Team
              */
-            getListTeamAdversary : function(sandboxId, effectiveId, enable, adversary, linkTeamId) {
+            getListTeamAdversary : function(sandboxId, effectiveId, enable, linkTeamId) {
                 var url;
                 if(linkTeamId===null) {
-                    url = teamAPIURL + '/list/?sandboxId=' +sandboxId+'&effectiveId='+effectiveId+'&enable='+enable+'&adversary='+adversary
+                    url = teamAPIURL + '/list/?sandboxId=' +sandboxId+'&effectiveId='+effectiveId+'&enable='+enable+'&adversary=true'
                 } else {
-                    url = teamAPIURL + '/list/?sandboxId=' +sandboxId+'&effectiveId='+effectiveId+'&enable='+enable+'&adversary='+adversary+'&linkTeamId='+linkTeamId
+                    url = teamAPIURL + '/list/?sandboxId=' +sandboxId+'&effectiveId='+effectiveId+'&enable='+enable+'&adversary=true&linkTeamId='+linkTeamId
                 }
                 return $http({
                     url : url,

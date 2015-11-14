@@ -69,7 +69,7 @@
 
                 if($scope.adversary==='false') {
                     /* Retrieve list of adversary of effective */
-                    teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'all', 'true', $scope.team._id).success(function (data) {
+                    teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'all', $scope.team._id).success(function (data) {
                         $scope.listTeamAdversary = data.sortBy(function(n) {
                             return n.label; 
                         });
@@ -77,7 +77,7 @@
                     }); 
                 } else {
                     /* Retrieve list of team of effective */
-                    teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true', 'false').success(function (data) {
+                    teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true').success(function (data) {
                         $scope.listTeamHome = data.sortBy(function(n) {
                             return n.label; 
                         });

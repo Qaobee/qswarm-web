@@ -77,7 +77,7 @@
         
         /* Retrieve list of team of effective */
         $scope.getListTeamHome = function () {
-            teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.effectiveId, 'all', 'false').success(function (data) {
+            teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.effectiveId, 'all').success(function (data) {
                 $scope.listTeamHome = data.sortBy(function(n) {
                         return n.label; 
                     });
@@ -86,7 +86,7 @@
         
         /* Retrieve list of adversary of effective */
         $scope.getListTeamAdversary = function () {
-            teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.effectiveId, 'all', 'true', null).success(function (data) {
+            teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.effectiveId, 'all', null).success(function (data) {
                 $scope.listTeamAdversary = data.sortBy(function(n) {
                     return n.label; 
                 });
