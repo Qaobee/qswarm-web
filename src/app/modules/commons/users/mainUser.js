@@ -12,6 +12,8 @@
 
         /* qaobee Rest API */
         'activityRestAPI',
+        'activityCfgRestAPI',
+        'countryRestAPI',
         'structureRestAPI',
         'signupRestAPI'
     ])
@@ -33,7 +35,7 @@
             });
         })
 
-        .controller('SignupCtrl', function ($rootScope, $scope, $translatePartialLoader, $log, $routeParams, $window, $location, $filter, WizardHandler, activityRestAPI, structureRestAPI, signupRestAPI, locationAPI) {
+        .controller('SignupCtrl', function ($rootScope, $scope, $translatePartialLoader, $log, $routeParams, $window, $location, $filter, WizardHandler, activityRestAPI, activityCfgRestAPI, countryRestAPI, structureRestAPI, signupRestAPI, locationAPI) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
 
@@ -47,6 +49,7 @@
             $scope.temp = {};
             $scope.temp.detailsCountry = {};
             $scope.temp.createStructure = false;
+            $scope.temp.referencialId = -1;
             
             $scope.valuesStructures = [{
             	'_id': -1, 
@@ -131,6 +134,7 @@
                     WizardHandler.wizard().next();
                 }
             };
+            
 
             /* init ngAutocomplete*/
             $scope.options = {};
@@ -166,6 +170,7 @@
                     $scope.isStructureCityChanged = false;
                     $scope.isStructureReload = true;
                     $scope.temp.zipcode = '';
+                    $scope.temp.referencialId = -1;
                 }
             };
 
@@ -200,6 +205,34 @@
                     			address.city = item.long_name;
                     			$scope.temp.city = address.city;
                     		}
+                    	});
+                    	
+                    	// Recherche du pays et liste des category age
+                    	countryRestAPI.getAlpha2($scope.temp.countryAlpha2).success(function (data) {
+                    		activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.signup.account.listPlan[0].activity._id, data._id,'listCategoryAge').success(function (data2) {
+                    			$scope.categoryAgeResult = data2;
+                    			$scope.valuesCategoryAge = [];
+                    			var dataSort = data2.sortBy(function(o) {
+                                	return o.order;
+                                });
+
+                    			dataSort.forEach(function(i) {
+                    				var tempAge = '';
+                    				if(i.ageMax > 80) {
+                    					tempAge = i.ageMin + '+';
+                    				} else if(i.ageMin===i.ageMax) {
+                    					tempAge = i.ageMin;
+                    				} else {
+                    					tempAge = i.ageMin + '/' + i.ageMax;
+                    				}
+                    				
+                                    $scope.valuesCategoryAge.push({
+                                        _id: i.code,
+                                        label: i.label + ' (' + tempAge + ')'
+                                    });
+                                });
+                    			$scope.categoryAge = '';
+                    		});
                     	});
                     	
                     	// Recherche des structures
@@ -249,6 +282,7 @@
             // Puts structure selected in a hidden input 
             $scope.applyChangeStructure = function () {
                 $scope.structure.referencialId = $window.document.getElementById('userStructureSelect').value;
+                $scope.temp.referencialId = $scope.structure.referencialId;
                 
                 if($scope.structure.referencialId==='new') {
                 	$scope.temp.createStructure = true;
@@ -288,11 +322,11 @@
 
                 if ($scope.temp.createStructure) {
                 	if(angular.isUndefined($scope.newStructure.label) || $scope.newStructure.label===null || $scope.newStructure.label==='') {
-                		toastr.warning('label vide');
+                		toastr.warning($filter('translate')('structureSection.ph.createLabelMandatory'));
                         validateOk = false;
                 	}
                 	if(angular.isUndefined($scope.newStructure.address.place) || $scope.newStructure.address.place===null || $scope.newStructure.address.place==='') {
-                		toastr.warning('place vide');
+                		toastr.warning($filter('translate')('structureSection.ph.createAddressMandatory'));
                         validateOk = false;
                 	}
                 }
@@ -307,8 +341,18 @@
             $scope.createSandBox = function () {
                 var user = $scope.signup;
                 delete(user.detailsStructureCity);
+                // Récupération CategoryAge
+                var catAge = {};
+                if(!angular.isUndefined($scope.categoryAgeResult)) {
+	                $scope.categoryAgeResult.forEach(function(item) {
+	                	if(item.code===$scope.signup.categoryAge._id) {
+	                		catAge = item;
+	                	}
+	                });
+                }
+                $log.debug(catAge);
 
-                signupRestAPI.finalizeSignup(user, $routeParams.code, $scope.structure, $scope.signup.account.listPlan[0].activity._id).success(function (data) {
+                signupRestAPI.finalizeSignup(user, $routeParams.code, $scope.structure, $scope.signup.account.listPlan[0].activity._id, catAge).success(function (data) {
                     if (false === data.status) {
                         toastr.error('Pb');
                     } else {

@@ -12,7 +12,14 @@
 			"no"  : "No"
 		}
 	},
+	"headerSignup" : {
+		"label" : "Signup"
+	},
     "civilSection" : {
+		"line1" : "Votre inscription est presque terminée !",
+    	"line2" : "Ces dernières étapes vont permettre la création de votre espace personnel et l'accès à votre assistant personnel de collecte et d'analyse en temps réel de données sportives.",
+		"line3" : "Veuillez renseigner au moins un numéro de téléphone :",
+		
     	"label" : {
 	        "userSignupCivilSection" : "Informations personnelles",
 	        "userName" : "Nom",
@@ -37,6 +44,9 @@
 	    }
 	},
 	"sportSection" : {
+		"line1" : "Veuillez choisir le sport pour lequel vous souhaitez créer votre assistant.",
+		"line2" : "Certains sports ne sont pas encore disponibles, mais cela ne saurait tarder !", 
+		
 		"label" : {
 			"userSignupSportSection" : "Choix du sport",
 	        "userSportChoice" : "Veuillez choisir le sport"
@@ -46,11 +56,18 @@
 	    }
 	},
 	"structureSection" : {
+		"line1" : "Veuillez indiquer la ville pour retrouver votre club.",
+		"line2" : "Nous recherchons les clubs à partir de la ville et du code postal. Si votre club n'apparaît pas dans la liste, il vous est possible de le créer !",
+		
 		"label" : {
 			"userSignupStructureSection" : "Choix du club",
 	        "userStructureCity" : "Ville du club",
 	        "userZipcode" : "Zipcode",
-	        "userStructureName" : "Nom du club"
+	        "userStructureName" : "Nom du club",
+	        "userStructureChoiceLabel" : "Nom",
+	        "userStructureChoiceAddress" : "Adresse",
+	        "userStructureChoiceCity" : "Ville",
+	        "userCategoryAge" : "Catégorie d'âge"
 	    }, 
 	    "list" : {
 	    	"empty" : "No data found",
@@ -58,7 +75,9 @@
 	    	"create" : "Create club"
 	    },
 	    "ph" : {
-	    	"structureMandatory" : "Un club doit être choisi"
+	    	"structureMandatory" : "Un club doit être choisi",
+	    	"createLabelMandatory" : "Nom du club à créer obligatoire",
+	    	"createAddressMandatory" : "Adresse du club à créer obligatoire"
 	    }
 	},
 	"sumupSection" : {

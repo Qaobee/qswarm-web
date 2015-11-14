@@ -37,8 +37,8 @@
         </div>
     </div>
 </nav>
-            <!-- Connected Fisrt header-->
-<div class="navbar-fixed" ng-show="user">
+            <!-- Connected First header-->
+<div class="navbar-fixed" ng-if="user && !user.account.firstConnexion">
     <nav class="top-nav light-green lighten-1 visible-nav" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
@@ -106,7 +106,8 @@
         </div>
     </nav>
 </div>
-<div ng-show="user">
+
+<div ng-if="user && !user.account.firstConnexion">
     <!-- Connected second header-->
     <nav class="green darken-1 hide-on-med-and-down visible-nav" role="navigation">
         <div class="container">
@@ -139,6 +140,27 @@
             </div>
         </div>
     </nav>
+</div>
+
+<!-- Finalize signup -->
+<div class="navbar-fixed" ng-if="user && user.account.firstConnexion">
+    <nav class="top-nav light-green lighten-1 visible-nav" role="navigation">
+        <div class="container">
+            <div class="nav-wrapper">
+	            <a href="/#/" class="hide-on-med-and-down brand-logo"><img src="assets/images/logo-mini.png" height="30px"/></a>
+	            <ul class="right hide-on-med-and-down">
+	                <li><a href="https://twitter.com/Qaobee"
+	                       target="_blank"
+	                       class="white-text"><i
+	                        class="fa fa-twitter-square fa-2x"></i></a></li>
+	            </ul>
+	            <a class="brand-logo white-text center">
+	            	<span class="hide-on-med-and-down fa fa-sign-in"></span>
+            		<span translate="headerSignup.label"></span>
+                </a>
+			</div>
+		</div>
+	</nav>
 </div>
 
 <!-- Modal login -->

@@ -51,7 +51,7 @@
                 	});
                 },
                 
-                finalizeSignup: function (user, captcha, structure, activity) {
+                finalizeSignup: function (user, captcha, structure, activity, categoryAge) {
                 	return $http({
                 		url: signupURL + '/finalize',
                 		method: 'POST',
@@ -59,7 +59,8 @@
                 			user: user,
                 			code: captcha,
                 			structure: structure,
-                			activity : activity
+                			activity : activity,
+                			categoryAge : categoryAge
                 		}
                 	});
                 }
