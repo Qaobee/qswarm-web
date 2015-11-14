@@ -481,8 +481,8 @@
 							<th>adversary</th>
 							<th>Mongo</th>
 						</tr>
-						<tr ng-repeat="team in SBListTeams | orderBy : ['-enable', '+adversary', '+label']">
-							<td>{{team._id}}</td>
+						<tr ng-repeat="team in SBListTeams">
+							<td><span ng-if="team.adversary"><i class="material-icons prefix">forward</i></span> {{team._id}}</td>
 							<td>{{team.label}}</td>
 							<td>{{team.enable}}</td>
 							<td>{{team.adversary}}</td>

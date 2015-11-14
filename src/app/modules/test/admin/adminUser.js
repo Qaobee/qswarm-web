@@ -150,7 +150,7 @@
     		$scope.currentSBEffective = {};
     		$scope.sandboxEffectiveSelected = {};
     		
-    		effectiveRestAPI.getListMemberEffective(sandboxCfgObj._id, null).success(function (data) {
+    		effectiveRestAPI.getListEffective(sandboxCfgObj._id, null).success(function (data) {
                 if (true === data.error) {
                 	toastr.error(data.message);
                 } else {
@@ -174,12 +174,35 @@
     	
     	$scope.searchSandboxTeam = function(sandboxCfgObj, effectiveObj) {
     		$scope.SBListTeams = [];
-    		teamRestAPI.getListTeam(sandboxCfgObj.sandbox._id, effectiveObj._id, 'all', false).success(function (data) {
+    		teamRestAPI.getListTeamHome(sandboxCfgObj.sandbox._id, effectiveObj._id, 'all').success(function (data) {
                 if (true === data.error) {
                 	toastr.error(data.message);
                 } else {
-                	data.forEach(function(element){
+                	var dataSort =  data.sortBy(function(o) {
+                    	return o.label;
+                    });
+                	dataSort.forEach(function(element){
                 		$scope.SBListTeams.push(element);
+                		
+                		teamRestAPI.getListTeamAdversary(sandboxCfgObj.sandbox._id, effectiveObj._id, 'all', element._id).success(function (data2) {
+                            if (true === data2.error) {
+                            	toastr.error(data2.message);
+                            } else {
+                            	var dataSort2 = data2.sortBy(function(o) {
+                                	return o.label;
+                                });
+                            	dataSort2.forEach(function(element2){
+                            		$scope.SBListTeams.push(element2);
+                            	});
+                            }
+                        }).error(function (error) {
+                            if (error != null) {
+                            	toastr.error(error.message);
+                            } else {
+                            	toastr.error('Problème getListTeam - all / false');
+                            }
+                        });
+                		
                 	});
                 	toastr.info('Sandbox Team refreshed');
                 }
@@ -191,22 +214,7 @@
                 }
             });
     		
-    		teamRestAPI.getListTeam(sandboxCfgObj.sandbox._id, effectiveObj._id, 'all', true).success(function (data) {
-                if (true === data.error) {
-                	toastr.error(data.message);
-                } else {
-                	data.forEach(function(element){
-                		$scope.SBListTeams.push(element);
-                	});
-                	toastr.info('Sandbox Teams VS refreshed');
-                }
-            }).error(function (error) {
-                if (error != null) {
-                	toastr.error(error.message);
-                } else {
-                	toastr.error('Problème getListTeam - all / false');
-                }
-            });
+    		
     	};
     	
     	$scope.refreshUser = function() {
