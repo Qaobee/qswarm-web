@@ -102,6 +102,8 @@
         "label" : "Label",
         "enable": "Activate",
         "disable":"Disactivate",
-        "status" : "Choice status"
+        "activation":"Activation",
+        "status" : "Choice status",
+        "teamsAdversary" : "Adversary list"
     }
 }

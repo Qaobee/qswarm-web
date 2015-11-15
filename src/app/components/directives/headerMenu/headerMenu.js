@@ -63,7 +63,6 @@
                             closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
                         });
 
-                        $('.tooltipped').tooltip({delay: 50});
                     });
 
 

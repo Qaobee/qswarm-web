@@ -44,7 +44,7 @@
     "font-awesome": "4.3.0",
     "html5shiv": "~3.7.2",
     "jquery": "2.1.4",
-    "Materialize": "materialize#~0.97.0",
+    "materialize": "materialize#~0.97.2",
     "momentjs": "2.8.1",
     "ngAutocomplete": "~1.0.0",
     "ngmap": "~1.11.5",

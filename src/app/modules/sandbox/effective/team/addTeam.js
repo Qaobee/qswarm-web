@@ -14,12 +14,13 @@
         /* angular modules*/
         
         /* qaobee Rest API */
-        'teamRestAPI'])
+        'teamRestAPI',
+        'userRestAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
 
-            $routeProvider.when('/private/addTeam/:adversary', {
+            $routeProvider.when('/private/addTeam/:adversary/:teamId', {
                 controller: 'AddTeamControler',
                 resolve: {
                     user: metaDatasProvider.checkUser,
@@ -27,19 +28,29 @@
                 },
                 templateUrl: 'app/modules/sandbox/effective/team/writeTeam.html'
 
-            });
+            }).when('/private/addTeam/:adversary', {
+                controller: 'AddTeamControler',
+                resolve: {
+                    user: metaDatasProvider.checkUser,
+                    meta: metaDatasProvider.getMeta
+                },
+                templateUrl: 'app/modules/sandbox/effective/team/writeTeam.html'
+
+            });;
         })
 
     /**
      * @class qaobee.modules.sandbox.effective.AddTeamControler
      * @description Main controller for view addTeam.html
      */
-        .controller('AddTeamControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, teamRestAPI) {
+        .controller('AddTeamControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
+                                                   userRestAPI, teamRestAPI) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('effective');
         
         $scope.adversary = $routeParams.adversary;
+        $scope.teamId = $routeParams.teamId;
 
         $scope.user = user;
         $scope.meta = meta;
@@ -59,6 +70,7 @@
             enable : true
         };
         
+        
         /* Create a new team */
         $scope.writeTeam = function () {
             
@@ -66,17 +78,34 @@
             $scope.team.adversary = $scope.team.adversary==='true';
             $scope.team.enable = $scope.team.enable==='true';
             
+            if($scope.adversary) {
+                $scope.team.linkTeamId = [];
+                $scope.team.linkTeamId.push($scope.teamId);
+            }
+            
             /* add team */
             teamRestAPI.addTeam($scope.team).success(function (team) {
                 
                 toastr.success($filter('translate')('addTeam.toastSuccess', {
                     label: team.label
                 }));
-
-                $window.history.back();
-                        
+                
+                $scope.doTheBack();
             });
         };
+        
+        /* check user connected */
+        $scope.checkUserConnected = function () {
+            
+            userRestAPI.getUserById(user._id).success(function (data) {
+
+            }).error(function (data) {
+                $log.error('AddTeamControler : User not Connected');
+            });
+        }; 
+        
+        /* Primary, check if user connected */
+        $scope.checkUserConnected();
     })
     
     //

@@ -102,6 +102,8 @@
         "label" : "Libellé",
         "enable": "Activé",
         "disable":"Désactivé",
-        "status" : "Choisir un statut"
+        "activation":"Activation",
+        "status" : "Choisir un statut",
+        "teamsAdversary" : "Liste des équipes adverses"
     }
 }

@@ -58,6 +58,7 @@
         $scope.team = {};
         $scope.listTeamAdversary = {};
         $scope.listTeamHome = {};
+        $scope.listTeamAdversaryUpdate = [];
         
         /* get team */
         $scope.getTeam = function () {
@@ -69,48 +70,44 @@
 
                 if($scope.adversary==='false') {
                     /* Retrieve list of adversary of effective */
-                    teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'all', $scope.team._id).success(function (data) {
+                    teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'all', null).success(function (data) {
                         $scope.listTeamAdversary = data.sortBy(function(n) {
                             return n.label; 
                         });
-                        $log.debug($scope.listTeamAdversary);
-                    }); 
-                } else {
-                    /* Retrieve list of team of effective */
-                    teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true').success(function (data) {
-                        $scope.listTeamHome = data.sortBy(function(n) {
-                            return n.label; 
-                        });
                         
-                        if(angular.isDefined($scope.team.linkTeamId)) {
-                            data.forEach(function (a) {
-                                a.checked=false;
-                                var trouve = $scope.team.linkTeamId.find(function(n) {
-                                    return n === a._id; 
-                                });
+                        if($scope.listTeamAdversary.length>0){
+                            $scope.listTeamAdversary.forEach(function (a) {
+                                a.modified=false;
+                                if(angular.isDefined(a.linkTeamId)) {
+                                    a.checked=false;
+                                    var trouve = a.linkTeamId.find(function(n) {
+                                        return n === team._id; 
+                                    });
 
-                                if(angular.isDefined(trouve)) {
-                                    a.checked=true;
+                                    if(angular.isDefined(trouve)) {
+                                        a.checked=true;
+                                    }
                                 }
                             });
-                        } else {
-                            $scope.team.linkTeamId = [];
-                        }
-                    });
-                }
+                        }              
+                    });      
+                } 
             });
         };
         
         /* Update effective list member*/
         $scope.changed = function(item) {
+            if(angular.isUndefined(item.linkTeamId)) {
+                item.linkTeamId= [];
+            }
             if(item.checked) {
-                $scope.team.linkTeamId.push(item._id);
+                item.linkTeamId.push($scope.team._id);
             } else {
-                $scope.team.linkTeamId.remove(function(n) {
-                    return n === item._id; 
+                item.linkTeamId.remove(function(n) {
+                    return n === $scope.team._id; 
                 });
             }
-            $log.debug($scope.team.linkTeamId);
+            item.modified = true;
         };
         
         /* Create a new team */
@@ -121,6 +118,14 @@
             
             /* add team */
             teamRestAPI.updateTeam($scope.team).success(function (team) {
+                
+                if($scope.listTeamAdversary.length>0){
+                    $scope.listTeamAdversary.forEach(function (a) {
+                        if(a.modified) {
+                            teamRestAPI.updateTeam(a).success(function (team) {});
+                        }
+                    });
+                }   
                 
                 toastr.success($filter('translate')('updateTeam.toastSuccess', {
                     label: team.label

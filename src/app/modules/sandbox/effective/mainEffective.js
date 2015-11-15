@@ -84,15 +84,6 @@
             });
         };
         
-        /* Retrieve list of adversary of effective */
-        $scope.getListTeamAdversary = function () {
-            teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.effectiveId, 'all', null).success(function (data) {
-                $scope.listTeamAdversary = data.sortBy(function(n) {
-                    return n.label; 
-                });
-            });
-        }; 
-        
         /* Retrieve list effective */
         $scope.getEffectives = function () {
             
@@ -143,7 +134,6 @@
             userRestAPI.getUserById(user._id).success(function (data) {
                 $scope.getEffectives();
                 $scope.getListTeamHome();
-                $scope.getListTeamAdversary();
             }).error(function (data) {
                 $log.error('MainEffectiveControler : User not Connected');
             });
