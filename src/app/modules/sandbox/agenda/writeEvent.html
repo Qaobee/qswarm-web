@@ -33,7 +33,26 @@
                             <label>{{'eventLabels.StartDate' | translate }} <span class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="input-field col s8">
-                           <input ng-model="startDate" id="EventStartDate" type="date" class="datepicker" required>
+                            <input input-date
+    type="date"
+    name="created"
+    id="EventStartDate"
+    ng-model="startDate"
+    container="body"
+    format="{{'commons.format.date.label' | translate }}"
+    months-full="{{ month }}"
+    months-short="{{ monthShort }}"
+    weekdays-full="{{ weekdaysFull }}"
+    weekdays-short="{{ weekdaysShort }}"
+    weekdays-letter="{{ weekdaysLetter }}"
+    disable="disable"
+    today="today"
+    clear="clear"
+    close="close"
+    select-years="15"
+    placeholder="{{'commons.format.date.label' | translate }}"
+     />
+                           
                         </div>
 
                         <div class="input-field col s4">
@@ -76,17 +95,11 @@
                         </a>
                     </div>
 
-                    <div class="input-field col s10 m5">
+                    <div class="input-field col s10 m5" ng-show="chooseHome">
                         <select class="browser-default blue-grey-text text-darken-1" ng-model="adversaryId" id="adversary">
                             <option value="" disabled selected>{{'eventLabels.Adversary' | translate }}</option>
                             <option ng-repeat="p in listTeamAdversary" value="{{p._id}}">{{p.label}}</option>
                         </select>
-                    </div>
-                    <div class="input-field col s2 m1">
-                        <a href="#/private/addTeam/{{true}}" class="red-text text-lighten-1 left-align tooltipped" 
-                           data-position="left" data-delay="20" data-tooltip="{{'mainEffective.buttons.addTeamAdversary' | translate }}">
-                            <h5><i class="fa fa-plus-square-o"></i></h5>
-                        </a>
                     </div>
                 </div>
             </div>
