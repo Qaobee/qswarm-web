@@ -59,11 +59,29 @@
         $scope.listTeamAdversary = {};
         $scope.adversaryId = '';
         $scope.chooseAdversary = false;
+        $scope.chooseHome = false;
         $scope.startDate = '';
         $scope.endDate = '';
         $scope.startHours = '';
         $scope.endHours = '';
         $scope.location = 'home';
+        
+        //i18n datepicker
+        var month = $filter('translate')('commons.format.date.listMonth');
+        $scope.month = month.split(',');
+        
+        var monthShort = $filter('translate')('commons.format.date.listMonthShort');
+        $scope.monthShort = monthShort.split(',');
+
+        var weekdaysFull = $filter('translate')('commons.format.date.listWeekdaysFull');
+        $scope.weekdaysFull = weekdaysFull.split(',');
+        
+        var weekdaysLetter = $filter('translate')('commons.format.date.listWeekdaysLetter');
+        $scope.weekdaysLetter = weekdaysLetter.split(',');
+        
+        $scope.today = $filter('translate')('commons.format.date.today');
+        $scope.clear = $filter('translate')('commons.format.date.clear');
+        $scope.close = $filter('translate')('commons.format.date.close');
         
         $scope.addEventTitle = false;
         
@@ -89,8 +107,8 @@
                 $scope.listTeamHome = data.sortBy(function(n) {
                     return n.label; 
                 });
-                $scope.getEvent();
                 
+                $scope.getListEventType();
             });
         }; 
         
@@ -100,7 +118,7 @@
                 $scope.listTeamAdversary = data.sortBy(function(n) {
                     return n.label; 
                 });
-
+                $log.debug($scope.adversaryId);
             });
         };
         
@@ -108,8 +126,10 @@
         $scope.getListEventType = function () {
             activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listEventType').success(function (data) {
                 $scope.listEventType = data.sortBy(function(n) {
-                        return n.order; 
-                    });
+                    return n.order; 
+                });
+                
+                $scope.getEvent();
             });
         };
         
@@ -121,6 +141,7 @@
                     return n.label; 
                 });
             });
+            $scope.chooseHome = true;
         };
         
         /* on change event type, calculate the value for chooseAdversary */
@@ -128,6 +149,7 @@
             
             if($scope.event.link.type==='training'  || $scope.event.link.type==='other') {
                  $scope.chooseAdversary = false;
+                $scope.chooseHome = false;
             } else {
                 $scope.chooseAdversary = true;
             }
@@ -146,6 +168,13 @@
                     $scope.startHours = $scope.startDate;
                 }
                 
+                if($scope.event.link.type==='training'  || $scope.event.link.type==='other') {
+                     $scope.chooseAdversary = false;
+                } else {
+                    $scope.chooseAdversary = true;
+                    $scope.chooseHome = true;
+                }
+                
                 /* alimentation des listes des équipes */
                 if(angular.isDefined($scope.event.participants.teamHome.id)) {
                     $scope.teamId = $scope.event.participants.teamHome.id;
@@ -162,10 +191,10 @@
                         $scope.teamId = $scope.event.participants.teamVisitor.id;
                         $scope.adversaryId = $scope.event.participants.teamHome.id;
                     }
+                    $log.debug($scope.adversaryId);
                     $scope.getListTeamAdversary($scope.teamId);
                 }
                 
-                $scope.changeEventType();
             });
         };    
 
@@ -281,7 +310,6 @@
             
             userRestAPI.getUserById(user._id).success(function (data) {
                 $scope.getListTeamHome();
-                $scope.getListEventType();
             }).error(function (data) {
                 $log.error('UpdateEventControler : User not Connected');
             });

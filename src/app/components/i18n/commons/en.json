@@ -6,7 +6,14 @@
             "ageYear": "years",
             "date": {
                 "pattern": "MM/dd/yyyy",
-                "label": "mm/dd/yyyy"
+                "label": "mm/dd/yyyy",
+                "listMonth": "January,February,March,April,May,June,July,August,September,October,November,December",
+                "listMonthShort":"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
+                "listWeekdaysFull":"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday",
+                "listWeekdaysLetter":"S,M,T,W,T,F,S",
+                "today":"Today",
+                "clear":"Clear",
+                "close":"Close"
             },
             "phone": {
                 "pattern": "(999) 999-9999"

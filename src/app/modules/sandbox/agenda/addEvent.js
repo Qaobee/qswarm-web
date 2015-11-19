@@ -59,11 +59,29 @@
         $scope.listTeamAdversary = {};
         $scope.adversaryId = '';
         $scope.chooseAdversary = false;
+        $scope.chooseHome = false;
         $scope.startDate = '';
         $scope.endDate = '';
         $scope.startHours = '';
         $scope.endHours = '';
         $scope.location = 'home';
+        
+        //i18n datepicker
+        var month = $filter('translate')('commons.format.date.listMonth');
+        $scope.month = month.split(',');
+        
+        var monthShort = $filter('translate')('commons.format.date.listMonthShort');
+        $scope.monthShort = monthShort.split(',');
+
+        var weekdaysFull = $filter('translate')('commons.format.date.listWeekdaysFull');
+        $scope.weekdaysFull = weekdaysFull.split(',');
+        
+        var weekdaysLetter = $filter('translate')('commons.format.date.listWeekdaysLetter');
+        $scope.weekdaysLetter = weekdaysLetter.split(',');
+        
+        $scope.today = $filter('translate')('commons.format.date.today');
+        $scope.clear = $filter('translate')('commons.format.date.clear');
+        $scope.close = $filter('translate')('commons.format.date.close');
         
         $scope.addEventTitle = true;
         
@@ -116,6 +134,7 @@
                     return n.label; 
                 });
             });
+            $scope.chooseHome = true;
         };
 
         
@@ -124,6 +143,7 @@
             
             if($scope.event.link.type==='training'  || $scope.event.link.type==='other') {
                  $scope.chooseAdversary = false;
+                $scope.chooseHome = false;
             } else {
                 $scope.chooseAdversary = true;
             }
