@@ -363,7 +363,6 @@
 	                	}
 	                });
                 }
-                $log.debug(catAge);
 
                 signupRestAPI.finalizeSignup(user, $routeParams.code, $scope.structure, $scope.signup.account.listPlan[0].activity._id, catAge).success(function (data) {
                     if (false === data.status) {
@@ -394,9 +393,12 @@
 
         })
 
-        .controller('SignupEndCtrl', function ($scope, $translatePartialLoader, $location) {
+        .controller('SignupEndCtrl', function ($scope, $rootScope, $translatePartialLoader, $location) {
             $translatePartialLoader.addPart('user');
 
+            $rootScope.user = $scope.signup;
+            $scope.user = $scope.signup;
+            
             $scope.goHome = function () {
                 $location.path('/private');
             };
