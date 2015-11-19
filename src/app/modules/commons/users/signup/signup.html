@@ -146,7 +146,7 @@
             
             
             <!-- step choix du sport -->
-            <wz-step title="{{'sportSection.label.userSignupSportSection' | translate }}" template="app/components/directives/wizard/step.html">
+            <wz-step wz-disabled="{{temp.skipSportSection}}" ng-if="!temp.skipSportSection" title="{{'sportSection.label.userSignupSportSection' | translate }}" template="app/components/directives/wizard/step.html" >
                 <div class="row"></div>
                 <form novalidate class="col s12" name="userSportSection">
                 
