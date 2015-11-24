@@ -38,7 +38,7 @@
     "angular-translate-storage-cookie": "2.7.0",
     "angular-translate-storage-local": "2.7.0",
     "angular-ui-mask": "~1.3.0",
-    "angular-wizard": "0.5.3",
+    "angular-wizard": "~0.5.5",
     "c3-angular": "~0.7.1",
     "font-awesome": "4.3.0",
     "html5shiv": "~3.7.2",
@@ -49,8 +49,7 @@
     "respond": "~1.4.2",
     "sugar": "1.4.1",
     "toastr": "2.1.0",
-    "angular-materialize": "*",
-    "Materialize": "materialize#~0.97.3"
+    "angular-materialize": "*"
   },
   "resolutions": {
     "angular": "1.4.0-rc.2",

@@ -1,32 +1,25 @@
+/**
+ *  Welcome to your gulpfile!
+ *  The gulp tasks are splitted in several files in the gulp directory
+ *  because putting all here was really too long
+ */
+
 'use strict';
 
 var gulp = require('gulp');
-var gutil = require('gulp-util');
 var wrench = require('wrench');
+var conf = require('./gulp/conf');
 var gulpNgConfig = require('gulp-ng-config');
 var plato = require('gulp-plato');
 var jsdoc = require("gulp-jsdoc");
-
-var options = {
-    src: 'src',
-    dist: 'dist',
-    tmp: '.tmp',
-    e2e: 'e2e',
-    errorHandler: function (title) {
-        return function (err) {
-            gutil.log(gutil.colors.red('[' + title + ']'), err.toString());
-            this.emit('end');
-        };
-    },
-    wiredep: {
-        directory: 'bower_components'
-    }
-};
-
+/**
+ *  This will load all js or coffee files in the gulp directory
+ *  in order to load all gulp tasks
+ */
 wrench.readdirSyncRecursive('./gulp').filter(function (file) {
     return (/\.(js|coffee)$/i).test(file);
 }).map(function (file) {
-    require('./gulp/' + file)(options);
+    require('./gulp/' + file);
 });
 
 gulp.task('conf-dev', function () {
@@ -47,16 +40,20 @@ gulp.task('conf-prod', function () {
         .pipe(gulp.dest('./src/app'))
 });
 
+/**
+ *  Default task clean temporaries directories and launch the
+ *  main optimization build task
+ */
 gulp.task('default', ['clean', 'conf-prod'], function () {
     gulp.start('build');
 });
 
 gulp.task('jsdoc', [], function () {
-    return gulp.src(options.src + '/**/*.js')
+    return gulp.src(conf.paths.src + '/**/*.js')
         .pipe(jsdoc('./docs/jsdoc'))
 });
 gulp.task('plato', [], function () {
-    return gulp.src(options.src + '/**/*.js')
+    return gulp.src(conf.paths.src + '/**/*.js')
         .pipe(plato('docs/plato', {
             jshint: {
                 options: {

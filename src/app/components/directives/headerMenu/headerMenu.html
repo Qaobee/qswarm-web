@@ -1,5 +1,6 @@
 <!-- Not connected -->
-<nav class="top-nav " ng-class="{ 'white top-nav-trans': isActive('/'), 'green darken-1': !isActive('/')}" role="navigation" ng-hide="user" >
+<nav class="top-nav " ng-class="{ 'white top-nav-trans': isActive('/'), 'green darken-1': !isActive('/')}"
+     role="navigation" ng-hide="user">
     <div class="container">
         <div class="nav-wrapper">
 
@@ -14,30 +15,31 @@
                 <li><a href="#modalLogin" class="white-text modal-trigger"><i
                         class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}</a></li>
             </ul>
-            
+
             <ul class="right hide-on-med-and-down" ng-show="signupAvailable">
                 <li><a href="#modalSignup" class="white-text modal-trigger"><i
                         class="fa fa-sign-in right"></i>{{'navbar.signup' | translate}}</a></li>
             </ul>
-            
+
             <a href="#" data-activates="nav-mobileHC" class="button-collapse grey-text text-lighten-1"><i
                     class="mdi-navigation-menu"></i></a>
 
             <ul id="nav-mobileHC" class="side-nav">
-            	<li ng-show="signupAvailable"><a href="#modalSignup" class="grey-text text-lighten-1 modal-trigger"><span
+                <li ng-show="signupAvailable"><a href="#modalSignup"
+                                                 class="grey-text text-lighten-1 modal-trigger"><span
                         class="fa fa-sign-in"></span> {{'navbar.signup' | translate}}</a></li>
                 <li><a href="#modalLogin" class="grey-text text-lighten-1 modal-trigger"><span
                         class="fa fa-sign-in"></span> {{'navbar.connect' | translate}}</a></li>
-               <li><a href="https://twitter.com/Qaobee"
-                      target="_blank"
-                      class="black-text"><i
-                       class="fa fa-twitter-square fa-2x"></i></a></li>
+                <li><a href="https://twitter.com/Qaobee"
+                       target="_blank"
+                       class="black-text"><i
+                        class="fa fa-twitter-square fa-2x"></i></a></li>
             </ul>
 
         </div>
     </div>
 </nav>
-            <!-- Connected First header-->
+<!-- Connected First header-->
 <div class="navbar-fixed" ng-if="user && !user.account.firstConnexion">
     <nav class="top-nav light-green lighten-1 visible-nav" role="navigation">
         <div class="container">
@@ -87,7 +89,8 @@
                     -->
                     <li><a href="#/private/mainStats" class="white-text light"><i class="fa fa-bar-chart left"></i>
                         {{'headerMenu.stats' | translate }}</a></li>
-                    <li><a href="#/private/effective/{{user.effectiveDefault}}" class="white-text light"><i class="mdi-social-people left"></i>
+                    <li><a href="#/private/effective/{{user.effectiveDefault}}" class="white-text light"><i
+                            class="mdi-social-people left"></i>
                         {{'headerMenu.effective' | translate }}</a></li>
                     <!--
                     <li><a href="#/private/" class="white-text light"><i class="mdi-image-timer left"></i>
@@ -96,7 +99,8 @@
                     <li><a href="#/private/" class="white-text light"><i class="fa fa-trophy left"></i>
                         {{'headerMenu.championship' | translate }}</a></li>
                     -->
-                    <li><a href="#/private/agenda/{{user.effectiveDefault}}" class="white-text light"><i class="fa fa-calendar left"></i>
+                    <li><a href="#/private/agenda/{{user.effectiveDefault}}" class="white-text light"><i
+                            class="fa fa-calendar left"></i>
                         {{'headerMenu.calendar' | translate }}</a></li>
                     <li class="divider"></li>
                     <li><a ng-click="logoff()" class="white-text light"><i class="fa fa-power-off left"></i>
@@ -121,7 +125,8 @@
                     <li><a href="#/private/mainStats" class="light"><i class="fa fa-bar-chart left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.stats"></span></a>
                     </li>
-                    <li><a href="#/private/effective/{{user.effectiveDefault}}" class="light"><i class="mdi-social-people left"></i>
+                    <li><a href="#/private/effective/{{user.effectiveDefault}}" class="light"><i
+                            class="mdi-social-people left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.effective"></span></a>
                     </li>
                     <!--
@@ -133,7 +138,8 @@
                         <span class="hide-on-med-and-down" translate="headerMenu.championship"></span></a>
                     </li>
                     -->
-                    <li><a href="#/private/agenda/{{user.effectiveDefault}}" class="light"><i class="fa fa-calendar left"></i>
+                    <li><a href="#/private/agenda/{{user.effectiveDefault}}" class="light"><i
+                            class="fa fa-calendar left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.calendar"></span></a>
                     </li>
                 </ul>
@@ -147,20 +153,21 @@
     <nav class="top-nav light-green lighten-1 visible-nav" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
-	            <a href="/#/" class="hide-on-med-and-down brand-logo"><img src="assets/images/logo-mini.png" height="30px"/></a>
-	            <ul class="right hide-on-med-and-down">
-	                <li><a href="https://twitter.com/Qaobee"
-	                       target="_blank"
-	                       class="white-text"><i
-	                        class="fa fa-twitter-square fa-2x"></i></a></li>
-	            </ul>
-	            <a class="brand-logo white-text center">
-	            	<span class="hide-on-med-and-down fa fa-sign-in"></span>
-            		<span translate="headerSignup.label"></span>
+                <a href="/#/" class="hide-on-med-and-down brand-logo"><img src="assets/images/logo-mini.png"
+                                                                           height="30px"/></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="https://twitter.com/Qaobee"
+                           target="_blank"
+                           class="white-text"><i
+                            class="fa fa-twitter-square fa-2x"></i></a></li>
+                </ul>
+                <a class="brand-logo white-text center">
+                    <span class="hide-on-med-and-down fa fa-sign-in"></span>
+                    <span translate="headerSignup.label"></span>
                 </a>
-			</div>
-		</div>
-	</nav>
+            </div>
+        </div>
+    </nav>
 </div>
 
 <!-- Modal login -->
@@ -175,22 +182,24 @@
         <div class="modal-content grey lighten-3 ">
             <div class="row">
                 <div class="input-field col s12">
-                    <input placeholder="{{'content.login.label.login' | translate }}" id="login" type="text"
+                    <input id="modal-login" type="text"
                            class="validate" ng-model="signin.login" required>
-                    <label for="login">{{'content.login.label.login' | translate }}</label>
+                    <label for="modal-login">{{'content.login.label.login' | translate }}</label>
                 </div>
                 <div class="input-field col s12">
-                    <input placeholder="{{'content.login.label.password' | translate }}" id="password" type="password"
+                    <input id="modal-password" type="password"
                            class="validate" ng-model="signin.passwd" required>
-                    <label for="password">{{'content.login.label.password' | translate }}</label>
+                    <label for="modal-password">{{'content.login.label.password' | translate }}</label>
                 </div>
             </div>
         </div>
 
         <div class="row center">
             <div class="col s12">
-                <a href="#/" class="modal-action modal-close waves-effect waves-red btn red" translate="commons.buttons.cancel"></a>
-                <button type="submit" class="btn waves-effect waves-red  green darken-1" translate="commons.buttons.validate"/>
+                <a href="#/" class="modal-action modal-close waves-effect waves-red btn red"
+                   translate="commons.buttons.cancel"></a>
+                <button type="submit" class="btn waves-effect waves-red  green darken-1"
+                        translate="commons.buttons.validate"/>
             </div>
         </div>
     </form>
@@ -207,7 +216,7 @@
     <form class="col s12" ng-submit="usernameTest()">
         <div class="modal-content grey lighten-3 ">
             <div class="row">
-            	<div class="input-field col s6">
+                <div class="input-field col s6">
                     <input placeholder="{{'content.signup.label.firstname' | translate }}" id="firstname" type="text"
                            class="validate" ng-model="signup.firstname" required>
                     <label for="firstname">{{'content.signup.label.firstname' | translate }}</label>
@@ -233,42 +242,47 @@
                     <label for="password">{{'content.signup.label.password' | translate }}</label>
                 </div>
                 <div class="input-field col s6">
-                    <input placeholder="{{'content.signup.label.passwordConfirm' | translate }}" id="passwordConfirm" type="password"
+                    <input placeholder="{{'content.signup.label.passwordConfirm' | translate }}" id="passwordConfirm"
+                           type="password"
                            class="validate" ng-model="passwdConfirm" required>
                     <label for="password">{{'content.signup.label.passwordConfirm' | translate }}</label>
                 </div>
                 <div class="input-field col s6">
-                	<div re-captcha ng-model="signup.captcha"></div>
+                    <div re-captcha ng-model="signup.captcha"></div>
                 </div>
             </div>
         </div>
 
-        <div class="modal-footer">
-            <button type="submit" class="waves-effect waves-red btn green darken-1" translate="commons.buttons.validate"/>
-            <a href="" ng-click="cancelSignup()" class="modal-action modal-close waves-effect waves-red btn red">{{'commons.buttons.cancel' |
-                translate}}</a>
+        <div class="row center">
+            <div class="col s12">
+                <a href="" ng-click="cancelSignup()" class="modal-action modal-close waves-effect waves-red btn red"
+                   translate="commons.buttons.cancel"></a>
+                <button type="submit" class="btn waves-effect waves-red  green darken-1"
+                        translate="commons.buttons.validate"/>
+            </div>
         </div>
     </form>
 </div>
 
 <!-- Modal SignUp OK ! -->
 <div id="modalSignupOK" class="modal">
-	<div class="modal-header center-align ">
+    <div class="modal-header center-align ">
         <h5>
             <span class="fa fa-sign-in"></span>
             <span translate="content.signup.label.title"></span>
         </h5>
     </div>
     <div class="modal-content grey lighten-3 ">
-		<div class="row">
-			<div class="col s12">
-			{{'modalSignupOk.line1' | translate}}<br>
-			{{'modalSignupOk.line2' | translate}}<br>
-			{{'modalSignupOk.line3' | translate}}<br>
-			</div>
-		</div>
-	</div>
-	<div class="modal-footer">
-		<a href="" ng-click="closeSignupOk()" class="modal-action modal-closewaves-effect waves-red btn green darken-1">{{'commons.buttons.close' | translate}}</a>
-	</div>
+        <div class="row">
+            <div class="col s12">
+                {{'modalSignupOk.line1' | translate}}<br>
+                {{'modalSignupOk.line2' | translate}}<br>
+                {{'modalSignupOk.line3' | translate}}<br>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="" ng-click="closeSignupOk()" class="modal-action modal-closewaves-effect waves-red btn green darken-1">{{'commons.buttons.close'
+            | translate}}</a>
+    </div>
 </div>

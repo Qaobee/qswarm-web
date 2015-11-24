@@ -51,6 +51,8 @@
             $scope.temp.createStructure = false;
             $scope.temp.referencialId = -1;
             
+            $scope.temp.skipSportSection = true;
+                        
             $scope.valuesStructures = [{
             	'_id': -1, 
             	label: $filter('translate')('structureSection.list.empty'), 
@@ -62,7 +64,18 @@
                     $location.path('/signup/error');
                 } else {
                     $scope.signup = data;
-                    $scope.signup.birthdate = new Date($scope.signup.birthdate);
+                    if($scope.signup.birthdate!=null && $scope.signup.birthdate!=0) {
+                    	$scope.signup.birthdateInput = new Date(moment($scope.signup.birthdate));
+                    }
+                    
+//                    if (!angular.isUndefined(data.account) && !angular.isUndefined(data.account.listPlan[0]) &&
+//                    		!angular.isUndefined(data.account.listPlan[0].activity) && data.account.listPlan[0].activity!=null && 
+//                    		!angular.isUndefined(data.account.listPlan[0].activity._id) && 
+//                    		data.account.listPlan[0].activity._id !== null) {
+//                    	$scope.temp.skipSportSection = true;
+//                    } else {
+//                    	$scope.temp.skipSportSection = false;
+//                    }
                     
                     // Déclaration du user en mode connecté
                     $window.sessionStorage.qaobeesession = data.account.token;
@@ -94,7 +107,7 @@
                     toastr.warning($filter('translate')('civilSection.ph.genderMandatory'));
                     validateOk = false;
                 }
-                if ($scope.signup.birthdate === null || $scope.signup.birthdate === 0) {
+                if (angular.isUndefined($scope.signup.birthdateInput) || $scope.signup.birthdateInput === null || $scope.signup.birthdateInput === 0) {
                     toastr.warning($filter('translate')('civilSection.ph.birthdateMandatory'));
                     validateOk = false;
                 }
@@ -118,7 +131,7 @@
                 }
 
                 if (validateOk) {
-                	$scope.signup.birthdate = Date.parse($scope.signup.birthdate);
+                	$scope.signup.birthdate = Date.parse($scope.signup.birthdateInput);
                     WizardHandler.wizard().next();
                 }
             };
@@ -350,7 +363,6 @@
 	                	}
 	                });
                 }
-                $log.debug(catAge);
 
                 signupRestAPI.finalizeSignup(user, $routeParams.code, $scope.structure, $scope.signup.account.listPlan[0].activity._id, catAge).success(function (data) {
                     if (false === data.status) {
@@ -381,11 +393,14 @@
 
         })
 
-        .controller('SignupEndCtrl', function ($scope, $translatePartialLoader, $location) {
+        .controller('SignupEndCtrl', function ($scope, $rootScope, $translatePartialLoader, $location) {
             $translatePartialLoader.addPart('user');
 
+            $rootScope.user = $scope.signup;
+            $scope.user = $scope.signup;
+            
             $scope.goHome = function () {
-                $location.path('/');
+                $location.path('/private');
             };
         })
 

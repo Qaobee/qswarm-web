@@ -80,7 +80,7 @@
 								</div>
 								<div class="input-field col m12 s6">
 									<div class="hide-on-med-and-down"><br/></div>
-									<input placeholder="{{'userLabels.userBirthDate' | translate }}" ng-model="signup.birthdate" id="userBirthDate" type="date" class="validate" required>
+									<input placeholder="{{'civilSection.label.userBirthDate' | translate }}" ng-model="signup.birthdateInput" id="userBirthDate" type="date" class="validate" required>
 								</div>
 							</div>
 						</div>
@@ -146,7 +146,7 @@
             
             
             <!-- step choix du sport -->
-            <wz-step title="{{'sportSection.label.userSignupSportSection' | translate }}" template="app/components/directives/wizard/step.html">
+            <wz-step title="{{'sportSection.label.userSignupSportSection' | translate }}" template="app/components/directives/wizard/step.html" >
                 <div class="row"></div>
                 <form novalidate class="col s12" name="userSportSection">
                 
@@ -358,9 +358,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal-footer">
-		<a href="" ng-click="cancelSignup()"   class="modal-action modal-close waves-effect waves-red btn green darken-1">{{'modalSignupCancel.button.yes' | translate}}</a>&nbsp; 
-        <a href="" ng-click="closeCancelModal()" class="modal-action modal-close waves-effect waves-red btn red">{{'modalSignupCancel.button.no' | translate}}</a>
+	<div class="center">
+		<div class="col s12">
+			<a href="" ng-click="cancelSignup()" class="modal-action modal-close waves-effect waves-red btn green darken-1" translate="modalSignupCancel.button.yes"></a>
+			<a href="" ng-click="closeCancelModal()" class="modal-action modal-close waves-effect waves-red btn red" translate="modalSignupCancel.button.no"></a>
+		</div>
 	</div>
 </div>
 <!-- body end-->
