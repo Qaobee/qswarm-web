@@ -34,7 +34,7 @@
                         </div>
                         <div class="input-field col s8">
                             <input input-date
-    type="date"
+    type="text"
     name="created"
     id="EventStartDate"
     ng-model="startDate"
@@ -51,6 +51,7 @@
     close="close"
     select-years="15"
     placeholder="{{'commons.format.date.label' | translate }}"
+    on-set="onSet()"
      />
                            
                         </div>

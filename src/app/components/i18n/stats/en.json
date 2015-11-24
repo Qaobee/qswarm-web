@@ -24,6 +24,13 @@
                 "right-wingman": "Right-wingman",
                 "left-wingman": "Left-wingman"
             }
-        }
+        },
+        "efficiently" : {
+            "efficientlyTotal": "Efficacité Globale",
+            "efficiently9m" : "9 mètres",
+            "efficiently6m" : "6 mètres",
+            "efficiently7m" : "7 mètres"
+        },
+        "typoGoal" : "Typologie des buts"
     }
 }

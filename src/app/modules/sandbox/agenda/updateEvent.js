@@ -100,6 +100,9 @@
         $scope.optionsAdr = null;
         $scope.detailsAdr = '';
         
+        $scope.onSet = function () {
+            console.log($scope.startDate);
+        };
         
         /* Retrieve list of team of effective */
         $scope.getListTeamHome = function () {
@@ -113,7 +116,7 @@
         }; 
         
         /* Retrieve list of adversary of effective */
-        $scope.getListTeamAdversary = function (teamId) {
+        $scope.getListAdversary = function (teamId) {
             teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true', teamId).success(function (data) {
                 $scope.listTeamAdversary = data.sortBy(function(n) {
                     return n.label; 
@@ -165,7 +168,8 @@
                 if(angular.isDefined($scope.event.startDate)) {
                     
                     $scope.startDate = new Date(moment($scope.event.startDate));
-                    $scope.startHours = $scope.startDate;
+                    $scope.startHours = new Date(moment($scope.event.startDate).format('hh:mm'));
+                    $log.debug($scope.startHours);
                 }
                 
                 if($scope.event.link.type==='training'  || $scope.event.link.type==='other') {
@@ -191,8 +195,7 @@
                         $scope.teamId = $scope.event.participants.teamVisitor.id;
                         $scope.adversaryId = $scope.event.participants.teamHome.id;
                     }
-                    $log.debug($scope.adversaryId);
-                    $scope.getListTeamAdversary($scope.teamId);
+                    $scope.getListAdversary($scope.teamId);
                 }
                 
             });

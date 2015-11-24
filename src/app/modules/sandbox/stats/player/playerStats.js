@@ -36,7 +36,7 @@
 /**
  * @class qaobee.modules.home.HomeControler
  */
-    .controller('PlayerStats', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
+    .controller('PlayerStats', function ($timeout, $log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
                                             effectiveRestAPI, personRestAPI, eventsRestAPI, statsRestAPI, userRestAPI) {
         $translatePartialLoader.addPart('home');
         $translatePartialLoader.addPart('stats');
@@ -47,12 +47,14 @@
         $scope.periodicity = 'month';
         $scope.periodicityActive = {};
         
+        
+        
         // return button
         $scope.doTheBack = function() {
             $window.history.back();
         };
         
-        //Initialization event
+        //Initialization owner Object
         $scope.player = {};
         
         /* get player */
@@ -66,9 +68,9 @@
         };
         
         /* get statistic for one player */
-        $scope.getStatsPlayer = function (playerId, startDate, endDate) {
+        $scope.getStats = function (ownerId, startDate, endDate) {
             var ownersId = [];
-            ownersId.push(playerId);
+            ownersId.push(ownerId);
             
             var search = {
                 listIndicators: ['goalScored', 'originShootAtt'],
@@ -81,10 +83,12 @@
 
             statsRestAPI.getStatGroupBy(search).success(function (data) {
                 if (angular.isDefined(data[0]) && data !== null) {
-                    $log.debug(data[0].value/data[1].value);
+                    $scope.efficaciteGlobal = (data[0].value/data[1].value)*100;
+                    
                 } else {
-                    return;
+                    $scope.efficaciteGlobal = O;
                 }
+                $log.debug($scope.efficaciteGlobal);
             });
         };
         
@@ -101,7 +105,7 @@
                 endDate: end,
             };
             
-            $scope.getStatsPlayer($scope.player._id, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
+            $scope.getStats($scope.player._id, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
         };
         
         /* Previous month */
@@ -116,7 +120,7 @@
                 endDate: end,
             };
             
-            $scope.getStatsPlayer($scope.player._id, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
+            $scope.getStats($scope.player._id, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
         };
         
         /* Next month */
@@ -131,7 +135,7 @@
                 endDate: end,
             };
             
-            $scope.getStatsPlayer($scope.player._id, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
+            $scope.getStats($scope.player._id, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
         };
         
         /* generate calendar by quarter */
@@ -181,7 +185,7 @@
             /* Current quarter */
             $scope.periodicityActive = quarter;
             
-            $scope.getStatsPlayer($scope.player._id, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
+            $scope.getStats($scope.player._id, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
         };
         
         /* Previous quarter */
@@ -196,7 +200,7 @@
                 endDate: end,
             };
             
-            $scope.getStatsPlayer($scope.player._id, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
+            $scope.getStats($scope.player._id, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
         };
         
         /* Next quarter */
@@ -211,7 +215,7 @@
                 endDate: end,
             };
             
-            $scope.getStatsPlayer($scope.player._id, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
+            $scope.getStats($scope.player._id, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
         };
         
         /* generate calendar by season */
@@ -224,7 +228,7 @@
                 endDate: moment($scope.meta.season.endDate)                   
             };
             
-            $scope.getStatsPlayer($scope.player._id, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
+            $scope.getStats($scope.player._id, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
         };
         
         /* Previous season */
@@ -239,7 +243,7 @@
                 endDate: end,
             };        
             
-            $scope.getStatsPlayer($scope.player._id, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
+            $scope.getStats($scope.player._id, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
         };
         
         /* Next season */
@@ -254,7 +258,7 @@
                 endDate: end,
             };
             
-            $scope.getStatsPlayer($scope.player._id, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
+            $scope.getStats($scope.player._id, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
         };
         
         

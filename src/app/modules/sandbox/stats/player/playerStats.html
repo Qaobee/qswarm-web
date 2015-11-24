@@ -89,11 +89,11 @@
         <div class="col m6 s12">
             <div class="card-panel blue-grey-text text-darken-2">
                 <div class="card-content center">
-                    <span class="card-title"><h5>Efficacité Globale</h5></span>
+                    <span class="card-title"><h5>{{'stats.efficiently.efficientlyTotal' | translate }}</h5></span>
                 </div>
                 <div class="card-content">
-                    <c3chart bindto-id="gauge-plot1-chart">
-                        <chart-column column-id="Data 1" column-values="70" column-type="gauge" column-color="#66bb6a"/>
+                    <c3chart bindto-id="gaugeEfficaciteGlobal">
+                        <chart-column column-id="effiGlobal" column-values="{{efficaciteGlobal}}" column-type="gauge" column-color="#66bb6a"/>
                         <chart-gauge min="0" max="100" width="39"/>
                     </c3chart>
                 </div>
@@ -102,11 +102,11 @@
         <div class="col m2 s12">
             <div class="card-panel blue-grey-text text-darken-2">
                 <div class="card-content center">
-                    <span class="card-title"><h5>9 mètres</h5></span>
+                    <span class="card-title"><h5>{{'stats.efficiently.efficiently9m' | translate }}</h5></span>
                 </div>
                 <div class="card-content">
                     <c3chart bindto-id="gauge-plot2-chart">
-                        <chart-column column-id="Data 1" column-values="45" column-type="gauge" column-color="#ef5350"/>
+                        <chart-column column-id="efficacite9m" column-values="stats.efficacite9m" column-type="gauge" column-color="#ef5350"/>
                         <chart-gauge min="0" max="100" width="30"/>
                     </c3chart>
                 </div>
@@ -115,11 +115,11 @@
         <div class="col m2 s12">
             <div class="card-panel blue-grey-text text-darken-2">
                 <div class="card-content center">
-                    <span class="card-title"><h5>6 mètres</h5></span>
+                    <span class="card-title"><h5>{{'stats.efficiently.efficiently6m' | translate }}</h5></span>
                 </div>
                 <div class="card-content">
                     <c3chart bindto-id="gauge-plot3-chart">
-                        <chart-column column-id="Data 1" column-values="90" column-type="gauge" column-color="#66bb6a"/>
+                        <chart-column column-id="efficacite6m" column-values="stats.efficacite6m" column-type="gauge" column-color="#66bb6a"/>
                         <chart-gauge min="0" max="100" width="30"/>
                     </c3chart>
                 </div>
@@ -128,11 +128,11 @@
         <div class="col m2 s12">
             <div class="card-panel blue-grey-text text-darken-2">
                 <div class="card-content center">
-                    <span class="card-title"><h5>7 mètres</h5></span>
+                    <span class="card-title"><h5>{{'stats.efficiently.efficiently7m' | translate }}</h5></span>
                 </div>
                 <div class="card-content">
                     <c3chart bindto-id="gauge-plot4-chart">
-                        <chart-column column-id="Data 1" column-values="85" column-type="gauge" column-color="#66bb6a"/>
+                        <chart-column column-id="efficacite7m" column-values="stats.efficacite7m" column-type="gauge" column-color="#66bb6a"/>
                         <chart-gauge min="0" max="100" width="30"/>
                     </c3chart>
                 </div>
@@ -144,7 +144,7 @@
             <div class="col m4 s12">
                 <div class="card-panel blue-grey-text text-darken-2">
                     <div class="card-content center">
-                        <span class="card-title"><h5>Typologie des buts</h5></span>
+                        <span class="card-title"><h5>{{'stats.typoGoal' | translate }}</h5></span>
                     </div>
                     <div class="card-content">
                         <c3chart bindto-id="donut-plot1-chart">
