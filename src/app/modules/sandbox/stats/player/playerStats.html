@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-cloack>
 
     <!-- space between header menu and body-->
     <div class="row s12"></div>
@@ -7,18 +7,22 @@
     <div class="row">
         <div class="card">
             <div class="col s12 center">&nbsp;</div>
-            
+
             <!-- Periodicity selector -->
-            <div class="col m3 s1 center"><h5 class="red-text text-lighten-1">{{player.firstname}} {{player.name}}</h5></div>
+            <div class="col m3 s1 center"><h5 class="red-text text-lighten-1">{{player.firstname}} {{player.name}}</h5>
+            </div>
 
             <div class="col m1 s4 center red lighten-1" style="margin:1px">
-                <a ng-click="getCurrentMonth()" class="white-text"><h6 class="small">{{'stats.periodicity.month' | translate }}</h6></a>
+                <a ng-click="getCurrentMonth()" class="white-text"><h6 class="small">{{'stats.periodicity.month' |
+                    translate }}</h6></a>
             </div>
             <div class="col m1 s4 center red lighten-1" style="margin:1px">
-                <a ng-click="getCurrentQuarter()" class="white-text"><h6 class="small">{{'stats.periodicity.quarter' | translate }}</h6></a>
+                <a ng-click="getCurrentQuarter()" class="white-text"><h6 class="small">{{'stats.periodicity.quarter' |
+                    translate }}</h6></a>
             </div>
             <div class="col m1 s4 center red lighten-1" style="margin:1px">
-                <a ng-click="getCurrentSeason()" class="white-text"><h6 class="small">{{'stats.periodicity.season' | translate }}</h6></a>
+                <a ng-click="getCurrentSeason()" class="white-text"><h6 class="small">{{'stats.periodicity.season' |
+                    translate }}</h6></a>
             </div>
 
             <div class="col m1 s1 center">&nbsp;</div>
@@ -69,17 +73,20 @@
             </div>
 
             <div class="col m1 s1 center">&nbsp;</div>
-            
+
         </div>
     </div>
     <!-- Filter Zone end-->
-    
+
     <div class="row grey lighten-4">
         <div class="col s12">
             <ul class="tabs" tabs>
-                <li class="tab col s4 "><a href="#shoot" class="blue-grey darken-2 white-text">{{'stats.labelTab.shoot' | translate }}</a></li>
-                <li class="tab col s4 "><a href="#actions" class="blue-grey darken-2 white-text">{{'stats.labelTab.actions' | translate }}</a></li>
-                <li class="tab col s4 "><a href="#sanctions" class="blue-grey darken-2 white-text">{{'stats.labelTab.sanctions' | translate }}</a></li>
+                <li class="tab col s4 "><a href="#shoot" class="blue-grey darken-2 white-text">{{'stats.labelTab.shoot'
+                    | translate }}</a></li>
+                <li class="tab col s4 "><a href="#actions" class="blue-grey darken-2 white-text">{{'stats.labelTab.actions'
+                    | translate }}</a></li>
+                <li class="tab col s4 "><a href="#sanctions" class="blue-grey darken-2 white-text">{{'stats.labelTab.sanctions'
+                    | translate }}</a></li>
             </ul>
         </div>
     </div>
@@ -89,12 +96,16 @@
         <div class="col m6 s12">
             <div class="card-panel blue-grey-text text-darken-2">
                 <div class="card-content center">
-                    <span class="card-title"><h5>{{'stats.efficiently.efficientlyTotal' | translate }}</h5></span>
+                    <span class="card-title"><h5 translate="stats.efficiently.efficientlyTotal"></h5></span>
                 </div>
                 <div class="card-content">
-                    <c3chart bindto-id="gaugeEfficaciteGlobal">
-                        <chart-column column-id="effiGlobal" column-values="{{efficaciteGlobal}}" column-type="gauge" column-color="#66bb6a"/>
-                        <chart-gauge min="0" max="100" width="39"/>
+                    <c3chart bindto-id="gaugeEfficaciteGlobal"
+                             chart-columns="effCol"
+                             chart-data="chartData">
+                       <!-- <chart-column column-id="gaugeEfficaciteGlobal"
+                                      column-values="{{efficaciteGlobal + ''}}"
+                                      column-type="gauge" column-color="#66bb6a"/>
+                        <chart-gauge min="0" max="100" width="39"/> -->
                     </c3chart>
                 </div>
             </div>
@@ -106,7 +117,8 @@
                 </div>
                 <div class="card-content">
                     <c3chart bindto-id="gauge-plot2-chart">
-                        <chart-column column-id="efficacite9m" column-values="stats.efficacite9m" column-type="gauge" column-color="#ef5350"/>
+                        <chart-column column-id="efficacite9m" column-values="stats.efficacite9m" column-type="gauge"
+                                      column-color="#ef5350"/>
                         <chart-gauge min="0" max="100" width="30"/>
                     </c3chart>
                 </div>
@@ -119,7 +131,8 @@
                 </div>
                 <div class="card-content">
                     <c3chart bindto-id="gauge-plot3-chart">
-                        <chart-column column-id="efficacite6m" column-values="stats.efficacite6m" column-type="gauge" column-color="#66bb6a"/>
+                        <chart-column column-id="efficacite6m" column-values="stats.efficacite6m" column-type="gauge"
+                                      column-color="#66bb6a"/>
                         <chart-gauge min="0" max="100" width="30"/>
                     </c3chart>
                 </div>
@@ -132,68 +145,82 @@
                 </div>
                 <div class="card-content">
                     <c3chart bindto-id="gauge-plot4-chart">
-                        <chart-column column-id="efficacite7m" column-values="stats.efficacite7m" column-type="gauge" column-color="#66bb6a"/>
+                        <chart-column column-id="efficacite7m" column-values="stats.efficacite7m" column-type="gauge"
+                                      column-color="#66bb6a"/>
                         <chart-gauge min="0" max="100" width="30"/>
                     </c3chart>
                 </div>
             </div>
         </div>
         <!-- Stats shoot efficacite end -->
-        
+
         <!-- Stats shoot origine Start -->
-            <div class="col m4 s12">
-                <div class="card-panel blue-grey-text text-darken-2">
-                    <div class="card-content center">
-                        <span class="card-title"><h5>{{'stats.typoGoal' | translate }}</h5></span>
-                    </div>
-                    <div class="card-content">
-                        <c3chart bindto-id="donut-plot1-chart">
-                            <chart-column column-id="9 mètres" column-values="35" column-type="donut" column-color="#66bb6a"/>
-                            <chart-column column-id="6 mètres" column-values="75" column-type="donut" column-color="#ffb74d"/>
-                            <chart-column column-id="7 mètres" column-values="50" column-type="donut" column-color="#42a5f5"/>
+        <div class="col m4 s12">
+            <div class="card-panel blue-grey-text text-darken-2">
+                <div class="card-content center">
+                    <span class="card-title"><h5>{{'stats.typoGoal' | translate }}</h5></span>
+                </div>
+                <div class="card-content">
+                    <c3chart bindto-id="donut-plot1-chart">
+                        <chart-column column-id="9 mètres" column-values="35" column-type="donut"
+                                      column-color="#66bb6a"/>
+                        <chart-column column-id="6 mètres" column-values="75" column-type="donut"
+                                      column-color="#ffb74d"/>
+                        <chart-column column-id="7 mètres" column-values="50" column-type="donut"
+                                      column-color="#42a5f5"/>
 
-                        </c3chart>
-                    </div>
+                    </c3chart>
                 </div>
             </div>
+        </div>
 
-            <div class="col m4 s12">
-                <div class="card-panel blue-grey-text text-darken-2">
-                    <div class="card-content center">
-                        <span class="card-title"><h5>Origine des shoots</h5></span>
-                    </div>
-                    <div class="card-content">
-                        <c3chart bindto-id="originShoot" show-labels="true" enable-zoom="true">
-                            <chart-column column-id="data1" column-name="data1" column-color="#66bb6a" column-values="30,200,100,400,150,250,45,2" column-type="bar"/>
-                        </c3chart>
-                    </div>
+        <div class="col m4 s12">
+            <div class="card-panel blue-grey-text text-darken-2">
+                <div class="card-content center">
+                    <span class="card-title"><h5>Origine des shoots</h5></span>
+                </div>
+                <div class="card-content">
+                    <c3chart bindto-id="originShoot" show-labels="true" enable-zoom="true">
+                        <chart-column column-id="data1" column-name="data1" column-color="#66bb6a"
+                                      column-values="30,200,100,400,150,250,45,2" column-type="bar"/>
+                    </c3chart>
                 </div>
             </div>
+        </div>
 
-            <div class="col m4 s12">
-                <div class="card-panel blue-grey-text text-darken-2">
-                    <div class="card-content center">
-                        <span class="card-title"><h5>Impact des shoots</h5></span>
-                    </div>
-                    <div class="card-content">
-                        <c3chart bindto-id="impactShoot">
+        <div class="col m4 s12">
+            <div class="card-panel blue-grey-text text-darken-2">
+                <div class="card-content center">
+                    <span class="card-title"><h5>Impact des shoots</h5></span>
+                </div>
+                <div class="card-content">
+                    <c3chart bindto-id="impactShoot">
 
-                            <chart-column column-id="Haut Gauche" column-values="35" column-type="donut" column-color="#66bb6a"/>
-                            <chart-column column-id="Haut Centre" column-values="75" column-type="donut" column-color="#ffb74d"/>
-                            <chart-column column-id="Haut Droite" column-values="50" column-type="donut" column-color="#42a5f5"/>
-                            <chart-column column-id="Milieu Gauche" column-values="45" column-type="donut" column-color="#66bb6a"/>
-                            <chart-column column-id="Milieu Centre" column-values="100" column-type="donut" column-color="#ffb74d"/>
-                            <chart-column column-id="Milieu Droite" column-values="35" column-type="donut" column-color="#42a5f5"/>
-                            <chart-column column-id="Bas Gauche" column-values="5" column-type="donut" column-color="#66bb6a"/>
-                            <chart-column column-id="Bas Centre" column-values="10" column-type="donut" column-color="#ffb74d"/>
-                            <chart-column column-id="Bas Droite" column-values="25" column-type="donut" column-color="#42a5f5"/>
-                        </c3chart>
-                    </div>
+                        <chart-column column-id="Haut Gauche" column-values="35" column-type="donut"
+                                      column-color="#66bb6a"/>
+                        <chart-column column-id="Haut Centre" column-values="75" column-type="donut"
+                                      column-color="#ffb74d"/>
+                        <chart-column column-id="Haut Droite" column-values="50" column-type="donut"
+                                      column-color="#42a5f5"/>
+                        <chart-column column-id="Milieu Gauche" column-values="45" column-type="donut"
+                                      column-color="#66bb6a"/>
+                        <chart-column column-id="Milieu Centre" column-values="100" column-type="donut"
+                                      column-color="#ffb74d"/>
+                        <chart-column column-id="Milieu Droite" column-values="35" column-type="donut"
+                                      column-color="#42a5f5"/>
+                        <chart-column column-id="Bas Gauche" column-values="5" column-type="donut"
+                                      column-color="#66bb6a"/>
+                        <chart-column column-id="Bas Centre" column-values="10" column-type="donut"
+                                      column-color="#ffb74d"/>
+                        <chart-column column-id="Bas Droite" column-values="25" column-type="donut"
+                                      column-color="#42a5f5"/>
+                    </c3chart>
                 </div>
             </div>
+        </div>
 
         <!-- Stats shoot origine End -->
-        
+
         <!-- Stats shoot origine Start -->
         <div class="col s12">
             <div class="card-panel blue-grey-text text-darken-2">
@@ -202,23 +229,24 @@
                 </div>
                 <div class="card-content">
                     <div class="card-content">
-                    <c3chart bindto-id="time" show-labels="true">
-                        <chart-column column-id="data1" column-name="data1" column-color="#42a5f5" column-values="30,20,10,40,15,25" column-type="bar"/>
-                    </c3chart>
-                </div>
+                        <c3chart bindto-id="time" show-labels="true">
+                            <chart-column column-id="data1" column-name="data1" column-color="#42a5f5"
+                                          column-values="30,20,10,40,15,25" column-type="bar"/>
+                        </c3chart>
+                    </div>
                 </div>
             </div>
         </div>
         <!-- Stats shoot origine End -->
     </div>
     <!-- Stats shoot end -->
-    
+
     <!-- Stats actions Start -->
     <div class="row" id="actions">
         <div class="blue-grey-text text-darken-2 center"><h5>Actions offensives</h5></div>
     </div>
     <!-- Stats actions end -->
-    
+
     <!-- Stats actions Start -->
     <div class="row" id="sanctions">
         <div class="blue-grey-text text-darken-2 center"><h5>Sanctions</h5></div>
