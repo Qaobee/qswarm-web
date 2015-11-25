@@ -77,7 +77,8 @@
 	    "ph" : {
 	    	"structureMandatory" : "Un club doit être choisi",
 	    	"createLabelMandatory" : "Nom du club à créer obligatoire",
-	    	"createAddressMandatory" : "Adresse du club à créer obligatoire"
+	    	"createAddressMandatory" : "Adresse du club à créer obligatoire",
+	    	"categoryAgeMandatory" : "La catégorie d'âge est obligatoire"
 	    }
 	},
 	"sumupSection" : {

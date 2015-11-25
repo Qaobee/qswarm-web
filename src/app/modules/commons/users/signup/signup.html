@@ -269,8 +269,8 @@
                     	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     	<div class="col input-field m3 s6"><label>{{'structureSection.label.userCategoryAge' | translate}} <span class="red-text text-lighten-1">*</span></label></div>
                     	<div class="input-field col s3">
-                            <select name="categoryAgeSelect" ng-model="signup.categoryAge" id="userCaegoryAgeSelect" class="browser-default blue-grey-text text-darken-1"
-                            	ng-options="cat.label for cat in valuesCategoryAge track by cat.code">
+                            <select name="categoryAgeSelect" ng-model="signup.categoryAge" id="userCategoryAgeSelect" class="browser-default blue-grey-text text-darken-1"
+                            	ng-options="cat.label for cat in valuesCategoryAge track by cat._id">
                             </select>
                         </div>
                     	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
@@ -310,7 +310,7 @@
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col s1">
-                            <img ng-src="assets/images/activity/{{signup.account.listPlan[0].activity._id}}.jpg"/><br/>
+                            <img ng-src="assets/images/activity/{{signup.account.listPlan[0].activity._id}}.jpg" width="80"/><br/>
                        </div>
                         <div class="input-field col s5">
                         	<div ng-repeat="data in structuresResult" ng-show="data._id==structure.referencialId">

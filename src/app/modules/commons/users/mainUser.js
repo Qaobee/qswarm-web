@@ -67,6 +67,7 @@
                     if($scope.signup.birthdate!=null && $scope.signup.birthdate!=0) {
                     	$scope.signup.birthdateInput = new Date(moment($scope.signup.birthdate));
                     }
+                    $scope.signup.categoryAge = '';
                     
 //                    if (!angular.isUndefined(data.account) && !angular.isUndefined(data.account.listPlan[0]) &&
 //                    		!angular.isUndefined(data.account.listPlan[0].activity) && data.account.listPlan[0].activity!=null && 
@@ -225,8 +226,9 @@
                     		activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.signup.account.listPlan[0].activity._id, data._id,'listCategoryAge').success(function (data2) {
                     			$scope.categoryAgeResult = data2;
                     			$scope.valuesCategoryAge = [];
+                    			
                     			var dataSort = data2.sortBy(function(o) {
-                                	return o.order;
+                                	return -1 * o.order;
                                 });
 
                     			dataSort.forEach(function(i) {
@@ -244,7 +246,7 @@
                                         label: i.label + ' (' + tempAge + ')'
                                     });
                                 });
-                    			$scope.categoryAge = '';
+                    			$scope.signup.categoryAge = '';
                     		});
                     	});
                     	
@@ -342,6 +344,11 @@
                 		toastr.warning($filter('translate')('structureSection.ph.createAddressMandatory'));
                         validateOk = false;
                 	}
+                }
+                
+                if($scope.signup.categoryAge===null || $scope.signup.categoryAge==='') {
+                	toastr.warning('category age nécessaire');
+                    validateOk = false;
                 }
                 
                 if (validateOk) {
