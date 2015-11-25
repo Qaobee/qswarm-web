@@ -100,12 +100,10 @@
                 </div>
                 <div class="card-content">
                     <c3chart bindto-id="gaugeEfficaciteGlobal"
-                             chart-columns="effCol"
-                             chart-data="chartData">
-                       <!-- <chart-column column-id="gaugeEfficaciteGlobal"
-                                      column-values="{{efficaciteGlobal + ''}}"
-                                      column-type="gauge" column-color="#66bb6a"/>
-                        <chart-gauge min="0" max="100" width="39"/> -->
+                             chart-columns="efficaciteGlobalCol"
+                             chart-data="efficaciteGlobalData">
+                       
+                        <chart-gauge min="0" max="100" width="39"/>
                     </c3chart>
                 </div>
             </div>
@@ -113,12 +111,13 @@
         <div class="col m2 s12">
             <div class="card-panel blue-grey-text text-darken-2">
                 <div class="card-content center">
-                    <span class="card-title"><h5>{{'stats.efficiently.efficiently9m' | translate }}</h5></span>
+                    <span class="card-title"><h5 translate="stats.efficiently.efficiently9m"></h5></span>
                 </div>
                 <div class="card-content">
-                    <c3chart bindto-id="gauge-plot2-chart">
-                        <chart-column column-id="efficacite9m" column-values="stats.efficacite9m" column-type="gauge"
-                                      column-color="#ef5350"/>
+                    <c3chart bindto-id="gaugeEfficacite9m"
+                             chart-columns="efficacite9mCol"
+                             chart-data="efficacite9mData">
+                       
                         <chart-gauge min="0" max="100" width="30"/>
                     </c3chart>
                 </div>
@@ -127,12 +126,13 @@
         <div class="col m2 s12">
             <div class="card-panel blue-grey-text text-darken-2">
                 <div class="card-content center">
-                    <span class="card-title"><h5>{{'stats.efficiently.efficiently6m' | translate }}</h5></span>
+                    <span class="card-title"><h5 translate="stats.efficiently.efficiently6m"></h5></span>
                 </div>
                 <div class="card-content">
-                    <c3chart bindto-id="gauge-plot3-chart">
-                        <chart-column column-id="efficacite6m" column-values="stats.efficacite6m" column-type="gauge"
-                                      column-color="#66bb6a"/>
+                    <c3chart bindto-id="gaugeEfficacite6m"
+                             chart-columns="efficacite6mCol"
+                             chart-data="efficacite6mData">
+                       
                         <chart-gauge min="0" max="100" width="30"/>
                     </c3chart>
                 </div>
@@ -141,12 +141,13 @@
         <div class="col m2 s12">
             <div class="card-panel blue-grey-text text-darken-2">
                 <div class="card-content center">
-                    <span class="card-title"><h5>{{'stats.efficiently.efficiently7m' | translate }}</h5></span>
+                    <span class="card-title"><h5 translate="stats.efficiently.efficiently7m"></h5></span>
                 </div>
                 <div class="card-content">
-                    <c3chart bindto-id="gauge-plot4-chart">
-                        <chart-column column-id="efficacite7m" column-values="stats.efficacite7m" column-type="gauge"
-                                      column-color="#66bb6a"/>
+                    <c3chart bindto-id="gaugeEfficacite7m"
+                             chart-columns="efficacite7mCol"
+                             chart-data="efficacite7mData">
+                       
                         <chart-gauge min="0" max="100" width="30"/>
                     </c3chart>
                 </div>
