@@ -45,12 +45,32 @@
         },
         "settings" : {
             "activity": {
-                "handball" : "Handball",
-                "football" : "Football",
-                "fencing" : "Escrime",
-                "basketball" : "Basketball",
-                "volleyball" : "Volleyball",
-                "rugbyball" : "Rugby"
+            	"archery"	: "Tir à l'arc",
+            	"badminton"	: "Badminton",
+            	"baseball"	: "Baseball",
+            	"basketball": "Basketball",
+            	"bobsleigh"	: "Bobsleigh",
+            	"boxing"	: "Boxe",
+            	"combined"	: "Combiné",
+            	"curling"	: "Curling",
+            	"cycling"	: "Cyclisme",
+            	"dance"		: "Danse",
+            	"fencing"	: "Escrime",
+            	"fight"		: "Lutte",
+            	"football"	: "Football",
+                "handball"	: "Handball",
+                "hockey"	: "Hockey",
+                "horsing"	: "Equitation",
+                "judo"		: "Judo",
+                "luge"		: "Luge",
+                "ping"		: "Ping-Pong",
+                "rowing"	: "Aviron",
+                "rugbyball"	: "Rugby",
+                "shooting"	: "Tir",
+                "sprint"	: "Sprint",
+                "swim"		: "Natation",
+                "tennis"	: "Tennis",
+                "volleyball" : "Volleyball"
             }
         }
     }

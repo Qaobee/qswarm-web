@@ -163,12 +163,13 @@
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="col m6 s12">
                             <div class="col m3" ng-repeat="activity in activities track by $index">
-                                <img ng-src="assets/images/activity/{{activity.code}}.jpg"/><br/>
+                                <img ng-src="assets/images/activity/{{activity.code}}.jpg" width="80"/><br/>
                                 <input class="with-gap" type="radio"
                                        id="activity.{{activity._id}}" value="{{activity._id}}"
                                        placeholder="{{activity.label | translate }}"
                                        ng-model="signup.account.listPlan[0].activity._id" required ng-disabled="!activity.enable"/>
                                 <label for="activity.{{activity._id}}">{{activity.label | translate }}</label>
+                                <br>&nbsp;<br>
                             </div>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
