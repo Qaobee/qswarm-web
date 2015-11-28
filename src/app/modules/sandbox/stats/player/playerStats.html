@@ -92,16 +92,16 @@
     </div>
     <!-- Stats shoot Start -->
     <div class="row grey lighten-5" id="shoot">
-        <!-- Stats shoot efficacite Start -->
+        <!-- Stats shoot efficiently Start -->
         <div class="col m6 s12">
             <div class="card-panel blue-grey-text text-darken-2">
                 <div class="card-content center">
-                    <span class="card-title"><h5 translate="stats.efficiently.efficientlyTotal"></h5></span>
+                    <span class="card-title"><h5>{{'stats.efficiently.efficientlyTotal' | translate }} <br/>{{nbGoalGlobal}}/{{nbShootGlobal}}</h5></span>
                 </div>
                 <div class="card-content">
-                    <c3chart bindto-id="gaugeEfficaciteGlobal"
-                             chart-columns="efficaciteGlobalCol"
-                             chart-data="efficaciteGlobalData">
+                    <c3chart bindto-id="gaugeEfficientlyGlobal"
+                             chart-columns="efficientlyGlobalCol"
+                             chart-data="efficientlyGlobalData">
                        
                         <chart-gauge min="0" max="100" width="39"/>
                     </c3chart>
@@ -111,12 +111,12 @@
         <div class="col m2 s12">
             <div class="card-panel blue-grey-text text-darken-2">
                 <div class="card-content center">
-                    <span class="card-title"><h5 translate="stats.efficiently.efficiently9m"></h5></span>
+                    <span class="card-title"><h5>{{'stats.efficiently.efficiently9m' | translate }} <br/>{{nbGoal9m}}/{{nbShoot9m}}</h5></span>
                 </div>
                 <div class="card-content">
-                    <c3chart bindto-id="gaugeEfficacite9m"
-                             chart-columns="efficacite9mCol"
-                             chart-data="efficacite9mData">
+                    <c3chart bindto-id="gaugeEfficiently9m"
+                             chart-columns="efficiently9mCol"
+                             chart-data="efficiently9mData">
                        
                         <chart-gauge min="0" max="100" width="30"/>
                     </c3chart>
@@ -126,12 +126,12 @@
         <div class="col m2 s12">
             <div class="card-panel blue-grey-text text-darken-2">
                 <div class="card-content center">
-                    <span class="card-title"><h5 translate="stats.efficiently.efficiently6m"></h5></span>
+                    <span class="card-title"><h5>{{'stats.efficiently.efficiently6m' | translate }} <br/>{{nbGoal6m}}/{{nbShoot6m}}</h5></span>
                 </div>
                 <div class="card-content">
-                    <c3chart bindto-id="gaugeEfficacite6m"
-                             chart-columns="efficacite6mCol"
-                             chart-data="efficacite6mData">
+                    <c3chart bindto-id="gaugeEfficiently6m"
+                             chart-columns="efficiently6mCol"
+                             chart-data="efficiently6mData">
                        
                         <chart-gauge min="0" max="100" width="30"/>
                     </c3chart>
@@ -141,19 +141,19 @@
         <div class="col m2 s12">
             <div class="card-panel blue-grey-text text-darken-2">
                 <div class="card-content center">
-                    <span class="card-title"><h5 translate="stats.efficiently.efficiently7m"></h5></span>
+                    <span class="card-title"><h5>{{'stats.efficiently.efficiently7m' | translate }} <br/>{{nbGoal7m}}/{{nbShoot7m}}</h5></span>
                 </div>
                 <div class="card-content">
-                    <c3chart bindto-id="gaugeEfficacite7m"
-                             chart-columns="efficacite7mCol"
-                             chart-data="efficacite7mData">
+                    <c3chart bindto-id="gaugeEfficiently7m"
+                             chart-columns="efficiently7mCol"
+                             chart-data="efficiently7mData">
                        
                         <chart-gauge min="0" max="100" width="30"/>
                     </c3chart>
                 </div>
             </div>
         </div>
-        <!-- Stats shoot efficacite end -->
+        <!-- Stats shoot efficiently end -->
 
         <!-- Stats shoot origine Start -->
         <div class="col m4 s12">
