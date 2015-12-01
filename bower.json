@@ -48,8 +48,10 @@
     "ngmap": "~1.11.5",
     "respond": "~1.4.2",
     "sugar": "1.4.1",
+    "animate.css": "~3.4.0",
     "angular-materialize": "*",
-    "toastr": "2.1.0"
+    "toastr": "2.1.0",
+    "owl.carousel": "owlcarousel2#~2.0.0-beta.3"
   },
   "resolutions": {
     "angular": "1.4.0-rc.2",

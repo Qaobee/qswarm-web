@@ -4,7 +4,7 @@
     angular.module('qaobee.user', [
         /* angular qaobee */
         'ngAutocomplete',
-
+       
         /* qaobee modules */
         
         /* services */
@@ -34,7 +34,7 @@
                 templateUrl: 'app/modules/commons/users/signup/signup.html'
             });
         })
-
+        
         .controller('SignupCtrl', function ($rootScope, $scope, $translatePartialLoader, $log, $routeParams, $window, $location, $filter, WizardHandler, activityRestAPI, activityCfgRestAPI, countryRestAPI, structureRestAPI, signupRestAPI, locationAPI) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
@@ -52,6 +52,8 @@
             $scope.temp.referencialId = -1;
             
             $scope.temp.skipSportSection = true;
+            
+            $scope.creationFinished = false;
                         
             $scope.valuesStructures = [{
             	'_id': -1, 
@@ -68,15 +70,6 @@
                     	$scope.signup.birthdateInput = new Date(moment($scope.signup.birthdate));
                     }
                     $scope.signup.categoryAge = '';
-                    
-//                    if (!angular.isUndefined(data.account) && !angular.isUndefined(data.account.listPlan[0]) &&
-//                    		!angular.isUndefined(data.account.listPlan[0].activity) && data.account.listPlan[0].activity!=null && 
-//                    		!angular.isUndefined(data.account.listPlan[0].activity._id) && 
-//                    		data.account.listPlan[0].activity._id !== null) {
-//                    	$scope.temp.skipSportSection = true;
-//                    } else {
-//                    	$scope.temp.skipSportSection = false;
-//                    }
                     
                     // Déclaration du user en mode connecté
                     $window.sessionStorage.qaobeesession = data.account.token;
@@ -370,14 +363,18 @@
 	                	}
 	                });
                 }
+                
+                // Ouverture Modal creation compte
+                $scope.openModalCreate();
 
                 signupRestAPI.finalizeSignup(user, $routeParams.code, $scope.structure, $scope.signup.account.listPlan[0].activity._id, catAge).success(function (data) {
                     if (false === data.status) {
                         toastr.error('Pb');
                     } else {
-                        $window.location.href = '/#/signup/end';
+                    	$scope.creationFinished = true;
                     }
                 }).error(function (data) {
+                	$('#modalCreate').closeModal();
                     $scope.messageErreur = data.message;
                     $window.location.href = '/#/signup/error';
                 });
@@ -397,6 +394,37 @@
                 toastr.info('A bientôt !');
                 $location.path('/');
             }
+            
+            $scope.owlOptions = {
+        			items : 1,
+        			loop : false,
+        			mouseDrag : false,
+        			touchDrag : false,
+        			pullDrag : false,
+        			freeDrag : false,
+        			dots : false,
+        			autoplay : true,
+        			autoplaySpeed : 1500,
+        			autoplayTimeout : 1500,
+        			animateIn : 'rotateInDownLeft',
+        			animateOut : 'rotateOutDownLeft',
+        			onTranslated : nextStep
+        	};
+        	
+        	$scope.openModalCreate = function () {
+        		$('#modalCreate').openModal({dismissible: false});
+        		$('.owl-carousel').owlCarousel($scope.owlOptions);
+        	};
+        	
+        	function nextStep(event) {
+        	    if (event.item.count === event.item.index + 1) {
+        	    	while(!$scope.creationFinished) {
+        	    		// Attente fin de la création en base Mongo
+        	    	}
+        	    	$('#modalCreate').closeModal();
+        	    	$window.location.href = '/#/signup/end';
+        	    }
+        	}
 
         })
 

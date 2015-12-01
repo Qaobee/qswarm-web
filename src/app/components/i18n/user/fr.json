@@ -12,6 +12,15 @@
 			"no"  : "Non"
 		}
 	},
+	"modalCreate" : {
+		"title" : "Création en cours...",
+		"stepCreateSpace" : "Création de votre espace",
+		"stepCreatePlayers" : "Création des joueurs",
+		"stepCreateTeam" : "Création de votre équipe",
+		"stepCreateAdversaryTeam" : "Création d'une équipe adverse",
+		"stepValidateAccount" : "Validation de votre abonnement",
+		"stepFinished" : "C'est prêt !"
+	},
 	"headerSignup" : {
 		"label" : "Inscription"
 	},
@@ -83,8 +92,13 @@
 	    } 
 	},
 	"sumupSection" : {
+		"line1" : "Dernière étape !",
+		"line2" : "Veuillez vérifier les données ci-dessous et valider pour que nous vous créions votre espace personnel !",
+		
 		"label" : {
-		 	"userSignupSumup" : "Résumé"
+		 	"userSignupSumup" : "Résumé",
+		 	"born" : "Né(e) le",
+		 	"sportSection" : "Sport & Structure"
 		 }
 	},
 	"errorPage" : {

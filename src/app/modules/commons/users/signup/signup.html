@@ -295,35 +295,75 @@
             <wz-step title="{{'sumupSection.label.userSignupSumup' | translate }}" template="app/components/directives/wizard/step.html">
                 <div class="row"></div>
                 <form class="col s12" name="userSumup">
+                	<div class="row">
+                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    	<div class="col m6 s12">
+                    		<h5>{{'sumupSection.line1' | translate}}</h5>
+                    		<h6>{{'sumupSection.line2' | translate}}</h6>
+                    	</div>
+                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
+                    
+                    <div class="row" style="margin:0">
+                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    	<div class="col m6 s12">
+                    		<h6 style="margin:0"><b><u>{{'civilSection.label.userSignupCivilSection' | translate}}</u></b></h6>
+                    	</div>
+                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col s1"></div>
                         <div class="input-field col s5">
                             {{'civilSection.label.' + signup.gender + '' | translate}} {{signup.name}} {{signup.firstname}}<br>
+                            {{'sumupSection.label.born' | translate}} {{signup.birthdateInput}}<br>
                             {{signup.contact.email}}<br>
+                            <span ng-hide="signup.nationality===null || angular.isUndefined(signup.nationality)">{{'civilSection.label.userNationality' | translate }} : {{signup.nationality}}<br></span>
                             <span ng-hide="signup.contact.home===null || angular.isUndefined(signup.contact.home)">{{'civilSection.label.userPhoneHome' | translate}} : {{signup.contact.home}}<br></span> 
                             <span ng-hide="signup.contact.office===null || angular.isUndefined(signup.contact.office)">{{'civilSection.label.userPhoneOffice' | translate}} : {{signup.contact.office}}<br></span>
                             <span ng-hide="signup.contact.cellphone===null || angular.isUndefined(signup.contact.cellphone)">{{'civilSection.label.userCellPhone' | translate}} : {{signup.contact.cellphone}}<br></span>
                        </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
+                    
+                    <div class="row" style="margin:0">
+                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    	<div class="col m6 s12">
+                    		<h6 style="margin:0"><b><u>{{'sumupSection.label.sportSection' | translate }}</u></b></h6>
+                    	</div>
+                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col s1">
                             <img ng-src="assets/images/activity/{{signup.account.listPlan[0].activity._id}}.jpg" width="80"/><br/>
                        </div>
-                        <div class="input-field col s5">
-                        	<div ng-repeat="data in structuresResult" ng-show="data._id==structure.referencialId">
+                        <div class="input-field col m5 s11">
+                        	<div ng-repeat="data in structuresResult" ng-if="data._id==structure.referencialId">
 							     {{data.label}}<br>
 							     {{data.address.place}}<br>
 							     {{data.address.zipcode}} {{data.address.city}}
-							</div> 
+							</div>
+							<div>
+								 {{structure.label}}<br>
+							     {{structure.address.place}}<br>
+							     {{structure.address.zipcode}} {{structure.address.city}}
+							</div>
                         </div>
-                        <div class="input-field col s5">
-						     {{structure.label}}<br>
-						     {{structure.address.place}}<br>
-						     {{structure.address.zipcode}} {{structure.address.city}}
-                        </div>
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
+                    
+                   <div class="row" style="margin:0">
+                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    	<div class="col m6 s12">
+                    		<h6 style="margin:0"><b><u>{{'structureSection.label.userCategoryAge' | translate }}</u></b></h6>
+                    	</div>
+                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
+                    <div class="row">
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        <div class="input-field col s1"></div>
+                        <div class="input-field col s5">{{signup.categoryAge.label}}</div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
                     
@@ -366,5 +406,28 @@
 		</div>
 	</div>
 </div>
+
+   <!-- Modal Creation InProgress -->
+<div id="modalCreate" class="modal">
+	<div class="modal-header center-align ">
+        <h5>
+            <span class="fa fa-sign-in"></span>
+            <span>{{'modalCreate.title' | translate}}</span>
+        </h5>
+    </div>
+	
+	<div class="owl-carousel grey lighten-3" style="height:200px">
+       	<div style="padding-top:80px;text-align:center"><h4><i class="fa fa-home"></i> {{'modalCreate.stepCreateSpace' | translate}}</h4></div>
+   		<div style="padding-top:80px;text-align:center"><h4><i class="fa fa-user"></i> {{'modalCreate.stepCreatePlayers' | translate}}</h4></div>
+   		<div style="padding-top:80px;text-align:center"><h4><i class="fa fa-user"></i> {{'modalCreate.stepCreateTeam' | translate}}</h4></div>
+   		<div style="padding-top:80px;text-align:center"><h4><i class="fa fa-user"></i> {{'modalCreate.stepCreateAdversaryTeam' | translate}}</h4></div>
+		<div style="padding-top:80px;text-align:center"><h4><i class="fa fa-credit-card"></i> {{'modalCreate.stepValidateAccount' | translate}}</h4></div>
+		<div style="padding-top:80px;text-align:center"><h4><i class="fa fa-check-square-o"></i> {{'modalCreate.stepFinished' | translate}}</h4></div>
+	</div>
+	<div class="center">
+		<div class="col s12">&nbsp;</div>
+	</div>
+</div>
+
 <!-- body end-->
 </div>
