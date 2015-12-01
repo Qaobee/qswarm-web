@@ -75,6 +75,16 @@
             $scope.efficiently7mData = [{data:0}];
             $scope.nbShoot7m = 0;
             $scope.nbGoal7m = 0;
+        
+            $scope.nbYellowCard = 0;
+            $scope.avgYellowCard = 0;
+            $scope.freqYellowCard = 0;
+            $scope.nbExcluTmp = 0;
+            $scope.avgExcluTmp = 0;
+            $scope.freqExcluTmp = 0;
+            $scope.nbRedCard = 0;
+            $scope.avgRedCard = 0;
+            $scope.freqRedCard = 0;
 
             /* get player */
             $scope.getPlayer = function () {
@@ -145,6 +155,44 @@
                     statsSrv.getColorGauge(result.efficiently).then(function (color) {
                         $scope.efficiently7mCol[0].color = color;
                     });
+                });
+                
+                /* Sanctions */
+                $scope.nbYellowCard = 0;
+                $scope.avgYellowCard = 0;
+                $scope.freqYellowCard = 0;
+                
+                var indicators =  ['yellowCard'];
+                 
+                statsSrv.getStatsIndicator(indicators, ownersId, startDate, endDate, $scope.meta.sandbox._id, $scope.user.effectiveDefault).then(function (result) {
+                    $scope.nbYellowCard = result.nbItem;
+                    $scope.avgYellowCard = result.average;
+                    $scope.freqYellowCard = result.frequence;
+                });
+                
+                $scope.nbExcluTmp = 0;
+                $scope.avgExcluTmp = 0;
+                $scope.freqExcluTmp = 0;
+                
+                indicators =  ['exclTmp'];
+                
+                
+                statsSrv.getStatsIndicator(indicators, ownersId, startDate, endDate, $scope.meta.sandbox._id, $scope.user.effectiveDefault).then(function (result) {
+                    $scope.nbExcluTmp = result.nbItem;
+                    $scope.avgExcluTmp = result.average;
+                    $scope.freqExcluTmp = result.frequence;
+                });
+                
+                $scope.nbRedCard = 0;
+                $scope.avgRedCard = 0;
+                $scope.freqRedCard = 0;
+                
+                indicators =  ['redCard'];
+                
+                statsSrv.getStatsIndicator(indicators, ownersId, startDate, endDate, $scope.meta.sandbox._id, $scope.user.effectiveDefault).then(function (result) {
+                    $scope.nbRedCard = result.nbItem;
+                    $scope.avgRedCard = result.average;
+                    $scope.freqRedCard = result.frequence;
                 });
             };
 

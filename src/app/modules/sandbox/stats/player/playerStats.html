@@ -3,80 +3,159 @@
     <!-- space between header menu and body-->
     <div class="row s12"></div>
 
+<!-- view for tablet and phone -->
     <!-- Filter Zone start-->
-    <div class="row">
-        <div class="card">
-            <div class="col s12 center">&nbsp;</div>
-
-            <!-- Periodicity selector -->
-            <div class="col m3 s1 center"><h5 class="red-text text-lighten-1">{{player.firstname}} {{player.name}}</h5>
-            </div>
-
-            <div class="col m1 s4 center red lighten-1" style="margin:1px">
-                <a ng-click="getCurrentMonth()" class="white-text"><h6 class="small">{{'stats.periodicity.month' |
-                    translate }}</h6></a>
-            </div>
-            <div class="col m1 s4 center red lighten-1" style="margin:1px">
-                <a ng-click="getCurrentQuarter()" class="white-text"><h6 class="small">{{'stats.periodicity.quarter' |
-                    translate }}</h6></a>
-            </div>
-            <div class="col m1 s4 center red lighten-1" style="margin:1px">
-                <a ng-click="getCurrentSeason()" class="white-text"><h6 class="small">{{'stats.periodicity.season' |
-                    translate }}</h6></a>
-            </div>
-
-            <div class="col m1 s1 center">&nbsp;</div>
-
-            <!-- Month Navigation-->
-            <div class="col m1 s1 center" ng-if="periodicity=='month'">
-                <a href="" ng-click="previousMonth()" class="btn-floating red lighten-1 left white-text">
-                    <i class="mdi-navigation-chevron-left"></i>
-                </a>
-            </div>
-            <div class="col m2 s10 center" ng-if="periodicity=='month'">
-                <h6 class="red-text text-lighten-1">{{periodicityActive.label}}</h6>
-            </div>
-            <div class="col m1 s1 center" ng-if="periodicity=='month'">
-                <a href="" ng-click="nextMonth()" class="btn-floating red lighten-1 right white-text">
-                    <i class="mdi-navigation-chevron-right"></i>
-                </a>
-            </div>
-
-            <!-- Quarter Navigation-->
-            <div class="col m1 s1 center" ng-if="periodicity=='quarter'">
-                <a href="" ng-click="previousQuarter()" class="btn-floating red lighten-1 left white-text">
-                    <i class="mdi-navigation-chevron-left"></i>
-                </a>
-            </div>
-            <div class="col m2 s10 center" ng-if="periodicity=='quarter'">
-                <h6 class="red-text text-lighten-1">{{periodicityActive.label}}</h6>
-            </div>
-            <div class="col m1 s1 center" ng-if="periodicity=='quarter'">
-                <a href="" ng-click="nextQuarter()" class="btn-floating red lighten-1 right white-text">
-                    <i class="mdi-navigation-chevron-right"></i>
-                </a>
-            </div>
-
-            <!-- Season Navigation-->
-            <div class="col m1 s1 center" ng-if="periodicity=='season'">
-                <a href="" ng-click="previousSeason()" class="btn-floating red lighten-1 left white-text">
-                    <i class="mdi-navigation-chevron-left"></i>
-                </a>
-            </div>
-            <div class="col m2 s10 center" ng-if="periodicity=='season'">
-                <h6 class="red-text text-lighten-1">{{periodicityActive.label}}</h6>
-            </div>
-            <div class="col m1 s1 center" ng-if="periodicity=='season'">
-                <a href="" ng-click="nextSeason()" class="btn-floating red lighten-1 right white-text">
-                    <i class="mdi-navigation-chevron-right"></i>
-                </a>
-            </div>
-
-            <div class="col m1 s1 center">&nbsp;</div>
-
+    <div class="row hide-on-large-only">
+           
+        <!-- Periodicity selector -->
+        <div class="col m1 s1 center">&nbsp;</div>
+        <div class="col m1 s3 center red lighten-1" style="margin:1px">
+            <a ng-click="getCurrentMonth()" class="white-text"><h6 class="small">{{'stats.periodicity.month' | translate }}</h6></a>
         </div>
+        
+        <div class="col m1 s4 center red lighten-1" style="margin:1px">
+            <a ng-click="getCurrentQuarter()" class="white-text"><h6 class="small">{{'stats.periodicity.quarter' | translate }}</h6></a>
+        </div>
+        <div class="col m1 s3 center red lighten-1" style="margin:1px">
+            <a ng-click="getCurrentSeason()" class="white-text"><h6 class="small">{{'stats.periodicity.season' | translate }}</h6></a>
+        </div>
+        <div class="col m1 s1 center">&nbsp;</div>
+    </div>
+        
+    <!-- Month Navigation-->
+    <div class="row hide-on-large-only" ng-if="periodicity=='month'">   
+        <div class="col m1 s1 center">&nbsp;</div>
+        <div class="col m1 s1 center" ng-if="periodicity=='month'">
+            <a href="" ng-click="previousMonth()" class="btn-floating blue-grey darken-2 white-text left">
+                <i class="mdi-navigation-chevron-left"></i>
+            </a>
+        </div>
+        <div class="col m2 s8 center">
+            <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
+        </div>
+        <div class="col m1 s1 center" ng-if="periodicity=='month'">
+            <a href="" ng-click="nextMonth()" class="btn-floating blue-grey darken-2 white-text right">
+                <i class="mdi-navigation-chevron-right"></i>
+            </a>
+        </div>
+        <div class="col m1 s1 center">&nbsp;</div>
+    </div>
+    
+    <!-- Quarter Navigation-->
+    <div class="row hide-on-large-only" ng-if="periodicity=='quarter'">
+        <div class="col m1 s1 center">&nbsp;</div>
+        <div class="col m1 s1 center" ng-if="periodicity=='quarter'">
+            <a href="" ng-click="previousQuarter()" class="btn-floating blue-grey darken-2 white-text left">
+                <i class="mdi-navigation-chevron-left"></i>
+            </a>
+        </div>
+        <div class="col m2 s8 center">
+            <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
+        </div>
+        <div class="col m1 s1 center" ng-if="periodicity=='quarter'">
+            <a href="" ng-click="nextQuarter()" class="btn-floating blue-grey darken-2 white-text right">
+                <i class="mdi-navigation-chevron-right"></i>
+            </a>
+        </div>
+        <div class="col m1 s1 center">&nbsp;</div>
+    </div>
+    
+    <!-- Season Navigation-->
+    <div class="row hide-on-large-only" ng-if="periodicity=='season'">
+        <div class="col m1 s1 center">&nbsp;</div>
+        <div class="col m1 s1 center">
+            <a href="" ng-click="previousSeason()" class="btn-floating blue-grey darken-2 white-text left">
+                <i class="mdi-navigation-chevron-left"></i>
+            </a>
+        </div>
+        <div class="col m2 s8 center" ng-if="periodicity=='season'">
+            <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
+        </div>
+        <div class="col m1 s1 center" ng-if="periodicity=='season'">
+            <a href="" ng-click="nextSeason()" class="btn-floating blue-grey darken-2 white-text right">
+                <i class="mdi-navigation-chevron-right"></i>
+            </a>
+        </div>
+        <div class="col m1 s1 center">&nbsp;</div>
     </div>
     <!-- Filter Zone end-->
+<!-- view for tablet and phone -->
+
+<!-- view desktop -->
+    <div class="row hide-on-med-and-down">
+    <!-- Filter Zone start-->
+        <div class="col s1 center">&nbsp;</div>
+        
+        <!-- Periodicity selector -->
+        <div class="col s1 center red lighten-1" style="margin:1px">
+            <a ng-click="getCurrentMonth()" class="white-text"><h6 class="small">{{'stats.periodicity.month' | translate }}</h6></a>
+        </div>
+        
+        <div class="col s1 center red lighten-1" style="margin:1px">
+            <a ng-click="getCurrentQuarter()" class="white-text"><h6 class="small">{{'stats.periodicity.quarter' | translate }}</h6></a>
+        </div>
+        <div class="col s1 center red lighten-1" style="margin:1px">
+            <a ng-click="getCurrentSeason()" class="white-text"><h6 class="small">{{'stats.periodicity.season' | translate }}</h6></a>
+        </div>
+        
+        
+        <!-- Month Navigation--> 
+        <div class="col s2 center" ng-if="periodicity=='month'">&nbsp;</div>
+        <div class="col s1 center" ng-if="periodicity=='month'">
+            <a href="" ng-click="previousMonth()" class="btn-floating blue-grey darken-2 white-text left">
+                <i class="mdi-navigation-chevron-left"></i>
+            </a>
+        </div>
+        <div class="col s2 center" ng-if="periodicity=='month'">
+            <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
+        </div>
+        <div class="col s1 center" ng-if="periodicity=='month'">
+            <a href="" ng-click="nextMonth()" class="btn-floating blue-grey darken-2 white-text right">
+                <i class="mdi-navigation-chevron-right"></i>
+            </a>
+        </div>
+        <div class="col s2 center" ng-if="periodicity=='month'">&nbsp;</div>
+        
+        <!-- Quarter Navigation-->
+        <div class="col s1 center" ng-if="periodicity=='quarter'">&nbsp;</div>
+        <div class="col s1 center" ng-if="periodicity=='quarter'">
+            <a href="" ng-click="previousQuarter()" class="btn-floating blue-grey darken-2 white-text left">
+                <i class="mdi-navigation-chevron-left"></i>
+            </a>
+        </div>
+        <div class="col s4 center" ng-if="periodicity=='quarter'">
+            <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
+        </div>
+        <div class="col s1 center" ng-if="periodicity=='quarter'">
+            <a href="" ng-click="nextQuarter()" class="btn-floating blue-grey darken-2 white-text right">
+                <i class="mdi-navigation-chevron-right"></i>
+            </a>
+        </div>
+        <div class="col s1 center" ng-if="periodicity=='quarter'">&nbsp;</div>
+       
+        <!-- Season Navigation-->
+        <div class="col s1 center" ng-if="periodicity=='season'">&nbsp;</div>
+        <div class="col s1 center" ng-if="periodicity=='season'">
+            <a href="" ng-click="previousSeason()" class="btn-floating blue-grey darken-2 white-text left">
+                <i class="mdi-navigation-chevron-left"></i>
+            </a>
+        </div>
+        <div class="col s4 center" ng-if="periodicity=='season'">
+            <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
+        </div>
+        <div class="col s1 center" ng-if="periodicity=='season'">
+            <a href="" ng-click="nextSeason()" class="btn-floating blue-grey darken-2 white-text right">
+                <i class="mdi-navigation-chevron-right"></i>
+            </a>
+        </div>
+        <div class="col s1 center" ng-if="periodicity=='season'">&nbsp;</div>
+    </div> 
+    <!-- Filter Zone end-->
+<!-- view desktop -->
+    
+    <div class="row">
+        <div class="col s12 center"><h4 class="red-text text-lighten-1">{{player.firstname}} {{player.name}}</h4></div>
+    </div>
 
     <div class="row grey lighten-4">
         <div class="col s12">
@@ -92,68 +171,82 @@
     </div>
     <!-- Stats shoot Start -->
     <div class="row grey lighten-5" id="shoot">
-        <!-- Stats shoot efficiently Start -->
-        <div class="col m6 s12">
-            <div class="card-panel blue-grey-text text-darken-2">
-                <div class="card-content center">
-                    <span class="card-title"><h5>{{'stats.efficiently.efficientlyTotal' | translate }} <br/>{{nbGoalGlobal}}/{{nbShootGlobal}}</h5></span>
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header"><i class="material-icons">filter_drama</i> {{'stats.efficiently.efficiently' | translate }}</div>
+                <div class="collapsible-body">
+                    <!-- Stats shoot efficiently Start -->
+                    
+                        <div class="card-panel blue-grey-text text-darken-2">
+                            <div class="card-content center">
+                                <span class="card-title"><h5>{{'stats.efficiently.efficientlyTotal' | translate }} <br/>{{nbGoalGlobal}}/{{nbShootGlobal}}</h5></span>
+                            </div>
+                            <div class="card-content">
+                                <c3chart bindto-id="gaugeEfficientlyGlobal"
+                                         chart-columns="efficientlyGlobalCol"
+                                         chart-data="efficientlyGlobalData">
+
+                                    <chart-gauge min="0" max="100" width="39"/>
+                                </c3chart>
+                            </div>
+                        </div>
+                    
+                    
+                        <div class="card-panel blue-grey-text text-darken-2">
+                            <div class="card-content center">
+                                <span class="card-title"><h5>{{'stats.efficiently.efficiently9m' | translate }} <br/>{{nbGoal9m}}/{{nbShoot9m}}</h5></span>
+                            </div>
+                            <div class="card-content">
+                                <c3chart bindto-id="gaugeEfficiently9m"
+                                         chart-columns="efficiently9mCol"
+                                         chart-data="efficiently9mData">
+
+                                    <chart-gauge min="0" max="100" width="30"/>
+                                </c3chart>
+                            </div>
+                        </div>
+                   
+                     <div class="card-panel blue-grey-text text-darken-2">
+                            <div class="card-content center">
+                                <span class="card-title"><h5>{{'stats.efficiently.efficiently6m' | translate }} <br/>{{nbGoal6m}}/{{nbShoot6m}}</h5></span>
+                            </div>
+                            <div class="card-content">
+                                <c3chart bindto-id="gaugeEfficiently6m"
+                                         chart-columns="efficiently6mCol"
+                                         chart-data="efficiently6mData">
+
+                                    <chart-gauge min="0" max="100" width="30"/>
+                                </c3chart>
+                            </div>
+                        </div>
+                    
+                        <div class="card-panel blue-grey-text text-darken-2">
+                            <div class="card-content center">
+                                <span class="card-title"><h5>{{'stats.efficiently.efficiently7m' | translate }} <br/>{{nbGoal7m}}/{{nbShoot7m}}</h5></span>
+                            </div>
+                            <div class="card-content">
+                                <c3chart bindto-id="gaugeEfficiently7m"
+                                         chart-columns="efficiently7mCol"
+                                         chart-data="efficiently7mData">
+
+                                    <chart-gauge min="0" max="100" width="30"/>
+                                </c3chart>
+                            </div>
+                        </div>
+                   
+                    <!-- Stats shoot efficiently end -->
                 </div>
-                <div class="card-content">
-                    <c3chart bindto-id="gaugeEfficientlyGlobal"
-                             chart-columns="efficientlyGlobalCol"
-                             chart-data="efficientlyGlobalData">
-                       
-                        <chart-gauge min="0" max="100" width="39"/>
-                    </c3chart>
-                </div>
-            </div>
-        </div>
-        <div class="col m2 s12">
-            <div class="card-panel blue-grey-text text-darken-2">
-                <div class="card-content center">
-                    <span class="card-title"><h5>{{'stats.efficiently.efficiently9m' | translate }} <br/>{{nbGoal9m}}/{{nbShoot9m}}</h5></span>
-                </div>
-                <div class="card-content">
-                    <c3chart bindto-id="gaugeEfficiently9m"
-                             chart-columns="efficiently9mCol"
-                             chart-data="efficiently9mData">
-                       
-                        <chart-gauge min="0" max="100" width="30"/>
-                    </c3chart>
-                </div>
-            </div>
-        </div>
-        <div class="col m2 s12">
-            <div class="card-panel blue-grey-text text-darken-2">
-                <div class="card-content center">
-                    <span class="card-title"><h5>{{'stats.efficiently.efficiently6m' | translate }} <br/>{{nbGoal6m}}/{{nbShoot6m}}</h5></span>
-                </div>
-                <div class="card-content">
-                    <c3chart bindto-id="gaugeEfficiently6m"
-                             chart-columns="efficiently6mCol"
-                             chart-data="efficiently6mData">
-                       
-                        <chart-gauge min="0" max="100" width="30"/>
-                    </c3chart>
-                </div>
-            </div>
-        </div>
-        <div class="col m2 s12">
-            <div class="card-panel blue-grey-text text-darken-2">
-                <div class="card-content center">
-                    <span class="card-title"><h5>{{'stats.efficiently.efficiently7m' | translate }} <br/>{{nbGoal7m}}/{{nbShoot7m}}</h5></span>
-                </div>
-                <div class="card-content">
-                    <c3chart bindto-id="gaugeEfficiently7m"
-                             chart-columns="efficiently7mCol"
-                             chart-data="efficiently7mData">
-                       
-                        <chart-gauge min="0" max="100" width="30"/>
-                    </c3chart>
-                </div>
-            </div>
-        </div>
-        <!-- Stats shoot efficiently end -->
+            </li>
+            <li>
+                  <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                  <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+            <li>
+                  <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+                  <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+      </ul>
+        
 
         <!-- Stats shoot origine Start -->
         <div class="col m4 s12">
@@ -251,6 +344,36 @@
     <!-- Stats actions Start -->
     <div class="row" id="sanctions">
         <div class="blue-grey-text text-darken-2 center"><h5>Sanctions</h5></div>
+        <div class="col m4 s12">
+            <div class="card-panel blue-grey-text text-darken-2">
+                <div class="card-content center">
+                    <span class="card-title"><h5>{{'stats.sanction.yellowCard' | translate }}</h5></span>
+                </div>
+                <div class="card-content">
+                    <h3>{{nbYellowCard}} / {{avgYellowCard}} / {{freqYellowCard}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col m4 s12">
+            <div class="card-panel blue-grey-text text-darken-2">
+                <div class="card-content center">
+                    <span class="card-title"><h5>{{'stats.sanction.excluTempo' | translate }}</h5></span>
+                </div>
+                <div class="card-content">
+                    <h3>{{nbExcluTmp}} / {{avgExcluTmp}} / {{freqExcluTmp}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col m4 s12">
+            <div class="card-panel blue-grey-text text-darken-2">
+                <div class="card-content center">
+                    <span class="card-title"><h5>{{'stats.sanction.redCard' | translate }}</h5></span>
+                </div>
+                <div class="card-content">
+                    <h3>{{nbRedCard}} / {{avgRedCard}} / {{freqRedCard}}</h3>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- Stats actions end -->
 </div>

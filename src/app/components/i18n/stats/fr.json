@@ -26,11 +26,17 @@
             }
         },
         "efficiently" : {
-            "efficientlyTotal": "Efficacité Globale",
+            "efficiently": "Efficacité",
+            "efficientlyTotal": "Globale",
             "efficiently9m" : "9 mètres",
             "efficiently6m" : "6 mètres",
             "efficiently7m" : "7 mètres"
         },
-        "typoGoal" : "Typologie des buts"
+        "typoGoal" : "Typologie des buts",
+        "sanction" : {
+            "yellowCard" : "Avertissement",
+            "excluTempo" : "2 minutes",
+            "redCard" : "Exclusion"
+        }
     }
 }
