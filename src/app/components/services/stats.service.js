@@ -91,9 +91,9 @@
             } else if(efficiently>=25 && efficiently<50) {
                  deferred.resolve('#ffb74d');
             } else if(efficiently>=50 && efficiently<75) {
-                 deferred.resolve('#42a5f5');
+                 deferred.resolve('#29b6f6');
             } else if(efficiently>75) {
-                 deferred.resolve('#66bb6a');
+                 deferred.resolve('#9ccc65');
             } else {
                 deferred.reject('');
             }
