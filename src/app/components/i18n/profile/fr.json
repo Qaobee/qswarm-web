@@ -3,8 +3,11 @@
     "stats": "Mes statistiques",
     "info": "Mes informations",
     "account": "Mon abonnement",
-    "title": "Profile",
+    "title": "Profil",
     "desc": "Modifiez votre profil <b>Qaobee</b>.",
+    "plan":  {
+      "desc" : "Visualisez vos abonnements"
+    },
     "label": {
       "name": "Nom",
       "forname": "Prénom",
@@ -19,10 +22,11 @@
       "avatar": "Votre photo de profile",
       "mandatory": "Les champs en rouge sont obligatoires",
       "clubadmin": "Administrateur du club",
-      "billingdate": "Date de paiement : ",
-      "billingnumber": "Numéro de facture : ",
+      "billingdate": "Date de paiement",
+      "billingnumber": "Numéro de facture",
       "product": "Produit",
-      "price": "Prix"
+      "price": "Prix",
+      "activity": "Activité"
     },
     "ph": {
       "name": "Saisissez votre nom",

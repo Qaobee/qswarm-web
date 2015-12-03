@@ -1,0 +1,118 @@
+<h5 class="light-green-text text-lighten-1" translate="profile.desc"></h5>
+<p translate="profile.label.mandatory"></p>
+<form novalidate class="form-horizontal css-form" accept-charset="UTF-8" name="profileForm"
+      data-ng-submit="updateUser(profileForm)">
+    <div class="row">
+        <div class="col s12 m2 center">
+            <avatar person="user" width="'130px'"></avatar>
+            <h5 class="center">{{user.account.login}}</h5>
+
+            <div class="btn-toolbar">
+                <div class="btn-group center">
+                    <a ng-href="{{pdfUrl}}" class="btn waves-effect waves-light" target="_blank"><i
+                            class="fa fa-file-pdf-o"></i></a>
+                    <!--                <a class="btn btn-default"><i class="fa fa-tag"></i></a>
+                                    <a class="btn btn-default"><i class="fa fa-share-alt"></i></a>-->
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4">
+            <div class="input-field">
+                <input type="hidden" name="idusers" id="idusers" value="{{user._id}}">
+                <input type="text" class="validate" name="name"
+                       ng-model="user.name" required
+                       ng-class="{'invalid': profileForm.name.$invalid}">
+                <label translate="profile.label.name"></label>
+            </div>
+            <div class="input-field">
+                <input type="text" class="validate" name="forname"
+                       ng-model="user.firstname" required
+                       ng-class="{'invalid': profileForm.forname.$invalid}">
+                <label translate="profile.label.forname"></label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="formatedAddress" name="formatedAddress"
+                       ng-autocomplete
+                       ng-model="user.address.formatedAddress" details="detailsAdr" options="optionsAdr"
+                />
+                <label translate="profile.label.address"></label>
+            </div>
+            <div class="input-field">
+                <input type="email" name="email"
+                       ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+                       class="validate"
+                       required ng-model="user.contact.email"
+                       ng-class="{ 'invalid': profileForm.email.$invalid }"
+                />
+
+                <div ng-class="{'has-error': profileForm.email.$dirty && profileForm.email.$error.required}"
+                     ng-hide="profileForm.email.$valid"
+                     translate="profile.message.email.required"></div>
+
+                <label translate="profile.label.email" data-error="{{'profile.message.email.ko'|translate}}"></label>
+            </div>
+        </div>
+        <div class="col m2 s12">&nbsp;</div>
+        <div class="col s12 m4">
+            <div class="input-field">
+                <input type="text" input-date class="datepicker" name="birthdate"
+                       ng-model="birthdate"
+                       today="today"
+                       close="close"
+                       format="{{format}}"
+                       container="body"
+                       months-full="{{ month }}"
+                       months-short="{{ monthShort }}"
+                       weekdays-full="{{ weekdaysFull }}"
+                       weekdays-short="{{ weekdaysShort }}"
+                       weekdays-letter="{{ weekdaysLetter }}"
+                       required ng-class="{'invalid': profileForm.birthdate.$invalid}"/>
+                <label class="col s4 control-label" translate='profile.label.birthdate'></label>
+
+                <div ng-class="{'has-error': profileForm.birthdate.$invalid}" ng-hide="profileForm.birthdate.$valid"
+                     translate="date.label"></div>
+            </div>
+            <div class="input-field">
+                <input type="password" class="validate" name="passwd" ng-model="user.account.passwd" id="passwd"/>
+                <label translate="profile.ph.passwd1"></label>
+
+                <div ng-show="user.account.passwd">
+                    <small translate='profile.message.passwd.strength'></small>
+                    <div ng-hide="true" ng-password-strength="user.account.passwd" strength="passStrength"
+                         inner-class="meter"></div>
+                    <div class="progress grey lighten-3">
+                        <div class="determinate"
+                             ng-class="{'red' : passStrength < 33, 'orange': passStrength >= 33 && passStrength < 66, 'green' : passStrength >= 66}"
+                             style="width: {{passStrength}}%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="input-field">
+                <input type="password" class="" name="passwd2" ng-model="passwd2"
+                       passwd-check="passwd"/>
+                <label translate="profile.label.passwd2"></label>
+
+                <div class="text-danger pull-left"
+                     ng-show="profileForm.passwd2.$dirty && profileForm.passwd2.$error.pwmatch"
+                     translate='profile.message.passwd.ko'></div>
+                <div class="text-success fa fa-check pull-left"
+                     ng-hide="profileForm.passwd2.$pristine || profileForm.passwd2.$error.pwmatch"></div>
+            </div>
+            <div class="col s6 center hide-on-small-only">
+                <a href="#/private" class=" btn red" translate="commons.buttons.cancel"></a>
+            </div>
+            <div class="col s6 center hide-on-small-only">
+                <a ng-click="updateUser(profileForm)" class="btn success" translate="commons.buttons.validate"
+                   ng-disabled="profileForm.$invalid"></a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col s6 center hide-on-med-and-up">
+        <a href="#/private" class=" btn red" translate="commons.buttons.cancel"></a>
+    </div>
+    <div class="col s6 center hide-on-med-and-up">
+        <a ng-click="updateUser(profileForm)" class="btn success" translate="commons.buttons.validate"
+           ng-disabled="profileForm.$invalid"></a>
+    </div>
+</form>

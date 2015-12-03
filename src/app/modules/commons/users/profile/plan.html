@@ -1,0 +1,37 @@
+<h5 class="light-green-text text-lighten-1" translate="profile.plan.desc"></h5>
+<div class="col s12 m2 center">
+    <avatar person="user" width="'130px'"></avatar>
+    <h3>{{user.account.login}}</h3>
+
+    <div class="btn-toolbar">
+        <div class="btn-group">
+            <a ng-href="{{billPdfUrl}}" class="btn btn-default" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
+            <!--                 <a href="#" class="btn btn-default"><i class="fa fa-tag"></i></a>
+                             <a class="btn btn-default"><i class="fa fa-share-alt"></i></a> -->
+        </div>
+    </div>
+</div>
+<div class="col s12 m10">
+    <table class="highlight responsive-table">
+        <thead>
+        <tr>
+            <th translate="profile.label.activity"></th>
+            <th translate="profile.label.product"></th>
+            <th translate="profile.label.price"></th>
+            <th translate="profile.label.billingnumber"></th>
+            <th translate="profile.label.billingdate"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="plan in user.account.listPlan track by $index">
+            <td class="valign-wrapper">
+                <img class="valign responsive-img col s2 m1" ng-src="assets/images/activity/{{plan.activity.code}}.jpg"/>
+                <div class="valign">{{plan.activity.label | translate}}</div></td>
+            <td>{{plan.levelPlan}}</td>
+            <td>{{plan.amountPaid}} €</td>
+            <td>{{plan.paymentId}}</td>
+            <td>{{plan.paidDate | date}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

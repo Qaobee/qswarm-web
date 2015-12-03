@@ -6,7 +6,7 @@
         'ngAutocomplete',
        
         /* qaobee modules */
-        
+        'qaobee.user.profile',
         /* services */
         'locationAPI',
 

@@ -5,6 +5,9 @@
     "account": "My subscription",
     "title": "Profile",
     "desc": "Edit your profile <b>Qaobee</b>.",
+    "plan":  {
+      "desc" : "Manage your invoices"
+    },
     "label": {
       "name": "Name",
       "forname": "First name",
@@ -19,10 +22,11 @@
       "avatar": "Your profile photo",
       "mandatory": "Fields in red are required",
       "clubadmin": "Club Administrator",
-      "billingdate": "Payment date : ",
-      "billingnumber": "Invoice number : ",
+      "billingdate": "Payment date",
+      "billingnumber": "Invoice number",
       "product": "Product",
-      "price": "Price"
+      "price": "Price",
+      "activity": "Activity"
     },
     "ph": {
       "name": "Enter your name",

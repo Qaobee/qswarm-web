@@ -257,3 +257,8 @@ table.super-fancy tr.foobar {
   color: white;
   background-image: url('img/29.png'), url('img/53.png'), url('img/79.png');
 }
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+}

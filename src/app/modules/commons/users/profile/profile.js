@@ -4,14 +4,17 @@
      * user profile
      *
      * @author Xavier MARIN
-     * @class qaobee.prive.profile
-     * @requires {@link qaobee.rest.public.userInfosAPI|qaobee.rest.public.userInfosAPI}
-     * @requires {@link qaobee.rest.prive.profileRestAPI|qaobee.rest.prive.profileRestAPI}
-     * @requires {@link qaobee.rest.public.userMetaAPI|qaobee.rest.public.userMetaAPI}
-     * @requires {@link qaobee.tools.locationAPI|qaobee.tools.locationAPI}
+     * @class qaobee.user.profile
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('profile', ['profileRestAPI', 'userInfosAPI', 'structureCfgRestAPI', 'locationAPI', 'userMetaAPI', 'statAPI', 'chart.js'])
+    angular.module('qaobee.user.profile', [
+            'profileRestAPI',
+            'userRestAPI',
+            'structureCfgRestAPI',
+            'locationAPI',
+            'qaobee.eventbus',
+            'ngAutocomplete',
+            'ngPasswordStrength'])
 
         .config(function ($routeProvider, metaDatasProvider) {
             $routeProvider.when('/private/profil', {
@@ -20,51 +23,46 @@
                     user: metaDatasProvider.checkUser,
                     meta: metaDatasProvider.getMeta
                 },
-                templateUrl: 'prive/profile/profil.html'
+                templateUrl: 'app/modules/commons/users/profile/profil.html'
             });
         })
-    /**
-     * @class qaobee.prive.profile.ProfileCtrl
-     * @description Main controller of templates/prive/profil.html
-     */
-        .controller('ProfileCtrl', function ($scope, eventbus, profileRestAPI, userInfosAPI, userMetaAPI, statAPI, $filter, structureCfgRestAPI, $translatePartialLoader, $rootScope, $location, $window, locationAPI, $log, user, meta) {
+        /**
+         * @class qaobee.user.profile.ProfileCtrl
+         * @description Main controller of app/modules/commons/users/profile/profil.html
+         */
+        .controller('ProfileCtrl', function ($scope, qeventbus, profileRestAPI, userRestAPI, $filter, structureCfgRestAPI, $translatePartialLoader, $translate, $rootScope, $location, $window, locationAPI, $log, user, meta) {
             $translatePartialLoader.addPart('profile');
-            $translatePartialLoader.addPart('stats');
-            $translatePartialLoader.addPart('format');
+            $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('effective');
-            $translatePartialLoader.addPart('data');
             $scope.season = meta.season;
             $scope.activity = meta.activity;
             $scope.structure = meta.structure;
             $scope.user = user;
-            $scope.birthdate = moment().format($filter('translate')('date.format'));
+            $scope.birthdate = new Date(user.birthdate);
             $scope.pdfUrl = '/rest/prive/profile/pdf?token=' + $window.sessionStorage.qaobeesession;
             $scope.billPdfUrl = '/rest/prive/profile/billpdf?token=' + $window.sessionStorage.qaobeesession;
-            $scope.dateOption = {
-                minDate: new Date(1900, 0, 1, 1, 0, 1),
-                maxDate: new Date()
-            };
-
-            $scope.attendance = {
-                options: {
-                    scaleLineColor: '#fff',
-                    scaleFontSize: 10,
-                    scaleFontColor: '#fff',
-                    tooltipFontSize: 10,
-                    tooltipTitleFontSize: 10,
-                    maintainAspectRatio: false,
-                    animationEasing: 'easeOutQuart',
-                    percentageInnerCutout: 85,
-                    legendTemplate: ''
-                },
-                data: {
-                    labels: [],
-                    series: [],
-                    datasets: [[]]
-                }
-            };
-
-
+            $rootScope.$on('$translateChangeSuccess', function () {
+                $translate(['commons.format.date.today',
+                    'commons.format.date.clear',
+                    'commons.format.date.close',
+                    'commons.format.date.label',
+                    'commons.format.date.listMonth',
+                    'commons.format.date.listMonthShort',
+                    'commons.format.date.listWeekdaysFull',
+                    'commons.format.date.listWeekdaysLetter'
+                ]).then(function (translations) {
+                    $scope.today = translations['commons.format.date.today'];
+                    $scope.clear = translations['commons.format.date.clear'];
+                    $scope.close = translations['commons.format.date.close'];
+                    $scope.format = translations['commons.format.date.label'];
+                    $scope.month = translations['commons.format.date.listMonth'].split(',');
+                    $scope.monthShort = translations['commons.format.date.listMonthShort'].split(',');
+                    $scope.weekdaysFull = translations['commons.format.date.listWeekdaysFull'].split(',');
+                    $scope.weekdaysLetter = translations['commons.format.date.listWeekdaysLetter'].split(',');
+                });
+            });
+            $scope.optionsAdr = null;
+            $scope.detailsAdr = '';
             $scope.$on('$destroy', function () {
                 delete $scope.user;
                 delete $scope.pdfUrl;
@@ -72,67 +70,6 @@
                 delete $scope.dateOption;
                 delete $scope.birthdate;
             });
-
-
-            $scope.birthdate = moment(user.birthdate).format($filter('translate')('date.format'));
-            var search = {
-                listIndicators: Array.create('attendance'),
-                listOwners: Array.create(user._id),
-                startDate: meta.season.startDate,
-                endDate: meta.season.endDate,
-                value: $filter('translate')('stat.attendance.val'),
-                aggregat: 'AVG',
-                listFieldsGroupBy: ['code']
-            };
-            statAPI.getStatGroupBy(search).success(function (data) {
-                if (angular.isArray(data) && data.length > 0) {
-                    var labels = [];
-                    var datasets = [];
-                    labels.push($filter('translate')('stat.attendance.value.present'));
-                    labels.push($filter('translate')('stat.attendance.value.absent'));
-                    datasets.push(parseInt($filter('number')(data[0].value * 100, 2)));
-                    datasets.push(parseInt($filter('number')((1 - data[0].value) * 100, 2)));
-                    $scope.attendance.data = {
-                        labels: labels,
-                        datasets: datasets
-                    };
-                }
-            });
-            // Fetch user's stats
-            $scope.technicalRadar = {
-                datasets: [[]],
-                series: [$filter('translate')('playerSheet.rubrics.technical.title')],
-                labels: []
-            };
-            $scope.physicalRadar = {
-                datasets: [[]],
-                series: [$filter('translate')('playerSheet.rubrics.physical.title')],
-                labels: []
-            };
-            $scope.mentalRadar = {
-                datasets: [[]],
-                series: [$filter('translate')('playerSheet.rubrics.mental.title')],
-                labels: []
-            };
-            $scope.ownersId = Array.create(user._id);
-            if (angular.isDefined($scope.user.technicalFolder) && $scope.user.technicalFolder !== null) {
-                $scope.user.technicalFolder.forEach(function (a) {
-                    $scope.technicalRadar.labels.push($filter('translate')('playerSheet.rubrics.technical.label.' + a.key));
-                    $scope.technicalRadar.datasets[0].push(a.value);
-                });
-            }
-            if (angular.isDefined($scope.user.physicalFolder) && $scope.user.physicalFolder !== null) {
-                $scope.user.physicalFolder.forEach(function (a) {
-                    $scope.physicalRadar.labels.push($filter('translate')('playerSheet.rubrics.physical.label.' + a.key));
-                    $scope.physicalRadar.datasets[0].push(a.value);
-                });
-            }
-            if (angular.isDefined($scope.user.mentalFolder) && $scope.user.mentalFolder !== null) {
-                $scope.user.mentalFolder.forEach(function (a) {
-                    $scope.mentalRadar.labels.push($filter('translate')('playerSheet.rubrics.mental.label.' + a.key));
-                    $scope.mentalRadar.datasets[0].push(a.value);
-                });
-            }
             /**
              * @name $scope.updateUser
              * @function
@@ -145,7 +82,7 @@
                 if (profileForm.$valid) {
                     var updUser = {};
                     angular.copy($scope.user, updUser);
-                    updUser.birthdate = $scope.dateOption.val;
+                    updUser.birthdate = moment($scope.birthdate).valueOf();
                     delete updUser.isAdmin;
                     // address management
                     if (angular.isDefined(updUser.address.formatedAddress) && updUser.address.formatedAddress !== '') {
@@ -173,37 +110,18 @@
                                 updUser.birthdate = $scope.dateOption.val;
                                 profileRestAPI.update(updUser).success(function (data) {
                                     toastr.success(data.firstname + ' ' + data.name + $filter('translate')('popup.success.updated'));
-                                    eventbus.prepForBroadcast('refreshUser', data);
+                                    qeventbus.prepForBroadcast('refreshUser', data);
                                 });
                             }
                         );
                     } else {
                         profileRestAPI.update(updUser).success(function (data) {
                             toastr.success(data.firstname + ' ' + data.name + $filter('translate')('popup.success.updated'));
-                            eventbus.prepForBroadcast('refreshUser', data);
+                            qeventbus.prepForBroadcast('refreshUser', data);
                         });
                     }
 
                 }
             };
-
-
-            /**
-             * @name $scope.getLocation
-             * @function
-             * @memberOf qaobee.prive.profile.ProfileCtrl
-             * @description Fetch address with Google API
-             * @see {@link https://developers.google.com/maps/documentation/geocoding/}
-             */
-            $scope.getLocation = function (val) {
-                return locationAPI.get(val).then(function (res) {
-                    var addresses = [];
-                    angular.forEach(res.data.results, function (item) {
-                        addresses.push(item.formatted_address);
-                    });
-                    return addresses;
-                });
-            };
-        })
-    ;
+        });
 }());
