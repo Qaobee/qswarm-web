@@ -89,7 +89,7 @@
     <div class="row">
         <div class="col s12">
             <ul id="task-card" class="collection with-header">
-                <li class="collection-header grey lighten-4 white-text">
+                <li class="collection-header white white-text">
                     <div class="row blue-grey darken-2">
                         <div class="col m4 s12 center"><avatar person="player" width="'100px'"></avatar></div>
                         <div class="col m8 s12 center">
@@ -178,7 +178,7 @@
                                 <div class="col s4 blue-grey-text text-darken-2 center"><h6>Moyenne/match</h6></div>
                                 <div class="col s4 blue-grey-text text-darken-2 center"><h6>Fréquence <br/>1 but toutes les</h6></div>
                                 
-                                <div class="col s4 light-green lighten-2 center"><h5>37</h5></div>
+                                <div class="col s4 light-green lighten-2 center"><h5>{{stats['goalScored'].count}}</h5></div>
                                 <div class="col s4 light-green-text text-lighten-2 center"><h5>5,67</h5></div>
                                 <div class="col s4 light-green-text text-lighten-2 center"><h5>3 minutes</h5></div>
 
@@ -195,7 +195,7 @@
                                 <div class="col s4 blue-grey-text text-darken-2 center"><h6>Temps de jeu <br/> moyen</h6></div>
                                 
                                 <div class="col s4 light-blue-text text-lighten-1 center"><h5>3</h5></div>
-                                <div class="col s4 light-blue-text text-lighten-1 center"><h5>2</h5></div>
+                                <div class="col s4 light-blue-text text-lighten-1 center"><h5>{{stats['holder'].count}}</h5></div>
                                 <div class="col s4 light-blue lighten-1 center"><h5>25 minutes</h5></div>
 
                                 <div class="col s12">&nbsp;</div>
@@ -220,13 +220,13 @@
                                 
                                 <div class="col s12">&nbsp;</div>
                                 <div class="col s6 blue-grey-text text-darken-2 center"><h6>{{'stats.sanction.yellowCard' | translate }}</h6></div>
-                                <div class="col s6 amber accent-2  center"><h5>{{nbYellowCard}}</h5></div>
+                                <div class="col s6 amber accent-2  center"><h5>{{stats['yellowCard'].count}}</h5></div>
                                 
                                 <div class="col s6 blue-grey-text text-darken-2 center"><h6>{{'stats.sanction.excluTempo' | translate }}</h6></div>
-                                <div class="col s6 red-text text-lighten-1 center"><h5>{{nbExcluTmp}}</h5></div>
+                                <div class="col s6 red-text text-lighten-1 center"><h5>{{stats['exclTmp'].count}}</h5></div>
                                 
                                 <div class="col s6 blue-grey-text text-darken-2 center"><h6>{{'stats.sanction.redCard' | translate }}</h6></div>
-                                <div class="col s6 red lighten-1  center"><h5>{{nbRedCard}}</h5></div>
+                                <div class="col s6 red lighten-1  center"><h5>{{stats['redCard'].count}}</h5></div>
 
                                 <div class="col s12">&nbsp;</div>
                             </div>

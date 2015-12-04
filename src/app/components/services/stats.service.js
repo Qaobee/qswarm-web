@@ -100,67 +100,30 @@
             return deferred.promise;
         };
         
-        /* Nb iteration, Average, frequence for indicator */  
-        var getStatsIndicator = function (indicators, ownersId, startDate, endDate, sandboxId, effectiveId, values) {
+        /* Nb SB_Collecte */  
+        var getMatchs = function (startDate, endDate, sandboxId, effectiveId) {
             var deferred = $q.defer(); 
             var search = {};
             var result = {
                 nbCollect : 0,
-                nbItem : 0,
-                average : 0,
-                frequence : 0
+                totalTime : 0
             };
             
-            /* nb iteration */
-            if(angular.isDefined(values)) {
-                search = {
-                    listIndicators: indicators,
-                    listOwners: ownersId,
-                    startDate: startDate.valueOf(),
-                    endDate: endDate.valueOf(),
-                    values: values,
-                    aggregat: 'COUNT',
-                    listFieldsGroupBy: ['owner', 'code']
-                };
-            } else {
-                search = {
-                    listIndicators: indicators,
-                    listOwners: ownersId,
-                    startDate: startDate.valueOf(),
-                    endDate: endDate.valueOf(),
-                    aggregat: 'COUNT',
-                    listFieldsGroupBy: ['owner', 'code']
-                };
-            }
-
-            statsRestAPI.getStatGroupBy(search).success(function (data) {
-                if (angular.isDefined(data[0]) && data !== null) {
-                    result.nbItem = data[0].value;
-                }
-                    
-                var requestCollecte = {
-                    startDate : startDate.valueOf(),
-                    endDate : endDate.valueOf(),
-                    sandboxId : sandboxId,
-                    effectiveId : effectiveId
-                };
-               
-                collecteRestAPI.getListCollectes(requestCollecte).success(function (dataCol) {
-                    result.nbCollect = dataCol.length;
-                    $log.debug('Collecte', result.nbCollect);
-                    result.average = $filter('number')(result.nbItem / result.nbCollect);
-                    deferred.resolve(result);  
-                }).error(function (){
-                    deferred.reject('Cant get indicator' + indicators[0]);
-                });
+            collecteRestAPI.getListCollectes(requestCollecte).success(function (dataCol) {
+                result.nbCollect = dataCol.length;
+                
+                result.average = $filter('number')(result.nbItem / result.nbCollect);
+                deferred.resolve(result);  
+            }).error(function (){
+                deferred.reject('Cant get indicator' + indicators[0]);
             });
             return deferred.promise;
         };
              
         return {
             getEfficiently : getEfficiently,
-            getStatsIndicator : getStatsIndicator,
-            getColorGauge : getColorGauge
+            getColorGauge : getColorGauge,
+            getMatchs : getMatchs
         };
     });
 
