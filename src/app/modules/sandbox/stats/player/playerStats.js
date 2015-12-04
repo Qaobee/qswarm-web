@@ -77,6 +77,15 @@
             $scope.efficiently7mData = [{data:0}];
             $scope.nbShoot7m = 0;
             $scope.nbGoal7m = 0;
+        
+            $scope.defenseCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
+                                    {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
+            $scope.defenseData = [{"Positive":1}, {"Negative":1}];
+
+            $scope.attackCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
+                               {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
+            $scope.attackData = [{"Positive":1}, {"Negative":1}];
+                
 
             /* get player */
             $scope.getPlayer = function () {
@@ -149,9 +158,40 @@
                     });
                 });
                 
+                var listFieldsGroupBy = Array.create('owner');
+                
+                /* PERS-ACT-DEF-POS */
+                var indicators =  Array.create('neutralization', 'forceDef', 'contre', 'interceptionOk');
+                statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
+                    $scope.defenseData.push({"Positive": result});
+                    $scope.defenseCol.push({"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'});
+                    $log.debug(' $scope.defenseData', $scope.defenseData);
+                });
+                
+                /* PERS-ACT-DEF-NEG */
+                var indicators =  Array.create('penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition');
+                statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
+                    $scope.defenseData.push({"Negative": result});
+                    $scope.defenseCol.push({"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'});
+                });
+                
+                /* PERS-ACT-OFF-POS */
+                var indicators =  Array.create('penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec');
+                statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
+                    $scope.attackData.push({"Positive": result});
+                    $scope.attackCol.push({"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'});
+                });
+                
+                /* PERS-ACT-OFF-NEG */
+                var indicators =  Array.create('forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt');
+                statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
+                    $scope.attackData.push({"Negative": result});
+                    $scope.attackCol.push({"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'});
+                });
+                
                 /* Stats Count */
                 var indicators =  Array.create('yellowCard', 'exclTmp', 'redCard', 'originShootAtt', 'goalScored', 'holder', 'substitue');
-                var listFieldsGroupBy = Array.create('owner', 'code');
+                listFieldsGroupBy = Array.create('owner', 'code');
                 
                 angular.forEach(indicators, function (value) {
                     $scope.stats[value] = {sum: 0, avg: 0, count: 0, freq: 0};

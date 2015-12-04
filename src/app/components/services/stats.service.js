@@ -75,7 +75,7 @@
                         result.efficiently = (result.nbGoal / result.nbShoot) * 100;
                         deferred.resolve(result);  
                     } else {
-                        deferred.reject('Can t determinante efficiently');
+                        deferred.reject('getEfficiently -> problem for : ' + search);
                     }
                 });
             });
@@ -119,11 +119,38 @@
             });
             return deferred.promise;
         };
+        
+        /* Return counter for all indicators list */  
+        var countAllInstanceIndicators = function (indicators, ownersId, startDate, endDate, listFieldsGroupBy) {
+            var deferred = $q.defer();
+            var counter = 0;
+
+            var search = {
+                listIndicators: indicators,
+                listOwners: ownersId,
+                startDate: startDate.valueOf(),
+                endDate: endDate.valueOf(),
+                aggregat: 'COUNT',
+                listFieldsGroupBy: listFieldsGroupBy
+            };
+            $log.debug('search', search);
+            /* Appel stats API */
+            statsRestAPI.getStatGroupBy(search).success(function (data) {
+                if (angular.isArray(data) && data.length > 0) {
+                    counter = data[0].value;
+                }
+                deferred.resolve(counter);
+            }).error(function (){
+                deferred.reject('countAllInstanceIndicators -> problem for : ' + search);
+            });
+            return deferred.promise;
+        };
              
         return {
             getEfficiently : getEfficiently,
             getColorGauge : getColorGauge,
-            getMatchs : getMatchs
+            getMatchs : getMatchs,
+            countAllInstanceIndicators : countAllInstanceIndicators
         };
     });
 

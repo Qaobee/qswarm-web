@@ -5,11 +5,6 @@
 			"quarter" : "Trimestre", 
 			"season" : "Saison"
 		},
-        "labelTab" : {
-			"shoot" : "Tir", 
-			"actions" : "Actions de jeu", 
-			"sanctions" : "Discipline"
-		},
         "positionType": {
             "libelle": "Poste",
             "value": {
@@ -32,6 +27,32 @@
             "efficiently6m" : "6 mètres",
             "efficiently7m" : "7 mètres"
         },
+        "actionTab" : {
+            "actions": "Actions",
+            "positive": "positives",
+            "negative": "négatives",
+            "attack" : "Attaque",
+            "defense" : "Défense"
+        },
+        "resumeTab" : {
+            "shoot": "Tirs",
+            "goal": "Buts",
+            "goalLabel": "Nombre de Buts",
+            "goalAvg": "Moyenne/match",
+            "frequence": "Fréquence",
+            "frequence2" : "1 but toutes les",
+            "minute" : "minutes",
+            "usePlayer" : "Utilisation",
+            "gamePlayed" : "Matchs joués",
+            "holder" : "Titularisations",
+            "playTime" : "Temps de jeu moyen",
+            "sanctions" : "Sanctions"
+        },
+        "labelTab" : {
+			"shoot" : "Tir", 
+			"actions" : "Actions de jeu", 
+			"resume" : "Résumé"
+		},
         "typoGoal" : "Typologie des buts",
         "sanction" : {
             "yellowCard" : "Avertissement",
