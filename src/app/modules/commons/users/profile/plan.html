@@ -26,7 +26,7 @@
             <td>{{plan.paymentId}}</td>
             <td>{{plan.paidDate | date}}</td>
             <td>{{plan.paidDate | date}}</td>
-            <a ng-href="{{billPdfUrl}}?id={{$index}}" class="btn btn-default" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
+            <td><a ng-href="{{billPdfUrl}}&id={{$index}}" target="_blank"><i class="fa fa-file-pdf-o"></i></a></td>
         </tr>
         </tbody>
     </table>

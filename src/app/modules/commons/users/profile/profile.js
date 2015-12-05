@@ -30,7 +30,7 @@
          * @class qaobee.user.profile.ProfileCtrl
          * @description Main controller of app/modules/commons/users/profile/profil.html
          */
-        .controller('ProfileCtrl', function ($scope, qeventbus, profileRestAPI, userRestAPI, $filter, structureCfgRestAPI, $translatePartialLoader, $translate, $rootScope, $location, $window, locationAPI, $log, user, meta) {
+        .controller('ProfileCtrl', function ($scope, qeventbus, profileRestAPI, userRestAPI, $filter, structureCfgRestAPI, EnvironmentConfig, $translatePartialLoader, $translate, $rootScope, $location, $window, locationAPI, $log, user, meta) {
             $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('effective');
@@ -39,8 +39,8 @@
             $scope.structure = meta.structure;
             $scope.user = user;
             $scope.birthdate = new Date(user.birthdate);
-            $scope.pdfUrl = '/rest/prive/profile/pdf?token=' + $window.sessionStorage.qaobeesession;
-            $scope.billPdfUrl = '/rest/prive/profile/billpdf?token=' + $window.sessionStorage.qaobeesession;
+            $scope.pdfUrl = EnvironmentConfig.apiEndPoint + '/api/1/commons/users/profile/pdf?token=' + $window.sessionStorage.qaobeesession;
+            $scope.billPdfUrl = EnvironmentConfig.apiEndPoint + '/api/1/commons/users/profile/billpdf?token=' + $window.sessionStorage.qaobeesession;
             $rootScope.$on('$translateChangeSuccess', function () {
                 $translate(['commons.format.date.today',
                     'commons.format.date.clear',
