@@ -5,11 +5,6 @@
             "quarter": "Quarter",
             "season": "Season"
         },
-        "labelTab" : {
-			"shoot" : "Shoot", 
-			"actions" : "Game actions", 
-			"sanctions" : "Discipline"
-		},
         "positionType": {
             "libelle": "Poste",
             "value": {
@@ -32,6 +27,32 @@
             "efficiently6m" : "6 mètres",
             "efficiently7m" : "7 mètres"
         },
+        "actionTab" : {
+            "actions": "Actions",
+            "positive": "positives",
+            "negative": "negative",
+            "attack" : "Attack",
+            "defense" : "Defense"
+        },
+        "resumeTab" : {
+            "shoot": "Shoots",
+            "goal": "Goals",
+            "goalLabel": "Nb Goal",
+            "goalAvg": "Average/Game",
+            "frequence": "Frequence",
+            "frequence2" : "1 goal per",
+            "minute" : "minutes",
+            "usePlayer" : "Use player",
+            "gamePlayed" : "Games played",
+            "holder" : "Holder",
+            "playTime" : "Average playtime",
+            "sanctions" : "Advertissements"
+        },
+        "labelTab" : {
+			"shoot" : "Shoot", 
+			"actions" : "Game actions", 
+			"resume" : "Synthesis"
+		},
         "typoGoal" : "Typologie des buts",
         "sanction" : {
             "yellowCard" : "Yellow card",

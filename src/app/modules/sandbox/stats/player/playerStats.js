@@ -19,6 +19,7 @@
             'effectiveRestAPI',
             'eventsRestAPI',
             'personRestAPI',
+            'statsRestAPI',
             'userRestAPI',
 
             /* qaobee widget */
@@ -39,7 +40,7 @@
          * @class qaobee.modules.home.HomeControler
          */
         .controller('PlayerStats', function ($timeout, $log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                             effectiveRestAPI, personRestAPI, eventsRestAPI, statsSrv, userRestAPI) {
+                                             effectiveRestAPI, statsRestAPI, personRestAPI, eventsRestAPI, statsSrv, userRestAPI) {
             $translatePartialLoader.addPart('home');
             $translatePartialLoader.addPart('stats');
             $scope.user = user;
@@ -55,6 +56,7 @@
 
             //Initialization owner Object
             $scope.player = {};
+            $scope.stats = {};
         
             $scope.efficientlyGlobalCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
             $scope.efficientlyGlobalData = [{data:0}];
@@ -76,15 +78,14 @@
             $scope.nbShoot7m = 0;
             $scope.nbGoal7m = 0;
         
-            $scope.nbYellowCard = 0;
-            $scope.avgYellowCard = 0;
-            $scope.freqYellowCard = 0;
-            $scope.nbExcluTmp = 0;
-            $scope.avgExcluTmp = 0;
-            $scope.freqExcluTmp = 0;
-            $scope.nbRedCard = 0;
-            $scope.avgRedCard = 0;
-            $scope.freqRedCard = 0;
+            $scope.defenseCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
+                                    {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
+            $scope.defenseData = [{"Positive":1}, {"Negative":1}];
+
+            $scope.attackCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
+                               {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
+            $scope.attackData = [{"Positive":1}, {"Negative":1}];
+                
 
             /* get player */
             $scope.getPlayer = function () {
@@ -157,43 +158,62 @@
                     });
                 });
                 
-                /* Sanctions */
-                $scope.nbYellowCard = 0;
-                $scope.avgYellowCard = 0;
-                $scope.freqYellowCard = 0;
+                var listFieldsGroupBy = Array.create('owner');
                 
-                var indicators =  ['yellowCard'];
-                 
-                statsSrv.getStatsIndicator(indicators, ownersId, startDate, endDate, $scope.meta.sandbox._id, $scope.user.effectiveDefault).then(function (result) {
-                    $scope.nbYellowCard = result.nbItem;
-                    $scope.avgYellowCard = result.average;
-                    $scope.freqYellowCard = result.frequence;
+                /* PERS-ACT-DEF-POS */
+                var indicators =  Array.create('neutralization', 'forceDef', 'contre', 'interceptionOk');
+                statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
+                    $scope.defenseData.push({"Positive": result});
+                    $scope.defenseCol.push({"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'});
+                    $log.debug(' $scope.defenseData', $scope.defenseData);
                 });
                 
-                $scope.nbExcluTmp = 0;
-                $scope.avgExcluTmp = 0;
-                $scope.freqExcluTmp = 0;
-                
-                indicators =  ['exclTmp'];
-                
-                
-                statsSrv.getStatsIndicator(indicators, ownersId, startDate, endDate, $scope.meta.sandbox._id, $scope.user.effectiveDefault).then(function (result) {
-                    $scope.nbExcluTmp = result.nbItem;
-                    $scope.avgExcluTmp = result.average;
-                    $scope.freqExcluTmp = result.frequence;
+                /* PERS-ACT-DEF-NEG */
+                var indicators =  Array.create('penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition');
+                statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
+                    $scope.defenseData.push({"Negative": result});
+                    $scope.defenseCol.push({"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'});
                 });
                 
-                $scope.nbRedCard = 0;
-                $scope.avgRedCard = 0;
-                $scope.freqRedCard = 0;
-                
-                indicators =  ['redCard'];
-                
-                statsSrv.getStatsIndicator(indicators, ownersId, startDate, endDate, $scope.meta.sandbox._id, $scope.user.effectiveDefault).then(function (result) {
-                    $scope.nbRedCard = result.nbItem;
-                    $scope.avgRedCard = result.average;
-                    $scope.freqRedCard = result.frequence;
+                /* PERS-ACT-OFF-POS */
+                var indicators =  Array.create('penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec');
+                statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
+                    $scope.attackData.push({"Positive": result});
+                    $scope.attackCol.push({"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'});
                 });
+                
+                /* PERS-ACT-OFF-NEG */
+                var indicators =  Array.create('forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt');
+                statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
+                    $scope.attackData.push({"Negative": result});
+                    $scope.attackCol.push({"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'});
+                });
+                
+                /* Stats Count */
+                var indicators =  Array.create('yellowCard', 'exclTmp', 'redCard', 'originShootAtt', 'goalScored', 'holder', 'substitue');
+                listFieldsGroupBy = Array.create('owner', 'code');
+                
+                angular.forEach(indicators, function (value) {
+                    $scope.stats[value] = {sum: 0, avg: 0, count: 0, freq: 0};
+                });
+                
+                var search = {
+                    listIndicators: indicators,
+                    listOwners: ownersId,
+                    startDate: startDate.valueOf(),
+                    endDate: endDate.valueOf(),
+                    aggregat: 'COUNT',
+                    listFieldsGroupBy: listFieldsGroupBy
+                };
+                
+                /* Appel stats API */
+                statsRestAPI.getStatGroupBy(search).success(function (data) {
+                    if (angular.isArray(data) && data.length > 0) {
+                        data.forEach(function(a){
+                            $scope.stats[a._id.code].count = a.value;
+                        });
+                    }
+                })
             };
 
             /* generate calendar by month */

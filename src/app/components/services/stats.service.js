@@ -75,7 +75,7 @@
                         result.efficiently = (result.nbGoal / result.nbShoot) * 100;
                         deferred.resolve(result);  
                     } else {
-                        deferred.reject('Can t determinante efficiently');
+                        deferred.reject('getEfficiently -> problem for : ' + search);
                     }
                 });
             });
@@ -100,67 +100,57 @@
             return deferred.promise;
         };
         
-        /* Nb iteration, Average, frequence for indicator */  
-        var getStatsIndicator = function (indicators, ownersId, startDate, endDate, sandboxId, effectiveId, values) {
+        /* Nb SB_Collecte */  
+        var getMatchs = function (startDate, endDate, sandboxId, effectiveId) {
             var deferred = $q.defer(); 
             var search = {};
             var result = {
                 nbCollect : 0,
-                nbItem : 0,
-                average : 0,
-                frequence : 0
+                totalTime : 0
             };
             
-            /* nb iteration */
-            if(angular.isDefined(values)) {
-                search = {
-                    listIndicators: indicators,
-                    listOwners: ownersId,
-                    startDate: startDate.valueOf(),
-                    endDate: endDate.valueOf(),
-                    values: values,
-                    aggregat: 'COUNT',
-                    listFieldsGroupBy: ['owner', 'code']
-                };
-            } else {
-                search = {
-                    listIndicators: indicators,
-                    listOwners: ownersId,
-                    startDate: startDate.valueOf(),
-                    endDate: endDate.valueOf(),
-                    aggregat: 'COUNT',
-                    listFieldsGroupBy: ['owner', 'code']
-                };
-            }
+            collecteRestAPI.getListCollectes(requestCollecte).success(function (dataCol) {
+                result.nbCollect = dataCol.length;
+                
+                result.average = $filter('number')(result.nbItem / result.nbCollect);
+                deferred.resolve(result);  
+            }).error(function (){
+                deferred.reject('Cant get indicator' + indicators[0]);
+            });
+            return deferred.promise;
+        };
+        
+        /* Return counter for all indicators list */  
+        var countAllInstanceIndicators = function (indicators, ownersId, startDate, endDate, listFieldsGroupBy) {
+            var deferred = $q.defer();
+            var counter = 0;
 
+            var search = {
+                listIndicators: indicators,
+                listOwners: ownersId,
+                startDate: startDate.valueOf(),
+                endDate: endDate.valueOf(),
+                aggregat: 'COUNT',
+                listFieldsGroupBy: listFieldsGroupBy
+            };
+            $log.debug('search', search);
+            /* Appel stats API */
             statsRestAPI.getStatGroupBy(search).success(function (data) {
-                if (angular.isDefined(data[0]) && data !== null) {
-                    result.nbItem = data[0].value;
+                if (angular.isArray(data) && data.length > 0) {
+                    counter = data[0].value;
                 }
-                    
-                var requestCollecte = {
-                    startDate : startDate.valueOf(),
-                    endDate : endDate.valueOf(),
-                    sandboxId : sandboxId,
-                    effectiveId : effectiveId
-                };
-               
-                collecteRestAPI.getListCollectes(requestCollecte).success(function (dataCol) {
-                    result.nbCollect = dataCol.length;
-                    $log.debug('Collecte', result.nbCollect);
-                    result.average = $filter('number')(result.nbItem / result.nbCollect);
-                    deferred.resolve(result);  
-                }).error(function (){
-                    deferred.reject('Cant get indicator' + indicators[0]);
-                });
+                deferred.resolve(counter);
+            }).error(function (){
+                deferred.reject('countAllInstanceIndicators -> problem for : ' + search);
             });
             return deferred.promise;
         };
              
         return {
             getEfficiently : getEfficiently,
-            getStatsIndicator : getStatsIndicator,
-            getColorGauge : getColorGauge
+            getColorGauge : getColorGauge,
+            getMatchs : getMatchs,
+            countAllInstanceIndicators : countAllInstanceIndicators
         };
     });
 
