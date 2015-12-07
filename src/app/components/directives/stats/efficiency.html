@@ -1,0 +1,12 @@
+<!-- efficiency gauge -->
+<div class="card-panel blue-grey-text text-darken-2">
+    <div class="card-content center">
+        <span class="card-title"><h6>{{title | translate }} <br/>{{nbGoal}}/{{nbShoot}}</h6></span>
+    </div>
+    <div class="card-content">
+        <c3chart bindto-id="bindToId" chart-columns="efficientlyCol" chart-data="efficientlyData"
+            padding-top="25" padding-bottom="25" padding-right="25" padding-left="25">
+            <chart-gauge min="0" max="100" width="30"/>
+        </c3chart>
+    </div>
+</div>

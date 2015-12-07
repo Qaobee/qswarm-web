@@ -1,29 +1,29 @@
 <div class="container" ng-cloack>
 
     <!-- space between header menu and body-->
-    <div class="row s12 hide-on-large-only"></div>
+    <div class="row"></div>
     
     <!-- view for tablet and phone -->
     <!-- Filter Zone start-->
-    <div class="row hide-on-large-only">
+    <div class="row hide-on-med-and-up">
            
         <!-- Periodicity selector -->
         <div class="col m1 s1 center">&nbsp;</div>
         <div class="col m1 s3 center red lighten-1" style="margin:1px">
-            <a ng-click="getCurrentMonth()" class="white-text"><h6 class="small">{{'stats.periodicity.month' | translate }}</h6></a>
+            <a href="" ng-click="getCurrentMonth()" class="white-text"><h6 class="small">{{'stats.periodicity.month' | translate }}</h6></a>
         </div>
         
         <div class="col m1 s4 center red lighten-1" style="margin:1px">
-            <a ng-click="getCurrentQuarter()" class="white-text"><h6 class="small">{{'stats.periodicity.quarter' | translate }}</h6></a>
+            <a href="" ng-click="getCurrentQuarter()" class="white-text"><h6 class="small">{{'stats.periodicity.quarter' | translate }}</h6></a>
         </div>
         <div class="col m1 s3 center red lighten-1" style="margin:1px">
-            <a ng-click="getCurrentSeason()" class="white-text"><h6 class="small">{{'stats.periodicity.season' | translate }}</h6></a>
+            <a href="" ng-click="getCurrentSeason()" class="white-text"><h6 class="small">{{'stats.periodicity.season' | translate }}</h6></a>
         </div>
         <div class="col m1 s1 center">&nbsp;</div>
     </div>
         
     <!-- Month Navigation-->
-    <div class="row hide-on-large-only" ng-if="periodicity=='month'">   
+    <div class="row hide-on-med-and-up" ng-if="periodicity=='month'">   
         <div class="col m1 s1 center">&nbsp;</div>
         <div class="col m1 s1 center" ng-if="periodicity=='month'">
             <a href="" ng-click="previousMonth()" class="btn-floating blue-grey darken-2 white-text left">
@@ -42,7 +42,7 @@
     </div>
     
     <!-- Quarter Navigation-->
-    <div class="row hide-on-large-only" ng-if="periodicity=='quarter'">
+    <div class="row hide-on-med-and-up" ng-if="periodicity=='quarter'">
         <div class="col m1 s1 center">&nbsp;</div>
         <div class="col m1 s1 center" ng-if="periodicity=='quarter'">
             <a href="" ng-click="previousQuarter()" class="btn-floating blue-grey darken-2 white-text left">
@@ -61,7 +61,7 @@
     </div>
     
     <!-- Season Navigation-->
-    <div class="row hide-on-large-only" ng-if="periodicity=='season'">
+    <div class="row hide-on-med-and-up" ng-if="periodicity=='season'">
         <div class="col m1 s1 center">&nbsp;</div>
         <div class="col m1 s1 center">
             <a href="" ng-click="previousSeason()" class="btn-floating blue-grey darken-2 white-text left">
@@ -80,55 +80,37 @@
     </div>
     <!-- Filter Zone end-->
 <!-- view for tablet and phone -->
-
-<!-- view desktop -->
     
 <!-- view desktop -->
     
     <!-- Resume-->
     <div class="row">
         <div class="col s12">
-            <ul id="task-card" class="collection with-header">
-                <li class="collection-header white white-text">
-                    <div class="row blue-grey darken-2">
-                        <div class="col m4 s12 center"><avatar person="player" width="'100px'"></avatar></div>
-                        <div class="col m4 s12 center">
-                            <h3 class="task-card-title">{{player.firstname}} {{player.name}}</h3>
-                            <h5 class="task-card-date">{{player.positionType}}</h5>
+            
+            <div class="row blue-grey darken-2">
+                <div class="col l8 m12 s12">
+                    <div class="row">
+                        <div class="col l3 m3 center hide-on-small-only"><avatar person="player" width="'100px'"></avatar></div>
+                        <div class="col l9 m9 s12 white-text right-align">
+                            <h4 class="task-card-title">{{player.firstname}} {{player.name}}</h4>
+                            <h5 class="task-card-date">{{player.positionType}}</h6>
                         </div>
-                        <div class="col m4 s12 grey lighten-4">
-                            <div class="row ">
-                                <div class="col s12 blue-grey center"><h6>{{'stats.resumeTab.usePlayer' | translate }}</h6></div>
-                                
-                                <div class="col s12">&nbsp;</div>
-                                <div class="col s4 blue-grey-text text-darken-2 center"><h6>{{'stats.resumeTab.gamePlayed' | translate }}</h6></div>
-                                <div class="col s4 blue-grey-text text-darken-2 center"><h6>{{'stats.resumeTab.holder' | translate }}</h6></div>
-                                <div class="col s4 blue-grey-text text-darken-2 center"><h6>{{'stats.resumeTab.playTime' | translate }}</h6></div>
-                                
-                                <div class="col s4 light-blue-text text-lighten-1 center"><h6>3</h6></div>
-                                <div class="col s4 light-blue-text text-lighten-1 center"><h6>{{stats['holder'].count}}</h6></div>
-                                <div class="col s4 light-blue lighten-1 center"><h6>25 {{'stats.resumeTab.minute' | translate }}</h6></div>
-
-                                <div class="col s12">&nbsp;</div>
-                            </div>
-                        </div>
-                        
                     </div>
-                    <div class="row hide-on-med-and-down white">
+                    <div class="row hide-on-small-only grey lighten-5">
                     <!-- Filter Zone start-->
-                        <div class="col s12 center">&nbsp;</div>
+           
                         <div class="col s1 center">&nbsp;</div>
 
                         <!-- Periodicity selector -->
                         <div class="col s1 center red lighten-1" style="margin:1px">
-                            <a ng-click="getCurrentMonth()" class="white-text"><h6 class="small">{{'stats.periodicity.month' | translate }}</h6></a>
+                            <a href="" ng-click="getCurrentMonth()" class="white-text"><h6 class="small">{{'stats.periodicity.month' | translate }}</h6></a>
                         </div>
 
                         <div class="col s1 center red lighten-1" style="margin:1px">
-                            <a ng-click="getCurrentQuarter()" class="white-text"><h6 class="small">{{'stats.periodicity.quarter' | translate }}</h6></a>
+                            <a href="" ng-click="getCurrentQuarter()" class="white-text"><h6 class="small">{{'stats.periodicity.quarter' | translate }}</h6></a>
                         </div>
                         <div class="col s1 center red lighten-1" style="margin:1px">
-                            <a ng-click="getCurrentSeason()" class="white-text"><h6 class="small">{{'stats.periodicity.season' | translate }}</h6></a>
+                            <a href="" ng-click="getCurrentSeason()" class="white-text"><h6 class="small">{{'stats.periodicity.season' | translate }}</h6></a>
                         </div>
 
 
@@ -147,7 +129,8 @@
                                 <i class="mdi-navigation-chevron-right"></i>
                             </a>
                         </div>
-                        <div class="col s2 center" ng-if="periodicity=='month'">&nbsp;</div>
+                        
+
 
                         <!-- Quarter Navigation-->
                         <div class="col s1 center" ng-if="periodicity=='quarter'">&nbsp;</div>
@@ -164,7 +147,7 @@
                                 <i class="mdi-navigation-chevron-right"></i>
                             </a>
                         </div>
-                        <div class="col s1 center" ng-if="periodicity=='quarter'">&nbsp;</div>
+
 
                         <!-- Season Navigation-->
                         <div class="col s1 center" ng-if="periodicity=='season'">&nbsp;</div>
@@ -181,238 +164,286 @@
                                 <i class="mdi-navigation-chevron-right"></i>
                             </a>
                         </div>
-                        <div class="col s1 center" ng-if="periodicity=='season'">&nbsp;</div>
+                 
+
                     </div> 
-                    
-                    <!-- Tabs -->
+                </div>
+                <div class="col l4 m12 s12 grey lighten-5">
                     <div class="row">
+                        <div class="s12">
+                        <h5 class="blue-grey-text text-darken-2 center">{{'stats.efficiently.efficiently' | translate }} {{nbGoalGlobal}}/{{nbShootGlobal}}</h5>
+                        <c3chart bindto-id="gaugeEfficientlyGlobal" chart-columns="efficientlyGlobalCol" chart-data="efficientlyGlobalData"
+                                 padding-top="20" padding-bottom="20" padding-right="20" padding-left="20">
+                            <chart-gauge min="0" max="100" width="30"/>
+                        </c3chart>
+                            <!-- <stats-efficiency bind-to-id="efficiency9m" owners-id="ownersId" 
+                                          label="efficiently9m" values="values9m"
+                                          start-date="periodicityActive.startDate" 
+                                          end-date="periodicityActive.endDate"/>
+                            -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- Tabs -->
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs" tabs>
+                        <li class="tab col s4 blue-grey darken-2"><a href="#resume" class="white-text">{{'stats.labelTab.resume' | translate }}</a></li>
+                        <li class="tab col s4 blue-grey darken-2"><a href="#shoot" class="white-text">{{'stats.labelTab.shoot' | translate }}</a></li>
+                        <li class="tab col s4 blue-grey darken-2"><a href="#actions" class="white-text">{{'stats.labelTab.actions' | translate }}</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Filter Zone end-->
+            <div class="row white-text" id="resume">
+                <div class="col s12 m12 l6">
+                    <div class="row">
+                        <div class="col s12 m6 l6">
+                            <div class="card blue-grey-text text-darken-2">
+                                <div class="card-title center light-green lighten-1">
+                                    <span class="white-text"><h5>{{'stats.resumeTab.goal' | translate }}</h5></span>
+                                </div>
+                                <div class="card-content">
+                                    <div class="row white">
+
+                                        <div class="col s8 blue-grey-text text-darken-2 right-align "><h6>{{'stats.resumeTab.goal' | translate }}</h6></div>
+                                        <div class="col s4 light-green lighten-2 white-text center"><h6>{{stats['goalScored'].count}}</h6></div>
+
+                                        <div class="col s8 blue-grey-text text-darken-2 right-align "><h6>{{'stats.resumeTab.goalAvgLight' | translate }}</h6></div>
+                                        <div class="col s4 center"><h6>5,67</h6></div>
+
+                                        <div class="col s8 blue-grey-text text-darken-2 right-align "><h6>{{'stats.resumeTab.frequence' | translate }}</h6></div>
+                                        <div class="col s4 center"><h6>3 {{'stats.resumeTab.minute' | translate }}</h6></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s12 m6 l6">
+                            <div class="card blue-grey-text text-darken-2">
+                                <div class="card-title red lighten-1 center">
+                                    <span class="white-text"><h5>{{'stats.resumeTab.sanctions' | translate }}</h5></span>
+                                </div>
+                                <div class="card-content">
+                                    <div class="row white">
+                                        <div class="col s8 blue-grey-text text-darken-2 right-align"><h6>{{'stats.sanction.yellowCard' | translate }}</h6></div>
+                                        <div class="col s4 amber accent-2  center"><h6>{{stats['yellowCard'].count}}</h6></div>
+
+                                        <div class="col s8 blue-grey-text text-darken-2 right-align"><h6>{{'stats.sanction.excluTempo' | translate }}</h6></div>
+                                        <div class="col s4 center"><h6>{{stats['exclTmp'].count}}</h6></div>
+
+                                        <div class="col s8 blue-grey-text text-darken-2 right-align"><h6>{{'stats.sanction.redCard' | translate }}</h6></div>
+                                        <div class="col s4 red lighten-1 white-text center"><h6>{{stats['redCard'].count}}</h6></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col s12">
-                            <ul class="tabs" tabs>
-                                <li class="tab col s4 blue-grey darken-2"><a href="#resume" class="white-text">{{'stats.labelTab.resume' | translate }}</a></li>
-                                <li class="tab col s4 blue-grey darken-2"><a href="#shoot" class="white-text">{{'stats.labelTab.shoot' | translate }}</a></li>
-                                <li class="tab col s4 blue-grey darken-2"><a href="#actions" class="white-text">{{'stats.labelTab.actions' | translate }}</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <!-- Filter Zone end-->
-                    <div class="row white-text" id="resume">
-
-                        <div class="col m8 s12">
-                            <div class="row white">
-                                
-                                <div class="col s12 light-green lighten-1 center"><h6>{{'stats.resumeTab.goal' | translate }}</h6></div>
-                                
-                                <div class="col s12">&nbsp;</div>
-                                <div class="col s4 blue-grey-text text-darken-2 center"><h6>{{'stats.resumeTab.goalLabel' | translate }}</h6></div>
-                                <div class="col s4 blue-grey-text text-darken-2 center"><h6>{{'stats.resumeTab.goalAvg' | translate }}</h6></div>
-                                <div class="col s4 blue-grey-text text-darken-2 center"><h6>{{'stats.resumeTab.frequence' | translate }}<br/>{{'stats.resumeTab.frequence2' | translate }}</h6></div>
-                                
-                                <div class="col s4 light-green lighten-2 center"><h6>{{stats['goalScored'].count}}</h6></div>
-                                <div class="col s4 light-green-text text-lighten-2 center"><h6>5,67</h6></div>
-                                <div class="col s4 light-green-text text-lighten-2 center"><h6>3 {{'stats.resumeTab.minute' | translate }}</h6></div>
-                                <div class="col s12">&nbsp;</div>
-                                <div class="col s12">&nbsp;</div>
-                            </div>
-                        </div>
-                        
-                        <div class="col m4 s12 grey lighten-4 center">
-                            <div class="col s12 blue-grey-text text-darken-1 center"><h6>{{'stats.efficiently.efficiently' | translate }} {{nbGoalGlobal}}/{{nbShootGlobal}}</h6></div>
-                            <div class="col s12">
-                                <c3chart bindto-id="gaugeEfficientlyGlobal" chart-columns="efficientlyGlobalCol" chart-data="efficientlyGlobalData">
-                                    <chart-gauge min="0" max="100" width="40"/>
-                                </c3chart>
-                            </div>
-                        </div>   
-                        
-                        <div class="col m4 s12 grey lighten-4">
-                            <div class="col s12 blue-grey-text text-darken-1 center"><h6>{{'stats.actionTab.attack' | translate }}</h6></div>
-                            <div class="col s12">
-                                <c3chart bindto-id="chartActionsAtt" chart-columns="attackCol" chart-data="attackData">
-                                    <chart-donut width="60"/>
-                                </c3chart>
-                            </div>
-                            <div class="col s12">&nbsp;</div>
-                        </div>
-     
-                        <div class="col m4 s12 grey lighten-4">
-                            <div class="col s12 blue-grey-text text-darken-1 center"><h6>{{'stats.actionTab.defense' | translate }}</h6></div>
-                            <div class="col s12">
-                                <c3chart bindto-id="chartActionsDef" chart-columns="defenseCol" chart-data="defenseData">
-                                    <chart-donut width="60"/>
-                                </c3chart>
-                            </div>
-                            <div class="col s12">&nbsp;</div>
-                        </div>
-                        
-                        <div class="col m4 s12">
-                            <div class="row white">
-                  
-                                <div class="col s12 red lighten-1 center"><h6>{{'stats.resumeTab.sanctions' | translate }}</h6></div>
-                                
-                                <div class="col s12">&nbsp;</div>
-                                <div class="col s8 blue-grey-text text-darken-2 center"><h6>{{'stats.sanction.yellowCard' | translate }}</h6></div>
-                                <div class="col s4 amber accent-2  center"><h6>{{stats['yellowCard'].count}}</h6></div>
-                                
-                                <div class="col s8 blue-grey-text text-darken-2 center"><h6>{{'stats.sanction.excluTempo' | translate }}</h6></div>
-                                <div class="col s4 red-text text-lighten-1 center"><h6>{{stats['exclTmp'].count}}</h6></div>
-                                
-                                <div class="col s8 blue-grey-text text-darken-2 center"><h6>{{'stats.sanction.redCard' | translate }}</h6></div>
-                                <div class="col s4 red lighten-1  center"><h6>{{stats['redCard'].count}}</h6></div>
-                            </div>
-                        </div>  
-                    </div>
-                    
-                    <!-- Stats shoot Start -->
-                    <div class="row" id="shoot">
-                        <!-- Stats shoot efficiently start -->
-                        <div class="col m4 s12">
-                            <!-- Stats shoot efficiently Start -->
-                            <div class="card-panel blue-grey-text text-darken-2">
-                                <div class="card-content center">
-                                    <span class="card-title"><h5>{{'stats.efficiently.efficiently9m' | translate }} <br/>{{nbGoal9m}}/{{nbShoot9m}}</h5></span>
+                            <div class="card blue-grey-text text-darken-2">
+                                <div class="card-title light-blue lighten-1 center">
+                                    <span class="white-text"><h5>{{'stats.resumeTab.usePlayer' | translate }}</h5></span>
                                 </div>
                                 <div class="card-content">
-                                    <c3chart bindto-id="gaugeEfficiently9m"
-                                             chart-columns="efficiently9mCol"
-                                             chart-data="efficiently9mData">
+                                    <div class="row white">
+                                        <div class="col s4 center"><h6>{{'stats.resumeTab.gamePlayed' | translate }}</h6></div>
+                                        <div class="col s4 center"><h6>{{'stats.resumeTab.holder' | translate }}</h6></div>
+                                        <div class="col s4 center"><h6>{{'stats.resumeTab.playTime' | translate }}</h6></div>
 
-                                        <chart-gauge min="0" max="100" width="30"/>
+                                        <div class="col s4 light-blue-text text-lighten-1 center"><h6>3</h6></div>
+                                        <div class="col s4 light-blue-text text-lighten-1 center"><h6>{{stats['holder'].count}}</h6></div>
+                                        <div class="col s4 light-blue lighten-1 white-text center"><h6>25 {{'stats.resumeTab.minute' | translate }}</h6></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m12 l6">
+                    <div class="row">
+                        <div class="col m6 s12">
+                            <div class="card white">
+                                <div class="card-title blue-grey darken-2 grey-text text-lighten-4 center">
+                                    <h5>{{'stats.actionTab.defense' | translate }}</h5>
+                                </div>
+                                <div class="card-content">
+                                    <c3chart bindto-id="chartActionsDef" chart-columns="defenseCol" chart-data="defenseData" 
+                                             padding-top="40" padding-bottom="40" padding-right="40" padding-left="40">
+                                        <chart-donut width="40"/>
                                     </c3chart>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col m4 s12">
-                             <div class="card-panel blue-grey-text text-darken-2">
-                                <div class="card-content center">
-                                    <span class="card-title"><h5>{{'stats.efficiently.efficiently6m' | translate }} <br/>{{nbGoal6m}}/{{nbShoot6m}}</h5></span>
+                        <div class="col m6 s12">
+                            <div class="card white">
+                                <div class="card-title blue-grey darken-2 grey-text text-lighten-4 center">
+                                    <h5>{{'stats.actionTab.attack' | translate }}</h5>
                                 </div>
                                 <div class="card-content">
-                                    <c3chart bindto-id="gaugeEfficiently6m"
-                                             chart-columns="efficiently6mCol"
-                                             chart-data="efficiently6mData">
-
-                                        <chart-gauge min="0" max="100" width="30"/>
+                                    <c3chart bindto-id="chartActionsAtt" chart-columns="attackCol" chart-data="attackData" 
+                                             padding-top="40" padding-bottom="40" padding-right="40" padding-left="40">
+                                        <chart-donut width="40"/>
                                     </c3chart>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
 
-                        <div class="col m4 s12">
-                            <div class="card-panel blue-grey-text text-darken-2">
-                                <div class="card-content center">
-                                    <span class="card-title"><h5>{{'stats.efficiently.efficiently7m' | translate }} <br/>{{nbGoal7m}}/{{nbShoot7m}}</h5></span>
-                                </div>
-                                <div class="card-content">
-                                    <c3chart bindto-id="gaugeEfficiently7m"
-                                             chart-columns="efficiently7mCol"
-                                             chart-data="efficiently7mData">
+            <!-- Stats shoot Start -->
+            <div class="row" id="shoot">
+                <!-- Stats shoot efficiently start -->
+                <div class="col m4 s12">
+                    <!-- Stats shoot efficiently Start -->
+                    <div class="card-panel blue-grey-text text-darken-2">
+                        <div class="card-content center">
+                            <span class="card-title"><h6>{{'stats.efficiently.efficiently9m' | translate }} <br/>{{nbGoal9m}}/{{nbShoot9m}}</h6></span>
+                        </div>
+                        <div class="card-content">
+                            <c3chart bindto-id="gaugeEfficiently9m"
+                                     chart-columns="efficiently9mCol"
+                                     chart-data="efficiently9mData">
 
-                                        <chart-gauge min="0" max="100" width="30"/>
-                                    </c3chart>
+                                <chart-gauge min="0" max="100" width="30"/>
+                            </c3chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col m4 s12">
+                     <div class="card-panel blue-grey-text text-darken-2">
+                        <div class="card-content center">
+                            <span class="card-title"><h6>{{'stats.efficiently.efficiently6m' | translate }} <br/>{{nbGoal6m}}/{{nbShoot6m}}</h6></span>
+                        </div>
+                        <div class="card-content">
+                            <c3chart bindto-id="gaugeEfficiently6m"
+                                     chart-columns="efficiently6mCol"
+                                     chart-data="efficiently6mData">
+
+                                <chart-gauge min="0" max="100" width="30"/>
+                            </c3chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col m4 s12">
+                    <div class="card-panel blue-grey-text text-darken-2">
+                        <div class="card-content center">
+                            <span class="card-title"><h6>{{'stats.efficiently.efficiently7m' | translate }} <br/>{{nbGoal7m}}/{{nbShoot7m}}</h6></span>
+                        </div>
+                        <div class="card-content">
+                            <c3chart bindto-id="gaugeEfficiently7m"
+                                     chart-columns="efficiently7mCol"
+                                     chart-data="efficiently7mData">
+
+                                <chart-gauge min="0" max="100" width="30"/>
+                            </c3chart>
+                        </div>
+                    </div>
+                </div>           
+                <!-- Stats shoot efficiently end -->            
+
+                <!-- Stats shoot origine Start -->
+                <!-- Stats shoot origine end -->
+
+            </div>
+            <!-- Stats shoot end -->
+
+            <!-- Stats actions Start -->
+            <div class="row blue-grey-text text-darken-2" id="actions">
+                <ul class="collapsible" data-collapsible="accordion">
+                    <li>
+                        <div class="collapsible-header active"><i class="material-icons">place</i>Attaque</div>
+                        <div class="collapsible-body">
+                            <div class="col m6 s12">
+                                <div class="row white">
+                                    <div class="col s12 light-green lighten-1 center white-text"><h6>Actions positives</h6></div>
+
+                                    <div class="col s12">&nbsp;</div>
+                                    <div class="col s6 blue-grey-text text-darken-2"><h6>Matchs joués</h6></div>
+                                    <div class="col s6 light-green lighten-1 center"><h6>3</h6></div>
+
+                                    <div class="col s12">&nbsp;</div>
+                                    <div class="col s6 blue-grey-text text-darken-2"><h6>Titularisations</h6></div>
+                                    <div class="col s6 light-green lighten-1 center"><h6>2</h6></div>
+
+                                    <div class="col s12">&nbsp;</div>
+                                    <div class="col s6 blue-grey-text text-darken-2"><h6>Temps de jeu moyen</h6></div>
+                                    <div class="col s6 light-green lighten-1 center"><h6>25 minutes</h6></div>
+
+                                    <div class="col s12">&nbsp;</div>
                                 </div>
                             </div>
-                        </div>           
-                        <!-- Stats shoot efficiently end -->            
+                            <div class="col m6 s12">
+                                <div class="row white">
+                                    <div class="col s12 red lighten-1 center white-text"><h6>Actions Négatives</h6></div>
 
-                        <!-- Stats shoot origine Start -->
-                        <!-- Stats shoot origine end -->
+                                    <div class="col s12">&nbsp;</div>
+                                    <div class="col s6 blue-grey-text text-darken-2"><h6>Avertissements</h6></div>
+                                    <div class="col s6 red lighten-1  center"><h6>3</h6></div>
 
-                    </div>
-                    <!-- Stats shoot end -->
-                    
-                    <!-- Stats actions Start -->
-                    <div class="row blue-grey-text text-darken-2" id="actions">
-                        <ul class="collapsible" data-collapsible="accordion">
-                            <li>
-                                <div class="collapsible-header"><i class="material-icons">place</i>Attaque</div>
-                                <div class="collapsible-body">
-                                    <div class="col m6 s12">
-                                        <div class="row white">
-                                            <div class="col s12 light-green lighten-1 center white-text"><h5>Actions positives</h5></div>
+                                    <div class="col s12">&nbsp;</div>
+                                    <div class="col s6 blue-grey-text text-darken-2"><h6>Exclusions</h6></div>
+                                    <div class="col s6 red lighten-1 center"><h6>2</h6></div>
 
-                                            <div class="col s12">&nbsp;</div>
-                                            <div class="col s6 blue-grey-text text-darken-2"><h6>Matchs joués</h6></div>
-                                            <div class="col s6 light-green lighten-1 center"><h6>3</h6></div>
+                                    <div class="col s12">&nbsp;</div>
+                                    <div class="col s6 blue-grey-text text-darken-2"><h6>Disqualification</h6></div>
+                                    <div class="col s6 red lighten-1  center"><h6>0</h6></div>
 
-                                            <div class="col s12">&nbsp;</div>
-                                            <div class="col s6 blue-grey-text text-darken-2"><h6>Titularisations</h6></div>
-                                            <div class="col s6 light-green lighten-1 center"><h6>2</h6></div>
-
-                                            <div class="col s12">&nbsp;</div>
-                                            <div class="col s6 blue-grey-text text-darken-2"><h6>Temps de jeu moyen</h6></div>
-                                            <div class="col s6 light-green lighten-1 center"><h6>25 minutes</h6></div>
-
-                                            <div class="col s12">&nbsp;</div>
-                                        </div>
-                                    </div>
-                                    <div class="col m6 s12">
-                                        <div class="row white">
-                                            <div class="col s12 red lighten-1 center white-text"><h5>Actions Négatives</h5></div>
-
-                                            <div class="col s12">&nbsp;</div>
-                                            <div class="col s6 blue-grey-text text-darken-2"><h6>Avertissements</h6></div>
-                                            <div class="col s6 red lighten-1  center"><h6>3</h6></div>
-
-                                            <div class="col s12">&nbsp;</div>
-                                            <div class="col s6 blue-grey-text text-darken-2"><h6>Exclusions</h6></div>
-                                            <div class="col s6 red lighten-1 center"><h6>2</h6></div>
-
-                                            <div class="col s12">&nbsp;</div>
-                                            <div class="col s6 blue-grey-text text-darken-2"><h6>Disqualification</h6></div>
-                                            <div class="col s6 red lighten-1  center"><h6>0</h6></div>
-
-                                            <div class="col s12">&nbsp;</div>
-                                        </div>
-                                    </div>
+                                    <div class="col s12">&nbsp;</div>
                                 </div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header"><i class="material-icons">place</i>Défense</div>
-                                <div class="collapsible-body">
-                                    <div class="col m6 s12">
-                                        <div class="row white">
-                                            <div class="col s12 light-green lighten-1 center white-text"><h5>Actions positives</h5></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">place</i>Défense</div>
+                        <div class="collapsible-body">
+                            <div class="col m6 s12">
+                                <div class="row white">
+                                    <div class="col s12 light-green lighten-1 center white-text"><h6>Actions positives</h6></div>
 
-                                            <div class="col s12">&nbsp;</div>
-                                            <div class="col s6 blue-grey-text text-darken-2"><h6>Matchs joués</h6></div>
-                                            <div class="col s6 light-green lighten-1 center"><h6>3</h6></div>
+                                    <div class="col s12">&nbsp;</div>
+                                    <div class="col s6 blue-grey-text text-darken-2"><h6>Matchs joués</h6></div>
+                                    <div class="col s6 light-green lighten-1 center"><h6>3</h6></div>
 
-                                            <div class="col s12">&nbsp;</div>
-                                            <div class="col s6 blue-grey-text text-darken-2"><h6>Titularisations</h6></div>
-                                            <div class="col s6 light-green lighten-1 center"><h6>2</h6></div>
+                                    <div class="col s12">&nbsp;</div>
+                                    <div class="col s6 blue-grey-text text-darken-2"><h6>Titularisations</h6></div>
+                                    <div class="col s6 light-green lighten-1 center"><h6>2</h6></div>
 
-                                            <div class="col s12">&nbsp;</div>
-                                            <div class="col s6 blue-grey-text text-darken-2"><h6>Temps de jeu moyen</h6></div>
-                                            <div class="col s6 light-green lighten-1 center"><h6>25 minutes</h6></div>
+                                    <div class="col s12">&nbsp;</div>
+                                    <div class="col s6 blue-grey-text text-darken-2"><h6>Temps de jeu moyen</h6></div>
+                                    <div class="col s6 light-green lighten-1 center"><h6>25 minutes</h6></div>
 
-                                            <div class="col s12">&nbsp;</div>
-                                        </div>
-                                    </div>
-                                    <div class="col m6 s12">
-                                        <div class="row white">
-                                            <div class="col s12 red lighten-1 center white-text"><h5>Actions Négatives</h5></div>
-
-                                            <div class="col s12">&nbsp;</div>
-                                            <div class="col s6 blue-grey-text text-darken-2"><h6>Avertissements</h6></div>
-                                            <div class="col s6 red lighten-1  center"><h6>3</h6></div>
-
-                                            <div class="col s12">&nbsp;</div>
-                                            <div class="col s6 blue-grey-text text-darken-2"><h6>Exclusions</h6></div>
-                                            <div class="col s6 red lighten-1 center"><h6>2</h6></div>
-
-                                            <div class="col s12">&nbsp;</div>
-                                            <div class="col s6 blue-grey-text text-darken-2"><h6>Disqualification</h6></div>
-                                            <div class="col s6 red lighten-1  center"><h6>0</h6></div>
-
-                                            <div class="col s12">&nbsp;</div>
-                                        </div>
-                                    </div>
+                                    <div class="col s12">&nbsp;</div>
                                 </div>
-                            </li>
-                        </ul>
+                            </div>
+                            <div class="col m6 s12">
+                                <div class="row white">
+                                    <div class="col s12 red lighten-1 center white-text"><h6>Actions Négatives</h6></div>
 
+                                    <div class="col s12">&nbsp;</div>
+                                    <div class="col s6 blue-grey-text text-darken-2"><h6>Avertissements</h6></div>
+                                    <div class="col s6 red lighten-1  center"><h6>3</h6></div>
+
+                                    <div class="col s12">&nbsp;</div>
+                                    <div class="col s6 blue-grey-text text-darken-2"><h6>Exclusions</h6></div>
+                                    <div class="col s6 red lighten-1 center"><h6>2</h6></div>
+
+                                    <div class="col s12">&nbsp;</div>
+                                    <div class="col s6 blue-grey-text text-darken-2"><h6>Disqualification</h6></div>
+                                    <div class="col s6 red lighten-1  center"><h6>0</h6></div>
+
+                                    <div class="col s12">&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- Stats actions end -->
                 </li>

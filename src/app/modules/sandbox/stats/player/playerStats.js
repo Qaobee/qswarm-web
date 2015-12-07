@@ -23,6 +23,7 @@
             'userRestAPI',
 
             /* qaobee widget */
+            'statsEfficiency'
         ])
 
         .config(function ($routeProvider, metaDatasProvider) {
@@ -46,8 +47,13 @@
             $scope.user = user;
             $scope.meta = meta;
             $scope.playerId = $routeParams.playerId;
-            $scope.periodicity = 'month';
-            $scope.periodicityActive = {};
+            $scope.periodicity = 'season';
+            $scope.periodicityActive = {
+                index: 1,
+                label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
+                startDate: moment($scope.meta.season.startDate),
+                endDate: moment($scope.meta.season.endDate)
+            };
             
             // return button
             $scope.doTheBack = function () {
@@ -60,31 +66,24 @@
         
             $scope.efficientlyGlobalCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
             $scope.efficientlyGlobalData = [{data:0}];
-            $scope.nbShootGlobal = 0;
-            $scope.nbGoalGlobal = 0;
-        
             $scope.efficiently9mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
             $scope.efficiently9mData = [{data:0}];
-            $scope.nbShoot9m = 0;
-            $scope.nbGoal9m = 0;
-        
             $scope.efficiently6mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
             $scope.efficiently6mData = [{data:0}];
-            $scope.nbShoot6m = 0;
-            $scope.nbGoal6m = 0;
-        
             $scope.efficiently7mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
             $scope.efficiently7mData = [{data:0}];
-            $scope.nbShoot7m = 0;
-            $scope.nbGoal7m = 0;
+        
+            $scope.values9m =  ['BACKLEFT9', 'CENTER9', 'BACKRIGHT9'];
+            $scope.values6m =  ['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING'];
+            $scope.values7m =  ['PENALTY'];
         
             $scope.defenseCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
                                     {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
-            $scope.defenseData = [{"Positive":1}, {"Negative":1}];
+            $scope.defenseData = [{"Positive":0}, {"Negative":0}];
 
             $scope.attackCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
                                {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
-            $scope.attackData = [{"Positive":1}, {"Negative":1}];
+            $scope.attackData = [{"Positive":0}, {"Negative":0}];
                 
 
             /* get player */
@@ -92,8 +91,13 @@
                 personRestAPI.getPerson($scope.playerId).success(function (person) {
                     $scope.player = person;
                     $scope.player.birthdate = new Date(moment($scope.player.birthdate));
+                    if (angular.isDefined($scope.player.status.positionType)) {
+                        $scope.player.positionType = $filter('translate')('stats.positionType.value.' + $scope.player.status.positionType);
+                    } else {
+                        $scope.player.positionType = '';
+                    }
 
-                    $scope.getCurrentMonth();
+                    $scope.getCurrentSeason();
                 });
             };
 
@@ -103,7 +107,7 @@
                 var ownersId = [];
                 ownersId.push(ownerId);
                 
-                /* Search parameters Efficiently Global */
+                /* Search parameters Efficiently Global */ 
                 $scope.efficientlyGlobalCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
                 $scope.efficientlyGlobalData = [{data:0}];
                 
@@ -117,11 +121,10 @@
                 });
                 
                 /* Search parameters Efficiently 9m */
-                var values =  ['BACKLEFT9', 'CENTER9', 'BACKRIGHT9'];
                 $scope.efficiently9mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
                 $scope.efficiently9mData = [{data:0}];
                 
-                statsSrv.getEfficiently(ownersId, startDate, endDate, values).then(function (result) {
+                statsSrv.getEfficiently(ownersId, startDate, endDate, $scope.values9m).then(function (result) {
                     $scope.nbShoot9m = result.nbShoot;
                     $scope.nbGoal9m = result.nbGoal;
                     $scope.efficiently9mData.push({data : result.efficiently});
@@ -131,11 +134,10 @@
                 });
                 
                 /* Search parameters Efficiently 6m */
-                var values =  ['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING'];
                 $scope.efficiently6mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
                 $scope.efficiently6mData = [{data:0}];
                 
-                statsSrv.getEfficiently(ownersId, startDate, endDate, values).then(function (result) {
+                statsSrv.getEfficiently(ownersId, startDate, endDate, $scope.values6m).then(function (result) {
                     $scope.nbShoot6m = result.nbShoot;
                     $scope.nbGoal6m = result.nbGoal;
                     $scope.efficiently6mData.push({data : result.efficiently});
@@ -145,11 +147,10 @@
                 });
                 
                 /* Search parameters Efficiently 7m */
-                var values =  ['PENALTY'];
                 $scope.efficiently7mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
                 $scope.efficiently7mData = [{data:0}];
                 
-                statsSrv.getEfficiently(ownersId, startDate, endDate, values).then(function (result) {
+                statsSrv.getEfficiently(ownersId, startDate, endDate, $scope.values7m).then(function (result) {
                     $scope.nbShoot7m = result.nbShoot;
                     $scope.nbGoal7m = result.nbGoal;
                     $scope.efficiently7mData.push({data : result.efficiently});
@@ -160,7 +161,7 @@
                 
                 var listFieldsGroupBy = Array.create('owner');
                 
-                /* PERS-ACT-DEF-POS */
+                /* ALL PERS-ACT-DEF-POS */
                 var indicators =  Array.create('neutralization', 'forceDef', 'contre', 'interceptionOk');
                 statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
                     $scope.defenseData.push({"Positive": result});
@@ -168,28 +169,28 @@
                     $log.debug(' $scope.defenseData', $scope.defenseData);
                 });
                 
-                /* PERS-ACT-DEF-NEG */
+                /* ALL PERS-ACT-DEF-NEG */
                 var indicators =  Array.create('penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition');
                 statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
                     $scope.defenseData.push({"Negative": result});
                     $scope.defenseCol.push({"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'});
                 });
                 
-                /* PERS-ACT-OFF-POS */
+                /* ALL PERS-ACT-OFF-POS */
                 var indicators =  Array.create('penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec');
                 statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
                     $scope.attackData.push({"Positive": result});
                     $scope.attackCol.push({"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'});
                 });
                 
-                /* PERS-ACT-OFF-NEG */
+                /* ALL PERS-ACT-OFF-NEG */
                 var indicators =  Array.create('forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt');
                 statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
                     $scope.attackData.push({"Negative": result});
                     $scope.attackCol.push({"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'});
                 });
                 
-                /* Stats Count */
+                /* Stats Count by indicator */
                 var indicators =  Array.create('yellowCard', 'exclTmp', 'redCard', 'originShootAtt', 'goalScored', 'holder', 'substitue');
                 listFieldsGroupBy = Array.create('owner', 'code');
                 

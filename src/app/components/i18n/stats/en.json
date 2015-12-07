@@ -31,14 +31,15 @@
             "actions": "Actions",
             "positive": "positives",
             "negative": "negative",
-            "attack" : "Attack",
-            "defense" : "Defense"
+            "attack" : "Attack actions",
+            "defense" : "Defense actions"
         },
         "resumeTab" : {
             "shoot": "Shoots",
             "goal": "Goals",
             "goalLabel": "Nb Goal",
-            "goalAvg": "Average/Game",
+            "goalAvgFull": "Average/Game",
+            "goalAvgLight": "Average",
             "frequence": "Frequence",
             "frequence2" : "1 goal per",
             "minute" : "minutes",

@@ -31,14 +31,15 @@
             "actions": "Actions",
             "positive": "positives",
             "negative": "négatives",
-            "attack" : "Attaque",
-            "defense" : "Défense"
+            "attack" : "Actions offensives",
+            "defense" : "Actions défensives"
         },
         "resumeTab" : {
             "shoot": "Tirs",
             "goal": "Buts",
             "goalLabel": "Nombre de Buts",
-            "goalAvg": "Moyenne/match",
+            "goalAvgFull": "Moyenne/match",
+            "goalAvgLight": "Moyenne",
             "frequence": "Fréquence",
             "frequence2" : "1 but toutes les",
             "minute" : "minutes",

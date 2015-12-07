@@ -133,7 +133,7 @@
                 aggregat: 'COUNT',
                 listFieldsGroupBy: listFieldsGroupBy
             };
-            $log.debug('search', search);
+            
             /* Appel stats API */
             statsRestAPI.getStatGroupBy(search).success(function (data) {
                 if (angular.isArray(data) && data.length > 0) {
