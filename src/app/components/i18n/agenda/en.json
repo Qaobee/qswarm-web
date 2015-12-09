@@ -1,6 +1,6 @@
 {
     "mainAgenda": {
-        "title": "Effective planning",
+        "title": "Planning",
         "buttons" : {
             "addEvent": "Add event",
             "updateEvent": "Update event",

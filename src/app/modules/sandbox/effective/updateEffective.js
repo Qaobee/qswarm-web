@@ -76,7 +76,7 @@
             personRestAPI.getListPersonSandbox($scope.meta.sandbox._id).success(function (data) {
                 data.forEach(function (a) {
                     if (angular.isDefined(a.status.positionType)) {
-                        a.positionType = $filter('translate')('stat.positionType.value.' + a.status.positionType);
+                        a.positionType = $filter('translate')('stats.positionType.value.' + a.status.positionType);
                     } else {
                         a.positionType = '';
                     }

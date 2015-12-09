@@ -88,15 +88,15 @@
         <div class="col s12">
             
             <div class="row blue-grey darken-2">
-                <div class="col l3 m3 center hide-on-small-only">
+                <div class="col l3 m12 center hide-on-small-only">
                     <avatar person="player" width="'120px'"></avatar>
                 </div>
-                <div class="col l4 m9 s12 white-text center">
+                <div class="col l4 m12 s12 white-text center">
                     <br/>
                     <h4>{{player.firstname}} {{player.name}}</h4>
                     {{player.positionType}}
                 </div>
-                <div class="col s12 m12 l5">
+                <div class="col l5 m12 s12">
                     <div class="card light-blue lighten-1 center blue-grey-text text-darken-2">
                         <div class="card-title">
                             <span class="white-text"><h5><small>{{'stats.resumeTab.usePlayer' | translate }}</small></h5></span>
@@ -191,8 +191,8 @@
             <div class="row">
                 
                 <div class="col s12 m12 l6">
-                    <div class="card small light-green lighten-1">
-                        <div class="card-title light-green lighten-1  grey-text text-lighten-4 center">
+                    <div class="card small light-green lighten-1 blue-grey-text text-darken-2">
+                        <div class="card-title grey-text text-lighten-4 center">
                             <span class="white-text"><h5><small>{{'stats.resumeTab.goal' | translate }}</small></h5></span>
                         </div>
                         <div class="card-image waves-effect waves-block waves-light">
@@ -200,44 +200,52 @@
                         </div>
                         
                         <div class="card-content light-green lighten-1">
-                            <div class="row center light-green lighten-2">
-                                <div class="col s4 blue-grey-text text-darken-2"><h6>{{'stats.resumeTab.goal' | translate }}</h6></div>
-                                <div class="col s4 blue-grey-text text-darken-2"><h6>{{'stats.resumeTab.goalAvgLight' | translate }}</h6></div>
-                                <div class="col s4 blue-grey-text text-darken-2"><h6>{{'stats.resumeTab.frequence' | translate }}</h6></div>
-                                <div class="col s4 white-text "><h5>{{stats['goalScored'].count}}</h5></div>
-                                <div class="col s4 white-text "><h5>5,67</h5></div>
-                                <div class="col s4 white-text "><h5>3 {{'stats.resumeTab.minute' | translate }}</h5></div>
+                            <div class="row center">
+                                <div class="col s4"><h6>{{'stats.resumeTab.goal' | translate }}</h6></div>
+                                <div class="col s4"><h6>{{'stats.resumeTab.goalAvgLight' | translate }}</h6></div>
+                                <div class="col s4"><h6>{{'stats.resumeTab.frequence' | translate }}</h6></div>
+                                <div class="col s4 light-green darken-2 white-text "><h5>{{stats['goalScored'].count}}</h5></div>
+                                <div class="col s4 light-green darken-1 white-text "><h5>5,67</h5></div>
+                                <div class="col s4 light-green darken-2 white-text "><h5>3 {{'stats.resumeTab.minute' | translate }}</h5></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col s12 m12 l6">
-                    <div class="card small red lighten-1">
-                        <div class="card-title red lighten-1  grey-text text-lighten-4 center">
+                    <div class="card small red lighten-1 white-text">
+                        <div class="card-title center">
                             <span class="white-text"><h5><small>{{'stats.resumeTab.sanctions' | translate }}</small></h5></span>
                         </div>
                         <div class="card-image waves-effect waves-block waves-light">
                             <img src="/assets/images/handball/ballon-fillet.jpeg">
                         </div>
                         
-                        <div class="card-content light-green lighten-1">
-                            <div class="row center light-green lighten-2">
-                                <div class="col s4 blue-grey-text text-darken-2"><h6>{{'stats.sanction.yellowCard' | translate }}</h6></div>
-                                <div class="col s4 blue-grey-text text-darken-2"><h6>{{'stats.sanction.excluTempo' | translate }}</h6></div>
-                                <div class="col s4 blue-grey-text text-darken-2"><h6>{{'stats.sanction.redCard' | translate }}</h6></div>
-                                <div class="col s4 amber accent-2"><h5>{{stats['yellowCard'].count}}</h5></div>
-                                <div class="col s4 "><h5>{{stats['exclTmp'].count}}</h5></div>
-                                <div class="col s4 red lighten-1 white-text"><h5>{{stats['redCard'].count}}</h5></div>
+                        <div class="card-content red lighten-1">
+                            <div class="row center">
+                                <div class="col s4"><h6>{{'stats.sanction.yellowCard' | translate }}</h6></div>
+                                <div class="col s4"><h6>{{'stats.sanction.excluTempo' | translate }}</h6></div>
+                                <div class="col s4"><h6>{{'stats.sanction.redCard' | translate }}</h6></div>
+                                <div class="col s4 amber accent-3"><h5>{{stats['yellowCard'].count}}</h5></div>
+                                <div class="col s4 red lighten-2"><h5>{{stats['exclTmp'].count}}</h5></div>
+                                <div class="col s4 red darken-3 white-text"><h5>{{stats['redCard'].count}}</h5></div>
                             </div>
                         </div>
                     </div>        
                 </div>
             </div>
-            <div class="row">
+           
+            <div class="row"></div>
+            
+            <div class="row grey lighten-2">
+                <div class="col s12 center blue-grey-text text-darken-2">
+                    <br/>
+                    <h5 style="padding-left:10px">{{'stats.efficiently.efficiently' | translate }}</h5>
+                </div>
+                
                 <div class="col l3 m6 s12">
                     <div class="card blue-grey darken-2">
                         <div class="card-title blue-grey darken-2  grey-text text-lighten-4 center">
-                            <h5><small>{{'stats.efficiently.efficiently' | translate }} {{nbGoalGlobal}}/{{nbShootGlobal}}</small></h5>
+                            <h5><small>{{'stats.efficiently.efficientlyTotal' | translate }} ({{nbGoalGlobal}}/{{nbShootGlobal}})</small></h5>
                         </div>
                         <div class="card-content white">
                             <c3chart bindto-id="gaugeEfficientlyGlobal" 
@@ -256,10 +264,11 @@
                 </div>
                 
                 <div class="col l3 m6 s12">
+                    
                     <!-- Stats shoot efficiently Start -->
                     <div class="card blue-grey darken-2">
                         <div class="card-title blue-grey darken-2  grey-text text-lighten-4 center">
-                            <h5><small>{{'stats.efficiently.efficiently9m' | translate }} {{nbGoal9m}}/{{nbShoot9m}}</small></h5>
+                            <h5><small>{{'stats.efficiently.efficiently9m' | translate }} ({{nbGoal9m}}/{{nbShoot9m}})</small></h5>
                         </div>
                         
                         <div class="card-content white">
@@ -276,7 +285,7 @@
                 <div class="col l3 m6 s12">
                      <div class="card blue-grey darken-2">
                         <div class="card-title blue-grey darken-2  grey-text text-lighten-4 center">
-                            <h5><small>{{'stats.efficiently.efficiently6m' | translate }} {{nbGoal6m}}/{{nbShoot6m}}</small></h5>
+                            <h5><small>{{'stats.efficiently.efficiently6m' | translate }} ({{nbGoal6m}}/{{nbShoot6m}})</small></h5>
                         </div>
                         <div class="card-content white">
                             <c3chart bindto-id="gaugeEfficiently6m"
@@ -292,7 +301,7 @@
                 <div class="col l3 m6 s12">
                     <div class="card blue-grey darken-2">
                         <div class="card-title blue-grey darken-2  grey-text text-lighten-4 center">
-                            <h5><small>{{'stats.efficiently.efficiently7m' | translate }} {{nbGoal7m}}/{{nbShoot7m}}</small></h5>
+                            <h5><small>{{'stats.efficiently.efficiently7m' | translate }} ({{nbGoal7m}}/{{nbShoot7m}})</small></h5>
                         </div>
                         <div class="card-content white">
                             <c3chart bindto-id="gaugeEfficiently7m"

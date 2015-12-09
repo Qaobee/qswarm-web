@@ -33,27 +33,7 @@
                             <label>{{'eventLabels.StartDate' | translate }} <span class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="input-field col s8">
-                            <input input-date
-    type="text"
-    name="created"
-    id="EventStartDate"
-    ng-model="startDate"
-    container="body"
-    format="{{'commons.format.date.label' | translate }}"
-    months-full="{{ month }}"
-    months-short="{{ monthShort }}"
-    weekdays-full="{{ weekdaysFull }}"
-    weekdays-short="{{ weekdaysShort }}"
-    weekdays-letter="{{ weekdaysLetter }}"
-    disable="disable"
-    today="today"
-    clear="clear"
-    close="close"
-    select-years="15"
-    placeholder="{{'commons.format.date.label' | translate }}"
-    on-set="onSet()"
-     />
-                           
+                            <input ng-model="startDate" id="EventStartDate" type="date" class="validate" required />
                         </div>
 
                         <div class="input-field col s4">
