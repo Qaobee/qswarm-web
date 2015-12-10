@@ -38,7 +38,7 @@
 				"login": "Login",
                 "email" : "e-Mail",
                 "password": "Mot de passe",
-                "passwordConfirm" : "Confirmation mot de passe",
+                "passwordConfirm" : "Confirmation",
                 "title": "Inscrivez-vous sur <b>Qaobee</b>"
             }
         }
