@@ -15,6 +15,9 @@
                 "clear":"Annuler",
                 "close":"Fermer"
             },
+            "hours": {
+                "pattern": "99:99"
+            },
             "phone": {
                 "pattern": "99-99-99-99-99"
             }
