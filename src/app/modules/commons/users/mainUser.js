@@ -42,6 +42,9 @@
             $scope.isStructureCityChanged = false;
             $scope.isStructureReload = false;
             
+            $scope.signup = {};
+            $scope.signup.detailsStructureCity = {};
+            
             $scope.structure = {};
             $scope.newStructure = {};
             $scope.newStructure.address = {};
@@ -55,12 +58,7 @@
             
             $scope.creationFinished = false;
                         
-            $scope.valuesStructures = [{
-            	'_id': -1, 
-            	label: $filter('translate')('structureSection.list.empty'), 
-            	address: ''}];
-            
-            signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function (data) {
+           signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function (data) {
                 if (true === data.error) {
                     $rootScope.messageErreur = data.message;
                     $location.path('/signup/error');
@@ -70,6 +68,11 @@
                     	$scope.signup.birthdateInput = new Date(moment($scope.signup.birthdate));
                     }
                     $scope.signup.categoryAge = '';
+                    
+                    $scope.valuesStructures = [{
+                    	'_id': -1, 
+                    	label: $filter('translate')('structureSection.list.empty'),
+                    	address: ''}];
                     
                     // Déclaration du user en mode connecté
                     $window.sessionStorage.qaobeesession = data.account.token;
@@ -161,25 +164,29 @@
             $scope.optionsAdr = null;
             $scope.detailsAdr = '';
 
-            // User changes the city name
-            $scope.changeCityName = function () {
-                $scope.isStructureCityChanged = true
-            };
-
-            // User blurs city name input
-            $scope.resetStructure = function () {
-                if ($scope.isStructureCityChanged) {
-                    $scope.valuesStructures = [{
-                        _id: -1,
-                        label: $filter('translate')('structureSection.list.empty'),
-                        address: ''
-                    }];
-                    $scope.isStructureCityChanged = false;
-                    $scope.isStructureReload = true;
-                    $scope.temp.zipcode = '';
-                    $scope.temp.referencialId = -1;
-                }
-            };
+            // Change city name and reset structure
+            $scope.resetStructure = function() {
+            	$scope.valuesStructures = [{
+                    _id: -1,
+                    label: $filter('translate')('structureSection.list.empty'),
+                    address: ''
+                }];
+                $scope.isStructureCityChanged = false;
+                $scope.isStructureReload = true;
+                $scope.temp.zipcode = '';
+                $scope.temp.referencialId = -1;
+                $scope.temp = {};
+                $scope.newStructure = {};
+            }
+            
+            // Surveillance de la modification du retour de l'API Google sur l'adresse
+            $scope.$watch('signup.detailsStructureCity', function(newValue, oldValue) {
+            	if(angular.isUndefined(newValue) || newValue==='' || angular.equals({}, newValue)) {
+            		return;
+            	}
+            	//place_changed
+            	$scope.loadStructures();
+            });
 
             // Update structure list
             $scope.loadStructures = function () {
