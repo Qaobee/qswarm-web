@@ -205,10 +205,13 @@
                     	signupRestAPI.usernameTest($scope.signup.login).success(function (data) {
                     		if(data.status===true) {
                     			toastr.warning($filter('translate')('error.signup.nonunique'));
+                    			$window.Recaptcha.reload();
                     		} else {
                     			$scope.signup.plan = new Object();
                     			$scope.signup.plan.levelPlan='FREEMIUM';
                     			signupRestAPI.registerUser($scope.signup).success(function (data2) {
+                    				// On recharge le captcha en cas d'erreur ou pour une nouvelle inscription
+                    				$window.Recaptcha.reload();
                     				if(data2===null) {
                     					toastr.error($filter('translate')('error.signup.unknown'));
                     				} else {
@@ -218,14 +221,12 @@
 	                          			$('#modalSignupOK').openModal();
                     				}
                     			}).error(function (error) {
-                                    if (error) {
-                                        if (error.code && error.code === 'CAPTCHA_EXCEPTION') {
-                                            $window.Recaptcha.reload();
-                                            toastr.error($filter('translate')('error.signup.' + error.code));
-                                        } else {
-                                        	$rootScope.errMessSend = true;
-                                            toastr.error(error.message);
-                                        }
+                    				$window.Recaptcha.reload();
+                                    if (error.code && error.code === 'CAPTCHA_EXCEPTION') {
+                                        toastr.error($filter('translate')('error.signup.' + error.code));
+                                    } else {
+                                    	$rootScope.errMessSend = true;
+                                        toastr.error(error.message);
                                     }
                                 });
                     		}
