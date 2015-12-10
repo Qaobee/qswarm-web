@@ -76,6 +76,7 @@
             $scope.values9m =  ['BACKLEFT9', 'CENTER9', 'BACKRIGHT9'];
             $scope.values6m =  ['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING'];
             $scope.values7m =  ['PENALTY'];
+            $scope.nbGame = 0;
         
             $scope.defenseCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
                                     {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
@@ -212,6 +213,62 @@
                     if (angular.isArray(data) && data.length > 0) {
                         data.forEach(function(a){
                             $scope.stats[a._id.code].count = a.value;
+                        });
+                        if(($scope.stats['holder'].count + $scope.stats['substitue'].count)>0){
+                            $scope.nbGame = $scope.stats['holder'].count + $scope.stats['substitue'].count;
+                            $log.debug('$scope.nbGame',$scope.nbGame);
+                        }
+                    }
+                })
+                
+                /* Stats SUM by indicator */
+                var indicators =  Array.create('playTime');
+                listFieldsGroupBy = Array.create('owner', 'code');
+                
+                angular.forEach(indicators, function (value) {
+                    $scope.stats[value] = {sum: 0, avg: 0, count: 0, freq: 0};
+                });
+                
+                var search = {
+                    listIndicators: indicators,
+                    listOwners: ownersId,
+                    startDate: startDate.valueOf(),
+                    endDate: endDate.valueOf(),
+                    aggregat: 'SUM',
+                    listFieldsGroupBy: listFieldsGroupBy
+                };
+                
+                /* Appel stats API */
+                statsRestAPI.getStatGroupBy(search).success(function (data) {
+                    if (angular.isArray(data) && data.length > 0) {
+                        data.forEach(function(a){
+                            $scope.stats[a._id.code].sum = a.value;
+                        });
+                    }
+                })
+                
+                /* Stats AVG by indicator */
+                var indicators =  Array.create('playTime');
+                listFieldsGroupBy = Array.create('owner', 'code');
+                
+                angular.forEach(indicators, function (value) {
+                    $scope.stats[value] = {sum: 0, avg: 0, count: 0, freq: 0};
+                });
+                
+                var search = {
+                    listIndicators: indicators,
+                    listOwners: ownersId,
+                    startDate: startDate.valueOf(),
+                    endDate: endDate.valueOf(),
+                    aggregat: 'AVG',
+                    listFieldsGroupBy: listFieldsGroupBy
+                };
+                
+                /* Appel stats API */
+                statsRestAPI.getStatGroupBy(search).success(function (data) {
+                    if (angular.isArray(data) && data.length > 0) {
+                        data.forEach(function(a){
+                            $scope.stats[a._id.code].avg = a.value;
                         });
                     }
                 })

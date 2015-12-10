@@ -18,7 +18,7 @@
         "toastError":"Erreur, l'effectif n'a pas été créé"
     },
     "updateEffective": {
-        "title": "Modification d'un effective",
+        "title": "Modification d'un effectif",
         "toastSuccess":"L'effective {{effective}} a bien été modifié",
         "toastError":"Erreur, l'effectif n'a pas été mis à jour"
     },

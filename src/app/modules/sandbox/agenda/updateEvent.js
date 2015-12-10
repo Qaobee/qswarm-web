@@ -66,23 +66,6 @@
         $scope.endHours = '';
         $scope.location = 'home';
         
-        //i18n datepicker
-        var month = $filter('translate')('commons.format.date.listMonth');
-        $scope.month = month.split(',');
-        
-        var monthShort = $filter('translate')('commons.format.date.listMonthShort');
-        $scope.monthShort = monthShort.split(',');
-
-        var weekdaysFull = $filter('translate')('commons.format.date.listWeekdaysFull');
-        $scope.weekdaysFull = weekdaysFull.split(',');
-        
-        var weekdaysLetter = $filter('translate')('commons.format.date.listWeekdaysLetter');
-        $scope.weekdaysLetter = weekdaysLetter.split(',');
-        
-        $scope.today = $filter('translate')('commons.format.date.today');
-        $scope.clear = $filter('translate')('commons.format.date.clear');
-        $scope.close = $filter('translate')('commons.format.date.close');
-        
         $scope.addEventTitle = false;
         
         // return button
@@ -99,10 +82,6 @@
         
         $scope.optionsAdr = null;
         $scope.detailsAdr = '';
-        
-        $scope.onSet = function () {
-            console.log($scope.startDate);
-        };
         
         /* Retrieve list of team of effective */
         $scope.getListTeamHome = function () {
@@ -121,7 +100,6 @@
                 $scope.listTeamAdversary = data.sortBy(function(n) {
                     return n.label; 
                 });
-                $log.debug($scope.adversaryId);
             });
         };
         
@@ -168,8 +146,7 @@
                 if(angular.isDefined($scope.event.startDate)) {
                     
                     $scope.startDate = new Date(moment($scope.event.startDate));
-                    $scope.startHours = new Date(moment($scope.event.startDate).format('hh:mm'));
-                    $log.debug($scope.startHours);
+                    $scope.startHours = $scope.startDate;
                 }
                 
                 if($scope.event.link.type==='training'  || $scope.event.link.type==='other') {

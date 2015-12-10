@@ -107,9 +107,9 @@
                                 <div class="col s4 center"><h6>{{'stats.resumeTab.holder' | translate }}</h6></div>
                                 <div class="col s4 center"><h6>{{'stats.resumeTab.playTime' | translate }}</h6></div>
 
-                                <div class="col s4 light-blue-text text-lighten-1 center"><h6>3</h6></div>
+                                <div class="col s4 light-blue-text text-lighten-1 center"><h6>{{nbGame}}</h6></div>
                                 <div class="col s4 light-blue-text text-lighten-1 center"><h6>{{stats['holder'].count}}</h6></div>
-                                <div class="col s4 light-blue lighten-1 white-text center"><h6>25 {{'stats.resumeTab.minute' | translate }}</h6></div>
+                                <div class="col s4 light-blue lighten-1 white-text center"><h6>{{stats['playTime'].avg/60 | number : 0}} {{'stats.resumeTab.minute' | translate }}</h6></div>
                             </div>
                         </div>
                     </div>
@@ -205,8 +205,8 @@
                                 <div class="col s4"><h6>{{'stats.resumeTab.goalAvgLight' | translate }}</h6></div>
                                 <div class="col s4"><h6>{{'stats.resumeTab.frequence' | translate }}</h6></div>
                                 <div class="col s4 light-green darken-2 white-text "><h5>{{stats['goalScored'].count}}</h5></div>
-                                <div class="col s4 light-green darken-1 white-text "><h5>5,67</h5></div>
-                                <div class="col s4 light-green darken-2 white-text "><h5>3 {{'stats.resumeTab.minute' | translate }}</h5></div>
+                                <div class="col s4 light-green darken-1 white-text "><h5>{{stats['goalScored'].count/nbGame | number : 2}}</h5></div>
+                                <div class="col s4 light-green darken-2 white-text "><h5>{{stats['playTime'].sum/60/stats['goalScored'].count | number : 0}} {{'stats.resumeTab.minute' | translate }}</h5></div>
                             </div>
                         </div>
                     </div>
