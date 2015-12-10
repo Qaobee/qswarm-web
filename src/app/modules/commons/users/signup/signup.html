@@ -51,11 +51,11 @@
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col m3 s6">
-                          <input placeholder="{{'civilSection.label.userFirstname' | translate }}" ng-model="signup.firstname" id="userFirstname" type="text" class="validate" required>
+                          <input ng-model="signup.firstname" id="userFirstname" type="text" class="validate" required>
                           <label for="userFirstname">{{'civilSection.label.userFirstname' | translate }} <span class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="input-field col m3 s6">
-                          <input placeholder="{{'civilSection.label.userName' | translate }}" ng-model="signup.name" id="userName" type="text" class="validate" required>
+                          <input ng-model="signup.name" id="userName" type="text" class="validate" required>
                           <label for="userName">{{'civilSection.label.userName' | translate }} <span class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
@@ -68,7 +68,7 @@
                         	<div class="row">
                         		<div class="hide-on-med-and-down input-field col m12 s6">&nbsp;</div>
 		                        <div class="input-field col m12 s6">
-		                            <input type="text" id="userNationality" class="form-control validate" ng-autocomplete ng-model="signup.nationality.label" details="temp.detailsCountry" options="optionsCountry" placeholder="" />
+		                            <input type="text" id="userNationality" class="form-control validate" ng-autocomplete ng-model="signup.nationality.label" details="temp.detailsCountry" options="optionsCountry" placeholder=""/>
                             		<label for="userNationality">{{'civilSection.label.userNationality' | translate }}</label>
 		                       </div>
                         	</div>
@@ -80,7 +80,7 @@
 								</div>
 								<div class="input-field col m12 s6">
 									<div class="hide-on-med-and-down"><br/></div>
-									<input placeholder="{{'civilSection.label.userBirthDate' | translate }}" ng-model="signup.birthdateInput" id="userBirthDate" type="date" class="validate" required>
+									<input ng-model="signup.birthdateInput" id="userBirthDate" type="date" class="validate" required>
 								</div>
 							</div>
 						</div>
@@ -102,8 +102,7 @@
                             <label for="userPhoneHome">{{'civilSection.label.userPhoneHome' | translate }} <span class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="input-field col m2 s8">
-                            <input id="userPhoneHome" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" 
-                                   class="validate" min="0" ng-model="signup.contact.home" model-view-value="true">
+                            <input id="userPhoneHome" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate" min="0" ng-model="signup.contact.home" model-view-value="true">
                         </div>
                         <div class="col m5 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -114,8 +113,7 @@
                             <label for="userPhoneOffice">{{'civilSection.label.userPhoneOffice' | translate }} <span class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="input-field col m2 s8">
-                            <input id="userPhoneOffice" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" 
-                                   class="validate" min="0" ng-model="signup.contact.office">
+                            <input id="userPhoneOffice" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate" min="0" ng-model="signup.contact.office">
                         </div>
                         <div class="col m5 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -126,8 +124,7 @@
                             <label for="userCellPhone">{{'civilSection.label.userCellPhone' | translate }} <span class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="input-field col m2 s8">
-                            <input id="userCellPhone" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}"
-                                   class="validate" min="0" ng-model="signup.contact.cellphone">
+                            <input id="userCellPhone" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate" min="0" ng-model="signup.contact.cellphone">
                         </div>
                         <div class="col m5 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -166,7 +163,6 @@
                                 <img ng-src="assets/images/activity/{{activity.code}}.jpg" width="80"/><br/>
                                 <input class="with-gap" type="radio"
                                        id="activity.{{activity._id}}" value="{{activity._id}}"
-                                       placeholder="{{activity.label | translate }}"
                                        ng-model="signup.account.listPlan[0].activity._id" required ng-disabled="!activity.enable"/>
                                 <label for="activity.{{activity._id}}">{{activity.label | translate }}</label>
                                 <br>&nbsp;<br>
@@ -207,11 +203,11 @@
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col m3 s12">
-                            <input type="text" id="userStructureCity" ng-autocomplete ng-model="structureCity" details="signup.detailsStructureCity" options="optionsStructureCity" placeholder="" ng-change="changeCityName();" ng-blur="resetStructure();" />
+                            <input type="text" id="userStructureCity" ng-autocomplete ng-model="structureCity" details="signup.detailsStructureCity" options="optionsStructureCity" ng-change="changeCityName();" ng-blur="resetStructure();" placeholder="" />
                             <label for="userStructureCity">{{'structureSection.label.userStructureCity' | translate }}  <span class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="input-field col m3 s12">
-                        	<input type="text" id="userStructureZipCode" ng-model="temp.zipcode" placeholder="{{'structureSection.label.userZipcode' | translate }}" disabled="disabled"/>
+                        	<input type="text" id="userStructureZipCode" ng-model="temp.zipcode" disabled="disabled"/>
                             <label for="userStructureZipCode">{{'structureSection.label.userZipcode' | translate }}</label>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>

@@ -280,6 +280,8 @@
                                 label: '-- ' + $filter('translate')('structureSection.list.create'),
                                 address: ''
                             });
+                        }).error(function (data) {
+                        	
                         });
                     	
                     });
