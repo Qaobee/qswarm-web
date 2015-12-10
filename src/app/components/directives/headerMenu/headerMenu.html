@@ -214,11 +214,11 @@
     <form class="col s12" ng-submit="usernameTest()">
         <div class="modal-content grey lighten-3 ">
             <div class="row">
-                <div class="input-field col s6">
+                <div class="input-field col m6 s12">
                     <input id="firstname" type="text" class="validate" ng-model="signup.firstname" required>
                     <label for="firstname">{{'content.signup.label.firstname' | translate }}</label>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col m6 s12">
                     <input id="name" type="text" class="validate" ng-model="signup.name" required>
                     <label for="name">{{'content.signup.label.name' | translate }}</label>
                 </div>
@@ -230,15 +230,15 @@
                     <input id="email" type="email" class="validate" ng-model="signup.contact.email" required>
                     <label for="email">{{'content.signup.label.email' | translate }}</label>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col m6 s12">
                     <input id="password" type="password" class="validate" ng-model="signup.account.passwd" required>
                     <label for="password">{{'content.signup.label.password' | translate }}</label>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col m6 s12">
                     <input id="passwordConfirm" type="password" class="validate" ng-model="passwdConfirm" required>
                     <label for="password">{{'content.signup.label.passwordConfirm' | translate }}</label>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col s12">
                     <div re-captcha ng-model="signup.captcha"></div>
                 </div>
             </div>
