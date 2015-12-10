@@ -103,7 +103,7 @@
                         </div>
                         <div class="input-field col m2 s8">
                             <input id="userPhoneHome" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" 
-                                   class="validate" min="0" ng-model="signup.contact.home">
+                                   class="validate" min="0" ng-model="signup.contact.home" model-view-value="true">
                         </div>
                         <div class="col m5 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -315,11 +315,11 @@
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col s1"></div>
                         <div class="input-field col s5">
-                            {{'civilSection.label.' + signup.gender + '' | translate}} {{signup.name}} {{signup.firstname}}<br>
+                            {{'civilSection.label.' + signup.gender + '' | translate}} {{signup.name | uppercase}} {{signup.firstname}}<br>
                             {{'sumupSection.label.born' | translate}} {{signup.birthdateInput}}<br>
                             {{signup.contact.email}}<br>
-                            <span ng-hide="signup.nationality===null || angular.isUndefined(signup.nationality)">{{'civilSection.label.userNationality' | translate }} : {{signup.nationality}}<br></span>
-                            <span ng-hide="signup.contact.home===null || angular.isUndefined(signup.contact.home)">{{'civilSection.label.userPhoneHome' | translate}} : {{signup.contact.home}}<br></span> 
+                            <span ng-hide="signup.nationality===null || angular.isUndefined(signup.nationality) || angular.isUndefined(signup.nationality.label)">{{'civilSection.label.userNationality' | translate }} : {{signup.nationality.label}}<br></span>
+                            <span ng-hide="signup.contact.home===null || angular.isUndefined(signup.contact.home)">{{'civilSection.label.userPhoneHome' | translate}} : {{signup.contact.home}}</span><br></span> 
                             <span ng-hide="signup.contact.office===null || angular.isUndefined(signup.contact.office)">{{'civilSection.label.userPhoneOffice' | translate}} : {{signup.contact.office}}<br></span>
                             <span ng-hide="signup.contact.cellphone===null || angular.isUndefined(signup.contact.cellphone)">{{'civilSection.label.userCellPhone' | translate}} : {{signup.contact.cellphone}}<br></span>
                        </div>
