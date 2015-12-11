@@ -1,4 +1,5 @@
 FROM nginx
+MAINTAINER Xavier MARIN <marin.xavier@gmail.com>
 COPY dist/ /data/www
 COPY bower_components/angular-i18n /data/www/bower_components/angular-i18n
 COPY bower_components/momentjs /data/www/bower_components/momentjs
