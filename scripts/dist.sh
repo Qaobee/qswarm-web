@@ -30,6 +30,7 @@ STATUS=$?
     git tag -a $tag -m "$tag"
     git push origin --tags
     docker build -t qaobee-web:$tag .
+    docker tag -f qaobee-web:$tag tutum.co/giwi/qaobee-web:$tag
     docker push tutum.co/giwi/qaobee-web:$tag
     echo -e "${green}****************************************************"
     echo -e "Collecting GIT stats"
