@@ -37,6 +37,6 @@ Il s'agit du serveur principal offrant l'ensemble des services pour :
 
     gulp
     docker build -t qaobee-web .
-    docker run --name qswarm-web -ti -p 80:80 -d qaobee-web
+    docker run --name qswarm-web -ti -p 80:80 -e HIVE_URL=http://hive.qaobee.com -d qaobee-web
     docker stop qswarm-web
     
