@@ -45,7 +45,7 @@
         <div class="container">
             <div class="nav-wrapper">
 
-                <!-- Dropdown Structure -->
+                <!-- Dropdown Structure 
                 <ul id="dropdownSearch" class="dropdown-content">
                     <li><a href="#/private/" class="red-text text-lighten-1 tooltipped" data-position="right"
                            data-delay="30" data-tooltip="{{'headerMenu.search-event' | translate }}">
@@ -57,22 +57,32 @@
                         <i class="mdi-social-person center"></i></a>
                     </li>
                 </ul>
-
+                -->
+                
+                
+                
                 <a href="#/private/" class="hide-on-med-and-down brand-logo white-text center">
                     <small><i class="fa fa-home left"></i>
                         <span data-ng-bind="structure.label"></span>
                     </small>
                 </a>
-
+                <!--
                 <ul class="left hide-on-med-and-down red lighten-1">
                     <li><a class="dropdown-button white-text light" href="#/private/" data-activates="dropdownSearch">
                         <i class="mdi-action-search left"></i>{{'headerMenu.search' | translate }}</a></li>
                 </ul>
-                <ul class="right hide-on-med-and-down">
-                    <li><a ng-click="logoff()" href="!#"><i class="white-text fa fa-power-off right"></i></a></li>
+                -->
+                <ul class="left hide-on-med-and-down">
+                    <li><a href="#/private/effective/{{user.effectiveDefault}}" class="light"><i class="mdi-social-people left"></i>
+                        <span class="hide-on-med-and-down" translate="headerMenu.effective"></span></a>
+                    </li>
+                    <li><a href="#/private/agenda/{{user.effectiveDefault}}" class="light"><i class="fa fa-calendar left"></i>
+                        <span class="hide-on-med-and-down" translate="headerMenu.calendar"></span></a>
+                    </li>
                 </ul>
-                <ul class="right hide-on-med-and-down">
+                <ul class="right hide-on-med-and-down right-align">
                     <li><a href="#/private/profil" class="white-text">{{user.firstname}} {{user.name}}</a></li>
+                    <li><a ng-click="logoff()" href="!#"><i class="white-text fa fa-power-off"></i></a></li>
                 </ul>
 
                 <a href="#" data-activates="nav-mobile" class="button-collapse white-text"><i
@@ -86,9 +96,10 @@
                     <!--
                     <li><a href="#/private/" class="white-text light"><i class="fa fa-envelope left"></i>
                         {{'headerMenu.notification' | translate }}</a></li>
-                    -->
+                    
                     <li><a href="#/private/mainStats" class="white-text light"><i class="fa fa-bar-chart left"></i>
                         {{'headerMenu.stats' | translate }}</a></li>
+                    -->
                     <li><a href="#/private/effective/{{user.effectiveDefault}}" class="white-text light"><i
                             class="mdi-social-people left"></i>
                         {{'headerMenu.effective' | translate }}</a></li>
@@ -111,8 +122,9 @@
     </nav>
 </div>
 
+<!--
 <div ng-if="user && !user.account.firstConnexion">
-    <!-- Connected second header-->
+    <!-- Connected second header
     <nav class="green darken-1 hide-on-med-and-down visible-nav" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
@@ -121,10 +133,11 @@
                     <li><a href="#/private/" class="light"><i class="fa fa-envelope left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.notification"></span>
                     </a></li>
-                    -->
+                    
                     <li><a href="#/private/mainStats" class="light"><i class="fa fa-bar-chart left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.stats"></span></a>
                     </li>
+                   
                     <li><a href="#/private/effective/{{user.effectiveDefault}}" class="light"><i
                             class="mdi-social-people left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.effective"></span></a>
@@ -137,7 +150,7 @@
                     <li><a href="#/private/" class="light"><i class="fa fa-trophy left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.championship"></span></a>
                     </li>
-                    -->
+                    
                     <li><a href="#/private/agenda/{{user.effectiveDefault}}" class="light"><i
                             class="fa fa-calendar left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.calendar"></span></a>
@@ -147,7 +160,7 @@
         </div>
     </nav>
 </div>
-
+-->
 <!-- Finalize signup -->
 <div class="navbar-fixed" ng-if="user && user.account.firstConnexion">
     <nav class="top-nav light-green lighten-1 visible-nav" role="navigation">
