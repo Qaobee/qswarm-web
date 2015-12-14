@@ -64,7 +64,7 @@
                     endDate: endDate.valueOf(),
                     listShootSeqId: listShootSeqId,
                     aggregat: 'COUNT',
-                    listFieldsGroupBy: ['owner', 'code']
+                    listFieldsGroupBy: ['code']
                 };
 
                 statsRestAPI.getStatGroupBy(search).success(function (dataGoal) {
