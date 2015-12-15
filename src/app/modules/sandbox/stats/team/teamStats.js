@@ -63,6 +63,11 @@
         //Initialization event
         $scope.team = {};
         $scope.stats = {};
+        $scope.teamCollecte = {
+            nbGame:0,
+            players: [{}],
+            totalTime:0
+        };
         
         $scope.efficientlyGlobalCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
         $scope.efficientlyGlobalData = [{data:0}];
@@ -76,8 +81,7 @@
         $scope.values9m =  ['BACKLEFT9', 'CENTER9', 'BACKRIGHT9'];
         $scope.values6m =  ['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING'];
         $scope.values7m =  ['PENALTY'];
-        $scope.nbGame = 0;
-
+        
         $scope.defenseCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
                                 {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
         $scope.defenseData = [{"Positive":0}, {"Negative":0}];
@@ -103,7 +107,21 @@
 
             var ownersId = [];
             ownersId.push(ownerId);
-
+            
+            /* get nbCollecte */
+            statsSrv.getMatchsTeams(startDate, endDate, $scope.meta.sandbox._id, ownerId).then(function (data) {
+                if (angular.isArray(data) && data.length > 0) {
+                    $scope.teamCollecte.nbGame = data.length;
+                    var totalTime = 0;
+                    
+                    data.forEach(function (e) {
+                        totalTime += (e.parametersGame.periodDuration * e.parametersGame.nbPeriod);
+                    });    
+                    $scope.teamCollecte.totalTime = totalTime;
+                    $log.debug('teamCollecte', $scope.teamCollecte);
+                }
+            })
+            
             /* Search parameters Efficiently Global */ 
             $scope.efficientlyGlobalCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
             $scope.efficientlyGlobalData = [{data:0}];
@@ -163,7 +181,6 @@
             statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
                 $scope.defenseData.push({"Positive": result});
                 $scope.defenseCol.push({"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'});
-                $log.debug(' $scope.defenseData', $scope.defenseData);
             });
 
             /* ALL PERS-ACT-DEF-NEG */
@@ -188,7 +205,7 @@
             });
 
             /* Stats Count by indicator */
-            var indicators =  Array.create('yellowCard', 'exclTmp', 'redCard', 'originShootAtt', 'goalScored', 'holder', 'substitue');
+            var indicators =  Array.create('yellowCard', 'exclTmp', 'redCard', 'originShootAtt', 'goalScored', 'holder', 'substitue', 'goalConceded');
             listFieldsGroupBy = Array.create('code');
 
             angular.forEach(indicators, function (value) {
@@ -210,10 +227,6 @@
                     data.forEach(function(a){
                         $scope.stats[a._id.code].count = a.value;
                     });
-                    if(($scope.stats['holder'].count + $scope.stats['substitue'].count)>0){
-                        $scope.nbGame = $scope.stats['holder'].count + $scope.stats['substitue'].count;
-                        $log.debug('$scope.nbGame',$scope.nbGame);
-                    }
                 }
             })
 

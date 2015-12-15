@@ -3,84 +3,6 @@
     <!-- space between header menu and body-->
     <div class="row"></div>
     
-    <!-- view for tablet and phone -->
-    <!-- Filter Zone start-->
-    <div class="row hide-on-med-and-up">
-           
-        <!-- Periodicity selector -->
-        <div class="col m1 s1 center">&nbsp;</div>
-        <div class="col m1 s3 center red lighten-1" style="margin:1px">
-            <a href="" ng-click="getCurrentMonth()" class="white-text"><h6 class="small">{{'stats.periodicity.month' | translate }}</h6></a>
-        </div>
-        
-        <div class="col m1 s4 center red lighten-1" style="margin:1px">
-            <a href="" ng-click="getCurrentQuarter()" class="white-text"><h6 class="small">{{'stats.periodicity.quarter' | translate }}</h6></a>
-        </div>
-        <div class="col m1 s3 center red lighten-1" style="margin:1px">
-            <a href="" ng-click="getCurrentSeason()" class="white-text"><h6 class="small">{{'stats.periodicity.season' | translate }}</h6></a>
-        </div>
-        <div class="col m1 s1 center">&nbsp;</div>
-    </div>
-        
-    <!-- Month Navigation-->
-    <div class="row hide-on-med-and-up" ng-if="periodicity=='month'">   
-        <div class="col m1 s1 center">&nbsp;</div>
-        <div class="col m1 s1 center" ng-if="periodicity=='month'">
-            <a href="" ng-click="previousMonth()" class="btn-floating blue-grey darken-2 white-text left">
-                <i class="mdi-navigation-chevron-left"></i>
-            </a>
-        </div>
-        <div class="col m2 s8 center">
-            <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
-        </div>
-        <div class="col m1 s1 center" ng-if="periodicity=='month'">
-            <a href="" ng-click="nextMonth()" class="btn-floating blue-grey darken-2 white-text right">
-                <i class="mdi-navigation-chevron-right"></i>
-            </a>
-        </div>
-        <div class="col m1 s1 center">&nbsp;</div>
-    </div>
-    
-    <!-- Quarter Navigation-->
-    <div class="row hide-on-med-and-up" ng-if="periodicity=='quarter'">
-        <div class="col m1 s1 center">&nbsp;</div>
-        <div class="col m1 s1 center" ng-if="periodicity=='quarter'">
-            <a href="" ng-click="previousQuarter()" class="btn-floating blue-grey darken-2 white-text left">
-                <i class="mdi-navigation-chevron-left"></i>
-            </a>
-        </div>
-        <div class="col m2 s8 center">
-            <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
-        </div>
-        <div class="col m1 s1 center" ng-if="periodicity=='quarter'">
-            <a href="" ng-click="nextQuarter()" class="btn-floating blue-grey darken-2 white-text right">
-                <i class="mdi-navigation-chevron-right"></i>
-            </a>
-        </div>
-        <div class="col m1 s1 center">&nbsp;</div>
-    </div>
-    
-    <!-- Season Navigation-->
-    <div class="row hide-on-med-and-up" ng-if="periodicity=='season'">
-        <div class="col m1 s1 center">&nbsp;</div>
-        <div class="col m1 s1 center">
-            <a href="" ng-click="previousSeason()" class="btn-floating blue-grey darken-2 white-text left">
-                <i class="mdi-navigation-chevron-left"></i>
-            </a>
-        </div>
-        <div class="col m2 s8 center" ng-if="periodicity=='season'">
-            <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
-        </div>
-        <div class="col m1 s1 center" ng-if="periodicity=='season'">
-            <a href="" ng-click="nextSeason()" class="btn-floating blue-grey darken-2 white-text right">
-                <i class="mdi-navigation-chevron-right"></i>
-            </a>
-        </div>
-        <div class="col m1 s1 center">&nbsp;</div>
-    </div>
-    <!-- Filter Zone end-->
-<!-- view for tablet and phone -->
-    
 <!-- view desktop -->
     
     <!-- Resume-->
@@ -93,84 +15,161 @@
                 </div>
                 <div class="col s12 hide-on-small-only grey lighten-2">
                     <!-- Filter Zone start-->
-                        <div class="col s12 center">&nbsp;</div>
-                        <div class="col s1 center">&nbsp;</div>
+                    <div class="col s12 center">&nbsp;</div>
+                    <div class="col s1 center">&nbsp;</div>
 
-                        <!-- Periodicity selector -->
-                        <div class="col s1 center red lighten-1" style="margin:1px">
-                            <a href="" ng-click="getCurrentMonth()" class="white-text"><h6>{{'stats.periodicity.month' | translate }}</h6></a>
-                        </div>
-
-                        <div class="col s1 center red lighten-1" style="margin:1px">
-                            <a href="" ng-click="getCurrentQuarter()" class="white-text"><h6>{{'stats.periodicity.quarter' | translate }}</h6></a>
-                        </div>
-                        <div class="col s1 center red lighten-1" style="margin:1px">
-                            <a href="" ng-click="getCurrentSeason()" class="white-text"><h6>{{'stats.periodicity.season' | translate }}</h6></a>
-                        </div>
-
-
-                        <!-- Month Navigation--> 
-                        <div class="col s1 center" ng-if="periodicity=='month'">&nbsp;</div>
-                        <div class="col s1 center" ng-if="periodicity=='month'">
-                            <a href="" ng-click="previousMonth()" class="btn-floating blue-grey darken-2 white-text left">
-                                <i class="mdi-navigation-chevron-left"></i>
-                            </a>
-                        </div>
-                        <div class="col s4 center" ng-if="periodicity=='month'">
-                            <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
-                        </div>
-                        <div class="col s1 center" ng-if="periodicity=='month'">
-                            <a href="" ng-click="nextMonth()" class="btn-floating blue-grey darken-2 white-text right">
-                                <i class="mdi-navigation-chevron-right"></i>
-                            </a>
-                        </div>
-
-
-                        <!-- Quarter Navigation-->
-                        <div class="col s1 center" ng-if="periodicity=='quarter'">&nbsp;</div>
-                        <div class="col s1 center" ng-if="periodicity=='quarter'">
-                            <a href="" ng-click="previousQuarter()" class="btn-floating blue-grey darken-2 white-text left">
-                                <i class="mdi-navigation-chevron-left"></i>
-                            </a>
-                        </div>
-                        <div class="col s4 center" ng-if="periodicity=='quarter'">
-                            <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
-                        </div>
-                        <div class="col s1 center" ng-if="periodicity=='quarter'">
-                            <a href="" ng-click="nextQuarter()" class="btn-floating blue-grey darken-2 white-text right">
-                                <i class="mdi-navigation-chevron-right"></i>
-                            </a>
-                        </div>
-
-
-                        <!-- Season Navigation-->
-                        <div class="col s1 center" ng-if="periodicity=='season'">&nbsp;</div>
-                        <div class="col s1 center" ng-if="periodicity=='season'">
-                            <a href="" ng-click="previousSeason()" class="btn-floating blue-grey darken-2 white-text left">
-                                <i class="mdi-navigation-chevron-left"></i>
-                            </a>
-                        </div>
-                        <div class="col s4 center" ng-if="periodicity=='season'">
-                            <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
-                        </div>
-                        <div class="col s1 center" ng-if="periodicity=='season'">
-                            <a href="" ng-click="nextSeason()" class="btn-floating blue-grey darken-2 white-text right">
-                                <i class="mdi-navigation-chevron-right"></i>
-                            </a>
-                        </div>
-                        
-                        <div class="col s1 center">&nbsp;</div>
-                        
+                    <!-- Periodicity selector -->
+                    <div class="col s1 center red lighten-1" style="margin:1px">
+                        <a href="" ng-click="getCurrentMonth()" class="white-text"><h6>{{'stats.periodicity.month' | translate }}</h6></a>
                     </div>
+                    <div class="col s1 center red lighten-1" style="margin:1px">
+                        <a href="" ng-click="getCurrentQuarter()" class="white-text"><h6>{{'stats.periodicity.quarter' | translate }}</h6></a>
+                    </div>
+                    <div class="col s1 center red lighten-1" style="margin:1px">
+                        <a href="" ng-click="getCurrentSeason()" class="white-text"><h6>{{'stats.periodicity.season' | translate }}</h6></a>
+                    </div>
+
+
+                    <!-- Month Navigation--> 
+                    <div class="col s1 center" ng-if="periodicity=='month'">&nbsp;</div>
+                    <div class="col s1 center" ng-if="periodicity=='month'">
+                        <a href="" ng-click="previousMonth()" class="btn-floating blue-grey darken-2 white-text left">
+                            <i class="mdi-navigation-chevron-left"></i>
+                        </a>
+                    </div>
+                    <div class="col s4 center" ng-if="periodicity=='month'">
+                        <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
+                    </div>
+                    <div class="col s1 center" ng-if="periodicity=='month'">
+                        <a href="" ng-click="nextMonth()" class="btn-floating blue-grey darken-2 white-text right">
+                            <i class="mdi-navigation-chevron-right"></i>
+                        </a>
+                    </div>
+
+
+                    <!-- Quarter Navigation-->
+                    <div class="col s1 center" ng-if="periodicity=='quarter'">&nbsp;</div>
+                    <div class="col s1 center" ng-if="periodicity=='quarter'">
+                        <a href="" ng-click="previousQuarter()" class="btn-floating blue-grey darken-2 white-text left">
+                            <i class="mdi-navigation-chevron-left"></i>
+                        </a>
+                    </div>
+                    <div class="col s4 center" ng-if="periodicity=='quarter'">
+                        <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
+                    </div>
+                    <div class="col s1 center" ng-if="periodicity=='quarter'">
+                        <a href="" ng-click="nextQuarter()" class="btn-floating blue-grey darken-2 white-text right">
+                            <i class="mdi-navigation-chevron-right"></i>
+                        </a>
+                    </div>
+
+
+                    <!-- Season Navigation-->
+                    <div class="col s1 center" ng-if="periodicity=='season'">&nbsp;</div>
+                    <div class="col s1 center" ng-if="periodicity=='season'">
+                        <a href="" ng-click="previousSeason()" class="btn-floating blue-grey darken-2 white-text left">
+                            <i class="mdi-navigation-chevron-left"></i>
+                        </a>
+                    </div>
+                    <div class="col s4 center" ng-if="periodicity=='season'">
+                        <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
+                    </div>
+                    <div class="col s1 center" ng-if="periodicity=='season'">
+                        <a href="" ng-click="nextSeason()" class="btn-floating blue-grey darken-2 white-text right">
+                            <i class="mdi-navigation-chevron-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="col s1 center">&nbsp;</div>   
+                </div>
             </div>
+            
+        <!-- view for tablet and phone -->
+            <!-- Filter Zone start-->
+            <div class="row hide-on-med-and-up grey lighten-2">
+
+                <!-- Periodicity selector -->
+                <div class="col s1 center">&nbsp;</div>
+                <div class="col s3 center red lighten-1" style="margin:1px">
+                    <a href="" ng-click="getCurrentMonth()" class="white-text"><h6 class="small">{{'stats.periodicity.month' | translate }}</h6></a>
+                </div>
+
+                <div class="col s4 center red lighten-1" style="margin:1px">
+                    <a href="" ng-click="getCurrentQuarter()" class="white-text"><h6 class="small">{{'stats.periodicity.quarter' | translate }}</h6></a>
+                </div>
+                <div class="col s3 center red lighten-1" style="margin:1px">
+                    <a href="" ng-click="getCurrentSeason()" class="white-text"><h6 class="small">{{'stats.periodicity.season' | translate }}</h6></a>
+                </div>
+                <div class="col s1 center">&nbsp;</div>
+            </div>
+
+            <!-- Month Navigation-->
+            <div class="row hide-on-med-and-up grey lighten-2" ng-if="periodicity=='month'">   
+                <div class="col s1 center">&nbsp;</div>
+                <div class="col s1 center" ng-if="periodicity=='month'">
+                    <a href="" ng-click="previousMonth()" class="btn-floating blue-grey darken-2 white-text left">
+                        <i class="mdi-navigation-chevron-left"></i>
+                    </a>
+                </div>
+                <div class="col s8 center">
+                    <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
+                </div>
+                <div class="col s1 center" ng-if="periodicity=='month'">
+                    <a href="" ng-click="nextMonth()" class="btn-floating blue-grey darken-2 white-text right">
+                        <i class="mdi-navigation-chevron-right"></i>
+                    </a>
+                </div>
+                <div class="col s1 center">&nbsp;</div>
+            </div>
+
+            <!-- Quarter Navigation-->
+            <div class="row hide-on-med-and-up grey lighten-2" ng-if="periodicity=='quarter'">
+                <div class="col s1 center">&nbsp;</div>
+                <div class="col s1 center" ng-if="periodicity=='quarter'">
+                    <a href="" ng-click="previousQuarter()" class="btn-floating blue-grey darken-2 white-text left">
+                        <i class="mdi-navigation-chevron-left"></i>
+                    </a>
+                </div>
+                <div class="col s8 center">
+                    <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
+                </div>
+                <div class="col s1 center" ng-if="periodicity=='quarter'">
+                    <a href="" ng-click="nextQuarter()" class="btn-floating blue-grey darken-2 white-text right">
+                        <i class="mdi-navigation-chevron-right"></i>
+                    </a>
+                </div>
+                <div class="col s1 center">&nbsp;</div>
+            </div>
+
+            <!-- Season Navigation-->
+            <div class="row hide-on-med-and-up grey lighten-2" ng-if="periodicity=='season'">
+                <div class="col s1 center">&nbsp;</div>
+                <div class="col s1 enter">
+                    <a href="" ng-click="previousSeason()" class="btn-floating blue-grey darken-2 white-text left">
+                        <i class="mdi-navigation-chevron-left"></i>
+                    </a>
+                </div>
+                <div class="col s8 center" ng-if="periodicity=='season'">
+                    <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
+                </div>
+                <div class="col s1 center" ng-if="periodicity=='season'">
+                    <a href="" ng-click="nextSeason()" class="btn-floating blue-grey darken-2 white-text right">
+                        <i class="mdi-navigation-chevron-right"></i>
+                    </a>
+                </div>
+                <div class="col s1 center">&nbsp;</div>
+            </div>
+            <!-- Filter Zone end-->
+        <!-- view for tablet and phone -->
+            
 
             <!-- Filter Zone end-->
             <div class="row">
                 
-                <div class="col s12 m12 l6">
+                <div class="col s12 m12 l4">
                     <div class="card small light-green lighten-1 blue-grey-text text-darken-2">
                         <div class="card-title grey-text text-lighten-4 center">
-                            <span class="white-text"><h5><small>{{'stats.resumeTab.goal' | translate }}</small></h5></span>
+                            <span class="white-text"><h5><small>{{'stats.resumeTab.goalScored' | translate }}</small></h5></span>
                         </div>
                         <div class="card-image waves-effect waves-block waves-light">
                             <img src="/assets/images/handball/ballon-filet.jpeg">
@@ -181,17 +180,18 @@
                                 <div class="col s4"><h6>{{'stats.resumeTab.goal' | translate }}</h6></div>
                                 <div class="col s4"><h6>{{'stats.resumeTab.goalAvgLight' | translate }}</h6></div>
                                 <div class="col s4"><h6>{{'stats.resumeTab.frequence' | translate }}</h6></div>
-                                <div class="col s4 light-green darken-2 white-text "><h5>{{stats['goalScored'].count}}</h5></div>
-                                <div class="col s4 light-green darken-1 white-text "><h5>{{stats['goalScored'].count/nbGame | number : 2}}</h5></div>
-                                <div class="col s4 light-green darken-2 white-text "><h5>{{stats['playTime'].sum/60/stats['goalScored'].count | number : 0}} {{'stats.resumeTab.minute' | translate }}</h5></div>
+                                <div class="col s4 light-green darken-2 white-text "><h6>{{stats['goalScored'].count}}</h6></div>
+                                <div class="col s4 light-green darken-1 white-text "><h6>{{stats['goalScored'].count/teamCollecte.nbGame | number : 2}}</h6></div>
+                                <div class="col s4 light-green darken-2 white-text "><h6>{{teamCollecte.totalTime/60/stats['goalScored'].count | number : 0}} {{'stats.resumeTab.minute' | translate }}</h6></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col s12 m12 l6">
+                <div class="col s12 hide-on-large-only"><br/></div>
+                <div class="col s12 m12 l4">
                     <div class="card small red lighten-1 white-text">
                         <div class="card-title center">
-                            <span class="white-text"><h5><small>{{'stats.resumeTab.sanctions' | translate }}</small></h5></span>
+                            <span class="white-text"><h5><small>{{'stats.resumeTab.goalConceded' | translate }}</small></h5></span>
                         </div>
                         <div class="card-image waves-effect waves-block waves-light">
                             <img src="/assets/images/handball/ballon-fillet.jpeg">
@@ -199,12 +199,35 @@
                         
                         <div class="card-content red lighten-1">
                             <div class="row center">
+                                <div class="col s4"><h6>{{'stats.resumeTab.goal' | translate }}</h6></div>
+                                <div class="col s4"><h6>{{'stats.resumeTab.goalAvgLight' | translate }}</h6></div>
+                                <div class="col s4"><h6>{{'stats.resumeTab.frequence' | translate }}</h6></div>
+                                <div class="col s4 red darken-2 white-text "><h6>{{stats['goalConceded'].count}}</h6></div>
+                                <div class="col s4 red lighten-2 white-text "><h6>{{stats['goalConceded'].count/teamCollecte.nbGame | number : 2}}</h6></div>
+                                <div class="col s4 red darken-2 white-text "><h6>{{teamCollecte.totalTime/60/stats['goalConceded'].count | number : 0}} {{'stats.resumeTab.minute' | translate }}</h6></div>
+                            </div>
+                        </div>
+                    </div>        
+                </div>
+                <div class="col s12 hide-on-large-only"><br/></div>
+                <div class="col s12 m12 l4">
+                    <div class="card small blue-grey darken-2 white-text">
+                        <div class="card-title center">
+                            <span class="white-text"><h5><small>{{'stats.resumeTab.sanctions' | translate }}</small></h5></span>
+                        </div>
+                        
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img src="/assets/images/handball/sanction.jpeg">
+                        </div>
+                        
+                        <div class="card-content blue-grey darken-2">
+                            <div class="row center">
                                 <div class="col s4"><h6>{{'stats.sanction.yellowCard' | translate }}</h6></div>
                                 <div class="col s4"><h6>{{'stats.sanction.excluTempo' | translate }}</h6></div>
                                 <div class="col s4"><h6>{{'stats.sanction.redCard' | translate }}</h6></div>
-                                <div class="col s4 amber accent-3"><h5>{{stats['yellowCard'].count}}</h5></div>
-                                <div class="col s4 red lighten-2"><h5>{{stats['exclTmp'].count}}</h5></div>
-                                <div class="col s4 red darken-3 white-text"><h5>{{stats['redCard'].count}}</h5></div>
+                                <div class="col s4 amber accent-3"><h6>{{stats['yellowCard'].count}}</h6></div>
+                                <div class="col s4 red lighten-2"><h6>{{stats['exclTmp'].count}}</h6></div>
+                                <div class="col s4 red darken-3 white-text"><h6>{{stats['redCard'].count}}</h6></div>
                             </div>
                         </div>
                     </div>        

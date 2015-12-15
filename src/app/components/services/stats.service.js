@@ -100,22 +100,44 @@
             return deferred.promise;
         };
         
-        /* Nb SB_Collecte */  
-        var getMatchs = function (startDate, endDate, sandboxId, effectiveId) {
-            var deferred = $q.defer(); 
-            var search = {};
-            var result = {
-                nbCollect : 0,
-                totalTime : 0
+        /* Nb SB_Collecte teams*/  
+        var getMatchsTeams = function (startDate, endDate, sandboxId, teamId) {
+            var deferred = $q.defer();
+            var collectes = [];
+            
+            var search = {
+                startDate: startDate.valueOf(),
+                endDate: endDate.valueOf(),
+                sandboxId: sandboxId,
+                teamId: teamId
             };
             
-            collecteRestAPI.getListCollectes(requestCollecte).success(function (dataCol) {
-                result.nbCollect = dataCol.length;
-                
-                result.average = $filter('number')(result.nbItem / result.nbCollect);
-                deferred.resolve(result);  
+            collecteRestAPI.getListCollectes(search).success(function (data) {
+                collectes = data;
+                deferred.resolve(collectes);  
             }).error(function (){
-                deferred.reject('Cant get indicator' + indicators[0]);
+                deferred.reject('Cant get SB_Collecte' + search);
+            });
+            return deferred.promise;
+        };
+        
+        /* Nb SB_Collecte teams*/  
+        var getMatchsEffective = function (startDate, endDate, sandboxId, effectiveId) {
+            var deferred = $q.defer();
+            var collectes = [];
+            
+            var search = {
+                startDate: startDate.valueOf(),
+                endDate: endDate.valueOf(),
+                sandboxId: sandboxId,
+                effectiveId: effectiveId
+            };
+            
+            collecteRestAPI.getListCollectes(search).success(function (data) {
+                collectes = data;
+                deferred.resolve(collectes);  
+            }).error(function (){
+                deferred.reject('Cant get SB_Collecte' + search);
             });
             return deferred.promise;
         };
@@ -149,7 +171,8 @@
         return {
             getEfficiently : getEfficiently,
             getColorGauge : getColorGauge,
-            getMatchs : getMatchs,
+            getMatchsTeams : getMatchsTeams,
+            getMatchsEffective : getMatchsEffective,
             countAllInstanceIndicators : countAllInstanceIndicators
         };
     });

@@ -37,10 +37,12 @@
         "resumeTab" : {
             "shoot": "Tirs",
             "goal": "Buts",
+            "goalScored": "Buts marqués",
+            "goalConceded": "Buts encaissés",
             "goalLabel": "Nombre de Buts",
             "goalAvgFull": "Moyenne/match",
             "goalAvgLight": "Moyenne",
-            "frequence": "Fréquence but",
+            "frequence": "Fréquence",
             "frequence2" : "1 but toutes les",
             "minute" : "minutes",
             "usePlayer" : "Utilisation",
