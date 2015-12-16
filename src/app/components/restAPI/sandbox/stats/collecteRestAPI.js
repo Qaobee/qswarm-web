@@ -56,7 +56,7 @@
                 addCollecte : function(collecte) {
                     return $http({
                         url : collecteAPIURL + '/add',
-                        method : 'POST',
+                        method : 'PUT',
                         data : collecte
                     });
                 },
