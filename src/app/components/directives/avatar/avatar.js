@@ -10,7 +10,7 @@
      */
     angular.module(
         'qaobee.avatar', [
-        
+
             /* angular module */
             'angularFileUpload'
         ])
@@ -19,10 +19,12 @@
                 restrict: 'AE',
                 scope: {
                     person: '=',
-                    width: '='
+                    width: '=',
+                    collection: '@?'
                 },
                 controller: function ($scope, FileUploader) {
                     $scope.showSpinner = false;
+                    $scope.collection = $scope.collection || 'SB_Person';
                     $scope.uploader = new FileUploader({
                         headers: {
                             'token': $window.sessionStorage.qaobeesession
@@ -31,13 +33,16 @@
                         queueLimit: 1
 
                     });
+
+                    $scope.uploader.url = EnvironmentConfig.apiEndPoint + '/file/'+$scope.collection+'/avatar/' + $scope.person._id
                     $scope.getAvatar = function (avatar) {
-                        return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/SB_Person/' + avatar : 'assets/images/user.png';
+                        return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/'+$scope.collection+'/' + avatar : 'assets/images/user.png';
                     };
-                    
+
                     $scope.$watch('person', function (newValue, oldValue) {
                         if (angular.isDefined(newValue) && !angular.equals(oldValue, newValue)) {
-                            $scope.uploader.url = EnvironmentConfig.apiEndPoint + '/file/SB_Person/avatar/' + newValue._id;
+                          console.log("ici");
+                            $scope.uploader.url = EnvironmentConfig.apiEndPoint + '/file/'+$scope.collection+'/avatar/' + newValue._id;
                         }
                     });
 
@@ -79,11 +84,13 @@
                 scope: {
                     person: '=',
                     width: '=',
-                    link: '='
+                    link: '=',
+                    collection: '@?'
                 },
                 controller: function ($scope) {
+                  $scope.collection = $scope.collection || 'SB_Person';
                     $scope.getAvatar = function (avatar) {
-                        return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/SB_Person/' + avatar : 'assets/images/user.png';
+                        return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/'+$scope.collection+'/' + avatar : 'assets/images/user.png';
                     };
                 },
                 templateUrl: 'app/components/directives/avatar/simpleAvatar.html'
