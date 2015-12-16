@@ -37,6 +37,8 @@
         "resumeTab" : {
             "shoot": "Tirs",
             "goal": "Buts",
+            "goalScored": "Buts marqués",
+            "goalConceded": "Buts encaissés",
             "goalLabel": "Nombre de Buts",
             "goalAvgFull": "Moyenne/match",
             "goalAvgLight": "Moyenne",

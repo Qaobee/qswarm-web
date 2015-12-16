@@ -37,6 +37,8 @@
         "resumeTab" : {
             "shoot": "Shoots",
             "goal": "Goals",
+            "goalScored": "Goal scored",
+            "goalConceded": "Goal conceded",
             "goalLabel": "Nb Goal",
             "goalAvgFull": "Average/Game",
             "goalAvgLight": "Average",
