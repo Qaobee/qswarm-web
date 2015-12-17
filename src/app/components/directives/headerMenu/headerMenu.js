@@ -91,9 +91,7 @@
                         if ('logoff' === qeventbus.message) {
                             delete $scope.user;
                             delete $window.sessionStorage.qaobeesession;
-                            if ($location.path().startsWith('/private') || $location.path().startsWith('/admin') || $location.path().startsWith('/firstconnection')) {
-                                $location.path('');
-                            }
+                            $location.path('');
                         } else if ('login' === qeventbus.message) {
                             $scope.user = qeventbus.data;
                             $scope.loadMetaInfos();
