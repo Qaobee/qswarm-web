@@ -61,6 +61,12 @@
             "yellowCard" : "Avertissement",
             "excluTempo" : "2 minutes",
             "redCard" : "Exclusion"
+        },
+        "teamLabels" : {
+            "listCollect" : "Evénements collectés"
+        },
+        "eventLabels" : {
+            "listPlayers" : "Liste joueurs"
         }
     }
 }

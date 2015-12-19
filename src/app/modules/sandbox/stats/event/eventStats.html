@@ -11,10 +11,26 @@
             
             <div class="row blue-grey darken-2">
                 <div class="col s12 white-text center">
-                    <h4>{{collecte.event.participants.teamHome.label}} - {{collecte.event.participants.teamVisitor.label}}</h4>
+                    <h5>{{collecte.event.label}} : 
+                        {{collecte.event.participants.teamHome.label}}
+                        
+                        <span ng-if="teamHome">
+                            <a href="#/private/teamStats/{{collecte.event.participants.teamHome.id}}"
+                                class="btn-floating red lighten-1 white-text"><small><i class="fa fa-bar-chart fa-2x"></small></i>
+                            </a>
+                        </span>
+                            
+                        - {{collecte.event.participants.teamVisitor.label}}
+                        
+                        <span ng-if="teamVisitor">
+                            <a href="#/private/teamStats/{{collecte.event.participants.teamVisitor.id}}"
+                                class="btn-floating red lighten-1 white-text"><small><i class="fa fa-bar-chart fa-2x"></small></i>
+                            </a>
+                        </span>
+                    </h5>
                 </div>
                 <div class="col s12 blue-grey-text text-darken-2 grey lighten-2 center">
-                    <h5>{{collecte.startDateLabel}} - {{collecte.event.label}}</h5>
+                    <h5>{{collecte.startDateLabel}}</h5>
                 </div>
             </div>
  
@@ -194,6 +210,33 @@
                     </div>
                 </div>
                    
+            </div>
+            <div class="row" ng-if="players.length > 0">
+                <div>
+                    <div class="col s12 white-text blue-grey darken-1"><h5><i class="fa fa-bar-chart"></i> {{'stats.eventLabels.listPlayers' | translate }}</h5></div>
+                    <div class="col s12">
+                        <table class="bordered responsive-table highlight">
+                            <thead>
+                                <tr class="grey lighten-2">
+                                    <th data-field="player">Joueur</th>
+                                    <th data-field="positionType">Poste</th>
+                                    <th data-field="efficiently">Efficatité (B/T)</th>
+                                    <th data-field="attack">Attaque (+/-)</th>
+                                    <th data-field="defense">Défense (+/-)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="player in players">
+                                    <td>{{player.name}} - {{player.firstname}}</td>
+                                    <td>{{player.positionType}}</td>
+                                    <td>50 % (2/4)</td>
+                                    <td>3/4</td>
+                                    <td>2/6</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

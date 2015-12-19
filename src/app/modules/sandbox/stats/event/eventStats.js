@@ -13,6 +13,7 @@
     angular.module('qaobee.eventStats', [
         
         /* qaobee services */
+        'effectifSRV',
         'statsSRV',
         
         /* qaobee Rest API */
@@ -39,7 +40,7 @@
  * @class qaobee.modules.home.HomeControler
  */
     .controller('EventStats', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                            collecteRestAPI, personRestAPI, statsRestAPI, statsSrv, userRestAPI) {
+                                            collecteRestAPI, personRestAPI, statsRestAPI, effectiveSrv, statsSrv, userRestAPI) {
         $translatePartialLoader.addPart('home');
         $translatePartialLoader.addPart('stats');
 
@@ -47,13 +48,8 @@
         $scope.meta = meta;
         $scope.collecteId = $routeParams.collecteId;
         $scope.ownerId = "";
-        
-        // return button
-        $scope.doTheBack = function() {
-            $window.history.back();
-        };
-        
-        //Initialization event
+        $scope.teamHome = false;
+        $scope.teamVisitor = true;
         $scope.collecte = {
             event : {},
             nbGame:0,
@@ -64,28 +60,50 @@
             startDateLabel : "",
             endDateLabel : ""
         };
-        $scope.stats = {};
         
-        $scope.efficientlyGlobalCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
-        $scope.efficientlyGlobalData = [{data:0}];
-        $scope.efficiently9mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
-        $scope.efficiently9mData = [{data:0}];
-        $scope.efficiently6mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
-        $scope.efficiently6mData = [{data:0}];
-        $scope.efficiently7mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
-        $scope.efficiently7mData = [{data:0}];
-
-        $scope.values9m =  ['BACKLEFT9', 'CENTER9', 'BACKRIGHT9'];
-        $scope.values6m =  ['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING'];
-        $scope.values7m =  ['PENALTY'];
+        $scope.players = [];
         
-        $scope.defenseCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
-                                {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
-        $scope.defenseData = [{"Positive":0}, {"Negative":0}];
+        // return button
+        $scope.doTheBack = function() {
+            $window.history.back();
+        };
+        
+        //Initialization event
+        $scope.initStats = function() {
+            $scope.stats = {};
+        
+            $scope.efficientlyGlobalCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
+            $scope.efficientlyGlobalData = [{data:0}];
+            $scope.efficiently9mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
+            $scope.efficiently9mData = [{data:0}];
+            $scope.efficiently6mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
+            $scope.efficiently6mData = [{data:0}];
+            $scope.efficiently7mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
+            $scope.efficiently7mData = [{data:0}];
 
-        $scope.attackCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
-                           {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
-        $scope.attackData = [{"Positive":0}, {"Negative":0}];
+            $scope.values9m =  ['BACKLEFT9', 'CENTER9', 'BACKRIGHT9'];
+            $scope.values6m =  ['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING'];
+            $scope.values7m =  ['PENALTY'];
+            
+            $scope.nbShootGlobal = 0;
+            $scope.nbGoalGlobal = 0;
+            $scope.nbShoot9m = 0;
+            $scope.nbGoal9m = 0;
+            $scope.nbShoot7m = 0;
+            $scope.nbGoal7m = 0;
+            $scope.nbShoot6m = 0;
+            $scope.nbGoal6m = 0;
+
+            $scope.defenseCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
+                                    {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
+            $scope.defenseData = [{"Positive":0}, {"Negative":0}];
+
+            $scope.attackCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
+                               {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
+            $scope.attackData = [{"Positive":0}, {"Negative":0}];
+        };
+        
+        //Initialization event
         
         /* get collect */
         $scope.getCollecte = function () {
@@ -96,14 +114,33 @@
                     $scope.collecte.event = data.eventRef;
                     $scope.collecte.nbGame = 1;
                     $scope.collecte.totalTime += (data.parametersGame.periodDuration * data.parametersGame.nbPeriod);
-                    $scope.collecte.players = data.players;
+                    
                     $scope.collecte.startDate = data.startDate;
                     $scope.collecte.endDate = data.endDate;
                     $scope.collecte.startDateLabel = moment(data.startDate).format('LLLL');
                     $scope.collecte.endDateLabel = moment(data.endDate).format('LLLL');
+                                 
+                    if($scope.collecte.event.owner.teamId === $scope.collecte.event.participants.teamHome.id) {
+                        $scope.teamHome = true;
+                        $scope.teamVisitor = false;
+                    } else {
+                        $scope.teamHome = false;
+                        $scope.teamVisitor = true;
+                    }
+                    
+                    var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status');
+                    effectiveSrv.getPersons(data.players, listField).then(function(players){
+                        $scope.players = players;
+                        $scope.players.forEach(function (e) {
+                            if (angular.isDefined(e.status.positionType)) {
+                                e.positionType = $filter('translate')('stats.positionType.value.' + e.status.positionType);
+                            } else {
+                                e.positionType = '';
+                            }
+                        });    
+                    });
                     
                     $scope.ownerId = data.eventRef._id;
-
                     $scope.getStats($scope.ownerId, $scope.collecte.startDate, $scope.collecte.endDate);
                 }
             });
@@ -111,6 +148,8 @@
         
         /* get statistic for one collect */
         $scope.getStats = function (ownerId, startDate, endDate) {
+            
+            $scope.initStats();
 
             var ownersId = [];
             ownersId.push(ownerId);
@@ -288,5 +327,6 @@
         
         /* Primary, check if user connected */
         $scope.checkUserConnected();
+        $scope.initStats();
     });
 }());

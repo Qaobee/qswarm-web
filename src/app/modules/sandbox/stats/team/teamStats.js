@@ -42,6 +42,7 @@
                                             teamRestAPI, personRestAPI, statsRestAPI, statsSrv, userRestAPI) {
         $translatePartialLoader.addPart('home');
         $translatePartialLoader.addPart('stats');
+        $translatePartialLoader.addPart('agenda');
 
         $scope.user = user;
         $scope.meta = meta;
@@ -61,34 +62,45 @@
         };
         
         //Initialization event
-        $scope.team = {};
-        $scope.stats = {};
-        $scope.teamCollecte = {
-            nbGame:0,
-            players: [{}],
-            totalTime:0
+        $scope.initStats = function() {
+            $scope.stats = {};
+            $scope.teamCollecte = {
+                nbGame:0,
+                players: [{}],
+                totalTime:0
+            };
+            $scope.collectes = [];
+        
+            $scope.efficientlyGlobalCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
+            $scope.efficientlyGlobalData = [{data:0}];
+            $scope.efficiently9mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
+            $scope.efficiently9mData = [{data:0}];
+            $scope.efficiently6mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
+            $scope.efficiently6mData = [{data:0}];
+            $scope.efficiently7mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
+            $scope.efficiently7mData = [{data:0}];
+
+            $scope.values9m =  ['BACKLEFT9', 'CENTER9', 'BACKRIGHT9'];
+            $scope.values6m =  ['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING'];
+            $scope.values7m =  ['PENALTY'];
+            
+            $scope.nbShootGlobal = 0;
+            $scope.nbGoalGlobal = 0;
+            $scope.nbShoot9m = 0;
+            $scope.nbGoal9m = 0;
+            $scope.nbShoot7m = 0;
+            $scope.nbGoal7m = 0;
+            $scope.nbShoot6m = 0;
+            $scope.nbGoal6m = 0;
+
+            $scope.defenseCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
+                                    {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
+            $scope.defenseData = [{"Positive":0}, {"Negative":0}];
+
+            $scope.attackCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
+                               {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
+            $scope.attackData = [{"Positive":0}, {"Negative":0}];
         };
-        
-        $scope.efficientlyGlobalCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
-        $scope.efficientlyGlobalData = [{data:0}];
-        $scope.efficiently9mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
-        $scope.efficiently9mData = [{data:0}];
-        $scope.efficiently6mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
-        $scope.efficiently6mData = [{data:0}];
-        $scope.efficiently7mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
-        $scope.efficiently7mData = [{data:0}];
-
-        $scope.values9m =  ['BACKLEFT9', 'CENTER9', 'BACKRIGHT9'];
-        $scope.values6m =  ['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING'];
-        $scope.values7m =  ['PENALTY'];
-        
-        $scope.defenseCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
-                                {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
-        $scope.defenseData = [{"Positive":0}, {"Negative":0}];
-
-        $scope.attackCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
-                           {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
-        $scope.attackData = [{"Positive":0}, {"Negative":0}];
         
         /* get team */
         $scope.getTeam = function () {
@@ -96,14 +108,14 @@
             /* get team */
             teamRestAPI.getTeam($scope.ownerId).success(function (team) {
                 $scope.team = team;
-                $scope.team.enable = $scope.team.enable?'true':'false';
-                
                 $scope.getCurrentSeason();
             });
         };
         
         /* get statistic for one player */
         $scope.getStats = function (ownerId, startDate, endDate) {
+            
+            $scope.initStats();
 
             var ownersId = [];
             ownersId.push(ownerId);
@@ -116,9 +128,10 @@
                     
                     data.forEach(function (e) {
                         totalTime += (e.parametersGame.periodDuration * e.parametersGame.nbPeriod);
+                        e.eventRef.startDate = moment(e.eventRef.startDate).format('LLLL');
+                        $scope.collectes.push(e);
                     });    
                     $scope.teamCollecte.totalTime = totalTime;
-                    $log.debug('teamCollecte', $scope.teamCollecte);
                 }
             })
             
@@ -463,5 +476,6 @@
         
         /* Primary, check if user connected */
         $scope.checkUserConnected();
+        $scope.initStats();
     });
 }());
