@@ -91,7 +91,7 @@
                     <!-- Phone numbers -->
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="input-field col m6 s12"><h6>{{'civilSection.line3' | translate}}</h6></div>
+                        <div class="input-field col m6 s12"><h6>{{'civilSection.line3' | translate}} <span class="red-text text-lighten-1">*</span></h6></div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
                     
@@ -99,7 +99,7 @@
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col m2 s4">
                             <i class="material-icons prefix">phone</i>
-                            <label for="userPhoneHome">{{'civilSection.label.userPhoneHome' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                            <label for="userPhoneHome">{{'civilSection.label.userPhoneHome' | translate }}</label>
                         </div>
                         <div class="input-field col m2 s8">
                             <input id="userPhoneHome" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate" min="0" ng-model="signup.contact.home">
@@ -110,7 +110,7 @@
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col m2 s4">
                             <i class="material-icons prefix">location_city</i>
-                            <label for="userPhoneOffice">{{'civilSection.label.userPhoneOffice' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                            <label for="userPhoneOffice">{{'civilSection.label.userPhoneOffice' | translate }}</label>
                         </div>
                         <div class="input-field col m2 s8">
                             <input id="userPhoneOffice" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate" min="0" ng-model="signup.contact.office">
@@ -121,7 +121,7 @@
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="input-field col m2 s4">
                             <i class="material-icons prefix">smartphone</i>
-                            <label for="userCellPhone">{{'civilSection.label.userCellPhone' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                            <label for="userCellPhone">{{'civilSection.label.userCellPhone' | translate }}</label>
                         </div>
                         <div class="input-field col m2 s8">
                             <input id="userCellPhone" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate" min="0" ng-model="signup.contact.cellphone">

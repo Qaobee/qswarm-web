@@ -23,6 +23,7 @@
             'selectionModel',
             'ngMap',
             'ui.materialize',
+            'ng.deviceDetector',
             
             /* qaobee shared directives */
             'qaobee.commonsDirectives',

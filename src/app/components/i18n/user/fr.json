@@ -27,7 +27,7 @@
     "civilSection" : {
     	"line1" : "Votre inscription est presque terminée !",
     	"line2" : "Ces dernières étapes vont permettre la création de votre espace personnel et l'accès à votre assistant personnel de collecte et d'analyse en temps réel de données sportives.",
-    	"line3" : "Veuillez renseigner au moins un numéro de téléphone :",
+    	"line3" : "Veuillez renseigner au moins un numéro de téléphone",
     	
     	"label" : {
 	        "userSignupCivilSection" : "Informations personnelles",

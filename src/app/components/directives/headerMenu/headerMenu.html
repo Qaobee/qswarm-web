@@ -1,3 +1,18 @@
+<div class="banner-container" ng-if="showBanner">
+<!-- Bannière Download appli mobile -->
+	<div class="row valign-wrapper">
+		<div class="col s1" ng-click="closeBanner()"><span class="banner-close"> <i class="material-icons prefix">close</i></span></div>
+		<div class="col s3" ng-click="openDownload()"><a class="banner-img-dl"><img src="assets/images/logo-download.png"/></a></div>
+		<div class="col s4">
+			<p class="banner-appl">
+			<span class="banner-appl-title">QSwarm Hand</span><br>
+			<span class="banner-appl-author">Qaobee</span>
+			</p>
+		</div>
+		<div class="col s4"><a href="https://play.google.com/apps/testing/com.qaobee.qswarm.hand" class="banner-btn-dl">Télécharger</a></div>
+	</div>
+</div>
+
 <!-- Not connected -->
 <nav class="top-nav " ng-class="{ 'white top-nav-trans': isActive('/'), 'green darken-1': !isActive('/')}"
      role="navigation" ng-hide="user">

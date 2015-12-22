@@ -262,3 +262,56 @@ table.super-fancy tr.foobar {
         width: 90%;
     }
 }
+
+/** Mobile App Download Banner */
+.banner-container {
+	background:linear-gradient(to bottom,#f2f5f6 0,#ede3e3 46%,#ddd 100%);
+	color: #666;
+	font-family: Arial;
+	text-align: center;
+}
+.banner-container div.row{
+	margin-bottom: 9px; 
+}
+
+.banner-container div.row div.col{
+	margin: 0px; 
+}
+
+.banner-close {
+	font-size:16px;
+	font-weight: bold;
+}
+
+.banner-img-dl {
+	height: 100px;
+}
+
+.banner-img-dl img {
+	width:70px;
+	height:70px;
+}
+
+.banner-appl {
+	line-height:normal;
+	text-align:left;
+}
+
+.banner-appl-title {
+	font-weight: bold;
+}
+
+.banner-appl-author {
+	font-size: 12px;
+}
+
+.banner-btn-dl {
+	border: 1px solid #bbb;
+	color: #666;
+	padding: 5px;
+	font-size: 13px;
+	font-weight: bold;
+	text-transform: uppercase;
+	border-radius: 6px;
+	box-shadow: 0 2px 2px #FFFFFF;
+}
