@@ -15,6 +15,7 @@
         /* qaobee services */
         'effectifSRV',
         'statsSRV',
+        'qaobee.eventbus',
         
         /* qaobee Rest API */
         'collecteRestAPI',
@@ -41,7 +42,7 @@
  * @class qaobee.modules.home.HomeControler
  */
     .controller('EventStats', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                            collecteRestAPI, personRestAPI, statsRestAPI, effectiveSrv, statsSrv, userRestAPI) {
+                                            collecteRestAPI, personRestAPI, statsRestAPI, effectiveSrv, statsSrv, userRestAPI, qeventbus) {
         $translatePartialLoader.addPart('home');
         $translatePartialLoader.addPart('stats');
 
@@ -60,6 +61,12 @@
             endDate : 0,
             startDateLabel : "",
             endDateLabel : ""
+        };
+        
+        $scope.periodicityActive = {
+            startDate: moment(new Date()),
+            endDate: moment(new Date()),
+            ownersId : []
         };
         
         $scope.players = [];
@@ -86,7 +93,12 @@
             $scope.attackData = [{"Positive":0}, {"Negative":0}];
         };
         
-        //Initialization event
+        /* watch if periodicity change */
+        $scope.$watch('periodicityActive', function (newValue, oldValue) {
+            if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
+                qeventbus.prepForBroadcast("periodicityActive", $scope.periodicityActive);
+            }
+        });
         
         /* get collect */
         $scope.getCollecte = function () {
@@ -124,6 +136,14 @@
                     });
                     
                     $scope.ownersId.push(data.eventRef._id);
+                    
+                    var periodicity = {
+                        startDate: data.startDate,
+                        endDate: data.endDate,
+                        ownersId : $scope.ownersId
+                    };
+                    $scope.periodicityActive = periodicity;
+                    
                     $scope.getStats($scope.ownersId, $scope.collecte.startDate, $scope.collecte.endDate);
                 }
             });

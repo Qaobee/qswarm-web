@@ -14,6 +14,7 @@
         
             /* qaobee services */
             'statsSRV',
+            'qaobee.eventbus',
 
             /* qaobee Rest API */
             'personRestAPI',
@@ -39,7 +40,7 @@
          * @class qaobee.modules.home.HomeControler
          */
         .controller('PlayerStats', function ($timeout, $log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                             statsRestAPI, personRestAPI, statsSrv, userRestAPI) {
+                                             statsRestAPI, personRestAPI, statsSrv, userRestAPI, qeventbus) {
             $translatePartialLoader.addPart('home');
             $translatePartialLoader.addPart('stats');
         
@@ -48,13 +49,14 @@
             $scope.ownersId = [];
             $scope.ownersId.push($routeParams.playerId);
         
-            $scope.periodicity = 'season';
             $scope.periodicityActive = {
-                index: 1,
-                label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
-                startDate: moment($scope.meta.season.startDate),
-                endDate: moment($scope.meta.season.endDate)
+                label: "",
+                startDate: moment(new Date()),
+                endDate: moment(new Date()),
+                ownersId : []
             };
+        
+            $scope.periodicity = 'season';
             
             // return button
             $scope.doTheBack = function () {
@@ -62,23 +64,31 @@
             };
 
             //Initialization owner Object
-            $scope.player = {};
-            $scope.stats = {};
-        
-            $scope.values9m =  ['BACKLEFT9', 'CENTER9', 'BACKRIGHT9'];
-            $scope.values6m =  ['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING'];
-            $scope.values7m =  ['PENALTY'];
-            $scope.nbGame = 0;
-        
-            $scope.defenseCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
-                                    {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
-            $scope.defenseData = [{"Positive":0}, {"Negative":0}];
+            $scope.initStats = function() {
+                $scope.player = {};
+                $scope.stats = {};
 
-            $scope.attackCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
-                               {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
-            $scope.attackData = [{"Positive":0}, {"Negative":0}];
+                $scope.values9m =  ['BACKLEFT9', 'CENTER9', 'BACKRIGHT9'];
+                $scope.values6m =  ['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING'];
+                $scope.values7m =  ['PENALTY'];
+                $scope.nbGame = 0;
+
+                $scope.defenseCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
+                                        {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
+                $scope.defenseData = [{"Positive":0}, {"Negative":0}];
+
+                $scope.attackCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
+                                   {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
+                $scope.attackData = [{"Positive":0}, {"Negative":0}];
+            };
                 
-
+            /* watch if periodicity change */
+            $scope.$watch('periodicityActive', function (newValue, oldValue) {
+                if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
+                    qeventbus.prepForBroadcast("periodicityActive", $scope.periodicityActive);
+                }
+            });
+        
             /* get player */
             $scope.getPlayer = function () {
                 personRestAPI.getPerson($routeParams.playerId).success(function (person) {
@@ -104,7 +114,6 @@
                 statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
                     $scope.defenseData.push({"Positive": result});
                     $scope.defenseCol.push({"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'});
-                    $log.debug(' $scope.defenseData', $scope.defenseData);
                 });
                 
                 /* ALL PERS-ACT-DEF-NEG */
@@ -153,7 +162,6 @@
                         });
                         if(($scope.stats['holder'].count + $scope.stats['substitue'].count)>0){
                             $scope.nbGame = $scope.stats['holder'].count + $scope.stats['substitue'].count;
-                            $log.debug('$scope.nbGame',$scope.nbGame);
                         }
                     }
                 })
@@ -220,7 +228,8 @@
                 $scope.periodicityActive = {
                     label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY'),
                     startDate: start,
-                    endDate: end
+                    endDate: end,
+                    ownersId : $scope.ownersId
                 };
 
                 $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
@@ -236,6 +245,7 @@
                     label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY'),
                     startDate: start,
                     endDate: end,
+                    ownersId : $scope.ownersId
                 };
 
                 $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
@@ -251,6 +261,7 @@
                     label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY'),
                     startDate: start,
                     endDate: end,
+                    ownersId : $scope.ownersId
                 };
 
                 $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
@@ -268,35 +279,40 @@
                         quarter = {
                             label: moment('01/01/' + year, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment('01/04/' + year, 'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
                             startDate: moment('01/01/' + year, 'DD/MM/YYYY').format('MMMM YYYY'),
-                            endDate: moment('/01/04/' + year, 'DD/MM/YYYY').subtract(1, 'ms')
+                            endDate: moment('/01/04/' + year, 'DD/MM/YYYY').subtract(1, 'ms'),
+                            ownersId : $scope.ownersId
                         };
                         break;
                     case 2:
                         quarter = {
                             label: moment('01/04/' + year, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment('/01/07/' + year, 'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
                             startDate: moment('/01/04/' + year, 'DD/MM/YYYY'),
-                            endDate: moment('/01/07/' + year, 'DD/MM/YYYY').subtract(1, 'ms')
+                            endDate: moment('/01/07/' + year, 'DD/MM/YYYY').subtract(1, 'ms'),
+                            ownersId : $scope.ownersId
                         };
                         break;
                     case 3:
                         quarter = {
                             label: moment('/01/07/' + year, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment('/01/10/' + year, 'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
                             startDate: moment('/01/07/' + year, 'DD/MM/YYYY'),
-                            endDate: moment('/01/10/' + year, 'DD/MM/YYYY').subtract(1, 'ms')
+                            endDate: moment('/01/10/' + year, 'DD/MM/YYYY').subtract(1, 'ms'),
+                            ownersId : $scope.ownersId
                         };
                         break;
                     case 4:
                         quarter = {
                             label: moment('/01/10/' + year, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment('/01/01/' + (year + 1), 'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
                             startDate: moment('/01/10/' + year, 'DD/MM/YYYY'),
-                            endDate: moment('/01/01/' + (year + 1), 'DD/MM/YYYY').subtract(1, 'ms')
+                            endDate: moment('/01/01/' + (year + 1), 'DD/MM/YYYY').subtract(1, 'ms'),
+                            ownersId : $scope.ownersId
                         };
                         break;
                     default:
                         quarter = {
                             label: moment('01/01/' + year, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment('01/04/' + year, 'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
                             startDate: moment('01/01/' + year, 'DD/MM/YYYY'),
-                            endDate: moment('/01/04/' + year, 'DD/MM/YYYY').subtract(1, 'ms')
+                            endDate: moment('/01/04/' + year, 'DD/MM/YYYY').subtract(1, 'ms'),
+                            ownersId : $scope.ownersId
                         };
                 }
 
@@ -316,6 +332,7 @@
                     label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment(end, 'DD/MM/YYYY').format('MMMM YYYY'),
                     startDate: start,
                     endDate: end,
+                    ownersId : $scope.ownersId
                 };
 
                 $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
@@ -331,6 +348,7 @@
                     label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment(end, 'DD/MM/YYYY').format('MMMM YYYY'),
                     startDate: start,
                     endDate: end,
+                    ownersId : $scope.ownersId
                 };
 
                 $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
@@ -340,10 +358,10 @@
             $scope.getCurrentSeason = function () {
                 $scope.periodicity = 'season';
                 $scope.periodicityActive = {
-                    index: 1,
                     label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
                     startDate: moment($scope.meta.season.startDate),
-                    endDate: moment($scope.meta.season.endDate)
+                    endDate: moment($scope.meta.season.endDate),
+                    ownersId : $scope.ownersId
                 };
 
                 $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
@@ -359,6 +377,7 @@
                     label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment(end, 'DD/MM/YYYY').format('MMMM YYYY'),
                     startDate: start,
                     endDate: end,
+                    ownersId : $scope.ownersId
                 };
 
                 $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
@@ -374,6 +393,7 @@
                     label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment(end, 'DD/MM/YYYY').format('MMMM YYYY'),
                     startDate: start,
                     endDate: end,
+                    ownersId : $scope.ownersId
                 };
 
                 $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
@@ -384,6 +404,12 @@
             $scope.checkUserConnected = function () {
 
                 userRestAPI.getUserById(user._id).success(function (data) {
+                    $scope.periodicityActive = {
+                        label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
+                        startDate: moment($scope.meta.season.startDate),
+                        endDate: moment($scope.meta.season.endDate),
+                        ownersId : $scope.ownersId
+                    };
                     $scope.getPlayer();
                 }).error(function (data) {
                     $log.error('PlayerStats : User not Connected');
@@ -392,5 +418,6 @@
 
             /* Primary, check if user connected */
             $scope.checkUserConnected();
+            $scope.initStats();
         });
 }());

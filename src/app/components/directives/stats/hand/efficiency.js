@@ -10,9 +10,9 @@
  *
  */
 
-angular.module('statsEfficiency', ['statsRestAPI'])
+angular.module('statsEfficiency', ['statsRestAPI', 'qaobee.eventbus'])
 
-    .directive('statsEfficiency', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI) {
+    .directive('statsEfficiency', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, qeventbus) {
         return {
             restrict: 'E',
             scope: {
@@ -35,12 +35,16 @@ angular.module('statsEfficiency', ['statsRestAPI'])
                 $scope.efficiency6mData = [{data6:0}];
                 $scope.efficiency7mCol = [{id: 'data7', type: 'gauge', color: '#42a5f5'}];
                 $scope.efficiency7mData = [{data7:0}];
-                
-                $scope.nbShoot = 0;
-                $scope.nbGoal = 0;
-                $scope.title = 'stats.efficiency.'+$scope.label;
-                
-                $log.debug('owners',$scope.ownersId);
+
+                /* Refresh widget on periodicity change */
+                $scope.$on('qeventbus', function () {
+                    if ("periodicityActive" === qeventbus.message) {
+                        $scope.startDate = qeventbus.data.startDate;
+                        $scope.endDate = qeventbus.data.endDate;
+                        $scope.ownersId = qeventbus.data.ownersId;
+                        buildGraph();
+                    }
+                });
                 
                 /* efficiency */  
                 var getEfficiency = function (ownersId, startDate, endDate, values) {
@@ -126,45 +130,59 @@ angular.module('statsEfficiency', ['statsRestAPI'])
                     return deferred.promise;
                 };
                 
-                if(angular.isDefined($scope.values)) {
-                    getEfficiency($scope.ownersId, $scope.startDate, $scope.endDate, $scope.values).then(function (result) {
-                        $scope.nbShoot = result.nbShoot;
-                        $scope.nbGoal = result.nbGoal;
-                        
-                        if($scope.bindToId==='gaugeEfficiency9m'){
-                            $scope.efficiency9mData.push({data9 : result.efficiency});
-                            getColorGauge(result.efficiency).then(function (color) {
-                                $scope.efficiency9mCol[0].color = color;
-                            });
-                        }
-                        
-                        if($scope.bindToId==='gaugeEfficiency7m'){
-                            $scope.efficiency7mData.push({data7 : result.efficiency});
-                            getColorGauge(result.efficiency).then(function (color) {
-                                $scope.efficiency7mCol[0].color = color;
-                            });
-                        }
-                        
-                        if($scope.bindToId==='gaugeEfficiency6m'){
-                            $scope.efficiency6mData.push({data6 : result.efficiency});
-                            getColorGauge(result.efficiency).then(function (color) {
-                                $scope.efficiency6mCol[0].color = color;
-                            });
-                        }
-                        
-                    });
-                } else {
-                    getEfficiency($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
-                        $scope.nbShoot = result.nbShoot;
-                        $scope.nbGoal = result.nbGoal;
-                        
-                        $scope.efficiencyGlobalData.push({dataG : result.efficiency});
-                        getColorGauge(result.efficiency).then(function (color) {
-                            $scope.efficiencyGlobalCol[0].color = color;
+                var buildGraph= function (){
+                    $scope.efficiencyGlobalCol = [{id: 'dataG', type: 'gauge', color: '#42a5f5'}];
+                    $scope.efficiencyGlobalData = [{dataG:0}];
+                    $scope.efficiency9mCol = [{id: 'data9', type: 'gauge', color: '#42a5f5'}];
+                    $scope.efficiency9mData = [{data9:0}];
+                    $scope.efficiency6mCol = [{id: 'data6', type: 'gauge', color: '#42a5f5'}];
+                    $scope.efficiency6mData = [{data6:0}];
+                    $scope.efficiency7mCol = [{id: 'data7', type: 'gauge', color: '#42a5f5'}];
+                    $scope.efficiency7mData = [{data7:0}];
+                    
+                    $scope.nbShoot = 0;
+                    $scope.nbGoal = 0;
+                    $scope.title = 'stats.efficiency.'+$scope.label;
+                    
+                    if(angular.isDefined($scope.values)) {
+                        getEfficiency($scope.ownersId, $scope.startDate, $scope.endDate, $scope.values).then(function (result) {
+                            $scope.nbShoot = result.nbShoot;
+                            $scope.nbGoal = result.nbGoal;
+
+                            if($scope.bindToId==='gaugeEfficiency9m'){
+                                $scope.efficiency9mData.push({data9 : result.efficiency});
+                                getColorGauge(result.efficiency).then(function (color) {
+                                    $scope.efficiency9mCol[0].color = color;
+                                });
+                            }
+
+                            if($scope.bindToId==='gaugeEfficiency7m'){
+                                $scope.efficiency7mData.push({data7 : result.efficiency});
+                                getColorGauge(result.efficiency).then(function (color) {
+                                    $scope.efficiency7mCol[0].color = color;
+                                });
+                            }
+
+                            if($scope.bindToId==='gaugeEfficiency6m'){
+                                $scope.efficiency6mData.push({data6 : result.efficiency});
+                                getColorGauge(result.efficiency).then(function (color) {
+                                    $scope.efficiency6mCol[0].color = color;
+                                });
+                            }
+
                         });
-                    });
+                    } else {
+                        getEfficiency($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
+                            $scope.nbShoot = result.nbShoot;
+                            $scope.nbGoal = result.nbGoal;
+
+                            $scope.efficiencyGlobalData.push({dataG : result.efficiency});
+                            getColorGauge(result.efficiency).then(function (color) {
+                                $scope.efficiencyGlobalCol[0].color = color;
+                            });
+                        });
+                    }
                 }
-                
             },
             templateUrl: 'app/components/directives/stats/hand/efficiency.html'
         };
