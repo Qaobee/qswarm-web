@@ -16,17 +16,17 @@
 
     .factory('statsSrv', function($log, $q, $filter, statsRestAPI, collecteRestAPI) {
 
-        /* efficiently */  
-        var getEfficiently = function (ownersId, startDate, endDate, values) {
+        /* efficiency */  
+        var getEfficiency = function (ownersId, startDate, endDate, values) {
             var deferred = $q.defer(); 
             var search = {};
             var result = {
                 nbShoot : 0,
                 nbGoal : 0,
-                efficiently : 0
+                efficiency : 0
             };
             
-            /* Search parameters Efficiently global */
+            /* Search parameters Efficiency global */
             if(angular.isDefined(values)) {
                 search = {
                     listIndicators: ['originShootAtt'],
@@ -72,10 +72,10 @@
                     
                     if (angular.isDefined(dataGoal[0]) && dataGoal !== null) {
                         result.nbGoal = dataGoal[0].value;
-                        result.efficiently = (result.nbGoal / result.nbShoot) * 100;
+                        result.efficiency = (result.nbGoal / result.nbShoot) * 100;
                         deferred.resolve(result);  
                     } else {
-                        deferred.reject('getEfficiently -> problem for : ' + search);
+                        deferred.reject('getEfficiency -> problem for : ' + search);
                     }
                 });
             });
@@ -83,16 +83,16 @@
         };
         
         /* color gauge */  
-        var getColorGauge = function (efficiently) {
+        var getColorGauge = function (efficiency) {
             var deferred = $q.defer(); 
             
-            if (efficiently<25) {
+            if (efficiency<25) {
                 deferred.resolve('#ef5350');
-            } else if(efficiently>=25 && efficiently<50) {
+            } else if(efficiency>=25 && efficiency<50) {
                  deferred.resolve('#ffb74d');
-            } else if(efficiently>=50 && efficiently<75) {
+            } else if(efficiency>=50 && efficiency<75) {
                  deferred.resolve('#29b6f6');
-            } else if(efficiently>75) {
+            } else if(efficiency>75) {
                  deferred.resolve('#9ccc65');
             } else {
                 deferred.reject('');
@@ -169,7 +169,7 @@
         };
              
         return {
-            getEfficiently : getEfficiently,
+            getEfficiency : getEfficiency,
             getColorGauge : getColorGauge,
             getMatchsTeams : getMatchsTeams,
             getMatchsEffective : getMatchsEffective,

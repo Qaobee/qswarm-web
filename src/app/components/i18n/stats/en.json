@@ -20,12 +20,12 @@
                 "left-wingman": "Left-wingman"
             }
         },
-        "efficiently" : {
-            "efficiently": "Shoot's efficiency",
-            "efficientlyTotal": "Global",
-            "efficiently9m" : "9 mètres",
-            "efficiently6m" : "6 mètres",
-            "efficiently7m" : "7 mètres"
+        "efficiency" : {
+            "efficiency": "Shoot's efficiency",
+            "efficiencyTotal": "Global",
+            "efficiency9m" : "9 mètres",
+            "efficiency6m" : "6 mètres",
+            "efficiency7m" : "7 mètres"
         },
         "actionTab" : {
             "actions": "Actions",

@@ -45,7 +45,8 @@
         
             $scope.user = user;
             $scope.meta = meta;
-            $scope.ownerId = $routeParams.playerId;
+            $scope.ownersId = [];
+            $scope.ownersId.push($routeParams.playerId);
         
             $scope.periodicity = 'season';
             $scope.periodicityActive = {
@@ -64,15 +65,6 @@
             $scope.player = {};
             $scope.stats = {};
         
-            $scope.efficientlyGlobalCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
-            $scope.efficientlyGlobalData = [{data:0}];
-            $scope.efficiently9mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
-            $scope.efficiently9mData = [{data:0}];
-            $scope.efficiently6mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
-            $scope.efficiently6mData = [{data:0}];
-            $scope.efficiently7mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
-            $scope.efficiently7mData = [{data:0}];
-        
             $scope.values9m =  ['BACKLEFT9', 'CENTER9', 'BACKRIGHT9'];
             $scope.values6m =  ['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING'];
             $scope.values7m =  ['PENALTY'];
@@ -89,7 +81,7 @@
 
             /* get player */
             $scope.getPlayer = function () {
-                personRestAPI.getPerson($scope.ownerId).success(function (person) {
+                personRestAPI.getPerson($routeParams.playerId).success(function (person) {
                     $scope.player = person;
                     $scope.player.birthdate = new Date(moment($scope.player.birthdate));
                     if (angular.isDefined($scope.player.status.positionType)) {
@@ -103,62 +95,7 @@
             };
 
             /* get statistic for one player */
-            $scope.getStats = function (ownerId, startDate, endDate) {
-                
-                var ownersId = [];
-                ownersId.push(ownerId);
-                
-                /* Search parameters Efficiently Global */ 
-                $scope.efficientlyGlobalCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
-                $scope.efficientlyGlobalData = [{data:0}];
-                
-                statsSrv.getEfficiently(ownersId, startDate, endDate).then(function (result) {
-                    $scope.nbShootGlobal = result.nbShoot;
-                    $scope.nbGoalGlobal = result.nbGoal;
-                    $scope.efficientlyGlobalData.push({data : result.efficiently});
-                    statsSrv.getColorGauge(result.efficiently).then(function (color) {
-                        $scope.efficientlyGlobalCol[0].color = color;
-                    });
-                });
-                
-                /* Search parameters Efficiently 9m */
-                $scope.efficiently9mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
-                $scope.efficiently9mData = [{data:0}];
-                
-                statsSrv.getEfficiently(ownersId, startDate, endDate, $scope.values9m).then(function (result) {
-                    $scope.nbShoot9m = result.nbShoot;
-                    $scope.nbGoal9m = result.nbGoal;
-                    $scope.efficiently9mData.push({data : result.efficiently});
-                    statsSrv.getColorGauge(result.efficiently).then(function (color) {
-                        $scope.efficiently9mCol[0].color = color;
-                    });
-                });
-                
-                /* Search parameters Efficiently 6m */
-                $scope.efficiently6mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
-                $scope.efficiently6mData = [{data:0}];
-                
-                statsSrv.getEfficiently(ownersId, startDate, endDate, $scope.values6m).then(function (result) {
-                    $scope.nbShoot6m = result.nbShoot;
-                    $scope.nbGoal6m = result.nbGoal;
-                    $scope.efficiently6mData.push({data : result.efficiently});
-                    statsSrv.getColorGauge(result.efficiently).then(function (color) {
-                        $scope.efficiently6mCol[0].color = color;
-                    });
-                });
-                
-                /* Search parameters Efficiently 7m */
-                $scope.efficiently7mCol = [{id: 'data', type: 'gauge', color: '#42a5f5'}];
-                $scope.efficiently7mData = [{data:0}];
-                
-                statsSrv.getEfficiently(ownersId, startDate, endDate, $scope.values7m).then(function (result) {
-                    $scope.nbShoot7m = result.nbShoot;
-                    $scope.nbGoal7m = result.nbGoal;
-                    $scope.efficiently7mData.push({data : result.efficiently});
-                    statsSrv.getColorGauge(result.efficiently).then(function (color) {
-                        $scope.efficiently7mCol[0].color = color;
-                    });
-                });
+            $scope.getStats = function (ownersId, startDate, endDate) {
                 
                 var listFieldsGroupBy = Array.create('owner');
                 
@@ -286,7 +223,7 @@
                     endDate: end
                 };
 
-                $scope.getStats($scope.ownerId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
+                $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
             };
 
             /* Previous month */
@@ -301,7 +238,7 @@
                     endDate: end,
                 };
 
-                $scope.getStats($scope.ownerId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
+                $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
             };
 
             /* Next month */
@@ -316,7 +253,7 @@
                     endDate: end,
                 };
 
-                $scope.getStats($scope.ownerId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
+                $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
             };
 
             /* generate calendar by quarter */
@@ -366,7 +303,7 @@
                 /* Current quarter */
                 $scope.periodicityActive = quarter;
 
-                $scope.getStats($scope.ownerId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
+                $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
             };
 
             /* Previous quarter */
@@ -381,7 +318,7 @@
                     endDate: end,
                 };
 
-                $scope.getStats($scope.ownerId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
+                $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
             };
 
             /* Next quarter */
@@ -396,7 +333,7 @@
                     endDate: end,
                 };
 
-                $scope.getStats($scope.ownerId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
+                $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
             };
 
             /* generate calendar by season */
@@ -409,7 +346,7 @@
                     endDate: moment($scope.meta.season.endDate)
                 };
 
-                $scope.getStats($scope.ownerId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
+                $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
             };
 
             /* Previous season */
@@ -424,7 +361,7 @@
                     endDate: end,
                 };
 
-                $scope.getStats($scope.ownerId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
+                $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
             };
 
             /* Next season */
@@ -439,7 +376,7 @@
                     endDate: end,
                 };
 
-                $scope.getStats($scope.ownerId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
+                $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
             };
 
 

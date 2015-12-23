@@ -1,0 +1,72 @@
+<!-- efficiency gauge -->
+<div class="card blue-grey darken-2" ng-if="bindToId==='gaugeEfficiencyGlobal'">
+    <div class="card-title blue-grey darken-2  grey-text text-lighten-4 center">
+        <h5><small>{{title | translate }} ({{nbGoal}}/{{nbShoot}})</small></h5>
+    </div>
+
+    <div class="card-content white center-align">
+        <c3chart bindto-id="gaugeEfficiencyGlobal" 
+                 chart-columns="efficiencyGlobalCol" 
+                 chart-data="efficiencyGlobalData"
+                 padding-top="0" 
+                 padding-bottom="padding" 
+                 padding-right="padding" 
+                 padding-left="padding">
+            <chart-gauge min="0" max="100" width="30"/>
+        </c3chart>
+    </div>
+</div>
+
+<div class="card blue-grey darken-2" ng-if="bindToId==='gaugeEfficiency9m'">
+    <div class="card-title blue-grey darken-2  grey-text text-lighten-4 center">
+        <h5><small>{{title | translate }} ({{nbGoal}}/{{nbShoot}})</small></h5>
+    </div>
+
+    <div class="card-content white center-align">
+        <c3chart bindto-id="gaugeEfficiency9m" 
+                 chart-columns="efficiency9mCol" 
+                 chart-data="efficiency9mData"
+                 padding-top="0" 
+                 padding-bottom="padding" 
+                 padding-right="padding" 
+                 padding-left="padding">
+            <chart-gauge min="0" max="100" width="30"/>
+        </c3chart>
+    </div>
+</div>
+
+<div class="card blue-grey darken-2" ng-if="bindToId==='gaugeEfficiency6m'">
+    <div class="card-title blue-grey darken-2  grey-text text-lighten-4 center">
+        <h5><small>{{title | translate }} ({{nbGoal}}/{{nbShoot}})</small></h5>
+    </div>
+
+    <div class="card-content white center-align">
+        <c3chart bindto-id="gaugeEfficiency6m" 
+                 chart-columns="efficiency6mCol" 
+                 chart-data="efficiency6mData"
+                 padding-top="0" 
+                 padding-bottom="padding" 
+                 padding-right="padding" 
+                 padding-left="padding">
+            <chart-gauge min="0" max="100" width="30"/>
+        </c3chart>
+    </div>
+</div>
+
+<div class="card blue-grey darken-2" ng-if="bindToId==='gaugeEfficiency7m'">
+    <div class="card-title blue-grey darken-2  grey-text text-lighten-4 center">
+        <h5><small>{{title | translate }} ({{nbGoal}}/{{nbShoot}})</small></h5>
+    </div>
+
+    <div class="card-content white center-align">
+        <c3chart bindto-id="gaugeEfficiency7m" 
+                 chart-columns="efficiency7mCol" 
+                 chart-data="efficiency7mData"
+                 padding-top="0" 
+                 padding-bottom="padding" 
+                 padding-right="padding" 
+                 padding-left="padding">
+            <chart-gauge min="0" max="100" width="30"/>
+        </c3chart>
+    </div>
+</div>

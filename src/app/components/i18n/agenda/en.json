@@ -30,7 +30,7 @@
         "toastError":"Error, event can't update"
     },
     "eventLabels": {
-        "Team": "Choice team",
+        "Team": "Select my team",
         "Adversary": "Choice adversary",
         "Type": "Choice Event Type",
         "Label": "Label",
@@ -43,7 +43,7 @@
         "Home": "Home",
         "Visitor":"Outside",
         "SectionIdentity":"Event",
-        "SectionActors":"Participants",
+        "SectionActors":"Teams",
         "SectionPlaning":"Planning",
         "SectionPlace":"Location"
     }

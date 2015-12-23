@@ -24,9 +24,9 @@
     },
     "effectiveLabels": {
         "effectiveCategoryAge": "Category Age",
-        "effectiveTabMembers": "Player list",
+        "effectiveTabMembers": "My player list",
         "effectiveTabCoachs": "Coachs",
-        "effectiveTabTeams": "Team list",
+        "effectiveTabTeams": "My team list",
         "effectiveTeamsHome": "Effective Team list",
         "effectiveTeamsAdversary": "Adversaries",
         "effectiveTeamEnable": "Team Enable",

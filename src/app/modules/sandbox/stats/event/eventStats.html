@@ -103,84 +103,47 @@
            
             <div class="row"></div>
             
+            <!-- Stats shoot efficiency Start -->
             <div class="row grey lighten-2">
                 <div class="col s12 center blue-grey-text text-darken-2">
                     <br/>
-                    <h5 style="padding-left:10px">{{'stats.efficiently.efficiently' | translate }}</h5>
+                    <h5 style="padding-left:10px">{{'stats.efficiency.efficiency' | translate }}</h5>
                 </div>
                 
                 <div class="col l3 m6 s12">
-                    <div class="card blue-grey darken-2">
-                        <div class="card-title blue-grey darken-2  grey-text text-lighten-4 center">
-                            <h5><small>{{'stats.efficiently.efficientlyTotal' | translate }} ({{nbGoalGlobal}}/{{nbShootGlobal}})</small></h5>
-                        </div>
-                        <div class="card-content white">
-                            <c3chart bindto-id="gaugeEfficientlyGlobal" 
-                                     chart-columns="efficientlyGlobalCol" 
-                                     chart-data="efficientlyGlobalData"
-                                     padding-top="20" padding-bottom="20" padding-right="20" padding-left="20">
-                                <chart-gauge min="0" max="100" width="30"/>
-                            </c3chart>
-                            <!-- <stats-efficiency bind-to-id="efficiency9m" owners-id="ownersId" 
-                                          label="efficiently9m" values="values9m"
-                                          start-date="periodicityActive.startDate" 
-                                          end-date="periodicityActive.endDate"/>
-                            -->
-                        </div>
-                    </div>
+                    <stats-efficiency bind-to-id="gaugeEfficiencyGlobal" 
+                        owners-id="ownersId" label="efficiencyTotal"
+                        start-date="collecte.startDate" end-date="collecte.endDate"
+                        padding="25">
+                    </stats-efficiency>
                 </div>
                 
                 <div class="col l3 m6 s12">
-                    
-                    <!-- Stats shoot efficiently Start -->
-                    <div class="card blue-grey darken-2">
-                        <div class="card-title blue-grey darken-2  grey-text text-lighten-4 center">
-                            <h5><small>{{'stats.efficiently.efficiently9m' | translate }} ({{nbGoal9m}}/{{nbShoot9m}})</small></h5>
-                        </div>
-                        
-                        <div class="card-content white">
-                            <c3chart bindto-id="gaugeEfficiently9m"
-                                     chart-columns="efficiently9mCol"
-                                     chart-data="efficiently9mData"
-                                     padding-top="20" padding-bottom="20" padding-right="20" padding-left="20">
-                                <chart-gauge min="0" max="100" width="30"/>
-                            </c3chart>
-                        </div>
-                    </div>
+                    <stats-efficiency bind-to-id="gaugeEfficiency9m" 
+                        owners-id="ownersId" label="efficiency9m"
+                        start-date="collecte.startDate" end-date="collecte.endDate"
+                        values="values9m" padding="25">
+                    </stats-efficiency>
                 </div>
-
+                
                 <div class="col l3 m6 s12">
-                     <div class="card blue-grey darken-2">
-                        <div class="card-title blue-grey darken-2  grey-text text-lighten-4 center">
-                            <h5><small>{{'stats.efficiently.efficiently6m' | translate }} ({{nbGoal6m}}/{{nbShoot6m}})</small></h5>
-                        </div>
-                        <div class="card-content white">
-                            <c3chart bindto-id="gaugeEfficiently6m"
-                                     chart-columns="efficiently6mCol"
-                                     chart-data="efficiently6mData"
-                                     padding-top="20" padding-bottom="20" padding-right="20" padding-left="20">
-                                <chart-gauge min="0" max="100" width="30"/>
-                            </c3chart>
-                        </div>
-                    </div>
+                    <stats-efficiency bind-to-id="gaugeEfficiency6m" 
+                        owners-id="ownersId" label="efficiency6m"
+                        start-date="collecte.startDate" end-date="collecte.endDate"
+                        values="values6m" padding="25">
+                    </stats-efficiency>
                 </div>
-
+                
                 <div class="col l3 m6 s12">
-                    <div class="card blue-grey darken-2">
-                        <div class="card-title blue-grey darken-2  grey-text text-lighten-4 center">
-                            <h5><small>{{'stats.efficiently.efficiently7m' | translate }} ({{nbGoal7m}}/{{nbShoot7m}})</small></h5>
-                        </div>
-                        <div class="card-content white">
-                            <c3chart bindto-id="gaugeEfficiently7m"
-                                     chart-columns="efficiently7mCol"
-                                     chart-data="efficiently7mData"
-                                     padding-top="20" padding-bottom="20" padding-right="20" padding-left="20">
-                                <chart-gauge min="0" max="100" width="30"/>
-                            </c3chart>
-                        </div>
-                    </div>
-                </div>           
+                    <stats-efficiency bind-to-id="gaugeEfficiency7m" 
+                        owners-id="ownersId" label="efficiency7m"
+                        start-date="collecte.startDate" end-date="collecte.endDate"
+                        values="values7m" padding="25">
+                    </stats-efficiency>
+                </div>
             </div>
+            <!-- Stats shoot efficiency end -->
+            
             <div class="row">    
                 <div class="col l6 s12">
                     <div class="card blue-grey darken-2">
@@ -220,7 +183,7 @@
                                 <tr class="grey lighten-2">
                                     <th data-field="player">Joueur</th>
                                     <th data-field="positionType">Poste</th>
-                                    <th data-field="efficiently">Efficatité (B/T)</th>
+                                    <th data-field="efficiency">Efficatité (B/T)</th>
                                     <th data-field="attack">Attaque (+/-)</th>
                                     <th data-field="defense">Défense (+/-)</th>
                                 </tr>
