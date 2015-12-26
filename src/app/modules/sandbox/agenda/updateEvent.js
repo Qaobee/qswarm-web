@@ -60,12 +60,60 @@
         $scope.adversaryId = '';
         $scope.chooseAdversary = false;
         $scope.chooseHome = false;
-        $scope.startDate = '';
+        $scope.startDate = new Date();
         $scope.endDate = '';
         $scope.startHours = '';
         $scope.endHours = '';
         $scope.location = 'home';
         
+        //i18n datepicker
+        var month = $filter('translate')('commons.format.date.listMonth');
+        $scope.month = month.split(',');
+
+        var monthShort = $filter('translate')('commons.format.date.listMonthShort');
+        $scope.monthShort = monthShort.split(',');
+
+        var weekdaysFull = $filter('translate')('commons.format.date.listWeekdaysFull');
+        $scope.weekdaysFull = weekdaysFull.split(',');
+
+        var weekdaysShort = $filter('translate')('commons.format.date.listWeekdaysShort');
+        $scope.weekdaysShort = weekdaysShort.split(',');
+
+        var weekdaysLetter = $filter('translate')('commons.format.date.listWeekdaysLetter');
+        $scope.weekdaysLetter = weekdaysLetter.split(',');
+
+        $scope.today = $filter('translate')('commons.format.date.today');
+        $scope.clear = $filter('translate')('commons.format.date.clear');
+        $scope.close = $filter('translate')('commons.format.date.close');
+        $scope.formatDate = $filter('translate')('commons.format.date.label');
+        $scope.formatDateSubmit = $filter('translate')('commons.format.date.pattern');
+
+        var $inputDate = $('.datepicker').pickadate({
+            format: $scope.formatDate,
+            formatSubmit: $scope.formatDateSubmit,
+            monthsFull: $scope.month,
+            weekdaysFull: $scope.weekdaysFull,
+            weekdaysLetter: $scope.weekdaysLetter,
+            weekdaysShort: $scope.weekdaysShort,
+            today: $scope.today,
+            clear: $scope.clear,
+            close: $scope.close
+        });
+
+        //i18n timepicker
+        $scope.formatTime = $filter('translate')('commons.format.hours.label');
+        $scope.formatTimeSubmit = $filter('translate')('commons.format.hours.pattern');
+        $scope.datePicker = $inputDate.pickadate('picker');
+
+        var $inputTimer = $('.timepicker').pickatime({
+            format: $scope.formatTime,
+            formatSubmit: $scope.formatTimeSubmit,
+            clear: $scope.clear,
+            min: [13,30],
+            max: [21,30]
+        });
+        $scope.timerPicker = $inputTimer.pickatime('picker');
+
         $scope.addEventTitle = false;
         
         // return button
@@ -145,8 +193,11 @@
                 /* Formatage des dates et heures */
                 if(angular.isDefined($scope.event.startDate)) {
                     
-                    $scope.startDate = new Date(moment($scope.event.startDate));
+                    $scope.startDate = $scope.event.startDate;
                     $scope.startHours = $scope.startDate;
+
+                    $scope.datePicker.set('select', $scope.startDate.valueOf());
+                    $scope.timerPicker.set('select', [moment($scope.startHours).hour(),moment($scope.startHours).minute()]);
                 }
                 
                 if($scope.event.link.type==='training'  || $scope.event.link.type==='other') {
@@ -203,14 +254,11 @@
         
         /* Format event */
         $scope.checkAndformatEvent = function () {
-            
-            $log.debug($scope.event);
+
             /* Convert start event to long */
-            var start = moment($scope.startDate);
-            $log.debug(start);
-            start.hour(moment($scope.startHours).hour());
-            start.minutes(moment($scope.startHours).minute());
-            $log.debug(start);     
+            var start = moment($scope.startDate,'DD/MM/YYYY');
+            start.hour(moment($scope.startHours,'HH').hour());
+            start.minutes(moment($scope.startHours,'m mm').minutes());
             $scope.event.startDate = moment(start).valueOf();
             
             /* Convert end event to long */

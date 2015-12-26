@@ -33,14 +33,14 @@
                             <label>{{'eventLabels.StartDate' | translate }} <span class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="input-field col s8">
-                            <input ng-model="startDate" id="EventStartDate" type="date" class="validate" required />
+                            <input id="EventStartDate" class="datepicker" name="EventStartDate" type="text" ng-model="startDate" required/>
                         </div>
 
                         <div class="input-field col s4">
                             <label>{{'eventLabels.StartHour' | translate }} <span class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="input-field col s8">
-                           <input ng-model="startHours" id="EventStartHours" type="time" required>
+                             <input id="EventStartHours" class="timepicker" name="hours" type="text" ng-model="startHours"/>
                         </div>
                     </div>
                     <!-- EventType -->

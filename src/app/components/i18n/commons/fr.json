@@ -5,18 +5,20 @@
             "height": "cm",
             "ageYear": "ans",
             "date": {
-                "pattern": "DD/MM/YYYY",
+                "pattern": "dd/mm/yyyy",
                 "label": "dd/mm/yyyy",
                 "listMonth": "Janvier,Février,Mars,Avril,Mai,Juin,Juillet,Aout,Septembre,Octobre,Novembre,Décembre",
                 "listMonthShort":"Jan,Fév,Mar,Avr,Mai,Juin,Juil,Aout,Sep,Oct,Nov,Déc",
                 "listWeekdaysFull":"Dimanche,Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi",
                 "listWeekdaysLetter":"D,L,M,M,J,V,S",
-                "today":"Aujourd'hui",
-                "clear":"Annuler",
+                "listWeekdaysShort": "Dim,Lun,Mar,Mer,Jeu,Ven,Sam",
+                "today":"",
+                "clear":"Effacer",
                 "close":"Fermer"
             },
             "hours": {
-                "pattern": "99:99"
+                "pattern": "HH:i",
+                "label": "HH:i"
             },
             "phone": {
                 "pattern": "99-99-99-99-99"

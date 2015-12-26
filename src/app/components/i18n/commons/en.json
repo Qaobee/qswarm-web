@@ -11,12 +11,14 @@
                 "listMonthShort":"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
                 "listWeekdaysFull":"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday",
                 "listWeekdaysLetter":"S,M,T,W,T,F,S",
-                "today":"Today",
+                "listWeekdaysShort": "Sun,Mon,Tue,Wed,Thu,Fri,Sat",
+                "today":"",
                 "clear":"Clear",
                 "close":"Close"
             },
             "hours": {
-                "pattern": "99:99"
+                "pattern": "HH:i",
+                "label": "HH:i a"
             },
             "phone": {
                 "pattern": "(999) 999-9999"

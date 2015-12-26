@@ -60,7 +60,7 @@
         $scope.adversaryId = '';
         $scope.chooseAdversary = false;
         $scope.chooseHome = false;
-        $scope.startDate = '';
+        $scope.startDate = new Date();
         $scope.endDate = '';
         $scope.startHours = '';
         $scope.endHours = '';
@@ -79,10 +79,33 @@
         var weekdaysLetter = $filter('translate')('commons.format.date.listWeekdaysLetter');
         $scope.weekdaysLetter = weekdaysLetter.split(',');
         
-        $scope.today = $filter('translate')('commons.format.date.today');
+        $scope.today = '';
         $scope.clear = $filter('translate')('commons.format.date.clear');
         $scope.close = $filter('translate')('commons.format.date.close');
         
+        var $input = $('.datepicker').pickadate({
+            monthsFull: $scope.month,
+            today: '',
+            clear: $scope.clear,
+            close: $scope.close
+        });
+
+        $log.debug('$input',$input);
+
+        // Use the picker object directly.
+        var picker = $input.pickadate('picker')
+
+
+        $scope.onOpen = function () {
+            console.log('onOpen', $scope.startDate);
+        };
+
+        $scope.onClose = function () {
+            $log.debug('avant',$scope.startDate);
+            $scope.startDate = moment($scope.startDate,'DD/MM/YYYY');
+            $log.debug('après',$scope.startDate);
+        };
+
         $scope.addEventTitle = true;
         
         // return button
