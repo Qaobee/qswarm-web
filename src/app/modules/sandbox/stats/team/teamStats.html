@@ -10,8 +10,17 @@
         <div class="col s12">
             
             <div class="row blue-grey darken-2">
-                <div class="col s12 white-text center">
+                <div class="col l2 m1 s12 white-text center hide-on-small-only">
+                    &nbsp;
+                </div>
+                <div class="col l8 m10 s12 white-text center-align">
                     <h4>{{team.label}}</h4>
+                </div>
+                <div class="col l2 m1 s12 white-text center-align">
+                    <a href="">
+                        <i class="material-icons white-text medium tooltipped" ng-click="doTheBack()" 
+                           data-position="top" data-delay="20" data-tooltip="{{'viewPlayer.buttons.returnViewPlayer' | translate }}">undo</i>
+                    </a>
                 </div>
                 <div class="col s12 hide-on-small-only grey lighten-2">
                     <!-- Filter Zone start-->
@@ -163,7 +172,7 @@
         <!-- view for tablet and phone -->
             
 
-            <!-- Filter Zone end-->
+            <!-- Stats goals/sanction/use start -->
             <div class="row">
                 
                 <div class="col s12 m12 l4">
@@ -181,28 +190,10 @@
                 </div>
                 <div class="col s12 hide-on-large-only"><br/></div>
                 <div class="col s12 m12 l4">
-                    <div class="card small blue-grey darken-2 white-text">
-                        <div class="card-title center">
-                            <span class="white-text"><h5><small>{{'stats.resumeTab.sanctions' | translate }}</small></h5></span>
-                        </div>
-                        
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img src="/assets/images/handball/sanction.jpeg">
-                        </div>
-                        
-                        <div class="card-content blue-grey darken-2">
-                            <div class="row center">
-                                <div class="col s4"><h6>{{'stats.sanction.yellowCard' | translate }}</h6></div>
-                                <div class="col s4"><h6>{{'stats.sanction.excluTempo' | translate }}</h6></div>
-                                <div class="col s4"><h6>{{'stats.sanction.redCard' | translate }}</h6></div>
-                                <div class="col s4 amber accent-3"><h6>{{stats['yellowCard'].count}}</h6></div>
-                                <div class="col s4 red lighten-2"><h6>{{stats['exclTmp'].count}}</h6></div>
-                                <div class="col s4 red darken-3 white-text"><h6>{{stats['redCard'].count}}</h6></div>
-                            </div>
-                        </div>
-                    </div>        
+                    <stats-sanction></stats-sanction>
                 </div>
             </div>
+            <!-- Stats goals/sanction/use end -->
            
             <div class="row"></div>
             
@@ -221,19 +212,19 @@
                 
                 <div class="col l3 m6 s12">
                     <stats-efficiency bind-to-id="gaugeEfficiency9m" 
-                        label="efficiency9m" values="values9m" padding="25">
+                        label="efficiency9m" values="'values9m'" padding="25">
                     </stats-efficiency>
                 </div>
                 
                 <div class="col l3 m6 s12">
                     <stats-efficiency bind-to-id="gaugeEfficiency6m" 
-                        label="efficiency6m" values="values6m" padding="25">
+                        label="efficiency6m" values="'values6m'" padding="25">
                     </stats-efficiency>
                 </div>
                 
                 <div class="col l3 m6 s12">
                     <stats-efficiency bind-to-id="gaugeEfficiency7m" 
-                        label="efficiency7m" values="values7m" padding="25">
+                        label="efficiency7m" values="'values7m'" padding="25">
                     </stats-efficiency>
                 </div>
             </div>

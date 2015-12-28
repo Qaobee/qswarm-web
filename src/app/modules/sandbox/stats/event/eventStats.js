@@ -21,10 +21,7 @@
         'collecteRestAPI',
         'personRestAPI',
         'statsRestAPI',
-        'userRestAPI',
-        
-        /* qaobee widget */
-        'statsEfficiency'
+        'userRestAPI'
     ])
 
     .config(function ($routeProvider, metaDatasProvider) {
@@ -48,15 +45,12 @@
 
         $scope.user = user;
         $scope.meta = meta;
-        $scope.collecteId = $routeParams.collecteId;
         $scope.ownersId = [];
         $scope.teamHome = false;
         $scope.teamVisitor = true;
         $scope.collecte = {
             event : {},
-            nbGame:0,
             players: [{}],
-            totalTime:0,
             startDate : 0,
             endDate : 0,
             startDateLabel : "",
@@ -78,11 +72,6 @@
         
         //Initialization event
         $scope.initStats = function() {
-            $scope.stats = {};
-        
-            $scope.values9m =  ['BACKLEFT9', 'CENTER9', 'BACKRIGHT9'];
-            $scope.values6m =  ['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING'];
-            $scope.values7m =  ['PENALTY'];
 
             $scope.defenseCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
                                     {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
@@ -104,11 +93,9 @@
         $scope.getCollecte = function () {
             
             /* get collect */
-            collecteRestAPI.getCollecte($scope.collecteId).success(function (data) {
+            collecteRestAPI.getCollecte($routeParams.collecteId).success(function (data) {
                 if (angular.isDefined(data)) {
                     $scope.collecte.event = data.eventRef;
-                    $scope.collecte.nbGame = 1;
-                    $scope.collecte.totalTime += (data.parametersGame.periodDuration * data.parametersGame.nbPeriod);
                     
                     $scope.collecte.startDate = data.startDate;
                     $scope.collecte.endDate = data.endDate;
@@ -181,83 +168,6 @@
                 $scope.attackCol.push({"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'});
             });
 
-            /* Stats Count by indicator */
-            var indicators =  Array.create('yellowCard', 'exclTmp', 'redCard', 'originShootAtt', 'goalScored', 'holder', 'substitue', 'goalConceded');
-            listFieldsGroupBy = Array.create('code');
-
-            angular.forEach(indicators, function (value) {
-                $scope.stats[value] = {sum: 0, avg: 0, count: 0, freq: 0};
-            });
-
-            var search = {
-                listIndicators: indicators,
-                listOwners: ownersId,
-                startDate: startDate.valueOf(),
-                endDate: endDate.valueOf(),
-                aggregat: 'COUNT',
-                listFieldsGroupBy: listFieldsGroupBy
-            };
-
-            /* Appel stats API */
-            statsRestAPI.getStatGroupBy(search).success(function (data) {
-                if (angular.isArray(data) && data.length > 0) {
-                    data.forEach(function(a){
-                        $scope.stats[a._id.code].count = a.value;
-                    });
-                }
-            })
-
-            /* Stats SUM by indicator */
-            var indicators =  Array.create('playTime');
-            listFieldsGroupBy = Array.create('code');
-
-            angular.forEach(indicators, function (value) {
-                $scope.stats[value] = {sum: 0, avg: 0, count: 0, freq: 0};
-            });
-
-            var search = {
-                listIndicators: indicators,
-                listOwners: ownersId,
-                startDate: startDate.valueOf(),
-                endDate: endDate.valueOf(),
-                aggregat: 'SUM',
-                listFieldsGroupBy: listFieldsGroupBy
-            };
-
-            /* Appel stats API */
-            statsRestAPI.getStatGroupBy(search).success(function (data) {
-                if (angular.isArray(data) && data.length > 0) {
-                    data.forEach(function(a){
-                        $scope.stats[a._id.code].sum = a.value;
-                    });
-                }
-            })
-
-            /* Stats AVG by indicator */
-            var indicators =  Array.create('playTime');
-            listFieldsGroupBy = Array.create('code');
-
-            angular.forEach(indicators, function (value) {
-                $scope.stats[value] = {sum: 0, avg: 0, count: 0, freq: 0};
-            });
-
-            var search = {
-                listIndicators: indicators,
-                listOwners: ownersId,
-                startDate: startDate.valueOf(),
-                endDate: endDate.valueOf(),
-                aggregat: 'AVG',
-                listFieldsGroupBy: listFieldsGroupBy
-            };
-
-            /* Appel stats API */
-            statsRestAPI.getStatGroupBy(search).success(function (data) {
-                if (angular.isArray(data) && data.length > 0) {
-                    data.forEach(function(a){
-                        $scope.stats[a._id.code].avg = a.value;
-                    });
-                }
-            })
         };
 
         /* check user connected */

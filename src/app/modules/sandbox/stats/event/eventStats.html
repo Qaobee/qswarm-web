@@ -10,7 +10,10 @@
         <div class="col s12">
             
             <div class="row blue-grey darken-2">
-                <div class="col s12 white-text center">
+                <div class="col l2 m1 s12 white-text center hide-on-small-only">
+                    &nbsp;
+                </div>
+                <div class="col l8 m10 s12 white-text center-align">
                     <h5>{{collecte.event.label}} : 
                         {{collecte.event.participants.teamHome.label}}
                         
@@ -29,77 +32,39 @@
                         </span>
                     </h5>
                 </div>
+                <div class="col l2 m1 s12 white-text center-align">
+                    <a href="">
+                        <i class="material-icons white-text medium tooltipped" ng-click="doTheBack()" 
+                           data-position="top" data-delay="20" data-tooltip="{{'viewPlayer.buttons.returnViewPlayer' | translate }}">undo</i>
+                    </a>
+                </div>
                 <div class="col s12 blue-grey-text text-darken-2 grey lighten-2 center">
                     <h5>{{collecte.startDateLabel}}</h5>
                 </div>
             </div>
  
-            <!-- Filter Zone end-->
+            <!-- Stats goals/sanction/use start -->
             <div class="row">
                 
                 <div class="col s12 m12 l4">
-                    <div class="card small light-green lighten-1 blue-grey-text text-darken-2">
-                        <div class="card-title grey-text text-lighten-4 center">
-                            <span class="white-text"><h5><small>{{'stats.resumeTab.goalScored' | translate }}</small></h5></span>
-                        </div>
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img src="/assets/images/handball/ballon-filet.jpeg">
-                        </div>
-                        
-                        <div class="card-content light-green lighten-1">
-                            <div class="row center">
-                                <div class="col s6"><h6>{{'stats.resumeTab.goal' | translate }}</h6></div>
-                                <div class="col s6"><h6>{{'stats.resumeTab.frequence' | translate }}</h6></div>
-                                <div class="col s6 light-green darken-2 white-text "><h6>{{stats['goalScored'].count}}</h6></div>
-                                <div class="col s6 light-green darken-1 white-text "><h6>{{Collecte.totalTime/60/stats['goalScored'].count | number : 0}} {{'stats.resumeTab.minute' | translate }}</h6></div>
-                            </div>
-                        </div>
-                    </div>
+                    <stats-goals bind-to-id="goalScored" 
+                                 label="goalScored" 
+                                 sandbox-id="meta.sandbox._id">
+                    </stats-goals>
                 </div>
                 <div class="col s12 hide-on-large-only"><br/></div>
                 <div class="col s12 m12 l4">
-                    <div class="card small red lighten-1 white-text">
-                        <div class="card-title center">
-                            <span class="white-text"><h5><small>{{'stats.resumeTab.goalConceded' | translate }}</small></h5></span>
-                        </div>
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img src="/assets/images/handball/ballon-fillet.jpeg">
-                        </div>
-                        
-                        <div class="card-content red lighten-1">
-                            <div class="row center">
-                                <div class="col s6"><h6>{{'stats.resumeTab.goal' | translate }}</h6></div>
-                                <div class="col s6"><h6>{{'stats.resumeTab.frequence' | translate }}</h6></div>
-                                <div class="col s6 red darken-2 white-text "><h6>{{stats['goalConceded'].count}}</h6></div>
-                                <div class="col s6 red darken-3 white-text "><h6>{{Collecte.totalTime/60/stats['goalConceded'].count | number : 0}} {{'stats.resumeTab.minute' | translate }}</h6></div>
-                            </div>
-                        </div>
-                    </div>        
+                    <stats-goals bind-to-id="goalConceded" 
+                                 label="goalConceded" 
+                                 sandbox-id="meta.sandbox._id">
+                    </stats-goals>
                 </div>
                 <div class="col s12 hide-on-large-only"><br/></div>
                 <div class="col s12 m12 l4">
-                    <div class="card small blue-grey darken-2 white-text">
-                        <div class="card-title center">
-                            <span class="white-text"><h5><small>{{'stats.resumeTab.sanctions' | translate }}</small></h5></span>
-                        </div>
-                        
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img src="/assets/images/handball/sanction.jpeg">
-                        </div>
-                        
-                        <div class="card-content blue-grey darken-2">
-                            <div class="row center">
-                                <div class="col s4"><h6>{{'stats.sanction.yellowCard' | translate }}</h6></div>
-                                <div class="col s4"><h6>{{'stats.sanction.excluTempo' | translate }}</h6></div>
-                                <div class="col s4"><h6>{{'stats.sanction.redCard' | translate }}</h6></div>
-                                <div class="col s4 amber accent-3"><h6>{{stats['yellowCard'].count}}</h6></div>
-                                <div class="col s4 red lighten-2"><h6>{{stats['exclTmp'].count}}</h6></div>
-                                <div class="col s4 red darken-3 white-text"><h6>{{stats['redCard'].count}}</h6></div>
-                            </div>
-                        </div>
-                    </div>        
+                    <stats-sanction></stats-sanction> 
                 </div>
             </div>
+            <!-- Stats goals/sanction/use end -->
            
             <div class="row"></div>
             
@@ -118,24 +83,25 @@
                 
                 <div class="col l3 m6 s12">
                     <stats-efficiency bind-to-id="gaugeEfficiency9m" 
-                        label="efficiency9m" values="values9m" padding="25">
+                        label="efficiency9m" values="'values9m'" padding="25">
                     </stats-efficiency>
                 </div>
                 
                 <div class="col l3 m6 s12">
                     <stats-efficiency bind-to-id="gaugeEfficiency6m" 
-                        label="efficiency6m" values="values6m" padding="25">
+                        label="efficiency6m" values="'values6m'" padding="25">
                     </stats-efficiency>
                 </div>
                 
                 <div class="col l3 m6 s12">
                     <stats-efficiency bind-to-id="gaugeEfficiency7m" 
-                        label="efficiency7m" values="values7m" padding="25">
+                        label="efficiency7m" values="'values7m'" padding="25">
                     </stats-efficiency>
                 </div>
             </div>
             <!-- Stats shoot efficiency end -->
             
+            <!-- Stats actions pos/neg Start -->
             <div class="row">    
                 <div class="col l6 s12">
                     <div class="card blue-grey darken-2">
@@ -166,6 +132,9 @@
                 </div>
                    
             </div>
+            <!-- Stats actions pos/neg End -->
+            
+            <!-- Stats participants Start -->
             <div class="row" ng-if="players.length > 0">
                 <div>
                     <div class="col s12 white-text blue-grey darken-1"><h5><i class="fa fa-bar-chart"></i> {{'stats.eventLabels.listPlayers' | translate }}</h5></div>
@@ -193,6 +162,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Stats participants Start -->
         </div>
     </div>
 </div>

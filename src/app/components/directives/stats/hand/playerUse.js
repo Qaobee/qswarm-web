@@ -16,8 +16,6 @@
         return {
             restrict: 'E',
             scope: {
-                bindToId: "@",
-                label: "@",
                 sandboxId: "=?"
             },
             controller: function ($scope) {
@@ -49,7 +47,7 @@
                             result.nbGame = data.length;
                             
                             var indicators =  Array.create('playTime');
-                            listFieldsGroupBy = Array.create('owner', 'code');
+                            var listFieldsGroupBy = Array.create('owner', 'code');
 
                             var search = {
                                 listIndicators: indicators,

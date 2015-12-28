@@ -25,7 +25,13 @@
         'qaobee.teamStats',
         
         /* c3 angular directive */
-        'gridshore.c3js.chart'
+        'gridshore.c3js.chart',
+        
+        /* qaobee widget */
+        'statsEfficiency',
+        'statsGoals',
+        'statsPlayerUse',
+        'statsSanction'
     ])
 
     .config(function ($routeProvider, metaDatasProvider) {

@@ -3,84 +3,6 @@
     <!-- space between header menu and body-->
     <div class="row"></div>
     
-    <!-- view for tablet and phone -->
-    <!-- Filter Zone start-->
-    <div class="row hide-on-med-and-up">
-           
-        <!-- Periodicity selector -->
-        <div class="col m1 s1 center">&nbsp;</div>
-        <div class="col m1 s3 center red lighten-1" style="margin:1px">
-            <a href="" ng-click="getCurrentMonth()" class="white-text"><h6 class="small">{{'stats.periodicity.month' | translate }}</h6></a>
-        </div>
-        
-        <div class="col m1 s4 center red lighten-1" style="margin:1px">
-            <a href="" ng-click="getCurrentQuarter()" class="white-text"><h6 class="small">{{'stats.periodicity.quarter' | translate }}</h6></a>
-        </div>
-        <div class="col m1 s3 center red lighten-1" style="margin:1px">
-            <a href="" ng-click="getCurrentSeason()" class="white-text"><h6 class="small">{{'stats.periodicity.season' | translate }}</h6></a>
-        </div>
-        <div class="col m1 s1 center">&nbsp;</div>
-    </div>
-        
-    <!-- Month Navigation-->
-    <div class="row hide-on-med-and-up" ng-if="periodicity=='month'">   
-        <div class="col m1 s1 center">&nbsp;</div>
-        <div class="col m1 s1 center" ng-if="periodicity=='month'">
-            <a href="" ng-click="previousMonth()" class="btn-floating blue-grey darken-2 white-text left">
-                <i class="mdi-navigation-chevron-left"></i>
-            </a>
-        </div>
-        <div class="col m2 s8 center">
-            <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
-        </div>
-        <div class="col m1 s1 center" ng-if="periodicity=='month'">
-            <a href="" ng-click="nextMonth()" class="btn-floating blue-grey darken-2 white-text right">
-                <i class="mdi-navigation-chevron-right"></i>
-            </a>
-        </div>
-        <div class="col m1 s1 center">&nbsp;</div>
-    </div>
-    
-    <!-- Quarter Navigation-->
-    <div class="row hide-on-med-and-up" ng-if="periodicity=='quarter'">
-        <div class="col m1 s1 center">&nbsp;</div>
-        <div class="col m1 s1 center" ng-if="periodicity=='quarter'">
-            <a href="" ng-click="previousQuarter()" class="btn-floating blue-grey darken-2 white-text left">
-                <i class="mdi-navigation-chevron-left"></i>
-            </a>
-        </div>
-        <div class="col m2 s8 center">
-            <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
-        </div>
-        <div class="col m1 s1 center" ng-if="periodicity=='quarter'">
-            <a href="" ng-click="nextQuarter()" class="btn-floating blue-grey darken-2 white-text right">
-                <i class="mdi-navigation-chevron-right"></i>
-            </a>
-        </div>
-        <div class="col m1 s1 center">&nbsp;</div>
-    </div>
-    
-    <!-- Season Navigation-->
-    <div class="row hide-on-med-and-up" ng-if="periodicity=='season'">
-        <div class="col m1 s1 center">&nbsp;</div>
-        <div class="col m1 s1 center">
-            <a href="" ng-click="previousSeason()" class="btn-floating blue-grey darken-2 white-text left">
-                <i class="mdi-navigation-chevron-left"></i>
-            </a>
-        </div>
-        <div class="col m2 s8 center" ng-if="periodicity=='season'">
-            <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
-        </div>
-        <div class="col m1 s1 center" ng-if="periodicity=='season'">
-            <a href="" ng-click="nextSeason()" class="btn-floating blue-grey darken-2 white-text right">
-                <i class="mdi-navigation-chevron-right"></i>
-            </a>
-        </div>
-        <div class="col m1 s1 center">&nbsp;</div>
-    </div>
-    <!-- Filter Zone end-->
-<!-- view for tablet and phone -->
-    
 <!-- view desktop -->
     
     <!-- Resume-->
@@ -91,10 +13,17 @@
                 <div class="col l3 m12 center hide-on-small-only">
                     <avatar person="player" width="'120px'"></avatar>
                 </div>
-                <div class="col l9 m12 s12 white-text center">
+                <div class="col l7 m10 s12 white-text center">
                     <br/>
                     <h4>{{player.firstname}} {{player.name}}</h4>
                     {{player.positionType}}
+                </div>
+                <div class="col l2 m2 s12 white-text center">
+                    <br/>
+                    <a href="">
+                        <i class="material-icons white-text large tooltipped" ng-click="doTheBack()" 
+                           data-position="top" data-delay="20" data-tooltip="{{'viewPlayer.buttons.returnViewPlayer' | translate }}">undo</i>
+                    </a>
                 </div>
                 
                 <div class="col s12 hide-on-small-only grey lighten-2">
@@ -169,8 +98,84 @@
                         
                     </div>
             </div>
+            
+            <!-- view for tablet and phone -->
+            <div class="row hide-on-med-and-up grey lighten-2">
 
-            <!-- Filter Zone end-->
+                <!-- Periodicity selector -->
+                <div class="col s1 center">&nbsp;</div>
+                <div class="col s3 center red lighten-1" style="margin:1px">
+                    <a href="" ng-click="getCurrentMonth()" class="white-text"><h6 class="small">{{'stats.periodicity.month' | translate }}</h6></a>
+                </div>
+
+                <div class="col s4 center red lighten-1" style="margin:1px">
+                    <a href="" ng-click="getCurrentQuarter()" class="white-text"><h6 class="small">{{'stats.periodicity.quarter' | translate }}</h6></a>
+                </div>
+                <div class="col s3 center red lighten-1" style="margin:1px">
+                    <a href="" ng-click="getCurrentSeason()" class="white-text"><h6 class="small">{{'stats.periodicity.season' | translate }}</h6></a>
+                </div>
+                <div class="col s1 center">&nbsp;</div>
+            </div>
+
+            <!-- Month Navigation-->
+            <div class="row hide-on-med-and-up grey lighten-2" ng-if="periodicity=='month'">   
+                <div class="col s1 center">&nbsp;</div>
+                <div class="col s1 center" ng-if="periodicity=='month'">
+                    <a href="" ng-click="previousMonth()" class="btn-floating blue-grey darken-2 white-text left">
+                        <i class="mdi-navigation-chevron-left"></i>
+                    </a>
+                </div>
+                <div class="col s8 center">
+                    <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
+                </div>
+                <div class="col s1 center" ng-if="periodicity=='month'">
+                    <a href="" ng-click="nextMonth()" class="btn-floating blue-grey darken-2 white-text right">
+                        <i class="mdi-navigation-chevron-right"></i>
+                    </a>
+                </div>
+                <div class="col s1 center">&nbsp;</div>
+            </div>
+
+            <!-- Quarter Navigation-->
+            <div class="row hide-on-med-and-up grey lighten-2" ng-if="periodicity=='quarter'">
+                <div class="col s1 center">&nbsp;</div>
+                <div class="col s1 center" ng-if="periodicity=='quarter'">
+                    <a href="" ng-click="previousQuarter()" class="btn-floating blue-grey darken-2 white-text left">
+                        <i class="mdi-navigation-chevron-left"></i>
+                    </a>
+                </div>
+                <div class="col s8 center">
+                    <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
+                </div>
+                <div class="col s1 center" ng-if="periodicity=='quarter'">
+                    <a href="" ng-click="nextQuarter()" class="btn-floating blue-grey darken-2 white-text right">
+                        <i class="mdi-navigation-chevron-right"></i>
+                    </a>
+                </div>
+                <div class="col s1 center">&nbsp;</div>
+            </div>
+
+            <!-- Season Navigation-->
+            <div class="row hide-on-med-and-up grey lighten-2" ng-if="periodicity=='season'">
+                <div class="col s1 center">&nbsp;</div>
+                <div class="col s1 enter">
+                    <a href="" ng-click="previousSeason()" class="btn-floating blue-grey darken-2 white-text left">
+                        <i class="mdi-navigation-chevron-left"></i>
+                    </a>
+                </div>
+                <div class="col s8 center" ng-if="periodicity=='season'">
+                    <h6 class="blue-grey-text text-lighten-1">{{periodicityActive.label}}</h6>
+                </div>
+                <div class="col s1 center" ng-if="periodicity=='season'">
+                    <a href="" ng-click="nextSeason()" class="btn-floating blue-grey darken-2 white-text right">
+                        <i class="mdi-navigation-chevron-right"></i>
+                    </a>
+                </div>
+                <div class="col s1 center">&nbsp;</div>
+            </div>
+            <!-- view for tablet and phone -->
+
+            <!-- Stats goals/sanction/use start -->
             <div class="row">
                 
                 <div class="col s12 m12 l4">
@@ -183,38 +188,17 @@
                 <div class="col s12 hide-on-med-and-up"><br/></div>
                 
                 <div class="col s12 m12 l4">
-                    <stats-player-use bind-to-id="playerUse" 
-                                 label="playerUse" 
-                                 sandbox-id="meta.sandbox._id">
-                    </stats-player-use>
+                    <stats-player-use sandbox-id="meta.sandbox._id"></stats-player-use>
                 </div>
                 
                 <div class="col s12 hide-on-med-and-up"><br/></div>
                 
                 <div class="col s12 m12 l4">
-                    <div class="card small blue-grey darken-2 white-text">
-                        <div class="card-title center">
-                            <span class="white-text"><h5><small>{{'stats.resumeTab.sanctions' | translate }}</small></h5></span>
-                        </div>
-                        
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img src="/assets/images/handball/sanction.jpeg">
-                        </div>
-                        
-                        <div class="card-content blue-grey darken-2">
-                            <div class="row center">
-                                <div class="col s4"><h6>{{'stats.sanction.yellowCard' | translate }}</h6></div>
-                                <div class="col s4"><h6>{{'stats.sanction.excluTempo' | translate }}</h6></div>
-                                <div class="col s4"><h6>{{'stats.sanction.redCard' | translate }}</h6></div>
-                                <div class="col s4 amber accent-3"><h6>{{stats['yellowCard'].count}}</h6></div>
-                                <div class="col s4 red lighten-2"><h6>{{stats['exclTmp'].count}}</h6></div>
-                                <div class="col s4 red darken-3 white-text"><h6>{{stats['redCard'].count}}</h6></div>
-                            </div>
-                        </div>
-                    </div>        
+                    <stats-sanction></stats-sanction>
                 </div>
             </div>
-           
+            <!-- Stats goals/sanction/use end -->
+            
             <div class="row"></div>
             
             <!-- Stats shoot efficiency Start -->
@@ -232,24 +216,25 @@
                 
                 <div class="col l3 m6 s12">
                     <stats-efficiency bind-to-id="gaugeEfficiency9m" 
-                        label="efficiency9m" values="values9m" padding="25">
+                        label="efficiency9m" values="'values9m'" padding="25">
                     </stats-efficiency>
                 </div>
                 
                 <div class="col l3 m6 s12">
                     <stats-efficiency bind-to-id="gaugeEfficiency6m" 
-                        label="efficiency6m" values="values6m" padding="25">
+                        label="efficiency6m" values="'values6m'" padding="25">
                     </stats-efficiency>
                 </div>
                 
                 <div class="col l3 m6 s12">
                     <stats-efficiency bind-to-id="gaugeEfficiency7m" 
-                        label="efficiency7m" values="values7m" padding="25">
+                        label="efficiency7m" values="'values7m'" padding="25">
                     </stats-efficiency>
                 </div>
             </div>
             <!-- Stats shoot efficiency end -->
             
+            <!-- Stats actions pos/neg Start -->
             <div class="row">    
                 <div class="col l6 s12">
                     <div class="card blue-grey darken-2">
@@ -277,9 +262,9 @@
                             </c3chart>
                         </div>
                     </div>
-                </div>
-                   
+                </div>  
             </div>
+            <!-- Stats actions pos/neg end -->
         </div>
     </div>
 </div>

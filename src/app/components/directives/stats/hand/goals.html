@@ -12,7 +12,7 @@
             <div class="col s4"><h6>{{'stats.resumeTab.goalAvgLight' | translate }}</h6></div>
             <div class="col s4"><h6>{{'stats.resumeTab.frequence' | translate }}</h6></div>
             <div class="col s4 light-green darken-2 white-text "><h6>{{nbGoal}}</h6></div>
-            <div class="col s4 light-green darken-1 white-text "><h6>{{nbGoal/nbGame | number : 2}}</h6></div>
+            <div class="col s4 light-green darken-1 white-text "><h6>{{goalAvg | number : 2}}</h6></div>
             <div class="col s4 light-green darken-2 white-text "><h6>{{totalPlayTime/60/nbGoal | number : 0}} {{'stats.resumeTab.minute' | translate }}</h6></div>
         </div>
     </div>
@@ -32,7 +32,7 @@
             <div class="col s4"><h6>{{'stats.resumeTab.goalAvgLight' | translate }}</h6></div>
             <div class="col s4"><h6>{{'stats.resumeTab.frequence' | translate }}</h6></div>
             <div class="col s4 red darken-2 white-text "><h6>{{nbGoal}}</h6></div>
-            <div class="col s4 red lighten-2 white-text "><h6>{{nbGoal/nbGame | number : 2}}</h6></div>
+            <div class="col s4 red lighten-2 white-text "><h6>{{goalAvg | number : 2}}</h6></div>
             <div class="col s4 red darken-2 white-text "><h6>{{totalPlayTime/60/nbGoal | number : 0}} {{'stats.resumeTab.minute' | translate }}</h6></div>
         </div>
     </div>

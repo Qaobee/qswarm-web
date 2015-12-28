@@ -20,11 +20,7 @@
         'personRestAPI',
         'statsRestAPI',
         'teamRestAPI',
-        'userRestAPI',
-        
-        /* qaobee widget */
-        'statsEfficiency',
-        'statsGoals'
+        'userRestAPI'
     ])
 
     .config(function ($routeProvider, metaDatasProvider) {
@@ -67,18 +63,8 @@
         
         //Initialization event
         $scope.initStats = function() {
-            $scope.stats = {};
-            $scope.teamCollecte = {
-                nbGame:0,
-                players: [{}],
-                totalTime:0
-            };
             $scope.collectes = [];
         
-            $scope.values9m =  ['BACKLEFT9', 'CENTER9', 'BACKRIGHT9'];
-            $scope.values6m =  ['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING'];
-            $scope.values7m =  ['PENALTY'];
-
             $scope.defenseCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
                                     {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
             $scope.defenseData = [{"Positive":0}, {"Negative":0}];
@@ -113,15 +99,10 @@
             /* get nbCollecte */
             statsSrv.getMatchsTeams(startDate, endDate, $scope.meta.sandbox._id, $routeParams.teamId).then(function (data) {
                 if (angular.isArray(data) && data.length > 0) {
-                    $scope.teamCollecte.nbGame = data.length;
-                    var totalTime = 0;
-                    
                     data.forEach(function (e) {
-                        totalTime += (e.parametersGame.periodDuration * e.parametersGame.nbPeriod);
                         e.eventRef.startDate = moment(e.eventRef.startDate).format('LLLL');
                         $scope.collectes.push(e);
                     });    
-                    $scope.teamCollecte.totalTime = totalTime;
                 }
             })
             
@@ -154,84 +135,6 @@
                 $scope.attackData.push({"Negative": result});
                 $scope.attackCol.push({"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'});
             });
-
-            /* Stats Count by indicator */
-            var indicators =  Array.create('yellowCard', 'exclTmp', 'redCard', 'originShootAtt', 'goalScored', 'holder', 'substitue', 'goalConceded');
-            listFieldsGroupBy = Array.create('code');
-
-            angular.forEach(indicators, function (value) {
-                $scope.stats[value] = {sum: 0, avg: 0, count: 0, freq: 0};
-            });
-
-            var search = {
-                listIndicators: indicators,
-                listOwners: ownersId,
-                startDate: startDate.valueOf(),
-                endDate: endDate.valueOf(),
-                aggregat: 'COUNT',
-                listFieldsGroupBy: listFieldsGroupBy
-            };
-
-            /* Appel stats API */
-            statsRestAPI.getStatGroupBy(search).success(function (data) {
-                if (angular.isArray(data) && data.length > 0) {
-                    data.forEach(function(a){
-                        $scope.stats[a._id.code].count = a.value;
-                    });
-                }
-            })
-
-            /* Stats SUM by indicator */
-            var indicators =  Array.create('playTime');
-            listFieldsGroupBy = Array.create('code');
-
-            angular.forEach(indicators, function (value) {
-                $scope.stats[value] = {sum: 0, avg: 0, count: 0, freq: 0};
-            });
-
-            var search = {
-                listIndicators: indicators,
-                listOwners: ownersId,
-                startDate: startDate.valueOf(),
-                endDate: endDate.valueOf(),
-                aggregat: 'SUM',
-                listFieldsGroupBy: listFieldsGroupBy
-            };
-
-            /* Appel stats API */
-            statsRestAPI.getStatGroupBy(search).success(function (data) {
-                if (angular.isArray(data) && data.length > 0) {
-                    data.forEach(function(a){
-                        $scope.stats[a._id.code].sum = a.value;
-                    });
-                }
-            })
-
-            /* Stats AVG by indicator */
-            var indicators =  Array.create('playTime');
-            listFieldsGroupBy = Array.create('code');
-
-            angular.forEach(indicators, function (value) {
-                $scope.stats[value] = {sum: 0, avg: 0, count: 0, freq: 0};
-            });
-
-            var search = {
-                listIndicators: indicators,
-                listOwners: ownersId,
-                startDate: startDate.valueOf(),
-                endDate: endDate.valueOf(),
-                aggregat: 'AVG',
-                listFieldsGroupBy: listFieldsGroupBy
-            };
-
-            /* Appel stats API */
-            statsRestAPI.getStatGroupBy(search).success(function (data) {
-                if (angular.isArray(data) && data.length > 0) {
-                    data.forEach(function(a){
-                        $scope.stats[a._id.code].avg = a.value;
-                    });
-                }
-            })
         };
 
         /* generate calendar by month */

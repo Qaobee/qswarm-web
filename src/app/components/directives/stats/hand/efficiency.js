@@ -58,12 +58,25 @@
 
                         /* Search parameters Efficiently global */
                         if(angular.isDefined(values)) {
+                            var valuesDist = '';
+                            
+                            //OriginShoot
+                            if(values ==='values9m'){
+                                valuesDist = ['BACKLEFT9', 'CENTER9', 'BACKRIGHT9'];
+                            }
+                            if(values ==='values7m'){
+                                valuesDist = ['PENALTY'];
+                            }
+                            if(values ==='values6m'){
+                                valuesDist = ['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING'];
+                            }
+
                             search = {
                                 listIndicators: ['originShootAtt'],
                                 listOwners: ownersId,
                                 startDate: startDate.valueOf(),
                                 endDate: endDate.valueOf(),
-                                values: values,
+                                values: valuesDist,
                                 aggregat: 'COUNT',
                                 listFieldsGroupBy: ['owner', 'code', 'shootSeqId']
                             };

@@ -93,6 +93,7 @@
                 var buildWidget= function (){
                     $scope.nbGoal = 0;
                     $scope.nbGame = 0;
+                    $scope.goalAvg = 0;
                     $scope.totalPlayTime = 0;
                     
                     $scope.title = 'stats.resumeTab.'+$scope.label;
@@ -100,6 +101,7 @@
                     getStats($scope.ownersId, $scope.startDate, $scope.endDate, $scope.values).then(function (result) {
                         $scope.nbGoal = result.nbGoal;
                         $scope.nbGame = result.nbGame;
+                        $scope.goalAvg = $scope.nbGoal/$scope.nbGame;
                         $scope.totalPlayTime = result.totalPlayTime;
                     });
                 }
