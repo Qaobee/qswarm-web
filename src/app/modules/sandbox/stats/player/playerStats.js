@@ -22,7 +22,9 @@
             'userRestAPI',
 
             /* qaobee widget */
-            'statsEfficiency'
+            'statsEfficiency',
+            'statsGoals',
+            'statsPlayerUse'
         ])
 
         .config(function ($routeProvider, metaDatasProvider) {

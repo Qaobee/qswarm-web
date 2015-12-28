@@ -179,50 +179,14 @@
                                  sandbox-id="meta.sandbox._id">
                     </stats-goals>
                 </div>
-                <div class="col s12 m12 l4">
-                    <div class="card small light-green lighten-1 blue-grey-text text-darken-2">
-                        <div class="card-title grey-text text-lighten-4 center">
-                            <span class="white-text"><h5><small>{{'stats.resumeTab.goal' | translate }}</small></h5></span>
-                        </div>
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img src="/assets/images/handball/ballon-filet.jpeg">
-                        </div>
-                        
-                        <div class="card-content light-green lighten-1">
-                            <div class="row center">
-                                <div class="col s4"><h6>{{'stats.resumeTab.goal' | translate }}</h6></div>
-                                <div class="col s4"><h6>{{'stats.resumeTab.goalAvgLight' | translate }}</h6></div>
-                                <div class="col s4"><h6>{{'stats.resumeTab.frequence' | translate }}</h6></div>
-                                <div class="col s4 light-green darken-2 white-text "><h6>{{stats['goalScored'].count}}</h6></div>
-                                <div class="col s4 light-green darken-1 white-text "><h6>{{stats['goalScored'].count/nbGame | number : 2}}</h6></div>
-                                <div class="col s4 light-green darken-2 white-text "><h6>{{stats['playTime'].sum/60/stats['goalScored'].count | number : 0}} {{'stats.resumeTab.minute' | translate }}</h6></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 
                 <div class="col s12 hide-on-med-and-up"><br/></div>
                 
                 <div class="col s12 m12 l4">
-                    <div class="card small light-blue lighten-1 blue-grey-text text-darken-2">
-                        <div class="card-title center">
-                            <span class="white-text"><h5><small>{{'stats.resumeTab.usePlayer' | translate }}</small></h5></span>
-                        </div>
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img src="/assets/images/handball/usePlayer.jpeg">
-                        </div>                        
-                        
-                        <div class="card-content light-blue lighten-3">
-                            <div class="row center">
-                                <div class="col s4 "><h6>{{'stats.resumeTab.gamePlayed' | translate }}</h6></div>
-                                <div class="col s4 "><h6>{{'stats.resumeTab.holder' | translate }}</h6></div>
-                                <div class="col s4 "><h6><small>{{'stats.resumeTab.playTime' | translate }}</small></h6></div>
-                                <div class="col s4 light-blue lighten-1 white-text "><h6>{{nbGame}}</h6></div>
-                                <div class="col s4 light-blue lighten-2 white-text "><h6>{{stats['holder'].count}}</h6></div>
-                                <div class="col s4 light-blue lighten-1 white-text "><h6>{{stats['playTime'].avg/60 | number : 0}} {{'stats.resumeTab.minute' | translate }}</h6></div>
-                            </div>
-                        </div>
-                    </div>        
+                    <stats-player-use bind-to-id="playerUse" 
+                                 label="playerUse" 
+                                 sandbox-id="meta.sandbox._id">
+                    </stats-player-use>
                 </div>
                 
                 <div class="col s12 hide-on-med-and-up"><br/></div>

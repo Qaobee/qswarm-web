@@ -1,14 +1,16 @@
-/**
- * Created by cke on 22/12/15.
- *
- * efficiency directive<br />
- *
- * @author christophe Kervella
- * @copyright &lt;b&gt;QaoBee&lt;/b&gt;.
- *
- */
+(function () {
+    'use strict';
+    /**
+     * Created by cke on 22/12/15.
+     *
+     * statsGoals directive<br />
+     *
+     * @author christophe Kervella
+     * @copyright &lt;b&gt;QaoBee&lt;/b&gt;.
+     *
+     */
 
-angular.module('statsGoals', ['statsSRV', 'statsRestAPI', 'qaobee.eventbus'])
+    angular.module('statsGoals', ['statsSRV', 'statsRestAPI', 'qaobee.eventbus'])
 
     .directive('statsGoals', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, statsSrv, qeventbus) {
         return {
@@ -105,3 +107,4 @@ angular.module('statsGoals', ['statsSRV', 'statsRestAPI', 'qaobee.eventbus'])
             templateUrl: 'app/components/directives/stats/hand/goals.html'
         };
     });
+}());
