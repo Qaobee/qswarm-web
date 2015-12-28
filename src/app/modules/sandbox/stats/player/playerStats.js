@@ -46,6 +46,7 @@
         
             $scope.user = user;
             $scope.meta = meta;
+            $scope.ownerId = $routeParams.playerId;
             $scope.ownersId = [];
             $scope.ownersId.push($routeParams.playerId);
         

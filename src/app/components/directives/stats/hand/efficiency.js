@@ -1,11 +1,9 @@
 /**
- * Created by xavier on 03/11/14.
- */
-/**
- * palmares effective directive<br />
+ * Created by cke on 22/12/15.
  *
- * @author Xavier MARIN
- * @class qaobee.directives.widget.palmaresEffective
+ * efficiency directive<br />
+ *
+ * @author christophe Kervella
  * @copyright &lt;b&gt;QaoBee&lt;/b&gt;.
  *
  */
