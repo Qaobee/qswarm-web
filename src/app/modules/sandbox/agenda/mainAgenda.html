@@ -84,6 +84,10 @@
      <div class="row">
         <div class="col s12"> 
             <div class="row blue-grey darken-2">
+                <div class="col m1 hide-on-small-only center-align white-text">
+                    <br><i class="fa fa-calendar fa-2x"></i>
+                    
+                </div>
                 <!-- effective list -->
                 <ul id="mainAgendaEffectiveList" class="dropdown-content">
                     <li ng-repeat="effective in effectives">
@@ -104,7 +108,7 @@
                     <h4>{{'mainAgenda.title' | translate }}  {{currentEffective.label}}</h4>
                 </div>
                 
-                <div class="col m3 s12 center">
+                <div class="col m2 s12 center">
                     <br/>
                     <a href="#/private/addEvent/{{effectiveId}}" class="white-text"><i class="fa fa-plus-square-o fa-2x"></i></a>
                 </div>

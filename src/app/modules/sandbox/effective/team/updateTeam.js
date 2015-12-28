@@ -57,7 +57,6 @@
         //Initialization team
         $scope.team = {};
         $scope.listTeamAdversary = {};
-        $scope.listTeamHome = {};
         $scope.listTeamAdversaryUpdate = [];
         
         /* get team */
@@ -113,7 +112,6 @@
         /* Create a new team */
         $scope.writeTeam = function () {
             
-            $scope.team.label = $scope.team.label.capitalize(true);
             $scope.team.enable = $scope.team.enable==='true';
             
             /* add team */

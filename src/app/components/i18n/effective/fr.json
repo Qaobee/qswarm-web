@@ -32,7 +32,7 @@
         "effectiveTeamEnable": "Equipe activée",
         "effectiveTeamNotEnable": "Equipe désactivée",
         "effectivePlaceHolderMembers": "Ajouter un joueur",
-        "effectiveLabel": "Libellé",
+        "effectiveLabel": "Libellé effectif",
         "effectiveNbPlayers":"Joueurs sélectionné(s)",
         "effectiveTabPlayerColPlayer":"Joueur",
         "effectiveTabPlayerColPosition":"Poste"

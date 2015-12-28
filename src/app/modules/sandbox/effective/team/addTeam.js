@@ -74,7 +74,6 @@
         /* Create a new team */
         $scope.writeTeam = function () {
             
-            $scope.team.label = $scope.team.label.capitalize(true);
             $scope.team.adversary = $scope.team.adversary==='true';
             $scope.team.enable = $scope.team.enable==='true';
             

@@ -1,61 +1,12 @@
 <div class="container">
 <!-- body start-->
     <div class="row">&nbsp;</div>   
-
-    <!-- view for tablet and phone -->
-    <div class="row hide-on-large-only">
-        <div class="col s2">
-            <a href="#/private/effectiveStats/{{currentEffective._id}}" class="red-text text-lighten-1"><i class="material-icons">people</i></a>
-        </div>
-        <div class="col s8 center-align">
-            <div><h5 class="light-green-text text-lighten-1" style="font-size:18px;">{{'mainEffective.title' | translate }} {{currentEffective.label}}</h5></div>
-        </div>
-        
-        <div class="col s2">
-            <a class="dropdown-button red-text text-lighten-1" href="#" data-activates="actionsEffective"><i class="material-icons right">more_vert</i></a>            
-            <!-- Dropdown Structure -->
-            <ul id="actionsEffective" class="dropdown-content">
-                <li><a href="#/private/addEffective/{{meta._id}}" class="red-text text-lighten-1 center"><i class="material-icons center">group_add</i></a></li>
-                <li><a href="#/private/updateEffective/{{currentEffective._id}}" class="red-text text-lighten-1 center"><i class="material-icons center">mode_edit</i></a></li>
-                <li class="divider"></li>
-                <li><a href="#/private/addPlayer/{{meta._id}}" class="red-text text-lighten-1 center"><i class="material-icons center">person_add</i></a></li>
-            </ul>        
-        </div>
     
-        <!-- effective list -->
-        <ul id="effectiveListSmall" class="dropdown-content">
-            <li ng-repeat="effective in effectives">
-                <a href="#/private/effective/{{effective._id}}"><span class="blue-grey-text text-darken-2" style="font-size:12px;">{{effective.label}} - {{effective.categoryAge.label}}</span></a>
-                <div class="divider"></div>
-            </li>
-        </ul>
-        <div class="col s12 center-align">
-            <p ng-show="effectives.length > 1">
-            <a class="dropdown-button waves-effect waves-light grey-text grey lighten-4 btn" style="font-size: xx-small;" href="#!" data-activates="effectiveListSmall">
-                {{'mainEffective.buttons.dropdownEffective' | translate }} <i class="material-icons right">arrow_drop_down</i>
-            </a>
-            </p>
-            <p ng-show="effectives.length < 2">&nbsp;</p>
+    <!-- entete start -->
+    <div class="row blue-grey darken-2">
+        <div class="col m1 hide-on-small-only center-align white-text">
+            <br><i class="material-icons medium">people</i>
         </div>
-    </div>
-    
-    
-    <!-- view for desktop -->
-    <div class="row hide-on-med-and-down blue-grey darken-2">
-        <div class="col s1">
-            <br/>
-            <a href="#/private/effectiveStats/{{currentEffective._id}}" class="white-text center tooltipped" 
-               data-position="down" data-delay="20" data-tooltip="{{'mainEffective.buttons.viewStatsEffective' | translate }}">
-                <i class="material-icons medium">people</i>
-            </a>
-        </div>
-        <div class="col s5">
-            <div>
-                <br/>
-                <h5 class="white-text">{{'mainEffective.title' | translate }} {{currentEffective.label}}</h5></div>
-                <br/>
-        </div>
-        
         <!-- effective list -->
         <ul id="mainEffectiveList" class="dropdown-content">
             <li ng-repeat="effective in effectives">
@@ -63,32 +14,39 @@
                 <div class="divider"></div>
             </li>
         </ul>
-        
-        <div class="col s4">
-            <p ng-show="effectives.length > 1">
+        <div class="col m3 s12 center-align" ng-if="effectives.length > 1">
+            <br>
             <a class="dropdown-button waves-effect waves-light grey-text grey lighten-4 btn" style="font-size: small;" href="#!" data-activates="mainEffectiveList">
                 {{'mainEffective.buttons.dropdownEffective' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;
                 <i class="material-icons right">arrow_drop_down</i>
             </a>
-            </p>
-            <p ng-show="effectives.length < 2">&nbsp;</p>
         </div>
         
-        <div class="col s1 right-align">
-            <br/>
+        <div class="col m3 s12 center-align" ng-if="effectives.length === 1">
+            <br>
+            <h5>&nbsp;</h5>
+        </div>
+        
+        
+        <div class="col m6 s12 center-align">
+            <br>
+            <h5 class="white-text">{{'mainEffective.title' | translate }} {{currentEffective.label}}</h5>
+        </div>
+        
+        <div class="col m2 s6 right-align">
+            <br>
             <a href="#/private/addEffective/{{meta._id}}" class="white-text tooltipped" 
                 data-position="down" data-delay="20" data-tooltip="{{'mainEffective.buttons.addEffective' | translate }}">
-                    <i class="fa fa-plus-square-o fa-3x"></i>
+                    <i class="fa fa-plus-square-o fa-2x"></i>
             </a>
-        </div>
-        <div class="col s1 right-align">
-            <br/>
+
             <a href="#/private/updateEffective/{{currentEffective._id}}" class="white-text tooltipped" 
                 data-position="down" data-delay="20" data-tooltip="{{'mainEffective.buttons.updateEffective' | translate }}">
-                    <i class="fa fa-pencil-square-o  fa-3x"></i>
+                    <i class="fa fa-pencil-square-o  fa-2x"></i>
             </a>
         </div>
     </div>
+    <!-- entete end -->
         
     <div class="row">
         <div class="col s12">

@@ -32,7 +32,7 @@
         "effectiveTeamEnable": "Team Enable",
         "effectiveTeamNotEnable": "Team disable",
         "effectivePlaceHolderMembers": "Add a player",
-        "effectiveLabel": "Label",
+        "effectiveLabel": "Effective Label",
         "effectiveNbPlayers":"Player(s) selected",
         "effectiveTabPlayerColPlayer":"Player",
         "effectiveTabPlayerColPosition":"Position"

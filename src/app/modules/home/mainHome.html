@@ -9,7 +9,7 @@
 
             <!-- Event -->
             <div ng-if="events.length > 0">
-                <div><h5 class="header light-green-text text-lighten-1"><i class="fa fa-calendar left"></i>{{'dashboard.event' | translate }}</h5></div>
+                <div><h5 class="header red-text text-lighten-1"><i class="fa fa-calendar left"></i>{{'dashboard.event' | translate }}</h5></div>
                 <div>
                     <div class="card white">
                         <div class="card-content blue-grey darken-1 white-text flow-text">
@@ -51,7 +51,7 @@
 
             <!-- Collecte-->
             <div ng-if="collectes.length > 0">
-                <div><h5 class="header light-green-text text-lighten-1"><i class="fa fa-bar-chart"></i> {{'dashboard.stats' | translate }}</h5></div>
+                <div><h5 class="header red-text text-lighten-1"><i class="fa fa-bar-chart"></i> {{'dashboard.stats' | translate }}</h5></div>
                 <ul class="collection">
                     <li class="collection-item avatar blue-grey darken-1 white-text" ng-repeat="collecte in collectes">
                         <h5><i class="material-icons center">stars</i> {{collecte.eventRef.label}}</h5>
@@ -69,7 +69,7 @@
         <div class="col s12 m6 l4">
             <!-- team list -->
             <div ng-if="listTeamHome.length > 0">
-                <div><h5 class="header red-text text-lighten-1"><i class="mdi-action-stars"></i> {{'dashboard.teams' | translate }}</h5></div>
+                <div><h5 class="header red-text text-lighten-1"><i class="fa fa-bar-chart"></i> {{'dashboard.teams' | translate }}</h5></div>
                 <ul class="collection">
                     <li class="collection-item" ng-repeat="team in listTeamHome">
                         <span class="title blue-grey-text text-darken-1">{{team.label}}</span>
@@ -93,7 +93,7 @@
             
             <!-- Player -->
             <div ng-if="effective.length > 0">
-                <div><h5 class="header light-green-text text-lighten-1"><i class="fa fa-bar-chart"></i> {{'dashboard.player' | translate }}</h5></div>
+                <div><h5 class="header red-text text-lighten-1"><i class="fa fa-bar-chart"></i> {{'dashboard.player' | translate }}</h5></div>
                 <div>
                     <form class="forms forms-inline input-field ">
                         <input type="text" class="grey lighten-4" id="query" ng-model="query">
