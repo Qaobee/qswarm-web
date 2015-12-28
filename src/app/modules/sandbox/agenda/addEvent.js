@@ -60,51 +60,56 @@
         $scope.adversaryId = '';
         $scope.chooseAdversary = false;
         $scope.chooseHome = false;
-        $scope.startDate = new Date();
-        $scope.endDate = '';
+        $scope.startDate = '';
         $scope.startHours = '';
-        $scope.endHours = '';
         $scope.location = 'home';
         
-        //i18n datepicker
+       //i18n datepicker
         var month = $filter('translate')('commons.format.date.listMonth');
         $scope.month = month.split(',');
-        
+
         var monthShort = $filter('translate')('commons.format.date.listMonthShort');
         $scope.monthShort = monthShort.split(',');
 
         var weekdaysFull = $filter('translate')('commons.format.date.listWeekdaysFull');
         $scope.weekdaysFull = weekdaysFull.split(',');
-        
+
+        var weekdaysShort = $filter('translate')('commons.format.date.listWeekdaysShort');
+        $scope.weekdaysShort = weekdaysShort.split(',');
+
         var weekdaysLetter = $filter('translate')('commons.format.date.listWeekdaysLetter');
         $scope.weekdaysLetter = weekdaysLetter.split(',');
-        
-        $scope.today = '';
+
+        $scope.today = $filter('translate')('commons.format.date.today');
         $scope.clear = $filter('translate')('commons.format.date.clear');
         $scope.close = $filter('translate')('commons.format.date.close');
-        
-        var $input = $('.datepicker').pickadate({
+        $scope.formatDate = $filter('translate')('commons.format.date.label');
+        $scope.formatDateSubmit = $filter('translate')('commons.format.date.pattern');
+
+        var $inputDate = $('#EventStartDate').pickadate({
+            format: $scope.formatDate,
+            formatSubmit: $scope.formatDateSubmit,
             monthsFull: $scope.month,
-            today: '',
+            weekdaysFull: $scope.weekdaysFull,
+            weekdaysLetter: $scope.weekdaysLetter,
+            weekdaysShort: $scope.weekdaysShort,
+            today: $scope.today,
             clear: $scope.clear,
             close: $scope.close
         });
+        $log.debug('$inputDate',$inputDate);
 
-        $log.debug('$input',$input);
+        //i18n timepicker
+        $scope.formatTime = $filter('translate')('commons.format.hours.label');
+        $scope.formatTimeSubmit = $filter('translate')('commons.format.hours.pattern');
 
-        // Use the picker object directly.
-        var picker = $input.pickadate('picker')
-
-
-        $scope.onOpen = function () {
-            console.log('onOpen', $scope.startDate);
-        };
-
-        $scope.onClose = function () {
-            $log.debug('avant',$scope.startDate);
-            $scope.startDate = moment($scope.startDate,'DD/MM/YYYY');
-            $log.debug('après',$scope.startDate);
-        };
+        var $inputTimer = $('.timepicker').pickatime({
+            format: $scope.formatTime,
+            formatSubmit: $scope.formatTimeSubmit,
+            clear: $scope.clear,
+            min: [13,30],
+            max: [21,30]
+        });
 
         $scope.addEventTitle = true;
         
@@ -197,15 +202,12 @@
         
         /* Format event */
         $scope.checkAndformatEvent = function () {
-            /* Convert start event to long */
-            var start = moment($scope.startDate).add(((moment($scope.startHours).hour()*60)+moment($scope.startHours).minute()),'m');         
+             /* Convert start event to long */
+            var start = moment($scope.startDate,'DD/MM/YYYY');
+            start.hour(moment($scope.startHours,'HH').hour());
+            start.minutes(moment($scope.startHours,'m mm').minutes());
             $scope.event.startDate = moment(start).valueOf();
-            
-            /* Convert end event to long */
-            if (angular.isDefined($scope.endDate) && $scope.endDate!==null && $scope.endDate.isBlank() && angular.isDefined($scope.endHours) && $scope.endHours!==null && !$scope.endHours.isBlank()) {
-                var end = moment($scope.endDate).add(((moment($scope.endHours).hour()*60)+moment($scope.endHours).minute()),'m');
-                $scope.event.endDate = moment(end).valueOf();
-            }
+
             
             /* add team Id to owner */
             if (angular.isDefined($scope.teamId)) {

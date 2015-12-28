@@ -60,10 +60,8 @@
         $scope.adversaryId = '';
         $scope.chooseAdversary = false;
         $scope.chooseHome = false;
-        $scope.startDate = new Date();
-        $scope.endDate = '';
+        $scope.startDate = '';
         $scope.startHours = '';
-        $scope.endHours = '';
         $scope.location = 'home';
         
         //i18n datepicker
@@ -100,10 +98,13 @@
             close: $scope.close
         });
 
+        $log.debug('$inputDate',$inputDate);
+
+        $scope.datePicker = $inputDate.pickadate('picker');
+
         //i18n timepicker
         $scope.formatTime = $filter('translate')('commons.format.hours.label');
         $scope.formatTimeSubmit = $filter('translate')('commons.format.hours.pattern');
-        $scope.datePicker = $inputDate.pickadate('picker');
 
         var $inputTimer = $('.timepicker').pickatime({
             format: $scope.formatTime,
@@ -260,13 +261,7 @@
             start.hour(moment($scope.startHours,'HH').hour());
             start.minutes(moment($scope.startHours,'m mm').minutes());
             $scope.event.startDate = moment(start).valueOf();
-            
-            /* Convert end event to long */
-            if (angular.isDefined($scope.endDate) && $scope.endDate!==null && $scope.endDate.isBlank() && angular.isDefined($scope.endHours) && $scope.endHours!==null && !$scope.endHours.isBlank()) {
-                var end = moment($scope.endDate).add(((moment($scope.endHours).hour()*60)+moment($scope.endHours).minute()),'m');
-                $scope.event.endDate = moment(end).valueOf();
-            }
-            
+
             /* add team Id to owner */
             if (angular.isDefined($scope.teamId)) {
                 $scope.event.owner.teamId = $scope.teamId ;

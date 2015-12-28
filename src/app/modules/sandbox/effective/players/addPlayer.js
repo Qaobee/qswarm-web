@@ -57,6 +57,41 @@
             $window.history.back();
         };
         
+        //i18n datepicker
+        var month = $filter('translate')('commons.format.date.listMonth');
+        $scope.month = month.split(',');
+
+        var monthShort = $filter('translate')('commons.format.date.listMonthShort');
+        $scope.monthShort = monthShort.split(',');
+
+        var weekdaysFull = $filter('translate')('commons.format.date.listWeekdaysFull');
+        $scope.weekdaysFull = weekdaysFull.split(',');
+
+        var weekdaysShort = $filter('translate')('commons.format.date.listWeekdaysShort');
+        $scope.weekdaysShort = weekdaysShort.split(',');
+
+        var weekdaysLetter = $filter('translate')('commons.format.date.listWeekdaysLetter');
+        $scope.weekdaysLetter = weekdaysLetter.split(',');
+
+        $scope.today = $filter('translate')('commons.format.date.today');
+        $scope.clear = $filter('translate')('commons.format.date.clear');
+        $scope.close = $filter('translate')('commons.format.date.close');
+        $scope.formatDate = $filter('translate')('commons.format.date.label');
+        $scope.formatDateSubmit = $filter('translate')('commons.format.date.pattern');
+
+        var $inputDate = $('.datepicker').pickadate({
+            format: $scope.formatDate,
+            formatSubmit: $scope.formatDateSubmit,
+            monthsFull: $scope.month,
+            weekdaysFull: $scope.weekdaysFull,
+            weekdaysLetter: $scope.weekdaysLetter,
+            weekdaysShort: $scope.weekdaysShort,
+            today: $scope.today,
+            clear: $scope.clear,
+            close: $scope.close
+        });
+        $scope.datePicker = $inputDate.pickadate('picker');
+
         //Initialisation du nouveau joueur
         $scope.player = {
             status: {

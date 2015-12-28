@@ -37,7 +37,7 @@
      * @class qaobee.modules.sandbox.effective.UpdatePlayerControler
      * @description Main controller for view updatePlayer.html
      */
-        .controller('UpdatePlayerControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
+        .controller('UpdatePlayerControler', function ($log, $scope, $timeout, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
                                                         activityCfgRestAPI, personRestAPI, personSrv, userRestAPI) {
 
         $translatePartialLoader.addPart('commons');
@@ -58,6 +58,59 @@
             $window.history.back();
         };
         
+        //i18n datepicker
+        var month = $filter('translate')('commons.format.date.listMonth');
+        $scope.month = month.split(',');
+
+        var monthShort = $filter('translate')('commons.format.date.listMonthShort');
+        $scope.monthShort = monthShort.split(',');
+
+        var weekdaysFull = $filter('translate')('commons.format.date.listWeekdaysFull');
+        $scope.weekdaysFull = weekdaysFull.split(',');
+
+        var weekdaysShort = $filter('translate')('commons.format.date.listWeekdaysShort');
+        $scope.weekdaysShort = weekdaysShort.split(',');
+
+        var weekdaysLetter = $filter('translate')('commons.format.date.listWeekdaysLetter');
+        $scope.weekdaysLetter = weekdaysLetter.split(',');
+
+        $scope.today = $filter('translate')('commons.format.date.today');
+        $scope.clear = $filter('translate')('commons.format.date.clear');
+        $scope.close = $filter('translate')('commons.format.date.close');
+        $scope.formatDate = $filter('translate')('commons.format.date.label');
+        $scope.formatDateSubmit = $filter('translate')('commons.format.date.pattern');
+
+        var $inputDate = null;
+        $timeout(function() {
+            $inputDate = $('#playerBirthdate').pickadate({
+                format: $scope.formatDate,
+                formatSubmit: $scope.formatDateSubmit,
+                monthsFull: $scope.month,
+                weekdaysFull: $scope.weekdaysFull,
+                weekdaysLetter: $scope.weekdaysLetter,
+                weekdaysShort: $scope.weekdaysShort,
+                labelMonthNext: 'Go to the next month',
+                labelMonthPrev: 'Go to the previous month',
+                labelMonthSelect: 'Pick a month from the dropdown',
+                labelYearSelect: 'Pick a year from the dropdown',
+                changeMonth: true,
+                changeYear: true,
+                selectYears: 40,
+                selectMonths: true,
+                today: $scope.today,
+                clear: $scope.clear,
+                close: $scope.close
+            });
+
+            $scope.datePicker = $inputDate.pickadate('picker');
+
+            $('.picker__select--month').css("display", "inline-block");
+
+            $log.debug('test1');
+        }, 500);
+
+
+
         /* init ngAutocomplete*/
         $scope.options = {};
         $scope.options.watchEnter = true;
@@ -86,6 +139,8 @@
             personRestAPI.getPerson($scope.playerId).success(function (person) {
                 $scope.player = person;
                 $scope.player.birthdate = new Date(moment($scope.player.birthdate));
+                $scope.datePicker.set('select', $scope.player.birthdate.valueOf());
+                $log.debug('test2');
             });
         };    
         
