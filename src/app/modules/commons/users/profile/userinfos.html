@@ -1,15 +1,13 @@
+
 <h5 class="light-green-text text-lighten-1" translate="profile.desc"></h5>
 <p translate="profile.label.mandatory"></p>
 <form novalidate class="form-horizontal css-form" accept-charset="UTF-8" name="profileForm"
       data-ng-submit="updateUser(profileForm)">
     <div class="row">
         <div class="col s12 m2 center">
-            <avatar person="user" width="'130px'" collection="User"></avatar>
-            <h5 class="center">{{user.account.login}}</h5>
-
             <div class="btn-toolbar">
                 <div class="btn-group center">
-                    <a ng-href="{{pdfUrl}}" class="btn waves-effect waves-light" target="_blank"><i
+                    <a ng-href="{{pdfUrl}}" class="btn blue-grey darken-2 waves-effect waves-light" target="_blank"><i
                             class="fa fa-file-pdf-o"></i></a>
                     <!--                <a class="btn btn-default"><i class="fa fa-tag"></i></a>
                                     <a class="btn btn-default"><i class="fa fa-share-alt"></i></a>-->
@@ -48,9 +46,9 @@
                        ng-class="{ 'invalid': profileForm.email.$invalid }"
                 />
 
-                <div ng-class="{'has-error': profileForm.email.$dirty && profileForm.email.$error.required}"
-                     ng-hide="profileForm.email.$valid"
-                     translate="profile.message.email.required"></div>
+                <span ng-class="{'has-error': profileForm.email.$dirty && profileForm.email.$error.required}"
+                     ng-hide="profileForm.email.$valid" class="small red-text text-lighten-1"
+                     translate="profile.message.email.required"></span>
 
                 <label translate="profile.label.email" data-error="{{'profile.message.email.ko'|translate}}"></label>
             </div>
@@ -86,14 +84,12 @@
                 <div class="text-danger pull-left"
                      ng-show="profileForm.passwd2.$dirty && profileForm.passwd2.$error.pwmatch"
                      translate='profile.message.passwd.ko'></div>
-                <div class="text-success fa fa-check pull-left"
-                     ng-hide="profileForm.passwd2.$pristine || profileForm.passwd2.$error.pwmatch"></div>
             </div>
             <div class="col s6 center hide-on-small-only">
                 <a href="#/private" class=" btn red" translate="commons.buttons.cancel"></a>
             </div>
             <div class="col s6 center hide-on-small-only">
-                <a ng-click="updateUser(profileForm)" class="btn success" translate="commons.buttons.validate"
+                <a ng-click="updateUser(profileForm)" class="btn light-green lighten-1" translate="commons.buttons.validate"
                    ng-disabled="profileForm.$invalid"></a>
             </div>
         </div>

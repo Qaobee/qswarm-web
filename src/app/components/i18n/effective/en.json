@@ -84,7 +84,8 @@
         "playerTelMobile": "Mobile",
         "playerTelHome": "Home",
         "playerAddress": "Address",
-        "playerMail": "E-mail"
+        "playerMail": "E-mail",
+        "emailDirty": "Email invalid"
     },
     
     "addTeam": {

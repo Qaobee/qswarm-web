@@ -13,21 +13,25 @@
                 <div class="col l2 m1 s12 white-text center hide-on-small-only">
                     &nbsp;
                 </div>
-                <div class="col l8 m10 s12 white-text center-align">
+                <div class="col l8 m10 s12 white-text center-align" ng-if="teamHome">
                     <h5>{{collecte.event.label}} : 
-                        {{collecte.event.participants.teamHome.label}}
-                        
+
                         <span ng-if="teamHome">
                             <a href="#/private/teamStats/{{collecte.event.participants.teamHome.id}}"
-                                class="btn-floating red lighten-1 white-text"><small><i class="fa fa-bar-chart fa-2x"></small></i>
+                                class="red lighten-1 white-text">{{collecte.event.participants.teamHome.label}}
                             </a>
-                        </span>
-                            
-                        - {{collecte.event.participants.teamVisitor.label}}
-                        
+                        </span>  
+                        - {{collecte.event.participants.teamVisitor.label}}                   
+                    </h5>
+                </div>
+                
+                <div class="col l8 m10 s12 white-text center-align" ng-if="teamVisitor">
+                    <h5>{{collecte.event.label}} : 
+                        {{collecte.event.participants.teamHome.label}}    
+                        - 
                         <span ng-if="teamVisitor">
                             <a href="#/private/teamStats/{{collecte.event.participants.teamVisitor.id}}"
-                                class="btn-floating red lighten-1 white-text"><small><i class="fa fa-bar-chart fa-2x"></small></i>
+                                class="red lighten-1 white-text">{{collecte.event.participants.teamVisitor.label}}
                             </a>
                         </span>
                     </h5>

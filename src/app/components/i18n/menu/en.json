@@ -40,7 +40,8 @@
                 "password": "Mot de passe",
                 "passwordConfirm" : "Confirmation",
                 "title": "Inscrivez-vous sur <b>Qaobee</b>"
-            }
+            },
+            "emailDirty": "Email invalid"
         }
     },
     "error": {
