@@ -23,6 +23,7 @@
         "toastError":"Erreur, l'effectif n'a pas été mis à jour"
     },
     "effectiveLabels": {
+        "effectiveAvatar":"Déposer la photo ici",
         "effectiveCategoryAge": "Categorie d'âge",
         "effectiveTabMembers": "Mes joueurs",
         "effectiveTabCoachs": "Coachs",

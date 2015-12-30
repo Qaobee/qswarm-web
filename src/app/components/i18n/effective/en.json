@@ -23,6 +23,7 @@
         "toastError":"Error, effective can't be update"
     },
     "effectiveLabels": {
+        "effectiveAvatar":"Drag and drop avatar here",
         "effectiveCategoryAge": "Category Age",
         "effectiveTabMembers": "My player list",
         "effectiveTabCoachs": "Coachs",
