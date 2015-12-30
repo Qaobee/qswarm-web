@@ -30,37 +30,58 @@
          * @class qaobee.user.profile.ProfileCtrl
          * @description Main controller of app/modules/commons/users/profile/profil.html
          */
-        .controller('ProfileCtrl', function ($scope, qeventbus, profileRestAPI, userRestAPI, $filter, structureCfgRestAPI, EnvironmentConfig, $translatePartialLoader, $translate, $rootScope, $location, $window, locationAPI, $log, user, meta) {
+        .controller('ProfileCtrl', function ($scope, $timeout, qeventbus, profileRestAPI, userRestAPI, $filter, structureCfgRestAPI, EnvironmentConfig, $translatePartialLoader, $translate, $rootScope, $location, $window, locationAPI, $log, user, meta) {
             $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('effective');
-            $scope.season = meta.season;
-            $scope.activity = meta.activity;
-            $scope.structure = meta.structure;
+            
             $scope.user = user;
-            $scope.birthdate = new Date(user.birthdate);
+
             $scope.pdfUrl = EnvironmentConfig.apiEndPoint + '/api/1/commons/users/profile/pdf?token=' + $window.sessionStorage.qaobeesession;
             $scope.billPdfUrl = EnvironmentConfig.apiEndPoint + '/api/1/commons/users/profile/billpdf?token=' + $window.sessionStorage.qaobeesession;
-            $rootScope.$on('$translateChangeSuccess', function () {
-                $translate(['commons.format.date.today',
-                    'commons.format.date.clear',
-                    'commons.format.date.close',
-                    'commons.format.date.label',
-                    'commons.format.date.listMonth',
-                    'commons.format.date.listMonthShort',
-                    'commons.format.date.listWeekdaysFull',
-                    'commons.format.date.listWeekdaysLetter'
-                ]).then(function (translations) {
-                    $scope.today = translations['commons.format.date.today'];
-                    $scope.clear = translations['commons.format.date.clear'];
-                    $scope.close = translations['commons.format.date.close'];
-                    $scope.format = translations['commons.format.date.label'];
-                    $scope.month = translations['commons.format.date.listMonth'].split(',');
-                    $scope.monthShort = translations['commons.format.date.listMonthShort'].split(',');
-                    $scope.weekdaysFull = translations['commons.format.date.listWeekdaysFull'].split(',');
-                    $scope.weekdaysLetter = translations['commons.format.date.listWeekdaysLetter'].split(',');
+            
+            //i18n datepicker
+            var month = $filter('translate')('commons.format.date.listMonth');
+            $scope.month = month.split(',');
+
+            var monthShort = $filter('translate')('commons.format.date.listMonthShort');
+            $scope.monthShort = monthShort.split(',');
+
+            var weekdaysFull = $filter('translate')('commons.format.date.listWeekdaysFull');
+            $scope.weekdaysFull = weekdaysFull.split(',');
+
+            var weekdaysShort = $filter('translate')('commons.format.date.listWeekdaysShort');
+            $scope.weekdaysShort = weekdaysShort.split(',');
+
+            var weekdaysLetter = $filter('translate')('commons.format.date.listWeekdaysLetter');
+            $scope.weekdaysLetter = weekdaysLetter.split(',');
+
+            $scope.today = $filter('translate')('commons.format.date.today');
+            $scope.clear = $filter('translate')('commons.format.date.clear');
+            $scope.close = $filter('translate')('commons.format.date.close');
+            $scope.formatDate = $filter('translate')('commons.format.date.label');
+            $scope.formatDateSubmit = $filter('translate')('commons.format.date.pattern');
+
+            var $inputDate = null;
+            $timeout(function() {
+                $inputDate = $('#profilBirthdate').pickadate({
+                    format: $scope.formatDate,
+                    formatSubmit: $scope.formatDateSubmit,
+                    monthsFull: $scope.month,
+                    weekdaysFull: $scope.weekdaysFull,
+                    weekdaysLetter: $scope.weekdaysLetter,
+                    weekdaysShort: $scope.weekdaysShort,
+                    selectYears: 100,
+                    selectMonths: true,
+                    today: $scope.today,
+                    clear: $scope.clear,
+                    close: $scope.close
                 });
-            });
+
+                $scope.datePicker = $inputDate.pickadate('picker');
+                $scope.datePicker.set('select', $scope.user.birthdate.valueOf());
+            }, 500);
+        
             $scope.optionsAdr = null;
             $scope.detailsAdr = '';
             $scope.$on('$destroy', function () {
@@ -68,7 +89,6 @@
                 delete $scope.pdfUrl;
                 delete $scope.billPdfUrl;
                 delete $scope.dateOption;
-                delete $scope.birthdate;
             });
             /**
              * @name $scope.updateUser
@@ -82,7 +102,7 @@
                 if (profileForm.$valid) {
                     var updUser = {};
                     angular.copy($scope.user, updUser);
-                    updUser.birthdate = moment($scope.birthdate).valueOf();
+                    updUser.birthdate = moment($scope.user.birthdate,'DD/MM/YYYY').valueOf();
                     delete updUser.isAdmin;
                     // address management
                     if (angular.isDefined(updUser.address.formatedAddress) && updUser.address.formatedAddress !== '') {
@@ -107,7 +127,7 @@
                                         updUser.address.country = item.long_name;
                                     }
                                 });
-                                updUser.birthdate = $scope.dateOption.val;
+                                
                                 profileRestAPI.update(updUser).success(function (data) {
                                     toastr.success(data.firstname + ' ' + data.name + $filter('translate')('popup.success.updated'));
                                     qeventbus.prepForBroadcast('refreshUser', data);

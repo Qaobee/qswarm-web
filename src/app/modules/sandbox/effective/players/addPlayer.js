@@ -39,7 +39,7 @@
      * @class qaobee.modules.sandbox.effective.AddPlayerControler
      * @description Main controller for view addPlayer.html
      */
-        .controller('AddPlayerControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
+        .controller('AddPlayerControler', function ($log, $http, $scope, $timeout, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
                                                      activityCfgRestAPI, personSrv, userRestAPI) {
 
         $translatePartialLoader.addPart('commons');
@@ -79,19 +79,6 @@
         $scope.formatDate = $filter('translate')('commons.format.date.label');
         $scope.formatDateSubmit = $filter('translate')('commons.format.date.pattern');
 
-        var $inputDate = $('.datepicker').pickadate({
-            format: $scope.formatDate,
-            formatSubmit: $scope.formatDateSubmit,
-            monthsFull: $scope.month,
-            weekdaysFull: $scope.weekdaysFull,
-            weekdaysLetter: $scope.weekdaysLetter,
-            weekdaysShort: $scope.weekdaysShort,
-            today: $scope.today,
-            clear: $scope.clear,
-            close: $scope.close
-        });
-        $scope.datePicker = $inputDate.pickadate('picker');
-
         //Initialisation du nouveau joueur
         $scope.player = {
             status: {
@@ -108,6 +95,25 @@
             address: {}, 
             contact: {}
         };
+        
+        var $inputDate = null;
+        $timeout(function() {
+            $inputDate = $('#playerBirthdate').pickadate({
+                format: $scope.formatDate,
+                formatSubmit: $scope.formatDateSubmit,
+                monthsFull: $scope.month,
+                weekdaysFull: $scope.weekdaysFull,
+                weekdaysLetter: $scope.weekdaysLetter,
+                weekdaysShort: $scope.weekdaysShort,
+                selectYears: 100,
+                selectMonths: true,
+                today: $scope.today,
+                clear: $scope.clear,
+                close: $scope.close
+            });
+
+            $scope.datePicker = $inputDate.pickadate('picker');
+        }, 100);
         
         /* init ngAutocomplete*/
         $scope.options = {};
@@ -133,7 +139,8 @@
         };
         
         /* add player */
-        $scope.checkAndformatPerson = function () { 
+        $scope.checkAndformatPerson = function () {
+            $scope.player.birthdate = moment($scope.player.birthdate,'DD/MM/YYYY').valueOf();
             personSrv.formatAddress($scope.player.address).then(function(adr){
                 $scope.player.address = adr;
                 

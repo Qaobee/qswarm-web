@@ -12,6 +12,11 @@
 			"no"  : "No"
 		}
 	},
+    "modalSignupUp": {
+        "passwd": {
+            "strength": "Password strength"
+        }
+    },
 	"modalCreate" : {
 		"title" : "Création en cours...",
 		"stepCreateSpace" : "Création de votre espace",

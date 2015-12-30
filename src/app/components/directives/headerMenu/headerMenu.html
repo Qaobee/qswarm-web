@@ -261,7 +261,18 @@
                 <div class="input-field col m6 s12">
                     <input id="password" type="password" class="validate" ng-model="signup.account.passwd" required>
                     <label for="password">{{'content.signup.label.password' | translate }}</label>
+                    <div ng-show="signup.account.passwd">
+                        <small translate='modalSignupUp.passwd.strength'></small>
+                        <div ng-hide="true" ng-password-strength="signup.account.passwd" strength="passStrength"
+                             inner-class="meter"></div>
+                        <div class="progress grey lighten-2">
+                            <div class="determinate"
+                                 ng-class="{'red' : passStrength < 33, 'orange': passStrength >= 33 && passStrength < 66, 'green' : passStrength >= 66}"
+                                 style="width: {{passStrength}}%"></div>
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="input-field col m6 s12">
                     <input id="passwordConfirm" type="password" class="validate" ng-model="passwdConfirm" required>
                     <label for="password">{{'content.signup.label.passwordConfirm' | translate }}</label>

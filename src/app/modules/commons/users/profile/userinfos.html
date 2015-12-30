@@ -33,9 +33,12 @@
             <div class="input-field">
                 <input type="text" id="formatedAddress" name="formatedAddress"
                        ng-autocomplete
-                       ng-model="user.address.formatedAddress" details="detailsAdr" options="optionsAdr"
-                />
-                <label translate="profile.label.address"></label>
+                       ng-model="user.address.formatedAddress" 
+                       details="detailsAdr" 
+                       options="optionsAdr"
+                       placeholder=""
+                       required/>
+                <label translate="profile.label.address"><span class="red-text text-lighten-1">*</span></label>
             </div>
             <div class="input-field">
                 <input type="email" name="email"
@@ -55,22 +58,10 @@
         <div class="col m2 s12">&nbsp;</div>
         <div class="col s12 m4">
             <div class="input-field">
-                <input type="text" input-date class="datepicker" name="birthdate"
-                       ng-model="birthdate"
-                       today="today"
-                       close="close"
-                       format="{{format}}"
-                       container="body"
-                       months-full="{{ month }}"
-                       months-short="{{ monthShort }}"
-                       weekdays-full="{{ weekdaysFull }}"
-                       weekdays-short="{{ weekdaysShort }}"
-                       weekdays-letter="{{ weekdaysLetter }}"
+                <label class="control-label" translate='profile.label.birthdate'></label>
+                <input type="text" class="datepicker" id="profilBirthdate"
+                       ng-model="user.birthdate"
                        required ng-class="{'invalid': profileForm.birthdate.$invalid}"/>
-                <label class="col s4 control-label" translate='profile.label.birthdate'></label>
-
-                <div ng-class="{'has-error': profileForm.birthdate.$invalid}" ng-hide="profileForm.birthdate.$valid"
-                     translate="date.label"></div>
             </div>
             <div class="input-field">
                 <input type="password" class="validate" name="passwd" ng-model="user.account.passwd" id="passwd"/>

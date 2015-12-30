@@ -80,37 +80,6 @@
         $scope.formatDate = $filter('translate')('commons.format.date.label');
         $scope.formatDateSubmit = $filter('translate')('commons.format.date.pattern');
 
-        var $inputDate = null;
-        $timeout(function() {
-            $inputDate = $('#playerBirthdate').pickadate({
-                format: $scope.formatDate,
-                formatSubmit: $scope.formatDateSubmit,
-                monthsFull: $scope.month,
-                weekdaysFull: $scope.weekdaysFull,
-                weekdaysLetter: $scope.weekdaysLetter,
-                weekdaysShort: $scope.weekdaysShort,
-                labelMonthNext: 'Go to the next month',
-                labelMonthPrev: 'Go to the previous month',
-                labelMonthSelect: 'Pick a month from the dropdown',
-                labelYearSelect: 'Pick a year from the dropdown',
-                changeMonth: true,
-                changeYear: true,
-                selectYears: 40,
-                selectMonths: true,
-                today: $scope.today,
-                clear: $scope.clear,
-                close: $scope.close
-            });
-
-            $scope.datePicker = $inputDate.pickadate('picker');
-
-            $('.picker__select--month').css("display", "inline-block");
-
-            $log.debug('test1');
-        }, 500);
-
-
-
         /* init ngAutocomplete*/
         $scope.options = {};
         $scope.options.watchEnter = true;
@@ -139,13 +108,32 @@
             personRestAPI.getPerson($scope.playerId).success(function (person) {
                 $scope.player = person;
                 $scope.player.birthdate = new Date(moment($scope.player.birthdate));
-                $scope.datePicker.set('select', $scope.player.birthdate.valueOf());
-                $log.debug('test2');
+                
+                var $inputDate = null;
+                $timeout(function() {
+                    $inputDate = $('#playerBirthdate').pickadate({
+                        format: $scope.formatDate,
+                        formatSubmit: $scope.formatDateSubmit,
+                        monthsFull: $scope.month,
+                        weekdaysFull: $scope.weekdaysFull,
+                        weekdaysLetter: $scope.weekdaysLetter,
+                        weekdaysShort: $scope.weekdaysShort,
+                        selectYears: 80,
+                        selectMonths: true,
+                        today: $scope.today,
+                        clear: $scope.clear,
+                        close: $scope.close
+                    });
+
+                    $scope.datePicker = $inputDate.pickadate('picker');
+                    $scope.datePicker.set('select', $scope.player.birthdate.valueOf());
+                }, 100);
             });
         };    
         
         /* update person */
         $scope.checkAndformatPerson = function () { 
+            $scope.player.birthdate = moment($scope.player.birthdate,'DD/MM/YYYY').valueOf();
             personSrv.formatAddress($scope.player.address).then(function(adr){
                 $scope.player.address = adr;
                 

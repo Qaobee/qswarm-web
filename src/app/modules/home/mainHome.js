@@ -128,8 +128,6 @@
                 $scope.collectes = data.sortBy(function(n) {
                     return n.endDate; 
                 });
-                
-                $log.debug($scope.collectes);
             });
         };
         

@@ -35,7 +35,7 @@
             });
         })
         
-        .controller('SignupCtrl', function ($rootScope, $scope, $translatePartialLoader, $log, $routeParams, $window, $location, $filter, WizardHandler, activityRestAPI, activityCfgRestAPI, countryRestAPI, structureRestAPI, signupRestAPI, locationAPI) {
+        .controller('SignupCtrl', function ($rootScope, $scope, $timeout, $translatePartialLoader, $log, $routeParams, $window, $location, $filter, WizardHandler, activityRestAPI, activityCfgRestAPI, countryRestAPI, structureRestAPI, signupRestAPI, locationAPI) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
 
@@ -57,6 +57,48 @@
             $scope.temp.skipSportSection = true;
             
             $scope.creationFinished = false;
+
+            var $inputDate = null;
+            $timeout(function() {
+                //i18n datepicker
+                var month = $filter('translate')('commons.format.date.listMonth');
+                $scope.month = month.split(',');
+
+                var monthShort = $filter('translate')('commons.format.date.listMonthShort');
+                $scope.monthShort = monthShort.split(',');
+
+                var weekdaysFull = $filter('translate')('commons.format.date.listWeekdaysFull');
+                $scope.weekdaysFull = weekdaysFull.split(',');
+
+                var weekdaysShort = $filter('translate')('commons.format.date.listWeekdaysShort');
+                $scope.weekdaysShort = weekdaysShort.split(',');
+
+                var weekdaysLetter = $filter('translate')('commons.format.date.listWeekdaysLetter');
+                $scope.weekdaysLetter = weekdaysLetter.split(',');
+
+                $scope.today = $filter('translate')('commons.format.date.today');
+                $scope.clear = $filter('translate')('commons.format.date.clear');
+                $scope.close = $filter('translate')('commons.format.date.close');
+                $scope.formatDate = $filter('translate')('commons.format.date.label');
+                $scope.formatDateSubmit = $filter('translate')('commons.format.date.pattern');
+        
+            $log.debug('label', $scope.weekdaysLetter);
+                $inputDate = $('#signupBirthdate').pickadate({
+                    format: $scope.formatDate,
+                    formatSubmit: $scope.formatDateSubmit,
+                    monthsFull: $scope.month,
+                    weekdaysFull: $scope.weekdaysFull,
+                    weekdaysLetter: $scope.weekdaysLetter,
+                    weekdaysShort: $scope.weekdaysShort,
+                    selectYears: 100,
+                    selectMonths: true,
+                    today: $scope.today,
+                    clear: $scope.clear,
+                    close: $scope.close
+                });
+
+                $scope.datePicker = $inputDate.pickadate('picker');
+            }, 500);
                         
            signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function (data) {
                 if (true === data.error) {
