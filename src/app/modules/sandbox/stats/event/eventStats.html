@@ -14,21 +14,25 @@
                     &nbsp;
                 </div>
                 <div class="col l8 m10 s12 white-text center-align" ng-if="teamHome">
-                    <h5>{{collecte.event.label}} : 
-
+                    <h5> 
                         <span ng-if="teamHome">
                             <a href="#/private/teamStats/{{collecte.event.participants.teamHome.id}}"
                                 class="red lighten-1 white-text">{{collecte.event.participants.teamHome.label}}
                             </a>
-                        </span>  
-                        - {{collecte.event.participants.teamVisitor.label}}                   
+                        </span>
+                        <br class="hide-on-med-and-up">
+                        - 
+                        <br class="hide-on-med-and-up">
+                        {{collecte.event.participants.teamVisitor.label}}                   
                     </h5>
                 </div>
                 
                 <div class="col l8 m10 s12 white-text center-align" ng-if="teamVisitor">
-                    <h5>{{collecte.event.label}} : 
-                        {{collecte.event.participants.teamHome.label}}    
+                    <h5>
+                        {{collecte.event.participants.teamHome.label}} 
+                        <br class="hide-on-med-and-up">
                         - 
+                        <br class="hide-on-med-and-up">
                         <span ng-if="teamVisitor">
                             <a href="#/private/teamStats/{{collecte.event.participants.teamVisitor.id}}"
                                 class="red lighten-1 white-text">{{collecte.event.participants.teamVisitor.label}}
@@ -37,13 +41,14 @@
                     </h5>
                 </div>
                 <div class="col l2 m1 s12 white-text center-align">
-                    <a href="">
-                        <i class="material-icons white-text medium tooltipped" ng-click="doTheBack()" 
-                           data-position="top" data-delay="20" data-tooltip="{{'viewPlayer.buttons.returnViewPlayer' | translate }}">undo</i>
+                    <h5>
+                    <a href="" class="blue-grey darken-2 white-text waves-effect waves-light" ng-click="doTheBack()">
+                        <i class="fa fa-arrow-left"></i>   
                     </a>
+                    </h5>
                 </div>
                 <div class="col s12 blue-grey-text text-darken-2 grey lighten-2 center">
-                    <h5>{{collecte.startDateLabel}}</h5>
+                    <h6>{{collecte.event.label}} : {{collecte.startDateLabel}}</h6>
                 </div>
             </div>
  

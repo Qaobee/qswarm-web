@@ -98,8 +98,6 @@
             close: $scope.close
         });
 
-        $log.debug('$inputDate',$inputDate);
-
         $scope.datePicker = $inputDate.pickadate('picker');
 
         //i18n timepicker

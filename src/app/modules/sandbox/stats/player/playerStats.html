@@ -10,23 +10,22 @@
         <div class="col s12">
             
             <div class="row blue-grey darken-2">
-                <div class="col l3 m12 center hide-on-small-only">
-                    <avatar person="player" width="'120px'"></avatar>
+                <div class="col l3 m3 center hide-on-small-only">
+                    <avatar person="player" width="'50px'"></avatar>
                 </div>
-                <div class="col l7 m10 s12 white-text center">
-                    <br/>
-                    <h4>{{player.firstname}} {{player.name}}</h4>
+                <div class="col l7 m7 s12 white-text center">
+                    <h5>{{player.firstname}} {{player.name}}</h5>
                     {{player.positionType}}
                 </div>
                 <div class="col l2 m2 s12 white-text center">
-                    <br/>
-                    <a href="">
-                        <i class="material-icons white-text large tooltipped" ng-click="doTheBack()" 
-                           data-position="top" data-delay="20" data-tooltip="{{'viewPlayer.buttons.returnViewPlayer' | translate }}">undo</i>
+                    <h5>
+                    <a href="" class="blue-grey darken-2 white-text waves-effect waves-light" ng-click="doTheBack()">
+                        <i class="fa fa-arrow-left"></i>   
                     </a>
+                    </h5>
                 </div>
                 
-                <div class="col s12 hide-on-small-only grey lighten-2">
+                <div class="col s12 hide-on-med-and-down grey lighten-2">
                     <!-- Filter Zone start-->
                         <div class="col s12 center">&nbsp;</div>
                         <div class="col s1 center">&nbsp;</div>
@@ -100,7 +99,7 @@
             </div>
             
             <!-- view for tablet and phone -->
-            <div class="row hide-on-med-and-up grey lighten-2">
+            <div class="row hide-on-large-only grey lighten-2">
 
                 <!-- Periodicity selector -->
                 <div class="col s1 center">&nbsp;</div>
@@ -118,7 +117,7 @@
             </div>
 
             <!-- Month Navigation-->
-            <div class="row hide-on-med-and-up grey lighten-2" ng-if="periodicity=='month'">   
+            <div class="row hide-on-large-only grey lighten-2" ng-if="periodicity=='month'">   
                 <div class="col s1 center">&nbsp;</div>
                 <div class="col s1 center" ng-if="periodicity=='month'">
                     <a href="" ng-click="previousMonth()" class="btn-floating blue-grey darken-2 white-text left">
@@ -137,7 +136,7 @@
             </div>
 
             <!-- Quarter Navigation-->
-            <div class="row hide-on-med-and-up grey lighten-2" ng-if="periodicity=='quarter'">
+            <div class="row hide-on-large-only grey lighten-2" ng-if="periodicity=='quarter'">
                 <div class="col s1 center">&nbsp;</div>
                 <div class="col s1 center" ng-if="periodicity=='quarter'">
                     <a href="" ng-click="previousQuarter()" class="btn-floating blue-grey darken-2 white-text left">
@@ -156,7 +155,7 @@
             </div>
 
             <!-- Season Navigation-->
-            <div class="row hide-on-med-and-up grey lighten-2" ng-if="periodicity=='season'">
+            <div class="row hide-on-large-only grey lighten-2" ng-if="periodicity=='season'">
                 <div class="col s1 center">&nbsp;</div>
                 <div class="col s1 enter">
                     <a href="" ng-click="previousSeason()" class="btn-floating blue-grey darken-2 white-text left">
@@ -185,13 +184,13 @@
                     </stats-goals>
                 </div>
                 
-                <div class="col s12 hide-on-med-and-up"><br/></div>
+                <div class="col s12 hide-on-large-only"><br/></div>
                 
                 <div class="col s12 m12 l4">
                     <stats-player-use sandbox-id="meta.sandbox._id"></stats-player-use>
                 </div>
                 
-                <div class="col s12 hide-on-med-and-up"><br/></div>
+                <div class="col s12 hide-on-large-only"><br/></div>
                 
                 <div class="col s12 m12 l4">
                     <stats-sanction></stats-sanction>

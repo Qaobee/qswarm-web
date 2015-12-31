@@ -97,7 +97,6 @@
             clear: $scope.clear,
             close: $scope.close
         });
-        $log.debug('$inputDate',$inputDate);
 
         //i18n timepicker
         $scope.formatTime = $filter('translate')('commons.format.hours.label');

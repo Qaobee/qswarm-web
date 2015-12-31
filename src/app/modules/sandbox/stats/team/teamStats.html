@@ -14,15 +14,16 @@
                     &nbsp;
                 </div>
                 <div class="col l8 m10 s12 white-text center-align">
-                    <h4>{{team.label}}</h4>
+                    <h5>{{team.label}}</h5>
                 </div>
                 <div class="col l2 m1 s12 white-text center-align">
-                    <a href="">
-                        <i class="material-icons white-text medium tooltipped" ng-click="doTheBack()" 
-                           data-position="top" data-delay="20" data-tooltip="{{'viewPlayer.buttons.returnViewPlayer' | translate }}">undo</i>
+                    <h5>
+                    <a href="" class="blue-grey darken-2 white-text waves-effect waves-light" ng-click="doTheBack()">
+                        <i class="fa fa-arrow-left"></i>   
                     </a>
+                    </h5>
                 </div>
-                <div class="col s12 hide-on-small-only grey lighten-2">
+                <div class="col s12 hide-on-med-and-down grey lighten-2">
                     <!-- Filter Zone start-->
                     <div class="col s12 center">&nbsp;</div>
                     <div class="col s1 center">&nbsp;</div>
@@ -95,7 +96,7 @@
             
         <!-- view for tablet and phone -->
             <!-- Filter Zone start-->
-            <div class="row hide-on-med-and-up grey lighten-2">
+            <div class="row hide-on-large-only grey lighten-2">
 
                 <!-- Periodicity selector -->
                 <div class="col s1 center">&nbsp;</div>
@@ -113,7 +114,7 @@
             </div>
 
             <!-- Month Navigation-->
-            <div class="row hide-on-med-and-up grey lighten-2" ng-if="periodicity=='month'">   
+            <div class="row hide-on-large-only grey lighten-2" ng-if="periodicity=='month'">   
                 <div class="col s1 center">&nbsp;</div>
                 <div class="col s1 center" ng-if="periodicity=='month'">
                     <a href="" ng-click="previousMonth()" class="btn-floating blue-grey darken-2 white-text left">
@@ -132,7 +133,7 @@
             </div>
 
             <!-- Quarter Navigation-->
-            <div class="row hide-on-med-and-up grey lighten-2" ng-if="periodicity=='quarter'">
+            <div class="row hide-on-large-only grey lighten-2" ng-if="periodicity=='quarter'">
                 <div class="col s1 center">&nbsp;</div>
                 <div class="col s1 center" ng-if="periodicity=='quarter'">
                     <a href="" ng-click="previousQuarter()" class="btn-floating blue-grey darken-2 white-text left">
@@ -151,7 +152,7 @@
             </div>
 
             <!-- Season Navigation-->
-            <div class="row hide-on-med-and-up grey lighten-2" ng-if="periodicity=='season'">
+            <div class="row hide-on-large-only grey lighten-2" ng-if="periodicity=='season'">
                 <div class="col s1 center">&nbsp;</div>
                 <div class="col s1 enter">
                     <a href="" ng-click="previousSeason()" class="btn-floating blue-grey darken-2 white-text left">
