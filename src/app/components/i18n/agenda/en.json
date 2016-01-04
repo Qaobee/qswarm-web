@@ -43,7 +43,8 @@
         "Home": "Home",
         "Visitor":"Outside",
         "SectionIdentity":"Event",
-        "SectionActors":"Teams",
+		"SectionActorsHome" : "My team",
+        "SectionActorsAdversary" : "Adversary", 
         "SectionPlaning":"Planning",
         "SectionPlace":"Location"
     }

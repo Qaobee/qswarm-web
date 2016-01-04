@@ -15,6 +15,7 @@
         'ngAutocomplete',
         
         /* qaobee modules */
+        'personSRV',
         
         /* qaobee Rest API */
         'activityCfgRestAPI',
@@ -43,7 +44,7 @@
      * @description Main controller for view mainAgenda.html
      */
         .controller('AddEventControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                                     eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, userRestAPI) {
+                                                     eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, userRestAPI, personSrv) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('agenda');
@@ -57,7 +58,7 @@
         $scope.listTeamHome = {};
         $scope.teamId = '';
         $scope.listTeamAdversary = {};
-        $scope.adversaryId = '';
+        $scope.adversaryLabel = '';
         $scope.chooseAdversary = false;
         $scope.chooseHome = false;
         $scope.startDate = '';
@@ -225,52 +226,62 @@
             });
             
             angular.forEach($scope.listTeamAdversary, function (item) {
-                if(item._id === $scope.adversaryId) {
+                if(item.label === $scope.adversaryLabel) {
                     adversary = item;
                 }   
             });
             
-            if ($scope.location === 'home') {
-                participants = { 
-                    teamHome: {id:team._id, label:team.label},
-                    teamVisitor: {id:adversary._id, label:adversary.label}
+            //new adversary
+            if (angular.isUndefined(adversary.label)){
+                adversary = {
+                    "label" : $scope.adversaryLabel,
+                    "sandboxId" : $scope.meta.sandbox._id, 
+                    "effectiveId" : $scope.user.effectiveDefault,
+                    "linkTeamId" : [team._id],
+                    "enable" : true,
+                    "adversary": true
                 };
-            } else {
-                participants = { 
-                    teamVisitor: {id:team._id, label:team.label},
-                    teamHome: {id:adversary._id, label:adversary.label}
-                };
-            }
-                
-            $scope.event.participants = participants ;
 
-            
-            if (angular.isDefined($scope.event.address.formatedAddress) && !$scope.event.address.formatedAddress.isBlank()) {
-                locationAPI.get($scope.event.address.formatedAddress).then(function (adr) {
-                    $scope.event.address.lat = adr.data.results[0].geometry.location.lat;
-                    $scope.event.address.lng = adr.data.results[0].geometry.location.lng;
-                    angular.forEach(adr.data.results[0].address_components, function (item) {
-                        if (item.types.count('street_number') > 0) {
-                            $scope.event.address.place = item.long_name + ' ';
-                        }
-                        if (item.types.count('route') > 0) {
-                            $scope.event.address.place += item.long_name;
-                        }
-                        if (item.types.count('locality') > 0) {
-                            $scope.event.address.city = item.long_name;
-                        }
-                        if (item.types.count('postal_code') > 0) {
-                            $scope.event.address.zipcode = item.long_name;
-                        }
-                        if (item.types.count('country') > 0) {
-                            $scope.event.address.country = item.long_name;
-                        }
+                /* add team */
+                teamRestAPI.addTeam(adversary).success(function (data) {
+                    adversary = data;
+                    if ($scope.location === 'home') {
+                        participants = { 
+                            teamHome: {id:team._id, label:team.label},
+                            teamVisitor: {id:adversary._id, label:adversary.label}
+                        };
+                    } else {
+                        participants = { 
+                            teamVisitor: {id:team._id, label:team.label},
+                            teamHome: {id:adversary._id, label:adversary.label}
+                        };
+                    }
+
+                    $scope.event.participants = participants ;
+                    personSrv.formatAddress($scope.event.address).then(function(adr){
+                        $scope.event.address = adr;
+                        $scope.writeEvent();
                     });
                     
-                    $scope.writeEvent();
                 });
             } else {
-                $scope.writeEvent();
+                if ($scope.location === 'home') {
+                    participants = { 
+                        teamHome: {id:team._id, label:team.label},
+                        teamVisitor: {id:adversary._id, label:adversary.label}
+                    };
+                } else {
+                    participants = { 
+                        teamVisitor: {id:team._id, label:team.label},
+                        teamHome: {id:adversary._id, label:adversary.label}
+                    };
+                }
+
+                $scope.event.participants = participants ;
+                personSrv.formatAddress($scope.event.address).then(function(adr){
+                    $scope.event.address = adr;
+                    $scope.writeEvent();
+                });
             }
         };
         

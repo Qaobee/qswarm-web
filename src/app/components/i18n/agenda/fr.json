@@ -30,35 +30,7 @@
 		"toastError" : "Erreur, l'évènement n'a pas été modifié"
 	}, 
 	"eventLabels" : {
-		"Team" : "Choix équipe...", 
-		"Adversary" : "Choix adversaire...", 
-		"Type" : "Choix type évènnement...", 
-		"Label" : "Libellé", 
-		"LabelPlaceHolder" : "1ére journée... Coupe de France...", 
-		"StartDate" : "Date début", 
-		"EndDate" : "Date fin", 
-		"StartHour" : "Heure début", 
-		"EndHour" : "Heure fin", 
-		"Address" : "Adresse", 
-		"Home" : "A domicile", 
-		"Visitor" : "A l'extérieur", 
-		"SectionIdentity" : "Evènnement", 
-		"SectionActors" : "Participants", 
-		"SectionPlaning" : "Planification", 
-		"SectionPlace" : "Localisation"
-	}, 
-	"addEvent" : {
-		"title" : "Ajout d'un évènement", 
-		"toastSuccess" : "L'évènement {{label}} a été ajouté", 
-		"toastError" : "Erreur, l'évènement n'a pas été créé"
-	}, 
-	"updateEvent" : {
-		"title" : "Mise à jour d'un évènement", 
-		"toastSuccess" : "L'évènement {{label}} a été modifié", 
-		"toastError" : "Erreur, l'évènement n'a pas été modifié"
-	}, 
-	"eventLabels" : {
-		"Team" : "Sélectionner mon équipe...", 
+		"Team" : "Sélectionner son équipe...", 
 		"Adversary" : "Sélectionner un adversaire...", 
 		"Type" : "Choix type évènement...", 
 		"Label" : "Libellé", 
@@ -71,7 +43,8 @@
 		"Home" : "A domicile", 
 		"Visitor" : "A l'extérieur", 
 		"SectionIdentity" : "Evènement", 
-		"SectionActors" : "Equipes", 
+		"SectionActorsHome" : "Mon équipe",
+        "SectionActorsAdversary" : "Adversaire", 
 		"SectionPlaning" : "Planification", 
 		"SectionPlace" : "Localisation"
 	}

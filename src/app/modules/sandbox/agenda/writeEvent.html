@@ -63,25 +63,28 @@
             <!-- Participants -->
             <div class="card-panel grey lighten-3" ng-show="chooseAdversary">                        
                 <div class="row">
-                    <h6 class="red-text text-lighten-1 col s12">{{'eventLabels.SectionActors' | translate }}</h6>
                     <div class="input-field col s10 m5">
+                        <h6 class="red-text text-lighten-1">{{'eventLabels.SectionActorsHome' | translate }}</h6>
                         <select class="browser-default blue-grey-text text-darken-1" ng-model="teamId" id="team" ng-change="changeTeamHome()">
                             <option value="" disabled selected>{{'eventLabels.Team' | translate }}</option>
                             <option ng-repeat="p in listTeamHome" value="{{p._id}}">{{p.label}}</option>
                         </select>
                     </div>
                     <div class="input-field col s2 m1">
-                        <a href="#/private/addTeam/{{false}}" class="red-text text-lighten-1 left-align tooltipped" 
-                           data-position="left" data-delay="20" data-tooltip="{{'mainEffective.buttons.addTeamHome' | translate }}">
-                            <h5><i class="fa fa-plus-square-o"></i></h5>
-                        </a>
+                        &nbsp;
                     </div>
 
                     <div class="input-field col s10 m5" ng-show="chooseHome">
-                        <select class="browser-default blue-grey-text text-darken-1" ng-model="adversaryId" id="adversary">
+                        <h6 class="red-text text-lighten-1">{{'eventLabels.SectionActorsAdversary' | translate }}</h6>                        
+                        <!--<select class="browser-default blue-grey-text text-darken-1" ng-model="adversaryId" id="adversary">
                             <option value="" disabled selected>{{'eventLabels.Adversary' | translate }}</option>
                             <option ng-repeat="p in listTeamAdversary" value="{{p._id}}">{{p.label}}</option>
-                        </select>
+                        </select>-->
+                        <input type="text" list="adversaries" ng-model="adversaryLabel" placeholder="{{'eventLabels.Adversary' | translate }}"/>
+                        <datalist id="adversaries">
+                            <option ng-repeat="p in listTeamAdversary" value="{{p.label}}"></option>
+                        </datalist>
+                        
                     </div>
                 </div>
             </div>
@@ -112,7 +115,7 @@
                 <!-- actions buttons -->
                 <div class="row">
                     <div class="col s12 center-align">
-                        <button class="btn red lighteen-1 white-text waves-effect waves-light center" ng-click="doTheBack()" translate="commons.buttons.cancel"></button>
+                        <a href="" class="btn red lighteen-1 white-text waves-effect waves-light center" ng-click="doTheBack()" translate="commons.buttons.cancel"></a>
                         <button class="btn green darken-1 waves-effect waves-light center" type="submit" name="action" translate="commons.buttons.validate">
                             <i class="mdi-content-send right"></i>
                         </button>
