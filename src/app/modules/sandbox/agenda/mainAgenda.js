@@ -158,7 +158,7 @@
                 case 1:
                     quarter = {
                         label: moment('01/01/'+year,'DD/MM/YYYY').format('MMMM YYYY') +' - ' +moment('01/04/'+year,'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
-                        startDate: moment('01/01/'+year,'DD/MM/YYYY').format('MMMM YYYY'),
+                        startDate: moment('01/01/'+year,'DD/MM/YYYY'),
                         endDate: moment('/01/04/'+year,'DD/MM/YYYY').subtract(1, 'ms')
                     };
                     break;
@@ -190,7 +190,7 @@
                         endDate: moment('/01/04/'+year,'DD/MM/YYYY').subtract(1, 'ms')
                     };
             }
-            
+
             /* Current quarter */
             $scope.periodicityActive = quarter;
             
