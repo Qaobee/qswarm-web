@@ -222,9 +222,9 @@
 
         <div class="row center">
             <div class="col s12">
-                <a href="#/" class="modal-action modal-close waves-effect waves-red btn red"
+                <a href="#/" class="modal-action modal-close waves-effect waves-red btn red" style="max-width:50%"
                    translate="commons.buttons.cancel"></a>
-                <button type="submit" class="btn waves-effect waves-red  green darken-1"
+                <button type="submit" class="btn waves-effect waves-red  green darken-1" style="max-width:50%"
                         translate="commons.buttons.validate"/>
             </div>
         </div>
@@ -266,8 +266,7 @@
                     <label for="password">{{'content.signup.label.password' | translate }}</label>
                     <div ng-show="signup.account.passwd">
                         <small translate='modalSignupUp.passwd.strength'></small>
-                        <div ng-hide="true" ng-password-strength="signup.account.passwd" strength="passStrength"
-                             inner-class="meter"></div>
+                        <div ng-hide="true" ng-password-strength="signup.account.passwd" strength="passStrength" inner-class="meter"></div>
                         <div class="progress grey lighten-2">
                             <div class="determinate"
                                  ng-class="{'red' : passStrength < 33, 'orange': passStrength >= 33 && passStrength < 66, 'green' : passStrength >= 66}"
@@ -304,9 +303,9 @@
 
         <div class="row center">
             <div class="col s12">
-                <a href="" ng-click="cancelSignup()" class="modal-action modal-close waves-effect waves-red btn red"
+                <a href="" ng-click="cancelSignup()" class="modal-action modal-close waves-effect waves-red btn red" style="max-width:50%"
                    translate="commons.buttons.cancel"></a>
-                <button type="submit" class="btn waves-effect waves-red  green darken-1"
+                <button type="submit" class="btn waves-effect waves-red  green darken-1" style="max-width:50%"
                         translate="commons.buttons.validate"/>
             </div>
         </div>
