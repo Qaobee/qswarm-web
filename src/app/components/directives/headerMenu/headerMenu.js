@@ -259,6 +259,7 @@
                     		}
                     	});
                     	
+                    	
                     	/**
                          * @name $scope.logoff
                          * @function

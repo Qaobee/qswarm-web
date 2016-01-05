@@ -65,7 +65,8 @@
             $translateProvider.determinePreferredLanguage();
             reCAPTCHAProvider.setPublicKey('6LdoTvMSAAAAAP4NTyay0WljN19Aq4Cl5pZELvIe');
             reCAPTCHAProvider.setOptions({
-                theme: 'clean'
+                theme: 'custom',
+                custom_theme_widget: 'custom_recaptcha_widget'
             });
             $httpProvider.defaults.useXDomain = true;
             delete $httpProvider.defaults.headers.common['X-Requested-With'];

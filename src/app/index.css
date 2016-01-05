@@ -320,3 +320,34 @@ table.super-fancy tr.foobar {
     display: inline-block;
     padding: 5px;
 }
+
+
+/** responsive RECAPTCHA*/
+#custom_recaptcha_widget .col {
+	padding:0px;
+}
+#custom_recaptcha_widget img#recaptcha_challenge_image,
+#custom_recaptcha_widget #recaptcha_image {
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+@media screen and (max-width: 400px) {
+	#custom_recaptcha_widget img#recaptcha_challenge_image,
+	#custom_recaptcha_widget #recaptcha_image {
+	  width: 100% !important;
+	  height: auto !important;
+	}
+	
+	#custom_recaptcha_widget img {
+	  -webkit-border-radius: 0.5em;
+	  -moz-border-radius: 0.5em;
+	  border-radius: 0.5em;
+	  -moz-background-clip: padding;
+	  -webkit-background-clip: padding-box;
+	  background-clip: padding-box;
+	}
+}
