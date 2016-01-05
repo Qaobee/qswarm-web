@@ -354,13 +354,7 @@ table.super-fancy tr.foobar {
 
 /** Responsive buttons on small screen */
 @media screen and (max-width: 400px) {
-	.btn2 {
+	.btn-s {
 		padding:0 10px;
-		/*max-width:50%;*/
-	}
-	
-	.btn3 {
-		padding:0 10px;
-		/* max-width:33%;*/
 	}
 }
