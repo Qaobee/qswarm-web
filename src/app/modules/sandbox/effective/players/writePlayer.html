@@ -172,10 +172,10 @@
                                     <label for="playerMail">{{'playerLabels.playerMail' | translate }}</label>
                                 </div>
                                 <div class="input-field col s8">
-                                    <input type="email" name="email2" class="validate" ng-model="player.contact.email" 
-                                           ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" ng-class="{ 'invalid': playerCivilSection.email2.$invalid }">
-                                    <span ng-class="{'has-error': playerCivilSection.email2.$dirty}" class="small red-text text-lighten-1"
-                                        ng-hide="playerCivilSection.email2.$valid" translate="playerLabels.emailDirty"></span>
+                                    <input type="email" name="playerEmail" class="validate" ng-model="player.contact.email" 
+                                           ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" ng-class="{ 'invalid': playerCivilSection.playerEmail.$invalid }">
+                                    <span ng-class="{'has-error': playerCivilSection.playerEmail.$dirty}" class="small red-text text-lighten-1"
+                                        ng-hide="playerCivilSection.playerEmail.$valid" translate="playerLabels.emailDirty"></span>
                                 </div>
                             </div>
                             <div class="col s12">

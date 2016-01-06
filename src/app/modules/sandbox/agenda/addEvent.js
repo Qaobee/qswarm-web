@@ -162,6 +162,7 @@
                     return n.label; 
                 });
             });
+            $scope.adversaryLabel = '';
             $scope.chooseHome = true;
         };
 

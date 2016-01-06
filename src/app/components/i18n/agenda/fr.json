@@ -31,8 +31,9 @@
 	}, 
 	"eventLabels" : {
 		"Team" : "Sélectionner son équipe...", 
-		"Adversary" : "Sélectionner un adversaire...", 
-		"Type" : "Choix type évènement...", 
+		"Adversary" : "Sélectionner un adversaire...",
+        "Type" : "Type", 
+		"selectType" : "Choix type évènement...", 
 		"Label" : "Libellé", 
 		"LabelPlaceHolder" : "1ére journée... Coupe de France...", 
 		"StartDate" : "Date début", 
@@ -47,5 +48,13 @@
         "SectionActorsAdversary" : "Adversaire", 
 		"SectionPlaning" : "Planification", 
 		"SectionPlace" : "Localisation"
+	},
+    "eventErrors" : {
+		"Type" : "La type d'événement est obligatoire", 
+		"Label" : "Le libellé de l'événement est obligatoire",  
+		"StartDate" : "La date de l'événement est obligatoire", 
+		"StartHour" : "L'heure de l'événement est obligatoire",
+        "teamHome" : "Le choix de son équipe est obligatoire",
+        "adversary" : "L'adversaire est obligatoire"
 	}
 }
