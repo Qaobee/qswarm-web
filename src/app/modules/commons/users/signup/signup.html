@@ -194,7 +194,7 @@
                 	<div class="row">
                     	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     	<div class="col m6 s12">
-                    		<h6>Nous allons maintenant vous aider à choisir votre club</h6>
+                    		<h6>{{'structureSection.line1' | translate}}</h6>
                     	</div>
                     	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
@@ -203,7 +203,7 @@
 	                    <div class="row">
 	                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
 	                    	<div class="input-field col m3 s12">
-	                            <label>Ville de votre club</label>
+	                            <label>{{'structureSection.label.userStructureCity' | translate}}</label>
 	                        </div>
 	                        <div class="input-field col m3 s12">
 	                            <input type="text" id="userStructureCity" ng-autocomplete ng-model="structureCity" details="signup.detailsStructureCity" options="optionsStructureCity" placeholder="" ng-change="resetStructure()" />
@@ -226,7 +226,7 @@
 		               		<div class="row">
 		                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
 		                        <div class="input-field col m6 s12">
-		                            <label>Choix du club :</label>
+		                            <label>{{'structureSection.label.userStructureSelect' | translate}}</label>
 		                       </div>
 		                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
 		                    </div>
@@ -251,7 +251,7 @@
 		                    <div class="row">
 		                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
 		                        <div class="input-field col m6 s12">
-		                        	<span class="title red-text text-lighten-1">Votre club n'a pas été trouvé ? Vous pouvez le créer <a ng-click="applyChangeStructure('new')">ici</a></span>
+		                        	<span class="title red-text text-lighten-1">{{'structureSection.label.structureCreateLink' | translate}} <a ng-click="applyChangeStructure('new')">{{'structureSection.label.hereLink' | translate}}</a></span>
 		                        </div>
 		                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
 		                    </div>
@@ -277,7 +277,7 @@
 	                    <div class="row">    
 	                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
 	                        <div class="col m6 s12"><span class="title red-text text-lighten-1">
-		                        Revenir à la recherche d'un club <a ng-click="applyChangeStructure('')">ici</a></span>
+		                        {{'structureSection.label.structureFindLink' | translate}} <a ng-click="applyChangeStructure('')">{{'structureSection.label.hereLink' | translate}}</a></span>
 		                    </div>
 	                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
 	                    </div>

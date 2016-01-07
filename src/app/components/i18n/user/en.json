@@ -70,18 +70,18 @@
 	    }
 	},
 	"structureSection" : {
-		"line1" : "Veuillez indiquer la ville pour retrouver votre club.",
-		"line2" : "Nous recherchons les clubs à partir de la ville et du code postal. Si votre club n'apparaît pas dans la liste, il vous est possible de le créer !",
+		"line1" : "Nous allons maintenant vous aider à choisir votre club.",
 		
 		"label" : {
 			"userSignupStructureSection" : "Choix du club",
-	        "userStructureCity" : "Ville du club",
-	        "userZipcode" : "Zipcode",
-	        "userStructureName" : "Nom du club",
+	        "userStructureCity" : "Ville de votre club",
+	        "userStructureSelect" : "Choix du club",
 	        "userStructureChoiceLabel" : "Nom",
 	        "userStructureChoiceAddress" : "Adresse",
-	        "userStructureChoiceCity" : "Ville",
-	        "userCategoryAge" : "Catégorie d'âge"
+	        "userCategoryAge" : "Catégorie d'âge",
+	        "structureCreateLink" : "Votre club n'a pas été trouvé ? Vous pouvez le créer",
+	        "structureFindLink" : "Revenir à la recherche d'un club",
+	        "hereLink" : "ici"
 	    }, 
 	    "list" : {
 	    	"empty" : "No data found",
