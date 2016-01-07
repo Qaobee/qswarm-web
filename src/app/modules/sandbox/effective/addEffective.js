@@ -37,7 +37,7 @@
      * @class qaobee.modules.sandbox.effective.AddEffectiveControler
      * @description Main controller for view addEffective.html
      */
-        .controller('AddEffectiveControler', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
+        .controller('AddEffectiveControler', function ($log, $scope, $window, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
                                                         activityCfgRestAPI, effectiveRestAPI, personRestAPI, userRestAPI) {
 
         $translatePartialLoader.addPart('commons');
@@ -54,6 +54,10 @@
         $scope.selectedPlayers = []; 
         
         $scope.addEffectiveTitle = true;
+        // return button
+        $scope.doTheBack = function() {
+            $window.history.back();
+        };
         
         /* Retrieve list of categoryAge */
         $scope.getListCategoryAge = function () {
