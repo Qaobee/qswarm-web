@@ -51,6 +51,12 @@
             
             $scope.temp = {};
             $scope.temp.detailsCountry = {};
+            
+            $scope.temp.structureVilleOK = false;
+            $scope.temp.structureSelectOK = false;
+            $scope.temp.structureSearch = false;
+            $scope.temp.message = '';
+            
             $scope.temp.createStructure = false;
             $scope.temp.referencialId = -1;
             
@@ -82,7 +88,6 @@
                 $scope.formatDate = $filter('translate')('commons.format.date.label');
                 $scope.formatDateSubmit = $filter('translate')('commons.format.date.pattern');
         
-            $log.debug('label', $scope.weekdaysLetter);
                 $inputDate = $('#signupBirthdate').pickadate({
                     format: $scope.formatDate,
                     formatSubmit: $scope.formatDateSubmit,
@@ -111,10 +116,8 @@
                     }
                     $scope.signup.categoryAge = '';
                     
-                    $scope.valuesStructures = [{
-                    	'_id': -1, 
-                    	label: $filter('translate')('structureSection.list.empty'),
-                    	address: ''}];
+                    $scope.temp.message=$filter('translate')('structureSection.list.empty');
+                    $scope.valuesStructures = [];
                     
                     // Déclaration du user en mode connecté
                     $window.sessionStorage.qaobeesession = data.account.token;
@@ -202,22 +205,26 @@
                 types: '(cities)'
             };
             $scope.detailsCity = '';
+            
+            // options pour ville nouvelle structure
+            $scope.optionsNewStructureCity = {
+                types: 'geocode'
+            };
 
             $scope.optionsAdr = null;
             $scope.detailsAdr = '';
 
             // Change city name and reset structure
             $scope.resetStructure = function() {
-            	$scope.valuesStructures = [{
-                    _id: -1,
-                    label: $filter('translate')('structureSection.list.empty'),
-                    address: ''
-                }];
+            	$scope.temp.message=$filter('translate')('structureSection.list.empty');
+                $scope.valuesStructures = [];
+            	
                 $scope.isStructureCityChanged = false;
                 $scope.isStructureReload = true;
                 $scope.temp.zipcode = '';
                 $scope.temp.referencialId = -1;
-                $scope.temp = {};
+                $scope.temp.structureVilleOK = false;
+                $scope.temp.structureSelectOK = false;
                 $scope.newStructure = {};
             }
             
@@ -229,6 +236,43 @@
             	//place_changed
             	$scope.loadStructures();
             });
+            
+            // Surveillance de la modification du retour de l'API Google sur l'adresse
+            $scope.$watch('signup.detailsNewStructureCity', function(newValue, oldValue) {
+            	if(angular.isUndefined(newValue) || newValue==='' || angular.equals({}, newValue)) {
+            		return;
+            	}
+            	$scope.newStructure.address = {};
+            	
+            	//place_changed
+            	angular.forEach(newValue.address_components, function (item) {
+            		if (item.types.count('postal_code') > 0) {
+            			$scope.newStructure.address.zipcode = item.long_name;
+            		}
+            		if (item.types.count('country') > 0) {
+            			$scope.newStructure.address.country = {}
+            			$scope.newStructure.address.country.label  = item.long_name;
+            			$scope.newStructure.address.country.alpha2 = item.short_name;
+            		}
+            		if (item.types.count('locality') > 0) {
+            			$scope.newStructure.address.city = item.long_name;
+            		}
+            		if (item.types.count('route') > 0) {
+            			if(angular.isUndefined($scope.newStructure.address.place)) {
+            				$scope.newStructure.address.place = item.long_name;
+            			} else {
+            				$scope.newStructure.address.place = $scope.newStructure.address.place + ' ' + item.long_name;
+            			}
+            		}
+            		if (item.types.count('street_number') > 0) {
+            			if(angular.isUndefined($scope.newStructure.address.place)) {
+            				$scope.newStructure.address.place = item.long_name;
+            			} else {
+            				$scope.newStructure.address.zipcode = item.long_name + ' ' + $scope.newStructure.address.place;
+            			}
+            		}
+            	});
+            });
 
             // Update structure list
             $scope.loadStructures = function () {
@@ -236,11 +280,7 @@
                     $scope.isStructureReload = false;
                     
                     // Recherche en cours...
-                    $scope.valuesStructures = [{
-                        _id: -1,
-                        label: $filter('translate')('structureSection.list.inProgress'),
-                        address: ''
-                    }];
+                    $scope.temp.structureSearch = true;
                     
                     // Recherche des infos complémentaires de la ville à partir des coordonnées Lat/Lng
                     var cityLocation = $scope.signup.detailsStructureCity.geometry.location;
@@ -298,11 +338,8 @@
                             $scope.structure2 = "";
                             $scope.temp.s = {};
                             if (data.status === false) {
-                                $scope.valuesStructures = [{
-                                    _id: -2,
-                                    label: $filter('translate')('structureSection.list.empty'),
-                                    address: ''
-                                }];
+                            	$scope.temp.message=$filter('translate')('structureSection.list.empty');
+                                $scope.valuesStructures = [];
                             } else {
                                 if (data.length > 0) {
                                     $scope.structuresResult = data;
@@ -313,24 +350,21 @@
                                         $scope.valuesStructures.push({
                                             _id: i._id,
                                             label: i.label,
-                                            address: ' (' +i.address.place + ' - ' + i.address.zipcode + ' ' + i.address.city + ')'
+                                            address: i.address
                                         });
                                     });
+                                    $scope.temp.message='';
                                 } else {
-                                    $scope.valuesStructures = [{
-                                        _id: -3,
-                                        label: $filter('translate')('structureSection.list.empty'),
-                                        address: ''
-                                    }];
+                                	$scope.temp.message=$filter('translate')('structureSection.list.empty');
+                                    $scope.valuesStructures = [];
                                 }
                             }
-                            $scope.valuesStructures.push({
-                                _id: 'new',
-                                label: '-- ' + $filter('translate')('structureSection.list.create'),
-                                address: ''
-                            });
+                            
+                            $scope.temp.structureSearch = false;
+                            $scope.temp.structureVilleOK = true;
+                            
                         }).error(function (data) {
-                        	
+                        	$scope.temp.structureSearch = false;
                         });
                     	
                     });
@@ -339,31 +373,24 @@
             };
 
             // Puts structure selected in a hidden input 
-            $scope.applyChangeStructure = function () {
-                $scope.structure.referencialId = $window.document.getElementById('userStructureSelect').value;
-                $scope.temp.referencialId = $scope.structure.referencialId;
-                
-                if($scope.structure.referencialId==='new') {
+            $scope.applyChangeStructure = function (value) {
+            	if(!angular.isUndefined(value)) {
+            		$scope.temp.referencialId = value;
+            	}
+            	
+                if($scope.temp.referencialId==='new') {
                 	$scope.temp.createStructure = true;
                 	$scope.newStructure.label = '';
-                	$scope.newStructure.address.place = '';
-                	$scope.newStructure.address.zipcode = $scope.temp.zipcode;
-                	$scope.newStructure.address.city = $scope.temp.city;
-                	$scope.newStructure.country = {};
-                	$scope.newStructure.country.label = $scope.temp.country;
-                	$scope.newStructure.country.alpha2 = $scope.temp.countryAlpha2;
+                	$scope.newStructure.address = {};
+                	$scope.resetStructure();
+                	$scope.temp.structureSelectOK = true;
                 } else {
                 	$scope.temp.createStructure = false;
 	                if(!angular.isUndefined($scope.structuresResult)) {
 		                $scope.structuresResult.forEach(function(item) {
-		                	if(item._id===$scope.structure.referencialId) {
-		                		$scope.temp.structure = {}
-		                		$scope.temp.structure._id = item._id;
-		                		$scope.temp.structure.label = item.label;
-		                		$scope.temp.structure.address = {};
-		                		$scope.temp.structure.address.place = item.address.place;
-		                		$scope.temp.structure.address.zipcode = item.address.zipcode;
-		                		$scope.temp.structure.address.city = item.address.city;
+		                	if(item._id===$scope.temp.referencialId) {
+		                		$scope.temp.structure = item;
+		                		$scope.temp.structureSelectOK = true;
 		                	}
 		                });
 	                }
@@ -373,25 +400,29 @@
             /* Validate structureSection */
             $scope.validateStructureSection = function () {
                 var validateOk = true;
-
-                if (angular.isUndefined($scope.structure2) || $scope.structure2 < 0) {
-                    toastr.warning($filter('translate')('structureSection.ph.structureMandatory'));
-                    validateOk = false;
+                
+                if (!$scope.temp.createStructure) {
+                	if (angular.isUndefined($scope.temp.structure) || $scope.temp.structure._id < 0) {
+                		toastr.warning($filter('translate')('structureSection.ph.structureMandatory'));
+                		validateOk = false;
+                	}
                 }
 
                 if ($scope.temp.createStructure) {
                 	if(angular.isUndefined($scope.newStructure.label) || $scope.newStructure.label===null || $scope.newStructure.label==='') {
                 		toastr.warning($filter('translate')('structureSection.ph.createLabelMandatory'));
                         validateOk = false;
+                	} else {
+                		$scope.newStructure.label = angular.uppercase($scope.newStructure.label);
                 	}
                 	if(angular.isUndefined($scope.newStructure.address.place) || $scope.newStructure.address.place===null || $scope.newStructure.address.place==='') {
-                		toastr.warning($filter('translate')('structureSection.ph.createAddressMandatory'));
+                		toastr.warning($filter('translate')('structureSection.ph.createAddressPlaceMandatory'));
                         validateOk = false;
                 	}
                 }
                 
                 if($scope.signup.categoryAge===null || $scope.signup.categoryAge==='') {
-                	toastr.warning('category age nécessaire');
+                	toastr.warning($filter('translate')('structureSection.ph.categoryAgeMandatory'));
                     validateOk = false;
                 }
                 

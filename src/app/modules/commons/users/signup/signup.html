@@ -194,84 +194,107 @@
                 	<div class="row">
                     	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     	<div class="col m6 s12">
-                    		<h6>{{'structureSection.line1' | translate}}</h6>
-                    		<h6>{{'structureSection.line2' | translate}}</h6>
+                    		<h6>Nous allons maintenant vous aider à choisir votre club</h6>
                     	</div>
                     	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
                     
-                    <div class="row">
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="input-field col m3 s12">
-                            <input type="text" id="userStructureCity" ng-autocomplete ng-model="structureCity" details="signup.detailsStructureCity" options="optionsStructureCity" placeholder="" ng-change="resetStructure()" />
-                            <label for="userStructureCity">{{'structureSection.label.userStructureCity' | translate }}  <span class="red-text text-lighten-1">*</span></label>
-                        </div>
-                        <div class="input-field col m3 s12">
-                        	<input type="text" id="userStructureZipCode" ng-model="temp.zipcode" disabled="disabled"/>
-                            <label for="userStructureZipCode">{{'structureSection.label.userZipcode' | translate }}</label>
-                        </div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="input-field col s3">
-                            <label>{{'structureSection.label.userStructureName' | translate }} <span class="red-text text-lighten-1">*</span></label>
-                       </div>
-                        <div class="input-field col s3">
-                            <select name="userStructureSelect" ng-model="structure" id="userStructureSelect" class="browser-default blue-grey-text text-darken-1"
-                            	ng-options="struct.labelAddress as (struct.label + struct.address) for struct in valuesStructures track by struct._id" ng-click="applyChangeStructure()">
-                            	<option></option>
-                            </select>
-                            <input type="hidden" ng-model="structure.referencialId" value="-1" />
-                        </div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                    
-                    
                     <div class="row" ng-if="!temp.createStructure">
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="col input-field m3 s6"><label>{{'structureSection.label.userStructureChoiceLabel' | translate}}</label></div>
-                        <div class="col m3 s6">{{temp.structure.label}}&nbsp;</div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                   </div>
-                   <div class="row" ng-if="!temp.createStructure">
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="col input-field m3 s6"><label>{{'structureSection.label.userStructureChoiceAddress' | translate}}</label></div>
-                        <div class="col m3 s6">{{temp.structure.address.place}}&nbsp;</div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                   </div>
-                   <div class="row" ng-if="!temp.createStructure">
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="col input-field m3 s6"><label>{{'structureSection.label.userStructureChoiceCity' | translate}}</label></div>
-                        <div class="col m3 s6">{{temp.structure.address.zipcode}} {{temp.structure.address.city}}&nbsp;</div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                    
-                    
-                    <div class="row" ng-if="temp.createStructure">
-                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="col input-field m3 s6"><label>{{'structureSection.label.userStructureChoiceLabel' | translate}}  <span class="red-text text-lighten-1">*</span></label></div>
-                        <div class="input-field col m3 s6"><input type="text" id="userStructureLabel" class="validate" ng-model="newStructure.label"></div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                    <div class="row" ng-if="temp.createStructure">    
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="col input-field m3 s6"><label>{{'structureSection.label.userStructureChoiceAddress' | translate}}  <span class="red-text text-lighten-1">*</span></label></div>
-                        <div class="input-field col m3 s6"><input type="text" id="userStructurePlace" class="validate" ng-model="newStructure.address.place"></div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
+	                    <div class="row">
+	                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
+	                    	<div class="input-field col m3 s12">
+	                            <label>Ville de votre club</label>
+	                        </div>
+	                        <div class="input-field col m3 s12">
+	                            <input type="text" id="userStructureCity" ng-autocomplete ng-model="structureCity" details="signup.detailsStructureCity" options="optionsStructureCity" placeholder="" ng-change="resetStructure()" />
+	                        </div>
+	                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+	                    </div>
+	                    
+	                    <div class="row" ng-if="temp.structureSearch">
+	                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
+	                    	<div class="input-field col m3 s12">
+			                    <div class="progress">
+							    	<div class="indeterminate"></div>
+							  	</div>
+							</div>
+							<div class="col m3 hide-on-med-and-down">&nbsp;</div>
+						</div>
+	                    
+		               	<div ng-if="temp.structureVilleOK">
+		               	
+		               		<div class="row">
+		                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+		                        <div class="input-field col m6 s12">
+		                            <label>Choix du club :</label>
+		                       </div>
+		                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+		                    </div>
+		                    
+		                    <div class="row">
+		                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+		                        <div class="input-field col m6 s12">
+		                        	<div class="col s12" ng-repeat="struct in valuesStructures track by $index">
+		   								<input class="with-gap" type="radio"
+		                                   	id="structure.{{struct._id}}" value="{{struct._id}}"
+		                                    	ng-model="temp.referencialId" required ng-change="applyChangeStructure()"/>
+		   								<label for="structure.{{struct._id}}">
+		                       				<span class="title red-text text-lighten-1">{{struct.label}}</span><br>
+				                        	<span>{{struct.address.place}}<br>
+				                        	{{struct.address.zipcode}} {{struct.address.city}}</span>
+				                        </label>
+		                        	</div>
+		                        	<div class="col s12"><span class="title red-text text-lighten-1">{{temp.message}}</span></div>
+					            </div>
+		                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+		                    </div>
+		                    <div class="row">
+		                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+		                        <div class="input-field col m6 s12">
+		                        	<span class="title red-text text-lighten-1">Votre club n'a pas été trouvé ? Vous pouvez le créer <a ng-click="applyChangeStructure('new')">ici</a></span>
+		                        </div>
+		                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+		                    </div>
+		               	</div>
+		            </div>
+	                
+	                
+	                <div ng-if="temp.createStructure">    
+	                    <div class="row">
+	                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
+	                        <div class="col input-field m3 s6"><label>{{'structureSection.label.userStructureChoiceLabel' | translate}}  <span class="red-text text-lighten-1">*</span></label></div>
+	                        <div class="input-field col m3 s6"><input type="text" id="userStructureLabel" class="validate" ng-model="newStructure.label"></div>
+	                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+	                    </div>
+	                    <div class="row">    
+	                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+	                        <div class="col input-field m3 s6"><label>{{'structureSection.label.userStructureChoiceAddress' | translate}}  <span class="red-text text-lighten-1">*</span></label></div>
+	                        <div class="input-field col m3 s6">
+	                        	<input type="text" id="userNewStructureCity" ng-autocomplete ng-model="temp.newStructure" details="signup.detailsNewStructureCity" options="optionsNewStructureCity" placeholder="" />
+	                        </div>
+	                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+	                    </div>
+	                    <div class="row">    
+	                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+	                        <div class="col m6 s12"><span class="title red-text text-lighten-1">
+		                        Revenir à la recherche d'un club <a ng-click="applyChangeStructure('')">ici</a></span>
+		                    </div>
+	                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+	                    </div>
+	                </div>
      
-                    <div class="row" ng-show="!(temp.referencialId < 0) || temp.referencialId=='new'">
-                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    	<div class="col input-field m3 s6"><label>{{'structureSection.label.userCategoryAge' | translate}} <span class="red-text text-lighten-1">*</span></label></div>
-                    	<div class="input-field col s3">
-                            <select name="categoryAgeSelect" ng-model="signup.categoryAge" id="userCategoryAgeSelect" class="browser-default blue-grey-text text-darken-1"
-                            	ng-options="cat.label for cat in valuesCategoryAge track by cat._id">
-                            </select>
-                        </div>
-                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
+     				<div ng-if="temp.structureSelectOK">
+	                    <div class="row">
+	                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
+	                    	<div class="col input-field m3 s6"><label>{{'structureSection.label.userCategoryAge' | translate}} <span class="red-text text-lighten-1">*</span></label></div>
+	                    	<div class="input-field col s3">
+	                            <select name="categoryAgeSelect" ng-model="signup.categoryAge" id="userCategoryAgeSelect" class="browser-default blue-grey-text text-darken-1"
+	                            	ng-options="cat.label for cat in valuesCategoryAge track by cat._id">
+	                            </select>
+	                        </div>
+	                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
+	                    </div>
+	                </div>
                     
                     <!-- actions buttons -->
                     <div class="row">&nbsp;</div>
