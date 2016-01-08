@@ -141,8 +141,7 @@
                 $scope.currentEvent = $scope.events[$scope.indexEvent];
                 if(angular.isDefined($scope.currentEvent.address)) {
                     $scope.mapShow = true;
-                }  
-                $log.debug($scope.currentEvent);
+                }
             }
         };
         

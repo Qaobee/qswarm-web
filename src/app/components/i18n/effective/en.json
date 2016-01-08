@@ -71,7 +71,7 @@
         "playerGenderF": "Female" ,
         "playerBirthdate": "Birthdate" ,
         "playerBirthCity": "BirthCity" ,
-        "playerNationality": "Nationality" ,
+        "playerNationality": "Born in" ,
 
         "playerCaracterSection": "Player characteristics",
         "playerPositionType": "Position" ,

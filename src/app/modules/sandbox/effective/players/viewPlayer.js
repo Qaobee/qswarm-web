@@ -48,6 +48,8 @@
         $scope.user = user;
         $scope.meta = meta;
         $scope.player = {};
+        $scope.mapShow = false;
+        $scope.googleMapsUrl="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlpuzARWjEPGHgnfsZEgBUgDZXPNcMu0A";
         
         // return button
         $scope.doTheBack = function() {
@@ -57,7 +59,6 @@
         /* get person */
         $scope.getPerson = function () {
             personRestAPI.getPerson($scope.playerId).success(function (person) {
-                $log.debug(person);
                 $scope.player = person;
 
                 if (angular.isDefined($scope.player.status.positionType)) {
@@ -70,6 +71,10 @@
                     $scope.player.stateForm = $filter('translate')('stats.stateForm.value.' + $scope.player.status.stateForm);
                 } else {
                     $scope.player.stateForm = '';
+                }
+                
+                if(angular.isDefined($scope.player.address)) {
+                    $scope.mapShow = true;
                 }
 
                 //$scope.player.birthdate = $filter('date')($scope.player.birthdate, 'yyyy');

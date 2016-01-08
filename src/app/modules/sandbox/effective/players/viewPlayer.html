@@ -1,68 +1,98 @@
 <div class="container">
 <!-- body start-->
-    <div class="row"> <div class="col s10"></div></div>   
+    <div class="row"></div>
+    
+    <!-- Entete -->
+    <div class="row">
+        <div class="col s12">
+            <div class="row blue-grey darken-2 white-text center">
+                <div class="col m3 s12 center">
+                    <avatar person="player" width="'100px'"></avatar>
+                </div>
+                <div class="col m7 s12">
+                    <br/>
+                    <h4>{{player.firstname}} {{player.name}}</h4>
+                    <h6>{{player.positionType}}</h6>
+                </div>
+                <div class="col m2 s12">
+                    <br/>
+                    <h4># {{player.status.squadnumber}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- action bar -->
-    <div class="row">
+    <div class="row card">
         <!--card-->
         <div class="col m12 s12 animated fadeInUp" style="-webkit-animation-duration:{{$index * 100}}ms">
-            <div class="card white lighten-1">
-                <div class="card-content center-align">
+            <div class="card-content white">
+                <div class="center-align blue-grey-text text-darken-2">
                     <div class="row">
                         <div class="col m4 s12">
-                            <div class="card-title red-text text-lighten-1"><h5>{{player.firstname}} {{player.name}}</h5></div>
-                            <avatar person="player" width="'150px'"></avatar>
-                            <div class="blue-grey-text text-darken-2"><h4># {{player.status.squadnumber}}</h4></div>
+                            <div class="left-align"><h5>{{'playerLabels.playerCivilSection' | translate }}</h5></div>
+                            <div class="divider red lighten-1"></div>
+                            <div>&nbsp;</div>
+                            <div class="left-align">{{player.age}} {{'commons.format.ageYear' | translate }}</div>
+                            <div>&nbsp;</div>
+                            <div class="left-align" ng-show="{{player.nationality !== null}}">{{'playerLabels.playerNationality' | translate }} {{player.nationality}}</div>
+                            <div>&nbsp;</div>
+                            <div class="left-align" ng-show="{{player.birthCity !== null}}">{{'playerLabels.playerBirthCity' | translate }} {{player.birthCity}}</div>
+                            <div>&nbsp;</div>
                         </div>
-                        <div class="col m1 hide-on-small-only">&nbsp;</div>
-                        <div class="col m3 s12">
-                            <div class="row blue-grey-text text-darken-2 left-align"><h5>{{'playerLabels.playerCivilSection' | translate }}</h5></div>
-                            <div class="row"><div class="divider red lighten-1"></div></div>
-                            <div class="row blue-grey-text text-darken-2 left-align">{{player.age}} {{'commons.format.ageYear' | translate }} - {{player.nationality}}</div>
+                        <div class="col m4 s12 grey lighten-4">
+                            <div class="left-align"><h5>{{'playerLabels.playerCaracterSection' | translate }}</h5></div>
+                            <div class="divider red lighten-1"></div> 
+                            <div>&nbsp;</div>
+                            <div class="left-align">{{'playerLabels.playerWeight' | translate }} : {{player.status.weight}}</div>
+                            <div>&nbsp;</div>
+                            <div class="left-align">{{'playerLabels.playerHeight' | translate }} : {{player.status.height}}</div>
+                            <div>&nbsp;</div>
+                            <div class="left-align">{{'playerLabels.playerLaterality' | translate }} : {{player.status.laterality}}</div>
+                            <div>&nbsp;</div>
+                            <div class="left-align">{{'playerLabels.playerPositionType' | translate }} : {{player.positionType}}</div>
+                            <div>&nbsp;</div>
                         </div>
-                        <div class="col m1 hide-on-small-only">&nbsp;</div>
-                        <div class="col m3 s12">
-                            <div class="row blue-grey-text text-darken-2 left-align"><h5>{{'playerLabels.playerCaracterSection' | translate }}</h5></div>
-                            <div class="row"><div class="divider red lighten-1"></div></div>                            
-                            <div class="row blue-grey-text text-darken-2 left-align">{{'playerLabels.playerWeight' | translate }} : {{player.status.weight}}</div>
-                            <div class="row blue-grey-text text-darken-2 left-align">{{'playerLabels.playerHeight' | translate }} : {{player.status.height}}</div>
-                            <div class="row blue-grey-text text-darken-2 left-align">{{'playerLabels.playerLaterality' | translate }} : {{player.status.laterality}}</div>
-                            <div class="row blue-grey-text text-darken-2 left-align">{{'playerLabels.playerPositionType' | translate }} : {{player.positionType}}</div>
-                        </div> 
+                        <div class="col m4 s12">
+                            <div class="center-align"><h5>{{'playerLabels.playerContactSection' | translate }}</h5></div>
+                            <div class="divider red lighten-1"></div>
+                            <div>&nbsp;</div>
+                            <div class="left-align"><a href="mailto:{{player.contact.email}}" class="red-text text-lighten-1"><i class="material-icons">mail</i> {{player.contact.email}}</a></div>
+                            <div>&nbsp;</div>
+                            <div class="left-align"><i class="material-icons">phone</i> {{player.contact.home}}</div>
+                            <div>&nbsp;</div>
+                            <div class="left-align"><i class="material-icons">smartphone</i> {{player.contact.cellphone}}</div>
+                            <div>&nbsp;</div>
+                        </div>
                     </div>
                 </div>
-                    
-                <div class="row m12 s12"><div class="divider red lighten-1"></div></div>
-                <div class="row">
-                    <div class="col m4 s12 center-align">
+                
+                <div class="row blue-grey darken-2">
+                    <div class="col s4 center-align">
                         <a href="" ng-click="doTheBack()">
-                            <i class="material-icons red-text text-lighten-1 small tooltipped"  
+                            <i class="white-text material-icons small tooltipped"  
                                data-position="top" data-delay="20" data-tooltip="{{'viewPlayer.buttons.returnViewPlayer' | translate }}">undo</i>
                         </a>
                     </div>
-                    <div class="col m4 s12 center-align">
+                    <div class="col s4 center-align">
                         <a href="#/private/updatePlayer/{{player._id}}">
-                            <i class="red-text text-lighten-1 small material-icons tooltipped" 
+                            <i class="white-text material-icons small tooltipped" 
                             data-position="top" data-delay="20" data-tooltip="{{'viewPlayer.buttons.updatePlayer' | translate }}">mode_edit</i>
                         </a>
                     </div>
-                    <div class="col m4 s12 center-align">
+                    <div class="col s4 center-align">
                         <a href="#/private/playerStats/{{player._id}}">
-                            <i class="red-text text-lighten-1 small fa fa-bar-chart tooltipped" 
+                            <i class="white-text small fa fa-bar-chart tooltipped" 
                             data-position="top" data-delay="20" data-tooltip="{{'viewPlayer.buttons.viewStatsPlayer' | translate }}"></i>
                         </a>
                     </div>
                 </div>
-                    
-                <div class="row blue-grey darken-2 white-text center-align">
-                    <div class="col m12 s12"><h5>{{'playerLabels.playerContactSection' | translate }}</h5></div>
+                <div class="blue-grey-text text-darken-2 left-align" ng-show="mapShow">
+                    <h6><i class="material-icons">home</i> {{player.address.formatedAddress}}</h6>
                 </div>
-                <div class="row m12 s12 center-align">
-                    <div class="col m3 s12"><i class="material-icons">mail</i> <br/> {{player.contact.email}}</div>
-                    <div class="col m3 s12"><i class="material-icons">phone</i> <br/> {{player.contact.home}}</div>
-                    <div class="col m3 s12"><i class="material-icons">smartphone</i> <br/> {{player.contact.cellphone}}</div>
-                    <div class="col m3 s12"><i class="material-icons">home</i> <br/> {{player.address.formatedAddress}}</div>
-                </div>
+                <ng-map center="{{player.address.lat}},{{player.address.lng}}" zoom="16" ng-if="mapShow">
+                </ng-map>
+                
             </div>
         </div>
     </div>
