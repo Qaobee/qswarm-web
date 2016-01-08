@@ -37,7 +37,7 @@
      * @class qaobee.modules.sandbox.effective.UpdateEffectiveControler
      * @description Main controller for view updateEffective.html
      */
-        .controller('UpdateEffectiveControler', function ($log, $scope, $routeParams, $http, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
+        .controller('UpdateEffectiveControler', function ($log, $window, $scope, $routeParams, $http, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
                                                            activityCfgRestAPI, effectiveRestAPI, personRestAPI, userRestAPI) {
 
         $translatePartialLoader.addPart('commons');
@@ -46,6 +46,11 @@
 
         $scope.effectiveId = $routeParams.effectiveId;
         $scope.addEffectiveTitle = false;
+        
+        // return button
+        $scope.doTheBack = function() {
+            $window.history.back();
+        };
         
         $scope.user = user;
         $scope.meta = meta;

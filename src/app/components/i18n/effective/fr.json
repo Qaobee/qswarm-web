@@ -38,7 +38,11 @@
         "effectiveTabPlayerColPlayer":"Joueur",
         "effectiveTabPlayerColPosition":"Poste"
     },
-    
+    "effectiveErrors": {
+        "Label": "Le libellé de l'effectif est obligatoire",
+        "LabelTooShort": "Le libellé est trop court",
+        "CategoryAge": "La catégorie d'âge de l'effectif est obligatoire"
+    },
     "addPlayer": {
         "title": "Ajout d'un joueur",
         "toastSuccess":"{{firstname}} {{name}} a été ajouté à l'effectif {{effective}}",
@@ -84,8 +88,15 @@
         "playerTelMobile": "Mobile",
         "playerTelHome": "Maison",
         "playerAddress": "Adresse",
-        "playerMail": "Email",
-        "emailDirty": "Format email invalide"
+        "playerMail": "Email"
+    },
+    "playerErrors": {
+        "Firstname": "Le prénom du joueur est obligatoire",
+        "Name": "Le nom du joueur est obligatoire",
+        "BirthDate": "La date de naissance est obligatoire",
+        "Gender": "Le genre est obligatoire",
+        "emailDirty": "Format email invalide",
+        "PositionType": "La poste du joueur est obligatoire"
     },
     
     "addTeam": {

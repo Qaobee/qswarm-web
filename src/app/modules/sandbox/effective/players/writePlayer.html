@@ -29,12 +29,15 @@
             <!-- step etat civil -->
             <wz-step title="{{'playerLabels.playerCivilSection' | translate }}" template="app/components/directives/wizard/step.html">
                 <div class="col s12">
-                    <form novalidate name="playerCivilSection">
+                    <form name="playerCivilSection">
                         <div class="row">
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
                             <div class="col s12 m4">
                                 <div class="input-field row">
-                                  <input ng-model="player.firstname" id="playerFirstname" type="text" class="validate" required />
+                                    <input ng-model="player.firstname" name="playerFirstname" type="text" class="validate" required 
+                                         ng-class="{ 'has-error' : playerCivilSection.playerFirstname.$invalid && !playerCivilSection.playerFirstname.$pristine }">
+                                    <span class="small red-text text-lighten-1"
+                                        ng-show="playerCivilSection.playerFirstname.$invalid && !playerCivilSection.playerFirstname.$pristine" translate="playerErrors.Firstname"></span>
                                   <label class="active" for="playerFirstname">{{'playerLabels.playerFirstname' | translate }} <span class="red-text text-lighten-1">*</span></label>
                                 </div>
                             </div>
@@ -43,7 +46,10 @@
                             
                             <div class="col s12 m4">
                                 <div class="input-field row">
-                                  <input ng-model="player.name" id="playerName" type="text" class="validate form-control" required />
+                                  <input ng-model="player.name" name="playerName" type="text" class="validate form-control" required 
+                                         ng-class="{ 'has-error' : playerCivilSection.playerName.$invalid && !playerCivilSection.playerName.$pristine }">
+                                    <span class="small red-text text-lighten-1"
+                                        ng-show="playerCivilSection.playerName.$invalid && !playerCivilSection.playerName.$pristine" translate="playerErrors.Name"></span>
                                   <label class="active" for="playerName">{{'playerLabels.playerName' | translate }} <span class="red-text text-lighten-1">*</span></label>
                                 </div>
                             </div>
@@ -55,9 +61,12 @@
                             <div class="col s12 m4">
                                 <div class="row">
                                     <div class="input-field">
-                                        <input id="playerBirthdate" class="datepicker" name="playerBirthdate" type="text" ng-model="player.birthdate" required/>
+                                        <input id="playerBirthdate" class="datepicker" name="playerBirthdate" type="text" ng-model="player.birthdate" required
+                                        ng-class="{ 'has-error' : playerCivilSection.playerBirthdate.$invalid && !playerCivilSection.playerBirthdate.$pristine }"/>
                                         <label>{{'playerLabels.playerBirthdate' | translate }} <span class="red-text text-lighten-1">*</span></label>
                                     </div>
+                                    <div class="small red-text text-lighten-1"
+                                        ng-show="playerCivilSection.playerBirthdate.$invalid && !playerCivilSection.playerBirthdate.$pristine" translate="playerErrors.BirthDate"></div>
                                 </div>
                             </div>
                             
@@ -72,7 +81,7 @@
                                     <input type="email" name="email" class="validate" ng-model="player.contact.email" 
                                            ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" ng-class="{ 'invalid': playerCivilSection.email.$invalid }">
                                     <span ng-class="{'has-error': playerCivilSection.email.$dirty}" class="small red-text text-lighten-1"
-                                        ng-hide="playerCivilSection.email.$valid" translate="playerLabels.emailDirty"></span>
+                                        ng-hide="playerCivilSection.email.$valid" translate="playerErrors.emailDirty"></span>
                                 </div>
                             </div>
                             
@@ -96,6 +105,8 @@
                                            ng-model="player.gender" required/>
                                         <label for="playerGenderM">{{'playerLabels.playerGenderM' | translate }}</label>
                                     </div>
+                                    <span class="small red-text text-lighten-1"
+                                        ng-show="playerCivilSection.gender.$invalid && !playerCivilSection.gender.$pristine" translate="playerErrors.Gender"></span>
                                 </div>
                             </div>
                             
@@ -215,7 +226,7 @@
                             <div class="col m3 hide-on-small-only">&nbsp;</div>
                             <div class="col m6 s12 center">
                                 <a href="" class="btn red lighteen-1 white-text" ng-click="doTheBack()">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
-                                <button class="btn white-text blue-grey darken-3" wz-next type="submit" name="next" ng-hide="playerCivilSection.$invalid">{{'commons.buttons.next' | translate }}</button>
+                                <button class="btn white-text blue-grey darken-3" wz-next type="submit" name="next" ng-disabled="playerCivilSection.$invalid">{{'commons.buttons.next' | translate }}</button>
                             </div>
                             <div class="col m3 hide-on-small-only">&nbsp;</div>
                         </div>
@@ -229,11 +240,15 @@
                 <form novalidate name="playerCaracterSection">
                     <div class="row">
                         <div class="col m1 hide-on-small-only">&nbsp;</div>
-                        <div class="input-field col m4 s6">
-                            <label class="active" >{{'playerLabels.playerPositionType' | translate }} <span class="red-text text-lighten-1">*</span></label>
-                            <select class="browser-default" ng-model="player.status.positionType" required id="playerPositionType"
+                        <div class="input-field col m1 s2"><label for="playerPositionType">{{'playerLabels.playerPositionType' | translate }} <span class="red-text text-lighten-1">*</span></label></div>
+                        <div class="input-field col m3 s4">
+                            <select class="browser-default" ng-model="player.status.positionType" required 
+                                         ng-class="{ 'has-error' : playerCaracterSection.playerPositionType.$invalid && !playerCaracterSection.playerPositionType.$pristine }" 
+                                    name="playerPositionType"
                                     ng-options="p.code as p.label for p in positionsType">
                             </select>
+                                    <span class="small red-text text-lighten-1"
+                                        ng-show="playerCaracterSection.playerPositionType.$invalid && !playerCaracterSection.playerPositionType.$pristine" translate="playerErrors.PositionType"></span>
                         </div>
                         
                         <div class="col m2 hide-on-small-only">&nbsp;</div>
@@ -286,7 +301,7 @@
                         <div class="col m6 center-align">
                             <button class="btn red lighteen-1 white-text" ng-click="doTheBack()">{{'commons.buttons.cancel' | translate }}</button>&nbsp;
                             <button class="btn white-text blue-grey darken-3" wz-previous type="submit" name="previous">{{'commons.buttons.previous' | translate }}</button>&nbsp;
-                            <button wz-next class="btn white-text green darken-1" ng-hide="playerCaracterSection.$invalid">{{'commons.buttons.validate' | translate }}</button>
+                            <button wz-next class="btn white-text green darken-1" ng-disabled="playerCaracterSection.$invalid">{{'commons.buttons.validate' | translate }}</button>
                         </div>
                         <div class="col m3">&nbsp;</div>
                     </div>
@@ -295,7 +310,7 @@
                     <div class="row hide-on-large-only center-align">
                         <div class="col s4"><button class="btn red lighteen-1 white-text col s12" ng-click="doTheBack()">{{'commons.buttons.cancel' | translate }}</button></div>
                         <div class="col s4"><button class="btn white-text blue-grey darken-3 col s12" wz-previous type="submit" name="previous">{{'commons.buttons.previous' | translate }}</button></div>
-                        <div class="col s4"><button wz-next class="btn white-text green darken-1 col s12" ng-hide="playerCaracterSection.$invalid">{{'commons.buttons.validate' | translate }}</button></div>
+                        <div class="col s4"><button wz-next class="btn white-text green darken-1 col s12" ng-disabled="playerCaracterSection.$invalid">{{'commons.buttons.validate' | translate }}</button></div>
                     </div>
                 </form>
             </wz-step>

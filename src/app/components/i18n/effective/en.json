@@ -38,7 +38,11 @@
         "effectiveTabPlayerColPlayer":"Player",
         "effectiveTabPlayerColPosition":"Position"
     },
-    
+    "effectiveErrors": {
+        "Label": "Effective label mandatory",
+        "LabelTooShort": "Label is too short",
+        "CategoryAge": "Effective age category mandatory"
+    },
     "addPlayer": {
         "title": "Add a person",
         "toastSuccess":"{{firstname}} {{name}} was added to the effective {{effective}}",
@@ -84,8 +88,15 @@
         "playerTelMobile": "Mobile",
         "playerTelHome": "Home",
         "playerAddress": "Address",
-        "playerMail": "E-mail",
-        "emailDirty": "Email invalid"
+        "playerMail": "E-mail"
+    },
+    "playerErrors": {
+        "Firstname": "Firstname is mandatory",
+        "Name": "Name is mandatory",
+        "BirthDate": "Birthdate is mandatory",
+        "Gender": "Gender is mandatory",
+        "emailDirty": "Mail format invalid",
+        "PositionType": "Position is mandatory"
     },
     
     "addTeam": {
