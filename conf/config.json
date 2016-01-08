@@ -14,5 +14,13 @@
       "useLoaderCache": true,
       "debugEnabled": true
     }
+  },
+  "docker": {
+    "EnvironmentConfig": {
+      "name": "docker",
+      "apiEndPoint": "",
+      "useLoaderCache": true,
+      "debugEnabled": true
+    }
   }
 }

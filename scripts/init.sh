@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 rm -fr node_modules
-rm -fr src/main/resources/web/js/libs/*
+rm -fr bower_components
 npm install
 bower install
-grunt
+gulp serve

@@ -40,11 +40,23 @@ gulp.task('conf-prod', function () {
         .pipe(gulp.dest('./src/app'))
 });
 
+gulp.task('conf-docker', function () {
+    gulp.src('conf/config.json')
+        .pipe(gulpNgConfig('qaobee.config', {
+            environment: 'docker',
+            wrap: true
+        }))
+        .pipe(gulp.dest('./src/app'))
+});
 /**
  *  Default task clean temporaries directories and launch the
  *  main optimization build task
  */
 gulp.task('default', ['clean', 'conf-prod'], function () {
+    gulp.start('build');
+});
+
+gulp.task('docker', ['clean', 'conf-docker'], function () {
     gulp.start('build');
 });
 
