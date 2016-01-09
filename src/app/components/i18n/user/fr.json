@@ -57,6 +57,14 @@
 	    	"phoneNumberMandatory" : "Au moins un numéro de téléphone doit être renseigné"
 	    }
 	},
+    "userErrors": {
+        "Firstname": "Le prénom est obligatoire",
+        "Name": "Le nom est obligatoire",
+        "BirthDate": "La date de naissance est obligatoire",
+        "Gender": "Le genre est obligatoire",
+        "emailDirty": "Format email invalide",
+        "phoneNumberMandatory" : "Au moins un numéro de téléphone doit être renseigné"
+    },
 	"sportSection" : {
 		"line1" : "Veuillez choisir le sport pour lequel vous souhaitez créer votre assistant.",
 		"line2" : "Certains sports ne sont pas encore disponibles, mais cela ne saurait tarder !", 
