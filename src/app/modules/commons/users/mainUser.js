@@ -173,7 +173,8 @@
                 }
 
                 if (validateOk) {
-                	$scope.signup.birthdate = Date.parse($scope.signup.birthdateInput);
+                    var start = moment($scope.signup.birthdateInput,'DD/MM/YYYY');
+                	$scope.signup.birthdate = moment(start).valueOf();
                     WizardHandler.wizard().next();
                 }
             };
