@@ -100,13 +100,15 @@
     },
     
     "addTeam": {
-        "title": "Ajout d'une équipe",
+        "titleHome": "Ajout d'une équipe à l'effectif",
+        "titleAdversary": "Ajout d'un adversaire à l'équipe",
         "toastSuccess":"L'équipe {{label}} a été ajoutée",
         "toastError":"Erreur, l'équipe {{label}} n'a pas été créée"
     },
     
     "updateTeam": {
-        "title": "Modification d'une équipe",
+        "titleHome": "Modification de l'équipe",
+        "titleAdversary": "Modification de l'adversaire",
         "toastSuccess":"L'équipe {{label}} a été modifiée",
         "toastError":"Erreur, l'équipe {{label}} n'a pas été modifiée"
     },
@@ -118,5 +120,9 @@
         "activation":"Activation",
         "status" : "Choisir un statut",
         "teamsAdversary" : "Liste des équipes adverses"
+    },
+    "teamErrors": {
+        "label": "Le libellé de l'équipe est obligatoire",
+        "activation": "Veuillez indiquer si l'équipe est active ou pas"
     }
 }

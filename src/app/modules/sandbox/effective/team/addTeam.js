@@ -11,7 +11,8 @@
      * @copyright <b>QaoBee</b>.
      */
     angular.module('qaobee.addTeam', [
-        /* angular modules*/
+        /* qaobee services */
+        'effectifSRV',
         
         /* qaobee Rest API */
         'teamRestAPI',
@@ -44,18 +45,19 @@
      * @description Main controller for view addTeam.html
      */
         .controller('AddTeamControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                                   userRestAPI, teamRestAPI) {
+                                                   userRestAPI, teamRestAPI, effectiveSrv) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('effective');
         
         $scope.adversary = $routeParams.adversary;
         $scope.teamId = $routeParams.teamId;
-
+        
         $scope.user = user;
         $scope.meta = meta;
         
         $scope.addTeamTitle = true;
+        $scope.currentEffective = {};
         
         // return button
         $scope.doTheBack = function() {
@@ -70,12 +72,18 @@
             enable : true
         };
         
+        /* Retrieve list effective */
+        $scope.getEffective = function () {
+            
+            effectiveSrv.getEffective($scope.user.effectiveDefault).then(function(data){
+                $scope.currentEffective = data;
+            });
+        };          
+        
         
         /* Create a new team */
         $scope.writeTeam = function () {
-            
             $scope.team.adversary = $scope.team.adversary==='true';
-            $scope.team.enable = $scope.team.enable==='true';
             
             if($scope.adversary) {
                 $scope.team.linkTeamId = [];
@@ -97,7 +105,7 @@
         $scope.checkUserConnected = function () {
             
             userRestAPI.getUserById(user._id).success(function (data) {
-
+                $scope.getEffective();
             }).error(function (data) {
                 $log.error('AddTeamControler : User not Connected');
             });

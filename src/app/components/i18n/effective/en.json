@@ -39,9 +39,9 @@
         "effectiveTabPlayerColPosition":"Position"
     },
     "effectiveErrors": {
-        "Label": "Effective label mandatory",
+        "Label": "Effective label is mandatory",
         "LabelTooShort": "Label is too short",
-        "CategoryAge": "Effective age category mandatory"
+        "CategoryAge": "Effective age category is mandatory"
     },
     "addPlayer": {
         "title": "Add a person",
@@ -100,13 +100,15 @@
     },
     
     "addTeam": {
-        "title": "Add Team",
+        "titleHome": "Add team for effective",
+        "titleAdversary": "Add adversary for team ",
         "toastSuccess":"{{label}} was added",
         "toastError":"Error, team {{label}} can't be create"
     },
     
     "updateTeam": {
-        "title": "Update team",
+        "titleHome": "Update team",
+        "titleAdversary": "Update adversary",
         "toastSuccess":"{{label}} was updated",
         "toastError":"Error, the team {{label}} can't be update"
     },
@@ -118,5 +120,9 @@
         "activation":"Activation",
         "status" : "Choice status",
         "teamsAdversary" : "Adversary list"
+    },
+    "teamErrors": {
+        "label": "Team label id mandatory",
+        "activation": "Activate or desactivate team"
     }
 }

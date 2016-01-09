@@ -25,9 +25,7 @@
 
 
         .config(function ($routeProvider, metaDatasProvider) {
-        
-            $('.dropdown-button').dropdown();
-        
+                
             $routeProvider.when('/private/agenda/:effectiveId', {
                 controller: 'MainAgendaControler',
                 resolve: {
@@ -92,7 +90,7 @@
                 $scope.effectives = data.sortBy(function(n) {
                     return n.label; 
                 });
-                
+
                 /* retrieve the current effective */ 
                 data.forEach(function (a) {
                     if(a._id===$scope.effectiveId) {

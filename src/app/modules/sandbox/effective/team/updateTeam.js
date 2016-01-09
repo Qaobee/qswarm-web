@@ -65,7 +65,7 @@
             /* get team */
             teamRestAPI.getTeam($scope.teamId).success(function (team) {
                 $scope.team = team;
-                $scope.team.enable = $scope.team.enable?'true':'false';
+                $scope.team.enable = $scope.team.enable?true:false;
 
                 if($scope.adversary==='false') {
                     /* Retrieve list of adversary of effective */
@@ -111,8 +111,6 @@
         
         /* Create a new team */
         $scope.writeTeam = function () {
-            
-            $scope.team.enable = $scope.team.enable==='true';
             
             /* add team */
             teamRestAPI.updateTeam($scope.team).success(function (team) {
