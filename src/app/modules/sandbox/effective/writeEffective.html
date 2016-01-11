@@ -51,6 +51,7 @@
                                 required ng-class="{ 'has-error' : effectiveCaracterSection.effectiveCategoryAge.$invalid && !effectiveCaracterSection.effectiveCategoryAge.$pristine }" 
                                 ng-options="p.code as p.label for p in listCategory">
                         </select>
+                        <br>
                         <span class="small red-text text-lighten-1"
                                 ng-show="effectiveCaracterSection.effectiveCategoryAge.$invalid && !effectiveCaracterSection.effectiveCategoryAge.$pristine" translate="effectiveErrors.CategoryAge"></span>
                     </div>
@@ -58,44 +59,47 @@
             </div>
             
             <div class="row">
+                <!-- List players -->
                 <div class="col s12">
-                    <!-- List players -->
-                    <div class="col s12">
-                        <ul class="collection with-header">
-                            <li class="collection-header blue-grey-text text-darken-2">
-                                <h5 class="card-title"> 
-                                    {{'effectiveLabels.effectiveTabMembers' | translate }}
-                                </h5>
-                                <span class="small right-align">{{selectedPlayers.length}} {{'effectiveLabels.effectiveNbPlayers' | translate }}</span>
-                                <div class="input-field">
-                                    <label for="query">Filter</label>
-                                    <input type="text" class="grey lighten-4" id="query" ng-model="query">
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                    <ul class="collection with-header">
+                        <li class="collection-header blue-grey-text text-darken-2">
+                            <h5 class="card-title"> 
+                                {{'effectiveLabels.effectiveTabMembers' | translate }}
+                            </h5>
+                            <span class="small right-align">{{selectedPlayers.length}} {{'effectiveLabels.effectiveNbPlayers' | translate }}</span>
+                            <div class="input-field">
+                                <label for="query">Filter</label>
+                                <input type="text" class="grey lighten-4" id="query" ng-model="query">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col s12 left-align">
+                    <a href ng-click="onClickAddPlayer()" class="red-text text-lighten-1 tooltipped" data-position="down" data-delay="20" data-tooltip="{{'mainEffective.buttons.addPlayer' | translate }}">
+                        <i class="fa fa-user-plus fa-2x"></i>
+                    </a>
+                </div>
                           
-                    <div class="col s12">
-                        <table class="bordered">
-                            <body>
-                                <tr ng-repeat="player in persons | filter:query"
-                                    selection-model
-                                    selection-model-type="checkbox"
-                                    selection-model-mode="multiple-additive"
-                                    selection-model-selected-attribute="checked"
-                                    selection-model-selected-items="selectedPlayers"
-                                    selection-model-on-change="changed(player)"
-                                    class="col m3 s12">
-                                    <td><simple-avatar person="player" width="'40px'" link="('#/private/viewPlayer/' + player._id)"></simple-avatar></td>
-                                    <td>                                    
-                                        <input type="checkbox" id="{{$index + 1}}"/> 
-                                        <label for="{{$index + 1}}"><span class="red-text text-lighten-1">{{player.name}} {{player.firstname}}</span></label>
-                                        <p class="blue-grey-text text-darken-2" style="margin-left:35px">{{player.positionType}}</p>
-                                    </td>
-                                </tr>
-                            </body>
-                        </table>
-                    </div>
+                <div class="col s12">
+                    <table class="bordered">
+                        <body>
+                            <tr ng-repeat="player in persons | filter:query"
+                                selection-model
+                                selection-model-type="checkbox"
+                                selection-model-mode="multiple-additive"
+                                selection-model-selected-attribute="checked"
+                                selection-model-selected-items="selectedPlayers"
+                                selection-model-on-change="changed(player)"
+                                class="col m3 s12">
+                                <td><simple-avatar person="player" width="'40px'" link="('#/private/viewPlayer/' + player._id)"></simple-avatar></td>
+                                <td>                                    
+                                    <input type="checkbox" id="{{$index + 1}}"/> 
+                                    <label for="{{$index + 1}}"><span class="red-text text-lighten-1">{{player.name}} {{player.firstname}}</span></label>
+                                    <p class="blue-grey-text text-darken-2" style="margin-left:35px">{{player.positionType}}</p>
+                                </td>
+                            </tr>
+                        </body>
+                    </table>
                 </div>
             </div>
             

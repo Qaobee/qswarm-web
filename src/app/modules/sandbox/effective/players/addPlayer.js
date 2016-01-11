@@ -145,18 +145,29 @@
                 $scope.player.address = adr;
                 
                 /* Write player*/
-                personSrv.addPlayer($scope.player, $scope.meta.sandbox._id, $scope.user.effectiveDefault).then(function(person){
+                personSrv.addPlayer($scope.player, $scope.meta.sandbox._id).then(function(person){
                     
                     /* add member*/
-                    personSrv.addEffectiveMember(person, $scope.user.effectiveDefault).then(function(effective){
+                    if($scope.user.effectiveDefault !== 'EFFECTIVE-TEMPO'){
+                        personSrv.addEffectiveMember(person, $scope.user.effectiveDefault).then(function(effective){
+                            toastr.success($filter('translate')('addPlayer.toastSuccess', {
+                                firstname: person.firstname,
+                                name: person.name,
+                                effective: effective.categoryAge.label
+                            }));
+
+                            $window.history.back();
+                        });
+                    } else {
                         toastr.success($filter('translate')('addPlayer.toastSuccess', {
                             firstname: person.firstname,
                             name: person.name,
-                            effective: effective.categoryAge.label
+                            effective: user.newEffective.categoryAge.label
                         }));
 
                         $window.history.back();
-                    });
+                    }
+                    
                 });
             });
         };

@@ -49,6 +49,9 @@
         $scope.user = user;
         $scope.meta = meta;
         $scope.effective = {};
+        if(user.newEffective){
+            $scope.effective = user.newEffective;
+        }
         $scope.listCategory = [];
         $scope.persons = [];
         $scope.selectedPlayers = []; 
@@ -56,6 +59,11 @@
         $scope.addEffectiveTitle = true;
         // return button
         $scope.doTheBack = function() {
+            if(user.newEffective){
+                delete user.newEffective;
+                user.effectiveDefault = user.previousEffectiveDefault;
+                delete user.previousEffectiveDefault;
+            }
             $window.history.back();
         };
         
@@ -82,9 +90,27 @@
                 $scope.persons = data;
             }); 
         };
+        
+        /* Add player  */
+        $scope.onClickAddPlayer = function () {
+            if(!$scope.effectiveCaracterSection.$valid) { 
+                $scope.effectiveCaracterSection.effectiveLabel.$setDirty();
+                $scope.effectiveCaracterSection.effectiveCategoryAge.$setDirty();
+            } else {
+                user.newEffective = $scope.effective;
+                user.previousEffectiveDefault = user.effectiveDefault;
+                user.effectiveDefault = 'EFFECTIVE-TEMPO';
+                $location.path('private/addPlayer/'+meta._id);
+            }
+        }
             
         /* add effective */
         $scope.writeEffective = function () {
+            
+            if(user.newEffective){
+                delete user.newEffective;
+                delete user.previousEffectiveDefault;
+            }
             
             var category = {};
             $scope.listCategory.forEach(function (c) {
@@ -99,7 +125,7 @@
                 toastr.success($filter('translate')('addEffective.toastSuccess', {
                     effective: $scope.effective.categoryAge.label
                 }));
-
+                
                 $location.path('private/effective/'+effective._id);
             });
         };

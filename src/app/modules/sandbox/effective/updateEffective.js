@@ -49,6 +49,9 @@
         
         // return button
         $scope.doTheBack = function() {
+            if(user.newEffective){
+                delete user.newEffective;
+            }
             $window.history.back();
         };
         
@@ -61,10 +64,15 @@
         
         /* get SB_Effective */
         $scope.getEffective = function () {
-            effectiveRestAPI.getEffective($scope.effectiveId).success(function (data) {
-                $scope.effective = data;
+            if(user.newEffective){
+                $scope.effective = user.newEffective;
                 $scope.getPersonSandBox();
-            });
+            } else { 
+                effectiveRestAPI.getEffective($scope.effectiveId).success(function (data) {
+                    $scope.effective = data;
+                    $scope.getPersonSandBox();
+                });
+            }
         };
         
         /* Retrieve list of categoryAge */
@@ -100,9 +108,25 @@
                 });
             });            
         };
+        
+        /* Add player  */
+        $scope.onClickAddPlayer = function () {
+            if(!$scope.effectiveCaracterSection.$valid) { 
+                $scope.effectiveCaracterSection.effectiveLabel.$setDirty();
+                $scope.effectiveCaracterSection.effectiveCategoryAge.$setDirty();
+            } else {
+                user.newEffective = $scope.effective;
+                $location.path('private/addPlayer/'+meta._id);
+            }
+        }
 
         /* update effective */
         $scope.writeEffective = function () {
+            
+            if(user.newEffective){
+                delete user.newEffective;
+            }
+            
             $scope.listCategory.forEach(function (c) {
                 if (c.code===$scope.effective.categoryAge.code) {
                     $scope.effective.categoryAge =  c;

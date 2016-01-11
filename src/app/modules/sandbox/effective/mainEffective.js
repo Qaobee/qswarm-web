@@ -56,7 +56,7 @@
      * @description Main controller for view mainEffective.html
      */
         .controller('MainEffectiveControler', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                                         effectiveRestAPI, effectiveSrv, teamRestAPI, userRestAPI) {
+                                                         effectiveRestAPI, effectiveSrv, teamRestAPI, userRestAPI, $timeout) {
 
         $translatePartialLoader.addPart('effective');
         $translatePartialLoader.addPart('stats');
@@ -72,6 +72,7 @@
         $scope.currentEffective = {};
         $scope.currentCategory = null;
         $scope.listTeamHome = {};
+        
         
         /* Retrieve list of team of effective */
         $scope.getListTeamHome = function () {
@@ -120,18 +121,31 @@
                             
                             e.birthdate = $filter('date')(e.birthdate, 'yyyy');
                             e.age = moment().format('YYYY') - e.birthdate;
-                        });    
+                        });
                     });
                 });  
             });                                                                                      
         };
         
+        /* keep in memory tab by default */
+        $scope.changeTabDefault = function (tabId) {
+            user.effectiveTabId = tabId;
+        }
+        
         /* check user connected */
         $scope.checkUserConnected = function () {
             
             userRestAPI.getUserById(user._id).success(function (data) {
+                
                 $scope.getEffectives();
                 $scope.getListTeamHome();
+                $timeout(function() {
+                    if(user.effectiveTabId){
+                        $('ul.tabs').tabs('select_tab', user.effectiveTabId);
+                    } else {
+                        $('ul.tabs').tabs('select_tab', 'playerList');
+                    }
+                }, 100);
             }).error(function (data) {
                 $log.error('MainEffectiveControler : User not Connected');
             });
