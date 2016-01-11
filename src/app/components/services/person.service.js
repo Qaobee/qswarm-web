@@ -98,7 +98,14 @@
                 if(angular.isDefined(effective)) {
                     var roleMember = {code : 'player', label: 'Joueur'};
                     var member = {personId : person._id, role: roleMember};
-                    effective.members.push(member);
+                    var memberList = effective.members;
+    
+                    if(memberList){
+                        effective.members.push(member);
+                    } else {
+                        effective.members = [];
+                        effective.members.push(member);
+                    }
 
                     /* Update effective members list */
                     effectiveRestAPI.update(effective).success(function (data) {
