@@ -1,10 +1,5 @@
 {
     "stats": {
-        "periodicity" : {
-			"month" : "Mois", 
-			"quarter" : "Trimestre", 
-			"season" : "Saison"
-		},
         "positionType": {
             "libelle": "Poste",
             "value": {

@@ -24,6 +24,11 @@
                 "pattern": "(999) 999-9999"
             }
         },
+        "periodicity" : {
+            "month": "Month",
+            "quarter": "Quarter",
+            "season": "Season"
+        }, 
         "footer": {
             "link": {
                 "about": "About",

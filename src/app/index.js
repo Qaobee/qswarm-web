@@ -25,7 +25,8 @@
             'ui.materialize',
             'ng.deviceDetector',
             
-            /* qaobee shared directives */
+            //* qaobee widget */
+            'qaobee.filterCalendar',
             'qaobee.commonsDirectives',
             'qaobee.headerMenu',
             'qaobee.avatar',

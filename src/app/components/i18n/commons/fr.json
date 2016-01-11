@@ -24,6 +24,11 @@
                 "pattern": "99-99-99-99-99"
             }
         },
+        "periodicity" : {
+			"month" : "Mois", 
+			"quarter" : "Trimestre", 
+			"season" : "Saison"
+		},
         "footer": {
             "link": {
                 "about": "A propos",

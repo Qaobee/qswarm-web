@@ -6,11 +6,6 @@
             "updateEvent": "Update event",
             "dropdownEffective": "Change effective"
         },
-        "periodicity" : {
-            "month": "Month",
-            "quarter": "Quarter",
-            "season": "Season"
-        },
         "eventType" : {
             "cup": "Cup",
             "championship": "Championship",
