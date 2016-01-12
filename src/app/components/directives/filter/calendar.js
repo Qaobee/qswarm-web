@@ -23,7 +23,7 @@
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('commons');
                     
-                    if($scope.periodicityActive){
+                    if($scope.periodicityActive && !$scope.periodicityActive.label){
                         if($scope.periodicity==='month'){
                             getCurrentMonth();
                         }
@@ -42,6 +42,10 @@
                         }
                     }
                     
+                    /* generate calendar by month */
+                    $scope.currentMonth = function () {
+                        getCurrentMonth();
+                    }
                     
                     function getCurrentMonth() {
                         $scope.periodicity = 'month';

@@ -48,13 +48,15 @@
         $scope.ownersId = [];
         $scope.ownersId.push($routeParams.teamId);
         
-        $scope.periodicity = 'season';
-        $scope.periodicityActive = {
-            label: "",
-            startDate: moment(new Date()),
-            endDate: moment(new Date()),
-            ownersId : []
-        };
+        if(!user.periodicity){
+            $scope.periodicity = 'season';
+            $scope.periodicityActive = {};
+        } else {
+            $scope.periodicity = user.periodicity;
+            $scope.periodicityActive = user.periodicityActive;
+        }
+
+        $scope.periodicityActive.ownersId = $scope.ownersId;
         
         // return button
         $scope.doTheBack = function() {
@@ -77,7 +79,11 @@
         /* watch if periodicity change */
         $scope.$watch('periodicityActive', function (newValue, oldValue) {
             if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
+                $scope.periodicityActive.ownersId = $scope.ownersId;
+                user.periodicity = $scope.periodicity;
+                user.periodicityActive = $scope.periodicityActive;
                 qeventbus.prepForBroadcast("periodicityActive", $scope.periodicityActive);
+                $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
             }
         });
         
@@ -87,7 +93,6 @@
             /* get team */
             teamRestAPI.getTeam($routeParams.teamId).success(function (team) {
                 $scope.team = team;
-                $scope.getCurrentSeason();
             });
         };
         
@@ -135,186 +140,6 @@
                 $scope.attackData.push({"Negative": result});
                 $scope.attackCol.push({"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'});
             });
-        };
-
-        /* generate calendar by month */
-        $scope.getCurrentMonth = function () {
-            $scope.periodicity = 'month';
-            var start = moment('01/' + moment().format('MM/YYYY'), 'DD/MM/YYYY');
-            var end = moment(start).add(1, 'months').subtract(1, 'ms');
-
-            $scope.periodicityActive = {
-                label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY'),
-                startDate: start,
-                endDate: end,
-                ownersId : $scope.ownersId
-            };
-
-            $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
-        };
-
-        /* Previous month */
-        $scope.previousMonth = function (index) {
-            $scope.periodicity = 'month';
-            var start = moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').subtract(1, 'month');
-            var end = moment($scope.periodicityActive.endDate, 'DD/MM/YYYY').subtract(1, 'month');
-
-            $scope.periodicityActive = {
-                label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY'),
-                startDate: start,
-                endDate: end,
-                ownersId : $scope.ownersId
-            };
-
-            $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
-        };
-
-        /* Next month */
-        $scope.nextMonth = function (index) {
-            $scope.periodicity = 'month';
-            var start = moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').add(1, 'month');
-            var end = moment($scope.periodicityActive.endDate, 'DD/MM/YYYY').add(1, 'month');
-
-            $scope.periodicityActive = {
-                label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY'),
-                startDate: start,
-                endDate: end,
-                ownersId : $scope.ownersId
-            };
-
-            $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
-        };
-
-        /* generate calendar by quarter */
-        $scope.getCurrentQuarter = function () {
-            $scope.periodicity = 'quarter';
-            var quarter = {};
-            var currentQuarter = moment().quarter();
-            var year = moment().year();
-
-            switch (currentQuarter) {
-                case 1:
-                    quarter = {
-                        label: moment('01/01/' + year, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment('01/04/' + year, 'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
-                        startDate: moment('01/01/' + year, 'DD/MM/YYYY'),
-                        endDate: moment('/01/04/' + year, 'DD/MM/YYYY').subtract(1, 'ms'),
-                        ownersId : $scope.ownersId
-                    };
-                    break;
-                case 2:
-                    quarter = {
-                        label: moment('01/04/' + year, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment('/01/07/' + year, 'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
-                        startDate: moment('/01/04/' + year, 'DD/MM/YYYY'),
-                        endDate: moment('/01/07/' + year, 'DD/MM/YYYY').subtract(1, 'ms'),
-                        ownersId : $scope.ownersId
-                    };
-                    break;
-                case 3:
-                    quarter = {
-                        label: moment('/01/07/' + year, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment('/01/10/' + year, 'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
-                        startDate: moment('/01/07/' + year, 'DD/MM/YYYY'),
-                        endDate: moment('/01/10/' + year, 'DD/MM/YYYY').subtract(1, 'ms'),
-                        ownersId : $scope.ownersId
-                    };
-                    break;
-                case 4:
-                    quarter = {
-                        label: moment('/01/10/' + year, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment('/01/01/' + (year + 1), 'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
-                        startDate: moment('/01/10/' + year, 'DD/MM/YYYY'),
-                        endDate: moment('/01/01/' + (year + 1), 'DD/MM/YYYY').subtract(1, 'ms'),
-                        ownersId : $scope.ownersId
-                    };
-                    break;
-                default:
-                    quarter = {
-                        label: moment('01/01/' + year, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment('01/04/' + year, 'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
-                        startDate: moment('01/01/' + year, 'DD/MM/YYYY'),
-                        endDate: moment('/01/04/' + year, 'DD/MM/YYYY').subtract(1, 'ms'),
-                        ownersId : $scope.ownersId
-                    };
-            }
-
-            /* Current quarter */
-            $scope.periodicityActive = quarter;
-
-            $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
-        };
-
-        /* Previous quarter */
-        $scope.previousQuarter = function () {
-            $scope.periodicity = 'quarter';
-            var start = moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').subtract(3, 'month');
-            var end = moment($scope.periodicityActive.endDate, 'DD/MM/YYYY').subtract(3, 'month');
-
-            $scope.periodicityActive = {
-                label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment(end, 'DD/MM/YYYY').format('MMMM YYYY'),
-                startDate: start,
-                endDate: end,
-                ownersId : $scope.ownersId
-            };
-
-            $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
-        };
-
-        /* Next quarter */
-        $scope.nextQuarter = function () {
-            $scope.periodicity = 'quarter';
-            var start = moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').add(3, 'month');
-            var end = moment($scope.periodicityActive.endDate, 'DD/MM/YYYY').add(3, 'month');
-
-            $scope.periodicityActive = {
-                label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment(end, 'DD/MM/YYYY').format('MMMM YYYY'),
-                startDate: start,
-                endDate: end,
-                ownersId : $scope.ownersId
-            };
-
-            $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
-        };
-
-        /* generate calendar by season */
-        $scope.getCurrentSeason = function () {
-            $scope.periodicity = 'season';
-            $scope.periodicityActive = {
-                label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
-                startDate: moment($scope.meta.season.startDate),
-                endDate: moment($scope.meta.season.endDate),
-                ownersId : $scope.ownersId
-            };
-
-            $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
-        };
-
-        /* Previous season */
-        $scope.previousSeason = function () {
-            $scope.periodicity = 'season';
-            var start = moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').subtract(1, 'year');
-            var end = moment($scope.periodicityActive.endDate, 'DD/MM/YYYY').subtract(1, 'year');
-
-            $scope.periodicityActive = {
-                label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment(end, 'DD/MM/YYYY').format('MMMM YYYY'),
-                startDate: start,
-                endDate: end,
-                ownersId : $scope.ownersId
-            };
-
-            $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
-        };
-
-        /* Next season */
-        $scope.nextSeason = function () {
-            $scope.periodicity = 'season';
-            var start = moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').add(1, 'year');
-            var end = moment($scope.periodicityActive.endDate, 'DD/MM/YYYY').add(1, 'year');
-
-            $scope.periodicityActive = {
-                label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment(end, 'DD/MM/YYYY').format('MMMM YYYY'),
-                startDate: start,
-                endDate: end,
-                ownersId : $scope.ownersId
-            };
-
-            $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
         };
         
         /* check user connected */

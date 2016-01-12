@@ -52,11 +52,13 @@
         
         $scope.user = user;
         $scope.meta = meta;
-        $log.debug('load', user.periodicity);
         
         if(!user.periodicity){
             $scope.periodicity = 'quarter';
             $scope.periodicityActive = {};
+        } else {
+            $scope.periodicity = user.periodicity;
+            $scope.periodicityActive = user.periodicityActive;
         }
 
         $scope.events = [];
@@ -69,14 +71,13 @@
             if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
                 user.periodicity = $scope.periodicity;
                 user.periodicityActive = $scope.periodicityActive;
-                $log.debug('watch', user.periodicityActive);
+
                 $scope.getEvents(moment($scope.periodicityActive.startDate,'DD/MM/YYYY').valueOf(), moment($scope.periodicityActive.endDate,'DD/MM/YYYY').valueOf());
             }
         });
         
         $scope.initAgenda = function () {
             if(user.periodicityActive){
-                $log.debug('initAgenda',user.periodicityActive)
                 $scope.getEvents(moment(user.periodicityActive.startDate,'DD/MM/YYYY').valueOf(), moment(user.periodicityActive.endDate,'DD/MM/YYYY').valueOf());
             }
         }
