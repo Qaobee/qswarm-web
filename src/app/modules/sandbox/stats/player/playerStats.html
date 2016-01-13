@@ -31,9 +31,15 @@
             <!-- Stats goals/sanction/use start -->
             <div class="row">
                 
-                <div class="col s12 m12 l4">
+                <div class="col s12 m12 l4" ng-show="player.status.positionType!=='goalkeeper'">
                     <stats-goals bind-to-id="goalScored" 
                                  label="goalScored" 
+                                 sandbox-id="meta.sandbox._id">
+                    </stats-goals>
+                </div>
+                <div class="col s12 m12 l4" ng-show="player.status.positionType==='goalkeeper'">
+                    <stats-goals bind-to-id="goalConceded" 
+                                 label="goalConceded" 
                                  sandbox-id="meta.sandbox._id">
                     </stats-goals>
                 </div>

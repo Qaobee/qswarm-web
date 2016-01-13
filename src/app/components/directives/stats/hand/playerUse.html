@@ -11,9 +11,10 @@
             <div class="col s4 "><h6>{{'stats.resumeTab.gamePlayed' | translate }}</h6></div>
             <div class="col s4 "><h6>{{'stats.resumeTab.holder' | translate }}</h6></div>
             <div class="col s4 "><h6><small>{{'stats.resumeTab.playTime' | translate }}</small></h6></div>
-            <div class="col s4 light-blue lighten-1 white-text "><h6>{{nbGame}}</h6></div>
-            <div class="col s4 light-blue lighten-2 white-text "><h6>{{nbHolder}}</h6></div>
-            <div class="col s4 light-blue lighten-1 white-text "><h6>{{playTimeAvg/60 | number : 0}} {{'stats.resumeTab.minute' | translate }}</h6></div>
+            <div class="col s4 light-blue lighten-1 white-text" ng-show="noStat"><h6>{{nbGame}}</h6></div>
+            <div class="col s4 light-blue lighten-2 white-text" ng-show="noStat"><h6>{{nbHolder}}</h6></div>
+            <div class="col s4 light-blue lighten-1 white-text" ng-show="noStat"><h6>{{playTimeAvg/60 | number : 0}} {{'stats.resumeTab.minute' | translate }}</h6></div>
+            <div class="col s12 light-blue lighten-2 white-text" ng-hide="noStat"><h6>{{'stats.resumeTab.noData' | translate }}</h6></div>
         </div>
     </div>
 </div>

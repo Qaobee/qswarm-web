@@ -44,7 +44,8 @@
             "gamePlayed" : "Matchs joués",
             "holder" : "Titularisations",
             "playTime" : "Temps de jeu moyen",
-            "sanctions" : "Sanctions"
+            "sanctions" : "Sanctions",
+            "noData" : "Aucune donnée collectée sur la période"
         },
         "labelTab" : {
 			"shoot" : "Tir", 

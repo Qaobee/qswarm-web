@@ -26,6 +26,7 @@
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
+                    $scope.noStat = true;
 
                     $scope.efficiencyGlobalCol = [{id: 'dataG', type: 'gauge', color: '#42a5f5'}];
                     $scope.efficiencyGlobalData = [{dataG:0}];
@@ -94,33 +95,38 @@
                         var listShootSeqId = [];
 
                         statsRestAPI.getStatGroupBy(search).success(function (dataOri) {
-                            result.nbShoot = dataOri.length;
-                            dataOri.forEach(function (e) {
-                                listShootSeqId.push(e._id.shootSeqId);
-                            });
+                            if(dataOri && dataOri.length) {
+                                $scope.noStat = true;
+                                result.nbShoot = dataOri.length;
+                                dataOri.forEach(function (e) {
+                                    listShootSeqId.push(e._id.shootSeqId);
+                                });
 
-                            search = {};
-                            search = {
-                                listIndicators: ['goalScored'],
-                                listOwners: ownersId,
-                                startDate: startDate.valueOf(),
-                                endDate: endDate.valueOf(),
-                                listShootSeqId: listShootSeqId,
-                                aggregat: 'COUNT',
-                                listFieldsGroupBy: ['code']
-                            };
+                                search = {};
+                                search = {
+                                    listIndicators: ['goalScored'],
+                                    listOwners: ownersId,
+                                    startDate: startDate.valueOf(),
+                                    endDate: endDate.valueOf(),
+                                    listShootSeqId: listShootSeqId,
+                                    aggregat: 'COUNT',
+                                    listFieldsGroupBy: ['code']
+                                };
 
-                            statsRestAPI.getStatGroupBy(search).success(function (dataGoal) {
-                                var efficacite = 0;
+                                statsRestAPI.getStatGroupBy(search).success(function (dataGoal) {
+                                    var efficacite = 0;
 
-                                if (angular.isDefined(dataGoal[0]) && dataGoal !== null) {
-                                    result.nbGoal = dataGoal[0].value;
-                                    result.efficiency = (result.nbGoal / result.nbShoot) * 100;
-                                    deferred.resolve(result);  
-                                } else {
-                                    deferred.reject('getEfficiency -> problem for : ' + search);
-                                }
-                            });
+                                    if (angular.isDefined(dataGoal[0]) && dataGoal !== null) {
+                                        result.nbGoal = dataGoal[0].value;
+                                        result.efficiency = (result.nbGoal / result.nbShoot) * 100;
+                                        deferred.resolve(result);  
+                                    } else {
+                                        deferred.reject('getEfficiency -> problem for : ' + search);
+                                    }
+                                });
+                            } else {
+                                $scope.noStat = false;
+                            }
                         });
                         return deferred.promise;
                     };

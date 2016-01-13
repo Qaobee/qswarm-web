@@ -18,6 +18,7 @@
             
             controller: function ($scope) {
                 $translatePartialLoader.addPart('stats');
+                $scope.noStat = true;
 
                 /* Refresh widget on periodicity change */
                 $scope.$on('qeventbus', function () {
@@ -54,6 +55,7 @@
                     /* Appel stats API */
                     statsRestAPI.getStatGroupBy(search).success(function (data) {
                         if (angular.isArray(data) && data.length > 0) {
+                            $scope.noStat = true;
                             data.forEach(function(a){
                                 if(a._id.code === 'yellowCard'){
                                     result.nbYellowCard = a.value;
@@ -67,6 +69,7 @@
                             });
                             deferred.resolve(result);  
                         } else {
+                            $scope.noStat = false;
                             deferred.reject('getStats -> problem for : ' + search);
                         }
                     })

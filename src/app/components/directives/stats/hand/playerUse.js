@@ -20,6 +20,7 @@
             },
             controller: function ($scope) {
                 $translatePartialLoader.addPart('stats');
+                $scope.noStat = true;
 
                 /* Refresh widget on periodicity change */
                 $scope.$on('qeventbus', function () {
@@ -61,6 +62,7 @@
                             /* Appel stats API */
                             statsRestAPI.getStatGroupBy(search).success(function (playtime) {
                                 if (angular.isArray(playtime) && playtime.length > 0) {
+                                    $scope.noStat = true;
                                     playtime.forEach(function(a){
                                         result.playTimeAvg = a.value;
                                     });
@@ -92,8 +94,10 @@
                                             deferred.reject('getStats -> problem for : ' + search);
                                         }
                                     })
-                                }
+                                } 
                             })
+                        } else {
+                            $scope.noStat = false;
                         }
                     })
 
