@@ -43,18 +43,17 @@
         
             $scope.user = user;
             $scope.meta = meta;
+            $scope.player = {};
             $scope.ownersId = [];
             $scope.ownersId.push($routeParams.playerId);
         
-            if(!user.periodicity){
-                $scope.periodicity = 'season';
-                $scope.periodicityActive = {};
-            } else {
-                $scope.periodicity = user.periodicity;
-                $scope.periodicityActive = user.periodicityActive;
-            }
+            $scope.defenseCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
+                                    {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
+            $scope.defenseData = [{"Positive":0}, {"Negative":0}];
 
-            $scope.periodicityActive.ownersId = $scope.ownersId;
+            $scope.attackCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
+                               {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
+            $scope.attackData = [{"Positive":0}, {"Negative":0}];
             
             // return button
             $scope.doTheBack = function () {
@@ -63,15 +62,22 @@
 
             //Initialization owner Object
             $scope.initStats = function() {
-                $scope.player = {};
-
-                $scope.defenseCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
-                                        {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
-                $scope.defenseData = [{"Positive":0}, {"Negative":0}];
-
-                $scope.attackCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
-                                   {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
-                $scope.attackData = [{"Positive":0}, {"Negative":0}];
+                
+                if(!user.periodicity){
+                    $scope.periodicity = 'season';
+                    $scope.periodicityActive = {
+                        label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
+                        startDate: moment($scope.meta.season.startDate),
+                        endDate: moment($scope.meta.season.endDate),
+                        ownersId : $scope.ownersId
+                    };
+                } else {
+                    $scope.periodicity = user.periodicity;
+                    $scope.periodicityActive = user.periodicityActive;
+                }
+                $scope.periodicityActive.ownersId = $scope.ownersId;
+                
+                $scope.getPlayer();
             };
                 
             /* watch if periodicity change */
@@ -100,6 +106,14 @@
 
             /* get statistic for one player */
             $scope.getStats = function (ownersId, startDate, endDate) {
+                
+                $scope.defenseCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
+                                        {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
+                $scope.defenseData = [{"Positive":0}, {"Negative":0}];
+
+                $scope.attackCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
+                                   {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
+                $scope.attackData = [{"Positive":0}, {"Negative":0}];
                 
                 var listFieldsGroupBy = Array.create('owner');
                 
@@ -134,15 +148,8 @@
 
             /* check user connected */
             $scope.checkUserConnected = function () {
-
                 userRestAPI.getUserById(user._id).success(function (data) {
-                    $scope.periodicityActive = {
-                        label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
-                        startDate: moment($scope.meta.season.startDate),
-                        endDate: moment($scope.meta.season.endDate),
-                        ownersId : $scope.ownersId
-                    };
-                    $scope.getPlayer();
+                    $scope.initStats();
                 }).error(function (data) {
                     $log.error('PlayerStats : User not Connected');
                 });
@@ -150,6 +157,5 @@
 
             /* Primary, check if user connected */
             $scope.checkUserConnected();
-            $scope.initStats();
         });
 }());
