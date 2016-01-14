@@ -23,6 +23,7 @@
             "efficiency7m" : "7 mètres"
         },
         "actionTab" : {
+            "title" : "Faits de jeu",
             "actions": "Actions",
             "positive": "positives",
             "negative": "négatives",
@@ -45,7 +46,7 @@
             "holder" : "Titularisations",
             "playTime" : "Temps de jeu moyen",
             "sanctions" : "Sanctions",
-            "noData" : "Aucune donnée collectée sur la période"
+            "noData" : "Aucune donnée collectée"
         },
         "labelTab" : {
 			"shoot" : "Tir", 

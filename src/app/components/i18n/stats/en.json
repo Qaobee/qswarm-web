@@ -23,6 +23,7 @@
             "efficiency7m" : "7 mètres"
         },
         "actionTab" : {
+            "title" : "Facts in game",
             "actions": "Actions",
             "positive": "positives",
             "negative": "negative",

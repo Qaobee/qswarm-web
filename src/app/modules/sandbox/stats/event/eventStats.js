@@ -130,44 +130,8 @@
                         ownersId : $scope.ownersId
                     };
                     $scope.periodicityActive = periodicity;
-                    
-                    $scope.getStats($scope.ownersId, $scope.collecte.startDate, $scope.collecte.endDate);
                 }
             });
-        };
-        
-        /* get statistic for one collect */
-        $scope.getStats = function (ownersId, startDate, endDate) {
-            var listFieldsGroupBy = Array.create('owner');
-
-            /* ALL PERS-ACT-DEF-POS */
-            var indicators =  Array.create('neutralization', 'forceDef', 'contre', 'interceptionOk');
-            statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
-                $scope.defenseData.push({"Positive": result});
-                $scope.defenseCol.push({"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'});
-            });
-
-            /* ALL PERS-ACT-DEF-NEG */
-            var indicators =  Array.create('penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition');
-            statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
-                $scope.defenseData.push({"Negative": result});
-                $scope.defenseCol.push({"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'});
-            });
-
-            /* ALL PERS-ACT-OFF-POS */
-            var indicators =  Array.create('penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec');
-            statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
-                $scope.attackData.push({"Positive": result});
-                $scope.attackCol.push({"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'});
-            });
-
-            /* ALL PERS-ACT-OFF-NEG */
-            var indicators =  Array.create('forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt');
-            statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
-                $scope.attackData.push({"Negative": result});
-                $scope.attackCol.push({"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'});
-            });
-
         };
 
         /* check user connected */

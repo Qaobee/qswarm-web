@@ -15,90 +15,6 @@
         'collecteRestAPI'])
 
     .factory('statsSrv', function($log, $q, $filter, statsRestAPI, collecteRestAPI) {
-
-        /* efficiency */  
-        var getEfficiency = function (ownersId, startDate, endDate, values) {
-            var deferred = $q.defer(); 
-            var search = {};
-            var result = {
-                nbShoot : 0,
-                nbGoal : 0,
-                efficiency : 0
-            };
-            
-            /* Search parameters Efficiency global */
-            if(angular.isDefined(values)) {
-                search = {
-                    listIndicators: ['originShootAtt'],
-                    listOwners: ownersId,
-                    startDate: startDate.valueOf(),
-                    endDate: endDate.valueOf(),
-                    values: values,
-                    aggregat: 'COUNT',
-                    listFieldsGroupBy: ['owner', 'code', 'shootSeqId']
-                };
-            } else {
-                search = {
-                    listIndicators: ['originShootAtt'],
-                    listOwners: ownersId,
-                    startDate: startDate.valueOf(),
-                    endDate: endDate.valueOf(),
-                    aggregat: 'COUNT',
-                    listFieldsGroupBy: ['owner', 'code', 'shootSeqId']
-                };
-            }
-            
-            var listShootSeqId = [];
-
-            statsRestAPI.getStatGroupBy(search).success(function (dataOri) {
-                result.nbShoot = dataOri.length;
-                dataOri.forEach(function (e) {
-                    listShootSeqId.push(e._id.shootSeqId);
-                });
-
-                search = {};
-                search = {
-                    listIndicators: ['goalScored'],
-                    listOwners: ownersId,
-                    startDate: startDate.valueOf(),
-                    endDate: endDate.valueOf(),
-                    listShootSeqId: listShootSeqId,
-                    aggregat: 'COUNT',
-                    listFieldsGroupBy: ['code']
-                };
-
-                statsRestAPI.getStatGroupBy(search).success(function (dataGoal) {
-                    var efficacite = 0;
-                    
-                    if (angular.isDefined(dataGoal[0]) && dataGoal !== null) {
-                        result.nbGoal = dataGoal[0].value;
-                        result.efficiency = (result.nbGoal / result.nbShoot) * 100;
-                        deferred.resolve(result);  
-                    } else {
-                        deferred.reject('getEfficiency -> problem for : ' + search);
-                    }
-                });
-            });
-            return deferred.promise;
-        };
-        
-        /* color gauge */  
-        var getColorGauge = function (efficiency) {
-            var deferred = $q.defer(); 
-            
-            if (efficiency<25) {
-                deferred.resolve('#ef5350');
-            } else if(efficiency>=25 && efficiency<50) {
-                 deferred.resolve('#ffb74d');
-            } else if(efficiency>=50 && efficiency<75) {
-                 deferred.resolve('#29b6f6');
-            } else if(efficiency>75) {
-                 deferred.resolve('#9ccc65');
-            } else {
-                deferred.reject('');
-            }
-            return deferred.promise;
-        };
         
         /* Nb SB_Collecte teams*/  
         var getMatchsTeams = function (startDate, endDate, sandboxId, teamId) {
@@ -169,8 +85,6 @@
         };
              
         return {
-            getEfficiency : getEfficiency,
-            getColorGauge : getColorGauge,
             getMatchsTeams : getMatchsTeams,
             getMatchsEffective : getMatchsEffective,
             countAllInstanceIndicators : countAllInstanceIndicators

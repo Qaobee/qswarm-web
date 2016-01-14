@@ -31,7 +31,8 @@
         'statsEfficiency',
         'statsGoals',
         'statsPlayerUse',
-        'statsSanction'
+        'statsSanction',
+        'statsActionsPosNeg'
     ])
 
     .config(function ($routeProvider, metaDatasProvider) {
