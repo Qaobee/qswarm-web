@@ -35,7 +35,10 @@ Il s'agit du serveur principal offrant l'ensemble des services pour :
 
 ## Docker
 
-    gulp
+    gulp docker
+    mkdir -p dist/bower_components
+    cp -R bower_components/angular-i18n dist/bower_components/.
+    cp -R bower_components/momentjs dist/bower_components/.
     docker build -t qaobee-web:latest .
     docker run --name qswarm-web -ti -p 80:80 -e HIVE_URL=http://hive.qaobee.com -d qaobee-web:latest
     docker stop qswarm-web
