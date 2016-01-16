@@ -1,0 +1,18 @@
+<!-- cup, championship, friendly game -->
+<div class="card">
+    <div class="{{color1}} {{textColor1}}">
+        <h5 class="card-content center {{color2}} {{textColor2}}">
+            <span class="left"><i class="material-icons">{{icon}}</i></span>
+            <span>{{title | translate }}</span>
+            <span class="right" ng-hide="isCollected">
+                <a href="#/private/updateEvent/{{event._id}}" class="{{textColor2}}"><i class="material-icons">mode_edit</i></a>
+            </span>
+            <span class="right" ng-show="isCollected">
+                <a href="#/private/eventStats/{{collectId}}" class="white-text"><i class="fa fa-bar-chart"></i></a>
+            </span>
+        </h5>
+
+        <h6 class="card-content">{{event.participants.teamHome.label}} <br/> {{event.participants.teamVisitor.label}}</h6>
+        <h6 class="card-content">{{event.startDate}}</h6>
+    </div>
+</div>

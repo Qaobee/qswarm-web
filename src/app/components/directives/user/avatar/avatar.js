@@ -74,7 +74,7 @@
                         //  $scope.showSpinner = false;
                     };
                 },
-                templateUrl: 'app/components/directives/avatar/avatar.html'
+                templateUrl: 'app/components/directives/user/avatar/avatar.html'
             };
         })
 
@@ -93,7 +93,7 @@
                         return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/'+$scope.collection+'/' + avatar : 'assets/images/user.png';
                     };
                 },
-                templateUrl: 'app/components/directives/avatar/simpleAvatar.html'
+                templateUrl: 'app/components/directives/user/avatar/simpleAvatar.html'
             };
         });
 }());

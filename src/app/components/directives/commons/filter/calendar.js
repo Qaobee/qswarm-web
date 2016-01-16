@@ -205,7 +205,7 @@
 
                     
                 },
-                templateUrl: 'app/components/directives/filter/calendar.html'
+                templateUrl: 'app/components/directives/commons/filter/calendar.html'
             };
         });
 }());

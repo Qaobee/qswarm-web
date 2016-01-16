@@ -52,70 +52,7 @@
     <div class="row" ng-if="events.length > 0">      
         <ul>                
             <li class="col s12 m6 l4" ng-repeat="currentEvent in events | filter:query">
-                
-                <!-- cup -->
-                <div class="card" ng-if="currentEvent.link.type=='cup'">
-                    <div class="red lighten-2 white-text">
-                        <h5 class="card-content center red lighten-1">
-                            <span class="left"><i class="material-icons">album</i></span>
-                            <span>{{'mainAgenda.eventType.cup' | translate }}</span>
-                            <span class="right">
-                                <a href="#/private/updateEvent/{{currentEvent._id}}" class="white-text"><i class="material-icons">mode_edit</i></a>
-                            </span>
-                        </h5>
-                        
-                        <h6 class="card-content">{{currentEvent.participants.teamHome.label}} <br/> {{currentEvent.participants.teamVisitor.label}}</h6>
-                        <h6 class="card-content">{{currentEvent.startDate}}</h6>
-                    </div>
-                </div>
-
-                <!-- friendlyGame -->
-                <div class="card" ng-if="currentEvent.link.type=='friendlyGame'">
-                    <div class="light-green lighten-2 white-text">
-                        <h5 class="card-content center light-green lighten-1">
-                            <span class="left"><i  class="material-icons">flare</i></span>
-                            <span>{{'mainAgenda.eventType.friendlyGame' | translate }}</span>
-                            <span class="right">
-                                <a href="#/private/updateEvent/{{currentEvent._id}}" class="white-text"><i class="material-icons">mode_edit</i></a>
-                            </span>
-                        </h5>
-                        
-                        <h6 class="card-content">{{currentEvent.participants.teamHome.label}} <br/> {{currentEvent.participants.teamVisitor.label}}</h6>
-                        <h6 class="card-content">{{currentEvent.startDate}}</h6>
-                    </div>                    
-                </div>
-
-                <!-- championship -->
-                <div class="card" ng-if="currentEvent.link.type=='championship'">
-                    <div class="white blue-grey-text text-darken-2">
-                        <h5 class="card-content center blue-grey lighten-1 white-text">
-                            <span class="left"><i  class="material-icons">stars</i></span>
-                            <span>{{'mainAgenda.eventType.championship' | translate }}</span>
-                            <span class="right">
-                                <a href="#/private/updateEvent/{{currentEvent._id}}" class="white-text"><i class="material-icons">mode_edit</i></a>
-                            </span>
-                        </h5>
-                        
-                        <h6 class="card-content">{{currentEvent.participants.teamHome.label}} <br/> {{currentEvent.participants.teamVisitor.label}}</h6>
-                        <h6 class="card-content blue-grey-text text-darken-2">{{currentEvent.startDate}}</h6>
-                    </div>                    
-                </div>
-                
-                <!-- training -->
-                <div class="card" ng-show="currentEvent.link.type=='training'">
-                    <div class="light-blue lighten-3 white-text">
-                        <h5 class="card-content center light-blue lighten-1">
-                            <span class="left"><i  class="material-icons">timer</i></span>
-                            <span>{{'mainAgenda.eventType.training' | translate }}</span>
-                            <span class="right">
-                                <a href="#/private/updateEvent/{{currentEvent._id}}" class="white-text"><i class="material-icons">mode_edit</i></a>
-                            </span>
-                        </h5>
-                        
-                        <h6 class="card-content">{{currentEvent.participants.teamHome.label}}&nbsp; <br/> &nbsp;{{currentEvent.participants.teamVisitor.label}}</h6>
-                        <h6 class="card-content">{{currentEvent.startDate}}</h6>
-                    </div>     
-                </div>
+                <event-card event="currentEvent"></event-card>
             </li>
         </ul>
     </div>

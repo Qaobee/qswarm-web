@@ -30,6 +30,7 @@
             'qaobee.commonsDirectives',
             'qaobee.headerMenu',
             'qaobee.avatar',
+            'eventCard',
             
             /* qaobee shared services */
             'qaobee.commonsConfig',

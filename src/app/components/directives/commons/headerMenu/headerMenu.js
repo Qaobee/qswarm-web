@@ -271,7 +271,7 @@
                         };
                     };
                 },
-                templateUrl: 'app/components/directives/headerMenu/headerMenu.html'
+                templateUrl: 'app/components/directives/commons/headerMenu/headerMenu.html'
             };
         });
 }());
