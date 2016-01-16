@@ -46,14 +46,6 @@
             $scope.player = {};
             $scope.ownersId = [];
             $scope.ownersId.push($routeParams.playerId);
-        
-            $scope.defenseCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
-                                    {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
-            $scope.defenseData = [{"Positive":0}, {"Negative":0}];
-
-            $scope.attackCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
-                               {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
-            $scope.attackData = [{"Positive":0}, {"Negative":0}];
             
             // return button
             $scope.doTheBack = function () {
@@ -62,6 +54,8 @@
 
             //Initialization owner Object
             $scope.initStats = function() {
+                
+                $scope.collectes = [];
                 
                 if(!user.periodicity){
                     $scope.periodicity = 'season';
@@ -79,6 +73,22 @@
                 
                 $scope.getPlayer();
             };
+        
+            /* get statistic for one player */
+            $scope.getStats = function (ownersId, startDate, endDate) {
+            
+                $scope.collectes = [];
+
+                /* get nbCollecte */
+                statsSrv.getMatchsPlayer(startDate, endDate, $scope.meta.sandbox._id, $routeParams.playerId).then(function (data) {
+                    if (angular.isArray(data) && data.length > 0) {
+                        data.forEach(function (e) {
+                            e.eventRef.startDate = moment(e.eventRef.startDate).format('LLLL');
+                            $scope.collectes.push(e);
+                        });    
+                    }
+                })
+            };
                 
             /* watch if periodicity change */
             $scope.$watch('periodicityActive', function (newValue, oldValue) {
@@ -87,6 +97,7 @@
                     user.periodicity = $scope.periodicity;
                     user.periodicityActive = $scope.periodicityActive;
                     qeventbus.prepForBroadcast("periodicityActive", $scope.periodicityActive);
+                    $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
                 }
             });
         

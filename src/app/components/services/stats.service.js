@@ -16,6 +16,35 @@
 
     .factory('statsSrv', function($log, $q, $filter, statsRestAPI, collecteRestAPI) {
         
+        /* Nb SB_Collecte player*/  
+        var getMatchsPlayer = function (startDate, endDate, sandboxId, playerId) {
+            var deferred = $q.defer();
+            var collectes = [];
+            
+            var search = {
+                startDate: startDate.valueOf(),
+                endDate: endDate.valueOf(),
+                sandboxId: sandboxId
+            };
+            
+            /* Search playerId in all player's list of collecte */
+            collecteRestAPI.getListCollectes(search).success(function (data) {
+                if(data && data.length>0){
+                    data.forEach(function (collect) {
+                        collect.players.forEach(function (player) {
+                            if(player===playerId) {
+                                collectes.push(collect);
+                            }
+                        });
+                    });
+                }
+                deferred.resolve(collectes);   
+            }).error(function (){
+                deferred.reject('Cant get SB_Collecte' + search);
+            });
+            return deferred.promise;
+        };
+        
         /* Nb SB_Collecte teams*/  
         var getMatchsTeams = function (startDate, endDate, sandboxId, teamId) {
             var deferred = $q.defer();
@@ -85,6 +114,7 @@
         };
              
         return {
+            getMatchsPlayer : getMatchsPlayer,
             getMatchsTeams : getMatchsTeams,
             getMatchsEffective : getMatchsEffective,
             countAllInstanceIndicators : countAllInstanceIndicators

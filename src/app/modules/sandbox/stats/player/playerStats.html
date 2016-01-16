@@ -98,6 +98,19 @@
                 <stats-actions-pos-neg></stats-actions-pos-neg>
             </div>
             <!-- Stats actions pos/neg end -->
+            
+            <!-- Stats event's list Start -->
+            <div class="row">
+                <div class="col s12" ng-if="collectes.length > 0">
+                    <div><h5 class="center white red-text text-lighten-2"><i class="fa fa-bar-chart"></i> {{'stats.teamLabels.listCollect' | translate }}</h5></div>
+                    <ul>
+                        <li class="col s12 m6 l4" ng-repeat="collecte in collectes">
+                            <event-card event="collecte.eventRef"></event-card>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Stats event's list Start -->
         </div>
     </div>
 </div>
