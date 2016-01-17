@@ -36,7 +36,7 @@
      * @class qaobee.modules.sandbox.effective.ViewPlayerControler
      * @description Main controller for view viewPlayer.html
      */
-        .controller('ViewPlayerControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
+        .controller('ViewPlayerControler', function ($log, $scope, $document,$routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
                                                       effectiveRestAPI, personRestAPI, userRestAPI) {
 
         $translatePartialLoader.addPart('commons');
@@ -49,12 +49,43 @@
         $scope.meta = meta;
         $scope.player = {};
         $scope.mapShow = false;
-        $scope.googleMapsUrl="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlpuzARWjEPGHgnfsZEgBUgDZXPNcMu0A";
+        
+        
+        
         
         // return button
         $scope.doTheBack = function() {
             $window.history.back();
         };
+        
+        $scope.openMap = function () {
+            var myLatLng = new google.maps.LatLng($scope.player.address.lat,$scope.player.address.lng);
+            var myOptions = {
+                zoom: 16,
+                center: myLatLng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            $scope.map = ($document.find('#ngMapPlayer'))[0];
+            $scope.map = new google.maps.Map($scope.map, myOptions);
+            google.maps.event.trigger($scope.map, 'resize');
+            /*
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: $scope.player.address.formatedAddress
+            });
+            */
+            
+            $('#mapPlayer').openModal();    
+        };
+        
+        $scope.closeMap = function () {
+            delete $scope.map;
+        };
+        
+        $scope.$on('$destroy', function () {
+            delete $scope.map;
+        });
         
         /* get person */
         $scope.getPerson = function () {

@@ -50,7 +50,7 @@
         $scope.teamVisitor = true;
         $scope.collecte = {
             event : {},
-            players: [{}],
+            players: [],
             startDate : 0,
             endDate : 0,
             startDateLabel : "",
@@ -68,18 +68,6 @@
         // return button
         $scope.doTheBack = function() {
             $window.history.back();
-        };
-        
-        //Initialization event
-        $scope.initStats = function() {
-
-            $scope.defenseCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
-                                    {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
-            $scope.defenseData = [{"Positive":0}, {"Negative":0}];
-
-            $scope.attackCol = [{"id": "Positive", "index":0 ,"type": 'donut', "color": '#9ccc65'},
-                               {"id": "Negative", "index":1 ,"type": 'donut', "color": '#ef5350'}];
-            $scope.attackData = [{"Positive":0}, {"Negative":0}];
         };
         
         /* watch if periodicity change */
@@ -146,6 +134,5 @@
         
         /* Primary, check if user connected */
         $scope.checkUserConnected();
-        $scope.initStats();
     });
 }());

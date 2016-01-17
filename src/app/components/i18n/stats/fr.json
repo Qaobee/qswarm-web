@@ -63,7 +63,15 @@
             "listCollect" : "Evénements collectés"
         },
         "eventLabels" : {
-            "listPlayers" : "Liste joueurs"
+            "listPlayers" : "Liste joueurs",
+            "player": "Joueur",
+            "position": "Poste",
+            "efficiency": "Efficatité (B/T)",
+            "attack": "Attaque (+/-)",
+            "defense": "Defense (+/-)",
+            "yellowCard": "CJ",
+            "exclusion": "2'",
+            "redCard": "CR"
         }
     }
 }

@@ -21,7 +21,6 @@
             'angularFileUpload',
             'ui.mask',
             'selectionModel',
-            'ngMap',
             'ui.materialize',
             'ng.deviceDetector',
             

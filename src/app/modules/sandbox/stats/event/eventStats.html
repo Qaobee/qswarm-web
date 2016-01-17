@@ -78,8 +78,8 @@
             <div class="row"></div>
             
             <!-- Stats shoot efficiency Start -->
-            <div class="row grey lighten-2">
-                <div class="col s12 center blue-grey-text text-darken-2">
+            <div class="row">
+                <div class="col s12 center white red-text text-lighten-2">
                     <br/>
                     <h5 style="padding-left:10px">{{'stats.efficiency.efficiency' | translate }}</h5>
                 </div>
@@ -121,30 +121,34 @@
             
             <!-- Stats participants Start -->
             <div class="row" ng-if="players.length > 0">
-                <div>
-                    <div class="col s12 white-text blue-grey darken-1"><h5><i class="fa fa-bar-chart"></i> {{'stats.eventLabels.listPlayers' | translate }}</h5></div>
-                    <div class="col s12">
-                        <table class="bordered responsive-table highlight">
-                            <thead>
-                                <tr class="grey lighten-2">
-                                    <th data-field="player">Joueur</th>
-                                    <th data-field="positionType">Poste</th>
-                                    <th data-field="efficiency">Efficatité (B/T)</th>
-                                    <th data-field="attack">Attaque (+/-)</th>
-                                    <th data-field="defense">Défense (+/-)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="player in players">
-                                    <td>{{player.name}} - {{player.firstname}}</td>
-                                    <td>{{player.positionType}}</td>
-                                    <td>50 % (2/4)</td>
-                                    <td>3/4</td>
-                                    <td>2/6</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="col s12 white-text blue-grey darken-1"><h5><i class="fa fa-bar-chart"></i> {{'stats.eventLabels.listPlayers' | translate }}</h5></div>
+                <div class="col s12">
+                    <table class="bordered responsive-table highlight">
+                        <thead>
+                            <tr class="grey lighten-2">
+                                <th data-field="player">{{'stats.eventLabels.player' | translate }}</th>
+                                <th data-field="positionType">{{'stats.eventLabels.position' | translate }}</th>
+                                <th data-field="efficiency">{{'stats.eventLabels.efficiency' | translate }}</th>
+                                <th class="center-align" data-field="yellowCard">{{'stats.eventLabels.yellowCard' | translate }}</th>
+                                <th class="center-align" data-field="exclusion">{{'stats.eventLabels.exclusion' | translate }}</th>
+                                <th class="center-align" data-field="redCard">{{'stats.eventLabels.redCard' | translate }}</th>
+                                <th class="center-align" data-field="attack">{{'stats.eventLabels.attack' | translate }}</th>
+                                <th class="center-align" data-field="defense">{{'stats.eventLabels.defense' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="player in players">
+                                <td>{{player.name}} - {{player.firstname}}</td>
+                                <td>{{player.positionType}}</td>
+                                <td>50 % (2/4)</td>
+                                <td class="center-align">0</td>
+                                <td class="center-align">1</td>
+                                <td class="center-align">0</td>
+                                <td class="center-align">3/4</td>
+                                <td class="center-align">2/6</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <!-- Stats participants Start -->

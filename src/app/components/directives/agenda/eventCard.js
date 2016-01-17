@@ -12,7 +12,7 @@
 
     angular.module('eventCard', ['collecteRestAPI'])
 
-        .directive('eventCard', function ($translatePartialLoader, $log, $q, $filter, collecteRestAPI) {
+        .directive('eventCard', function ($translatePartialLoader, $document, $log, $q, $filter, collecteRestAPI) {
             return {
                 restrict: 'E',
                 scope: {
@@ -23,6 +23,7 @@
                     $translatePartialLoader.addPart('agenda');
                     
                     $scope.isCollected = false;
+                    $scope.mapShow = false;
                     
                     $scope.icon ='';
                     $scope.color1 ='';
@@ -81,7 +82,33 @@
                             $scope.isCollected = true;
                             $scope.collectId = data[0]._id;
                         }
-                    });                  
+                    });
+                    
+                    if(angular.isDefined($scope.event.address.formatedAddress)) {
+                        $scope.mapShow = true;
+                    }
+                    
+                    $scope.openMap = function () {
+                        $log.debug('$scope.map',$scope.map);
+                        var myLatLng = new google.maps.LatLng($scope.event.address.lat,$scope.event.address.lng);
+                        var myOptions = {
+                            zoom: 16,
+                            center: myLatLng,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        };
+                        $scope.map = ($document.find('#mapEvent-'+$scope.event._id))[0];
+                        $scope.map = new google.maps.Map($scope.map, myOptions);
+                        google.maps.event.trigger($scope.map, 'resize');
+                        /*
+                        var marker = new google.maps.Marker({
+                            position: myLatLng,
+                            map: map,
+                            title: $scope.event.address.formatedAddress
+                        });
+                        */
+
+                        $('#modalEvent-'+$scope.event._id).openModal();    
+                    };
                 },
                 templateUrl: 'app/components/directives/agenda/eventCard.html'
             };
