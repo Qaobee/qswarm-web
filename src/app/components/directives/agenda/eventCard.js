@@ -12,7 +12,7 @@
 
     angular.module('eventCard', ['collecteRestAPI'])
 
-        .directive('eventCard', function ($translatePartialLoader, $document, $log, $q, $filter, collecteRestAPI) {
+        .directive('eventCard', function ($translatePartialLoader, $timeout, $document, $log, $q, $filter, collecteRestAPI) {
             return {
                 restrict: 'E',
                 scope: {
@@ -89,23 +89,26 @@
                     }
                     
                     $scope.openMap = function () {
-                        $log.debug('$scope.map',$scope.map);
-                        var myLatLng = new google.maps.LatLng($scope.event.address.lat,$scope.event.address.lng);
-                        var myOptions = {
-                            zoom: 16,
-                            center: myLatLng,
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                        };
-                        $scope.map = ($document.find('#mapEvent-'+$scope.event._id))[0];
-                        $scope.map = new google.maps.Map($scope.map, myOptions);
-                        google.maps.event.trigger($scope.map, 'resize');
-                        /*
-                        var marker = new google.maps.Marker({
-                            position: myLatLng,
-                            map: map,
-                            title: $scope.event.address.formatedAddress
-                        });
-                        */
+                        $timeout(function () {
+                            var myLatLng = new google.maps.LatLng($scope.event.address.lat,$scope.event.address.lng);
+                            var myOptions = {
+                                zoom: 16,
+                                center: myLatLng,
+                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                            };
+                            $scope.map = ($document.find('#mapEvent-'+$scope.event._id))[0];
+                            $scope.map = new google.maps.Map($scope.map, myOptions);
+                            google.maps.event.trigger($scope.map, 'resize');
+                            /*
+                            var marker = new google.maps.Marker({
+                                position: myLatLng,
+                                map: map,
+                                title: $scope.event.address.formatedAddress
+                            });
+                            */
+                        }, 0);
+                        
+                        
 
                         $('#modalEvent-'+$scope.event._id).openModal();    
                     };
