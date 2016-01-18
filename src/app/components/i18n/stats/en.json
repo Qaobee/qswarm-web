@@ -63,7 +63,19 @@
             "listCollect" : "list event"
         },
         "eventLabels" : {
-            "listPlayers" : "list players"
+            "listPlayers" : "Player list",
+            "goalkeeper" : "Goalkeeper",
+            "player": "Player",
+            "position": "Position",
+            "efficiency": "Efficiency",
+            "shoot": "Goal/Shoot",
+            "efficiencyGoal": "% Stop",
+            "shoot": "Stop/Shoot",
+            "attack": "Attack (+/-)",
+            "defense": "Defense (+/-)",
+            "yellowCard": "YC",
+            "exclusion": "2'",
+            "redCard": "RC"
         }
     }
 }

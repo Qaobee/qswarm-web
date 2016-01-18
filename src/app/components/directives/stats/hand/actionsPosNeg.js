@@ -59,7 +59,7 @@
                         });
 
                         /* ALL PERS-ACT-DEF-NEG */
-                        var indicators =  Array.create('penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition');
+                        indicators =  Array.create('penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition');
                         statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
                             if(!$scope.noStat && result>0) {
                                 $scope.noStat = true;
@@ -69,7 +69,7 @@
                         });
 
                         /* ALL PERS-ACT-OFF-POS */
-                        var indicators =  Array.create('penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec');
+                        indicators =  Array.create('penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec');
                         statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
                             if(!$scope.noStat && result>0) {
                                 $scope.noStat = true;
@@ -79,7 +79,7 @@
                         });
 
                         /* ALL PERS-ACT-OFF-NEG */
-                        var indicators =  Array.create('forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt');
+                        indicators =  Array.create('forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt');
                         statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
                             if(!$scope.noStat && result>0) {
                                 $scope.noStat = true;

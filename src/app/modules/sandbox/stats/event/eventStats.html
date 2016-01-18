@@ -122,13 +122,15 @@
             <!-- Stats participants Start -->
             <div class="row" ng-if="players.length > 0">
                 <div class="col s12 white-text blue-grey darken-1"><h5><i class="fa fa-bar-chart"></i> {{'stats.eventLabels.listPlayers' | translate }}</h5></div>
-                <div class="col s12">
+                <div class=" card col s12">
+                    <!-- player -->
                     <table class="bordered responsive-table highlight">
                         <thead>
-                            <tr class="grey lighten-2">
+                            <tr class="light-green lighten-1 white-text">
                                 <th data-field="player">{{'stats.eventLabels.player' | translate }}</th>
                                 <th data-field="positionType">{{'stats.eventLabels.position' | translate }}</th>
                                 <th data-field="efficiency">{{'stats.eventLabels.efficiency' | translate }}</th>
+                                <th data-field="efficiency">{{'stats.eventLabels.shoot' | translate }}</th>
                                 <th class="center-align" data-field="yellowCard">{{'stats.eventLabels.yellowCard' | translate }}</th>
                                 <th class="center-align" data-field="exclusion">{{'stats.eventLabels.exclusion' | translate }}</th>
                                 <th class="center-align" data-field="redCard">{{'stats.eventLabels.redCard' | translate }}</th>
@@ -137,15 +139,46 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="player in players">
+                            <tr ng-repeat="player in players | filter:{$:'!goalkeeper'}">
                                 <td>{{player.name}} - {{player.firstname}}</td>
                                 <td>{{player.positionType}}</td>
-                                <td>50 % (2/4)</td>
-                                <td class="center-align">0</td>
-                                <td class="center-align">1</td>
-                                <td class="center-align">0</td>
-                                <td class="center-align">3/4</td>
-                                <td class="center-align">2/6</td>
+                                <td>{{(player.stats.goalScored/player.stats.originShootAtt)*100 | number : 0}} %</td>
+                                <td>{{player.stats.goalScored}}/{{player.stats.originShootAtt}}</td>
+                                <td ng-show="player.stats.yellowCard>0" class="center-align amber accent-3">{{player.stats.yellowCard}}</td>
+                                <td ng-hide="player.stats.yellowCard>0" class="center-align"></td>
+                                <td ng-show="player.stats.exclTmp>0" class="center-align red lighten-2">{{player.stats.exclTmp}}</td>
+                                <td ng-hide="player.stats.exclTmp>0" class="center-align"></td>
+                                <td ng-show="player.stats.redCard>0" class="center-align red darken-2">{{player.stats.redCard}}</td>
+                                <td ng-hide="player.stats.redCard>0" class="center-align"></td>
+                                <td class="center-align">{{player.stats.actAttPos}}/{{player.stats.actAttNeg}}</td>
+                                <td class="center-align">{{player.stats.actDefPos}}/{{player.stats.actDefNeg}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <!-- goalkeeper -->
+                    <table class="bordered responsive-table highlight">
+                        <thead>
+                            <tr class="red lighten-1 white-text">
+                                <th data-field="player">{{'stats.eventLabels.goalkeeper' | translate }}</th>
+                                <th data-field="efficiency">{{'stats.eventLabels.efficiencyGoal' | translate }}</th>
+                                <th data-field="efficiency">{{'stats.eventLabels.stop' | translate }}</th>
+                                <th class="center-align" data-field="yellowCard">{{'stats.eventLabels.yellowCard' | translate }}</th>
+                                <th class="center-align" data-field="exclusion">{{'stats.eventLabels.exclusion' | translate }}</th>
+                                <th class="center-align" data-field="redCard">{{'stats.eventLabels.redCard' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="player in players | filter:{$:'goalkeeper'}">
+                                <td>{{player.name}} - {{player.firstname}}</td>
+                                <td>{{((player.stats.originShootDef-player.stats.goalConceded)/player.stats.originShootDef)*100 | number : 0}} %</td>
+                                <td>{{(player.stats.originShootDef-player.stats.goalConceded)}}/{{player.stats.originShootDef}}</td>
+                                <td ng-show="player.stats.yellowCard>0" class="center-align amber accent-3">{{player.stats.yellowCard}}</td>
+                                <td ng-hide="player.stats.yellowCard>0" class="center-align"></td>
+                                 <td ng-show="player.stats.exclTmp>0" class="center-align red lighten-2">{{player.stats.exclTmp}}</td>
+                                <td ng-hide="player.stats.exclTmp>0" class="center-align"></td>
+                                <td ng-show="player.stats.redCard>0" class="center-align red darken-2">{{player.stats.redCard}}</td>
+                                <td ng-hide="player.stats.redCard>0" class="center-align"></td>
                             </tr>
                         </tbody>
                     </table>
