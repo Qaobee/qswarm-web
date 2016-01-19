@@ -143,15 +143,15 @@
                                 <td>{{player.name}} - {{player.firstname}}</td>
                                 <td>{{player.positionType}}</td>
                                 <td>{{(player.stats.goalScored/player.stats.originShootAtt)*100 | number : 0}} %</td>
-                                <td>{{player.stats.goalScored}}/{{player.stats.originShootAtt}}</td>
+                                <td>{{player.stats.goalScored}} / {{player.stats.originShootAtt}}</td>
                                 <td ng-show="player.stats.yellowCard>0" class="center-align amber accent-3">{{player.stats.yellowCard}}</td>
                                 <td ng-hide="player.stats.yellowCard>0" class="center-align"></td>
                                 <td ng-show="player.stats.exclTmp>0" class="center-align red lighten-2">{{player.stats.exclTmp}}</td>
                                 <td ng-hide="player.stats.exclTmp>0" class="center-align"></td>
                                 <td ng-show="player.stats.redCard>0" class="center-align red darken-2">{{player.stats.redCard}}</td>
                                 <td ng-hide="player.stats.redCard>0" class="center-align"></td>
-                                <td class="center-align">{{player.stats.actAttPos}}/{{player.stats.actAttNeg}}</td>
-                                <td class="center-align">{{player.stats.actDefPos}}/{{player.stats.actDefNeg}}</td>
+                                <td class="center-align">{{player.stats.actAttPos}} / {{player.stats.actAttNeg}}</td>
+                                <td class="center-align">{{player.stats.actDefPos}} / {{player.stats.actDefNeg}}</td>
                             </tr>
                         </tbody>
                     </table>
