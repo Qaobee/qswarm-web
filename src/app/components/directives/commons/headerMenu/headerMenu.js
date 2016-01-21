@@ -90,6 +90,14 @@
                         });
 
                     });
+                    
+                    $scope.openSignup = function () {
+                        $('#modalSignup').openModal();    
+                    };
+                    
+                    $scope.openLogin = function () {
+                        $('#modalLogin').openModal();    
+                    };
 
 
                     /**

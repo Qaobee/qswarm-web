@@ -1,5 +1,5 @@
-<div class="banner-container" ng-if="showBanner">
 <!-- Bannière Download appli mobile -->
+<div class="banner-container" ng-if="showBanner">
 	<div class="row valign-wrapper">
 		<div class="col s1" ng-click="closeBanner()"><span class="banner-close"> <i class="material-icons prefix">close</i></span></div>
 		<div class="col s3" ng-click="openDownload()"><a class="banner-img-dl"><img src="assets/images/logo-download.png"/></a></div>
@@ -13,48 +13,52 @@
 	</div>
 </div>
 
-<!-- Not connected -->
+<!-- Menu Not connected -->
 <nav class="top-nav " ng-class="{ 'white top-nav-trans': isActive('/'), 'green darken-1': !isActive('/')}"
      role="navigation" ng-hide="user">
     <div class="container">
         <div class="nav-wrapper">
 
             <a href="/#/" class="brand-logo"><img src="assets/images/logo-mini.png" height="30px"/></a>
+
             <ul class="right hide-on-med-and-down">
-                <li><a href="https://twitter.com/Qaobee"
-                       target="_blank"
-                       class="white-text"><i
-                        class="fa fa-twitter-square fa-2x"></i></a></li>
-            </ul>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="#modalLogin" class="white-text modal-trigger"><i
-                        class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}</a></li>
+                <li>
+                    <a class="white-text" ng-click="openLogin()">
+                        <i class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}
+                    </a>
+                </li>
             </ul>
 
             <ul class="right hide-on-med-and-down" ng-show="signupAvailable">
-                <li><a href="#modalSignup" class="white-text modal-trigger"><i
-                        class="fa fa-sign-in right"></i>{{'navbar.signup' | translate}}</a></li>
+                <li>
+                    <a class="white-text" ng-click="openSignup()">
+                        <i class="fa fa-sign-in right"></i>{{'navbar.signup' | translate}}
+                    </a>
+                </li>
             </ul>
 
-            <a href="#" data-activates="nav-mobileHC" class="button-collapse grey-text text-lighten-1"><i
-                    class="mdi-navigation-menu"></i></a>
+            <!-- menu mobile start -->
+            <a href="#" data-activates="nav-mobileHC" class="button-collapse grey-text text-lighten-1">
+                <i class="mdi-navigation-menu"></i></a>
 
             <ul id="nav-mobileHC" class="side-nav">
-                <li ng-show="signupAvailable"><a href="#modalSignup"
-                                                 class="grey-text text-lighten-1 modal-trigger"><span
-                        class="fa fa-sign-in"></span> {{'navbar.signup' | translate}}</a></li>
-                <li><a href="#modalLogin" class="grey-text text-lighten-1 modal-trigger"><span
-                        class="fa fa-sign-in"></span> {{'navbar.connect' | translate}}</a></li>
-                <li><a href="https://twitter.com/Qaobee"
-                       target="_blank"
-                       class="black-text"><i
-                        class="fa fa-twitter-square fa-2x"></i></a></li>
-            </ul>
-
+                <li ng-show="signupAvailable">
+                    <a class="blue-grey-text text-darken-2" ng-click="openSignup()">
+                        {{'navbar.signup' | translate}} 
+                    </a>
+                </li>
+                <li>
+                    <a class="blue-grey-text text-darken-2" ng-click="openLogin()">
+                        {{'navbar.connect' | translate}}  
+                    </a>
+                </li>
+            </ul>   
+            <!-- menu mobile end -->
         </div>
     </div>
 </nav>
-<!-- Connected First header-->
+
+<!-- Menu Connected First header-->
 <div class="navbar-fixed" ng-if="user && !user.account.firstConnexion">
     <nav class="top-nav light-green lighten-1 visible-nav" role="navigation">
         <div class="container">
@@ -104,9 +108,12 @@
                         class="mdi-navigation-menu left"></i></a>
 
                 <!-- Mobile navigation -->
-                <ul id="nav-mobile" class="side-nav blue-grey darken-3">
-                    <li><a href="#/private/" class="white-text light"><i class="fa fa-home left"></i>
-                        {{'headerMenu.dashboard' | translate }}</a></li>
+                <ul id="nav-mobile" class="side-nav blue-grey darken-2">
+                    <li>
+                        <a href="#/private/" class="white-text light">
+                            <i class="mdi-action-home left"></i> {{'headerMenu.dashboard' | translate }}
+                        </a>
+                    </li>
                     <li class="divider"></li>
                     <!--
                     <li><a href="#/private/" class="white-text light"><i class="fa fa-envelope left"></i>
@@ -115,9 +122,11 @@
                     <li><a href="#/private/mainStats" class="white-text light"><i class="fa fa-bar-chart left"></i>
                         {{'headerMenu.stats' | translate }}</a></li>
                     -->
-                    <li><a href="#/private/effective/{{user.effectiveDefault}}" class="white-text light"><i
-                            class="mdi-social-people left"></i>
-                        {{'headerMenu.effective' | translate }}</a></li>
+                    <li>
+                        <a href="#/private/effective/{{user.effectiveDefault}}" class="white-text light">
+                            <i class="mdi-social-people left"></i> {{'headerMenu.effective' | translate }}
+                        </a>
+                    </li>
                     <!--
                     <li><a href="#/private/" class="white-text light"><i class="mdi-image-timer left"></i>
                         {{'headerMenu.training' | translate }}</a></li>
@@ -125,12 +134,17 @@
                     <li><a href="#/private/" class="white-text light"><i class="fa fa-trophy left"></i>
                         {{'headerMenu.championship' | translate }}</a></li>
                     -->
-                    <li><a href="#/private/agenda/{{user.effectiveDefault}}" class="white-text light"><i
-                            class="fa fa-calendar left"></i>
-                        {{'headerMenu.calendar' | translate }}</a></li>
+                    <li>
+                        <a href="#/private/agenda/{{user.effectiveDefault}}" class="white-text light">
+                            <i class="mdi-action-view-agenda left"></i> {{'headerMenu.calendar' | translate }}
+                        </a>
+                    </li>
                     <li class="divider"></li>
-                    <li><a ng-click="logoff()" class="white-text light"><i class="fa fa-power-off left"></i>
-                        {{'navbar.disconnect' | translate}}</a></li>
+                    <li>
+                        <a ng-click="logoff()" class="white-text">
+                            <i class="mdi-action-exit-to-app left"></i> {{'navbar.disconnect' | translate}}
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
