@@ -7,10 +7,10 @@
       "debugEnabled": true
     }
   },
-  "production": {
+  "recette": {
     "EnvironmentConfig": {
-      "name": "production",
-      "apiEndPoint": "http://hive.qaobee.com",
+      "name": "recette",
+      "apiEndPoint": "http://hive-qaobee.rhcloud.com",
       "useLoaderCache": true,
       "debugEnabled": true
     }
