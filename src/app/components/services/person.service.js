@@ -20,7 +20,8 @@
         /* Format address */
         var formatAddress = function (address) {
             var deferred = $q.defer(); 
-            
+            // TODO : à factoriser sur les conditions address.formatedAddress et address.formatted_address
+            // Formattage de l'adresse à partir du FormatedAddress
             if (angular.isDefined(address.formatedAddress) && !address.formatedAddress.isBlank()) {
                 locationAPI.get(address.formatedAddress).then(function (adr) {
                     address.lat = adr.data.results[0].geometry.location.lat;
@@ -45,6 +46,30 @@
 
                     deferred.resolve(address);
                 });
+            } else if (angular.isDefined(address.formatted_address) && !address.formatted_address.isBlank()) {
+                // Formattage de l'adresse à partir du résultat de l'API Google
+            	var adr = {};
+            	adr.lat = address.geometry.location.lat;
+            	adr.lng = address.geometry.location.lng;
+            	angular.forEach(address.address_components, function (item) {
+                    if (item.types.count('street_number') > 0) {
+                    	adr.place = item.long_name + ' ';
+                    }
+                    if (item.types.count('route') > 0) {
+                    	adr.place += item.long_name;
+                    }
+                    if (item.types.count('locality') > 0) {
+                    	adr.city = item.long_name;
+                    }
+                    if (item.types.count('postal_code') > 0) {
+                    	adr.zipcode = item.long_name;
+                    }
+                    if (item.types.count('country') > 0) {
+                    	adr.country = item.long_name;
+                    }
+                });
+                deferred.resolve(adr);
+                
             } else {
                 deferred.resolve(address);
             }

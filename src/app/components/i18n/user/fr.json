@@ -44,7 +44,7 @@
 	        	"female" : "Madame"
 	        },
 	        "userBirthDate" : "Date de naissance",
-	        "userNationality" : "Nationalité",
+	        "userAddress" : "Adresse",
 	        "userEMail" : "e-Mail",
 	        "userPhoneNumber" : "Numéros de téléphone",
 	        "userPhoneHome" : "Domicile",

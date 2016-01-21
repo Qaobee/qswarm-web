@@ -6,6 +6,7 @@
 //        'ngAutocomplete',
        
         /* qaobee modules */
+        'personSRV',
         
         /* services */
         'locationAPI',
@@ -35,7 +36,7 @@
             });
         })
         
-        .controller('SignupCtrl', function ($rootScope, $scope, $timeout, $translatePartialLoader, $log, $routeParams, $window, $location, $filter, WizardHandler, activityRestAPI, activityCfgRestAPI, countryRestAPI, structureRestAPI, signupRestAPI, locationAPI) {
+        .controller('SignupCtrl', function ($rootScope, $scope, $timeout, $translatePartialLoader, $log, $routeParams, $window, $location, $filter, WizardHandler, activityRestAPI, activityCfgRestAPI, countryRestAPI, structureRestAPI, signupRestAPI, locationAPI, personSrv) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
 
@@ -50,7 +51,8 @@
             $scope.newStructure.address = {};
             
             $scope.temp = {};
-            $scope.temp.detailsCountry = {};
+            $scope.temp.detailsAddress = {};
+            $scope.temp.detailsAddress.formatedAddress = '';
             
             $scope.temp.structureVilleOK = false;
             $scope.temp.structureSelectOK = false;
@@ -166,18 +168,6 @@
                     validateOk = false;
                 }
                 
-                if($scope.temp.detailsCountry === null || $scope.temp.detailsCountry === '') {
-                	if(!angular.isUndefined($scope.signup.nationality) && $scope.signup.nationality !== null) {
-                		$scope.signup.nationality.alpha2 = null;
-                	}
-                } else {
-                	angular.forEach($scope.temp.detailsCountry.address_components, function (item) {
-                        if (item.types.count('country') > 0) {
-                        	$scope.signup.nationality.alpha2 = item.short_name;
-                        }
-                    });
-                }
-
                 if (validateOk) {
                     var start = moment($scope.signup.birthdateInput,'DD/MM/YYYY');
                 	$scope.signup.birthdate = moment(start).valueOf();
@@ -202,10 +192,10 @@
             $scope.options = {};
             $scope.options.watchEnter = false;
             // options pour nationalité
-            $scope.optionsCountry = {
+            $scope.optionsAddress = {
                 types: 'geocode'
             };
-            $scope.detailsCountry = '';
+            $scope.detailsAddress = '';
 
             // options pour ville structure
             $scope.optionsStructureCity = {
@@ -235,6 +225,16 @@
                 $scope.newStructure = {};
             }
             
+            // Surveillance de la modification du retour de l'API Google sur l'adresse dans les infos personnelles
+            $scope.$watch('temp.detailsAddress', function(newValue, oldValue) {
+            	if(angular.isUndefined(newValue) || newValue==='' || angular.equals({}, newValue)) {
+            		return;
+            	}
+            	personSrv.formatAddress(newValue).then(function(adr){
+            		$scope.signup.address = adr;
+                });
+            });
+            
             // Surveillance de la modification du retour de l'API Google sur l'adresse
             $scope.$watch('signup.detailsStructureCity', function(newValue, oldValue) {
             	if(angular.isUndefined(newValue) || newValue==='' || angular.equals({}, newValue)) {
@@ -244,39 +244,20 @@
             	$scope.loadStructures();
             });
             
-            // Surveillance de la modification du retour de l'API Google sur l'adresse
+            // Surveillance de la modification du retour de l'API Google sur l'adresse du club
             $scope.$watch('signup.detailsNewStructureCity', function(newValue, oldValue) {
             	if(angular.isUndefined(newValue) || newValue==='' || angular.equals({}, newValue)) {
             		return;
             	}
-            	$scope.newStructure.address = {};
+            	personSrv.formatAddress(newValue).then(function(adr){
+            		$scope.newStructure.address = adr;
+                });
             	
-            	//place_changed
             	angular.forEach(newValue.address_components, function (item) {
-            		if (item.types.count('postal_code') > 0) {
-            			$scope.newStructure.address.zipcode = item.long_name;
-            		}
             		if (item.types.count('country') > 0) {
             			$scope.newStructure.address.country = {}
             			$scope.newStructure.address.country.label  = item.long_name;
             			$scope.newStructure.address.country.alpha2 = item.short_name;
-            		}
-            		if (item.types.count('locality') > 0) {
-            			$scope.newStructure.address.city = item.long_name;
-            		}
-            		if (item.types.count('route') > 0) {
-            			if(angular.isUndefined($scope.newStructure.address.place)) {
-            				$scope.newStructure.address.place = item.long_name;
-            			} else {
-            				$scope.newStructure.address.place = $scope.newStructure.address.place + ' ' + item.long_name;
-            			}
-            		}
-            		if (item.types.count('street_number') > 0) {
-            			if(angular.isUndefined($scope.newStructure.address.place)) {
-            				$scope.newStructure.address.place = item.long_name;
-            			} else {
-            				$scope.newStructure.address.zipcode = item.long_name + ' ' + $scope.newStructure.address.place;
-            			}
             		}
             	});
             });
