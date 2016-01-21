@@ -251,15 +251,15 @@
             	}
             	personSrv.formatAddress(newValue).then(function(adr){
             		$scope.newStructure.address = adr;
+            		
+            		angular.forEach(newValue.address_components, function (item) {
+                		if (item.types.count('country') > 0) {
+                			$scope.newStructure.address.country = {}
+                			$scope.newStructure.address.country.label  = item.long_name;
+                			$scope.newStructure.address.country.alpha2 = item.short_name;
+                		}
+                	});
                 });
-            	
-            	angular.forEach(newValue.address_components, function (item) {
-            		if (item.types.count('country') > 0) {
-            			$scope.newStructure.address.country = {}
-            			$scope.newStructure.address.country.label  = item.long_name;
-            			$scope.newStructure.address.country.alpha2 = item.short_name;
-            		}
-            	});
             });
 
             // Update structure list
