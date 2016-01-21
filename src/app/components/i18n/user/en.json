@@ -54,21 +54,18 @@
 	    "ph" : {
 	    	"genderMandatory" : "Civilité non renseignée",
 	    	"birthdateMandatory" : "Date de naissance non renseignée",
-	    	"phoneNumberMandatory" : "Au moins un numéro de téléphone doit être renseigné"
+	    	"phoneNumberMandatory" : "Numéro de téléphone non renseigné"
+	    },
+	    "userErrors": {
+	        "Firstname": "Firstname is mandatory",
+	        "Name": "Name is mandatory",
+	        "BirthDate": "Birthdate is mandatory",
+	        "Gender": "Gender is mandatory",
+	        "emailDirty": "Mail format invalid",
+	        "phoneNumberMandatory" : "Le numéro de téléphone est obligatoire"
 	    }
 	},
-    "userErrors": {
-        "Firstname": "Firstname is mandatory",
-        "Name": "Name is mandatory",
-        "BirthDate": "Birthdate is mandatory",
-        "Gender": "Gender is mandatory",
-        "emailDirty": "Mail format invalid",
-        "phoneNumberMandatory" : "Au moins un numéro de téléphone doit être renseigné"
-    },
 	"sportSection" : {
-		"line1" : "Veuillez choisir le sport pour lequel vous souhaitez créer votre assistant.",
-		"line2" : "Certains sports ne sont pas encore disponibles, mais cela ne saurait tarder !", 
-		
 		"label" : {
 			"userSignupSportSection" : "Choix du sport",
 	        "userSportChoice" : "Veuillez choisir le sport"
@@ -78,8 +75,6 @@
 	    }
 	},
 	"structureSection" : {
-		"line1" : "Nous allons maintenant vous aider à choisir votre club.",
-		
 		"label" : {
 			"userSignupStructureSection" : "Choix du club",
 	        "userStructureCity" : "Ville de votre club",
@@ -103,16 +98,6 @@
 	    	"createAddressMandatory" : "Adresse du club à créer obligatoire",
 	    	"categoryAgeMandatory" : "La catégorie d'âge est obligatoire"
 	    }
-	},
-	"sumupSection" : {
-		"line1" : "Dernière étape !",
-		"line2" : "Veuillez vérifier les données ci-dessous et valider pour que nous vous créions votre espace personnel !",
-		
-		"label" : {
-		 	"userSignupSumup" : "Résumé",
-		 	"born" : "Birthdate",
-		 	"sportSection" : "Sport & Structure"
-		 }
 	},
 	"errorPage" : {
 		"title" : "Error !",

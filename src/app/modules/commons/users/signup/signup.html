@@ -22,14 +22,49 @@
     </div>
     
     <div class="row card bleu-grey-text text-darken-2">
-        <wizard on-finish="createSandBox()" template="app/components/directives/wizard/wizard.html"> 
+        <wizard template="app/components/directives/wizard/wizard.html" on-finish="validateStructureSection()"> 
             
             <!-- step infos personnes -->
             <wz-step title="{{'civilSection.label.userSignupCivilSection' | translate }}" template="app/components/directives/wizard/step.html">
                 <div class="col s12">
                     <form name="userCivilSectionForm" ng-submit="validateUserCivilSection()">
                         
+                        <!-- Empty row -->
                         <div class="row">&nbsp;</div>
+                        
+                        <!-- Gender & Nationality -->
+                        <div class="row">
+                            <div class="col m1 hide-on-small-only">&nbsp;</div>
+                            <div class="col s12 m4">
+                                <div class="row">
+                                    <div class="input-field col s3">
+                                        <label>{{'civilSection.label.userGender' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                                    </div>
+                                    <div class="input-field col s9 center-align">
+                                        <input name="signup.gender" class="with-gap" type="radio" id="userGenderF" value="gender.female" ng-model="signup.gender" required/>
+                                        <label for="userGenderF">{{'civilSection.label.gender.female' | translate }}</label>
+
+                                        <input name="signup.gender" class="with-gap" type="radio" id="userGenderM" value="gender.male" ng-model="signup.gender" required/>
+                                        <label for="userGenderM">{{'civilSection.label.gender.male' | translate }}</label>
+                                    </div>
+                                    <span class="small red-text text-lighten-1"
+                                        ng-show="userCivilSectionForm.gender.$invalid && !userCivilSectionForm.gender.$pristine" translate="civilSection.userErrors.Gender"></span>
+                                </div>
+                            </div>
+                            
+                            <div class="col s1 m1">&nbsp;</div>
+                            
+                            <div class="col m5 hide-on-small-only">
+                                <div class="input-field row">
+                                    <input type="text" id="userNationality" class="form-control validate" ng-autocomplete ng-model="signup.nationality.label" details="temp.detailsCountry" options="optionsCountry" placeholder=""/>
+                                    <label for="userNationality">{{'civilSection.label.userNationality' | translate }}</label>
+                                </div>
+                            </div>
+                            <div class="col s1 m1">&nbsp;</div>
+                        </div>
+                        
+                        
+                        <!-- Firstname & Name -->
                         <div class="row">
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
                             <div class="col s12 m4">
@@ -37,53 +72,25 @@
                                     <input ng-model="signup.firstname" id="userFirstname" name="userFirstname" type="text" class="validate" required 
                                          ng-class="{ 'has-error' : userCivilSectionForm.userFirstname.$invalid && !userCivilSectionForm.userFirstname.$pristine }">
                                     <span class="small red-text text-lighten-1"
-                                        ng-show="userCivilSectionForm.userFirstname.$invalid && !userCivilSectionForm.userFirstname.$pristine" translate="userErrors.Firstname"></span>
+                                        ng-show="userCivilSectionForm.userFirstname.$invalid && !userCivilSectionForm.userFirstname.$pristine" translate="civilSection.userErrors.Firstname"></span>
                                     <label for="userFirstname">{{'civilSection.label.userFirstname' | translate }} <span class="red-text text-lighten-1">*</span></label>
                                 </div>
                             </div>
                             
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
-                            
                             <div class="col s12 m5">
                                 <div class="input-field row">
                                   <input ng-model="signup.name" id="userName" name="userName" type="text" class="validate" required 
                                          ng-class="{ 'has-error' : userCivilSectionForm.userName.$invalid && !userCivilSectionForm.userName.$pristine }">
                                     <span class="small red-text text-lighten-1"
-                                        ng-show="userCivilSectionForm.userName.$invalid && !userCivilSectionForm.userName.$pristine" translate="userErrors.Name"></span>
+                                        ng-show="userCivilSectionForm.userName.$invalid && !userCivilSectionForm.userName.$pristine" translate="civilSection.userErrors.Name"></span>
                                   <label for="userName">{{'civilSection.label.userName' | translate }} <span class="red-text text-lighten-1">*</span></label>
                                 </div>
                             </div>
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
                         </div>
                         
-                        <!-- Nationality & PhoneHome -->
-                        <div class="row">
-                            <div class="col m1 hide-on-small-only">&nbsp;</div>
-                            <div class="col s12 m4">
-                                <div class="input-field row">
-                                    <input type="text" id="userNationality" class="form-control validate" ng-autocomplete ng-model="signup.nationality.label" details="temp.detailsCountry" options="optionsCountry" placeholder=""/>
-                                    <label for="userNationality">{{'civilSection.label.userNationality' | translate }}</label>
-                                </div>
-                            </div>
-                            
-                            <div class="col m1 hide-on-small-only">&nbsp;</div>
-                            
-                            <div class="col s12 m5">
-                                <div class="row">
-                                    <div class="input-field col s4">
-                                        <i class="material-icons prefix">phone</i>
-                                        <label for="userPhoneHome">{{'civilSection.label.userPhoneHome' | translate }}</label>
-                                    </div>
-                                    <div class="input-field col s8">
-                                        <input id="userPhoneHome" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate" min="0" ng-model="signup.contact.home">
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col m1 hide-on-small-only">&nbsp;</div>
-                        </div>
-
-                        <!-- BirthDate & PhoneOffice -->
+                        <!-- BirthDate & Phone Home -->
                         <div class="row">
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
                             <div class="col s12 m4">
@@ -94,21 +101,32 @@
                                         <label for="signupBirthdate">{{'civilSection.label.userBirthDate' | translate }} <span class="red-text text-lighten-1">*</span></label>
                                     </div>
                                     <div class="small red-text text-lighten-1"
-                                        ng-show="userCivilSectionForm.signupBirthdate.$invalid && !userCivilSectionForm.signupBirthdate.$pristine" translate="userErrors.BirthDate">
+                                        ng-show="userCivilSectionForm.signupBirthdate.$invalid && !userCivilSectionForm.signupBirthdate.$pristine" translate="civilSection.userErrors.BirthDate">
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
                             
+                            <!-- Nationality for small -->
+                        	<div class="col s12 hide-on-med-and-up">
+                                <div class="input-field row">
+                                    <input type="text" id="userNationality" class="form-control validate" ng-autocomplete ng-model="signup.nationality.label" details="temp.detailsCountry" options="optionsCountry" placeholder=""/>
+                                    <label for="userNationality">{{'civilSection.label.userNationality' | translate }}</label>
+                                </div>
+                            </div>
+                            
                             <div class="col s12 m5">
                                 <div class="row">
-                                    <div class="input-field col s4">
-                                        <i class="material-icons prefix">location_city</i>
-                                        <label for="userPhoneOffice">{{'civilSection.label.userPhoneOffice' | translate }}</label>
+                                    <div class="input-field col s5 m4">
+                                        <i class="material-icons prefix">phone</i>
+                                        <label for="userPhoneHome">{{'civilSection.label.userPhoneHome' | translate }} <span class="red-text text-lighten-1">*</span></label>
                                     </div>
-                                    <div class="input-field col s8">
-                                        <input id="userPhoneOffice" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate" min="0" ng-model="signup.contact.office">
+                                    <div class="input-field col s7 m8">
+                                        <input id="userPhoneHome" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate" min="0" ng-model="signup.contact.home" required>
+                                        <div class="small red-text text-lighten-1"
+	                                        ng-show="userCivilSectionForm.userPhoneHome.$invalid && !userCivilSectionForm.userPhoneHome.$pristine" translate="civilSection.userErrors.phoneNumberMandatory">
+	                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -116,45 +134,6 @@
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
                         </div>
                         
-                        <!-- Gender & mobile -->
-                        <div class="row">
-                            <div class="col m1 hide-on-small-only">&nbsp;</div>
-                            <div class="col s12 m4">
-                                <div class="row">
-                                    <div class="input-field col s4">
-                                        <label>{{'civilSection.label.userGender' | translate }} <span class="red-text text-lighten-1">*</span></label>
-                                    </div>
-                                    <div class="input-field col s8 right-align">
-                                        <input name="signup.gender" class="with-gap" type="radio" id="userGenderF" value="gender.female" ng-model="signup.gender" required/>
-                                        <label for="userGenderF">{{'civilSection.label.gender.female' | translate }}</label>
-
-                                        <input name="signup.gender" class="with-gap" type="radio" id="userGenderM" value="gender.male" ng-model="signup.gender" required/>
-                                        <label for="userGenderM">{{'civilSection.label.gender.male' | translate }}</label>
-                                    </div>
-                                    <span class="small red-text text-lighten-1"
-                                        ng-show="userCivilSectionForm.gender.$invalid && !userCivilSectionForm.gender.$pristine" translate="userErrors.Gender"></span>
-                                </div>
-                            </div>
-                            
-                            <div class="col m1 hide-on-small-only">&nbsp;</div>
-                            
-                            <div class="col s12 m5">
-                                <div class="row">
-                                    <div class="input-field col s4">
-                                        <i class="material-icons prefix">smartphone</i>
-                                <label for="userCellPhone">{{'civilSection.label.userCellPhone' | translate }}</label>
-                                    </div>
-                                    <div class="input-field col s8">
-                                        <input id="userCellPhone" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate" min="0" ng-model="signup.contact.cellphone">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col m1 hide-on-small-only">&nbsp;</div>
-                            <div class="col s12 right-align"><h6><small>{{'civilSection.line3' | translate}} <span class="red-text text-lighten-1">*</span></small></h6></div>
-                        </div>
-
-
                         <!-- actions buttons -->
                         <div class="row">
                             <div class="col m3 hide-on-med-and-down">&nbsp;</div>
@@ -170,19 +149,10 @@
             
             
             <!-- step choix du sport -->
-            <wz-step title="{{'sportSection.label.userSignupSportSection' | translate }}" template="app/components/directives/wizard/step.html" >
-                <div class="row"></div>
+            <wz-step ng-if="false" title="{{'sportSection.label.userSignupSportSection' | translate }}" template="app/components/directives/wizard/step.html" >
+    <!--             <div class="row"></div>
                 <form novalidate class="col s12" name="userSportSection">
                 
-                	<div class="row bleu-grey-text text-darken-2">
-                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    	<div class="col m6 s12">
-                    		<h6>{{'sportSection.line1' | translate}}</h6>
-                    		<h6><i>{{'sportSection.line2' | translate}}</i></h6>
-                    	</div>
-                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                    
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="col m6 s12">
@@ -199,7 +169,6 @@
                     </div>
                     
                     
-                    <!-- actions buttons -->
                     <div class="row">&nbsp;</div>
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
@@ -210,7 +179,7 @@
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
-                </form>
+                </form> -->
             </wz-step>
             
              <!-- step choix du club -->
@@ -218,14 +187,6 @@
                 <div class="row"></div>
                 <form novalidate class="col s12" name="userStructureSection">
                 
-                	<div class="row">
-                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    	<div class="col m6 s12">
-                    		<h6>{{'structureSection.line1' | translate}}</h6>
-                    	</div>
-                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                    
                     <div class="row" ng-if="!temp.createStructure">
 	                    <div class="row">
 	                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
@@ -310,13 +271,14 @@
 	                    </div>
 	                </div>
      
-     				<div ng-if="temp.structureSelectOK">
+     				<div ng-show="temp.structureSelectOK">
 	                    <div class="row">
 	                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
 	                    	<div class="col input-field m3 s6"><label>{{'structureSection.label.userCategoryAge' | translate}} <span class="red-text text-lighten-1">*</span></label></div>
 	                    	<div class="input-field col s3">
 	                            <select name="categoryAgeSelect" ng-model="signup.categoryAge" id="userCategoryAgeSelect" class="browser-default blue-grey-text text-darken-1"
-	                            	ng-options="cat.label for cat in valuesCategoryAge track by cat._id">
+	                            	ng-options="cat.label for cat in valuesCategoryAge track by cat._id" required>
+	                            	<option></option>
 	                            </select>
 	                        </div>
 	                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
@@ -330,99 +292,7 @@
                         <div class="col m6 s12 center">
                             <a ng-click="openCancelModal()" class="btn btn-s red lighteen-1 white-text">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
                             <button class="btn btn-s white-text blue-grey darken-3" wz-previous type="submit" name="previous">{{'commons.buttons.previous' | translate }}</button>&nbsp;
-                            <button class="btn btn-s white-text green darken-1" type="submit" ng-click="validateStructureSection()" name="next">{{'commons.buttons.next' | translate }}</button>
-                        </div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                </form>
-            </wz-step>
-            
-            
-            <!-- step Résumé -->
-            <wz-step title="{{'sumupSection.label.userSignupSumup' | translate }}" template="app/components/directives/wizard/step.html">
-                <div class="row"></div>
-                <form class="col s12" name="userSumup">
-                	<div class="row">
-                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    	<div class="col m6 s12">
-                    		<h5>{{'sumupSection.line1' | translate}}</h5>
-                    		<h6>{{'sumupSection.line2' | translate}}</h6>
-                    	</div>
-                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                    
-                    <div class="row" style="margin:0">
-                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    	<div class="col m6 s12">
-                    		<h6 style="margin:0"><b><u>{{'civilSection.label.userSignupCivilSection' | translate}}</u></b></h6>
-                    	</div>
-                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                    <div class="row">
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="input-field col m1 s1"></div>
-                        <div class="input-field col m5 s11">
-                            {{'civilSection.label.' + signup.gender + '' | translate}} {{signup.name | uppercase}} {{signup.firstname}}<br>
-                            {{'sumupSection.label.born' | translate}} {{signup.birthdateInput | date:'dd/MM/yyyy'}}<br>
-                            {{signup.contact.email}}<br>
-                            <span ng-hide="signup.nationality===null || angular.isUndefined(signup.nationality) || angular.isUndefined(signup.nationality.label)">{{'civilSection.label.userNationality' | translate }} : {{signup.nationality.label}}<br></span>
-                            <span ng-hide="signup.contact.home===null || angular.isUndefined(signup.contact.home)">{{'civilSection.label.userPhoneHome' | translate}} : {{signup.contact.home}}</span><br></span> 
-                            <span ng-hide="signup.contact.office===null || angular.isUndefined(signup.contact.office)">{{'civilSection.label.userPhoneOffice' | translate}} : {{signup.contact.office}}<br></span>
-                            <span ng-hide="signup.contact.cellphone===null || angular.isUndefined(signup.contact.cellphone)">{{'civilSection.label.userCellPhone' | translate}} : {{signup.contact.cellphone}}<br></span>
-                       </div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                    
-                    <div class="row" style="margin:0">
-                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    	<div class="col m6 s12">
-                    		<h6 style="margin:0"><b><u>{{'sumupSection.label.sportSection' | translate }}</u></b></h6>
-                    	</div>
-                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                    <div class="row">
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="input-field col m1 s4">
-                            <img ng-src="assets/images/activity/{{signup.account.listPlan[0].activity._id}}.jpg" width="80"/><br/>
-                       </div>
-                        <div class="input-field col m5 s8">
-                        	<div ng-repeat="data in structuresResult" ng-if="data._id==structure.referencialId">
-							     {{data.label}}<br>
-							     {{data.address.place}}<br>
-							     {{data.address.zipcode}} {{data.address.city}}
-							</div>
-							<div>
-								 {{structure.label}}<br>
-							     {{structure.address.place}}<br>
-							     {{structure.address.zipcode}} {{structure.address.city}}
-							</div>
-                        </div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                    
-                   <div class="row" style="margin:0">
-                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    	<div class="col m6 s12">
-                    		<h6 style="margin:0"><b><u>{{'structureSection.label.userCategoryAge' | translate }}</u></b></h6>
-                    	</div>
-                    	<div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                    <div class="row">
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="input-field col m1 s1"></div>
-                        <div class="input-field col m5 s11">{{signup.categoryAge.label}}</div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                    
-                    
-                    <!-- actions buttons -->
-                    <div class="row">&nbsp;</div>
-                    <div class="row">
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="col m6 s12 center-align">
-                            <a ng-click="openCancelModal()" class="btn btn-s red lighteen-1 white-text">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
-                            <button class="btn btn-s white-text blue-grey darken-3" wz-previous type="submit" name="previous">{{'commons.buttons.previous' | translate }}</button>&nbsp;
-                            <a wz-next class="btn btn-s white-text green darken-1">{{'commons.buttons.validate' | translate }}</a>
+                            <button class="btn btn-s white-text green darken-1" type="submit" ng-click="validateStructureSection()" ng-disabled="userStructureSection.$invalid">{{'commons.buttons.validate' | translate }}</button>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     </div>
