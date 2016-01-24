@@ -222,6 +222,39 @@
                      * @memberOf qaobee.directives.headerMenu
                      * @description Cancel user signup
                      */
+                    $scope.openForgotPwd = function() {
+                    	delete($scope.infos);
+                    	$('#modalLogin').closeModal();
+                    	$('#modalForgotPwd').openModal();
+                    };
+                    
+                    /**
+                     * @name $qcope.renewPwd
+                     * @function
+                     * @memberOf qaobee.directives.headerMenu
+                     * @description Ask for paswword renew
+                     */
+                    $scope.renewPwd = function() {
+                    	userRestAPI.forgotPasswd($scope.infos.login).success(function (data) {
+                    		if(data.status===true) {
+                    			delete($scope.infos);
+                            	$('#modalForgotPwd').closeModal();
+                            	$('#modalForgotPwdOK').openModal();
+                    		} else {
+                    			toastr.warning(data.message);
+                    		}
+                    	}).error(function (error) {
+                    		toastr.error(error.message);
+                    	});
+                    };
+                    
+                    
+                    /**
+                     * @name $qcope.cancelSignup
+                     * @function
+                     * @memberOf qaobee.directives.headerMenu
+                     * @description Cancel user signup
+                     */
                     $scope.cancelSignup = function() {
                     	delete $scope.signup;
                     	$('#modalSignup').closeModal();

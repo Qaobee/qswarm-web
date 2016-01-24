@@ -17,6 +17,11 @@
             "strength": "Robustesse du mot de passe"
         }
     },
+    "modalForgotPwdOk" : {
+		"line1" : "Votre demande de regénération de mot de passe est en cours !",
+		"line2" : "Vous allez recevoir d'ici quelques minutes un e-mail pour modifier vos accès à votre compte Qaobee.",
+		"line3" : "A très vite sur qaobee.com !"
+	},
 	"modalCreate" : {
 		"title" : "Création en cours...",
 		"stepCreateSpace" : "Création de votre espace",
