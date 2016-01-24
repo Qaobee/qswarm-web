@@ -19,6 +19,30 @@
         $routeProvider.when('/test/adminUser/get/:id?', {
             controller: 'adminUserCtrl',
             templateUrl: 'app/modules/test/admin/adminUser.html'
+        })
+        .when('/test/adminUser/getLogin/:login?', {
+            controller: 'adminUserLoginCtrl',
+            templateUrl: 'app/modules/test/admin/adminUser.html'
+        });
+    })
+    
+    .controller('adminUserLoginCtrl', function ($scope, $routeParams, $log, $location, userRestAPI){
+    	var userLogin = $routeParams.login;
+    	$log.debug("Recherche user : " + userLogin);
+    	// Recherche du User
+    	userRestAPI.getUserByLogin(userLogin).success(function (data) {
+    		$log.debug(data);
+            if (true === data.error) {
+            	toastr.error(data.message);
+            } else {
+                $location.path('/test/adminUser/get/' + data._id);
+            }
+        }).error(function (error) {
+            if (error != null) {
+            	toastr.error(error.message);
+            } else {
+            	toastr.error('Problème getUserByLogin');
+            }
         });
     })
     

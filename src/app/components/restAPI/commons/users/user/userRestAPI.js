@@ -117,6 +117,19 @@
                         url: userURL + '/user?id=' + id,
                         method: 'GET'
                     });
+                },
+                /**
+                 * @memberOf qaobee.components.restAPI.commons.users.userRestAPI
+                 * @function getUserByLogin
+                 * @param {String} user login
+                 * @description Fetch uer informations
+                 * @returns {Object} Person com.qaobee.hive.business.model.commons.users.User
+                 */
+                getUserByLogin: function (login) {
+                    return $http({
+                        url: userURL + '/userByLogin?login=' + login,
+                        method: 'GET'
+                    });
                 }
             };
         });

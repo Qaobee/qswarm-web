@@ -122,7 +122,9 @@
                     $scope.signup.categoryAge = '';
                     
                     // On force le sport au HANDBALL
-                    $scope.signup.account.listPlan = [{}];
+                    if(angular.isUndefined($scope.signup.account.listPlan)) {
+                    	$scope.signup.account.listPlan = [{}];
+                    }
                     $scope.signup.account.listPlan[0].activity = {};
                     $scope.signup.account.listPlan[0].activity._id = 'ACT-HAND';
                     
