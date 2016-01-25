@@ -158,6 +158,10 @@
                 	toastr.error(data.message);
                 } else {
                 	$scope.SBPersons = data;
+                	$scope.SBPersons.forEach(function(person){
+                		person.birthdateFormatted = moment(person.birthdate);
+                	});
+                	
                 	toastr.info('Sandbox Person refreshed');
                 }
             }).error(function (error) {
