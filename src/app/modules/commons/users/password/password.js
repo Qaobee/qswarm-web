@@ -7,20 +7,15 @@
         /* qaobee modules */
         
         /* services */
-
+        'reCAPTCHA',
+        
         /* qaobee Rest API */
         'userRestAPI'
     ])
 
 
     .config(function ($routeProvider) {
-        $routeProvider.when('/recoverpasswd/end', {
-            controller: 'PasswdEndCtrl',
-            templateUrl: 'app/modules/commons/users/password/passwordEnd.html'
-        }).when('/recoverpasswd/error', {
-            controller: 'PasswdEndCtrl',
-            templateUrl: 'app/modules/commons/users/password/passwordError.html'
-        }).when('/recoverpasswd/:id/:code?', {
+        $routeProvider.when('/recoverpasswd/:id/:code?', {
             controller: 'PasswdCtrl',
             templateUrl: 'app/modules/commons/users/password/password.html'
         });
@@ -30,39 +25,52 @@
         $translatePartialLoader.addPart('user');
         $translatePartialLoader.addPart('commons');
         
-        toastr.warning('PasswdCtrl');
+        $scope.renew = {};
         
-        userRestAPI.passwdCheck($routeParams.id, $routeParams.code).success(function (data) {
-        	 if(data === null) {
-     	    	$rootScope.messageErreur = '';
-                 $location.path('/recoverpasswd/error');
+        userRestAPI.passwdCheck($routeParams.code, $routeParams.id).success(function (data) {
+        	if(data === null) {
+        		toastr.error($filter('translate')('renewPasswdPage.popup.errorUnknown'));
+                $location.path('/');
+        	} else if (false === data.status) {
+        		toastr.error($filter('translate')('renewPasswdPage.popup.errorCode'));
+     	    	$location.path('/');
      	    } else if (true === data.error) {
-                 $rootScope.messageErreur = data.message;
-                 $location.path('/recoverpasswd/error');
-             } else {
-            	 
-             }
+     	    	toastr.error(data.message);
+     	    	$location.path('/');
+            } else {
+            	 $scope.renew.id = $routeParams.id;
+            	 $scope.renew.code = $routeParams.code;
+            }
+        }).error(function (data) {
+        	toastr.error(data);
+        	$location.path('/');
         });
-    
-    })
-    .controller('PasswdEndCtrl', function ($rootScope, $scope, $translatePartialLoader, $log) {
-    	toastr.warning('PasswdErrorCtrl');
-    })
-    
-    .controller('PasswdErrorCtrl', function ($rootScope, $scope, $location, $translatePartialLoader, $log, $filter) {
-        $translatePartialLoader.addPart('user');
         
-        toastr.warning('PasswdErrorCtrl');
-
-        $scope.message = $rootScope.messageErreur;
-        if (angular.isUndefined($rootScope.messageErreur) || $scope.message === null || "" === $scope.message) {
-            $scope.message = $filter('translate')('errorPage.ph.noMessage');
+        $scope.renewPasswd = function() {
+        	if($scope.renew.passwd !== $scope.renew.passwdConfirm) {
+        		toastr.warning($filter('translate')('error.signup.password.different'));
+        		$window.Recaptcha.reload();
+        		return;
+        	}
+        	userRestAPI.resetPasswd($scope.renew).success(function () {
+                $window.Recaptcha.reload();
+                toastr.success($filter('translate')('renewPasswdPage.popup.success'));
+                $location.path('/');
+            }).error(function (error) {
+                $window.Recaptcha.reload();
+                if (error) {
+                    if (error.code && error.code === 'CAPTCHA_EXCEPTION') {
+                        toastr.error($filter('translate')('popup.error.' + error.code));
+                    } else {
+                        toastr.error(error.message);
+                    }
+                }
+            });
         }
-        delete $rootScope.messageErreur;
-
-        $scope.goHome = function () {
-            $location.path('/');
-        };
+        
+        $scope.cancelRenew = function() {
+        	 $location.path('/');
+        }
     });
 
 }());

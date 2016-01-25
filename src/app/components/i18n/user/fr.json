@@ -123,5 +123,14 @@
 			"signature" : "L'équipe Qaobee."
 		}, 
 		"buttonHome" : "Accueil" 
+	},
+	"renewPasswdPage" : {
+		"title" : "Regénération de mot de passe",
+		"line1" : "Veuillez inscrire un nouveau mot de passe",
+		"popup" : {
+			"success" : "Votre mot de passe est mis à jour",
+			"errorUnknown" : "Erreur inconnue",
+			"errorCode" : "Codes invalides"
+		}
 	}
 }

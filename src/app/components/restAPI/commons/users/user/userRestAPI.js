@@ -75,10 +75,11 @@
                  * @description Suppression du mot de passe
                  * @returns {Object} {"status", true} ou {"status", false}
                  */
-                resetPasswd: function () {
+                resetPasswd: function (data) {
                     return $http({
                         url: userURL + '/resetPasswd/',
-                        method: 'POST'
+                        method: 'POST',
+                        data: data 
                     });
                 },
                 /**
