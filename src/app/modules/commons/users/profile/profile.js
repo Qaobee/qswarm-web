@@ -36,9 +36,14 @@
             $translatePartialLoader.addPart('effective');
             
             $scope.user = user;
+        
+            // return button
+            $scope.doTheBack = function() {
+                $window.history.back();
+            };
 
-            $scope.pdfUrl = EnvironmentConfig.apiEndPoint + '/api/1/commons/users/profile/pdf?token=' + $window.sessionStorage.qaobeesession;
-            $scope.billPdfUrl = EnvironmentConfig.apiEndPoint + '/api/1/commons/users/profile/billpdf?token=' + $window.sessionStorage.qaobeesession;
+            //$scope.pdfUrl = EnvironmentConfig.apiEndPoint + '/api/1/commons/users/profile/pdf?token=' + $window.sessionStorage.qaobeesession;
+            //$scope.billPdfUrl = EnvironmentConfig.apiEndPoint + '/api/1/commons/users/profile/billpdf?token=' + $window.sessionStorage.qaobeesession;
             
             //i18n datepicker
             var month = $filter('translate')('commons.format.date.listMonth');
@@ -80,14 +85,14 @@
 
                 $scope.datePicker = $inputDate.pickadate('picker');
                 $scope.datePicker.set('select', $scope.user.birthdate.valueOf());
-            }, 500);
+            }, 0);
         
             $scope.optionsAdr = null;
             $scope.detailsAdr = '';
             $scope.$on('$destroy', function () {
                 delete $scope.user;
-                delete $scope.pdfUrl;
-                delete $scope.billPdfUrl;
+                //delete $scope.pdfUrl;
+                //delete $scope.billPdfUrl;
                 delete $scope.dateOption;
             });
             /**
