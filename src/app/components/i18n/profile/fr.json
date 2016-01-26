@@ -11,7 +11,7 @@
     "label": {
       "name": "Nom",
       "forname": "Prénom",
-      "nick": "Pseudonme",
+      "nick": "Login",
       "address": "Adresse",
       "zipcode": "Code postal",
       "city": "Ville",
@@ -50,6 +50,9 @@
         "ko": "Mauvaise adresse email",
         "required": "Email obligatoire",
         "exists": "Cette adresse email existe déjà"
+      },
+      "userLogin": {
+        "required": "Login obligatoire"  
       }
     }
   }

@@ -50,6 +50,9 @@
         "ko": "Wrong email address",
         "required": "Email required",
         "exists": "This e-mail address already exists"
+      },
+      "userLogin": {
+        "required": "Login required"  
       }
     }
   }

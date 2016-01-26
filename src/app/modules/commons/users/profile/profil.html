@@ -27,10 +27,38 @@
         <div id="profileinfo" class="col s12">
             <!--<div ng-include="'app/modules/commons/users/profile/userinfos.html'"></div>-->
             
-            <form name="profileForm" ng-submit="validateUserCivilSection()">
+            <form name="profileForm" ng-submit="updateUser()">
                 
                 <!-- Empty row -->
                 <div class="row">&nbsp;</div>
+                
+                <!-- Firstname & Name all size-->
+                <div class="row">
+                    <div class="col s12 m5 input-field">
+                        <label for="userLogin"> {{'profile.label.nick' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                        <input type="text" id="userLogin" name="userLogin" class="validate" required ng-model="user.account.login"
+                               ng-class="{ 'invalid': profileForm.userLogin.$invalid }"/>
+
+                        <span ng-class="{'has-error': profileForm.userLogin.$dirty && profileForm.userLogin.$error.required}"
+                             ng-hide="profileForm.userLogin.$valid" class="small red-text text-lighten-1"
+                             translate="profile.message.userLogin.required"></span>
+                    </div>
+                    
+                    <div class="col m2 hide-on-small-only">&nbsp;</div>
+                    
+                    <div class="col s12 m5 input-field">
+                        <label for="email"> {{'profile.label.email' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                        <input type="email" id="email" name="email"
+                               ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+                               class="validate"
+                               required ng-model="user.contact.email"
+                               ng-class="{ 'invalid': profileForm.email.$invalid }"/>
+
+                        <span ng-class="{'has-error': profileForm.email.$dirty && profileForm.email.$error.required}"
+                             ng-hide="profileForm.email.$valid" class="small red-text text-lighten-1"
+                             translate="profile.message.email.required"></span>
+                    </div>
+                </div>
                 
                 <!-- Gender for Small device -->
                 <div class="row  hide-on-med-and-up">
@@ -68,33 +96,6 @@
                     </div>
                 </div>
                 
-                <!-- Firstname & Name all size-->
-                <div class="row">
-                    <div class="col s12 m5 input-field">
-                        <label for="email"> {{'profile.label.email' | translate }} <span class="red-text text-lighten-1">*</span></label>
-                        <input type="email" id="email" name="email"
-                               ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
-                               class="validate"
-                               required ng-model="user.contact.email"
-                               ng-class="{ 'invalid': profileForm.email.$invalid }"/>
-
-                        <span ng-class="{'has-error': profileForm.email.$dirty && profileForm.email.$error.required}"
-                             ng-hide="profileForm.email.$valid" class="small red-text text-lighten-1"
-                             translate="profile.message.email.required"></span>
-                    </div>
-                    
-                    <div class="col m2 hide-on-small-only">&nbsp;</div>
-                    
-                    <div class="col s12 m5 input-field">
-                        <input type="text" class="datepicker" id="profilBirthdate" ng-model="user.birthdate"
-                                required ng-class="{'invalid': profileForm.birthdate.$invalid}"/>
-                        <label for="profilBirthdate" translate='profile.label.birthdate'><span class="red-text text-lighten-1">*</span></label>
-                        <span class="small red-text text-lighten-1"
-                            ng-show="userCivilSectionForm.signupBirthdate.$invalid && !userCivilSectionForm.signupBirthdate.$pristine" translate="civilSection.userErrors.BirthDate">
-                        </span>
-                    </div>
-                </div>
-                
                 <!-- Gender & Address on Med and Up -->
                 <div class="row hide-on-small-only">
                     <div class="col m5">
@@ -117,35 +118,67 @@
                     <div class="col m5 input-field">
                             <input type="text" id="formatedAddress" name="formatedAddress"
                                    ng-autocomplete
-                                   ng-model="user.address" 
+                                   ng-model="user.address.formatedAddress" 
                                    details="detailsAdr" 
                                    options="optionsAdr"
-                                   placeholder=""
-                                   required/>
-                            <label for="userAddres">{{'civilSection.label.userAddress' | translate }}  <span class="red-text text-lighten-1">*</span></label>
+                                   placeholder=""/>
+                            <label for="userAddres">{{'civilSection.label.userAddress' | translate }}</label>
                     </div>
                 </div>
                 
                 <!-- BirthDate & Phone Home all size -->
                 <div class="row">
                     <div class="col s12 m5 input-field">
-                        <i class="material-icons prefix">phone</i>
-                        <label for="userPhoneHome"><span class="red-text text-lighten-1">*</span></label>
-                        <input id="userPhoneHome" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate" min="0" ng-model="signup.contact.home" required>
+                        <label for="profilBirthdate">{{'profile.label.birthdate' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                        <input type="text" class="datepicker" id="profilBirthdate" name="profilBirthdate" ng-model="user.birthdate"
+                                required ng-class="{'invalid': profileForm.profilBirthdate.$invalid}"/>
                         <span class="small red-text text-lighten-1"
-                            ng-show="userCivilSectionForm.userPhoneHome.$invalid && !userCivilSectionForm.userPhoneHome.$pristine" translate="civilSection.userErrors.phoneNumberMandatory">
+                            ng-show="profileForm.profilBirthdate.$invalid && !profileForm.profilBirthdate.$pristine" translate="civilSection.userErrors.BirthDate">
                         </span>
                     </div>
-
-                    <div class="col m7 hide-on-small-only">&nbsp;</div>
                     
+                    <div class="col m2 hide-on-small-only">&nbsp;</div>
+                    
+                    <div class="col s12 m5 input-field">
+                        <i class="material-icons prefix">phone</i>
+                        <label for="userPhoneHome"><span class="red-text text-lighten-1">*</span></label>
+                        <input id="userPhoneHome" name="userPhoneHome" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate" min="0" ng-model="signup.contact.home" required>
+                        <span class="small red-text text-lighten-1"
+                            ng-show="profileForm.userPhoneHome.$invalid && !profileForm.userPhoneHome.$pristine" translate="civilSection.userErrors.phoneNumberMandatory">
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- password -->
+                <div class="row">
+                    <div class="col s12 m5 input-field">
+                        <label for="password">{{'content.signup.label.password' | translate }}</label>
+                        <input id="password" type="password" class="validate" ng-model="signup.account.passwd" required>
+                        
+                        <div ng-show="signup.account.passwd">
+                            <small translate='modalSignupUp.passwd.strength'></small>
+                            <div ng-hide="true" ng-password-strength="signup.account.passwd" strength="passStrength" inner-class="meter"></div>
+                            <div class="progress grey lighten-2">
+                                <div class="determinate"
+                                     ng-class="{'red' : passStrength < 33, 'orange': passStrength >= 33 && passStrength < 66, 'green' : passStrength >= 66}"
+                                     style="width: {{passStrength}}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="col m2 hide-on-small-only">&nbsp;</div>
+                    
+                    <div class="col s12 m5 input-field">
+                        <label for="passwordConfirm">{{'content.signup.label.passwordConfirm' | translate }}</label>
+                        <input id="passwordConfirm" type="password" class="validate" ng-model="passwdConfirm" required>
+                    </div>
                 </div>
                 
                 <!-- actions buttons -->
                 <div class="row">
                 <div class="col s12 center-align">
                     <a class="btn red lighteen-1 white-text waves-effect waves-light center" ng-click="doTheBack()" translate="commons.buttons.cancel"></a>
-                    <button class="btn green darken-1 waves-effect waves-light center" type="submit" ng-disabled="teamForm.$invalid" translate="commons.buttons.validate">
+                    <button class="btn green darken-1 waves-effect waves-light center" type="submit" ng-disabled="profileForm.$invalid" translate="commons.buttons.validate">
                         <i class="mdi-content-send right"></i>
                     </button>
                 </div>

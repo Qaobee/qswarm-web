@@ -48,28 +48,28 @@
                                 ng-show="userCivilSectionForm.gender.$invalid && !userCivilSectionForm.gender.$pristine" translate="civilSection.userErrors.Gender"></span>
                        	</div>
                         
+                        <!-- Empty row -->
+                        <div class="row hide-on-med-and-up">&nbsp;</div>
+                        
                         <!-- Firstname & Name all size-->
                         <div class="row">
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
-                            <div class="col s12 m4">
-                                <div class="input-field row">
-                                    <input ng-model="signup.firstname" id="userFirstname" name="userFirstname" type="text" class="validate" required 
+                            <div class="col s12 m4 input-field">
+                                <label for="userFirstname">{{'civilSection.label.userFirstname' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                                <input ng-model="signup.firstname" id="userFirstname" name="userFirstname" type="text" class="validate" required 
                                          ng-class="{ 'has-error' : userCivilSectionForm.userFirstname.$invalid && !userCivilSectionForm.userFirstname.$pristine }">
-                                    <span class="small red-text text-lighten-1"
-                                        ng-show="userCivilSectionForm.userFirstname.$invalid && !userCivilSectionForm.userFirstname.$pristine" translate="civilSection.userErrors.Firstname"></span>
-                                    <label for="userFirstname">{{'civilSection.label.userFirstname' | translate }} <span class="red-text text-lighten-1">*</span></label>
-                                </div>
+                                <span class="small red-text text-lighten-1" ng-show="userCivilSectionForm.userFirstname.$invalid && !userCivilSectionForm.userFirstname.$pristine" 
+                                      translate="civilSection.userErrors.Firstname"></span>
                             </div>
                             
-                            <div class="col m1 hide-on-small-only">&nbsp;</div>
-                            <div class="col s12 m5">
-                                <div class="input-field row">
-                                  <input ng-model="signup.name" id="userName" name="userName" type="text" class="validate" required 
+                            <div class="col m2 hide-on-small-only">&nbsp;</div>
+                            
+                            <div class="col s12 m4 input-field">
+                                <label for="userName">{{'civilSection.label.userName' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                                <input ng-model="signup.name" id="userName" name="userName" type="text" class="validate" required 
                                          ng-class="{ 'has-error' : userCivilSectionForm.userName.$invalid && !userCivilSectionForm.userName.$pristine }">
-                                    <span class="small red-text text-lighten-1"
-                                        ng-show="userCivilSectionForm.userName.$invalid && !userCivilSectionForm.userName.$pristine" translate="civilSection.userErrors.Name"></span>
-                                  <label for="userName">{{'civilSection.label.userName' | translate }} <span class="red-text text-lighten-1">*</span></label>
-                                </div>
+                                <span class="small red-text text-lighten-1" ng-show="userCivilSectionForm.userName.$invalid && !userCivilSectionForm.userName.$pristine" 
+                                      translate="civilSection.userErrors.Name"></span>
                             </div>
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
                         </div>
@@ -77,12 +77,11 @@
                         <!-- Gender & Nationality on Med and Up -->
                         <div class="row hide-on-small-only">
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
-                            <div class="col m4">
-                                <div class="row">
-                                    <div class="input-field col s3">
+                            <div class="col s12 m4 input-field">
+                                    <div class="col s2">
                                         <label>{{'civilSection.label.userGender' | translate }} <span class="red-text text-lighten-1">*</span></label>
                                     </div>
-                                    <div class="input-field col s9 center-align">
+                                    <div class="col s10 center-align">
                                         <input name="signup.gender" class="with-gap" type="radio" id="userGenderF" value="gender.female" ng-model="signup.gender" required/>
                                         <label for="userGenderF">{{'civilSection.label.gender.female' | translate }}</label>
 
@@ -91,57 +90,43 @@
                                     </div>
                                     <span class="small red-text text-lighten-1"
                                         ng-show="userCivilSectionForm.gender.$invalid && !userCivilSectionForm.gender.$pristine" translate="civilSection.userErrors.Gender"></span>
-                                </div>
                             </div>
-                            <div class="col m1">&nbsp;</div>
-                            <div class="col m5 ">
-                                <div class="input-field row">
-                                    <input type="text" id="userAddress" class="form-control validate" ng-autocomplete ng-model="temp.address" details="temp.detailsAddress" options="optionsAddress" placeholder=""/>
-                                    <label for="userAddres">{{'civilSection.label.userAddress' | translate }}</label>
-                                </div>
+                            <div class="col m2 hide-on-small-only">&nbsp;</div>
+                            <div class="col m4 s12 input-field">
+                                <label for="userAddres">{{'civilSection.label.userAddress' | translate }}</label>    
+                                <input type="text" id="userAddress" class="form-control validate" ng-autocomplete ng-model="temp.address" details="temp.detailsAddress" options="optionsAddress" placeholder=""/>
                             </div>
-                            <div class="col s1 m1">&nbsp;</div>
+                            <div class="col m1 hide-on-small-only">&nbsp;</div>
                         </div>
                         
                         <!-- BirthDate & Phone Home all size -->
                         <div class="row">
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
-                            <div class="col s12 m4">
-                                <div class="row">
-                                    <div class="input-field">
-                                        <input id="signupBirthdate" class="datepicker" name="signupBirthdate" type="text" ng-model="signup.birthdateInput" required
+                            <div class="col s12 m4 input-field">
+                                <label for="signupBirthdate">{{'civilSection.label.userBirthDate' | translate }} <span class="red-text text-lighten-1">*</span></label>        
+                                <input id="signupBirthdate" class="datepicker" name="signupBirthdate" type="text" ng-model="signup.birthdateInput" required
                                         ng-class="{ 'has-error' : userCivilSectionForm.signupBirthdate.$invalid && !userCivilSectionForm.signupBirthdate.$pristine }"/>
-                                        <label for="signupBirthdate">{{'civilSection.label.userBirthDate' | translate }} <span class="red-text text-lighten-1">*</span></label>
-                                    </div>
-                                    <div class="small red-text text-lighten-1"
-                                        ng-show="userCivilSectionForm.signupBirthdate.$invalid && !userCivilSectionForm.signupBirthdate.$pristine" translate="civilSection.userErrors.BirthDate">
-                                    </div>
-                                </div>
+                                <span class="small red-text text-lighten-1"
+                                    ng-show="userCivilSectionForm.signupBirthdate.$invalid && !userCivilSectionForm.signupBirthdate.$pristine" translate="civilSection.userErrors.BirthDate">
+                                </span>
                             </div>
                             
-                            <div class="col m1 hide-on-small-only">&nbsp;</div>
+                            <div class="col m2 hide-on-small-only">&nbsp;</div>
                             
                             <!-- Nationality for small -->
-                        	<div class="col s12 hide-on-med-and-up">
-                                <div class="input-field row">
-                                    <input type="text" id="userAddress" class="form-control validate" ng-autocomplete ng-model="temp.address" details="temp.detailsAddress" options="optionsAddress" placeholder=""/>
-                                    <label for="userAddres">{{'civilSection.label.userAddress' | translate }}</label>
-                                </div>
+                        	<div class="col s12 input-field hide-on-med-and-up">
+                                <label for="userAddres">{{'civilSection.label.userAddress' | translate }}</label>    
+                                <input type="text" id="userAddress" class="form-control validate" ng-autocomplete ng-model="temp.address" details="temp.detailsAddress" options="optionsAddress" placeholder=""/>
                             </div>
                             
-                            <div class="col s12 m5">
-                                <div class="row">
-                                    <div class="input-field col s5 m4">
-                                        <i class="material-icons prefix">phone</i>
-                                        <label for="userPhoneHome">{{'civilSection.label.userPhoneHome' | translate }} <span class="red-text text-lighten-1">*</span></label>
-                                    </div>
-                                    <div class="input-field col s7 m8">
-                                        <input id="userPhoneHome" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate" min="0" ng-model="signup.contact.home" required>
-                                        <div class="small red-text text-lighten-1"
-	                                        ng-show="userCivilSectionForm.userPhoneHome.$invalid && !userCivilSectionForm.userPhoneHome.$pristine" translate="civilSection.userErrors.phoneNumberMandatory">
-	                                    </div>
-                                    </div>
-                                </div>
+                            <div class="col s12 m4 input-field">
+                                <i class="material-icons prefix">phone</i>
+                                <label for="userPhoneHome"><span class="red-text text-lighten-1">*</span></label>
+                                <input id="userPhoneHome" name="userPhoneHome" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate" min="0" ng-model="signup.contact.home" required
+                                       ng-class="{ 'has-error' : userCivilSectionForm.userPhoneHome.$invalid && !userCivilSectionForm.userPhoneHome.$pristine }" />
+                                <span class="small red-text text-lighten-1"
+                                    ng-show="userCivilSectionForm.userPhoneHome.$invalid && !userCivilSectionForm.userPhoneHome.$pristine" translate="civilSection.userErrors.phoneNumberMandatory">
+                                </span>
                             </div>
 
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
