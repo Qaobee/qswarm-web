@@ -22,12 +22,21 @@
             </div>
         </div>
     </div>
-
+    
     <div class="row">
-        <div id="profileinfo" class="col s12">
-            <!--<div ng-include="'app/modules/commons/users/profile/userinfos.html'"></div>-->
-            
-            <form name="profileForm" ng-submit="updateUser()">
+        <div class="col s12">
+            <ul class="tabs" tabs>
+                <li class="tab col M2"><a href="#profile">{{'profile.tabs.profil' | translate }}</a></li>
+                <li class="tab col s2"><a href="#passwordUser">{{'profile.tabs.password' | translate }}</a></li>
+                <li class="tab col s2 disabled"><a href="#sharing">{{'profile.tabs.sharing' | translate }}</a></li>
+                <li class="tab col s2 disabled"><a href="#notification">{{'profile.tabs.notification' | translate }}</a></li>
+                <li class="tab col s2 disabled"><a href="#billing">{{'profile.tabs.billing' | translate }}</a></li>
+                <li class="tab col s2"><a href="#settings">{{'profile.tabs.settings' | translate }}</a></li>
+            </ul>
+        </div>
+    
+        <div id="profile" class="col s12 card">
+            <form name="profileForm" ng-submit="updateProfilUser()">
                 
                 <!-- Empty row -->
                 <div class="row">&nbsp;</div>
@@ -149,15 +158,34 @@
                     </div>
                 </div>
                 
+                
+                <!-- actions buttons -->
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <a class="btn red lighteen-1 white-text waves-effect waves-light center" ng-click="doTheBack()" translate="commons.buttons.cancel"></a>
+                        <button class="btn green darken-1 waves-effect waves-light center" type="submit" ng-disabled="profileForm.$invalid" translate="commons.buttons.validate">
+                            <i class="mdi-content-send right"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    
+        <div id="passwordUser"  class="col s12 card">
+            <form name="pwdForm" ng-submit="updatePwdUser()">
+                
+                <!-- Empty row -->
+                <div class="row">&nbsp;</div>
+                
                 <!-- password -->
                 <div class="row">
                     <div class="col s12 m5 input-field">
-                        <label for="password">{{'content.signup.label.password' | translate }}</label>
-                        <input id="password" type="password" class="validate" ng-model="signup.account.passwd" required>
+                        <label for="password">{{'profile.label.passwd1' | translate }}</label>
+                        <input id="password" type="password" class="validate" ng-model="new.account.passwd" required>
                         
-                        <div ng-show="signup.account.passwd">
-                            <small translate='modalSignupUp.passwd.strength'></small>
-                            <div ng-hide="true" ng-password-strength="signup.account.passwd" strength="passStrength" inner-class="meter"></div>
+                        <div ng-show="new.account.passwd">
+                            <small translate='profile.message.passwd.strength'></small>
+                            <div ng-hide="true" ng-password-strength="new.account.passwd" strength="passStrength" inner-class="meter"></div>
                             <div class="progress grey lighten-2">
                                 <div class="determinate"
                                      ng-class="{'red' : passStrength < 33, 'orange': passStrength >= 33 && passStrength < 66, 'green' : passStrength >= 66}"
@@ -169,21 +197,37 @@
                     <div class="col m2 hide-on-small-only">&nbsp;</div>
                     
                     <div class="col s12 m5 input-field">
-                        <label for="passwordConfirm">{{'content.signup.label.passwordConfirm' | translate }}</label>
-                        <input id="passwordConfirm" type="password" class="validate" ng-model="passwdConfirm" required>
+                        <label for="passwordConfirm">{{'profile.label.passwd2' | translate }}</label>
+                        <input id="passwordConfirm" type="password" class="validate" ng-model="new.account.passwdConfirm" required>
                     </div>
                 </div>
                 
                 <!-- actions buttons -->
                 <div class="row">
-                <div class="col s12 center-align">
-                    <a class="btn red lighteen-1 white-text waves-effect waves-light center" ng-click="doTheBack()" translate="commons.buttons.cancel"></a>
-                    <button class="btn green darken-1 waves-effect waves-light center" type="submit" ng-disabled="profileForm.$invalid" translate="commons.buttons.validate">
-                        <i class="mdi-content-send right"></i>
-                    </button>
+                    <div class="col s12 center-align">
+                        <button class="btn green darken-1 waves-effect waves-light center" type="submit" ng-disabled="pwdForm.$invalid && !pwdForm.$dirty" translate="commons.buttons.validate">
+                            <i class="mdi-content-send right"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
             </form>
         </div>
+        
+        <div id="sharing"  class="col s12">
+            
+        </div>
+        
+        <div id="notification"  class="col s12">
+            
+        </div>
+        
+        <div id="billing"  class="col s12">
+            
+        </div>
+        
+        <div id="settings"  class="col s12">
+            
+        </div>
+        
     </div>
 </div>
