@@ -207,6 +207,7 @@
                     $scope.timerPicker.set('select', [moment($scope.startHours).hour(),moment($scope.startHours).minute()]);
                 }
                 
+                /* View participants management */
                 if($scope.event.link.type==='training'  || $scope.event.link.type==='other') {
                      $scope.chooseAdversary = false;
                 } else {
@@ -214,7 +215,7 @@
                     $scope.chooseHome = true;
                 }
                 
-                /* alimentation des listes des équipes */
+                /* Participant Home/Visitor management */
                 if(angular.isDefined($scope.event.participants.teamHome.id)) {
                     $scope.teamId = $scope.event.participants.teamHome.id;
                     
@@ -303,9 +304,11 @@
                     "adversary": true
                 };
 
-                /* add team */
+                /* add new adversary */
                 teamRestAPI.addTeam(adversary).success(function (data) {
                     adversary = data;
+                    
+                    /* Participant Home/Visitor management */
                     if ($scope.location === 'home') {
                         participants = { 
                             teamHome: {id:team._id, label:team.label},
@@ -319,6 +322,8 @@
                     }
 
                     $scope.event.participants = participants ;
+                    
+                    /* address management */
                     personSrv.formatAddress($scope.event.address).then(function(adr){
                         $scope.event.address = adr;
                         $scope.writeEvent();
@@ -326,6 +331,7 @@
                     
                 });
             } else {
+                /* Participant Home/Visitor management */
                 if ($scope.location === 'home') {
                     participants = { 
                         teamHome: {id:team._id, label:team.label},
@@ -339,6 +345,8 @@
                 }
 
                 $scope.event.participants = participants ;
+                
+                /* address management */
                 personSrv.formatAddress($scope.event.address).then(function(adr){
                     $scope.event.address = adr;
                     $scope.writeEvent();
