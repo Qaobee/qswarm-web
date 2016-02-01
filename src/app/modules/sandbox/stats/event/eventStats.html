@@ -129,8 +129,8 @@
                             <tr class="light-green lighten-1 white-text">
                                 <th data-field="player">{{'stats.eventLabels.player' | translate }}</th>
                                 <th data-field="positionType">{{'stats.eventLabels.position' | translate }}</th>
-                                <th data-field="efficiency">{{'stats.eventLabels.efficiency' | translate }}</th>
-                                <th data-field="efficiency">{{'stats.eventLabels.shoot' | translate }}</th>
+                                <th class="center-align" data-field="efficiency">{{'stats.eventLabels.efficiency' | translate }}</th>
+                                <th class="center-align" data-field="efficiency">{{'stats.eventLabels.shoot' | translate }}</th>
                                 <th class="center-align" data-field="yellowCard">{{'stats.eventLabels.yellowCard' | translate }}</th>
                                 <th class="center-align" data-field="exclusion">{{'stats.eventLabels.exclusion' | translate }}</th>
                                 <th class="center-align" data-field="redCard">{{'stats.eventLabels.redCard' | translate }}</th>
@@ -142,13 +142,13 @@
                             <tr ng-repeat="player in players | filter:{$:'!goalkeeper'}">
                                 <td>{{player.name}} - {{player.firstname}}</td>
                                 <td>{{player.positionType}}</td>
-                                <td>{{(player.stats.goalScored/player.stats.originShootAtt)*100 | number : 0}} %</td>
-                                <td>{{player.stats.goalScored}} / {{player.stats.originShootAtt}}</td>
-                                <td ng-show="player.stats.yellowCard>0" class="center-align amber accent-3">{{player.stats.yellowCard}}</td>
+                                <td class="center-align">{{(player.stats.goalScored/player.stats.originShootAtt)*100 | number : 0}} %</td>
+                                <td class="center-align">{{player.stats.goalScored}} / {{player.stats.originShootAtt}}</td>
+                                <td ng-show="player.stats.yellowCard>0" class="center-align"><span class="badge amber accent-3">{{player.stats.yellowCard}}</span></td>
                                 <td ng-hide="player.stats.yellowCard>0" class="center-align"></td>
-                                <td ng-show="player.stats.exclTmp>0" class="center-align red lighten-2">{{player.stats.exclTmp}}</td>
+                                <td ng-show="player.stats.exclTmp>0" class="center-align"><span class="badge red lighten-2">{{player.stats.exclTmp}}</span></td>
                                 <td ng-hide="player.stats.exclTmp>0" class="center-align"></td>
-                                <td ng-show="player.stats.redCard>0" class="center-align red darken-2">{{player.stats.redCard}}</td>
+                                <td ng-show="player.stats.redCard>0" class="center-align"><span class="badge red darken-2">{{player.stats.redCard}}</span></td>
                                 <td ng-hide="player.stats.redCard>0" class="center-align"></td>
                                 <td class="center-align">{{player.stats.actAttPos}} / {{player.stats.actAttNeg}}</td>
                                 <td class="center-align">{{player.stats.actDefPos}} / {{player.stats.actDefNeg}}</td>
@@ -161,8 +161,8 @@
                         <thead>
                             <tr class="red lighten-1 white-text">
                                 <th data-field="player">{{'stats.eventLabels.goalkeeper' | translate }}</th>
-                                <th data-field="efficiency">{{'stats.eventLabels.efficiencyGoal' | translate }}</th>
-                                <th data-field="efficiency">{{'stats.eventLabels.stop' | translate }}</th>
+                                <th class="center-align" data-field="efficiency">{{'stats.eventLabels.efficiencyGoal' | translate }}</th>
+                                <th class="center-align" data-field="efficiency">{{'stats.eventLabels.stop' | translate }}</th>
                                 <th class="center-align" data-field="yellowCard">{{'stats.eventLabels.yellowCard' | translate }}</th>
                                 <th class="center-align" data-field="exclusion">{{'stats.eventLabels.exclusion' | translate }}</th>
                                 <th class="center-align" data-field="redCard">{{'stats.eventLabels.redCard' | translate }}</th>
@@ -171,13 +171,13 @@
                         <tbody>
                             <tr ng-repeat="player in players | filter:{$:'goalkeeper'}">
                                 <td>{{player.name}} - {{player.firstname}}</td>
-                                <td>{{((player.stats.originShootDef-player.stats.goalConceded)/player.stats.originShootDef)*100 | number : 0}} %</td>
-                                <td>{{(player.stats.originShootDef-player.stats.goalConceded)}}/{{player.stats.originShootDef}}</td>
-                                <td ng-show="player.stats.yellowCard>0" class="center-align amber accent-3">{{player.stats.yellowCard}}</td>
+                                <td class="center-align">>{{((player.stats.originShootDef-player.stats.goalConceded)/player.stats.originShootDef)*100 | number : 0}} %</td>
+                                <td class="center-align">{{(player.stats.originShootDef-player.stats.goalConceded)}}/{{player.stats.originShootDef}}</td>
+                                <td ng-show="player.stats.yellowCard>0" class="center-align"><span class="badge amber accent-3">{{player.stats.yellowCard}}</span></td>
                                 <td ng-hide="player.stats.yellowCard>0" class="center-align"></td>
-                                 <td ng-show="player.stats.exclTmp>0" class="center-align red lighten-2">{{player.stats.exclTmp}}</td>
+                                <td ng-show="player.stats.exclTmp>0" class="center-align"><span class="badge red lighten-2">{{player.stats.exclTmp}}</span></td>
                                 <td ng-hide="player.stats.exclTmp>0" class="center-align"></td>
-                                <td ng-show="player.stats.redCard>0" class="center-align red darken-2">{{player.stats.redCard}}</td>
+                                <td ng-show="player.stats.redCard>0" class="center-align"><span class="badge red darken-2">{{player.stats.redCard}}</span></td>
                                 <td ng-hide="player.stats.redCard>0" class="center-align"></td>
                             </tr>
                         </tbody>

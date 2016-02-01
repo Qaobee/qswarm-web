@@ -41,7 +41,7 @@ button, input, optgroup, select, textarea {
     background-color: #aed581;
 }
 
-.tabs .tab a:hover {
+.tabs .tab a:hover, .tabs .tab .active  {
     background-color: #8bc34a;;
     color: #ffffff;
 }
@@ -56,11 +56,15 @@ button, input, optgroup, select, textarea {
     cursor: default;
 }
 
+span.badge {
+    position: relative;
+}
+
 p {
     line-height: 2rem;
 }
 .container {
-    width: 85%;
+    width: 90%;
 }
 .button-collapse {
     color: #26a69a;

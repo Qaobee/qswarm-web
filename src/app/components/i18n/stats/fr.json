@@ -60,7 +60,7 @@
             "redCard" : "Exclusion"
         },
         "teamLabels" : {
-            "listCollect" : "Evénements collectés"
+            "listCollect" : "Evénements concernés"
         },
         "eventLabels" : {
             "listPlayers" : "Liste joueurs",
