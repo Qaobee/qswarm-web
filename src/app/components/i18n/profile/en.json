@@ -43,7 +43,7 @@
         "message": {
             "passwd": {
                 "strength": "Password strength",
-                "ko": "Passwords do not match",
+                "different": "Passwords do not match",
                 "ok": "Password OK"
             },
             "email": {
@@ -54,7 +54,11 @@
             },
             "userLogin": {
                 "required": "Login required"  
+            },
+            "updPasswd" : {
+                "success" : "Pssword update success"
             }
+            
         }
     }
 }

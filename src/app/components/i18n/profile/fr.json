@@ -43,7 +43,7 @@
         "message": {
             "passwd": {
                 "strength": "Robustesse du mot de passe",
-                "ko": "Les mots de passe ne correspondent pas",
+                "different": "Les mots de passe ne correspondent pas",
                 "ok": "Mot de passe OK"
             },
             "email": {
@@ -54,6 +54,9 @@
             },
             "userLogin": {
                 "required": "Login obligatoire"  
+            },
+            "updPasswd" : {
+                "success" : "Votre mot de passe est mis à jour"
             }
         }
     }
