@@ -20,7 +20,6 @@
             
             /* qaobee services */ 
             'qaobee.eventbus', 
-            'reCAPTCHA',
             'ng.deviceDetector',
 
             /* qaobee Rest API */
@@ -92,7 +91,7 @@
                     });
                     
                     $scope.openSignup = function () {
-                        $('#modalSignup').openModal();    
+                        $location.path('/signupStart');    
                     };
                     
                     $scope.openLogin = function () {
@@ -247,70 +246,7 @@
                     		toastr.error(error.message);
                     	});
                     };
-                    
-                    
-                    /**
-                     * @name $qcope.cancelSignup
-                     * @function
-                     * @memberOf qaobee.directives.headerMenu
-                     * @description Cancel user signup
-                     */
-                    $scope.cancelSignup = function() {
-                    	delete $scope.signup;
-                    	$('#modalSignup').closeModal();
-                    };
-                    
-                    /**
-                     * @name $scope.usernameTest
-                     * @function
-                     * @memberOf qaobee.directives.headerMenu
-                     * @description Test login and create account 
-                     */
-                    $scope.usernameTest = function() {
-                    	signupRestAPI.usernameTest($scope.signup.login).success(function (data) {
-                    		if(data.status===true) {
-                    			toastr.warning($filter('translate')('error.signup.nonunique'));
-                    			$window.Recaptcha.reload();
-                    		} else {
-                    			$scope.signup.plan = new Object();
-                    			$scope.signup.plan.levelPlan='FREEMIUM';
-                    			$scope.signup.name = $scope.signup.name.capitalize(true);
-                    			$scope.signup.firstname = $scope.signup.firstname.capitalize(true);
-                    			
-                    			signupRestAPI.registerUser($scope.signup).success(function (data2) {
-                    				// On recharge le captcha en cas d'erreur ou pour une nouvelle inscription
-                    				$window.Recaptcha.reload();
-                    				if(data2===null) {
-                    					toastr.error($filter('translate')('error.signup.unknown'));
-                    				} else {
-	                    				$('#modalSignup').closeModal();
-	                          			delete $scope.signup;
-	                          			delete $scope.passwdConfirm;
-	                          			$('#modalSignupOK').openModal();
-                    				}
-                    			}).error(function (error) {
-                    				$window.Recaptcha.reload();
-                                    if (error.code && error.code === 'CAPTCHA_EXCEPTION') {
-                                        toastr.error($filter('translate')('error.signup.' + error.code));
-                                    } else {
-                                    	$rootScope.errMessSend = true;
-                                        toastr.error(error.message);
-                                    }
-                                });
-                    		}
-                    	});
-                    	
-                    	
-                    	/**
-                         * @name $scope.logoff
-                         * @function
-                         * @memberOf qaobee.directives.headerMenu
-                         * @description Disconnection
-                         */
-                    	$scope.closeSignupOk = function() {
-                        	$('#modalSignupOK').closeModal();
-                        };
-                    };
+
                 },
                 templateUrl: 'app/components/directives/commons/headerMenu/headerMenu.html'
             };

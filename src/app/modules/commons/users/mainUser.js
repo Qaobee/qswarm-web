@@ -5,7 +5,8 @@
         /* angular qaobee */
        
         /* qaobee modules */
-        'qaobee.user.signup',
+        'qaobee.user.signup.start',
+        'qaobee.user.signup.end',
         'qaobee.user.profile',
         'qaobee.user.password'
         /* services */

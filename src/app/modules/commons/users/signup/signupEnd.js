@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('qaobee.user.signup', [
+    angular.module('qaobee.user.signup.end', [
         /* angular qaobee */
 //        'ngAutocomplete',
        
@@ -23,16 +23,16 @@
         .config(function ($routeProvider) {
             $routeProvider.when('/signup/end', {
                 controller: 'SignupEndCtrl',
-                templateUrl: 'app/modules/commons/users/signup/signupDone.html'
+                templateUrl: 'app/modules/commons/users/signup/signupEndDone.html'
             }).when('/signup/cancel', {
                 controller: 'SignupCancelCtrl',
-                templateUrl: 'app/modules/commons/users/signup/signupCancel.html'
+                templateUrl: 'app/modules/commons/users/signup/signupEndCancel.html'
             }).when('/signup/error', {
                 controller: 'SignupErrorCtrl',
-                templateUrl: 'app/modules/commons/users/signup/signupError.html'
+                templateUrl: 'app/modules/commons/users/signup/signupEndError.html'
             }).when('/signup/:id/:code?', {
                 controller: 'SignupCtrl',
-                templateUrl: 'app/modules/commons/users/signup/signup.html'
+                templateUrl: 'app/modules/commons/users/signup/signupEnd.html'
             });
         })
         
