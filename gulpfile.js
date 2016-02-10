@@ -13,6 +13,7 @@ var gulpNgConfig = require('gulp-ng-config');
 var plato = require('gulp-plato');
 var jsdoc = require("gulp-jsdoc");
 var sonar = require("gulp-sonar");
+var util = require("gulp-util");
 /**
  *  This will load all js or coffee files in the gulp directory
  *  in order to load all gulp tasks
