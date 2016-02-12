@@ -1,5 +1,5 @@
 <div id="index-banner">
-    <div class="section no-pad-bot hero">	
+    <div class="section no-pad-bot hero">
         <div class="container">
 
             <div class="center-align">
@@ -151,25 +151,28 @@
             </h5>
         </div>
 
-        <form name="subMailingListForm" action="http://www.mailinglist.fr/controller/form_ctrl.php?ID=49"
+        <form name="subMailingListForm" action="http://mailinglist.fr/mlbox/form"
               target="_blank" method="post">
             <div class="modal-content grey lighten-3 ">
                 <div class="row">
-                    <input type="hidden" Name="lid" Value="201405251813531029623">
-
+                    <input type="hidden" name="ListID" value="2113">
                     <div class="input-field col s12">
-                        <input id="email" type="email" placeholder="Email" class="validate" required/>
+                        <input id="email" name="email" type="email" placeholder="Email" class="validate" required/>
                         <label for="email" translate="landing.contact.popin.email"></label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input class="with-gap" name="group1" type="radio" id="test1" checked/>
-                        <label for="test1" translate="landing.contact.popin.subscribe"></label>
+                        <input class="with-gap" name="action"
+                               id="subscribe" value="subscribe"
+                               type="radio" checked/>
+                        <label for="subscribe" translate="landing.contact.popin.subscribe"></label>
                     </div>
                     <div class="input-field col s6">
-                        <input class="with-gap" name="group1" type="radio" id="test2"/>
-                        <label for="test2" translate="landing.contact.popin.unsubscribe"></label>
+                        <input class="with-gap" name="action"
+                               id="unsubscribe" value="unsubscribe"
+                               type="radio"/>
+                        <label for="unsubscribe" translate="landing.contact.popin.unsubscribe"></label>
                     </div>
                 </div>
             </div>
@@ -179,7 +182,7 @@
                     <a href="#/" class="modal-action modal-close waves-effect waves-red btn red"
                        translate="commons.buttons.cancel"></a>
                     <button type="submit" class="btn waves-effect waves-red  green darken-1"
-                            translate="commons.buttons.validate"/>
+                            translate="commons.buttons.validate"></button>
                 </div>
             </div>
         </form>
