@@ -17,9 +17,9 @@
      */
     angular.module(
         'qaobee.headerMenu', [
-            
-            /* qaobee services */ 
-            'qaobee.eventbus', 
+
+            /* qaobee services */
+            'qaobee.eventbus',
             'ng.deviceDetector',
 
             /* qaobee Rest API */
@@ -34,40 +34,40 @@
                     $translatePartialLoader.addPart('menu');
                     $translatePartialLoader.addPart('user');
                     $scope.signin = {};
-                    $scope.isActive = function(viewLocation) {
+                    $scope.isActive = function (viewLocation) {
                         return viewLocation === $location.path();
                     };
-                    
+
                     /*****************************************
                      * Gestion de la bannière de téléchargement de l'appli mobile
                      */
-                    // Par défaut, on n'affiche pas la bannière
+                        // Par défaut, on n'affiche pas la bannière
                     $scope.showBanner = false;
-                    if(deviceDetector.os==='android') {
-                    	var cookieDownload = $cookies.get('downloadApp');
-                    	if(angular.isUndefined(cookieDownload)) {
-                    		$scope.showBanner = true;
-                    	}
+                    if (deviceDetector.os === 'android') {
+                        var cookieDownload = $cookies.get('downloadApp');
+                        if (angular.isUndefined(cookieDownload)) {
+                            $scope.showBanner = true;
+                        }
                     }
                     // Si fermeture par clic sur Croix, cookie de téléchargement KO
-                    $scope.closeBanner = function() {
-                    	$cookies.put('downloadApp', "dlKO");
-                    	$scope.showBanner = false;
+                    $scope.closeBanner = function () {
+                        $cookies.put('downloadApp', "dlKO");
+                        $scope.showBanner = false;
                     };
                     // Si clic sur download, cookie de téléchargement OK + redirection
-                    $scope.openDownload = function() {
-                    	$cookies.put('downloadApp', "dlOK");
-                    	$window.location.href= 'https://play.google.com/apps/testing/com.qaobee.qswarm.hand';
-                    	$scope.showBanner = false;
-                    }
-                    
-                    
+                    $scope.openDownload = function () {
+                        $cookies.put('downloadApp', "dlOK");
+                        $window.location.href = 'https://play.google.com/apps/testing/com.qaobee.qswarm.hand';
+                        $scope.showBanner = false;
+                    };
+
+
                     /**
                      * @description initialization materialize components
                      */
                     $rootScope.$on('$viewContentLoaded', function () {
                         // Detect touch screen and enable scrollbar if necessary
-                        function is_touch_device() {
+                        function is_touch_device() { // NOSONAR
                             try {
                                 document.createEvent('TouchEvent');
                                 return true;
@@ -83,19 +83,22 @@
                         $('.dropdown-button').dropdown();
 
                         $('.button-collapse').sideNav({
-                            menuWidth: 240, // Default is 240
-                            edge: 'left', // Choose the horizontal origin
-                            closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                            // Default is 240
+                            menuWidth: 240,
+                            // Choose the horizontal origin
+                            edge: 'left',
+                            // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                            closeOnClick: true
                         });
 
                     });
-                    
+
                     $scope.openSignup = function () {
-                        $location.path('/signupStart');    
+                        $location.path('/signupStart');
                     };
-                    
+
                     $scope.openLogin = function () {
-                        $('#modalLogin').openModal();    
+                        $('#modalLogin').openModal();
                     };
 
 
@@ -160,7 +163,7 @@
 
                     };
 
-                     /**
+                    /**
                      * @name $scope.login
                      * @function
                      * @memberOf qaobee.QaobeeSwarnApp.ModalInstanceCtrl
@@ -214,37 +217,37 @@
                             }
                         });
                     };
-                    
+
                     /**
                      * @name $qcope.cancelSignup
                      * @function
                      * @memberOf qaobee.directives.headerMenu
                      * @description Cancel user signup
                      */
-                    $scope.openForgotPwd = function() {
-                    	delete($scope.infos);
-                    	$('#modalLogin').closeModal();
-                    	$('#modalForgotPwd').openModal();
+                    $scope.openForgotPwd = function () {
+                        delete($scope.infos);
+                        $('#modalLogin').closeModal();
+                        $('#modalForgotPwd').openModal();
                     };
-                    
+
                     /**
                      * @name $qcope.renewPwd
                      * @function
                      * @memberOf qaobee.directives.headerMenu
                      * @description Ask for paswword renew
                      */
-                    $scope.renewPwd = function() {
-                    	userRestAPI.forgotPasswd($scope.infos.login).success(function (data) {
-                    		if(data.status===true) {
-                    			delete($scope.infos);
-                            	$('#modalForgotPwd').closeModal();
-                            	$('#modalForgotPwdOK').openModal();
-                    		} else {
-                    			toastr.warning(data.message);
-                    		}
-                    	}).error(function (error) {
-                    		toastr.error(error.message);
-                    	});
+                    $scope.renewPwd = function () {
+                        userRestAPI.forgotPasswd($scope.infos.login).success(function (data) {
+                            if (data.status === true) {
+                                delete($scope.infos);
+                                $('#modalForgotPwd').closeModal();
+                                $('#modalForgotPwdOK').openModal();
+                            } else {
+                                toastr.warning(data.message);
+                            }
+                        }).error(function (error) {
+                            toastr.error(error.message);
+                        });
                     };
 
                 },
