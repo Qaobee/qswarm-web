@@ -15,8 +15,7 @@
                 /**
                  * @memberOf qaobee.components.restAPI.public.publicRestAPI
                  * @function getBlogs
-                 * @param {int}
-                 *            limit limite de blogs à retourner
+                 * @param {int} limit limite de blogs à retourner
                  * @description Récupération de la liste des blogs
                  * @returns {Array} com.qaobee.hive.business.model.commons.public.BlogPost
                  */
@@ -26,14 +25,12 @@
                         method: 'GET'
                     });
                 },
-                
+
                 /**
                  * @memberOf qaobee.components.restAPI.public.publicRestAPI
                  * @function sendMail
                  * @description Renvoi du mail d'activation de l'utilisateur
-                 * @param {Object}
-                 *            data
-                 * @todo à implémenter
+                 * @param {Object} data
                  * @returns {Object} {"status", true} ou {"status", false}
                  */
                 sendMail: function (data) {
@@ -42,7 +39,7 @@
                         method: 'POST',
                         data: data
                     });
-                },
+                }
             };
         });
 }());
