@@ -10,7 +10,6 @@
      */
     angular.module(
         'qaobee.avatar', [
-
             /* angular module */
             'angularFileUpload'
         ])
@@ -34,15 +33,14 @@
 
                     });
 
-                    $scope.uploader.url = EnvironmentConfig.apiEndPoint + '/file/'+$scope.collection+'/avatar/' + $scope.person._id
+                    $scope.uploader.url = EnvironmentConfig.apiEndPoint + '/file/' + $scope.collection + '/avatar/' + $scope.person._id;
                     $scope.getAvatar = function (avatar) {
-                        return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/'+$scope.collection+'/' + avatar : 'assets/images/user.png';
+                        return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/' + $scope.collection + '/' + avatar : 'assets/images/user.png';
                     };
 
                     $scope.$watch('person', function (newValue, oldValue) {
                         if (angular.isDefined(newValue) && !angular.equals(oldValue, newValue)) {
-                          console.log("ici");
-                            $scope.uploader.url = EnvironmentConfig.apiEndPoint + '/file/'+$scope.collection+'/avatar/' + newValue._id;
+                            $scope.uploader.url = EnvironmentConfig.apiEndPoint + '/file/' + $scope.collection + '/avatar/' + newValue._id;
                         }
                     });
 
@@ -53,25 +51,19 @@
                             return '|jpg|png|jpeg|gif|'.indexOf(type) !== -1;
                         }
                     });
-                    $scope.uploader.onWhenAddingFileFailed = function (item /*{File|FileLikeObject}*/, filter, options) {
+                    $scope.uploader.onWhenAddingFileFailed = function (item, filter, options) {
                         $log.debug('onWhenAddingFileFailed', item, filter, options);
                     };
                     $scope.uploader.onAfterAddingFile = function (fileItem) {
                         $log.info('onAfterAddingFile', fileItem);
                     };
-                    $scope.uploader.onProgressItem = function () { //fileItem, progress) {
-                        // $scope.showSpinner = true;
-                    };
-
                     $scope.uploader.onSuccessItem = function (fileItem, response) {
-                        //     $scope.showSpinner = false;
                         $scope.person.avatar = response.avatar;
                         $scope.uploader.clearQueue();
                     };
                     $scope.uploader.onErrorItem = function (fileItem, response, status, headers) {
                         $log.info('onErrorItem', fileItem, response, status, headers);
                         toastr.error(response);
-                        //  $scope.showSpinner = false;
                     };
                 },
                 templateUrl: 'app/components/directives/user/avatar/avatar.html'
@@ -88,9 +80,9 @@
                     collection: '@?'
                 },
                 controller: function ($scope) {
-                  $scope.collection = $scope.collection || 'SB_Person';
+                    $scope.collection = $scope.collection || 'SB_Person';
                     $scope.getAvatar = function (avatar) {
-                        return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/'+$scope.collection+'/' + avatar : 'assets/images/user.png';
+                        return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/' + $scope.collection + '/' + avatar : 'assets/images/user.png';
                     };
                 },
                 templateUrl: 'app/components/directives/user/avatar/simpleAvatar.html'
