@@ -2,7 +2,7 @@
   "local": {
     "EnvironmentConfig": {
       "name": "development",
-      "apiEndPoint": "http://localhost:8080",
+      "apiEndPoint": "http://localhost:8888",
       "useLoaderCache": false,
       "debugEnabled": true
     }
