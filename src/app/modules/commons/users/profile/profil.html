@@ -35,6 +35,7 @@
             </ul>
         </div>
     
+        <!-- modify profil -->
         <div id="profile" class="col s12 card">
             <form name="profileForm" ng-submit="updateProfilUser()">
                 
@@ -151,7 +152,7 @@
                     <div class="col s12 m5 input-field">
                         <i class="material-icons prefix">phone</i>
                         <label for="userPhoneHome"><span class="red-text text-lighten-1">*</span></label>
-                        <input id="userPhoneHome" name="userPhoneHome" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate" min="0" ng-model="signup.contact.home" required>
+                        <input id="userPhoneHome" name="userPhoneHome" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate" min="0" ng-model="user.contact.home" required>
                         <span class="small red-text text-lighten-1"
                             ng-show="profileForm.userPhoneHome.$invalid && !profileForm.userPhoneHome.$pristine" translate="civilSection.userErrors.phoneNumberMandatory">
                         </span>
@@ -171,6 +172,7 @@
             </form>
         </div>
     
+        <!-- change password -->
         <div id="passwordUser"  class="col s12 card">
             <form name="pwdForm" ng-submit="resetPasswd()">
                 
@@ -238,18 +240,22 @@
             </form>
         </div>
         
+        <!-- sharing -->
         <div id="sharing"  class="col s12">
             
         </div>
         
+        <!-- Notification -->
         <div id="notification"  class="col s12">
             
         </div>
         
+        <!-- billing -->
         <div id="billing"  class="col s12">
             
         </div>
         
+        <!-- settings -->
         <div id="settings"  class="col s12">
             
         </div>

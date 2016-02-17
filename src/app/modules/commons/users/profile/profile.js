@@ -105,50 +105,48 @@
              * @memberOf qaobee.prive.profile.ProfileCtrl
              * @description update the current user
              */
-            $scope.updateUser = function (profileForm) {
-                if (profileForm.$valid) {
-                    var updUser = {};
-                    angular.copy($scope.user, updUser);
-                    updUser.birthdate = moment($scope.user.birthdate,'DD/MM/YYYY').valueOf();
-                    delete updUser.isAdmin;
-                    // address management
-                    if (angular.isDefined(updUser.address.formatedAddress) && updUser.address.formatedAddress !== '') {
-                        locationAPI.get(updUser.address.formatedAddress).then(function (adr) {
-                                updUser.address.lat = adr.data.results[0].geometry.location.lat;
-                                updUser.address.lng = adr.data.results[0].geometry.location.lng;
-                                // parsing infos
-                                angular.forEach(adr.data.results[0].address_components, function (item) {
-                                    if (item.types.count('street_number') > 0) {
-                                        updUser.address.place = item.long_name + ' ';
-                                    }
-                                    if (item.types.count('route') > 0) {
-                                        updUser.address.place += item.long_name;
-                                    }
-                                    if (item.types.count('locality') > 0) {
-                                        updUser.address.city = item.long_name;
-                                    }
-                                    if (item.types.count('postal_code') > 0) {
-                                        updUser.address.zipcode = item.long_name;
-                                    }
-                                    if (item.types.count('country') > 0) {
-                                        updUser.address.country = item.long_name;
-                                    }
-                                });
-                                
-                                profileRestAPI.update(updUser).success(function (data) {
-                                    toastr.success(data.firstname + ' ' + data.name + $filter('translate')('popup.success.updated'));
-                                    qeventbus.prepForBroadcast('refreshUser', data);
-                                });
-                            }
-                        );
-                    } else {
-                        profileRestAPI.update(updUser).success(function (data) {
-                            toastr.success(data.firstname + ' ' + data.name + $filter('translate')('popup.success.updated'));
-                            qeventbus.prepForBroadcast('refreshUser', data);
-                        });
-                    }
+            $scope.updateProfilUser = function (profileForm) {
+                var updUser = {};
+                angular.copy($scope.user, updUser);
+                updUser.birthdate = moment($scope.user.birthdate,'DD/MM/YYYY').valueOf();
+                delete updUser.isAdmin;
+                // address management
+                if (angular.isDefined(updUser.address.formatedAddress) && updUser.address.formatedAddress !== '') {
+                    locationAPI.get(updUser.address.formatedAddress).then(function (adr) {
+                            updUser.address.lat = adr.data.results[0].geometry.location.lat;
+                            updUser.address.lng = adr.data.results[0].geometry.location.lng;
+                            // parsing infos
+                            angular.forEach(adr.data.results[0].address_components, function (item) {
+                                if (item.types.count('street_number') > 0) {
+                                    updUser.address.place = item.long_name + ' ';
+                                }
+                                if (item.types.count('route') > 0) {
+                                    updUser.address.place += item.long_name;
+                                }
+                                if (item.types.count('locality') > 0) {
+                                    updUser.address.city = item.long_name;
+                                }
+                                if (item.types.count('postal_code') > 0) {
+                                    updUser.address.zipcode = item.long_name;
+                                }
+                                if (item.types.count('country') > 0) {
+                                    updUser.address.country = item.long_name;
+                                }
+                            });
 
+                            profileRestAPI.update(updUser).success(function (data) {
+                                toastr.success(data.firstname + ' ' + data.name + $filter('translate')('popup.success.updated'));
+                                qeventbus.prepForBroadcast('refreshUser', data);
+                            });
+                        }
+                    );
+                } else {
+                    profileRestAPI.update(updUser).success(function (data) {
+                        toastr.success(data.firstname + ' ' + data.name + $filter('translate')('popup.success.updated'));
+                        qeventbus.prepForBroadcast('refreshUser', data);
+                    });
                 }
+
             };
         
             $scope.resetPasswd = function() {
