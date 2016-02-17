@@ -36,74 +36,13 @@
         </div>
     
         <!-- modify profil -->
-        <user-profil-data user="user" />
+        <div id="profile" class="col s12 card">
+            <user-profil-data user="user" />
+        </div>    
     
         <!-- change password -->
         <div id="passwordUser"  class="col s12 card">
-            <form name="pwdForm" ng-submit="resetPasswd()">
-                
-                <!-- Empty row -->
-                <div class="row">&nbsp;</div>
-                
-                <!-- password -->
-                <div class="row">
-                    <div class="col m2 hide-on-small">&nbsp;</div>
-                    <div class="col s12 m4 input-field">
-                        <label for="password">{{'profile.label.passwd1' | translate }}</label>
-                        <input id="password" type="password" class="validate" ng-model="renew.passwd" required>
-                        
-                        <div ng-show="renew.passwd">
-                            <small translate='profile.message.passwd.strength'></small>
-                            <div ng-hide="true" ng-password-strength="renew.passwd" strength="passStrength" inner-class="meter"></div>
-                            <div class="progress grey lighten-2">
-                                <div class="determinate"
-                                     ng-class="{'red' : passStrength < 33, 'orange': passStrength >= 33 && passStrength < 66, 'green' : passStrength >= 66}"
-                                     style="width: {{passStrength}}%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col s12 m4 input-field">
-                        <label for="passwordConfirm">{{'profile.label.passwd2' | translate }}</label>
-                        <input id="passwordConfirm" type="password" class="validate" ng-model="renew.passwdConfirm" required>
-                    </div>
-                    <div class="col m2 hide-on-small">&nbsp;</div>
-                </div>
-                
-                <div class="row">
-                    <div class="col m2 hide-on-small">&nbsp;</div>
-                    <div class="input-field col s12 m8">
-                        <div re-captcha ng-model="renew.captcha" id="profil_recaptcha_widget" style="display:none">
-                            <div class="col s12 m7">
-                                <div id="recaptcha_image"></div>
-                            </div>
-                            <div class="col s6 m1" style="line-height:0.5;">
-                                <a href="javascript:Recaptcha.reload()"><img width="25" height="18" src="https://www.google.com/recaptcha/api/img/clean/refresh.png"></a><br class="hide-on-med-and-down">
-                                <a class="recaptcha_only_if_image" href="javascript:Recaptcha.switch_type('audio')" id="icon-audio"><img width="25" height="18" src="https://www.google.com/recaptcha/api/img/clean/audio.png"></a>
-                                <a class="recaptcha_only_if_audio" href="javascript:Recaptcha.switch_type('image')" id="icon-image"><img width="25" height="18" src="https://www.google.com/recaptcha/api/img/clean/text.png"></a><br class="hide-on-med-and-down">
-                                <a href="javascript:Recaptcha.showhelp()"><img id="recaptcha_whatsthis" width="25" height="16" src="https://www.google.com/recaptcha/api/img/clean/help.png" alt="Aide"></a>
-                            </div>
-                            <div class="col s6 m4"><img id="recaptcha_logo" alt="" width="71" height="36" src="https://www.google.com/recaptcha/api/img/clean/logo.png"></div>
-                            <div class="col s12 m6">
-                                <input type="text" id="recaptcha_response_field" name="recaptcha_response_field" />
-                            </div>
-                            <div class="col m6 hide-on-med-and-down">&nbsp;</div>
-                        </div>
-                    </div>
-                    <div class="col m2 hide-on-small">&nbsp;</div>
-                </div>
-                
-                <!-- actions buttons -->
-                <div class="row">
-                    <div class="col s12 center-align">
-                        <a ng-click="resetPwdUser()" class="btn red lighteen-1 white-text waves-effect waves-light center" style="max-width:50%"
-	                   translate="commons.buttons.cancel"></a>
-                        <button class="btn green darken-1 waves-effect waves-light center" type="submit" ng-disabled="pwdForm.$invalid && !pwdForm.$dirty" translate="commons.buttons.validate">
-                            <i class="mdi-content-send right"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
+            <user-profil-pwd user="user" />
         </div>
         
         <!-- sharing -->
