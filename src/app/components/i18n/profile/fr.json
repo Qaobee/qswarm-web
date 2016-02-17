@@ -27,7 +27,8 @@
             "billingnumber": "Numéro de facture",
             "product": "Produit",
             "price": "Prix",
-            "activity": "Activité"
+            "activity": "Activité",
+            "avatar":"Déposer la photo ici"
         },
         "ph": {
             "name": "Saisissez votre nom",

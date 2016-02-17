@@ -27,7 +27,8 @@
             "billingnumber": "Invoice number",
             "product": "Product",
             "price": "Price",
-            "activity": "Activity"
+            "activity": "Activity",
+            "avatar":"Drag and drop avatar here"
         },
         "ph": {
             "name": "Enter your name",
