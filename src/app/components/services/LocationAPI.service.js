@@ -18,7 +18,7 @@
              * @see {@link https://developers.google.com/maps/documentation/geocoding/}
              */
             get : function(addr) {
-                return $http.get('http://maps.googleapis.com/maps/api/geocode/json', {
+                return $http.get('https://maps.googleapis.com/maps/api/geocode/json', {
                     params : {
                         address : addr,
                         sensor : false
@@ -33,7 +33,7 @@
              * @see {@link https://developers.google.com/maps/documentation/geocoding/}
              */
             getLatLng : function(lat, lng) {
-                return $http.get('http://maps.googleapis.com/maps/api/geocode/json', {
+                return $http.get('https://maps.googleapis.com/maps/api/geocode/json', {
                     params : {
                     	latlng : lat + ',' + lng,
                         sensor : false
