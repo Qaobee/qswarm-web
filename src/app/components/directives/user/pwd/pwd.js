@@ -40,6 +40,7 @@
                     $scope.resetPasswd = function() {
                         $scope.renew.id = $scope.user._id;
                         $scope.renew.code = $scope.user.account.activationCode;
+                        $scope.renew.byPassActivationCode = true;
 
                         if($scope.renew.passwd !== $scope.renew.passwdConfirm) {
                             toastr.warning($filter('translate')('profile.message.passwd.different'));
@@ -48,7 +49,7 @@
                             return;
                         }
                         userRestAPI.resetPasswd($scope.renew).success(function () {
-                            $window.Recaptcha.reload();
+                            $scope.resetPwdUser();
                             toastr.success($filter('translate')('profile.message.updPasswd.success'));
                         }).error(function (error) {
                             $window.Recaptcha.reload();
