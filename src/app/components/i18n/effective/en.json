@@ -43,6 +43,9 @@
         "LabelTooShort": "Label is too short",
         "CategoryAge": "Effective age category is mandatory"
     },
+    "mainPlayer": {
+      "title": "Player list of effective "
+    },
     "addPlayer": {
         "title": "Add a person",
         "toastSuccess":"{{firstname}} {{name}} was added to the effective {{effective}}",
@@ -99,6 +102,9 @@
         "PositionType": "Position is mandatory"
     },
     
+    "mainTeam": {
+      "title": "Team list of effective"
+    },    
     "addTeam": {
         "titleHome": "Add team for effective",
         "titleAdversary": "Add adversary for team ",

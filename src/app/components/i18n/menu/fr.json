@@ -2,14 +2,16 @@
     "headerMenu": {
         "dashboard": "Accueil",
         "stats" : "Statistiques",
-        "effective": "Mes effectifs",
+        "players": "Mes joueurs",
+        "teams": "Mes équipes",
         "training": "Entraînements",
         "championship" : "Compétition",
         "calendar" : "Agenda",
         "notification" : "Messages",
         "search" : "Rechercher",
         "search-event" : "Evènement",
-        "search-player" : "Joueur"
+        "search-player" : "Joueur",
+        "settings": "Paramétrage"
     },
     "navbar": {
         "welcome": "Bienvenue",

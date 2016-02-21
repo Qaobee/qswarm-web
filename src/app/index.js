@@ -42,6 +42,8 @@
             'qaobee.public',
             'qaobee.home',
             'qaobee.effective',
+            'qaobee.teams',
+            'qaobee.players',
             'qaobee.agenda',
             'qaobee.stats',
             'qaobee.user'

@@ -1,0 +1,68 @@
+<div class="container">
+<!-- body start-->
+    <div class="row"></div>   
+    
+    <!-- entete start -->
+    <div class="row blue-grey darken-2">
+        <div class="col s2 white-text center-align">
+            <i class="material-icons md-48">group</i>
+        </div>
+
+        <div class="col s10 left-align">
+            <h5 class="white-text">{{'mainTeam.title' | translate }} {{currentEffective.label}}</h5>
+        </div>
+    </div>
+    <!-- entete end -->
+        
+    <div class="row">
+
+        <div class="col s2 left-align">
+            <a href="#/private/addTeam/{{false}}" class="red-text text-lighten-1">
+                <br>
+                <i class="material-icons md-48">group_add</i>&nbsp;
+            </a>
+        </div>
+
+        <!-- filter -->
+        <div class="col s10">
+            <form class="forms forms-inline input-field">
+                <input type="text" id="queryTeam" class="grey lighten-4" ng-model="queryTeam">
+                <label for="queryTeam">Filter</label>
+            </form>
+        </div>
+        <div class="col s12">&nbsp;</div>   
+        <!-- List team --> 
+        <ul>
+            <li class="col l4 m6 s12" ng-repeat="team in listTeamHome | filter:queryTeam">
+                <!-- enable -->
+                <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===true">
+                    <div class="card-content red lighten-2 white-text center">
+                        <span class="card-title">{{team.label}}</span>
+                    </div>
+                    <div class="card-content">
+                        <p>{{'effectiveLabels.effectiveTeamEnable' | translate }}</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#/private/updateTeam/{{team._id}}/false" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
+                        <a href="#/private/teamStats/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
+                    </div>
+                </div>
+                <!-- disable -->
+                <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===false">
+                    <div class="card-content grey lighten-4 blue-grey-text text-darken-2 center">
+                        <span class="card-title">{{team.label}}</span>
+                    </div>
+                    <div class="card-content">
+                        <p>{{'effectiveLabels.effectiveTeamNotEnable' | translate }}</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#/private/updateTeam/{{team._id}}/false" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
+                        <a href="#/private/teamStats/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+<!-- body end-->
+</div>

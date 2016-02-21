@@ -43,6 +43,9 @@
         "LabelTooShort": "Le libellé est trop court",
         "CategoryAge": "La catégorie d'âge de l'effectif est obligatoire"
     },
+    "mainPlayer": {
+      "title": "Liste joueur de l'effectif "
+    },
     "addPlayer": {
         "title": "Ajout d'un joueur",
         "toastSuccess":"{{firstname}} {{name}} a été ajouté à l'effectif {{effective}}",
@@ -99,6 +102,9 @@
         "PositionType": "La poste du joueur est obligatoire"
     },
     
+    "mainTeam": {
+      "title": "Liste équipe de l'effectif "
+    },    
     "addTeam": {
         "titleHome": "Ajout d'une équipe à l'effectif",
         "titleAdversary": "Ajout d'un adversaire à l'équipe",

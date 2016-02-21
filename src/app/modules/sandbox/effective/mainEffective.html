@@ -49,13 +49,6 @@
     <!-- entete end -->
         
     <div class="row">
-        <div class="col s12">
-            <ul class="tabs" tabs>
-                <li class="tab col s6 "><a href="#playerList" ng-click="changeTabDefault('playerList')">{{'effectiveLabels.effectiveTabMembers' | translate }} ({{players.length}})</a></li>
-                <li class="tab col s6 "><a href="#teamList" ng-click="changeTabDefault('teamList')">{{'effectiveLabels.effectiveTabTeams' | translate }} ({{listTeamHome.length}})</a></li>
-            </ul>
-        </div>
-
         <!-- List player -->
         <div id="playerList" class="col s12">
 
@@ -84,54 +77,6 @@
                         <a href="#/private/playerStats/{{player._id}}" class="secondary-content btn-floating waves-effect waves-light red lighten-1">
                             <i class="fa fa-bar-chart" ></i>
                         </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- List team -->
-        <div id="teamList" class="col s12">
-            <div class="col s12">&nbsp;</div>
-            
-            <!-- List team home -->
-            <div class="col s11 grey lighten-4 blue-grey-text text-darken-2">
-                <h5>{{'effectiveLabels.effectiveTeamsHome' | translate }}</h5>
-            </div>
-            <div class="col s1 grey lighten-4">
-                <a href="#/private/addTeam/{{false}}" class="red-text text-lighten-1 left-align tooltipped" data-position="left" data-delay="20" data-tooltip="{{'mainEffective.buttons.addTeamHome' | translate }}">
-                    <h5><i class="fa fa-plus-square-o"></i></h5>
-                </a>
-            </div>
-            
-            <div class="col s12">    
-                <ul>
-                    <li class="col m3 s12" ng-repeat="team in listTeamHome">
-                        <!-- enable -->
-                        <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===true">
-                            <div class="card-content red lighten-2 white-text center">
-                                <span class="card-title">{{team.label}}</span>
-                            </div>
-                            <div class="card-content">
-                                <p>{{'effectiveLabels.effectiveTeamEnable' | translate }}</p>
-                            </div>
-                            <div class="card-action">
-                                <a href="#/private/updateTeam/{{team._id}}/false" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
-                                <a href="#/private/teamStats/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
-                            </div>
-                        </div>
-                        <!-- disable -->
-                        <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===false">
-                            <div class="card-content grey lighten-4 blue-grey-text text-darken-2 center">
-                                <span class="card-title">{{team.label}}</span>
-                            </div>
-                            <div class="card-content">
-                                <p>{{'effectiveLabels.effectiveTeamNotEnable' | translate }}</p>
-                            </div>
-                            <div class="card-action">
-                                <a href="#/private/updateTeam/{{team._id}}/false" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
-                                <a href="#/private/teamStats/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
-                            </div>
-                        </div>
                     </li>
                 </ul>
             </div>

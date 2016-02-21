@@ -1,0 +1,62 @@
+<div class="container">
+<!-- body start-->
+    <div class="row"></div>   
+    
+    <!-- entete start -->
+    <div class="row blue-grey darken-2">
+        <div class="col s2 white-text center-align">
+            <i class="material-icons md-48">person</i>
+        </div>
+
+        <div class="col s10 left-align">
+            <h5 class="white-text">{{'mainPlayer.title' | translate }} {{currentEffective.label}}</h5>
+        </div>
+    </div>
+    <!-- entete end -->
+        
+    <div class="row">
+        <div class="col s2 left-align">
+            <a href="#/private/addPlayer/{{meta._id}}" class="red-text text-lighten-1">
+                <br>
+                <i class="material-icons md-48">person_add</i>&nbsp;
+            </a>
+        </div>
+
+        <!-- filter -->
+        <div class="col s10">
+            <form class="forms forms-inline input-field">
+                <input type="text" id="queryPlayer" class="grey lighten-4" ng-model="queryPlayer">
+                <label for="queryPlayer">Filter</label>
+            </form>
+        </div>
+        
+        <div class="col s12">&nbsp;</div>   
+        
+        <!-- List player -->    
+        <ul>
+            <li class="col l3 m6 s12" ng-repeat="player in players | filter:queryPlayer">
+                <div class="card white blue-grey-text text-darken-2">
+                    <div class="card-content center-align blue-grey darken-2">
+                        <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}" class="title white-text">{{player.firstname}} {{player.name}}</a></span>
+                        <a href="#/private/viewPlayer/{{player._id}}"><avatar person="player" width="'100px'" ></avatar></a>
+                    </div>
+                    <div class="card-content center-align">
+                        <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}" class="title">{{player.positionType}}</a></span>
+                        <p>
+                            {{player.age}} {{'commons.format.ageYear' | translate }} - 
+                            {{player.status.height}} {{'commons.format.height' | translate }} / {{player.status.weight}} {{'commons.format.weight' | translate }}
+                        </p>
+                    </div>
+                    
+                    <div class="card-action">
+                        <a href="#/private/playerStats/{{player._id}}" class="btn waves-effect waves-light red lighten-1 white-text">
+                            <i class="fa fa-bar-chart" ></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+<!-- body end-->
+</div>
