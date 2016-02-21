@@ -11,12 +11,12 @@
      */
     angular.module(
         'qaobee.httpModule', [
-            
-            /* qaobee services */ 
-            'qaobee.eventbus', 
-            
+
+            /* qaobee services */
+            'qaobee.eventbus',
+
             /* angular module */
-            'chieffancypants.loadingBar', 
+            'chieffancypants.loadingBar',
             'ngAnimate'
         ])
         .config(function (cfpLoadingBarProvider) {
@@ -26,7 +26,7 @@
         .factory('httpInterceptor', function ($q, $rootScope, qeventbus, $window, EnvironmentConfig, $log) {
             return {
                 // Everytime a request starts
-                request: function (config) {                    
+                request: function (config) {
                     if (config.url.startsWith('/api')) {
                         config.headers.token = $window.sessionStorage.qaobeesession;
                         config.headers['Content-Type'] = 'application/json';

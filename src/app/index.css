@@ -275,7 +275,7 @@ h6.title {
 .my-drop-zone { border: dotted 3px lightgray; }
 .nv-file-over { border: dotted 3px red; } 
 .nv-file-drop { border: dotted 3px green; }
-
+/*
 canvas {
     background-color: #f3f3f3;
     -webkit-box-shadow: 3px 3px 3px 0 #e3e3e3;
@@ -285,7 +285,7 @@ canvas {
     height: 100px;
     margin: 6px 0 0 6px;
 }
-
+*/
 /* Custom style for angular-selection-model */
 /* Selection Model Styles */
 ul.fancy {
@@ -411,4 +411,37 @@ table.super-fancy tr.foobar {
 	.btn-s {
 		padding:0 10px;
 	}
+}
+
+/*** Customisation du bouton de feedback */
+.feedback-btn-gray {
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    font-size: larger;
+    background: #43A047 none;
+}
+.feedback-buttons {
+    padding: 10px;
+    font-weight: normal;
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+#feedback-highlighter-next {
+    float: none;
+    border: none;
+    border-radius: 0;
+}
+#feedback-overview-back {
+    background: #F44336 none;
+}
+.feedback-btn-blue{
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    background: #43A047 none;
+    font-weight: normal;
+    font-size: larger;
+    border: none;
+    border-radius: 0;
 }

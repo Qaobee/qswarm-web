@@ -11,42 +11,43 @@
     angular.module(
         'qswarmWeb', [
             /* angular module */
-            'ngRoute', 
-            'ngSanitize', 
-            'ngCookies', 
+            'ngRoute',
+            'ngSanitize',
+            'ngCookies',
             'ngAudio',
-            'pascalprecht.translate', 
-            'reCAPTCHA',  
+            'pascalprecht.translate',
+            'reCAPTCHA',
             'tmh.dynamicLocale',
             'angularFileUpload',
             'ui.mask',
             'selectionModel',
             'ui.materialize',
             'ng.deviceDetector',
-            
+            'angular-send-feedback',
+
             //* qaobee widget */
             'qaobee.filterCalendar',
             'qaobee.commonsDirectives',
             'qaobee.headerMenu',
             'qaobee.avatar',
             'eventCard',
-            
+
             /* qaobee shared services */
             'qaobee.commonsConfig',
-            'qaobee.config', 
+            'qaobee.config',
             'qaobee.eventbus',
             'qaobee.httpModule',
-            
-            /* qaobee modules */ 
+
+            /* qaobee modules */
             'qaobee.public',
             'qaobee.home',
             'qaobee.effective',
             'qaobee.agenda',
             'qaobee.stats',
             'qaobee.user'
-            
+
             /* A SUPPRIMER */
-            ,'qaobee.test'
+            , 'qaobee.test'
         ])
 
         .config(function ($translateProvider, $translatePartialLoaderProvider, reCAPTCHAProvider, $httpProvider, $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider) {
@@ -95,27 +96,32 @@
             $locale.id = $translate.proposedLanguage();
             tmhDynamicLocale.set($locale.id);
             $rootScope.$on('$translatePartialLoaderStructureChanged', function () {
-                $translate.refresh();                
+                $translate.refresh();
             });
         })
 
-    /**
-     * @class qaobee.qswarmweb
-     * @description Contrôleur principal
-     */
-        .controller('MainCtrl', function ($rootScope, $scope, $window, $translatePartialLoader, qeventbus) {
+        /**
+         * @class qaobee.qswarmweb
+         * @description Contrôleur principal
+         */
+        .controller('MainCtrl', function ($rootScope, $scope, $window, $translatePartialLoader, qeventbus, EnvironmentConfig) {
             /* i18n pour les formats de date, voir changement de la locale dans index.html */
             moment.locale($window.navigator.language);
-            
+            $scope.feedbackOptions = {
+                ajaxURL: EnvironmentConfig.apiEndPoint + '/api/1/commons/feedback/send',
+                initButtonText: 'Feedback',
+                html2canvasURL: 'https://github.com/niklasvh/html2canvas/blob/master/dist/html2canvas.min.js'
+            };
             $translatePartialLoader.addPart('public');
-            
+
             $scope.$on('qeventbus', function () {
                 if ('logoff' === qeventbus.message) {
                     delete  $scope.user;
                     delete $rootScope.user;
                     delete $rootScope.meta;
                     delete $window.sessionStorage.qaobeesession;
-                }  if ('bg-color' === qeventbus.message) {
+                }
+                if ('bg-color' === qeventbus.message) {
                     $scope.bgColor = qeventbus.data;
                 } else if ('login' === qeventbus.message) {
                     $scope.user = qeventbus.data;
