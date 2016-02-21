@@ -112,7 +112,7 @@
             $scope.feedbackOptions = {
                 ajaxURL: EnvironmentConfig.apiEndPoint + '/api/1/commons/feedback/send',
                 initButtonText: 'Feedback',
-                html2canvasURL: 'https://github.com/niklasvh/html2canvas/blob/master/dist/html2canvas.min.js',
+                html2canvasURL: 'https://raw.githubusercontent.com/niklasvh/html2canvas/master/dist/html2canvas.min.js',
                 postHTML : false
             };
             $translatePartialLoader.addPart('public');
