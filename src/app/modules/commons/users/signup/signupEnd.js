@@ -4,10 +4,10 @@
     angular.module('qaobee.user.signup.end', [
         /* angular qaobee */
 //        'ngAutocomplete',
-       
+
         /* qaobee modules */
         'personSRV',
-        
+
         /* services */
         'locationAPI',
 
@@ -35,35 +35,35 @@
                 templateUrl: 'app/modules/commons/users/signup/signupEnd.html'
             });
         })
-        
+
         .controller('SignupCtrl', function ($rootScope, $scope, $timeout, $translatePartialLoader, $log, $routeParams, $window, $location, $filter, WizardHandler, activityRestAPI, activityCfgRestAPI, countryRestAPI, structureRestAPI, signupRestAPI, locationAPI, personSrv) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
 
             $scope.isStructureCityChanged = false;
             $scope.isStructureReload = false;
-            
+
             $scope.signup = {};
             $scope.signup.detailsStructureCity = {};
-            
+
             $scope.structure = {};
             $scope.newStructure = {};
             $scope.newStructure.address = {};
-            
+
             $scope.temp = {};
             $scope.temp.detailsAddress = {};
             $scope.temp.detailsAddress.formatedAddress = '';
-            
+
             $scope.temp.structureVilleOK = false;
             $scope.temp.structureSelectOK = false;
             $scope.temp.structureSearch = false;
             $scope.temp.message = '';
-            
+
             $scope.temp.createStructure = false;
             $scope.temp.referencialId = -1;
-            
+
             $scope.temp.skipSportSection = true;
-            
+
             $scope.creationFinished = false;
 
             var $inputDate = null;
@@ -89,7 +89,7 @@
                 $scope.close = $filter('translate')('commons.format.date.close');
                 $scope.formatDate = $filter('translate')('commons.format.date.label');
                 $scope.formatDateSubmit = $filter('translate')('commons.format.date.pattern');
-        
+
                 $inputDate = $('#signupBirthdate').pickadate({
                     format: $scope.formatDate,
                     formatSubmit: $scope.formatDateSubmit,
@@ -106,9 +106,9 @@
 
                 $scope.datePicker = $inputDate.pickadate('picker');
             }, 500);
-                        
+
            signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function (data) {
-        	    if(data === null) {
+                if(data === null) {
         	    	$rootScope.messageErreur = '';
                     $location.path('/signup/error');
         	    } else if (true === data.error) {
@@ -116,21 +116,21 @@
                     $location.path('/signup/error');
                 } else {
                     $scope.signup = data;
-                    if($scope.signup.birthdate!=null && $scope.signup.birthdate!=0) {
+                    if($scope.signup.birthdate!==null && $scope.signup.birthdate!==0) {
                     	$scope.signup.birthdateInput = new Date(moment($scope.signup.birthdate));
                     }
                     $scope.signup.categoryAge = '';
-                    
+
                     // On force le sport au HANDBALL
                     if(angular.isUndefined($scope.signup.account.listPlan)) {
                     	$scope.signup.account.listPlan = [{}];
                     }
                     $scope.signup.account.listPlan[0].activity = {};
                     $scope.signup.account.listPlan[0].activity._id = 'ACT-HAND';
-                    
+
                     $scope.temp.message=$filter('translate')('structureSection.list.empty');
                     $scope.valuesStructures = [];
-                    
+
                     // Déclaration du user en mode connecté
                     $window.sessionStorage.qaobeesession = data.account.token;
                     $rootScope.user = data;
@@ -169,7 +169,7 @@
                     toastr.warning($filter('translate')('civilSection.ph.phoneNumberMandatory'));
                     validateOk = false;
                 }
-                
+
                 if (validateOk) {
                     var start = moment($scope.signup.birthdateInput,'DD/MM/YYYY');
                 	$scope.signup.birthdate = moment(start).valueOf();
@@ -188,7 +188,7 @@
                     WizardHandler.wizard().next();
                 }
             };
-            
+
 
             /* init ngAutocomplete*/
             $scope.options = {};
@@ -204,7 +204,7 @@
                 types: '(cities)'
             };
             $scope.detailsCity = '';
-            
+
             // options pour ville nouvelle structure
             $scope.optionsNewStructureCity = {
                 types: 'geocode'
@@ -217,7 +217,7 @@
             $scope.resetStructure = function() {
             	$scope.temp.message=$filter('translate')('structureSection.list.empty');
                 $scope.valuesStructures = [];
-            	
+
                 $scope.isStructureCityChanged = false;
                 $scope.isStructureReload = true;
                 $scope.temp.zipcode = '';
@@ -225,8 +225,8 @@
                 $scope.temp.structureVilleOK = false;
                 $scope.temp.structureSelectOK = false;
                 $scope.newStructure = {};
-            }
-            
+            };
+
             // Surveillance de la modification du retour de l'API Google sur l'adresse dans les infos personnelles
             $scope.$watch('temp.detailsAddress', function(newValue, oldValue) {
             	if(angular.isUndefined(newValue) || newValue==='' || angular.equals({}, newValue)) {
@@ -236,7 +236,7 @@
             		$scope.signup.address = adr;
                 });
             });
-            
+
             // Surveillance de la modification du retour de l'API Google sur l'adresse
             $scope.$watch('signup.detailsStructureCity', function(newValue, oldValue) {
             	if(angular.isUndefined(newValue) || newValue==='' || angular.equals({}, newValue)) {
@@ -245,7 +245,7 @@
             	//place_changed
             	$scope.loadStructures();
             });
-            
+
             // Surveillance de la modification du retour de l'API Google sur l'adresse du club
             $scope.$watch('signup.detailsNewStructureCity', function(newValue, oldValue) {
             	if(angular.isUndefined(newValue) || newValue==='' || angular.equals({}, newValue)) {
@@ -253,10 +253,10 @@
             	}
             	personSrv.formatAddress(newValue).then(function(adr){
             		$scope.newStructure.address = adr;
-            		
+
             		angular.forEach(newValue.address_components, function (item) {
                 		if (item.types.count('country') > 0) {
-                			$scope.newStructure.address.country = {}
+                			$scope.newStructure.address.country = {};
                 			$scope.newStructure.address.country.label  = item.long_name;
                 			$scope.newStructure.address.country.alpha2 = item.short_name;
                 		}
@@ -268,10 +268,10 @@
             $scope.loadStructures = function () {
                 if ($scope.isStructureReload) {
                     $scope.isStructureReload = false;
-                    
+
                     // Recherche en cours...
                     $scope.temp.structureSearch = true;
-                    
+
                     // Recherche des infos complémentaires de la ville à partir des coordonnées Lat/Lng
                     var cityLocation = $scope.signup.detailsStructureCity.geometry.location;
                     locationAPI.getLatLng(cityLocation.lat(), cityLocation.lng()).then(function (adr) {
@@ -292,13 +292,13 @@
                     			$scope.temp.city = address.city;
                     		}
                     	});
-                    	
+
                     	// Recherche du pays et liste des category age
                     	countryRestAPI.getAlpha2($scope.temp.countryAlpha2).success(function (data) {
                     		activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.signup.account.listPlan[0].activity._id, data._id,'listCategoryAge').success(function (data2) {
                     			$scope.categoryAgeResult = data2;
                     			$scope.valuesCategoryAge = [];
-                    			
+
                     			var dataSort = data2.sortBy(function(o) {
                                 	return -1 * o.order;
                                 });
@@ -312,7 +312,7 @@
                     				} else {
                     					tempAge = i.ageMin + '/' + i.ageMax;
                     				}
-                    				
+
                                     $scope.valuesCategoryAge.push({
                                         _id: i.code,
                                         label: i.label + ' (' + tempAge + ')'
@@ -321,7 +321,7 @@
                     			$scope.signup.categoryAge = '';
                     		});
                     	});
-                    	
+
                     	// Recherche des structures
                     	structureRestAPI.getList($scope.signup.account.listPlan[0].activity._id, address).success(function (data) {
                             $scope.valuesStructures = [];
@@ -349,25 +349,23 @@
                                     $scope.valuesStructures = [];
                                 }
                             }
-                            
+
                             $scope.temp.structureSearch = false;
                             $scope.temp.structureVilleOK = true;
-                            
-                        }).error(function (data) {
+
+                        }).error(function() {
                         	$scope.temp.structureSearch = false;
                         });
-                    	
                     });
-                    
                 }
             };
 
-            // Puts structure selected in a hidden input 
+            // Puts structure selected in a hidden input
             $scope.applyChangeStructure = function (value) {
             	if(!angular.isUndefined(value)) {
             		$scope.temp.referencialId = value;
             	}
-            	
+
                 if($scope.temp.referencialId==='new') {
                 	$scope.temp.createStructure = true;
                 	$scope.newStructure.label = '';
@@ -390,7 +388,7 @@
             /* Validate structureSection */
             $scope.validateStructureSection = function () {
                 var validateOk = true;
-                
+
                 if (!$scope.temp.createStructure) {
                 	if (angular.isUndefined($scope.temp.structure) || $scope.temp.structure._id < 0) {
                 		toastr.warning($filter('translate')('structureSection.ph.structureMandatory'));
@@ -410,12 +408,12 @@
                         validateOk = false;
                 	}
                 }
-                
+
                 if($scope.signup.categoryAge===null || $scope.signup.categoryAge==='') {
                 	toastr.warning($filter('translate')('structureSection.ph.categoryAgeMandatory'));
                     validateOk = false;
                 }
-                
+
                 if (validateOk) {
             		$scope.structure = $scope.temp.createStructure ? $scope.newStructure : $scope.temp.structure;
             		$scope.createSandBox();
@@ -435,7 +433,7 @@
 	                	}
 	                });
                 }
-                
+
                 // Ouverture Modal creation compte
                 $scope.openModalCreate();
 
@@ -469,8 +467,8 @@
                 delete($scope.signup);
                 toastr.info('A bientôt !');
                 $location.path('/');
-            }
-            
+            };
+
             $scope.owlOptions = {
         			items : 1,
         			loop : false,
@@ -486,12 +484,12 @@
         			animateOut : 'rotateOutDownLeft',
         			onTranslated : nextStep
         	};
-        	
+
         	$scope.openModalCreate = function () {
         		$('#modalCreate').openModal({dismissible: false});
         		$('.owl-carousel').owlCarousel($scope.owlOptions);
         	};
-        	
+
         	function nextStep(event) {
         	    if (event.item.count === event.item.index + 1) {
         	    	while(!$scope.creationFinished) {
@@ -507,14 +505,14 @@
         .controller('SignupEndCtrl', function ($rootScope, $scope, $log, $translatePartialLoader, $location) {
             $translatePartialLoader.addPart('user');
             $rootScope.user = {account : {firstConnexion : true}};
-            
+
             $scope.goHome = function () {
             	delete($rootScope.user);
                 $location.path('/');
             };
         })
 
-        .controller('SignupCancelCtrl', function ($scope, $translatePartialLoader, $log) {
+        .controller('SignupCancelCtrl', function () {
         })
 
         .controller('SignupErrorCtrl', function ($rootScope, $scope, $location, $translatePartialLoader, $log, $filter) {
