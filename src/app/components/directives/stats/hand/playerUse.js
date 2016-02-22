@@ -36,8 +36,8 @@
                         statsSrv.getMatchsTeams(startDate, endDate, $scope.sandboxId).then(function (data) {
                             if (angular.isArray(data) && data.length > 0) {
                                 result.nbGame = data.length;
-
-                                var indicators = Array.create('playTime');
+                                
+                                var indicators = Array.create('totalPlayTime');
                                 var listFieldsGroupBy = Array.create('owner', 'code');
 
                                 var search = {
@@ -48,7 +48,7 @@
                                     aggregat: 'AVG',
                                     listFieldsGroupBy: listFieldsGroupBy
                                 };
-
+                                $log.debug('search', search);
                                 /* Appel stats API */
                                 statsRestAPI.getStatGroupBy(search).success(function (playtime) {
                                     if (angular.isArray(playtime) && playtime.length > 0) {

@@ -11,18 +11,23 @@
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 
-.headerMenu {
-	background: linear-gradient(50deg, rgba(53,184,136,1), rgba(0,113,178,1));
+.cardStat {
+	background: linear-gradient(10deg, rgba(53,184,136,0.1), rgba(0,113,178,1));
+	overflow: hidden;
+}
+
+.cardStatTitle {
+	background: linear-gradient(10deg, rgba(30,100,136,1), rgba(69,90,100,1));
 	overflow: hidden;
 }
 
 .cardPlayer {
-	background: linear-gradient(50deg, rgba(00,130,136,1), rgba(0,113,178,1));
+	background: linear-gradient(10deg, rgba(30,100,136,1), rgba(69,90,100,1));
 	overflow: hidden;
 }
 
 .cardTeam {
-	background: linear-gradient(50deg, rgba(229,115,115,1), rgba(198,40,40,1));
+	background: linear-gradient(10deg, rgba(229,115,115,1), rgba(198,40,40,1));
 	overflow: hidden;
 } 
 

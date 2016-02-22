@@ -3,13 +3,13 @@
     <!-- space between header menu and body-->
     <div class="row"></div>
     
-    <div class="row">
+    <div class="row cardStat">
         <div class="col s12">
             
             <!-- Entete-->
-            <div class="row blue-grey darken-2">
+            <div class="row cardPlayer">
                 <div class="col l3 m3 center hide-on-small-only">
-                    <avatar person="player" width="'50px'"></avatar>
+                    <avatar person="player" width="'100px'"></avatar>
                 </div>
                 <div class="col l7 m7 s12 white-text center">
                     <h5>{{player.firstname}} {{player.name}}</h5>
@@ -60,7 +60,7 @@
             
             <!-- Stats shoot efficiency Start -->
             <div class="row">
-                <div class="col s12 center white red-text text-lighten-2">
+                <div class="col s12 center white-text">
                     <h5>{{'stats.efficiency.efficiency' | translate }}</h5>
                 </div>
                 
@@ -92,7 +92,7 @@
             
             <!-- Stats actions pos/neg Start -->
             <div class="row"> 
-                <div class="col s12 center white red-text text-lighten-2">
+                <div class="col s12 center white-text">
                     <h5>{{'stats.actionTab.title' | translate }}</h5>
                 </div>
                 <stats-actions-pos-neg></stats-actions-pos-neg>
@@ -102,7 +102,7 @@
             <!-- Stats event's list Start -->
             <div class="row">
                 <div class="col s12" ng-if="collectes.length > 0">
-                    <div><h5 class="center white red-text text-lighten-2"><i class="fa fa-bar-chart"></i> {{'stats.teamLabels.listCollect' | translate }}</h5></div>
+                    <div><h5 class="center white-text"><i class="fa fa-bar-chart"></i> {{'stats.teamLabels.listCollect' | translate }}</h5></div>
                     <ul>
                         <li class="col s12 m6 l4" ng-repeat="collecte in collectes">
                             <event-card event="collecte.eventRef"></event-card>
