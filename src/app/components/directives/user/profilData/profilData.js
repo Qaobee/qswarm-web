@@ -20,8 +20,8 @@
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('profile');
-                    $translatePartialLoader.addPart('commons');
                     $translatePartialLoader.addPart('user');
+                    $translatePartialLoader.addPart('commons');
 
 
                     // return button
