@@ -109,6 +109,7 @@
         .controller('MainCtrl', function ($rootScope, $scope, $window, $translatePartialLoader, qeventbus, EnvironmentConfig) {
             /* i18n pour les formats de date, voir changement de la locale dans index.html */
             moment.locale($window.navigator.language);
+            $scope.loaded = false;
             $scope.feedbackOptions = {
                 ajaxURL: EnvironmentConfig.apiEndPoint + '/api/1/commons/feedback/send',
                 initButtonText: 'Feedback',
@@ -131,5 +132,6 @@
                     console.log($scope.meta);
                 }
             });
+            $scope.loaded = true;
         });
 }());
