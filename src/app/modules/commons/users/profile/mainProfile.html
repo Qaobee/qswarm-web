@@ -1,0 +1,132 @@
+<div class="container">
+
+    <!-- space between header menu and body-->
+    <div class="row"></div>
+    
+    <!-- Entete -->
+    <div class="row">
+        <div class="col s12">
+            <div class="row blue-grey darken-2 white-text center">
+                <div class="col m3 s12 center">
+                    <avatar person="user" width="'100px'"></avatar>
+                    <span class="small">{{'profile.label.avatar' | translate }}</span>
+                </div>
+                <div class="col m7 s12">
+                    <br/>
+                    <h4>{{user.firstname}} {{user.name}}</h4>
+                    <h5>{{user.account.login}}</h5>
+                </div>
+                <div class="col m2 s12">
+                    <br/>&nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <ul>
+            <li class="col l4 m6 s12">
+                <div class="card white blue-grey-text text-darken-2">
+                    <div class="card-content center-align cardPlayer">
+                        <span class="card-content"><a href="#/private/viewPlayer/{{player._id}}" class="title white-text">{{'profile.tabs.profil' | translate }}</a></span>
+                    </div>
+                    <div class="card-content center-align">
+                        
+                    </div>
+                    
+                    <div class="card-action center-align">
+                        <a href="#/private/profile/writeProfile" class="btn waves-effect waves-light red lighten-1 white-text">
+                            <i class="fa fa-edit" ></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="col l4 m6 s12">
+                <div class="card white blue-grey-text text-darken-2">
+                    <div class="card-content center-align cardPlayer">
+                        <span class="card-content"><a href="#/private/viewPlayer/{{player._id}}" class="title white-text">{{'profile.tabs.password' | translate }}</a></span>
+                    </div>
+                    <div class="card-content center-align">
+                        
+                    </div>
+                    
+                    <div class="card-action center-align">
+                        <a href="#/private/profile/changePwd" class="btn waves-effect waves-light red lighten-1 white-text">
+                            <i class="fa fa-edit" ></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="col l4 m6 s12">
+                <div class="card white blue-grey-text text-darken-2">
+                    <div class="card-content center-align cardPlayer">
+                        <span class="card-content"><a href="#/private/viewPlayer/{{player._id}}" class="title white-text">{{'profile.tabs.billing' | translate }}</a></span>
+                    </div>
+                    <div class="card-content center-align">
+                        
+                    </div>
+                    
+                    <div class="card-action center-align">
+                        <a href="#/private/profile/billing" class="btn waves-effect waves-light red lighten-1 white-text">
+                            <i class="fa fa-edit" ></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="col l4 m6 s12">
+                <div class="card white blue-grey-text text-darken-2">
+                    <div class="card-content center-align cardPlayer">
+                        <span class="card-content"><a href="#/private/viewPlayer/{{player._id}}" class="title white-text">{{'profile.tabs.settings' | translate }}</a></span>
+                    </div>
+                    <div class="card-content center-align">
+                        
+                    </div>
+                    
+                    <div class="card-action center-align">
+                        <a href="#/private/config" class="btn waves-effect waves-light red lighten-1 white-text">
+                            <i class="fa fa-edit" ></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="col l4 m6 s12">
+                <div class="card white blue-grey-text text-darken-2">
+                    <div class="card-content center-align cardPlayer">
+                        <span class="card-content"><a href="#/private/viewPlayer/{{player._id}}" class="title white-text">{{'profile.tabs.sharing' | translate }}</a></span>
+                    </div>
+                    <div class="card-content center-align">
+                        
+                    </div>
+                    
+                    <div class="card-action center-align">
+                        <a href="#/private/config" class="btn waves-effect waves-light red lighten-1 white-text">
+                            <i class="fa fa-edit" ></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="col l4 m6 s12">
+                <div class="card white blue-grey-text text-darken-2">
+                    <div class="card-content center-align cardPlayer">
+                        <span class="card-content"><a href="#/private/viewPlayer/{{player._id}}" class="title white-text">{{'profile.tabs.notification' | translate }}</a></span>
+                    </div>
+                    <div class="card-content center-align">
+                        
+                    </div>
+                    
+                    <div class="card-action center-align">
+                        <a href="#/private/config" class="btn waves-effect waves-light red lighten-1 white-text">
+                            <i class="fa fa-edit" ></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        
+    </div>
+</div>

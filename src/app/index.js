@@ -129,7 +129,6 @@
                 } else if ('login' === qeventbus.message) {
                     $scope.user = qeventbus.data;
                     $scope.meta.user = $scope.user;
-                    console.log($scope.meta);
                 }
             });
             $scope.loaded = true;

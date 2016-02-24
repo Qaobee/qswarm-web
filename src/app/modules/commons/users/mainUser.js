@@ -7,9 +7,7 @@
         /* qaobee modules */
         'qaobee.user.signup.start',
         'qaobee.user.signup.end',
-        'qaobee.user.profile',
-        'qaobee.user.config',
-        'qaobee.user.password'
+        'qaobee.user.mainProfile'
         /* services */
 
         /* qaobee Rest API */

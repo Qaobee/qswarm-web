@@ -83,9 +83,7 @@
                 
                     <li class="right"><a ng-click="logoff()" href="!#"><i class="white-text fa fa-power-off"></i></a></li>
                     
-                    <li class="right"><a href="#/private/config" class="white-text"><i class="material-icons left">settings</i></a></li>
-                    
-                    <li class="right"><a href="#/private/profil" class="white-text"><i class="material-icons left">portrait</i>
+                    <li class="right"><a href="#/private/profile" class="white-text"><i class="material-icons left">portrait</i>
                         <span class="hide-on-med-and-down">{{user.firstname}} {{user.name}}</span></a>
                     </li>
                 </ul>
@@ -123,13 +121,7 @@
                     <li class="divider"></li>
                     
                     <li>
-                        <a href="#/private/profil" class="white-text"><i class="mdi-social-person-outline left"></i>{{user.firstname}} {{user.name}}</a>
-                    </li>
-                    
-                    <li>
-                        <a href="#/private/config" class="white-text">
-                            <i class="mdi-action-settings left"></i>{{'headerMenu.settings' | translate }}
-                        </a>
+                        <a href="#/private/profile" class="white-text"><i class="mdi-social-person-outline left"></i>{{user.firstname}} {{user.name}}</a>
                     </li>
                     
                     <li>
