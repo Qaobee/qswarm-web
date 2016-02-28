@@ -22,7 +22,7 @@
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
-                    $scope.noStat = true;
+                    $scope.noStat = false;
 
 
                     /* getStats */
@@ -68,8 +68,8 @@
                                 /* Appel stats API */
                                 statsRestAPI.getStatGroupBy(search).success(function (data) {
                                     if (angular.isArray(data) && data.length > 0) {
-                                        $scope.noStat = true;
                                         data.forEach(function (a) {
+                                            $scope.noStat = true;
                                             result.nbGoal = a.value;
                                         });
                                         deferred.resolve(result);

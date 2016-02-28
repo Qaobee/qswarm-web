@@ -28,7 +28,7 @@
 .blue-grey-text.text-darken-2 {
   color: #3c3f41 !important; }
 
-.cardStat {
+.moduleTitle {
     background: linear-gradient(10deg, rgba(53, 184, 136, 0.1), rgba(245,245,245, 1));
     overflow: hidden;
 }
@@ -43,10 +43,6 @@
     overflow: hidden;
 }
 
-.cardTeam {
-    background: linear-gradient(10deg, rgba(229, 115, 115, 1), rgba(198, 40, 40, 1));
-    overflow: hidden;
-}
 
 input[type=text].valid, input[type=text]:focus.valid, input[type=password].valid, input[type=password]:focus.valid, input[type=email].valid, input[type=email]:focus.valid, input[type=url].valid,
 input[type=url]:focus.valid, input[type=time].valid, input[type=time]:focus.valid, input[type=date].valid, input[type=date]:focus.valid, input[type=datetime-local].valid, input[type=datetime-local]:focus.valid,

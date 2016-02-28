@@ -20,7 +20,7 @@
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
-                    $scope.noStat = true;
+                    $scope.noStat = false;
 
                     /* getStats */
                     var getStats = function (ownersId, startDate, endDate /* , values */) {
@@ -36,7 +36,7 @@
                         statsSrv.getMatchsTeams(startDate, endDate, $scope.sandboxId).then(function (data) {
                             if (angular.isArray(data) && data.length > 0) {
                                 result.nbGame = data.length;
-                                
+                                $scope.noStat = true;
                                 var indicators = Array.create('totalPlayTime');
                                 var listFieldsGroupBy = Array.create('owner', 'code');
 
@@ -52,7 +52,7 @@
                                 /* Appel stats API */
                                 statsRestAPI.getStatGroupBy(search).success(function (playtime) {
                                     if (angular.isArray(playtime) && playtime.length > 0) {
-                                        $scope.noStat = true;
+                                        
                                         playtime.forEach(function (a) {
                                             result.playTimeAvg = a.value;
                                         });
@@ -77,12 +77,9 @@
                                             if (angular.isArray(holder) && holder.length > 0) {
                                                 holder.forEach(function (a) {
                                                     result.nbHolder = a.value;
-                                                });
-
-                                                deferred.resolve(result);
-                                            } else {
-                                                deferred.reject('getStats -> problem for : ' + search);
-                                            }
+                                                });                                                
+                                            } 
+                                            deferred.resolve(result);
                                         });
                                     }
                                 });
@@ -102,6 +99,7 @@
                         $scope.title = 'stats.resumeTab.' + $scope.label;
 
                         getStats($scope.ownersId, $scope.startDate, $scope.endDate, $scope.values).then(function (result) {
+                            $log.debug('result',result);
                             $scope.nbHolder = result.nbHolder;
                             $scope.nbGame = result.nbGame;
                             $scope.playTimeAvg = result.playTimeAvg;
