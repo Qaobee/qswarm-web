@@ -33,15 +33,13 @@
         <div class="col s12">&nbsp;</div>   
         <!-- List team --> 
         <ul>
-            <li class="col l4 m6 s12" ng-repeat="team in listTeamHome | filter:queryTeam">
+            <li class="col l3 m6 s12" ng-repeat="team in listTeamHome | filter:queryTeam">
                 <!-- enable -->
                 <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===true">
-                    <div class="card-content red lighten-2 white-text center">
-                        <span class="card-title">{{team.label}}</span>
+                    <div class="card-content red lighten-1 white-text center">
+                        <h5><small>{{team.label}}</small></h5>
                     </div>
-                    <div class="card-content">
-                        <p>{{'effectiveLabels.effectiveTeamEnable' | translate }}</p>
-                    </div>
+                    
                     <div class="card-action">
                         <a href="#/private/updateTeam/{{team._id}}/false" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
                         <a href="#/private/teamStats/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
@@ -49,12 +47,10 @@
                 </div>
                 <!-- disable -->
                 <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===false">
-                    <div class="card-content grey lighten-4 blue-grey-text text-darken-2 center">
-                        <span class="card-title">{{team.label}}</span>
+                    <div class="card-content grey lighten-4 grey-text text-darken-2 center">
+                        <h5><small>{{team.label}}</small></h5>
                     </div>
-                    <div class="card-content">
-                        <p>{{'effectiveLabels.effectiveTeamNotEnable' | translate }}</p>
-                    </div>
+                    
                     <div class="card-action">
                         <a href="#/private/updateTeam/{{team._id}}/false" class="red-text text-lighten-1"><i class="material-icons">mode_edit</i></a>
                         <a href="#/private/teamStats/{{team._id}}" class="red-text text-lighten-1"><i class="fa fa-bar-chart fa-2x" ></i></a>
