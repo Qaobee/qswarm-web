@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col s12">
             
-            <div class="row blue-grey darken-2">
+            <div class="row moduleTitle">
                 <div class="col l2 m1 s12 white-text center hide-on-small-only">
                     &nbsp;
                 </div>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="col l2 m1 s12 white-text center-align">
                     <h5>
-                    <a href="" class="blue-grey darken-2 white-text waves-effect waves-light" ng-click="doTheBack()">
+                    <a href="" class="white-text waves-effect waves-light" ng-click="doTheBack()">
                         <i class="fa fa-arrow-left"></i>   
                     </a>
                     </h5>
@@ -74,14 +74,12 @@
                 </div>
             </div>
             <!-- Stats goals/sanction/use end -->
-           
-            <div class="row"></div>
+
             
             <!-- Stats shoot efficiency Start -->
             <div class="row">
-                <div class="col s12 center white red-text text-lighten-2">
-                    <br/>
-                    <h5 style="padding-left:10px">{{'stats.efficiency.efficiency' | translate }}</h5>
+                <div class="col s12 left-align grey-text text-ligthen-4">
+                    <h5><small>{{'stats.efficiency.efficiency' | translate }}</small></h5>
                 </div>
                 
                 <div class="col l3 m6 s12">
@@ -111,9 +109,9 @@
             <!-- Stats shoot efficiency end -->
             
             <!-- Stats actions pos/neg Start -->
-            <div class="row">
-                <div class="col s12 center white red-text text-lighten-2">
-                    <h5>{{'stats.actionTab.title' | translate }}</h5>
+            <div class="row"> 
+                <div class="col s12 left-align grey-text text-ligthen-4">
+                    <h5><small>{{'stats.actionTab.title' | translate }}</small></h5>
                 </div>
                 <stats-actions-pos-neg></stats-actions-pos-neg>
             </div>
@@ -121,7 +119,7 @@
             
             <!-- Stats participants Start -->
             <div class="row" ng-if="players.length > 0">
-                <div class="col s12 white-text blue-grey darken-1"><h5><i class="fa fa-bar-chart"></i> {{'stats.eventLabels.listPlayers' | translate }}</h5></div>
+                <div class="col s12 white-text moduleTitle"><h5><i class="fa fa-bar-chart"></i> {{'stats.eventLabels.listPlayers' | translate }}</h5></div>
                 <div class=" card col s12">
                     <!-- player -->
                     <table class="bordered responsive-table highlight">

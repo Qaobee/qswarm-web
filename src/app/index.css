@@ -22,14 +22,11 @@
     font-size: 48px;
 }
 
-.blue-grey.darken-2 {
-  background: linear-gradient(10deg, rgba(60, 70, 65, 1), rgba(60,63,65, 1)); }
-
 .blue-grey-text.text-darken-2 {
   color: #3c3f41 !important; }
 
 .moduleTitle {
-    background: linear-gradient(10deg, rgba(53, 184, 136, 0.1), rgba(245,245,245, 1));
+    background: linear-gradient(10deg, rgba(60, 70, 65, 1), rgba(60,63,65, 1));
     overflow: hidden;
 }
 

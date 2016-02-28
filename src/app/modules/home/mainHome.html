@@ -5,14 +5,39 @@
 
     <!-- body start-->
     <div class="row">
-        <div class="col s12 m6 l8">
-
+        <div class="col s12">
+            <!-- Collecte-->
+            <div>
+                <h5 class="header red-text text-lighten-1"><i class="fa fa-bar-chart"></i> {{'dashboard.stats' | translate }}</h5>
+            </div>
+            
+            <ul>
+                <li class="col s12 m12 l6" ng-repeat="collecte in collectes">
+                    <div class="card white">
+                        <div class="card-content moduleTitle white-text flow-text">
+                            <h5>{{collecte.eventRef.label}}</h5>
+                        </div>
+                        <div class="card-content white blue-grey-text text-darken-2 flow-text">
+                            <h5>{{collecte.eventRef.participants.teamHome.label}} - {{collecte.eventRef.participants.teamVisitor.label}}</h5>
+                            <hr class="white" />
+                            <span class="blue-grey-text text-lighten-3"><small>{{collecte.eventRef.startDate |  date : 'dd MMMM yyyy HH:mm'}}</small></span>
+                            <a href="#/private/eventStats/{{collecte._id}}" class="btn-floating waves-effect waves-light red lighten-1 right">
+                                <i class="fa fa-bar-chart"></i>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">      
+            <div><h5 class="header red-text text-lighten-1"><i class="fa fa-calendar left"></i>{{'dashboard.event' | translate }}</h5></div>
             <!-- Event -->
             <div ng-if="events.length > 0">
-                <div><h5 class="header red-text text-lighten-1"><i class="fa fa-calendar left"></i>{{'dashboard.event' | translate }}</h5></div>
                 <div>
                     <div class="card white">
-                        <div class="card-content blue-grey darken-1 white-text flow-text">
+                        <div class="card-content moduleTitle white-text flow-text">
                             <span class="card-title">{{currentEvent.participants.teamHome.label}} - {{currentEvent.participants.teamVisitor.label}}</span>
                             <hr class="white" />
                             <h5 class="small blue-grey-text text-lighten-3">{{currentEvent.startDate |  date : 'dd MMMM yyyy HH:mm'}}</h5>
@@ -36,92 +61,17 @@
                     <div class="card">                        
                         <div class="row center">
                             <a href="#/private/addEvent/{{currentEffective._id}}" class="blue-grey-text text-darken-1">
-                                <i class="fa fa-plus-square-o fa-5x"></i> 
-                                <h3>{{'mainAgenda.buttons.addEvent' | translate }}</h3>
+                                <i class="fa fa-plus-square-o fa-3x"></i> 
+                                <h4>{{'mainAgenda.buttons.addEvent' | translate }}</h4>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <br/>
-
-            <!-- Collecte-->
-            <div ng-if="collectes.length > 0">
-                <div><h5 class="header red-text text-lighten-1"><i class="fa fa-bar-chart"></i> {{'dashboard.stats' | translate }}</h5></div>
-                <ul class="collection">
-                    <li class="collection-item avatar blue-grey darken-1 white-text" ng-repeat="collecte in collectes">
-                        <h5><i class="material-icons center">stars</i> {{collecte.eventRef.label}}</h5>
-                        <br/>
-                        <span class="title white-text">{{collecte.eventRef.participants.teamHome.label}} - {{collecte.eventRef.participants.teamVisitor.label}}</span>
-                        <a href="#/private/eventStats/{{collecte._id}}"
-                           class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i
-                                class="fa fa-bar-chart"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Right column-->
-        <div class="col s12 m6 l4">
-            <!-- team list -->
-            <div ng-if="listTeamHome.length > 0">
-                <div><h5 class="header red-text text-lighten-1"><i class="fa fa-bar-chart"></i> {{'dashboard.teams' | translate }}</h5></div>
-                <ul class="collection">
-                    <li class="collection-item" ng-repeat="team in listTeamHome">
-                        <span class="title blue-grey-text text-darken-1">{{team.label}}</span>
-                        <a href="#/private/teamStats/{{team._id}}"
-                           class="waves-effect waves-light btn-floating red lighten-1  white-text right"><i class="fa fa-bar-chart"></i></a>
-                    </li>
-                </ul>
-                <br/>
-            </div>
-            <div ng-if="listTeamHome.length === 0">
-                <div class="card blue lighten-2">                        
-                    <div class="row center">
-                        <a href="#/private/addTeam/{{false}}" class="blue-grey-text text-darken-1">
-                            <i class="fa fa-plus-square-o fa-3x"></i> 
-                            <h4>{{'mainEffective.buttons.addTeamHome' | translate }}</h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
             
-            <!-- Player -->
-            <div ng-if="effective.length > 0">
-                <div><h5 class="header red-text text-lighten-1"><i class="fa fa-bar-chart"></i> {{'dashboard.player' | translate }}</h5></div>
-                <div>
-                    <form class="forms forms-inline input-field ">
-                        <input type="text" class="grey lighten-4" id="query" ng-model="query">
-                        <label for="query">Filter</label>
-                    </form>
-                </div>
-                <ul class="collection" ng-show="effective.length > 0">
-                    <li class="collection-item avatar" ng-repeat="player in effective | filter:query">
-                        <simple-avatar width="'30px'" person="player"
-                                       link="('#/private/viewPlayer/' + player._id)"></simple-avatar>
-                        <span class="title red-text text-lighten-1">{{player.firstname}} {{player.name}}</span>
-
-                        <p>{{player.positionType}}</p>
-                        <a href="#/private/playerStats/{{player._id}}"
-                           class="secondary-content btn-floating waves-effect waves-light red lighten-1"><i
-                                class="fa fa-bar-chart"></i></a>
-                    </li>
-                </ul>
-            </div>
-            <div ng-if="effective.length === 0">
-                <div class="card orange lighten-1">                        
-                    <div class="row center">
-                        <a href="#/private/addPlayer/{{meta._id}}" class="blue-grey-text text-darken-1">
-                            <i class="fa fa-plus-square-o fa-3x"></i> 
-                            <h4>{{'mainEffective.buttons.addPlayer' | translate }}</h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-
+            
         </div>
+        
     </div>
     <!-- body end-->
 </div>
