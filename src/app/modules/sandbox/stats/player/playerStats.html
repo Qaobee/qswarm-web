@@ -3,7 +3,7 @@
     <!-- space between header menu and body-->
     <div class="row"></div>
     
-    <div class="row cardStat">
+    <div class="row white">
         <div class="col s12">
             
             <!-- Entete-->
@@ -56,12 +56,12 @@
             </div>
             <!-- Stats goals/sanction/use end -->
             
-            <div class="row"></div>
+            
             
             <!-- Stats shoot efficiency Start -->
             <div class="row">
-                <div class="col s12 center white-text">
-                    <h5>{{'stats.efficiency.efficiency' | translate }}</h5>
+                <div class="col s12 left-align grey-text text-ligthen-4">
+                    <h5><small>{{'stats.efficiency.efficiency' | translate }}</small></h5>
                 </div>
                 
                 <div class="col l3 m6 s12">
@@ -92,8 +92,8 @@
             
             <!-- Stats actions pos/neg Start -->
             <div class="row"> 
-                <div class="col s12 center white-text">
-                    <h5>{{'stats.actionTab.title' | translate }}</h5>
+                <div class="col s12 left-align grey-text text-ligthen-4">
+                    <h5><small>{{'stats.actionTab.title' | translate }}</small></h5>
                 </div>
                 <stats-actions-pos-neg></stats-actions-pos-neg>
             </div>
@@ -101,14 +101,14 @@
             
             <!-- Stats event's list Start -->
             <div class="row">
-                <div class="col s12" ng-if="collectes.length > 0">
-                    <div><h5 class="center white-text"><i class="fa fa-bar-chart"></i> {{'stats.teamLabels.listCollect' | translate }}</h5></div>
-                    <ul>
-                        <li class="col s12 m6 l4" ng-repeat="collecte in collectes">
-                            <event-card event="collecte.eventRef"></event-card>
-                        </li>
-                    </ul>
+                <div class="col s12 left-align grey-text text-ligthen-4" ng-if="collectes.length > 0">
+                    <h5><small>{{'stats.teamLabels.listCollect' | translate }}</small></h5>
                 </div>
+                <ul>
+                    <li class="col s12 m6 l4" ng-repeat="collecte in collectes">
+                        <event-card event="collecte.eventRef"></event-card>
+                    </li>
+                </ul>
             </div>
             <!-- Stats event's list Start -->
         </div>

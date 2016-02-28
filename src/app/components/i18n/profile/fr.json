@@ -5,9 +5,9 @@
             "profil": "Mon profil",
             "password": "Mot de passe",
             "billing": "Abonnement",
-            "sharing": "Invitation",
+            "sharing": "Invitations",
             "notification": "Notifications",
-            "settings": "Settings"
+            "settings": "Paramétrage"
         },
         "label": {
             "name": "Nom",
