@@ -23,7 +23,8 @@
 }
 
 .blue-grey-text.text-darken-2 {
-  color: #3c3f41 !important; }
+  color: #646464 !important; 
+}
 
 .moduleTitle {
     background: linear-gradient(10deg, rgba(100, 100, 100, 1), rgba(60,63,65, 1));
