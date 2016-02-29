@@ -2,33 +2,52 @@
 <!-- body start-->
     <div class="row"></div>   
     
-    <!-- entete start -->
-    <div class="row moduleTitle">
-        <div class="col s2 white-text center-align">
+    <!-- entete start tablet and sup-->
+    <div class="row white hide-on-small-only">
+        <div class="col s1 grey-text text-lighten-1 left-align">
             <i class="material-icons md-48">person</i>
         </div>
 
         <div class="col s10 left-align">
-            <h5 class="white-text">{{'mainPlayer.title' | translate }} {{currentEffective.label}}</h5>
+            <h5 class="grey-text text-lighten-1">{{'mainPlayer.title' | translate }} {{currentEffective.label}}</h5>
+        </div>
+        
+        <div class="col s1 center-align">
+            <a href="#/private/addPlayer/{{meta._id}}" class="red-text text-lighten-1">
+                <i class="material-icons md-48">person_add</i>&nbsp;
+            </a>
+        </div>
+    </div>
+    <!-- entete end -->
+    
+    <!-- entete start smartphone-->
+    <div class="row white hide-on-med-and-up">
+
+        <div class="col s12 left-align">
+            <h5 class="grey-text text-lighten-1">{{'mainPlayer.title' | translate }} {{currentEffective.label}}</h5>
+        </div>
+        
+        <div class="col s12 center-align">
+            <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+                <a href="#/private/addPlayer/{{meta._id}}" class="btn-floating btn-large red lighten-1">
+                    <i class="material-icons md-24">person_add</i>&nbsp;
+                </a>
+            </div>
         </div>
     </div>
     <!-- entete end -->
         
     <div class="row">
-        <div class="col s2 center-align">
-            <a href="#/private/addPlayer/{{meta._id}}" class="red-text text-lighten-1">
-                <br>
-                <i class="material-icons md-48">person_add</i>&nbsp;
-            </a>
-        </div>
 
         <!-- filter -->
-        <div class="col s10">
+        <div class="col s12">
             <form class="forms forms-inline input-field">
                 <input type="text" id="queryPlayer" class="grey lighten-4" ng-model="queryPlayer">
                 <label for="queryPlayer">Filter</label>
             </form>
         </div>
+        
+        
         
         <div class="col s12">&nbsp;</div>   
         
@@ -37,19 +56,23 @@
             <li class="col l4 m6 s12" ng-repeat="player in players | filter:queryPlayer">
                 <div class="card white blue-grey-text text-darken-2">
                     <div class="card-content center-align cardPlayer">
-                        <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}" class="title white-text">{{player.firstname}} {{player.name}}</a></span>
+                        <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}" class="white-text">{{player.firstname}} {{player.name}}</a></span>
                         <a href="#/private/viewPlayer/{{player._id}}"><avatar person="player" width="'120px'" ></avatar></a>
-                        <span class="card-title white-text"> #{{player.status.squadnumber}}</span>
+                        <span class="white-text"> #{{player.status.squadnumber}}</span>
                     </div>
                     <div class="card-content center-align">
-                        <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}" class="title">{{player.positionType}}</a></span>
+                        <h5><a href="#/private/viewPlayer/{{player._id}}">{{player.positionType}}</a></h5>
                         <p>
                             {{player.age}} {{'commons.format.ageYear' | translate }} - 
                             {{player.status.height}} {{'commons.format.height' | translate }} / {{player.status.weight}} {{'commons.format.weight' | translate }}
                         </p>
                     </div>
                     
-                    c
+                     <div class="card-action">
+                        <a href="#/private/playerStats/{{player._id}}" class="btn waves-effect waves-light red lighten-1 white-text">
+                            <i class="fa fa-bar-chart" ></i>
+                        </a>
+                    </div>
                 </div>
             </li>
         </ul>

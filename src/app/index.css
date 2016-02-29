@@ -26,7 +26,12 @@
   color: #3c3f41 !important; }
 
 .moduleTitle {
-    background: linear-gradient(10deg, rgba(60, 70, 65, 1), rgba(60,63,65, 1));
+    background: linear-gradient(10deg, rgba(100, 100, 100, 1), rgba(60,63,65, 1));
+    overflow: hidden;
+}
+
+.menuBgColor {
+    background: linear-gradient(10deg, rgba(140, 190, 100, 1), rgba(102,187,106, 1));
     overflow: hidden;
 }
 
@@ -36,7 +41,7 @@
 }
 
 .cardPlayer {
-    background: linear-gradient(10deg, rgba(60, 70, 65, 1), rgba(60,63,65, 1));
+    background: linear-gradient(10deg, rgba(100, 100, 100, 1), rgba(60,63,65, 1));
     overflow: hidden;
 }
 

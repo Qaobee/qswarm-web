@@ -28,20 +28,20 @@
                     $scope.icon = '';
                     $scope.color1 = '';
                     $scope.color2 = '';
-                    $scope.textColor1 = 'white-text';
+                    $scope.textColor1 = 'blue-grey-text text-darken-2';
                     $scope.textColor2 = 'white-text';
                     $scope.title = '';
 
                     if ($scope.event.link.type === 'cup') {
                         $scope.icon = 'album';
-                        $scope.color1 = 'red lighten-2';
+                        $scope.color1 = 'white';
                         $scope.color2 = 'red lighten-1';
                         $scope.title = 'mainAgenda.eventType.cup';
                     }
 
                     if ($scope.event.link.type === 'friendlyGame') {
                         $scope.icon = 'flare';
-                        $scope.color1 = 'light-green lighten-2';
+                        $scope.color1 = 'white';
                         $scope.color2 = 'light-green lighten-1';
                         $scope.title = 'mainAgenda.eventType.friendlyGame';
                     }
@@ -49,21 +49,20 @@
                     if ($scope.event.link.type === 'championship') {
                         $scope.icon = 'stars';
                         $scope.color1 = 'white';
-                        $scope.color2 = 'blue-grey lighten-1';
+                        $scope.color2 = 'cardPlayer';
                         $scope.title = 'mainAgenda.eventType.championship';
-                        $scope.textColor1 = 'blue-grey-text text-darken-2';
                     }
 
                     if ($scope.event.link.type === 'training') {
                         $scope.icon = 'timer';
-                        $scope.color1 = 'light-blue lighten-3';
+                        $scope.color1 = 'white';
                         $scope.color2 = 'light-blue lighten-1';
                         $scope.title = 'mainAgenda.eventType.training';
                     }
 
                     if ($scope.event.link.type === 'other') {
                         $scope.icon = 'timer';
-                        $scope.color1 = 'orange lighten-2';
+                        $scope.color1 = 'white';
                         $scope.color2 = 'orange lighten-1';
                         $scope.title = '';
                     }

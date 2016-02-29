@@ -2,29 +2,47 @@
 <!-- body start-->
     <div class="row"></div>   
     
-    <!-- entete start -->
-    <div class="row moduleTitle">
-        <div class="col s2 white-text center-align">
+    <!-- entete start tablet and sup-->
+    <div class="row white hide-on-small-only">
+        <div class="col s1 grey-text text-lighten-1 left-align">
             <i class="material-icons md-48">group</i>
         </div>
 
         <div class="col s10 left-align">
-            <h5 class="white-text">{{'mainTeam.title' | translate }} {{currentEffective.label}}</h5>
+            <h5 class="grey-text text-lighten-1">{{'mainTeam.title' | translate }} {{currentEffective.label}}</h5>
+        </div>
+        
+        <div class="col s1 center-align">
+            <a href="#/private/addTeam/{{false}}" class="red-text text-lighten-1">
+                <i class="material-icons md-48">group_add</i>&nbsp;
+            </a>
+        </div>
+    </div>
+    <!-- entete end -->
+    
+    <!-- entete start smartphone-->
+    <div class="row white hide-on-med-and-up">
+
+        <div class="col s12 left-align">
+            <h5 class="grey-text text-lighten-1">{{'mainTeam.title' | translate }} {{currentEffective.label}}</h5>
+        </div>
+        
+        <div class="col s12 center-align">
+            <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+                <a href="#/private/addTeam/{{false}}" class="btn-floating btn-large red lighten-1">
+                    <i class="material-icons md-24">group_add</i>&nbsp;
+                </a>
+            </div>
         </div>
     </div>
     <!-- entete end -->
         
     <div class="row">
 
-        <div class="col s2 center-align">
-            <a href="#/private/addTeam/{{false}}" class="red-text text-lighten-1">
-                <br>
-                <i class="material-icons md-48">group_add</i>&nbsp;
-            </a>
-        </div>
+        
 
         <!-- filter -->
-        <div class="col s10">
+        <div class="col s12">
             <form class="forms forms-inline input-field">
                 <input type="text" id="queryTeam" class="grey lighten-4" ng-model="queryTeam">
                 <label for="queryTeam">Filter</label>
@@ -36,7 +54,7 @@
             <li class="col l3 m6 s12" ng-repeat="team in listTeamHome | filter:queryTeam">
                 <!-- enable -->
                 <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===true">
-                    <div class="card-content red lighten-1 white-text center">
+                    <div class="card-content cardPlayer white-text center">
                         <h5><small>{{team.label}}</small></h5>
                     </div>
                     
@@ -47,7 +65,7 @@
                 </div>
                 <!-- disable -->
                 <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===false">
-                    <div class="card-content grey lighten-4 grey-text text-darken-2 center">
+                    <div class="card-content grey lighten-2 grey-text text-darken-2 center">
                         <h5><small>{{team.label}}</small></h5>
                     </div>
                     
