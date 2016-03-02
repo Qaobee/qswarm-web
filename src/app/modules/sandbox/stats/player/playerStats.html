@@ -105,7 +105,7 @@
                     <h5><small>{{'stats.teamLabels.listCollect' | translate }}</small></h5>
                 </div>
                 <ul>
-                    <li class="col s12 m6 l4" ng-repeat="collecte in collectes">
+                    <li class="col s12 m6 l4" ng-repeat="collecte in collectes track by $index">
                         <event-card event="collecte.eventRef"></event-card>
                     </li>
                 </ul>

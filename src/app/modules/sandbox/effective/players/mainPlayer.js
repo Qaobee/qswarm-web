@@ -17,21 +17,21 @@
      * @copyright <b>QaoBee</b>.
      */
     angular.module('qaobee.players', [
-        /* angular qaobee */
-        'ngAutocomplete',
-        
-        /* qaobee modules */
-        'qaobee.addPlayer',
-        'qaobee.updatePlayer',
-        'qaobee.viewPlayer',
-        
-        /* qaobee services */
-        'effectifSRV',
-        
-        /* qaobee Rest API */
-        'effectiveRestAPI',
-        'teamRestAPI',
-        'userRestAPI'])
+            /* angular qaobee */
+            'ngAutocomplete',
+
+            /* qaobee modules */
+            'qaobee.addPlayer',
+            'qaobee.updatePlayer',
+            'qaobee.viewPlayer',
+
+            /* qaobee services */
+            'effectifSRV',
+
+            /* qaobee Rest API */
+            'effectiveRestAPI',
+            'teamRestAPI',
+            'userRestAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
@@ -47,67 +47,66 @@
             });
         })
 
-    /**
-     * @class qaobee.modules.sandbox.effective.MainPlayerControler
-     * @description Main controller for view mainPlayer.html
-     */
-        .controller('MainPlayerControler', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                                         effectiveRestAPI, effectiveSrv, userRestAPI) {
+        /**
+         * @class qaobee.modules.sandbox.effective.MainPlayerControler
+         * @description Main controller for view mainPlayer.html
+         */
+        .controller('MainPlayerControler', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
+                                                     effectiveRestAPI, effectiveSrv, userRestAPI) {
 
-        $translatePartialLoader.addPart('effective');
-        $translatePartialLoader.addPart('commons');
-        $translatePartialLoader.addPart('stats');
-        
-        $scope.effectiveId = $routeParams.effectiveId;
-        $scope.user.effectiveDefault = $scope.effectiveId;
+            $translatePartialLoader.addPart('effective');
+            $translatePartialLoader.addPart('commons');
+            $translatePartialLoader.addPart('stats');
 
-        $scope.user = user;
-        $scope.meta = meta;
-        $scope.players = [];
-        $scope.effectives = [];
-        $scope.currentEffective = {};
-        $scope.currentCategory = null;                                                                           
+            $scope.effectiveId = $routeParams.effectiveId;
+            $scope.user.effectiveDefault = $scope.effectiveId;
 
-        /* Retrieve current effective and list player */
-        $scope.getPlayers = function () { 
-            effectiveSrv.getEffective($scope.user.effectiveDefault).then(function(data){
-                $scope.currentEffective = data;
-                
-                effectiveSrv.getListId($scope.currentEffective, 'player').then(function(listId){
-                    var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact');
-                    
-                    effectiveSrv.getPersons(listId, listField).then(function(players){
-                        $scope.players = players;
-                        $scope.players.forEach(function (e) {
-                            if (angular.isDefined(e.status.positionType)) {
-                                e.positionType = $filter('translate')('stats.positionType.value.' + e.status.positionType);
-                            } else {
-                                e.positionType = '';
-                            }
-                            
-                            e.birthdate = $filter('date')(e.birthdate, 'yyyy');
-                            e.age = moment().format('YYYY') - e.birthdate;
+            $scope.user = user;
+            $scope.meta = meta;
+            $scope.players = [];
+            $scope.effectives = [];
+            $scope.currentEffective = {};
+            $scope.currentCategory = null;
+
+            /* Retrieve current effective and list player */
+            $scope.getPlayers = function () {
+                effectiveSrv.getEffective($scope.user.effectiveDefault).then(function (data) {
+                    $scope.currentEffective = data;
+
+                    effectiveSrv.getListId($scope.currentEffective, 'player').then(function (listId) {
+                        var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact');
+
+                        effectiveSrv.getPersons(listId, listField).then(function (players) {
+                            $scope.players = players;
+                            $scope.players.forEach(function (e) {
+                                if (angular.isDefined(e.status.positionType)) {
+                                    e.positionType = $filter('translate')('stats.positionType.value.' + e.status.positionType);
+                                } else {
+                                    e.positionType = '';
+                                }
+
+                                e.birthdate = $filter('date')(e.birthdate, 'yyyy');
+                                e.age = moment().format('YYYY') - e.birthdate;
+                            });
                         });
                     });
-                });  
-            });                                                                                      
-        };
-        
-        /* check user connected */
-        $scope.checkUserConnected = function () {
-            
-            userRestAPI.getUserById(user._id).success(function (data) {        
-                $scope.getPlayers();          
-            }).error(function (data) {
-                $log.error('MainPlayerControler : User not Connected');
-            });
-        }; 
-        
-        /* Primary, check if user connected */
-        $scope.checkUserConnected();
-        
-        
-    })
-    //
+                });
+            };
+
+            /* check user connected */
+            $scope.checkUserConnected = function () {
+                userRestAPI.getUserById(user._id).success(function (/* data */) {
+                    $scope.getPlayers();
+                }).error(function (/* data */) {
+                    $log.error('MainPlayerControler : User not Connected');
+                });
+            };
+
+            /* Primary, check if user connected */
+            $scope.checkUserConnected();
+
+
+        })
+        //
     ;
 }());

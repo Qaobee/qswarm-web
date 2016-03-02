@@ -4,7 +4,8 @@
       "name": "development",
       "apiEndPoint": "http://localhost:8888",
       "useLoaderCache": false,
-      "debugEnabled": true
+      "debugEnabled": true,
+      "uaid" : ""
     }
   },
   "recette": {
@@ -12,7 +13,8 @@
       "name": "recette",
       "apiEndPoint": "http://hive-qaobee.rhcloud.com",
       "useLoaderCache": true,
-      "debugEnabled": true
+      "debugEnabled": true,
+      "uaid" : ""
     }
   },
   "docker": {
@@ -20,7 +22,8 @@
       "name": "docker",
       "apiEndPoint": "",
       "useLoaderCache": true,
-      "debugEnabled": true
+      "debugEnabled": true,
+      "uaid" : "UA-72906581-1"
     }
   }
 }

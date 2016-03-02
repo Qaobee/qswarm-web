@@ -54,13 +54,13 @@
     "ng-password-strength": "~0.2.1",
     "ng-device-detector": "~2.0.2",
     "pickadate": "~3.5.6",
-    "angular-send-feedback": "Giwi/angular-feedback#~1.0.3"
+    "angular-send-feedback": "Giwi/angular-feedback#~1.0.3",
+    "angular-google-analytics": "~1.1.6"
   },
   "resolutions": {
     "angular": "1.4.0-rc.2",
     "angular-cookies": "1.4.0-rc.2",
     "lodash": "^3.0.1"
   },
-  "overrides": {
-  }
+  "overrides": {}
 }

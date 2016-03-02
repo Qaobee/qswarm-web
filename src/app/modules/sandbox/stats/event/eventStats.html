@@ -137,7 +137,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="player in players | filter:{$:'!goalkeeper'}">
+                            <tr ng-repeat="player in players track by $index | filter:{$:'!goalkeeper'}">
                                 <td>{{player.name}} - {{player.firstname}}</td>
                                 <td>{{player.positionType}}</td>
                                 <td class="center-align">{{(player.stats.goalScored/player.stats.originShootAtt)*100 | number : 0}} %</td>
@@ -167,7 +167,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="player in players | filter:{$:'goalkeeper'}">
+                            <tr ng-repeat="player in players track by $index | filter:{$:'goalkeeper'}">
                                 <td>{{player.name}} - {{player.firstname}}</td>
                                 <td class="center-align">>{{((player.stats.originShootDef-player.stats.goalConceded)/player.stats.originShootDef)*100 | number : 0}} %</td>
                                 <td class="center-align">{{(player.stats.originShootDef-player.stats.goalConceded)}}/{{player.stats.originShootDef}}</td>

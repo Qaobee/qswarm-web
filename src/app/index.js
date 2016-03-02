@@ -24,6 +24,7 @@
             'ui.materialize',
             'ng.deviceDetector',
             'angular-send-feedback',
+            'angular-google-analytics',
 
             //* qaobee widget */
             'qaobee.filterCalendar',
@@ -52,7 +53,8 @@
             , 'qaobee.test'
         ])
 
-        .config(function ($translateProvider, $translatePartialLoaderProvider, reCAPTCHAProvider, $httpProvider, $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider) {
+        .config(function ($translateProvider, $translatePartialLoaderProvider, reCAPTCHAProvider, $httpProvider, $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, AnalyticsProvider) {
+            AnalyticsProvider.setAccount(EnvironmentConfig.uaid).useDisplayFeatures(true).trackUrlParams(true);;
             tmhDynamicLocaleProvider.localeLocationPattern('i18n/angular-locale_{{locale}}.js');
             $translateProvider.useLoader('$translatePartialLoader', {
                 urlTemplate: 'app/components/i18n/{part}/{lang}.json'

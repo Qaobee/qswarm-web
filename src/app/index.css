@@ -566,7 +566,7 @@ table.super-fancy tr.foobar {
 .fs-loader {
     margin: 0;
     padding: 0;
-    background: url(../assets/images/background1.jpg) no-repeat center fixed;
+    background: url(../assets/images/background1.jpg) black no-repeat center fixed;
     -webkit-background-size: cover;
     background-size: cover;
     width: 100%;
@@ -576,7 +576,14 @@ table.super-fancy tr.foobar {
     top: 0;
     left: 0;
 }
+.fs-loader h1 {
 
+    position: absolute;
+    top : 200px;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
 /* http://codepen.io/anon/pen/JGQQwX */
 .fs-loader ul, .fs-loader li {
     list-style: none;
