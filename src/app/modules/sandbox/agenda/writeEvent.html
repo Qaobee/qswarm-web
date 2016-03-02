@@ -71,7 +71,7 @@
                             <select class="browser-default blue-grey-text text-darken-1" name="eventType" ng-model="event.link.type" 
                                     required id="EventType" ng-change="changeEventType()" ng-class="{ 'has-error' : eventForm.eventType.$invalid && !eventForm.eventType.$pristine }">
                                 <option value="" selected>{{'eventLabels.selectType' | translate }}</option>
-                                <option ng-repeat="p in listEventType" value="{{p.code}}">{{p.label}}</option>
+                                <option ng-repeat="p in listEventType track by $index" value="{{p.code}}">{{p.label}}</option>
                             </select>
                             <span class="small red-text text-lighten-1"
                                 ng-show="eventForm.eventType.$invalid && !eventForm.eventType.$pristine" translate="eventErrors.Type"></span>
@@ -87,7 +87,7 @@
                         <select class="browser-default blue-grey-text text-darken-1" ng-model="teamId" name="SectionActorsHome" ng-change="changeTeamHome()" ng-required="chooseAdversary"
                                 ng-class="{ 'has-error' : eventForm.SectionActorsHome.$invalid && !eventForm.SectionActorsHome.$pristine }">
                             <option value="" disabled selected>{{'eventLabels.Team' | translate }}</option>
-                            <option ng-repeat="p in listTeamHome" value="{{p._id}}">{{p.label}}</option>
+                            <option ng-repeat="p in listTeamHome track by $index" value="{{p._id}}">{{p.label}}</option>
                         </select>
                         <span class="small red-text text-lighten-1 col s12"
                             ng-show="eventForm.SectionActorsHome.$invalid && !eventForm.SectionActorsHome.$pristine" translate="eventErrors.teamHome"></span>
@@ -103,7 +103,7 @@
                         <span class="small red-text text-lighten-1 col s12"
                             ng-show="eventForm.SectionActorsAdversary.$invalid && !eventForm.SectionActorsAdversary.$pristine" translate="eventErrors.adversary"></span>
                         <datalist id="adversaries">
-                            <option ng-repeat="p in listTeamAdversary" value="{{p.label}}"></option>
+                            <option ng-repeat="p in listTeamAdversary track by $index" value="{{p.label}}"></option>
                         </datalist>
                     </div>
                 </div>

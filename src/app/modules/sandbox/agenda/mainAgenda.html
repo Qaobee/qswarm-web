@@ -12,7 +12,7 @@
                 </div>
                 <!-- effective list -->
                 <ul id="mainAgendaEffectiveList" class="dropdown-content">
-                    <li ng-repeat="effective in effectives">
+                    <li ng-repeat="effective in effectives track by $index">
                         <a href="#/private/agenda/{{effective._id}}"><h6 class="blue-grey-text text-darken-2">{{effective.label}} - {{effective.categoryAge.label}}</h6></a>
                         <div class="divider"></div>
                     </li>
@@ -51,7 +51,7 @@
     
     <div class="row" ng-if="events.length > 0">      
         <ul>                
-            <li class="col s12 m6 l4" ng-repeat="currentEvent in events | filter:query">
+            <li class="col s12 m6 l4" ng-repeat="currentEvent in events track by $index | filter:query">
                 <event-card event="currentEvent"></event-card>
             </li>
         </ul>
