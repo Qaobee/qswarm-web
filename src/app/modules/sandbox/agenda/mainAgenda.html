@@ -51,7 +51,7 @@
     
     <div class="row" ng-if="events.length > 0">      
         <ul>                
-            <li class="col s12 m6 l4" ng-repeat="currentEvent in events track by $index | filter:query">
+            <li class="col s12 m6 l4" ng-repeat="currentEvent in events | filter:query">
                 <event-card event="currentEvent"></event-card>
             </li>
         </ul>
