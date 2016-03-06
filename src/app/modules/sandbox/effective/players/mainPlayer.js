@@ -24,6 +24,7 @@
             'qaobee.addPlayer',
             'qaobee.updatePlayer',
             'qaobee.viewPlayer',
+            'qaobee.compare',
 
             /* qaobee services */
             'effectifSRV',
@@ -65,8 +66,21 @@
             $scope.meta = meta;
             $scope.players = [];
             $scope.effectives = [];
+            $scope.compareList = {};
             $scope.currentEffective = {};
             $scope.currentCategory = null;
+            $scope.updatePlayerToCompare = function (id) {
+                var count = 0;
+                Object.keys($scope.compareList, function (n) {
+                    if ($scope.compareList[n]) {
+                        count++;
+                    }
+                });
+                if (count > 3) {
+                    toastr.error($filter('translate')('compare.player-max', {'max':3}));
+                    $scope.compareList[id] = false;
+                }
+            };
 
             /* Retrieve current effective and list player */
             $scope.getPlayers = function () {

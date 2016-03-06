@@ -25,12 +25,13 @@
             'ng.deviceDetector',
             'angular-send-feedback',
             'angular-google-analytics',
-
             //* qaobee widget */
             'qaobee.filterCalendar',
             'qaobee.commonsDirectives',
             'qaobee.headerMenu',
             'qaobee.avatar',
+            'qaobee.compare',
+            'qaobee.radar',
             'eventCard',
 
             /* qaobee shared services */

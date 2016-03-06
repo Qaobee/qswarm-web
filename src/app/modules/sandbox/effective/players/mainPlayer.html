@@ -1,42 +1,45 @@
 <div class="container">
-<!-- body start-->
-    <div class="row"></div>   
-    
+    <!-- body start-->
+    <div class="row"></div>
+
     <!-- entete start tablet and sup-->
     <div class="row white hide-on-small-only">
         <div class="col s1 blue-grey-text text-darken-2 left-align">
             <i class="material-icons md-48">person</i>
         </div>
 
-        <div class="col s10 left-align">
+        <div class="col s9 left-align">
             <h5 class="blue-grey-text text-darken-2">{{'mainPlayer.title' | translate }} {{currentEffective.label}}</h5>
         </div>
-        
-        <div class="col s1 center-align">
-            <a href="#/private/addPlayer/{{meta._id}}" class="red-text text-lighten-1">
+
+        <div class="col s2 center-align">
+            <a href="#/private/addPlayer/{{meta._id}}" class="red-text text-lighten-1"
+               title="{{'mainEffective.buttons.addPlayer' | translate}}">
                 <i class="material-icons md-48">person_add</i>&nbsp;
             </a>
+            <qaobee-stat-compare items="compareList" kind="player" meta="meta"></qaobee-stat-compare>
         </div>
     </div>
     <!-- entete end -->
-    
+
     <!-- entete start smartphone-->
     <div class="row white hide-on-med-and-up">
 
         <div class="col s12 left-align">
             <h5 class="blue-grey-text text-darken-2">{{'mainPlayer.title' | translate }} {{currentEffective.label}}</h5>
         </div>
-        
+
         <div class="col s12 center-align">
             <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
                 <a href="#/private/addPlayer/{{meta._id}}" class="btn-floating btn-large red lighten-1">
                     <i class="material-icons md-24">person_add</i>&nbsp;
                 </a>
+              <!--  <qaobee-stat-compare data-items="compareList" data-kind="player" data-meta="meta"></qaobee-stat-compare>-->
             </div>
         </div>
     </div>
     <!-- entete end -->
-        
+
     <div class="row">
 
         <!-- filter -->
@@ -46,37 +49,54 @@
                 <label for="queryPlayer">Filter</label>
             </form>
         </div>
-        
-        
-        
-        <div class="col s12">&nbsp;</div>   
-        
-        <!-- List player -->    
+
+
+        <div class="col s12">&nbsp;</div>
+
+        <!-- List player -->
         <ul>
             <li class="col l4 m6 s12" ng-repeat="player in players | filter:queryPlayer">
                 <div class="card white blue-grey-text text-darken-2">
                     <div class="card-content center-align cardPlayer">
-                        <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}" class="white-text">{{player.firstname}} {{player.name}}</a></span>
-                        <a href="#/private/viewPlayer/{{player._id}}"><avatar person="player" width="'120px'" ></avatar></a>
+                        <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}" class="white-text">{{player.firstname}}
+                            {{player.name}}</a></span>
+                        <a href="#/private/viewPlayer/{{player._id}}">
+                            <avatar person="player" width="'120px'"></avatar>
+                        </a>
                         <span class="white-text"> #{{player.status.squadnumber}}</span>
                     </div>
                     <div class="card-content center-align">
                         <h5><a href="#/private/viewPlayer/{{player._id}}">{{player.positionType}}</a></h5>
                         <p>
-                            {{player.age}} {{'commons.format.ageYear' | translate }} - 
-                            {{player.status.height}} {{'commons.format.height' | translate }} / {{player.status.weight}} {{'commons.format.weight' | translate }}
+                            {{player.age}} {{'commons.format.ageYear' | translate }} -
+                            {{player.status.height}} {{'commons.format.height' | translate }} / {{player.status.weight}}
+                            {{'commons.format.weight' | translate }}
                         </p>
                     </div>
-                    
-                     <div class="card-action">
-                        <a href="#/private/playerStats/{{player._id}}" class="btn waves-effect waves-light red lighten-1 white-text">
-                            <i class="fa fa-bar-chart" ></i>
-                        </a>
+
+                    <div class="card-action">
+                        <div class="row">
+                            <div class="col s6">
+                                <a href="#/private/playerStats/{{player._id}}"
+                                   class="btn waves-effect waves-light red lighten-1 white-text left">
+                                    <i class="fa fa-bar-chart"></i>
+                                </a>
+                            </div>
+                            <div class="col s6">
+                                <div class="right">
+                                    <input type="checkbox" ng-model="compareList[player._id]" name="compare"
+                                           class=""
+                                           ng-change="updatePlayerToCompare(player._id)"
+                                           ng-checked="compareList[player._id]" id="compare-{{player._id}}"/>
+                                    <label for="compare-{{player._id}}"></label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </li>
         </ul>
     </div>
-    
-<!-- body end-->
+
+    <!-- body end-->
 </div>

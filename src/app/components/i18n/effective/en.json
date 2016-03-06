@@ -9,7 +9,8 @@
             "addTeamAdversary": "Add adversary",
             "viewPlayer": "View player sheet",
             "viewStatsEffective": "View stats of effective",
-            "dropdownEffective": "Change effective"
+            "dropdownEffective": "Change effective",
+            "compare" : "Compare"
         }
     },
     "addEffective": {

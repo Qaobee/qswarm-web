@@ -11,7 +11,7 @@
      * @requires {@link qaobee.components.restAPI.sandbox.effective.personRestAPI|qaobee.components.restAPI.sandbox.effective.personRestAPI}
      */
     angular.module('qaobee.playerStats', [
-        
+
             /* qaobee services */
             'statsSRV',
             'qaobee.eventbus',
@@ -40,43 +40,43 @@
                                              statsRestAPI, personRestAPI, statsSrv, userRestAPI, qeventbus) {
             $translatePartialLoader.addPart('home');
             $translatePartialLoader.addPart('stats');
-        
+
             $scope.user = user;
             $scope.meta = meta;
             $scope.player = {};
             $scope.ownersId = [];
             $scope.ownersId.push($routeParams.playerId);
-            
+
             // return button
             $scope.doTheBack = function () {
                 $window.history.back();
             };
 
             //Initialization owner Object
-            $scope.initStats = function() {
-                
+            $scope.initStats = function () {
+
                 $scope.collectes = [];
-                
-                if(!user.periodicity){
+
+                if (!user.periodicity) {
                     $scope.periodicity = 'season';
                     $scope.periodicityActive = {
                         label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
                         startDate: moment($scope.meta.season.startDate),
                         endDate: moment($scope.meta.season.endDate),
-                        ownersId : $scope.ownersId
+                        ownersId: $scope.ownersId
                     };
                 } else {
                     $scope.periodicity = user.periodicity;
                     $scope.periodicityActive = user.periodicityActive;
                 }
                 $scope.periodicityActive.ownersId = $scope.ownersId;
-                
+
                 $scope.getPlayer();
             };
-        
+
             /* get statistic for one player */
             $scope.getStats = function (ownersId, startDate, endDate) {
-            
+
                 $scope.collectes = [];
 
                 /* get nbCollecte */
@@ -85,11 +85,11 @@
                         data.forEach(function (e) {
                             e.eventRef.startDate = moment(e.eventRef.startDate).format('LLLL');
                             $scope.collectes.push(e);
-                        });    
+                        });
                     }
                 })
             };
-                
+
             /* watch if periodicity change */
             $scope.$watch('periodicityActive', function (newValue, oldValue) {
                 if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
@@ -100,7 +100,7 @@
                     $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
                 }
             });
-        
+
             /* get player */
             $scope.getPlayer = function () {
                 personRestAPI.getPerson($routeParams.playerId).success(function (person) {

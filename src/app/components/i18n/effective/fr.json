@@ -1,134 +1,133 @@
 {
-    "mainEffective": {
-        "title": "Effectif",
-        "buttons" : {
-            "addEffective": "Ajouter un effectif",
-            "updateEffective": "Editer un effectif",
-            "addPlayer": "Ajouter un joueur",
-            "viewPlayer": "Voir la fiche du joueur",
-            "addTeamHome": "Ajouter une équipe",
-            "addTeamAdversary": "Ajouter un adversaire",
-            "viewStatsEffective": "Voir les stats de l'effectif",
-            "dropdownEffective": "Changer d'effectif"
-        }
-    },
-    "addEffective": {
-        "title": "Ajout d'un effectif",
-        "toastSuccess":"L'effective {{effective}} a été ajouté",
-        "toastError":"Erreur, l'effectif n'a pas été créé"
-    },
-    "updateEffective": {
-        "title": "Modification d'un effectif",
-        "toastSuccess":"L'effective {{effective}} a bien été modifié",
-        "toastError":"Erreur, l'effectif n'a pas été mis à jour"
-    },
-    "effectiveLabels": {
-        "effectiveAvatar":"Déposer la photo ici",
-        "effectiveCategoryAge": "Categorie d'âge",
-        "effectiveTabMembers": "Mes joueurs",
-        "effectiveTabCoachs": "Coachs",
-        "effectiveTabTeams": "Mes équipes",
-        "effectiveTeamsHome": "Equipes de l'effectif",
-        "effectiveTeamsAdversary": "Adversaires",
-        "effectiveTeamEnable": "Equipe activée",
-        "effectiveTeamNotEnable": "Equipe désactivée",
-        "effectivePlaceHolderMembers": "Ajouter un joueur",
-        "effectiveLabel": "Libellé effectif",
-        "effectiveNbPlayers":"Joueurs sélectionné(s)",
-        "effectiveTabPlayerColPlayer":"Joueur",
-        "effectiveTabPlayerColPosition":"Poste"
-    },
-    "effectiveErrors": {
-        "Label": "Le libellé de l'effectif est obligatoire",
-        "LabelTooShort": "Le libellé est trop court",
-        "CategoryAge": "La catégorie d'âge de l'effectif est obligatoire"
-    },
-    "mainPlayer": {
-      "title": "Liste joueur de l'effectif "
-    },
-    "addPlayer": {
-        "title": "Ajout d'un joueur",
-        "toastSuccess":"{{firstname}} {{name}} a été ajouté à l'effectif {{effective}}",
-        "toastError":"Erreur, le joueur {{firstname}} {{name}} n'a pas été créé"
-    },
-    "updatePlayer": {
-        "title": "Modification du joueur",
-        "toastSuccess":"{{firstname}} {{name}} a bien été modifié",
-        "toastError":"Erreur, le joueur {{firstname}} {{name}} n'a pas été modifié"
-    },
-    "viewPlayer": {
-        "title": "Fiche joueur de",
-        "buttons" : {
-            "updatePlayer": "Editer le joueur" ,
-            "viewStatsPlayer": "Voir les stats du joueur",
-            "returnViewPlayer": "Retour"
-        }
-    },
-    "playerLabels": {
-        "playerCivilSection": "Etat civil",
-        "playerAvatar": "Avatar" ,
-        "playerName": "Nom" ,
-        "playerFirstname": "Prénom",
-        "playerGender": "Genre" ,
-        "playerGenderM": "Homme" ,
-        "playerGenderF": "Femme" ,
-        "playerBirthdate": "Date de naissance" ,
-        "playerBirthCity": "Ville de naissance" ,
-        "playerNationality": "Né(e) en" ,
-
-        "playerCaracterSection": "Caractéristiques",
-        "playerPositionType": "Poste" ,
-        "playerWeight": "Poids (kg)",
-        "playerHeight": "Taille (cm)",
-        "playerLaterality": "Latéralité",
-        "playerLateralityL": "Gaucher",
-        "playerLateralityR": "Droitier",
-        "playerLateralityA": "Ambidextre",
-        "playerSquadNumber": "Numéro de maillot",
-
-        "playerContactSection": "Contact",
-        "playerPhoneNumber": "Numéro téléphone",
-        "playerTelMobile": "Mobile",
-        "playerTelHome": "Maison",
-        "playerAddress": "Adresse",
-        "playerMail": "Email"
-    },
-    "playerErrors": {
-        "Firstname": "Le prénom du joueur est obligatoire",
-        "Name": "Le nom du joueur est obligatoire",
-        "BirthDate": "La date de naissance est obligatoire",
-        "Gender": "Le genre est obligatoire",
-        "emailDirty": "Format email invalide",
-        "PositionType": "La poste du joueur est obligatoire"
-    },
-    
-    "mainTeam": {
-      "title": "Liste équipe de l'effectif "
-    },    
-    "addTeam": {
-        "titleHome": "Ajout d'une équipe à l'effectif",
-        "titleAdversary": "Ajout d'un adversaire à l'équipe",
-        "toastSuccess":"L'équipe {{label}} a été ajoutée",
-        "toastError":"Erreur, l'équipe {{label}} n'a pas été créée"
-    },
-    
-    "updateTeam": {
-        "titleHome": "Modification de l'équipe",
-        "titleAdversary": "Modification de l'adversaire",
-        "toastSuccess":"L'équipe {{label}} a été modifiée",
-        "toastError":"Erreur, l'équipe {{label}} n'a pas été modifiée"
-    },
-    
-    "teamLabels" : {
-        "label" : "Libellé",
-        "enable": "Activé",
-        "disable":"Désactivé",
-        "activation":"Activation",
-        "status" : "Choisir un statut",
-        "teamsAdversary" : "Liste des équipes adverses"
-    },
-    "teamErrors": {
-        "label": "Le libellé de l'équipe est obligatoire",
-        "activation": "Veuillez indiquer si l'équipe est active ou pas"
+  "mainEffective": {
+    "title": "Effectif",
+    "buttons": {
+      "addEffective": "Ajouter un effectif",
+      "updateEffective": "Editer un effectif",
+      "addPlayer": "Ajouter un joueur",
+      "viewPlayer": "Voir la fiche du joueur",
+      "addTeamHome": "Ajouter une équipe",
+      "addTeamAdversary": "Ajouter un adversaire",
+      "viewStatsEffective": "Voir les stats de l'effectif",
+      "dropdownEffective": "Changer d'effectif",
+      "compare": "Comparer"
     }
+  },
+  "addEffective": {
+    "title": "Ajout d'un effectif",
+    "toastSuccess": "L'effective {{effective}} a été ajouté",
+    "toastError": "Erreur, l'effectif n'a pas été créé"
+  },
+  "updateEffective": {
+    "title": "Modification d'un effectif",
+    "toastSuccess": "L'effective {{effective}} a bien été modifié",
+    "toastError": "Erreur, l'effectif n'a pas été mis à jour"
+  },
+  "effectiveLabels": {
+    "effectiveAvatar": "Déposer la photo ici",
+    "effectiveCategoryAge": "Categorie d'âge",
+    "effectiveTabMembers": "Mes joueurs",
+    "effectiveTabCoachs": "Coachs",
+    "effectiveTabTeams": "Mes équipes",
+    "effectiveTeamsHome": "Equipes de l'effectif",
+    "effectiveTeamsAdversary": "Adversaires",
+    "effectiveTeamEnable": "Equipe activée",
+    "effectiveTeamNotEnable": "Equipe désactivée",
+    "effectivePlaceHolderMembers": "Ajouter un joueur",
+    "effectiveLabel": "Libellé effectif",
+    "effectiveNbPlayers": "Joueurs sélectionné(s)",
+    "effectiveTabPlayerColPlayer": "Joueur",
+    "effectiveTabPlayerColPosition": "Poste"
+  },
+  "effectiveErrors": {
+    "Label": "Le libellé de l'effectif est obligatoire",
+    "LabelTooShort": "Le libellé est trop court",
+    "CategoryAge": "La catégorie d'âge de l'effectif est obligatoire"
+  },
+  "mainPlayer": {
+    "title": "Liste joueur de l'effectif "
+  },
+  "addPlayer": {
+    "title": "Ajout d'un joueur",
+    "toastSuccess": "{{firstname}} {{name}} a été ajouté à l'effectif {{effective}}",
+    "toastError": "Erreur, le joueur {{firstname}} {{name}} n'a pas été créé"
+  },
+  "updatePlayer": {
+    "title": "Modification du joueur",
+    "toastSuccess": "{{firstname}} {{name}} a bien été modifié",
+    "toastError": "Erreur, le joueur {{firstname}} {{name}} n'a pas été modifié"
+  },
+  "viewPlayer": {
+    "title": "Fiche joueur de",
+    "buttons": {
+      "updatePlayer": "Editer le joueur",
+      "viewStatsPlayer": "Voir les stats du joueur",
+      "returnViewPlayer": "Retour"
+    }
+  },
+  "playerLabels": {
+    "playerCivilSection": "Etat civil",
+    "playerAvatar": "Avatar",
+    "playerName": "Nom",
+    "playerFirstname": "Prénom",
+    "playerGender": "Genre",
+    "playerGenderM": "Homme",
+    "playerGenderF": "Femme",
+    "playerBirthdate": "Date de naissance",
+    "playerBirthCity": "Ville de naissance",
+    "playerNationality": "Né(e) en",
+    "playerCaracterSection": "Caractéristiques",
+    "playerPositionType": "Poste",
+    "playerWeight": "Poids (kg)",
+    "playerHeight": "Taille (cm)",
+    "playerLaterality": "Latéralité",
+    "playerLateralityL": "Gaucher",
+    "playerLateralityR": "Droitier",
+    "playerLateralityA": "Ambidextre",
+    "playerSquadNumber": "Numéro de maillot",
+    "playerContactSection": "Contact",
+    "playerPhoneNumber": "Numéro téléphone",
+    "playerTelMobile": "Mobile",
+    "playerTelHome": "Maison",
+    "playerAddress": "Adresse",
+    "playerMail": "Email"
+  },
+  "playerErrors": {
+    "Firstname": "Le prénom du joueur est obligatoire",
+    "Name": "Le nom du joueur est obligatoire",
+    "BirthDate": "La date de naissance est obligatoire",
+    "Gender": "Le genre est obligatoire",
+    "emailDirty": "Format email invalide",
+    "PositionType": "La poste du joueur est obligatoire"
+  },
+  "mainTeam": {
+    "title": "Liste équipe de l'effectif "
+  },
+  "addTeam": {
+    "titleHome": "Ajout d'une équipe à l'effectif",
+    "titleAdversary": "Ajout d'un adversaire à l'équipe",
+    "toastSuccess": "L'équipe {{label}} a été ajoutée",
+    "toastError": "Erreur, l'équipe {{label}} n'a pas été créée"
+  },
+  "updateTeam": {
+    "titleHome": "Modification de l'équipe",
+    "titleAdversary": "Modification de l'adversaire",
+    "toastSuccess": "L'équipe {{label}} a été modifiée",
+    "toastError": "Erreur, l'équipe {{label}} n'a pas été modifiée"
+  },
+  "teamLabels": {
+    "label": "Libellé",
+    "enable": "Activé",
+    "disable": "Désactivé",
+    "activation": "Activation",
+    "status": "Choisir un statut",
+    "teamsAdversary": "Liste des équipes adverses"
+  },
+  "teamErrors": {
+    "label": "Le libellé de l'équipe est obligatoire",
+    "activation": "Veuillez indiquer si l'équipe est active ou pas"
+  },
+  "compare": {
+    "player-max": "Vous ne pouvez sélectionner que {{max}} joueurs"
+  }
 }

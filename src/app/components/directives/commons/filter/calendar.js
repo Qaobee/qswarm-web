@@ -133,7 +133,7 @@
 
                         /* Current quarter */
                         $scope.periodicityActive = quarter;
-                    };
+                    }
 
                     /* Previous quarter */
                     $scope.previousQuarter = function () {

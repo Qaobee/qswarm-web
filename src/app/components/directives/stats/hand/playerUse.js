@@ -52,7 +52,7 @@
                                 /* Appel stats API */
                                 statsRestAPI.getStatGroupBy(search).success(function (playtime) {
                                     if (angular.isArray(playtime) && playtime.length > 0) {
-                                        
+
                                         playtime.forEach(function (a) {
                                             result.playTimeAvg = a.value;
                                         });
@@ -77,8 +77,8 @@
                                             if (angular.isArray(holder) && holder.length > 0) {
                                                 holder.forEach(function (a) {
                                                     result.nbHolder = a.value;
-                                                });                                                
-                                            } 
+                                                });
+                                            }
                                             deferred.resolve(result);
                                         });
                                     }
@@ -99,7 +99,7 @@
                         $scope.title = 'stats.resumeTab.' + $scope.label;
 
                         getStats($scope.ownersId, $scope.startDate, $scope.endDate, $scope.values).then(function (result) {
-                            $log.debug('result',result);
+                            $log.debug('result', result);
                             $scope.nbHolder = result.nbHolder;
                             $scope.nbGame = result.nbGame;
                             $scope.playTimeAvg = result.playTimeAvg;
