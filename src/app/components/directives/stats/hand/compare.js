@@ -85,6 +85,7 @@
                                     });
                                 }
                             }));
+                            /*
                             promises.push(statsSrv.countAllInstanceIndicators(Array.create('neutralization', 'forceDef', 'contre', 'interceptionOk'), Array.create(id), startDate, endDate, listFieldsGroupBy).then(function (data) {
                                 if (angular.isArray(data.data) && data.data.length > 0) {
                                     data.data.forEach(function (a) {
@@ -113,6 +114,7 @@
                                     });
                                 }
                             }));
+                            */
                         });
                         $q.all(promises).then(function () {
                            $scope.loading = false;

@@ -60,7 +60,8 @@
   "resolutions": {
     "angular": "1.4.0-rc.2",
     "angular-cookies": "1.4.0-rc.2",
-    "lodash": "^3.0.1"
+    "lodash": "^3.0.1",
+    "materialize": "~0.97.2"
   },
   "overrides": {}
 }

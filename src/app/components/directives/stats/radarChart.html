@@ -1,3 +1,30 @@
-<canvas id="radar" class="chart chart-radar"
-        chart-data="data" chart-labels="labels">
-</canvas>
+<div class="card blue-grey darken-2">
+    <div class="card-title cardStatTitle center">
+        <span class="white-text title"><small ng-bind="title"></small></span>
+    </div>
+
+    <div class="card-content white center-align">
+        <div ng-if="loading">
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-green-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <canvas id="radar" class="chart chart-radar"
+                chart-legend="true"
+                chart-colours="rgbaColors"
+                chart-series="series"
+                chart-data="data" chart-labels="labels"
+                ng-if="!loading">
+        </canvas>
+    </div>
+</div>
