@@ -55,7 +55,7 @@
         <ul>
             <li class="col l4 m6 s12" ng-repeat="player in players | filter:queryPlayer">
                 <div class="card white blue-grey-text text-darken-2">
-                    <div class="card-content center-align cardPlayer">
+                    <div class="card-content center-align colorMain">
                         <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}" class="white-text">{{player.firstname}} {{player.name}}</a></span>
                         <a href="#/private/viewPlayer/{{player._id}}"><avatar person="player" width="'120px'" ></avatar></a>
                         <span class="white-text"> #{{player.status.squadnumber}}</span>

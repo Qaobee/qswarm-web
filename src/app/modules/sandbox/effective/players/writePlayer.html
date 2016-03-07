@@ -6,7 +6,7 @@
     <!-- Entete -->
     <div class="row">
         <div class="col s12">
-            <div class="row moduleTitle white-text center">
+            <div class="row colorMain white-text center">
                 <div class="col m3 s12 center">
                     <avatar person="player" width="'100px'"></avatar>
                     <span class="small">{{'effectiveLabels.effectiveAvatar' | translate }}</span>
@@ -75,7 +75,7 @@
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
 
                             <div class="col m6 input-field hide-on-small-only">
-                                <i class="material-icons prefix">mail</i>
+                                <i class="material-icons prefix blue-grey-text text-darken-2">mail</i>
                                 <label>{{'playerLabels.playerMail' | translate }}</label>
                                 <input type="email" name="email" class="validate" ng-model="player.contact.email"
                                        ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
@@ -114,7 +114,7 @@
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
 
                             <div class="col m6 input-field hide-on-small-only">
-                                <i class="material-icons prefix">phone</i>
+                                <i class="material-icons prefix blue-grey-text text-darken-2">phone</i>
                                 <label>{{'playerLabels.playerTelHome' | translate }}</label>
                                 <input type="tel" ui-mask="{{'commons.format.phone.pattern' | translate }}"
                                        class="validate" min="0" ng-model="player.contact.home">
@@ -133,7 +133,7 @@
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
 
                             <div class="col s12 m6 input-field hide-on-small-only">
-                                <i class="material-icons prefix">smartphone</i>
+                                <i class="material-icons prefix blue-grey-text text-darken-2">smartphone</i>
                                 <label for="playerTelMobile">{{'playerLabels.playerTelMobile' | translate }}</label>
                                 <input id="playerTelMobile" type="tel"
                                        ui-mask="{{'commons.format.phone.pattern' | translate }}"
@@ -153,7 +153,7 @@
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
 
                             <div class="col m6 input-field hide-on-small-only">
-                                <i class="material-icons prefix">home</i>
+                                <i class="material-icons prefix blue-grey-text text-darken-2">home</i>
                                 <label for="playerAddress">{{'playerLabels.playerAddress' | translate }}</label>
                                 <input type="text" id="Autocomplete" class="form-control" ng-autocomplete
                                        ng-model="player.address.formatedAddress" details="detailsAdr"

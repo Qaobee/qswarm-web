@@ -2,15 +2,56 @@
 <!-- body start-->
     <div class="row"></div>
  
-    <!-- entete -->
+    <!-- entete start tablet and sup-->
+    <div class="row colorMain hide-on-small-only white-text">
+        <div class="col s1 left-align">
+            <h5><i class="material-icons md-36">event</i></h5>
+        </div>
+
+        <div class="col s10 center-align">
+            <h5 >{{'mainAgenda.title' | translate }}  {{currentEffective.label}}</h5>
+        </div>
+        
+        <div class="col s1 center-align">
+            <h5>
+                <a href="#/private/addEvent/{{effectiveId}}">
+                    <i class="material-icons md-36 white-text">add</i>
+                </a>
+            </h5>
+        </div>
+        
+        <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
+    </div>
+    <!-- entete end -->
+    
+    <!-- entete start smartphone-->
+    <div class="row colorMain hide-on-med-and-up white-text">
+
+        <div class="col s12 center-align">
+            <h5>{{'mainAgenda.title' | translate }}  {{currentEffective.label}}</h5>
+        </div>
+        
+        <div class="col s12 center-align">
+            <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+                <a href="#/private/addEvent/{{effectiveId}}" class="btn-floating btn-large red lighten-1">
+                    <i class="material-icons md-24 white-text">add</i>
+                </a>
+            </div>
+        </div>
+        
+        <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
+    </div>
+    <!-- entete end -->
+    
+    <!-- entete 
      <div class="row">
         <div class="col s12"> 
-            <div class="row moduleTitle">
+            <div class="row colorMain">
                 <div class="col m1 hide-on-small-only center-align white-text">
                     <br><i class="fa fa-calendar fa-2x"></i>
                     
                 </div>
-                <!-- effective list -->
+                <!-- effective list 
                 <ul id="mainAgendaEffectiveList" class="dropdown-content">
                     <li ng-repeat="effective in effectives track by $index">
                         <a href="#/private/agenda/{{effective._id}}"><h6 class="blue-grey-text text-darken-2">{{effective.label}} - {{effective.categoryAge.label}}</h6></a>
@@ -39,7 +80,8 @@
             </div>
         </div>
     </div>
-
+    <!-- entete end -->
+    
     <div class="row center">
         
     <!-- filter -->
