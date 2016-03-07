@@ -105,7 +105,6 @@
                 $scope.data.push(datas);
               });
               $scope.loading = false;
-
             });
           };
         },
