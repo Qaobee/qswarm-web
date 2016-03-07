@@ -20,11 +20,7 @@
                     $scope.stats = {
                         goals: {},
                         sanctions: {},
-                        originShoot: {},
-                        'PERS-ACT-DEF-POS' : {},
-                        'PERS-ACT-DEF-NEG' : {},
-                        'PERS-ACT-OFF-POS' : {},
-                        'PERS-ACT-OFF-NEG' : {}
+                        originShoot: {}
                     };
                     $scope.selectedPlayerids = [];
 
@@ -85,36 +81,6 @@
                                     });
                                 }
                             }));
-                            /*
-                            promises.push(statsSrv.countAllInstanceIndicators(Array.create('neutralization', 'forceDef', 'contre', 'interceptionOk'), Array.create(id), startDate, endDate, listFieldsGroupBy).then(function (data) {
-                                if (angular.isArray(data.data) && data.data.length > 0) {
-                                    data.data.forEach(function (a) {
-                                        $scope.stats['PERS-ACT-DEF-POS'][data.config.data.listOwners[0]] = a.value;
-                                    });
-                                }
-                            }));
-                            promises.push(statsSrv.countAllInstanceIndicators(Array.create('penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition'), Array.create(id), startDate, endDate, listFieldsGroupBy).then(function (data) {
-                                if (angular.isArray(data.data) && data.data.length > 0) {
-                                    data.data.forEach(function (a) {
-                                        $scope.stats['PERS-ACT-DEF-NEG'][data.config.data.listOwners[0]] = a.value;
-                                    });
-                                }
-                            }));
-                            promises.push(statsSrv.countAllInstanceIndicators(Array.create('penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec'), Array.create(id), startDate, endDate, listFieldsGroupBy).then(function (data) {
-                                if (angular.isArray(data.data) && data.data.length > 0) {
-                                    data.data.forEach(function (a) {
-                                        $scope.stats['PERS-ACT-OFF-POS'][data.config.data.listOwners[0]] = a.value;
-                                    });
-                                }
-                            }));
-                            promises.push(statsSrv.countAllInstanceIndicators(Array.create('forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt'), Array.create(id), startDate, endDate, listFieldsGroupBy).then(function (data) {
-                                if (angular.isArray(data.data) && data.data.length > 0) {
-                                    data.data.forEach(function (a) {
-                                        $scope.stats['PERS-ACT-OFF-NEG'][data.config.data.listOwners[0]] = a.value;
-                                    });
-                                }
-                            }));
-                            */
                         });
                         $q.all(promises).then(function () {
                            $scope.loading = false;
