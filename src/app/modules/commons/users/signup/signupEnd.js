@@ -502,9 +502,11 @@
 
         })
 
-        .controller('SignupEndCtrl', function ($rootScope, $scope, $log, $translatePartialLoader, $location) {
+        .controller('SignupEndCtrl', function ($rootScope, $scope, $log, $translatePartialLoader, $location, EnvironmentConfig) {
             $translatePartialLoader.addPart('user');
             $rootScope.user = {account : {firstConnexion : true}};
+            
+            $scope.url = EnvironmentConfig.appMobile;
 
             $scope.goHome = function () {
             	delete($rootScope.user);
