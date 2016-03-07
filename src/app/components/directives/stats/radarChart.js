@@ -80,7 +80,6 @@
                 if (angular.isArray(data) && data.length > 0) {
                   angular.forEach(data, function (value) {
                     $scope.stats[config.data.listOwners[0]][value._id.code] = value.value;
-                    console.log(value._id.code, value.value)
                   });
                 }
               }));
@@ -105,7 +104,6 @@
                 });
                 $scope.data.push(datas);
               });
-              console.log($scope.data);
               $scope.loading = false;
 
             });
