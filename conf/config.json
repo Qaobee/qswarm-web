@@ -5,7 +5,11 @@
       "apiEndPoint": "http://localhost:8888",
       "useLoaderCache": false,
       "debugEnabled": true,
-      "uaid" : ""
+      "uaid" : "",
+      "appMobile" : {
+        "google" : "https://play.google.com/store/apps/details?id=com.qaobee.hand",
+        "apple" : ""
+      }
     }
   },
   "recette": {
@@ -14,7 +18,11 @@
       "apiEndPoint": "http://hive-qaobee.rhcloud.com",
       "useLoaderCache": true,
       "debugEnabled": true,
-      "uaid" : ""
+      "uaid" : "",
+	  "appMobile" : {
+	    "google" : "https://play.google.com/store/apps/details?id=com.qaobee.hand",
+	    "apple" : ""
+	  }
     }
   },
   "docker": {
@@ -23,7 +31,11 @@
       "apiEndPoint": "",
       "useLoaderCache": true,
       "debugEnabled": true,
-      "uaid" : "UA-72906581-1"
+      "uaid" : "UA-72906581-1",
+      "appMobile" : {
+        "google" : "https://play.google.com/store/apps/details?id=com.qaobee.hand",
+        "apple" : ""
+      }
     }
   }
 }

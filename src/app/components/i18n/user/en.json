@@ -36,7 +36,7 @@
 	},
     "civilSection" : {
 		"line1" : "Votre inscription est presque terminée !",
-    	"line2" : "Ces dernières étapes vont permettre la création de votre espace personnel et l'accès à votre assistant personnel de collecte et d'analyse de données de performance en temps réel.",
+    	"line2" : "Ces dernières étapes vont permettre la création de votre espace personnel et l'accès à votre assistant de collecte et d'analyse de données de performance en temps réel.",
 		
     	"label" : {
 	        "userSignupCivilSection" : "Informations personnelles",
