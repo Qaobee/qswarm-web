@@ -127,7 +127,8 @@
                         if ('logoff' === qeventbus.message) {
                             delete $scope.user;
                             delete $window.sessionStorage.qaobeesession;
-                            $location.path('');
+                            // $location.path('/');
+                            $window.location.href = '/#';
                         } else if ('login' === qeventbus.message) {
                             $scope.user = qeventbus.data;
                             $scope.loadMetaInfos();
