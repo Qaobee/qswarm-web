@@ -53,7 +53,7 @@
          * @description Main controller for view mainPlayer.html
          */
         .controller('MainPlayerControler', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                     effectiveRestAPI, effectiveSrv, userRestAPI) {
+                                                     effectiveRestAPI, effectiveSrv, userRestAPI, compareService) {
 
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('commons');
@@ -71,13 +71,17 @@
             $scope.currentCategory = null;
             $scope.updatePlayerToCompare = function (id) {
                 var count = 0;
-                Object.keys($scope.compareList, function (n) {
-                    if ($scope.compareList[n]) {
-                        count++;
-                    }
+                if ($scope.compareList[id]) {
+                    compareService.add(id);
+                } else {
+                    compareService.remove(id);
+                }
+                Object.keys($scope.compareList, function () {
+                    count++;
                 });
                 if (count > 3) {
-                    toastr.error($filter('translate')('compare.player-max', {'max':3}));
+                    toastr.error($filter('translate')('compare.player-max', {'max': 3}));
+                    compareService.remove(id);
                     $scope.compareList[id] = false;
                 }
             };

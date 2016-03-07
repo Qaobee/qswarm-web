@@ -17,7 +17,10 @@
                title="{{'mainEffective.buttons.addPlayer' | translate}}">
                 <i class="material-icons md-48">person_add</i>&nbsp;
             </a>
-            <qaobee-stat-compare items="compareList" kind="player" meta="meta"></qaobee-stat-compare>
+            <a href="#/private/players/{{user.effectiveDefault}}/compare/" class="red-text text-lighten-1"
+               title="{{'mainEffective.buttons.compare' | translate}}">
+                <i class="material-icons md-48">recent_actors</i>&nbsp;
+            </a>
         </div>
     </div>
     <!-- header end -->
@@ -35,7 +38,12 @@
                     <i class="material-icons md-24">person_add</i>&nbsp;
                 </a>
             </div>
-            <qaobee-stat-compare items="compareList" kind="player" meta="meta"></qaobee-stat-compare>
+            <div class="fixed-action-btn" style="bottom: 45px; right: 94px;">
+                <a href="#/private/players/{{user.effectiveDefault}}/compare/"
+                   class="btn-floating btn-large red lighten-1">
+                    <i class="material-icons md-24">recent_actors</i>&nbsp;
+                </a>
+            </div>
         </div>
     </div>
     <!-- header end -->

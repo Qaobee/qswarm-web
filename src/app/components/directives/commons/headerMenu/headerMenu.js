@@ -77,12 +77,12 @@
                         }
 
                         if (is_touch_device()) {
-                            $('#nav-mobile').css({overflow: 'auto'});
+                            angular.element('#nav-mobile').css({overflow: 'auto'});
                         }
 
-                        $('.dropdown-button').dropdown();
+                        angular.element('.dropdown-button').dropdown();
 
-                        $('.button-collapse').sideNav({
+                        angular.element('.button-collapse').sideNav({
                             // Default is 240
                             menuWidth: 240,
                             // Choose the horizontal origin
@@ -98,7 +98,7 @@
                     };
 
                     $scope.openLogin = function () {
-                        $('#modalLogin').openModal();
+                        angular.element('#modalLogin').openModal();
                     };
 
 
@@ -127,8 +127,8 @@
                         if ('logoff' === qeventbus.message) {
                             delete $scope.user;
                             delete $window.sessionStorage.qaobeesession;
-                            // $location.path('/');
-                            $window.location.href = '/#';
+                            $location.path('/');
+                            //$window.location.href = '/#';
                         } else if ('login' === qeventbus.message) {
                             $scope.user = qeventbus.data;
                             $scope.loadMetaInfos();
@@ -172,7 +172,7 @@
                      */
                     $scope.login = function () {
                         userRestAPI.logon($scope.signin.login, $scope.signin.passwd).success(function (data) {
-                            $('#modalLogin').closeModal();
+                            angular.element('#modalLogin').closeModal();
                             if (data.account.active) {
                                 var paid = true;
                                 // Let's verify if our user as paid
@@ -227,8 +227,8 @@
                      */
                     $scope.openForgotPwd = function () {
                         delete($scope.infos);
-                        $('#modalLogin').closeModal();
-                        $('#modalForgotPwd').openModal();
+                        angular.element('#modalLogin').closeModal();
+                        angular.element('#modalForgotPwd').openModal();
                     };
 
                     /**
@@ -241,8 +241,8 @@
                         userRestAPI.forgotPasswd($scope.infos.login).success(function (data) {
                             if (data.status === true) {
                                 delete($scope.infos);
-                                $('#modalForgotPwd').closeModal();
-                                $('#modalForgotPwdOK').openModal();
+                                angular.element('#modalForgotPwd').closeModal();
+                                angular.element('#modalForgotPwdOK').openModal();
                             } else {
                                 toastr.warning(data.message);
                             }
