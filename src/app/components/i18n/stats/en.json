@@ -73,7 +73,7 @@
       "efficiency": "Efficiency",
       "shoot": "Goal/Shoot",
       "efficiencyGoal": "% Stop",
-      "shoot": "Stop/Shoot",
+      "stop": "Stop/Shoot",
       "attack": "Attack (+/-)",
       "defense": "Defense (+/-)",
       "yellowCard": "YC",
@@ -81,6 +81,7 @@
       "redCard": "RC"
     },
     "label": {
+      "indicator" : "Indicator",
       "interceptionKo": "Interception ratée",
       "duelLoose": "Duel perdu",
       "badPosition": "Mauvais placement",

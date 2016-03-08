@@ -81,6 +81,7 @@
       "redCard": "CR"
     },
     "label": {
+      "indicator" : "Indicateur",
       "interceptionKo": "Interception ratée",
       "duelLoose": "Duel perdu",
       "badPosition": "Mauvais placement",

@@ -7,6 +7,7 @@
             "date": {
                 "pattern": "dd/mm/yyyy",
                 "label": "dd/mm/yyyy",
+                "moment": "DD/MM/YYYY",
                 "listMonth": "Janvier,Février,Mars,Avril,Mai,Juin,Juillet,Aout,Septembre,Octobre,Novembre,Décembre",
                 "listMonthShort":"Jan,Fév,Mar,Avr,Mai,Juin,Juil,Aout,Sep,Oct,Nov,Déc",
                 "listWeekdaysFull":"Dimanche,Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi",

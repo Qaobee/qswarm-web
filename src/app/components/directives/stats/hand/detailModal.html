@@ -1,0 +1,72 @@
+<button class="btn waves-effect waves-light red" title="{{'stats.buttons.timeline' | translate}}"
+        ng-click="openDetail()">
+    <i class="material-icons">timeline</i>
+</button>
+<div id="{{uid}}" class="modal">
+    <div class="modal-content">
+        <form name="myForm">
+            <h4 ng-bind="title"></h4>
+            <div class="row">
+                <div class="input-field col m2 s4">
+                    <label for="currentIndicator" translate="stats.label.indicator"></label>
+                </div>
+                <div class="input-field col m4 s8">
+                    <select class="browser-default" ng-model="currentIndicator" id="currentIndicator">
+                        <option ng-repeat="i in indicators" value="{{i}}" ng-selected="currentIndicator === i">
+                            {{'stats.label.' + i | translate}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive"
+                                     meta="meta"></filter-calendar>
+                </div>
+            </div>
+            <div class="row" ng-if="loading">
+                <div class="col s12">
+                    <div class="preloader-wrapper big active">
+                        <div class="spinner-layer spinner-green-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if="noData">
+                <div class="col s12">
+                    <h6 class="center-align" translate="stats.resumeTab.noData"></h6>
+                </div>
+            </div>
+            <canvas ng-if="!noData" id="line" class="chart chart-line" chart-data="data"
+                    chart-colours="colours"
+                    chart-labels="labels" chart-legend="true" chart-series="series"
+            >
+            </canvas>
+            <table>
+                <thead>
+                <tr>
+                    <th data-field="indicators"></th>
+                    <th ng-repeat="p in series track by $index" data-field="{{p}}" class="center-align" ng-bind="p"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="l in indicatorLabels track by $index">
+                    <td><b ng-bind="l"></b></td>
+                    <td ng-repeat="d in tabular track by $index" data-field="{{d[$parent.$index]}}" class="center-align">
+                        {{d[$parent.$index]}}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>

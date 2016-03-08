@@ -18,7 +18,7 @@
             });
         })
 
-        .factory('compareService', function () {
+        .factory('compareService', function ($window) {
             var compareList = [];
             return {
                 get: function () {

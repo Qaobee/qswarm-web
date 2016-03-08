@@ -14,53 +14,16 @@
                     startDate: '=',
                     endDate: '=',
                     title: '@',
-                    series: '='
+                    series: '=',
+                    meta: '='
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
-                    $scope.uid = qaobeeUtils.guid();
-                    $scope.rgbaColors = Array.create({
-                        fillColor: "rgba(3, 169, 244, 0.2)",
-                        strokeColor: "rgba(3, 169, 244, 1)",
-                        pointColor: "rgba(3, 169, 244, 1)",
-
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(3, 169, 244, 0.8)"
-                    }, {
-                        fillColor: "rgba(15, 157, 88, 0.2)",
-                        strokeColor: "rgba(15, 157, 88, 1)",
-                        pointColor: "rgba(15, 157, 88, 1)",
-
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(15, 157, 88, 0.8)"
-                    }, {
-                        fillColor: "rgba(255, 87, 34, 0.2)",
-                        strokeColor: "rgba(255, 87, 34, 1)",
-                        pointColor: "rgba(255, 87, 34, 1)",
-
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(255, 87, 34, 0.8)"
-                    });
-
-                    $scope.openDetail = function () {
-                        angular.element('#' + $scope.uid).openModal();
-                    };
-                },
-                link: function ($scope) {
-                    $scope.$watchGroup(['indicators', 'owners', 'startDate', 'endDate', 'title'], function (n, o, scope) {
-                        if (!!$scope.startDate && !!$scope.endDate) {
-                            scope.buildDatas();
-                        }
-                    });
                     $scope.stats = {};
-
+                    $scope.rgbaColors = qaobeeUtils.getChartColours();
                     $scope.buildDatas = function () {
                         $scope.loading = true;
                         $scope.data = [];
-                        $scope.dataTmp = [];
                         $scope.labels = $scope.indicators.map(function (i) {
                             return $filter('translate')('stats.label.' + i);
                         });
@@ -107,7 +70,14 @@
                         });
                     };
                 },
-                templateUrl: 'app/components/directives/stats/radarChart.html'
+                link: function ($scope) {
+                    $scope.$watchGroup(['indicators', 'owners', 'startDate', 'endDate', 'title'], function (n, o, scope) {
+                        if (!!$scope.startDate && !!$scope.endDate) {
+                            $scope.buildDatas();
+                        }
+                    });
+                },
+                templateUrl: 'app/components/directives/stats/hand/radarChart.html'
             };
         });
 })();
