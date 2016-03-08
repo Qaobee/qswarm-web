@@ -35,6 +35,7 @@
             'eventCard',
 
             /* qaobee shared services */
+            'qaobee.utils',
             'qaobee.commonsConfig',
             'qaobee.config',
             'qaobee.eventbus',

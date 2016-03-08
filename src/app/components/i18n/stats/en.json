@@ -1,81 +1,139 @@
 {
-    "stats": {
-        "positionType": {
-            "libelle": "Poste",
-            "value": {
-                "midfielder": "Midfielder",
-                "defender": "Defender",
-                "forward": "Forward",
-                "goalkeeper": "Goalkeeper",
-                "pivot": "Pivot",
-                "center-backcourt": "Center-backcourt",
-                "right-backcourt": "Right-backcourt",
-                "left-backcourt": "Left-backcourt",
-                "right-wingman": "Right-wingman",
-                "left-wingman": "Left-wingman"
-            }
-        },
-        "efficiency" : {
-            "efficiency": "Shoot's efficiency",
-            "efficiencyTotal": "Global",
-            "efficiency9m" : "9 mètres",
-            "efficiency6m" : "6 mètres",
-            "efficiency7m" : "7 mètres"
-        },
-        "actionTab" : {
-            "title" : "Facts in game",
-            "actions": "Actions",
-            "positive": "positives",
-            "negative": "negative",
-            "attack" : "Attack actions",
-            "defense" : "Defense actions"
-        },
-        "resumeTab" : {
-            "shoot": "Shoots",
-            "goal": "Goals",
-            "goalScored": "Goal scored",
-            "goalConceded": "Goal conceded",
-            "goalLabel": "Nb Goal",
-            "goalAvgFull": "Average/Game",
-            "goalAvgLight": "Average",
-            "frequence": "Frequence",
-            "frequence2" : "1 goal per",
-            "minute" : "minutes",
-            "usePlayer" : "Use player",
-            "gamePlayed" : "Games played",
-            "holder" : "Holder",
-            "playTime" : "Average playtime",
-            "sanctions" : "Advertissements",
-            "noData" : "No Data collected on period"
-        },
-        "labelTab" : {
-			"shoot" : "Shoot", 
-			"actions" : "Game actions", 
-			"resume" : "Synthesis"
-		},
-        "typoGoal" : "Typologie des buts",
-        "sanction" : {
-            "yellowCard" : "Yellow card",
-            "excluTempo" : "2 minutes",
-            "redCard" : "Red card"
-        },
-        "teamLabels" : {
-            "listCollect" : "list event"
-        },
-        "eventLabels" : {
-            "listPlayers" : "Player list",
-            "goalkeeper" : "Goalkeeper",
-            "player": "Player",
-            "position": "Position",
-            "efficiency": "Efficiency",
-            "shoot": "Goal/Shoot",
-            "efficiencyGoal": "% Stop",
-            "shoot": "Stop/Shoot",
-            "attack": "Attack (+/-)",
-            "defense": "Defense (+/-)",
-            "yellowCard": "YC",
-            "exclusion": "2'",
-            "redCard": "RC"
-        }
+  "stats": {
+    "buttons" : {
+      "timeline" : "Détail"
+    },
+    "positionType": {
+      "libelle": "Poste",
+      "value": {
+        "midfielder": "Midfielder",
+        "defender": "Defender",
+        "forward": "Forward",
+        "goalkeeper": "Goalkeeper",
+        "pivot": "Pivot",
+        "center-backcourt": "Center-backcourt",
+        "right-backcourt": "Right-backcourt",
+        "left-backcourt": "Left-backcourt",
+        "right-wingman": "Right-wingman",
+        "left-wingman": "Left-wingman"
+      }
+    },
+    "efficiency": {
+      "efficiency": "Shoot's efficiency",
+      "efficiencyTotal": "Global",
+      "efficiency9m": "9 mètres",
+      "efficiency6m": "6 mètres",
+      "efficiency7m": "7 mètres"
+    },
+    "actionTab": {
+      "title": "Facts in game",
+      "actions": "Actions",
+      "positive": "positives",
+      "negative": "negative",
+      "attack": "Attack actions",
+      "defense": "Defense actions"
+    },
+    "resumeTab": {
+      "shoot": "Shoots",
+      "goal": "Goals",
+      "goalScored": "Goal scored",
+      "goalConceded": "Goal conceded",
+      "goalLabel": "Nb Goal",
+      "goalAvgFull": "Average/Game",
+      "goalAvgLight": "Average",
+      "frequence": "Frequence",
+      "frequence2": "1 goal per",
+      "minute": "minutes",
+      "usePlayer": "Use player",
+      "gamePlayed": "Games played",
+      "holder": "Holder",
+      "playTime": "Average playtime",
+      "sanctions": "Advertissements",
+      "noData": "No Data collected on period"
+    },
+    "labelTab": {
+      "shoot": "Shoot",
+      "actions": "Game actions",
+      "resume": "Synthesis"
+    },
+    "typoGoal": "Typologie des buts",
+    "sanction": {
+      "yellowCard": "Yellow card",
+      "excluTempo": "2 minutes",
+      "redCard": "Red card"
+    },
+    "teamLabels": {
+      "listCollect": "list event"
+    },
+    "eventLabels": {
+      "listPlayers": "Player list",
+      "goalkeeper": "Goalkeeper",
+      "player": "Player",
+      "position": "Position",
+      "efficiency": "Efficiency",
+      "shoot": "Goal/Shoot",
+      "efficiencyGoal": "% Stop",
+      "shoot": "Stop/Shoot",
+      "attack": "Attack (+/-)",
+      "defense": "Defense (+/-)",
+      "yellowCard": "YC",
+      "exclusion": "2'",
+      "redCard": "RC"
+    },
+    "label": {
+      "interceptionKo": "Interception ratée",
+      "duelLoose": "Duel perdu",
+      "badPosition": "Mauvais placement",
+      "neutralization": "Neutralisation",
+      "forceDef": "Force",
+      "contre": "Contre",
+      "interceptionOk": "Interception réussie",
+      "forceAtt": "Force",
+      "marcher": "Marcher",
+      "doubleDribble": "Double dribble",
+      "looseball": "Perte de balle",
+      "foot": "Pied",
+      "zone": "Zone",
+      "counterAttack": "Contre attaque",
+      "shift": "Décallage",
+      "duelWon": "Duel gagné",
+      "passDec": "Passe décisive",
+      "yellowCard": "Carton jaune",
+      "redCard": "Carton rouge",
+      "playtime": "Temps de jeu",
+      "substitue": "Remplaçant",
+      "holder": "Titulaire",
+      "injured": "Blessé",
+      "eventNotePerson": "Note",
+      "defenseSysUs": "Système de jeu",
+      "defenseSystemThem": "Système de jeu",
+      "timeAttack": "Temps en attaque",
+      "timeDefense": "Temps en défense",
+      "timeoutUs": "Temps mort",
+      "timeoutThem": "Temps mort",
+      "wound": "Blessure",
+      "passOk": "Passe",
+      "passOkStat": "Nb de passes",
+      "gameSystem": "Système de jeu",
+      "stopGKAtt": "Arrêt gardien",
+      "stopGKDef": "Arrêt gardien",
+      "positionType": "Poste",
+      "penaltyObtained": "Penalty",
+      "penaltyConceded": "Penalty",
+      "originShootAtt": "Origine de tir",
+      "originShootDef": "Origine de tir",
+      "shootAtt": "Tir",
+      "shootDef": "Tir adverse",
+      "goalScored": "But marqué",
+      "goalconceded": "But encaissé",
+      "stopOk": "Tir arreté",
+      "impactShootAtt": "Impact de tir",
+      "impactShootDef": "Impact de tir",
+      "pole": "Poteau",
+      "outside": "Sortie",
+      "exclTmpObtained": "2 minutes",
+      "exclusionTempoObtained": "2 minutes",
+      "playTime": "Temps de jeu"
     }
+  }
 }

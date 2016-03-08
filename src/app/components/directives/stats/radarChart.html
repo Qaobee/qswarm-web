@@ -25,7 +25,12 @@
                 chart-data="data" chart-labels="labels"
                 ng-if="!loading">
         </canvas>
-
+        <div class="right-align ">
+            <button class="btn waves-effect waves-light red" title="{{'stats.buttons.timeline' | translate}}"
+                    ng-click="openDetail()">
+                <i class="material-icons">timeline</i>
+            </button>
+        </div>
     </div>
     <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">{{title}}<i class="material-icons right">close</i></span>
@@ -37,11 +42,20 @@
             </tr>
             </thead>
             <tbody>
-            <tr  ng-repeat="l in labels track by $index">
+            <tr ng-repeat="l in labels track by $index">
                 <td><b ng-bind="l"></b></td>
-                <td ng-repeat="d in data track by $index" data-field="{{d[$parent.$index]}}" class="center-align">{{d[$parent.$index]}}</td>
+                <td ng-repeat="d in data track by $index" data-field="{{d[$parent.$index]}}" class="center-align">
+                    {{d[$parent.$index]}}
+                </td>
             </tr>
             </tbody>
         </table>
+    </div>
+</div>
+
+<div id="{{uid}}" class="modal">
+    <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
     </div>
 </div>

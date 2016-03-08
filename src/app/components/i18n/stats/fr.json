@@ -1,5 +1,8 @@
 {
   "stats": {
+    "buttons" : {
+      "timeline" : "Détail"
+    },
     "positionType": {
       "libelle": "Poste",
       "value": {
