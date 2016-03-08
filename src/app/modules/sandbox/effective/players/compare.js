@@ -36,16 +36,24 @@
         .controller('ComparePlayerControler', function ($scope, $translatePartialLoader, $log, $q, $filter, effectiveSrv, statsRestAPI, statsSrv, compareService, user, meta, $window) {
             $scope.loading = true;
             $scope.players = [];
+            $scope.playersIds = [];
             $scope.meta = meta;
             $scope.stats = {
                 goals: {},
                 sanctions: {},
                 originShoot: {}
             };
+            $scope.series = [];
             $scope.selectedPlayerids = compareService.get();
             if ($scope.selectedPlayerids.length > 0) {
                 getPlayers($scope.selectedPlayerids, function (data) {
                     $scope.players = data;
+                    $scope.series = $scope.players.map(function (p) {
+                        return p.firstname + ' ' + p.name;
+                    });
+                    $scope.playersIds = $scope.players.map(function (p) {
+                        return p._id;
+                    });
                     $scope.buildWidget();
                 });
             } else {

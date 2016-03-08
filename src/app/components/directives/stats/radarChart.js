@@ -13,7 +13,8 @@
           owners: '=',
           startDate: '=',
           endDate: '=',
-          title: '@'
+          title: '@',
+          series: '='
         },
         controller : function($scope) {
           $translatePartialLoader.addPart('stats');
@@ -55,27 +56,22 @@
             $scope.loading = true;
             $scope.data = [];
             $scope.dataTmp = [];
-            $scope.series = $scope.owners.map(function (p) {
-              return p.firstname + ' ' + p.name;
-            });
             $scope.labels = $scope.indicators.map(function(i) {
               return $filter('translate')('stats.label.'+ i);
             });
             var search = {
               listIndicators: $scope.indicators,
-              listOwners: $scope.owners.map(function (p) {
-                return p._id;
-              }),
+              listOwners: $scope.owners,
               startDate: $scope.startDate.valueOf(),
               endDate: $scope.endDate.valueOf(),
               aggregat: "COUNT",
               listFieldsGroupBy: ['code']
             };
             var promises = [];
-            $scope.owners.forEach(function (p) {
+            $scope.owners.forEach(function (id) {
               var tSearch = angular.copy(search);
-              tSearch.listOwners = Array.create(p._id);
-              $scope.stats[p._id] = {};
+              tSearch.listOwners = Array.create(id);
+              $scope.stats[id] = {};
               promises.push(statsRestAPI.getStatGroupBy(tSearch).success(function (data, status, headers, config) {
                 if (angular.isArray(data) && data.length > 0) {
                   angular.forEach(data, function (value) {
@@ -86,9 +82,7 @@
             });
 
             $q.all(promises).then(function () {
-              $scope.owners.map(function (p) {
-                return p._id;
-              }).forEach(function(id) {
+              $scope.owners.forEach(function(id) {
                 var datas = [];
                 $scope.indicators.forEach(function (i) {
                   if (!$scope.stats[id]) {
