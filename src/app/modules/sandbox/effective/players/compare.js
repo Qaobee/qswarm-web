@@ -51,10 +51,11 @@
             } else {
                 $scope.loading = false;
             }
-// return button
+
             $scope.doTheBack = function () {
                 $window.history.back();
             };
+
             $scope.buildWidget = function () {
                 $scope.periodicity = $scope.periodicity || 'season';
                 $scope.periodicityActive = $scope.periodicityActive || {

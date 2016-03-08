@@ -14,7 +14,7 @@
             <ul>
                 <li class="col s12 m12 l6" ng-repeat="collecte in collectes">
                     <div class="card white">
-                        <div class="card-content moduleTitle white-text flow-text">
+                        <div class="card-content colorMain white-text flow-text">
                             <h5>{{collecte.eventRef.label}}</h5>
                         </div>
                         <div class="card-content white blue-grey-text text-darken-2 flow-text">
@@ -37,7 +37,7 @@
             <div ng-if="events.length > 0">
                 <div>
                     <div class="card white">
-                        <div class="card-content moduleTitle white-text flow-text">
+                        <div class="card-content colorMain white-text flow-text">
                             <span class="card-title">{{currentEvent.participants.teamHome.label}} - {{currentEvent.participants.teamVisitor.label}}</span>
                             <hr class="white" />
                             <h5 class="small blue-grey-text text-lighten-3">{{currentEvent.startDate |  date : 'dd MMMM yyyy HH:mm'}}</h5>
@@ -47,9 +47,9 @@
                             <a href='#/private/agenda/{{currentEffective._id}}' class="hide-on-med-and-down left waves-effect waves-light blue-grey-text text-darken-1">
                                 <i class="fa fa-calendar left"></i>{{'headerMenu.calendar' | translate }}
                             </a>
-                            <a href="" ng-if="indexEvent < events.length -1" ng-click="nextEvent()" class="btn-floating blue-grey darken-1 right white-text">
+                            <a href="" ng-if="indexEvent < events.length -1" ng-click="nextEvent()" class="btn-floating colorMain right white-text">
                                 <i class="mdi-navigation-chevron-right right"></i></a>
-                            <a href="" ng-if="indexEvent > 0" ng-click="previousEvent()" class="btn-floating blue-grey darken-1 right white-text">
+                            <a href="" ng-if="indexEvent > 0" ng-click="previousEvent()" class="btn-floating colorMain right white-text">
                                 <i class="mdi-navigation-chevron-left left"></i></a>
                             <div>&nbsp;</div>
                         </div>
