@@ -128,6 +128,7 @@
     "activation": "Veuillez indiquer si l'équipe est active ou pas"
   },
   "compare": {
-    "player-max": "Vous ne pouvez sélectionner que {{max}} joueurs"
+    "player-max": "Vous ne pouvez sélectionner que {{max}} joueurs",
+    "player-min" : "Vous devez sélectionner au moins un joueur"
   }
 }

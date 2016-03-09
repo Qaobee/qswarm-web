@@ -17,8 +17,8 @@
                title="{{'mainEffective.buttons.addPlayer' | translate}}">
                 <i class="material-icons md-48">person_add</i>&nbsp;
             </a>
-            <a href="#/private/players/{{user.effectiveDefault}}/compare/" class="red-text text-lighten-1"
-               title="{{'mainEffective.buttons.compare' | translate}}">
+            <a ng-click="compare()" class="red-text text-lighten-1"
+               href="" title="{{'mainEffective.buttons.compare' | translate}}">
                 <i class="material-icons md-48">recent_actors</i>&nbsp;
             </a>
         </div>
@@ -39,10 +39,9 @@
                 </a>
             </div>
             <div class="fixed-action-btn" style="bottom: 45px; right: 94px;">
-                <a href="#/private/players/{{user.effectiveDefault}}/compare/"
-                   class="btn-floating btn-large red lighten-1">
-                    <i class="material-icons md-24">recent_actors</i>&nbsp;
-                </a>
+                <button ng-click="compare()" class="btn-floating btn-large red lighten-1">
+                    <i class="material-icons md-24">recent_actors</i>
+                </button>
             </div>
         </div>
     </div>
@@ -73,8 +72,11 @@
                                    ng-checked="compareList[player._id]" id="compare-{{player._id}}"/>
                             <label for="compare-{{player._id}}"></label>
                         </div>
-                        <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}" class="white-text">{{player.firstname}} {{player.name}}</a></span>
-                        <a href="#/private/viewPlayer/{{player._id}}"><avatar person="player" width="'120px'" ></avatar></a>
+                        <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}" class="white-text">{{player.firstname}}
+                            {{player.name}}</a></span>
+                        <a href="#/private/viewPlayer/{{player._id}}">
+                            <avatar person="player" width="'120px'"></avatar>
+                        </a>
                         <span class="white-text"> #{{player.status.squadnumber}}</span>
                     </div>
                     <div class="card-content center-align">

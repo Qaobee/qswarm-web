@@ -7,7 +7,7 @@
         'qaobee.commonsConfig'
     ]).config(function ($routeProvider, metaDatasProvider) {
 
-            $routeProvider.when('/private/players/:effectiveId/compare', {
+            $routeProvider.when('/private/players/compare', {
                 controller: 'ComparePlayerControler',
                 resolve: {
                     user: metaDatasProvider.checkUser,

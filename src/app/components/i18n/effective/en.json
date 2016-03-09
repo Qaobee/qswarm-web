@@ -1,135 +1,135 @@
 {
-    "mainEffective": {
-        "title": "Effective",
-        "buttons" : {
-            "addEffective": "Add effective",
-            "updateEffective": "Edit effective",
-            "addPlayer": "Add player",
-            "addTeamHome": "Add team",
-            "addTeamAdversary": "Add adversary",
-            "viewPlayer": "View player sheet",
-            "viewStatsEffective": "View stats of effective",
-            "dropdownEffective": "Change effective",
-            "compare" : "Compare"
-        }
-    },
-    "addEffective": {
-        "title": "Add an effectif",
-        "toastSuccess":"Effective {{effective}} was added",
-        "toastError":"Error, effective can't be create"
-    },
-    "updateEffective": {
-        "title": "Update effective",
-        "toastSuccess":"Effective {{effective}} was updated",
-        "toastError":"Error, effective can't be update"
-    },
-    "effectiveLabels": {
-        "effectiveAvatar":"Drag and drop avatar here",
-        "effectiveCategoryAge": "Category Age",
-        "effectiveTabMembers": "My player list",
-        "effectiveTabCoachs": "Coachs",
-        "effectiveTabTeams": "My team list",
-        "effectiveTeamsHome": "Effective Team list",
-        "effectiveTeamsAdversary": "Adversaries",
-        "effectiveTeamEnable": "Team Enable",
-        "effectiveTeamNotEnable": "Team disable",
-        "effectivePlaceHolderMembers": "Add a player",
-        "effectiveLabel": "Effective Label",
-        "effectiveNbPlayers":"Player(s) selected",
-        "effectiveTabPlayerColPlayer":"Player",
-        "effectiveTabPlayerColPosition":"Position"
-    },
-    "effectiveErrors": {
-        "Label": "Effective label is mandatory",
-        "LabelTooShort": "Label is too short",
-        "CategoryAge": "Effective age category is mandatory"
-    },
-    "mainPlayer": {
-      "title": "Player list of effective "
-    },
-    "addPlayer": {
-        "title": "Add a person",
-        "toastSuccess":"{{firstname}} {{name}} was added to the effective {{effective}}",
-        "toastError":"Error, player {{firstname}} {{name}} can't be create"
-    },
-    "updatePlayer": {
-        "title": "Update player",
-        "toastSuccess":"{{firstname}} {{name}} was updated",
-        "toastError":"Error, player {{firstname}} {{name}} can't be update"
-    },
-    "viewPlayer": {
-        "title": "Player sheet of",
-        "buttons" : {
-            "updatePlayer": "Edit player",
-            "viewStatsPlayer": "View player's stats",
-            "returnViewPlayer": "Return"
-        }
-    },
-    "playerLabels": {
-        "playerCivilSection": "Vital sheet",
-        "playerAvatar": "Avatar" ,
-        "playerName": "Name" ,
-        "playerFirstname": "Firstname",
-        "playerGender": "Gender" ,,
-        "playerGenderM": "Male" ,
-        "playerGenderF": "Female" ,
-        "playerBirthdate": "Birthdate" ,
-        "playerBirthCity": "BirthCity" ,
-        "playerNationality": "Born in" ,
-
-        "playerCaracterSection": "Player characteristics",
-        "playerPositionType": "Position" ,
-        "playerWeight": "Weight (lb)",
-        "playerHeight": "Height (in)",
-        "playerLaterality": "Laterality",
-        "playerLateralityL": "Left-handed",
-        "playerLateralityR": "Right-handed",
-        "playerLateralityA": "Ambidextrous",
-        "playerSquadNumber": "Squad number",
-
-        "playerContactSection": "Contact",
-        "playerPhoneNumber": "Phone number",
-        "playerTelMobile": "Mobile",
-        "playerTelHome": "Home",
-        "playerAddress": "Address",
-        "playerMail": "E-mail"
-    },
-    "playerErrors": {
-        "Firstname": "Firstname is mandatory",
-        "Name": "Name is mandatory",
-        "BirthDate": "Birthdate is mandatory",
-        "Gender": "Gender is mandatory",
-        "emailDirty": "Mail format invalid",
-        "PositionType": "Position is mandatory"
-    },
-    
-    "mainTeam": {
-      "title": "Team list of effective"
-    },    
-    "addTeam": {
-        "titleHome": "Add team for effective",
-        "titleAdversary": "Add adversary for team ",
-        "toastSuccess":"{{label}} was added",
-        "toastError":"Error, team {{label}} can't be create"
-    },
-    
-    "updateTeam": {
-        "titleHome": "Update team",
-        "titleAdversary": "Update adversary",
-        "toastSuccess":"{{label}} was updated",
-        "toastError":"Error, the team {{label}} can't be update"
-    },
-    
-    "teamLabels" : {
-        "label" : "Label",
-        "enable": "Activate",
-        "disable":"Disactivate",
-        "activation":"Activation",
-        "status" : "Choice status",
-        "teamsAdversary" : "Adversary list"
-    },
-    "teamErrors": {
-        "label": "Team label id mandatory",
-        "activation": "Activate or desactivate team"
+  "mainEffective": {
+    "title": "Effective",
+    "buttons": {
+      "addEffective": "Add effective",
+      "updateEffective": "Edit effective",
+      "addPlayer": "Add player",
+      "addTeamHome": "Add team",
+      "addTeamAdversary": "Add adversary",
+      "viewPlayer": "View player sheet",
+      "viewStatsEffective": "View stats of effective",
+      "dropdownEffective": "Change effective",
+      "compare": "Compare"
     }
+  },
+  "addEffective": {
+    "title": "Add an effectif",
+    "toastSuccess": "Effective {{effective}} was added",
+    "toastError": "Error, effective can't be create"
+  },
+  "updateEffective": {
+    "title": "Update effective",
+    "toastSuccess": "Effective {{effective}} was updated",
+    "toastError": "Error, effective can't be update"
+  },
+  "effectiveLabels": {
+    "effectiveAvatar": "Drag and drop avatar here",
+    "effectiveCategoryAge": "Category Age",
+    "effectiveTabMembers": "My player list",
+    "effectiveTabCoachs": "Coachs",
+    "effectiveTabTeams": "My team list",
+    "effectiveTeamsHome": "Effective Team list",
+    "effectiveTeamsAdversary": "Adversaries",
+    "effectiveTeamEnable": "Team Enable",
+    "effectiveTeamNotEnable": "Team disable",
+    "effectivePlaceHolderMembers": "Add a player",
+    "effectiveLabel": "Effective Label",
+    "effectiveNbPlayers": "Player(s) selected",
+    "effectiveTabPlayerColPlayer": "Player",
+    "effectiveTabPlayerColPosition": "Position"
+  },
+  "effectiveErrors": {
+    "Label": "Effective label is mandatory",
+    "LabelTooShort": "Label is too short",
+    "CategoryAge": "Effective age category is mandatory"
+  },
+  "mainPlayer": {
+    "title": "Player list of effective "
+  },
+  "addPlayer": {
+    "title": "Add a person",
+    "toastSuccess": "{{firstname}} {{name}} was added to the effective {{effective}}",
+    "toastError": "Error, player {{firstname}} {{name}} can't be create"
+  },
+  "updatePlayer": {
+    "title": "Update player",
+    "toastSuccess": "{{firstname}} {{name}} was updated",
+    "toastError": "Error, player {{firstname}} {{name}} can't be update"
+  },
+  "viewPlayer": {
+    "title": "Player sheet of",
+    "buttons": {
+      "updatePlayer": "Edit player",
+      "viewStatsPlayer": "View player's stats",
+      "returnViewPlayer": "Return"
+    }
+  },
+  "playerLabels": {
+    "playerCivilSection": "Vital sheet",
+    "playerAvatar": "Avatar",
+    "playerName": "Name",
+    "playerFirstname": "Firstname",
+    "playerGender": "Gender",
+    ,
+    "playerGenderM": "Male",
+    "playerGenderF": "Female",
+    "playerBirthdate": "Birthdate",
+    "playerBirthCity": "BirthCity",
+    "playerNationality": "Born in",
+    "playerCaracterSection": "Player characteristics",
+    "playerPositionType": "Position",
+    "playerWeight": "Weight (lb)",
+    "playerHeight": "Height (in)",
+    "playerLaterality": "Laterality",
+    "playerLateralityL": "Left-handed",
+    "playerLateralityR": "Right-handed",
+    "playerLateralityA": "Ambidextrous",
+    "playerSquadNumber": "Squad number",
+    "playerContactSection": "Contact",
+    "playerPhoneNumber": "Phone number",
+    "playerTelMobile": "Mobile",
+    "playerTelHome": "Home",
+    "playerAddress": "Address",
+    "playerMail": "E-mail"
+  },
+  "playerErrors": {
+    "Firstname": "Firstname is mandatory",
+    "Name": "Name is mandatory",
+    "BirthDate": "Birthdate is mandatory",
+    "Gender": "Gender is mandatory",
+    "emailDirty": "Mail format invalid",
+    "PositionType": "Position is mandatory"
+  },
+  "mainTeam": {
+    "title": "Team list of effective"
+  },
+  "addTeam": {
+    "titleHome": "Add team for effective",
+    "titleAdversary": "Add adversary for team ",
+    "toastSuccess": "{{label}} was added",
+    "toastError": "Error, team {{label}} can't be create"
+  },
+  "updateTeam": {
+    "titleHome": "Update team",
+    "titleAdversary": "Update adversary",
+    "toastSuccess": "{{label}} was updated",
+    "toastError": "Error, the team {{label}} can't be update"
+  },
+  "teamLabels": {
+    "label": "Label",
+    "enable": "Activate",
+    "disable": "Disactivate",
+    "activation": "Activation",
+    "status": "Choice status",
+    "teamsAdversary": "Adversary list"
+  },
+  "teamErrors": {
+    "label": "Team label id mandatory",
+    "activation": "Activate or desactivate team"
+  }
+  "compare": {
+    "player-max": "You can select at most {{max}} players",
+    "player-min": "You have to select at least one player"
+  }
 }

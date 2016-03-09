@@ -69,6 +69,16 @@
             $scope.compareList = {};
             $scope.currentEffective = {};
             $scope.currentCategory = null;
+
+            $scope.compare = function() {
+                if(Object.keys($scope.compareList).length >0) {
+                    $location.path('/private/players/compare/');
+                    return false;
+                } else {
+                    toastr.info($filter('translate')('compare.player-min'));
+                }
+            };
+
             $scope.updatePlayerToCompare = function (id) {
                 var count = 0;
                 if ($scope.compareList[id]) {

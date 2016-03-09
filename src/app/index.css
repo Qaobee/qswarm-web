@@ -756,3 +756,7 @@ table.super-fancy tr.foobar {
         width: 10px;
     }
 }
+.compare-modale canvas#line {
+    width: 100% !important;
+    height: 200px !important;
+}

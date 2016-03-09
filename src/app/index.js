@@ -97,7 +97,7 @@
                 showMethod: 'fadeIn',
                 hideMethod: 'fadeOut'
             };
-
+            Chart.defaults.global.responsive = true;
         })
         .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale) {
             $locale.id = $translate.proposedLanguage();
