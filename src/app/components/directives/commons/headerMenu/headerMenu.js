@@ -95,6 +95,7 @@
 
                     $scope.openSignup = function () {
                         $location.path('/signupStart');
+                        return false;
                     };
 
                     $scope.openLogin = function () {
@@ -128,7 +129,6 @@
                             delete $scope.user;
                             delete $window.sessionStorage.qaobeesession;
                             $location.path('/');
-                            //$window.location.href = '/#';
                         } else if ('login' === qeventbus.message) {
                             $scope.user = qeventbus.data;
                             $scope.loadMetaInfos();
@@ -160,6 +160,7 @@
                             delete $rootScope.user;
                             delete $rootScope.meta;
                             delete $scope.user;
+                            return false;
                         });
 
                     };
@@ -220,7 +221,7 @@
                     };
 
                     /**
-                     * @name $qcope.cancelSignup
+                     * @name $scope.cancelSignup
                      * @function
                      * @memberOf qaobee.directives.headerMenu
                      * @description Cancel user signup
@@ -232,7 +233,7 @@
                     };
 
                     /**
-                     * @name $qcope.renewPwd
+                     * @name $scope.renewPwd
                      * @function
                      * @memberOf qaobee.directives.headerMenu
                      * @description Ask for paswword renew
