@@ -44,7 +44,6 @@
                     meta: metaDatasProvider.getMeta
                 },
                 templateUrl: 'app/modules/sandbox/effective/players/mainPlayer.html'
-
             });
         })
 
@@ -53,7 +52,7 @@
          * @description Main controller for view mainPlayer.html
          */
         .controller('MainPlayerControler', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                     effectiveRestAPI, effectiveSrv, userRestAPI, compareService) {
+                                                     effectiveRestAPI, effectiveSrv, userRestAPI, playerCompareService) {
 
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('commons');
@@ -82,16 +81,16 @@
             $scope.updatePlayerToCompare = function (id) {
                 var count = 0;
                 if ($scope.compareList[id]) {
-                    compareService.add(id);
+                    playerCompareService.add(id);
                 } else {
-                    compareService.remove(id);
+                    playerCompareService.remove(id);
                 }
                 Object.keys($scope.compareList, function () {
                     count++;
                 });
                 if (count > 3) {
                     toastr.error($filter('translate')('compare.player-max', {'max': 3}));
-                    compareService.remove(id);
+                    playerCompareService.remove(id);
                     $scope.compareList[id] = false;
                 }
             };

@@ -18,7 +18,7 @@
             });
         })
 
-        .factory('compareService', function ($window) {
+        .factory('playerCompareService', function () {
             var compareList = [];
             return {
                 get: function () {
@@ -33,7 +33,7 @@
             };
         })
 
-        .controller('ComparePlayerControler', function ($scope, $translatePartialLoader, $log, $q, $filter, effectiveSrv, statsRestAPI, statsSrv, compareService, user, meta, $window) {
+        .controller('ComparePlayerControler', function ($scope, $translatePartialLoader, $log, $q, $filter, effectiveSrv, statsRestAPI, statsSrv, playerCompareService, user, meta, $window) {
             $scope.loading = true;
             $scope.players = [];
             $scope.playersIds = [];
@@ -44,7 +44,7 @@
                 originShoot: {}
             };
             $scope.series = [];
-            $scope.selectedPlayerids = compareService.get();
+            $scope.selectedPlayerids = playerCompareService.get();
             if ($scope.selectedPlayerids.length > 0) {
                 getPlayers($scope.selectedPlayerids, function (data) {
                     $scope.players = data;
