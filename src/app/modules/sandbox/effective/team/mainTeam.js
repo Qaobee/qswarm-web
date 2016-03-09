@@ -10,26 +10,26 @@
      * @copyright <b>QaoBee</b>.
      */
     angular.module('qaobee.teams', [
-        /* angular qaobee */
-        'ngAutocomplete',
-        
-        /* qaobee modules */
-        'qaobee.addTeam',
-        'qaobee.updateTeam',
-        
-        /* qaobee services */
-        'effectifSRV',
-        
-        /* qaobee Rest API */
-        'effectiveRestAPI',
-        'teamRestAPI',
-        'userRestAPI'])
+            /* angular qaobee */
+            'ngAutocomplete',
+            'qaobee.compare.team',
+            /* qaobee modules */
+            'qaobee.addTeam',
+            'qaobee.updateTeam',
+
+            /* qaobee services */
+            'effectifSRV',
+
+            /* qaobee Rest API */
+            'effectiveRestAPI',
+            'teamRestAPI',
+            'userRestAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
 
             $routeProvider.when('/private/teams/:effectiveId', {
-                controller: 'MainTeamControler',
+                controller: 'MainTeamController',
                 resolve: {
                     user: metaDatasProvider.checkUser,
                     meta: metaDatasProvider.getMeta
@@ -39,52 +39,79 @@
             });
         })
 
-    /**
-     * @class qaobee.modules.sandbox.effective.team.MainTeamControler
-     * @description Main controller for view mainTeam.html
-     */
-        .controller('MainTeamControler', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, 
-                                                         user, meta, effectiveSrv, teamRestAPI, userRestAPI) {
+        /**
+         * @class qaobee.modules.sandbox.effective.team.MainTeamControler
+         * @description Main controller for view mainTeam.html
+         */
+        .controller('MainTeamController', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter,
+                                                   user, meta, effectiveSrv, teamRestAPI, userRestAPI, teamCompareService) {
 
-        $translatePartialLoader.addPart('effective');
-        $translatePartialLoader.addPart('commons');
-        
-        $scope.effectiveId = $routeParams.effectiveId;
+            $translatePartialLoader.addPart('effective');
+            $translatePartialLoader.addPart('commons');
 
-        $scope.user = user;
-        $scope.meta = meta;
-        $scope.listTeamHome = [];
-        
-                                                                                          
-        /* Retrieve list of team of effective */
-        $scope.getListTeamHome = function () {
-            teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.effectiveId, 'all').success(function (data) {
-                $scope.listTeamHome = data.sortBy(function(n) {
-                    return n.label; 
+            $scope.effectiveId = $routeParams.effectiveId;
+
+            $scope.user = user;
+            $scope.meta = meta;
+            $scope.listTeamHome = [];
+
+            $scope.compareList = {};
+
+            $scope.compare = function() {
+                if(Object.keys($scope.compareList).length >0) {
+                    $location.path('/private/team/compare/'+$scope.effectiveId);
+                    return false;
+                } else {
+                    toastr.info($filter('translate')('compare.team-min'));
+                }
+            };
+
+            $scope.updateTeamToCompare = function (id) {
+                var count = 0;
+                if ($scope.compareList[id]) {
+                    teamCompareService.add(id);
+                } else {
+                    teamCompareService.remove(id);
+                }
+                Object.keys($scope.compareList, function () {
+                    count++;
                 });
-            });
-            
-            effectiveSrv.getEffective($scope.user.effectiveDefault).then(function(data){
-                $scope.currentEffective = data;
-            });    
-        };
-        
-        
-        /* check user connected */
-        $scope.checkUserConnected = function () {
-            userRestAPI.getUserById(user._id).success(function (data) {
-                $scope.getListTeamHome();
-            }).error(function (data) {
-                $log.error('MainTeamControler : User not Connected');
-            });
-        }; 
-        
-        /* Primary, check if user connected */
-        $scope.checkUserConnected();
-        
-        
-    })
-    //
+                if (count > 3) {
+                    toastr.error($filter('translate')('compare.team-max', {'max': 3}));
+                    teamCompareService.remove(id);
+                    $scope.compareList[id] = false;
+                }
+            };
+
+            /* Retrieve list of team of effective */
+            $scope.getListTeamHome = function () {
+                teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.effectiveId, 'all').success(function (data) {
+                    $scope.listTeamHome = data.sortBy(function (n) {
+                        return n.label;
+                    });
+                });
+
+                effectiveSrv.getEffective($scope.user.effectiveDefault).then(function (data) {
+                    $scope.currentEffective = data;
+                });
+            };
+
+
+            /* check user connected */
+            $scope.checkUserConnected = function () {
+                userRestAPI.getUserById(user._id).success(function (data) {
+                    $scope.getListTeamHome();
+                }).error(function (data) {
+                    $log.error('MainTeamControler : User not Connected');
+                });
+            };
+
+            /* Primary, check if user connected */
+            $scope.checkUserConnected();
+
+
+        })
+        //
     ;
 }());
 

@@ -24,7 +24,7 @@
             'qaobee.addPlayer',
             'qaobee.updatePlayer',
             'qaobee.viewPlayer',
-            'qaobee.compare',
+            'qaobee.compare.players',
 
             /* qaobee services */
             'effectifSRV',
@@ -38,7 +38,7 @@
         .config(function ($routeProvider, metaDatasProvider) {
 
             $routeProvider.when('/private/players/:effectiveId', {
-                controller: 'MainPlayerControler',
+                controller: 'MainPlayerController',
                 resolve: {
                     user: metaDatasProvider.checkUser,
                     meta: metaDatasProvider.getMeta
@@ -51,7 +51,7 @@
          * @class qaobee.modules.sandbox.effective.MainPlayerControler
          * @description Main controller for view mainPlayer.html
          */
-        .controller('MainPlayerControler', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
+        .controller('MainPlayerController', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
                                                      effectiveRestAPI, effectiveSrv, userRestAPI, playerCompareService) {
 
             $translatePartialLoader.addPart('effective');

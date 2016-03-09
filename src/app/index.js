@@ -30,7 +30,6 @@
             'qaobee.commonsDirectives',
             'qaobee.headerMenu',
             'qaobee.avatar',
-            'qaobee.compare',
             'qaobee.radar',
             'qaobee.stat.detail.modal',
             'eventCard',

@@ -1,24 +1,24 @@
 (function () {
     'use strict';
-    angular.module('qaobee.compare.players', [
+    angular.module('qaobee.compare.team', [
         'effectifSRV',
         'statsSRV',
         'statsRestAPI',
         'qaobee.commonsConfig'
     ]).config(function ($routeProvider, metaDatasProvider) {
 
-            $routeProvider.when('/private/players/compare', {
-                controller: 'ComparePlayerControler',
+            $routeProvider.when('/private/team/compare/:effectiveId', {
+                controller: 'TeamCompareController',
                 resolve: {
                     user: metaDatasProvider.checkUser,
                     meta: metaDatasProvider.getMeta
                 },
-                templateUrl: 'app/modules/sandbox/effective/players/compare.html'
+                templateUrl: 'app/modules/sandbox/effective/team/compare.html'
 
             });
         })
 
-        .factory('playerCompareService', function () {
+        .factory('teamCompareService', function () {
             var compareList = [];
             return {
                 get: function () {
@@ -33,10 +33,11 @@
             };
         })
 
-        .controller('ComparePlayerControler', function ($scope, $translatePartialLoader, $log, $q, $filter, effectiveSrv, statsRestAPI, statsSrv, playerCompareService, user, meta, $window) {
+        .controller('TeamCompareController', function ($scope, $translatePartialLoader, $log, $q, $filter, teamRestAPI, statsRestAPI, statsSrv, teamCompareService, user, meta, $window, $routeParams) {
             $scope.loading = true;
-            $scope.players = [];
-            $scope.playersIds = [];
+            $scope.effectiveId = $routeParams.effectiveId;
+            $scope.teams = [];
+            $scope.teamsIds = [];
             $scope.meta = meta;
             $scope.stats = {
                 goals: {},
@@ -44,14 +45,14 @@
                 originShoot: {}
             };
             $scope.series = [];
-            $scope.selectedPlayerids = playerCompareService.get();
-            if ($scope.selectedPlayerids.length > 0) {
-                getPlayers($scope.selectedPlayerids, function (data) {
-                    $scope.players = data;
-                    $scope.series = $scope.players.map(function (p) {
-                        return p.firstname + ' ' + p.name;
+            $scope.selectedIds = teamCompareService.get();
+            if ($scope.selectedIds.length > 0) {
+                getTeams($scope.selectedIds, function (data) {
+                    $scope.teams = data;
+                    $scope.series = $scope.teams.map(function (p) {
+                        return p.label;
                     });
-                    $scope.playersIds = $scope.players.map(function (p) {
+                    $scope.teamsIds = $scope.teams.map(function (p) {
                         return p._id;
                     });
                     $scope.buildWidget();
@@ -73,14 +74,14 @@
                         ownersId: $scope.ownersId
                     };
                 $scope.periodicityActive.ownersId = $scope.periodicityActive.ownersId || $scope.ownersId;
-                if ($scope.selectedPlayerids.length === 0) {
+                if ($scope.teamsIds.length === 0) {
                     return;
                 }
                 var listFieldsGroupBy = Array.create('code');
                 var promises = [];
                 var startDate = $scope.periodicityActive.startDate.valueOf();
                 var endDate = $scope.periodicityActive.endDate.valueOf();
-                $scope.selectedPlayerids.forEach(function (id) {
+                $scope.selectedIds.forEach(function (id) {
                     promises.push(statsSrv.countAllInstanceIndicators(Array.create('goalScored', 'goalConceded'), Array.create(id), startDate, endDate, listFieldsGroupBy).then(function (data) {
                         if (angular.isArray(data.data) && data.data.length > 0) {
                             data.data.forEach(function (a) {
@@ -109,11 +110,17 @@
             };
 
             /* Retrieve current effective and list player */
-            function getPlayers(selectedPlayerids, callback) {
-                var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact');
-
-                effectiveSrv.getPersons(selectedPlayerids, listField).then(function (players) {
-                    callback(players);
+            function getTeams(selectedIds, callback) {
+                teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.effectiveId, 'all').then(function (data) {
+                    var teams = [];
+                    if (angular.isArray(data.data) && data.data.length > 0) {
+                        data.data.forEach(function (t) {
+                            if (selectedIds.any(t._id)) {
+                                teams.push(t);
+                            }
+                        });
+                    }
+                    callback(teams);
                 });
             }
 

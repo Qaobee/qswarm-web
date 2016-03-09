@@ -1,0 +1,101 @@
+<div class="container" ng-cloack>
+
+    <!-- space between header menu and body-->
+    <div class="row"></div>
+
+    <div class="row white">
+        <div class="col s12">
+
+            <!-- Header-->
+            <div class="row cardPlayer">
+                <div class="col l3 m3 center hide-on-small-only">
+                    &nbsp;
+                    <div ng-if="loading">
+                        <div class="preloader-wrapper small active ">
+                            <div class="spinner-layer spinner-blue-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col l7 m7 s12 white-text center">
+                    &nbsp;
+                </div>
+                <div class="col l2 m2 s12 white-text center">
+                    <h5>
+                        <a href="" class="white-text waves-effect waves-light" ng-click="doTheBack()">
+                            <i class="fa fa-arrow-left"></i>
+                        </a>
+                    </h5>
+                </div>
+
+                <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive"
+                                 meta="meta"></filter-calendar>
+            </div>
+
+            <div class="row">
+                <table>
+                    <thead>
+                    <tr>
+                        <th data-field="indicators"></th>
+                        <th ng-repeat="p in teams track by $index" data-field="{{p._id}}" class="center-align">
+                            {{p.label}}
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><b>Buts</b></td>
+                        <td ng-repeat="p in teams track by $index" data-field="{{p._id}}" class="center-align"><h3
+                                class="light-blue-text text-darken-1">
+                            {{stats.goals[p._id] || 0}}</h3>
+                            <p ng-if="(stats.originShoot[p._id]||0)>0">{{ (stats.goals[p._id] || 0) *100 /
+                                stats.originShoot[p._id] | number : 2}} %</p>
+                            <p ng-if="(stats.originShoot[p._id]||0)==0">na</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Sanctions</b></td>
+                        <td ng-repeat="p in teams track by $index" data-field="{{p._id}}" class="center-align">
+                            <h3 class="red-text text-darken-1">{{stats.sanctions[p._id] || 0}}</h3></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <qaobee-radar-chart title="Actions positives offensives" owners="teamsIds" series="series"
+                                            start-date="periodicityActive.startDate" meta="meta"
+                                            end-date="periodicityActive.endDate"
+                                            indicators="['penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec']"></qaobee-radar-chart>
+                    </div>
+                    <div class="col s12 m6">
+                        <qaobee-radar-chart title="Actions négatives offensives" owners="teamsIds" series="series"
+                                            start-date="periodicityActive.startDate" meta="meta"
+                                            end-date="periodicityActive.endDate"
+                                            indicators="['forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt']"></qaobee-radar-chart>
+                    </div>
+                    <div class="col s12 m6">
+                        <qaobee-radar-chart title="Actions positives défensives" owners="teamsIds" series="series"
+                                            start-date="periodicityActive.startDate" meta="meta"
+                                            end-date="periodicityActive.endDate"
+                                            indicators="['neutralization', 'forceDef', 'contre', 'interceptionOk']"></qaobee-radar-chart>
+                    </div>
+                    <div class="col s12 m6">
+                        <qaobee-radar-chart title="Actions négatives défensives" owners="teamsIds" series="series"
+                                            start-date="periodicityActive.startDate" meta="meta"
+                                            end-date="periodicityActive.endDate"
+                                            indicators="['penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition']"></qaobee-radar-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

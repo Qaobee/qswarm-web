@@ -16,7 +16,7 @@
                     series: '='
                 },
                 controller: function ($scope) {
-
+                    $scope.dateFormat = $filter('translate')('commons.format.date.moment');
                     $scope.tabular = [];
                     $scope.loading = true;
                     $translatePartialLoader.addPart('stats');
@@ -35,7 +35,7 @@
                     $scope.stats = {};
 
 
-                    $scope.$watchGroup(['indicators', 'currentIndicator', 'owners', 'periodicity', 'periodicityActive'], function (n, o, scope) {
+                    $scope.$watchGroup(['indicators', 'currentIndicator', 'owners', 'periodicity', 'periodicityActive'], function () {
                         if (!!$scope.periodicityActive.startDate && !!$scope.periodicityActive.endDate || !!currentIndicator) {
                             $scope.buildDatas();
                         }
@@ -65,11 +65,13 @@
                             promises.push(statsRestAPI.getListDetailValue(tSearch).success(function (data, status, headers, config) {
                                 if (angular.isArray(data) && data.length > 0) {
                                     angular.forEach(data, function (value) {
-                                        var time = moment(value.timer).format($filter('translate')('commons.format.date.moment'));
+                                        var time = moment(value.timer).format($scope.dateFormat);
                                         if (!$scope.stats[time]) {
                                             $scope.stats[time] = [];
+                                            $scope.stats[time][config.data.listOwners[0]] = 0;
                                         }
-                                        $scope.stats[time][config.data.listOwners[0]] = value.value;
+
+                                        $scope.stats[time][config.data.listOwners[0]] += parseInt(value.value);
                                     });
                                 }
                             }));
@@ -80,7 +82,7 @@
                             promises.push(statsRestAPI.getStatGroupBy(tSearch2).success(function (data, status, headers, config) {
                                 if (angular.isArray(data) && data.length > 0) {
                                     angular.forEach(data, function (value) {
-                                        $scope.tab[config.data.listOwners[0]][value._id.code] = value.value;
+                                        $scope.tab[config.data.listOwners[0]][value._id.code] = parseInt(value.value);
                                     });
                                 }
                             }));
@@ -92,27 +94,28 @@
                             $scope.tabular = [];
                             if (Object.keys($scope.stats).length === 0) {
                                 $scope.noData = true;
-                            }
-                            $scope.labels = Object.keys($scope.stats);
-
-                            if ($scope.labels.length === 1) {
-                                $scope.labels.add(0, 0);
-                            }
-                            $scope.owners.forEach(function (id) {
-                                var datas = [];
-                                Object.keys($scope.stats).forEach(function (time) {
-                                    if (!$scope.stats[time][id]) {
-                                        datas.push(0);
-                                    } else {
-                                        datas.push($scope.stats[time][id]);
-                                    }
+                            } else {
+                                $scope.labels = Object.keys($scope.stats).sortBy(function (n) {
+                                    return moment(n, $scope.dateFormat);
                                 });
-                                if (datas.length === 1) {
-                                    datas.add(0, 0);
+                                $scope.owners.forEach(function (id) {
+                                    var datas = [];
+                                    $scope.labels.forEach(function (time) {
+                                        if (!$scope.stats[time][id]) {
+                                            datas.push(0);
+                                        } else {
+                                            datas.push($scope.stats[time][id]);
+                                        }
+                                    });
+                                    if (datas.length === 1) {
+                                        datas.add(0, 0);
+                                    }
+                                    $scope.data.push(datas);
+                                });
+                                if ($scope.labels.length === 1) {
+                                    $scope.labels.add(0, 0);
                                 }
-                                $scope.data.push(datas);
-                            });
-
+                            }
                             $scope.owners.forEach(function (id) {
                                 var datas = [];
                                 $scope.indicators.forEach(function (i) {
