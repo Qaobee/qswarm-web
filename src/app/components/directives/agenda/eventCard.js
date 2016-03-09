@@ -12,16 +12,18 @@
 
     angular.module('eventCard', ['collecteRestAPI'])
 
-        .directive('eventCard', function ($translatePartialLoader, $timeout, $document, $log, $q, $filter, collecteRestAPI) {
+        .directive('eventCard', function ($translatePartialLoader, $timeout, $document, $log, $q, $filter, collecteRestAPI, qeventbus) {
             return {
                 restrict: 'E',
                 scope: {
-                    event: "="
+                    event: "=",
+                    hasCompare: '=?'
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('commons');
                     $translatePartialLoader.addPart('agenda');
 
+                    $scope.compareList = {};
                     $scope.isCollected = false;
                     $scope.mapShow = false;
 
@@ -86,7 +88,9 @@
                     if (angular.isDefined($scope.event.address.formatedAddress)) {
                         $scope.mapShow = true;
                     }
-
+                    $scope.updateEventToCompare = function (id) {
+                        qeventbus.prepForBroadcast('event.compare', {id: id, value: $scope.compareList[id]});
+                    };
                     $scope.openMap = function () {
                         $timeout(function () {
                             var myLatLng = new google.maps.LatLng($scope.event.address.lat, $scope.event.address.lng);

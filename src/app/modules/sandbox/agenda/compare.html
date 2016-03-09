@@ -46,15 +46,15 @@
                     <thead>
                     <tr>
                         <th data-field="indicators"></th>
-                        <th ng-repeat="p in teams track by $index" data-field="{{p._id}}" class="center-align">
-                            {{p.label}}
+                        <th ng-repeat="p in series track by $index" class="center-align">
+                            {{p}}
                         </th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <td><b>Buts</b></td>
-                        <td ng-repeat="p in teams track by $index" data-field="{{p._id}}" class="center-align"><h3
+                        <td ng-repeat="p in events track by $index" class="center-align"><h3
                                 class="light-blue-text text-darken-1">
                             {{stats.goals[p._id] || 0}}</h3>
                             <p ng-if="(stats.originShoot[p._id]||0)>0">{{ (stats.goals[p._id] || 0) *100 /
@@ -64,43 +64,35 @@
                     </tr>
                     <tr>
                         <td><b>Sanctions</b></td>
-                        <td ng-repeat="p in teams track by $index" data-field="{{p._id}}" class="center-align">
+                        <td ng-repeat="p in events track by $index" data-field="{{p._id}}" class="center-align">
                             <h3 class="red-text text-darken-1">{{stats.sanctions[p._id] || 0}}</h3></td>
                     </tr>
                     </tbody>
                 </table>
                 <div class="row">
                     <div class="col s12 m6">
-                        <qaobee-radar-chart
-                                title="{{'stats.actionTab.attack' | translate}} {{'stats.actionTab.positive' | translate}}"
-                                owners="teamsIds" series="series"
-                                start-date="periodicityActive.startDate" meta="meta"
-                                end-date="periodicityActive.endDate"
-                                indicators="['penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec']"></qaobee-radar-chart>
+                        <qaobee-radar-chart title="{{'stats.actionTab.attack' | translate}} {{'stats.actionTab.positive' | translate}}" owners="eventsIds" series="series"
+                                            start-date="periodicityActive.startDate" meta="meta"
+                                            end-date="periodicityActive.endDate"
+                                            indicators="['penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec']"></qaobee-radar-chart>
                     </div>
                     <div class="col s12 m6">
-                        <qaobee-radar-chart
-                                title="{{'stats.actionTab.attack' | translate}} {{'stats.actionTab.negative' | translate}}"
-                                owners="teamsIds" series="series"
-                                start-date="periodicityActive.startDate" meta="meta"
-                                end-date="periodicityActive.endDate"
-                                indicators="['forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt']"></qaobee-radar-chart>
+                        <qaobee-radar-chart title="{{'stats.actionTab.attack' | translate}} {{'stats.actionTab.negative' | translate}}" owners="eventsIds" series="series"
+                                            start-date="periodicityActive.startDate" meta="meta"
+                                            end-date="periodicityActive.endDate"
+                                            indicators="['forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt']"></qaobee-radar-chart>
                     </div>
                     <div class="col s12 m6">
-                        <qaobee-radar-chart
-                                title="{{'stats.actionTab.defense' | translate}} {{'stats.actionTab.positive' | translate}}"
-                                owners="teamsIds" series="series"
-                                start-date="periodicityActive.startDate" meta="meta"
-                                end-date="periodicityActive.endDate"
-                                indicators="['neutralization', 'forceDef', 'contre', 'interceptionOk']"></qaobee-radar-chart>
+                        <qaobee-radar-chart title="{{'stats.actionTab.defense' | translate}} {{'stats.actionTab.positive' | translate}}" owners="eventsIds" series="series"
+                                            start-date="periodicityActive.startDate" meta="meta"
+                                            end-date="periodicityActive.endDate"
+                                            indicators="['neutralization', 'forceDef', 'contre', 'interceptionOk']"></qaobee-radar-chart>
                     </div>
                     <div class="col s12 m6">
-                        <qaobee-radar-chart
-                                title="{{'stats.actionTab.defense' | translate}} {{'stats.actionTab.negative' | translate}}"
-                                owners="teamsIds" series="series"
-                                start-date="periodicityActive.startDate" meta="meta"
-                                end-date="periodicityActive.endDate"
-                                indicators="['penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition']"></qaobee-radar-chart>
+                        <qaobee-radar-chart title="{{'stats.actionTab.defense' | translate}} {{'stats.actionTab.negative' | translate}}" owners="eventsIds" series="series"
+                                            start-date="periodicityActive.startDate" meta="meta"
+                                            end-date="periodicityActive.endDate"
+                                            indicators="['penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition']"></qaobee-radar-chart>
                     </div>
                 </div>
             </div>

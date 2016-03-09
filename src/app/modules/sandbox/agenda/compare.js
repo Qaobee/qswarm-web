@@ -1,24 +1,24 @@
 (function () {
     'use strict';
-    angular.module('qaobee.compare.players', [
+    angular.module('qaobee.compare.events', [
         'effectifSRV',
-        'statsSRV',
+        'eventsRestAPI',
         'statsRestAPI',
         'qaobee.commonsConfig'
     ]).config(function ($routeProvider, metaDatasProvider) {
 
-            $routeProvider.when('/private/players/compare', {
-                controller: 'ComparePlayerController',
+            $routeProvider.when('/private/agenda/compare/:effectiveId', {
+                controller: 'CompareEventsController',
                 resolve: {
                     user: metaDatasProvider.checkUser,
                     meta: metaDatasProvider.getMeta
                 },
-                templateUrl: 'app/modules/sandbox/effective/players/compare.html'
+                templateUrl: 'app/modules/sandbox/agenda/compare.html'
 
             });
         })
 
-        .factory('playerCompareService', function () {
+        .factory('eventCompareService', function () {
             var compareList = [];
             return {
                 get: function () {
@@ -33,10 +33,10 @@
             };
         })
 
-        .controller('ComparePlayerController', function ($scope, $translatePartialLoader, $log, $q, $filter, effectiveSrv, statsRestAPI, playerCompareService, user, meta, $window) {
+        .controller('CompareEventsController', function ($scope, $translatePartialLoader, $log, $q, $filter, eventsRestAPI, statsRestAPI, eventCompareService, user, meta, $window) {
             $scope.loading = true;
-            $scope.players = [];
-            $scope.playersIds = [];
+            $scope.events = [];
+            $scope.eventsIds = [];
             $scope.meta = meta;
             $scope.stats = {
                 goals: {},
@@ -44,6 +44,7 @@
                 originShoot: {}
             };
             $scope.series = [];
+            $scope.eventsIds = eventCompareService.get();
             $scope.periodicity = $scope.periodicity || 'season';
             $scope.periodicityActive = $scope.periodicityActive || {
                     label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
@@ -52,14 +53,16 @@
                     ownersId: $scope.ownersId
                 };
             $scope.periodicityActive.ownersId = $scope.periodicityActive.ownersId || $scope.ownersId;
-            $scope.selectedPlayerids = playerCompareService.get();
-            if ($scope.selectedPlayerids.length > 0) {
-                getPlayers($scope.selectedPlayerids, function (data) {
-                    $scope.players = data;
-                    $scope.series = $scope.players.map(function (p) {
-                        return p.firstname + ' ' + p.name;
+            if ($scope.eventsIds.length > 0) {
+                getEvents($scope.eventsIds, function (data) {
+                    if(data.error) {
+                        return;
+                    }
+                    $scope.events = data;
+                    $scope.series = $scope.events.map(function (p) {
+                        return p.label || p.type.label + ' ' + moment(p.startDate).format('LLLL');
                     });
-                    $scope.playersIds = $scope.players.map(function (p) {
+                    $scope.eventsIds = $scope.events.map(function (p) {
                         return p._id;
                     });
                     $scope.buildWidget();
@@ -73,14 +76,15 @@
             };
 
             $scope.buildWidget = function () {
-                if ($scope.selectedPlayerids.length === 0) {
+                if ($scope.eventsIds.length === 0) {
+                    $scope.loading = false;
                     return;
                 }
                 var listFieldsGroupBy = Array.create('code');
                 var promises = [];
                 var startDate = $scope.periodicityActive.startDate.valueOf();
                 var endDate = $scope.periodicityActive.endDate.valueOf();
-                $scope.selectedPlayerids.forEach(function (id) {
+                $scope.eventsIds.forEach(function (id) {
                     promises.push(statsRestAPI.getStatGroupBy({
                         listIndicators: Array.create('goalScored', 'goalConceded'),
                         listOwners: Array.create(id),
@@ -130,11 +134,35 @@
             };
 
             /* Retrieve current effective and list player */
-            function getPlayers(selectedPlayerids, callback) {
-                var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact');
+            function getEvents(eventsIds, callback) {
+                var requestEvent = {
+                    activityId: $scope.meta.activity._id,
+                    startDate: $scope.periodicityActive.startDate.valueOf(),
+                    endDate: $scope.periodicityActive.endDate.valueOf(),
+                    ownersandboxId: $scope.meta.sandbox._id,
+                    ownereffectiveId: $scope.effectiveId,
+                    type: ['cup', 'friendlyGame', 'championship', 'training']
+                };
 
-                effectiveSrv.getPersons(selectedPlayerids, listField).then(function (players) {
-                    callback(players);
+                eventsRestAPI.getListEvents(requestEvent).then(function (data) {
+                    if (angular.isArray(data.data) && data.data.length > 0) {
+                        var events = [];
+                        data.data.forEach(function (t) {
+                            if (eventsIds.any(t._id)) {
+                                events.push(t);
+                            }
+                        });
+                        events = events.sortBy(function (n) {
+                            return n.startDate;
+                        });
+
+                        events.forEach(function (a) {
+                            a.startDate = moment(a.startDate).format('LLLL');
+                        });
+                        callback(events);
+                    } else {
+                        callback();
+                    }
                 });
             }
 

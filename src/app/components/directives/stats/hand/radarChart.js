@@ -50,6 +50,7 @@
                         });
 
                         $q.all(promises).then(function () {
+                            $scope.data = [];
                             $scope.owners.forEach(function (id) {
                                 var datas = [];
                                 $scope.indicators.forEach(function (i) {

@@ -129,6 +129,10 @@
   },
   "compare": {
     "player-max": "Vous ne pouvez sélectionner que {{max}} joueurs",
-    "player-min" : "Vous devez sélectionner au moins un joueur"
+    "player-min" : "Vous devez sélectionner au moins un joueur",
+    "event-max" : "Vous ne pouvez sélectionner que {{max}} événements",
+    "event-min" : "Vous devez sélectionner au moins un événement",
+    "team-max" : "Vous ne pouvez sélectionner que {{max}} équipes",
+    "team-min" : "Vous devez sélectionner au moins une équipe"
   }
 }

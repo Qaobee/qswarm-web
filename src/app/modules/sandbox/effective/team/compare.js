@@ -33,7 +33,7 @@
             };
         })
 
-        .controller('TeamCompareController', function ($scope, $translatePartialLoader, $log, $q, $filter, teamRestAPI, statsRestAPI, statsSrv, teamCompareService, user, meta, $window, $routeParams) {
+        .controller('TeamCompareController', function ($scope, $translatePartialLoader, $log, $q, $filter, teamRestAPI, statsRestAPI, teamCompareService, user, meta, $window, $routeParams) {
             $scope.loading = true;
             $scope.effectiveId = $routeParams.effectiveId;
             $scope.teams = [];
@@ -46,6 +46,15 @@
             };
             $scope.series = [];
             $scope.selectedIds = teamCompareService.get();
+            $scope.periodicity = $scope.periodicity || 'season';
+            $scope.periodicityActive = $scope.periodicityActive || {
+                    label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
+                    startDate: moment($scope.meta.season.startDate),
+                    endDate: moment($scope.meta.season.endDate),
+                    ownersId: $scope.ownersId
+                };
+            $scope.periodicityActive.ownersId = $scope.periodicityActive.ownersId || $scope.ownersId;
+
             if ($scope.selectedIds.length > 0) {
                 getTeams($scope.selectedIds, function (data) {
                     $scope.teams = data;
@@ -66,14 +75,6 @@
             };
 
             $scope.buildWidget = function () {
-                $scope.periodicity = $scope.periodicity || 'season';
-                $scope.periodicityActive = $scope.periodicityActive || {
-                        label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
-                        startDate: moment($scope.meta.season.startDate),
-                        endDate: moment($scope.meta.season.endDate),
-                        ownersId: $scope.ownersId
-                    };
-                $scope.periodicityActive.ownersId = $scope.periodicityActive.ownersId || $scope.ownersId;
                 if ($scope.teamsIds.length === 0) {
                     return;
                 }
@@ -82,21 +83,42 @@
                 var startDate = $scope.periodicityActive.startDate.valueOf();
                 var endDate = $scope.periodicityActive.endDate.valueOf();
                 $scope.selectedIds.forEach(function (id) {
-                    promises.push(statsSrv.countAllInstanceIndicators(Array.create('goalScored', 'goalConceded'), Array.create(id), startDate, endDate, listFieldsGroupBy).then(function (data) {
+                    promises.push(statsRestAPI.getStatGroupBy({
+                        listIndicators: Array.create('goalScored', 'goalConceded'),
+                        listOwners: Array.create(id),
+                        startDate: startDate.valueOf(),
+                        endDate: endDate.valueOf(),
+                        aggregat: 'COUNT',
+                        listFieldsGroupBy: listFieldsGroupBy
+                    }).then(function (data) {
                         if (angular.isArray(data.data) && data.data.length > 0) {
                             data.data.forEach(function (a) {
                                 $scope.stats.goals[data.config.data.listOwners[0]] = a.value;
                             });
                         }
                     }));
-                    promises.push(statsSrv.countAllInstanceIndicators(Array.create('originShootAtt', 'originShootDef'), Array.create(id), startDate, endDate, listFieldsGroupBy).then(function (data) {
+                    promises.push(statsRestAPI.getStatGroupBy({
+                        listIndicators: Array.create('originShootAtt', 'originShootDef'),
+                        listOwners: Array.create(id),
+                        startDate: startDate.valueOf(),
+                        endDate: endDate.valueOf(),
+                        aggregat: 'COUNT',
+                        listFieldsGroupBy: listFieldsGroupBy
+                    }).then(function (data) {
                         if (angular.isArray(data.data) && data.data.length > 0) {
                             data.data.forEach(function (a) {
                                 $scope.stats.originShoot[data.config.data.listOwners[0]] = a.value;
                             });
                         }
                     }));
-                    promises.push(statsSrv.countAllInstanceIndicators(Array.create('yellowCard', 'exclTmp', 'redCard'), Array.create(id), startDate, endDate, listFieldsGroupBy).then(function (data) {
+                    promises.push(statsRestAPI.getStatGroupBy({
+                        listIndicators: Array.create('yellowCard', 'exclTmp', 'redCard'),
+                        listOwners: Array.create(id),
+                        startDate: startDate.valueOf(),
+                        endDate: endDate.valueOf(),
+                        aggregat: 'COUNT',
+                        listFieldsGroupBy: listFieldsGroupBy
+                    }).then(function (data) {
                         if (angular.isArray(data.data) && data.data.length > 0) {
                             data.data.forEach(function (a) {
                                 $scope.stats.sanctions[data.config.data.listOwners[0]] = a.value;
