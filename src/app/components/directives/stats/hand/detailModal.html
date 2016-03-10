@@ -5,8 +5,7 @@
 <div id="{{uid}}" class="modal">
     <div class="modal-content compare-modale">
         <form name="myForm">
-            <h4 ng-bind="title"></h4>
-            <div class="row">
+            <div class="row colorMain white-text">
                 <div class="input-field col m2 s4">
                     <label for="currentIndicator" translate="stats.label.indicator"></label>
                 </div>
@@ -16,10 +15,10 @@
                             {{'stats.label.' + i | translate}}
                         </option>
                     </select>
+                    <br>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col s12">
+                <div class="input-field col m6 s12"><h4 ng-bind="title"></h4></div>
+                <div>
                     <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive"
                                      meta="meta"></filter-calendar>
                 </div>

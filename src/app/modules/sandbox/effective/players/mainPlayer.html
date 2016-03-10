@@ -12,11 +12,13 @@
             <h5 class="blue-grey-text text-darken-2">{{'mainPlayer.title' | translate }} {{currentEffective.label}}</h5>
         </div>
 
-        <div class="col s2 center-align">
+        <div class="col s1 center-align">
             <a href="#/private/addPlayer/{{meta._id}}" class="red-text text-lighten-1"
                title="{{'mainEffective.buttons.addPlayer' | translate}}">
                 <i class="material-icons md-48">person_add</i>&nbsp;
             </a>
+        </div>
+        <div class="col s1 center-align">
             <a ng-click="compare()" class="red-text text-lighten-1"
                href="" title="{{'mainEffective.buttons.compare' | translate}}">
                 <i class="material-icons md-48">recent_actors</i>&nbsp;
@@ -33,15 +35,15 @@
         </div>
 
         <div class="col s12 center-align">
+            
             <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-                <a href="#/private/addPlayer/{{meta._id}}" class="btn-floating btn-large red lighten-1">
-                    <i class="material-icons md-24">person_add</i>&nbsp;
+                <a class="btn-floating btn-large red lighten-1">
+                  <i class="large material-icons">more</i>
                 </a>
-            </div>
-            <div class="fixed-action-btn" style="bottom: 45px; right: 94px;">
-                <button ng-click="compare()" class="btn-floating btn-large red lighten-1">
-                    <i class="material-icons md-24">recent_actors</i>
-                </button>
+                <ul>
+                  <li><a href="#/private/addPlayer/{{meta._id}}" class="btn-floating red lighten-1"><i class="material-icons md-24">person_add</i></a></li>
+                  <li><a ng-click="compare()" class="btn-floating red lighten-1"><i class="material-icons md-24">recent_actors</i></a></li>
+                </ul>
             </div>
         </div>
     </div>
@@ -65,12 +67,7 @@
             <li class="col l4 m6 s12" ng-repeat="player in players | filter:queryPlayer">
                 <div class="card white blue-grey-text text-darken-2">
                     <div class="card-content center-align colorMain">
-                        <div class="left">
-                            <input type="checkbox" ng-model="compareList[player._id]" name="compare"
-                                   ng-change="updatePlayerToCompare(player._id)"
-                                   ng-checked="compareList[player._id]" id="compare-{{player._id}}"/>
-                            <label for="compare-{{player._id}}"></label>
-                        </div>
+                        
                         <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}" class="white-text">{{player.firstname}}
                             {{player.name}}</a></span>
                         <a href="#/private/viewPlayer/{{player._id}}">
@@ -92,6 +89,13 @@
                            class="btn waves-effect waves-light red lighten-1 white-text">
                             <i class="fa fa-bar-chart"></i>
                         </a>
+                        
+                        <div class="right">
+                            <input type="checkbox" ng-model="compareList[player._id]" name="compare"
+                                   ng-change="updatePlayerToCompare(player._id)"
+                                   ng-checked="compareList[player._id]" id="compare-{{player._id}}"/>
+                            <label for="compare-{{player._id}}"></label>
+                        </div>
                     </div>
                 </div>
             </li>
