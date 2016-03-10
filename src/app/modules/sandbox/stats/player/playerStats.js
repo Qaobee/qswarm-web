@@ -45,7 +45,9 @@
             $scope.meta = meta;
             $scope.player = {};
             $scope.ownersId = [];
+            $scope.series = [];
             $scope.ownersId.push($routeParams.playerId);
+            $scope.playersIds = $scope.ownersId;
 
             // return button
             $scope.doTheBack = function () {
@@ -111,6 +113,8 @@
                     } else {
                         $scope.player.positionType = '';
                     }
+                    
+                     $scope.series.push($scope.player.firstname + ' ' + $scope.player.name)
                 });
             };
 
