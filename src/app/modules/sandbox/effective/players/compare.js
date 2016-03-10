@@ -34,6 +34,9 @@
         })
 
         .controller('ComparePlayerController', function ($scope, $translatePartialLoader, $log, $q, $filter, effectiveSrv, statsRestAPI, playerCompareService, user, meta, $window) {
+            $translatePartialLoader.addPart('effective');
+            $translatePartialLoader.addPart('commons');
+            $translatePartialLoader.addPart('stats');
             $scope.loading = true;
             $scope.players = [];
             $scope.playersIds = [];
