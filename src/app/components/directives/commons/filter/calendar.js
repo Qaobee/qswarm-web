@@ -12,7 +12,7 @@
 
     angular.module('qaobee.filterCalendar', ['qaobee.eventbus'])
 
-        .directive('filterCalendar', function ($translatePartialLoader /*, $log, $q, $filter, qeventbus */) {
+        .directive('filterCalendar', function ($translatePartialLoader , $log, $q, $filter, qeventbus) {
             return {
                 restrict: 'E',
                 scope: {

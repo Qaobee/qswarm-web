@@ -40,7 +40,8 @@
             'qaobee.config',
             'qaobee.eventbus',
             'qaobee.httpModule',
-
+            'qaobee.widgets',
+            'ui.dashboard',
             /* qaobee modules */
             'qaobee.public',
             'qaobee.home',

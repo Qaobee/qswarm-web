@@ -124,7 +124,7 @@
                 if (user.periodicityActive) {
                     $scope.getEvents(moment(user.periodicityActive.startDate, 'DD/MM/YYYY').valueOf(), moment(user.periodicityActive.endDate, 'DD/MM/YYYY').valueOf());
                 }
-            }
+            };
 
             /* Retrieve list events */
             $scope.getEvents = function (startDate, endDate) {

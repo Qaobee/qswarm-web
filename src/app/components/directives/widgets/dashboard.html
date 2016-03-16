@@ -1,0 +1,68 @@
+<div>
+    <div ng-if="!options.hideToolbar">
+        <div ng-if="!options.widgetButtons">
+           <span class="dropdown" on-toggle="toggled(open)">
+             <button type="button" class="waves-effect waves-light btn dropdown-toggle" data-toggle="dropdown">
+                 Button dropdown <span class="caret"></span>
+             </button>
+             <ul class="dropdown-menu" role="menu">
+                 <li ng-repeat="widget in widgetDefs">
+                     <a href="#" ng-click="addWidgetInternal($event, widget);" class="dropdown-toggle"><span
+                             class="label label-primary">{{widget.name}}</span></a>
+                 </li>
+             </ul>
+           </span>
+        </div>
+
+        <div class="container">
+      <span ng-if="options.widgetButtons">
+        <button ng-repeat="widget in widgetDefs"
+                ng-click="addWidgetInternal($event, widget);" type="button" class="waves-effect waves-light btn">
+            {{widget.name}}
+        </button>
+      </span>
+            <button class="waves-effect waves-light btn" ng-click="resetWidgetsToDefault()"><i
+                    class="material-icons">refresh</i></button>
+
+            <button ng-if="options.storage && options.explicitSave" ng-click="options.saveDashboard()"
+                    class="waves-effect waves-light btn" ng-disabled="!options.unsavedChangeCount">{{
+                !options.unsavedChangeCount
+                ? "all saved" : "<i class=\"material-icons\">save</i> (" + options.unsavedChangeCount + ")" }}
+            </button>
+
+            <button ng-click="clear();" type="button" class="waves-effect waves-light btn"><i
+                    class="material-icons">delete</i></button>
+        </div>
+    </div>
+
+    <div ui-sortable="sortableOptions" ng-model="widgets" class="dashboard-widget-area">
+        <div ng-repeat="widget in widgets" ng-style="widget.containerStyle" class="widget-container" widget>
+            <div class="widget card" ng-class="widget.class">
+                <div class="widget-header card-content">
+                    <h3 class="card-title">
+          <span class="widget-title" ng-dblclick="editTitle(widget)"
+                ng-hide="widget.editingTitle" translate="{{widget.title}}"></span>
+                        <form action="" class="widget-title" ng-show="widget.editingTitle"
+                              ng-submit="saveTitleEdit(widget)">
+                            <div class="input-field col s12" >
+                                <input type="text" ng-model="widget.title" ng-class="widget.class" />
+                            </div>
+                        </form>
+                        <span ng-if="!options.hideWidgetName">{{widget.name}}</span>
+                        <span ng-click="removeWidget(widget);" ng-if="!options.hideWidgetClose"><i
+                                class="material-icons">close</i></span>
+          <span ng-click="widget.contentStyle.display = widget.contentStyle.display === 'none' ? 'block' : 'none'">
+            <i class="material-icons">{{ widget.contentStyle.display ===
+                'none'?'arrow_drop_up':''}}{{widget.contentStyle.display
+                !== 'none'?'arrow_drop_down':''}}</i>
+               </span>
+                    </h3>
+                    <div class="widget-content" ng-style="widget.contentStyle" style="overflow-y: auto;"></div>
+                </div>
+                <div class="widget-ew-resizer" ng-mousedown="grabResizer($event)"></div>
+                <div ng-if="widget.enableVerticalResize" class="widget-s-resizer"
+                     ng-mousedown="grabSouthResizer($event)"></div>
+            </div>
+        </div>
+    </div>
+</div>

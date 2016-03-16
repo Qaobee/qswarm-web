@@ -1,6 +1,7 @@
 {
 	"mainAgenda" : {
-		"title" : "Agenda", 
+		"title" : "Agenda",
+		"next_event" : "Prochains événements",
 		"buttons" : {
 			"addEvent" : "Ajouter un évènement", 
 			"updateEvent" : "Editer un évènement", 

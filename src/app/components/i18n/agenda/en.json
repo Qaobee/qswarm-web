@@ -1,6 +1,7 @@
 {
     "mainAgenda": {
         "title": "Planning",
+        "next_event" : "Next events",
         "buttons" : {
             "addEvent": "Add event",
             "updateEvent": "Update event",
