@@ -509,6 +509,8 @@ table.super-fancy tr.foobar {
     font-weight: normal;
     font-size: larger;
     background: #43A047 none;
+    left: 60px;
+    right: auto;
 }
 
 .feedback-buttons {
