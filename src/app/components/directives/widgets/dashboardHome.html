@@ -18,7 +18,7 @@
             <span ng-if="options.widgetButtons">
                 <button ng-repeat="widget in widgetDefs"
                     style="margin: 1px" ng-click="addWidgetInternal($event, widget);" class="waves-effect waves-light colorAccent btn">
-                {{widget.name}}
+                {{widget.name | translate}}
                 </button>
             </span>
             <button class="waves-effect waves-light btn" ng-click="resetWidgetsToDefault()"><i

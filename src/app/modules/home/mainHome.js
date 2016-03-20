@@ -63,6 +63,19 @@
             $scope.indexEvent = 0;
             $scope.currentEvent = {};
             $scope.mapShow = false;
+        
+            if (!user.periodicity) {
+                $scope.periodicity = 'season';
+                $scope.periodicityActive = {
+                    label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
+                    startDate: moment($scope.meta.season.startDate),
+                    endDate: moment($scope.meta.season.endDate),
+                    ownersId: $scope.ownersId
+                };
+            } else {
+                $scope.periodicity = user.periodicity;
+                $scope.periodicityActive = user.periodicityActive;
+            }
 
             /* Collectes */
             $scope.collectes = [];

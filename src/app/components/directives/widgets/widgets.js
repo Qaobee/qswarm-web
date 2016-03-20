@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('qaobee.widgets', ['qaobee.widgets.agenda'])
+    angular.module('qaobee.widgets', ['qaobee.widgets.agenda', 'qaobee.widgets.topStriker'])
         .factory('widgetDefinitions', function () {
             return {
                 get: function () {
@@ -21,10 +21,10 @@
                         },
                         
                         {
-                            name: 'agenda2',
-                            directive: 'widget-calendar',
+                            name: 'Top but',
+                            directive: 'widget-top-striker',
                             class: 'colorMain white-text',
-                            title: 'mainAgenda.next_event',
+                            title: 'dashboard.widgetTopScored.title',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user'
@@ -38,6 +38,7 @@
             };
         })
         .value('defaultWidgets', [
-            {name: 'agenda'}
+            {name: 'agenda'},
+            {name: 'Top but'}
         ]);
 })();

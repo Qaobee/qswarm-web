@@ -1,0 +1,32 @@
+<!-- cup, championship, friendly game -->
+<div class="card">
+    <div class="{{color1}} {{textColor1}}">
+        <h5 class="card-content center {{color2}} {{textColor2}}">
+            <span class="left"><i class="material-icons">{{icon}}</i></span>
+            <span>{{title | translate }}</span>
+            <span class="right" ng-hide="isCollected">
+                <a href="#/private/updateEvent/{{event._id}}" class="{{textColor2}} waves-effect waves-light"><i
+                        class="material-icons">mode_edit</i></a>
+            </span>
+            <span class="right" ng-show="isCollected">
+                <a href="#/private/eventStats/{{collectId}}" class="{{textColor2}} waves-effect waves-light"><i
+                        class="fa fa-bar-chart"></i></a>
+                <span ng-if="hasCompare">&nbsp;
+                    <input type="checkbox" ng-model="compareList[event._id]" name="compare"
+                           ng-change="updateEventToCompare(event._id)"
+                           ng-checked="compareList[event._id]" id="compare-{{event._id}}"/>
+                    <label for="compare-{{event._id}}"></label>
+                </span>
+            </span>
+        </h5>
+
+        <div class="card-content">&nbsp; {{event.participants.teamHome.label}} <br/> &nbsp;
+            {{event.participants.teamVisitor.label}}
+        </div>
+        <div class="card-content">{{event.startDate}}
+            <a ng-show="mapShow" class="waves-effect waves-light {{textColor1}} right" ng-click="openMap()">
+                <i class="material-icons">location_on</i>
+            </a>
+        </div>
+    </div>
+</div>
