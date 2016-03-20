@@ -86,7 +86,7 @@
                         <span class="hide-on-med-and-down" translate="headerMenu.calendar"></span></a>
                     </li>
 
-                    <li class="right"><a ng-click="logoff()" href="!#"><i class="white-text fa fa-power-off"></i></a>
+                    <li class="right"><a ng-click="logoff()" href="javascript:void(0);"><i class="white-text fa fa-power-off"></i></a>
                     </li>
 
                     <li class="right"><a href="#/private/profile" class="white-text"><i class="material-icons left">portrait</i>
@@ -142,7 +142,7 @@
                     </li>
 
                     <li>
-                        <a ng-click="logoff()" class="white-text">
+                        <a ng-click="logoff()" href="javascript:void(0);" class="white-text">
                             <i class="mdi-action-exit-to-app left"></i> {{'navbar.disconnect' | translate}}
                         </a>
                     </li>
@@ -282,7 +282,7 @@
 
 
         <p>{{n.content}}</p>
-        <a href="" ng-click="markAsRead(n._id)" class="right"><i class="tiny material-icons" ng-if="n.read">visibility_off</i><i class="tiny material-icons" ng-if="!n.read">visibility</i></a>
-        <a href="" ng-click="deleteNotification(n._id)" class="right"><i class="tiny material-icons" >delete</i></a>
+        <a href="javascript:void(0);" ng-click="markAsRead(n._id)" class="right"><i class="tiny material-icons" ng-if="n.read">visibility_off</i><i class="tiny material-icons" ng-if="!n.read">visibility</i></a>
+        <a href="javascript:void(0);" ng-click="deleteNotification(n._id)" class="right"><i class="tiny material-icons" >delete</i></a>
     </li>
 </ul>

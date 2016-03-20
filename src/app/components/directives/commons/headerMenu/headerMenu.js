@@ -37,15 +37,23 @@
                     $translatePartialLoader.addPart('user');
                     $scope.signin = {};
                     $scope.notifications = {
-                        unread : 0,
-                        datas : []
+                        unread: 0,
+                        datas: []
                     };
+                    /**
+                     *
+                     * @param viewLocation
+                     * @returns {boolean}
+                     */
                     $scope.isActive = function (viewLocation) {
                         return viewLocation === $location.path();
                     };
 
-                    var eb = new vertx.EventBus(EnvironmentConfig.apiEndPoint +'/eventbus');
+                    var eb = new vertx.EventBus(EnvironmentConfig.apiEndPoint + '/eventbus');
 
+                    /**
+                     *
+                     */
                     function getNotifications() {
                         notificationsRestAPI.getUserNotifications(10).then(function (data) {
                             $scope.notifications.datas = data.data;
@@ -55,21 +63,56 @@
                         });
                     }
 
-                    eb.onopen = function() {
-                        eb.registerHandler('qaobee.notification', function(message) {
+                    /**
+                     *
+                     * @param id
+                     * @returns {boolean}
+                     */
+                    $scope.markAsRead = function (id) {
+                        notificationsRestAPI.markAsRead(id).then(function (data) {
+                            if (data.data.status) {
+                                getNotifications();
+                            }
+                        });
+                        return false;
+                    };
+
+                    /**
+                     *
+                     * @param id
+                     * @returns {boolean}
+                     */
+                    $scope.deleteNotification = function (id) {
+                        notificationsRestAPI.del(id).then(function (data) {
+                            if (data.data.status) {
+                                getNotifications();
+                            }
+                        });
+                        return false;
+                    };
+
+                    /**
+                     *
+                     */
+                    eb.onopen = function () {
+                        eb.registerHandler('qaobee.notification', function (message) {
                             $scope.notifications.unread = $scope.notifications.unread + 1;
                             toastr.info(message.title, message.content);
                             getNotifications();
                         });
                     };
-                    eb.onclose = function() {
+
+                    /**
+                     *
+                     */
+                    eb.onclose = function () {
                         eb = null;
                     };
 
                     /*****************************************
                      * Gestion de la bannière de téléchargement de l'appli mobile
                      */
-                        // Par défaut, on n'affiche pas la bannière
+                    // Par défaut, on n'affiche pas la bannière
                     $scope.showBanner = false;
                     if (deviceDetector.os === 'android') {
                         var cookieDownload = $cookies.get('downloadApp');
@@ -77,15 +120,26 @@
                             $scope.showBanner = true;
                         }
                     }
+                    /**
+                     *
+                     * @param avatar
+                     * @returns {string}
+                     */
                     $scope.getAvatar = function (avatar) {
                         return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/' + $scope.collection + '/' + avatar : 'assets/images/user.png';
                     };
                     // Si fermeture par clic sur Croix, cookie de téléchargement KO
+                    /**
+                     *
+                     */
                     $scope.closeBanner = function () {
                         $cookies.put('downloadApp', "dlKO");
                         $scope.showBanner = false;
                     };
                     // Si clic sur download, cookie de téléchargement OK + redirection
+                    /**
+                     *
+                     */
                     $scope.openDownload = function () {
                         $cookies.put('downloadApp', "dlOK");
                         $window.location.href = 'https://play.google.com/apps/testing/com.qaobee.qswarm.hand';
@@ -124,11 +178,18 @@
 
                     });
 
+                    /**
+                     *
+                     * @returns {boolean}
+                     */
                     $scope.openSignup = function () {
                         $location.path('/signupStart');
                         return false;
                     };
 
+                    /**
+                     * 
+                     */
                     $scope.openLogin = function () {
                         angular.element('#modalLogin').openModal();
                     };
