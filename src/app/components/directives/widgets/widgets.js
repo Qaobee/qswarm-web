@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('qaobee.widgets', ['qaobee.widgets.agenda', 'qaobee.widgets.topStriker'])
+    angular.module('qaobee.widgets', ['qaobee.widgets.agenda', 'qaobee.widgets.podium'])
         .factory('widgetDefinitions', function () {
             return {
                 get: function () {
@@ -19,13 +19,31 @@
                                 height : '200px'
                             }
                         },{
-                            name: 'Top but',
-                            directive: 'widget-top-striker',
+                            name: 'Top buteurs',
+                            directive: 'widget-podium',
                             class: 'colorMain white-text',
                             title: 'dashboard.widgetTopScored.title',
                             attrs: {
                                 meta: 'meta',
-                                user: 'user'
+                                user: 'user',
+                                indicator:'goalScored',
+                                nbitem: 3,
+                                stataggregat: 'COUNT'
+                            },
+                            size: {
+                                height : '200px'
+                            }
+                        },{
+                            name: 'Temps de jeu',
+                            directive: 'widget-podium',
+                            class: 'colorMain white-text',
+                            title: 'dashboard.widgetTopUsed.title',
+                            attrs: {
+                                meta: 'meta',
+                                user: 'user',
+                                indicator:'playTime',
+                                nbitem: 3,
+                                stataggregat: 'SUM'
                             },
                             size: {
                                 height : '200px'
@@ -37,6 +55,7 @@
         })
         .value('defaultWidgets', [
             {name: 'agenda'},
-            {name: 'Top but'}
+            {name: 'Top buteurs'},
+            {name: 'Temps de jeu'}
         ]);
 })();
