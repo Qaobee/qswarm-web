@@ -21,12 +21,14 @@
             /* qaobee services */
             'qaobee.eventbus',
             'ng.deviceDetector',
-
+            'notificationsRestAPI',
             /* qaobee Rest API */
             'userRestAPI',
             'signupRestAPI'
         ])
-        .directive('headerMenu', function (qeventbus, userRestAPI, signupRestAPI, $rootScope, $cookieStore, $cookies, $location, $window, $log, $translatePartialLoader, $filter, deviceDetector) {
+        .directive('headerMenu', function (qeventbus, userRestAPI, signupRestAPI, $rootScope, $cookieStore, $cookies,
+                                           $location, $window, $log, $translatePartialLoader, $filter, deviceDetector,
+                                           notificationsRestAPI, EnvironmentConfig) {
             return {
                 restrict: 'AE',
                 controller: function ($scope) {
@@ -34,8 +36,34 @@
                     $translatePartialLoader.addPart('menu');
                     $translatePartialLoader.addPart('user');
                     $scope.signin = {};
+                    $scope.notifications = {
+                        unread : 0,
+                        datas : []
+                    };
                     $scope.isActive = function (viewLocation) {
                         return viewLocation === $location.path();
+                    };
+
+                    var eb = new vertx.EventBus(EnvironmentConfig.apiEndPoint +'/eventbus');
+
+                    function getNotifications() {
+                        notificationsRestAPI.getUserNotifications(10).then(function (data) {
+                            $scope.notifications.datas = data.data;
+                            $scope.notifications.unread = data.data.count(function (n) {
+                                return !n.read;
+                            });
+                        });
+                    }
+
+                    eb.onopen = function() {
+                        eb.registerHandler('qaobee.notification', function(message) {
+                            $scope.notifications.unread = $scope.notifications.unread + 1;
+                            toastr.info(message.title, message.content);
+                            getNotifications();
+                        });
+                    };
+                    eb.onclose = function() {
+                        eb = null;
                     };
 
                     /*****************************************
@@ -49,6 +77,9 @@
                             $scope.showBanner = true;
                         }
                     }
+                    $scope.getAvatar = function (avatar) {
+                        return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/' + $scope.collection + '/' + avatar : 'assets/images/user.png';
+                    };
                     // Si fermeture par clic sur Croix, cookie de téléchargement KO
                     $scope.closeBanner = function () {
                         $cookies.put('downloadApp', "dlKO");
@@ -251,7 +282,7 @@
                             toastr.error(error.message);
                         });
                     };
-
+                    getNotifications();
                 },
                 templateUrl: 'app/components/directives/commons/headerMenu/headerMenu.html'
             };

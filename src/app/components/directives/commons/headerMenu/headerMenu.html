@@ -1,16 +1,19 @@
 <!-- Bannière Download appli mobile -->
 <div class="banner-container" ng-if="showBanner">
-	<div class="row valign-wrapper">
-		<div class="col s1" ng-click="closeBanner()"><span class="banner-close"> <i class="material-icons prefix">close</i></span></div>
-		<div class="col s3" ng-click="openDownload()"><a class="banner-img-dl"><img src="assets/images/logo-download.png"/></a></div>
-		<div class="col s4">
-			<p class="banner-appl">
-			<span class="banner-appl-title">QSwarm Hand</span><br>
-			<span class="banner-appl-author">Qaobee</span>
-			</p>
-		</div>
-		<div class="col s4"><a href="https://play.google.com/apps/testing/com.qaobee.qswarm.hand" class="banner-btn-dl">Télécharger</a></div>
-	</div>
+    <div class="row valign-wrapper">
+        <div class="col s1" ng-click="closeBanner()"><span class="banner-close"> <i
+                class="material-icons prefix">close</i></span></div>
+        <div class="col s3" ng-click="openDownload()"><a class="banner-img-dl"><img
+                src="assets/images/logo-download.png"/></a></div>
+        <div class="col s4">
+            <p class="banner-appl">
+                <span class="banner-appl-title">QSwarm Hand</span><br>
+                <span class="banner-appl-author">Qaobee</span>
+            </p>
+        </div>
+        <div class="col s4"><a href="https://play.google.com/apps/testing/com.qaobee.qswarm.hand" class="banner-btn-dl">Télécharger</a>
+        </div>
+    </div>
 </div>
 
 <!-- Menu Not connected -->
@@ -44,15 +47,15 @@
             <ul id="nav-mobileHC" class="side-nav">
                 <li ng-show="signupAvailable">
                     <a class="blue-grey-text text-darken-2" ng-click="openSignup()">
-                        {{'navbar.signup' | translate}} 
+                        {{'navbar.signup' | translate}}
                     </a>
                 </li>
                 <li>
                     <a class="blue-grey-text text-darken-2" ng-click="openLogin()">
-                        {{'navbar.connect' | translate}}  
+                        {{'navbar.connect' | translate}}
                     </a>
                 </li>
-            </ul>   
+            </ul>
             <!-- menu mobile end -->
         </div>
     </div>
@@ -68,28 +71,41 @@
                     <li class="left"><a href="#/private/"><i class="fa fa-home left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.dashboard"></span></a>
                     </li>
-                    
-                    <li class="left"><a href="#/private/players/{{user.effectiveDefault}}"><i class="material-icons left">person</i>
+
+                    <li class="left"><a href="#/private/players/{{user.effectiveDefault}}"><i
+                            class="material-icons left">person</i>
                         <span class="hide-on-med-and-down" translate="headerMenu.players"></span></a>
                     </li>
-                    
+
                     <li class="left"><a href="#/private/teams/{{user.effectiveDefault}}"><i class="material-icons left">group</i>
                         <span class="hide-on-med-and-down" translate="headerMenu.teams"></span></a>
                     </li>
-                    
-                    <li class="left"><a href="#/private/agenda/{{user.effectiveDefault}}"><i class="fa fa-calendar left"></i>
+
+                    <li class="left"><a href="#/private/agenda/{{user.effectiveDefault}}"><i
+                            class="fa fa-calendar left"></i>
                         <span class="hide-on-med-and-down" translate="headerMenu.calendar"></span></a>
                     </li>
-                
-                    <li class="right"><a ng-click="logoff()" href="!#"><i class="white-text fa fa-power-off"></i></a></li>
-                    
+
+                    <li class="right"><a ng-click="logoff()" href="!#"><i class="white-text fa fa-power-off"></i></a>
+                    </li>
+
                     <li class="right"><a href="#/private/profile" class="white-text"><i class="material-icons left">portrait</i>
                         <span class="hide-on-med-and-down">{{user.firstname}} {{user.name}}</span></a>
                     </li>
+                    <li class="right">
+                        <a class='dropdown-button' data-beloworigin="true" dropdown data-alignment="right"
+                           href='javascript:void(0);' data-constrainWidth="false" data-activates='notificationDropdown'
+                           data-hover="false">
+                            <i class="material-icons left">email</i>
+                            <span class="new badge" ng-show="notifications.unread > 0">{{notifications.unread}}</span>
+                        </a>
+                    </li>
+
                 </ul>
-                
+
                 <!-- Mobile navigation hamburger -->
-                <a href="#" data-activates="nav-mobile" class="button-collapse white-text"><i class="mdi-navigation-menu left"></i></a>
+                <a href="#" data-activates="nav-mobile" class="button-collapse white-text"><i
+                        class="mdi-navigation-menu left"></i></a>
 
                 <!-- Mobile navigation -->
                 <ul id="nav-mobile" class="side-nav blue-grey darken-2">
@@ -99,31 +115,32 @@
                         </a>
                     </li>
                     <li class="divider"></li>
-                                        
+
                     <li>
                         <a href="#/private/players/{{user.effectiveDefault}}" class="white-text light">
                             <i class="mdi-social-person left"></i> {{'headerMenu.players' | translate }}
                         </a>
                     </li>
-                    
+
                     <li>
                         <a href="#/private/teams/{{user.effectiveDefault}}" class="white-text light">
                             <i class="mdi-social-group left"></i> {{'headerMenu.teams' | translate }}
                         </a>
                     </li>
-                    
+
                     <li>
                         <a href="#/private/agenda/{{user.effectiveDefault}}" class="white-text light">
                             <i class="mdi-action-view-agenda left"></i> {{'headerMenu.calendar' | translate }}
                         </a>
                     </li>
-                    
+
                     <li class="divider"></li>
-                    
+
                     <li>
-                        <a href="#/private/profile" class="white-text"><i class="mdi-social-person-outline left"></i>{{user.firstname}} {{user.name}}</a>
+                        <a href="#/private/profile" class="white-text"><i class="mdi-social-person-outline left"></i>{{user.firstname}}
+                            {{user.name}}</a>
                     </li>
-                    
+
                     <li>
                         <a ng-click="logoff()" class="white-text">
                             <i class="mdi-action-exit-to-app left"></i> {{'navbar.disconnect' | translate}}
@@ -179,7 +196,7 @@
                 </div>
             </div>
             <div class="row">
-            	<div><a href="" ng-click="openForgotPwd()">{{'content.login.label.forgotpasswd' | translate }}</a></div>
+                <div><a href="" ng-click="openForgotPwd()">{{'content.login.label.forgotpasswd' | translate }}</a></div>
             </div>
         </div>
 
@@ -205,12 +222,12 @@
     <form class="col s12" ng-submit="renewPwd()">
         <div class="modal-content grey lighten-3 ">
             <div class="row">
-            	<div class="col s12">
-            		<h6><span translate="content.login.label.forgotpasswdmess"></span></h6>
-            	</div>
+                <div class="col s12">
+                    <h6><span translate="content.login.label.forgotpasswdmess"></span></h6>
+                </div>
             </div>
             <div class="row">
-            	<div class="col m3 hide-on-small">&nbsp;</div>
+                <div class="col m3 hide-on-small">&nbsp;</div>
                 <div class="input-field col s12 m6">
                     <input id="modal-login" type="text" class="validate" ng-model="infos.login" required>
                     <label for="modal-login">{{'content.login.label.login' | translate }}</label>
@@ -248,6 +265,24 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#/" class="modal-action modal-close waves-effect waves-red btn green darken-1" translate="commons.buttons.close"></a>
+        <a href="#/" class="modal-action modal-close waves-effect waves-red btn green darken-1"
+           translate="commons.buttons.close"></a>
     </div>
 </div>
+<ul id='notificationDropdown' class='notification dropdown-content collection'
+    ng-if="notifications.datas.length > 0">
+    <li ng-repeat="n in notifications.datas" class="collection-item avatar">
+        <img ng-src="{{getAvatar(n.from_user_id.avatar)}}" alt="" class="circle">
+        <span class="title">{{n.title}} </span>
+        <p>
+            <small>{{n.from_user_id.firstname}} {{n.from_user_id.name}}
+                ({{n.timestamp | date : 'short'}})
+            </small>
+        </p>
+
+
+        <p>{{n.content}}</p>
+        <a href="" ng-click="markAsRead(n._id)" class="right"><i class="tiny material-icons" ng-if="n.read">visibility_off</i><i class="tiny material-icons" ng-if="!n.read">visibility</i></a>
+        <a href="" ng-click="deleteNotification(n._id)" class="right"><i class="tiny material-icons" >delete</i></a>
+    </li>
+</ul>

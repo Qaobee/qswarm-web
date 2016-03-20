@@ -56,7 +56,8 @@
     "pickadate": "~3.5.6",
     "angular-send-feedback": "Giwi/angular-feedback#~1.0.3",
     "malhar-angular-dashboard": "Giwi/malhar-angular-dashboard#~2.0.2",
-    "angular-google-analytics": "~1.1.6"
+    "angular-google-analytics": "~1.1.6",
+    "vertxbus": "*"
   },
   "resolutions": {
     "angular": "1.4.0-rc.2",
