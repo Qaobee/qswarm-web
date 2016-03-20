@@ -18,9 +18,7 @@
                             size: {
                                 height : '200px'
                             }
-                        },
-                        
-                        {
+                        },{
                             name: 'Top but',
                             directive: 'widget-top-striker',
                             class: 'colorMain white-text',
