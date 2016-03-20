@@ -14,13 +14,13 @@
            </span>
         </div>
 
-        <div class="container">
-      <span ng-if="options.widgetButtons">
-        <button ng-repeat="widget in widgetDefs"
-                ng-click="addWidgetInternal($event, widget);" type="button" class="waves-effect waves-light btn">
-            {{widget.name}}
-        </button>
-      </span>
+        <div>
+            <span ng-if="options.widgetButtons">
+                <button ng-repeat="widget in widgetDefs"
+                    style="margin: 1px" ng-click="addWidgetInternal($event, widget);" class="waves-effect waves-light colorAccent btn">
+                {{widget.name}}
+                </button>
+            </span>
             <button class="waves-effect waves-light btn" ng-click="resetWidgetsToDefault()"><i
                     class="material-icons">refresh</i></button>
 
@@ -39,26 +39,20 @@
         <div ng-repeat="widget in widgets" ng-style="widget.containerStyle" class="widget-container" widget>
             <div class="widget card" ng-class="widget.class">
                 <div class="widget-header card-content">
-                    <h3 class="card-title">
-          <span class="widget-title" ng-dblclick="editTitle(widget)"
-                ng-hide="widget.editingTitle" translate="{{widget.title}}"></span>
-                        <form action="" class="widget-title" ng-show="widget.editingTitle"
-                              ng-submit="saveTitleEdit(widget)">
+
+                        <span class="widget-title" ng-dblclick="editTitle(widget)" ng-hide="widget.editingTitle" translate="{{widget.title}}"></span>
+                        <form action="" class="widget-title" ng-show="widget.editingTitle" ng-submit="saveTitleEdit(widget)">
                             <div class="input-field col s12" >
                                 <input type="text" ng-model="widget.title" ng-class="widget.class" />
                             </div>
                         </form>
                         <span ng-if="!options.hideWidgetName">{{widget.name}}</span>
-                        <span ng-click="removeWidget(widget);" ng-if="!options.hideWidgetClose"><i
-                                class="material-icons">close</i></span>
-          <span ng-click="widget.contentStyle.display = widget.contentStyle.display === 'none' ? 'block' : 'none'">
-            <i class="material-icons">{{ widget.contentStyle.display ===
-                'none'?'arrow_drop_up':''}}{{widget.contentStyle.display
-                !== 'none'?'arrow_drop_down':''}}</i>
-               </span>
-                    </h3>
-                    <div class="widget-content" ng-style="widget.contentStyle" style="overflow-y: auto;"></div>
+                        <span ng-click="removeWidget(widget);" ng-if="!options.hideWidgetClose"><i class="material-icons right">close</i></span>
+                        <span ng-click="widget.contentStyle.display = widget.contentStyle.display === 'none' ? 'block' : 'none'">
+                            <i class="material-icons right">{{ widget.contentStyle.display === 'none'?'arrow_drop_up':''}}{{widget.contentStyle.display !== 'none'?'arrow_drop_down':''}}</i>
+                        </span>
                 </div>
+                <div class="widget-content container" ng-style="widget.contentStyle" style="overflow-y: auto;"></div>
                 <div class="widget-ew-resizer" ng-mousedown="grabResizer($event)"></div>
                 <div ng-if="widget.enableVerticalResize" class="widget-s-resizer"
                      ng-mousedown="grabSouthResizer($event)"></div>

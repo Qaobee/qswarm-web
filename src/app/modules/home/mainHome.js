@@ -43,6 +43,7 @@
             $translatePartialLoader.addPart('effective');
             $scope.user = user;
             $scope.meta = meta;
+        
             $scope.dashboardOptions = {
                 widgetButtons: true,
                 widgetDefinitions: widgetDefinitions.get(),
@@ -63,29 +64,6 @@
             $scope.currentEvent = {};
             $scope.mapShow = false;
 
-            if (!user.periodicity) {
-                $scope.periodicity = 'season';
-                $scope.periodicityActive = {
-                    label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
-                    startDate: moment($scope.meta.season.startDate),
-                    endDate: moment($scope.meta.season.endDate),
-                    ownersId: $scope.ownersId
-                };
-            } else {
-                $scope.periodicity = user.periodicity;
-                $scope.periodicityActive = user.periodicityActive;
-            }
-            $scope.periodicityActive.ownersId = $scope.ownersId;
-            /* watch if periodicity change */
-            $scope.$watch('periodicityActive', function (newValue, oldValue) {
-                if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
-                    $scope.periodicityActive.ownersId = $scope.ownersId;
-                    user.periodicity = $scope.periodicity;
-                    user.periodicityActive = $scope.periodicityActive;
-                    qeventbus.prepForBroadcast('periodicityActive', $scope.periodicityActive);
-                   // console.log($scope.periodicityActive)
-                }
-            });
             /* Collectes */
             $scope.collectes = [];
 

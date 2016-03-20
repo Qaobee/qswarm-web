@@ -36,16 +36,15 @@
     overflow: hidden;
 }
 
-.cardStatTitle {
-    background: linear-gradient(10deg, rgba(60, 70, 65, 1), rgba(60,63,65, 1));
+.colorAccent {
+    background: linear-gradient(10deg, rgba(239,83,80, 1), rgba(239,83,80, 1));
     overflow: hidden;
 }
 
-.cardPlayer {
-    background: linear-gradient(10deg, rgba(100, 100, 100, 1), rgba(60,63,65, 1));
-    overflow: hidden;
+.btn, .btn-large, .btn-flat {
+    height: 24px;
+    line-height: 24px;
 }
-
 
 input[type=text].valid, input[type=text]:focus.valid, input[type=password].valid, input[type=password]:focus.valid, input[type=email].valid, input[type=email]:focus.valid, input[type=url].valid,
 input[type=url]:focus.valid, input[type=time].valid, input[type=time]:focus.valid, input[type=date].valid, input[type=date]:focus.valid, input[type=datetime-local].valid, input[type=datetime-local]:focus.valid,

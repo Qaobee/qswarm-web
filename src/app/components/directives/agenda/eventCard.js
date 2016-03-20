@@ -51,7 +51,7 @@
                     if ($scope.event.link.type === 'championship') {
                         $scope.icon = 'stars';
                         $scope.color1 = 'white';
-                        $scope.color2 = 'cardPlayer';
+                        $scope.color2 = 'colorMain';
                         $scope.title = 'mainAgenda.eventType.championship';
                     }
 

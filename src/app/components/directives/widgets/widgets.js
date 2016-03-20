@@ -16,7 +16,21 @@
                                 user: 'user'
                             },
                             size: {
-                                height : '500px'
+                                height : '200px'
+                            }
+                        },
+                        
+                        {
+                            name: 'agenda2',
+                            directive: 'widget-calendar',
+                            class: 'colorMain white-text',
+                            title: 'mainAgenda.next_event',
+                            attrs: {
+                                meta: 'meta',
+                                user: 'user'
+                            },
+                            size: {
+                                height : '200px'
                             }
                         }
                     ];
