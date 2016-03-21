@@ -57,12 +57,13 @@
         ])
 
         .config(function ($translateProvider, $translatePartialLoaderProvider, reCAPTCHAProvider, $httpProvider, $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, AnalyticsProvider) {
-            AnalyticsProvider.setAccount(EnvironmentConfig.uaid).useDisplayFeatures(true).trackUrlParams(true);;
+            AnalyticsProvider.setAccount(EnvironmentConfig.uaid).useDisplayFeatures(true).trackUrlParams(true);
             tmhDynamicLocaleProvider.localeLocationPattern('i18n/angular-locale_{{locale}}.js');
             $translateProvider.useLoader('$translatePartialLoader', {
                 urlTemplate: 'app/components/i18n/{part}/{lang}.json'
             });
             $translateProvider.useLoaderCache(EnvironmentConfig.useLoaderCache);
+            $translateProvider.useSanitizeValueStrategy('sanitize');
             $logProvider.debugEnabled(EnvironmentConfig.debugEnabled);
             $translateProvider.registerAvailableLanguageKeys(['fr', 'en', 'de'], {
                 'fr_FR': 'fr',
@@ -123,17 +124,23 @@
             $scope.meta = {};
             $translatePartialLoader.addPart('public');
             $scope.$on('qeventbus', function () {
-                if ('logoff' === qeventbus.message) {
-                    delete  $scope.user;
-                    delete $rootScope.user;
-                    delete $rootScope.meta;
-                    delete $window.sessionStorage.qaobeesession;
-                }
-                if ('bg-color' === qeventbus.message) {
-                    $scope.bgColor = qeventbus.data;
-                } else if ('login' === qeventbus.message) {
-                    $scope.user = qeventbus.data;
-                    $scope.meta.user = $scope.user;
+                switch (qeventbus.message) {
+                    case
+                    'logoff' :
+                        delete  $scope.user;
+                        delete $rootScope.user;
+                        delete $rootScope.meta;
+                        delete $window.sessionStorage.qaobeesession;
+                        break;
+                    case 'bg-color' :
+                        $scope.bgColor = qeventbus.data;
+                        break;
+                    case 'login' :
+                        $scope.user = qeventbus.data;
+                        $scope.meta.user = $scope.user;
+                        break;
+                    default:
+                        break;
                 }
             });
             $scope.loaded = true;

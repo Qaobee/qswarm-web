@@ -27,12 +27,9 @@
             $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
-            
             $scope.user = user;
-
             $scope.$on('$destroy', function () {
                 delete $scope.user;
             });
-                
         });
 }());
