@@ -86,7 +86,8 @@
                         <span class="hide-on-med-and-down" translate="headerMenu.calendar"></span></a>
                     </li>
 
-                    <li class="right"><a ng-click="logoff()" href="javascript:void(0);"><i class="white-text fa fa-power-off"></i></a>
+                    <li class="right"><a ng-click="logoff()" href="javascript:void(0);"><i
+                            class="white-text fa fa-power-off"></i></a>
                     </li>
 
                     <li class="right"><a href="#/private/profile" class="white-text"><i class="material-icons left">portrait</i>
@@ -96,8 +97,10 @@
                         <a class='dropdown-button' data-beloworigin="true" dropdown data-alignment="right"
                            href='javascript:void(0);' data-constrainWidth="false" data-activates='notificationDropdown'
                            data-hover="false">
-                            <i class="material-icons left">email</i>
-                            <span class="new badge" ng-show="notifications.unread > 0">{{notifications.unread}}</span>
+                            <i class="material-icons right"
+                               ng-class="{'red-text text-lighten-1' : notifications.unread > 0}">email</i>
+                            <span class="new badge white-text red lighten-1" ng-show="notifications.unread > 0"
+                                  >{{notifications.unread}}</span>
                         </a>
                     </li>
 
@@ -269,20 +272,27 @@
            translate="commons.buttons.close"></a>
     </div>
 </div>
-<ul id='notificationDropdown' class='notification dropdown-content collection'
-    ng-if="notifications.datas.length > 0">
-    <li ng-repeat="n in notifications.datas" class="collection-item avatar">
-        <img ng-src="{{getAvatar(n.from_user_id.avatar)}}" alt="" class="circle">
-        <span class="title">{{n.title}} </span>
-        <p>
-            <small>{{n.from_user_id.firstname}} {{n.from_user_id.name}}
-                ({{n.timestamp | date : 'short'}})
-            </small>
-        </p>
+<div id='notificationDropdown' class='notification dropdown-content'
+     ng-if="notifications.datas.length > 0">
+    <div ng-repeat="n in notifications.datas" class="hoverable grey-text text-darken-2">
+        <a href="javascript:void(0);" ng-click="markAsRead(n._id)" class="waves-effect waves-teal btn-flat right">
+            <i class="tiny material-icons" ng-if="n.read"
+               title="{{'headerMenu.notifications.mark-as-unread' | translate}}">visibility_off</i><i
+                class="tiny material-icons" ng-if="!n.read"
+                title="{{'headerMenu.notifications.mark-as-read' | translate}}">visibility</i></a>
+        <a href="javascript:void(0);" ng-click="deleteNotification(n._id)"
+           class="waves-effect waves-teal btn-flat right"><i
+                class="tiny material-icons" title="{{'headerMenu.notifications.delete' | translate}}">delete</i></a>
+        {{n.from_user_id.firstname}} {{n.from_user_id.name}}<br>
+        <small>{{n.timestamp | date : 'short'}}</small>
+        <div class="row">
+            <div class="col s2">
+                <img ng-src="{{getAvatar(n.from_user_id.avatar)}}" alt="" class="circle" width="30px">
+            </div>
+            <div class="col s10">
+                <b ng-bind="n.title"></b><br><span class="truncate" ng-bind="n.content"></span>
+            </div>
+        </div>
 
-
-        <p>{{n.content}}</p>
-        <a href="javascript:void(0);" ng-click="markAsRead(n._id)" class="right"><i class="tiny material-icons" ng-if="n.read">visibility_off</i><i class="tiny material-icons" ng-if="!n.read">visibility</i></a>
-        <a href="javascript:void(0);" ng-click="deleteNotification(n._id)" class="right"><i class="tiny material-icons" >delete</i></a>
-    </li>
-</ul>
+    </div>
+</div>

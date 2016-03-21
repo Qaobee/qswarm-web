@@ -769,7 +769,26 @@ table.super-fancy tr.foobar {
     will-change: width, height;
     top: 55px !important;
     overflow: visible;
-    padding: 20px;
+    min-height: 0;
+    padding: 0;
+}
+.notification.dropdown-content div {
+    padding: 10px 20px;
+    line-height: 1rem;
+}
+.notification.dropdown-content div.row, .notification.dropdown-content div.col {
+    padding: 0;
+    margin: 0;
+    line-height: 1rem;
+}
+.notification.dropdown-content a>i.material-icons {
+    padding: 5px;
+    line-height: 1rem;
+    font-size: 1rem;
+}
+.notification.dropdown-content a {
+    padding: 0;
+    margin: 0;
 }
 .notification:after {
     content:'';

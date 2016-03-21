@@ -49,13 +49,11 @@
                         return viewLocation === $location.path();
                     };
 
-                    var eb = new vertx.EventBus(EnvironmentConfig.apiEndPoint + '/eventbus');
-
                     /**
                      *
                      */
                     function getNotifications() {
-                        notificationsRestAPI.getUserNotifications(10).then(function (data) {
+                        notificationsRestAPI.getUserNotifications(5).then(function (data) {
                             $scope.notifications.datas = data.data;
                             $scope.notifications.unread = data.data.count(function (n) {
                                 return !n.read;
@@ -91,23 +89,6 @@
                         return false;
                     };
 
-                    /**
-                     *
-                     */
-                    eb.onopen = function () {
-                        eb.registerHandler('qaobee.notification', function (message) {
-                            $scope.notifications.unread = $scope.notifications.unread + 1;
-                            toastr.info(message.title, message.content);
-                            getNotifications();
-                        });
-                    };
-
-                    /**
-                     *
-                     */
-                    eb.onclose = function () {
-                        eb = null;
-                    };
 
                     /*****************************************
                      * Gestion de la bannière de téléchargement de l'appli mobile
@@ -188,7 +169,7 @@
                     };
 
                     /**
-                     * 
+                     *
                      */
                     $scope.openLogin = function () {
                         angular.element('#modalLogin').openModal();
@@ -202,10 +183,29 @@
                      * @description Load meta information such as current season, current structure and current activity
                      */
                     $scope.loadMetaInfos = function () {
-                        userRestAPI.getMetas().success(function (data) {
-                            if (angular.isDefined(data) && data !== null) {
-                                $rootScope.meta = data;
-                                $scope.structure = data.structure;
+                        userRestAPI.getMetas().then(function (data) {
+                            if (angular.isDefined(data.data) && data.data !== null) {
+                                $rootScope.meta = data.data;
+                                $scope.structure = data.data.structure;
+
+                                var eb = new vertx.EventBus(EnvironmentConfig.apiEndPoint + '/eventbus');
+                                eb.onopen = function () {
+                                    console.log('socket connected');
+                                    eb.registerHandler('qaobee.notification.' + $scope.user._id, function (message) {
+                                        $scope.notifications.unread = $scope.notifications.unread + 1;
+                                        toastr.info(message.title, message.content);
+                                        getNotifications();
+                                    });
+                                    eb.registerHandler('qaobee.notification.' + $rootScope.meta.sandbox._id, function (message) {
+                                        $scope.notifications.unread = $scope.notifications.unread + 1;
+                                        toastr.info(message.title, message.content);
+                                        getNotifications();
+                                    });
+                                };
+                                eb.onclose = function () {
+                                    console.log('socket closed');
+                                    eb = null;
+                                };
                             }
                         });
                     };

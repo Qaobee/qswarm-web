@@ -11,7 +11,13 @@
         "search" : "Rechercher",
         "search-event" : "Evènement",
         "search-player" : "Joueur",
-        "settings": "Paramétrage"
+        "settings": "Paramétrage",
+        "notifications": {
+            "mark-as-read" : "Marquer comme lu",
+            "mark-as-unread" : "Marquer comme non lu",
+            "delete" : "Supprimer",
+            "new" : "Nouveaux"
+        }
     },
     "navbar": {
         "welcome": "Bienvenue",

@@ -36,14 +36,14 @@
          * @class qaobee.modules.home.HomeControler
          */
         .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, $window,
-                                               effectiveSrv, collecteRestAPI, eventsRestAPI, teamRestAPI, userRestAPI, widgetDefinitions, defaultWidgets, qeventbus) {
+                                               effectiveSrv, collecteRestAPI, eventsRestAPI, teamRestAPI, userRestAPI, widgetDefinitions, defaultWidgets) {
             $translatePartialLoader.addPart('home');
             $translatePartialLoader.addPart('stats');
             $translatePartialLoader.addPart('agenda');
             $translatePartialLoader.addPart('effective');
             $scope.user = user;
             $scope.meta = meta;
-        
+
             $scope.dashboardOptions = {
                 widgetButtons: true,
                 widgetDefinitions: widgetDefinitions.get(),
@@ -63,7 +63,7 @@
             $scope.indexEvent = 0;
             $scope.currentEvent = {};
             $scope.mapShow = false;
-        
+
             if (!user.periodicity) {
                 $scope.periodicity = 'season';
                 $scope.periodicityActive = {

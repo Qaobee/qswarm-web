@@ -11,7 +11,13 @@
         "search" : "Search",
         "search-event" : "Event",
         "search-player" : "Player",
-        "settings": "Settings"
+        "settings": "Settings",
+        "notifications": {
+            "mark-as-read" : "Mark as read",
+            "mark-as-unread" : "Mark as unread",
+            "delete" : "Delete",
+            "new" : "New"
+        }
     },
     "navbar": {
         "welcome": "Welcome",
