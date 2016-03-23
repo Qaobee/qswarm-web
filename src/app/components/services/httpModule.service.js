@@ -47,9 +47,9 @@
                 },
                 // When a request fails
                 responseError: function (response) {
-                    if (response.data !== null) {
-                        $log.error(response.data);
-                        if (response.data.message !== null && ['CAPTCHA_EXCEPTION', 'NON_ACTIVE'].findIndex(response.data.code) > 1) {
+                    $log.error(response);
+                    if (!!response.data) {
+                        if (!!response.data.message && ['CAPTCHA_EXCEPTION', 'NON_ACTIVE'].findIndex(response.data.code) > 1) {
                             toastr.error(response.data.message);
                         }
                         if ('NOT_LOGGED' === response.data.code) {

@@ -194,14 +194,14 @@
                                     $log.debug('socket connected');
                                     eb.registerHandler('qaobee.notification.' + $scope.user._id, function (message) {
                                         if(!!message.title) {
-                                            toastr.info(message.title, message.content);
+                                            toastr.info(message.title, message.content.stripTags().truncate(30));
                                         }
                                         qeventbus.prepForBroadcast('notifications', message);
                                         getNotifications();
                                     });
                                     eb.registerHandler('qaobee.notification.' + $rootScope.meta.sandbox._id, function (message) {
                                         if(!!message.title) {
-                                            toastr.info(message.title, message.content);
+                                            toastr.info(message.title, message.content.stripTags().truncate(30));
                                         }
                                         qeventbus.prepForBroadcast('notifications', message);
                                         getNotifications();
