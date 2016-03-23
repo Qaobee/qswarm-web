@@ -4,6 +4,8 @@
             'qaobee.widgets.agenda',
             'qaobee.widgets.podium',
             'qaobee.widgets.notifications'])
+
+    angular.module('qaobee.widgets.dashboard.home', ['qaobee.widgets.agenda', 'qaobee.widgets.podium'])
         .factory('widgetDefinitions', function () {
             return {
                 get: function () {
@@ -51,7 +53,7 @@
                             size: {
                                 height: '200px'
                             }
-                        }, {
+                        }, , {
                             name: 'notifications',
                             directive: 'widget-notifications',
                             class: 'red white-text',

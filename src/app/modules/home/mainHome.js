@@ -50,7 +50,7 @@
                 hideWidgetName: true,
                 defaultWidgets: defaultWidgets,
                 storage: $window.localStorage,
-                storageId: 'qaobee_widgets'
+                storageId: 'qaobee-widgets-dashboard-home'
             };
 
             $scope.currentEffective = {};
