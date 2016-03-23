@@ -1,7 +1,7 @@
 {
   "dashboard": {
-    "event": "Prochain évènement",
-    "stats": "Statistiques évènement",
+    "event": "Prochaine rencontre",
+    "stats": "Statistiques",
     "player": "Statistiques joueur",
     "teams": "Statistiques équipes",
     "widgetTopScored": {

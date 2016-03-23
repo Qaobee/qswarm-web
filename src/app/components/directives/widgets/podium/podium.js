@@ -110,7 +110,7 @@
                                 } else {
                                     player.positionType = '';
                                 }
-                                $log.debug('coucou',player);
+                                
                                 $scope.players.push(player);
                             });
                         });

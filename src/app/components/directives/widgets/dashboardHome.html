@@ -1,7 +1,7 @@
 <div>
     <div ng-if="!options.hideToolbar">
         <span ng-if="!options.widgetButtons">
-            <a class='dropdown-button btn' href='javascript:void(0);' data-activates='widgetDropdown' dropdown
+            <a class='dropdown-button btn colorAccent' href='javascript:void(0);' data-activates='widgetDropdown' dropdown
                data-beloworigin="true"
                data-constrainWidth="false"
                data-hover="true">
@@ -10,42 +10,42 @@
             <ul id='widgetDropdown' class='dropdown-content'>
                 <li ng-repeat="widget in widgetDefs">
                     <a href="#" ng-click="addWidgetInternal($event, widget);" class="dropdown-toggle"><span
-                            class="label label-primary" translate="{{widget.title}}"></span></a>
+                            class="label red-text text-lighten-1" translate="{{widget.title}}"></span></a>
                 </li>
             </ul>
         </span>
         <span ng-if="options.widgetButtons">
             <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
-                <a class="btn-floating btn-large red ">
+                <a class="btn-floating btn-large colorAccent ">
                     <i class="large material-icons">add</i>
                 </a>
                 <ul>
                     <li ng-repeat="widget in widgetDefs">
                         <button
                                 style="margin: 1px" ng-click="addWidgetInternal($event, widget);"
-                                class="waves-effect waves-light colorAccent btn" translate="{{widget.title}}">
+                                class="waves-effect waves-light colorAccent btn right" translate="{{widget.title}}">
                         </button>
                     </li>
                 </ul>
             </div>
         </span>
-        <button class="waves-effect waves-light btn" ng-click="resetWidgetsToDefault()"><i
+        <button class="waves-effect waves-light btn colorAccent" ng-click="resetWidgetsToDefault()"><i
                 class="material-icons">refresh</i></button>
 
         <button ng-if="options.storage && options.explicitSave" ng-click="options.saveDashboard()"
-                class="waves-effect waves-light btn" ng-disabled="!options.unsavedChangeCount">{{
+                class="waves-effect waves-light btn colorAccent" ng-disabled="!options.unsavedChangeCount">{{
             !options.unsavedChangeCount? 'all saved' : '<i class="material-icons">save</i> (' +
             options.unsavedChangeCount + ')' }}
         </button>
 
-        <button ng-click="clear();" type="button" class="waves-effect waves-light btn"><i
+        <button ng-click="clear();" type="button" class="waves-effect waves-light btn colorAccent"><i
                 class="material-icons">delete</i></button>
     </div>
 
     <div ui-sortable="sortableOptions" ng-model="widgets" class="dashboard-widget-area">
         <div ng-repeat="widget in widgets" ng-style="widget.containerStyle" class="widget-container" widget>
-            <div class="widget card" ng-class="widget.class">
-                <div class="widget-header card-content">
+            <div class="widget" ng-class="widget.classContent">
+                <div ng-class="widget.classHeader">
 
                     <span class="widget-title" ng-dblclick="editTitle(widget)" ng-hide="widget.editingTitle"
                           translate="{{widget.title}}"></span>

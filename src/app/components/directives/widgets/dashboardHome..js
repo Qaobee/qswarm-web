@@ -14,19 +14,22 @@
                         {
                             name: 'agenda',
                             directive: 'widget-calendar',
-                            class: 'blue-grey darken-1 white-text',
+                            classContent: 'card colorAccent white-text',
+                            classHeader: 'widget-header card-content colorMain white-text',
                             title: 'mainAgenda.next_event',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user'
                             },
                             size: {
-                                height: '200px'
+                                height: '200px',
+                                width: '25%'
                             }
                         }, {
                             name: 'Top buteurs',
                             directive: 'widget-podium',
-                            class: 'colorMain white-text',
+                            classContent: 'card white blue-grey-text text-darken-2',
+                            classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetTopScored.title',
                             attrs: {
                                 meta: 'meta',
@@ -36,12 +39,14 @@
                                 stataggregat: 'COUNT'
                             },
                             size: {
-                                height: '200px'
+                                height: '200px',
+                                width: '50%'
                             }
                         }, {
                             name: 'Temps de jeu',
                             directive: 'widget-podium',
-                            class: 'colorMain white-text',
+                            classContent: 'card white blue-grey-text text-darken-2',
+                            classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetTopUsed.title',
                             attrs: {
                                 meta: 'meta',
@@ -51,19 +56,22 @@
                                 stataggregat: 'SUM'
                             },
                             size: {
-                                height: '200px'
+                                height: '200px',
+                                width: '50%'
                             }
-                        }, , {
+                        }, {
                             name: 'notifications',
                             directive: 'widget-notifications',
-                            class: 'red white-text',
+                            classContent: 'card blue-grey lighten-4 blue-grey-text text-darken-2',
+                            classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetNotifications.title',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user'
                             },
-                            size: {
-                                height: '200px'
+                             size: {
+                                height: '200px',
+                                width: '25%'
                             }
                         }
                     ];
@@ -71,9 +79,11 @@
             };
         })
         .value('defaultWidgets', [
-            {name: 'agenda'},
+            {name: 'notifications'}, 
             {name: 'Top buteurs'},
-            {name: 'Temps de jeu'},
-            {name: 'notifications'}
+            {name: 'agenda'},
+            {name: 'Temps de jeu'}
+            
+            
         ]);
 })();
