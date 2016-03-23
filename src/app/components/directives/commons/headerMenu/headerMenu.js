@@ -54,7 +54,6 @@
                             $scope.notifications = data.data.filter(function(n) {
                                 return !n.read;
                             });
-                            console.log($scope.notifications)
                         });
                     }
 
@@ -187,20 +186,20 @@
 
                                 var eb = new vertx.EventBus(EnvironmentConfig.apiEndPoint + '/eventbus');
                                 eb.onopen = function () {
-                                    console.log('socket connected');
+                                    $log.debug('socket connected');
                                     eb.registerHandler('qaobee.notification.' + $scope.user._id, function (message) {
-                                        $scope.notifications.unread = $scope.notifications.unread + 1;
                                         toastr.info(message.title, message.content);
+                                        qeventbus.prepForBroadcast('notifications', message);
                                         getNotifications();
                                     });
                                     eb.registerHandler('qaobee.notification.' + $rootScope.meta.sandbox._id, function (message) {
-                                        $scope.notifications.unread = $scope.notifications.unread + 1;
                                         toastr.info(message.title, message.content);
+                                        qeventbus.prepForBroadcast('notifications', message);
                                         getNotifications();
                                     });
                                 };
                                 eb.onclose = function () {
-                                    console.log('socket closed');
+                                    $log.debug('socket closed');
                                     eb = null;
                                 };
                             }

@@ -5,7 +5,7 @@
      */
     angular.module('qaobee.widgets.notifications', [])
 
-        .directive('widgetNotifications', function ($filter, $translatePartialLoader, EnvironmentConfig, notificationsRestAPI) {
+        .directive('widgetNotifications', function (qeventbus, $translatePartialLoader, EnvironmentConfig, notificationsRestAPI, $log) {
             return {
                 restrict: 'AE',
                 scope: {
@@ -14,13 +14,20 @@
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('home');
+                    $scope.notifications = [];
+
+                    $scope.$on('qeventbus', function () {
+                        if ('notifications' === qeventbus.message) {
+                            getNotifications();
+                        }
+                    });
                     /**
                      *
                      */
                     function getNotifications() {
                         notificationsRestAPI.getUserNotifications().then(function (data) {
                             $scope.notifications = data.data;
-                            console.log($scope.notifications)
+                            $log.debug($scope.notifications);
                         });
                     }
 
