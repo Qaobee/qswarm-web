@@ -5,7 +5,7 @@
         'qaobee.widgets.podium',
         'qaobee.widgets.notifications'])
 
-    angular.module('qaobee.widgets.dashboard.home', ['qaobee.widgets.agenda', 'qaobee.widgets.podium'])
+    angular.module('qaobee.widgets.dashboard.home', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications'])
         .factory('widgetDefinitions', function () {
             return {
                 get: function () {

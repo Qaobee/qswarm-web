@@ -273,25 +273,31 @@
     </div>
 </div>
 <div id='notificationDropdown' class='notification dropdown-content' ng-if="notifications.length > 0">
+    <div class="row" style="padding-left: 10px">
+        <div class="col s12"><a href="#/notifications" class="waves-effect waves-teal btn-flat">
+            {{'notifications.more' | translate}} <i class="material-icons right">forward</i></a>
+        </div>
+    </div>
     <div ng-repeat="n in notifications" class="hoverable grey-text text-darken-2">
-
         <div class="row">
             <div class="col s2">
                 <img ng-src="{{getAvatar(n.from_user_id.avatar)}}" alt="" class="circle" width="30px">
             </div>
             <div class="col s10">
-                <b><a href="#/notification/{{n._id}}" class="grey-text text-darken-2" ng-bind="n.title"></a></b>
-                <a href="javascript:void(0);" ng-click="markAsRead(n._id)" class="waves-effect waves-teal btn-flat right">
-                <i class="tiny material-icons" ng-if="n.read"
-                   title="{{'headerMenu.notifications.mark-as-unread' | translate}}">visibility_off</i><i
-                    class="tiny material-icons" ng-if="!n.read"
-                    title="{{'headerMenu.notifications.mark-as-read' | translate}}">visibility</i></a>
+                <b><a href="#/notifications/{{n._id}}" class="grey-text text-darken-2" ng-bind="n.title"></a></b>
+                <a href="javascript:void(0);" ng-click="markAsRead(n._id)"
+                   class="waves-effect waves-teal btn-flat right">
+                    <i class="tiny material-icons" ng-if="n.read"
+                       title="{{'headerMenu.notifications.mark-as-unread' | translate}}">visibility_off</i><i
+                        class="tiny material-icons" ng-if="!n.read"
+                        title="{{'headerMenu.notifications.mark-as-read' | translate}}">visibility</i></a>
                 <a href="javascript:void(0);" ng-click="deleteNotification(n._id)"
                    class="waves-effect waves-teal btn-flat right"><i
                         class="tiny material-icons" title="{{'headerMenu.notifications.delete' | translate}}">delete</i></a>
-                <br /><span class="truncate" ng-bind="n.content"></span>
+                <br/><span class="truncate" ng-bind="n.content"></span>
                 <small> {{n.from_user_id.firstname}} {{n.from_user_id.name}} |
-                    {{n.timestamp | date : 'short'}}</small>
+                    {{n.timestamp | date : 'short'}}
+                </small>
             </div>
         </div>
 

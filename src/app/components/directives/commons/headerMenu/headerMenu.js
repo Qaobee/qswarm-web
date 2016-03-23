@@ -51,9 +51,14 @@
                      */
                     function getNotifications() {
                         notificationsRestAPI.getUserNotifications().then(function (data) {
-                            $scope.notifications = data.data.filter(function(n) {
-                                return !n.read;
-                            });
+                            if(!!data.data && !data.data.error) {
+                                $scope.notifications = data.data.filter(function (n) {
+                                    return !n.read;
+                                });
+                                $scope.notifications.forEach(function (n) {
+                                    n.content = n.content.stripTags().truncate(30);
+                                });
+                            }
                         });
                     }
 
@@ -188,12 +193,16 @@
                                 eb.onopen = function () {
                                     $log.debug('socket connected');
                                     eb.registerHandler('qaobee.notification.' + $scope.user._id, function (message) {
-                                        toastr.info(message.title, message.content);
+                                        if(!!message.title) {
+                                            toastr.info(message.title, message.content);
+                                        }
                                         qeventbus.prepForBroadcast('notifications', message);
                                         getNotifications();
                                     });
                                     eb.registerHandler('qaobee.notification.' + $rootScope.meta.sandbox._id, function (message) {
-                                        toastr.info(message.title, message.content);
+                                        if(!!message.title) {
+                                            toastr.info(message.title, message.content);
+                                        }
                                         qeventbus.prepForBroadcast('notifications', message);
                                         getNotifications();
                                     });

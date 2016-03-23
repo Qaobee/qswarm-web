@@ -1,0 +1,62 @@
+<div class="container">
+
+    <!-- space between header menu and body-->
+    <div class="row"></div>
+    <div class="row">
+        <div class="col" ng-class="{'s12': !id, 's4' : id}">
+            <ul class="collection grey-text text-darken-2">
+                <li class="collection-item avatar" ng-repeat="n in notifications"
+                    ng-class="{'grey lighten-1' : n.read && n._id !== id, 'light-green lighten-4' : n._id === id}">
+                    <img ng-src="{{getAvatar(n.from_user_id.avatar)}}" alt="" class="circle">
+                    <span class="title" ng-bind="n.title"></span>
+                    <p><span class="truncate" ng-bind="n.exerp"></span> <br>
+                        <small>{{n.from_user_id.firstname}} {{n.from_user_id.name}} | {{n.timestamp | date : 'short'}} |
+                            <a href="javascript:void(0);" ng-click="markAsRead(n._id)"
+                               class="waves-effect waves-teal btn-flat"
+                               style="padding: 0;">
+                                <i class="tiny material-icons" ng-if="n.read"
+                                   title="{{'headerMenu.notifications.mark-as-unread' | translate}}">visibility_off</i><i
+                                    class="tiny material-icons" ng-if="!n.read"
+                                    title="{{'headerMenu.notifications.mark-as-read' | translate}}">visibility</i></a>
+                            <a href="javascript:void(0);" ng-click="deleteNotification(n._id)" style="padding: 0;"
+                               class="waves-effect waves-teal btn-flat"><i
+                                    class="tiny material-icons"
+                                    title="{{'headerMenu.notifications.delete' | translate}}">delete</i></a>
+                        </small>
+                    </p>
+                    <a href="javascript:void(0);" class="secondary-content"><i class="material-icons"
+                                                                               ng-click="show(n._id)">forward</i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="col s8" ng-if="id">
+            <div class="card-panel" ng-if="notifications.length ===0">
+                <h4 class="center-align" translate="notifications.nodata"></h4>
+            </div>
+            <div class="card-panel" ng-if="notif">
+                <a href="javascript:void(0);" class="right"><i class="material-icons" ng-click="close()">close</i></a>
+                <div class="center-align">
+                    <img ng-src="{{getAvatar(notif.from_user_id.avatar)}}" alt="" class="circle">
+                </div>
+                <div class="center-align">
+                    {{notif.from_user_id.firstname}} {{notif.from_user_id.name}}
+                </div>
+                <h4 ng-bind="notif.title"></h4>
+                <p ng-bind-html="notif.content" style="text-align: justify"></p>
+                <small>{{notif.timestamp | date : 'short'}}
+                    |
+                    <a href="javascript:void(0);" ng-click="markAsRead(notif._id)"
+                       class="waves-effect waves-teal btn-flat" style="padding: 0;">
+                        <i class="tiny material-icons" ng-if="notif.read"
+                           title="{{'headerMenu.notifications.mark-as-unread' | translate}}">visibility_off</i><i
+                            class="tiny material-icons" ng-if="!notif.read"
+                            title="{{'headerMenu.notifications.mark-as-read' | translate}}">visibility</i></a>
+                    <a href="javascript:void(0);" ng-click="deleteNotification(notif._id)" style="padding: 0;"
+                       class="waves-effect waves-teal btn-flat"><i class="tiny material-icons"
+                                                                   title="{{'headerMenu.notifications.delete' | translate}}">delete</i>
+                    </a>
+                </small>
+            </div>
+        </div>
+    </div>
+</div>

@@ -15,21 +15,19 @@
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('home');
                     $scope.notifications = [];
-
-                    $scope.$on('qeventbus', function () {
-                        if ('notifications' === qeventbus.message) {
-                            getNotifications();
-                        }
-                    });
                     /**
                      *
                      */
-                    function getNotifications() {
+                    $scope.getNotifications = function () {
                         notificationsRestAPI.getUserNotifications().then(function (data) {
-                            $scope.notifications = data.data;
-                            $log.debug($scope.notifications);
+                            if(!!data.data && !data.data.error) {
+                                $scope.notifications = data.data;
+                                $scope.notifications.forEach(function (n) {
+                                    n.content = n.content.stripTags().truncate(30);
+                                });
+                            }
                         });
-                    }
+                    };
 
                     /**
                      *
@@ -39,7 +37,7 @@
                     $scope.markAsRead = function (id) {
                         notificationsRestAPI.markAsRead(id).then(function (data) {
                             if (data.data.status) {
-                                getNotifications();
+                                $scope.getNotifications();
                             }
                         });
                         return false;
@@ -53,15 +51,28 @@
                     $scope.deleteNotification = function (id) {
                         notificationsRestAPI.del(id).then(function (data) {
                             if (data.data.status) {
-                                getNotifications();
+                                $scope.getNotifications();
                             }
                         });
                         return false;
                     };
+                    /**
+                     *
+                     * @param avatar
+                     * @returns {string}
+                     */
                     $scope.getAvatar = function (avatar) {
                         return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/' + $scope.collection + '/' + avatar : 'assets/images/user.png';
                     };
-                    getNotifications();
+                    $scope.$on('qeventbus', function () {
+                        if ('notifications' === qeventbus.message) {
+                            $scope.getNotifications();
+                        }
+                    });
+                },
+                link: function ($scope) {
+
+                    $scope.getNotifications();
                 },
                 templateUrl: 'app/components/directives/widgets/notifications/notifications.html'
             };

@@ -50,7 +50,8 @@
             'qaobee.players',
             'qaobee.agenda',
             'qaobee.stats',
-            'qaobee.user'
+            'qaobee.user',
+            'qaobee.notifiactions'
 
             /* A SUPPRIMER */
             , 'qaobee.test'

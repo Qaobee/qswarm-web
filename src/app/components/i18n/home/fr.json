@@ -13,5 +13,9 @@
     "widgetNotifications": {
       "title": "Notifications"
     }
+  },
+  "notifications" : {
+    "nodata" : "Pas de nouvelle, bonne nouvelle!",
+    "more" : "Voir plus"
   }
 }
