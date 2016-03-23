@@ -1,66 +1,66 @@
 {
-    "headerMenu": {
-        "dashboard": "Accueil",
-        "stats" : "Statistiques",
-        "players": "Mes joueurs",
-        "teams": "Mes équipes",
-        "training": "Entraînements",
-        "championship" : "Compétition",
-        "calendar" : "Agenda",
-        "notification" : "Messages",
-        "search" : "Rechercher",
-        "search-event" : "Evènement",
-        "search-player" : "Joueur",
-        "settings": "Paramétrage",
-        "notifications": {
-            "mark-as-read" : "Marquer comme lu",
-            "mark-as-unread" : "Marquer comme non lu",
-            "delete" : "Supprimer",
-            "new" : "Nouveaux"
-        }
-    },
-    "navbar": {
-        "welcome": "Bienvenue",
-        "connect": "Connexion",
-        "disconnect": "Déconnexion",
-        "administration": "Administration",
-        "signup": "S'inscrire",
-        "param" : "Paramétrage"
-    },
-    "content": {
-        "login": {
-            "label": {
-                "login": "Login",
-                "password": "Mot de passe",
-                "signin": "Se connecter",
-                "forgotpasswd": "Mot de passe oublié?",
-                "forgotpasswdmess": "Ce sont des choses qui arrivent, donnez-nous votre identifiant de connexion, nous le réinitialiserons pour vous!",
-                "title": "Connectez vous sur <b>Qaobee</b>",
-                "forgotpasswdcancel": "Attendez, je m'en rappelle à présent!"
-            }
-        },
-        "signup": {
-            "label": {
-                "name": "Nom",
-                "firstname": "Prénom",
-				"login": "Login",
-                "email" : "e-Mail",
-                "password": "Mot de passe",
-                "passwordConfirm" : "Confirmation",
-                "title": "Inscrivez-vous sur <b>Qaobee</b>"
-            },
-            "emailDirty": "Format email invalide"
-        }
-    },
-    "error": {
-    	"signup" : {
-		   	"nonunique": "Le nom d'utilisateur que vous avez choisi existe déjà",
-        	"password": {
-        		"short" : "Le mot de passe que vous avez choisi est trop court",
-        		"different" : "Le mot de passe et sa confirmation sont différents"
-        	},
-        	"unknown" : "Erreur inconnue",
-        	"CAPTCHA_EXCEPTION": "Le code de vérification est erroné."
-    	}
+  "headerMenu": {
+    "dashboard": "Accueil",
+    "stats": "Statistiques",
+    "players": "Mes joueurs",
+    "teams": "Mes équipes",
+    "training": "Entraînements",
+    "championship": "Compétition",
+    "calendar": "Agenda",
+    "notification": "Messages",
+    "search": "Rechercher",
+    "search-event": "Evènement",
+    "search-player": "Joueur",
+    "settings": "Paramétrage",
+    "notifications": {
+      "mark-as-read": "Marquer comme lu",
+      "mark-as-unread": "Marquer comme non lu",
+      "delete": "Supprimer",
+      "new": "Nouveaux"
     }
+  },
+  "navbar": {
+    "welcome": "Bienvenue",
+    "connect": "Connexion",
+    "disconnect": "Déconnexion",
+    "administration": "Administration",
+    "signup": "S'inscrire",
+    "param": "Paramétrage"
+  },
+  "content": {
+    "login": {
+      "label": {
+        "login": "Login",
+        "password": "Mot de passe",
+        "signin": "Se connecter",
+        "forgotpasswd": "Mot de passe oublié?",
+        "forgotpasswdmess": "Ce sont des choses qui arrivent, donnez-nous votre identifiant de connexion, nous le réinitialiserons pour vous!",
+        "title": "Connectez vous sur <b>Qaobee</b>",
+        "forgotpasswdcancel": "Attendez, je m'en rappelle à présent!"
+      }
+    },
+    "signup": {
+      "label": {
+        "name": "Nom",
+        "firstname": "Prénom",
+        "login": "Login",
+        "email": "e-Mail",
+        "password": "Mot de passe",
+        "passwordConfirm": "Confirmation",
+        "title": "Inscrivez-vous sur <b>Qaobee</b>"
+      },
+      "emailDirty": "Format email invalide"
+    }
+  },
+  "error": {
+    "signup": {
+      "nonunique": "Le nom d'utilisateur que vous avez choisi existe déjà",
+      "password": {
+        "short": "Le mot de passe que vous avez choisi est trop court",
+        "different": "Le mot de passe et sa confirmation sont différents"
+      },
+      "unknown": "Erreur inconnue",
+      "CAPTCHA_EXCEPTION": "Le code de vérification est erroné."
+    }
+  }
 }

@@ -98,9 +98,9 @@
                            href='javascript:void(0);' data-constrainWidth="false" data-activates='notificationDropdown'
                            data-hover="false">
                             <i class="material-icons right"
-                               ng-class="{'red-text text-lighten-1' : notifications.unread > 0}">email</i>
-                            <span class="new badge white-text red lighten-1" ng-show="notifications.unread > 0"
-                                  >{{notifications.unread}}</span>
+                               ng-class="{'red-text text-lighten-1' : notifications.length > 0}">email</i>
+                            <span class="new badge white-text red lighten-1" ng-show="notifications.length > 0"
+                            >{{notifications.length}}</span>
                         </a>
                     </li>
 
@@ -272,9 +272,8 @@
            translate="commons.buttons.close"></a>
     </div>
 </div>
-<div id='notificationDropdown' class='notification dropdown-content'
-     ng-if="notifications.datas.length > 0">
-    <div ng-repeat="n in notifications.datas" class="hoverable grey-text text-darken-2">
+<div id='notificationDropdown' class='notification dropdown-content' ng-if="notifications.length > 0">
+    <div ng-repeat="n in notifications" class="hoverable grey-text text-darken-2">
         <a href="javascript:void(0);" ng-click="markAsRead(n._id)" class="waves-effect waves-teal btn-flat right">
             <i class="tiny material-icons" ng-if="n.read"
                title="{{'headerMenu.notifications.mark-as-unread' | translate}}">visibility_off</i><i

@@ -1,46 +1,46 @@
 {
   "landing": {
-    "main-title" : "Captez l'instant",
-    "sub-title" : "Le premier assistant personnel de collecte et d'analyse en temps réel de données sportives",
-    "manual-btn" : "Mode d'emploi",
-    "connect" : "Restons connectés",
-    "legals" : "Mentions légales",
-    "contact" : {
-      "email" : "Contactez-nous",
-      "visit" : "Rendez-nous visite",
-      "newsletter" : "Restez connecté",
-      "popin" : {
+    "main-title": "Captez l'instant",
+    "sub-title": "Le premier assistant personnel de collecte et d'analyse en temps réel de données sportives",
+    "manual-btn": "Mode d'emploi",
+    "connect": "Restons connectés",
+    "legals": "Mentions légales",
+    "contact": {
+      "email": "Contactez-nous",
+      "visit": "Rendez-nous visite",
+      "newsletter": "Restez connecté",
+      "popin": {
         "title": "Inscrivez vous à la newsletter",
         "email": "E-mail",
         "subscribe": "S'inscrire",
         "unsubscribe": "Se désinscrire"
       }
     },
-    "area-2" : {
-      "title" : "Améliorez vos performances.",
-      "content" : "Qaobee facilite l'acquisition et l'analyse des statistiques sportives."
+    "area-2": {
+      "title": "Améliorez vos performances.",
+      "content": "Qaobee facilite l'acquisition et l'analyse des statistiques sportives."
     },
-    "area-3" : {
-      "item-0" : {
-        "title" : "Téléchargement gratuit",
-        "content" : "Disponible dans l'App Store et Google Play, Qaobee est la solution idéale pour la gestion des données sportives. Elle fonctionne aussi bien sur téléphone que sur tablette, à l'entraînement comme en compétition."
+    "area-3": {
+      "item-0": {
+        "title": "Téléchargement gratuit",
+        "content": "Disponible dans l'App Store et Google Play, Qaobee est la solution idéale pour la gestion des données sportives. Elle fonctionne aussi bien sur téléphone que sur tablette, à l'entraînement comme en compétition."
       },
-      "item-1" :{
-        "title" : "Valorisation des données",
-        "content" : "Qaobee transforme les données sportives en informations stratégiques et vous aide dans la prise de décision."
+      "item-1": {
+        "title": "Valorisation des données",
+        "content": "Qaobee transforme les données sportives en informations stratégiques et vous aide dans la prise de décision."
       },
-      "item-2" : {
-        "title" : "Espace de travail",
-        "content" : "Tableau de bord personnalisé, gestion de l'effectif, calendrier sportif, rapports et analyse des rencontres, Qaobee s'occupe de tout pour vous permettre de vous concentrer sur l'essentiel : la performance de votre groupe."
+      "item-2": {
+        "title": "Espace de travail",
+        "content": "Tableau de bord personnalisé, gestion de l'effectif, calendrier sportif, rapports et analyse des rencontres, Qaobee s'occupe de tout pour vous permettre de vous concentrer sur l'essentiel : la performance de votre groupe."
       },
-      "item-3" : {
-        "title" : "Amélioration continue",
-        "content" : "Les mises à jour proposées régulièrement vous offrent des fonctionnalités toujours plus riches pour optimiser la gestion de votre équipe."
+      "item-3": {
+        "title": "Amélioration continue",
+        "content": "Les mises à jour proposées régulièrement vous offrent des fonctionnalités toujours plus riches pour optimiser la gestion de votre équipe."
       }
     },
-    "area-4" : {
-      "title" : "Prochainement disponible.",
-      "content" : "Qaobee sera téléchargeable sur l'App Store et sur Google Play."
+    "area-4": {
+      "title": "Prochainement disponible.",
+      "content": "Qaobee sera téléchargeable sur l'App Store et sur Google Play."
     }
   },
   "contact": {

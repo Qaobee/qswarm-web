@@ -1,38 +1,45 @@
 <div>
     <div ng-if="!options.hideToolbar">
-        <div ng-if="!options.widgetButtons">
-           <span class="dropdown" on-toggle="toggled(open)">
-             <button type="button" class="waves-effect waves-light btn dropdown-toggle" data-toggle="dropdown">
-                 Button dropdown <span class="caret"></span>
-             </button>
-             <ul class="dropdown-menu" role="menu">
-                 <li ng-repeat="widget in widgetDefs">
-                     <a href="#" ng-click="addWidgetInternal($event, widget);" class="dropdown-toggle"><span
-                             class="label label-primary">{{widget.name}}</span></a>
-                 </li>
-             </ul>
-           </span>
-        </div>
+        <span ng-if="!options.widgetButtons">
+            <a class='dropdown-button btn' href='javascript:void(0);' data-activates='widgetDropdown' dropdown
+               data-beloworigin="true"
+               data-constrainWidth="false"
+               data-hover="true">
+                <i class="material-icons">add</i>
+            </a>
+            <ul id='widgetDropdown' class='dropdown-content'>
+                <li ng-repeat="widget in widgetDefs">
+                    <a href="#" ng-click="addWidgetInternal($event, widget);" class="dropdown-toggle"><span
+                            class="label label-primary" translate="{{widget.title}}"></span></a>
+                </li>
+            </ul>
+        </span>
+        <span ng-if="options.widgetButtons">
+            <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
+                <a class="btn-floating btn-large red ">
+                    <i class="large material-icons">add</i>
+                </a>
+                <ul>
+                    <li ng-repeat="widget in widgetDefs">
+                        <button
+                                style="margin: 1px" ng-click="addWidgetInternal($event, widget);"
+                                class="waves-effect waves-light colorAccent btn" translate="{{widget.title}}">
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </span>
+        <button class="waves-effect waves-light btn" ng-click="resetWidgetsToDefault()"><i
+                class="material-icons">refresh</i></button>
 
-        <div>
-            <span ng-if="options.widgetButtons">
-                <button ng-repeat="widget in widgetDefs"
-                    style="margin: 1px" ng-click="addWidgetInternal($event, widget);" class="waves-effect waves-light colorAccent btn">
-                {{widget.name | translate}}
-                </button>
-            </span>
-            <button class="waves-effect waves-light btn" ng-click="resetWidgetsToDefault()"><i
-                    class="material-icons">refresh</i></button>
+        <button ng-if="options.storage && options.explicitSave" ng-click="options.saveDashboard()"
+                class="waves-effect waves-light btn" ng-disabled="!options.unsavedChangeCount">{{
+            !options.unsavedChangeCount? 'all saved' : '<i class="material-icons">save</i> (' +
+            options.unsavedChangeCount + ')' }}
+        </button>
 
-            <button ng-if="options.storage && options.explicitSave" ng-click="options.saveDashboard()"
-                    class="waves-effect waves-light btn" ng-disabled="!options.unsavedChangeCount">{{
-                !options.unsavedChangeCount
-                ? "all saved" : "<i class=\"material-icons\">save</i> (" + options.unsavedChangeCount + ")" }}
-            </button>
-
-            <button ng-click="clear();" type="button" class="waves-effect waves-light btn"><i
-                    class="material-icons">delete</i></button>
-        </div>
+        <button ng-click="clear();" type="button" class="waves-effect waves-light btn"><i
+                class="material-icons">delete</i></button>
     </div>
 
     <div ui-sortable="sortableOptions" ng-model="widgets" class="dashboard-widget-area">
@@ -40,16 +47,21 @@
             <div class="widget card" ng-class="widget.class">
                 <div class="widget-header card-content">
 
-                        <span class="widget-title" ng-dblclick="editTitle(widget)" ng-hide="widget.editingTitle" translate="{{widget.title}}"></span>
-                        <form action="" class="widget-title" ng-show="widget.editingTitle" ng-submit="saveTitleEdit(widget)">
-                            <div class="input-field col s12" >
-                                <input type="text" ng-model="widget.title" ng-class="widget.class" />
-                            </div>
-                        </form>
-                        <span ng-if="!options.hideWidgetName">{{widget.name}}</span>
-                        <span ng-click="removeWidget(widget);" ng-if="!options.hideWidgetClose"><i class="material-icons right">close</i></span>
+                    <span class="widget-title" ng-dblclick="editTitle(widget)" ng-hide="widget.editingTitle"
+                          translate="{{widget.title}}"></span>
+                    <form action="" class="widget-title" ng-show="widget.editingTitle"
+                          ng-submit="saveTitleEdit(widget)">
+                        <div class="input-field col s12">
+                            <input type="text" ng-model="widget.title" ng-class="widget.class"/>
+                        </div>
+                    </form>
+                    <span ng-if="!options.hideWidgetName">{{widget.name}}</span>
+                    <span ng-click="removeWidget(widget);" ng-if="!options.hideWidgetClose"><i
+                            class="material-icons right">close</i></span>
                         <span ng-click="widget.contentStyle.display = widget.contentStyle.display === 'none' ? 'block' : 'none'">
-                            <i class="material-icons right">{{ widget.contentStyle.display === 'none'?'arrow_drop_up':''}}{{widget.contentStyle.display !== 'none'?'arrow_drop_down':''}}</i>
+                            <i class="material-icons right">{{ widget.contentStyle.display ===
+                                'none'?'arrow_drop_up':''}}{{widget.contentStyle.display !==
+                                'none'?'arrow_drop_down':''}}</i>
                         </span>
                 </div>
                 <div class="widget-content container" ng-style="widget.contentStyle" style="overflow-y: auto;"></div>

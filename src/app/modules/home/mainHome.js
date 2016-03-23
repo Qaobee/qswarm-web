@@ -45,7 +45,7 @@
             $scope.meta = meta;
 
             $scope.dashboardOptions = {
-                widgetButtons: true,
+                widgetButtons: false,
                 widgetDefinitions: widgetDefinitions.get(),
                 hideWidgetName: true,
                 defaultWidgets: defaultWidgets,

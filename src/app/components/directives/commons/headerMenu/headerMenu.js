@@ -36,10 +36,7 @@
                     $translatePartialLoader.addPart('menu');
                     $translatePartialLoader.addPart('user');
                     $scope.signin = {};
-                    $scope.notifications = {
-                        unread: 0,
-                        datas: []
-                    };
+                    $scope.notifications = [];
                     /**
                      *
                      * @param viewLocation
@@ -53,11 +50,11 @@
                      *
                      */
                     function getNotifications() {
-                        notificationsRestAPI.getUserNotifications(5).then(function (data) {
-                            $scope.notifications.datas = data.data;
-                            $scope.notifications.unread = data.data.count(function (n) {
+                        notificationsRestAPI.getUserNotifications().then(function (data) {
+                            $scope.notifications = data.data.filter(function(n) {
                                 return !n.read;
                             });
+                            console.log($scope.notifications)
                         });
                     }
 
