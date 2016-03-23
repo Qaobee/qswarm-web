@@ -1,9 +1,9 @@
 (function () {
     'use strict';
     angular.module('qaobee.widgets', [
-            'qaobee.widgets.agenda',
-            'qaobee.widgets.podium',
-            'qaobee.widgets.notifications'])
+        'qaobee.widgets.agenda',
+        'qaobee.widgets.podium',
+        'qaobee.widgets.notifications'])
 
     angular.module('qaobee.widgets.dashboard.home', ['qaobee.widgets.agenda', 'qaobee.widgets.podium'])
         .factory('widgetDefinitions', function () {
@@ -53,7 +53,7 @@
                             size: {
                                 height: '200px'
                             }
-                        }, , {
+                        }, {
                             name: 'notifications',
                             directive: 'widget-notifications',
                             class: 'red white-text',
@@ -63,7 +63,8 @@
                                 user: 'user'
                             },
                             size: {
-                                height: '200px'
+                                height: '200px',
+                                width: '66%'
                             }
                         }
                     ];
