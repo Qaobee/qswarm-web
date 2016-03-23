@@ -51,7 +51,7 @@
             'qaobee.agenda',
             'qaobee.stats',
             'qaobee.user',
-            'qaobee.notifiactions'
+            'qaobee.notifications'
 
             /* A SUPPRIMER */
             , 'qaobee.test'

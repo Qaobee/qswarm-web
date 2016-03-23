@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('qaobee.notifiactions', [])
+    angular.module('qaobee.notifications', [])
 
         .config(function ($routeProvider, metaDatasProvider) {
             $routeProvider.when('/notifications/:id', {
