@@ -189,7 +189,7 @@
                                 $rootScope.meta = data.data;
                                 $scope.structure = data.data.structure;
 
-                                var eb = new vertx.EventBus(EnvironmentConfig.apiEndPoint + '/eventbus');
+                                var eb = new vertx.EventBus(EnvironmentConfig.wsEndPoint + '/eventbus');
                                 eb.onopen = function () {
                                     $log.debug('socket connected');
                                     eb.registerHandler('qaobee.notification.' + $scope.user._id, function (message) {
