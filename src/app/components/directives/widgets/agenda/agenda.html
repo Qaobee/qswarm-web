@@ -1,8 +1,8 @@
 <div ng-repeat="e in events track by $index" class="row">
     <div class="col s2">
-        <h5 style="line-height: 0.5">{{e.startDate | date : "dd"}}</h5>
+        <h5 style="line-height: 0.5" class="center-align">{{e.startDate | date : "dd"}}</h5>
         <hr/>
-        <h6 style="line-height: 0.5">{{e.startDate | date : 'MM'}}</h6>
+        <h6 style="line-height: 0.5" class="center-align">{{e.startDate | date : 'MM'}}</h6>
     </div>
     <div class="col s10">
         <h6>{{e.label}}

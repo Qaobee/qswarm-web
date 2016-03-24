@@ -5,7 +5,7 @@
         <img ng-src="{{getAvatar(n.from_user_id.avatar)}}" alt="" class="circle">
         <span class="title" ng-bind="n.title"></span>
         <p><span class="truncate" ng-bind="n.content"></span> <br>
-            <small>{{n.from_user_id.firstname}} {{n.from_user_id.name}} | {{n.timestamp | date : 'short'}} |
+            <small>{{n.from_user_id.firstname}} {{n.from_user_id.name}} <br /> {{n.timestamp | date : 'short'}} |
                 <a href="javascript:void(0);" ng-click="markAsRead(n._id)" class="waves-effect waves-teal btn-flat"
                    style="padding: 0;">
                     <i class="tiny material-icons" ng-if="n.read"
