@@ -97,8 +97,8 @@
                         <a class='dropdown-button' data-beloworigin="true" dropdown data-alignment="right"
                            href='javascript:void(0);' data-constrainWidth="false" data-activates='notificationDropdown'
                            data-hover="false">
-                            <i class="material-icons right"
-                               ng-class="{'red-text text-lighten-1' : notifications.length > 0}">email</i>
+                            <i class="material-icons right red-text text-lighten-1" ng-if="notifications.length > 0" >drafts</i>
+                            <i class="material-icons right" ng-if="notifications.length === 0">email</i>
                             <span class="new badge white-text red lighten-1" ng-show="notifications.length > 0"
                             >{{notifications.length}}</span>
                         </a>

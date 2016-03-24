@@ -810,8 +810,8 @@ table.super-fancy tr.foobar {
     content: '';
     display: block;
     position: absolute;
-    top: -20px; /*should be set to -border-width x 2 */
-    right: 31px;
+    top: -19px; /*should be set to -border-width x 2 */
+    right: 21px;
     width: 0;
     text-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     height: 0;
