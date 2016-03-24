@@ -4,17 +4,23 @@
             <div class="col s4">
                 <simple-avatar person="players[1]" link="('#/private/viewPlayer/' + players[1]._id)" width="'75px'"></simple-avatar> 
                 <br> {{players[1].firstname}}
-                <br> <h5>{{players[1].nbGoal}}</h5>
+                <br> 
+                 <h5 ng-if="indicator==='playTime'">{{players[1].value/60 | number : 0}} '</h5>
+                <h5 ng-if="indicator==='goalScored'">{{players[1].value}}</h5>
             </div>
             <div class="col s4">
                 <simple-avatar person="players[0]" link="('#/private/viewPlayer/' + players[0]._id)" width="'100px'"></simple-avatar>
                 <br> {{players[0].firstname}}
-                <br> <h4>{{players[0].nbGoal}}</h4>
+                <br> 
+                <h4 ng-if="indicator==='playTime'">{{players[0].value/60 | number : 0}} '</h4>
+                <h4 ng-if="indicator==='goalScored'">{{players[0].value}}</h4>
             </div>
             <div class="col s4">
                 <simple-avatar person="players[2]" link="('#/private/viewPlayer/' + players[2]._id)" width="'50px'"></simple-avatar>
                 <br> {{players[2].firstname}}
-                <br> <h6>{{players[2].nbGoal}}</h6>
+                <br> 
+                <h6 ng-if="indicator==='playTime'">{{players[2].value/60 | number : 0}} '</h6>
+                <h6 ng-if="indicator==='goalScored'">{{players[2].value}}</h6>
             </div>
         </div>
 </div>

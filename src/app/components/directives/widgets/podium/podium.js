@@ -42,8 +42,7 @@
                         indicators.push($scope.indicator);
 
                         var listFieldsGroupBy = Array.create('owner');
-                        $log.debug('stataggregat', $scope.stataggregat);
-                        $log.debug('indicator', $scope.indicator);
+                        
                         var search = {
                             listIndicators: indicators,
                             listOwners: ownersId,
@@ -84,7 +83,7 @@
                                     result.forEach(function (e) {
                                         var player = {
                                             _id: e._id.owner[4],
-                                            nbGoal: e.value
+                                            value: e.value
                                         };
                                         $scope.getInfosPlayer(player);
                                     });
