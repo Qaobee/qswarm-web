@@ -51,7 +51,7 @@
                      */
                     function getNotifications() {
                         notificationsRestAPI.getUserNotifications().then(function (data) {
-                            if(!!data.data && !data.data.error) {
+                            if (!!data.data && !data.data.error) {
                                 $scope.notifications = data.data.filter(function (n) {
                                     return !n.read;
                                 });
@@ -193,20 +193,22 @@
                                 eb.onopen = function () {
                                     $log.debug('socket connected');
                                     eb.registerHandler('qaobee.notification.' + $scope.user._id, function (message) {
-                                        if(!!message.title) {
-                                            toastr.info(message.content.stripTags().truncate(30),message.title);
+                                        if (!!message.title) {
+                                            toastr.info(message.content.stripTags().truncate(30), message.title);
                                         }
                                         qeventbus.prepForBroadcast('notifications', message);
                                         getNotifications();
                                     });
                                     eb.registerHandler('qaobee.notification.' + $rootScope.meta.sandbox._id, function (message) {
-                                        if(!!message.title) {
-                                            toastr.info(message.content.stripTags().truncate(30),message.title);
+                                        if (!!message.title) {
+                                            toastr.info(message.content.stripTags().truncate(30), message.title);
                                         }
                                         qeventbus.prepForBroadcast('notifications', message);
                                         getNotifications();
                                     });
                                 };
+
+                                getNotifications();
                                 eb.onclose = function () {
                                     $log.debug('socket closed');
                                     eb = null;
@@ -348,7 +350,9 @@
                             toastr.error(error.message);
                         });
                     };
-                    getNotifications();
+                    if (!!$scope.user) {
+                        getNotifications();
+                    }
                 },
                 templateUrl: 'app/components/directives/commons/headerMenu/headerMenu.html'
             };
