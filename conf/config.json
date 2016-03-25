@@ -31,7 +31,7 @@
     "EnvironmentConfig": {
       "name": "docker",
       "apiEndPoint": "",
-      "wsEndPoint": "https://hive.qaobee.com",
+      "wsEndPoint": "",
       "useLoaderCache": true,
       "debugEnabled": true,
       "uaid" : "UA-72906581-1",
