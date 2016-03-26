@@ -2,7 +2,7 @@
   "local": {
     "EnvironmentConfig": {
       "name": "development",
-      "apiEndPoint": "https://www.qaobee.com",
+      "apiEndPoint": "http://localhost:8888",
       "useLoaderCache": false,
       "debugEnabled": true,
       "uaid" : "",
