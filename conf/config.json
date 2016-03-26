@@ -2,8 +2,7 @@
   "local": {
     "EnvironmentConfig": {
       "name": "development",
-      "apiEndPoint": "http://localhost:8888",
-      "wsEndPoint": "http://localhost:8888",
+      "apiEndPoint": "https://www.qaobee.com",
       "useLoaderCache": false,
       "debugEnabled": true,
       "uaid" : "",
@@ -17,7 +16,6 @@
     "EnvironmentConfig": {
       "name": "recette",
       "apiEndPoint": "http://hive-qaobee.rhcloud.com",
-      "wsEndPoint": "http://hive-qaobee.rhcloud.com",
       "useLoaderCache": true,
       "debugEnabled": true,
       "uaid" : "",
@@ -31,7 +29,6 @@
     "EnvironmentConfig": {
       "name": "docker",
       "apiEndPoint": "",
-      "wsEndPoint": "",
       "useLoaderCache": true,
       "debugEnabled": true,
       "uaid" : "UA-72906581-1",
