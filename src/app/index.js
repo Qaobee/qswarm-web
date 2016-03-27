@@ -66,7 +66,7 @@
                 urlTemplate: 'app/components/i18n/{part}/{lang}.json'
             });
             $translateProvider.useLoaderCache(EnvironmentConfig.useLoaderCache);
-            $translateProvider.useSanitizeValueStrategy('escape');
+            $translateProvider.useSanitizeValueStrategy('escapeParameters');
             $logProvider.debugEnabled(EnvironmentConfig.debugEnabled);
             $translateProvider.registerAvailableLanguageKeys(['fr', 'en', 'de'], {
                 'fr_FR': 'fr',
