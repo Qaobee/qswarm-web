@@ -68,6 +68,7 @@
             $scope.compareList = {};
             $scope.currentEffective = {};
             $scope.currentCategory = null;
+            $scope.activeTabIndex =0;
         
             $scope.dashboardOptions = {
                 widgetButtons: false,
