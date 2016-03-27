@@ -43,6 +43,7 @@
             $translatePartialLoader.addPart('effective');
             $scope.user = user;
             $scope.meta = meta;
+            $scope.activeTabIndex =0;
 
             $scope.dashboardOptions = {
                 widgetButtons: false,

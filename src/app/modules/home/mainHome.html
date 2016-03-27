@@ -2,12 +2,29 @@
 
     <!-- space between header menu and body-->
     <div class="row"></div>
-    <div class="row">
-        <div class="col s12">
-            <div dashboard="dashboardOptions" class="dashboard-container" template-url="app/components/directives/widgets/dashboardHome.html"></div>
-        </div>
-    </div>
-    
+    <v-tabs class="tabs" horizontal active="activeTabIndex">
+        <v-tab class="tab"><a ng-href="" ng-class="{'active': activeTabIndex === 0}">Tab 1</a></v-tab>
+        <v-tab class="tab"><a ng-href="" ng-class="{'active': activeTabIndex === 1}">Tab 2</a></v-tab>
+        <v-tab class="tab"><a ng-href="" ng-class="{'active': activeTabIndex === 2}">Tab 3</a></v-tab>
+    </v-tabs>
+
+    <v-pages class="vPages--default" active="activeTabIndex">
+        <v-page>
+            <div class="row">
+                <div class="col s12">
+                    <div dashboard="dashboardOptions" class="dashboard-container" template-url="app/components/directives/widgets/dashboardHome.html"></div>
+                </div>
+            </div>
+        </v-page>
+        <v-page>
+            <h3>Page 2</h3>
+            <p>Maecenas malesuada elit lectus felis, malesuada ultricies.</p>
+        </v-page>
+        <v-page>
+            <h3>Page 3</h3>
+            <p>Curabitur et ligula. Ut molestie a, ultricies porta urna.</p>
+        </v-page>
+    </v-pages>
     <!-- body start-->
     <!--
     <div class="row">
@@ -91,4 +108,3 @@
     </div>
     -->
     <!-- body end-->
-</div>

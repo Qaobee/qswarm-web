@@ -57,7 +57,9 @@
     "angular-send-feedback": "Giwi/angular-feedback#~1.0.3",
     "malhar-angular-dashboard": "Giwi/malhar-angular-dashboard#~2.0.2",
     "angular-google-analytics": "~1.1.6",
-    "vertxbus": "*"
+    "vertxbus": "*",
+    "materialize": "~0.97.5",
+    "v-tabs": "~0.2.0"
   },
   "resolutions": {
     "angular": "1.4.0-rc.2",

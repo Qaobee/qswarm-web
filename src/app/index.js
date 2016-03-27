@@ -15,6 +15,7 @@
             'ngSanitize',
             'ngCookies',
             'ngAudio',
+            'ngAnimate',
             'pascalprecht.translate',
             'reCAPTCHA',
             'tmh.dynamicLocale',
@@ -25,6 +26,7 @@
             'ng.deviceDetector',
             'angular-send-feedback',
             'angular-google-analytics',
+            'vTabs',
             //* qaobee widget */
             'qaobee.filterCalendar',
             'qaobee.commonsDirectives',
