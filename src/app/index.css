@@ -41,6 +41,11 @@
     overflow: hidden;
 }
 
+.cardBckg {
+    background: #9e9e9e;
+    color: #646464 !important;
+}
+
 .btn, .btn-large, .btn-flat {
     height: 24px;
     line-height: 24px;

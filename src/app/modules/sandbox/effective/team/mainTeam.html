@@ -3,6 +3,25 @@
     <div class="row"></div>
 
     <!-- header start tablet and sup-->
+    <!-- entete start -->
+    <div class="row colorMain white-text">
+        <div class="col s2 left-align">
+            <h5><i class="material-icons md-36">group</i></h5>
+        </div>
+
+        <div class="col s8 center-align">
+            <h5>{{'mainTeam.title' | translate }} {{currentEffective.label}}</h5>
+        </div>
+        
+        <div class="col s2">&nbsp;</div>
+        
+            <ul class="tabs" tabs>
+                <li class="tab col s6"><a class="active" href="#dashboardTeam">{{'tabEffectif.dashboard' | translate }}</a></li>
+                <li class="tab col s6"><a href="#listTeam">{{'tabEffectif.Listplayer' | translate }}</a></li>
+            </ul>
+        
+    </div>
+    
     <div class="row white hide-on-small-only">
         <div class="col s1 blue-grey-text text-darken-2 left-align">
             <i class="material-icons md-48">group</i>

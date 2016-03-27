@@ -2,45 +2,32 @@
     <!-- body start-->
     <div class="row"></div>
     
-    <!-- entete start tablet and sup-->
-    <div class="row colorMain hide-on-small-only white-text">
-        <div class="col s1 left-align">
+    <!-- entete start -->
+    <div class="row colorMain white-text">
+        <div class="col s2 left-align">
             <h5><i class="material-icons md-36">person</i></h5>
         </div>
 
-        <div class="col s9 center-align">
+        <div class="col s8 center-align">
             <h5>{{'mainEffective.title' | translate }} {{currentEffective.label}}</h5>
         </div>
-
-        <div class="col s2 center-align">
-            <h5>
-                <a href="#/private/addPlayer/{{meta._id}}">
-                    <i class="material-icons md-36 white-text">add</i>
-                </a>
-                <a ng-click="compare()" class="white-text text-lighten-1"
-                   href="" title="{{'mainEffective.buttons.compare' | translate}}">
-                    <i class="material-icons md-36">recent_actors</i>&nbsp;
-                </a>
-            </h5>
-        </div>
+        
+        <div class="col s2">&nbsp;</div>
         
             <ul class="tabs" tabs>
-                <li class="tab col s6"><a href="#dashboardPlayer">{{'tabEffectif.dashboard' | translate }}</a></li>
+                <li class="tab col s6"><a class="active" href="#dashboardEff">{{'tabEffectif.dashboard' | translate }}</a></li>
                 <li class="tab col s6"><a href="#listPlayer">{{'tabEffectif.Listplayer' | translate }}</a></li>
             </ul>
         
     </div>
     <!-- entete end -->
 
-    
-
     <div class="row">
-        
-        
+
         <!-- tab List player -->
-        <div id="dashboardPlayer">
-            <div class="col s12">&nbsp;</div>
-            <div class="col s12">
+        <div id="dashboardEff" class="col s12">
+            <br>
+            <div>
                 <div dashboard="dashboardOptions" class="dashboard-container" template-url="app/components/directives/widgets/dashboardHome.html"></div>
             </div>
         </div>
@@ -48,12 +35,24 @@
         
         <!-- tab List player -->
         <div id="listPlayer">
-            <div class="col s12">
+            <div class="col s8">
                 <form class="forms forms-inline input-field">
                     <input type="text" id="queryPlayer" class="grey lighten-4" ng-model="queryPlayer">
                     <label for="queryPlayer">Filter</label>
                 </form>
             </div>
+            
+            <div class="col s4 center-align">
+                <br>
+                <a href="#/private/addPlayer/{{meta._id}}" class="waves-effect waves-light btn colorAccent">
+                    <i class="material-icons">add</i>
+                </a>
+                
+                <button ng-click="compare()" title="{{'mainEffective.buttons.compare' | translate}}" class="waves-effect waves-light btn colorAccent">
+                    <i class="material-icons">recent_actors</i>
+                </button>
+
+        </div>
 
 
             <div class="col s12">&nbsp;</div>
@@ -63,20 +62,14 @@
                     <div class="card white blue-grey-text text-darken-2">
                         <div class="card-content center-align colorMain">
 
-                            <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}" class="white-text">{{player.firstname}}
-                                {{player.name}}</a></span>
                             <a href="#/private/viewPlayer/{{player._id}}">
                                 <avatar person="player" width="'50px'"></avatar>
                             </a>
-                            <span class="white-text"> #{{player.status.squadnumber}}</span>
+                            <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}" class="white-text">
+                                <small>{{player.firstname}} {{player.name}}</small></a></span>
                         </div>
                         <div class="card-content center-align">
-                            <h5><a href="#/private/viewPlayer/{{player._id}}">{{player.positionType}}</a></h5>
-                            <p>
-                                {{player.age}} {{'commons.format.ageYear' | translate }} -
-                                {{player.status.height}} {{'commons.format.height' | translate }} / {{player.status.weight}}
-                                {{'commons.format.weight' | translate }}
-                            </p>
+                            <h5><small><a href="#/private/viewPlayer/{{player._id}}">{{player.positionType}}</a></small></h5>
                         </div>
 
                         <div class="card-action">
