@@ -53,9 +53,9 @@
                         <!-- enable -->
                         <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===true">
                             <div class="card-content colorMain white-text center">
-                                <h5>
+                                <span class="card-title">
                                     <a href="#/private/updateTeam/{{team._id}}/false" class="white-text"><small>{{team.label}}</small></a>
-                                </h5>
+                                </span>
                             </div>
                             <div class="card-action">
                                 <a href="#/private/teamStats/{{team._id}}" class="btn waves-effect colorAccent white-text"><i
@@ -71,9 +71,9 @@
                         <!-- disable -->
                         <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===false">
                             <div class="card-content grey lighten-2 grey-text text-darken-2 center">
-                                <h5>
+                                <span class="card-title">
                                     <a href="#/private/updateTeam/{{team._id}}/false" class="blue-grey-text text-darken-2"><small>{{team.label}}</small></a>
-                                </h5>
+                                </span>
                             </div>
                             <div class="card-action">
                                 <a href="#/private/teamStats/{{team._id}}" class="btn waves-effect colorAccent white-text"><i
