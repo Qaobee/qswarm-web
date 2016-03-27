@@ -44,8 +44,9 @@
     "LabelTooShort": "Le libellé est trop court",
     "CategoryAge": "La catégorie d'âge de l'effectif est obligatoire"
   },
-  "mainPlayer": {
-    "title": "Liste joueur de l'effectif "
+  "tabEffectif": {
+      "dashboard": "Tableau de bord",
+      "Listplayer": "Liste des joueurs"
   },
   "addPlayer": {
     "title": "Ajout d'un joueur",

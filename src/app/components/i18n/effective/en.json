@@ -44,8 +44,9 @@
     "LabelTooShort": "Label is too short",
     "CategoryAge": "Effective age category is mandatory"
   },
-  "mainPlayer": {
-    "title": "Player list of effective "
+  "tabEffectif": {
+      "dashboard": "Dashboard",
+      "Listplayer": "Players list"
   },
   "addPlayer": {
     "title": "Add a person",

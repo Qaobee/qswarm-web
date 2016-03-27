@@ -22,8 +22,8 @@
                                 user: 'user'
                             },
                             size: {
-                                height: '200px',
-                                width: '25%'
+                                height: '250px',
+                                width: '40%'
                             }
                         }, {
                             name: 'Top buteurs',
@@ -39,8 +39,8 @@
                                 stataggregat: 'COUNT'
                             },
                             size: {
-                                height: '200px',
-                                width: '50%'
+                                height: '250px',
+                                width: '60%'
                             }
                         }, {
                             name: 'Temps de jeu',
@@ -56,8 +56,8 @@
                                 stataggregat: 'SUM'
                             },
                             size: {
-                                height: '200px',
-                                width: '50%'
+                                height: '250px',
+                                width: '60%'
                             }
                         }, {
                             name: 'notifications',
@@ -70,8 +70,8 @@
                                 user: 'user'
                             },
                              size: {
-                                height: '200px',
-                                width: '25%'
+                                height: '250px',
+                                width: '40%'
 
                             }
                         }
@@ -82,9 +82,8 @@
         .value('defaultWidgets', [
             {name: 'notifications'}, 
             {name: 'Top buteurs'},
-            {name: 'agenda'},
-            {name: 'Temps de jeu'}
-            
+            {name: 'Temps de jeu'},
+            {name: 'agenda'}
             
         ]);
 })();

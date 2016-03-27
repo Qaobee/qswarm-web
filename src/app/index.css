@@ -77,13 +77,13 @@ button, input, optgroup, select, textarea {
 }
 
 .tabs .tab a {
-    color: #ffffff;
-    background-color: #aed581;
+    color: #646464 !important;
+    background-color: #e0e0e0;
 }
 
 .tabs .tab a:hover, .tabs .tab .active {
-    background-color: #8bc34a;;
-    color: #ffffff;
+    background-color: #bdbdbd;
+    color: #646464 !important;
 }
 
 .tabs .indicator {

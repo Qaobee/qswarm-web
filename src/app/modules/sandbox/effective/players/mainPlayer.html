@@ -1,105 +1,102 @@
 <div class="container">
     <!-- body start-->
     <div class="row"></div>
-
-    <!-- header start tablet and sup-->
-    <div class="row white hide-on-small-only">
-        <div class="col s1 blue-grey-text text-darken-2 left-align">
-            <i class="material-icons md-48">person</i>
+    
+    <!-- entete start tablet and sup-->
+    <div class="row colorMain hide-on-small-only white-text">
+        <div class="col s1 left-align">
+            <h5><i class="material-icons md-36">person</i></h5>
         </div>
 
-        <div class="col s9 left-align">
-            <h5 class="blue-grey-text text-darken-2">{{'mainPlayer.title' | translate }} {{currentEffective.label}}</h5>
+        <div class="col s9 center-align">
+            <h5>{{'mainEffective.title' | translate }} {{currentEffective.label}}</h5>
         </div>
 
-        <div class="col s1 center-align">
-            <a href="#/private/addPlayer/{{meta._id}}" class="red-text text-lighten-1"
-               title="{{'mainEffective.buttons.addPlayer' | translate}}">
-                <i class="material-icons md-48">person_add</i>&nbsp;
-            </a>
-        </div>
-        <div class="col s1 center-align">
-            <a ng-click="compare()" class="red-text text-lighten-1"
-               href="" title="{{'mainEffective.buttons.compare' | translate}}">
-                <i class="material-icons md-48">recent_actors</i>&nbsp;
-            </a>
-        </div>
-    </div>
-    <!-- header end -->
-
-    <!-- header start smartphone-->
-    <div class="row white hide-on-med-and-up">
-
-        <div class="col s12 left-align">
-            <h5 class="blue-grey-text text-darken-2">{{'mainPlayer.title' | translate }} {{currentEffective.label}}</h5>
-        </div>
-
-        <div class="col s12 center-align">
-            
-            <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-                <a class="btn-floating btn-large red lighten-1">
-                  <i class="large material-icons">more</i>
+        <div class="col s2 center-align">
+            <h5>
+                <a href="#/private/addPlayer/{{meta._id}}">
+                    <i class="material-icons md-36 white-text">add</i>
                 </a>
-                <ul>
-                  <li><a href="#/private/addPlayer/{{meta._id}}" class="btn-floating red lighten-1"><i class="material-icons md-24">person_add</i></a></li>
-                  <li><a ng-click="compare()" class="btn-floating red lighten-1"><i class="material-icons md-24">recent_actors</i></a></li>
-                </ul>
-            </div>
+                <a ng-click="compare()" class="white-text text-lighten-1"
+                   href="" title="{{'mainEffective.buttons.compare' | translate}}">
+                    <i class="material-icons md-36">recent_actors</i>&nbsp;
+                </a>
+            </h5>
         </div>
+        
+            <ul class="tabs" tabs>
+                <li class="tab col s6"><a href="#dashboardPlayer">{{'tabEffectif.dashboard' | translate }}</a></li>
+                <li class="tab col s6"><a href="#listPlayer">{{'tabEffectif.Listplayer' | translate }}</a></li>
+            </ul>
+        
     </div>
-    <!-- header end -->
+    <!-- entete end -->
+
+    
 
     <div class="row">
-
-        <!-- filter -->
-        <div class="col s12">
-            <form class="forms forms-inline input-field">
-                <input type="text" id="queryPlayer" class="grey lighten-4" ng-model="queryPlayer">
-                <label for="queryPlayer">Filter</label>
-            </form>
+        
+        
+        <!-- tab List player -->
+        <div id="dashboardPlayer">
+            <div class="col s12">&nbsp;</div>
+            <div class="col s12">
+                <div dashboard="dashboardOptions" class="dashboard-container" template-url="app/components/directives/widgets/dashboardHome.html"></div>
+            </div>
         </div>
+        <!-- tab List player -->
+        
+        <!-- tab List player -->
+        <div id="listPlayer">
+            <div class="col s12">
+                <form class="forms forms-inline input-field">
+                    <input type="text" id="queryPlayer" class="grey lighten-4" ng-model="queryPlayer">
+                    <label for="queryPlayer">Filter</label>
+                </form>
+            </div>
 
 
-        <div class="col s12">&nbsp;</div>
+            <div class="col s12">&nbsp;</div>
 
-        <!-- List player -->
-        <ul>
-            <li class="col l3 m6 s12" ng-repeat="player in players | filter:queryPlayer">
-                <div class="card white blue-grey-text text-darken-2">
-                    <div class="card-content center-align colorMain">
-                        
-                        <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}" class="white-text">{{player.firstname}}
-                            {{player.name}}</a></span>
-                        <a href="#/private/viewPlayer/{{player._id}}">
-                            <avatar person="player" width="'50px'"></avatar>
-                        </a>
-                        <span class="white-text"> #{{player.status.squadnumber}}</span>
-                    </div>
-                    <div class="card-content center-align">
-                        <h5><a href="#/private/viewPlayer/{{player._id}}">{{player.positionType}}</a></h5>
-                        <p>
-                            {{player.age}} {{'commons.format.ageYear' | translate }} -
-                            {{player.status.height}} {{'commons.format.height' | translate }} / {{player.status.weight}}
-                            {{'commons.format.weight' | translate }}
-                        </p>
-                    </div>
+            <ul>
+                <li class="col l3 m6 s12" ng-repeat="player in players | filter:queryPlayer">
+                    <div class="card white blue-grey-text text-darken-2">
+                        <div class="card-content center-align colorMain">
 
-                    <div class="card-action">
-                        <a href="#/private/playerStats/{{player._id}}"
-                           class="btn waves-effect waves-light red lighten-1 white-text">
-                            <i class="fa fa-bar-chart"></i>
-                        </a>
-                        
-                        <div class="right">
-                            <input type="checkbox" ng-model="compareList[player._id]" name="compare"
-                                   ng-change="updatePlayerToCompare(player._id)"
-                                   ng-checked="compareList[player._id]" id="compare-{{player._id}}"/>
-                            <label for="compare-{{player._id}}"></label>
+                            <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}" class="white-text">{{player.firstname}}
+                                {{player.name}}</a></span>
+                            <a href="#/private/viewPlayer/{{player._id}}">
+                                <avatar person="player" width="'50px'"></avatar>
+                            </a>
+                            <span class="white-text"> #{{player.status.squadnumber}}</span>
+                        </div>
+                        <div class="card-content center-align">
+                            <h5><a href="#/private/viewPlayer/{{player._id}}">{{player.positionType}}</a></h5>
+                            <p>
+                                {{player.age}} {{'commons.format.ageYear' | translate }} -
+                                {{player.status.height}} {{'commons.format.height' | translate }} / {{player.status.weight}}
+                                {{'commons.format.weight' | translate }}
+                            </p>
+                        </div>
+
+                        <div class="card-action">
+                            <a href="#/private/playerStats/{{player._id}}"
+                               class="btn waves-effect waves-light red lighten-1 white-text">
+                                <i class="fa fa-bar-chart"></i>
+                            </a>
+
+                            <div class="right">
+                                <input type="checkbox" ng-model="compareList[player._id]" name="compare"
+                                       ng-change="updatePlayerToCompare(player._id)"
+                                       ng-checked="compareList[player._id]" id="compare-{{player._id}}"/>
+                                <label for="compare-{{player._id}}"></label>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- tab List player -->
     </div>
 
     <!-- body end-->

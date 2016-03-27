@@ -1,9 +1,9 @@
 <a href="#/notifications" class="waves-effect waves-teal btn-flat white-text">{{'notifications.more' | translate}} <i
         class="material-icons right">forward</i></a>
-<ul class="collection grey-text text-darken-2">
+<ul class="collection blue-grey-text text-darken-2">
     <li class="collection-item avatar" ng-repeat="n in notifications">
         <img ng-src="{{getAvatar(n.from_user_id.avatar)}}" alt="" class="circle">
-        <span class="title" ng-bind="n.title"></span>
+        <a href="#/notifications/{{n._id}}"><span class="title" ng-bind="n.title"></span></a>
         <p><span class="truncate" ng-bind="n.content"></span> <br>
             <small>{{n.from_user_id.firstname}} {{n.from_user_id.name}} <br /> {{n.timestamp | date : 'short'}} |
                 <a href="javascript:void(0);" ng-click="markAsRead(n._id)" class="waves-effect waves-teal btn-flat"

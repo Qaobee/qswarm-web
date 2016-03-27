@@ -51,13 +51,13 @@
          * @class qaobee.modules.sandbox.effective.MainPlayerControler
          * @description Main controller for view mainPlayer.html
          */
-        .controller('MainPlayerController', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                     effectiveRestAPI, effectiveSrv, userRestAPI, playerCompareService) {
+        .controller('MainPlayerController', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, $window, user, meta,
+                                                     effectiveRestAPI, effectiveSrv, userRestAPI, playerCompareService, widgetDefinitions, defaultWidgets, $timeout) {
 
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('stats');
-
+        
             $scope.effectiveId = $routeParams.effectiveId;
             $scope.user.effectiveDefault = $scope.effectiveId;
 
@@ -68,6 +68,15 @@
             $scope.compareList = {};
             $scope.currentEffective = {};
             $scope.currentCategory = null;
+        
+            $scope.dashboardOptions = {
+                widgetButtons: false,
+                widgetDefinitions: widgetDefinitions.get(),
+                hideWidgetName: true,
+                defaultWidgets: defaultWidgets,
+                storage: $window.localStorage,
+                storageId: 'qaobee-widgets-dashboard-home'
+            };
 
             $scope.compare = function() {
                 if(Object.keys($scope.compareList).length >0) {
@@ -124,6 +133,9 @@
             $scope.checkUserConnected = function () {
                 userRestAPI.getUserById(user._id).success(function (/* data */) {
                     $scope.getPlayers();
+                    
+                  
+                    
                 }).error(function (/* data */) {
                     $log.error('MainPlayerControler : User not Connected');
                 });
