@@ -13,10 +13,11 @@
         </div>
         
         <div class="col s2">&nbsp;</div>
-            <v-tabs class="tabs" horizontal active="activeTabIndex">
-                <v-tab class="tab"><a ng-href="" ng-class="{'active': activeTabIndex === 0}">{{'tabEffectif.dashboard' | translate }}</a></v-tab>
-                <v-tab class="tab"><a ng-href="" ng-class="{'active': activeTabIndex === 1}">{{'tabEffectif.Listplayer' | translate }}</a></v-tab>
-            </v-tabs>
+        
+        <v-tabs class="tabs" horizontal active="activeTabIndex">
+            <v-tab class="tab"><a ng-href="" ng-class="{'active': activeTabIndex === 0}">{{'tabEffectif.dashboard' | translate }}</a></v-tab>
+            <v-tab class="tab"><a ng-href="" ng-class="{'active': activeTabIndex === 1}">{{'tabEffectif.Listplayer' | translate }}</a></v-tab>
+        </v-tabs>
             
         
     </div>
@@ -53,16 +54,16 @@
                 <ul>
                     <li class="col l3 m6 s12" ng-repeat="player in players | filter:queryPlayer">
                         <div class="card white blue-grey-text text-darken-2">
-                            <div class="card-content center-align colorMain">
+                            <div class="card-content center-align">
 
                                 <a href="#/private/viewPlayer/{{player._id}}">
                                     <avatar person="player" width="'50px'"></avatar>
                                 </a>
-                                <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}" class="white-text">
+                                <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}">
                                     <small>{{player.firstname}} {{player.name}}</small></a></span>
                             </div>
-                            <div class="card-content center-align">
-                                <h5><small><a href="#/private/viewPlayer/{{player._id}}">{{player.positionType}}</a></small></h5>
+                            <div class="card-content center-align colorMain">
+                                <h5><small class="white-text">{{player.positionType}}</small></h5>
                             </div>
 
                             <div class="card-action">

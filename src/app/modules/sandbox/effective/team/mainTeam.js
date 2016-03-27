@@ -43,8 +43,8 @@
          * @class qaobee.modules.sandbox.effective.team.MainTeamControler
          * @description Main controller for view mainTeam.html
          */
-        .controller('MainTeamController', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter,
-                                                   user, meta, effectiveSrv, teamRestAPI, userRestAPI, teamCompareService) {
+        .controller('MainTeamController', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, $window, 
+                                                   user, meta, effectiveSrv, teamRestAPI, userRestAPI, teamCompareService, widgetDefinitions, defaultWidgets) {
 
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('commons');
@@ -54,8 +54,17 @@
             $scope.user = user;
             $scope.meta = meta;
             $scope.listTeamHome = [];
-
+            $scope.activeTabIndex =0;
             $scope.compareList = {};
+        
+            $scope.dashboardOptions = {
+                widgetButtons: false,
+                widgetDefinitions: widgetDefinitions.get(),
+                hideWidgetName: true,
+                defaultWidgets: defaultWidgets,
+                storage: $window.localStorage,
+                storageId: 'qaobee-widgets-dashboard-home'
+            };
 
             $scope.compare = function() {
                 if(Object.keys($scope.compareList).length >0) {

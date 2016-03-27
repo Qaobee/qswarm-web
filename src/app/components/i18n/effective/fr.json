@@ -48,6 +48,20 @@
       "dashboard": "Tableau de bord",
       "Listplayer": "Liste des joueurs"
   },
+    "mainPlayer": {
+    "title": "Joueurs de l'effectif",
+    "buttons": {
+      "addEffective": "Ajouter un effectif",
+      "updateEffective": "Editer un effectif",
+      "addPlayer": "Ajouter un joueur",
+      "viewPlayer": "Voir la fiche du joueur",
+      "addTeamHome": "Ajouter une équipe",
+      "addTeamAdversary": "Ajouter un adversaire",
+      "viewStatsEffective": "Voir les stats de l'effectif",
+      "dropdownEffective": "Changer d'effectif",
+      "compare": "Comparer"
+    }
+  },
   "addPlayer": {
     "title": "Ajout d'un joueur",
     "toastSuccess": "{{firstname}} {{name}} a été ajouté à l'effectif {{effective}}",
@@ -102,7 +116,11 @@
     "PositionType": "La poste du joueur est obligatoire"
   },
   "mainTeam": {
-    "title": "Liste équipe de l'effectif "
+    "title": "Equipe de l'effectif "
+  },
+    "tabTeam": {
+      "dashboard": "Tableau de bord",
+      "ListTeam": "Liste des équipes"
   },
   "addTeam": {
     "titleHome": "Ajout d'une équipe à l'effectif",

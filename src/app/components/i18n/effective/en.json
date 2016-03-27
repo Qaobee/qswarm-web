@@ -48,6 +48,20 @@
       "dashboard": "Dashboard",
       "Listplayer": "Players list"
   },
+    "mainPlayer": {
+    "title": "Effective's players",
+        "buttons": {
+          "addEffective": "Add effective",
+          "updateEffective": "Edit effective",
+          "addPlayer": "Add player",
+          "addTeamHome": "Add team",
+          "addTeamAdversary": "Add adversary",
+          "viewPlayer": "View player sheet",
+          "viewStatsEffective": "View stats of effective",
+          "dropdownEffective": "Change effective",
+          "compare": "Compare"
+        }
+  },
   "addPlayer": {
     "title": "Add a person",
     "toastSuccess": "{{firstname}} {{name}} was added to the effective {{effective}}",
@@ -103,7 +117,11 @@
     "PositionType": "Position is mandatory"
   },
   "mainTeam": {
-    "title": "Team list of effective"
+    "title": "Teams of effective"
+  },
+    "tabTeam": {
+      "dashboard": "Dashboard",
+      "ListTeam": "Team's list"
   },
   "addTeam": {
     "titleHome": "Add team for effective",
