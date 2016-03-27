@@ -52,7 +52,7 @@
          * @description Main controller for view mainPlayer.html
          */
         .controller('MainPlayerController', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, $window, user, meta,
-                                                     effectiveRestAPI, effectiveSrv, userRestAPI, playerCompareService, widgetDefinitions, defaultWidgets, $timeout) {
+                                                     effectiveRestAPI, effectiveSrv, userRestAPI, playerCompareService, widgetDefinitionsMainPlayer, defaultWidgetsMainPlayer, $timeout) {
 
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('commons');
@@ -80,13 +80,13 @@
                 user.mainPlayerTabId = tabId;
             }
         
-            $scope.dashboardOptions = {
+            $scope.dashboardMainPlayerOptions = {
                 widgetButtons: false,
-                widgetDefinitions: widgetDefinitions.get(),
+                widgetDefinitions: widgetDefinitionsMainPlayer.get(),
                 hideWidgetName: true,
-                defaultWidgets: defaultWidgets,
+                defaultWidgets: defaultWidgetsMainPlayer,
                 storage: $window.localStorage,
-                storageId: 'qaobee-widgets-dashboard-home'
+                storageId: 'qaobee-widgets-dashboard-mainPlayer'
             };
 
             $scope.compare = function() {

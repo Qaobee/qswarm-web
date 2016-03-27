@@ -1,25 +1,28 @@
 (function () {
     'use strict';
-    angular.module('qaobee.dashboard.home', [
+    angular.module('qaobee.dashboard.mainPlayer', [
         'qaobee.widgets.agenda',
         'qaobee.widgets.podium',
         'qaobee.widgets.notifications'])
 
-    angular.module('qaobee.widgets.dashboard.home', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications'])
-        .factory('widgetDefinitionsHome', function () {
+    angular.module('qaobee.widgets.dashboard.mainPlayer', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications', 'statsEfficiency'])
+        .factory('widgetDefinitionsMainPlayer', function () {
             return {
                 get: function () {
 
                     return [
                         {
-                            name: 'agenda',
-                            directive: 'widget-calendar',
-                            classContent: 'card colorAccent white-text',
+                            name: 'Efficacite',
+                            directive: 'stats-efficiency',
+                            classContent: 'card blue-grey-text text-darken-2',
                             classHeader: 'widget-header card-content colorMain white-text',
-                            title: 'mainAgenda.next_event',
+                            title: 'efficiency.efficiency',
                             attrs: {
                                 meta: 'meta',
-                                user: 'user'
+                                user: 'user',
+                                bindToId: 'gaugeEfficiencyGlobal', 
+                                label:'efficiencyTotal',
+                                padding:'25'
                             },
                             size: {
                                 height: '250px',
@@ -79,11 +82,11 @@
                 }
             };
         })
-        .value('defaultWidgetsHome', [
+        .value('defaultWidgetsMainPlayer', [
             {name: 'notifications'}, 
             {name: 'Top buteurs'},
             {name: 'Temps de jeu'},
-            {name: 'agenda'}
+            {name: 'Efficacite'}
             
         ]);
 })();

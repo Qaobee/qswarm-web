@@ -43,6 +43,7 @@
             'qaobee.eventbus',
             'qaobee.httpModule',
             'qaobee.widgets.dashboard.home',
+            'qaobee.widgets.dashboard.mainPlayer',
             'ui.dashboard',
             /* qaobee modules */
             'qaobee.public',

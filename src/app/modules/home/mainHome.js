@@ -36,7 +36,7 @@
          * @class qaobee.modules.home.HomeControler
          */
         .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, $window,
-                                               effectiveSrv, collecteRestAPI, eventsRestAPI, teamRestAPI, userRestAPI, widgetDefinitions, defaultWidgets) {
+                                               effectiveSrv, collecteRestAPI, eventsRestAPI, teamRestAPI, userRestAPI, widgetDefinitionsHome, defaultWidgetsHome) {
             $translatePartialLoader.addPart('home');
             $translatePartialLoader.addPart('stats');
             $translatePartialLoader.addPart('agenda');
@@ -45,11 +45,11 @@
             $scope.meta = meta;
             $scope.activeTabIndex =0;
 
-            $scope.dashboardOptions = {
+            $scope.dashboardOptionsHome = {
                 widgetButtons: false,
-                widgetDefinitions: widgetDefinitions.get(),
+                widgetDefinitions: widgetDefinitionsHome.get(),
                 hideWidgetName: true,
-                defaultWidgets: defaultWidgets,
+                defaultWidgets: defaultWidgetsHome,
                 storage: $window.localStorage,
                 storageId: 'qaobee-widgets-dashboard-home'
             };
