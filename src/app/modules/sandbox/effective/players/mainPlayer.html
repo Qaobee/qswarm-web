@@ -9,14 +9,14 @@
         </div>
 
         <div class="col s8 center-align">
-            <h5>{{'mainEffective.title' | translate }} {{currentEffective.label}}</h5>
+            <h5>{{'mainPlayer.title' | translate }} {{currentEffective.label}}</h5>
         </div>
         
         <div class="col s2">&nbsp;</div>
         
         <v-tabs class="tabs" horizontal active="activeTabIndex">
-            <v-tab class="tab"><a ng-href="" ng-class="{'active': activeTabIndex === 0}">{{'tabEffectif.dashboard' | translate }}</a></v-tab>
-            <v-tab class="tab"><a ng-href="" ng-class="{'active': activeTabIndex === 1}">{{'tabEffectif.Listplayer' | translate }}</a></v-tab>
+            <v-tab class="tab" ng-click="changeTabDefault(0)"><a ng-href="" ng-class="{'active': activeTabIndex === 0}">{{'tabEffectif.dashboard' | translate }}</a></v-tab>
+            <v-tab class="tab" ng-click="changeTabDefault(1)"><a ng-href="" ng-class="{'active': activeTabIndex === 1}">{{'tabEffectif.Listplayer' | translate }} ({{players.length}})</a></v-tab>
         </v-tabs>
             
         
@@ -55,12 +55,14 @@
                     <li class="col l3 m6 s12" ng-repeat="player in players | filter:queryPlayer">
                         <div class="card white blue-grey-text text-darken-2">
                             <div class="card-content center-align">
-
+                                <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}" class="blue-grey-text text-darken-2">
+                                    {{player.firstname}} {{player.name}}</a>
+                                </span>
+                            </div>
+                            <div class="card-content center-align">
                                 <a href="#/private/viewPlayer/{{player._id}}">
                                     <avatar person="player" width="'50px'"></avatar>
                                 </a>
-                                <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}">
-                                    <small>{{player.firstname}} {{player.name}}</small></a></span>
                             </div>
                             <div class="card-content center-align colorMain">
                                 <h5><small class="white-text">{{player.positionType}}</small></h5>
@@ -68,7 +70,7 @@
 
                             <div class="card-action">
                                 <a href="#/private/playerStats/{{player._id}}"
-                                   class="btn waves-effect waves-light red lighten-1 white-text">
+                                   class="btn waves-effect colorAccent white-text">
                                     <i class="fa fa-bar-chart"></i>
                                 </a>
 

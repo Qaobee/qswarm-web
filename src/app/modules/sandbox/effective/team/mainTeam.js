@@ -54,8 +54,18 @@
             $scope.user = user;
             $scope.meta = meta;
             $scope.listTeamHome = [];
-            $scope.activeTabIndex =0;
             $scope.compareList = {};
+        
+            if(user.mainTeamTabId){
+                $scope.activeTabIndex = user.mainTeamTabId;
+            } else {
+                $scope.activeTabIndex = 0;
+            }
+        
+            /* keep in memory tab by default */
+            $scope.changeTabDefault = function (tabId) {
+                user.mainTeamTabId = tabId;
+            }
         
             $scope.dashboardOptions = {
                 widgetButtons: false,

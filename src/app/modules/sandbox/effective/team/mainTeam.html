@@ -15,8 +15,8 @@
         <div class="col s2">&nbsp;</div>
         
         <v-tabs class="tabs" horizontal active="activeTabIndex">
-            <v-tab class="tab"><a ng-href="" ng-class="{'active': activeTabIndex === 0}">{{'tabTeam.dashboard' | translate }}</a></v-tab>
-            <v-tab class="tab"><a ng-href="" ng-class="{'active': activeTabIndex === 1}">{{'tabTeam.ListTeam' | translate }}</a></v-tab>
+            <v-tab class="tab" ng-click="changeTabDefault(0)"><a ng-href="" ng-class="{'active': activeTabIndex === 0}">{{'tabTeam.dashboard' | translate }}</a></v-tab>
+            <v-tab class="tab" ng-click="changeTabDefault(1)"><a ng-href="" ng-class="{'active': activeTabIndex === 1}">{{'tabTeam.ListTeam' | translate }} ({{listTeamHome.length}})</a></v-tab>
         </v-tabs>
         
     </div>
@@ -54,36 +54,37 @@
                         <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===true">
                             <div class="card-content colorMain white-text center">
                                 <h5>
-                                    <small>{{team.label}}</small>
+                                    <a href="#/private/updateTeam/{{team._id}}/false" class="white-text"><small>{{team.label}}</small></a>
                                 </h5>
                             </div>
                             <div class="card-action">
-                                <input type="checkbox" ng-model="compareList[team._id]" name="compare"
-                                       ng-change="updateTeamToCompare(team._id)"
-                                       ng-checked="compareList[team._id]" id="compare1-{{team._id}}"/>
-                                <label for="compare1-{{team._id}}"></label>
-                                <a href="#/private/updateTeam/{{team._id}}/false" class="red-text text-lighten-1"><i
-                                        class="material-icons">mode_edit</i></a>
-                                <a href="#/private/teamStats/{{team._id}}" class="red-text text-lighten-1"><i
-                                        class="fa fa-bar-chart fa-2x"></i></a>
+                                <a href="#/private/teamStats/{{team._id}}" class="btn waves-effect colorAccent white-text"><i
+                                        class="fa fa-bar-chart"></i></a>
+                                <div class="right">
+                                    <input type="checkbox" ng-model="compareList[team._id]" name="compare"
+                                           ng-change="updateTeamToCompare(team._id)"
+                                           ng-checked="compareList[team._id]" id="compare1-{{team._id}}"/>
+                                    <label for="compare1-{{team._id}}"></label>
+                                </div>
                             </div>
                         </div>
                         <!-- disable -->
                         <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===false">
                             <div class="card-content grey lighten-2 grey-text text-darken-2 center">
                                 <h5>
-                                    <small>{{team.label}} sdqsd</small>
+                                    <a href="#/private/updateTeam/{{team._id}}/false" class="blue-grey-text text-darken-2"><small>{{team.label}}</small></a>
                                 </h5>
                             </div>
                             <div class="card-action">
-                                <input type="checkbox" ng-model="compareList[team._id]" name="compare"
-                                       ng-change="updateTeamToCompare(team._id)"
-                                       ng-checked="compareList[team._id]" id="compare-{{team._id}}"/>
-                                <label for="compare-{{team._id}}"></label>
-                                <a href="#/private/updateTeam/{{team._id}}/false" class="red-text text-lighten-1"><i
-                                        class="material-icons">mode_edit</i></a>
-                                <a href="#/private/teamStats/{{team._id}}" class="red-text text-lighten-1"><i
-                                        class="fa fa-bar-chart fa-2x"></i></a>
+                                <a href="#/private/teamStats/{{team._id}}" class="btn waves-effect colorAccent white-text"><i
+                                        class="fa fa-bar-chart"></i></a>
+                                
+                                <div class="right">
+                                    <input type="checkbox" ng-model="compareList[team._id]" name="compare"
+                                           ng-change="updateTeamToCompare(team._id)"
+                                           ng-checked="compareList[team._id]" id="compare1-{{team._id}}"/>
+                                    <label for="compare1-{{team._id}}"></label>
+                                </div>
                             </div>
                         </div>
                     </li>

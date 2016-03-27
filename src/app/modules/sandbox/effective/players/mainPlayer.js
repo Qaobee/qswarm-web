@@ -68,7 +68,17 @@
             $scope.compareList = {};
             $scope.currentEffective = {};
             $scope.currentCategory = null;
-            $scope.activeTabIndex =0;
+        
+            if(user.mainPlayerTabId){
+                $scope.activeTabIndex = user.mainPlayerTabId;
+            } else {
+                $scope.activeTabIndex = 0;
+            }
+        
+            /* keep in memory tab by default */
+            $scope.changeTabDefault = function (tabId) {
+                user.mainPlayerTabId = tabId;
+            }
         
             $scope.dashboardOptions = {
                 widgetButtons: false,
@@ -134,8 +144,6 @@
             $scope.checkUserConnected = function () {
                 userRestAPI.getUserById(user._id).success(function (/* data */) {
                     $scope.getPlayers();
-                    
-                  
                     
                 }).error(function (/* data */) {
                     $log.error('MainPlayerControler : User not Connected');
