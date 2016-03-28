@@ -12,17 +12,17 @@
      * @requires {@link https://github.com/mllrsohn/angular-re-captcha|reCAPTCHA}
      */
     angular.module('qaobee.signin', [
-        /* angular module */
-        'ngRoute',
-        'reCAPTCHA',
-    
-        /* qaobee modules */
-        'qaobee.signup',  
-        
-        /* qaobee API REST */
-        'userInfosRestAPI' 
-    
-    ])
+            /* angular module */
+            'ngRoute',
+            'reCAPTCHA',
+
+            /* qaobee modules */
+            'qaobee.signup',
+
+            /* qaobee API REST */
+            'userInfosRestAPI'
+
+        ])
 
         .config(function ($routeProvider) {
             $routeProvider.when('/verifyaccount/:id/:code', {
@@ -38,7 +38,7 @@
             });
         })
 
-        
+
         /**
          * @class qaobee.public.public.RecoverPasswdCtrl
          * @description Contrôleur de la page templates/public/recoverpasswd.html

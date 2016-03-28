@@ -876,3 +876,8 @@ table.super-fancy tr.foobar {
     margin-top: -25px;
     margin-right: 25px;
 }
+.payplug-frame {
+    width: 100%;
+    height: calc(100vh + 80px);
+    margin-top: -150px;
+}

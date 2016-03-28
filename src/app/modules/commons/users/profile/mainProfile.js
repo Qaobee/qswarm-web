@@ -8,16 +8,16 @@
      * @copyright <b>QaoBee</b>.
      */
     angular.module('qaobee.user.mainProfile', [
-        
-        'qaobee.user.writeProfile',
-        'qaobee.user.config',
-        'qaobee.user.password',
-        'qaobee.user.userProfilPwd',
-        'qaobee.user.billing',
-        
-        'ngAutocomplete',
-        'ngPasswordStrength'
-    ])
+
+            'qaobee.user.writeProfile',
+            'qaobee.user.config',
+            'qaobee.user.password',
+            'qaobee.user.userProfilPwd',
+            'qaobee.user.billing',
+            'paymentRestAPI',
+            'ngAutocomplete',
+            'ngPasswordStrength'
+        ])
 
         .config(function ($routeProvider, metaDatasProvider) {
             $routeProvider.when('/private/profile', {
@@ -27,6 +27,13 @@
                     meta: metaDatasProvider.getMeta
                 },
                 templateUrl: 'app/modules/commons/users/profile/mainProfile.html'
+            }).when('/private/profile/pay/:index', {
+                controller: 'PayProfileCtrl',
+                resolve: {
+                    user: metaDatasProvider.checkUser,
+                    meta: metaDatasProvider.getMeta
+                },
+                templateUrl: 'app/modules/commons/users/profile/pay.html'
             });
         })
         /**
@@ -37,12 +44,32 @@
             $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
-            
+
             $scope.user = user;
 
             $scope.$on('$destroy', function () {
                 delete $scope.user;
             });
-                
-        });
+
+        })
+        .controller('PayProfileCtrl', function ($scope, $filter, EnvironmentConfig, $translatePartialLoader, $translate,
+                                                $log, user, meta, $routeParams, paymentAPI) {
+            $translatePartialLoader.addPart('profile');
+            $translatePartialLoader.addPart('commons');
+            $translatePartialLoader.addPart('user');
+
+            $scope.user = user;
+            $scope.index = $routeParams.index;
+            $scope.plan = $scope.user.account.listPlan[0];
+            paymentAPI.getPaymentURL($scope.index).then(function(data){
+                $scope.paymentUrl = data.data;
+                console.log(data.data.payment_url)
+                angular.element('#frame').html('<iframe class="payplug-frame" src="'+data.data.payment_url+'"></iframe>');
+            });
+            $scope.$on('$destroy', function () {
+                delete $scope.user;
+            });
+
+        })
+    ;
 }());

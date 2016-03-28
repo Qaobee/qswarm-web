@@ -23,15 +23,15 @@
          * @class qaobee.user.profile.WriteProfileCtrl
          * @description Main controller of app/modules/commons/users/profile/writeProfile.html
          */
-        .controller('WriteProfileCtrl', function ($scope, $filter, EnvironmentConfig, $timeout, $window, $translatePartialLoader, 
-                                                   $translate, $rootScope, $log, personSrv, profileRestAPI, user, meta) {
+        .controller('WriteProfileCtrl', function ($scope, $filter, EnvironmentConfig, $timeout, $window, $translatePartialLoader,
+                                                  $translate, $rootScope, $log, personSrv, profileRestAPI, user, meta) {
             $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
 
 
             // return button
-            $scope.doTheBack = function() {
+            $scope.doTheBack = function () {
                 $window.history.back();
             };
 
@@ -61,7 +61,7 @@
             $scope.formatDateSubmit = $filter('translate')('commons.format.date.pattern');
 
             var $inputDate = null;
-            $timeout(function() {
+            $timeout(function () {
                 $inputDate = $('#profilBirthdate').pickadate({
                     format: $scope.formatDate,
                     formatSubmit: $scope.formatDateSubmit,
@@ -94,10 +94,10 @@
             $scope.updateProfilUser = function (profileForm) {
                 var updUser = {};
                 angular.copy($scope.user, updUser);
-                updUser.birthdate = moment($scope.user.birthdate,'DD/MM/YYYY').valueOf();
+                updUser.birthdate = moment($scope.user.birthdate, 'DD/MM/YYYY').valueOf();
                 delete updUser.isAdmin;
                 // address management
-                personSrv.formatAddress($scope.user.address).then(function(adr){
+                personSrv.formatAddress($scope.user.address).then(function (adr) {
                     $scope.user.address = adr;
 
                     profileRestAPI.update(updUser).success(function (data) {
@@ -105,6 +105,6 @@
                         $window.history.back();
                     });
                 });
-            };    
+            };
         });
 }());

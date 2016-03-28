@@ -37,15 +37,20 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="plan in user.account.listPlan track by $index">
-                    <td class="valign-wrapper">
-                        <img class="valign responsive-img col s2 m1" ng-src="assets/images/activity/{{plan.activity.code}}.jpg"/>
-                        <div class="valign">{{plan.activity.label | translate}}</div></td>
+                <tr ng-repeat="plan in user.account.listPlan track by $index" >
+                    <td>
+                        <div class="valign-wrapper">
+                        <img class="valign" ng-src="assets/images/activity/{{plan.activity.code}}.jpg" height="15px"/>
+                            &nbsp;
+                        <div class="valign">{{plan.activity.label | translate}}</div>
+                    </div></td>
                     <td>{{plan.levelPlan}}</td>
                     <td>{{plan.amountPaid}} €</td>
                     <td>{{plan.paymentId}}</td>
-                    <td>{{plan.paidDate | date}}</td>
-                    <td>{{plan.paidDate | date}}</td>
+                    <td>
+                        <span ng-if="plan.status==='pending'"><i class="material-icons left">autorenew</i> {{plan.paidDate | date}}</span>
+                        <span ng-if="plan.status==='paid'">{{plan.paidDate | date}}</span>
+                        <span ng-if="plan.status==='open'"><a href="#/private/profile/pay/{{$index}}" class="btn btn-s" translate="profile.label.pay"></a> </span></td>
                     <td><a ng-href="{{billPdfUrl}}&id={{$index}}" target="_blank"><i class="fa fa-file-pdf-o"></i></a></td>
                 </tr>
                 </tbody>
