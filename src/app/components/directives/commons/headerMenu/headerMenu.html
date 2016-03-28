@@ -27,19 +27,17 @@
                 <li ng-class="{'active' : menuItem === 'pricing'}">
                     <a class="white-text" href="#/pricing">{{'navbar.pricing' | translate}} </a>
                 </li>
+                <li ng-class="{'active' : menuItem === 'signup'}"  ng-show="signupAvailable">
+                    <a class="white-text" ng-click="openSignup()">
+                       {{'navbar.signup' | translate}}
+                    </a>
+                </li>
                 <li>
                     <a class="white-text" ng-click="openLogin()">
                         <i class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}
                     </a>
                 </li>
-            </ul>
 
-            <ul class="right hide-on-med-and-down" ng-show="signupAvailable">
-                <li>
-                    <a class="white-text" ng-click="openSignup()">
-                        <i class="fa fa-sign-in right"></i>{{'navbar.signup' | translate}}
-                    </a>
-                </li>
             </ul>
 
             <!-- menu mobile start -->
@@ -47,12 +45,12 @@
                 <i class="mdi-navigation-menu"></i></a>
 
             <ul id="nav-mobileHC" class="side-nav">
-                <li>
+                <li ng-class="{'active' : menuItem === 'pricing'}">
                     <a class="blue-grey-text text-darken-2" href="#/pricing">
                         {{'navbar.pricing' | translate}}
                     </a>
                 </li>
-                <li ng-show="signupAvailable">
+                <li ng-show="signupAvailable" ng-class="{'active' : menuItem === 'signup'}">
                     <a class="blue-grey-text text-darken-2" ng-click="openSignup()">
                         {{'navbar.signup' | translate}}
                     </a>

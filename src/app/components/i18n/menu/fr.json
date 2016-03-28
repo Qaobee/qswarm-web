@@ -25,7 +25,8 @@
     "disconnect": "Déconnexion",
     "administration": "Administration",
     "signup": "S'inscrire",
-    "param": "Paramétrage"
+    "param": "Paramétrage",
+    "pricing" : "Tarifs"
   },
   "content": {
     "login": {

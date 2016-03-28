@@ -12,19 +12,19 @@
      * @requires {@link https://github.com/mllrsohn/angular-re-captcha|reCAPTCHA}
      */
     angular.module('qaobee.public', [
-        /* angular module */
-        'ngRoute',
-        'reCAPTCHA',
-        
-        /* qaobee shared directives */
-        'qaobee.headerMenu',
-    
-        /* qaobee modules */ 
-            
-        /* qaobee Rest API */
-        'publicRestAPI' 
-    
-    ])
+            /* angular module */
+            'ngRoute',
+            'reCAPTCHA',
+
+            /* qaobee shared directives */
+            'qaobee.headerMenu',
+
+            /* qaobee modules */
+
+            /* qaobee Rest API */
+            'publicRestAPI'
+
+        ])
 
         .config(function ($routeProvider) {
             $routeProvider.when('/', {
@@ -81,16 +81,17 @@
 
         })
 
-    /**
-     * @class qaobee.public.public.PublicCtrl
-     * @description Contrôleur de la page d'accueil publique
-     */
-        .controller('PublicCtrl', function ($scope, $rootScope, $translatePartialLoader, $log, $routeParams) {
+        /**
+         * @class qaobee.public.public.PublicCtrl
+         * @description Contrôleur de la page d'accueil publique
+         */
+        .controller('PublicCtrl', function ($scope, $rootScope, $translatePartialLoader,qeventbus) {
             $translatePartialLoader.addPart('public');
             $translatePartialLoader.addPart('commons');
             // asu = Allow SignUp
-            $rootScope.signupAvailable=($routeParams.asu==='true');
+            $rootScope.signupAvailable = true; //($routeParams.asu==='true');
             delete $rootScope.user;
+            qeventbus.prepForBroadcast('menuItem', 'home');
 
             /**
              * @description initialization materialize components
@@ -105,34 +106,34 @@
             });
         })
 
-    /**
-     * @class qaobee.public.public.AboutCtrl
-     * @description Contrôleur de la page "à propos"
-     */
+        /**
+         * @class qaobee.public.public.AboutCtrl
+         * @description Contrôleur de la page "à propos"
+         */
         .controller('AboutCtrl', function ($scope) {
             $scope.crew = ['pascal', 'mathieu', 'christophe', 'xavier', 'jerome', 'you'];
         })
 
-    /**
-     * @class qaobee.public.public.PricingCtrl
-     * @description Contrôleur de la page "nos tarifs"
-     */
+        /**
+         * @class qaobee.public.public.PricingCtrl
+         * @description Contrôleur de la page "nos tarifs"
+         */
         .controller('PricingCtrl', function ($scope, qeventbus) {
             qeventbus.prepForBroadcast('menuItem', 'pricing');
         })
 
-    /**
-     * @class qaobee.public.public.MentionslegalesCtrl
-     * @description Contrôleur de la page "mentions légales"
-     */
+        /**
+         * @class qaobee.public.public.MentionslegalesCtrl
+         * @description Contrôleur de la page "mentions légales"
+         */
         .controller('MentionslegalesCtrl', function () {
 
         })
 
-    /**
-     * @class qaobee.public.public.ContactCtrl
-     * @description Contrôleur de la page "contactez nous"
-     */
+        /**
+         * @class qaobee.public.public.ContactCtrl
+         * @description Contrôleur de la page "contactez nous"
+         */
         .controller('ContactCtrl', function ($scope, publicRestAPI, $filter, $translatePartialLoader) {
             $translatePartialLoader.addPart('landing');
             $scope.subjects = Array.create();
@@ -168,10 +169,10 @@
             });
         })
 
-    /**
-     * @class qaobee.public.public.BlogCtrl
-     * @description Contrôleur de la page "Blog"
-     */
+        /**
+         * @class qaobee.public.public.BlogCtrl
+         * @description Contrôleur de la page "Blog"
+         */
         .controller('BlogCtrl', function ($scope, publicRestAPI) {
             $scope.blogs = Array.create();
             // récupération de la liste des blogs

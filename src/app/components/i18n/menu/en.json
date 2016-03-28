@@ -25,7 +25,8 @@
         "disconnect": "Logout",
         "administration": "Administration",
         "signup": "Create an account",
-        "param" : "Settings"
+        "param" : "Settings",
+        "pricing" : "Pricing"
     },
     "content": {
         "login": {
