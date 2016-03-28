@@ -44,6 +44,7 @@
             'qaobee.httpModule',
             'qaobee.widgets.dashboard.home',
             'qaobee.widgets.dashboard.mainPlayer',
+            'qaobee.widgets.dashboard.mainTeam',
             'ui.dashboard',
             /* qaobee modules */
             'qaobee.public',

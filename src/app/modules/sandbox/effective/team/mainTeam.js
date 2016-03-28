@@ -44,7 +44,7 @@
          * @description Main controller for view mainTeam.html
          */
         .controller('MainTeamController', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, $window, 
-                                                   user, meta, effectiveSrv, teamRestAPI, userRestAPI, teamCompareService, widgetDefinitions, defaultWidgets) {
+                                                   user, meta, effectiveSrv, teamRestAPI, userRestAPI, teamCompareService, widgetDefinitionsMainTeam, defaultWidgetsMainTeam) {
 
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('commons');
@@ -69,11 +69,11 @@
         
             $scope.dashboardOptions = {
                 widgetButtons: false,
-                widgetDefinitions: widgetDefinitions.get(),
+                widgetDefinitions: widgetDefinitionsMainTeam.get(),
                 hideWidgetName: true,
-                defaultWidgets: defaultWidgets,
+                defaultWidgets: defaultWidgetsMainTeam,
                 storage: $window.localStorage,
-                storageId: 'qaobee-widgets-dashboard-home'
+                storageId: 'qaobee-widgets-dashboard-MainTeam'
             };
 
             $scope.compare = function() {

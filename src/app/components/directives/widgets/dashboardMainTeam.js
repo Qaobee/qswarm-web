@@ -1,12 +1,12 @@
 (function () {
     'use strict';
-    angular.module('qaobee.dashboard.mainPlayer', [
+    angular.module('qaobee.dashboard.mainTeam', [
         'qaobee.widgets.agenda',
         'qaobee.widgets.podium',
         'qaobee.widgets.notifications'])
 
-    angular.module('qaobee.widgets.dashboard.mainPlayer', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications', 'statsEfficiency'])
-        .factory('widgetDefinitionsMainPlayer', function () {
+    angular.module('qaobee.widgets.dashboard.mainTeam', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications', 'statsEfficiency'])
+        .factory('widgetDefinitionsMainTeam', function () {
             return {
                 get: function () {
 
@@ -65,31 +65,16 @@
                                 height: '275px',
                                 width: '60%'
                             }
-                        }, {
-                            name: 'notifications',
-                            directive: 'widget-notifications',
-                            classContent: 'card blue-grey lighten-4 blue-grey-text text-darken-2',
-                            classHeader: 'widget-header card-content colorMain white-text',
-                            title: 'dashboard.widgetNotifications.title',
-                            attrs: {
-                                meta: 'meta',
-                                user: 'user'
-                            },
-                             size: {
-                                height: '250px',
-                                width: '40%'
-
-                            }
                         }
                     ];
                 }
             };
         })
-        .value('defaultWidgetsMainPlayer', [
-            {name: 'notifications'}, 
+        .value('defaultWidgetsMainTeam', [
             {name: 'Top buteurs'},
-            {name: 'Temps de jeu'},
-            {name: 'Efficacite'}
+            {name: 'Efficacite'},  
+            {name: 'Temps de jeu'}
+            
             
         ]);
 })();

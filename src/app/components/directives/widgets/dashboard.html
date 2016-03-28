@@ -46,7 +46,7 @@
         <div ng-repeat="widget in widgets" ng-style="widget.containerStyle" class="widget-container" widget>
             <div class="widget" ng-class="widget.classContent">
                 <div ng-class="widget.classHeader">
-
+                    <i class="{{widget.icon}}"></i>
                     <span class="widget-title" ng-dblclick="editTitle(widget)" ng-hide="widget.editingTitle"
                           translate="{{widget.title}}"></span>
                     <form action="" class="widget-title" ng-show="widget.editingTitle"
