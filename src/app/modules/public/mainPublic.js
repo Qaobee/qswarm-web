@@ -117,8 +117,8 @@
      * @class qaobee.public.public.PricingCtrl
      * @description Contrôleur de la page "nos tarifs"
      */
-        .controller('PricingCtrl', function () {
-
+        .controller('PricingCtrl', function ($scope, qeventbus) {
+            qeventbus.prepForBroadcast('menuItem', 'pricing');
         })
 
     /**

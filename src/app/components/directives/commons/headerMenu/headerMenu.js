@@ -224,26 +224,36 @@
                      * @description Intercept qeventbus
                      */
                     $scope.$on('qeventbus', function () {
-                        if ('logoff' === qeventbus.message) {
-                            delete $scope.user;
-                            delete $window.sessionStorage.qaobeesession;
-                            $location.path('/');
-                        } else if ('login' === qeventbus.message) {
-                            $scope.user = qeventbus.data;
-                            $scope.loadMetaInfos();
-                        } else if ('title' === qeventbus.message) {
-                            $scope.title = qeventbus.data;
-                        } else if ('refreshUser' === qeventbus.message) {
-                            var data = qeventbus.data;
-                            data.isAdmin = false;
-                            if (angular.isDefined(data.account) && data.account.habilitations !== null) {
-                                data.account.habilitations.forEach(function (a) {
-                                    if (a.key === 'admin_qaobee') {
-                                        data.isAdmin = true;
-                                    }
-                                });
-                            }
-                            $rootScope.user = data;
+                        switch (qeventbus.message) {
+                            case 'logoff':
+                                delete $scope.user;
+                                delete $window.sessionStorage.qaobeesession;
+                                $location.path('/');
+                                break;
+                            case 'login' :
+                                $scope.user = qeventbus.data;
+                                $scope.loadMetaInfos();
+                                break;
+                            case 'title' :
+                                $scope.title = qeventbus.data;
+                                break;
+                            case 'menuItem' :
+                                $scope.menuItem = qeventbus.data;
+                                break;
+                            case 'refreshUser' :
+                                var data = qeventbus.data;
+                                data.isAdmin = false;
+                                if (angular.isDefined(data.account) && data.account.habilitations !== null) {
+                                    data.account.habilitations.forEach(function (a) {
+                                        if (a.key === 'admin_qaobee') {
+                                            data.isAdmin = true;
+                                        }
+                                    });
+                                }
+                                $rootScope.user = data;
+                                break;
+                            default :
+                                break;
                         }
                     });
 

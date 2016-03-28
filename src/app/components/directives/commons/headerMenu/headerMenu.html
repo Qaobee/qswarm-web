@@ -21,10 +21,12 @@
      role="navigation" ng-hide="user">
     <div class="container">
         <div class="nav-wrapper">
-
             <a href="/#/" class="brand-logo"><img src="assets/images/logo-mini.png" height="30px"/></a>
 
             <ul class="right hide-on-med-and-down">
+                <li ng-class="{'active' : menuItem === 'pricing'}">
+                    <a class="white-text" href="#/pricing">{{'navbar.pricing' | translate}} </a>
+                </li>
                 <li>
                     <a class="white-text" ng-click="openLogin()">
                         <i class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}
@@ -45,6 +47,11 @@
                 <i class="mdi-navigation-menu"></i></a>
 
             <ul id="nav-mobileHC" class="side-nav">
+                <li>
+                    <a class="blue-grey-text text-darken-2" href="#/pricing">
+                        {{'navbar.pricing' | translate}}
+                    </a>
+                </li>
                 <li ng-show="signupAvailable">
                     <a class="blue-grey-text text-darken-2" ng-click="openSignup()">
                         {{'navbar.signup' | translate}}
@@ -98,7 +105,7 @@
                            href='javascript:void(0);' data-constrainWidth="false" data-activates='notificationDropdown'
                            data-hover="false">
                             <i class="material-icons right" ng-if="!(notifications.length > 0)">email</i>
-                            <i class="material-icons right red-text text-lighten-1" ng-if="notifications.length > 0" >drafts</i>
+                            <i class="material-icons right red-text text-lighten-1" ng-if="notifications.length > 0">drafts</i>
                             <span class="new badge white-text red lighten-1" ng-if="notifications.length > 0"
                             >{{notifications.length}}</span>
                         </a>
@@ -140,7 +147,8 @@
                     <li class="divider"></li>
 
                     <li>
-                        <a href="#/private/profile" class="white-text"><i class="mdi-social-person-outline left"></i></a>
+                        <a href="#/private/profile" class="white-text"><i
+                                class="mdi-social-person-outline left"></i></a>
                     </li>
 
                     <li>
@@ -274,7 +282,8 @@
 
 <div id='notificationDropdown' class='notification dropdown-content blue-grey lighten-4'>
     <div class="row" style="padding-left: 10px">
-        <div class="col s12"><a href="#/notifications" class="waves-effect waves-teal btn-flat blue-grey-text text-darken-2">
+        <div class="col s12"><a href="#/notifications"
+                                class="waves-effect waves-teal btn-flat blue-grey-text text-darken-2">
             {{'notifications.more' | translate}} <i class="material-icons right">forward</i></a>
         </div>
     </div>

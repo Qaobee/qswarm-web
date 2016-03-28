@@ -53,7 +53,19 @@
 
 .card-content {
     padding: 10px !important;
-    height: 48px;
+    min-height: 48px;
+}
+
+.card .card-content {
+    padding: 10px !important;
+}
+
+.card .card-content .card-title {
+    line-height: 24px;
+}
+.card .card-title {
+    font-size: 24px;
+    font-weight: 300;
 }
 
 input[type=text].valid, input[type=text]:focus.valid, input[type=password].valid, input[type=password]:focus.valid, input[type=email].valid, input[type=email]:focus.valid, input[type=url].valid,
@@ -840,16 +852,27 @@ table.super-fancy tr.foobar {
     padding: 10px !important;
 }
 
-.card .card-content {
-    padding: 10px !important;
+.pricing .card-title {
+    padding: 10px;
 }
-
-.card .card-content .card-title {
-    line-height: 24px;
+.pricing .price span.amount {
+    font-size: 50px;
+    font-weight: 100;
 }
-.card .card-title {
-    font-size: 24px;
-    font-weight: 300;
+.pricing .price span.period {
 }
-
-
+.pricing .price span.currency {
+    letter-spacing: -6px;
+    top: -20px;
+}
+.pricing .price span.currency, .pricing .price span.period {
+    font-size: 16px;
+}
+.pricing .collection li.collection-item:hover{
+    background: #f5f5f5;
+}
+.pricing .btn-floating {
+    float: right;
+    margin-top: -25px;
+    margin-right: 25px;
+}
