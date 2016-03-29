@@ -110,10 +110,8 @@
             $rootScope.$on('$translatePartialLoaderStructureChanged', function () {
                 $translate.refresh();
             });
-            console.log(top.location.href,self.location.href)
-            if (top.location.href != self.location.href) {
+            if (top.location.href !== self.location.href) {
                 top.location.href = self.location.href;
-
             }
         })
 

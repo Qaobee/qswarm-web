@@ -27,9 +27,9 @@
                 <li ng-class="{'active' : menuItem === 'pricing'}">
                     <a class="white-text" href="#/pricing">{{'navbar.pricing' | translate}} </a>
                 </li>
-                <li ng-class="{'active' : menuItem === 'signup'}"  ng-show="signupAvailable">
+                <li ng-class="{'active' : menuItem === 'signup'}" ng-show="signupAvailable">
                     <a class="white-text" ng-click="openSignup()">
-                       {{'navbar.signup' | translate}}
+                        {{'navbar.signup' | translate}}
                     </a>
                 </li>
                 <li>
@@ -65,7 +65,6 @@
         </div>
     </div>
 </nav>
-
 <!-- Menu Connected First header-->
 <div class="navbar-fixed" ng-if="user && !user.account.firstConnexion">
     <nav class="top-nav colorSecondary visible-nav" role="navigation">
@@ -98,17 +97,14 @@
                     <li class="right">
                         <a href="#/private/profile" class="white-text"><i class="material-icons left">portrait</i></a>
                     </li>
-                    <li class="right">
+                    <li class="right"  >
                         <a class='dropdown-button' data-beloworigin="true" dropdown data-alignment="right"
                            href='javascript:void(0);' data-constrainWidth="false" data-activates='notificationDropdown'
                            data-hover="false">
-                            <i class="material-icons right" ng-if="!(notifications.length > 0)">email</i>
-                            <i class="material-icons right red-text text-lighten-1" ng-if="notifications.length > 0">drafts</i>
-                            <span class="new badge white-text red lighten-1" ng-if="notifications.length > 0"
-                            >{{notifications.length}}</span>
+                            <i class="material-icons right" ng-class="{'red-text text-lighten-1 activeNotif':notifications.length}">{{notifications.length?'drafts':'email'}}</i>
+                            <span ng-if="notifications.length" class="new badge white-text red lighten-1" ng-bind="notifications.length"></span>
                         </a>
                     </li>
-
                 </ul>
 
                 <!-- Mobile navigation hamburger -->
@@ -213,7 +209,7 @@
                 <a href="#/" class="modal-action modal-close waves-effect waves-red btn btn-s red"
                    translate="commons.buttons.cancel"></a>
                 <button type="submit" class="btn btn-s waves-effect waves-red  green darken-1"
-                        translate="commons.buttons.validate"/>
+                        translate="commons.buttons.validate"></button>
             </div>
         </div>
     </form>
@@ -249,7 +245,7 @@
                 <a href="#/" class="modal-action modal-close waves-effect waves-red btn btn-s red"
                    translate="commons.buttons.cancel"></a>
                 <button type="submit" class="btn btn-s waves-effect waves-red  green darken-1"
-                        translate="commons.buttons.validate"/>
+                        translate="commons.buttons.validate"></button>
             </div>
         </div>
     </form>

@@ -37,6 +37,7 @@
                         $translatePartialLoader.addPart('user');
                         $scope.signin = {};
                         $scope.notifications = [];
+                        $scope.hasnotif = false;
                         /**
                          *
                          * @param viewLocation
@@ -50,6 +51,7 @@
                          *
                          */
                         function getNotifications() {
+                            if(!$scope.user) return;
                             notificationsRestAPI.getUserNotifications().then(function (data) {
                                 if (!!data.data && !data.data.error) {
                                     $scope.notifications = data.data.filter(function (n) {
@@ -58,6 +60,7 @@
                                     $scope.notifications.forEach(function (n) {
                                         n.content = n.content.stripTags().truncate(30);
                                     });
+                                    $scope.hasnotif = ($scope.notifications.length > 0);
                                 }
                             });
                         }
@@ -193,6 +196,7 @@
                                     eb.onopen = function () {
                                         $log.debug('socket connected');
                                         eb.registerHandler('qaobee.notification.' + $scope.user._id, function (message) {
+                                            console.log(message);
                                             if (!!message.title) {
                                                 toastr.info(message.content.stripTags().truncate(30), message.title);
                                             }
