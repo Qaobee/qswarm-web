@@ -297,6 +297,7 @@
                                         });
                                         $window.sessionStorage.qaobeesession = data.account.token;
                                         $rootScope.user = data;
+                                        $rootScope.notLogged = false;
                                         $scope.user = data;
                                         qeventbus.prepForBroadcast('login', data);
                                         // is it his first visit?

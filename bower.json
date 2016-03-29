@@ -49,7 +49,7 @@
     "sugar": "1.4.1",
     "animate.css": "~3.4.0",
     "angular-materialize": "0.1.3",
-    "toastr": "2.1.0",
+    "toastr": "2.1.2",
     "owl.carousel": "~2.0.0-beta.3",
     "ng-password-strength": "~0.2.1",
     "ng-device-detector": "~2.0.2",

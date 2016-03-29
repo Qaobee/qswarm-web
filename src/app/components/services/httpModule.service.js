@@ -54,7 +54,10 @@
                         }
                         if ('NOT_LOGGED' === response.data.code) {
                             // TODO avoir un liste de messages sans doublons avec toastr
-                            toastr.error(response.data.message);
+                            if ($rootScope.notLogged === false) {
+                                toastr.error(response.data.message);
+                                $rootScope.notLogged = true;
+                            }
                             qeventbus.prepForBroadcast('logoff', '');
                         }
                     }
