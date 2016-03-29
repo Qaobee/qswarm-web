@@ -1,13 +1,5 @@
 {
     "stats": {
-        "dashboard" : {
-            "widgetTopScored" : {
-                "title" : "Top Striker"
-            },
-            "widgetTopUsed" : {
-                "title" : "Top Playtime"
-            }
-        },
         "buttons" : {
           "timeline" : "Détail"
         },

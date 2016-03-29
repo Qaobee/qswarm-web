@@ -52,7 +52,7 @@
          * @description Main controller for view mainPlayer.html
          */
         .controller('MainPlayerController', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, $window, user, meta,
-                                                     effectiveRestAPI, effectiveSrv, userRestAPI, playerCompareService, widgetDefinitionsMainPlayer, defaultWidgetsMainPlayer, $timeout) {
+                                                     effectiveRestAPI, effectiveSrv, userRestAPI, playerCompareService, widgetDefinitionsMainPlayer, defaultWidgetsMainPlayer, $timeout, qeventbus) {
 
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('commons');
@@ -67,6 +67,8 @@
             $scope.effectives = [];
             $scope.compareList = {};
             $scope.currentEffective = {};
+            $scope.periodicityActive = {};
+            $scope.periodicity = null;
             $scope.currentCategory = null;
         
             if(user.mainPlayerTabId){
@@ -114,6 +116,32 @@
                     $scope.compareList[id] = false;
                 }
             };
+        
+            /* watch if periodicity change */
+            $scope.$watch('periodicityActive', function (newValue, oldValue) {
+                if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
+                    $scope.periodicityActive.ownersId = $scope.ownersId;
+                    user.periodicity = $scope.periodicity;
+                    user.periodicityActive = $scope.periodicityActive;
+                    qeventbus.prepForBroadcast("periodicityActive", $scope.periodicityActive);
+                }
+            });
+        
+            /* init periodicity active */
+            $scope.initPeriodicityActive = function() {
+                if (!user.periodicity) {
+                    $scope.periodicity = 'season';
+                    $scope.periodicityActive = {
+                        label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
+                        startDate: moment($scope.meta.season.startDate),
+                        endDate: moment($scope.meta.season.endDate),
+                        ownersId: $scope.ownersId
+                    };
+                } else {
+                    $scope.periodicity = user.periodicity;
+                    $scope.periodicityActive = user.periodicityActive;
+                }
+            };
 
             /* Retrieve current effective and list player */
             $scope.getPlayers = function () {
@@ -124,6 +152,7 @@
                         var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact');
 
                         effectiveSrv.getPersons(listId, listField).then(function (players) {
+                            $scope.ownersId = listId;
                             $scope.players = players;
                             $scope.players.forEach(function (e) {
                                 if (angular.isDefined(e.status.positionType)) {
@@ -135,6 +164,8 @@
                                 e.birthdate = $filter('date')(e.birthdate, 'yyyy');
                                 e.age = moment().format('YYYY') - e.birthdate;
                             });
+                            
+                            $scope.initPeriodicityActive();
                         });
                     });
                 });
@@ -144,7 +175,6 @@
             $scope.checkUserConnected = function () {
                 userRestAPI.getUserById(user._id).success(function (/* data */) {
                     $scope.getPlayers();
-                    
                 }).error(function (/* data */) {
                     $log.error('MainPlayerControler : User not Connected');
                 });

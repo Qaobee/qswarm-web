@@ -16,12 +16,12 @@
                             directive: 'stats-efficiency',
                             classContent: 'card blue-grey-text text-darken-2',
                             classHeader: 'widget-header card-content colorMain white-text',
-                            title: 'efficiency.efficiency',
+                            title: 'dashboard.widgetEfficiency.title',
                             icon:'fa fa-dot-circle-o',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user',
-                                bindToId: 'gaugeEfficiencyGlobal', 
+                                bindtoid: 'gaugeEfficiencyGlobal', 
                                 label:'efficiencyTotal',
                                 padding:'25'
                             },
