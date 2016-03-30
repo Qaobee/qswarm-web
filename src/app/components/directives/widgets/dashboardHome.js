@@ -18,6 +18,7 @@
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'mainAgenda.next_event',
                             icon:'fa fa-calendar',
+                            activator:false,
                             attrs: {
                                 meta: 'meta',
                                 user: 'user'
@@ -33,6 +34,7 @@
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetTopScored.title',
                             icon:'fa fa-futbol-o',
+                            activator:true,
                             attrs: {
                                 meta: 'meta',
                                 user: 'user',
@@ -51,6 +53,7 @@
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetTopUsed.title',
                             icon:'fa fa-hourglass',
+                            activator:true,
                             attrs: {
                                 meta: 'meta',
                                 user: 'user',
@@ -69,6 +72,7 @@
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetNotifications.title',
                             icon:'fa fa-bell',
+                            activator:false,
                             attrs: {
                                 meta: 'meta',
                                 user: 'user'
