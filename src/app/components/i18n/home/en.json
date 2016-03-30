@@ -1,21 +1,24 @@
 {
-  "dashboard": {
-    "event": "Next event",
-    "stats": "Statistics event",
-    "player": "Statistics player",
-    "teams": "Statistics team"
-  },
-  "widgetTopScored": {
-    "title": "Top buteurs"
-  },
-  "widgetTopUsed": {
-    "title": "Les + utilisés"
-  },
-  "widgetNotifications": {
-    "title": "Notifications"
-  },
-  "notifications" : {
-    "nodata" : "No news, good news!",
-    "more" : "See more"
-  }
+    "dashboard": {
+        "event": "Next event",
+        "stats": "Statistics event",
+        "player": "Statistics player",
+        "teams": "Statistics team",
+        "widgetTopScored": {
+            "title": "Top buteurs"
+        },
+        "widgetTopUsed": {
+            "title": "More used"
+        },
+        "widgetNotifications": {
+            "title": "Notifications"
+        },
+        "widgetEfficiency": {
+            "title": "Shoot 's efficiency"
+        }
+    },
+    "notifications" : {
+        "nodata" : "No news, good news!",
+        "more" : "see more"
+    }
 }

@@ -1,13 +1,12 @@
 (function () {
     'use strict';
-    angular.module('qaobee.dashboard.mainPlayer', [
+    angular.module('qaobee.dashboard.mainTeam', [
         'qaobee.widgets.agenda',
         'qaobee.widgets.podium',
-        'qaobee.widgets.notifications',
-        'statsEfficiency'])
+        'qaobee.widgets.notifications'])
 
-    angular.module('qaobee.widgets.dashboard.mainPlayer', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications', 'statsEfficiency'])
-        .factory('widgetDefinitionsMainPlayer', function () {
+    angular.module('qaobee.widgets.dashboard.mainTeam', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications', 'statsEfficiency'])
+        .factory('widgetDefinitionsMainTeam', function () {
             return {
                 get: function () {
 
@@ -27,7 +26,7 @@
                                 padding:'25'
                             },
                             size: {
-                                height: '275px',
+                                height: '250px',
                                 width: '40%'
                             }
                         }, {
@@ -71,9 +70,11 @@
                 }
             };
         })
-        .value('defaultWidgetsMainPlayer', [
-            {name: 'Efficacite'},
+        .value('defaultWidgetsMainTeam', [
             {name: 'Top buteurs'},
+            {name: 'Efficacite'},  
             {name: 'Temps de jeu'}
+            
+            
         ]);
 })();

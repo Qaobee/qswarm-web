@@ -1,31 +1,23 @@
 {
-  "stats": {
-    "dashboard": {
-      "widgetTopScored": {
-        "title": "Top buteurs"
-      },
-      "widgetTopUsed": {
-        "title": "Les + utilisés"
-      }
-    },
-    "buttons": {
-      "timeline": "Détail"
-    },
-    "positionType": {
-      "libelle": "Poste",
-      "value": {
-        "midfielder": "Milieu",
-        "defender": "Défenseur",
-        "forward": "Attaquant",
-        "goalkeeper": "Gardien",
-        "pivot": "Pivot",
-        "center-backcourt": "Demi-centre",
-        "right-backcourt": "Arrière Droit",
-        "left-backcourt": "Arrière Gauche",
-        "right-wingman": "Ailier Droit",
-        "left-wingman": "Ailier Gauche"
-      }
-    },
+    "stats": {
+        "buttons": {
+          "timeline": "Détail"
+        },
+        "positionType": {
+            "libelle": "Poste",
+            "value": {
+                "midfielder": "Milieu",
+                "defender": "Défenseur",
+                "forward": "Attaquant",
+                "goalkeeper": "Gardien",
+                "pivot": "Pivot",
+                "center-backcourt": "Demi-centre",
+                "right-backcourt": "Arrière Droit",
+                "left-backcourt": "Arrière Gauche",
+                "right-wingman": "Ailier Droit",
+                "left-wingman": "Ailier Gauche"
+            }
+        },
     "efficiency": {
       "efficiency": "Efficacité au tir",
       "efficiencyTotal": "Globale",

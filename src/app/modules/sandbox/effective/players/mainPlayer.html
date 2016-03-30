@@ -18,26 +18,27 @@
             <v-tab class="tab" ng-click="changeTabDefault(0)"><a ng-href="" ng-class="{'active': activeTabIndex === 0}">{{'tabEffectif.dashboard' | translate }}</a></v-tab>
             <v-tab class="tab" ng-click="changeTabDefault(1)"><a ng-href="" ng-class="{'active': activeTabIndex === 1}">{{'tabEffectif.Listplayer' | translate }} ({{players.length}})</a></v-tab>
         </v-tabs>
-            
         
     </div>
     <!-- entete end -->
 
+    <div class="row"><filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar></div>
+    
     <div class="row">
         
         <v-pages class="vPages--default" active="activeTabIndex">
             <v-page>
-                <div dashboard="dashboardMainPlayerOptions" class="dashboard-container" template-url="app/components/directives/widgets/dashboardMainPlayer.html"></div>
+                <div dashboard="dashboardMainPlayerOptions" class="dashboard-container" template-url="app/components/directives/widgets/dashboard.html"></div>
             </v-page>
             <v-page>
-                <div class="col s8">
+                <div class="col m8 s12">
                     <form class="forms forms-inline input-field">
                         <input type="text" id="queryPlayer" class="grey lighten-4" ng-model="queryPlayer">
                         <label for="queryPlayer">Filter</label>
                     </form>
                 </div>
 
-                <div class="col s4 center-align">
+                <div class="col m4 s12 center-align">
                     <br>
                     <a href="#/private/addPlayer/{{meta._id}}" class="waves-effect waves-light btn colorAccent">
                         <i class="material-icons">add</i>
@@ -54,17 +55,17 @@
                 <ul>
                     <li class="col l3 m6 s12" ng-repeat="player in players | filter:queryPlayer">
                         <div class="card white blue-grey-text text-darken-2">
-                            <div class="card-content center-align">
+                            <div class="card-content center-align" style="height:48px;">
                                 <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}" class="blue-grey-text text-darken-2">
                                     {{player.firstname}} {{player.name}}</a>
                                 </span>
                             </div>
-                            <div class="card-content center-align">
+                            <div class="card-content center-align" style="height:48px;">
                                 <a href="#/private/viewPlayer/{{player._id}}">
                                     <avatar person="player" width="'50px'"></avatar>
                                 </a>
                             </div>
-                            <div class="card-content center-align colorMain">
+                            <div class="card-content center-align colorMain" style="height:48px;">
                                 <h5><small class="white-text">{{player.positionType}}</small></h5>
                             </div>
 

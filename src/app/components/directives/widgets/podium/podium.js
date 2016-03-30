@@ -36,7 +36,7 @@
                     var getStats = function (ownersId, startDate, endDate) {
                         var deferred = $q.defer();
                         var result = [];
-
+                        
                         /* Stats Count by indicator */
                         var indicators = [];
                         indicators.push($scope.indicator);
@@ -78,7 +78,6 @@
                             
                             effectiveSrv.getListId($scope.currentEffective, 'player').then(function (listId) {
                                 $scope.ownersId = listId;
-                                
                                 getStats($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
                                     result.forEach(function (e) {
                                         var player = {
@@ -129,24 +128,8 @@
                             $scope.ownersId = $scope.user.periodicityActive.ownersId;
                         }
                         
-                        if (!$scope.ownersId) {
-                            $scope.getEffective();
-                        } else {
-                            getStats($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
-                                result.forEach(function (e) {
-                                    var player = {
-                                        _id: e._id,
-                                        nbGoal: e.value
-                                    };
-                                    $scope.getInfosPlayer(player);
-                                });
-                            });
-                        }
-
-                        
+                        $scope.getEffective();
                     };
-
-                    buildWidget();
                 },
                 templateUrl: 'app/components/directives/widgets/podium/podium.html'
             };

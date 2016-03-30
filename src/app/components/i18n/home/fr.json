@@ -1,21 +1,24 @@
 {
-  "dashboard": {
-    "event": "Prochain événement",
-    "stats": "Statistiques événement",
-    "player": "Statistiques joueur",
-    "teams": "Statistiques équipes",
-    "widgetTopScored": {
-      "title": "Top buteurs"
+    "dashboard": {
+        "event": "Prochain événement",
+        "stats": "Statistiques événement",
+        "player": "Statistiques joueur",
+        "teams": "Statistiques équipes",
+        "widgetTopScored": {
+            "title": "Top buteurs"
+        },
+        "widgetTopUsed": {
+            "title": "Les + utilisés"
+        },
+        "widgetNotifications": {
+            "title": "Notifications"
+        },
+        "widgetEfficiency": {
+            "title": "Efficacité au tir"
+        }
     },
-    "widgetTopUsed": {
-      "title": "Les + utilisés"
-    },
-    "widgetNotifications": {
-      "title": "Notifications"
+    "notifications" : {
+        "nodata" : "Pas de nouvelle, bonne nouvelle!",
+        "more" : "Voir plus"
     }
-  },
-  "notifications" : {
-    "nodata" : "Pas de nouvelle, bonne nouvelle!",
-    "more" : "Voir plus"
-  }
 }

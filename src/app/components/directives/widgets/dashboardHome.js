@@ -17,12 +17,13 @@
                             classContent: 'card colorAccent white-text',
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'mainAgenda.next_event',
+                            icon:'fa fa-calendar',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user'
                             },
                             size: {
-                                height: '250px',
+                                height: '275px',
                                 width: '40%'
                             }
                         }, {
@@ -31,6 +32,7 @@
                             classContent: 'card white blue-grey-text text-darken-2',
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetTopScored.title',
+                            icon:'fa fa-futbol-o',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user',
@@ -39,7 +41,7 @@
                                 stataggregat: 'COUNT'
                             },
                             size: {
-                                height: '250px',
+                                height: '275px',
                                 width: '60%'
                             }
                         }, {
@@ -48,6 +50,7 @@
                             classContent: 'card white blue-grey-text text-darken-2',
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetTopUsed.title',
+                            icon:'fa fa-hourglass',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user',
@@ -56,7 +59,7 @@
                                 stataggregat: 'SUM'
                             },
                             size: {
-                                height: '250px',
+                                height: '275px',
                                 width: '60%'
                             }
                         }, {
@@ -65,12 +68,13 @@
                             classContent: 'card blue-grey lighten-4 blue-grey-text text-darken-2',
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetNotifications.title',
+                            icon:'fa fa-bell',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user'
                             },
                              size: {
-                                height: '250px',
+                                height: '275px',
                                 width: '40%'
 
                             }

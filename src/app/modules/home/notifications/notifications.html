@@ -9,7 +9,7 @@
                     ng-class="{'grey lighten-1' : n.read && n._id !== id, 'colorSecondary' : n._id === id}">
                     <img ng-src="{{getAvatar(n.from_user_id.avatar)}}" alt="" class="circle hide-on-med-and-down">
                     <a href="javascript:void(0);" class="title" 
-                       ng-class="{'white-text' : n._id === id}"
+                       ng-class="{'white-text' : n._id === id, 'red-text text-lighten-2' : n._id !== id}"
                        ng-bind="n.title" ng-click="show(n._id)"></a>
                     <p><span class="truncate" ng-bind="n.exerp"></span> <br>
                         <small>{{n.from_user_id.firstname}} {{n.from_user_id.name}} | {{n.timestamp | date : 'short'}} |
