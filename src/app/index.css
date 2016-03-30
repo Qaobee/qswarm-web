@@ -88,9 +88,14 @@ button, input, optgroup, select, textarea {
     background-color: #e0e0e0;
 }
 
-.tabs .tab a:hover, .tabs .tab .active {
-    background-color: #bdbdbd;
-    color: #646464 !important;
+.tabs .tab a:hover {
+    background-color: #ef5350;
+    color: #ffffff !important;
+}
+
+.tabs .tab .active {
+    background: #bdbdbd;
+    color: #ffffff !important;
 }
 
 .tabs .indicator {
