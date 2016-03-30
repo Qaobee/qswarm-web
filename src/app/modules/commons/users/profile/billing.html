@@ -2,7 +2,7 @@
 
     <!-- space between header menu and body-->
     <div class="row"></div>
-    
+
     <!-- Entete -->
     <div class="row">
         <div class="col s12">
@@ -22,9 +22,9 @@
             </div>
         </div>
     </div>
-    
+
     <div class="row">
-        <div class="col s12 card"> 
+        <div class="col s12 card">
             <table class="highlight responsive-table">
                 <thead>
                 <tr>
@@ -33,25 +33,35 @@
                     <th translate="profile.label.price"></th>
                     <th translate="profile.label.billingnumber"></th>
                     <th translate="profile.label.billingdate"></th>
+                    <th translate="profile.label.cardNumber"></th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="plan in user.account.listPlan track by $index" >
+                <tr ng-repeat="plan in user.account.listPlan track by $index">
                     <td>
                         <div class="valign-wrapper">
-                        <img class="valign" ng-src="assets/images/activity/{{plan.activity.code}}.jpg" height="15px"/>
+                            <img class="valign" ng-src="assets/images/activity/{{plan.activity.code}}.jpg"
+                                 height="15px"/>
                             &nbsp;
-                        <div class="valign">{{plan.activity.label | translate}}</div>
-                    </div></td>
-                    <td>{{plan.levelPlan}}</td>
-                    <td>{{plan.amountPaid}} €</td>
-                    <td>{{plan.paymentId}}</td>
+                            <div class="valign">{{plan.activity.label | translate}}</div>
+                        </div>
+                    </td>
+                    <td ng-bind="plan.levelPlan"></td>
+                    <td><span ng-bind="plan.amountPaid"></span> €</td>
+                    <td ng-bind="plan.paymentId"></td>
                     <td>
                         <span ng-if="plan.status==='pending'"><i class="material-icons left">autorenew</i> {{plan.paidDate | date}}</span>
                         <span ng-if="plan.status==='paid'">{{plan.paidDate | date}}</span>
-                        <span ng-if="plan.status==='open'"><a href="#/private/profile/pay/{{$index}}" class="btn btn-s" translate="profile.label.pay"></a> </span></td>
-                    <td><a ng-href="{{billPdfUrl}}&id={{$index}}" target="_blank"><i class="fa fa-file-pdf-o"></i></a></td>
+                        <span ng-if="plan.status==='open'"><a href="#/private/profile/pay/{{$index}}" class="btn btn-s"
+                                                              translate="profile.label.pay"></a></span>
+                    </td>
+                    <td><span ng-if="plan.status==='paid'" ng-bind="'xxxx xxxx xxxx ' +plan.cardInfo.last4"></span></td>
+                    <td>
+                        <button ng-if="plan.status==='paid'" ng-click="getBill($index, plan.paymentId)"
+                                class="waves-effect waves-teal btn-flat"><i class="material-icons">cloud_download</i>
+                        </button>
+                    </td>
                 </tr>
                 </tbody>
             </table>

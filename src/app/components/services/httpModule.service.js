@@ -30,7 +30,9 @@
                     if (config.url.startsWith('/api')) {
                         config.headers.token = $window.sessionStorage.qaobeesession;
                         config.headers['Content-Type'] = 'application/json';
-                        config.responseType = 'json';
+                        if (!config.headers['Accept']) {
+                            config.responseType = 'json';
+                        }
                     }
                     if (!config.url.startsWith('app') && !config.url.startsWith('http') && !config.url.startsWith('isteven-multi-select') && !config.url.startsWith('ng-table')) {
                         if (config.url.startsWith('/')) {

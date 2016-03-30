@@ -28,7 +28,8 @@
       "price": "Price",
       "activity": "Activity",
       "avatar": "Drag and drop avatar here",
-      "pay": "Subscribe"
+      "pay": "Subscribe",
+      "cardNumber": "Card number"
     },
     "ph": {
       "name": "Enter your name",

@@ -28,7 +28,8 @@
       "price": "Prix",
       "activity": "Activité",
       "avatar": "Déposer la photo ici",
-      "pay": "Souscrire"
+      "pay": "Souscrire",
+      "cardNumber": "N° de carte"
     },
     "ph": {
       "name": "Saisissez votre nom",

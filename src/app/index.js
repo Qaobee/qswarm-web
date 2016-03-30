@@ -27,6 +27,7 @@
             'angular-send-feedback',
             'angular-google-analytics',
             'vTabs',
+            'ngFileSaver',
             //* qaobee widget */
             'qaobee.filterCalendar',
             'qaobee.commonsDirectives',
@@ -45,6 +46,7 @@
             'qaobee.widgets.dashboard.home',
             'qaobee.widgets.dashboard.mainPlayer',
             'qaobee.widgets.dashboard.mainTeam',
+            'qaobee.downloadService',
             'ui.dashboard',
             /* qaobee modules */
             'qaobee.public',

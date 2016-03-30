@@ -1,1 +1,8 @@
 <div id="frame"></div>
+<div class="row" ng-if="payError">
+    <h6>Une erreur s'est produite lors de votr paiement</h6>
+    <a href="" class="white-text waves-effect waves-light"
+       ng-click="doTheBack()">
+        <i class="fa fa-arrow-left"></i>
+    </a>
+</div>

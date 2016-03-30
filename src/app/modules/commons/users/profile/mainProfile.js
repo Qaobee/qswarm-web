@@ -44,14 +44,12 @@
             $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
-
             $scope.user = user;
-
             $scope.$on('$destroy', function () {
                 delete $scope.user;
             });
-
         })
+        
         .controller('PayProfileCtrl', function ($scope, $filter, EnvironmentConfig, $translatePartialLoader, $translate,
                                                 $log, user, meta, $routeParams, paymentAPI) {
             $translatePartialLoader.addPart('profile');
@@ -61,10 +59,14 @@
             $scope.user = user;
             $scope.index = $routeParams.index;
             $scope.plan = $scope.user.account.listPlan[0];
-            paymentAPI.getPaymentURL($scope.index).then(function(data){
-                $scope.paymentUrl = data.data;
-                console.log(data.data.payment_url)
-                angular.element('#frame').html('<iframe class="payplug-frame" src="'+data.data.payment_url+'"></iframe>');
+            paymentAPI.getPaymentURL($scope.index).then(function (data) {
+                if (!!data.data) {
+                    $scope.paymentUrl = data.data;
+                    angular.element('#frame').html('<iframe class="payplug-frame" src="' + data.data.payment_url + '"></iframe>');
+                } else {
+                    $scope.payError = true;
+                }
+
             });
             $scope.$on('$destroy', function () {
                 delete $scope.user;
