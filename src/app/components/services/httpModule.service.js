@@ -27,6 +27,7 @@
             return {
                 // Everytime a request starts
                 request: function (config) {
+                    $log.debug(config);
                     if (config.url.startsWith('/api')) {
                         config.headers.token = $window.sessionStorage.qaobeesession;
                         config.headers['Content-Type'] = 'application/json';

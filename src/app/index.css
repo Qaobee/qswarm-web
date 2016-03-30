@@ -879,7 +879,8 @@ table.super-fancy tr.foobar {
 .payplug-frame {
     width: 100%;
     height: calc(100vh + 80px);
-    margin-top: -150px;
+    margin-top: -54px;
+    overflow-y: hidden;
 }
 
 .activeNotif {

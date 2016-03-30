@@ -53,7 +53,7 @@
                     <td>
                         <span ng-if="plan.status==='pending'"><i class="material-icons left">autorenew</i> {{plan.paidDate | date}}</span>
                         <span ng-if="plan.status==='paid'">{{plan.paidDate | date}}</span>
-                        <span ng-if="plan.status==='open'"><a href="#/private/profile/pay/{{$index}}" class="btn btn-s"
+                        <span ng-if="plan.status==='open' || plan.status==='notpaid'"><a href="#/private/profile/pay/{{$index}}" class="btn btn-s"
                                                               translate="profile.label.pay"></a></span>
                     </td>
                     <td><span ng-if="plan.status==='paid'" ng-bind="'xxxx xxxx xxxx ' +plan.cardInfo.last4"></span></td>

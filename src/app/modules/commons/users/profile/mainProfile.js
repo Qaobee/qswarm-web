@@ -49,7 +49,6 @@
                 delete $scope.user;
             });
         })
-        
         .controller('PayProfileCtrl', function ($scope, $filter, EnvironmentConfig, $translatePartialLoader, $translate,
                                                 $log, user, meta, $routeParams, paymentAPI) {
             $translatePartialLoader.addPart('profile');
@@ -62,7 +61,7 @@
             paymentAPI.getPaymentURL($scope.index).then(function (data) {
                 if (!!data.data) {
                     $scope.paymentUrl = data.data;
-                    angular.element('#frame').html('<iframe class="payplug-frame" src="' + data.data.payment_url + '"></iframe>');
+                    angular.element('#frame').html('<iframe class="payplug-frame" height="100%" src="' + data.data.payment_url + '"></iframe>');
                 } else {
                     $scope.payError = true;
                 }
