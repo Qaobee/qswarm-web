@@ -30,10 +30,6 @@
                 <tr>
                     <th translate="profile.label.activity"></th>
                     <th translate="profile.label.product"></th>
-                    <th translate="profile.label.price"></th>
-                    <th translate="profile.label.billingnumber"></th>
-                    <th translate="profile.label.billingdate"></th>
-                    <th translate="profile.label.cardNumber"></th>
                     <th></th>
                 </tr>
                 </thead>
@@ -48,19 +44,38 @@
                         </div>
                     </td>
                     <td ng-bind="plan.levelPlan"></td>
-                    <td><span ng-bind="plan.amountPaid"></span> €</td>
-                    <td ng-bind="plan.paymentId"></td>
+
                     <td>
-                        <span ng-if="plan.status==='pending'"><i class="material-icons left">autorenew</i> {{plan.paidDate | date}}</span>
-                        <span ng-if="plan.status==='paid'">{{plan.paidDate | date}}</span>
-                        <span ng-if="plan.status==='open' || plan.status==='notpaid'"><a href="#/private/profile/pay/{{$index}}" class="btn btn-s"
-                                                              translate="profile.label.pay"></a></span>
-                    </td>
-                    <td><span ng-if="plan.status==='paid'" ng-bind="'xxxx xxxx xxxx ' +plan.cardInfo.last4"></span></td>
-                    <td>
-                        <button ng-if="plan.status==='paid'" ng-click="getBill($index, plan.paymentId)"
-                                class="waves-effect waves-teal btn-flat"><i class="material-icons">cloud_download</i>
-                        </button>
+                         <span ng-if="plan.status === 'open' || plan.status === 'notpaid'"><a
+                                 href="#/private/profile/pay/{{$index}}" class="btn btn-s"
+                                 translate="profile.label.pay"></a></span>
+                        <table class="highlight responsive-table">
+                            <thead>
+                            <tr>
+                                <th translate="profile.label.price"></th>
+                                <th translate="profile.label.billingnumber"></th>
+                                <th translate="profile.label.billingdate"></th>
+                                <th translate="profile.label.cardNumber"></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="s in plan.shippingList | orderBy : '-paidDate'">
+                                <td><span ng-bind="s.amountPaid"></span> €</td>
+                                <td ng-bind="s.paymentId"></td>
+                                <td>
+                                    <span><i class="material-icons left" ng-if="plan.status==='pending'">autorenew</i> {{s.paidDate | date}}</span>
+
+                                </td>
+                                <td ng-bind="'xxxx xxxx xxxx ' + s.cardInfo.last4"></td>
+                                <td>
+                                    <button ng-click="getBill($parent.$index, s.paymentId, s.id)"
+                                            class="waves-effect waves-teal btn-flat"><i class="material-icons">cloud_download</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </td>
                 </tr>
                 </tbody>

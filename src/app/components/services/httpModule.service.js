@@ -27,13 +27,13 @@
             return {
                 // Everytime a request starts
                 request: function (config) {
-                    $log.debug(config);
                     if (config.url.startsWith('/api')) {
                         config.headers.token = $window.sessionStorage.qaobeesession;
                         config.headers['Content-Type'] = 'application/json';
                         if (!config.headers['Accept']) {
                             config.responseType = 'json';
                         }
+                        $log.debug(config);
                     }
                     if (!config.url.startsWith('app') && !config.url.startsWith('http') && !config.url.startsWith('isteven-multi-select') && !config.url.startsWith('ng-table')) {
                         if (config.url.startsWith('/')) {
@@ -46,6 +46,7 @@
                 },
                 // When a request ends
                 response: function (response) {
+                    $log.debug(response);
                     return response || $q.when(response);
                 },
                 // When a request fails

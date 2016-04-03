@@ -36,8 +36,8 @@
                 delete $scope.user;
             });
 
-            $scope.getBill = function (id, pay_id) {
-                downloadSrv.getPdf('/api/1/commons/users/profile/billpdf?id=' + id,  pay_id + '-Qaobee.pdf');
+            $scope.getBill = function (id, plan_id, pay_id) {
+                downloadSrv.getPdf('/api/1/commons/users/profile/billpdf?plan_id=' + plan_id + '&pay_id=' + pay_id ,  pay_id + '-Qaobee.pdf');
             };
         });
 }());
