@@ -28,7 +28,7 @@
         ])
         .directive('headerMenu', function (qeventbus, userRestAPI, signupRestAPI, $rootScope, $cookieStore, $cookies,
                                            $location, $window, $log, $translatePartialLoader, $filter, deviceDetector,
-                                           notificationsRestAPI, EnvironmentConfig) {
+                                           notificationsRestAPI, EnvironmentConfig, $translate) {
             return {
                 restrict: 'AE',
                 controller: function ($scope) {
@@ -240,6 +240,20 @@
                                 angular.forEach($scope.user.account.listPlan, function (plan) {
                                     if (plan.status === 'notpaid') {
                                         paid = false;
+                                    }
+                                    if (plan.status === 'open') {
+                                        $scope.intrial = true;
+                                        var endDate = moment(plan.startPeriodDate).add(30, 'day');
+                                        $translate(['headerMenu.trial.title', 'headerMenu.trial.content'], {'count': $filter('number')(moment.duration(endDate.diff(moment())).asDays() - 1, 0)})
+                                            .then(function (translatedMessage) {
+                                                toastr.info(translatedMessage['headerMenu.trial.content'], translatedMessage['headerMenu.trial.title'], {
+                                                    closeButton: true,
+                                                    positionClass: 'toast-top-full-width',
+                                                    extendedTimeOut: 0,
+                                                    timeOut: 0,
+                                                    onHidden :function() { $scope.intrial = false; }
+                                                });
+                                            });
                                     }
                                 });
                                 if (!paid) {

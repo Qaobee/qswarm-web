@@ -33,9 +33,12 @@
                         if (!config.headers['Accept']) {
                             config.responseType = 'json';
                         }
-                        $log.debug(config);
+                    //    $log.debug(config);
                     }
-                    if (!config.url.startsWith('app') && !config.url.startsWith('http') && !config.url.startsWith('isteven-multi-select') && !config.url.startsWith('ng-table')) {
+                    if (!config.url.startsWith('app')
+                        && !config.url.startsWith('http')
+                        && !config.url.startsWith('isteven-multi-select')
+                        && !config.url.startsWith('ng-table')) {
                         if (config.url.startsWith('/')) {
                             config.url = EnvironmentConfig.apiEndPoint + config.url;
                         } else {
@@ -46,7 +49,7 @@
                 },
                 // When a request ends
                 response: function (response) {
-                    $log.debug(response);
+                 //   $log.debug(response);
                     return response || $q.when(response);
                 },
                 // When a request fails

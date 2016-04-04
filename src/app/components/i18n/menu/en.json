@@ -1,67 +1,71 @@
 {
-    "headerMenu": {
-        "dashboard": "Home",
-        "stats" : "Statistics",
-        "players": "My players",
-        "teams": "My teams",
-        "training": "Training",
-        "championship" : "Competition",
-        "calendar" : "Agenda",
-        "notification" : "Messages",
-        "search" : "Search",
-        "search-event" : "Event",
-        "search-player" : "Player",
-        "settings": "Settings",
-        "notifications": {
-            "mark-as-read" : "Mark as read",
-            "mark-as-unread" : "Mark as unread",
-            "delete" : "Delete",
-            "new" : "New"
-        }
+  "headerMenu": {
+    "dashboard": "Home",
+    "stats": "Statistics",
+    "players": "My players",
+    "teams": "My teams",
+    "training": "Training",
+    "championship": "Competition",
+    "calendar": "Agenda",
+    "notification": "Messages",
+    "search": "Search",
+    "search-event": "Event",
+    "search-player": "Player",
+    "settings": "Settings",
+    "notifications": {
+      "mark-as-read": "Mark as read",
+      "mark-as-unread": "Mark as unread",
+      "delete": "Delete",
+      "new": "New"
     },
-    "navbar": {
-        "welcome": "Welcome",
-        "connect": "Connection",
-        "disconnect": "Logout",
-        "administration": "Administration",
-        "signup": "Create an account",
-        "param" : "Settings",
-        "pricing" : "Pricing"
-    },
-    "content": {
-        "login": {
-            "label": {
-                "login": "Login",
-                "password": "Password",
-                "signin": "Login",
-                "forgotpasswd": "Forgot password?",
-                "forgotpasswdmess": "These are things that happen, give us your login and we will reset it for you!",
-                "title": "Log on to <b>Qaobee</b>",
-                "forgotpasswdcancel": "Wait, I remember now!"
-            }
-        },
-        "signup": {
-            "label": {
-                "name": "Nom",
-                "firstname": "Prénom",
-				"login": "Login",
-                "email" : "e-Mail",
-                "password": "Mot de passe",
-                "passwordConfirm" : "Confirmation",
-                "title": "Inscrivez-vous sur <b>Qaobee</b>"
-            },
-            "emailDirty": "Email invalid"
-        }
-    },
-    "error": {
-    	"signup" : {
-		   	"nonunique": "Le nom d'utilisateur que vous avez choisi existe déjà",
-        	"password": {
-        		"short" : "Le mot de passe que vous avez choisi est trop court",
-        		"different" : "Le mot de passe et sa confirmation sont différents"
-        	},
-        	"unknown" : "Unknown error",
-        	"CAPTCHA_EXCEPTION": "Wrong validation code."
-    	}
+    "trial": {
+      "title": "You are in trial period",
+      "content": "You can subscribe anytime by <a href=\"/#/private/profile/pay/0\" >clikcing here</a>. This period expires in <b>{{count}}</b> day(s)."
     }
+  },
+  "navbar": {
+    "welcome": "Welcome",
+    "connect": "Connection",
+    "disconnect": "Logout",
+    "administration": "Administration",
+    "signup": "Create an account",
+    "param": "Settings",
+    "pricing": "Pricing"
+  },
+  "content": {
+    "login": {
+      "label": {
+        "login": "Login",
+        "password": "Password",
+        "signin": "Login",
+        "forgotpasswd": "Forgot password?",
+        "forgotpasswdmess": "These are things that happen, give us your login and we will reset it for you!",
+        "title": "Log on to <b>Qaobee</b>",
+        "forgotpasswdcancel": "Wait, I remember now!"
+      }
+    },
+    "signup": {
+      "label": {
+        "name": "Nom",
+        "firstname": "Prénom",
+        "login": "Login",
+        "email": "e-Mail",
+        "password": "Mot de passe",
+        "passwordConfirm": "Confirmation",
+        "title": "Inscrivez-vous sur <b>Qaobee</b>"
+      },
+      "emailDirty": "Email invalid"
+    }
+  },
+  "error": {
+    "signup": {
+      "nonunique": "Le nom d'utilisateur que vous avez choisi existe déjà",
+      "password": {
+        "short": "Le mot de passe que vous avez choisi est trop court",
+        "different": "Le mot de passe et sa confirmation sont différents"
+      },
+      "unknown": "Unknown error",
+      "CAPTCHA_EXCEPTION": "Wrong validation code."
+    }
+  }
 }
