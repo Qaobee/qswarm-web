@@ -25,104 +25,67 @@
     
     <div class="row">
         <ul>
-            <li class="col l4 m6 s12">
+            <li class="col l8 s12">
                 <div class="card white blue-grey-text text-darken-2">
                     <div class="card-content center-align colorMain">
-                        <span class="card-content"><a href="#/private/viewPlayer/{{player._id}}" class="title white-text">{{'profile.tabs.profil' | translate }}</a></span>
+                        <span class="card-content title white-text">{{'profile.tabs.account' | translate }}</span>
                     </div>
                     <div class="card-content center-align">
-                        
-                    </div>
-                    
-                    <div class="card-action center-align">
-                        <a href="#/private/profile/writeProfile" class="btn waves-effect waves-light red lighten-1 white-text">
-                            <i class="fa fa-edit" ></i>
-                        </a>
+                        <div class="row">
+                            <div class="col s4">
+                                <a href="#/private/profile/writeProfile" class="waves-effect waves-light red-text text- lighten-1">
+                                    <i class="material-icons md-48">account_box</i>
+                                </a>
+                                <br/>
+                                {{'profile.tabs.profil' | translate }}
+                            </div>
+                            
+                            <div class="col s4">
+                                <a href="#/private/profile/changePwd" class="waves-effect waves-light red-text text- lighten-1">
+                                    <i class="material-icons md-48">https</i>
+                                </a>
+                                <br/>
+                                {{'profile.tabs.password' | translate }}
+                            </div>
+                            
+                            <div class="col s4">
+                                <a href="#/private/profile/billing" class="waves-effect waves-light red-text text- lighten-1">
+                                    <i class="material-icons md-48">verified_user</i>
+                                </a>
+                                <br/>
+                                {{'profile.tabs.billing' | translate }}
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
             </li>
             
-            <li class="col l4 m6 s12">
+            
+            <li class="col l4 s12">
                 <div class="card white blue-grey-text text-darken-2">
                     <div class="card-content center-align colorMain">
-                        <span class="card-content"><a href="#/private/viewPlayer/{{player._id}}" class="title white-text">{{'profile.tabs.password' | translate }}</a></span>
+                        <span class="card-content title white-text">{{'profile.tabs.sandbox' | translate }}</span>
                     </div>
                     <div class="card-content center-align">
-                        
-                    </div>
-                    
-                    <div class="card-action center-align">
-                        <a href="#/private/profile/changePwd" class="btn waves-effect waves-light red lighten-1 white-text">
-                            <i class="fa fa-edit" ></i>
-                        </a>
-                    </div>
-                </div>
-            </li>
-            
-            <li class="col l4 m6 s12">
-                <div class="card white blue-grey-text text-darken-2">
-                    <div class="card-content center-align colorMain">
-                        <span class="card-content"><a href="#/private/viewPlayer/{{player._id}}" class="title white-text">{{'profile.tabs.billing' | translate }}</a></span>
-                    </div>
-                    <div class="card-content center-align">
-                        
-                    </div>
-                    
-                    <div class="card-action center-align">
-                        <a href="#/private/profile/billing" class="btn waves-effect waves-light red lighten-1 white-text">
-                            <i class="fa fa-edit" ></i>
-                        </a>
-                    </div>
-                </div>
-            </li>
-            
-            <li class="col l4 m6 s12">
-                <div class="card white blue-grey-text text-darken-2">
-                    <div class="card-content center-align colorMain">
-                        <span class="card-content"><a href="#/private/viewPlayer/{{player._id}}" class="title white-text">{{'profile.tabs.settings' | translate }}</a></span>
-                    </div>
-                    <div class="card-content center-align">
-                        
-                    </div>
-                    
-                    <div class="card-action center-align">
-                        <a href="#/private/config" class="btn waves-effect waves-light red lighten-1 white-text">
-                            <i class="fa fa-edit" ></i>
-                        </a>
-                    </div>
-                </div>
-            </li>
-            
-            <li class="col l4 m6 s12">
-                <div class="card white blue-grey-text text-darken-2">
-                    <div class="card-content center-align colorMain">
-                        <span class="card-content"><a href="#/private/viewPlayer/{{player._id}}" class="title white-text">{{'profile.tabs.sharing' | translate }}</a></span>
-                    </div>
-                    <div class="card-content center-align">
-                        
-                    </div>
-                    
-                    <div class="card-action center-align">
-                        <a href="#/private/config" class="btn waves-effect waves-light red lighten-1 white-text">
-                            <i class="fa fa-edit" ></i>
-                        </a>
-                    </div>
-                </div>
-            </li>
-            
-            <li class="col l4 m6 s12">
-                <div class="card white blue-grey-text text-darken-2">
-                    <div class="card-content center-align cardPlayer">
-                        <span class="card-content"><a href="#/private/viewPlayer/{{player._id}}" class="title white-text">{{'profile.tabs.notification' | translate }}</a></span>
-                    </div>
-                    <div class="card-content center-align">
-                        
-                    </div>
-                    
-                    <div class="card-action center-align">
-                        <a href="#/private/config" class="btn waves-effect waves-light red lighten-1 white-text">
-                            <i class="fa fa-edit" ></i>
-                        </a>
+                        <div class="row">
+                            <div class="col s6">
+                                <a href="#/private/config" class="waves-effect waves-light red-text text- lighten-1">
+                                    <i class="material-icons md-48">mode_edit</i>
+                                </a>
+                                <br/>
+                                {{'profile.tabs.settings' | translate }}
+                            </div>
+                            
+                            <div class="col s6">
+                                <a href="#/private/profile/billing" class="waves-effect waves-light red-text text- lighten-1">
+                                    <i class="material-icons md-48">notifications</i>
+                                </a>
+                                <br/>
+                                {{'profile.tabs.sharing' | translate }}
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
             </li>

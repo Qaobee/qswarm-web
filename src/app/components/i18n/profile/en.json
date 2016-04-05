@@ -1,7 +1,8 @@
 {
   "profile": {
     "tabs": {
-      "stats": "Stats",
+      "account" : "My account",
+      "sandbox": "My sandbox",
       "profil": "Profil",
       "password": "Password",
       "billing": "Billing",
