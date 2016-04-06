@@ -941,6 +941,7 @@ table.super-fancy tr.foobar {
     top: 65px;
     right:0 !important;
     max-width: 100% !important;
+    z-index: 90!important;
 }
 .toast-top-full-width > div {
     width: 100% !important;
