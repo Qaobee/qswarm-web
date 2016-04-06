@@ -1,60 +1,80 @@
 <!-- START PRICING TABLE CONTAINER -->
 <div class="container pricing">
     <div class="row"></div>
-    <h3 class="center-align">Nos tarifs</h3>
+    <h3 class="center-align" translate="pricing.title"></h3>
+    <h5 class="center-align" translate="pricing.desc"></h5>
     <div class="row">
-        <div class="col s12 m4 offset-m2">
-            <div class="card z-depth-4">
+        <div class="col s12 m3 offset-m3">
+            <div class="card z-depth-0 blue darken-1 white-text">
                 <div class="card-content center-align">
-                    <div class="card-title colorSecondary white-text">BASIC</div>
-                    <ul class="collection left-align">
-                        <li data-tooltip="Dedicated support team available 24/7" data-delay="10" data-position="top"
-                            class="collection-item tooltipped"><b>24/7</b> Support <i
-                                class="mdi-action-info-outline right"></i></li>
-                        <li class="collection-item"><b>1TB</b> Bandwidth</li>
-                        <li data-tooltip="On demand increase anytime with extra fee" data-delay="10" data-position="top"
-                            class="collection-item tooltipped"><b>10GB</b> Hosting Space <i
-                                class="mdi-action-info-outline right"></i></li>
-                        <li class="collection-item"><b>1GB</b> Memory</li>
-                        <li class="collection-item"><b>10</b> Free Domain</li>
-                        <li class="collection-item">User Analytics</li>
-                    </ul>
-                    <a class="btn-floating btn-large waves-effect waves-light green darken-1 z-depth-2"
-                       href="#/signupStart">
-                        <i class="material-icons">shopping_basket</i></a>
-                    <div class="card-action price center-align colorSecondary white-text ">
+                    <div class="card-title blue darken-3 white-text"><b translate="pricing.offers.standard.title"></b>
+                    </div>
+                    <div class="price center-align white-text">
                         <h4>
-                            <span class="amount">x</span>
+                            <span class="amount" translate="pricing.offers.standard.price"></span>
                             <span class="currency">€</span>
-                            <span class="period">/mo</span>
                         </h4>
-
+                        <span class="period" translate="pricing.offers.standard.period"></span>
+                        <p translate="pricing.offers.standard.desc"></p>
+                        <a class="btn btn-flat btn-large waves-effect waves-light blue darken-3 white-text"
+                           href="#/signupStart" translate="pricing.subscribe-btn"></a>
                     </div>
                 </div>
             </div>
+            <h5 class="blue-text text-darken-3" translate="pricing.offers.standard.detail.title"></h5>
+            <h6 class="blue-text text-darken-3" translate="pricing.offers.standard.detail.sub-title"></h6>
+            <div class="divider blue darken-3"></div>
+            <ul class="left-align">
+                <li translate="pricing.offers.standard.detail.line1"></li>
+                <li translate="pricing.offers.standard.detail.line2"></li>
+                <li translate="pricing.offers.standard.detail.line3"></li>
+                <li translate="pricing.offers.standard.detail.line4"></li>
+                <li translate="pricing.offers.standard.detail.line5"></li>
+                <li translate="pricing.offers.standard.detail.line6"></li>
+            </ul>
         </div>
 
-        <div class="col s12 m4">
-            <div class="card">
+        <div class="col s12 m3">
+            <div class="card z-depth-0 light-green white-text">
                 <div class="card-content center-align">
-                    <div class="card-title colorAccent white-text">TEAM</div>
-                    <ul class="collection left-align">
-                        <li data-tooltip="Dedicated support team available 24/7" data-delay="10" data-position="top"
-                            class="collection-item tooltipped"><b>24/7</b> Support <i
-                                class="mdi-action-info-outline right"></i></li>
-                        <li class="collection-item"><b>1TB</b> Bandwidth</li>
-                        <li data-tooltip="On demand increase anytime with extra fee" data-delay="10" data-position="top"
-                            class="collection-item tooltipped"><b>10GB</b> Hosting Space <i
-                                class="mdi-action-info-outline right"></i></li>
-                        <li class="collection-item"><b>1GB</b> Memory</li>
-                        <li class="collection-item"><b>10</b> Free Domain</li>
-                        <li class="collection-item">User Analytics</li>
-                    </ul>
-                    <div class="card-action price center-align colorAccent white-text">
+                    <div class="card-title light-green darken-2 white-text"><b
+                            translate="pricing.offers.team.title"></b></div>
+                    <div class="price center-align white-text">
                         <h4>
-                            Prochainement
+                            <span class="amount" translate="pricing.offers.team.price"></span>
+                            <span class="currency">€</span>
                         </h4>
+                        <span class="period" translate="pricing.offers.team.period"></span>
+                        <p translate="pricing.offers.team.desc"></p>
+                        <a class="btn btn-flat btn-large waves-effect waves-light light-green darken-2 white-text"
+                           href="javascript:void(0);" translate="pricing.soon-btn"></a>
                     </div>
+                </div>
+            </div>
+            <h5 class="light-green-text text-darken-2" translate="pricing.offers.team.detail.title"></h5>
+            <h6 class="light-green-text text-darken-2" translate="pricing.offers.team.detail.sub-title"></h6>
+            <div class="divider light-green darken-2"></div>
+            <ul class="left-align">
+                <li translate="pricing.offers.team.detail.line1"></li>
+                <li translate="pricing.offers.team.detail.line2"></li>
+                <li translate="pricing.offers.team.detail.line3"></li>
+                <li translate="pricing.offers.team.detail.line4"></li>
+                <li translate="pricing.offers.team.detail.line5"></li>
+            </ul>
+        </div>
+    </div>
+    <p class="center-align" translate="pricing.team-subscribe"></p>
+</div>
+<div class="pricing red white-text">
+    <div class="container center-align">
+        <div class="row valign-middle">
+            <div class="col m6 s12 left-align">
+                <h5 translate="pricing.trial.title"></h5>
+            </div>
+            <div class="col m6 s12 ">
+                <div class="left-align">
+                    <a class="btn btn-flat btn-large waves-effect waves-light white red-text subscribe"
+                       href="#/signupStart" translate="pricing.trial.btn"></a>
                 </div>
             </div>
         </div>

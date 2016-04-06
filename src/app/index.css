@@ -8,6 +8,7 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
+
 .material-icons.md-18 {
     font-size: 18px;
 }
@@ -838,9 +839,11 @@ table.super-fancy tr.foobar {
     padding: 5px;
     width: 100%;
 }
+
 .widget-header {
     padding: 10px !important;
 }
+
 .card .card-content {
     padding: 10px !important;
 }
@@ -848,34 +851,91 @@ table.super-fancy tr.foobar {
 .card .card-content .card-title {
     line-height: 24px;
 }
+
 .card .card-title {
     font-size: 24px;
     font-weight: 300;
 }
-.pricing .card-title {
+
+.pricing .card-content {
+    padding: 0 !important;
+    min-height: 330px;
+}
+
+.pricing li:before {
+    content: "- "; /* on affiche une chaîne de caractère */
+}
+
+.pricing ul {
     padding: 10px;
 }
+
+.pricing .price .btn {
+    position: absolute;
+    bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    right: 0;
+    left: 0;
+    height: auto;
+    padding: 10px !important;
+}
+
+.pricing .card-title {
+    padding: 10px;
+    margin: 0;
+}
+
 .pricing .price span.amount {
     font-size: 50px;
-    font-weight: 100;
+    font-weight: bolder;
 }
+
+.pricing .price {
+    padding: 10px;
+    line-height: 100%;
+}
+
+.pricing .price p {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    line-height: 120%;
+}
+
+.pricing .pricing-subscribe {
+    padding: 10px;
+    height: 100%;
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+    vertical-align: middle;
+}
+
+.pricing .btn.subscribe {
+    padding: 10px;
+    vertical-align: middle;
+    height: 100%;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.pricing .container {
+    padding: 20px 12%;
+}
+
 .pricing .price span.period {
+    line-height: 5px;
+    margin-top: -20px;
 }
+
 .pricing .price span.currency {
-    letter-spacing: -6px;
-    top: -20px;
+    line-height: 25px;
+    vertical-align: text-top;
+    font-weight: bolder;
+    font-size: 25px !important;
 }
-.pricing .price span.currency, .pricing .price span.period {
-    font-size: 16px;
-}
-.pricing .collection li.collection-item:hover{
-    background: #f5f5f5;
-}
-.pricing .btn-floating {
-    float: right;
-    margin-top: -25px;
-    margin-right: 25px;
-}
+
 .payplug-frame {
     width: 100%;
     height: calc(100vh + 80px);
@@ -901,6 +961,7 @@ table.super-fancy tr.foobar {
         transform: translateY(-5px);
     }
 }
+
 @-webkit-keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
         -webkit-transform: translateY(0);
@@ -915,6 +976,7 @@ table.super-fancy tr.foobar {
         transform: translateY(-5px);
     }
 }
+
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
         -moz-transform: translateY(0);
@@ -937,20 +999,37 @@ table.super-fancy tr.foobar {
 }
 
 .toast-top-full-width {
-    left:0 !important;
+    left: 0 !important;
     top: 65px;
-    right:0 !important;
+    right: 0 !important;
     max-width: 100% !important;
-    z-index: 90!important;
+    z-index: 90 !important;
 }
+
 .toast-top-full-width > div {
     width: 100% !important;
 }
-.toast-top-full-width  a {
+
+.toast-top-full-width a {
     color: #fff !important;
     font-weight: bold;
     text-decoration: underline;
 }
+
 .nav-padding {
     margin-bottom: 65px;
+}
+
+.valign-middle {
+    display: table;
+}
+
+.valign-middle .col {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.valign-middle .col,
+.valign-middle [class*="col"] + [class*="col"]:last-child {
+    float: none;
 }

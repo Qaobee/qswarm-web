@@ -118,7 +118,8 @@
          * @class qaobee.public.public.PricingCtrl
          * @description Contrôleur de la page "nos tarifs"
          */
-        .controller('PricingCtrl', function ($scope, qeventbus) {
+        .controller('PricingCtrl', function ($scope, qeventbus, $translatePartialLoader) {
+            $translatePartialLoader.addPart('public');
             qeventbus.prepForBroadcast('menuItem', 'pricing');
         })
 

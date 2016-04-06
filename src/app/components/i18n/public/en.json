@@ -27,7 +27,7 @@
       },
       "item-1" :{
         "title" : "Data management",
-        "content" : "Qaobee converts sports data into strategic informations and integrates easily with your business to simplify your life."
+        "content" : "Qaobee converts sports data into strategic information and integrates easily with your business to simplify your life."
       },
       "item-2" : {
         "title" : "Workspace",
@@ -68,6 +68,50 @@
     },
     "button": {
       "send": "Send"
+    }
+  },
+  "pricing": {
+    "title": "Offers guide",
+    "desc": "Qaobee is for coaches and handball clubs.",
+    "subscribe-btn": "Subscribe",
+    "soon-btn": "Soon",
+    "team-subscribe": "You are a club and you want to subscribe to Qaobee to your coaches, <a href=\"mailto:contact@qaobee.com\">contact us</a>",
+    "trial": {
+      "title": "Qaobee is free for a month, so enjoy it now",
+      "btn": "Try for free"
+    },
+    "offers": {
+      "standard": {
+        "title": "Standard",
+        "price": "8",
+        "period": "per month",
+        "desc": "The workspace you need to practice with ease.",
+        "detail": {
+          "title": "Standard contents",
+          "sub-title": "All these features:",
+          "line1": "Personalized dashboard",
+          "line2": "Workforce Management",
+          "line3": "Sports calendar",
+          "line4": "Training",
+          "line5": "Real time data collection",
+          "line6": "Statistical reports"
+        }
+      },
+      "team": {
+        "title": "Team",
+        "price": "12",
+        "period": "per user / per month",
+        "desc": "For coaches who work in teams.",
+        "detail": {
+          "title": "Team contents",
+          "sub-title": "All <b>Standard</b>, and :",
+          "line1": "Sharing work space with 5 coaches",
+          "line2": "Managing the collaborative workforce",
+          "line3": "Collaborative agenda",
+          "line4": "Collaborative training",
+          "line5": "Support"
+        }
+      }
     }
   }
 }
