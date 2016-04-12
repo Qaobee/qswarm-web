@@ -60,7 +60,8 @@
                 $scope.formatDate = translations['commons.format.date.label'];
                 $scope.formatDateSubmit = translations['commons.format.date.pattern'];
 
-                $scope.datePicker = angular.element('#profilBirthdate').pickadate({
+                $scope.datePicker = angular.element('#profilBirthdate')
+                    .pickadate({
                         format: $scope.formatDate,
                         formatSubmit: $scope.formatDateSubmit,
                         monthsFull: $scope.month,
