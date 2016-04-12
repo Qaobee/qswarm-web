@@ -71,7 +71,6 @@
             /**
              * @name $scope.updateUser
              * @function
-             * @param profileForm the form
              * @memberOf qaobee.prive.profile.ProfileCtrl
              * @description update the current user
              */
