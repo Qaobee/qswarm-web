@@ -28,8 +28,7 @@
             $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
-            $scope.optionsAdr = null;
-            $scope.detailsAdr = '';
+
             // return button
             /**
              * Do the back
@@ -67,6 +66,37 @@
                     .pickadate('picker')
                     .set('select', $scope.user.birthdate.valueOf());
             });
+            
+
+            $scope.temp = {};
+            $scope.temp.optionsAdr = {
+                types: 'geocode'
+            };
+            $scope.temp.detailsAdr = '';
+            if(angular.isDefined($scope.user.address) && $scope.user.address!=null && angular.isDefined($scope.user.address.formatedAddress)) {
+            	$scope.temp.addr = $scope.user.address.formatedAddress;
+            } else {
+            	$scope.temp.addr = '';
+            }
+            
+            
+            // Surveillance de la modification du retour de l'API Google sur l'adresse
+            $scope.$watch('temp.detailsAdr', function(newValue, oldValue) {
+            	if(angular.isUndefined(newValue) || newValue==='' || angular.equals({}, newValue)) {
+            		return;
+            	}
+            	personSrv.formatAddress(newValue).then(function(adr){
+            		$scope.user.address = adr;
+                });
+            });
+            
+            // Surveillance de la modification du champ adresse par l'utilisateur
+            $scope.$watch('temp.addr', function(newValue, oldValue) {
+            	if(angular.isUndefined(newValue) || newValue==='' || angular.equals({}, newValue) || newValue==null || newValue.length==1) {
+            		$log.debug("temp.addr = {}");
+            		$scope.user.address = {};
+            	}
+            });
 
             /**
              * @name $scope.updateUser
@@ -79,14 +109,15 @@
                 angular.copy($scope.user, updUser);
                 updUser.birthdate = moment($scope.user.birthdate, 'DD/MM/YYYY').valueOf();
                 delete updUser.isAdmin;
-                // address management
-                personSrv.formatAddress($scope.user.address).then(function (adr) {
-                    $scope.user.address = adr;
+                
+                if($scope.temp.addr !='' && angular.equals({}, $scope.user.address)) {
+                	toastr.error("Adresse inconnue");
+                	return;
+                }
 
-                    profileRestAPI.update(updUser).success(function (data) {
-                        toastr.success(data.firstname + ' ' + data.name + $filter('translate')('popup.success.updated'));
-                        $window.history.back();
-                    });
+                profileRestAPI.update(updUser).success(function (data) {
+                    toastr.success(data.firstname + ' ' + data.name + $filter('translate')('profile.popup.update.success'));
+                    $window.history.back();
                 });
             };
         });
