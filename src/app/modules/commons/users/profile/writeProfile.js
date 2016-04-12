@@ -49,30 +49,20 @@
                 'commons.format.date.label',
                 'commons.format.date.pattern'
             ]).then(function (translations) {
-                $scope.month = translations['commons.format.date.listMonth'].split(',');
-                $scope.monthShort = translations['commons.format.date.listMonthShort'].split(',');
-                $scope.weekdaysFull = translations['commons.format.date.listWeekdaysFull'].split(',');
-                $scope.weekdaysShort = translations['commons.format.date.listWeekdaysShort'].split(',');
-                $scope.weekdaysLetter = translations['commons.format.date.listWeekdaysLetter'].split(',');
-                $scope.today = translations['commons.format.date.today'];
-                $scope.clear = translations['commons.format.date.clear'];
-                $scope.close = translations['commons.format.date.close'];
-                $scope.formatDate = translations['commons.format.date.label'];
-                $scope.formatDateSubmit = translations['commons.format.date.pattern'];
-
                 $scope.datePicker = angular.element('#profilBirthdate')
                     .pickadate({
-                        format: $scope.formatDate,
-                        formatSubmit: $scope.formatDateSubmit,
-                        monthsFull: $scope.month,
-                        weekdaysFull: $scope.weekdaysFull,
-                        weekdaysLetter: $scope.weekdaysLetter,
-                        weekdaysShort: $scope.weekdaysShort,
+                        format: translations['commons.format.date.label'],
+                        formatSubmit: translations['commons.format.date.pattern'],
+                        monthsFull: translations['commons.format.date.listMonth'].split(','),
+                        monthShort: translations['commons.format.date.listMonthShort'].split(','),
+                        weekdaysFull: translations['commons.format.date.listWeekdaysFull'].split(','),
+                        weekdaysLetter: translations['commons.format.date.listWeekdaysLetter'].split(','),
+                        weekdaysShort: translations['commons.format.date.listWeekdaysShort'].split(','),
                         selectYears: 100,
                         selectMonths: true,
-                        today: $scope.today,
-                        clear: $scope.clear,
-                        close: $scope.close
+                        today: translations['commons.format.date.today'],
+                        clear: translations['commons.format.date.clear'],
+                        close: translations['commons.format.date.close']
                     })
                     .pickadate('picker')
                     .set('select', $scope.user.birthdate.valueOf());
