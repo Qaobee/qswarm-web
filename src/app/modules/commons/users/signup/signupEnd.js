@@ -2,22 +2,22 @@
     'use strict';
 
     angular.module('qaobee.user.signup.end', [
-        /* angular qaobee */
+            /* angular qaobee */
 //        'ngAutocomplete',
 
-        /* qaobee modules */
-        'personSRV',
+            /* qaobee modules */
+            'personSRV',
 
-        /* services */
-        'locationAPI',
+            /* services */
+            'locationAPI',
 
-        /* qaobee Rest API */
-        'activityRestAPI',
-        'activityCfgRestAPI',
-        'countryRestAPI',
-        'structureRestAPI',
-        'signupRestAPI'
-    ])
+            /* qaobee Rest API */
+            'activityRestAPI',
+            'activityCfgRestAPI',
+            'countryRestAPI',
+            'structureRestAPI',
+            'signupRestAPI'
+        ])
 
 
         .config(function ($routeProvider) {
@@ -67,7 +67,7 @@
             $scope.creationFinished = false;
 
             var $inputDate = null;
-            $timeout(function() {
+            $timeout(function () {
                 //i18n datepicker
                 var month = $filter('translate')('commons.format.date.listMonth');
                 $scope.month = month.split(',');
@@ -107,28 +107,28 @@
                 $scope.datePicker = $inputDate.pickadate('picker');
             }, 500);
 
-           signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function (data) {
-                if(data === null) {
-        	    	$rootScope.messageErreur = '';
+            signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function (data) {
+                if (data === null) {
+                    $rootScope.messageErreur = '';
                     $location.path('/signup/error');
-        	    } else if (true === data.error) {
+                } else if (true === data.error) {
                     $rootScope.messageErreur = data.message;
                     $location.path('/signup/error');
                 } else {
                     $scope.signup = data;
-                    if($scope.signup.birthdate!==null && $scope.signup.birthdate!==0) {
-                    	$scope.signup.birthdateInput = new Date(moment($scope.signup.birthdate));
+                    if ($scope.signup.birthdate !== null && $scope.signup.birthdate !== 0) {
+                        $scope.signup.birthdateInput = new Date(moment($scope.signup.birthdate));
                     }
                     $scope.signup.categoryAge = '';
 
                     // On force le sport au HANDBALL
-                    if(angular.isUndefined($scope.signup.account.listPlan)) {
-                    	$scope.signup.account.listPlan = [{}];
+                    if (angular.isUndefined($scope.signup.account.listPlan)) {
+                        $scope.signup.account.listPlan = [{}];
                     }
                     $scope.signup.account.listPlan[0].activity = {};
                     $scope.signup.account.listPlan[0].activity._id = 'ACT-HAND';
 
-                    $scope.temp.message=$filter('translate')('structureSection.list.empty');
+                    $scope.temp.message = $filter('translate')('structureSection.list.empty');
                     $scope.valuesStructures = [];
 
                     // Déclaration du user en mode connecté
@@ -171,8 +171,8 @@
                 }
 
                 if (validateOk) {
-                    var start = moment($scope.signup.birthdateInput,'DD/MM/YYYY');
-                	$scope.signup.birthdate = moment(start).valueOf();
+                    var start = moment($scope.signup.birthdateInput, 'DD/MM/YYYY');
+                    $scope.signup.birthdate = moment(start).valueOf();
                     WizardHandler.wizard().next();
                 }
             };
@@ -214,8 +214,8 @@
             $scope.detailsAdr = '';
 
             // Change city name and reset structure
-            $scope.resetStructure = function() {
-            	$scope.temp.message=$filter('translate')('structureSection.list.empty');
+            $scope.resetStructure = function () {
+                $scope.temp.message = $filter('translate')('structureSection.list.empty');
                 $scope.valuesStructures = [];
 
                 $scope.isStructureCityChanged = false;
@@ -228,39 +228,39 @@
             };
 
             // Surveillance de la modification du retour de l'API Google sur l'adresse dans les infos personnelles
-            $scope.$watch('temp.detailsAddress', function(newValue, oldValue) {
-            	if(angular.isUndefined(newValue) || newValue==='' || angular.equals({}, newValue)) {
-            		return;
-            	}
-            	personSrv.formatAddress(newValue).then(function(adr){
-            		$scope.signup.address = adr;
+            $scope.$watch('temp.detailsAddress', function (newValue, oldValue) {
+                if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue)) {
+                    return;
+                }
+                personSrv.formatAddress(newValue).then(function (adr) {
+                    $scope.signup.address = adr;
                 });
             });
 
             // Surveillance de la modification du retour de l'API Google sur l'adresse
-            $scope.$watch('signup.detailsStructureCity', function(newValue, oldValue) {
-            	if(angular.isUndefined(newValue) || newValue==='' || angular.equals({}, newValue)) {
-            		return;
-            	}
-            	//place_changed
-            	$scope.loadStructures();
+            $scope.$watch('signup.detailsStructureCity', function (newValue, oldValue) {
+                if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue)) {
+                    return;
+                }
+                //place_changed
+                $scope.loadStructures();
             });
 
             // Surveillance de la modification du retour de l'API Google sur l'adresse du club
-            $scope.$watch('signup.detailsNewStructureCity', function(newValue, oldValue) {
-            	if(angular.isUndefined(newValue) || newValue==='' || angular.equals({}, newValue)) {
-            		return;
-            	}
-            	personSrv.formatAddress(newValue).then(function(adr){
-            		$scope.newStructure.address = adr;
+            $scope.$watch('signup.detailsNewStructureCity', function (newValue, oldValue) {
+                if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue)) {
+                    return;
+                }
+                personSrv.formatAddress(newValue).then(function (adr) {
+                    $scope.newStructure.address = adr;
 
-            		angular.forEach(newValue.address_components, function (item) {
-                		if (item.types.count('country') > 0) {
-                			$scope.newStructure.address.country = {};
-                			$scope.newStructure.address.country.label  = item.long_name;
-                			$scope.newStructure.address.country.alpha2 = item.short_name;
-                		}
-                	});
+                    angular.forEach(newValue.address_components, function (item) {
+                        if (item.types.count('country') > 0) {
+                            $scope.newStructure.address.country = {};
+                            $scope.newStructure.address.country.label = item.long_name;
+                            $scope.newStructure.address.country.alpha2 = item.short_name;
+                        }
+                    });
                 });
             });
 
@@ -275,77 +275,77 @@
                     // Recherche des infos complémentaires de la ville à partir des coordonnées Lat/Lng
                     var cityLocation = $scope.signup.detailsStructureCity.geometry.location;
                     locationAPI.getLatLng(cityLocation.lat(), cityLocation.lng()).then(function (adr) {
-                    	var address = {};
-                    	angular.forEach(adr.data.results[0].address_components, function (item) {
-                    		if (item.types.count('postal_code') > 0) {
-                    			address.zipcode = item.long_name;
-                    			$scope.temp.zipcode = address.zipcode;
-                    		}
-                    		if (item.types.count('country') > 0) {
-                    			address.countryAlpha2 = item.short_name;
-                    			$scope.temp.countryAlpha2 = address.countryAlpha2;
-                    			address.country = item.long_name;
-                    			$scope.temp.country = address.country;
-                    		}
-                    		if (item.types.count('locality') > 0) {
-                    			address.city = item.long_name;
-                    			$scope.temp.city = address.city;
-                    		}
-                    	});
+                        var address = {};
+                        angular.forEach(adr.data.results[0].address_components, function (item) {
+                            if (item.types.count('postal_code') > 0) {
+                                address.zipcode = item.long_name;
+                                $scope.temp.zipcode = address.zipcode;
+                            }
+                            if (item.types.count('country') > 0) {
+                                address.countryAlpha2 = item.short_name;
+                                $scope.temp.countryAlpha2 = address.countryAlpha2;
+                                address.country = item.long_name;
+                                $scope.temp.country = address.country;
+                            }
+                            if (item.types.count('locality') > 0) {
+                                address.city = item.long_name;
+                                $scope.temp.city = address.city;
+                            }
+                        });
 
-                    	// Recherche du pays et liste des category age
-                    	countryRestAPI.getAlpha2($scope.temp.countryAlpha2).success(function (data) {
-                    		activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.signup.account.listPlan[0].activity._id, data._id,'listCategoryAge').success(function (data2) {
-                    			$scope.categoryAgeResult = data2;
-                    			$scope.valuesCategoryAge = [];
+                        // Recherche du pays et liste des category age
+                        countryRestAPI.getAlpha2($scope.temp.countryAlpha2).success(function (data) {
+                            activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.signup.account.listPlan[0].activity._id, data._id, 'listCategoryAge').success(function (data2) {
+                                $scope.categoryAgeResult = data2;
+                                $scope.valuesCategoryAge = [];
 
-                    			var dataSort = data2.sortBy(function(o) {
-                                	return -1 * o.order;
+                                var dataSort = data2.sortBy(function (o) {
+                                    return -1 * o.order;
                                 });
 
-                    			dataSort.forEach(function(i) {
-                    				var tempAge = '';
-                    				if(i.ageMax > 80) {
-                    					tempAge = i.ageMin + '+';
-                    				} else if(i.ageMin===i.ageMax) {
-                    					tempAge = i.ageMin;
-                    				} else {
-                    					tempAge = i.ageMin + '/' + i.ageMax;
-                    				}
+                                dataSort.forEach(function (i) {
+                                    var tempAge = '';
+                                    if (i.ageMax > 80) {
+                                        tempAge = i.ageMin + '+';
+                                    } else if (i.ageMin === i.ageMax) {
+                                        tempAge = i.ageMin;
+                                    } else {
+                                        tempAge = i.ageMin + '/' + i.ageMax;
+                                    }
 
                                     $scope.valuesCategoryAge.push({
                                         _id: i.code,
                                         label: i.label + ' (' + tempAge + ')'
                                     });
                                 });
-                    			$scope.signup.categoryAge = '';
-                    		});
-                    	});
+                                $scope.signup.categoryAge = '';
+                            });
+                        });
 
-                    	// Recherche des structures
-                    	structureRestAPI.getList($scope.signup.account.listPlan[0].activity._id, address).success(function (data) {
+                        // Recherche des structures
+                        structureRestAPI.getList($scope.signup.account.listPlan[0].activity._id, address).success(function (data) {
                             $scope.valuesStructures = [];
                             $scope.structure2 = "";
                             $scope.temp.s = {};
                             if (data.status === false) {
-                            	$scope.temp.message=$filter('translate')('structureSection.list.empty');
+                                $scope.temp.message = $filter('translate')('structureSection.list.empty');
                                 $scope.valuesStructures = [];
                             } else {
                                 if (data.length > 0) {
                                     $scope.structuresResult = data;
-                                    var dataSort = data.sortBy(function(o) {
-                                    	return o.label;
-                                    }) ;
-                                    dataSort.forEach(function(i) {
+                                    var dataSort = data.sortBy(function (o) {
+                                        return o.label;
+                                    });
+                                    dataSort.forEach(function (i) {
                                         $scope.valuesStructures.push({
                                             _id: i._id,
                                             label: i.label,
                                             address: i.address
                                         });
                                     });
-                                    $scope.temp.message='';
+                                    $scope.temp.message = '';
                                 } else {
-                                	$scope.temp.message=$filter('translate')('structureSection.list.empty');
+                                    $scope.temp.message = $filter('translate')('structureSection.list.empty');
                                     $scope.valuesStructures = [];
                                 }
                             }
@@ -353,8 +353,8 @@
                             $scope.temp.structureSearch = false;
                             $scope.temp.structureVilleOK = true;
 
-                        }).error(function() {
-                        	$scope.temp.structureSearch = false;
+                        }).error(function () {
+                            $scope.temp.structureSearch = false;
                         });
                     });
                 }
@@ -362,26 +362,26 @@
 
             // Puts structure selected in a hidden input
             $scope.applyChangeStructure = function (value) {
-            	if(!angular.isUndefined(value)) {
-            		$scope.temp.referencialId = value;
-            	}
+                if (!angular.isUndefined(value)) {
+                    $scope.temp.referencialId = value;
+                }
 
-                if($scope.temp.referencialId==='new') {
-                	$scope.temp.createStructure = true;
-                	$scope.newStructure.label = '';
-                	$scope.newStructure.address = {};
-                	$scope.resetStructure();
-                	$scope.temp.structureSelectOK = true;
+                if ($scope.temp.referencialId === 'new') {
+                    $scope.temp.createStructure = true;
+                    $scope.newStructure.label = '';
+                    $scope.newStructure.address = {};
+                    $scope.resetStructure();
+                    $scope.temp.structureSelectOK = true;
                 } else {
-                	$scope.temp.createStructure = false;
-	                if(!angular.isUndefined($scope.structuresResult)) {
-		                $scope.structuresResult.forEach(function(item) {
-		                	if(item._id===$scope.temp.referencialId) {
-		                		$scope.temp.structure = item;
-		                		$scope.temp.structureSelectOK = true;
-		                	}
-		                });
-	                }
+                    $scope.temp.createStructure = false;
+                    if (!angular.isUndefined($scope.structuresResult)) {
+                        $scope.structuresResult.forEach(function (item) {
+                            if (item._id === $scope.temp.referencialId) {
+                                $scope.temp.structure = item;
+                                $scope.temp.structureSelectOK = true;
+                            }
+                        });
+                    }
                 }
             };
 
@@ -390,33 +390,33 @@
                 var validateOk = true;
 
                 if (!$scope.temp.createStructure) {
-                	if (angular.isUndefined($scope.temp.structure) || $scope.temp.structure._id < 0) {
-                		toastr.warning($filter('translate')('structureSection.ph.structureMandatory'));
-                		validateOk = false;
-                	}
+                    if (angular.isUndefined($scope.temp.structure) || $scope.temp.structure._id < 0) {
+                        toastr.warning($filter('translate')('structureSection.ph.structureMandatory'));
+                        validateOk = false;
+                    }
                 }
 
                 if ($scope.temp.createStructure) {
-                	if(angular.isUndefined($scope.newStructure.label) || $scope.newStructure.label===null || $scope.newStructure.label==='') {
-                		toastr.warning($filter('translate')('structureSection.ph.createLabelMandatory'));
+                    if (angular.isUndefined($scope.newStructure.label) || $scope.newStructure.label === null || $scope.newStructure.label === '') {
+                        toastr.warning($filter('translate')('structureSection.ph.createLabelMandatory'));
                         validateOk = false;
-                	} else {
-                		$scope.newStructure.label = angular.uppercase($scope.newStructure.label);
-                	}
-                	if(angular.isUndefined($scope.newStructure.address.place) || $scope.newStructure.address.place===null || $scope.newStructure.address.place==='') {
-                		toastr.warning($filter('translate')('structureSection.ph.createAddressPlaceMandatory'));
+                    } else {
+                        $scope.newStructure.label = angular.uppercase($scope.newStructure.label);
+                    }
+                    if (angular.isUndefined($scope.newStructure.address.place) || $scope.newStructure.address.place === null || $scope.newStructure.address.place === '') {
+                        toastr.warning($filter('translate')('structureSection.ph.createAddressPlaceMandatory'));
                         validateOk = false;
-                	}
+                    }
                 }
 
-                if($scope.signup.categoryAge===null || $scope.signup.categoryAge==='') {
-                	toastr.warning($filter('translate')('structureSection.ph.categoryAgeMandatory'));
+                if ($scope.signup.categoryAge === null || $scope.signup.categoryAge === '') {
+                    toastr.warning($filter('translate')('structureSection.ph.categoryAgeMandatory'));
                     validateOk = false;
                 }
 
                 if (validateOk) {
-            		$scope.structure = $scope.temp.createStructure ? $scope.newStructure : $scope.temp.structure;
-            		$scope.createSandBox();
+                    $scope.structure = $scope.temp.createStructure ? $scope.newStructure : $scope.temp.structure;
+                    $scope.createSandBox();
                 }
             };
 
@@ -426,12 +426,12 @@
                 delete(user.detailsStructureCity);
                 // Récupération CategoryAge
                 var catAge = {};
-                if(!angular.isUndefined($scope.categoryAgeResult)) {
-	                $scope.categoryAgeResult.forEach(function(item) {
-	                	if(item.code===$scope.signup.categoryAge._id) {
-	                		catAge = item;
-	                	}
-	                });
+                if (!angular.isUndefined($scope.categoryAgeResult)) {
+                    $scope.categoryAgeResult.forEach(function (item) {
+                        if (item.code === $scope.signup.categoryAge._id) {
+                            catAge = item;
+                        }
+                    });
                 }
 
                 // Ouverture Modal creation compte
@@ -441,14 +441,14 @@
                     if (false === data.status) {
                         toastr.error('Pb');
                     } else {
-                    	$scope.creationFinished = true;
-                    	delete $rootScope.user;
+                        $scope.creationFinished = true;
+                        delete $rootScope.user;
                         delete $rootScope.meta;
                         delete $scope.user;
                         delete $scope.signup;
                     }
                 }).error(function (data) {
-                	$('#modalCreate').closeModal();
+                    $('#modalCreate').closeModal();
                     $scope.messageErreur = data.message;
                     $window.location.href = '/#/signup/error';
                 });
@@ -470,46 +470,46 @@
             };
 
             $scope.owlOptions = {
-        			items : 1,
-        			loop : false,
-        			mouseDrag : false,
-        			touchDrag : false,
-        			pullDrag : false,
-        			freeDrag : false,
-        			dots : false,
-        			autoplay : true,
-        			autoplaySpeed : 1500,
-        			autoplayTimeout : 1500,
-        			animateIn : 'rotateInDownLeft',
-        			animateOut : 'rotateOutDownLeft',
-        			onTranslated : nextStep
-        	};
+                items: 1,
+                loop: false,
+                mouseDrag: false,
+                touchDrag: false,
+                pullDrag: false,
+                freeDrag: false,
+                dots: false,
+                autoplay: true,
+                autoplaySpeed: 1500,
+                autoplayTimeout: 1500,
+                animateIn: 'rotateInDownLeft',
+                animateOut: 'rotateOutDownLeft',
+                onTranslated: nextStep
+            };
 
-        	$scope.openModalCreate = function () {
-        		$('#modalCreate').openModal({dismissible: false});
-        		$('.owl-carousel').owlCarousel($scope.owlOptions);
-        	};
+            $scope.openModalCreate = function () {
+                $('#modalCreate').openModal({dismissible: false});
+                $('.owl-carousel').owlCarousel($scope.owlOptions);
+            };
 
-        	function nextStep(event) {
-        	    if (event.item.count === event.item.index + 1) {
-        	    	while(!$scope.creationFinished) {
-        	    		// Attente fin de la création en base Mongo
-        	    	}
-        	    	$('#modalCreate').closeModal();
-        	    	$window.location.href = '/#/signup/end';
-        	    }
-        	}
+            function nextStep(event) {
+                if (event.item.count === event.item.index + 1) {
+                    while (!$scope.creationFinished) {
+                        // Attente fin de la création en base Mongo
+                    }
+                    $('#modalCreate').closeModal();
+                    $window.location.href = '/#/signup/end';
+                }
+            }
 
         })
 
         .controller('SignupEndCtrl', function ($rootScope, $scope, $log, $translatePartialLoader, $location, EnvironmentConfig) {
             $translatePartialLoader.addPart('user');
-            $rootScope.user = {account : {firstConnexion : true}};
-            
+            $rootScope.user = {account: {firstConnexion: true}};
+
             $scope.url = EnvironmentConfig.appMobile;
 
             $scope.goHome = function () {
-            	delete($rootScope.user);
+                delete($rootScope.user);
                 $location.path('/');
             };
         })

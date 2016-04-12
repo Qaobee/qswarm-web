@@ -11,7 +11,7 @@
 
         .factory('signupRestAPI', function ($http, signupURL) {
             return {
-            	/**
+                /**
                  * @memberOf qaobee.components.restAPI.commons.users.user.signupRestAPI
                  * @function registerUser
                  * @description register a new user
@@ -27,7 +27,7 @@
                     });
                 },
                 
-            	/**
+                /**
                  * @memberOf qaobee.components.restAPI.commons.users.user.signupRestAPI
                  * @function usernameTest
                  * @description Login unicity test
@@ -43,26 +43,26 @@
                         }
                     });
                 },
-                
+
                 firstConnectionCheck: function (id, code) {
-                	return $http({
-                		url: signupURL + '/firstconnectioncheck?id=' + id + '&code=' + code,
-                		method: 'GET'
-                	});
+                    return $http({
+                        url: signupURL + '/firstconnectioncheck?id=' + id + '&code=' + code,
+                        method: 'GET'
+                    });
                 },
-                
+
                 finalizeSignup: function (user, captcha, structure, activity, categoryAge) {
-                	return $http({
-                		url: signupURL + '/finalize',
-                		method: 'POST',
-                		data: {
-                			user: user,
-                			code: captcha,
-                			structure: structure,
-                			activity : activity,
-                			categoryAge : categoryAge
-                		}
-                	});
+                    return $http({
+                        url: signupURL + '/finalize',
+                        method: 'POST',
+                        data: {
+                            user: user,
+                            code: captcha,
+                            structure: structure,
+                            activity: activity,
+                            categoryAge: categoryAge
+                        }
+                    });
                 }
             };
         });
