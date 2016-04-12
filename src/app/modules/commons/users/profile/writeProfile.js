@@ -28,7 +28,12 @@
             $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
+            $scope.optionsAdr = null;
+            $scope.detailsAdr = '';
             // return button
+            /**
+             * Do the back
+             */
             $scope.doTheBack = function () {
                 $window.history.back();
             };
@@ -44,21 +49,11 @@
                 'commons.format.date.label',
                 'commons.format.date.pattern'
             ]).then(function (translations) {
-                var month = translations['commons.format.date.listMonth'];
-                $scope.month = month.split(',');
-
-                var monthShort = translations['commons.format.date.listMonthShort'];
-                $scope.monthShort = monthShort.split(',');
-
-                var weekdaysFull = translations['commons.format.date.listWeekdaysFull'];
-                $scope.weekdaysFull = weekdaysFull.split(',');
-
-                var weekdaysShort = translations['commons.format.date.listWeekdaysShort'];
-                $scope.weekdaysShort = weekdaysShort.split(',');
-
-                var weekdaysLetter = translations['commons.format.date.listWeekdaysLetter'];
-                $scope.weekdaysLetter = weekdaysLetter.split(',');
-
+                $scope.month = translations['commons.format.date.listMonth'].split(',');
+                $scope.monthShort = translations['commons.format.date.listMonthShort'].split(',');
+                $scope.weekdaysFull = translations['commons.format.date.listWeekdaysFull'].split(',');
+                $scope.weekdaysShort = translations['commons.format.date.listWeekdaysShort'].split(',');
+                $scope.weekdaysLetter = translations['commons.format.date.listWeekdaysLetter'].split(',');
                 $scope.today = translations['commons.format.date.today'];
                 $scope.clear = translations['commons.format.date.clear'];
                 $scope.close = translations['commons.format.date.close'];
@@ -66,33 +61,30 @@
                 $scope.formatDateSubmit = translations['commons.format.date.pattern'];
 
                 $scope.datePicker = angular.element('#profilBirthdate').pickadate({
-                    format: $scope.formatDate,
-                    formatSubmit: $scope.formatDateSubmit,
-                    monthsFull: $scope.month,
-                    weekdaysFull: $scope.weekdaysFull,
-                    weekdaysLetter: $scope.weekdaysLetter,
-                    weekdaysShort: $scope.weekdaysShort,
-                    selectYears: 100,
-                    selectMonths: true,
-                    today: $scope.today,
-                    clear: $scope.clear,
-                    close: $scope.close
-                }).pickadate('picker');
-
-                $scope.datePicker.set('select', $scope.user.birthdate.valueOf());
+                        format: $scope.formatDate,
+                        formatSubmit: $scope.formatDateSubmit,
+                        monthsFull: $scope.month,
+                        weekdaysFull: $scope.weekdaysFull,
+                        weekdaysLetter: $scope.weekdaysLetter,
+                        weekdaysShort: $scope.weekdaysShort,
+                        selectYears: 100,
+                        selectMonths: true,
+                        today: $scope.today,
+                        clear: $scope.clear,
+                        close: $scope.close
+                    })
+                    .pickadate('picker')
+                    .set('select', $scope.user.birthdate.valueOf());
             });
-            $scope.optionsAdr = null;
-            $scope.detailsAdr = '';
 
             /**
              * @name $scope.updateUser
              * @function
-             * @param profileForm
-             *            the form
+             * @param profileForm the form
              * @memberOf qaobee.prive.profile.ProfileCtrl
              * @description update the current user
              */
-            $scope.updateProfilUser = function (profileForm) {
+            $scope.updateProfilUser = function () {
                 var updUser = {};
                 angular.copy($scope.user, updUser);
                 updUser.birthdate = moment($scope.user.birthdate, 'DD/MM/YYYY').valueOf();
