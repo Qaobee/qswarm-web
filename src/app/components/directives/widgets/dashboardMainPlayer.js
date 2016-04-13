@@ -2,22 +2,24 @@
     'use strict';
     angular.module('qaobee.dashboard.mainPlayer', [
         'qaobee.widgets.agenda',
+        'qaobee.widgets.efficiencyGB',
+        'qaobee.widgets.efficiency9m',
         'qaobee.widgets.podium',
         'qaobee.widgets.notifications',
         'statsEfficiency'])
 
-    angular.module('qaobee.widgets.dashboard.mainPlayer', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications', 'statsEfficiency'])
+    angular.module('qaobee.widgets.dashboard.mainPlayer', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications', 'qaobee.widgets.efficiencyGB', 'qaobee.widgets.efficiency9m'])
         .factory('widgetDefinitionsMainPlayer', function () {
             return {
                 get: function () {
 
                     return [
                         {
-                            name: 'Efficacite',
-                            directive: 'stats-efficiency',
+                            name: 'EfficaciteGB',
+                            directive: 'widget-efficiency-g-b',
                             classContent: 'card blue-grey-text text-darken-2',
                             classHeader: 'widget-header card-content colorMain white-text',
-                            title: 'dashboard.widgetEfficiency.title',
+                            title: 'dashboard.widgetEfficiencyGB.title',
                             icon:'fa fa-dot-circle-o',
                             attrs: {
                                 meta: 'meta',
@@ -66,14 +68,34 @@
                                 height: '275px',
                                 width: '60%'
                             }
+                        }, {
+                            name: 'Efficacite9m',
+                            directive: 'widget-efficiency-nine',
+                            classContent: 'card blue-grey-text text-darken-2',
+                            classHeader: 'widget-header card-content colorMain white-text',
+                            title: 'dashboard.widgetEfficiencyNine.title',
+                            icon:'fa fa-dot-circle-o',
+                            attrs: {
+                                meta: 'meta',
+                                user: 'user',
+                                bindtoid: 'gaugeEfficiency9m', 
+                                label:'efficiency9m',
+                                values:'values9m',
+                                padding:'25'
+                            },
+                            size: {
+                                height: '275px',
+                                width: '40%'
+                            }
                         }
                     ];
                 }
             };
         })
         .value('defaultWidgetsMainPlayer', [
-            {name: 'Efficacite'},
+            {name: 'EfficaciteGB'},
             {name: 'Top buteurs'},
-            {name: 'Temps de jeu'}
+            {name: 'Temps de jeu'},
+            {name: 'Efficacite9m'}
         ]);
 })();

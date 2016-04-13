@@ -2,18 +2,19 @@
     'use strict';
     angular.module('qaobee.dashboard.mainTeam', [
         'qaobee.widgets.agenda',
+        'qaobee.widgets.efficiencyGB',
         'qaobee.widgets.podium',
         'qaobee.widgets.notifications'])
 
-    angular.module('qaobee.widgets.dashboard.mainTeam', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications', 'statsEfficiency'])
+    angular.module('qaobee.widgets.dashboard.mainTeam', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications', 'qaobee.widgets.efficiencyGB'])
         .factory('widgetDefinitionsMainTeam', function () {
             return {
                 get: function () {
 
                     return [
                         {
-                            name: 'Efficacite',
-                            directive: 'stats-efficiency',
+                            name: 'EfficaciteGB',
+                            directive: 'widget-efficiency',
                             classContent: 'card blue-grey-text text-darken-2',
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetEfficiency.title',
@@ -26,7 +27,7 @@
                                 padding:'25'
                             },
                             size: {
-                                height: '250px',
+                                height: '275px',
                                 width: '40%'
                             }
                         }, {
@@ -72,7 +73,7 @@
         })
         .value('defaultWidgetsMainTeam', [
             {name: 'Top buteurs'},
-            {name: 'Efficacite'},  
+            {name: 'EfficaciteGB'},  
             {name: 'Temps de jeu'}
             
             

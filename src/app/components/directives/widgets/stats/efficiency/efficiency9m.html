@@ -1,0 +1,17 @@
+<!-- efficiency gauge -->
+<div class="white" ng-if="bindtoid==='gaugeEfficiency9m'">
+    <div class="white center-align" ng-show="noStat">
+        <br><br>
+        <c3chart bindto-id="gaugeEfficiency9m" 
+                 chart-columns="efficiency9mCol" 
+                 chart-data="efficiency9mData"
+                 padding-top="0" 
+                 padding-bottom="padding" 
+                 padding-right="padding" 
+                 padding-left="padding">
+            <chart-gauge min="0" max="100" width="30"/>
+        </c3chart>
+        <span class="title">{{title | translate }} ({{nbGoal9m}}/{{nbShoot9m}})</span>
+    </div>
+    <div class="card-content white center-align red-text text-lighten-2" ng-hide="noStat">{{'stats.resumeTab.noData' | translate }}</div>
+</div>

@@ -13,8 +13,11 @@
         "widgetNotifications": {
             "title": "Notifications"
         },
-        "widgetEfficiency": {
-            "title": "Shoot 's efficiency"
+        "widgetEfficiencyGB": {
+            "title": "Global Efficiency Shoot"
+        },
+        "widgetEfficiencyNine": {
+            "title": "9 meter Efficiency Shoot"
         },
         "actionTitle": {
             "defaultScreen": "Default dashboard"

@@ -86,7 +86,7 @@
                                         };
                                         $scope.players.push(player);
                                     });
-                                    $log.debug('$scope.players',$scope.players);
+                                    
                                     $scope.getInfosPlayer();
                                 });
                             });

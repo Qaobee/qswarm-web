@@ -13,8 +13,11 @@
         "widgetNotifications": {
             "title": "Notifications"
         },
-        "widgetEfficiency": {
-            "title": "Efficacité au tir"
+        "widgetEfficiencyGB": {
+            "title": "Efficacité au tir globale"
+        },
+        "widgetEfficiencyNine": {
+            "title": "Efficacité au tir à 9 mètres"
         },
         "actionTitle": {
             "defaultScreen": "Retour à l'écran par défaut"
