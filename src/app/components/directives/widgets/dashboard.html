@@ -15,7 +15,7 @@
             </ul>
         </span>
         
-        <button class="waves-effect waves-light btn colorAccent" ng-click="resetWidgetsToDefault()"><i
+        <button class="waves-effect waves-light btn colorAccent" ng-click="resetWidgetsToDefault()" title="{{dashboard.actionTitle.defaultScreen}}" ><i
                 class="material-icons">settings_backup_restore</i></button>
 
         <button ng-if="options.storage && options.explicitSave" ng-click="options.saveDashboard()"

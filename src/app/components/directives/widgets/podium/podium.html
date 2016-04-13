@@ -1,25 +1,35 @@
 <!-- cup, championship, friendly game -->
 <div class="card-content">
         <div class="row center-align">
-            <div class="col s4">
+            <div class="col s4" style="background-image:url(/assets/images/trophy1.png); 
+                                       background-repeat:no-repeat; 
+                                       background-size: 80% 100%;
+                                       background-position: center;">
                 <br>
-                <simple-avatar person="players[1]" link="('#/private/viewPlayer/' + players[1]._id)" width="'100px'"></simple-avatar> 
-                <br> {{players[1].firstname}}
-                <br> 
-                 <h4 ng-if="indicator==='playTime'">{{players[1].value/60 | number : 0}} '</h4>
-                <h4 ng-if="indicator==='goalScored'">{{players[1].value}}</h4>
-            </div>
-            <div class="col s4 card z-depth-3 grey lighten-3 yellow-text text-darken-3">
-                <br>
-                <simple-avatar person="players[0]" link="('#/private/viewPlayer/' + players[0]._id)" width="'100px'"></simple-avatar>
+                <simple-avatar person="players[0]" link="('#/private/viewPlayer/' + players[0]._id)" width="'80px'"></simple-avatar>
                 <br> {{players[0].firstname}}
                 <br> 
                 <h4 ng-if="indicator==='playTime'">{{players[0].value/60 | number : 0}} '</h4>
                 <h4 ng-if="indicator==='goalScored'">{{players[0].value}} </h4>
             </div>
-            <div class="col s4 ">
+            <div class="col s4" style="background-image:url(/assets/images/trophy2.png); 
+                                       background-repeat:no-repeat; 
+                                       background-size: 80% 100%;
+                                       background-position: center;">
                 <br>
-                <simple-avatar person="players[2]" link="('#/private/viewPlayer/' + players[2]._id)" width="'100px'"></simple-avatar>
+                <simple-avatar person="players[1]" link="('#/private/viewPlayer/' + players[1]._id)" width="'80px'"></simple-avatar> 
+                <br> {{players[1].firstname}}
+                <br> 
+                 <h4 ng-if="indicator==='playTime'">{{players[1].value/60 | number : 0}} '</h4>
+                <h4 ng-if="indicator==='goalScored'">{{players[1].value}}</h4>
+            </div>
+            
+            <div class="col s4" style="background-image:url(/assets/images/trophy3.png); 
+                                       background-repeat:no-repeat; 
+                                       background-size: 80% 100%;
+                                       background-position: center;">
+                <br>
+                <simple-avatar person="players[2]" link="('#/private/viewPlayer/' + players[2]._id)" width="'80px'"></simple-avatar>
                 <br> {{players[2].firstname}}
                 <br> 
                 <h4 ng-if="indicator==='playTime'">{{players[2].value/60 | number : 0}} '</h4>
