@@ -38,7 +38,6 @@
                     $scope.signin = {};
                     $scope.notifications = [];
                     $scope.hasnotif = false;
-                    $scope.paid = true;
                     /**
                      *
                      * @param viewLocation
@@ -221,6 +220,9 @@
                         });
                     };
 
+                    $scope.closeTrial = function () {
+                      $scope.intrial = false;
+                    };
                     /**
                      * @name $scope.$on
                      * @function
@@ -236,14 +238,14 @@
                                 break;
                             case 'login' :
                                 $scope.user = qeventbus.data;
-                                var paid = true;
                                 angular.forEach($scope.user.account.listPlan, function (plan) {
-                                    if (plan.status === 'notpaid') {
-                                        paid = false;
-                                    }
+                                    $scope.notpaid = plan.status === 'notpaid';
                                     if (plan.status === 'open') {
                                         $scope.intrial = true;
                                         var endDate = moment(plan.startPeriodDate).add(30, 'day');
+                                        $scope.endTrial = $filter('number')(moment.duration(endDate.diff(moment())).asDays() - 1, 0);
+                                        $scope.trialCountVal = {count : $scope.endTrial };
+                                        /*
                                         $translate(['headerMenu.trial.title', 'headerMenu.trial.content'], {'count': $filter('number')(moment.duration(endDate.diff(moment())).asDays() - 1, 0)})
                                             .then(function (translatedMessage) {
                                                 toastr.info(translatedMessage['headerMenu.trial.content'], translatedMessage['headerMenu.trial.title'], {
@@ -251,13 +253,15 @@
                                                     positionClass: 'toast-top-full-width',
                                                     extendedTimeOut: 0,
                                                     timeOut: 0,
-                                                    onHidden :function() { $scope.intrial = false; }
+                                                    onHidden: function () {
+                                                        $scope.intrial = false;
+                                                    }
                                                 });
                                             });
+                                            */
                                     }
                                 });
-                                if (!paid) {
-                                    $scope.paid = false;
+                                if ($scope.notpaid) {
                                     $location.path('/private/profile/billing');
                                 }
                                 $scope.loadMetaInfos();
@@ -278,14 +282,10 @@
                                         }
                                     });
                                 }
-                                var paid = true;
-                                angular.forEach(data.account.listPlan, function (plan) {
-                                    if (plan.status === 'notpaid') {
-                                        paid = false;
-                                    }
-                                });
-                                if (!paid) {
-                                    $scope.paid = false;
+                                $scope.notpaid = data.account.listPlan.filter(function (n) {
+                                        return n.status === 'notpaid';
+                                    }).length > 0;
+                                if ($scope.notpaid) {
                                     $location.path('/private/profile/billing');
                                 }
                                 $rootScope.user = data;
@@ -307,6 +307,7 @@
                             delete $rootScope.user;
                             delete $rootScope.meta;
                             delete $scope.user;
+                            delete $scope.intrial;
                             return false;
                         });
                     };
@@ -321,13 +322,9 @@
                         userRestAPI.logon($scope.signin.login, $scope.signin.passwd).success(function (data) {
                             angular.element('#modalLogin').closeModal();
                             if (data.account.active) {
-                                var paid = true;
-                                // Let's verify if our user as paid
-                                angular.forEach(data.account.listPlan, function (plan) {
-                                    if (plan.status === 'notpaid') {
-                                        paid = false;
-                                    }
-                                });
+                                $scope.notpaid = data.account.listPlan.filter(function (n) {
+                                        return n.status === 'notpaid';
+                                    }).length > 0;
                                 $window.sessionStorage.qaobeesession = data.account.token;
                                 $rootScope.user = data;
                                 $rootScope.notLogged = false;
@@ -339,14 +336,11 @@
                                 } else {
                                     data.isAdmin = false;
                                     if (angular.isDefined(data.account) && data.account.habilitations !== null) {
-                                        data.account.habilitations.forEach(function (a) {
-                                            if (a.key === 'admin_qaobee') {
-                                                data.isAdmin = true;
-                                            }
-                                        });
+                                        data.isAdmin = (data.account.habilitations.filter(function (n) {
+                                            return n.key === 'admin_qaobee';
+                                        }).length > 0);
                                     }
-                                    if (!paid) {
-                                        $scope.paid = false;
+                                    if ($scope.notpaid) {
                                         $location.path('/private/profile/billing');
                                     } else {
                                         $location.path('/private');

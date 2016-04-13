@@ -19,7 +19,7 @@
       "new": "Nouveaux"
     },
     "trial": {
-      "title": "Vous êtes en période d'essai",
+      "title": "Vous êtes en période d'essai.",
       "content": "Vous pouvez vous abonner à tout moment en <a href=\"/#/private/profile/pay/0\" >cliquant ici</a>. Cette période expire dans <b>{{count}}</b> jour(s)."
     }
   },

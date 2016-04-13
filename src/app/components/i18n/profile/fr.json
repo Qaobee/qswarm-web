@@ -1,7 +1,7 @@
 {
   "profile": {
     "tabs": {
-      "account" : "Mon compte",
+      "account": "Mon compte",
       "sandbox": "Ma sandbox",
       "profil": "Mon profil",
       "password": "Mot de passe",
@@ -60,6 +60,11 @@
       },
       "updPasswd": {
         "success": "Votre mot de passe est mis à jour"
+      }
+    },
+    "popup": {
+      "update": {
+        "success": "Profil mis à jour"
       }
     }
   }

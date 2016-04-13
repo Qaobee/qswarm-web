@@ -92,7 +92,7 @@
 
             // Surveillance de la modification du champ adresse par l'utilisateur
             $scope.$watch('temp.addr', function (newValue, oldValue) {
-                if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue) || newValue == null || newValue.length == 1) {
+                if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue) || newValue === null || newValue.length === 1) {
                     $log.debug("temp.addr = {}");
                     $scope.user.address = {};
                 }
@@ -110,14 +110,24 @@
                 updUser.birthdate = moment($scope.user.birthdate, 'DD/MM/YYYY').valueOf();
                 delete updUser.isAdmin;
 
-                if ($scope.temp.addr != '' && angular.equals({}, $scope.user.address)) {
+                if ($scope.temp.addr !== '' && angular.equals({}, $scope.user.address)) {
                     toastr.error("Adresse inconnue");
                     return;
                 }
 
                 profileRestAPI.update(updUser).success(function (data) {
-                    toastr.success(data.firstname + ' ' + data.name + $filter('translate')('profile.popup.update.success'));
-                    $window.history.back();
+                    $translate('profile.popup.update.success').then(function (mess) {
+                        toastr.success(data.firstname + ' ' + data.name, mess,{
+                            closeButton: true,
+                            extendedTimeOut: 0,
+                            positionClass: 'toast-top-left',
+                            timeOut: 0,
+                            onHidden: function () {
+                                $scope.intrial = false;
+                            }
+                        });
+                        $scope.doTheBack();
+                    });
                 });
             };
         });

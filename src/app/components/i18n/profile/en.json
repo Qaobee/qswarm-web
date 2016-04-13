@@ -61,6 +61,11 @@
       "updPasswd": {
         "success": "Pssword update success"
       }
+    },
+    "popup": {
+      "update": {
+        "success": "Profile updated"
+      }
     }
   }
 }
