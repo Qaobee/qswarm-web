@@ -15,6 +15,9 @@
         },
         "widgetEfficiency": {
             "title": "Efficacité au tir"
+        },
+        "actionTitle": {
+            "defaultScreen": "Retour à l'écran par défaut"
         }
     },
     "notifications" : {

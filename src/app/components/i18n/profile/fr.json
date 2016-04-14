@@ -1,7 +1,7 @@
 {
   "profile": {
     "tabs": {
-      "account" : "Mon compte",
+      "account": "Mon compte",
       "sandbox": "Ma sandbox",
       "profil": "Mon profil",
       "password": "Mot de passe",
@@ -64,8 +64,12 @@
     },
     "popup": {
       "update": {
+<<<<<<< HEAD
         "success": " mis à jour avec succès",
         "failed": " non mis à jour"
+=======
+        "success": "Profil mis à jour"
+>>>>>>> refs/remotes/origin/master
       }
     }
   }

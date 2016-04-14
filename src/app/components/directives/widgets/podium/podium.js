@@ -84,32 +84,38 @@
                                             _id: e._id.owner[4],
                                             value: e.value
                                         };
-                                        $scope.getInfosPlayer(player);
+                                        $scope.players.push(player);
                                     });
+                                    $log.debug('$scope.players',$scope.players);
+                                    $scope.getInfosPlayer();
                                 });
                             });
                         });
                     };
 
-                    $scope.getInfosPlayer = function (player) {
+                    $scope.getInfosPlayer = function () {
                         var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status');
                         var listId = [];
-                        listId.push(player._id);
+                        
+                        $scope.players.forEach(function (e) {
+                            listId.push(e._id);
+                        });
                         
                         effectiveSrv.getPersons(listId, listField).then(function (result) {
                             result.forEach(function (e) {
-                                player._id = e._id;
-                                player.name = e.name;
-                                player.firstname = e.firstname;
-                                player.avatar = e.avatar;
-                                player.status = e.status;
-                                if (angular.isDefined(e.status.positionType)) {
-                                    player.positionType = $filter('translate')('stats.positionType.value.' + e.status.positionType);
-                                } else {
-                                    player.positionType = '';
-                                }
-                                
-                                $scope.players.push(player);
+                                $scope.players.forEach(function (player) {
+                                    if(player._id === e._id){
+                                        player.name = e.name;
+                                        player.firstname = e.firstname;
+                                        player.avatar = e.avatar;
+                                        player.status = e.status;
+                                        if (angular.isDefined(e.status.positionType)) {
+                                            player.positionType = $filter('translate')('stats.positionType.value.' + e.status.positionType);
+                                        } else {
+                                            player.positionType = '';
+                                        }
+                                    }
+                                });
                             });
                         });
                     }

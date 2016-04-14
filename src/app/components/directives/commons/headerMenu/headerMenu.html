@@ -17,7 +17,7 @@
 </div>
 
 <!-- Menu Not connected -->
-<nav class="top-nav " ng-class="{ 'white top-nav-trans': isActive('/'), 'green darken-1': !isActive('/')}"
+<nav class="top-nav " ng-class="{ 'white top-nav-trans': isActive('/'), 'colorSecondary': !isActive('/')}"
      role="navigation" ng-hide="user">
     <div class="container">
         <div class="nav-wrapper">
@@ -66,7 +66,7 @@
     </div>
 </nav>
 <!-- Menu Connected First header-->
-<div class="navbar-fixed" ng-if="user && !user.account.firstConnexion && paid" ng-class="{'nav-padding': intrial}">
+<div class="navbar-fixed" ng-if="user && !user.account.firstConnexion && !notpaid" >
     <nav class="top-nav colorSecondary visible-nav" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
@@ -155,8 +155,13 @@
             </div>
         </div>
     </nav>
-</div>
 
+</div>
+<div class="card-panel light-blue white-text trial" ng-if="intrial">
+    <span translate="headerMenu.trial.title"></span>
+    <span translate="headerMenu.trial.content" translate-values="trialCountVal"></span>
+    <a href="javascript:void(0);" ng-click="closeTrial()" class="right"><i class="material-icons">close</i></a>
+</div>
 <!-- Finalize signup -->
 <div class="navbar-fixed" ng-if="user && user.account.firstConnexion">
     <nav class="top-nav light-green lighten-1 visible-nav" role="navigation">
