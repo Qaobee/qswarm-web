@@ -61,6 +61,12 @@
       "updPasswd": {
         "success": "Votre mot de passe est mis à jour"
       }
+    },
+    "popup": {
+      "update": {
+        "success": " mis à jour avec succès",
+        "failed": " non mis à jour"
+      }
     }
   }
 }
