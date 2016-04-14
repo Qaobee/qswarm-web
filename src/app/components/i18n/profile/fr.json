@@ -64,12 +64,8 @@
     },
     "popup": {
       "update": {
-<<<<<<< HEAD
         "success": " mis à jour avec succès",
         "failed": " non mis à jour"
-=======
-        "success": "Profil mis à jour"
->>>>>>> refs/remotes/origin/master
       }
     }
   }
