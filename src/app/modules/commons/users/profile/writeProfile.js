@@ -117,15 +117,7 @@
 
                 profileRestAPI.update(updUser).success(function (data) {
                     $translate('profile.popup.update.success').then(function (mess) {
-                        toastr.success(data.firstname + ' ' + data.name, mess,{
-                            closeButton: true,
-                            extendedTimeOut: 0,
-                            positionClass: 'toast-top-left',
-                            timeOut: 0,
-                            onHidden: function () {
-                                $scope.intrial = false;
-                            }
-                        });
+                        toastr.success(mess, data.firstname + ' ' + data.name);
                         $scope.doTheBack();
                     });
                 });
