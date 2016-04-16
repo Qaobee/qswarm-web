@@ -64,7 +64,8 @@
     },
     "popup": {
       "update": {
-        "success": "Profile updated"
+        "success": " mis à jour avec succès",
+        "failed": " non mis à jour"
       }
     }
   }

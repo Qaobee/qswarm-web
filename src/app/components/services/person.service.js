@@ -24,8 +24,8 @@
             // Formattage de l'adresse à partir du FormatedAddress
             if (angular.isDefined(address.formatedAddress) && !address.formatedAddress.isBlank()) {
                 locationAPI.get(address.formatedAddress).then(function (adr) {
-                    address.lat = adr.data.results[0].geometry.location.lat;
-                    address.lng = adr.data.results[0].geometry.location.lng;
+                    address.lat = adr.data.results[0].geometry.location.lat();
+                    address.lng = adr.data.results[0].geometry.location.lng();
                     angular.forEach(adr.data.results[0].address_components, function (item) {
                         if (item.types.count('street_number') > 0) {
                             address.place = item.long_name + ' ';
@@ -49,8 +49,9 @@
             } else if (angular.isDefined(address.formatted_address) && !address.formatted_address.isBlank()) {
                 // Formattage de l'adresse à partir du résultat de l'API Google
             	var adr = {};
-            	adr.lat = address.geometry.location.lat;
-            	adr.lng = address.geometry.location.lng;
+            	adr.lat = address.geometry.location.lat();
+            	adr.lng = address.geometry.location.lng();
+            	adr.formatedAddress = address.formatted_address;
             	angular.forEach(address.address_components, function (item) {
                     if (item.types.count('street_number') > 0) {
                     	adr.place = item.long_name + ' ';

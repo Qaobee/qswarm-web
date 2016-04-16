@@ -103,8 +103,10 @@
 
         })
 
-        .controller('SignupStartDoneCtrl', function ($rootScope, $scope, $log, $translatePartialLoader, $location) {
+        .controller('SignupStartDoneCtrl', function ($rootScope, $scope, $log, $translatePartialLoader, $location, EnvironmentConfig) {
             $translatePartialLoader.addPart('user');
+            
+            $scope.url = EnvironmentConfig.appMobile;
 
             $scope.goHome = function () {
                 delete($rootScope.user);

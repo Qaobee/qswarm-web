@@ -11,13 +11,13 @@
                 <span class="banner-appl-author">Qaobee</span>
             </p>
         </div>
-        <div class="col s4"><a href="https://play.google.com/apps/testing/com.qaobee.qswarm.hand" class="banner-btn-dl">Télécharger</a>
+        <div class="col s4"><a ng-click="openDownload()" class="banner-btn-dl">Télécharger</a>
         </div>
     </div>
 </div>
 
 <!-- Menu Not connected -->
-<nav class="top-nav " ng-class="{ 'white top-nav-trans': isActive('/'), 'green darken-1': !isActive('/')}"
+<nav class="top-nav " ng-class="{ 'white top-nav-trans': isActive('/'), 'colorSecondary': !isActive('/')}"
      role="navigation" ng-hide="user">
     <div class="container">
         <div class="nav-wrapper">

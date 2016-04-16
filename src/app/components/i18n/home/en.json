@@ -15,6 +15,9 @@
         },
         "widgetEfficiency": {
             "title": "Shoot 's efficiency"
+        },
+        "actionTitle": {
+            "defaultScreen": "Default dashboard"
         }
     },
     "notifications" : {

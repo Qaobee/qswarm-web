@@ -102,6 +102,7 @@
                     if (deviceDetector.os === 'android') {
                         var cookieDownload = $cookies.get('downloadApp');
                         if (angular.isUndefined(cookieDownload)) {
+                        	$scope.urlAppMobile = EnvironmentConfig.appMobile.google;
                             $scope.showBanner = true;
                         }
                     }
@@ -127,7 +128,7 @@
                      */
                     $scope.openDownload = function () {
                         $cookies.put('downloadApp', "dlOK");
-                        $window.location.href = 'https://play.google.com/apps/testing/com.qaobee.qswarm.hand';
+                        $window.location.href = $scope.urlAppMobile;
                         $scope.showBanner = false;
                     };
 
