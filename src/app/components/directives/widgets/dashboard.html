@@ -1,5 +1,5 @@
 <div>
-    <div ng-if="!options.hideToolbar" class="center-align">
+    <div ng-if="!options.hideToolbar" class="center-align row">
         <span ng-if="!options.widgetButtons">
             <a class='dropdown-button btn colorAccent' href='javascript:void(0);' data-activates='widgetDropdown' dropdown
                data-beloworigin="true"
@@ -28,7 +28,7 @@
                 class="material-icons">delete</i></button>
     </div>
 
-    <div ui-sortable="sortableOptions" ng-model="widgets" class="dashboard-widget-area">
+    <div ui-sortable="sortableOptions" ng-model="widgets" class="dashboard-widget-area row">
         <div ng-repeat="widget in widgets" ng-style="widget.containerStyle" class="widget-container" widget>
             
             <div class="widget" ng-class="widget.classContent">

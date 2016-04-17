@@ -30,7 +30,7 @@
                             },
                             size: {
                                 height: '2O0px',
-                                width: '25%'
+                                width: '50%'
                             }
                         }, {
                             name: 'EfficacitePlayer9m',

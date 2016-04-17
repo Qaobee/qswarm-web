@@ -29,6 +29,31 @@
         <v-pages class="vPages--default" active="activeTabIndex">
             <v-page>
                 <div dashboard="dashboardMainPlayerOptions" class="dashboard-container" template-url="app/components/directives/widgets/dashboard.html"></div>
+                
+                <div class="col s12 m6 l3">
+                    <qaobee-radar-chart title="{{'stats.actionTab.attack' | translate}} {{'stats.actionTab.positive' | translate}}" owners="tabOwner" series="series"
+                                        start-date="periodicityActive.startDate" meta="meta"
+                                        end-date="periodicityActive.endDate"
+                                        indicators="['penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec']"></qaobee-radar-chart>
+                </div>
+                <div class="col s12 m6 l3">
+                    <qaobee-radar-chart title="{{'stats.actionTab.attack' | translate}} {{'stats.actionTab.negative' | translate}}" owners="tabOwner" series="series"
+                                        start-date="periodicityActive.startDate" meta="meta"
+                                        end-date="periodicityActive.endDate"
+                                        indicators="['forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt']"></qaobee-radar-chart>
+                </div>
+                <div class="col s12 m6 l3">
+                    <qaobee-radar-chart title="{{'stats.actionTab.defense' | translate}} {{'stats.actionTab.positive' | translate}}" owners="tabOwner" series="series"
+                                        start-date="periodicityActive.startDate" meta="meta"
+                                        end-date="periodicityActive.endDate"
+                                        indicators="['neutralization', 'forceDef', 'contre', 'interceptionOk']"></qaobee-radar-chart>
+                </div>
+                <div class="col s12 m6 l3">
+                    <qaobee-radar-chart title="{{'stats.actionTab.defense' | translate}} {{'stats.actionTab.negative' | translate}}" owners="tabOwner" series="series"
+                                        start-date="periodicityActive.startDate" meta="meta"
+                                        end-date="periodicityActive.endDate"
+                                        indicators="['penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition']"></qaobee-radar-chart>
+                </div>
             </v-page>
             <v-page>
                 <div class="col m8 s12">

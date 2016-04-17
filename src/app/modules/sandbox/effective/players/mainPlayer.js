@@ -60,6 +60,9 @@
         
             $scope.effectiveId = $routeParams.effectiveId;
             $scope.user.effectiveDefault = $scope.effectiveId;
+        
+            $scope.tabOwner = [];
+            $scope.tabOwner.push($scope.effectiveId);
 
             $scope.user = user;
             $scope.meta = meta;
@@ -151,7 +154,7 @@
 
                     effectiveSrv.getListId($scope.currentEffective, 'player').then(function (listId) {
                         var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact');
-
+                        
                         effectiveSrv.getPersons(listId, listField).then(function (players) {
                             $scope.ownersId = listId;
                             $scope.players = players;
