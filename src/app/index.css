@@ -35,7 +35,7 @@
 }
 
 .colorSecondary {
-    background: linear-gradient(10deg, rgba(150, 190, 120, 1), rgba(102, 187, 136, 1));
+    background: linear-gradient(10deg, rgba(120, 190, 120, 1), rgba(120, 190, 120, 1));
     /*  overflow: hidden; */
 }
 
