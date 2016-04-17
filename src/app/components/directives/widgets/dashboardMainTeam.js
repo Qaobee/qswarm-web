@@ -2,35 +2,16 @@
     'use strict';
     angular.module('qaobee.dashboard.mainTeam', [
         'qaobee.widgets.agenda',
-        'qaobee.widgets.efficiencyGB',
         'qaobee.widgets.podium',
         'qaobee.widgets.notifications'])
 
-    angular.module('qaobee.widgets.dashboard.mainTeam', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications', 'qaobee.widgets.efficiencyGB'])
+    angular.module('qaobee.widgets.dashboard.mainTeam', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications'])
         .factory('widgetDefinitionsMainTeam', function () {
             return {
                 get: function () {
 
                     return [
                         {
-                            name: 'EfficaciteGB',
-                            directive: 'widget-efficiency',
-                            classContent: 'card blue-grey-text text-darken-2',
-                            classHeader: 'widget-header card-content colorMain white-text',
-                            title: 'dashboard.widgetEfficiency.title',
-                            icon:'fa fa-dot-circle-o',
-                            attrs: {
-                                meta: 'meta',
-                                user: 'user',
-                                bindtoid: 'gaugeEfficiencyGlobal', 
-                                label:'efficiencyTotal',
-                                padding:'25'
-                            },
-                            size: {
-                                height: '275px',
-                                width: '40%'
-                            }
-                        }, {
                             name: 'Top buteurs',
                             directive: 'widget-podium',
                             classContent: 'card white blue-grey-text text-darken-2',
@@ -72,8 +53,7 @@
             };
         })
         .value('defaultWidgetsMainTeam', [
-            {name: 'Top buteurs'},
-            {name: 'EfficaciteGB'},  
+            {name: 'Top buteurs'}, 
             {name: 'Temps de jeu'}
             
             

@@ -3,32 +3,25 @@
     /**
      * Created by cke on 13/04/16.
      *
-     * efficiencyGB directive<br />
+     * efficiency6m directive<br />
      *
      * @author christophe Kervella
      * @copyright &lt;b&gt;QaoBee&lt;/b&gt;.
      *
      */
 
-    angular.module('qaobee.widgets.efficiencyGB', ['effectifSRV', 'statsRestAPI', 'qaobee.eventbus'])
+    angular.module('qaobee.widgets.efficiencyPlayer6m', ['effectifSRV', 'statsRestAPI', 'qaobee.eventbus'])
 
-        .directive('widgetEfficiencyGB', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, effectiveSrv, qeventbus) {
+        .directive('widgetEfficiencyPlayerSix', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, effectiveSrv, qeventbus) {
             return {
                 restrict: 'AE',
                 scope: {
                     user: '=',
-                    meta: '=',
-                    bindtoid: '@',
-                    label: '@',
-                    padding: '@'
+                    meta: '='
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
                     $scope.noStat = true;
-
-                    $scope.efficiencyGlobalCol = [{id: 'dataG', type: 'gauge', color: '#42a5f5'}];
-                    $scope.efficiencyGlobalData = [{dataG: 0}];
-                    
 
                     /* efficiency */
                     var getEfficiency = function (ownersId, startDate, endDate, values) {
@@ -41,11 +34,13 @@
                         };
 
                         /* Search parameters Efficiently global */
+                        var valuesDist = ['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING'];
                         search = {
                             listIndicators: ['originShootAtt'],
                             listOwners: ownersId,
                             startDate: startDate.valueOf(),
                             endDate: endDate.valueOf(),
+                            values: valuesDist,
                             aggregat: 'COUNT',
                             listFieldsGroupBy: ['owner', 'code', 'shootSeqId']
                         };
@@ -85,45 +80,19 @@
                         });
                         return deferred.promise;
                     };
-
-                    /* color gauge */
-                    var getColorGauge = function (efficiently) {
-                        var deferred = $q.defer();
-
-                        if (efficiently < 25) {
-                            deferred.resolve('#ef5350');
-                        } else if (efficiently >= 25 && efficiently < 50) {
-                            deferred.resolve('#ffb74d');
-                        } else if (efficiently >= 50 && efficiently < 75) {
-                            deferred.resolve('#42a5f5');
-                        } else if (efficiently > 75) {
-                            deferred.resolve('#9ccc65');
-                        } else {
-                            deferred.reject('');
-                        }
-                        return deferred.promise;
-                    };
-
+                    
                     var buildGraph = function () {
                         
-                        $scope.efficiencyGlobalCol = [{id: 'dataG', type: 'gauge', color: '#42a5f5'}];
-                        $scope.efficiencyGlobalData = [{dataG: 0}];
-                        
-
+                        $scope.efficiency = 0;
                         $scope.nbShoot = 0;
                         $scope.nbGoal = 0;
-                        $scope.title = 'stats.efficiency.' + $scope.label;
                         
-                        getEfficiency($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
+                        getEfficiency($scope.ownersId, $scope.startDate, $scope.endDate, $scope.values).then(function (result) {
                             $scope.nbShoot = result.nbShoot;
                             $scope.nbGoal = result.nbGoal;
-
-                            $scope.efficiencyGlobalData.push({dataG: result.efficiency});
-
-                            getColorGauge(result.efficiency).then(function (color) {
-                                $scope.efficiencyGlobalCol[0].color = color;
-                            });
+                            $scope.efficiency = result.efficiency;
                         });
+                        
                     };
                     /* Refresh widget on periodicity change */
                     $scope.$on('qeventbus', function () {
@@ -135,7 +104,7 @@
                         }
                     });
                 },
-                templateUrl: 'app/components/directives/widgets/stats/efficiency/efficiencyGB.html'
+                templateUrl: 'app/components/directives/widgets/stats/efficiency/efficiencyPlayer.html'
             };
         });
 }());

@@ -86,6 +86,7 @@
                 widgetButtons: false,
                 widgetDefinitions: widgetDefinitionsMainPlayer.get(),
                 hideWidgetName: true,
+                hideToolbar:false,
                 defaultWidgets: defaultWidgetsMainPlayer,
                 storage: $window.localStorage,
                 storageId: 'qaobee-widgets-dashboard-mainPlayer'

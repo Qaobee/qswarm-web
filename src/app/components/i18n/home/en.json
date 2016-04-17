@@ -19,6 +19,12 @@
         "widgetEfficiencyNine": {
             "title": "9 meter Efficiency Shoot"
         },
+        "widgetEfficiencySeven": {
+            "title": "7 meter Efficiency Shoot"
+        },
+        "widgetEfficiencySix": {
+            "title": "6 meter Efficiency Shoot"
+        },
         "actionTitle": {
             "defaultScreen": "Default dashboard"
         }

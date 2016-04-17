@@ -14,10 +14,16 @@
             "title": "Notifications"
         },
         "widgetEfficiencyGB": {
-            "title": "Efficacité au tir globale"
+            "title": "Efficacité au tir"
         },
         "widgetEfficiencyNine": {
-            "title": "Efficacité au tir à 9 mètres"
+            "title": "Efficacité 9 mètres"
+        },
+        "widgetEfficiencySeven": {
+            "title": "Efficacité à 7 mètres"
+        },
+        "widgetEfficiencySix": {
+            "title": "Efficacité à 6 mètres"
         },
         "actionTitle": {
             "defaultScreen": "Retour à l'écran par défaut"

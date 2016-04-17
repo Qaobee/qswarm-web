@@ -3,33 +3,29 @@
     /**
      * Created by cke on 13/04/16.
      *
-     * efficiency9m directive<br />
+     * efficiencyPlayer directive<br />
      *
      * @author christophe Kervella
      * @copyright &lt;b&gt;QaoBee&lt;/b&gt;.
      *
      */
 
-    angular.module('qaobee.widgets.efficiency9m', ['effectifSRV', 'statsRestAPI', 'qaobee.eventbus'])
+    angular.module('qaobee.widgets.efficiencyPlayer', ['effectifSRV', 'statsRestAPI', 'qaobee.eventbus'])
 
-        .directive('widgetEfficiencyNine', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, effectiveSrv, qeventbus) {
+        .directive('widgetEfficiencyPlayer', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, effectiveSrv, qeventbus) {
             return {
                 restrict: 'AE',
                 scope: {
                     user: '=',
                     meta: '=',
-                    values: "=?",
                     bindtoid: '@',
                     label: '@',
-                    padding: '@'
+                    padding: '@',
+                    values: "=?"
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
                     $scope.noStat = true;
-
-                    $scope.efficiency9mCol = [{id: 'data9', type: 'gauge', color: '#42a5f5'}];
-                    $scope.efficiency9mData = [{data9: 0}];
-                    
 
                     /* efficiency */
                     var getEfficiency = function (ownersId, startDate, endDate, values) {
@@ -42,16 +38,39 @@
                         };
 
                         /* Search parameters Efficiently global */
-                        var valuesDist = ['BACKLEFT9', 'CENTER9', 'BACKRIGHT9'];
-                        search = {
-                            listIndicators: ['originShootAtt'],
-                            listOwners: ownersId,
-                            startDate: startDate.valueOf(),
-                            endDate: endDate.valueOf(),
-                            values: valuesDist,
-                            aggregat: 'COUNT',
-                            listFieldsGroupBy: ['owner', 'code', 'shootSeqId']
-                        };
+                        if (angular.isDefined(values)) {
+                            var valuesDist = '';
+
+                            //OriginShoot
+                            if (values === 'values9m') {
+                                valuesDist = ['BACKLEFT9', 'CENTER9', 'BACKRIGHT9'];
+                            }
+                            if (values === 'values7m') {
+                                valuesDist = ['PENALTY'];
+                            }
+                            if (values === 'values6m') {
+                                valuesDist = ['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING'];
+                            }
+
+                            search = {
+                                listIndicators: ['originShootAtt'],
+                                listOwners: ownersId,
+                                startDate: startDate.valueOf(),
+                                endDate: endDate.valueOf(),
+                                values: valuesDist,
+                                aggregat: 'COUNT',
+                                listFieldsGroupBy: ['owner', 'code', 'shootSeqId']
+                            };
+                        } else {
+                            search = {
+                                listIndicators: ['originShootAtt'],
+                                listOwners: ownersId,
+                                startDate: startDate.valueOf(),
+                                endDate: endDate.valueOf(),
+                                aggregat: 'COUNT',
+                                listFieldsGroupBy: ['owner', 'code', 'shootSeqId']
+                            };
+                        }
                         
                         var listShootSeqId = [];
 
@@ -89,49 +108,19 @@
                         return deferred.promise;
                     };
 
-                    /* color gauge */
-                    var getColorGauge = function (efficiently) {
-                        var deferred = $q.defer();
-
-                        if (efficiently < 25) {
-                            deferred.resolve('#ef5350');
-                        } else if (efficiently >= 25 && efficiently < 50) {
-                            deferred.resolve('#ffb74d');
-                        } else if (efficiently >= 50 && efficiently < 75) {
-                            deferred.resolve('#29b6f6');
-                        } else if (efficiently > 75) {
-                            deferred.resolve('#9ccc65');
-                        } else {
-                            deferred.reject('');
-                        }
-                        return deferred.promise;
-                    };
-
                     var buildGraph = function () {
-                        
-                        $scope.efficiency9mCol = [{id: 'data9', type: 'gauge', color: '#42a5f5'}];
-                        $scope.efficiency9mData = [{data9: 0}];
-                        
-
-                        $scope.nbShoot9m = 0;
-                        $scope.nbGoal9m = 0;
+                        $scope.efficiency = 0;
+                        $scope.nbShoot = 0;
+                        $scope.nbGoal = 0;
                         $scope.title = 'stats.efficiency.' + $scope.label;
                         
-                        getEfficiency($scope.ownersId, $scope.startDate, $scope.endDate, $scope.values).then(function (result) {
-                            $scope.nbShoot9m = result.nbShoot;
-                            $scope.nbGoal9m = result.nbGoal;
-
-                            if ($scope.bindtoid === 'gaugeEfficiency9m') {
-                                $scope.efficiency9mData.push({data9: result.efficiency});
-                                getColorGauge(result.efficiency).then(function (color) {
-                                    $scope.efficiency9mCol[0].color = color;
-                                });
-                            }
-
-
+                        getEfficiency($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
+                            $scope.nbShoot = result.nbShoot;
+                            $scope.nbGoal = result.nbGoal;
+                            $scope.efficiency = result.efficiency;
                         });
-                        
                     };
+                    
                     /* Refresh widget on periodicity change */
                     $scope.$on('qeventbus', function () {
                         if ("periodicityActive" === qeventbus.message) {
@@ -142,7 +131,7 @@
                         }
                     });
                 },
-                templateUrl: 'app/components/directives/widgets/stats/efficiency/efficiency9m.html'
+                templateUrl: 'app/components/directives/widgets/stats/efficiency/efficiencyPlayer.html'
             };
         });
 }());
