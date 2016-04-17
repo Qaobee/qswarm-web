@@ -24,7 +24,7 @@
                                 user: 'user'
                             },
                             size: {
-                                height: '275px',
+                                height: '250px',
                                 width: '40%'
                             }
                         }, {
@@ -43,7 +43,7 @@
                                 stataggregat: 'COUNT'
                             },
                             size: {
-                                height: '275px',
+                                height: '250px',
                                 width: '60%'
                             }
                         }, {
@@ -62,7 +62,7 @@
                                 stataggregat: 'SUM'
                             },
                             size: {
-                                height: '275px',
+                                height: '250px',
                                 width: '60%'
                             }
                         }, {
@@ -78,7 +78,7 @@
                                 user: 'user'
                             },
                              size: {
-                                height: '275px',
+                                height: '250px',
                                 width: '40%'
 
                             }

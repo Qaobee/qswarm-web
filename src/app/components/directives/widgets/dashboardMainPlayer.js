@@ -92,7 +92,7 @@
                                 stataggregat: 'COUNT'
                             },
                             size: {
-                                height: '230px',
+                                height: '250px',
                                 width: '50%'
                             }
                         }, {
@@ -110,7 +110,7 @@
                                 stataggregat: 'SUM'
                             },
                             size: {
-                                height: '230px',
+                                height: '250px',
                                 width: '50%'
                             }
                         }
