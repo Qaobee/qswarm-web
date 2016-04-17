@@ -2,16 +2,11 @@
     'use strict';
 
     angular.module('qaobee.user.signup.start', [
-            /* angular qaobee */
-//        'ngAutocomplete',
-
             /* qaobee modules */
             'personSRV',
-
             /* services */
             'locationAPI',
             'reCAPTCHA',
-
             /* qaobee Rest API */
             'activityRestAPI',
             'activityCfgRestAPI',
@@ -33,11 +28,9 @@
         .controller('SignupStartCtrl', function ($rootScope, $scope, $timeout, $translatePartialLoader, $log, $routeParams,
                                                  $window, $location, $filter, WizardHandler, activityRestAPI, activityCfgRestAPI,
                                                  countryRestAPI, structureRestAPI, signupRestAPI,
-                                                 qeventbus, personSrv) {
+                                                 qeventbus) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
-
-
             qeventbus.prepForBroadcast('menuItem', 'signup');
             /**
              * @name $qcope.cancelSignup
@@ -57,14 +50,13 @@
              * @description Test login and create account
              */
             $scope.usernameTest = function () {
-                signupRestAPI.usernameTest($scope.signup.login).success(function (data) {
+                signupRestAPI.usernameTest($scope.signup.account.login).success(function (data) {
                     if (data.status === true) {
                         toastr.warning($filter('translate')('error.signup.nonunique'));
                         $window.Recaptcha.reload();
                     } else {
-                        $scope.signup.plan = new Object();
-                        $scope.signup.plan.levelPlan = 'FREEMIUM';
-                        $scope.signup.name = $scope.signup.name.capitalize(true);
+                        $scope.signup.plan = {levelPlan: 'FREEMIUM'};
+                        $scope.signup.name = $scope.signup.account.login.capitalize(true);
                         $scope.signup.firstname = $scope.signup.firstname.capitalize(true);
 
                         signupRestAPI.registerUser($scope.signup).success(function (data2) {
@@ -88,9 +80,8 @@
                         });
                     }
                 });
-            }
-
-
+            };
+            
             /**
              * @name $scope.logoff
              * @function
@@ -98,16 +89,14 @@
              * @description Disconnection
              */
             $scope.closeSignupOk = function () {
-                $('#modalSignupOK').closeModal();
+                angular.element('#modalSignupOK').closeModal();
             };
 
         })
 
         .controller('SignupStartDoneCtrl', function ($rootScope, $scope, $log, $translatePartialLoader, $location, EnvironmentConfig) {
             $translatePartialLoader.addPart('user');
-            
             $scope.url = EnvironmentConfig.appMobile;
-
             $scope.goHome = function () {
                 delete($rootScope.user);
                 $location.path('/');
