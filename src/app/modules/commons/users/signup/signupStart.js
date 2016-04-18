@@ -56,7 +56,7 @@
                         $window.Recaptcha.reload();
                     } else {
                         $scope.signup.plan = {levelPlan: 'FREEMIUM'};
-                        $scope.signup.name = $scope.signup.account.login.capitalize(true);
+                        $scope.signup.name = $scope.signup.name.capitalize(true);
                         $scope.signup.firstname = $scope.signup.firstname.capitalize(true);
 
                         signupRestAPI.registerUser($scope.signup).success(function (data2) {
