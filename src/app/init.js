@@ -2,6 +2,7 @@
     'use strict';
     (function ($) {
         $(document).ready(function () {
+            $.getScript('http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js');
             var window_width = $(window).width();
             // Plugin initialization
             $('.dropdown-button').dropdown({
