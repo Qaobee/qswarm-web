@@ -51,6 +51,7 @@ gulp.task('html', ['inject', 'partials'], function () {
         .pipe(jsFilter.restore)
         .pipe(cssFilter)
         .pipe(replace(/font\/[^\/]+\/([^\/]+)/g, 'fonts/$1'))
+        .pipe(replace(/fonts\/[^\/]+\/([^\/]+)/g, 'fonts/$1'))
         .pipe($.sourcemaps.init())
         .pipe($.minifyCss({processImport: false}))
         .pipe($.sourcemaps.write('maps'))
