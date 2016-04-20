@@ -85,11 +85,11 @@ gulp.task('sonar', function () {
             host: {
                 url: 'http://flufy.hd.free.fr/sonarqube'
             },
-            jdbc: {
+          /*  jdbc: {
                 url: 'jdbc:mysql://localhost:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance',
                 username: 'sonar',
                 password: 'sonar'
-            },
+            }, */
             projectKey: 'com.qaobee:qswarm-web:1.0.0',
             projectName: 'QSwarmWeb',
             projectVersion: '1.0.0',

@@ -289,7 +289,7 @@
     <div ng-repeat="n in notifications" class="hoverable blue-grey-text text-darken-2 white">
         <div class="row">
             <div class="col s2">
-                <img ng-src="{{getAvatar(n.from_user_id.avatar)}}" alt="" class="circle" width="30px">
+                <img ng-src="{{getAvatar(n.senderId.avatar)}}" alt="" class="circle" width="30px">
             </div>
             <div class="col s10">
                 <a href="#/notifications/{{n._id}}" class="blue-text text-lighten-2" ng-bind="n.title"></a>
@@ -303,7 +303,7 @@
                    class="waves-effect waves-teal btn-flat right"><i
                         class="tiny material-icons" title="{{'headerMenu.notifications.delete' | translate}}">delete</i></a>
                 <br/><span class="truncate" ng-bind="n.content"></span>
-                <small> {{n.from_user_id.firstname}} {{n.from_user_id.name}} |
+                <small> {{n.senderId.firstname}} {{n.senderId.name}} |
                     {{n.timestamp | date : 'short'}}
                 </small>
             </div>
