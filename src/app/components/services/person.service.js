@@ -20,12 +20,14 @@
         /* Format address */
         var formatAddress = function (address) {
             var deferred = $q.defer(); 
+            
             // TODO : à factoriser sur les conditions address.formatedAddress et address.formatted_address
             // Formattage de l'adresse à partir du FormatedAddress
             if (angular.isDefined(address.formatedAddress) && !address.formatedAddress.isBlank()) {
                 locationAPI.get(address.formatedAddress).then(function (adr) {
-                    address.lat = adr.data.results[0].geometry.location.lat();
-                    address.lng = adr.data.results[0].geometry.location.lng();
+                    $log.debug(adr);
+                    address.lat = adr.data.results[0].geometry.location.lat;
+                    address.lng = adr.data.results[0].geometry.location.lng;
                     angular.forEach(adr.data.results[0].address_components, function (item) {
                         if (item.types.count('street_number') > 0) {
                             address.place = item.long_name + ' ';

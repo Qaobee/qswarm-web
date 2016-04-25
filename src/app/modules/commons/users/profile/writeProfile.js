@@ -93,7 +93,6 @@
             // Surveillance de la modification du champ adresse par l'utilisateur
             $scope.$watch('temp.addr', function (newValue, oldValue) {
                 if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue) || newValue === null || newValue.length === 1) {
-                    $log.debug("temp.addr = {}");
                     $scope.user.address = {};
                 }
             });

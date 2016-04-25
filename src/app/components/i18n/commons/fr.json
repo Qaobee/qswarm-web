@@ -52,7 +52,8 @@
       "close": "Fermer",
       "back": "Retour",
       "next": "Suivant",
-      "previous": "Précédent"
+      "previous": "Précédent",
+      "filter":"Filtrer"
     },
     "settings": {
       "activity": {

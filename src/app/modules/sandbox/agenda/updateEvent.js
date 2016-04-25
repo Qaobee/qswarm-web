@@ -44,7 +44,7 @@
      * @description Main controller for view mainAgenda.html
      */
         .controller('UpdateEventControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                                     eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, userRestAPI, personSrv) {
+                                                      $translate, eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, userRestAPI, personSrv) {
 
         $translatePartialLoader.addPart('commons');
         $translatePartialLoader.addPart('agenda');
@@ -69,51 +69,46 @@
          * start Datapicker et timepicker
          ***************************************/
         //i18n datepicker
-        var month = $filter('translate')('commons.format.date.listMonth');
-        $scope.month = month.split(',');
-
-        var monthShort = $filter('translate')('commons.format.date.listMonthShort');
-        $scope.monthShort = monthShort.split(',');
-
-        var weekdaysFull = $filter('translate')('commons.format.date.listWeekdaysFull');
-        $scope.weekdaysFull = weekdaysFull.split(',');
-
-        var weekdaysShort = $filter('translate')('commons.format.date.listWeekdaysShort');
-        $scope.weekdaysShort = weekdaysShort.split(',');
-
-        var weekdaysLetter = $filter('translate')('commons.format.date.listWeekdaysLetter');
-        $scope.weekdaysLetter = weekdaysLetter.split(',');
-
-        $scope.today = $filter('translate')('commons.format.date.today');
-        $scope.clear = $filter('translate')('commons.format.date.clear');
-        $scope.close = $filter('translate')('commons.format.date.close');
-        $scope.formatDate = $filter('translate')('commons.format.date.label');
-        $scope.formatDateSubmit = $filter('translate')('commons.format.date.pattern');
-
-        var $inputDate = $('.datepicker').pickadate({
-            format: $scope.formatDate,
-            formatSubmit: $scope.formatDateSubmit,
-            monthsFull: $scope.month,
-            weekdaysFull: $scope.weekdaysFull,
-            weekdaysLetter: $scope.weekdaysLetter,
-            weekdaysShort: $scope.weekdaysShort,
-            today: $scope.today,
-            clear: $scope.clear,
-            close: $scope.close
+        $translate(['commons.format.date.listMonth',
+            'commons.format.date.listMonthShort',
+            'commons.format.date.listWeekdaysFull',
+            'commons.format.date.listWeekdaysShort',
+            'commons.format.date.listWeekdaysLetter',
+            'commons.format.date.today',
+            'commons.format.date.clear',
+            'commons.format.date.close',
+            'commons.format.date.label',
+            'commons.format.date.pattern'
+        ]).then(function (translations) {
+            $scope.datePicker = angular.element('#EventStartDate')
+                .pickadate({
+                    format: translations['commons.format.date.label'],
+                    formatSubmit: translations['commons.format.date.pattern'],
+                    monthsFull: translations['commons.format.date.listMonth'].split(','),
+                    monthShort: translations['commons.format.date.listMonthShort'].split(','),
+                    weekdaysFull: translations['commons.format.date.listWeekdaysFull'].split(','),
+                    weekdaysLetter: translations['commons.format.date.listWeekdaysLetter'].split(','),
+                    weekdaysShort: translations['commons.format.date.listWeekdaysShort'].split(','),
+                    selectYears: 100,
+                    selectMonths: true,
+                    today: translations['commons.format.date.today'],
+                    clear: translations['commons.format.date.clear'],
+                    close: translations['commons.format.date.close']
+                })
+                .pickadate('picker');
         });
-
-        $scope.datePicker = $inputDate.pickadate('picker');
 
         //i18n timepicker
         $scope.formatTime = $filter('translate')('commons.format.hours.label');
         $scope.formatTimeSubmit = $filter('translate')('commons.format.hours.pattern');
+        $scope.clear = $filter('translate')('commons.format.date.clear');
 
         var $inputTimer = $('.timepicker').pickatime({
             format: $scope.formatTime,
             formatSubmit: $scope.formatTimeSubmit,
             clear: $scope.clear,
-            min: [13,30],
-            max: [21,30]
+            min: [8,0],
+            max: [22,0]
         });
         $scope.timerPicker = $inputTimer.pickatime('picker');
         /****************************************

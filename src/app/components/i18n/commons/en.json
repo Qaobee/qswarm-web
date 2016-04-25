@@ -52,7 +52,8 @@
             "close" : "Close",
             "back" : "Return",
             "next" : "Next",
-            "previous" : "Previous"
+            "previous" : "Previous",
+            "filter":"Filter"
         },
         "settings" : {
             "activity": {
