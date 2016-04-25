@@ -103,7 +103,7 @@
                     toastr.info($filter('translate')('compare.player-min'),'Title');
                 }
             };
-
+        
             $scope.updatePlayerToCompare = function (id) {
                 var count = 0;
                 if ($scope.compareList[id]) {

@@ -123,7 +123,7 @@
             {name: 'EfficacitePlayer9m'},
             {name: 'EfficacitePlayer6m'},
             {name: 'EfficacitePlayer7m'},
-            {name: 'Top buteurs'},
-            {name: 'Temps de jeu'}
+            {name: 'Temps de jeu'},
+            {name: 'Top buteurs'}
         ]);
 })();
