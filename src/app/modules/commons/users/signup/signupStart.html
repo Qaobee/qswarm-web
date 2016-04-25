@@ -58,7 +58,7 @@
                     </div>
                     <div class="col m2 hide-on-small-only">&nbsp;</div>
                     <div class="col s12 m4 input-field">
-                        <input type="email" name="email" class="validate" ng-model="signup.contact.email"
+                        <input type="email" name="email" id="email" class="validate" ng-model="signup.contact.email"
                                ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
                                ng-class="{ 'invalid': signupForm.email.$invalid }" tabindex="4">
 	                    <span ng-class="{'has-error': signupForm.email.$dirty && signupForm.email.$error.required}"
