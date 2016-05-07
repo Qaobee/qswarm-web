@@ -17,10 +17,10 @@
                     </select>
                     <br>
                 </div>
-                <div class="input-field col m6 s12"><h4 ng-bind="title"></h4></div>
+                <div class="input-field col m6 s12"><h4 ng-bind="title" class="flow-text"></h4></div>
                 <div>
                     <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive"
-                                     meta="meta"></filter-calendar>
+                                     popup="true" meta="meta"></filter-calendar>
                 </div>
             </div>
             <div class="row" ng-if="loading">

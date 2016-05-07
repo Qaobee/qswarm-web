@@ -18,7 +18,8 @@
                 scope: {
                     periodicity: "=",
                     periodicityActive: "=",
-                    meta: "="
+                    meta: "=",
+                    popup: "=?"
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('commons');

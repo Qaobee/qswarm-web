@@ -1,31 +1,53 @@
 <div class="col s12 hide-on-small-only grey lighten-2">
-<!-- Filter Zone start-->
+    <!-- Filter Zone start-->
     <div class="col s12 center">&nbsp;</div>
-    <div class="col s1 center">&nbsp;</div>
+    <div class="col s1 center" ng-if="!popup">&nbsp;</div>
 
     <!-- Periodicity selector -->
-    <div class="col s1 center colorAccent" style="margin:1px">
-        <a href="" ng-click="currentMonth()" class="white-text"><h6>{{'commons.periodicity.month' | translate }}</h6></a>
-    </div>
+    <span ng-if="!popup">
+        <div class="col s1 center colorAccent" style="margin:1px">
+            <a href="" ng-click="currentMonth()" class="white-text"><h6 translate="commons.periodicity.month"></h6></a>
+        </div>
 
-    <div class="col s1 center colorAccent" style="margin:1px">
-        <a href="" ng-click="currentQuarter()" class="white-text"><h6>{{'commons.periodicity.quarter' | translate }}</h6></a>
-    </div>
-    <div class="col s1 center colorAccent" style="margin:1px">
-        <a href="" ng-click="currentSeason()" class="white-text"><h6>{{'commons.periodicity.season' | translate }}</h6></a>
-    </div>
+        <div class="col s1 center colorAccent" style="margin:1px">
+            <a href="" ng-click="currentQuarter()" class="white-text"><h6 translate="commons.periodicity.quarter"></h6></a>
+        </div>
+        <div class="col s1 center colorAccent" style="margin:1px">
+            <a href="" ng-click="currentSeason()" class="white-text"><h6
+                    translate="commons.periodicity.season"></h6></a>
+        </div>
+    </span>
+    <span ng-if="popup">
+        <div class="col s2 center colorAccent" style="margin:1px">
+            <a href="" ng-click="currentMonth()" class="white-text"><h6 translate="commons.periodicity.month"></h6></a>
+        </div>
 
+        <div class="col s2 center colorAccent" style="margin:1px">
+            <a href="" ng-click="currentQuarter()" class="white-text"><h6 translate="commons.periodicity.quarter"></h6></a>
+        </div>
+        <div class="col s2 center colorAccent" style="margin:1px">
+            <a href="" ng-click="currentSeason()" class="white-text"><h6
+                    translate="commons.periodicity.season"></h6></a>
+        </div>
+    </span>
 
-    <!-- Month Navigation--> 
-    <div class="col s1 center" ng-if="periodicity=='month'">&nbsp;</div>
+    <div class="col s1 center" ng-if="!popup">&nbsp;</div>
+    <!-- Month Navigation-->
     <div class="col s1 center" ng-if="periodicity=='month'">
         <a href="" ng-click="previousMonth()" class="btn-floating colorMain white-text left">
             <i class="material-icons">chevron_left</i>
         </a>
     </div>
-    <div class="col s4 center" ng-if="periodicity=='month'">
-        <h6 class="blue-grey-text text-darken-2">{{periodicityActive.label}}</h6>
-    </div>
+    <span ng-if="!popup">
+        <div class="col s4 center" ng-if="periodicity=='month'">
+            <h6 class="blue-grey-text text-darken-2" ng-bind="periodicityActive.label"></h6>
+        </div>
+    </span>
+    <span ng-if="popup">
+        <div class="col s3 center" ng-if="periodicity=='month'">
+            <h6 class="blue-grey-text text-darken-2" ng-bind="periodicityActive.label"></h6>
+        </div>
+    </span>
     <div class="col s1 center" ng-if="periodicity=='month'">
         <a href="" ng-click="nextMonth()" class="btn-floating colorMain white-text right">
             <i class="material-icons">chevron_right</i>
@@ -34,15 +56,21 @@
 
 
     <!-- Quarter Navigation-->
-    <div class="col s1 center" ng-if="periodicity=='quarter'">&nbsp;</div>
     <div class="col s1 center" ng-if="periodicity=='quarter'">
         <a href="" ng-click="previousQuarter()" class="btn-floating colorMain white-text left">
             <i class="material-icons">chevron_left</i>
         </a>
     </div>
-    <div class="col s4 center" ng-if="periodicity=='quarter'">
-        <h6 class="blue-grey-text text-darken-2">{{periodicityActive.label}}</h6>
-    </div>
+    <span ng-if="!popup">
+        <div class="col s4 center" ng-if="periodicity=='quarter'">
+            <h6 class="blue-grey-text text-darken-2" ng-bind="periodicityActive.label"></h6>
+        </div>
+    </span>
+    <span ng-if="popup">
+        <div class="col s3 center" ng-if="periodicity=='quarter'">
+            <h6 class="blue-grey-text text-darken-2" ng-bind="periodicityActive.label"></h6>
+        </div>
+    </span>
     <div class="col s1 center" ng-if="periodicity=='quarter'">
         <a href="" ng-click="nextQuarter()" class="btn-floating colorMain white-text right">
             <i class="material-icons">chevron_right</i>
@@ -51,45 +79,56 @@
 
 
     <!-- Season Navigation-->
-    <div class="col s1 center" ng-if="periodicity=='season'">&nbsp;</div>
     <div class="col s1 center" ng-if="periodicity=='season'">
         <a href="" ng-click="previousSeason()" class="btn-floating colorMain white-text left">
             <i class="material-icons">chevron_left</i>
         </a>
     </div>
-    <div class="col s4 center" ng-if="periodicity=='season'">
-        <h6 class="blue-grey-text text-darken-2">{{periodicityActive.label}}</h6>
-    </div>
+    <span ng-if="!popup">
+        <div class="col s4 center" ng-if="periodicity=='season'">
+            <h6 class="blue-grey-text text-darken-2" ng-bind="periodicityActive.label"></h6>
+        </div>
+    </span>
+    <span ng-if="popup">
+        <div class="col s3 center" ng-if="periodicity=='season'">
+            <h6 class="blue-grey-text text-darken-2" ng-bind="periodicityActive.label"></h6>
+        </div>
+    </span>
     <div class="col s1 center" ng-if="periodicity=='season'">
         <a href="" ng-click="nextSeason()" class="btn-floating colorMain white-text right">
             <i class="material-icons">chevron_right</i>
         </a>
     </div>
 
-    <div class="col s1 center">&nbsp;</div>
+
+    <div class="col s12 center">&nbsp;</div>
 </div>
 
 <!-- view for tablet and phone -->
 <div class="col s12 hide-on-med-and-up grey lighten-2">
     <div class="row">
-
         <!-- Periodicity selector -->
         <div class="col s1 center">&nbsp;</div>
         <div class="col s3 center colorAccent" style="margin:1px">
-            <a href="" ng-click="currentMonth()" class="white-text"><h6 class="small">{{'commons.periodicity.month' | translate }}</h6></a>
+            <a href="" ng-click="currentMonth()" class="white-text"><h6 class="small"
+                                                                        translate="commons.periodicity.month"></h6></a>
         </div>
 
         <div class="col s4 center colorAccent" style="margin:1px">
-            <a href="" ng-click="currentQuarter()" class="white-text"><h6 class="small">{{'commons.periodicity.quarter' | translate }}</h6></a>
+            <a href="" ng-click="currentQuarter()" class="white-text"><h6 class="small"
+                                                                          translate="commons.periodicity.quarter"></h6>
+            </a>
         </div>
         <div class="col s3 center colorAccent" style="margin:1px">
-            <a href="" ng-click="currentSeason()" class="white-text"><h6 class="small">{{'commons.periodicity.season' | translate }}</h6></a>
+            <a href="" ng-click="currentSeason()" class="white-text"><h6 class="small"
+                                                                         translate="commons.periodicity.season"></h6>
+            </a>
         </div>
         <div class="col s1 center">&nbsp;</div>
     </div>
 
     <!-- Month Navigation-->
-    <div class="row" ng-if="periodicity=='month'">   
+    <div class="row" ng-if="periodicity=='month'">
         <div class="col s1 center">&nbsp;</div>
         <div class="col s1 center" ng-if="periodicity=='month'">
             <a href="" ng-click="previousMonth()" class="btn-floating colorMain white-text left">
@@ -97,7 +136,7 @@
             </a>
         </div>
         <div class="col s8 center">
-            <h6 class="blue-grey-text text-darken-2">{{periodicityActive.label}}</h6>
+            <h6 class="blue-grey-text text-darken-2" ng-bind="periodicityActive.label"></h6>
         </div>
         <div class="col s1 center" ng-if="periodicity=='month'">
             <a href="" ng-click="nextMonth()" class="btn-floating colorMain white-text right">
@@ -116,7 +155,7 @@
             </a>
         </div>
         <div class="col s8 center">
-            <h6 class="blue-grey-text text-darken-2">{{periodicityActive.label}}</h6>
+            <h6 class="blue-grey-text text-darken-2" ng-bind="periodicityActive.label"></h6>
         </div>
         <div class="col s1 center" ng-if="periodicity=='quarter'">
             <a href="" ng-click="nextQuarter()" class="btn-floating colorMain white-text right">
@@ -135,7 +174,7 @@
             </a>
         </div>
         <div class="col s8 center" ng-if="periodicity=='season'">
-            <h6 class="blue-grey-text text-darken-2">{{periodicityActive.label}}</h6>
+            <h6 class="blue-grey-text text-darken-2" ng-bind="periodicityActive.label"></h6>
         </div>
         <div class="col s1 center" ng-if="periodicity=='season'">
             <a href="" ng-click="nextSeason()" class="btn-floating colorMain white-text right">
