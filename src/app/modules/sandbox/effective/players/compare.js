@@ -41,11 +41,6 @@
             $scope.players = [];
             $scope.playersIds = [];
             $scope.meta = meta;
-            $scope.stats = {
-                goals: {},
-                sanctions: {},
-                originShoot: {}
-            };
             $scope.series = [];
             $scope.periodicity = $scope.periodicity || 'season';
             $scope.periodicityActive = $scope.periodicityActive || {
@@ -75,7 +70,16 @@
                 $window.history.back();
             };
 
+            $scope.$watch('periodicityActive', function () {
+                $scope.buildWidget();
+            });
+
             $scope.buildWidget = function () {
+                $scope.stats = {
+                    goals: {},
+                    sanctions: {},
+                    originShoot: {}
+                };
                 if ($scope.selectedPlayerids.length === 0) {
                     return;
                 }

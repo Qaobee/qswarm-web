@@ -38,11 +38,6 @@
             $scope.events = [];
             $scope.eventsIds = [];
             $scope.meta = meta;
-            $scope.stats = {
-                goals: {},
-                sanctions: {},
-                originShoot: {}
-            };
             $scope.series = [];
             $scope.eventsIds = eventCompareService.get();
             $scope.periodicity = $scope.periodicity || 'season';
@@ -53,9 +48,12 @@
                     ownersId: $scope.ownersId
                 };
             $scope.periodicityActive.ownersId = $scope.periodicityActive.ownersId || $scope.ownersId;
+            $scope.$watch('periodicityActive', function () {
+                $scope.buildWidget();
+            });
             if ($scope.eventsIds.length > 0) {
                 getEvents($scope.eventsIds, function (data) {
-                    if(data.error) {
+                    if (data.error) {
                         return;
                     }
                     $scope.events = data;
@@ -76,6 +74,11 @@
             };
 
             $scope.buildWidget = function () {
+                $scope.stats = {
+                    goals: {},
+                    sanctions: {},
+                    originShoot: {}
+                };
                 if ($scope.eventsIds.length === 0) {
                     $scope.loading = false;
                     return;

@@ -39,11 +39,6 @@
             $scope.teams = [];
             $scope.teamsIds = [];
             $scope.meta = meta;
-            $scope.stats = {
-                goals: {},
-                sanctions: {},
-                originShoot: {}
-            };
             $scope.series = [];
             $scope.selectedIds = teamCompareService.get();
             $scope.periodicity = $scope.periodicity || 'season';
@@ -74,7 +69,16 @@
                 $window.history.back();
             };
 
+            $scope.$watch('periodicityActive', function () {
+                $scope.buildWidget();
+            });
+
             $scope.buildWidget = function () {
+                $scope.stats = {
+                    goals: {},
+                    sanctions: {},
+                    originShoot: {}
+                };
                 if ($scope.teamsIds.length === 0) {
                     return;
                 }

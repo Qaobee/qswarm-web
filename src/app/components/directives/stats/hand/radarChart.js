@@ -72,7 +72,7 @@
                     };
                 },
                 link: function ($scope) {
-                    $scope.$watchGroup(['indicators', 'owners', 'startDate', 'endDate', 'title'], function (n, o, scope) {
+                    $scope.$watchGroup(['indicators', 'owners', 'startDate', 'endDate', 'title'], function () {
                         if (!!$scope.startDate && !!$scope.endDate) {
                             $scope.buildDatas();
                         }
