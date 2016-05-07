@@ -13,7 +13,8 @@
                     title: '=',
                     meta: '=',
                     owners: '=',
-                    series: '='
+                    series: '=',
+                    periodicityActive: '=?'
                 },
                 controller: function ($scope) {
                     $scope.dateFormat = $filter('translate')('commons.format.date.moment');
