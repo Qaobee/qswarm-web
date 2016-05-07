@@ -11,8 +11,7 @@
                 scope: {
                     indicators: '=',
                     owners: '=',
-                    startDate: '=',
-                    endDate: '=',
+                    periodicityActive: '=',
                     title: '@',
                     series: '=',
                     meta: '='
@@ -30,8 +29,8 @@
                         var search = {
                             listIndicators: $scope.indicators,
                             listOwners: $scope.owners,
-                            startDate: $scope.startDate.valueOf(),
-                            endDate: $scope.endDate.valueOf(),
+                            startDate: $scope.periodicityActive.startDate.valueOf(),
+                            endDate: $scope.periodicityActive.endDate.valueOf(),
                             aggregat: "COUNT",
                             listFieldsGroupBy: ['code']
                         };
@@ -72,8 +71,8 @@
                     };
                 },
                 link: function ($scope) {
-                    $scope.$watchGroup(['indicators', 'owners', 'startDate', 'endDate', 'title'], function () {
-                        if (!!$scope.startDate && !!$scope.endDate) {
+                    $scope.$watchGroup(['indicators', 'owners', 'periodicityActive', 'title'], function () {
+                        if (!!$scope.periodicityActive.startDate && !!$scope.periodicityActive.endDate) {
                             $scope.buildDatas();
                         }
                     });
