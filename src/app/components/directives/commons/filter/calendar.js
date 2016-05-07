@@ -12,7 +12,7 @@
 
     angular.module('qaobee.filterCalendar', ['qaobee.eventbus'])
 
-        .directive('filterCalendar', function ($translatePartialLoader , $log, $q, $filter, qeventbus) {
+        .directive('filterCalendar', function ($translatePartialLoader) {
             return {
                 restrict: 'E',
                 scope: {
@@ -22,20 +22,13 @@
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('commons');
-
+                    var periodicity = {
+                        month : getCurrentMonth,
+                        quarter : getCurrentQuarter(),
+                        season : getCurrentSeason()
+                    };
                     if ($scope.periodicityActive && !$scope.periodicityActive.label) {
-                        if ($scope.periodicity === 'month') {
-                            getCurrentMonth();
-                        }
-
-                        if ($scope.periodicity === 'quarter') {
-                            getCurrentQuarter();
-                        }
-
-                        if ($scope.periodicity === 'season') {
-                            getCurrentSeason();
-                        }
-
+                        periodicity[$scope.periodicity].call();
                         /* generate calendar by month */
                         $scope.currentMonth = function () {
                             getCurrentMonth();
@@ -90,18 +83,11 @@
 
                     function getCurrentQuarter() {
                         $scope.periodicity = 'quarter';
-                        var quarter = {};
+                        var quarter;
                         var currentQuarter = moment().quarter();
                         var year = moment().year();
 
                         switch (currentQuarter) {
-                            case 1:
-                                quarter = {
-                                    label: moment('01/01/' + year, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment('01/04/' + year, 'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
-                                    startDate: moment('01/01/' + year, 'DD/MM/YYYY'),
-                                    endDate: moment('/01/04/' + year, 'DD/MM/YYYY').subtract(1, 'ms')
-                                };
-                                break;
                             case 2:
                                 quarter = {
                                     label: moment('01/04/' + year, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment('/01/07/' + year, 'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
@@ -123,12 +109,14 @@
                                     endDate: moment('/01/01/' + (year + 1), 'DD/MM/YYYY').subtract(1, 'ms')
                                 };
                                 break;
+                            // case 1
                             default:
                                 quarter = {
                                     label: moment('01/01/' + year, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment('01/04/' + year, 'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
                                     startDate: moment('01/01/' + year, 'DD/MM/YYYY'),
                                     endDate: moment('/01/04/' + year, 'DD/MM/YYYY').subtract(1, 'ms')
                                 };
+                                break;
                         }
 
                         /* Current quarter */
