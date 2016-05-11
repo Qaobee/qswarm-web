@@ -3,7 +3,7 @@
     angular.module('qaobee.dashboard.mainTeam', [
         'qaobee.widgets.agenda',
         'qaobee.widgets.podium',
-        'qaobee.widgets.notifications'])
+        'qaobee.widgets.notifications']);
 
     angular.module('qaobee.widgets.dashboard.mainTeam', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications'])
         .factory('widgetDefinitionsMainTeam', function () {
@@ -17,7 +17,7 @@
                             classContent: 'card white blue-grey-text text-darken-2',
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetTopScored.title',
-                            icon:'fa fa-futbol-o',
+                            icon: 'fa fa-futbol-o',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user',
@@ -35,7 +35,7 @@
                             classContent: 'card white blue-grey-text text-darken-2',
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetTopUsed.title',
-                            icon:'fa fa-hourglass',
+                            icon: 'fa fa-hourglass',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user',
@@ -53,9 +53,9 @@
             };
         })
         .value('defaultWidgetsMainTeam', [
-            {name: 'Top buteurs'}, 
+            {name: 'Top buteurs'},
             {name: 'Temps de jeu'}
-            
-            
+
+
         ]);
 })();

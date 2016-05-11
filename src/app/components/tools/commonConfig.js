@@ -8,8 +8,8 @@
             /* qaobee Rest API */
             'userRestAPI'])
 
-        .provider('metaDatas', function() {
-            this.$get = function() {
+        .provider('metaDatas', function () {
+            this.$get = function () {
                 return this;
             };
             /**
@@ -61,7 +61,7 @@
             };
 
             /**
-             * 
+             *
              * @param $rootScope
              * @param userRestAPI
              * @param $location

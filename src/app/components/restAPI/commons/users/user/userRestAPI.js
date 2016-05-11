@@ -79,7 +79,7 @@
                     return $http({
                         url: userURL + '/resetPasswd/',
                         method: 'POST',
-                        data: data 
+                        data: data
                     });
                 },
                 /**

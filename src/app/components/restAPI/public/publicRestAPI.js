@@ -12,19 +12,6 @@
 
         .factory('publicRestAPI', function ($http, publicURL) {
             return {
-                /**
-                 * @memberOf qaobee.components.restAPI.public.publicRestAPI
-                 * @function getBlogs
-                 * @param {int} limit limite de blogs à retourner
-                 * @description Récupération de la liste des blogs
-                 * @returns {Array} com.qaobee.hive.business.model.commons.public.BlogPost
-                 */
-                getBlogs: function (limit) {
-                    return $http({
-                        url: publicURL + '/blogs?limit=' + limit,
-                        method: 'GET'
-                    });
-                },
 
                 /**
                  * @memberOf qaobee.components.restAPI.public.publicRestAPI

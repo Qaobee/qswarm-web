@@ -9,15 +9,15 @@
      */
     angular.module('qaobee.user.mainProfile', [
 
-            'qaobee.user.writeProfile',
-            'qaobee.user.config',
-            'qaobee.user.password',
-            'qaobee.user.userProfilPwd',
-            'qaobee.user.billing',
-            'paymentRestAPI',
-            'ngAutocomplete',
-            'ngPasswordStrength'
-        ])
+        'qaobee.user.writeProfile',
+        'qaobee.user.config',
+        'qaobee.user.password',
+        'qaobee.user.userProfilPwd',
+        'qaobee.user.billing',
+        'paymentRestAPI',
+        'ngAutocomplete',
+        'ngPasswordStrength'
+    ])
 
         .config(function ($routeProvider, metaDatasProvider) {
             $routeProvider.when('/private/profile', {

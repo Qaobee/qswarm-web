@@ -26,7 +26,7 @@
                         data: u
                     });
                 },
-                
+
                 /**
                  * @memberOf qaobee.components.restAPI.commons.users.user.signupRestAPI
                  * @function usernameTest

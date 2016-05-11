@@ -15,7 +15,7 @@
                  * @description Retrieve all events match to parameters filter
                  * @function
                  * @memberOf qaobee.components.restAPI.sandbox.agenda.eventRestAPI
-                 * @param   {jsonObject}     request  request
+                 * @param   {Object}     request  request
                  * @returns {Array}    list of events
                  */
                 getListEvents: function (request) {
@@ -44,9 +44,8 @@
                  * @memberOf qaobee.components.restAPI.sandbox.agenda.eventRestAPI
                  * @function addEvent()
                  * @description add event
-                 * @param {SB_Event}
-                 *            event : event to add
-                 * @returns {SB_Event} com.qaobee.hive.business.model.sandbox.agenda.SB_Event
+                 * @param {event} event : event to add
+                 * @returns {Object} com.qaobee.hive.business.model.sandbox.agenda.SB_Event
                  */
                 addEvent: function (event) {
                     return $http({
@@ -60,8 +59,7 @@
                  * @memberOf qaobee.components.restAPI.sandbox.agenda.eventRestAPI
                  * @function updateEvent()
                  * @description update a event
-                 * @param {SB_Event}
-                 *            event : event to update
+                 * @param {SB_Event}  event : event to update
                  * @returns {SB_Event} com.qaobee.hive.business.model.sandbox.agenda.SB_Event
                  */
                 updateEvent: function (event) {

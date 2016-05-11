@@ -8,10 +8,10 @@
         'qaobee.widgets.efficiencyPlayer6m',
         'qaobee.widgets.podium',
         'qaobee.widgets.notifications',
-        'statsEfficiency'])
+        'statsEfficiency']);
 
-    angular.module('qaobee.widgets.dashboard.statsPlayer', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications', 
-                                                            'qaobee.widgets.efficiencyPlayer', 'qaobee.widgets.efficiencyPlayer9m', 'qaobee.widgets.efficiencyPlayer7m', 'qaobee.widgets.efficiencyPlayer6m'])
+    angular.module('qaobee.widgets.dashboard.statsPlayer', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications',
+        'qaobee.widgets.efficiencyPlayer', 'qaobee.widgets.efficiencyPlayer9m', 'qaobee.widgets.efficiencyPlayer7m', 'qaobee.widgets.efficiencyPlayer6m'])
         .factory('widgetDefinitionsStatsPlayer', function () {
             return {
                 get: function () {
@@ -23,7 +23,7 @@
                             classContent: 'card grey lighten-4 red-text text-lighten-1',
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetEfficiencyGB.title',
-                            icon:'fa fa-dot-circle-o',
+                            icon: 'fa fa-dot-circle-o',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user'
@@ -38,7 +38,7 @@
                             classContent: 'card grey lighten-4 blue-grey-text text-darken-2',
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetEfficiencyNine.title',
-                            icon:'fa fa-dot-circle-o',
+                            icon: 'fa fa-dot-circle-o',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user'
@@ -53,7 +53,7 @@
                             classContent: 'card grey lighten-4 blue-grey-text text-darken-2',
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetEfficiencySix.title',
-                            icon:'fa fa-dot-circle-o',
+                            icon: 'fa fa-dot-circle-o',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user'
@@ -68,7 +68,7 @@
                             classContent: 'card grey lighten-4 blue-grey-text text-darken-2',
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetEfficiencySeven.title',
-                            icon:'fa fa-dot-circle-o',
+                            icon: 'fa fa-dot-circle-o',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user'

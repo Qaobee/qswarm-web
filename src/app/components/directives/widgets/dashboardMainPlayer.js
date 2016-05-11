@@ -8,14 +8,13 @@
         'qaobee.widgets.efficiencyPlayer6m',
         'qaobee.widgets.podium',
         'qaobee.widgets.notifications',
-        'statsEfficiency'])
+        'statsEfficiency']);
 
-    angular.module('qaobee.widgets.dashboard.mainPlayer', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications', 
-                                                           'qaobee.widgets.efficiencyPlayer', 'qaobee.widgets.efficiencyPlayer9m', 'qaobee.widgets.efficiencyPlayer7m', 'qaobee.widgets.efficiencyPlayer6m'])
+    angular.module('qaobee.widgets.dashboard.mainPlayer', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications',
+        'qaobee.widgets.efficiencyPlayer', 'qaobee.widgets.efficiencyPlayer9m', 'qaobee.widgets.efficiencyPlayer7m', 'qaobee.widgets.efficiencyPlayer6m'])
         .factory('widgetDefinitionsMainPlayer', function () {
             return {
                 get: function () {
-
                     return [
                         {
                             name: 'EfficacitePlayerTotal',
@@ -23,7 +22,7 @@
                             classContent: 'card white blue-grey-text text-darken-2',
                             classHeader: 'widget-header card-content colorSecondary white-text',
                             title: 'dashboard.widgetEfficiencyGB.title',
-                            icon:'fa fa-dot-circle-o',
+                            icon: 'fa fa-dot-circle-o',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user'
@@ -38,7 +37,7 @@
                             classContent: 'card white blue-grey-text text-darken-2',
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetEfficiencyNine.title',
-                            icon:'fa fa-dot-circle-o',
+                            icon: 'fa fa-dot-circle-o',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user'
@@ -53,7 +52,7 @@
                             classContent: 'card white blue-grey-text text-darken-2',
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetEfficiencySix.title',
-                            icon:'fa fa-dot-circle-o',
+                            icon: 'fa fa-dot-circle-o',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user'
@@ -68,13 +67,13 @@
                             classContent: 'card white blue-grey-text text-darken-2',
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetEfficiencySeven.title',
-                            icon:'fa fa-dot-circle-o',
+                            icon: 'fa fa-dot-circle-o',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user'
                             },
                             size: {
-                               height: '180px',
+                                height: '180px',
                                 width: '25%'
                             }
                         }, {
@@ -83,7 +82,7 @@
                             classContent: 'card white blue-grey-text text-darken-2',
                             classHeader: 'widget-header card-content colorAccent white-text',
                             title: 'dashboard.widgetTopScored.title',
-                            icon:'fa fa-futbol-o',
+                            icon: 'fa fa-futbol-o',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user',
@@ -101,7 +100,7 @@
                             classContent: 'card white blue-grey-text text-darken-2',
                             classHeader: 'widget-header card-content colorMain white-text',
                             title: 'dashboard.widgetTopUsed.title',
-                            icon:'fa fa-hourglass',
+                            icon: 'fa fa-hourglass',
                             attrs: {
                                 meta: 'meta',
                                 user: 'user',

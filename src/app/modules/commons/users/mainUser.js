@@ -3,7 +3,7 @@
 
     angular.module('qaobee.user', [
         /* angular qaobee */
-       
+
         /* qaobee modules */
         'qaobee.user.signup.start',
         'qaobee.user.signup.end',

@@ -6,7 +6,7 @@
     angular.module('qaobee.utils', [])
         .factory('qaobeeUtils', function () {
             return {
-                guid : function() {
+                guid: function () {
                     function s4() {
                         return Math.floor((1 + Math.random()) * 0x10000)
                             .toString(16)
@@ -16,7 +16,7 @@
                     return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
                         s4() + '-' + s4() + s4() + s4();
                 },
-                getChartColours: function() {
+                getChartColours: function () {
                     return Array.create({
                         fillColor: "rgba(3, 169, 244, 0.2)",
                         strokeColor: "rgba(3, 169, 244, 1)",

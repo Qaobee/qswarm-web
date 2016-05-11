@@ -2,17 +2,17 @@
     'use strict';
 
     angular.module('qaobee.user.signup.end', [
-            /* qaobee modules */
-            'personSRV',
-            /* services */
-            'locationAPI',
-            /* qaobee Rest API */
-            'activityRestAPI',
-            'activityCfgRestAPI',
-            'countryRestAPI',
-            'structureRestAPI',
-            'signupRestAPI'
-        ])
+        /* qaobee modules */
+        'personSRV',
+        /* services */
+        'locationAPI',
+        /* qaobee Rest API */
+        'activityRestAPI',
+        'activityCfgRestAPI',
+        'countryRestAPI',
+        'structureRestAPI',
+        'signupRestAPI'
+    ])
 
         .config(function ($routeProvider) {
             $routeProvider.when('/signup/end', {

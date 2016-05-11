@@ -25,9 +25,9 @@
                         url: indicatorAPIURL + '/getList',
                         method: 'POST',
                         data: {
-                            activityId : activityId,
-                            countryId : countryId,
-                            screens : screens
+                            activityId: activityId,
+                            countryId: countryId,
+                            screens: screens
                         }
                     });
                 },
@@ -45,9 +45,9 @@
                         url: indicatorAPIURL + '/getByCode',
                         method: 'POST',
                         data: {
-                            activityId : activityId,
-                            countryId : countryId,
-                            codes : codes
+                            activityId: activityId,
+                            countryId: countryId,
+                            codes: codes
                         }
                     });
                 }
@@ -56,5 +56,5 @@
         })
     //
     ;
-    
+
 }());

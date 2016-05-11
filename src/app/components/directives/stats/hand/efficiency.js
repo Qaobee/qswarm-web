@@ -81,7 +81,7 @@
                                 listFieldsGroupBy: ['owner', 'code', 'shootSeqId']
                             };
                         }
-                        
+
                         var listShootSeqId = [];
 
                         statsRestAPI.getStatGroupBy(search).success(function (dataOri) {
@@ -137,7 +137,7 @@
                     };
 
                     var buildGraph = function () {
-                        
+
                         $scope.efficiencyGlobalCol = [{id: 'dataG', type: 'gauge', color: '#42a5f5'}];
                         $scope.efficiencyGlobalData = [{dataG: 0}];
                         $scope.efficiency9mCol = [{id: 'data9', type: 'gauge', color: '#42a5f5'}];
@@ -184,7 +184,7 @@
                                 $scope.nbGoal = result.nbGoal;
 
                                 $scope.efficiencyGlobalData.push({dataG: result.efficiency});
-                                
+
                                 getColorGauge(result.efficiency).then(function (color) {
                                     $scope.efficiencyGlobalCol[0].color = color;
                                 });

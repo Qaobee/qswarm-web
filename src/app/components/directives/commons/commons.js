@@ -2,10 +2,10 @@
     'use strict';
     angular.module(
         'qaobee.commonsDirectives', [])
-        /**
-         * @class qaobee.components.directives.quniqueusername
-         * @description Directive de test de l'unicité du username
-         */
+    /**
+     * @class qaobee.components.directives.quniqueusername
+     * @description Directive de test de l'unicité du username
+     */
         .directive('uniqueusername', function (userInfosAPI, $log) {
             return {
                 require: 'ngModel',
@@ -28,7 +28,7 @@
                 }
             };
         })
-    
+
         /**
          * Directive pour vérifier que deux mots de passe sont identiques
          *

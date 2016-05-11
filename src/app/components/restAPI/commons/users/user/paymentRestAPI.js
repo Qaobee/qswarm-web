@@ -15,9 +15,7 @@
                  * @memberOf qaobee.components.restAPI..commons.users.paymentAPI
                  * @function getPaymentURL
                  * @description Récupération de l'url pour le paiement en ligne
-                 * @param {String} amount montant
                  * @param {String} planId
-                 * @param {String} personId
                  * @returns {Object} status
                  */
                 getPaymentURL: function (planId) {

@@ -16,12 +16,12 @@
                  */
                 getPdf: function (url, filename) {
                     $http.get(url, {
-                            responseType: 'arraybuffer',
-                            headers: {
-                                'Content-type': 'application/json',
-                                'Accept': 'application/pdf'
-                            }
-                        })
+                        responseType: 'arraybuffer',
+                        headers: {
+                            'Content-type': 'application/json',
+                            'Accept': 'application/pdf'
+                        }
+                    })
                         .success(function (data, status, headers, config) {
                             $log.debug(data.length, status, headers, config);
                             openSaveAsDialog(filename, data, 'application/pdf;charset=utf-8');
@@ -30,6 +30,6 @@
                             $log.error(data, status, headers, config);
                         });
                 }
-            }
+            };
         });
 })();

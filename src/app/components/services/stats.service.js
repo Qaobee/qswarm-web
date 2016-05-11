@@ -9,9 +9,9 @@
      */
     angular.module('statsSRV', [
 
-            /* qaobee Rest API */
-            'statsRestAPI',
-            'collecteRestAPI'])
+        /* qaobee Rest API */
+        'statsRestAPI',
+        'collecteRestAPI'])
 
         .factory('statsSrv', function ($log, $q, $filter, statsRestAPI, collecteRestAPI) {
 
