@@ -23,8 +23,7 @@
          * @class qaobee.user.profile.PwdCtrl
          * @description Main controller of app/modules/commons/users/profile/pwd.html
          */
-        .controller('PwdCtrl', function ($scope, $filter, EnvironmentConfig, $window, $translatePartialLoader, 
-                                          userRestAPI, $translate, $rootScope, $log, user, meta) {
+        .controller('PwdCtrl', function ($scope, $filter, EnvironmentConfig, $window, $translatePartialLoader, userRestAPI) {
             $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
@@ -33,7 +32,7 @@
             $scope.renew = {};
 
             // return button
-            $scope.doTheBack = function() {
+            $scope.doTheBack = function () {
                 $window.history.back();
             };
 
@@ -43,12 +42,12 @@
                 delete $scope.renew;
             });
 
-            $scope.resetPasswd = function() {
+            $scope.resetPasswd = function () {
                 $scope.renew.id = $scope.user._id;
                 $scope.renew.code = $scope.user.account.activationCode;
                 $scope.renew.byPassActivationCode = true;
 
-                if($scope.renew.passwd !== $scope.renew.passwdConfirm) {
+                if ($scope.renew.passwd !== $scope.renew.passwdConfirm) {
                     toastr.warning($filter('translate')('profile.message.passwd.different'));
                     $window.Recaptcha.reload();
                     $scope.renew = {};
@@ -68,12 +67,11 @@
                         $scope.renew = {};
                     }
                 });
-            }
+            };
 
-            $scope.resetPwdUser = function (pwdForm) {
+            $scope.resetPwdUser = function () {
                 $scope.renew = {};
                 $scope.doTheBack();
-            }
-            
+            };
         });
 }());

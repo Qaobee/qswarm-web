@@ -24,7 +24,7 @@
                     $scope.noStat = true;
 
                     /* efficiency */
-                    var getEfficiency = function (ownersId, startDate, endDate, values) {
+                    var getEfficiency = function (ownersId, startDate, endDate) {
                         var deferred = $q.defer();
                         var search = {};
                         var result = {
@@ -44,7 +44,6 @@
                             aggregat: 'COUNT',
                             listFieldsGroupBy: ['owner', 'code', 'shootSeqId']
                         };
-                        
                         var listShootSeqId = [];
 
                         statsRestAPI.getStatGroupBy(search).success(function (dataOri) {
@@ -80,19 +79,15 @@
                         });
                         return deferred.promise;
                     };
-                    
                     var buildGraph = function () {
-                        
                         $scope.efficiency = 0;
                         $scope.nbShoot = 0;
                         $scope.nbGoal = 0;
-                        
-                        getEfficiency($scope.ownersId, $scope.startDate, $scope.endDate, $scope.values).then(function (result) {
+                        getEfficiency($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
                             $scope.nbShoot = result.nbShoot;
                             $scope.nbGoal = result.nbGoal;
                             $scope.efficiency = result.efficiency;
                         });
-                        
                     };
                     /* Refresh widget on periodicity change */
                     $scope.$on('qeventbus', function () {

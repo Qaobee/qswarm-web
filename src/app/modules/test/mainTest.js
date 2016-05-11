@@ -8,6 +8,5 @@
         'qaobee.test.adminUser'
 
         /* qaobee Rest API */
-    ])
-    
+    ]);
 }());

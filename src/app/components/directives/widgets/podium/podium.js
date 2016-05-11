@@ -25,24 +25,13 @@
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
 
-                    /* Refresh widget on periodicity change */
-                    $scope.$on('qeventbus', function () {
-                        if ("periodicityActive" === qeventbus.message) {
-                            buildWidget();
-                        }
-                    });
-
                     /* getStats */
                     var getStats = function (ownersId, startDate, endDate) {
                         var deferred = $q.defer();
-                        var result = [];
-                        
                         /* Stats Count by indicator */
                         var indicators = [];
                         indicators.push($scope.indicator);
-
                         var listFieldsGroupBy = Array.create('owner');
-                        
                         var search = {
                             listIndicators: indicators,
                             listOwners: ownersId,
@@ -51,16 +40,16 @@
                             aggregat: $scope.stataggregat,
                             listFieldsGroupBy: listFieldsGroupBy
                         };
-                        
+
                         /* Appel stats API */
                         statsRestAPI.getStatGroupBy(search).success(function (data) {
                             data = data.sortBy(function (n) {
                                 return n.value;
-                            },true);
-                            
+                            }, true);
+
                             if (angular.isArray(data) && data.length > 0) {
                                 if (data.length > $scope.nbitem) {
-                                    deferred.resolve(data.removeAt($scope.nbitem,data.length));
+                                    deferred.resolve(data.removeAt($scope.nbitem, data.length));
                                 } else {
                                     deferred.resolve(data);
                                 }
@@ -75,7 +64,7 @@
                     $scope.getEffective = function () {
                         effectiveSrv.getEffective($scope.user.effectiveDefault).then(function (data) {
                             $scope.currentEffective = data;
-                            
+
                             effectiveSrv.getListId($scope.currentEffective, 'player').then(function (listId) {
                                 $scope.ownersId = listId;
                                 getStats($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
@@ -86,7 +75,7 @@
                                         };
                                         $scope.players.push(player);
                                     });
-                                    
+
                                     $scope.getInfosPlayer();
                                 });
                             });
@@ -96,15 +85,15 @@
                     $scope.getInfosPlayer = function () {
                         var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status');
                         var listId = [];
-                        
+
                         $scope.players.forEach(function (e) {
                             listId.push(e._id);
                         });
-                        
+
                         effectiveSrv.getPersons(listId, listField).then(function (result) {
                             result.forEach(function (e) {
                                 $scope.players.forEach(function (player) {
-                                    if(player._id === e._id){
+                                    if (player._id === e._id) {
                                         player.name = e.name;
                                         player.firstname = e.firstname;
                                         player.avatar = e.avatar;
@@ -118,24 +107,31 @@
                                 });
                             });
                         });
-                    }
+                    };
 
                     var buildWidget = function () {
                         $scope.players = [];
                         $scope.title = 'stats.resumeTab.' + $scope.label;
-                        
+
                         if (!$scope.user.periodicity) {
                             $scope.periodicity = 'season';
-                            $scope.startDate =  moment($scope.meta.season.startDate);
+                            $scope.startDate = moment($scope.meta.season.startDate);
                             $scope.endDate = moment($scope.meta.season.endDate);
                         } else {
                             $scope.startDate = $scope.user.periodicityActive.startDate;
                             $scope.endDate = $scope.user.periodicityActive.endDate;
                             $scope.ownersId = $scope.user.periodicityActive.ownersId;
                         }
-                        
+
                         $scope.getEffective();
                     };
+                    /* Refresh widget on periodicity change */
+                    $scope.$on('qeventbus', function () {
+                        if ("periodicityActive" === qeventbus.message) {
+                            buildWidget();
+                        }
+                    });
+
                 },
                 templateUrl: 'app/components/directives/widgets/podium/podium.html'
             };

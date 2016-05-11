@@ -15,15 +15,10 @@
             /* angular module */
             'ngRoute',
             'reCAPTCHA',
-
             /* qaobee shared directives */
             'qaobee.headerMenu',
-
-            /* qaobee modules */
-
             /* qaobee Rest API */
             'publicRestAPI'
-
         ])
 
         .config(function ($routeProvider) {

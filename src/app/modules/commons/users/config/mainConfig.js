@@ -23,7 +23,7 @@
          * @class qaobee.user.config.ConfigCtrl
          * @description Main controller of app/modules/commons/users/config/config.html
          */
-        .controller('ConfigCtrl', function ($scope, $filter, EnvironmentConfig, $translatePartialLoader, $translate, $rootScope, $log, user, meta) {
+        .controller('ConfigCtrl', function ($scope, $filter, EnvironmentConfig, $translatePartialLoader, $translate, $rootScope, $log, user) {
             $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');

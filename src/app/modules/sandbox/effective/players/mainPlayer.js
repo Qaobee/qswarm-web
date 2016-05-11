@@ -17,22 +17,22 @@
      * @copyright <b>QaoBee</b>.
      */
     angular.module('qaobee.players', [
-            /* angular qaobee */
-            'ngAutocomplete',
+        /* angular qaobee */
+        'ngAutocomplete',
 
-            /* qaobee modules */
-            'qaobee.addPlayer',
-            'qaobee.updatePlayer',
-            'qaobee.viewPlayer',
-            'qaobee.compare.players',
+        /* qaobee modules */
+        'qaobee.addPlayer',
+        'qaobee.updatePlayer',
+        'qaobee.viewPlayer',
+        'qaobee.compare.players',
 
-            /* qaobee services */
-            'effectifSRV',
+        /* qaobee services */
+        'effectifSRV',
 
-            /* qaobee Rest API */
-            'effectiveRestAPI',
-            'teamRestAPI',
-            'userRestAPI'])
+        /* qaobee Rest API */
+        'effectiveRestAPI',
+        'teamRestAPI',
+        'userRestAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
@@ -52,15 +52,16 @@
          * @description Main controller for view mainPlayer.html
          */
         .controller('MainPlayerController', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, $window, user, meta,
-                                                     effectiveRestAPI, effectiveSrv, userRestAPI, playerCompareService, widgetDefinitionsMainPlayer, defaultWidgetsMainPlayer, $timeout, qeventbus) {
+                                                      effectiveRestAPI, effectiveSrv, userRestAPI, playerCompareService, widgetDefinitionsMainPlayer, defaultWidgetsMainPlayer, $timeout, qeventbus) {
 
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('stats');
-        
+            $translatePartialLoader.addPart('home');
+
             $scope.effectiveId = $routeParams.effectiveId;
             $scope.user.effectiveDefault = $scope.effectiveId;
-        
+
             $scope.tabOwner = [];
             $scope.tabOwner.push($scope.effectiveId);
 
@@ -73,37 +74,37 @@
             $scope.periodicityActive = {};
             $scope.periodicity = null;
             $scope.currentCategory = null;
-        
-            if(user.mainPlayerTabId){
+
+            if (user.mainPlayerTabId) {
                 $scope.activeTabIndex = user.mainPlayerTabId;
             } else {
                 $scope.activeTabIndex = 0;
             }
-        
+
             /* keep in memory tab by default */
             $scope.changeTabDefault = function (tabId) {
                 user.mainPlayerTabId = tabId;
-            }
-        
+            };
+
             $scope.dashboardMainPlayerOptions = {
                 widgetButtons: false,
                 widgetDefinitions: widgetDefinitionsMainPlayer.get(),
                 hideWidgetName: true,
-                hideToolbar:false,
+                hideToolbar: false,
                 defaultWidgets: defaultWidgetsMainPlayer,
                 storage: $window.localStorage,
                 storageId: 'qaobee-widgets-dashboard-mainPlayer'
             };
 
-            $scope.compare = function() {
-                if(Object.keys($scope.compareList).length >0) {
+            $scope.compare = function () {
+                if (Object.keys($scope.compareList).length > 0) {
                     $location.path('/private/players/compare/');
                     return false;
                 } else {
-                    toastr.info($filter('translate')('compare.player-min'),'Title');
+                    toastr.info($filter('translate')('compare.player-min'), 'Title');
                 }
             };
-        
+
             $scope.updatePlayerToCompare = function (id) {
                 var count = 0;
                 if ($scope.compareList[id]) {
@@ -115,12 +116,12 @@
                     count++;
                 });
                 if (count > 3) {
-                    toastr.error($filter('translate')('compare.player-max', {'max': 3}),'Title');
+                    toastr.error($filter('translate')('compare.player-max', {'max': 3}), 'Title');
                     playerCompareService.remove(id);
                     $scope.compareList[id] = false;
                 }
             };
-        
+
             /* watch if periodicity change */
             $scope.$watch('periodicityActive', function (newValue, oldValue) {
                 if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
@@ -130,9 +131,9 @@
                     qeventbus.prepForBroadcast("periodicityActive", $scope.periodicityActive);
                 }
             });
-        
+
             /* init periodicity active */
-            $scope.initPeriodicityActive = function() {
+            $scope.initPeriodicityActive = function () {
                 if (!user.periodicity) {
                     $scope.periodicity = 'season';
                     $scope.periodicityActive = {
@@ -154,7 +155,7 @@
 
                     effectiveSrv.getListId($scope.currentEffective, 'player').then(function (listId) {
                         var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact');
-                        
+
                         effectiveSrv.getPersons(listId, listField).then(function (players) {
                             $scope.ownersId = listId;
                             $scope.players = players;
@@ -168,7 +169,7 @@
                                 e.birthdate = $filter('date')(e.birthdate, 'yyyy');
                                 e.age = moment().format('YYYY') - e.birthdate;
                             });
-                            
+
                             $scope.initPeriodicityActive();
                         });
                     });
@@ -189,6 +190,6 @@
 
 
         })
-        //
+    //
     ;
 }());

@@ -20,7 +20,7 @@
   "validthis": true,
   "globals": {
     "angular": false,
-    "toastr" : false,
+    "google" : false,
     "jQuery" : false,
     "$" : false,
     "moment" : false,

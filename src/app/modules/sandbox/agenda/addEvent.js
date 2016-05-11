@@ -13,10 +13,8 @@
     angular.module('qaobee.addEvent', [
         /* angular qaobee */
         'ngAutocomplete',
-        
         /* qaobee modules */
         'personSRV',
-        
         /* qaobee Rest API */
         'activityCfgRestAPI',
         'eventsRestAPI',
@@ -39,264 +37,260 @@
             });
         })
 
-    /**
-     * @class qaobee.modules.sandbox.agenda.MainAgendaControler
-     * @description Main controller for view mainAgenda.html
-     */
-        .controller('AddEventControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
+        /**
+         * @class qaobee.modules.sandbox.agenda.MainAgendaControler
+         * @description Main controller for view mainAgenda.html
+         */
+        .controller('AddEventControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
                                                    $translate, eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, userRestAPI, personSrv) {
 
-        $translatePartialLoader.addPart('commons');
-        $translatePartialLoader.addPart('agenda');
-        $translatePartialLoader.addPart('effective');
-        
-        $scope.effectiveId = $routeParams.effectiveId;
-        
-        $scope.user = user;
-        $scope.meta = meta;
-        $scope.listEventType = {};
-        $scope.listTeamHome = {};
-        $scope.teamId = '';
-        $scope.listTeamAdversary = {};
-        $scope.adversaryLabel = '';
-        $scope.chooseAdversary = false;
-        $scope.chooseHome = false;
-        $scope.startDate = '';
-        $scope.startHours = '';
-        $scope.location = 'home';
-    
-        //i18n datepicker
-        $translate(['commons.format.date.listMonth',
-            'commons.format.date.listMonthShort',
-            'commons.format.date.listWeekdaysFull',
-            'commons.format.date.listWeekdaysShort',
-            'commons.format.date.listWeekdaysLetter',
-            'commons.format.date.today',
-            'commons.format.date.clear',
-            'commons.format.date.close',
-            'commons.format.date.label',
-            'commons.format.date.pattern'
-        ]).then(function (translations) {
-            $scope.datePicker = angular.element('#EventStartDate')
-                .pickadate({
-                    format: translations['commons.format.date.label'],
-                    formatSubmit: translations['commons.format.date.pattern'],
-                    monthsFull: translations['commons.format.date.listMonth'].split(','),
-                    monthShort: translations['commons.format.date.listMonthShort'].split(','),
-                    weekdaysFull: translations['commons.format.date.listWeekdaysFull'].split(','),
-                    weekdaysLetter: translations['commons.format.date.listWeekdaysLetter'].split(','),
-                    weekdaysShort: translations['commons.format.date.listWeekdaysShort'].split(','),
-                    selectYears: 100,
-                    selectMonths: true,
-                    today: translations['commons.format.date.today'],
-                    clear: translations['commons.format.date.clear'],
-                    close: translations['commons.format.date.close']
-                })
-                .pickadate('picker');
-        });
+            $translatePartialLoader.addPart('commons');
+            $translatePartialLoader.addPart('agenda');
+            $translatePartialLoader.addPart('effective');
 
-        //i18n timepicker
-        $scope.formatTime = $filter('translate')('commons.format.hours.label');
-        $scope.formatTimeSubmit = $filter('translate')('commons.format.hours.pattern');
-        $scope.clear = $filter('translate')('commons.format.date.clear');
+            $scope.effectiveId = $routeParams.effectiveId;
 
-        var $inputTimer = $('.timepicker').pickatime({
-            format: $scope.formatTime,
-            formatSubmit: $scope.formatTimeSubmit,
-            clear: $scope.clear,
-            min: [8,0],
-            max: [22,0]
-        });
-
-        $scope.addEventTitle = true;
-        
-        // return button
-        $scope.doTheBack = function() {
-            $window.history.back();
-        };
-        
-        //Initialization new event
-        $scope.event = {
-            activityId: $scope.meta.activity._id,
-            owner: {
-                sandboxId : $scope.meta.sandbox._id,
-                effectiveId : $scope.effectiveId
-            }, 
-            address: {}, 
-            link: {}
-        };
-        
-        /* init ngAutocomplete*/
-        $scope.options = {};
-        $scope.options.watchEnter = true;
-        
-        $scope.optionsAdr = null;
-        $scope.detailsAdr = '';
-        
-        /* Retrieve list of team of effective */
-        $scope.getListTeamHome = function () {
-            teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true').success(function (data) {
-                $scope.listTeamHome = data.sortBy(function(n) {
-                    return n.label; 
-                });
-            });
-        }; 
-        
-        /* Retrieve list of event type */
-        $scope.getListEventType = function () {
-            activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listEventType').success(function (data) {
-                $scope.listEventType = data.sortBy(function(n) {
-                    return n.order; 
-                });
-            });
-        };
-        
-        /* on change event type, calculate the value for chooseAdversary */
-        $scope.changeTeamHome = function () {
-            
-            teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true', $scope.teamId).success(function (data) {
-                $scope.listTeamAdversary = data.sortBy(function(n) {
-                    return n.label; 
-                });
-            });
+            $scope.user = user;
+            $scope.meta = meta;
+            $scope.listEventType = {};
+            $scope.listTeamHome = {};
+            $scope.teamId = '';
+            $scope.listTeamAdversary = {};
             $scope.adversaryLabel = '';
-            $scope.chooseHome = true;
-        };
+            $scope.chooseAdversary = false;
+            $scope.chooseHome = false;
+            $scope.startDate = '';
+            $scope.startHours = '';
+            $scope.location = 'home';
 
-        
-        /* on change event type, calculate the value for chooseAdversary */
-        $scope.changeEventType = function () {
-            
-            if($scope.event.link.type==='training'  || $scope.event.link.type==='other') {
-                 $scope.chooseAdversary = false;
-                $scope.chooseHome = false;
-            } else {
-                $scope.chooseAdversary = true;
-            }
-        };
+            //i18n datepicker
+            $translate(['commons.format.date.listMonth',
+                'commons.format.date.listMonthShort',
+                'commons.format.date.listWeekdaysFull',
+                'commons.format.date.listWeekdaysShort',
+                'commons.format.date.listWeekdaysLetter',
+                'commons.format.date.today',
+                'commons.format.date.clear',
+                'commons.format.date.close',
+                'commons.format.date.label',
+                'commons.format.date.pattern'
+            ]).then(function (translations) {
+                $scope.datePicker = angular.element('#EventStartDate')
+                    .pickadate({
+                        format: translations['commons.format.date.label'],
+                        formatSubmit: translations['commons.format.date.pattern'],
+                        monthsFull: translations['commons.format.date.listMonth'].split(','),
+                        monthShort: translations['commons.format.date.listMonthShort'].split(','),
+                        weekdaysFull: translations['commons.format.date.listWeekdaysFull'].split(','),
+                        weekdaysLetter: translations['commons.format.date.listWeekdaysLetter'].split(','),
+                        weekdaysShort: translations['commons.format.date.listWeekdaysShort'].split(','),
+                        selectYears: 100,
+                        selectMonths: true,
+                        today: translations['commons.format.date.today'],
+                        clear: translations['commons.format.date.clear'],
+                        close: translations['commons.format.date.close']
+                    })
+                    .pickadate('picker');
+            });
 
-        /* Create a new event and add to effective */
-        $scope.writeEvent = function () {
-                
-            /* get effective */
-            effectiveRestAPI.getEffective($scope.effectiveId).success(function (data) {
+            //i18n timepicker
+            $scope.formatTime = $filter('translate')('commons.format.hours.label');
+            $scope.formatTimeSubmit = $filter('translate')('commons.format.hours.pattern');
+            $scope.clear = $filter('translate')('commons.format.date.clear');
 
-                var effective = data;
+            angular.element('.timepicker').pickatime({
+                format: $scope.formatTime,
+                formatSubmit: $scope.formatTimeSubmit,
+                clear: $scope.clear,
+                min: [8, 0],
+                max: [22, 0]
+            });
 
-                if(angular.isDefined(effective)) {
-                    /* add event */
-                    eventsRestAPI.addEvent($scope.event).success(function (event) {
-                        $scope.event = event;
-                        toastr.success($filter('translate')('addEvent.toastSuccess', {
-                            label: $scope.event.label,
-                            effective: effective.categoryAge.label
-                        }));
+            $scope.addEventTitle = true;
 
-                        $window.history.back();
+            // return button
+            $scope.doTheBack = function () {
+                $window.history.back();
+            };
+
+            //Initialization new event
+            $scope.event = {
+                activityId: $scope.meta.activity._id,
+                owner: {
+                    sandboxId: $scope.meta.sandbox._id,
+                    effectiveId: $scope.effectiveId
+                },
+                address: {},
+                link: {}
+            };
+
+            /* init ngAutocomplete*/
+            $scope.options = {};
+            $scope.options.watchEnter = true;
+
+            $scope.optionsAdr = null;
+            $scope.detailsAdr = '';
+
+            /* Retrieve list of team of effective */
+            $scope.getListTeamHome = function () {
+                teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true').success(function (data) {
+                    $scope.listTeamHome = data.sortBy(function (n) {
+                        return n.label;
                     });
+                });
+            };
+
+            /* Retrieve list of event type */
+            $scope.getListEventType = function () {
+                activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listEventType').success(function (data) {
+                    $scope.listEventType = data.sortBy(function (n) {
+                        return n.order;
+                    });
+                });
+            };
+
+            /* on change event type, calculate the value for chooseAdversary */
+            $scope.changeTeamHome = function () {
+
+                teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true', $scope.teamId).success(function (data) {
+                    $scope.listTeamAdversary = data.sortBy(function (n) {
+                        return n.label;
+                    });
+                });
+                $scope.adversaryLabel = '';
+                $scope.chooseHome = true;
+            };
+
+
+            /* on change event type, calculate the value for chooseAdversary */
+            $scope.changeEventType = function () {
+
+                if ($scope.event.link.type === 'training' || $scope.event.link.type === 'other') {
+                    $scope.chooseAdversary = false;
+                    $scope.chooseHome = false;
+                } else {
+                    $scope.chooseAdversary = true;
                 }
-            });
-        };
-        
-        /* Format event */
-        $scope.checkAndformatEvent = function () {
-             /* Convert start event to long */
-            var start = moment($scope.startDate,'DD/MM/YYYY');
-            start.hour(moment($scope.startHours,'HH').hour());
-            start.minutes(moment($scope.startHours,'m mm').minutes());
-            $scope.event.startDate = moment(start).valueOf();
+            };
 
-            
-            /* add team Id to owner */
-            if (angular.isDefined($scope.teamId)) {
-                $scope.event.owner.teamId = $scope.teamId ;
-            }
-            
-            /* add participants event */
-            var participants = {};
-            var team = {};
-            var adversary = {};
-            
-            angular.forEach($scope.listTeamHome, function (item) {
-                if(item._id === $scope.teamId) {
-                    team = item;
-                }   
-            });
-            
-            angular.forEach($scope.listTeamAdversary, function (item) {
-                if(item.label === $scope.adversaryLabel) {
-                    adversary = item;
-                }   
-            });
-            
-            //new adversary
-            if (angular.isUndefined(adversary.label)){
-                adversary = {
-                    "label" : $scope.adversaryLabel,
-                    "sandboxId" : $scope.meta.sandbox._id, 
-                    "effectiveId" : $scope.user.effectiveDefault,
-                    "linkTeamId" : [team._id],
-                    "enable" : true,
-                    "adversary": true
-                };
+            /* Create a new event and add to effective */
+            $scope.writeEvent = function () {
 
-                /* add team */
-                teamRestAPI.addTeam(adversary).success(function (data) {
-                    adversary = data;
+                /* get effective */
+                effectiveRestAPI.getEffective($scope.effectiveId).success(function (data) {
+
+                    var effective = data;
+
+                    if (angular.isDefined(effective)) {
+                        /* add event */
+                        eventsRestAPI.addEvent($scope.event).success(function (event) {
+                            $scope.event = event;
+                            toastr.success($filter('translate')('addEvent.toastSuccess', {
+                                label: $scope.event.label,
+                                effective: effective.categoryAge.label
+                            }));
+
+                            $window.history.back();
+                        });
+                    }
+                });
+            };
+
+            /* Format event */
+            $scope.checkAndformatEvent = function () {
+                /* Convert start event to long */
+                var start = moment($scope.startDate, 'DD/MM/YYYY');
+                start.hour(moment($scope.startHours, 'HH').hour());
+                start.minutes(moment($scope.startHours, 'm mm').minutes());
+                $scope.event.startDate = moment(start).valueOf();
+
+
+                /* add team Id to owner */
+                if (angular.isDefined($scope.teamId)) {
+                    $scope.event.owner.teamId = $scope.teamId;
+                }
+
+                /* add participants event */
+                var participants = {};
+                var team = {};
+                var adversary = {};
+
+                angular.forEach($scope.listTeamHome, function (item) {
+                    if (item._id === $scope.teamId) {
+                        team = item;
+                    }
+                });
+
+                angular.forEach($scope.listTeamAdversary, function (item) {
+                    if (item.label === $scope.adversaryLabel) {
+                        adversary = item;
+                    }
+                });
+                //new adversary
+                if (angular.isUndefined(adversary.label)) {
+                    adversary = {
+                        "label": $scope.adversaryLabel,
+                        "sandboxId": $scope.meta.sandbox._id,
+                        "effectiveId": $scope.user.effectiveDefault,
+                        "linkTeamId": [team._id],
+                        "enable": true,
+                        "adversary": true
+                    };
+
+                    /* add team */
+                    teamRestAPI.addTeam(adversary).success(function (data) {
+                        adversary = data;
+                        if ($scope.location === 'home') {
+                            participants = {
+                                teamHome: {id: team._id, label: team.label},
+                                teamVisitor: {id: adversary._id, label: adversary.label}
+                            };
+                        } else {
+                            participants = {
+                                teamVisitor: {id: team._id, label: team.label},
+                                teamHome: {id: adversary._id, label: adversary.label}
+                            };
+                        }
+
+                        $scope.event.participants = participants;
+                        personSrv.formatAddress($scope.event.address).then(function (adr) {
+                            $scope.event.address = adr;
+                            $scope.writeEvent();
+                        });
+
+                    });
+                } else {
                     if ($scope.location === 'home') {
-                        participants = { 
-                            teamHome: {id:team._id, label:team.label},
-                            teamVisitor: {id:adversary._id, label:adversary.label}
+                        participants = {
+                            teamHome: {id: team._id, label: team.label},
+                            teamVisitor: {id: adversary._id, label: adversary.label}
                         };
                     } else {
-                        participants = { 
-                            teamVisitor: {id:team._id, label:team.label},
-                            teamHome: {id:adversary._id, label:adversary.label}
+                        participants = {
+                            teamVisitor: {id: team._id, label: team.label},
+                            teamHome: {id: adversary._id, label: adversary.label}
                         };
                     }
 
-                    $scope.event.participants = participants ;
-                    personSrv.formatAddress($scope.event.address).then(function(adr){
+                    $scope.event.participants = participants;
+                    personSrv.formatAddress($scope.event.address).then(function (adr) {
                         $scope.event.address = adr;
                         $scope.writeEvent();
                     });
-                    
-                });
-            } else {
-                if ($scope.location === 'home') {
-                    participants = { 
-                        teamHome: {id:team._id, label:team.label},
-                        teamVisitor: {id:adversary._id, label:adversary.label}
-                    };
-                } else {
-                    participants = { 
-                        teamVisitor: {id:team._id, label:team.label},
-                        teamHome: {id:adversary._id, label:adversary.label}
-                    };
                 }
-
-                $scope.event.participants = participants ;
-                personSrv.formatAddress($scope.event.address).then(function(adr){
-                    $scope.event.address = adr;
-                    $scope.writeEvent();
+            };
+            /* check user connected */
+            $scope.checkUserConnected = function () {
+                userRestAPI.getUserById(user._id).success(function () {
+                    $scope.getListTeamHome();
+                    $scope.getListEventType();
+                }).error(function () {
+                    $log.error('AddEventControler : User not Connected');
                 });
-            }
-        };
-        
-        /* check user connected */
-        $scope.checkUserConnected = function () {
-            
-            userRestAPI.getUserById(user._id).success(function (data) {
-                $scope.getListTeamHome();
-                $scope.getListEventType();
-            }).error(function (data) {
-                $log.error('AddEventControler : User not Connected');
-            });
-        }; 
-        
-        /* Primary, check if user connected */
-        $scope.checkUserConnected();
-    })
+            };
+            /* Primary, check if user connected */
+            $scope.checkUserConnected();
+        })
     //
     ;
 }());

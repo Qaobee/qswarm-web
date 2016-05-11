@@ -10,13 +10,11 @@
  * @function
  * @memberOf qaobee.tools.utilities
  * @description équivalent de replaceAll de Java
- * @param find
- *            la chaîne de recherche
- * @param replace
- *            la chaîne de remplacement
+ * @param find  la chaîne de recherche
+ * @param replace  la chaîne de remplacement
  * @returns this
  */
-String.prototype.replaceAll = function(find, replace) {
+String.prototype.replaceAll = function (find, replace) {
     'use strict';
     var str = this;
     return str.replace(new RegExp(find, 'g'), replace);
@@ -33,35 +31,31 @@ function ensureP(txt) {
 
 /**
  * Ouvre une popup modale
- * 
+ *
  * @name modalConfirm
  * @function
  * @memberOf qaobee.tools.utilities
- * @param heading
- *            message d'entête
- * @param question
- *            la question à poser
+ * @param heading message d'entête
+ * @param question la question à poser
  * @param callback
  */
 function modalConfirm(heading, question, callback) {
     'use strict';
-    $('#modal-title').html(heading);
-    $('#modal-body').html(question);
-    $('#modal-ok-btn').click(function(event) {
+    angular.element('#modal-title').html(heading);
+    angular.element('#modal-body').html(question);
+    angular.element('#modal-ok-btn').click(function () {
         callback();
-        $('#myModal').modal('hide');
+        angular.element('#myModal').modal('hide');
     });
-    $('#myModal').modal('show');
+    angular.element('#myModal').modal('show');
 }
 /**
- * Calcule le nombre d'années entre le timestamp actuel et un timestamp
- * (antérieur)
- * 
+ * Calcule le nombre d'années entre le timestamp actuel et un timestamp (antérieur)
+ *
  * @name dateDiff
  * @function
  * @memberOf qaobee.tools.utilities
- * @param timestamp
- *            date passée
+ * @param timestamp date passée
  * @returns nombre d'années
  * @deprecated
  */

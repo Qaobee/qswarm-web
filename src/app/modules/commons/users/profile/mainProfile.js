@@ -40,7 +40,7 @@
          * @class qaobee.user.profile.MainProfileCtrl
          * @description Main controller of app/modules/commons/users/profile/mainProfil.html
          */
-        .controller('MainProfileCtrl', function ($scope, $filter, EnvironmentConfig, $translatePartialLoader, $translate, $rootScope, $log, user, meta) {
+        .controller('MainProfileCtrl', function ($scope, $filter, EnvironmentConfig, $translatePartialLoader, $translate, $rootScope, $log, user) {
             $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');

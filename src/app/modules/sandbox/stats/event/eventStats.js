@@ -11,18 +11,16 @@
      * @requires {@link qaobee.components.restAPI.sandbox.effective.personRestAPI|qaobee.components.restAPI.sandbox.effective.personRestAPI}
      */
     angular.module('qaobee.eventStats', [
-
-            /* qaobee services */
-            'effectifSRV',
-            'statsSRV',
-            'qaobee.eventbus',
-
-            /* qaobee Rest API */
-            'collecteRestAPI',
-            'personRestAPI',
-            'statsRestAPI',
-            'userRestAPI'
-        ])
+        /* qaobee services */
+        'effectifSRV',
+        'statsSRV',
+        'qaobee.eventbus',
+        /* qaobee Rest API */
+        'collecteRestAPI',
+        'personRestAPI',
+        'statsRestAPI',
+        'userRestAPI'
+    ])
 
         .config(function ($routeProvider, metaDatasProvider) {
             $routeProvider.when('/private/eventStats/:collecteId', {
@@ -32,7 +30,6 @@
                     meta: metaDatasProvider.getMeta
                 },
                 templateUrl: 'app/modules/sandbox/stats/event/eventStats.html'
-
             });
         })
         /**
@@ -79,7 +76,6 @@
 
             /* get collect */
             $scope.getCollecte = function () {
-
                 /* get collect */
                 collecteRestAPI.getCollecte($routeParams.collecteId).success(function (data) {
                     if (angular.isDefined(data)) {
@@ -104,15 +100,11 @@
                             $scope.players = players;
 
                             $scope.players.forEach(function (player) {
-
                                 if (angular.isDefined(player.status.positionType)) {
                                     player.positionType = $filter('translate')('stats.positionType.value.' + player.status.positionType);
                                 } else {
                                     player.positionType = '';
                                 }
-
-                                //$scope.stats[player._id] = [];
-
                                 player.stats = {
                                     originShootAtt: 0,
                                     originShootDef: 0,
@@ -122,7 +114,6 @@
                                     exclTmp: 0,
                                     redCard: 0
                                 };
-
                             });
 
                             var listFieldsGroupBy = Array.create('owner', 'code');
@@ -172,7 +163,6 @@
                                         if (a._id.code === 'redCard') {
                                             $scope.players[i].stats.redCard = a.value;
                                         }
-
                                     });
                                 }
                             });
@@ -284,27 +274,23 @@
                         });
 
                         $scope.ownersId.push(data.eventRef._id);
-
-                        var periodicity = {
+                        $scope.periodicityActive = {
                             startDate: data.startDate,
                             endDate: data.endDate,
                             ownersId: $scope.ownersId
                         };
-                        $scope.periodicityActive = periodicity;
                     }
                 });
             };
 
             /* check user connected */
             $scope.checkUserConnected = function () {
-
-                userRestAPI.getUserById(user._id).success(function (data) {
+                userRestAPI.getUserById(user._id).success(function () {
                     $scope.getCollecte();
-                }).error(function (data) {
+                }).error(function () {
                     $log.error('EventStats : User not Connected');
                 });
             };
-
             /* Primary, check if user connected */
             $scope.checkUserConnected();
         });

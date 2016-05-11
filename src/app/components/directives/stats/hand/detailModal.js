@@ -108,14 +108,8 @@
                                             datas.push($scope.stats[time][id]);
                                         }
                                     });
-                                  /*  if (datas.length === 1) {
-                                        datas.add(0, 0);
-                                    } */
                                     $scope.data.push(datas);
                                 });
-                            /*    if ($scope.labels.length === 1) {
-                                    $scope.labels.add(0, 0);
-                                } */
                             }
                             $scope.owners.forEach(function (id) {
                                 var datas = [];

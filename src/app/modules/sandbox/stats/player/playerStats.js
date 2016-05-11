@@ -11,16 +11,12 @@
      * @requires {@link qaobee.components.restAPI.sandbox.effective.personRestAPI|qaobee.components.restAPI.sandbox.effective.personRestAPI}
      */
     angular.module('qaobee.playerStats', [
-
-            /* qaobee services */
-            'statsSRV',
-            'qaobee.eventbus',
-
-            /* qaobee Rest API */
-            'personRestAPI',
-            'statsRestAPI',
-            'userRestAPI'
-        ])
+        'statsSRV',
+        'qaobee.eventbus',
+        'personRestAPI',
+        'statsRestAPI',
+        'userRestAPI'
+    ])
 
         .config(function ($routeProvider, metaDatasProvider) {
             $routeProvider.when('/private/playerStats/:playerId', {
@@ -30,7 +26,6 @@
                     meta: metaDatasProvider.getMeta
                 },
                 templateUrl: 'app/modules/sandbox/stats/player/playerStats.html'
-
             });
         })
         /**
@@ -89,7 +84,7 @@
                             $scope.collectes.push(e);
                         });
                     }
-                })
+                });
             };
 
             /* watch if periodicity change */
@@ -113,20 +108,19 @@
                     } else {
                         $scope.player.positionType = '';
                     }
-                    
-                     $scope.series.push($scope.player.firstname + ' ' + $scope.player.name)
+
+                    $scope.series.push($scope.player.firstname + ' ' + $scope.player.name);
                 });
             };
 
             /* check user connected */
             $scope.checkUserConnected = function () {
-                userRestAPI.getUserById(user._id).success(function (data) {
+                userRestAPI.getUserById(user._id).success(function () {
                     $scope.initStats();
-                }).error(function (data) {
+                }).error(function () {
                     $log.error('PlayerStats : User not Connected');
                 });
             };
-
             /* Primary, check if user connected */
             $scope.checkUserConnected();
         });

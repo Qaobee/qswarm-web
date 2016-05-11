@@ -13,11 +13,9 @@
     angular.module('qaobee.addTeam', [
         /* qaobee services */
         'effectifSRV',
-        
         /* qaobee Rest API */
         'teamRestAPI',
         'userRestAPI'])
-
 
         .config(function ($routeProvider, metaDatasProvider) {
 
@@ -28,7 +26,6 @@
                     meta: metaDatasProvider.getMeta
                 },
                 templateUrl: 'app/modules/sandbox/effective/team/writeTeam.html'
-
             }).when('/private/addTeam/:adversary', {
                 controller: 'AddTeamControler',
                 resolve: {
@@ -36,85 +33,79 @@
                     meta: metaDatasProvider.getMeta
                 },
                 templateUrl: 'app/modules/sandbox/effective/team/writeTeam.html'
-
-            });;
+            });
         })
 
-    /**
-     * @class qaobee.modules.sandbox.effective.AddTeamControler
-     * @description Main controller for view addTeam.html
-     */
-        .controller('AddTeamControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                                   userRestAPI, teamRestAPI, effectiveSrv) {
+        /**
+         * @class qaobee.modules.sandbox.effective.AddTeamControler
+         * @description Main controller for view addTeam.html
+         */
+        .controller('AddTeamControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
+                                                  userRestAPI, teamRestAPI, effectiveSrv) {
 
-        $translatePartialLoader.addPart('commons');
-        $translatePartialLoader.addPart('effective');
-        
-        $scope.adversary = $routeParams.adversary;
-        $scope.teamId = $routeParams.teamId;
-        
-        $scope.user = user;
-        $scope.meta = meta;
-        
-        $scope.addTeamTitle = true;
-        $scope.currentEffective = {};
-        
-        // return button
-        $scope.doTheBack = function() {
-            $window.history.back();
-        };
-        
-        //Initialization team
-        $scope.team = {
-            sandboxId : $scope.meta.sandbox._id,
-            effectiveId : $scope.user.effectiveDefault,
-            adversary : $scope.adversary,
-            enable : true
-        };
-        
-        /* Retrieve list effective */
-        $scope.getEffective = function () {
-            
-            effectiveSrv.getEffective($scope.user.effectiveDefault).then(function(data){
-                $scope.currentEffective = data;
-            });
-        };          
-        
-        
-        /* Create a new team */
-        $scope.writeTeam = function () {
-            $scope.team.adversary = $scope.team.adversary==='true';
-            
-            if($scope.adversary) {
-                $scope.team.linkTeamId = [];
-                $scope.team.linkTeamId.push($scope.teamId);
-            }
-            
-            /* add team */
-            teamRestAPI.addTeam($scope.team).success(function (team) {
-                
-                toastr.success($filter('translate')('addTeam.toastSuccess', {
-                    label: team.label
-                }));
-                
-                $scope.doTheBack();
-            });
-        };
-        
-        /* check user connected */
-        $scope.checkUserConnected = function () {
-            
-            userRestAPI.getUserById(user._id).success(function (data) {
-                $scope.getEffective();
-            }).error(function (data) {
-                $log.error('AddTeamControler : User not Connected');
-            });
-        }; 
-        
-        /* Primary, check if user connected */
-        $scope.checkUserConnected();
-    })
-    
-    //
-    ;
+            $translatePartialLoader.addPart('commons');
+            $translatePartialLoader.addPart('effective');
+
+            $scope.adversary = $routeParams.adversary;
+            $scope.teamId = $routeParams.teamId;
+
+            $scope.user = user;
+            $scope.meta = meta;
+
+            $scope.addTeamTitle = true;
+            $scope.currentEffective = {};
+
+            // return button
+            $scope.doTheBack = function () {
+                $window.history.back();
+            };
+
+            //Initialization team
+            $scope.team = {
+                sandboxId: $scope.meta.sandbox._id,
+                effectiveId: $scope.user.effectiveDefault,
+                adversary: $scope.adversary,
+                enable: true
+            };
+
+            /* Retrieve list effective */
+            $scope.getEffective = function () {
+
+                effectiveSrv.getEffective($scope.user.effectiveDefault).then(function (data) {
+                    $scope.currentEffective = data;
+                });
+            };
+
+
+            /* Create a new team */
+            $scope.writeTeam = function () {
+                $scope.team.adversary = $scope.team.adversary === 'true';
+
+                if ($scope.adversary) {
+                    $scope.team.linkTeamId = [];
+                    $scope.team.linkTeamId.push($scope.teamId);
+                }
+
+                /* add team */
+                teamRestAPI.addTeam($scope.team).success(function (team) {
+
+                    toastr.success($filter('translate')('addTeam.toastSuccess', {
+                        label: team.label
+                    }));
+
+                    $scope.doTheBack();
+                });
+            };
+
+            /* check user connected */
+            $scope.checkUserConnected = function () {
+                userRestAPI.getUserById(user._id).success(function () {
+                    $scope.getEffective();
+                }).error(function () {
+                    $log.error('AddTeamControler : User not Connected');
+                });
+            };
+            /* Primary, check if user connected */
+            $scope.checkUserConnected();
+        });
 }());

@@ -4,16 +4,19 @@
     angular.module(
         'qaobee.commonsConfig', [
             /* qaobee services */
-            'qaobee.eventbus', 
-
+            'qaobee.eventbus',
             /* qaobee Rest API */
             'userRestAPI'])
 
-        .provider('metaDatas', function metaDatasProvider() {
-            this.$get = function metaDatasFactory() {
-               // return this;
+        .provider('metaDatas', function() {
+            this.$get = function() {
+                return this;
             };
-
+            /**
+             *
+             * @param data
+             * @returns {*}
+             */
             function loadAdmin(data) {
                 data.isAdmin = false;
                 if (angular.isDefined(data.account) && data.account.habilitations !== null) {
@@ -26,6 +29,16 @@
                 return data;
             }
 
+            /**
+             *
+             * @param $rootScope
+             * @param userRestAPI
+             * @param qeventbus
+             * @param $location
+             * @param $q
+             * @param $window
+             * @returns {*}
+             */
             this.checkUser = function ($rootScope, userRestAPI, qeventbus, $location, $q, $window) {
                 var deferred = $q.defer();
                 if (angular.isDefined($rootScope.user)) {
@@ -47,6 +60,15 @@
                 return deferred.promise;
             };
 
+            /**
+             * 
+             * @param $rootScope
+             * @param userRestAPI
+             * @param $location
+             * @param $q
+             * @param $window
+             * @returns {*}
+             */
             this.getMeta = function ($rootScope, userRestAPI, $location, $q, $window) {
                 var deferred = $q.defer();
                 if (angular.isDefined($rootScope.meta)) {
@@ -67,7 +89,5 @@
                 }
                 return deferred.promise;
             };
-
         });
-
 }());

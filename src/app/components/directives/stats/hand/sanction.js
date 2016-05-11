@@ -21,9 +21,8 @@
                     $scope.noStat = true;
 
                     /* getStats */
-                    var getStats = function (ownersId, startDate, endDate /* , values */) {
+                    var getStats = function (ownersId, startDate, endDate) {
                         var deferred = $q.defer();
-                       // var search = {};
                         var result = {
                             nbYellowCard: 0,
                             nbExclTmp: 0,
@@ -74,7 +73,7 @@
 
                         $scope.title = 'stats.resumeTab.' + $scope.label;
 
-                        getStats($scope.ownersId, $scope.startDate, $scope.endDate, $scope.values).then(function (result) {
+                        getStats($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
                             $scope.nbYellowCard = result.nbYellowCard;
                             $scope.nbExclTmp = result.nbExclTmp;
                             $scope.nbRedCard = result.nbRedCard;

@@ -26,9 +26,8 @@
 
 
                     /* getStats */
-                    var getStats = function (ownersId, startDate, endDate /*, values */) {
+                    var getStats = function (ownersId, startDate, endDate) {
                         var deferred = $q.defer();
-                        // var search = {};
                         var result = {
                             nbGame: 0,
                             nbGoal: 0,
@@ -93,7 +92,7 @@
 
                         $scope.title = 'stats.resumeTab.' + $scope.label;
 
-                        getStats($scope.ownersId, $scope.startDate, $scope.endDate, $scope.values).then(function (result) {
+                        getStats($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
                             $scope.nbGoal = result.nbGoal;
                             $scope.nbGame = result.nbGame;
                             $scope.goalAvg = $scope.nbGoal / $scope.nbGame;

@@ -15,8 +15,7 @@
                  * @memberOf qaobee.components.restAPI.commons.users.profileRestAPI
                  * @function update
                  * @description Mise à jour du profil utilisateur
-                 * @param {Object}
-                 *            u com.qaobee.swarn.model.transverse.User
+                 * @param {Object} u com.qaobee.swarn.model.transverse.User
                  * @returns {Object} Person com.qaobee.hive.business.model.commons.users.User
                  */
                 update: function (u) {
@@ -28,7 +27,7 @@
                 },
                 getBillPDF: function (id, pay_id) {
                     return $http({
-                        url: '/api/1/commons/users/profile/billpdf?id='+id,
+                        url: '/api/1/commons/users/profile/billpdf?plan_id=' + id + '&pay_id=' + pay_id,
                         method: 'GET'
                     });
                 },
@@ -36,8 +35,7 @@
                  * @memberOf qaobee.components.restAPI.commons.users.profileRestAPI
                  * @function uploadAvatar
                  * @description Mise à jour de l'avatar de l'utilisateur
-                 * @param {String}
-                 *            uid Identifiant Mongo de l'utilisateur
+                 * @param {String} uid Identifiant Mongo de l'utilisateur
                  * @returns {Object} Person com.qaobee.hive.business.model.commons.users.User
                  */
                 uploadAvatar: function (uid) {
@@ -50,9 +48,8 @@
                  * @memberOf qaobee.components.restAPI.commons.users.profileRestAPI
                  * @function getPrefDetails
                  * @description Get user preferences
-                 * @param {String}
-                 *            key preference key
-                 * @param {String} user id
+                 * @param {String} key preference key
+                 * @param {String} id user id
                  * @returns {Object} Preferences data
                  */
                 getPrefDetails: function (key, id) {
@@ -65,10 +62,9 @@
                  * @memberOf qaobee.components.restAPI.commons.users.profileRestAPI
                  * @function setPreference
                  * @description Store user preferences
-                 * @param {String}
-                 *            key preference key
-                 * @param {Object} preferences to store
-                 * @param {String} user id
+                 * @param {String} key preference key
+                 * @param {Object} data to store
+                 * @param {String} id id
                  * @returns {Object} Preferences data
                  */
                 setPreference: function (key, data, id) {

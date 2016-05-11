@@ -24,7 +24,7 @@
          * @description Main controller of app/modules/commons/users/profile/writeProfile.html
          */
         .controller('WriteProfileCtrl', function ($scope, $filter, EnvironmentConfig, $timeout, $window, $translatePartialLoader,
-                                                  $translate, $rootScope, $log, personSrv, profileRestAPI, user, meta) {
+                                                  $translate, $rootScope, $log, personSrv, profileRestAPI, user) {
             $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
@@ -81,7 +81,7 @@
 
 
             // Surveillance de la modification du retour de l'API Google sur l'adresse
-            $scope.$watch('temp.detailsAdr', function (newValue, oldValue) {
+            $scope.$watch('temp.detailsAdr', function (newValue) {
                 if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue)) {
                     return;
                 }
@@ -91,7 +91,7 @@
             });
 
             // Surveillance de la modification du champ adresse par l'utilisateur
-            $scope.$watch('temp.addr', function (newValue, oldValue) {
+            $scope.$watch('temp.addr', function (newValue) {
                 if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue) || newValue === null || newValue.length === 1) {
                     $scope.user.address = {};
                 }

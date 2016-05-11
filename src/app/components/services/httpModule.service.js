@@ -33,7 +33,6 @@
                         if (!config.headers['Accept']) {
                             config.responseType = 'json';
                         }
-                    //    $log.debug(config);
                     }
                     if (!config.url.startsWith('app')
                         && !config.url.startsWith('http')
@@ -49,7 +48,6 @@
                 },
                 // When a request ends
                 response: function (response) {
-                 //   $log.debug(response);
                     return response || $q.when(response);
                 },
                 // When a request fails
@@ -60,7 +58,6 @@
                             toastr.error(response.data.message);
                         }
                         if ('NOT_LOGGED' === response.data.code) {
-                            // TODO avoir un liste de messages sans doublons avec toastr
                             if ($rootScope.notLogged === false) {
                                 toastr.error(response.data.message);
                                 $rootScope.notLogged = true;

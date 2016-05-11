@@ -2,15 +2,10 @@
     'use strict';
 
     angular.module('qaobee.user.signup.end', [
-            /* angular qaobee */
-//        'ngAutocomplete',
-
             /* qaobee modules */
             'personSRV',
-
             /* services */
             'locationAPI',
-
             /* qaobee Rest API */
             'activityRestAPI',
             'activityCfgRestAPI',
@@ -18,7 +13,6 @@
             'structureRestAPI',
             'signupRestAPI'
         ])
-
 
         .config(function ($routeProvider) {
             $routeProvider.when('/signup/end', {
@@ -36,7 +30,10 @@
             });
         })
 
-        .controller('SignupCtrl', function ($rootScope, $scope, $timeout, $translatePartialLoader, $log, $routeParams, $window, $location, $filter, WizardHandler, activityRestAPI, activityCfgRestAPI, countryRestAPI, structureRestAPI, signupRestAPI, locationAPI, personSrv) {
+        .controller('SignupCtrl', function ($rootScope, $scope, $timeout, $translatePartialLoader, $log,
+                                            $routeParams, $window, $location, $filter, WizardHandler,
+                                            activityRestAPI, activityCfgRestAPI, countryRestAPI, structureRestAPI,
+                                            signupRestAPI, locationAPI, personSrv) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
 
@@ -90,7 +87,7 @@
                 $scope.formatDate = $filter('translate')('commons.format.date.label');
                 $scope.formatDateSubmit = $filter('translate')('commons.format.date.pattern');
 
-                $inputDate = $('#signupBirthdate').pickadate({
+                $inputDate = angular.element('#signupBirthdate').pickadate({
                     format: $scope.formatDate,
                     formatSubmit: $scope.formatDateSubmit,
                     monthsFull: $scope.month,
@@ -228,7 +225,7 @@
             };
 
             // Surveillance de la modification du retour de l'API Google sur l'adresse dans les infos personnelles
-            $scope.$watch('temp.detailsAddress', function (newValue, oldValue) {
+            $scope.$watch('temp.detailsAddress', function (newValue) {
                 if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue)) {
                     return;
                 }
@@ -238,7 +235,7 @@
             });
 
             // Surveillance de la modification du retour de l'API Google sur l'adresse
-            $scope.$watch('signup.detailsStructureCity', function (newValue, oldValue) {
+            $scope.$watch('signup.detailsStructureCity', function (newValue) {
                 if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue)) {
                     return;
                 }
@@ -247,7 +244,7 @@
             });
 
             // Surveillance de la modification du retour de l'API Google sur l'adresse du club
-            $scope.$watch('signup.detailsNewStructureCity', function (newValue, oldValue) {
+            $scope.$watch('signup.detailsNewStructureCity', function (newValue) {
                 if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue)) {
                     return;
                 }
@@ -304,7 +301,7 @@
                                 });
 
                                 dataSort.forEach(function (i) {
-                                    var tempAge = '';
+                                    var tempAge;
                                     if (i.ageMax > 80) {
                                         tempAge = i.ageMin + '+';
                                     } else if (i.ageMin === i.ageMax) {
@@ -389,11 +386,9 @@
             $scope.validateStructureSection = function () {
                 var validateOk = true;
 
-                if (!$scope.temp.createStructure) {
-                    if (angular.isUndefined($scope.temp.structure) || $scope.temp.structure._id < 0) {
-                        toastr.warning($filter('translate')('structureSection.ph.structureMandatory'));
-                        validateOk = false;
-                    }
+                if (!$scope.temp.createStructure && (angular.isUndefined($scope.temp.structure) || $scope.temp.structure._id < 0)) {
+                    toastr.warning($filter('translate')('structureSection.ph.structureMandatory'));
+                    validateOk = false;
                 }
 
                 if ($scope.temp.createStructure) {

@@ -33,7 +33,7 @@
             $translatePartialLoader.addPart('commons');
             qeventbus.prepForBroadcast('menuItem', 'signup');
             /**
-             * @name $qcope.cancelSignup
+             * @name $scope.cancelSignup
              * @function
              * @memberOf qaobee.directives.headerMenu
              * @description Cancel user signup
@@ -67,7 +67,7 @@
                             } else {
                                 delete $scope.signup;
                                 delete $scope.passwdConfirm;
-                                $location.path('/signupStartDone')
+                                $location.path('/signupStartDone');
                             }
                         }).error(function (error) {
                             $window.Recaptcha.reload();
@@ -81,7 +81,6 @@
                     }
                 });
             };
-            
             /**
              * @name $scope.logoff
              * @function
@@ -91,7 +90,6 @@
             $scope.closeSignupOk = function () {
                 angular.element('#modalSignupOK').closeModal();
             };
-
         })
 
         .controller('SignupStartDoneCtrl', function ($rootScope, $scope, $log, $translatePartialLoader, $location, EnvironmentConfig) {
@@ -104,5 +102,3 @@
         });
 
 }());
-        
-        

@@ -28,7 +28,7 @@
         ])
         .directive('headerMenu', function (qeventbus, userRestAPI, signupRestAPI, $rootScope, $cookieStore, $cookies,
                                            $location, $window, $log, $translatePartialLoader, $filter, deviceDetector,
-                                           notificationsRestAPI, EnvironmentConfig, $translate) {
+                                           notificationsRestAPI, EnvironmentConfig) {
             return {
                 restrict: 'AE',
                 controller: function ($scope) {
@@ -51,7 +51,9 @@
                      *
                      */
                     function getNotifications() {
-                        if (!$scope.user) return;
+                        if (!$scope.user) {
+                            return;
+                        }
                         notificationsRestAPI.getUserNotifications().then(function (data) {
                             if (!!data.data && !data.data.error) {
                                 $scope.notifications = data.data.filter(function (n) {
@@ -102,7 +104,7 @@
                     if (deviceDetector.os === 'android') {
                         var cookieDownload = $cookies.get('downloadApp');
                         if (angular.isUndefined(cookieDownload)) {
-                        	$scope.urlAppMobile = EnvironmentConfig.appMobile.google;
+                            $scope.urlAppMobile = EnvironmentConfig.appMobile.google;
                             $scope.showBanner = true;
                         }
                     }
@@ -222,7 +224,7 @@
                     };
 
                     $scope.closeTrial = function () {
-                      $scope.intrial = false;
+                        $scope.intrial = false;
                     };
                     /**
                      * @name $scope.$on
@@ -245,21 +247,7 @@
                                         $scope.intrial = true;
                                         var endDate = moment(plan.startPeriodDate).add(30, 'day');
                                         $scope.endTrial = $filter('number')(moment.duration(endDate.diff(moment())).asDays() - 1, 0);
-                                        $scope.trialCountVal = {count : $scope.endTrial };
-                                        /*
-                                        $translate(['headerMenu.trial.title', 'headerMenu.trial.content'], {'count': $filter('number')(moment.duration(endDate.diff(moment())).asDays() - 1, 0)})
-                                            .then(function (translatedMessage) {
-                                                toastr.info(translatedMessage['headerMenu.trial.content'], translatedMessage['headerMenu.trial.title'], {
-                                                    closeButton: true,
-                                                    positionClass: 'toast-top-full-width',
-                                                    extendedTimeOut: 0,
-                                                    timeOut: 0,
-                                                    onHidden: function () {
-                                                        $scope.intrial = false;
-                                                    }
-                                                });
-                                            });
-                                            */
+                                        $scope.trialCountVal = {count: $scope.endTrial};
                                     }
                                 });
                                 if ($scope.notpaid) {

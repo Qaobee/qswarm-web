@@ -11,12 +11,11 @@
      * @requires {@link qaobee.components.restAPI.sandbox.effective.personRestAPI|qaobee.components.restAPI.sandbox.effective.personRestAPI}
      */
     angular.module('qaobee.effectiveStats', [
-            /* qaobee Rest API */
-            'effectiveRestAPI',
-            'personRestAPI',
-            'userRestAPI'
-            /* qaobee widget */
-        ])
+        /* qaobee Rest API */
+        'effectiveRestAPI',
+        'personRestAPI',
+        'userRestAPI'
+    ])
 
         .config(function ($routeProvider, metaDatasProvider) {
             $routeProvider.when('/private/effectiveStats/:effectiveId', {
@@ -26,7 +25,6 @@
                     meta: metaDatasProvider.getMeta
                 },
                 templateUrl: 'app/modules/sandbox/stats/effective/effectiveStats.html'
-
             });
         })
         /**

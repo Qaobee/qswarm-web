@@ -21,11 +21,9 @@
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
                     $scope.noStat = false;
-
                     /* getStats */
-                    var getStats = function (ownersId, startDate, endDate /* , values */) {
+                    var getStats = function (ownersId, startDate, endDate) {
                         var deferred = $q.defer();
-                        // var search = {};
                         var result = {
                             nbGame: 0,
                             nbHolder: 0,
@@ -98,7 +96,7 @@
 
                         $scope.title = 'stats.resumeTab.' + $scope.label;
 
-                        getStats($scope.ownersId, $scope.startDate, $scope.endDate, $scope.values).then(function (result) {
+                        getStats($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
                             $log.debug('result', result);
                             $scope.nbHolder = result.nbHolder;
                             $scope.nbGame = result.nbGame;

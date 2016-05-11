@@ -11,15 +11,11 @@
      * @copyright <b>QaoBee</b>.
      */
     angular.module('qaobee.updateTeam', [
-        /* angular modules*/
-        
         /* qaobee Rest API */
         'teamRestAPI',
         'userRestAPI'])
 
-
         .config(function ($routeProvider, metaDatasProvider) {
-
             $routeProvider.when('/private/updateTeam/:teamId/:adversary', {
                 controller: 'UpdateTeamControler',
                 resolve: {
@@ -27,126 +23,116 @@
                     meta: metaDatasProvider.getMeta
                 },
                 templateUrl: 'app/modules/sandbox/effective/team/writeTeam.html'
-
             });
         })
 
-    /**
-     * @class qaobee.modules.sandbox.effective.UpdateTeamControler
-     * @description Main controller for view writeTeam.html
-     */
-        .controller('UpdateTeamControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, 
-                                                      teamRestAPI, userRestAPI) {
+        /**
+         * @class qaobee.modules.sandbox.effective.UpdateTeamControler
+         * @description Main controller for view writeTeam.html
+         */
+        .controller('UpdateTeamControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
+                                                     teamRestAPI, userRestAPI) {
 
-        $translatePartialLoader.addPart('commons');
-        $translatePartialLoader.addPart('effective');
-        
-        $scope.teamId = $routeParams.teamId;
-        $scope.adversary = $routeParams.adversary;
+            $translatePartialLoader.addPart('commons');
+            $translatePartialLoader.addPart('effective');
 
-        $scope.user = user;
-        $scope.meta = meta;
-        
-        $scope.addTeamTitle = false;
-        
-        // return button
-        $scope.doTheBack = function() {
-            $window.history.back();
-        };
-        
-        //Initialization team
-        $scope.team = {};
-        $scope.listTeamAdversary = {};
-        $scope.listTeamAdversaryUpdate = [];
-        
-        /* get team */
-        $scope.getTeam = function () {
-            
-            /* get team */
-            teamRestAPI.getTeam($scope.teamId).success(function (team) {
-                $scope.team = team;
-                $scope.team.enable = $scope.team.enable?true:false;
+            $scope.teamId = $routeParams.teamId;
+            $scope.adversary = $routeParams.adversary;
 
-                if($scope.adversary==='false') {
-                    /* Retrieve list of adversary of effective */
-                    teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'all', null).success(function (data) {
-                        $scope.listTeamAdversary = data.sortBy(function(n) {
-                            return n.label; 
-                        });
-                        
-                        if($scope.listTeamAdversary.length>0){
-                            $scope.listTeamAdversary.forEach(function (a) {
-                                a.modified=false;
-                                if(angular.isDefined(a.linkTeamId)) {
-                                    a.checked=false;
-                                    var trouve = a.linkTeamId.find(function(n) {
-                                        return n === team._id; 
-                                    });
+            $scope.user = user;
+            $scope.meta = meta;
 
-                                    if(angular.isDefined(trouve)) {
-                                        a.checked=true;
-                                    }
-                                }
-                            });
-                        }              
-                    });      
-                } 
-            });
-        };
-        
-        /* Update effective list member*/
-        $scope.changed = function(item) {
-            if(angular.isUndefined(item.linkTeamId)) {
-                item.linkTeamId= [];
-            }
-            if(item.checked) {
-                item.linkTeamId.push($scope.team._id);
-            } else {
-                item.linkTeamId.remove(function(n) {
-                    return n === $scope.team._id; 
-                });
-            }
-            item.modified = true;
-        };
-        
-        /* Create a new team */
-        $scope.writeTeam = function () {
-            
-            /* add team */
-            teamRestAPI.updateTeam($scope.team).success(function (team) {
-                
-                if($scope.listTeamAdversary.length>0){
-                    $scope.listTeamAdversary.forEach(function (a) {
-                        if(a.modified) {
-                            teamRestAPI.updateTeam(a).success(function (team) {});
-                        }
-                    });
-                }   
-                
-                toastr.success($filter('translate')('updateTeam.toastSuccess', {
-                    label: team.label
-                }));
+            $scope.addTeamTitle = false;
 
+            // return button
+            $scope.doTheBack = function () {
                 $window.history.back();
-                        
-            });
-        };
-        
-        /* check user connected */
-        $scope.checkUserConnected = function () {
-            
-            userRestAPI.getUserById(user._id).success(function (data) {
-                $scope.getTeam();
-            }).error(function (data) {
-                $log.error('MainEffectiveControler : User not Connected');
-            });
-        }; 
-        
-        /* Primary, check if user connected */
-        $scope.checkUserConnected();
-       
-    })
-    
-    //
-    ;
+            };
+
+            //Initialization team
+            $scope.team = {};
+            $scope.listTeamAdversary = {};
+            $scope.listTeamAdversaryUpdate = [];
+
+            /* get team */
+            $scope.getTeam = function () {
+
+                /* get team */
+                teamRestAPI.getTeam($scope.teamId).success(function (team) {
+                    $scope.team = team;
+                    $scope.team.enable = $scope.team.enable ? true : false;
+
+                    if ($scope.adversary === 'false') {
+                        /* Retrieve list of adversary of effective */
+                        teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'all', null).success(function (data) {
+                            $scope.listTeamAdversary = data.sortBy(function (n) {
+                                return n.label;
+                            });
+
+                            if ($scope.listTeamAdversary.length > 0) {
+                                $scope.listTeamAdversary.forEach(function (a) {
+                                    a.modified = false;
+                                    if (angular.isDefined(a.linkTeamId)) {
+                                        a.checked = false;
+                                        var trouve = a.linkTeamId.find(function (n) {
+                                            return n === team._id;
+                                        });
+                                        a.checked = angular.isDefined(trouve);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            };
+
+            /* Update effective list member*/
+            $scope.changed = function (item) {
+                if (angular.isUndefined(item.linkTeamId)) {
+                    item.linkTeamId = [];
+                }
+                if (item.checked) {
+                    item.linkTeamId.push($scope.team._id);
+                } else {
+                    item.linkTeamId.remove(function (n) {
+                        return n === $scope.team._id;
+                    });
+                }
+                item.modified = true;
+            };
+
+            /* Create a new team */
+            $scope.writeTeam = function () {
+
+                /* add team */
+                teamRestAPI.updateTeam($scope.team).success(function (team) {
+
+                    if ($scope.listTeamAdversary.length > 0) {
+                        $scope.listTeamAdversary.forEach(function (a) {
+                            if (a.modified) {
+                                teamRestAPI.updateTeam(a).success();
+                            }
+                        });
+                    }
+
+                    toastr.success($filter('translate')('updateTeam.toastSuccess', {
+                        label: team.label
+                    }));
+
+                    $window.history.back();
+
+                });
+            };
+
+            /* check user connected */
+            $scope.checkUserConnected = function () {
+                userRestAPI.getUserById(user._id).success(function () {
+                    $scope.getTeam();
+                }).error(function () {
+                    $log.error('MainEffectiveControler : User not Connected');
+                });
+            };
+            /* Primary, check if user connected */
+            $scope.checkUserConnected();
+        });
 }());

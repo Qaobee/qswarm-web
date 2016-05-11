@@ -12,7 +12,6 @@
      * @requires {@link qaobee.components.widgets.event.widget.nextEvent|qaobee.components.widgets.event.widget.nextEvent}
      */
     angular.module('qaobee.home', [
-
             /* qaobee services */
             'effectifSRV',
             /* qaobee Rest API */
@@ -60,10 +59,8 @@
                     qeventbus.prepForBroadcast("periodicityActive", $scope.periodicityActive);
                 }
             });
-        
             /* init periodicity active */
             $scope.initPeriodicityActive = function() {
-                
                 if (!user.periodicity) {
                     $scope.periodicity = 'season';
                     $scope.periodicityActive = {

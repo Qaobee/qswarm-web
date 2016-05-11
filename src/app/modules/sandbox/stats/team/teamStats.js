@@ -11,17 +11,13 @@
      * @requires {@link qaobee.components.restAPI.sandbox.effective.personRestAPI|qaobee.components.restAPI.sandbox.effective.personRestAPI}
      */
     angular.module('qaobee.teamStats', [
-
-            /* qaobee services */
-            'statsSRV',
-            'qaobee.eventbus',
-
-            /* qaobee Rest API */
-            'personRestAPI',
-            'statsRestAPI',
-            'teamRestAPI',
-            'userRestAPI'
-        ])
+        'statsSRV',
+        'qaobee.eventbus',
+        'personRestAPI',
+        'statsRestAPI',
+        'teamRestAPI',
+        'userRestAPI'
+    ])
 
         .config(function ($routeProvider, metaDatasProvider) {
             $routeProvider.when('/private/teamStats/:teamId', {
@@ -31,7 +27,6 @@
                     meta: metaDatasProvider.getMeta
                 },
                 templateUrl: 'app/modules/sandbox/stats/team/teamStats.html'
-
             });
         })
         /**
@@ -108,19 +103,17 @@
                             $scope.collectes.push(e);
                         });
                     }
-                })
+                });
             };
 
             /* check user connected */
             $scope.checkUserConnected = function () {
-
-                userRestAPI.getUserById(user._id).success(function (data) {
+                userRestAPI.getUserById(user._id).success(function () {
                     $scope.initStats();
-                }).error(function (data) {
+                }).error(function () {
                     $log.error('TeamStats : User not Connected');
                 });
             };
-
             /* Primary, check if user connected */
             $scope.checkUserConnected();
         });

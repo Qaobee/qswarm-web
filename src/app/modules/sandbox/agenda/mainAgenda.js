@@ -11,18 +11,18 @@
      * @copyright <b>QaoBee</b>.
      */
     angular.module('qaobee.agenda', [
-            /* angular qaobee */
-            'ngAutocomplete',
-            'qaobee.compare.events',
+        /* angular qaobee */
+        'ngAutocomplete',
+        'qaobee.compare.events',
 
-            /* qaobee modules */
-            'qaobee.addEvent',
-            'qaobee.updateEvent',
+        /* qaobee modules */
+        'qaobee.addEvent',
+        'qaobee.updateEvent',
 
-            /* qaobee Rest API */
-            'eventsRestAPI',
-            'effectiveRestAPI',
-            'userRestAPI'])
+        /* qaobee Rest API */
+        'eventsRestAPI',
+        'effectiveRestAPI',
+        'userRestAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
@@ -106,7 +106,7 @@
             $scope.$on('qeventbus', function () {
                 if ('event.compare' === qeventbus.message) {
                     $scope.compareList[qeventbus.data.id] = qeventbus.data.value;
-                    $scope.updateEventToCompare(qeventbus.data.id)
+                    $scope.updateEventToCompare(qeventbus.data.id);
                 }
             });
 
@@ -115,7 +115,6 @@
                 if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
                     user.periodicity = $scope.periodicity;
                     user.periodicityActive = $scope.periodicityActive;
-
                     $scope.getEvents(moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').valueOf(), moment($scope.periodicityActive.endDate, 'DD/MM/YYYY').valueOf());
                 }
             });
@@ -169,11 +168,10 @@
 
             /* check user connected */
             $scope.checkUserConnected = function () {
-
-                userRestAPI.getUserById(user._id).success(function (data) {
+                userRestAPI.getUserById(user._id).success(function () {
                     $scope.getEffectives();
                     $scope.initAgenda();
-                }).error(function (data) {
+                }).error(function () {
                     $log.error('MainAgendaControler : User not Connected');
                 });
             };
@@ -182,7 +180,7 @@
             $scope.checkUserConnected();
 
         })
-        //
+    //
     ;
 }());
 

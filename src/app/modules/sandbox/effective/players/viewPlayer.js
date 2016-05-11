@@ -13,14 +13,12 @@
      */
     angular.module('qaobee.viewPlayer', [
 
-            /* qaobee Rest API */
-            'effectiveRestAPI',
-            'personRestAPI',
-            'userRestAPI'])
-
+        /* qaobee Rest API */
+        'effectiveRestAPI',
+        'personRestAPI',
+        'userRestAPI'])
 
         .config(function ($routeProvider, metaDatasProvider) {
-
             $routeProvider.when('/private/viewPlayer/:playerId', {
                 controller: 'ViewPlayerControler',
                 resolve: {
@@ -28,7 +26,6 @@
                     meta: metaDatasProvider.getMeta
                 },
                 templateUrl: 'app/modules/sandbox/effective/players/viewPlayer.html'
-
             });
         })
 
@@ -67,13 +64,6 @@
                     $scope.map = ($document.find('#ngMapPlayer'))[0];
                     $scope.map = new google.maps.Map($scope.map, myOptions);
                     google.maps.event.trigger($scope.map, 'resize');
-                    /*
-                     var marker = new google.maps.Marker({
-                     position: myLatLng,
-                     map: map,
-                     title: $scope.player.address.formatedAddress
-                     });
-                     */
                 }, 0);
 
                 angular.element('#mapPlayer').openModal();
@@ -99,25 +89,19 @@
                     if (angular.isDefined($scope.player.address)) {
                         $scope.mapShow = true;
                     }
-
-                    //$scope.player.birthdate = $filter('date')($scope.player.birthdate, 'yyyy');
                     $scope.player.age = moment().format('YYYY') - moment($scope.player.birthdate).format('YYYY');
                 });
             };
 
             /* check user connected */
             $scope.checkUserConnected = function () {
-
-                userRestAPI.getUserById(user._id).success(function (data) {
+                userRestAPI.getUserById(user._id).success(function () {
                     $scope.getPerson();
-                }).error(function (data) {
+                }).error(function () {
                     $log.error('ViewPlayerControler : User not Connected');
                 });
             };
-
             /* Primary, check if user connected */
             $scope.checkUserConnected();
-        })
-        //
-    ;
+        });
 }());

@@ -12,28 +12,28 @@
      */
     angular.module('qaobee.stats', [
 
-            /* qaobee Rest API */
-            'effectiveRestAPI',
-            'eventsRestAPI',
-            'personRestAPI',
-            'userRestAPI',
+        /* qaobee Rest API */
+        'effectiveRestAPI',
+        'eventsRestAPI',
+        'personRestAPI',
+        'userRestAPI',
 
-            /* qaobee module */
-            'qaobee.effectiveStats',
-            'qaobee.eventStats',
-            'qaobee.playerStats',
-            'qaobee.teamStats',
+        /* qaobee module */
+        'qaobee.effectiveStats',
+        'qaobee.eventStats',
+        'qaobee.playerStats',
+        'qaobee.teamStats',
 
-            /* c3 angular directive */
-            'gridshore.c3js.chart',
+        /* c3 angular directive */
+        'gridshore.c3js.chart',
 
-            /* qaobee widget */
-            'statsEfficiency',
-            'statsGoals',
-            'statsPlayerUse',
-            'statsSanction',
-            'statsActionsPosNeg'
-        ])
+        /* qaobee widget */
+        'statsEfficiency',
+        'statsGoals',
+        'statsPlayerUse',
+        'statsSanction',
+        'statsActionsPosNeg'
+    ])
 
         .config(function ($routeProvider, metaDatasProvider) {
             $routeProvider.when('/private/mainStats', {
@@ -69,17 +69,14 @@
                 });
             };
 
-
             /* check user connected */
             $scope.checkUserConnected = function () {
-
-                userRestAPI.getUserById(user._id).success(function (data) {
+                userRestAPI.getUserById(user._id).success(function () {
                     $scope.showGraph();
-                }).error(function (data) {
+                }).error(function () {
                     $log.error('MainStats : User not Connected');
                 });
             };
-
             /* Primary, check if user connected */
             $scope.checkUserConnected();
         });

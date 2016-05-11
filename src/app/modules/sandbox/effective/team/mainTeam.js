@@ -10,24 +10,23 @@
      * @copyright <b>QaoBee</b>.
      */
     angular.module('qaobee.teams', [
-            /* angular qaobee */
-            'ngAutocomplete',
-            'qaobee.compare.team',
-            /* qaobee modules */
-            'qaobee.addTeam',
-            'qaobee.updateTeam',
+        /* angular qaobee */
+        'ngAutocomplete',
+        'qaobee.compare.team',
+        /* qaobee modules */
+        'qaobee.addTeam',
+        'qaobee.updateTeam',
 
-            /* qaobee services */
-            'effectifSRV',
+        /* qaobee services */
+        'effectifSRV',
 
-            /* qaobee Rest API */
-            'effectiveRestAPI',
-            'teamRestAPI',
-            'userRestAPI'])
+        /* qaobee Rest API */
+        'effectiveRestAPI',
+        'teamRestAPI',
+        'userRestAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
-
             $routeProvider.when('/private/teams/:effectiveId', {
                 controller: 'MainTeamController',
                 resolve: {
@@ -35,7 +34,6 @@
                     meta: metaDatasProvider.getMeta
                 },
                 templateUrl: 'app/modules/sandbox/effective/team/mainTeam.html'
-
             });
         })
 
@@ -44,10 +42,11 @@
          * @description Main controller for view mainTeam.html
          */
         .controller('MainTeamController', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, $window, qeventbus,
-                                                   user, meta, effectiveSrv, teamRestAPI, userRestAPI, teamCompareService, widgetDefinitionsMainTeam, defaultWidgetsMainTeam) {
+                                                    user, meta, effectiveSrv, teamRestAPI, userRestAPI, teamCompareService, widgetDefinitionsMainTeam, defaultWidgetsMainTeam) {
 
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('commons');
+            $translatePartialLoader.addPart('home');
 
             $scope.effectiveId = $routeParams.effectiveId;
 
@@ -55,18 +54,18 @@
             $scope.meta = meta;
             $scope.listTeamHome = [];
             $scope.compareList = {};
-        
-            if(user.mainTeamTabId){
+
+            if (user.mainTeamTabId) {
                 $scope.activeTabIndex = user.mainTeamTabId;
             } else {
                 $scope.activeTabIndex = 0;
             }
-        
+
             /* keep in memory tab by default */
             $scope.changeTabDefault = function (tabId) {
                 user.mainTeamTabId = tabId;
-            }
-        
+            };
+
             $scope.dashboardOptions = {
                 widgetButtons: false,
                 widgetDefinitions: widgetDefinitionsMainTeam.get(),
@@ -76,15 +75,15 @@
                 storageId: 'qaobee-widgets-dashboard-MainTeam'
             };
 
-            $scope.compare = function() {
-                if(Object.keys($scope.compareList).length >0) {
-                    $location.path('/private/team/compare/'+$scope.effectiveId);
+            $scope.compare = function () {
+                if (Object.keys($scope.compareList).length > 0) {
+                    $location.path('/private/team/compare/' + $scope.effectiveId);
                     return false;
                 } else {
                     toastr.info($filter('translate')('compare.team-min'));
                 }
             };
-        
+
             /* watch if periodicity change */
             $scope.$watch('periodicityActive', function (newValue, oldValue) {
                 if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
@@ -94,9 +93,9 @@
                     qeventbus.prepForBroadcast("periodicityActive", $scope.periodicityActive);
                 }
             });
-        
+
             /* init periodicity active */
-            $scope.initPeriodicityActive = function() {
+            $scope.initPeriodicityActive = function () {
                 if (!user.periodicity) {
                     $scope.periodicity = 'season';
                     $scope.periodicityActive = {
@@ -144,19 +143,16 @@
 
             /* check user connected */
             $scope.checkUserConnected = function () {
-                userRestAPI.getUserById(user._id).success(function (data) {
+                userRestAPI.getUserById(user._id).success(function () {
                     $scope.getListTeamHome();
                     $scope.initPeriodicityActive();
-                }).error(function (data) {
+                }).error(function () {
                     $log.error('MainTeamControler : User not Connected');
                 });
             };
 
             /* Primary, check if user connected */
             $scope.checkUserConnected();
-
-        })
-        //
-    ;
+        });
 }());
 

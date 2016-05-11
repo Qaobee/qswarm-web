@@ -17,25 +17,25 @@
      * @copyright <b>QaoBee</b>.
      */
     angular.module('qaobee.effective', [
-            /* angular qaobee */
-            'ngAutocomplete',
+        /* angular qaobee */
+        'ngAutocomplete',
 
-            /* qaobee modules */
-            'qaobee.addEffective',
-            'qaobee.updateEffective',
-            'qaobee.addPlayer',
-            'qaobee.updatePlayer',
-            'qaobee.viewPlayer',
-            'qaobee.addTeam',
-            'qaobee.updateTeam',
+        /* qaobee modules */
+        'qaobee.addEffective',
+        'qaobee.updateEffective',
+        'qaobee.addPlayer',
+        'qaobee.updatePlayer',
+        'qaobee.viewPlayer',
+        'qaobee.addTeam',
+        'qaobee.updateTeam',
 
-            /* qaobee services */
-            'effectifSRV',
+        /* qaobee services */
+        'effectifSRV',
 
-            /* qaobee Rest API */
-            'effectiveRestAPI',
-            'teamRestAPI',
-            'userRestAPI'])
+        /* qaobee Rest API */
+        'effectiveRestAPI',
+        'teamRestAPI',
+        'userRestAPI'])
 
 
         .config(function ($routeProvider, metaDatasProvider) {
@@ -130,13 +130,12 @@
             /* keep in memory tab by default */
             $scope.changeTabDefault = function (tabId) {
                 user.effectiveTabId = tabId;
-            }
+            };
 
             /* check user connected */
             $scope.checkUserConnected = function () {
 
-                userRestAPI.getUserById(user._id).success(function (data) {
-
+                userRestAPI.getUserById(user._id).success(function () {
                     $scope.getEffectives();
                     $scope.getListTeamHome();
                     $timeout(function () {
@@ -146,17 +145,13 @@
                             $('ul.tabs').tabs('select_tab', 'playerList');
                         }
                     }, 100);
-                }).error(function (data) {
+                }).error(function () {
                     $log.error('MainEffectiveControler : User not Connected');
                 });
             };
 
             /* Primary, check if user connected */
             $scope.checkUserConnected();
-
-
-        })
-        //
-    ;
+        });
 }());
 

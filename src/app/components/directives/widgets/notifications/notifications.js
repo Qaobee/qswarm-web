@@ -5,7 +5,7 @@
      */
     angular.module('qaobee.widgets.notifications', [])
 
-        .directive('widgetNotifications', function (qeventbus, $translatePartialLoader, EnvironmentConfig, notificationsRestAPI, $log) {
+        .directive('widgetNotifications', function (qeventbus, $translatePartialLoader, EnvironmentConfig, notificationsRestAPI) {
             return {
                 restrict: 'AE',
                 scope: {

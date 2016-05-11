@@ -71,7 +71,6 @@
                                 listFieldsGroupBy: ['owner', 'code', 'shootSeqId']
                             };
                         }
-                        
                         var listShootSeqId = [];
 
                         statsRestAPI.getStatGroupBy(search).success(function (dataOri) {
@@ -113,14 +112,12 @@
                         $scope.nbShoot = 0;
                         $scope.nbGoal = 0;
                         $scope.title = 'stats.efficiency.' + $scope.label;
-                        
                         getEfficiency($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
                             $scope.nbShoot = result.nbShoot;
                             $scope.nbGoal = result.nbGoal;
                             $scope.efficiency = result.efficiency;
                         });
                     };
-                    
                     /* Refresh widget on periodicity change */
                     $scope.$on('qeventbus', function () {
                         if ("periodicityActive" === qeventbus.message) {
