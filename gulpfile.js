@@ -33,15 +33,6 @@ gulp.task('conf-dev', function () {
         .pipe(gulp.dest('./src/app'))
 });
 
-gulp.task('conf-rec', function () {
-    gulp.src('conf/config.json')
-        .pipe(gulpNgConfig('qaobee.config', {
-            environment: 'recette',
-            wrap: true
-        }))
-        .pipe(gulp.dest('./src/app'))
-});
-
 gulp.task('conf-docker', function () {
     gulp.src('conf/config.json')
         .pipe(gulpNgConfig('qaobee.config', {
@@ -54,7 +45,7 @@ gulp.task('conf-docker', function () {
  *  Default task clean temporaries directories and launch the
  *  main optimization build task
  */
-gulp.task('default', ['clean', 'conf-rec'], function () {
+gulp.task('default', ['clean', 'conf-dev'], function () {
     gulp.start('build');
 });
 
