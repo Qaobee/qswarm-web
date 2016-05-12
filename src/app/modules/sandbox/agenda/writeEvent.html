@@ -1,116 +1,136 @@
 <div class="container">
-<!-- body start-->
+    <!-- body start-->
     <div class="row"></div>
-    
+
     <!-- Entete -->
     <div class="row">
         <div class="col s12">
             <div class="row colorMain white-text center-align">
                 <div ng-hide="addEventTitle">
-                    <div class="col s1">    
+                    <div class="col s1">
                         <h5><i class="fa fa-pencil-square-o"></i></h5>
                     </div>
                     <div class="col s11">
-                        <h5>{{'updateEvent.title' | translate }}</h5>
+                        <h5 translate="updateEvent.title"></h5>
                     </div>
                 </div>
                 <div ng-show="addEventTitle">
-                    <div class="col s1">    
+                    <div class="col s1">
                         <h5><i class="fa fa-plus-square-o"></i></h5>
                     </div>
                     <div class="col s11">
-                        <h5>{{'addEvent.title' | translate }}</h5>
+                        <h5 translate="addEvent.title"></h5>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div class="row">
         <form class="col s12" ng-submit="checkAndformatEvent()" name="eventForm">
             <!-- Planning-->
-            <div class="card-panel"> 
+            <div class="card-panel">
                 <div class="row">
                     <div class="col m6 s12">
-                        <h6 class="red-text text-lighten-1">{{'eventLabels.SectionPlaning' | translate }}</h6>
+                        <h6 class="red-text text-lighten-1" translate="eventLabels.SectionPlaning"></h6>
                         <div class="input-field col s4">
-                            <label>{{'eventLabels.StartDate' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                            <label>{{'eventLabels.StartDate' | translate }} <span
+                                    class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="input-field col s8">
-                            <input id="EventStartDate" name="EventStartDate" type="text" class="datepicker" ng-model="startDate" required
+                            <input id="EventStartDate" name="EventStartDate" type="text" class="datepicker"
+                                   ng-model="startDate" required
                                    ng-class="{ 'has-error' : eventForm.EventStartDate.$invalid && !eventForm.EventStartDate.$pristine }"/>
                         </div>
                         <div class="small red-text text-lighten-1 col s12"
-                            ng-show="eventForm.EventStartDate.$invalid && !eventForm.EventStartDate.$pristine" translate="eventErrors.StartDate"></div>
+                             ng-show="eventForm.EventStartDate.$invalid && !eventForm.EventStartDate.$pristine"
+                             translate="eventErrors.StartDate"></div>
 
                         <div class="input-field col s4">
-                            <label>{{'eventLabels.StartHour' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                            <label>{{'eventLabels.StartHour' | translate }} <span
+                                    class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="input-field col s8">
-                             <input id="EventStartHours" class="timepicker" name="EventStartHours" type="text" ng-model="startHours" required
-                                    ng-class="{ 'has-error' : eventForm.EventStartHours.$invalid && !eventForm.EventStartHours.$pristine }"/>
+                            <input id="EventStartHours" class="timepicker" name="EventStartHours" type="text"
+                                   ng-model="startHours" required
+                                   ng-class="{ 'has-error' : eventForm.EventStartHours.$invalid && !eventForm.EventStartHours.$pristine }"/>
                         </div>
                         <div class="small red-text text-lighten-1 col s12"
-                            ng-show="eventForm.EventStartHours.$invalid && !eventForm.EventStartHours.$pristine" translate="eventErrors.StartHour"></div>
+                             ng-show="eventForm.EventStartHours.$invalid && !eventForm.EventStartHours.$pristine"
+                             translate="eventErrors.StartHour"></div>
                     </div>
                     <!-- EventType -->
                     <div class="col m6 s12">
-                        <h6 class="red-text text-lighten-1">{{'eventLabels.SectionIdentity' | translate }}</h6>
+                        <h6 class="red-text text-lighten-1" translate="eventLabels.SectionIdentity"></h6>
                         <div class="input-field col s3">
-                            <label>{{'eventLabels.Label' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                            <label>{{'eventLabels.Label' | translate }} <span
+                                    class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="input-field col s9">
-                            <input name="eventLabel" type="text" ng-model="event.label" required ng-class="{ 'has-error' : eventForm.eventLabel.$invalid && !eventForm.eventLabel.$pristine }">
+                            <input name="eventLabel" type="text" ng-model="event.label" required
+                                   ng-class="{ 'has-error' : eventForm.eventLabel.$invalid && !eventForm.eventLabel.$pristine }">
                                 <span class="small red-text text-lighten-1"
-                                    ng-show="eventForm.eventLabel.$invalid && !eventForm.eventLabel.$pristine" translate="eventErrors.Label"></span>
+                                      ng-show="eventForm.eventLabel.$invalid && !eventForm.eventLabel.$pristine"
+                                      translate="eventErrors.Label"></span>
                         </div>
                         <div class="input-field col s3">
-                            <label>{{'eventLabels.Type' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                            <label>{{'eventLabels.Type' | translate }} <span
+                                    class="red-text text-lighten-1">*</span></label>
                         </div>
                         <div class="input-field col s9">
-                            <select class="browser-default blue-grey-text text-darken-1" name="eventType" ng-model="event.link.type" 
-                                    required id="EventType" ng-change="changeEventType()" ng-class="{ 'has-error' : eventForm.eventType.$invalid && !eventForm.eventType.$pristine }">
+                            <select class="browser-default blue-grey-text text-darken-1" name="eventType"
+                                    ng-model="event.link.type"
+                                    required id="EventType" ng-change="changeEventType()"
+                                    ng-class="{ 'has-error' : eventForm.eventType.$invalid && !eventForm.eventType.$pristine }">
                                 <option value="" selected>{{'eventLabels.selectType' | translate }}</option>
-                                <option ng-repeat="p in listEventType track by $index" value="{{p.code}}">{{p.label}}</option>
+                                <option ng-repeat="p in listEventType track by $index" value="{{p.code}}">{{p.label}}
+                                </option>
                             </select>
                             <span class="small red-text text-lighten-1"
-                                ng-show="eventForm.eventType.$invalid && !eventForm.eventType.$pristine" translate="eventErrors.Type"></span>
+                                  ng-show="eventForm.eventType.$invalid && !eventForm.eventType.$pristine"
+                                  translate="eventErrors.Type"></span>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Participants -->
-            <div class="card-panel grey lighten-3" ng-show="chooseAdversary">                        
+            <div class="card-panel grey lighten-3" ng-show="chooseAdversary">
                 <div class="row">
                     <div class="input-field col s10 m5">
-                        <h6 class="red-text text-lighten-1">{{'eventLabels.SectionActorsHome' | translate }} <span class="red-text text-lighten-1">*</span></label></h6>
-                        <select class="browser-default blue-grey-text text-darken-1" ng-model="teamId" name="SectionActorsHome" ng-change="changeTeamHome()" ng-required="chooseAdversary"
+                        <h6 class="red-text text-lighten-1">{{'eventLabels.SectionActorsHome' | translate }} <span
+                                class="red-text text-lighten-1">*</span></label></h6>
+                        <select class="browser-default blue-grey-text text-darken-1" ng-model="teamId"
+                                name="SectionActorsHome" ng-change="changeTeamHome()" ng-required="chooseAdversary"
                                 ng-class="{ 'has-error' : eventForm.SectionActorsHome.$invalid && !eventForm.SectionActorsHome.$pristine }">
                             <option value="" disabled selected>{{'eventLabels.Team' | translate }}</option>
                             <option ng-repeat="p in listTeamHome track by $index" value="{{p._id}}">{{p.label}}</option>
                         </select>
                         <span class="small red-text text-lighten-1 col s12"
-                            ng-show="eventForm.SectionActorsHome.$invalid && !eventForm.SectionActorsHome.$pristine" translate="eventErrors.teamHome"></span>
+                              ng-show="eventForm.SectionActorsHome.$invalid && !eventForm.SectionActorsHome.$pristine"
+                              translate="eventErrors.teamHome"></span>
                     </div>
                     <div class="input-field col s2 m1">
                         &nbsp;
                     </div>
 
                     <div class="input-field col s10 m5" ng-show="chooseHome">
-                        <h6 class="red-text text-lighten-1">{{'eventLabels.SectionActorsAdversary' | translate }} <span class="red-text text-lighten-1">*</span></label></h6>                        
-                        <input type="text" list="adversaries" name="SectionActorsAdversary" ng-model="adversaryLabel" placeholder="{{'eventLabels.Adversary' | translate }}" ng-required="chooseHome"
+                        <h6 class="red-text text-lighten-1">{{'eventLabels.SectionActorsAdversary' | translate }} <span
+                                class="red-text text-lighten-1">*</span></label></h6>
+                        <input type="text" list="adversaries" name="SectionActorsAdversary" ng-model="adversaryLabel"
+                               placeholder="{{'eventLabels.Adversary' | translate }}" ng-required="chooseHome"
                                ng-class="{ 'has-error' : eventForm.SectionActorsAdversary.$invalid && !eventForm.SectionActorsAdversary.$pristine }"/>
                         <span class="small red-text text-lighten-1 col s12"
-                            ng-show="eventForm.SectionActorsAdversary.$invalid && !eventForm.SectionActorsAdversary.$pristine" translate="eventErrors.adversary"></span>
+                              ng-show="eventForm.SectionActorsAdversary.$invalid && !eventForm.SectionActorsAdversary.$pristine"
+                              translate="eventErrors.adversary"></span>
                         <datalist id="adversaries">
                             <option ng-repeat="p in listTeamAdversary track by $index" value="{{p.label}}"></option>
                         </datalist>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Localisation-->
-            <div class="card-panel"> 
+            <div class="card-panel">
                 <div class="row">
                     <h6 class="red-text text-lighten-1 col s12">{{'eventLabels.SectionPlace' | translate }}</h6>
                     <div class="input-field col m2 s4">
@@ -118,32 +138,33 @@
                         <label for="formatedAddress">{{'eventLabels.Address' | translate }}</label>
                     </div>
                     <div class="input-field col m4 s8">
-                        <input type="text" id="formatedAddress" ng-autocomplete ng-model="event.address.formatedAddress" details="detailsAdr" options="optionsAdr" placeholder=""/>
+                        <input type="text" id="formatedAddress" ng-autocomplete ng-model="event.address.formatedAddress"
+                               details="detailsAdr" options="optionsAdr" placeholder=""/>
                     </div>
 
                     <div class="input-field col m6 s12 center-align">
-                        <input name="location" class="with-gap" checked="checked" type="radio" id="home" 
+                        <input name="location" class="with-gap" checked="checked" type="radio" id="home"
                                value="home" ng-model="location"/>
-                        <label for="home">{{'eventLabels.Home' | translate }}</label>
+                        <label for="home" translate="eventLabels.Home"></label>
 
-                        <input name="location" class="with-gap" type="radio" id="outside" 
+                        <input name="location" class="with-gap" type="radio" id="outside"
                                value="outside" ng-model="location"/>
-                        <label for="outside">{{'eventLabels.Visitor' | translate }}</label>
+                        <label for="outside" translate="eventLabels.Visitor"></label>
                     </div>
                 </div>
 
                 <!-- actions buttons -->
                 <div class="row">
                     <div class="col s12 center-align">
-                        <a href="" class="btn red lighteen-1 white-text waves-effect waves-light center" ng-click="doTheBack()" translate="commons.buttons.cancel"></a>
-                        <button class="btn green darken-1 waves-effect waves-light center" type="submit" ng-disabled="eventForm.$invalid" translate="commons.buttons.validate">
+                        <a href="" class="btn red lighteen-1 white-text waves-effect waves-light center"
+                           ng-click="doTheBack()" translate="commons.buttons.cancel"></a>
+                        <button class="btn green darken-1 waves-effect waves-light center" type="submit"
+                                ng-disabled="eventForm.$invalid" translate="commons.buttons.validate">
                         </button>
                     </div>
                 </div>
             </div>
         </form>
     </div>
-    
-    
-<!-- body end-->
+    <!-- body end-->
 </div>

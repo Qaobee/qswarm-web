@@ -38,6 +38,8 @@
                     $scope.signin = {};
                     $scope.notifications = [];
                     $scope.hasnotif = false;
+                    $scope.isProd = $window.location.hostname === 'www.qaobee.com';
+
                     /**
                      *
                      * @param viewLocation

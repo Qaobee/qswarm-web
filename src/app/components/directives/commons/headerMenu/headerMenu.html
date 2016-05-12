@@ -24,13 +24,11 @@
             <a href="/#/" class="brand-logo"><img src="assets/images/logo-mini.png" height="30px"/></a>
 
             <ul class="right hide-on-med-and-down">
-                <li ng-class="{'active' : menuItem === 'pricing'}">
-                    <a class="white-text" href="#/pricing">{{'navbar.pricing' | translate}} </a>
+                <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
+                    <a class="white-text" href="#/pricing" translate="navbar.pricing"></a>
                 </li>
                 <li ng-class="{'active' : menuItem === 'signup'}" ng-show="signupAvailable">
-                    <a class="white-text" ng-click="openSignup()">
-                        {{'navbar.signup' | translate}}
-                    </a>
+                    <a class="white-text" ng-click="openSignup()" translate="navbar.signup"></a>
                 </li>
                 <li>
                     <a class="white-text" ng-click="openLogin()">
@@ -45,20 +43,14 @@
                 <i class="mdi-navigation-menu"></i></a>
 
             <ul id="nav-mobileHC" class="side-nav">
-                <li ng-class="{'active' : menuItem === 'pricing'}">
-                    <a class="blue-grey-text text-darken-2" href="#/pricing">
-                        {{'navbar.pricing' | translate}}
-                    </a>
+                <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
+                    <a class="blue-grey-text text-darken-2" href="#/pricing" translate="navbar.pricing"></a>
                 </li>
                 <li ng-show="signupAvailable" ng-class="{'active' : menuItem === 'signup'}">
-                    <a class="blue-grey-text text-darken-2" ng-click="openSignup()">
-                        {{'navbar.signup' | translate}}
-                    </a>
+                    <a class="blue-grey-text text-darken-2" ng-click="openSignup()" translate="navbar.signup"></a>
                 </li>
                 <li>
-                    <a class="blue-grey-text text-darken-2" ng-click="openLogin()">
-                        {{'navbar.connect' | translate}}
-                    </a>
+                    <a class="blue-grey-text text-darken-2" ng-click="openLogin()" translate="navbar.connect"></a>
                 </li>
             </ul>
             <!-- menu mobile end -->
@@ -66,7 +58,7 @@
     </div>
 </nav>
 <!-- Menu Connected First header-->
-<div class="navbar-fixed" ng-if="user && !user.account.firstConnexion && !notpaid" >
+<div class="navbar-fixed" ng-if="user && !user.account.firstConnexion && !notpaid">
     <nav class="top-nav colorSecondary visible-nav" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
@@ -97,12 +89,14 @@
                     <li class="right">
                         <a href="#/private/profile" class="white-text"><i class="material-icons left">portrait</i></a>
                     </li>
-                    <li class="right"  >
+                    <li class="right">
                         <a class='dropdown-button' data-beloworigin="true" dropdown data-alignment="right"
                            href='javascript:void(0);' data-constrainWidth="false" data-activates='notificationDropdown'
                            data-hover="false">
-                            <i class="material-icons right" ng-class="{'red-text text-lighten-1 activeNotif':notifications.length}">{{notifications.length?'drafts':'email'}}</i>
-                            <span ng-if="notifications.length" class="new badge white-text red lighten-1" ng-bind="notifications.length"></span>
+                            <i class="material-icons right"
+                               ng-class="{'red-text text-lighten-1 activeNotif':notifications.length}">{{notifications.length?'drafts':'email'}}</i>
+                            <span ng-if="notifications.length" class="new badge white-text red lighten-1"
+                                  ng-bind="notifications.length"></span>
                         </a>
                     </li>
                 </ul>
