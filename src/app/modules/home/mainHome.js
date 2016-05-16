@@ -69,6 +69,8 @@
                         endDate: moment($scope.meta.season.endDate),
                         ownersId: $scope.ownersId
                     };
+                    user.periodicity = $scope.periodicity;
+                    user.periodicityActive = $scope.periodicityActive;
                 } else {
                     $scope.periodicity = user.periodicity;
                     $scope.periodicityActive = user.periodicityActive;

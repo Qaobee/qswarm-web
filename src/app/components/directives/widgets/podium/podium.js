@@ -24,6 +24,7 @@
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
+                    $scope.loading = true;
 
                     /* getStats */
                     var getStats = function (ownersId, startDate, endDate) {
@@ -78,6 +79,7 @@
 
                                     $scope.getInfosPlayer();
                                 });
+                                $scope.loading = false;
                             });
                         });
                     };

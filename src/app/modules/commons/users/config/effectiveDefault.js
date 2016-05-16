@@ -35,8 +35,6 @@
             
             $scope.updUser = {};
             angular.copy($scope.user, $scope.updUser);
-            $log.debug('0',$scope.updUser.effectiveDefault);
-            
             $scope.effectives = [];
         
             // return button
@@ -72,7 +70,6 @@
             };
         
             $scope.$on('$destroy', function () {
-                delete $scope.user;
                 delete $scope.updUser;
             });
         

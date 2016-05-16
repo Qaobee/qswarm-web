@@ -1,5 +1,20 @@
 <!-- efficiency gauge -->
-<div>
+<div ng-if="loading" class="center-align">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-if="!loading">
     <div class="center-align" ng-show="noStat">
         <h2 class="">{{efficiency | number : 0}} <small>%</small> </h2>
         <h5 class="right-align">{{nbGoal}} buts / {{nbShoot}} tirs</h5>

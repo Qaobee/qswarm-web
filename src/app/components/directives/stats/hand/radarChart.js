@@ -71,7 +71,7 @@
                 },
                 link: function ($scope) {
                     $scope.$watchGroup(['indicators', 'owners', 'periodicityActive', 'title'], function () {
-                        if (!!$scope.periodicityActive.startDate && !!$scope.periodicityActive.endDate) {
+                        if (angular.isDefined($scope.periodicityActive) && !!$scope.periodicityActive.startDate && !!$scope.periodicityActive.endDate) {
                             $scope.buildDatas();
                         }
                     });

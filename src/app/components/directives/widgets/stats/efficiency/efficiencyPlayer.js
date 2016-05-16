@@ -25,7 +25,8 @@
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
-                    $scope.noStat = true;
+                    $scope.noStat = false;
+                    $scope.loading = true;
 
                     /* efficiency */
                     var getEfficiency = function (ownersId, startDate, endDate, values) {
@@ -104,6 +105,7 @@
                                 $scope.noStat = false;
                             }
                         });
+                        $scope.loading = false;
                         return deferred.promise;
                     };
 
@@ -124,7 +126,10 @@
                             $scope.startDate = qeventbus.data.startDate;
                             $scope.endDate = qeventbus.data.endDate;
                             $scope.ownersId = qeventbus.data.ownersId;
-                            buildGraph();
+                            
+                            if(angular.isDefined($scope.ownersId)){
+                               buildGraph();
+                            }
                         }
                     });
                 },

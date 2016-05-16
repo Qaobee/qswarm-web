@@ -60,7 +60,6 @@
             $translatePartialLoader.addPart('home');
 
             $scope.effectiveId = $routeParams.effectiveId;
-            $scope.user.effectiveDefault = $scope.effectiveId;
 
             $scope.tabOwner = [];
             $scope.tabOwner.push($scope.effectiveId);
@@ -71,7 +70,8 @@
             $scope.effectives = [];
             $scope.compareList = {};
             $scope.currentEffective = {};
-            $scope.periodicityActive = {};
+            $scope.initPeriodicity = true;
+            $scope.periodicityActive = null;
             $scope.periodicity = null;
             $scope.currentCategory = null;
 
@@ -134,7 +134,8 @@
 
             /* init periodicity active */
             $scope.initPeriodicityActive = function () {
-                if (!user.periodicity) {
+                
+                if ($scope.initPeriodicity) {
                     $scope.periodicity = 'season';
                     $scope.periodicityActive = {
                         label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
@@ -142,22 +143,23 @@
                         endDate: moment($scope.meta.season.endDate),
                         ownersId: $scope.ownersId
                     };
-                } else {
-                    $scope.periodicity = user.periodicity;
-                    $scope.periodicityActive = user.periodicityActive;
-                }
+                    $scope.initPeriodicity = false;
+                } 
             };
 
             /* Retrieve current effective and list player */
             $scope.getPlayers = function () {
-                effectiveSrv.getEffective($scope.user.effectiveDefault).then(function (data) {
+                
+                effectiveSrv.getEffective($scope.effectiveId).then(function (data) {
                     $scope.currentEffective = data;
 
                     effectiveSrv.getListId($scope.currentEffective, 'player').then(function (listId) {
+                        $scope.ownersId = listId;
+                        $scope.initPeriodicityActive();
                         var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact');
 
                         effectiveSrv.getPersons(listId, listField).then(function (players) {
-                            $scope.ownersId = listId;
+                            
                             $scope.players = players;
                             $scope.players.forEach(function (e) {
                                 if (angular.isDefined(e.status.positionType)) {
@@ -169,8 +171,6 @@
                                 e.birthdate = $filter('date')(e.birthdate, 'yyyy');
                                 e.age = moment().format('YYYY') - e.birthdate;
                             });
-
-                            $scope.initPeriodicityActive();
                         });
                     });
                 });
@@ -179,6 +179,7 @@
             /* check user connected */
             $scope.checkUserConnected = function () {
                 userRestAPI.getUserById(user._id).success(function (/* data */) {
+                    
                     $scope.getPlayers();
                 }).error(function (/* data */) {
                     $log.error('MainPlayerControler : User not Connected');
