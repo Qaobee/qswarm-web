@@ -29,19 +29,18 @@
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('effective');
-        
+
             $scope.user = user;
-            $scope.meta = meta;    
-            
+            $scope.meta = meta;
+
             $scope.updUser = {};
             angular.copy($scope.user, $scope.updUser);
             $scope.effectives = [];
-        
+
             // return button
             $scope.doTheBack = function () {
                 $window.history.back();
             };
-        
             /* Retrieve list effective */
             $scope.getEffectives = function () {
 
@@ -51,16 +50,14 @@
                     });
                 });
             };
-        
+
             /**
              * @name $scope.updateUser
              * @function
              * @description update the default effective user
              */
             $scope.updateEffectiveDefaultUser = function () {
-                
                 $scope.user.effectiveDefault = $scope.updUser.effectiveDefault;
-                
                 profileRestAPI.update($scope.updUser).success(function (data) {
                     $translate('profile.popup.update.success').then(function (mess) {
                         toastr.success(mess, data.firstname + ' ' + data.name);
@@ -68,11 +65,11 @@
                     });
                 });
             };
-        
+
             $scope.$on('$destroy', function () {
                 delete $scope.updUser;
             });
-        
+
             /* check user connected */
             $scope.checkUserConnected = function () {
 

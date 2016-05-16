@@ -126,7 +126,7 @@
                             $scope.startDate = qeventbus.data.startDate;
                             $scope.endDate = qeventbus.data.endDate;
                             $scope.ownersId = qeventbus.data.ownersId;
-                            
+
                             if(angular.isDefined($scope.ownersId)){
                                buildGraph();
                             }
