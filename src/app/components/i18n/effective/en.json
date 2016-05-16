@@ -1,9 +1,10 @@
 {
   "mainEffective": {
-    "title": "Effective",
+    "title": "Effective management",
     "buttons": {
       "addEffective": "Add effective",
       "updateEffective": "Edit effective",
+      "effectiveDefault": "Choose default effective",    
       "addPlayer": "Add player",
       "addTeamHome": "Add team",
       "addTeamAdversary": "Add adversary",

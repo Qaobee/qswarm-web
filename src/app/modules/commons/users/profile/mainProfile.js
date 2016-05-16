@@ -11,6 +11,7 @@
 
         'qaobee.user.writeProfile',
         'qaobee.user.config',
+        'qaobee.user.effectiveDefault',
         'qaobee.user.password',
         'qaobee.user.userProfilPwd',
         'qaobee.user.billing',

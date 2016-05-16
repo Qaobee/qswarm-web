@@ -1,9 +1,10 @@
 {
   "mainEffective": {
-    "title": "Effectif",
+    "title": "Gestion des effectifs",
     "buttons": {
       "addEffective": "Ajouter un effectif",
       "updateEffective": "Editer un effectif",
+      "effectiveDefault": "Choisir effectif par défaut",    
       "addPlayer": "Ajouter un joueur",
       "viewPlayer": "Voir la fiche du joueur",
       "addTeamHome": "Ajouter une équipe",

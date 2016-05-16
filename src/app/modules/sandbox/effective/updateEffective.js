@@ -132,7 +132,7 @@
                         effective: effective.categoryAge.label
                     }));
 
-                    $location.path('private/effective/' + $scope.user.effectiveDefault);
+                    $location.path('private/config');
                 });
             };
 

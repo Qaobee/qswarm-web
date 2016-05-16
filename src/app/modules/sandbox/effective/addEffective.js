@@ -123,7 +123,7 @@
                         effective: $scope.effective.categoryAge.label
                     }));
 
-                    $location.path('private/effective/' + effective._id);
+                    $location.path('private/config');
                 });
             };
 

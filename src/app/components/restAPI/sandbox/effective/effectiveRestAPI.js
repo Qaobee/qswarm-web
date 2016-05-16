@@ -50,7 +50,7 @@
                 add: function (effective) {
                     return $http({
                         url: effectiveAPIURL + '/add',
-                        method: 'PUT',
+                        method: 'POST',
                         data: effective
                     });
                 },
