@@ -35,13 +35,13 @@
         'userRestAPI'])
 
 
-        .config(function ($routeProvider, metaDatasProvider) {
+        .config(function ($routeProvider, metaProvider, userProvider) {
 
             $routeProvider.when('/private/players/:effectiveId', {
                 controller: 'MainPlayerController',
                 resolve: {
-                    user: metaDatasProvider.checkUser,
-                    meta: metaDatasProvider.getMeta
+                    user: userProvider.$get,
+                    meta: metaProvider.$get
                 },
                 templateUrl: 'app/modules/sandbox/effective/players/mainPlayer.html'
             });

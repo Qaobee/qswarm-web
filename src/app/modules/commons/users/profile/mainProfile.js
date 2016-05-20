@@ -20,19 +20,19 @@
         'ngPasswordStrength'
     ])
 
-        .config(function ($routeProvider, metaDatasProvider) {
+        .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/profile', {
                 controller: 'MainProfileCtrl',
                 resolve: {
-                    user: metaDatasProvider.checkUser,
-                    meta: metaDatasProvider.getMeta
+                    user: userProvider.$get,
+                    meta: metaProvider.$get
                 },
                 templateUrl: 'app/modules/commons/users/profile/mainProfile.html'
             }).when('/private/profile/pay/:index', {
                 controller: 'PayProfileCtrl',
                 resolve: {
-                    user: metaDatasProvider.checkUser,
-                    meta: metaDatasProvider.getMeta
+                    user: userProvider.$get,
+                    meta: metaProvider.$get
                 },
                 templateUrl: 'app/modules/commons/users/profile/pay.html'
             });

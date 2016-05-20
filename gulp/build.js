@@ -45,8 +45,8 @@ gulp.task('html', ['inject', 'partials'], function () {
         .pipe($.rev())
         .pipe(jsFilter)
         .pipe($.sourcemaps.init())
-        .pipe($.ngAnnotate({single_quotes: true}))
-        .pipe($.uglify({mangle: false}))
+        .pipe($.ngAnnotate({ single_quotes: true}))
+        .pipe($.uglify({mangle: {toplevel: true, except: ['user', 'meta']}}))
         .pipe($.sourcemaps.write('maps'))
         .pipe(jsFilter.restore)
         .pipe(cssFilter)
@@ -98,8 +98,14 @@ gulp.task('i18n', function () {
         ])
         .pipe(gulp.dest(conf.paths.dist + '/i18n/'));
 });
+gulp.task('momentjs', function () {
+    return gulp.src([
+        'bower_components/momentjs/locale/*'
+    ])
+        .pipe(gulp.dest(conf.paths.dist + '/bower_components/momentjs/locale/'));
+});
 gulp.task('clean', function () {
     return $.del([path.join(conf.paths.dist, '/'), path.join(conf.paths.tmp, '/')]);
 });
 
-gulp.task('build', ['html', 'fonts', 'other', 'i18n']);
+gulp.task('build', ['html', 'fonts', 'other', 'i18n', 'momentjs']);

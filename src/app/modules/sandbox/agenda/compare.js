@@ -5,16 +5,16 @@
         'eventsRestAPI',
         'statsRestAPI',
         'qaobee.commonsConfig'
-    ]).config(function ($routeProvider, metaDatasProvider) {
+    ])
 
+        .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/agenda/compare/:effectiveId', {
                 controller: 'CompareEventsController',
                 resolve: {
-                    user: metaDatasProvider.checkUser,
-                    meta: metaDatasProvider.getMeta
+                    user: userProvider.$get,
+                    meta: metaProvider.$get
                 },
                 templateUrl: 'app/modules/sandbox/agenda/compare.html'
-
             });
         })
 

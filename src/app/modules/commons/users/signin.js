@@ -96,5 +96,5 @@
                     $location.path('/accountko');
                 }
             });
-        })
+        });
 }());

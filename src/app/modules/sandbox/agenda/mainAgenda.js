@@ -25,16 +25,14 @@
         'userRestAPI'])
 
 
-        .config(function ($routeProvider, metaDatasProvider) {
-
+        .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/agenda/:effectiveId', {
                 controller: 'MainAgendaController',
                 resolve: {
-                    user: metaDatasProvider.checkUser,
-                    meta: metaDatasProvider.getMeta
+                    user: userProvider.$get,
+                    meta: metaProvider.$get
                 },
                 templateUrl: 'app/modules/sandbox/agenda/mainAgenda.html'
-
             });
         })
 
@@ -44,15 +42,14 @@
          */
         .controller('MainAgendaController', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
                                                       eventsRestAPI, effectiveRestAPI, userRestAPI, eventCompareService, qeventbus) {
+            $scope.user = user;
+            $scope.meta = meta;
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('agenda');
 
             $scope.effectiveId = $routeParams.effectiveId;
             $scope.user.effectiveDefault = $scope.effectiveId;
-
-            $scope.user = user;
-            $scope.meta = meta;
 
             if (!user.periodicity) {
                 $scope.periodicity = 'quarter';

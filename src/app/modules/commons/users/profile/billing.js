@@ -9,12 +9,12 @@
      */
     angular.module('qaobee.user.billing', ['qaobee.downloadService'])
 
-        .config(function ($routeProvider, metaDatasProvider) {
+        .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/profile/billing', {
                 controller: 'BillingCtrl',
                 resolve: {
-                    user: metaDatasProvider.checkUser,
-                    meta: metaDatasProvider.getMeta
+                    user: userProvider.$get,
+                    meta: metaProvider.$get
                 },
                 templateUrl: 'app/modules/commons/users/profile/billing.html'
             });

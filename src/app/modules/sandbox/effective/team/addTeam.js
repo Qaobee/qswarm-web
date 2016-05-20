@@ -17,20 +17,20 @@
         'teamRestAPI',
         'userRestAPI'])
 
-        .config(function ($routeProvider, metaDatasProvider) {
+        .config(function ($routeProvider, metaProvider, userProvider) {
 
             $routeProvider.when('/private/addTeam/:adversary/:teamId', {
                 controller: 'AddTeamControler',
                 resolve: {
-                    user: metaDatasProvider.checkUser,
-                    meta: metaDatasProvider.getMeta
+                    user: userProvider.$get,
+                    meta: metaProvider.$get
                 },
                 templateUrl: 'app/modules/sandbox/effective/team/writeTeam.html'
             }).when('/private/addTeam/:adversary', {
                 controller: 'AddTeamControler',
                 resolve: {
-                    user: metaDatasProvider.checkUser,
-                    meta: metaDatasProvider.getMeta
+                    user: userProvider.$get,
+                    meta: metaProvider.$get
                 },
                 templateUrl: 'app/modules/sandbox/effective/team/writeTeam.html'
             });

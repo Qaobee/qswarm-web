@@ -18,12 +18,12 @@
         'userRestAPI'
     ])
 
-        .config(function ($routeProvider, metaDatasProvider) {
+        .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/playerStats/:playerId', {
                 controller: 'PlayerStats',
                 resolve: {
-                    user: metaDatasProvider.checkUser,
-                    meta: metaDatasProvider.getMeta
+                    user: userProvider.$get,
+                    meta: metaProvider.$get
                 },
                 templateUrl: 'app/modules/sandbox/stats/player/playerStats.html'
             });

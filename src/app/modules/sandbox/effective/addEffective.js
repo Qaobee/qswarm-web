@@ -18,13 +18,12 @@
         'personRestAPI',
         'userRestAPI'])
 
-        .config(function ($routeProvider, metaDatasProvider) {
-
+        .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/addEffective/:sandBoxCfgId', {
                 controller: 'AddEffectiveControler',
                 resolve: {
-                    user: metaDatasProvider.checkUser,
-                    meta: metaDatasProvider.getMeta
+                    user: userProvider.$get,
+                    meta: metaProvider.$get
                 },
                 templateUrl: 'app/modules/sandbox/effective/writeEffective.html'
             });
@@ -118,7 +117,7 @@
 
                 $scope.effective.categoryAge = category;
                 $scope.effective.sandBoxCfgId = $scope.sandBoxCfgId;
-                effectiveRestAPI.add($scope.effective).success(function (effective) {
+                effectiveRestAPI.add($scope.effective).success(function () {
                     toastr.success($filter('translate')('addEffective.toastSuccess', {
                         effective: $scope.effective.categoryAge.label
                     }));

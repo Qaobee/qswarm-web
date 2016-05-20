@@ -38,16 +38,14 @@
         'userRestAPI'])
 
 
-        .config(function ($routeProvider, metaDatasProvider) {
-
+        .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/effective/:effectiveId', {
                 controller: 'MainEffectiveControler',
                 resolve: {
-                    user: metaDatasProvider.checkUser,
-                    meta: metaDatasProvider.getMeta
+                    user: userProvider.$get,
+                    meta: metaProvider.$get
                 },
                 templateUrl: 'app/modules/sandbox/effective/mainEffective.html'
-
             });
         })
 

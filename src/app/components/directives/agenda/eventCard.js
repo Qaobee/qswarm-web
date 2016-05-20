@@ -85,7 +85,7 @@
                         }
                     });
 
-                    if (angular.isDefined($scope.event.address.formatedAddress)) {
+                    if (angular.isDefined($scope.event.address) && angular.isDefined($scope.event.address.formatedAddress)) {
                         $scope.mapShow = true;
                     }
                     $scope.updateEventToCompare = function (id) {

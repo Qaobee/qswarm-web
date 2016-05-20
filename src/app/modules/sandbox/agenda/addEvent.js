@@ -24,16 +24,14 @@
         'userRestAPI'])
 
 
-        .config(function ($routeProvider, metaDatasProvider) {
-
+        .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/addEvent/:effectiveId', {
                 controller: 'AddEventControler',
                 resolve: {
-                    user: metaDatasProvider.checkUser,
-                    meta: metaDatasProvider.getMeta
+                    user: userProvider.$get,
+                    meta: metaProvider.$get
                 },
                 templateUrl: 'app/modules/sandbox/agenda/writeEvent.html'
-
             });
         })
 

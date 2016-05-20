@@ -1,5 +1,5 @@
 ;(function () {
-  'use strict'
+  'use strict';
   /**
    * user effective default
    *
@@ -9,15 +9,15 @@
    */
   angular.module('qaobee.user.effectiveDefault', [])
 
-    .config(function ($routeProvider, metaDatasProvider) {
+    .config(function ($routeProvider, metaProvider, userProvider) {
       $routeProvider.when('/private/config/effectiveDefault', {
         controller: 'EffectiveDefaultCtrl',
         resolve: {
-          user: metaDatasProvider.checkUser,
-          meta: metaDatasProvider.getMeta
+          user: userProvider.$get,
+          meta: metaProvider.$get
         },
         templateUrl: 'app/modules/commons/users/config/effectiveDefault.html'
-      })
+      });
     })
     /**
      * @class qaobee.user.config.EffectiveDefaultCtrl
@@ -25,30 +25,30 @@
      */
     .controller('EffectiveDefaultCtrl', function ($scope, $filter, EnvironmentConfig, $translatePartialLoader, $translate, $rootScope, $log, user, meta,
       userRestAPI, effectiveRestAPI, profileRestAPI, $window) {
-      $translatePartialLoader.addPart('profile')
-      $translatePartialLoader.addPart('commons')
-      $translatePartialLoader.addPart('user')
-      $translatePartialLoader.addPart('effective')
+      $translatePartialLoader.addPart('profile');
+      $translatePartialLoader.addPart('commons');
+      $translatePartialLoader.addPart('user');
+      $translatePartialLoader.addPart('effective');
 
-      $scope.user = user
-      $scope.meta = meta
+      $scope.user = user;
+      $scope.meta = meta;
 
-      $scope.updUser = {}
-      angular.copy($scope.user, $scope.updUser)
-      $scope.effectives = []
+      $scope.updUser = {};
+      angular.copy($scope.user, $scope.updUser);
+      $scope.effectives = [];
 
       // return button
       $scope.doTheBack = function () {
-        $window.history.back()
-      }
+        $window.history.back();
+      };
       /* Retrieve list effective */
       $scope.getEffectives = function () {
         effectiveRestAPI.getListEffective($scope.meta._id, $scope.currentCategory).success(function (data) {
           $scope.effectives = data.sortBy(function (n) {
-            return n.label
-          })
-        })
-      }
+            return n.label;
+          });
+        });
+      };
 
       /**
        * @name $scope.updateUser
@@ -56,29 +56,29 @@
        * @description update the default effective user
        */
       $scope.updateEffectiveDefaultUser = function () {
-        $scope.user.effectiveDefault = $scope.updUser.effectiveDefault
+        $scope.user.effectiveDefault = $scope.updUser.effectiveDefault;
         profileRestAPI.update($scope.updUser).success(function (data) {
           $translate('profile.popup.update.success').then(function (mess) {
-            toastr.success(mess, data.firstname + ' ' + data.name)
-            $scope.doTheBack()
-          })
-        })
-      }
+            toastr.success(mess, data.firstname + ' ' + data.name);
+            $scope.doTheBack();
+          });
+        });
+      };
 
       $scope.$on('$destroy', function () {
-        delete $scope.updUser
-      })
+        delete $scope.updUser;
+      });
 
       /* check user connected */
       $scope.checkUserConnected = function () {
         userRestAPI.getUserById(user._id).success(function () {
-          $scope.getEffectives()
+          $scope.getEffectives();
         }).error(function () {
-          $log.error('ConfigCtrlControler : User not Connected')
-        })
-      }
+          $log.error('ConfigCtrlControler : User not Connected');
+        });
+      };
 
       /* Primary, check if user connected */
-      $scope.checkUserConnected()
-    })
-}())
+      $scope.checkUserConnected();
+    });
+}());

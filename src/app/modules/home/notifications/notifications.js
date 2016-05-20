@@ -2,20 +2,20 @@
     'use strict';
     angular.module('qaobee.notifications', [])
 
-        .config(function ($routeProvider, metaDatasProvider) {
+        .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/notifications/:id', {
                 controller: 'NotificationControler',
                 resolve: {
-                    user: metaDatasProvider.checkUser,
-                    meta: metaDatasProvider.getMeta
+                    user: userProvider.$get,
+                    meta: metaProvider.$get
                 },
                 templateUrl: 'app/modules/home/notifications/notifications.html'
 
             }).when('/notifications/', {
                 controller: 'NotificationControler',
                 resolve: {
-                    user: metaDatasProvider.checkUser,
-                    meta: metaDatasProvider.getMeta
+                    user: userProvider.$get,
+                    meta: metaProvider.$get
                 },
                 templateUrl: 'app/modules/home/notifications/notifications.html'
 

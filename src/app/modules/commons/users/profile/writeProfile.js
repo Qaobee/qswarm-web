@@ -9,12 +9,12 @@
      */
     angular.module('qaobee.user.writeProfile', ['profileRestAPI'])
 
-        .config(function ($routeProvider, metaDatasProvider) {
+        .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/profile/writeProfile', {
                 controller: 'WriteProfileCtrl',
                 resolve: {
-                    user: metaDatasProvider.checkUser,
-                    meta: metaDatasProvider.getMeta
+                    user: userProvider.$get,
+                    meta: metaProvider.$get
                 },
                 templateUrl: 'app/modules/commons/users/profile/writeProfile.html'
             });
@@ -24,7 +24,7 @@
          * @description Main controller of app/modules/commons/users/profile/writeProfile.html
          */
         .controller('WriteProfileCtrl', function ($scope, $filter, EnvironmentConfig, $timeout, $window, $translatePartialLoader,
-                                                  $translate, $rootScope, $log, personSrv, profileRestAPI, user) {
+                                                  $translate, $rootScope, $log, personSrv, profileRestAPI) {
             $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
