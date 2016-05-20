@@ -46,7 +46,7 @@ gulp.task('html', ['inject', 'partials'], function () {
         .pipe(jsFilter)
         .pipe($.sourcemaps.init())
         .pipe($.ngAnnotate({single_quotes: true}))
-        .pipe($.uglify({mangle: {toplevel: true, except: ['user', 'meta']}})).on('error', conf.errorHandler('Uglify'))
+        .pipe($.uglify({mangle: false}))
         .pipe($.sourcemaps.write('maps'))
         .pipe(jsFilter.restore)
         .pipe(cssFilter)
