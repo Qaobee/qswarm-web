@@ -1,7 +1,4 @@
 <div class="container">
-    <!-- body start-->
-    <div class="row"></div>
-    
     <!-- entete start -->
     <div class="row colorMain white-text">
         <div class="col s2 left-align">
@@ -28,7 +25,34 @@
         
         <v-pages class="vPages--default" active="activeTabIndex">
             <v-page>
-                <div dashboard="dashboardMainPlayerOptions" class="dashboard-container" template-url="app/components/directives/widgets/dashboard.html"></div>
+                
+                <div class="col s12 m6 l3" style="margin-top:15px;">
+                    <widget-efficiency-player meta="meta" user="user"></widget-efficiency-player>
+                </div>
+                
+                <div class="col s12 m6 l3" style="margin-top:15px;">
+                    <widget-efficiency-player-nine meta="meta" user="user"></widget-efficiency-player-nine>
+                </div>
+                
+                <div class="col s12 m6 l3" style="margin-top:15px;">
+                    <widget-efficiency-player-six meta="meta" user="user"></widget-efficiency-player-six>
+                </div>
+                
+                <div class="col s12 m6 l3" style="margin-top:15px;">
+                    <widget-efficiency-player-seven meta="meta" user="user"></widget-efficiency-player-seven>
+                </div>
+                
+                
+                
+                <div class="col s12 m6 l6" style="margin-top:15px;">
+                    <widget-podium meta="meta" user="user" indicator="goalScored" nbitem="3" stataggregat="COUNT"></widget-podium>
+                </div>
+
+                <div class="col s12 m6 l6" style="margin-top:15px;">
+                    <widget-podium meta="meta" user="user" indicator="playTime" nbitem="3" stataggregat="SUM"></widget-podium>
+                </div>
+                
+                
                 
                 <div class="col s12 m6 l3">
                     <qaobee-radar-chart title="{{'stats.actionTab.attack' | translate}} {{'stats.actionTab.positive' | translate}}" owners="tabOwner" series="series"

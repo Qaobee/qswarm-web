@@ -1,7 +1,4 @@
 <div class="container">
-    <!-- body start-->
-    <div class="row"></div>
-
     <!-- entete start -->
     <div class="row colorMain white-text">
         <div class="col s2 left-align">
@@ -25,8 +22,17 @@
 
         <v-pages class="vPages--default" active="activeTabIndex">
             <v-page>
-                <div dashboard="dashboardOptions" class="dashboard-container" template-url="app/components/directives/widgets/dashboard.html"></div>
+                
+                <div class="col s12 m6 l6" style="margin-top:15px;">
+                    <widget-podium meta="meta" user="user" indicator="goalScored" nbitem="3" stataggregat="COUNT"></widget-podium>
+                </div>
+
+                <div class="col s12 m6 l6" style="margin-top:15px;">
+                    <widget-podium meta="meta" user="user" indicator="playTime" nbitem="3" stataggregat="SUM"></widget-podium>
+                </div>
             </v-page>
+            
+            
             <v-page>
                 <div class="col s8">
                     <form class="forms forms-inline input-field">
