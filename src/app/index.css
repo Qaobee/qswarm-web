@@ -835,7 +835,7 @@ table.super-fancy tr.foobar {
 }
 
 .widget-content {
-    margin: 0;
+    margin: Opx;
     padding: 5px;
     width: 100%;
 }

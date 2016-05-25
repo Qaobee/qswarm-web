@@ -1,13 +1,60 @@
-<div ng-repeat="e in events track by $index" class="row">
-    <div class="col s2">
-        <h5 style="line-height: 0.5" class="center-align">{{e.startDate | date : "dd"}}</h5>
-        <hr/>
-        <h6 style="line-height: 0.5" class="center-align">{{e.startDate | date : 'MM'}}</h6>
+<div class="widget card colorAccent white-text">
+    <div class="widget-header card-content colorMain white-text">
+        <i class="fa fa-calendar"></i>
+        {{mainAgenda.next_event  | translate}}
+
+        <span ng-click="removeWidget(widget);" ng-if="!options.hideWidgetClose"><i class="material-icons right">close</i></span>
+        <span ng-click="widget.contentStyle.display = widget.contentStyle.display === 'none' ? 'block' : 'none'">
+            <i class="material-icons right">
+                {{ widget.contentStyle.display ===
+                'none'?'expand_more':''}}{{widget.contentStyle.display !==
+                'none'?'expand_less':''}}
+            </i>
+        </span>
+        <span ng-if="widget.activator"><i class="activator material-icons right">more_vert</i></span>
     </div>
-    <div class="col s10">
-        <h6>{{e.label}}
-            <small>{{e.title | translate}}</small>
-        </h6>
-        {{e.participants.teamHome.label}} / {{e.participants.teamVisitor.label}}
+    <div class="widget-content container" style="overflow-y: auto; height:250px;">
+
+
+
+        <div ng-repeat="e in events track by $index" class="row">
+            <div class="col s2">
+                <h5 style="line-height: 0.5" class="center-align">{{e.startDate | date : "dd"}}</h5>
+                <hr/>
+                <h6 style="line-height: 0.5" class="center-align">{{e.startDate | date : 'MM'}}</h6>
+            </div>
+            <div class="col s10">
+                <h6>{{e.label}}
+                    <small>{{e.title | translate}}</small>
+                </h6>
+                {{e.participants.teamHome.label}} / {{e.participants.teamVisitor.label}}
+            </div>
+        </div>
     </div>
+
+    <div class="card-reveal">
+        <span class="card-title">
+            <small><i class="fa fa-calendar"></i>
+            {{widget.title  | translate}}
+            <i class="material-icons right">close</i></small></span>
+        <table>
+            <thead>
+            <tr>
+                <th data-field="indicators"></th>
+                <th ng-repeat="p in series track by $index" data-field="{{p}}" class="center-align" ng-bind="p"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="l in labels track by $index">
+                <td><b ng-bind="l"></b></td>
+                <td ng-repeat="d in data track by $index" data-field="{{d[$parent.$index]}}" class="center-align">
+                    {{d[$parent.$index]}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="widget-ew-resizer" ng-mousedown="grabResizer($event)"></div>
+    <div ng-if="widget.enableVerticalResize" class="widget-s-resizer" ng-mousedown="grabSouthResizer($event)"></div>
 </div>

@@ -1,22 +1,40 @@
-<a href="#/notifications" class="waves-effect waves-teal btn-flat blue-grey-text text-darken-2">{{'notifications.more' | translate}} <i
-        class="material-icons right">forward</i></a>
-<ul class="collection blue-grey-text text-darken-2">
-    <li class="collection-item avatar" ng-repeat="n in notifications">
-        <img ng-src="{{getAvatar(n.from_user_id.avatar)}}" alt="" class="circle">
-        <a href="#/notifications/{{n._id}}"><span class="title" ng-bind="n.title"></span></a>
-        <p><span class="truncate" ng-bind="n.content"></span>
-            <small>{{n.from_user_id.firstname}} {{n.from_user_id.name}} <br /> {{n.timestamp | date : 'short'}} |
-                <a href="javascript:void(0);" ng-click="markAsRead(n._id)" class="waves-effect waves-teal btn-flat"
-                   style="padding: 0;">
-                    <i class="tiny material-icons" ng-if="n.read"
-                       title="{{'headerMenu.notifications.mark-as-unread' | translate}}">visibility_off</i><i
-                        class="tiny material-icons" ng-if="!n.read"
-                        title="{{'headerMenu.notifications.mark-as-read' | translate}}">visibility</i></a>
-                <a href="javascript:void(0);" ng-click="deleteNotification(n._id)" style="padding: 0;"
-                   class="waves-effect waves-teal btn-flat"><i
-                        class="tiny material-icons" title="{{'headerMenu.notifications.delete' | translate}}">delete</i></a>
-            </small>
-        </p>
-        <a href="#/notifications/{{n._id}}" class="secondary-content "><i class="material-icons md-36 light-green-text text-lighten-1">forward</i></a>
-    </li>
-</ul>
+<div class="widget card blue-grey lighten-4 blue-grey-text text-darken-2">
+    <div class="card-content colorMain white-text">
+        <i class="fa fa-bell"></i>
+        {{dashboard.widgetNotifications.title  | translate}}
+
+        <span ng-click="widget.contentStyle.display = widget.contentStyle.display === 'none' ? 'block' : 'none'">
+            <i class="material-icons right">
+                {{ widget.contentStyle.display ===
+                'none'?'expand_more':''}}{{widget.contentStyle.display !==
+                'none'?'expand_less':''}}
+            </i>
+        </span>
+        <span ng-if="widget.activator"><i class="activator material-icons right">more_vert</i></span>
+    </div>
+    <div class="widget-content container" style="overflow-y: auto; height:250px;">
+
+        <a href="#/notifications" class="waves-effect waves-teal btn-flat blue-grey-text text-darken-2">{{'notifications.more' | translate}} <i
+                class="material-icons right">forward</i></a>
+        <ul class="collection blue-grey-text text-darken-2">
+            <li class="collection-item avatar" ng-repeat="n in notifications">
+                <img ng-src="{{getAvatar(n.from_user_id.avatar)}}" alt="" class="circle">
+                <a href="#/notifications/{{n._id}}"><span class="title" ng-bind="n.title"></span></a>
+                <p><span class="truncate" ng-bind="n.content"></span>
+                    <small>{{n.from_user_id.firstname}} {{n.from_user_id.name}} <br /> {{n.timestamp | date : 'short'}} |
+                        <a href="javascript:void(0);" ng-click="markAsRead(n._id)" class="waves-effect waves-teal btn-flat"
+                           style="padding: 0;">
+                            <i class="tiny material-icons" ng-if="n.read"
+                               title="{{'headerMenu.notifications.mark-as-unread' | translate}}">visibility_off</i><i
+                                class="tiny material-icons" ng-if="!n.read"
+                                title="{{'headerMenu.notifications.mark-as-read' | translate}}">visibility</i></a>
+                        <a href="javascript:void(0);" ng-click="deleteNotification(n._id)" style="padding: 0;"
+                           class="waves-effect waves-teal btn-flat"><i
+                                class="tiny material-icons" title="{{'headerMenu.notifications.delete' | translate}}">delete</i></a>
+                    </small>
+                </p>
+                <a href="#/notifications/{{n._id}}" class="secondary-content "><i class="material-icons md-36 light-green-text text-lighten-1">forward</i></a>
+            </li>
+        </ul>
+    </div>
+</div>

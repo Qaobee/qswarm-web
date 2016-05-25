@@ -24,6 +24,7 @@
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
+                    $translatePartialLoader.addPart('home');
                     $scope.loading = true;
 
                     /* getStats */

@@ -28,6 +28,8 @@
             'angular-google-analytics',
             'vTabs',
             'ngFileSaver',
+            'ui.date',
+            
             //* qaobee widget */
             'qaobee.filterCalendar',
             'qaobee.commonsDirectives',
