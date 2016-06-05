@@ -1,8 +1,19 @@
-<div id="frame"></div>
+<div id="frame" ng-show="modalClosed"></div>
 <div class="row" ng-if="payError">
-    <h6>Une erreur s'est produite lors de votr paiement</h6>
+    <h6 translate="profile.label.pay-error"></h6>
     <a href="" class="white-text waves-effect waves-light"
        ng-click="doTheBack()">
         <i class="fa fa-arrow-left"></i>
     </a>
+</div>
+<!-- Modal Structure -->
+<div id=payMessageModal class="modal">
+    <div class="modal-content">
+        <h4>Attention</h4>
+        <p translate="profile.label.pay-modal"></p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0);" class="modal-action modal-close waves-effect waves-red btn btn-s red" ng-click="cancel()" translate="commons.buttons.cancel"></a>
+        <a href="javascript:void(0);" class="btn btn-s waves-effect waves-red  green darken-1" ng-click="agree()"  translate="commons.buttons.agree"></a>
+    </div>
 </div>

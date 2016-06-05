@@ -30,7 +30,9 @@
       "activity": "Activity",
       "avatar": "Drag and drop avatar here",
       "pay": "Subscribe",
-      "cardNumber": "Card number"
+      "cardNumber": "Card number",
+      "pay-error" : "An error occurs during your payment",
+      "pay-modal" : "You're about to subscribe to Qaobee"
     },
     "ph": {
       "name": "Enter your name",

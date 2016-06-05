@@ -53,7 +53,8 @@
             "back" : "Return",
             "next" : "Next",
             "previous" : "Previous",
-            "filter":"Filter"
+            "filter":"Filter",
+            "agree" : "I agree"
         },
         "settings" : {
             "activity": {

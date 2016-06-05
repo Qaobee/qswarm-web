@@ -51,12 +51,13 @@
             });
         })
         .controller('PayProfileCtrl', function ($scope, $filter, EnvironmentConfig, $translatePartialLoader, $translate,
-                                                $log, user, meta, $routeParams, paymentAPI) {
+                                                $log, user, meta, $window, $routeParams, paymentAPI) {
             $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
-
+            angular.element('#payMessageModal').openModal();
             $scope.user = user;
+            $scope.modalClosed = false;
             $scope.index = $routeParams.index;
             $scope.plan = $scope.user.account.listPlan[0];
             paymentAPI.getPaymentURL($scope.index).then(function (data) {
@@ -68,6 +69,20 @@
                 }
 
             });
+            $scope.doTheBack = function () {
+                $window.history.back();
+            };
+
+            $scope.cancel = function () {
+                angular.element('#payMessageModal').closeModal();
+                $scope.doTheBack();
+            };
+
+            $scope.agree = function () {
+                angular.element('#payMessageModal').closeModal();
+                $scope.modalClosed = true;
+            };
+
             $scope.$on('$destroy', function () {
                 delete $scope.user;
             });

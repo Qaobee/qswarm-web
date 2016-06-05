@@ -30,7 +30,9 @@
       "activity": "Activité",
       "avatar": "Déposer la photo ici",
       "pay": "Souscrire",
-      "cardNumber": "N° de carte"
+      "cardNumber": "N° de carte",
+      "pay-error" : "Une erreur s'est produite lors de votre paiement",
+      "pay-modal" : "Vous allez souscrire un abonnement à l'application Qaobee."
     },
     "ph": {
       "name": "Saisissez votre nom",
