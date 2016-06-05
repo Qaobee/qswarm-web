@@ -1,11 +1,8 @@
-/**
- * Created by xavier on 08/03/16.
- */
 (function () {
     'use strict';
     angular.module('qaobee.stat.detail.modal', ['statsRestAPI'])
 
-        .directive('qaobeeStatDetailModal', function ($log, $q, $filter, $translatePartialLoader, qaobeeUtils, statsRestAPI) {
+        .directive('qaobeeStatDetailModal', function ($log, $q, $filter, $translatePartialLoader, qaobeeUtils, statsRestAPI, ChartJs ) {
             return {
                 restrict: 'E',
                 scope: {
@@ -23,7 +20,6 @@
                     $translatePartialLoader.addPart('stats');
                     $translatePartialLoader.addPart('commons');
                     $scope.uid = qaobeeUtils.guid();
-                    $scope.colours = qaobeeUtils.getChartColours();
                     $scope.currentIndicator = $scope.indicators[0];
                     $scope.periodicity = $scope.periodicity || 'season';
                     $scope.periodicityActive = $scope.periodicityActive || {
@@ -34,7 +30,7 @@
                         };
                     $scope.periodicityActive.ownersId = $scope.periodicityActive.owners || $scope.owners;
                     $scope.stats = {};
-
+                    $scope.legendColours  =ChartJs.getOptions().colours;
 
                     $scope.$watchGroup(['indicators', 'currentIndicator', 'owners', 'periodicity', 'periodicityActive'], function () {
                         if (!!$scope.periodicityActive.startDate && !!$scope.periodicityActive.endDate || !!currentIndicator) {

@@ -29,6 +29,9 @@
                 },
                 remove: function (pId) {
                     compareList.remove(pId);
+                },
+                init: function () {
+                    compareList = [];
                 }
             };
         })

@@ -2,7 +2,7 @@
 <div class="col l6 s12">
     <div class="card white">
         <div class="card-title colorMain center">
-            <span class="white-text title"><small>{{'stats.actionTab.defense' | translate }}</small></span>
+            <span class="white-text title"><small translate="stats.actionTab.defense"></small></span>
         </div>
         <div class="card-content" ng-show="noStat">
             <c3chart bindto-id="chartActionsDef" chart-columns="defenseCol" chart-data="defenseData" 
@@ -10,14 +10,15 @@
                 <chart-donut width="40"/>
             </c3chart>
         </div>
-        <div class="card-content center-align red-text text-lighten-2" ng-hide="noStat">{{'stats.resumeTab.noData' | translate }}</div>
+        <div class="card-content center-align red-text text-lighten-2" ng-hide="noStat"
+             translate="stats.resumeTab.noData"></div>
     </div>
 </div>
 
 <div class="col l6 s12">
     <div class="card white">
         <div class="card-title colorMain center">
-            <span class="white-text title"><small>{{'stats.actionTab.attack' | translate }}</small></span>
+            <span class="white-text title"><small translate="stats.actionTab.attack"></small></span>
         </div>
         <div class="card-content" ng-show="noStat">
             <c3chart bindto-id="chartActionsAtt" chart-columns="attackCol" chart-data="attackData" 
@@ -25,6 +26,7 @@
                 <chart-donut width="40"/>
             </c3chart>
         </div>
-        <div class="card-content center-align red-text text-lighten-2" ng-hide="noStat">{{'stats.resumeTab.noData' | translate }}</div>
+        <div class="card-content center-align red-text text-lighten-2" ng-hide="noStat"
+             translate="stats.resumeTab.noData"></div>
     </div>
 </div>  

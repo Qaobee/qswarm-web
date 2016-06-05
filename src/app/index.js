@@ -14,7 +14,6 @@
             'ngRoute',
             'ngSanitize',
             'ngCookies',
-            'ngAudio',
             'ngAnimate',
             'pascalprecht.translate',
             'reCAPTCHA',
@@ -66,7 +65,8 @@
             , 'qaobee.test'
         ])
 
-        .config(function ($translateProvider, $translatePartialLoaderProvider, reCAPTCHAProvider, $httpProvider, $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, AnalyticsProvider) {
+        .config(function ($translateProvider, $translatePartialLoaderProvider, reCAPTCHAProvider, $httpProvider,
+                          $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, AnalyticsProvider, ChartJsProvider) {
             AnalyticsProvider.setAccount(EnvironmentConfig.uaid).useDisplayFeatures(true).trackUrlParams(true);
             tmhDynamicLocaleProvider.localeLocationPattern('i18n/angular-locale_{{locale}}.js');
             $translateProvider.useLoader('$translatePartialLoader', {
@@ -109,6 +109,7 @@
                 hideMethod: 'fadeOut'
             };
             Chart.defaults.global.responsive = true;
+            ChartJsProvider.setOptions({ colours : [ '#03a9f4', '#0f9d58', '#ff5722', '#803690', '#FDB45C', '#949FB1', '#4D5360'] });
         })
         .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale) {
             $locale.id = $translate.proposedLanguage();

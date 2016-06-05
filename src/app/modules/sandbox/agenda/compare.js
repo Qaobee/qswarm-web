@@ -29,6 +29,9 @@
                 },
                 remove: function (pId) {
                     compareList.remove(pId);
+                },
+                init: function () {
+                    compareList = [];
                 }
             };
         })
@@ -48,6 +51,7 @@
                     ownersId: $scope.ownersId
                 };
             $scope.periodicityActive.ownersId = $scope.periodicityActive.ownersId || $scope.ownersId;
+            eventCompareService.init();
             $scope.$watch('periodicityActive', function () {
                 $scope.buildWidget();
             });

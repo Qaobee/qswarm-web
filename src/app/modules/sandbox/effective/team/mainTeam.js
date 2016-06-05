@@ -54,6 +54,7 @@
             $scope.meta = meta;
             $scope.listTeamHome = [];
             $scope.compareList = {};
+            teamCompareService.init();
 
             if (user.mainTeamTabId) {
                 $scope.activeTabIndex = user.mainTeamTabId;

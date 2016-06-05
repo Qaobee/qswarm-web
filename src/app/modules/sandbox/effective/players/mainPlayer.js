@@ -80,7 +80,7 @@
             } else {
                 $scope.activeTabIndex = 0;
             }
-
+            playerCompareService.init();
             /* keep in memory tab by default */
             $scope.changeTabDefault = function (tabId) {
                 user.mainPlayerTabId = tabId;

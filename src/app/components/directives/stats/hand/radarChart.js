@@ -19,7 +19,6 @@
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
                     $scope.stats = {};
-                    $scope.rgbaColors = qaobeeUtils.getChartColours();
                     $scope.buildDatas = function () {
                         $scope.loading = true;
                         $scope.data = [];
