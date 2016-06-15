@@ -4,6 +4,8 @@ var path = require('path');
 var gulp = require('gulp');
 var conf = require('./conf');
 var replace = require('gulp-replace');
+var gulp = require('gulp');
+var imagemin = require('gulp-imagemin');
 
 var $ = require('gulp-load-plugins')({
     pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
@@ -107,5 +109,10 @@ gulp.task('momentjs', function () {
 gulp.task('clean', function () {
     return $.del([path.join(conf.paths.dist, '/'), path.join(conf.paths.tmp, '/')]);
 });
+gulp.task('images', function () {
+    return  gulp.src('src/assets/images/**/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/assets/images'))
+});
 
-gulp.task('build', ['html', 'fonts', 'other', 'i18n', 'momentjs']);
+gulp.task('build', ['html', 'fonts', 'other', 'i18n', 'momentjs', 'images']);
