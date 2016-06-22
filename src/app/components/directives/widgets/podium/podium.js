@@ -25,6 +25,7 @@
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
                     $translatePartialLoader.addPart('home');
+                    $scope.noStat = false;
                     $scope.loading = true; 
 
                     /* getStats */
@@ -48,8 +49,9 @@
                             data = data.sortBy(function (n) {
                                 return n.value;
                             }, true);
-
+                            
                             if (angular.isArray(data) && data.length > 0) {
+                                $scope.noStat = true;
                                 if (data.length > $scope.nbitem) {
                                     deferred.resolve(data.removeAt($scope.nbitem, data.length));
                                 } else {
@@ -131,6 +133,7 @@
                     /* Refresh widget on periodicity change */
                     $scope.$on('qeventbus', function () {
                         if ("periodicityActive" === qeventbus.message) {
+                            $scope.noStat = false;
                             buildWidget();
                         }
                     });

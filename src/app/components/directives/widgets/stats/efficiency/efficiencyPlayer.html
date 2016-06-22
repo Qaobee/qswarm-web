@@ -1,17 +1,8 @@
-<div class="widget card white blue-grey-text text-darken-2">
+<div class="card white blue-grey-text text-darken-2">
     <div class="card-content colorMain white-text">
-        <i class="fa fa-futbol-o"></i>{{dashboard.widgetTopScored.title | translate}}
-
-        <span ng-click="widget.contentStyle.display = widget.contentStyle.display === 'none' ? 'block' : 'none'">
-            <i class="material-icons right">
-                {{ widget.contentStyle.display ===
-                'none'?'expand_more':''}}{{widget.contentStyle.display !==
-                'none'?'expand_less':''}}
-            </i>
-        </span>
-        <span ng-if="widget.activator"><i class="activator material-icons right">more_vert</i></span>
+        <span class=""><i class="fa fa-futbol-o"></i> {{widgetTitle | translate}}</span>
     </div>
-    <div class="widget-content container" style="overflow-y: auto; height:200px;">
+    <div class="card-content" style="height:200px;">
         <div ng-if="loading" class="center-align">
             <div class="preloader-wrapper big active">
                 <div class="spinner-layer">
@@ -33,7 +24,7 @@
                 <h2 class="">{{efficiency | number : 0}} <small>%</small> </h2>
                 <h5 class="right-align">{{nbGoal}} buts / {{nbShoot}} tirs</h5>
             </div>
-            <div class="card-content center-align" ng-hide="noStat">{{'stats.resumeTab.noData' | translate }}</div>
+            <div class="center-align" ng-hide="noStat">{{'stats.resumeTab.noData' | translate }}</div>
         </div>
     </div>
 </div>

@@ -64,7 +64,7 @@
             <div class="nav-wrapper">
                 <!-- Desktop and tablet-->
                 <ul class="hide-on-small-only">
-                    <li class="left"><a href="#/private/"><i class="fa fa-home left"></i>
+                    <li class="left"><a href="#/private/"><i class="material-icons left">home</i>
                         <span class="hide-on-med-and-down" translate="headerMenu.dashboard"></span></a>
                     </li>
 
@@ -77,13 +77,11 @@
                         <span class="hide-on-med-and-down" translate="headerMenu.teams"></span></a>
                     </li>
 
-                    <li class="left"><a href="#/private/agenda/{{user.effectiveDefault}}"><i
-                            class="fa fa-calendar left"></i>
+                    <li class="left"><a href="#/private/agenda/{{user.effectiveDefault}}"><i class="material-icons left">event_note</i>
                         <span class="hide-on-med-and-down" translate="headerMenu.calendar"></span></a>
                     </li>
 
-                    <li class="right"><a ng-click="logoff()" href="javascript:void(0);"><i
-                            class="white-text fa fa-power-off"></i></a>
+                    <li class="right"><a ng-click="logoff()" href="javascript:void(0);"><i class="material-icons">exit_to_app</i></a>
                     </li>
 
                     <li class="right">
@@ -151,10 +149,12 @@
     </nav>
 
 </div>
-<div class="card-panel light-blue white-text trial" ng-if="intrial">
-    <span translate="headerMenu.trial.title"></span>
-    <span translate="headerMenu.trial.content" translate-values="trialCountVal"></span>
-    <a href="javascript:void(0);" ng-click="closeTrial()" class="right"><i class="material-icons">close</i></a>
+<div class="navbar-fixed light-blue white-text trial" ng-if="intrial">
+    <div class="row valign-wrapper">
+        <div class="col s4" style="font-size: 24px;" translate="headerMenu.trial.title"></div>
+        <div class="col s7" style="font-size: 20px;" translate="headerMenu.trial.content" translate-values="trialCountVal"></div>
+        <div class="col s1"><a href="javascript:void(0);" ng-click="closeTrial()" class="right"><i class="material-icons">close</i></a></div>
+    </div>
 </div>
 <!-- Finalize signup -->
 <div class="navbar-fixed" ng-if="user && user.account.firstConnexion">

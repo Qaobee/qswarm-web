@@ -23,6 +23,7 @@
                     $translatePartialLoader.addPart('stats');
                     $scope.noStat = false;
                     $scope.loading = true;
+                    $scope.widgetTitle = 'stats.efficiency.efficiency9m';
 
                     /* efficiency */
                     var getEfficiency = function (ownersId, startDate, endDate) {

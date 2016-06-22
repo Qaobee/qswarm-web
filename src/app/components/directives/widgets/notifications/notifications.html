@@ -1,18 +1,9 @@
 <div class="card blue-grey lighten-4 blue-grey-text text-darken-2">
     <div class="card-content colorMain white-text">
-        <i class="fa fa-bell"></i>
-        {{dashboard.widgetNotifications.title  | translate}}
+        <span class="card-title"><i class="fa fa-bell"></i> {{'dashboard.widgetNotifications.title'  | translate}}</span>
 
-        <span ng-click="widget.contentStyle.display = widget.contentStyle.display === 'none' ? 'block' : 'none'">
-            <i class="material-icons right">
-                {{ widget.contentStyle.display ===
-                'none'?'expand_more':''}}{{widget.contentStyle.display !==
-                'none'?'expand_less':''}}
-            </i>
-        </span>
-        <span ng-if="widget.activator"><i class="activator material-icons right">more_vert</i></span>
     </div>
-    <div class="widget-content container" style="overflow-y: auto; height:250px;">
+    <div class="card-content" style="overflow-y: auto; height:255px;">
 
         <a href="#/notifications" class="waves-effect waves-teal btn-flat blue-grey-text text-darken-2">{{'notifications.more' | translate}} <i
                 class="material-icons right">forward</i></a>

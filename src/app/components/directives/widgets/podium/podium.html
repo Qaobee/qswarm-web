@@ -2,18 +2,20 @@
 
 <div class="card white blue-grey-text text-darken-2">
     <div class="card-content colorMain white-text">
-        <i class="fa fa-futbol-o"></i>{{dashboard.widgetTopScored.title | translate}}
-
-        <span ng-click="widget.contentStyle.display = widget.contentStyle.display === 'none' ? 'block' : 'none'">
-            <i class="material-icons right">
-                {{ widget.contentStyle.display ===
-                'none'?'expand_more':''}}{{widget.contentStyle.display !==
-                'none'?'expand_less':''}}
-            </i>
+        <span class="activator card-title" ng-if="indicator==='goalScored'"> 
+            <i class="fa fa-futbol-o left"></i>
+            {{'dashboard.widgetTopScored.title' | translate}} 
+            <i class=" material-icons right">more_vert</i>
         </span>
-        <span ng-if="widget.activator"><i class="activator material-icons right">more_vert</i></span>
+        
+        <span class="activator card-title" ng-if="indicator==='playTime'"> 
+            <i class="fa fa-futbol-o left"></i>
+            {{'dashboard.widgetTopUsed.title' | translate}} 
+            <i class=" material-icons right">more_vert</i>
+        </span>
+
     </div>
-    <div class="widget-content container" style="overflow-y: auto; height:250px;">
+    <div class="card-content" style="overflow-y: auto; height:258px">
         <!-- cup, championship, friendly game -->
         <div ng-if="loading" class="center-align">
             <div class="preloader-wrapper big active">
@@ -30,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div style="padding-top:20px;" ng-if="!loading">
+        <div style="padding:10px;" ng-if="!loading" ng-show="noStat">
             <div class="row center-align">
                 <div class="col s4" style="background-image:url(/assets/images/trophy1.png); 
                                            background-repeat:no-repeat; 
@@ -68,6 +70,7 @@
                 </div>
             </div>
         </div>
+        <div class="center-align" ng-hide="noStat">{{'stats.resumeTab.noData' | translate }}</div>
     
     </div>
 
