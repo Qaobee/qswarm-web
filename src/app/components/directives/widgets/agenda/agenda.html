@@ -1,5 +1,5 @@
-<div class="widget card colorAccent white-text">
-    <div class="widget-header card-content colorMain white-text">
+<div class="card colorAccent white-text">
+    <div class="card-content colorMain white-text">
         <i class="fa fa-calendar"></i>
         {{mainAgenda.next_event  | translate}}
 
@@ -13,7 +13,7 @@
         </span>
         <span ng-if="widget.activator"><i class="activator material-icons right">more_vert</i></span>
     </div>
-    <div class="widget-content container" style="overflow-y: auto; height:250px;">
+    <div class="container" style="overflow-y: auto; height:250px;">
 
 
 
@@ -54,7 +54,4 @@
             </tbody>
         </table>
     </div>
-
-    <div class="widget-ew-resizer" ng-mousedown="grabResizer($event)"></div>
-    <div ng-if="widget.enableVerticalResize" class="widget-s-resizer" ng-mousedown="grabSouthResizer($event)"></div>
 </div>

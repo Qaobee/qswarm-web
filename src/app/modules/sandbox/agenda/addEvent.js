@@ -82,7 +82,7 @@
                         weekdaysFull: translations['commons.format.date.listWeekdaysFull'].split(','),
                         weekdaysLetter: translations['commons.format.date.listWeekdaysLetter'].split(','),
                         weekdaysShort: translations['commons.format.date.listWeekdaysShort'].split(','),
-                        selectYears: 100,
+                        selectYears: 3,
                         selectMonths: true,
                         today: translations['commons.format.date.today'],
                         clear: translations['commons.format.date.clear'],
@@ -90,19 +90,9 @@
                     })
                     .pickadate('picker');
             });
-
+        
             //i18n timepicker
-            $scope.formatTime = $filter('translate')('commons.format.hours.label');
-            $scope.formatTimeSubmit = $filter('translate')('commons.format.hours.pattern');
-            $scope.clear = $filter('translate')('commons.format.date.clear');
-
-            angular.element('.timepicker').pickatime({
-                format: $scope.formatTime,
-                formatSubmit: $scope.formatTimeSubmit,
-                clear: $scope.clear,
-                min: [8, 0],
-                max: [22, 0]
-            });
+            $scope.close = $filter('translate')('commons.format.date.close');
 
             $scope.addEventTitle = true;
 
@@ -198,6 +188,7 @@
             $scope.checkAndformatEvent = function () {
                 /* Convert start event to long */
                 var start = moment($scope.startDate, 'DD/MM/YYYY');
+                $log.debug('$scope.startHours',$scope.startHours);
                 start.hour(moment($scope.startHours, 'HH').hour());
                 start.minutes(moment($scope.startHours, 'm mm').minutes());
                 $scope.event.startDate = moment(start).valueOf();

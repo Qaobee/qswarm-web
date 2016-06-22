@@ -81,7 +81,7 @@
                         weekdaysFull: translations['commons.format.date.listWeekdaysFull'].split(','),
                         weekdaysLetter: translations['commons.format.date.listWeekdaysLetter'].split(','),
                         weekdaysShort: translations['commons.format.date.listWeekdaysShort'].split(','),
-                        selectYears: 100,
+                        selectYears: 20,
                         selectMonths: true,
                         today: translations['commons.format.date.today'],
                         clear: translations['commons.format.date.clear'],
@@ -91,18 +91,8 @@
             });
 
             //i18n timepicker
-            $scope.formatTime = $filter('translate')('commons.format.hours.label');
-            $scope.formatTimeSubmit = $filter('translate')('commons.format.hours.pattern');
-            $scope.clear = $filter('translate')('commons.format.date.clear');
+            $scope.close = $filter('translate')('commons.format.date.close');
 
-            var $inputTimer = angular.element('.timepicker').pickatime({
-                format: $scope.formatTime,
-                formatSubmit: $scope.formatTimeSubmit,
-                clear: $scope.clear,
-                min: [8, 0],
-                max: [22, 0]
-            });
-            $scope.timerPicker = $inputTimer.pickatime('picker');
             /****************************************
              * end Datapicker et timepicker
              ***************************************/
@@ -181,10 +171,10 @@
                     if (angular.isDefined($scope.event.startDate)) {
 
                         $scope.startDate = $scope.event.startDate;
-                        $scope.startHours = $scope.startDate;
-
+                        $scope.startHours = moment($scope.startDate).hour()+':'+moment($scope.startDate).minute();
                         $scope.datePicker.set('select', $scope.startDate.valueOf());
-                        $scope.timerPicker.set('select', [moment($scope.startHours).hour(), moment($scope.startHours).minute()]);
+                        
+                        
                     }
 
                     /* View participants management */
