@@ -128,19 +128,10 @@
 	                    <div class="row" id="rowBirthdate">
 		                    <div class="col s12 input-field">
 		                        <label for="profilBirthdate">{{'profile.label.birthdate' | translate }} <span class="red-text text-lighten-1">*</span></label>
-                                <input type="text" id="profilBirthdate" name="profilBirthdate" ng-model="user.birthdate" date-options="dateOptions" custom-datepicker required/>
+                                <input id="profilBirthdate" name="profilBirthdate" type="text" class="datepicker"
+                                       ng-model="user.birthdate" required
+                                       ng-class="{ 'has-error' : profileForm.profilBirthdate.$invalid && !profileForm.profilBirthdate.$pristine }"/>
 		                        
-                                <script type="text/ng-template" id="custom-datepicker.html">
-                                <div>
-                                    <div class="proxied-field-wrap">
-                                        <input type="text" ui-date-format="yy-mm-dd" ng-model="user.birthdate" ui-date="dateOptions"/>
-                                    </div>
-                                    <label>
-                                        <button class="btn" type="button"><i class="material-icons md-48">mode_edit</i></button>
-                                        <span class="datepicker-date">{{user.birthdate | date:'d MMM yyyy'}}</span>
-                                    </label>
-                                </div>
-                                </script>
 		                        <span class="small red-text text-lighten-1"
 		                            ng-show="profileForm.profilBirthdate.$invalid && !profileForm.profilBirthdate.$pristine" translate="civilSection.userErrors.BirthDate">
 		                        </span>

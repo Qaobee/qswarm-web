@@ -36,12 +36,38 @@
             $scope.doTheBack = function () {
                 $window.history.back();
             };
-            $scope.dateOptions = {
-                minDate: -1000,
-                maxDate: "+1M +10D"
-            };
 
-
+            //i18n datepicker
+            $translate(['commons.format.date.listMonth',
+                'commons.format.date.listMonthShort',
+                'commons.format.date.listWeekdaysFull',
+                'commons.format.date.listWeekdaysShort',
+                'commons.format.date.listWeekdaysLetter',
+                'commons.format.date.today',
+                'commons.format.date.clear',
+                'commons.format.date.close',
+                'commons.format.date.label',
+                'commons.format.date.pattern'
+            ]).then(function (translations) {
+                $scope.datePicker = angular.element('#profilBirthdate')
+                    .pickadate({
+                        format: translations['commons.format.date.label'],
+                        formatSubmit: translations['commons.format.date.pattern'],
+                        monthsFull: translations['commons.format.date.listMonth'].split(','),
+                        monthShort: translations['commons.format.date.listMonthShort'].split(','),
+                        weekdaysFull: translations['commons.format.date.listWeekdaysFull'].split(','),
+                        weekdaysLetter: translations['commons.format.date.listWeekdaysLetter'].split(','),
+                        weekdaysShort: translations['commons.format.date.listWeekdaysShort'].split(','),
+                        selectYears: 100,
+                        selectMonths: true,
+                        today: translations['commons.format.date.today'],
+                        clear: translations['commons.format.date.clear'],
+                        close: translations['commons.format.date.close']
+                    })
+                    .pickadate('picker')
+                    .set('select', $scope.user.birthdate.valueOf());
+            });
+        
             $scope.temp = {};
             $scope.temp.optionsAdr = {
                 types: 'geocode'
