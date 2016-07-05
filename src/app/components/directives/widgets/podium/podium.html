@@ -9,7 +9,7 @@
         </span>
         
         <span class="activator card-title" ng-if="indicator==='playTime'"> 
-            <i class="fa fa-futbol-o left"></i>
+            <i class="fa fa-clock-o left"></i>
             {{'dashboard.widgetTopUsed.title' | translate}} 
             <i class=" material-icons right">more_vert</i>
         </span>
@@ -75,10 +75,17 @@
     </div>
 
     <div class="card-reveal">
-        <span class="card-title">
-            <small><i class="fa fa-futbol-o"></i>
-            {{widget.title  | translate}}
-            <i class="material-icons right">close</i></small></span>
+        <span class="card-title" ng-if="indicator==='goalScored'"> 
+            <i class="fa fa-futbol-o left"></i>
+            {{'dashboard.widgetTopScored.title' | translate}} 
+            <i class=" material-icons right">more_vert</i>
+        </span>
+        
+        <span class="card-title" ng-if="indicator==='playTime'"> 
+            <i class="fa fa-clock-o left"></i>
+            {{'dashboard.widgetTopUsed.title' | translate}} 
+            <i class=" material-icons right">more_vert</i>
+        </span>
         <table>
             <thead>
             <tr>
