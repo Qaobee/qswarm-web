@@ -103,7 +103,7 @@
 
             //Initialization new event
             $scope.event = {
-                activityId: $scope.meta.activity._id,
+                activityId: $scope.meta.sandbox.activity._id,
                 owner: {
                     sandboxId: $scope.meta.sandbox._id,
                     effectiveId: $scope.effectiveId
@@ -121,7 +121,7 @@
 
             /* Retrieve list of team of effective */
             $scope.getListTeamHome = function () {
-                teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true').success(function (data) {
+                teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.meta.sandbox.effectiveDefault, 'true').success(function (data) {
                     $scope.listTeamHome = data.sortBy(function (n) {
                         return n.label;
                     });
@@ -130,7 +130,7 @@
 
             /* Retrieve list of event type */
             $scope.getListEventType = function () {
-                activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listEventType').success(function (data) {
+                activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.sandbox.activity._id, $scope.meta.sandbox.structure.country._id, 'listEventType').success(function (data) {
                     $scope.listEventType = data.sortBy(function (n) {
                         return n.order;
                     });
@@ -140,7 +140,7 @@
             /* on change event type, calculate the value for chooseAdversary */
             $scope.changeTeamHome = function () {
 
-                teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true', $scope.teamId).success(function (data) {
+                teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.meta.sandbox.effectiveDefault, 'true', $scope.teamId).success(function (data) {
                     $scope.listTeamAdversary = data.sortBy(function (n) {
                         return n.label;
                     });
@@ -188,7 +188,6 @@
             $scope.checkAndformatEvent = function () {
                 /* Convert start event to long */
                 var start = moment($scope.startDate, 'DD/MM/YYYY');
-                $log.debug('$scope.startHours',$scope.startHours);
                 start.hour(moment($scope.startHours, 'HH').hour());
                 start.minutes(moment($scope.startHours, 'm mm').minutes());
                 $scope.event.startDate = moment(start).valueOf();
@@ -220,7 +219,7 @@
                     adversary = {
                         "label": $scope.adversaryLabel,
                         "sandboxId": $scope.meta.sandbox._id,
-                        "effectiveId": $scope.user.effectiveDefault,
+                        "effectiveId": $scope.meta.sandbox.effectiveDefault,
                         "linkTeamId": [team._id],
                         "enable": true,
                         "adversary": true

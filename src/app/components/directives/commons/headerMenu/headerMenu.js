@@ -197,14 +197,14 @@
                         userRestAPI.getMetas().then(function (data) {
                             
                             if (angular.isDefined(data.data) && data.data !== null) {
-                                $rootScope.meta = {
+                                $scope.meta = {
                                     sandbox : data.data,
                                     season : null
                                 };
                                 $scope.structure = data.data.structure;
                                 
-                                seasonsRestAPI.getSeasonCurrent($rootScope.meta.sandbox.activity._id, $rootScope.user.country._id).then(function (season) {
-                                    $rootScope.meta.season = season.data;
+                                seasonsRestAPI.getSeasonCurrent($scope.meta.sandbox.activity._id, $rootScope.user.country._id).then(function (season) {
+                                    $scope.meta.season = season.data;
                                 });
                                 
                                 var eb = new vertx.EventBus(EnvironmentConfig.apiEndPoint + '/eventbus');

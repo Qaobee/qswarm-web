@@ -126,7 +126,7 @@
             $scope.getEvents = function (startDate, endDate) {
 
                 var requestEvent = {
-                    activityId: $scope.meta.activity._id,
+                    activityId: $scope.meta.sandbox.activity._id,
                     startDate: startDate,
                     endDate: endDate,
                     ownersandboxId: $scope.meta.sandbox._id,
@@ -149,7 +149,7 @@
             /* Retrieve list effective */
             $scope.getEffectives = function () {
 
-                effectiveRestAPI.getListEffective($scope.meta._id, $scope.currentCategory).success(function (data) {
+                effectiveRestAPI.getListEffective($scope.meta.sandbox._id, $scope.currentCategory).success(function (data) {
                     $scope.effectives = data.sortBy(function (n) {
                         return n.label;
                     });

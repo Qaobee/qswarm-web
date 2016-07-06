@@ -111,7 +111,7 @@
             $scope.detailsAdr = '';
             /* Retrieve list of team of effective */
             $scope.getListTeamHome = function () {
-                teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true').success(function (data) {
+                teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.meta.sandbox.effectiveDefault, 'true').success(function (data) {
                     $scope.listTeamHome = data.sortBy(function (n) {
                         return n.label;
                     });
@@ -120,7 +120,7 @@
             };
             /* Retrieve list of adversary of effective */
             $scope.getListAdversary = function (teamId) {
-                teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true', teamId).success(function (data) {
+                teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.meta.sandbox.effectiveDefault, 'true', teamId).success(function (data) {
                     $scope.listTeamAdversary = data.sortBy(function (n) {
                         return n.label;
                     });
@@ -129,7 +129,7 @@
 
             /* Retrieve list of event type */
             $scope.getListEventType = function () {
-                activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listEventType').success(function (data) {
+                activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.sandbox.activity._id, $scope.meta.sandbox.structure.country._id, 'listEventType').success(function (data) {
                     $scope.listEventType = data.sortBy(function (n) {
                         return n.order;
                     });
@@ -141,7 +141,7 @@
             /* on change event type, calculate the value for chooseAdversary */
             $scope.changeTeamHome = function () {
 
-                teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'true', $scope.teamId).success(function (data) {
+                teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.meta.sandbox.effectiveDefault, 'true', $scope.teamId).success(function (data) {
                     $scope.listTeamAdversary = data.sortBy(function (n) {
                         return n.label;
                     });
@@ -211,7 +211,7 @@
             $scope.writeEvent = function () {
 
                 /* get effective */
-                effectiveRestAPI.getEffective($scope.user.effectiveDefault).success(function (data) {
+                effectiveRestAPI.getEffective($scope.meta.sandbox.effectiveDefault).success(function (data) {
 
                     var effective = data;
 
@@ -268,7 +268,7 @@
                     adversary = {
                         "label": $scope.adversaryLabel,
                         "sandboxId": $scope.meta.sandbox._id,
-                        "effectiveId": $scope.user.effectiveDefault,
+                        "effectiveId": $scope.meta.sandbox.effectiveDefault,
                         "linkTeamId": [team._id],
                         "enable": true,
                         "adversary": true

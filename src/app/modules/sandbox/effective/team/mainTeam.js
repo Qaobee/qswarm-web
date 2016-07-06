@@ -67,15 +67,6 @@
                 user.mainTeamTabId = tabId;
             };
 
-            $scope.dashboardOptions = {
-                widgetButtons: false,
-                widgetDefinitions: widgetDefinitionsMainTeam.get(),
-                hideWidgetName: true,
-                defaultWidgets: defaultWidgetsMainTeam,
-                storage: $window.localStorage,
-                storageId: 'qaobee-widgets-dashboard-MainTeam'
-            };
-
             $scope.compare = function () {
                 if (Object.keys($scope.compareList).length > 0) {
                     $location.path('/private/team/compare/' + $scope.effectiveId);
@@ -136,7 +127,7 @@
                     });
                 });
 
-                effectiveSrv.getEffective($scope.user.effectiveDefault).then(function (data) {
+                effectiveSrv.getEffective($scope.meta.sandbox.effectiveDefault).then(function (data) {
                     $scope.currentEffective = data;
                 });
             };
