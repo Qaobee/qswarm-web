@@ -12,6 +12,15 @@
 
     angular.module('qaobee.widgets.podium', ['effectifSRV', 'statsRestAPI', 'qaobee.eventbus'])
 
+        .config(function ($routeProvider, metaProvider, userProvider) {
+            $routeProvider.when('/private', {
+                resolve: {
+                    user: userProvider.$get,
+                    meta: metaProvider.$get
+                }
+
+            });
+        })
         .directive('widgetPodium', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, effectiveSrv, qeventbus) {
             return {
                 restrict: 'AE',
@@ -66,7 +75,7 @@
 
                     /* Retrieve list player */
                     $scope.getEffective = function () {
-                        effectiveSrv.getEffective($scope.user.effectiveDefault).then(function (data) {
+                        effectiveSrv.getEffective($scope.meta.sandbox.effectiveDefault).then(function (data) {
                             $scope.currentEffective = data;
 
                             effectiveSrv.getListId($scope.currentEffective, 'player').then(function (listId) {

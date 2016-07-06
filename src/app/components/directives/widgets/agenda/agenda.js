@@ -62,11 +62,11 @@
                     /* Retrieve list events */
                     $scope.getEvents = function (startDate, endDate) {
                         var requestEvent = {
-                            activityId: $scope.meta.activity._id,
+                            activityId: $scope.meta.sandbox.activity._id,
                             startDate: startDate,
                             endDate: endDate,
                             ownersandboxId: $scope.meta.sandbox._id,
-                            ownereffectiveId: $scope.user.effectiveDefault,
+                            ownereffectiveId: $scope.meta.sandbox.effectiveDefault,
                             type: ['cup', 'friendlyGame', 'championship', 'training']
                         };
 

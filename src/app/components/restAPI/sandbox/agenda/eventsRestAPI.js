@@ -6,7 +6,7 @@
      * @author Xavier MARIN
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('eventsRestAPI', []).value('eventsAPIURL', '/api/1/sandbox/agenda/event')
+    angular.module('eventsRestAPI', []).value('eventsAPIURL', '/api/1/sandbox/event/event')
 
         .factory('eventsRestAPI', function ($http, eventsAPIURL) {
             return {

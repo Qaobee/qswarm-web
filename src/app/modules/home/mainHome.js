@@ -41,15 +41,6 @@
             $scope.meta = meta;
             $scope.activeTabIndex =0;
 
-            $scope.dashboardOptionsHome = {
-                widgetButtons: false,
-                widgetDefinitions: widgetDefinitionsHome.get(),
-                hideWidgetName: true,
-                defaultWidgets: defaultWidgetsHome,
-                storage: $window.localStorage,
-                storageId: 'qaobee-widgets-dashboard-home'
-            };
-
             /* watch if periodicity change */
             $scope.$watch('periodicityActive', function (newValue, oldValue) {
                 if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {

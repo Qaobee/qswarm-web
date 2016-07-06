@@ -6,10 +6,11 @@
             /* qaobee services */
             'qaobee.eventbus',
             /* qaobee Rest API */
-            'userRestAPI'])
+            'userRestAPI',
+            'seasonsRestAPI'])
 
         .provider('meta', function () {
-            this.$get = function ($rootScope, userRestAPI, $location, $q, $window) {
+            this.$get = function ($log, $rootScope, userRestAPI, seasonsRestAPI, $location, $q, $window) {
                 var deferred = $q.defer();
                 if (angular.isDefined($rootScope.meta)) {
                     deferred.resolve($rootScope.meta);
@@ -20,7 +21,15 @@
                     if (token !== null && angular.isDefined(token)) {
                         userRestAPI.getMetas().success(function (data) {
                             if (angular.isDefined(data) && data !== null) {
-                                deferred.resolve(data);
+                                $rootScope.meta = {
+                                    sandbox : data,
+                                    season : null
+                                };
+                                
+                                seasonsRestAPI.getSeasonCurrent($rootScope.meta.sandbox.activity._id, $rootScope.user.country._id).then(function (season) {
+                                    $rootScope.meta.season = season.data;
+                                    deferred.resolve($rootScope.meta);
+                                });
                             }
                         });
                     } else {

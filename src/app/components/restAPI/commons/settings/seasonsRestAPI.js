@@ -9,7 +9,7 @@
      */
     angular.module('seasonsRestAPI', []).value('seasonsApiURL', '/api/1/commons/settings/season')
 
-        .factory('seasonsAPI', function ($http, seasonsApiURL) {
+        .factory('seasonsRestAPI', function ($http, seasonsApiURL) {
             return {
                 /**
                  * @memberOf qaobee.components.restAPI.commons.settings.seasonsRestAPI
@@ -21,7 +21,7 @@
                  */
                 getSeasonCurrent: function (activityId, countryId) {
                     return $http({
-                        url: seasonsApiURL + '/getseasoncurrent/?activityId=' + activityId + '&countryId=' + countryId,
+                        url: seasonsApiURL + '/current/?activityId=' + activityId + '&countryId=' + countryId,
                         method: 'GET'
                     });
                 },

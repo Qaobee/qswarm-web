@@ -21,14 +21,16 @@
             /* qaobee services */
             'qaobee.eventbus',
             'ng.deviceDetector',
-            'notificationsRestAPI',
+            
             /* qaobee Rest API */
+            'notificationsRestAPI',
             'userRestAPI',
-            'signupRestAPI'
+            'signupRestAPI',
+            'seasonsRestAPI'
         ])
-        .directive('headerMenu', function (qeventbus, userRestAPI, signupRestAPI, $rootScope, $cookieStore, $cookies,
+        .directive('headerMenu', function (qeventbus, $rootScope, $cookieStore, $cookies,
                                            $location, $window, $log, $translatePartialLoader, $filter, deviceDetector,
-                                           notificationsRestAPI, EnvironmentConfig) {
+                                           signupRestAPI, userRestAPI, seasonsRestAPI, notificationsRestAPI, EnvironmentConfig) {
             return {
                 restrict: 'AE',
                 controller: function ($scope) {
@@ -193,13 +195,21 @@
                      */
                     $scope.loadMetaInfos = function () {
                         userRestAPI.getMetas().then(function (data) {
+                            
                             if (angular.isDefined(data.data) && data.data !== null) {
-                                $rootScope.meta = data.data;
+                                $rootScope.meta = {
+                                    sandbox : data.data,
+                                    season : null
+                                };
                                 $scope.structure = data.data.structure;
-
+                                
+                                seasonsRestAPI.getSeasonCurrent($rootScope.meta.sandbox.activity._id, $rootScope.user.country._id).then(function (season) {
+                                    $rootScope.meta.season = season.data;
+                                });
+                                
                                 var eb = new vertx.EventBus(EnvironmentConfig.apiEndPoint + '/eventbus');
                                 eb.onopen = function () {
-                                    $log.debug('socket connected');
+
                                     eb.registerHandler('qaobee.notification.' + $scope.user._id, function (message) {
                                         if (!!message.title) {
                                             toastr.info(message.content.stripTags().truncate(30), message.title);
@@ -218,11 +228,13 @@
 
                                 getNotifications();
                                 eb.onclose = function () {
-                                    $log.debug('socket closed');
                                     eb = null;
                                 };
+                                
+                                
                             }
                         });
+                        
                     };
 
                     $scope.closeTrial = function () {
