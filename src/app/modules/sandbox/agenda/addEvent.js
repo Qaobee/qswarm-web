@@ -103,7 +103,7 @@
 
             //Initialization new event
             $scope.event = {
-                activityId: $scope.meta.sandbox.activity._id,
+                activityId: $scope.meta.sandbox.activityId,
                 owner: {
                     sandboxId: $scope.meta.sandbox._id,
                     effectiveId: $scope.effectiveId
@@ -130,7 +130,7 @@
 
             /* Retrieve list of event type */
             $scope.getListEventType = function () {
-                activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.sandbox.activity._id, $scope.meta.sandbox.structure.country._id, 'listEventType').success(function (data) {
+                activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.sandbox.activityId, $scope.meta.sandbox.structure.country._id, 'listEventType').success(function (data) {
                     $scope.listEventType = data.sortBy(function (n) {
                         return n.order;
                     });

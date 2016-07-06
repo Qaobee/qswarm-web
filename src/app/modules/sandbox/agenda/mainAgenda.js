@@ -126,7 +126,7 @@
             $scope.getEvents = function (startDate, endDate) {
 
                 var requestEvent = {
-                    activityId: $scope.meta.sandbox.activity._id,
+                    activityId: $scope.meta.sandbox.activityId,
                     startDate: startDate,
                     endDate: endDate,
                     ownersandboxId: $scope.meta.sandbox._id,

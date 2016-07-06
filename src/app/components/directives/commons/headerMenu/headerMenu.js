@@ -203,7 +203,7 @@
                                 };
                                 $scope.structure = data.data.structure;
                                 
-                                seasonsRestAPI.getSeasonCurrent($scope.meta.sandbox.activity._id, $rootScope.user.country._id).then(function (season) {
+                                seasonsRestAPI.getSeasonCurrent($scope.meta.sandbox.activityId, $rootScope.user.country._id).then(function (season) {
                                     $scope.meta.season = season.data;
                                 });
                                 

@@ -26,7 +26,7 @@
                                     season : null
                                 };
                                 
-                                seasonsRestAPI.getSeasonCurrent($rootScope.meta.sandbox.activity._id, $rootScope.user.country._id).then(function (season) {
+                                seasonsRestAPI.getSeasonCurrent($rootScope.meta.sandbox.activityId, $rootScope.user.country._id).then(function (season) {
                                     $rootScope.meta.season = season.data;
                                     deferred.resolve($rootScope.meta);
                                 });
