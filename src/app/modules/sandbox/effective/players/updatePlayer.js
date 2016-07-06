@@ -96,7 +96,7 @@
 
             /* Retrieve list of positions type */
             $scope.getListPositionType = function () {
-                activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listPositionType').success(function (data) {
+                activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.sandbox.activity._id, $scope.meta.sandbox.structure.country._id, 'listPositionType').success(function (data) {
                     $scope.positionsType = data;
                 });
             };

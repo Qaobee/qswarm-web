@@ -133,7 +133,7 @@
 
             /* Retrieve list of positions type */
             $scope.getListPositionType = function () {
-                activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.activity._id, $scope.meta.structure.country._id, 'listPositionType').success(function (data) {
+                activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.sandbox.activity._id, $scope.meta.sandbox.structure.country._id, 'listPositionType').success(function (data) {
                     $scope.positionsType = data;
                 });
             };
@@ -148,8 +148,8 @@
                     personSrv.addPlayer($scope.player, $scope.meta.sandbox._id).then(function (person) {
 
                         /* add member*/
-                        if ($scope.user.effectiveDefault !== 'EFFECTIVE-TEMPO') {
-                            personSrv.addEffectiveMember(person, $scope.user.effectiveDefault).then(function (effective) {
+                        if ($scope.meta.sandbox.effectiveDefault !== 'EFFECTIVE-TEMPO') {
+                            personSrv.addEffectiveMember(person, $scope.meta.sandbox.effectiveDefault).then(function (effective) {
                                 toastr.success($filter('translate')('addPlayer.toastSuccess', {
                                     firstname: person.firstname,
                                     name: person.name,
