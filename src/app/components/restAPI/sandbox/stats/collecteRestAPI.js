@@ -6,7 +6,7 @@
      * @author Xavier MARIN
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('collecteRestAPI', []).value('collecteAPIURL', '/api/1/sandbox/stats/collecte')
+    angular.module('collecteRestAPI', []).value('collecteAPIURL', '/api/1/sandbox/stats/collect')
 
         .factory('collecteRestAPI', function ($http, collecteAPIURL) {
             return {
