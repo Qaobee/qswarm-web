@@ -18,7 +18,7 @@
 
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
-                    $scope.noStat = true;
+                    $scope.noStat = false;
 
                     /* getStats */
                     var getStats = function (ownersId, startDate, endDate) {

@@ -29,10 +29,11 @@
                             nbHolder: 0,
                             playTimeAvg: 0
                         };
-
+                        
                         /* get nbCollecte */
-                        statsSrv.getMatchsTeams(startDate, endDate, $scope.sandboxId).then(function (data) {
+                        statsSrv.getMatchsPlayer(startDate, endDate, $scope.sandboxId, ownersId[0]).then(function (data) {
                             if (angular.isArray(data) && data.length > 0) {
+                                
                                 result.nbGame = data.length;
                                 $scope.noStat = true;
                                 var indicators = Array.create('totalPlayTime');
@@ -46,7 +47,8 @@
                                     aggregat: 'AVG',
                                     listFieldsGroupBy: listFieldsGroupBy
                                 };
-                                $log.debug('search', search);
+                                
+                                $log.debug('Yep',search);
                                 /* Appel stats API */
                                 statsRestAPI.getStatGroupBy(search).success(function (playtime) {
                                     if (angular.isArray(playtime) && playtime.length > 0) {
