@@ -20,7 +20,7 @@
     },
     "trial": {
       "title": "You are in trial period.",
-      "content": "You can subscribe anytime by <a href=\"/#/private/profile/pay/0\" >clikcing here</a>. This period expires in <b>{{count}}</b> day(s)."
+      "content": "You can subscribe anytime by <a href=\"/#/private/billing/pay/0\" >clikcing here</a>. This period expires in <b>{{count}}</b> day(s)."
     }
   },
   "navbar": {

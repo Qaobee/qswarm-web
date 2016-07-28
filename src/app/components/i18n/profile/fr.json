@@ -2,13 +2,18 @@
   "profile": {
     "tabs": {
       "account": "Mon compte",
-      "sandbox": "Ma sandbox",
+      "sandbox": "Mes sandboxs",
+      "preference": "Préférences",
       "profil": "Mon profil",
       "password": "Mot de passe",
       "billing": "Abonnement",
-      "sharing": "Invitations",
       "notification": "Notifications",
-      "settings": "Paramétrage"
+      "settings": "Paramétrage",
+      "sbSharing": "Invitations",
+      "sbMembers": "Gestion des utilisateurs",
+      "sbDefault" : "Sandbox par défaut",
+      "sbSwitch" : "Changer de sandbox",
+      "notificationSettings" : "Paramètrage des notifications"
     },
     "label": {
       "name": "Nom",

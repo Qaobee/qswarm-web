@@ -1,0 +1,164 @@
+<div class="container">
+
+    <!-- space between header menu and body-->
+    <div class="row"></div>
+    
+    <!-- Entete -->
+    <div class="row">
+        <div class="col s12">
+            <div class="row colorMain white-text center">
+                <div class="col m3 s12 center">
+                    <avatar person="user" width="'100px'"></avatar>
+                    <span class="small">{{'profile.label.avatar' | translate }}</span>
+                </div>
+                <div class="col m7 s12">
+                    <br/>
+                    <h4>{{user.firstname}} {{user.name}}</h4>
+                    <h5>{{user.account.login}}</h5>
+                </div>
+                <div class="col m2 s12">
+                    <br/>&nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col s12 m4 l4">
+            <div class="card white blue-grey-text text-darken-2">
+                <div class="card-content center-align colorMain">
+                    <span class="card-content title white-text">{{'profile.tabs.account' | translate }}</span>
+                </div>
+                <div class="card-content center-align">
+                    <div class="row">
+                        <div class="col s12">
+                            <a href="#/private/profile/writeProfile" class="waves-effect waves-light red-text text- lighten-1">
+                                <i class="material-icons md-48">account_box</i>
+                            </a>
+                            <br/>
+                            {{'profile.tabs.profil' | translate }}
+                            <br/>
+                            <br/>
+                        </div>
+
+                        <div class="col s12 divider"></div>
+
+                        <div class="col s12">
+                            <br/>
+                            <a href="#/private/profile/changePwd" class="waves-effect waves-light red-text text- lighten-1">
+                                <i class="material-icons md-48">https</i>
+                            </a>
+                            <br/>
+                            {{'profile.tabs.password' | translate }}
+                            <br/>
+                            <br/>
+                        </div>
+                        <div class="col s12 divider"></div>
+
+                        <div class="col s12">
+                            <br/>
+                            <a href="#/private/billing" class="waves-effect waves-light red-text text- lighten-1">
+                                <i class="material-icons md-48">verified_user</i>
+                            </a>
+                            <br/>
+                            {{'profile.tabs.billing' | translate }}
+                            <br/>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+            
+        <div class="col s12 m4 l4">
+            <div class="card white blue-grey-text text-darken-2">
+                <div class="card-content center-align colorMain">
+                    <span class="card-content title white-text">{{'profile.tabs.sandbox' | translate }}</span>
+                </div>
+                <div class="card-content center-align">
+                    <div class="row">
+                        <div class="col s12">
+                            <a href="#/private/sbSwitch" class="waves-effect waves-light red-text text- lighten-1">
+                                <i class="material-icons md-48">rotate_90_degrees_ccw</i>
+                            </a>
+                            <br/>
+                            {{'profile.tabs.sbSwitch' | translate }}
+                            <br/>
+                            <br/>
+                        </div>
+                        <div class="col s12 divider"></div>
+
+                        <div class="col s12">
+                            <br/>
+                            <span class="blue-grey-text text-darken-2">
+                                <i class="material-icons md-48">share</i>
+                            </span>
+                            <br/>
+                            {{'profile.tabs.sbSharing' | translate }}
+                            <br/>
+                            <br/>
+                        </div>
+                        <div class="col s12 divider"></div>
+                        <div class="col s12">
+                            <br/>
+                            <a href="#/private/sbMembers" class="waves-effect waves-light red-text text- lighten-1">
+                                <i class="material-icons md-48">group</i>
+                            </a>
+                            <br/>
+                            {{'profile.tabs.sbMembers' | translate }}
+                            <br/>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col s12 m4 l4">
+            <div class="card white blue-grey-text text-darken-2">
+                <div class="card-content center-align colorMain">
+                    <span class="card-content title white-text">{{'profile.tabs.preference' | translate }}</span>
+                </div>
+                <div class="card-content center-align">
+                    <div class="row">
+                        <div class="col s12">
+                            <span class="blue-grey-text text-darken-2">
+                                <i class="material-icons md-48">settings_applications</i>
+                            </span>
+                            <br/>
+                            {{'profile.tabs.settings' | translate }}
+                            <br/>
+                            <br/>
+                        </div>
+                        <div class="col s12 divider"></div>
+
+                        <div class="col s12">
+                            <br/>
+                            <a href="#/private/sbDefault" class="waves-effect waves-light red-text text- lighten-1">
+                                <i class="material-icons md-48">grade</i>
+                            </a>
+                            <br/>
+                            {{'profile.tabs.sbDefault' | translate }}
+                            <br/>
+                            <br/>
+                        </div>
+                        
+                        <div class="col s12 divider"></div>
+                        <div class="col s12">
+                            <br/>
+                            <span class="blue-grey-text text-darken-2">
+                                <i class="material-icons md-48">notifications_active</i>
+                            </span>
+                            <br/>
+                            {{'profile.tabs.notificationSettings' | translate }}
+                            <br/>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

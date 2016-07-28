@@ -7,7 +7,7 @@
      * @class qaobee.user.changePwd
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('qaobee.user.userProfilPwd', [])
+    angular.module('qaobee.user.pwdUpdate', [])
 
         .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/profile/changePwd', {
@@ -16,7 +16,7 @@
                     user: userProvider.$get,
                     meta: metaProvider.$get
                 },
-                templateUrl: 'app/modules/commons/users/profile/pwd.html'
+                templateUrl: 'app/modules/commons/users/password/pwdUpdate.html'
             });
         })
         /**

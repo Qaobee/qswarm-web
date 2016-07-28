@@ -58,7 +58,7 @@
             'qaobee.players',
             'qaobee.agenda',
             'qaobee.stats',
-            'qaobee.user',
+            'qaobee.user.mainProfile',
             'qaobee.notifications'
 
             /* A SUPPRIMER */

@@ -2,13 +2,18 @@
   "profile": {
     "tabs": {
       "account" : "My account",
-      "sandbox": "My sandbox",
+      "sandbox": "Sandbox",
+      "preference": "Preference",
       "profil": "Profil",
       "password": "Password",
       "billing": "Billing",
-      "sharing": "Invitation",
       "notification": "Notifications",
-      "settings": "Settings"
+      "settings": "Settings",
+      "sbSharing": "Invitation",    
+      "sbMembers": "Members managment of my sandbox",
+      "sbDefault" : "Set défault Sandbox",
+      "sbSwitch" : "Switch sandbox",
+      "notificationSettings" : "Notification settings"
     },
     "label": {
       "name": "Name",

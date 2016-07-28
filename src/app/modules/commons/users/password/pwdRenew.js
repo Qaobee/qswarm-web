@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('qaobee.user.password', [
+    angular.module('qaobee.user.pwdRenew', [
         /* angular qaobee */
 
         /* qaobee modules */
@@ -17,7 +17,7 @@
         .config(function ($routeProvider) {
             $routeProvider.when('/recoverpasswd/:id/:code?', {
                 controller: 'PasswdCtrl',
-                templateUrl: 'app/modules/commons/users/password/password.html'
+                templateUrl: 'app/modules/commons/users/password/pwdRenew.html'
             });
         })
 

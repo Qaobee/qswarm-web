@@ -7,49 +7,26 @@
      * @class qaobee.user.mainProfile
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('qaobee.user.mainProfile', [
+    angular.module('qaobee.user.billing.pay', [
 
-        'qaobee.user.writeProfile',
-        'qaobee.user.config',
-        'qaobee.user.effectiveDefault',
-        'qaobee.user.password',
-        'qaobee.user.userProfilPwd',
-        'qaobee.user.billing',
-        'paymentRestAPI',
-        'ngAutocomplete',
-        'ngPasswordStrength'
+        /* qaobee modules */
+        'paymentRestAPI'
     ])
 
         .config(function ($routeProvider, metaProvider, userProvider) {
-            $routeProvider.when('/private/profile', {
-                controller: 'MainProfileCtrl',
-                resolve: {
-                    user: userProvider.$get,
-                    meta: metaProvider.$get
-                },
-                templateUrl: 'app/modules/commons/users/profile/mainProfile.html'
-            }).when('/private/profile/pay/:index', {
+            $routeProvider.when('/private/billing/pay/:index', {
                 controller: 'PayProfileCtrl',
                 resolve: {
                     user: userProvider.$get,
                     meta: metaProvider.$get
                 },
-                templateUrl: 'app/modules/commons/users/profile/pay.html'
+                templateUrl: 'app/modules/commons/users/billing/pay.html'
             });
         })
         /**
-         * @class qaobee.user.profile.MainProfileCtrl
-         * @description Main controller of app/modules/commons/users/profile/mainProfil.html
+         * @class qaobee.user.billing.PayProfileCtrl
+         * @description Main controller of app/modules/commons/users/billing/pay.html
          */
-        .controller('MainProfileCtrl', function ($scope, $filter, EnvironmentConfig, $translatePartialLoader, $translate, $rootScope, $log, user) {
-            $translatePartialLoader.addPart('profile');
-            $translatePartialLoader.addPart('commons');
-            $translatePartialLoader.addPart('user');
-            $scope.user = user;
-            $scope.$on('$destroy', function () {
-                delete $scope.user;
-            });
-        })
         .controller('PayProfileCtrl', function ($scope, $filter, EnvironmentConfig, $translatePartialLoader, $translate,
                                                 $log, user, meta, $window, $routeParams, paymentAPI) {
             $translatePartialLoader.addPart('profile');
