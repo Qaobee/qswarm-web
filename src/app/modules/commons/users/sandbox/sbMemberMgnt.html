@@ -1,0 +1,77 @@
+<div class="container" ng-cloack>
+
+    <!-- space between header menu and body-->
+    <div class="row"></div>
+
+    <!-- Entete -->
+    <div class="row">
+        <div class="col s12">
+            <div class="row colorMain white-text center">
+                <div class="col m3 s12 center">
+                    <avatar person="user" width="'100px'"></avatar>
+                    <span class="small" translate="profile.label.avatar"></span>
+                </div>
+                <div class="col m7 s12">
+                    <br/>
+                    <h4>{{user.firstname}} {{user.name}}</h4>
+                    <h5 ng-bind="user.account.login"></h5>
+                </div>
+                <div class="col m2 s12">
+                    <br/>&nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row colorMain white-text">
+        <div class="col s2 left-align">
+            <h5><i class="material-icons md-36">group</i></h5>
+        </div>
+
+        <div class="col s8 center-align">
+            <h5>{{'profile.tabs.sbMembers' | translate }}</h5>
+        </div>
+        
+        <div class="col s2">&nbsp;</div>
+        
+    </div>
+
+    <div class="row">
+        <ul>
+            <li class="col l3 m6 s12" ng-repeat="member in sandbox.members">
+                <div class="card white blue-grey-text text-darken-2">
+                    <div class="card-content center-align" style="height:48px;">
+                        <span class="card-title blue-grey-text text-darken-2">
+                            {{member.person.firstname}} {{member.person.name}}
+                        </span>
+                    </div>
+                    <div class="card-content center-align" style="height:48px;">
+                        <avatar person="member.person" width="'50px'"></avatar>
+                    </div>
+                    
+                    <div class="card-content center-align colorMain" style="height:48px;">
+                        <h5><small class="white-text">{{member.role.label}}</small></h5>
+                    </div>
+
+                    <div class="card-action">
+                        <span class="blue-grey-text text-darken-2">Etat</span>
+                        <div class="right"> 
+                            <input type="checkbox" ng-model="compareList[member.person._id]" name="compare"
+                                   ng-change="updateMemberSandbox(member.person._id)"
+                                   ng-checked="member.status=='activate'" id="cb-{{member.person._id}}"/>
+                            <label for="cb-{{member.person._id}}"></label>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="row center-align">
+        <div class="col s12">
+            <button class="btn red lighteen-1 white-text" ng-click="doTheBack()">
+                {{'commons.buttons.back' | translate }}
+            </button>
+        </div>
+    </div>
+</div>

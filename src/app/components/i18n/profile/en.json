@@ -74,6 +74,10 @@
         "success": " mis à jour avec succès",
         "failed": " non mis à jour"
       }
+    },
+    "sbMemberMngtToast":{
+        "memberAdd": "{{firstname}} {{name}} has been activated to your sandbox",
+        "memberremove": "{{firstname}} {{name}} has been desactivated to your sandbox" 
     }
   }
 }
