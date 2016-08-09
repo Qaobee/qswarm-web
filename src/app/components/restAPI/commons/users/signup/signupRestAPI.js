@@ -20,6 +20,7 @@
                  * @returns {Object} Person com.qaobee.hive.business.model.commons.users.user.User
                  */
                 registerUser: function (u) {
+                    u.origin = 'web';
                     return $http({
                         url: signupURL + '/register',
                         method: 'PUT',
