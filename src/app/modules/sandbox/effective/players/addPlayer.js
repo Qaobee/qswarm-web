@@ -98,7 +98,7 @@
 
             var $inputDate = null;
             $timeout(function () {
-                $inputDate = $('#playerBirthdate').pickadate({
+                $inputDate = angular.element('#playerBirthdate').pickadate({
                     format: $scope.formatDate,
                     formatSubmit: $scope.formatDateSubmit,
                     monthsFull: $scope.month,

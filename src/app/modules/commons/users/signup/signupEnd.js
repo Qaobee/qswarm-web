@@ -443,22 +443,22 @@
                         delete $scope.signup;
                     }
                 }).error(function (data) {
-                    $('#modalCreate').closeModal();
+                    angular.element('#modalCreate').closeModal();
                     $scope.messageErreur = data.message;
                     $window.location.href = '/#/signup/error';
                 });
             };
 
             $scope.openCancelModal = function () {
-                $('#modalCancel').openModal();
+                angular.element('#modalCancel').openModal();
             };
 
             $scope.closeCancelModal = function () {
-                $('#modalCancel').closeModal();
+                angular.element('#modalCancel').closeModal();
             };
 
             $scope.cancelSignup = function () {
-                $('#modalCancel').closeModal();
+                angular.element('#modalCancel').closeModal();
                 delete($scope.signup);
                 toastr.info('A bientôt !');
                 $location.path('/');
@@ -481,8 +481,8 @@
             };
 
             $scope.openModalCreate = function () {
-                $('#modalCreate').openModal({dismissible: false});
-                $('.owl-carousel').owlCarousel($scope.owlOptions);
+                angular.element('#modalCreate').openModal({dismissible: false});
+                angular.element('.owl-carousel').owlCarousel($scope.owlOptions);
             };
 
             function nextStep(event) {
@@ -490,7 +490,7 @@
                     while (!$scope.creationFinished) {
                         // Attente fin de la création en base Mongo
                     }
-                    $('#modalCreate').closeModal();
+                    angular.element('#modalCreate').closeModal();
                     $window.location.href = '/#/signup/end';
                 }
             }

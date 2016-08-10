@@ -138,9 +138,9 @@
                     $scope.getListTeamHome();
                     $timeout(function () {
                         if (user.effectiveTabId) {
-                            $('ul.tabs').tabs('select_tab', user.effectiveTabId);
+                            angular.element('ul.tabs').tabs('select_tab', user.effectiveTabId);
                         } else {
-                            $('ul.tabs').tabs('select_tab', 'playerList');
+                            angular.element('ul.tabs').tabs('select_tab', 'playerList');
                         }
                     }, 100);
                 }).error(function () {

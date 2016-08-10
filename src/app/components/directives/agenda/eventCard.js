@@ -104,7 +104,7 @@
                             google.maps.event.trigger($scope.map, 'resize');
                         }, 0);
 
-                        $('#modalEvent-' + $scope.event._id).openModal();
+                        angular.element('#modalEvent-' + $scope.event._id).openModal();
                     };
                 },
                 templateUrl: 'app/components/directives/agenda/eventCard.html'
