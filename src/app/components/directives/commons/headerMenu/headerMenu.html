@@ -17,7 +17,7 @@
 </div>
 
 <!-- Menu Not connected -->
-<nav class="top-nav " ng-class="{ 'top-nav-trans': isActive('/'), 'colorSecondary': !isActive('/')}"
+<nav class="top-nav " ng-class="{ 'top-nav-trans': isActive('/'), 'colorBckgModal': !isActive('/')}"
      role="navigation" ng-hide="user">
     <div class="container">
         <div class="nav-wrapper">
@@ -39,8 +39,8 @@
             </ul>
 
             <!-- menu mobile start -->
-            <a href="#" data-activates="nav-mobileHC" class="button-collapse grey-text text-lighten-1">
-                <i class="mdi-navigation-menu"></i></a>
+            <a href="#" data-activates="nav-mobileHC" class="button-collapse white-text">
+                <i class="material-icons">menu</i></a>
 
             <ul id="nav-mobileHC" class="side-nav">
                 <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
@@ -57,6 +57,7 @@
         </div>
     </div>
 </nav>
+
 <!-- Menu Connected First header-->
 <div class="navbar-fixed" ng-if="user && !user.account.firstConnexion && !notpaid">
     <nav class="top-nav colorSecondary visible-nav" role="navigation">
@@ -179,15 +180,15 @@
 </div>
 
 <!-- Modal login -->
-<div id="modalLogin" class="modal">
-    <div class="modal-header center-align ">
+<div id="modalLogin" class="modal colorBckgModal">
+    <div class="modal-header center-align white-text">
         <h5>
             <span class="fa fa-sign-in"></span>
             <span translate="content.login.label.title"></span>
         </h5>
     </div>
     <form class="col s12" ng-submit="login()">
-        <div class="modal-content grey lighten-3 ">
+        <div class="modal-content white">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="modal-login" type="text" class="validate" ng-model="signin.login" required>
@@ -199,15 +200,16 @@
                 </div>
             </div>
             <div class="row">
-                <div><a href="" ng-click="openForgotPwd()">{{'content.login.label.forgotpasswd' | translate }}</a></div>
+                <div><a href="" class="colorAccent-text" ng-click="openForgotPwd()">{{'content.login.label.forgotpasswd' | translate }}</a></div>
             </div>
         </div>
 
         <div class="row center">
+            <div class="col s12">&nbsp;</div>
             <div class="col s12">
-                <a href="#/" class="modal-action modal-close waves-effect waves-red btn btn-s red"
+                <a href="#/" class="modal-action modal-close waves-effect waves-red btn btn-s colorAccent"
                    translate="commons.buttons.cancel"></a>
-                <button type="submit" class="btn btn-s waves-effect waves-red  green darken-1"
+                <button type="submit" class="btn btn-s waves-effect waves-red  colorSecondary"
                         translate="commons.buttons.validate"></button>
             </div>
         </div>
@@ -215,16 +217,16 @@
 </div>
 
 <!-- Modal forgot password -->
-<div id="modalForgotPwd" class="modal">
-    <div class="modal-header center-align ">
+<div id="modalForgotPwd" class="modal colorBckgModal colorMain-text">
+    <div class="modal-header center-align white-text">
         <h5>
             <span class="fa fa-sign-in"></span>
             <span translate="content.login.label.forgotpasswd"></span>
         </h5>
     </div>
     <form class="col s12" ng-submit="renewPwd()">
-        <div class="modal-content grey lighten-3 ">
-            <div class="row">
+        <div class="modal-content white">
+            <div class="row center">
                 <div class="col s12">
                     <h6><span translate="content.login.label.forgotpasswdmess"></span></h6>
                 </div>
@@ -240,10 +242,11 @@
         </div>
 
         <div class="row center">
+            <div class="col s12">&nbsp;</div>
             <div class="col s12">
-                <a href="#/" class="modal-action modal-close waves-effect waves-red btn btn-s red"
+                <a href="#/" class="modal-action modal-close waves-effect waves-red btn btn-s colorAccent"
                    translate="commons.buttons.cancel"></a>
-                <button type="submit" class="btn btn-s waves-effect waves-red  green darken-1"
+                <button type="submit" class="btn btn-s waves-effect waves-red  colorSecondary"
                         translate="commons.buttons.validate"></button>
             </div>
         </div>
@@ -251,14 +254,14 @@
 </div>
 
 <!-- Modal RenewPwd OK ! -->
-<div id="modalForgotPwdOK" class="modal">
-    <div class="modal-header center-align ">
+<div id="modalForgotPwdOK" class="modal colorBckgModal colorMain-text">
+    <div class="modal-header center-align white-text">
         <h5>
             <span class="fa fa-sign-in"></span>
-            <span translate="content.signup.label.title"></span>
+            <span translate="content.login.label.forgotpasswd"></span>
         </h5>
     </div>
-    <div class="modal-content grey lighten-3 ">
+    <div class="modal-content white">
         <div class="row">
             <div class="col s12">
                 {{'modalForgotPwdOk.line1' | translate}}<br>
@@ -267,9 +270,12 @@
             </div>
         </div>
     </div>
-    <div class="modal-footer">
-        <a href="#/" class="modal-action modal-close waves-effect waves-red btn green darken-1"
-           translate="commons.buttons.close"></a>
+    <div class="row center">
+        <div class="col s12">&nbsp;</div>
+        <div class="col s12">
+            <a href="#/" class="modal-action modal-close waves-effect waves-red btn colorSecondary"
+               translate="commons.buttons.close"></a>
+        </div>
     </div>
 </div>
 
