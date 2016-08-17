@@ -34,7 +34,7 @@
 }
 
 .colorMain {
-    background: linear-gradient(10deg, rgba(100, 100, 100, 1), rgba(100, 100, 100, 1));
+    background: linear-gradient(10deg, rgba(100, 100, 100, 0.7), rgba(100, 100, 100, 0.7));
     overflow: hidden;
 }
 
@@ -185,7 +185,17 @@ footer.page-footer {
 }
 
 .hero-pricing {
-    background: url("../assets/images/background1%20-%202.jpg") center 40%;
+    background: url("../assets/images/handball/Tir-handball-.jpg") center 50%;
+    background-size: cover;
+    width: 100%;
+    margin-top: -65px;
+    padding-top: 10%;
+    min-height: calc(40vh - 194px);
+    height: 100%;
+}
+
+.hero-signup {
+    background: url("../assets/images/handball/usePlayer.jpeg") center 45%;
     background-size: cover;
     width: 100%;
     margin-top: -65px;
@@ -197,7 +207,7 @@ footer.page-footer {
 .hero-overlay {
     background-color: #000000;
     width: 100%;
-    min-height: calc(100vh - 194px);
+    min-height: calc(40vh - 194px);
     z-index: 1;
     position: absolute;
     top: 0;
@@ -295,6 +305,7 @@ h6.title {
 @media only screen and (max-width: 992px) {
     .hero {
         min-height: calc(100vh - 150px) !important;
+        margin-top: 0px;
     }
 
     #index-banner .section {
@@ -341,6 +352,7 @@ h6.title {
 @media only screen and (max-width: 600px) {
     .hero {
         min-height: calc(100vh - 50px);
+        margin-top: 0px;
     }
 
     .lost {

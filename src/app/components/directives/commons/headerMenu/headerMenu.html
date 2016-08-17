@@ -17,8 +17,7 @@
 </div>
 
 <!-- Menu Not connected -->
-<nav class="top-nav " ng-class="{ 'top-nav-trans': isActive('/'), 'colorBckgModal': !isActive('/')}"
-     role="navigation" ng-hide="user">
+<nav class="top-nav top-nav-trans" role="navigation" ng-hide="user">
     <div class="container">
         <div class="nav-wrapper">
             <a href="/#/" class="brand-logo"><img src="assets/images/logo-mini.png" height="30px"/></a>
@@ -148,7 +147,7 @@
             </div>
         </div>
     </nav>
-
+    <angular-feedback options="feedbackOptions" meta="meta"></angular-feedback>
 </div>
 <div class="navbar-fixed light-blue white-text trial" ng-if="intrial">
     <div class="row valign-wrapper">
