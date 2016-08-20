@@ -1,9 +1,11 @@
 <div class="colorMain-text">
-    <div class="section no-pad-bot hero-signup">
+    <div class="hero-signup ">
         <div class="colorBckgModal white-text center-align">
-            <h1 class="title" translate="landing.main-title"></h1>
-
-            <h4 class="title" translate="landing.sub-title"></h4>
+            <h1 class="title hide-on-small-only" translate="landing.main-title"></h1>
+            <h4 class="title hide-on-small-only" translate="landing.sub-title"></h4>
+            
+            <h2 class="title hide-on-med-and-up" translate="landing.main-title"></h2>
+            <h5 class="title hide-on-med-and-up" translate="landing.sub-title"></h5>
 
             <!-- <a class="waves-effect waves-light btn" translate="landing.manual-btn" href="#/how"></a>-->
         </div>
@@ -12,144 +14,154 @@
     <!-- Entete -->
     <div class="row">
         <div class="col s12 colorSecondary white-text center">
-
             <h3 translate="headerSignup.label"></h3>
-
         </div>
     </div>
 
-    <div class="row card bleu-grey-text text-darken-2">
-        <div class="col s12">
-            <form ng-submit="usernameTest()" name="signupForm">
-                <!-- Empty row -->
-                <div class="row">&nbsp;</div>
+    <form ng-submit="usernameTest()" name="signupForm">    
+        <div class="row">
 
-                <!-- Firstname & Name -->
-                <div class="row">
-                    <div class="col m1 hide-on-small-only">&nbsp;</div>
-                    <div class="col s12 m4 input-field">
-                        <input id="firstname" type="text" class="validate" ng-model="signup.firstname" required
-                               tabindex="1">
-                        <label for="firstname">{{'content.signup.label.firstname' | translate }} <span
-                                class="red-text text-lighten-1">*</span></label>
-                    </div>
+        <!-- Firstname & Name -->
+            <div class="col m1 hide-on-small-only">&nbsp;</div>
+            <div class="col s12 m4 input-field">
+                <input id="firstname" type="text" class="validate" ng-model="signup.firstname" required tabindex="1">
+                <label for="firstname">
+                    {{'content.signup.label.firstname' | translate }} 
+                    <span class="colorAccent-text">*</span>
+                </label>
+            </div>
 
-                    <div class="col m2 hide-on-small-only">&nbsp;</div>
+            <div class="col m2 hide-on-small-only">&nbsp;</div>
 
-                    <div class="col s12 m4 input-field">
-                        <input id="name" type="text" class="validate" ng-model="signup.name" required tabindex="2">
-                        <label for="name">{{'content.signup.label.name' | translate }} <span
-                                class="red-text text-lighten-1">*</span></label>
-                    </div>
-                    <div class="col m1 hide-on-small-only">&nbsp;</div>
-                </div>
+            <div class="col s12 m4 input-field">
+                <input id="name" type="text" class="validate" ng-model="signup.name" required tabindex="2">
+                <label for="name">
+                    {{'content.signup.label.name' | translate }} 
+                    <span class="colorAccent-text">*</span>
+                </label>
+            </div>
 
-                <!-- Login & e-Mail -->
-                <div class="row">
-                    <div class="col m1 hide-on-small-only">&nbsp;</div>
-                    <div class="col s12 m4 input-field">
-                        <input id="login" type="text" class="validate" ng-model="signup.account.login" required
-                               tabindex="3">
-                        <label for="login">{{'content.signup.label.login' | translate }} <span
-                                class="red-text text-lighten-1">*</span></label>
-                    </div>
-                    <div class="col m2 hide-on-small-only">&nbsp;</div>
-                    <div class="col s12 m4 input-field">
-                        <input type="email" name="email" id="email" class="validate" ng-model="signup.contact.email"
-                               ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
-                               ng-class="{ 'invalid': signupForm.email.$invalid }" tabindex="4">
-	                    <span ng-class="{'has-error': signupForm.email.$dirty && signupForm.email.$error.required}"
-                              class="small red-text text-lighten-1"
-                              ng-hide="signupForm.email.$valid" translate="content.signup.emailDirty" required></span>
-                        <label for="email">{{'content.signup.label.email' | translate }} <span
-                                class="red-text text-lighten-1">*</span></label>
-                    </div>
-                    <div class="col m1 hide-on-small-only">&nbsp;</div>
-                </div>
-
-                <!-- Password & confirm -->
-                <div class="row">
-                    <div class="col m1 hide-on-small-only">&nbsp;</div>
-                    <div class="col s12 m4 input-field">
-                        <input id="password" type="password" class="validate" ng-model="signup.account.passwd" required
-                               tabindex="5">
-                        <label for="password">{{'content.signup.label.password' | translate }} <span
-                                class="red-text text-lighten-1">*</span></label>
-                        <div ng-show="signup.account.passwd">
-                            <small translate='modalSignupUp.passwd.strength'></small>
-                            <div ng-hide="true" ng-password-strength="signup.account.passwd" strength="passStrength"
-                                 inner-class="meter"></div>
-                            <div class="progress grey lighten-2">
-                                <div class="determinate"
-                                     ng-class="{'red' : passStrength < 33, 'orange': passStrength >= 33 && passStrength < 66, 'green' : passStrength >= 66}"
-                                     style="width: {{passStrength}}%"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col m2 hide-on-small-only">&nbsp;</div>
-
-                    <div class="col s12 m4 input-field">
-                        <input id="passwordConfirm" type="password" class="validate" ng-model="passwdConfirm" required
-                               tabindex="6">
-                        <label for="passwordConfirm">{{'content.signup.label.passwordConfirm' | translate }} <span
-                                class="red-text text-lighten-1">*</span></label>
-                    </div>
-                    <div class="col m1 hide-on-small-only">&nbsp;</div>
-                </div>
-
-                <!-- Captcha -->
-                <div class="row">
-                    <div class="col m1 hide-on-small-only">&nbsp;</div>
-                    <div class="col s12 m10 input-field">
-                        <div re-captcha ng-model="signup.captcha" id="custom_recaptcha_widget" style="display:none">
-                            <div class="col s12 m7">
-                                <div id="recaptcha_image"></div>
-                            </div>
-                            <div class="col s6 m1" style="line-height:0.5;">
-                                <a href="javascript:Recaptcha.reload()"><img width="25" height="18"
-                                                                             src="https://www.google.com/recaptcha/api/img/clean/refresh.png"></a><br
-                                    class="hide-on-med-and-down">
-                                <a class="recaptcha_only_if_image" href="javascript:Recaptcha.switch_type('audio')"
-                                   id="icon-audio"><img width="25" height="18"
-                                                        src="https://www.google.com/recaptcha/api/img/clean/audio.png"></a>
-                                <a class="recaptcha_only_if_audio" href="javascript:Recaptcha.switch_type('image')"
-                                   id="icon-image"><img width="25" height="18"
-                                                        src="https://www.google.com/recaptcha/api/img/clean/text.png"></a><br
-                                    class="hide-on-med-and-down">
-                                <a href="javascript:Recaptcha.showhelp()"><img id="recaptcha_whatsthis" width="25"
-                                                                               height="16"
-                                                                               src="https://www.google.com/recaptcha/api/img/clean/help.png"
-                                                                               alt="Aide"></a>
-                            </div>
-                            <div class="col s6 m4"><img id="recaptcha_logo" alt="" width="71" height="36"
-                                                        src="https://www.google.com/recaptcha/api/img/clean/logo.png">
-                            </div>
-
-                            <div class="col s12 m6">
-                                <input type="text" id="recaptcha_response_field" name="recaptcha_response_field"
-                                       tabindex="7"/>
-                            </div>
-                            <div class="col m6 hide-on-med-and-down">&nbsp;</div>
-                        </div>
-                    </div>
-                    <div class="col m1 hide-on-small-only">&nbsp;</div>
-                </div>
-
-                <!-- Buttons -->
-                <div class="row center">
-                    <div class="col s12">
-                        <a href="" ng-click="cancelSignup()"
-                           class="modal-action modal-close waves-effect waves-white btn btn-s colorAccent" style="max-width:50%"
-                           translate="commons.buttons.cancel" tabindex="9"></a>
-                        <button type="submit" class="btn btn-s waves-effect waves-white colorSecondary"
-                                style="max-width:50%"
-                                translate="commons.buttons.validate" ng-disabled="signupForm.$invalid" tabindex="8" ></button>
-                    </div>
-                </div>
-            </form>
+            <div class="col m1 hide-on-small-only">&nbsp;</div>
         </div>
-    </div>
+        
+        <div class="row">
+        <!-- Login & e-Mail -->
+            <div class="col m1 hide-on-small-only">&nbsp;</div>
+            <div class="col s12 m4 input-field">
+                <input id="login" type="text" class="validate" ng-model="signup.account.login" required tabindex="3">
+                <label for="login">
+                    {{'content.signup.label.login' | translate }} 
+                    <span class="colorAccent-text">*</span>
+                </label>
+            </div>
 
+            <div class="col m2 hide-on-small-only">&nbsp;</div>
+
+            <div class="col s12 m4 input-field">
+                <input type="text" name="email" id="email" ng-model="signup.contact.email"
+                       ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+                        tabindex="4">
+                <label for="email">
+                    {{'content.signup.label.email' | translate }} 
+                    <span class="colorAccent-text">*</span>
+                </label>
+                <span ng-class="{'has-error': signupForm.email.$dirty && signupForm.email.$error.required}"
+                      class="small colorAccent-text"
+                      ng-hide="signupForm.email.$valid" translate="content.signup.emailDirty"></span>
+            </div>
+            <div class="col m1 hide-on-small-only">&nbsp;</div>
+        </div>
+        
+        <div class="row">
+        <!-- Password & confirm -->
+            <div class="col m1 hide-on-small-only">&nbsp;</div>
+            <div class="col s12 m4 input-field">
+                <input id="password" type="password" class="validate" ng-model="signup.account.passwd" required tabindex="5">
+                <label for="password">
+                    {{'content.signup.label.password' | translate }} 
+                    <span class="colorAccent-text">*</span>
+                </label>
+                <div ng-show="signup.account.passwd">
+                    <small translate='modalSignupUp.passwd.strength'></small>
+                    <div ng-hide="true" ng-password-strength="signup.account.passwd" strength="passStrength" inner-class="meter"></div>
+                    <div class="progress grey lighten-2">
+                        <div class="determinate"
+                             ng-class="{'red' : passStrength < 33, 'orange': passStrength >= 33 && passStrength < 66, 'green' : passStrength >= 66}"
+                             style="width: {{passStrength}}%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col m2 hide-on-small-only">&nbsp;</div>
+
+            <div class="col s12 m4 input-field">
+                <input id="passwordConfirm" name="passwordConfirm" type="password" class="validate" ng-model="passwdConfirm" required tabindex="6" passwd-check="password">
+                <label for="passwordConfirm">
+                    {{'content.signup.label.passwordConfirm' | translate }} 
+                    <span class="colorAccent-text">*</span>
+                </label>
+                <span ng-show="signupForm.passwordConfirm.$dirty && signupForm.passwordConfirm.$error.pwmatch" class="small colorAccent-text" translate="error.signup.password.different"></span>
+            </div>
+            <div class="col m1 hide-on-small-only">&nbsp;</div>
+        </div>
+
+        <!-- Captcha -->
+        <div class="row">
+            <div class="col m1 hide-on-small-only">&nbsp;</div>
+            <div class="col s12 m10 input-field">
+                <div re-captcha ng-model="signup.captcha" id="custom_recaptcha_widget" style="display:none">
+                    <div class="col s12 m7">
+                        <div id="recaptcha_image"></div>
+                    </div>
+                    <div class="col s6 m1" style="line-height:0.5;">
+                        <a href="javascript:Recaptcha.reload()">
+                            <img width="25" height="18" src="https://www.google.com/recaptcha/api/img/clean/refresh.png">
+                        </a>
+                        <br class="hide-on-med-and-down">
+
+                        <a class="recaptcha_only_if_image" href="javascript:Recaptcha.switch_type('audio')" id="icon-audio">
+                            <img width="25" height="18" src="https://www.google.com/recaptcha/api/img/clean/audio.png">
+                        </a>
+
+                        <a class="recaptcha_only_if_audio" href="javascript:Recaptcha.switch_type('image')" id="icon-image">
+                            <img width="25" height="18" src="https://www.google.com/recaptcha/api/img/clean/text.png">
+                        </a>
+                        <br class="hide-on-med-and-down">
+
+                        <a href="javascript:Recaptcha.showhelp()">
+                            <img id="recaptcha_whatsthis" width="25" height="16" src="https://www.google.com/recaptcha/api/img/clean/help.png" alt="Aide">
+                        </a>
+                    </div>
+                    <div class="col s6 m4">
+                        <img id="recaptcha_logo" alt="" width="100" height="50" src="https://www.google.com/recaptcha/api/img/clean/logo.png">
+                    </div>
+
+                    <div class="col s12 m6">
+                        <input type="text" id="recaptcha_response_field" name="recaptcha_response_field" tabindex="7"/>
+                    </div>
+                    <div class="col m6 hide-on-med-and-down">&nbsp;</div>
+                </div>
+            </div>
+            <div class="col m1 hide-on-small-only">&nbsp;</div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="row center">
+            <div class="col s12">
+                <a href="" ng-click="cancelSignup()" class="modal-action modal-close waves-effect waves-white btn btn-s colorAccent" style="max-width:50%"
+                        translate="commons.buttons.cancel" tabindex="9">
+                </a>
+                <button type="submit"  style="max-width:50%"
+                        translate="commons.buttons.validate" ng-disabled="signupForm.$invalid" tabindex="8"
+                        ng-class="{'btn btn-s waves-effect waves-white disabled': signupForm.$invalid, 
+                                  'btn btn-s waves-effect waves-white colorSecondary': !signupForm.$invalid}">
+                </button>
+                
+                
+            </div>
+        </div>
+    </form>
+    
     <!-- body end-->
 </div>

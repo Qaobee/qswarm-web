@@ -62,7 +62,7 @@
       "nonunique": "Le nom d'utilisateur que vous avez choisi existe déjà",
       "password": {
         "short": "Le mot de passe que vous avez choisi est trop court",
-        "different": "Le mot de passe et sa confirmation sont différents"
+        "different": "Les mots de passe ne correspondent pas"
       },
       "unknown": "Erreur inconnue",
       "CAPTCHA_EXCEPTION": "Le code de vérification est erroné."

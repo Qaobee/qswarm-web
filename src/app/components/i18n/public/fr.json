@@ -72,10 +72,10 @@
   },
   "pricing": {
     "title": "Guide des offres",
-    "desc": "Qaobee s'adresse aux entraîneurs et aux clubs de handball.",
+    "desc": "Qaobee s'adresse aux entraîneurs et aux clubs<span style=\"vertical-align: super; font-size: 50%;\">*</span> de handball",
     "subscribe-btn": "Souscrire",
     "soon-btn": "Prochainement",
-    "team-subscribe": "Vous êtes un club et vous souhaitez souscrire à Qaobee pour vos entraîneurs, <a href=\"mailto:contact@qaobee.com\">contactez nous</a>",
+    "team-subscribe": "(*) Vous êtes un club et vous souhaitez souscrire à Qaobee pour vos entraîneurs, <a href=\"mailto:contact@qaobee.com\">contactez nous</a>",
     "trial": {
       "title": "Qaobee est gratuit pendant un mois, alors profitez-en dès à présent",
       "btn": "Essayer gratuitement"
@@ -84,10 +84,10 @@
       "standard": {
         "title": "Standard",
         "price": "8",
-        "period": "par utilisateur / par mois",
+        "period": "par mois",
         "desc": "L'espace de travail dont vous avez besoin pour entraîner en toute simplicité.",
         "detail": {
-          "title": "Standard comprends",
+          "title": "Standard comprend",
           "sub-title": "Toutes ces fonctionnalités :",
           "line1": "Gestion de son effectif et de ses équipes",
           "line2": "Agenda partagé",
