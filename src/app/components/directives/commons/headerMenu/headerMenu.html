@@ -186,16 +186,22 @@
             <span translate="content.login.label.title"></span>
         </h5>
     </div>
-    <form class="col s12" ng-submit="login()">
+    <form name="loginForm" ng-submit="login()">
         <div class="modal-content white">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="modal-login" type="text" class="validate" ng-model="signin.login" required>
-                    <label for="modal-login">{{'content.login.label.login' | translate }}</label>
+                    <label for="modal-login">
+                        {{'content.login.label.login' | translate }}
+                        <span class="colorAccent-text">*</span>
+                    </label>
                 </div>
                 <div class="input-field col s12">
                     <input id="modal-password" type="password" class="validate" ng-model="signin.passwd" required>
-                    <label for="modal-password">{{'content.login.label.password' | translate }}</label>
+                    <label for="modal-password">
+                        {{'content.login.label.password' | translate }}
+                        <span class="colorAccent-text">*</span>
+                    </label>
                 </div>
             </div>
             <div class="row">
@@ -208,8 +214,12 @@
             <div class="col s12">
                 <a href="#/" class="modal-action modal-close waves-effect waves-red btn btn-s colorAccent"
                    translate="commons.buttons.cancel"></a>
-                <button type="submit" class="btn btn-s waves-effect waves-red  colorSecondary"
-                        translate="commons.buttons.validate"></button>
+                <button type="submit"  style="max-width:50%"
+                        translate="commons.buttons.validate" ng-disabled="loginForm.$invalid" tabindex="8"
+                        ng-class="{'btn btn-s waves-effect waves-white disabled': loginForm.$invalid, 
+                                  'btn btn-s waves-effect waves-white colorSecondary': !loginForm.$invalid}">
+                </button>
+                
             </div>
         </div>
     </form>
@@ -223,7 +233,7 @@
             <span translate="content.login.label.forgotpasswd"></span>
         </h5>
     </div>
-    <form class="col s12" ng-submit="renewPwd()">
+    <form name="renewPwdForm" ng-submit="renewPwd()">
         <div class="modal-content white">
             <div class="row center">
                 <div class="col s12">
@@ -234,7 +244,10 @@
                 <div class="col m3 hide-on-small">&nbsp;</div>
                 <div class="input-field col s12 m6">
                     <input id="modal-login" type="text" class="validate" ng-model="infos.login" required>
-                    <label for="modal-login">{{'content.login.label.login' | translate }}</label>
+                    <label for="modal-login">
+                        {{'content.login.label.login' | translate }}
+                        <span class="colorAccent-text">*</span>
+                    </label>
                 </div>
                 <div class="col m3 hide-on-small">&nbsp;</div>
             </div>
@@ -245,8 +258,12 @@
             <div class="col s12">
                 <a href="#/" class="modal-action modal-close waves-effect waves-red btn btn-s colorAccent"
                    translate="commons.buttons.cancel"></a>
-                <button type="submit" class="btn btn-s waves-effect waves-red  colorSecondary"
-                        translate="commons.buttons.validate"></button>
+                <button type="submit"  style="max-width:50%"
+                        translate="commons.buttons.validate" ng-disabled="renewPwdForm.$invalid" tabindex="8"
+                        ng-class="{'btn btn-s waves-effect waves-white disabled': renewPwdForm.$invalid, 
+                                  'btn btn-s waves-effect waves-white colorSecondary': !renewPwdForm.$invalid}">
+                </button>
+                
             </div>
         </div>
     </form>

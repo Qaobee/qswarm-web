@@ -37,42 +37,16 @@
             }).when('/contact', {
                 controller: 'ContactCtrl',
                 templateUrl: 'app/modules/public/contact.html'
-            }).when('/blog', {
-                controller: 'BlogCtrl',
-                templateUrl: 'app/modules/public/blog.html'
             }).when('/pricing', {
                 controller: 'PricingCtrl',
                 templateUrl: 'app/modules/public/pricing.html'
-            }).when('/features', {
-                controller: 'FeaturesCtrl',
-                templateUrl: 'app/modules/public/features.html'
-            }).when('/offer/DISCOVERY', {
-                controller: 'DiscoveryOfferCtrl',
-                templateUrl: 'app/modules/public/offers/discovery.html'
-            }).when('/offer/PREMIUM', {
-                controller: 'PremiumOfferCtrl',
-                templateUrl: 'app/modules/public/offers/premium.html'
-            }).when('/offer/TEAM_PLUS', {
-                controller: 'TeamPlusOfferCtrl',
-                templateUrl: 'app/modules/public/offers/teamplus.html'
+            }).when('/about', {
+                controller: 'AboutCtrl',
+                templateUrl: 'app/modules/public/aboutUs.html'
             });
         })
 
-        .controller('FeaturesCtrl', function () {
-
-        })
         .controller('HowCtrl', function () {
-
-        })
-        .controller('DiscoveryOfferCtrl', function () {
-
-        })
-
-        .controller('PremiumOfferCtrl', function () {
-
-        })
-
-        .controller('TeamPlusOfferCtrl', function () {
 
         })
 
@@ -163,49 +137,5 @@
                 delete $scope.subjects;
                 delete $scope.contact;
             });
-        })
-
-        /**
-         * @class qaobee.public.public.BlogCtrl
-         * @description Contrôleur de la page "Blog"
-         */
-        .controller('BlogCtrl', function ($scope, publicRestAPI) {
-            $scope.blogs = Array.create();
-            // récupération de la liste des blogs
-            publicRestAPI.getBlogs().success(function (data) {
-                data.each(function (n) {
-                    n.color = $scope.getRandomColor();
-                });
-                $scope.blogs = data;
-            });
-            /**
-             * @name $scope.getRandomColor
-             * @function
-             * @memberOf qaobee.public.public.BlogCtrl
-             * @description retourne une couleur aléatoire pour la puce de la timeline
-             */
-            $scope.getRandomColor = function () {
-                var i = Math.floor(Math.random() * 6 + 1);
-                switch (i) {
-                    case 1:
-                        return 'bg-success';
-                    case 2:
-                        return 'bg-secondary';
-                    case 3:
-                        return 'bg-info';
-                    case 4:
-                        return 'bg-warning';
-                    case 5:
-                        return 'bg-danger';
-                    case 6:
-                        return 'bg-primary';
-                    default:
-                        break;
-                }
-            };
-            $scope.$on('$destroy', function () {
-                delete $scope.blogs;
-            });
-
         });
 }());

@@ -33,6 +33,10 @@
   color: #ea5350 !important;
 }
 
+.colorSecondary-text {
+  color: #78BE78 !important;
+}
+
 .colorMain {
     background: linear-gradient(10deg, rgba(100, 100, 100, 1), rgba(100, 100, 100, 1));
     overflow: hidden;
