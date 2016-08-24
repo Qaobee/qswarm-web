@@ -1,6 +1,5 @@
-<div class="container">
-<!-- body start-->
-    <div class="row"> <div class="col s10"></div></div>   
+<div class="container colorMain-text">
+<!-- body start--> 
     
 	<div class="container">
         <div class="section">
@@ -8,7 +7,7 @@
             <div class="row">
                 <div class="col s12">
                     <div class="center icon-block">
-                         <div class="red-text text-lighten-1">
+                         <div class="colorAccent-text">
                              <i class="medium material-icons">verified_user</i>
                          </div>
                         <h4 class="center" translate="endPage.title"></h4>
@@ -17,9 +16,9 @@
             </div>
             <div class="row">
                 <div class="col s12">
-                {{'modalSignupOk.line1' | translate}}<br>
-                {{'modalSignupOk.line2' | translate}}<br>
-                {{'modalSignupOk.line3' | translate}}<br>
+                <h5>{{'modalSignupOk.line1' | translate}}</h5>
+                <h5>{{'modalSignupOk.line2' | translate}}</h5>
+                <h5>{{'modalSignupOk.line3' | translate}}</h5>
                 </div>
             </div>
             <div class="row">
@@ -29,28 +28,28 @@
             </div>
             <div class="row">
                 <div class="center col s12">
-                <a href="" class="btn white-text blue-grey darken-3" ng-click="goHome()"><i class="fa fa-home left"></i>{{'endPage.buttonHome' | translate }}</a>&nbsp;
+                <a href="" class="btn white-text colorAccent" ng-click="goHome()"><i class="material-icons left">home</i>{{'endPage.buttonHome' | translate }}</a>&nbsp;
                 </div>
             </div>
         </div>
     </div>
-    
-    <div class="container">
-        <div class="section">
-            <h5 class="center-align" translate="landing.area-4.content"></h5>
-            <div class="row">
-                <span class="col m2 hide-on-small-only">&nbsp;</span>
-                <a href="{{url.apple}}" target="_blank">
-                	<img class="col m3 s12 center-align" src="assets/images/appstore.png" alt="AppStore"/>
-                </a>
-                <span class="col m2 hide-on-small-only">&nbsp;</span>
-                <a href="{{url.google}}" target="_blank">
-                	<img class="col m3 s12 center-align" src="assets/images/googleplay.png" alt="Googleplay"/>
-                </a>
-                <span class="col m2 hide-on-small-only">&nbsp;</span>
-            </div>
+</div>
+
+<div class="colorSecondary white-text">
+    <div class="section">
+        <h5 class="center-align" translate="landing.area-4.content"></h5>
+        <div class="row">
+            <span class="col m2 hide-on-small-only">&nbsp;</span>
+            <a href="{{url.apple}}" target="_blank">
+                <img class="col m3 s12 center-align" src="assets/images/appstore.png" alt="AppStore"/>
+            </a>
+            <span class="col m2 hide-on-small-only">&nbsp;</span>
+            <a href="{{url.google}}" target="_blank">
+                <img class="col m3 s12 center-align" src="assets/images/googleplay.png" alt="Googleplay"/>
+            </a>
+            <span class="col m2 hide-on-small-only">&nbsp;</span>
         </div>
     </div>
+</div>
    
 <!-- body end-->
-</div>

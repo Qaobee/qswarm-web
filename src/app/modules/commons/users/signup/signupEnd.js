@@ -63,46 +63,7 @@
 
             $scope.creationFinished = false;
 
-            var $inputDate = null;
-            $timeout(function () {
-                //i18n datepicker
-                var month = $filter('translate')('commons.format.date.listMonth');
-                $scope.month = month.split(',');
-
-                var monthShort = $filter('translate')('commons.format.date.listMonthShort');
-                $scope.monthShort = monthShort.split(',');
-
-                var weekdaysFull = $filter('translate')('commons.format.date.listWeekdaysFull');
-                $scope.weekdaysFull = weekdaysFull.split(',');
-
-                var weekdaysShort = $filter('translate')('commons.format.date.listWeekdaysShort');
-                $scope.weekdaysShort = weekdaysShort.split(',');
-
-                var weekdaysLetter = $filter('translate')('commons.format.date.listWeekdaysLetter');
-                $scope.weekdaysLetter = weekdaysLetter.split(',');
-
-                $scope.today = $filter('translate')('commons.format.date.today');
-                $scope.clear = $filter('translate')('commons.format.date.clear');
-                $scope.close = $filter('translate')('commons.format.date.close');
-                $scope.formatDate = $filter('translate')('commons.format.date.label');
-                $scope.formatDateSubmit = $filter('translate')('commons.format.date.pattern');
-
-                $inputDate = angular.element('#signupBirthdate').pickadate({
-                    format: $scope.formatDate,
-                    formatSubmit: $scope.formatDateSubmit,
-                    monthsFull: $scope.month,
-                    weekdaysFull: $scope.weekdaysFull,
-                    weekdaysLetter: $scope.weekdaysLetter,
-                    weekdaysShort: $scope.weekdaysShort,
-                    selectYears: 100,
-                    selectMonths: true,
-                    today: $scope.today,
-                    clear: $scope.clear,
-                    close: $scope.close
-                });
-
-                $scope.datePicker = $inputDate.pickadate('picker');
-            }, 500);
+            
 
             signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function (data) {
                 if (data === null) {
@@ -113,9 +74,6 @@
                     $location.path('/signup/error');
                 } else {
                     $scope.signup = data;
-                    if ($scope.signup.birthdate !== null && $scope.signup.birthdate !== 0) {
-                        $scope.signup.birthdateInput = new Date(moment($scope.signup.birthdate));
-                    }
                     $scope.signup.categoryAge = '';
 
                     // On force le sport au HANDBALL
@@ -126,6 +84,7 @@
                     $scope.signup.account.listPlan[0].activity._id = 'ACT-HAND';
 
                     $scope.temp.message = $filter('translate')('structureSection.list.empty');
+                    
                     $scope.valuesStructures = [];
 
                     // Déclaration du user en mode connecté
@@ -151,52 +110,10 @@
                 });
             });
 
-            /* Validate userCivilSection */
-            $scope.validateUserCivilSection = function () {
-                var validateOk = true;
-                if ($scope.signup.gender === null) {
-                    toastr.warning($filter('translate')('civilSection.ph.genderMandatory'));
-                    validateOk = false;
-                }
-                if (angular.isUndefined($scope.signup.birthdateInput) || $scope.signup.birthdateInput === null || $scope.signup.birthdateInput === 0) {
-                    toastr.warning($filter('translate')('civilSection.ph.birthdateMandatory'));
-                    validateOk = false;
-                }
-                if ($scope.signup.contact.home === null || $scope.signup.contact.home === '') {
-                    toastr.warning($filter('translate')('civilSection.ph.phoneNumberMandatory'));
-                    validateOk = false;
-                }
-
-                if (validateOk) {
-                    var start = moment($scope.signup.birthdateInput, 'DD/MM/YYYY');
-                    $scope.signup.birthdate = moment(start).valueOf();
-                    WizardHandler.wizard().next();
-                }
-            };
-
-            /* Validate sportSection */
-            $scope.validateSportSection = function () {
-                var validateOk = true;
-                if (angular.isUndefined($scope.signup.account.listPlan[0].activity._id) || $scope.signup.account.listPlan[0].activity._id === null) {
-                    toastr.warning($filter('translate')('sportSection.ph.sportMandatory'));
-                    validateOk = false;
-                }
-                if (validateOk) {
-                    WizardHandler.wizard().next();
-                }
-            };
-
-
             /* init ngAutocomplete*/
             $scope.options = {};
             $scope.options.watchEnter = false;
-            // options pour nationalité
-            $scope.optionsAddress = {
-                types: 'geocode'
-            };
-            $scope.detailsAddress = '';
-
-            // options pour ville structure
+            /// options pour ville structure
             $scope.optionsStructureCity = {
                 types: '(cities)'
             };
@@ -224,15 +141,6 @@
                 $scope.newStructure = {};
             };
 
-            // Surveillance de la modification du retour de l'API Google sur l'adresse dans les infos personnelles
-            $scope.$watch('temp.detailsAddress', function (newValue) {
-                if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue)) {
-                    return;
-                }
-                personSrv.formatAddress(newValue).then(function (adr) {
-                    $scope.signup.address = adr;
-                });
-            });
 
             // Surveillance de la modification du retour de l'API Google sur l'adresse
             $scope.$watch('signup.detailsStructureCity', function (newValue) {
@@ -385,6 +293,8 @@
             /* Validate structureSection */
             $scope.validateStructureSection = function () {
                 var validateOk = true;
+                
+                $log.debug('coucou', 'coucoucou');
 
                 if (!$scope.temp.createStructure && (angular.isUndefined($scope.temp.structure) || $scope.temp.structure._id < 0)) {
                     toastr.warning($filter('translate')('structureSection.ph.structureMandatory'));

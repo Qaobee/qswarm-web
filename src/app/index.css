@@ -222,7 +222,7 @@ footer.page-footer {
 }
 
 .hero-pricing {
-    background: url("../assets/images/handball/Tir-handball-.jpg") center 50%;
+    background: url("../assets/images/handball/Back03.jpg") center 50%;
     background-size: cover;
     width: 100%;
     margin-top: -65px;
@@ -232,7 +232,17 @@ footer.page-footer {
 }
 
 .hero-signup {
-    background: url("../assets/images/handball/usePlayer.jpeg") center 45%;
+    background: url("../assets/images/handball/Back02.jpeg") center 45%;
+    background-size: cover;
+    width: 100%;
+    margin-top: -65px;
+    padding-top: 10%;
+    min-height: calc(40vh - 194px);
+    height: 100%;
+}
+
+.hero-signup-end {
+    background: url("../assets/images/handball/Back01.jpg");
     background-size: cover;
     width: 100%;
     margin-top: -65px;
