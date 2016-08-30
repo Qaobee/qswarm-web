@@ -37,7 +37,6 @@
 
                 sandboxRestAPI.getSandbox($scope.meta.sandbox._id).success(function (data) {
                     $scope.sandbox = data;
-                    $log.debug('sandbox',$scope.sandbox);
                 });
             }
             

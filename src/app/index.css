@@ -53,7 +53,7 @@
 }
 
 .colorBckgModal {
-    background-color: rgba(100, 100, 100, 0.7);
+    background-color: rgba(100, 100, 100, 0.1);
     overflow: hidden;
 }
 
@@ -191,6 +191,13 @@ footer.page-footer {
     margin: 0;
 }
 
+.card-image {
+    min-height: 20vh;
+    max-height: 35vh;
+    min-width: 20vw;
+    max-width: 50vw;
+}
+
 .lost {
     background: url("../assets/images/404-bg.jpg") center 0%;
     background-size: cover;
@@ -212,7 +219,7 @@ footer.page-footer {
 }
 
 .hero {
-    background: url("../assets/images/background1 - 1.jpg") center 40%;
+    background: url("../assets/images/backHome.jpg") center 40%;
     background-size: cover;
     width: 100%;
     margin-top: -65px;
@@ -267,12 +274,13 @@ footer.page-footer {
     z-index: 10;
 }
 
-.hero h1.title, .lost h1.title, .hero-pricing h1.title, .hero-signup h1.title {
+.hero h1.title, .lost h1.title, .hero h2.title, .hero-pricing h1.title, .hero-signup h1.title {
     text-transform: uppercase;
     font-weight: bold;
 }
 
-.hero h4.title, .lost h4.title {
+.hero h2.title, .lost h2.title, .hero h4.title, .lost h4.title {
+    font-weight: bold;
 }
 
 h6.title {
@@ -287,7 +295,7 @@ h6.title {
 .top-nav-trans {
     position: relative;
     z-index: 30;
-    background-color: rgba(100, 100, 100, 0.7);
+    background-color: rgba(100, 100, 100, 1);
     box-shadow: none;
 }
 
@@ -351,7 +359,8 @@ h6.title {
 
 @media only screen and (max-width: 992px) {
     .hero {
-        min-height: calc(100vh - 150px) !important;
+        min-height: calc(65vh - 150px) !important;
+        max-height: calc(100vh - 150px) !important;
         margin-top: 0px;
     }
 
@@ -360,7 +369,7 @@ h6.title {
     }
 
     .hero h1.title {
-        font-size: 3em;
+        font-size: 5em;
     }
 
     .hero-overlay + .container {
@@ -398,7 +407,8 @@ h6.title {
 
 @media only screen and (max-width: 600px) {
     .hero {
-        min-height: calc(100vh - 50px);
+        min-height: calc(65vh - 150px) !important;
+        max-height: calc(110vh - 150px) !important;
         margin-top: 0px;
     }
 
