@@ -38,7 +38,7 @@
 }
 
 .colorMain {
-    background: linear-gradient(10deg, rgba(100, 100, 100, 1), rgba(100, 100, 100, 1));
+    background: rgba(100, 100, 100, 1);
     overflow: hidden;
 }
 
@@ -191,13 +191,6 @@ footer.page-footer {
     margin: 0;
 }
 
-.card-image {
-    min-height: 20vh;
-    max-height: 35vh;
-    min-width: 20vw;
-    max-width: 50vw;
-}
-
 .lost {
     background: url("../assets/images/404-bg.jpg") center 0%;
     background-size: cover;
@@ -220,43 +213,29 @@ footer.page-footer {
 
 .hero {
     background: url("../assets/images/backHome.jpg") center 40%;
-    background-size: cover;
-    width: 100%;
-    margin-top: -65px;
-    padding-top: 10%;
-    min-height: calc(40vh - 194px);
-    height: 100%;
 }
 
 .hero-pricing {
     background: url("../assets/images/handball/Back03.jpg") center 50%;
-    background-size: cover;
-    width: 100%;
-    margin-top: -65px;
-    padding-top: 10%;
-    min-height: calc(40vh - 194px);
-    height: 100%;
 }
 
 .hero-signup {
     background: url("../assets/images/handball/Back02.jpeg") center 45%;
-    background-size: cover;
-    width: 100%;
-    margin-top: -65px;
-    padding-top: 10%;
-    min-height: calc(40vh - 194px);
-    height: 100%;
 }
 
 .hero-signup-end {
     background: url("../assets/images/handball/Back01.jpg");
+}
+
+.hero, .hero-pricing, .hero-signup, .hero-signup-end {
     background-size: cover;
     width: 100%;
-    margin-top: -65px;
-    padding-top: 10%;
-    min-height: calc(40vh - 194px);
+    padding-top: 2%;
+    min-height: calc(35vh - 100px);
     height: 100%;
 }
+
+
 
 .hero-overlay {
     background-color: #000000;
@@ -272,19 +251,6 @@ footer.page-footer {
     position: relative;
     padding-top: 5px;
     z-index: 10;
-}
-
-.hero h1.title, .lost h1.title, .hero h2.title, .hero-pricing h1.title, .hero-signup h1.title {
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-.hero h2.title, .lost h2.title, .hero h4.title, .lost h4.title {
-    font-weight: bold;
-}
-
-h6.title {
-    font-weight: bold;
 }
 
 .hero a.btn, .lost a.btn {
@@ -358,34 +324,10 @@ h6.title {
 }
 
 @media only screen and (max-width: 992px) {
-    .hero {
-        min-height: calc(65vh - 150px) !important;
-        max-height: calc(100vh - 150px) !important;
-        margin-top: 0px;
-    }
+    
 
     #index-banner .section {
         top: 0;
-    }
-
-    .hero h1.title {
-        font-size: 5em;
-    }
-
-    .hero-overlay + .container {
-        padding: 0;
-    }
-
-    .hero h4.title {
-        font-size: 1.5em;
-    }
-
-    .hero-overlay {
-        min-height: calc(100vh - 150px);
-    }
-
-    .hero a.btn {
-        margin-bottom: 10px;
     }
 
     .describe .col {
@@ -395,53 +337,16 @@ h6.title {
     .container {
         width: 90%;
     }
-
-    .lost {
-        min-height: 100vh;
-    }
-
-    .lost-overlay {
-        min-height: 100vh;
-    }
 }
 
 @media only screen and (max-width: 600px) {
-    .hero {
-        min-height: calc(65vh - 150px) !important;
-        max-height: calc(110vh - 150px) !important;
-        margin-top: 0px;
-    }
-
-    .lost {
-        min-height: 100vh;
-    }
 
     #index-banner .section {
         top: 0;
     }
 
-    .hero h1.title {
-        font-size: 3em;
-    }
-
-    .hero-overlay + .container {
-        padding: 0;
-    }
-
-    .hero h4.title {
-        font-size: 1.5em;
-    }
-
-    .hero-overlay {
-        min-height: calc(100vh - 58px);
-    }
-
-    .lost-overlay {
-        min-height: 100vh;
-    }
-
-    .hero a.btn {
-        margin-bottom: 10px;
+    .container {
+        width: 80%;
     }
 }
 

@@ -17,8 +17,8 @@
       }
     },
     "area-2": {
-      "title": "Améliorez vos performances.",
-      "content": "Qaobee facilite l'acquisition et l'analyse des statistiques sportives."
+      "title": "Améliorez vos performances",
+      "content": "Qaobee facilite l'acquisition et l'analyse des statistiques sportives"
     },
     "area-3": {
       "item-0": {
@@ -40,7 +40,7 @@
     },
     "area-4": {
       "title": "Prochainement disponible.",
-      "content": "Qaobee sera téléchargeable sur l'App Store et sur Google Play."
+      "content": "Téléchargez notre application sur votre mobile Android"
     }
   },
   "contact": {
@@ -71,7 +71,7 @@
     }
   },
   "pricing": {
-    "title": "Guide des offres",
+    "title": "Notre offre",
     "desc": "Qaobee s'adresse aux entraîneurs et aux clubs<span style=\"vertical-align: super; font-size: 50%;\">*</span> de handball",
     "subscribe-btn": "Souscrire",
     "soon-btn": "Prochainement",
