@@ -1,23 +1,20 @@
 <div class="colorMain-text">
-    <div class="hero-signup colorAccent-text center-align">
+    <div class="hero-signup white-text center-align">
         
-            <h1 class="title hide-on-small-only" translate="landing.main-title"></h1>
-            <h4 class="title hide-on-small-only" translate="landing.sub-title"></h4>
-            
-            <h2 class="title hide-on-med-and-up" translate="landing.main-title"></h2>
-            <h5 class="title hide-on-med-and-up" translate="landing.sub-title"></h5>
+        <h2 class="title" translate="landing.main-title"></h2>
+        <h5 class="title hide-on-small-only" translate="landing.sub-title"></h5>
 
     </div>
 
     <!-- Entete -->
     <div class="row">
-        <div class="col s12 colorSecondary white-text center">
+        <div class="col s12 colorAccent-text center">
             <h4 translate="headerSignup.label"></h4>
         </div>
     </div>
 
     <form ng-submit="usernameTest()" name="signupForm">    
-        <div class="row">
+        <div class="row container">
 
         <!-- Firstname & Name -->
             <div class="col m1 hide-on-small-only">&nbsp;</div>
@@ -42,7 +39,7 @@
             <div class="col m1 hide-on-small-only">&nbsp;</div>
         </div>
         
-        <div class="row">
+        <div class="row container">
         <!-- Login & e-Mail -->
             <div class="col m1 hide-on-small-only">&nbsp;</div>
             <div class="col s12 m4 input-field">
@@ -70,7 +67,7 @@
             <div class="col m1 hide-on-small-only">&nbsp;</div>
         </div>
         
-        <div class="row">
+        <div class="row container">
         <!-- Password & confirm -->
             <div class="col m1 hide-on-small-only">&nbsp;</div>
             <div class="col s12 m4 input-field">
@@ -105,7 +102,7 @@
         </div>
 
         <!-- Captcha -->
-        <div class="row">
+        <div class="row container">
             <div class="col m1 hide-on-small-only">&nbsp;</div>
             <div class="col s12 m10 input-field">
                 <div re-captcha ng-model="signup.captcha" id="custom_recaptcha_widget" style="display:none">
@@ -145,7 +142,7 @@
         </div>
 
         <!-- Buttons -->
-        <div class="row center">
+        <div class="row center container">
             <div class="col s12">
                 <a href="" ng-click="cancelSignup()" class="modal-action modal-close waves-effect waves-white btn btn-s colorAccent" style="max-width:50%"
                         translate="commons.buttons.cancel" tabindex="9">
