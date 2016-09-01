@@ -42,7 +42,7 @@
          * @description Main controller for view mainTeam.html
          */
         .controller('MainTeamController', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, $window, qeventbus,
-                                                    user, meta, effectiveSrv, teamRestAPI, userRestAPI, teamCompareService, widgetDefinitionsMainTeam, defaultWidgetsMainTeam) {
+                                                    user, meta, effectiveSrv, teamRestAPI, userRestAPI, teamCompareService) {
 
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('commons');

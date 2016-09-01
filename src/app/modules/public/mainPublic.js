@@ -58,7 +58,7 @@
             $translatePartialLoader.addPart('public');
             $translatePartialLoader.addPart('commons');
             // asu = Allow SignUp
-            $rootScope.signupAvailable = true; //($routeParams.asu==='true');
+            $rootScope.signupAvailable = true;
             delete $rootScope.user;
             qeventbus.prepForBroadcast('menuItem', 'home');
 

@@ -11,8 +11,8 @@
      */
 
     angular.module('datePicker', ['ui.date'])
-    
-        .directive('customDatepicker',function($compile) {
+
+        .directive('customDatepicker', function () {
             return {
                 replace:true,
                 templateUrl:'custom-datepicker.html',
@@ -20,7 +20,7 @@
                     ngModel: '=',
                     dateOptions: '='
                 },
-                link: function($scope, $element, $attrs, $controller){
+                link: function ($scope, $element) {
                     var $button = $element.find('button');
                     var $input = $element.find('input');
                     $button.on('click',function(){
@@ -32,14 +32,11 @@
                     });
                 }    
             };
-        })
-    
+        });
+
     angular.module('ui.date', [])
-
-.constant('uiDateConfig', {})
-
-.directive('uiDate', ['uiDateConfig', '$timeout', function (uiDateConfig, $timeout) {
-  'use strict';
+        .constant('uiDateConfig', {})
+        .directive('uiDate', ['uiDateConfig', function (uiDateConfig) {
   var options;
   options = {};
   angular.extend(options, uiDateConfig);
@@ -70,7 +67,7 @@
           opts.beforeShow = function() {
             showing = true;
           };
-          opts.onClose = function(value, picker) {
+            opts.onClose = function () {
             showing = false;
           };
           element.on('blur', function() {
@@ -110,7 +107,7 @@
 .constant('uiDateFormatConfig', '')
 
 .directive('uiDateFormat', ['uiDateFormatConfig', function(uiDateFormatConfig) {
-  var directive = {
+    return {
     require:'ngModel',
     link: function(scope, element, attrs, modelCtrl) {
       var dateFormat = attrs.uiDateFormat || uiDateFormatConfig;
@@ -145,7 +142,6 @@
       }
     }
   };
-  return directive;
 }]);
     
 }());

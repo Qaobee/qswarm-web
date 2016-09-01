@@ -19,7 +19,7 @@
                 var supported,
                     el = document.createElement('div');
                 el.innerHTML = '<svg/>';
-                supported = (el.firstChild && el.firstChild.namespaceURI) == svgNS;
+                supported = (el.firstChild && el.firstChild.namespaceURI) === svgNS;
                 el.innerHTML = '';
                 return supported;
             })();
@@ -152,8 +152,6 @@
                 '</button>',
                 '</div>'
             ].join('');
-
-            var amPmButtons = $(amPmButtonsTemplate);
 
             if(!options.ampmclickable) {
                 $('<button type="button" class="btn-floating btn-flat clockpicker-button am-button">' + "AM" + '</button>').on("click", function() {
@@ -387,7 +385,7 @@
         donetext: 'Done',      // done button text
         autoclose: false,      // auto close when minute is selected
         ampmclickable: false,  // set am/pm button on itself
-        darktheme: false,			 // set to dark theme
+        darktheme: false,      // set to dark theme
         twelvehour: true,      // change to 12 hour AM/PM clock from 24 hour
         vibrate: true          // vibrate the device when dragging clock hand
     };
@@ -610,7 +608,7 @@
         if (isHours) {
             this.fg.setAttribute('class', 'clockpicker-canvas-fg');
         } else {
-            if(value % 5 == 0) {
+            if(value % 5 === 0) {
                 this.fg.setAttribute('class', 'clockpicker-canvas-fg');
             }
             else {
@@ -619,15 +617,13 @@
         }
 
         // Once hours or minutes changed, vibrate the device
-        if (this[this.currentView] !== value) {
-            if (vibrate && this.options.vibrate) {
-                // Do not vibrate too frequently
-                if (! this.vibrateTimer) {
-                    navigator[vibrate](10);
-                    this.vibrateTimer = setTimeout($.proxy(function(){
-                        this.vibrateTimer = null;
-                    }, this), 100);
-                }
+        if (this[this.currentView] !== value && vibrate && this.options.vibrate) {
+            // Do not vibrate too frequently
+            if (!this.vibrateTimer) {
+                navigator[vibrate](10);
+                this.vibrateTimer = setTimeout($.proxy(function () {
+                    this.vibrateTimer = null;
+                }, this), 100);
             }
         }
 
@@ -715,7 +711,7 @@
             var $this = $(this),
                 data = $this.data('clockpicker');
             if (! data) {
-                var options = $.extend({}, ClockPicker.DEFAULTS, $this.data(), typeof option == 'object' && option);
+                var options = $.extend({}, ClockPicker.DEFAULTS, $this.data(), typeof option === 'object' && option);
                 $this.data('clockpicker', new ClockPicker($this, options));
             } else {
                 // Manual operatsions. show, hide, remove, e.g.

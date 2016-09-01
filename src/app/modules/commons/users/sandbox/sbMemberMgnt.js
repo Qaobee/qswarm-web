@@ -38,7 +38,7 @@
                 sandboxRestAPI.getSandbox($scope.meta.sandbox._id).success(function (data) {
                     $scope.sandbox = data;
                 });
-            }
+            };
             
             $scope.updateMemberSandbox = function (memberId) {
                 
@@ -51,7 +51,7 @@
                     }));                                           
                 });
                 
-            }
+            };
             
             // return button
             $scope.doTheBack = function () {

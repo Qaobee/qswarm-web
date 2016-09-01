@@ -67,7 +67,7 @@
                                     listFieldsGroupBy: ['code']
                                 };
                                 statsRestAPI.getStatGroupBy(search).success(function (dataGoal) {
-                                    if (angular.isDefined(dataGoal[0]) && dataGoal !== null) {
+                                    if (angular.isDefined(dataGoal) && dataGoal.length > 0) {
                                         result.nbGoal = dataGoal[0].value;
                                         result.efficiency = (result.nbGoal / result.nbShoot) * 100;
                                         deferred.resolve(result);
