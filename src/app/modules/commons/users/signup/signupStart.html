@@ -1,19 +1,19 @@
 <div class="colorMain-text">
     <div class="hero-signup white-text center-align">
         
-        <h2 class="title" translate="landing.main-title"></h2>
-        <h5 class="title hide-on-small-only" translate="landing.sub-title"></h5>
+        <h2 class="title" translate="signupStartPage.title1"></h2>
+        <h5 class="title hide-on-small-only" translate="signupStartPage.title2"></h5>
 
     </div>
 
     <!-- Entete -->
     <div class="row">
         <div class="col s12 colorAccent-text center">
-            <h4 translate="headerSignup.label"></h4>
+            <h4 translate="signupStartPage.form.title"></h4>
         </div>
     </div>
 
-    <form ng-submit="usernameTest()" name="signupForm">    
+    <form ng-submit="usernameTest()" name="signupStartPageForm">    
         <div class="row container">
 
         <!-- Firstname & Name -->
@@ -21,7 +21,7 @@
             <div class="col s12 m4 input-field">
                 <input id="firstname" type="text" class="validate" ng-model="signup.firstname" required tabindex="1">
                 <label for="firstname">
-                    {{'content.signup.label.firstname' | translate }} 
+                    {{'signupStartPage.form.label.firstname' | translate }} 
                     <span class="colorAccent-text">*</span>
                 </label>
             </div>
@@ -31,7 +31,7 @@
             <div class="col s12 m4 input-field">
                 <input id="name" type="text" class="validate" ng-model="signup.name" required tabindex="2">
                 <label for="name">
-                    {{'content.signup.label.name' | translate }} 
+                    {{'signupStartPage.form.label.name' | translate }} 
                     <span class="colorAccent-text">*</span>
                 </label>
             </div>
@@ -45,7 +45,7 @@
             <div class="col s12 m4 input-field">
                 <input id="login" type="text" class="validate" ng-model="signup.account.login" required tabindex="3">
                 <label for="login">
-                    {{'content.signup.label.login' | translate }} 
+                    {{'signupStartPage.form.label.login' | translate }} 
                     <span class="colorAccent-text">*</span>
                 </label>
             </div>
@@ -57,12 +57,12 @@
                        ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
                         tabindex="4">
                 <label for="email">
-                    {{'content.signup.label.email' | translate }} 
+                    {{'signupStartPage.form.label.email' | translate }} 
                     <span class="colorAccent-text">*</span>
                 </label>
-                <span ng-class="{'has-error': signupForm.email.$dirty && signupForm.email.$error.required}"
+                <span ng-class="{'has-error': signupStartPageForm.email.$dirty && signupStartPageForm.email.$error.required}"
                       class="small colorAccent-text"
-                      ng-hide="signupForm.email.$valid" translate="content.signup.emailDirty"></span>
+                      ng-hide="signupStartPageForm.email.$valid" translate="signupStartPage.form.messageControl.emailDirty"></span>
             </div>
             <div class="col m1 hide-on-small-only">&nbsp;</div>
         </div>
@@ -73,11 +73,11 @@
             <div class="col s12 m4 input-field">
                 <input id="password" type="password" class="validate" ng-model="signup.account.passwd" required tabindex="5">
                 <label for="password">
-                    {{'content.signup.label.password' | translate }} 
+                    {{'signupStartPage.form.label.password' | translate }} 
                     <span class="colorAccent-text">*</span>
                 </label>
                 <div ng-show="signup.account.passwd">
-                    <small translate='modalSignupUp.passwd.strength'></small>
+                    <small translate='signupStartPage.form.messageControl.passwdStrength'></small>
                     <div ng-hide="true" ng-password-strength="signup.account.passwd" strength="passStrength" inner-class="meter"></div>
                     <div class="progress grey lighten-2">
                         <div class="determinate"
@@ -93,10 +93,10 @@
             <div class="col s12 m4 input-field">
                 <input id="passwordConfirm" name="passwordConfirm" type="password" class="validate" ng-model="passwdConfirm" required tabindex="6" passwd-check="password">
                 <label for="passwordConfirm">
-                    {{'content.signup.label.passwordConfirm' | translate }} 
+                    {{'signupStartPage.form.label.passwordConfirm' | translate }} 
                     <span class="colorAccent-text">*</span>
                 </label>
-                <span ng-show="signupForm.passwordConfirm.$dirty && signupForm.passwordConfirm.$error.pwmatch" class="small colorAccent-text" translate="error.signup.password.different"></span>
+                <span ng-show="signupStartPageForm.passwordConfirm.$dirty && signupStartPageForm.passwordConfirm.$error.pwmatch" class="small colorAccent-text" translate="signupStartPage.form.messageControl.password.different"></span>
             </div>
             <div class="col m1 hide-on-small-only">&nbsp;</div>
         </div>
@@ -148,9 +148,9 @@
                         translate="commons.buttons.cancel" tabindex="9">
                 </a>
                 <button type="submit"  style="max-width:50%"
-                        translate="commons.buttons.validate" ng-disabled="signupForm.$invalid" tabindex="8"
-                        ng-class="{'btn btn-s waves-effect waves-white disabled': signupForm.$invalid, 
-                                  'btn btn-s waves-effect waves-white colorSecondary': !signupForm.$invalid}">
+                        translate="commons.buttons.validate" ng-disabled="signupStartPageForm.$invalid" tabindex="8"
+                        ng-class="{'btn btn-s waves-effect waves-white disabled': signupStartPageForm.$invalid, 
+                                  'btn btn-s waves-effect waves-white colorSecondary': !signupStartPageForm.$invalid}">
                 </button>
                 
                 

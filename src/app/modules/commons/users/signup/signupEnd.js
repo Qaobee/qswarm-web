@@ -39,6 +39,8 @@
 
             $scope.isStructureCityChanged = false;
             $scope.isStructureReload = false;
+        
+            $scope.activeTabIndex = 0;
 
             $scope.signup = {};
             $scope.signup.detailsStructureCity = {};

@@ -161,8 +161,9 @@
     <nav class="top-nav top-nav-trans visible-nav" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
-                <a href="/#/" class="hide-on-med-and-down brand-logo"><img src="assets/images/logo-mini.png"
-                                                                           height="30px"/></a>
+                <a href="/#/" class="hide-on-med-and-down brand-logo">
+                    <img src="assets/images/logo-mini.png" height="30px"/>
+                </a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="https://twitter.com/Qaobee"
                            target="_blank"
@@ -171,7 +172,7 @@
                 </ul>
                 <a class="brand-logo white-text center">
                     <span class="hide-on-med-and-down fa fa-sign-in"></span>
-                    <span translate="headerSignup.label"></span>
+                    <span translate="headerMenu.signup"></span>
                 </a>
             </div>
         </div>
@@ -183,7 +184,7 @@
     <div class="modal-header center-align white-text">
         <h5>
             <span class="fa fa-sign-in"></span>
-            <span translate="content.login.label.title"></span>
+            <span translate="modal.login.label.title"></span>
         </h5>
     </div>
     <form name="loginForm" ng-submit="login()">
@@ -192,20 +193,20 @@
                 <div class="input-field col s12">
                     <input id="modal-login" type="text" class="validate" ng-model="signin.login" required>
                     <label for="modal-login">
-                        {{'content.login.label.login' | translate }}
+                        {{'modal.login.label.login' | translate }}
                         <span class="colorAccent-text">*</span>
                     </label>
                 </div>
                 <div class="input-field col s12">
                     <input id="modal-password" type="password" class="validate" ng-model="signin.passwd" required>
                     <label for="modal-password">
-                        {{'content.login.label.password' | translate }}
+                        {{'modal.login.label.password' | translate }}
                         <span class="colorAccent-text">*</span>
                     </label>
                 </div>
             </div>
             <div class="row">
-                <div><a href="" class="colorAccent-text" ng-click="openForgotPwd()">{{'content.login.label.forgotpasswd' | translate }}</a></div>
+                <div><a href="" class="colorAccent-text" ng-click="openForgotPwd()">{{'modal.login.label.forgotpasswd' | translate }}</a></div>
             </div>
         </div>
 
@@ -230,14 +231,14 @@
     <div class="modal-header center-align white-text">
         <h5>
             <span class="fa fa-sign-in"></span>
-            <span translate="content.login.label.forgotpasswd"></span>
+            <span translate="modal.login.label.forgotpasswd"></span>
         </h5>
     </div>
     <form name="renewPwdForm" ng-submit="renewPwd()">
         <div class="modal-content white">
             <div class="row center">
                 <div class="col s12">
-                    <h6><span translate="content.login.label.forgotpasswdmess"></span></h6>
+                    <h6><span translate="modal.login.label.forgotpasswdmess"></span></h6>
                 </div>
             </div>
             <div class="row">
@@ -245,7 +246,7 @@
                 <div class="input-field col s12 m6">
                     <input id="modal-login" type="text" class="validate" ng-model="infos.login" required>
                     <label for="modal-login">
-                        {{'content.login.label.login' | translate }}
+                        {{'modal.login.label.login' | translate }}
                         <span class="colorAccent-text">*</span>
                     </label>
                 </div>
@@ -274,7 +275,7 @@
     <div class="modal-header center-align white-text">
         <h5>
             <span class="fa fa-sign-in"></span>
-            <span translate="content.login.label.forgotpasswd"></span>
+            <span translate="modal.login.label.forgotpasswd"></span>
         </h5>
     </div>
     <div class="modal-content white">

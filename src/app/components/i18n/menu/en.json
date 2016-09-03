@@ -12,6 +12,7 @@
     "search-event": "Event",
     "search-player": "Player",
     "settings": "Settings",
+        "signup": "Inscription",
     "notifications": {
       "mark-as-read": "Mark as read",
       "mark-as-unread": "Mark as unread",
@@ -32,7 +33,7 @@
     "param": "Settings",
     "pricing": "Pricing"
   },
-  "content": {
+  "modal": {
     "login": {
       "label": {
         "login": "Login",
@@ -43,29 +44,6 @@
         "title": "Log on to <b>Qaobee</b>",
         "forgotpasswdcancel": "Wait, I remember now!"
       }
-    },
-    "signup": {
-      "label": {
-        "name": "Nom",
-        "firstname": "Prénom",
-        "login": "Login",
-        "email": "e-Mail",
-        "password": "Mot de passe",
-        "passwordConfirm": "Confirmation",
-        "title": "Inscrivez-vous sur <b>Qaobee</b>"
-      },
-      "emailDirty": "Email invalid"
-    }
-  },
-  "error": {
-    "signup": {
-      "nonunique": "Le nom d'utilisateur que vous avez choisi existe déjà",
-      "password": {
-        "short": "Le mot de passe que vous avez choisi est trop court",
-        "different": "Le mot de passe et sa confirmation sont différents"
-      },
-      "unknown": "Unknown error",
-      "CAPTCHA_EXCEPTION": "Wrong validation code."
     }
   }
 }

@@ -1,8 +1,79 @@
-{	
-	"modalSignupOk" : {
+{
+    "signupStartPage": {
+        "title1": "Captez l'instant",
+        "title2": "Le premier assistant personnel de collecte et d'analyse en temps réel de données sportives",
+        "form": {
+            "title": "Inscription",
+            "label": {
+                "name": "Nom",
+                "firstname": "Prénom",
+                "login": "Identifiant",
+                "email": "e-Mail",
+                "password": "Mot de passe",
+                "passwordConfirm": "Confirmation",
+                "title": "Inscrivez-vous sur <b>Qaobee</b>"
+            },
+            "messageControl": {
+                "emailDirty": "Format email invalide",
+                "nonunique": "Le nom d'utilisateur que vous avez choisi existe déjà",
+                "password": {
+                    "short": "Le mot de passe que vous avez choisi est trop court",
+                    "different": "Les mots de passe ne correspondent pas"
+                },
+                "passwdStrength": "Robustesse du mot de passe",
+                "unknown": "Erreur inconnue",
+                "CAPTCHA_EXCEPTION": "Le code de vérification est erroné"
+            }    
+        }
+    },
+    
+    "signupEndPage": {
+        "title": "Création de votre espace de travail",
+        "tabFindClub" : {
+            "tabTitle":"Recherchez votre club",
+            "form":{
+                "label" : {
+                    "city" : "Indiquez votre ville",
+                    "selectClub" : "Sélectionnez votre club",
+                    "clubname" : "Nom",
+                    "clubAddress" : "Adresse",
+                    "categoryAge" : "Choisissez une catégorie d'âge"
+                }
+            },
+            "list" : {
+                "empty" : "Aucune donnée trouvée",
+                "inProgress" : "Recherche en cours...",
+                "create" : "Créer un club"
+            },
+            "ph" : {
+                "structureMandatory" : "Un club doit être choisi",
+                "createLabelMandatory" : "Nom du club à créer obligatoire",
+                "createAddressPlaceMandatory" : "Rue du club à créer obligatoire",
+                "createAddressMandatory" : "Adresse du club à créer obligatoire",
+                "categoryAgeMandatory" : "La catégorie d'âge est obligatoire"
+            },
+            "errorPage" : {
+                "title" : "Error !",
+                "text" : "La validation de votre inscription n'a pu aboutir pour la raison suivante : ",
+                "buttonHome" : "Home",
+                "ph" : {
+                    "unknown" : "Erreur inconnue",
+                    "noMessage" : "Pas de message"
+                }
+            }
+        },
+        "tabCreateClub" : {
+            "tabTitle":"Créer votre club"
+        }
+    },
+    
+	"signupStartDonePage" : {
+        "title" : "Compte créé !",
 		"line1" : "Votre inscription est presque terminée !",
 		"line2" : "Vous allez recevoir d'ici quelques minutes un e-mail pour valider votre compte Qaobee.",
-		"line3" : "A très vite sur qaobee.com !"
+		"line3" : "A très vite sur qaobee.com !",
+        "signature" : "L'équipe Qaobee",
+        "buttonHome" : "Accueil" 
 	},
 	"modalSignupCancel" : {
 		"title" : "Abandon",
@@ -12,11 +83,7 @@
 			"no"  : "Non"
 		}
 	},
-    "modalSignupUp": {
-        "passwd": {
-            "strength": "Robustesse du mot de passe"
-        }
-    },
+    
     "modalForgotPwdOk" : {
 		"line1" : "Votre demande de regénération de mot de passe est en cours !",
 		"line2" : "Vous allez recevoir d'ici quelques minutes un e-mail pour modifier vos accès à votre compte Qaobee.",
@@ -31,90 +98,7 @@
 		"stepValidateAccount" : "Validation de votre abonnement",
 		"stepFinished" : "C'est prêt !"
 	},
-	"headerSignup" : {
-		"label" : "Inscription"
-	},
-    "headerSignupEnd" : {
-		"label" : "Choix du club"
-	},
-    "civilSection" : {
-    	"line1" : "Votre inscription est presque terminée !",
-    	"line2" : "Ces dernières étapes vont permettre la création de votre espace personnel et l'accès à votre assistant de collecte et d'analyse de données de performance en temps réel.",
-    	
-    	"label" : {
-	        "userSignupCivilSection" : "Informations personnelles",
-	        "userName" : "Nom",
-	        "userFirstname" : "Prénom",
-	        "userGender" : "Civilité",
-	        "gender" : {
-	        	"male" : "Monsieur",
-	        	"female" : "Madame"
-	        },
-	        "userBirthDate" : "Date de naissance",
-	        "userAddress" : "Adresse",
-	        "userEMail" : "e-Mail",
-	        "userPhoneNumber" : "Numéros de téléphone",
-	        "userPhoneHome" : "Domicile",
-	        "userPhoneOffice" : "Bureau",
-	        "userCellPhone" : "Portable"
-	    },
-	    "ph" : {
-	    	"genderMandatory" : "Civilité non renseignée",
-	    	"birthdateMandatory" : "Date de naissance non renseignée",
-	    	"phoneNumberMandatory" : "Numéro de téléphone non renseigné"
-	    },
-	    "userErrors": {
-	        "Firstname": "Le prénom est obligatoire",
-	        "Name": "Le nom est obligatoire",
-	        "BirthDate": "La date de naissance est obligatoire",
-	        "Gender": "Le genre est obligatoire",
-	        "emailDirty": "Format email invalide",
-	        "phoneNumberMandatory" : "Le numéro de téléphone est obligatoire"
-    	}
-	},
-	"sportSection" : {
-		"label" : {
-			"userSignupSportSection" : "Choix du sport",
-	        "userSportChoice" : "Veuillez choisir le sport"
-	    },
-	    "ph" : {
-	    	"sportMandatory" : "Sport non renseigné"
-	    }
-	},
-	"structureSection" : {
-		"label" : {
-			"userSignupStructureSection" : "Choix du club",
-	        "userStructureCity" : "Ville de votre club",
-	        "userStructureSelect" : "Choix du club",
-	        "userStructureChoiceLabel" : "Nom",
-	        "userStructureChoiceAddress" : "Adresse",
-	        "userCategoryAge" : "Catégorie d'âge",
-	        "structureCreateLink" : "Votre club n'a pas été trouvé ? Vous pouvez le créer",
-	        "structureFindLink" : "Revenir à la recherche d'un club",
-	        "hereLink" : "ici"
-	    }, 
-	    "list" : {
-	    	"empty" : "Aucune donnée trouvée",
-	    	"inProgress" : "Recherche en cours...",
-	    	"create" : "Créer un club"
-	    },
-	    "ph" : {
-	    	"structureMandatory" : "Un club doit être choisi",
-	    	"createLabelMandatory" : "Nom du club à créer obligatoire",
-	    	"createAddressPlaceMandatory" : "Rue du club à créer obligatoire",
-	    	"createAddressMandatory" : "Adresse du club à créer obligatoire",
-	    	"categoryAgeMandatory" : "La catégorie d'âge est obligatoire"
-	    } 
-	},
-	"errorPage" : {
-		"title" : "Erreur !",
-		"text" : "La validation de votre inscription n'a pu aboutir pour la raison suivante : ",
-		"buttonHome" : "Accueil",
-		"ph" : {
-			"unknown" : "Erreur inconnue",
-			"noMessage" : "Pas de message"
-		}
-	},
+        
 	"endPage" : {
 		"title" : "Compte créé !",
 		"text" : {

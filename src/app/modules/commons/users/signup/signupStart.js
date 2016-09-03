@@ -8,10 +8,6 @@
         'locationAPI',
         'reCAPTCHA',
         /* qaobee Rest API */
-        'activityRestAPI',
-        'activityCfgRestAPI',
-        'countryRestAPI',
-        'structureRestAPI',
         'signupRestAPI'
     ])
 
@@ -25,10 +21,8 @@
             });
         })
 
-        .controller('SignupStartCtrl', function ($rootScope, $scope, $timeout, $translatePartialLoader, $log, $routeParams,
-                                                 $window, $location, $filter, WizardHandler, activityRestAPI, activityCfgRestAPI,
-                                                 countryRestAPI, structureRestAPI, signupRestAPI,
-                                                 qeventbus) {
+        .controller('SignupStartCtrl', function ($rootScope, $scope, $translatePartialLoader, $log, $routeParams,
+                                                 $window, $location, $filter, signupRestAPI, qeventbus) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
             qeventbus.prepForBroadcast('menuItem', 'signup');
@@ -52,7 +46,7 @@
             $scope.usernameTest = function () {
                 signupRestAPI.usernameTest($scope.signup.account.login).success(function (data) {
                     if (data.status === true) {
-                        toastr.warning($filter('translate')('error.signup.nonunique'));
+                        toastr.warning($filter('translate')('signupStartPage.form.messageControl.nonunique'));
                         $window.Recaptcha.reload();
                     } else {
                         $scope.signup.plan = {levelPlan: 'FREEMIUM'};
@@ -63,7 +57,7 @@
                             // On recharge le captcha en cas d'erreur ou pour une nouvelle inscription
                             $window.Recaptcha.reload();
                             if (data2 === null) {
-                                toastr.error($filter('translate')('error.signup.unknown'));
+                                toastr.error($filter('translate')('signupStartPage.form.messageControl.unknown'));
                             } else {
                                 delete $scope.signup;
                                 delete $scope.passwdConfirm;
@@ -72,7 +66,7 @@
                         }).error(function (error) {
                             $window.Recaptcha.reload();
                             if (error.code && error.code === 'CAPTCHA_EXCEPTION') {
-                                toastr.error($filter('translate')('error.signup.' + error.code));
+                                toastr.error($filter('translate')('signupStartPage.form.messageControl.' + error.code));
                             } else {
                                 $rootScope.errMessSend = true;
                                 toastr.error(error.message);
@@ -80,15 +74,6 @@
                         });
                     }
                 });
-            };
-            /**
-             * @name $scope.logoff
-             * @function
-             * @memberOf qaobee.directives.headerMenu
-             * @description Disconnection
-             */
-            $scope.closeSignupOk = function () {
-                angular.element('#modalSignupOK').closeModal();
             };
         })
 

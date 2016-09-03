@@ -1,28 +1,29 @@
 {
-  "headerMenu": {
-    "dashboard": "Accueil",
-    "stats": "Statistiques",
-    "players": "Mes joueurs",
-    "teams": "Mes équipes",
-    "training": "Entraînements",
-    "championship": "Compétition",
-    "calendar": "Agenda",
-    "notification": "Messages",
-    "search": "Rechercher",
-    "search-event": "Evènement",
-    "search-player": "Joueur",
-    "settings": "Paramétrage",
-    "notifications": {
-      "mark-as-read": "Marquer comme lu",
-      "mark-as-unread": "Marquer comme non lu",
-      "delete": "Supprimer",
-      "new": "Nouveaux"
+    "headerMenu": {
+        "dashboard": "Accueil",
+        "stats": "Statistiques",
+        "players": "Mes joueurs",
+        "teams": "Mes équipes",
+        "training": "Entraînements",
+        "championship": "Compétition",
+        "calendar": "Agenda",
+        "notification": "Messages",
+        "search": "Rechercher",
+        "search-event": "Evènement",
+        "search-player": "Joueur",
+        "settings": "Paramétrage",
+        "signup": "Inscription",
+        "notifications": {
+            "mark-as-read": "Marquer comme lu",
+            "mark-as-unread": "Marquer comme non lu",
+            "delete": "Supprimer",
+            "new": "Nouveaux"
+        },
+        "trial": {
+            "title": "Vous êtes en période d'essai.",
+            "content": "Vous pouvez vous abonner à tout moment en <a href=\"/#/private/billing/pay/0\" >cliquant ici</a>. Cette période expire dans <b>{{count}}</b> jour(s)."
+        }
     },
-    "trial": {
-      "title": "Vous êtes en période d'essai.",
-      "content": "Vous pouvez vous abonner à tout moment en <a href=\"/#/private/billing/pay/0\" >cliquant ici</a>. Cette période expire dans <b>{{count}}</b> jour(s)."
-    }
-  },
   "navbar": {
     "welcome": "Bienvenue",
     "connect": "Connexion",
@@ -32,7 +33,7 @@
     "param": "Paramétrage",
     "pricing": "Tarifs"
   },
-  "content": {
+  "modal": {
     "login": {
       "label": {
         "login": "Identifiant",
@@ -43,29 +44,6 @@
         "title": "Connectez vous sur <b>Qaobee</b>",
         "forgotpasswdcancel": "Attendez, je m'en rappelle à présent!"
       }
-    },
-    "signup": {
-      "label": {
-        "name": "Nom",
-        "firstname": "Prénom",
-        "login": "Identifiant",
-        "email": "e-Mail",
-        "password": "Mot de passe",
-        "passwordConfirm": "Confirmation",
-        "title": "Inscrivez-vous sur <b>Qaobee</b>"
-      },
-      "emailDirty": "Format email invalide"
-    }
-  },
-  "error": {
-    "signup": {
-      "nonunique": "Le nom d'utilisateur que vous avez choisi existe déjà",
-      "password": {
-        "short": "Le mot de passe que vous avez choisi est trop court",
-        "different": "Les mots de passe ne correspondent pas"
-      },
-      "unknown": "Erreur inconnue",
-      "CAPTCHA_EXCEPTION": "Le code de vérification est erroné."
     }
   }
 }
