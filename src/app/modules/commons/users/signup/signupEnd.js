@@ -30,43 +30,28 @@
             });
         })
 
-        .controller('SignupCtrl', function ($rootScope, $scope, $timeout, $translatePartialLoader, $log,
-                                            $routeParams, $window, $location, $filter, WizardHandler,
+        .controller('SignupCtrl', function ($rootScope, $scope, $translatePartialLoader, $log,
+                                            $routeParams, $window, $location, $filter,
                                             activityRestAPI, activityCfgRestAPI, countryRestAPI, structureRestAPI,
                                             signupRestAPI, locationAPI, personSrv) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
 
-            $scope.isStructureCityChanged = false;
-            $scope.isStructureReload = false;
-        
             $scope.activeTabIndex = 0;
-
-            $scope.signup = {};
-            $scope.signup.detailsStructureCity = {};
-
+            
+            $scope.listStructures = [];
+            $scope.searchCity = {};
+        
             $scope.structure = {};
-            $scope.newStructure = {};
-            $scope.newStructure.address = {};
-
-            $scope.temp = {};
-            $scope.temp.detailsAddress = {};
-            $scope.temp.detailsAddress.formatedAddress = '';
-
-            $scope.temp.structureVilleOK = false;
-            $scope.temp.structureSelectOK = false;
-            $scope.temp.structureSearch = false;
-            $scope.temp.message = '';
-
-            $scope.temp.createStructure = false;
-            $scope.temp.referencialId = -1;
-
-            $scope.temp.skipSportSection = true;
+            $scope.structure.activity = {};
+            $scope.structure.address = {};
+            $scope.structureCity = {};
+            $scope.structureCity.formatAddress = {};
 
             $scope.creationFinished = false;
 
             
-
+            // Verification user signup
             signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function (data) {
                 if (data === null) {
                     $rootScope.messageErreur = '';
@@ -75,24 +60,14 @@
                     $rootScope.messageErreur = data.message;
                     $location.path('/signup/error');
                 } else {
-                    $scope.signup = data;
-                    $scope.signup.categoryAge = '';
-
-                    // On force le sport au HANDBALL
-                    if (angular.isUndefined($scope.signup.account.listPlan)) {
-                        $scope.signup.account.listPlan = [{}];
-                    }
-                    $scope.signup.account.listPlan[0].activity = {};
-                    $scope.signup.account.listPlan[0].activity._id = 'ACT-HAND';
-
-                    $scope.temp.message = $filter('translate')('structureSection.list.empty');
+                    $rootScope.user = data;
+                    $scope.user = data;
                     
-                    $scope.valuesStructures = [];
+                    $scope.user.account.listPlan[0].activity = {};
+                    $scope.user.account.listPlan[0].activity._id = 'ACT-HAND';
 
                     // Déclaration du user en mode connecté
                     $window.sessionStorage.qaobeesession = data.account.token;
-                    $rootScope.user = data;
-                    $scope.user = data;
                 }
             }).error(function (error) {
                 if (error != null) {
@@ -103,23 +78,13 @@
                 $location.path('/signup/error');
             });
 
-
-            $scope.activities = Array.create();
-
-            activityRestAPI.getListActive().success(function (data) {
-                $scope.activities = data.sortBy(function (n) {
-                    return n.label;
-                });
-            });
-
             /* init ngAutocomplete*/
             $scope.options = {};
             $scope.options.watchEnter = false;
             /// options pour ville structure
-            $scope.optionsStructureCity = {
+            $scope.optionsSearchCity = {
                 types: '(cities)'
             };
-            $scope.detailsCity = '';
 
             // options pour ville nouvelle structure
             $scope.optionsNewStructureCity = {
@@ -129,26 +94,13 @@
             $scope.optionsAdr = null;
             $scope.detailsAdr = '';
 
-            // Change city name and reset structure
-            $scope.resetStructure = function () {
-                $scope.temp.message = $filter('translate')('structureSection.list.empty');
-                $scope.valuesStructures = [];
-
-                $scope.isStructureCityChanged = false;
-                $scope.isStructureReload = true;
-                $scope.temp.zipcode = '';
-                $scope.temp.referencialId = -1;
-                $scope.temp.structureVilleOK = false;
-                $scope.temp.structureSelectOK = false;
-                $scope.newStructure = {};
-            };
-
-
             // Surveillance de la modification du retour de l'API Google sur l'adresse
-            $scope.$watch('signup.detailsStructureCity', function (newValue) {
+            $scope.$watch('searchCity', function (newValue) {
+                $log.debug('pouet');
                 if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue)) {
                     return;
                 }
+                
                 //place_changed
                 $scope.loadStructures();
             });
@@ -158,6 +110,8 @@
                 if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue)) {
                     return;
                 }
+                $scope.temp.structureSelectOK = true;
+                
                 personSrv.formatAddress(newValue).then(function (adr) {
                     $scope.newStructure.address = adr;
 
@@ -173,14 +127,14 @@
 
             // Update structure list
             $scope.loadStructures = function () {
-                if ($scope.isStructureReload) {
+                
                     $scope.isStructureReload = false;
 
                     // Recherche en cours...
-                    $scope.temp.structureSearch = true;
+                    $scope.structureSearch = true;
 
                     // Recherche des infos complémentaires de la ville à partir des coordonnées Lat/Lng
-                    var cityLocation = $scope.signup.detailsStructureCity.geometry.location;
+                    var cityLocation = $scope.structureCity.geometry.location;
                     locationAPI.getLatLng(cityLocation.lat(), cityLocation.lng()).then(function (adr) {
                         var address = {};
                         angular.forEach(adr.data.results[0].address_components, function (item) {
@@ -235,7 +189,7 @@
                             $scope.structure2 = "";
                             $scope.temp.s = {};
                             if (data.status === false) {
-                                $scope.temp.message = $filter('translate')('structureSection.list.empty');
+                                $scope.temp.message = $filter('translate')('signupEndPage.tabFindClub.list.empty');
                                 $scope.valuesStructures = [];
                             } else {
                                 if (data.length > 0) {
@@ -252,7 +206,7 @@
                                     });
                                     $scope.temp.message = '';
                                 } else {
-                                    $scope.temp.message = $filter('translate')('structureSection.list.empty');
+                                    $scope.temp.message = $filter('translate')('signupEndPage.tabFindClub.list.empty');
                                     $scope.valuesStructures = [];
                                 }
                             }
@@ -264,7 +218,7 @@
                             $scope.temp.structureSearch = false;
                         });
                     });
-                }
+                
             };
 
             // Puts structure selected in a hidden input
@@ -296,8 +250,6 @@
             $scope.validateStructureSection = function () {
                 var validateOk = true;
                 
-                $log.debug('coucou', 'coucoucou');
-
                 if (!$scope.temp.createStructure && (angular.isUndefined($scope.temp.structure) || $scope.temp.structure._id < 0)) {
                     toastr.warning($filter('translate')('structureSection.ph.structureMandatory'));
                     validateOk = false;
@@ -314,11 +266,6 @@
                         toastr.warning($filter('translate')('structureSection.ph.createAddressPlaceMandatory'));
                         validateOk = false;
                     }
-                }
-
-                if ($scope.signup.categoryAge === null || $scope.signup.categoryAge === '') {
-                    toastr.warning($filter('translate')('structureSection.ph.categoryAgeMandatory'));
-                    validateOk = false;
                 }
 
                 if (validateOk) {

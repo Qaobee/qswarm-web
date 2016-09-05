@@ -51,19 +51,19 @@
                 "createAddressPlaceMandatory" : "Rue du club à créer obligatoire",
                 "createAddressMandatory" : "Adresse du club à créer obligatoire",
                 "categoryAgeMandatory" : "La catégorie d'âge est obligatoire"
-            },
-            "errorPage" : {
-                "title" : "Error !",
-                "text" : "La validation de votre inscription n'a pu aboutir pour la raison suivante : ",
-                "buttonHome" : "Home",
-                "ph" : {
-                    "unknown" : "Erreur inconnue",
-                    "noMessage" : "Pas de message"
-                }
             }
         },
         "tabCreateClub" : {
             "tabTitle":"Créer votre club"
+        },
+        "errorPage" : {
+            "title" : "Erreur !",
+            "text" : "La validation de votre inscription n'a pu aboutir pour la raison suivante : ",
+            "buttonHome" : "Accueil",
+            "ph" : {
+                "unknown" : "Erreur inconnue",
+                "noMessage" : "Pas de message"
+            }
         }
     },
     

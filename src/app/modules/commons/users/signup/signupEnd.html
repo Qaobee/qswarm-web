@@ -11,63 +11,64 @@
     
     
     <v-tabs class="tabs" horizontal active="activeTabIndex">
-        <v-tab class="tab"><a ng-href="" ng-class="{'active': activeTabIndex === 0}">{{'signupEndPage.tabFindClub.tabTitle' | translate }}</a></v-tab>
-        <v-tab class="tab"><a ng-href="" ng-class="{'active': activeTabIndex === 1}">{{'signupEndPage.tabCreateClub.tabTitle' | translate }}</a></v-tab>
+        <v-tab class="tab"><a ng-href=""  ng-class="{'active': activeTabIndex === 0}">{{'signupEndPage.tabFindClub.tabTitle' | translate }}</a></v-tab>
+        <v-tab class="tab"><a ng-href=""  ng-class="{'active': activeTabIndex === 1}">{{'signupEndPage.tabCreateClub.tabTitle' | translate }}</a></v-tab>
     </v-tabs>
     
     <v-pages class="vPages--default" active="activeTabIndex">
         <v-page>
-            <form ng-submit="validateStructureSection()" name="structureSectionForm">
+            <form ng-submit="validateStructureSection()" name="findClubForm" class="container">
 
-                <div class="row">
+                <div class="row container">
+                    <div class="col m2 s1">&nbsp;</div>
+                    <div class="input-field col m3 s4">
+                        <label>{{'signupEndPage.tabFindClub.form.label.city' | translate}}</label>
+                    </div>
+                    <div class="col m2 s1">&nbsp;</div>
+                    <div class="input-field col m3 s5">
+                        <input type="text" id="searchCity" ng-autocomplete 
+                               ng-model="structureCity"
+                               options="optionsSearchCity" placeholder=" " />
+                    </div>
+                    <div class="col m2 s1">&nbsp;</div>
+                </div>
+
+                <div class="row container" ng-if="structureSearch">
+                    <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    <div class="input-field col m3 s12">
+                        <div class="progress">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+                    <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                </div>
+
+                <div ng-if="temp.structureVilleOK">
+
+                    <div class="row container">
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        <div class="input-field col m6 s12">
+                            <label>{{'signupEndPage.tabFindClub.form.label.selectClub' | translate}}</label>
+                       </div>
+                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                    </div>
+
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="input-field col m3 s12">
-                            <label>{{'signupEndPage.tabFindClub.form.label.city' | translate}}</label>
-                        </div>
-                        <div class="input-field col m3 s12">
-                            <input type="text" id="userStructureCity" ng-autocomplete ng-model="structureCity" details="signup.detailsStructureCity" options="optionsStructureCity" placeholder="" ng-change="resetStructure()" />
-                        </div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-
-                    <div class="row" ng-if="temp.structureSearch">
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="input-field col m3 s12">
-                            <div class="progress">
-                                <div class="indeterminate"></div>
+                        <div class="input-field col m6 s12">
+                            <div class="col s12" ng-repeat="struct in valuesStructures track by $index">
+                                <input class="with-gap" type="radio"
+                                    id="structure.{{struct._id}}" value="{{struct._id}}"
+                                        ng-model="temp.referencialId" required ng-change="applyChangeStructure()"/>
+                                <label for="structure.{{struct._id}}">
+                                    <span class="title red-text text-lighten-1">{{struct.label}}</span><br>
+                                    <span>{{struct.address.place}}<br>
+                                    {{struct.address.zipcode}} {{struct.address.city}}</span>
+                                </label>
                             </div>
+                            <div class="col s12"><span class="title red-text text-lighten-1">{{temp.message}}</span></div>
                         </div>
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-
-                    <div ng-if="temp.structureVilleOK">
-
-                        <div class="row">
-                            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                            <div class="input-field col m6 s12">
-                                <label>{{'signupEndPage.tabFindClub.form.label.selectClub' | translate}}</label>
-                           </div>
-                            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                            <div class="input-field col m6 s12">
-                                <div class="col s12" ng-repeat="struct in valuesStructures track by $index">
-                                    <input class="with-gap" type="radio"
-                                        id="structure.{{struct._id}}" value="{{struct._id}}"
-                                            ng-model="temp.referencialId" required ng-change="applyChangeStructure()"/>
-                                    <label for="structure.{{struct._id}}">
-                                        <span class="title red-text text-lighten-1">{{struct.label}}</span><br>
-                                        <span>{{struct.address.place}}<br>
-                                        {{struct.address.zipcode}} {{struct.address.city}}</span>
-                                    </label>
-                                </div>
-                                <div class="col s12"><span class="title red-text text-lighten-1">{{temp.message}}</span></div>
-                            </div>
-                            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        </div>
                     </div>
                 </div>
 
@@ -87,15 +88,15 @@
 
                 <!-- actions buttons -->
                 <div class="row">&nbsp;</div>
-                <div class="row">
+                <div class="row container">
                     <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     <div class="col m6 s12 center">
                         <a ng-click="openCancelModal()" class="waves-effect waves-white btn btn-s colorAccent">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
 
                         <button type="submit"  style="max-width:50%" ng-click="validateStructureSection()"
-                            translate="commons.buttons.validate" ng-disabled="structureSectionForm.$invalid" tabindex="8"
-                            ng-class="{'btn btn-s waves-effect waves-white disabled': structureSectionForm.$invalid, 
-                                      'btn btn-s waves-effect waves-white colorSecondary': !structureSectionForm.$invalid}">
+                            translate="commons.buttons.validate" ng-disabled="findClubForm.$invalid" tabindex="8"
+                            ng-class="{'btn btn-s waves-effect waves-white disabled': findClubForm.$invalid, 
+                                      'btn btn-s waves-effect waves-white colorSecondary': !findClubForm.$invalid}">
                         </button>
                     </div>
                     <div class="col m3 hide-on-med-and-down">&nbsp;</div>
@@ -104,7 +105,7 @@
         </v-page>   
             
         <v-page>
-            <form ng-submit="validateStructureSection()" name="structureSectionForm">
+            <form ng-submit="validateStructureSection()" name="createClubForm">
                 <div class="row">
                     <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     <div class="col input-field m3 s6"><label>{{'signupEndPage.tabFindClub.form.label.clubname' | translate}}  <span class="red-text text-lighten-1">*</span></label></div>
@@ -115,12 +116,12 @@
                     <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                     <div class="col input-field m3 s6"><label>{{'signupEndPage.tabFindClub.form.label.clubAddress' | translate}}  <span class="red-text text-lighten-1">*</span></label></div>
                     <div class="input-field col m3 s6">
-                        <input type="text" id="userNewStructureCity" ng-autocomplete ng-model="temp.newStructure" details="signup.detailsNewStructureCity" options="optionsNewStructureCity" placeholder="" />
+                        <input type="text" id="userNewStructureCity" ng-autocomplete ng-model="temp.newStructure" details="signup.detailsNewStructureCity" options="optionsNewStructureCity" placeholder="" ng-change="resetStructure()"/>
                     </div>
                     <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                 </div>
                 
-                <div>
+                <div ng-show="temp.structureSelectOK">
                     <div class="row">
                         <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         <div class="col input-field m3 s6"><label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span class="red-text text-lighten-1">*</span></label></div>
@@ -142,9 +143,9 @@
                         <a ng-click="openCancelModal()" class="waves-effect waves-white btn btn-s colorAccent">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
 
                         <button type="submit"  style="max-width:50%" ng-click="validateStructureSection()"
-                            translate="commons.buttons.validate" ng-disabled="structureSectionForm.$invalid" tabindex="8"
-                            ng-class="{'btn btn-s waves-effect waves-white disabled': structureSectionForm.$invalid, 
-                                      'btn btn-s waves-effect waves-white colorSecondary': !structureSectionForm.$invalid}">
+                            translate="commons.buttons.validate" ng-disabled="createClubForm.$invalid" tabindex="8"
+                            ng-class="{'btn btn-s waves-effect waves-white disabled': createClubForm.$invalid, 
+                                      'btn btn-s waves-effect waves-white colorSecondary': !createClubForm.$invalid}">
                         </button>
                     </div>
                     <div class="col m3 hide-on-med-and-down">&nbsp;</div>
