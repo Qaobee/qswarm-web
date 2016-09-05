@@ -28,7 +28,7 @@
             'vTabs',
             'ngFileSaver',
             'ui.date',
-            
+
             //* qaobee widget */
             'qaobee.filterCalendar',
             'qaobee.commonsDirectives',
@@ -109,7 +109,7 @@
                 hideMethod: 'fadeOut'
             };
             Chart.defaults.global.responsive = true;
-            ChartJsProvider.setOptions({ colours : [ '#03a9f4', '#0f9d58', '#ff5722', '#803690', '#FDB45C', '#949FB1', '#4D5360'] });
+            ChartJsProvider.setOptions({colours: ['#03a9f4', '#0f9d58', '#ff5722', '#803690', '#FDB45C', '#949FB1', '#4D5360']});
         })
         .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale) {
             $locale.id = $translate.proposedLanguage();
@@ -126,22 +126,32 @@
          * @class qaobee.qswarmweb
          * @description Contrôleur principal
          */
-        .controller('MainCtrl', function ($rootScope, $scope, $window, $translatePartialLoader, qeventbus, EnvironmentConfig) {
+        .controller('MainCtrl', function ($rootScope, $scope, $window, $translatePartialLoader, qeventbus, $timeout, EnvironmentConfig, $templateRequest, $sce, $compile, $log) {
             /* i18n pour les formats de date, voir changement de la locale dans index.html */
+            $translatePartialLoader.addPart('public');
+            $translatePartialLoader.addPart('feedback');
             moment.locale($window.navigator.language);
             $scope.loaded = false;
             $scope.feedbackOptions = {
                 ajaxURL: EnvironmentConfig.apiEndPoint + '/api/1/commons/feedback/send',
                 initButtonText: 'Feedback',
-                postHTML: false
+                postHTML: false,
+                tpl: {}
             };
+            ['description', 'highlighter', 'overview', 'submitSuccess', 'submitError'].forEach(function (i) {
+                $templateRequest($sce.getTrustedResourceUrl('app/components/feedback/' + i + '.html')).then(function (tpl) {
+                    var res = $compile(tpl)($scope)[0];
+                    $timeout(function () {
+                        $scope.feedbackOptions.tpl[i] = res.outerHTML;
+                        $log.debug('Loading '+i, res.outerHTML);
+                    });
+                });
+            });
             $scope.meta = {};
-            $translatePartialLoader.addPart('public');
             $scope.$on('qeventbus', function () {
                 switch (qeventbus.message) {
-                    case
-                    'logoff' :
-                        delete  $scope.user;
+                    case 'logoff' :
+                        delete $scope.user;
                         delete $rootScope.user;
                         delete $rootScope.meta;
                         delete $window.sessionStorage.qaobeesession;

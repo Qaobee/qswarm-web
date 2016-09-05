@@ -1,0 +1,40 @@
+{
+  "feedback": {
+    "common": {
+      "next": "Next",
+      "back": "Back",
+      "submit": "Submit",
+      "ok": "OK",
+      "error": {
+        "desc": "Please enter a description."
+      }
+    },
+    "highlighter": {
+      "heading": "Click and drag on the page to help us better understand your feedback. You can move this dialog if it's in the way.",
+      "highlight-title": "Highlight areas relevant to your feedback",
+      "blackout-title": "Black out any personal information."
+    },
+    "description": {
+      "heading": "Feedback lets you send us suggestions about our products. We welcome problem reports, feature ideas and general comments.",
+      "desc": "Start by writing a brief description:",
+      "highlight": ">Next we'll let you identify areas of the page related to your description."
+    },
+    "overview": {
+      "desc": "Description",
+      "additional-info": "Additional info",
+      "none": "None",
+      "browser-info": "Browser Info",
+      "page-info": "Page Info",
+      "timestamp": "Time Stamp",
+      "page-structure": "Page Structure",
+      "screenshot": "Screenshot"
+    },
+    "submit-error": {
+      "heading": "Sadly an error occurred while sending your feedback. Please try again."
+    },
+    "submit-success": {
+      "heading" : "Thank you for your feedback. We value every piece of feedback we receive.",
+      "sub" : "We cannot respond individually to every one, but we will use your comments as we strive to improve your experience."
+    }
+  }
+}
