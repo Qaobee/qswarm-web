@@ -143,7 +143,6 @@
                     var res = $compile(tpl)($scope)[0];
                     $timeout(function () {
                         $scope.feedbackOptions.tpl[i] = res.outerHTML;
-                        $log.debug('Loading '+i, res.outerHTML);
                     });
                 });
             });
