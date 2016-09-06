@@ -30,7 +30,7 @@
     "signupEndPage": {
         "title": "Création de votre espace de travail",
         "tabFindClub" : {
-            "tabTitle":"Recherchez votre club",
+            "tabTitle":"Associez votre club à votre espace de travail",
             "form":{
                 "label" : {
                     "city" : "Indiquez votre ville",
@@ -41,7 +41,7 @@
                 }
             },
             "list" : {
-                "empty" : "Aucune donnée trouvée",
+                "empty" : "Aucun club trouvé",
                 "inProgress" : "Recherche en cours...",
                 "create" : "Créer un club"
             },
@@ -54,7 +54,7 @@
             }
         },
         "tabCreateClub" : {
-            "tabTitle":"Créer votre club"
+            "tabTitle":"ou créer votre propre club"
         },
         "errorPage" : {
             "title" : "Erreur !",

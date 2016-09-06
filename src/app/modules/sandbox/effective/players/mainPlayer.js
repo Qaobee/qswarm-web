@@ -86,15 +86,7 @@
                 user.mainPlayerTabId = tabId;
             };
 
-            $scope.dashboardMainPlayerOptions = {
-                widgetButtons: false,
-                widgetDefinitions: widgetDefinitionsMainPlayer.get(),
-                hideWidgetName: true,
-                hideToolbar: false,
-                defaultWidgets: defaultWidgetsMainPlayer,
-                storage: $window.localStorage,
-                storageId: 'qaobee-widgets-dashboard-mainPlayer'
-            };
+            
 
             $scope.compare = function () {
                 if (Object.keys($scope.compareList).length > 0) {
