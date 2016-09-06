@@ -5,154 +5,185 @@
     <!-- Entete -->
     <div class="row">
         <div class="col s12 colorSecondary white-text center">
-            <h4 translate="signupEndPage.title"></h4>
+            <h5 translate="signupEndPage.title"></h5>
         </div>
     </div>
     
-    
-    <v-tabs class="tabs" horizontal active="activeTabIndex">
-        <v-tab class="tab"><a ng-href=""  ng-class="{'active': activeTabIndex === 0}">{{'signupEndPage.tabFindClub.tabTitle' | translate }}</a></v-tab>
-        <v-tab class="tab"><a ng-href=""  ng-class="{'active': activeTabIndex === 1}">{{'signupEndPage.tabCreateClub.tabTitle' | translate }}</a></v-tab>
-    </v-tabs>
-    
-    <v-pages class="vPages--default" active="activeTabIndex">
-        <v-page>
-            <form ng-submit="validateStructureSection()" name="findClubForm" class="container">
-
-                <div class="row container">
-                    <div class="col m2 s1">&nbsp;</div>
-                    <div class="input-field col m3 s4">
-                        <label>{{'signupEndPage.tabFindClub.form.label.city' | translate}}</label>
-                    </div>
-                    <div class="col m2 s1">&nbsp;</div>
-                    <div class="input-field col m3 s5">
-                        <input type="text" id="searchCity" ng-autocomplete 
-                               ng-model="structureCity"
-                               options="optionsSearchCity" placeholder=" " />
-                    </div>
-                    <div class="col m2 s1">&nbsp;</div>
+    <div class="row container">
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header colorBckgModal active" ng-click="resertForm()">
+                    <i class="material-icons md-36 colorAccent-text">search</i>
+                    <h5>{{'signupEndPage.tabFindClub.tabTitle' | translate }}</h5>
                 </div>
+                <div class="collapsible-body">
 
-                <div class="row container" ng-if="structureSearch">
-                    <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    <div class="input-field col m3 s12">
-                        <div class="progress">
-                            <div class="indeterminate"></div>
-                        </div>
-                    </div>
-                    <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                </div>
+                    <form ng-submit="validateStructureSection()" name="findClubForm" class="container">
 
-                <div ng-if="temp.structureVilleOK">
-
-                    <div class="row container">
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="input-field col m6 s12">
-                            <label>{{'signupEndPage.tabFindClub.form.label.selectClub' | translate}}</label>
-                       </div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="input-field col m6 s12">
-                            <div class="col s12" ng-repeat="struct in valuesStructures track by $index">
-                                <input class="with-gap" type="radio"
-                                    id="structure.{{struct._id}}" value="{{struct._id}}"
-                                        ng-model="temp.referencialId" required ng-change="applyChangeStructure()"/>
-                                <label for="structure.{{struct._id}}">
-                                    <span class="title red-text text-lighten-1">{{struct.label}}</span><br>
-                                    <span>{{struct.address.place}}<br>
-                                    {{struct.address.zipcode}} {{struct.address.city}}</span>
-                                </label>
+                        <div class="row">
+                            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                            <div class="col input-field m3 s12">
+                                <label>{{'signupEndPage.tabFindClub.form.label.city' | translate}} <span class="red-text text-lighten-1">*</span></label>
                             </div>
-                            <div class="col s12"><span class="title red-text text-lighten-1">{{temp.message}}</span></div>
+
+                            <div class="input-field col m3 s12">
+                                <input type="text" id="searchCity" 
+                                       ng-autocomplete 
+                                       details="detailsSearchCity"
+                                       ng-model="searchCity"
+                                       options="optionsSearchCity" 
+                                       placeholder="" />
+                            </div>
+                            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
                         </div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                </div>
 
-                <div ng-show="temp.structureSelectOK">
-                    <div class="row">
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="col input-field m3 s6"><label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span class="red-text text-lighten-1">*</span></label></div>
-                        <div class="input-field col s3">
-                            <select name="categoryAgeSelect" ng-model="signup.categoryAge" id="userCategoryAgeSelect" class="browser-default blue-grey-text text-darken-1"
-                                ng-options="cat.label for cat in valuesCategoryAge track by cat._id" required>
-                                <option></option>
-                            </select>
+                        <div class="row container" ng-if="structureSearch">
+                            <div class="input-field col s12 center-align">
+                                <div class="preloader-wrapper big active">
+                                    <div class="spinner-layer">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                </div>
 
-                <!-- actions buttons -->
-                <div class="row">&nbsp;</div>
-                <div class="row container">
-                    <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    <div class="col m6 s12 center">
-                        <a ng-click="openCancelModal()" class="waves-effect waves-white btn btn-s colorAccent">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
+                        <div ng-if="structureSelectOK">
 
-                        <button type="submit"  style="max-width:50%" ng-click="validateStructureSection()"
-                            translate="commons.buttons.validate" ng-disabled="findClubForm.$invalid" tabindex="8"
-                            ng-class="{'btn btn-s waves-effect waves-white disabled': findClubForm.$invalid, 
-                                      'btn btn-s waves-effect waves-white colorSecondary': !findClubForm.$invalid}">
-                        </button>
-                    </div>
-                    <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                </div>
-            </form>
-        </v-page>   
-            
-        <v-page>
-            <form ng-submit="validateStructureSection()" name="createClubForm">
-                <div class="row">
-                    <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    <div class="col input-field m3 s6"><label>{{'signupEndPage.tabFindClub.form.label.clubname' | translate}}  <span class="red-text text-lighten-1">*</span></label></div>
-                    <div class="input-field col m3 s6"><input type="text" id="userStructureLabel" class="validate" ng-model="newStructure.label"></div>
-                    <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                </div>
-                <div class="row">    
-                    <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    <div class="col input-field m3 s6"><label>{{'signupEndPage.tabFindClub.form.label.clubAddress' | translate}}  <span class="red-text text-lighten-1">*</span></label></div>
-                    <div class="input-field col m3 s6">
-                        <input type="text" id="userNewStructureCity" ng-autocomplete ng-model="temp.newStructure" details="signup.detailsNewStructureCity" options="optionsNewStructureCity" placeholder="" ng-change="resetStructure()"/>
-                    </div>
-                    <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                </div>
-                
-                <div ng-show="temp.structureSelectOK">
-                    <div class="row">
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                        <div class="col input-field m3 s6"><label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span class="red-text text-lighten-1">*</span></label></div>
-                        <div class="input-field col s3">
-                            <select name="categoryAgeSelect" ng-model="signup.categoryAge" id="userCategoryAgeSelect" class="browser-default blue-grey-text text-darken-1"
-                                ng-options="cat.label for cat in valuesCategoryAge track by cat._id" required>
-                                <option></option>
-                            </select>
+                            <div class="row container">
+                                <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                                <div class="input-field col m3 s12">
+                                    <label>{{'signupEndPage.tabFindClub.form.label.selectClub' | translate}} <span class="red-text text-lighten-1">*</span></label>
+                               </div>
+                                <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                                <div class="input-field col m3 s12">
+                                    <div ng-repeat="struct in listStructures track by $index">
+                                        <input class="with-gap" 
+                                               type="radio"
+                                               id="structure.{{struct._id}}" 
+                                               value="{{struct._id}}"
+                                               ng-model="structure._id"
+                                               ng-change="applyChangeStructure()"
+                                               required/>
+                                        <label for="structure.{{struct._id}}">
+                                            <span class="title colorAccent-text">{{struct.label}}</span> 
+                                            <span>{{struct.address.place}} {{struct.address.zipcode}} {{struct.address.city}}</span>
+                                        </label>
+                                    </div>
+                                    <div><span class="title colorAccent-text">{{messageErreur}}</span></div>
+                                </div>
+                                <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                            </div>
                         </div>
-                        <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    </div>
-                </div>
-                
-                <!-- actions buttons -->
-                <div class="row">&nbsp;</div>
-                <div class="row">
-                    <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                    <div class="col m6 s12 center">
-                        <a ng-click="openCancelModal()" class="waves-effect waves-white btn btn-s colorAccent">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
 
-                        <button type="submit"  style="max-width:50%" ng-click="validateStructureSection()"
-                            translate="commons.buttons.validate" ng-disabled="createClubForm.$invalid" tabindex="8"
-                            ng-class="{'btn btn-s waves-effect waves-white disabled': createClubForm.$invalid, 
-                                      'btn btn-s waves-effect waves-white colorSecondary': !createClubForm.$invalid}">
-                        </button>
-                    </div>
-                    <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        <div ng-show="catAgeSelectOK">
+                            <div class="row">
+                                <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                                <div class="col input-field m3 s12"><label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span class="red-text text-lighten-1">*</span></label></div>
+                                <div class="input-field col s3">
+                                    <select name="categoryAgeSelect" ng-model="categoryAge" id="userCategoryAgeSelect" class="browser-default"
+                                        ng-options="cat.label for cat in valuesCategoryAge track by cat._id" required>
+                                        <option></option>
+                                    </select>
+                                </div>
+                                <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                            </div>
+                        </div>
+
+                        <!-- actions buttons -->
+                        <div class="row">&nbsp;</div>
+                        <div class="row container">
+                            <div class="col s12 center">
+                                <a ng-click="openCancelModal()" class="waves-effect waves-white btn btn-s colorAccent">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
+
+                                <button type="submit"  style="max-width:50%" ng-click="validateStructureSection()"
+                                    translate="commons.buttons.validate" ng-disabled="findClubForm.$invalid" tabindex="8"
+                                    ng-class="{'btn btn-s waves-effect waves-white disabled': findClubForm.$invalid, 
+                                              'btn btn-s waves-effect waves-white colorSecondary': !findClubForm.$invalid}">
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </form>
-        </v-page>
-    </v-pages>
+            </li>   
+
+            <li>
+                <div class="collapsible-header colorBckgModal" ng-click="resertForm()">
+                    <i class="material-icons md-36 colorAccent-text">add</i>
+                    <h5>{{'signupEndPage.tabCreateClub.tabTitle' | translate }}</h5>
+                </div>
+                <div class="collapsible-body">
+                    <form ng-submit="createStructure()" name="createStructureForm" class="container">
+                        <div class="row">
+                            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                            <div class="col input-field m3 s12">
+                                <label>{{'signupEndPage.tabFindClub.form.label.clubname' | translate}}  <span class="red-text text-lighten-1">*</span></label>
+                            </div>
+                            <div class="input-field col m3 s12">
+                                <input type="text" id="userStructureLabel" class="validate" ng-model="newStructure.label" required>
+                            </div>
+                            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        </div>
+                        <div class="row">    
+                            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                            <div class="col input-field m3 s12">
+                                <label>{{'signupEndPage.tabFindClub.form.label.clubAddress' | translate}}  <span class="red-text text-lighten-1">*</span></label>
+                            </div>
+                            <div class="input-field col m3 s12">
+                                <input type="text" id="userNewStructureCity" 
+                                       ng-autocomplete
+                                       details="detailsCreateCity"
+                                       ng-model="createCity" 
+                                       options="optionsCreateCity" 
+                                       required 
+                                       placeholder=""/>
+                            </div>
+                            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                        </div>
+
+                        <div ng-show="structureSelectOK">
+                            <div class="row">
+                                <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                                <div class="col input-field m3 s12"><label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span class="red-text text-lighten-1">*</span></label></div>
+                                <div class="input-field col s12">
+                                    <select name="categoryAgeSelect" ng-model="signup.categoryAge" id="userCategoryAgeSelect" class="browser-default blue-grey-text text-darken-1"
+                                        ng-options="cat.label for cat in valuesCategoryAge track by cat._id" required>
+                                        <option></option>
+                                    </select>
+                                </div>
+                                <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                            </div>
+                        </div>
+
+                        <!-- actions buttons -->
+                        <div class="row">&nbsp;</div>
+                        <div class="row">
+                            <div class="col s12 center">
+                                <a ng-click="openCancelModal()" class="waves-effect waves-white btn btn-s colorAccent">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
+
+                                <button type="submit"  style="max-width:50%" translate="commons.buttons.validate" 
+                                        ng-disabled="createStructureForm.$invalid" tabindex="8"
+                                        ng-class="{'btn btn-s waves-effect waves-white disabled': createStructureForm.$invalid, 
+                                              'btn btn-s waves-effect waves-white colorSecondary': !createStructureForm.$invalid}">
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
 <!-- body end-->
 </div>
     
