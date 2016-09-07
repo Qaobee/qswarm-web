@@ -93,7 +93,7 @@
                     $location.path('/private/players/compare/');
                     return false;
                 } else {
-                    toastr.info($filter('translate')('compare.player-min'), 'Title');
+                    toastr.info($filter('translate')('compare.player-min'));
                 }
             };
 
@@ -108,7 +108,7 @@
                     count++;
                 });
                 if (count > 3) {
-                    toastr.error($filter('translate')('compare.player-max', {'max': 3}), 'Title');
+                    toastr.error($filter('translate')('compare.player-max', {'max': 3}));
                     playerCompareService.remove(id);
                     $scope.compareList[id] = false;
                 }
