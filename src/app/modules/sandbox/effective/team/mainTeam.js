@@ -72,7 +72,7 @@
                     $location.path('/private/team/compare/' + $scope.effectiveId);
                     return false;
                 } else {
-                    toastr.info($filter('translate')('compare.team-min'));
+                    toastr.error($filter('translate')('compare.team-min'));
                 }
             };
 
@@ -112,10 +112,10 @@
                 Object.keys($scope.compareList, function () {
                     count++;
                 });
-                if (count > 3) {
+                if (count > 3 && $scope.compareList[id]) {
                     toastr.error($filter('translate')('compare.team-max', {'max': 3}));
                     teamCompareService.remove(id);
-                    $scope.compareList[id] = false;
+                    delete $scope.compareList[id];
                 }
             };
 
