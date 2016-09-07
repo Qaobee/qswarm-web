@@ -150,7 +150,7 @@
   }
   "compare": {
     "player-max": "You can select at most {{max}} players",
-    "player-min": "You have to select at least one player",
+    "player-min": "You have to select at least two players",
     "event-max" : "You can select at most {{max}} events",
     "event-min" : "You have to select at least one event",
     "team-max" : "You can select at most {{max}} teams",
