@@ -19,10 +19,7 @@
             </div>
         </div>
         <canvas id="radar" class="chart chart-radar"
-                chart-legend="true"
-                chart-series="series"
-                chart-data="data" chart-labels="labels"
-                ng-if="!loading">
+                chart-legend="{{!!series}}" chart-series="series" chart-data="data" chart-labels="labels" ng-if="!loading">
         </canvas>
         <div class="right-align ">
             <qaobee-stat-detail-modal indicators="indicators" title="title" meta="meta" series="series" owners="owners"
@@ -31,7 +28,8 @@
         </div>
     </div>
     <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4"><small>{{title}}<i class="material-icons right">close</i></small></span>
+        <span class="card-title grey-text text-darken-4"><small>{{title}}<i
+                class="material-icons right">close</i></small></span>
         <table>
             <thead>
             <tr>
