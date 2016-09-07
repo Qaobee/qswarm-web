@@ -46,9 +46,9 @@
                     <h6 class="center-align" translate="stats.resumeTab.noData"></h6>
                 </div>
             </div>
-                <canvas ng-if="!noData" id="bar" class="chart chart-bar" chart-data="data"
-                        height="200" chart-labels="labels" chart-series="series">
-                </canvas>
+            <canvas ng-if="!noData" id="bar" class="chart chart-bar" chart-data="data"
+                    height="200" chart-labels="labels" chart-series="series">
+            </canvas>
             <ul ng-if="!noData" class="bar-legend">
                 <li ng-repeat="p in series track by $index">
                     <span class="bar-legend-icon" style="background-color:{{legendColours[$index]}}"></span>
