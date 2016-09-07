@@ -121,12 +121,11 @@
 
             /* Retrieve list of team of effective */
             $scope.getListTeamHome = function () {
-                teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.effectiveId, 'all').success(function (data) {
+                teamRestAPI.getListTeamHome($scope.meta.sandbox._id, $scope.meta.sandbox.effectiveDefault, 'all').success(function (data) {
                     $scope.listTeamHome = data.sortBy(function (n) {
                         return n.label;
                     });
                 });
-
                 effectiveSrv.getEffective($scope.meta.sandbox.effectiveDefault).then(function (data) {
                     $scope.currentEffective = data;
                 });

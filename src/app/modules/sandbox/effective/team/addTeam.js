@@ -63,15 +63,14 @@
             //Initialization team
             $scope.team = {
                 sandboxId: $scope.meta.sandbox._id,
-                effectiveId: $scope.user.effectiveDefault,
+                effectiveId: $scope.meta.sandbox.effectiveDefault,
                 adversary: $scope.adversary,
                 enable: true
             };
 
             /* Retrieve list effective */
             $scope.getEffective = function () {
-
-                effectiveSrv.getEffective($scope.user.effectiveDefault).then(function (data) {
+                effectiveSrv.getEffective($scope.meta.sandbox.effectiveDefault).then(function (data) {
                     $scope.currentEffective = data;
                 });
             };

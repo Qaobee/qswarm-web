@@ -18,7 +18,6 @@
             /* get Effective */
             var getEffective = function (effectiveId) {
                 var deferred = $q.defer();
-
                 effectiveRestAPI.getEffective(effectiveId).success(function (data) {
                     deferred.resolve(data);
                 });
