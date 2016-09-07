@@ -109,7 +109,11 @@
                 hideMethod: 'fadeOut'
             };
             Chart.defaults.global.responsive = true;
-            ChartJsProvider.setOptions({colours: ['#03a9f4', '#0f9d58', '#ff5722', '#803690', '#FDB45C', '#949FB1', '#4D5360']});
+            ChartJsProvider.setOptions({
+                responsive: true,
+                maintainAspectRatio: false,
+                colours: ['#03a9f4', '#0f9d58', '#ff5722', '#803690', '#FDB45C', '#949FB1', '#4D5360']
+            });
         })
         .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale) {
             $locale.id = $translate.proposedLanguage();

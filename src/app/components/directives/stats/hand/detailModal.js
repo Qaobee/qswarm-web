@@ -2,7 +2,7 @@
     'use strict';
     angular.module('qaobee.stat.detail.modal', ['statsRestAPI'])
 
-        .directive('qaobeeStatDetailModal', function ($log, $q, $filter, $translatePartialLoader, qaobeeUtils, statsRestAPI, ChartJs ) {
+        .directive('qaobeeStatDetailModal', function ($log, $q, $filter, $translatePartialLoader, qaobeeUtils, statsRestAPI, ChartJs, qeventbus) {
             return {
                 restrict: 'E',
                 scope: {
@@ -30,7 +30,7 @@
                         };
                     $scope.periodicityActive.ownersId = $scope.periodicityActive.owners || $scope.owners;
                     $scope.stats = {};
-                    $scope.legendColours  =ChartJs.getOptions().colours;
+                    $scope.legendColours = ChartJs.getOptions().colours;
 
                     $scope.$watchGroup(['indicators', 'currentIndicator', 'owners', 'periodicity', 'periodicityActive'], function () {
                         if (!!$scope.periodicityActive.startDate && !!$scope.periodicityActive.endDate || !!currentIndicator) {
@@ -124,13 +124,26 @@
                                 $scope.tabular.push(datas);
                             });
                             $scope.loading = false;
+                            console.log($scope.stats)
                         });
                     };
 
-                    $scope.openDetail = function () {
-                        angular.element('#' + $scope.uid).openModal();
+                    $scope.openDetail = function (uid) {
+                        var modal = angular.element('#modal-' + uid);
+                        modal.detach();
+                        angular.element('body').append(modal);
+                        modal.openModal({
+                            complete: function () {
+                                modal.detach();
+                            }
+                        });
                     };
-
+                    $scope.$on('qeventbus', function () {
+                        if (qeventbus.message === 'periodicityActive') {
+                            $scope.periodicityActive = qeventbus.data;
+                            $scope.buildDatas();
+                        }
+                    });
                     $scope.buildDatas();
                 },
                 link: function () {

@@ -5,7 +5,7 @@
             'statsRestAPI'
         ])
 
-        .directive('qaobeeRadarChart', function (statsRestAPI, $log, $q, $filter, $translatePartialLoader) {
+        .directive('qaobeeRadarChart', function (statsRestAPI, $log, $q, $filter, $translatePartialLoader, qeventbus) {
             return {
                 restrict: 'E',
                 scope: {
@@ -37,13 +37,14 @@
                         $scope.owners.forEach(function (id) {
                             var tSearch = angular.copy(search);
                             tSearch.listOwners = Array.create(id);
-                            $scope.stats[id] = {};
                             promises.push(statsRestAPI.getStatGroupBy(tSearch).success(function (data, status, headers, config) {
                                 if (angular.isArray(data) && data.length > 0) {
                                     angular.forEach(data, function (value) {
+                                        $scope.stats[config.data.listOwners[0]] = {};
                                         $scope.stats[config.data.listOwners[0]][value._id.code] = value.value;
                                     });
                                 }
+                                $scope.noData = Object.isEmpty($scope.stats);
                             }));
                         });
 
@@ -67,9 +68,15 @@
                             $scope.loading = false;
                         });
                     };
+                    $scope.$on('qeventbus', function () {
+                       if(qeventbus.message === 'periodicityActive')  {
+                           $scope.periodicityActive = qeventbus.data;
+                           $scope.buildDatas();
+                       }
+                    });
                 },
                 link: function ($scope) {
-                    $scope.$watchGroup(['indicators', 'owners', 'periodicityActive', 'title'], function () {
+                    $scope.$watchGroup(['indicators', 'owners', 'title'], function () {
                         if (angular.isDefined($scope.periodicityActive) && !!$scope.periodicityActive.startDate && !!$scope.periodicityActive.endDate) {
                             $scope.buildDatas();
                         }

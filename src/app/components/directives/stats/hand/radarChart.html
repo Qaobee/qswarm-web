@@ -18,10 +18,12 @@
                 </div>
             </div>
         </div>
-        <canvas id="radar" class="chart chart-radar"
-                chart-legend="{{!!series}}" chart-series="series" chart-data="data" chart-labels="labels" ng-if="!loading">
+        <p ng-if="noData" translate="stats.resumeTab.noData"></p>
+        <canvas id="radar" class="chart chart-radar" ng-if="!noData"
+                chart-legend="{{!!series}}" chart-series="series" chart-data="data" chart-labels="labels"
+                ng-if="!loading">
         </canvas>
-        <div class="right-align ">
+        <div class="right-align" ng-if="!noData">
             <qaobee-stat-detail-modal indicators="indicators" title="title" meta="meta" series="series" owners="owners"
                                       periodicity-active="periodicityActive"
             ></qaobee-stat-detail-modal>

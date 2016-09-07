@@ -71,9 +71,6 @@
             $scope.compareList = {};
             $scope.currentEffective = {};
             $scope.initPeriodicity = true;
-            $scope.periodicityActive = null;
-            $scope.periodicity = null;
-            $scope.currentCategory = null;
 
             if (user.mainPlayerTabId) {
                 $scope.activeTabIndex = user.mainPlayerTabId;

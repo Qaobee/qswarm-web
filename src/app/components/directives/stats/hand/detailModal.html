@@ -1,8 +1,9 @@
-<button class="btn waves-effect waves-light colorAccent" title="{{'stats.buttons.timeline' | translate}}"
-        ng-click="openDetail()">
+<button class="btn waves-effect waves-light colorAccent modal-trigger" title="{{'stats.buttons.timeline' | translate}}"
+        ng-click="openDetail(uid)">
     <i class="material-icons">timeline</i>
 </button>
-<div id="{{uid}}" class="modal">
+
+<div id="modal-{{uid}}" class="modal graph-modal">
     <div class="modal-content compare-modale">
         <form name="myForm">
             <div class="row colorMain white-text">
@@ -45,9 +46,9 @@
                     <h6 class="center-align" translate="stats.resumeTab.noData"></h6>
                 </div>
             </div>
-            <canvas ng-if="!noData" id="bar" class="chart chart-bar" chart-data="data"
-                    height="200" chart-labels="labels" chart-series="series">
-            </canvas>
+                <canvas ng-if="!noData" id="bar" class="chart chart-bar" chart-data="data"
+                        height="200" chart-labels="labels" chart-series="series">
+                </canvas>
             <ul ng-if="!noData" class="bar-legend">
                 <li ng-repeat="p in series track by $index">
                     <span class="bar-legend-icon" style="background-color:{{legendColours[$index]}}"></span>
@@ -58,13 +59,15 @@
                 <thead>
                 <tr>
                     <th data-field="indicators"></th>
-                    <th ng-repeat="p in series track by $index" data-field="{{p}}" class="center-align" ng-bind="p"></th>
+                    <th ng-repeat="p in series track by $index" data-field="{{p}}" class="center-align"
+                        ng-bind="p"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="l in indicatorLabels track by $index">
                     <td><b ng-bind="l"></b></td>
-                    <td ng-repeat="d in tabular track by $index" data-field="{{d[$parent.$index]}}" class="center-align">
+                    <td ng-repeat="d in tabular track by $index" data-field="{{d[$parent.$index]}}"
+                        class="center-align">
                         {{d[$parent.$index]}}
                     </td>
                 </tr>

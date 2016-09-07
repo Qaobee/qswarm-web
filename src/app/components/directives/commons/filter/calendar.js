@@ -156,6 +156,9 @@
                     };
                     function getCurrentSeason() {
                         $scope.periodicity = 'season';
+                        if(angular.isUndefined($scope.meta)) {
+                            return;
+                        }
                         $scope.periodicityActive = {
                             index: 1,
                             label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),

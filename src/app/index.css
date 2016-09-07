@@ -770,6 +770,11 @@ table.super-fancy tr.foobar {
     }
 }
 
+.graph-modal.modal {
+    width: 85%;
+    max-height: 85%;
+}
+
 .compare-modale canvas#line {
     width: 100% !important;
     height: 200px !important;
