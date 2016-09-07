@@ -68,7 +68,7 @@
             };
 
             $scope.compare = function () {
-                if (Object.keys($scope.compareList).length > 0) {
+                if (Object.keys($scope.compareList).length > 1) {
                     $location.path('/private/team/compare/' + $scope.effectiveId);
                     return false;
                 } else {

@@ -153,6 +153,6 @@
     "event-max" : "Vous ne pouvez sélectionner que {{max}} événements",
     "event-min" : "Vous devez sélectionner au moins un événement",
     "team-max" : "Vous ne pouvez sélectionner que {{max}} équipes",
-    "team-min" : "Vous devez sélectionner au moins une équipe"
+    "team-min" : "Vous devez sélectionner au moins deux équipes"
   }
 }
