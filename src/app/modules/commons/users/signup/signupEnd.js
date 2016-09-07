@@ -227,7 +227,7 @@
                 
             };
 
-            // Puts structure selected in a hidden input
+            
             $scope.applyChangeStructure = function (value) {
                 if (!angular.isUndefined(value)) {
                     $scope.structure._id = value;
@@ -243,7 +243,7 @@
                 }
             };
         
-            // Puts structure selected in a hidden input
+            // resert forms
             $scope.resertForm = function () {
                 if (!$scope.creatClub) {
                     $scope.creatClub = true;
@@ -252,6 +252,12 @@
                 }
 
                 $scope.initForm();
+            };
+        
+            // validate fincClubForm
+            $scope.validateFindClubForm = function () {
+                $log.debug('coucou');
+                $scope.createSandBox();
             };
         
             /* Validate structureSection */
@@ -267,7 +273,7 @@
                 var catAge = {};
                 if (!angular.isUndefined($scope.categoryAgeResult)) {
                     $scope.categoryAgeResult.forEach(function (item) {
-                        if (item.code === $scope.signup.categoryAge._id) {
+                        if (item.code === $scope.categoryAge._id) {
                             catAge = item;
                         }
                     });
@@ -276,7 +282,7 @@
                 // Ouverture Modal creation compte
                 $scope.openModalCreate();
 
-                signupRestAPI.finalizeSignup(user, $routeParams.code, $scope.structure, $scope.signup.account.listPlan[0].activity._id, catAge).success(function (data) {
+                signupRestAPI.finalizeSignup($scope.user, $routeParams.code, $scope.structure, $scope.user.account.listPlan[0].activity._id, catAge).success(function (data) {
                     if (false === data.status) {
                         toastr.error('Pb');
                     } else {

@@ -18,7 +18,7 @@
                 </div>
                 <div class="collapsible-body">
 
-                    <form ng-submit="validateStructureSection()" name="findClubForm" class="container">
+                    <form name="findClubForm" class="container">
 
                         <div class="row">
                             <div class="col m3 hide-on-med-and-down">&nbsp;</div>
@@ -107,7 +107,7 @@
                             <div class="col s12 center">
                                 <a ng-click="openCancelModal()" class="waves-effect waves-white btn btn-s colorAccent">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
 
-                                <button type="submit"  style="max-width:50%" ng-click="validateStructureSection()"
+                                <button type="submit"  style="max-width:50%" ng-click="validateFindClubForm()"
                                     translate="commons.buttons.validate" ng-disabled="findClubForm.$invalid" tabindex="8"
                                     ng-class="{'btn btn-s waves-effect waves-white disabled': findClubForm.$invalid, 
                                               'btn btn-s waves-effect waves-white colorSecondary': !findClubForm.$invalid}">
