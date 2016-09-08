@@ -10,8 +10,8 @@
         <ul class="collection blue-grey-text text-darken-2">
             <li class="collection-item avatar" ng-repeat="n in notifications">
                 <img ng-src="{{getAvatar(n.from_user_id.avatar)}}" alt="" class="circle">
-                <a href="#/notifications/{{n._id}}"><span class="title" ng-bind="n.title"></span></a>
-                <p><span class="truncate" ng-bind="n.content"></span>
+                <a href="#/notifications/{{n._id}}"><span class="title" ng-bind-html="n.title"></span></a>
+                <p><span class="truncate" ng-bind-html="n.content"></span>
                     <small>{{n.from_user_id.firstname}} {{n.from_user_id.name}} <br /> {{n.timestamp | date : 'short'}} |
                         <a href="javascript:void(0);" ng-click="markAsRead(n._id)" class="waves-effect waves-teal btn-flat"
                            style="padding: 0;">

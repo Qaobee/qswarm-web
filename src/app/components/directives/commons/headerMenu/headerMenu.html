@@ -309,7 +309,7 @@
                 <img ng-src="{{getAvatar(n.senderId.avatar)}}" alt="" class="circle" width="30px">
             </div>
             <div class="col s10">
-                <a href="#/notifications/{{n._id}}" class="blue-text text-lighten-2" ng-bind="n.title"></a>
+                <a href="#/notifications/{{n._id}}" class="blue-text text-lighten-2" ng-bind-html="n.title"></a>
                 <a href="javascript:void(0);" ng-click="markAsRead(n._id)"
                    class="waves-effect waves-teal btn-flat right">
                     <i class="tiny material-icons" ng-if="n.read"
@@ -319,7 +319,7 @@
                 <a href="javascript:void(0);" ng-click="deleteNotification(n._id)"
                    class="waves-effect waves-teal btn-flat right"><i
                         class="tiny material-icons" title="{{'headerMenu.notifications.delete' | translate}}">delete</i></a>
-                <br/><span class="truncate" ng-bind="n.content"></span>
+                <br/><span class="truncate" ng-bind-html="n.content"></span>
                 <small> {{n.senderId.firstname}} {{n.senderId.name}} |
                     {{n.timestamp | date : 'short'}}
                 </small>
