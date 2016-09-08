@@ -156,9 +156,9 @@
         <div class="col s1"><a href="javascript:void(0);" ng-click="closeTrial()" class="right"><i class="material-icons">close</i></a></div>
     </div>
 </div>
+
 <!-- Finalize signup -->
-<div class="navbar-fixed" ng-if="user && user.account.firstConnexion">
-    <nav class="top-nav top-nav-trans visible-nav" role="navigation">
+    <nav class="top-nav top-nav-trans" role="navigation" ng-if="user && user.account.firstConnexion">
         <div class="container">
             <div class="nav-wrapper">
                 <a href="/#/" class="hide-on-med-and-down brand-logo">
@@ -177,11 +177,11 @@
             </div>
         </div>
     </nav>
-</div>
+
 
 <!-- Modal login -->
-<div id="modalLogin" class="modal colorBckgModal">
-    <div class="modal-header center-align white-text">
+<div id="modalLogin" class="modal colorBckgModal colorMain-text">
+    <div class="modal-header center-align">
         <h5>
             <span class="fa fa-sign-in"></span>
             <span translate="modal.login.label.title"></span>
@@ -228,7 +228,7 @@
 
 <!-- Modal forgot password -->
 <div id="modalForgotPwd" class="modal colorBckgModal colorMain-text">
-    <div class="modal-header center-align white-text">
+    <div class="modal-header center-align">
         <h5>
             <span class="fa fa-sign-in"></span>
             <span translate="modal.login.label.forgotpasswd"></span>
@@ -272,7 +272,7 @@
 
 <!-- Modal RenewPwd OK ! -->
 <div id="modalForgotPwdOK" class="modal colorBckgModal colorMain-text">
-    <div class="modal-header center-align white-text">
+    <div class="modal-header center-align">
         <h5>
             <span class="fa fa-sign-in"></span>
             <span translate="modal.login.label.forgotpasswd"></span>
