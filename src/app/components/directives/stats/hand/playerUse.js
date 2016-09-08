@@ -29,11 +29,11 @@
                             nbHolder: 0,
                             playTimeAvg: 0
                         };
-                        
+
                         /* get nbCollecte */
                         statsSrv.getMatchsPlayer(startDate, endDate, $scope.sandboxId, ownersId[0]).then(function (data) {
                             if (angular.isArray(data) && data.length > 0) {
-                                
+
                                 result.nbGame = data.length;
                                 $scope.noStat = true;
                                 var indicators = Array.create('totalPlayTime');
@@ -47,8 +47,8 @@
                                     aggregat: 'AVG',
                                     listFieldsGroupBy: listFieldsGroupBy
                                 };
-                                
-                                $log.debug('Yep',search);
+
+                                $log.debug('Yep', search);
                                 /* Appel stats API */
                                 statsRestAPI.getStatGroupBy(search).success(function (playtime) {
                                     if (angular.isArray(playtime) && playtime.length > 0) {
@@ -109,9 +109,9 @@
                     /* Refresh widget on periodicity change */
                     $scope.$on('qeventbus', function () {
                         if ("periodicityActive" === qeventbus.message) {
-                            $scope.startDate = qeventbus.data.startDate;
-                            $scope.endDate = qeventbus.data.endDate;
-                            $scope.ownersId = qeventbus.data.ownersId;
+                            $scope.startDate = qeventbus.data.periodicityActive.startDate;
+                            $scope.endDate = qeventbus.data.periodicityActive.endDate;
+                            $scope.ownersId = qeventbus.data.periodicityActive.ownersId;
                             buildWidget();
                         }
                     });

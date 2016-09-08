@@ -83,7 +83,6 @@
                 user.mainPlayerTabId = tabId;
             };
 
-            
 
             $scope.compare = function () {
                 if (Object.keys($scope.compareList).length > 1) {
@@ -117,13 +116,16 @@
                     $scope.periodicityActive.ownersId = $scope.ownersId;
                     user.periodicity = $scope.periodicity;
                     user.periodicityActive = $scope.periodicityActive;
-                    qeventbus.prepForBroadcast("periodicityActive", $scope.periodicityActive);
+                    qeventbus.prepForBroadcast('periodicityActive', {
+                        periodicityActive: $scope.periodicityActive,
+                        periodicity: $scope.periodicity
+                    });
                 }
             });
 
             /* init periodicity active */
             $scope.initPeriodicityActive = function () {
-                
+
                 if ($scope.initPeriodicity) {
                     $scope.periodicity = 'season';
                     $scope.periodicityActive = {
@@ -133,12 +135,12 @@
                         ownersId: $scope.ownersId
                     };
                     $scope.initPeriodicity = false;
-                } 
+                }
             };
 
             /* Retrieve current effective and list player */
             $scope.getPlayers = function () {
-                
+
                 effectiveSrv.getEffective($scope.effectiveId).then(function (data) {
                     $scope.currentEffective = data;
 
@@ -148,7 +150,7 @@
                         var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact');
 
                         effectiveSrv.getPersons(listId, listField).then(function (players) {
-                            
+
                             $scope.players = players;
                             $scope.players.forEach(function (e) {
                                 if (angular.isDefined(e.status.positionType)) {
@@ -168,7 +170,7 @@
             /* check user connected */
             $scope.checkUserConnected = function () {
                 userRestAPI.getUserById(user._id).success(function (/* data */) {
-                    
+
                     $scope.getPlayers();
                 }).error(function (/* data */) {
                     $log.error('MainPlayerControler : User not Connected');

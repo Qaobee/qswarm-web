@@ -82,7 +82,10 @@
                     $scope.periodicityActive.ownersId = $scope.ownersId;
                     user.periodicity = $scope.periodicity;
                     user.periodicityActive = $scope.periodicityActive;
-                    qeventbus.prepForBroadcast("periodicityActive", $scope.periodicityActive);
+                    qeventbus.prepForBroadcast('periodicityActive', {
+                        periodicityActive: $scope.periodicityActive,
+                        periodicity: $scope.periodicity
+                    });
                 }
             });
 

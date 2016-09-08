@@ -20,6 +20,7 @@
                     $translatePartialLoader.addPart('stats');
                     $scope.stats = {};
                     $scope.buildDatas = function () {
+                        $scope.stats = {};
                         $scope.loading = true;
                         $scope.data = [];
                         $scope.labels = $scope.indicators.map(function (i) {
@@ -70,7 +71,7 @@
                     };
                     $scope.$on('qeventbus', function () {
                        if(qeventbus.message === 'periodicityActive')  {
-                           $scope.periodicityActive = qeventbus.data;
+                           $scope.periodicityActive = qeventbus.data.periodicityActive;
                            $scope.buildDatas();
                        }
                     });

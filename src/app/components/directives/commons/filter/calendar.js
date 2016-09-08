@@ -12,7 +12,7 @@
 
     angular.module('qaobee.filterCalendar', ['qaobee.eventbus'])
 
-        .directive('filterCalendar', function ($translatePartialLoader) {
+        .directive('filterCalendar', function ($translatePartialLoader, qeventbus) {
             return {
                 restrict: 'E',
                 scope: {
@@ -24,9 +24,9 @@
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('commons');
                     var periodicity = {
-                        month : getCurrentMonth,
-                        quarter : getCurrentQuarter(),
-                        season : getCurrentSeason()
+                        month: getCurrentMonth,
+                        quarter: getCurrentQuarter(),
+                        season: getCurrentSeason()
                     };
                     if ($scope.periodicityActive && !$scope.periodicityActive.label) {
                         periodicity[$scope.periodicity].call();
@@ -39,6 +39,12 @@
                     $scope.currentMonth = function () {
                         getCurrentMonth();
                     };
+                    $scope.$on('qeventbus', function () {
+                        if (qeventbus.message === 'periodicityActive') {
+                            $scope.periodicityActive = qeventbus.data.periodicityActive;
+                            $scope.periodicity = qeventbus.data.periodicity;
+                        }
+                    });
                     function getCurrentMonth() {
                         $scope.periodicity = 'month';
                         var start = moment('01/' + moment().format('MM/YYYY'), 'DD/MM/YYYY');
@@ -156,7 +162,7 @@
                     };
                     function getCurrentSeason() {
                         $scope.periodicity = 'season';
-                        if(angular.isUndefined($scope.meta)) {
+                        if (angular.isUndefined($scope.meta)) {
                             return;
                         }
                         $scope.periodicityActive = {

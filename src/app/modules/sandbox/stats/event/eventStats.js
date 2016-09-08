@@ -70,7 +70,10 @@
             /* watch if periodicity change */
             $scope.$watch('periodicityActive', function (newValue, oldValue) {
                 if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
-                    qeventbus.prepForBroadcast("periodicityActive", $scope.periodicityActive);
+                    qeventbus.prepForBroadcast('periodicityActive', {
+                        periodicityActive: $scope.periodicityActive,
+                        periodicity: $scope.periodicity
+                    });
                 }
             });
 

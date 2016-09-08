@@ -2,7 +2,7 @@
     'use strict';
     angular.module('qaobee.stat.detail.modal', ['statsRestAPI'])
 
-        .directive('qaobeeStatDetailModal', function ($log, $q, $filter, $translatePartialLoader, qaobeeUtils, statsRestAPI, ChartJs, qeventbus) {
+        .directive('qaobeeStatDetailModal', function ($q, $filter, $translatePartialLoader, qaobeeUtils, statsRestAPI, ChartJs) {
             return {
                 restrict: 'E',
                 scope: {
@@ -11,9 +11,11 @@
                     meta: '=',
                     owners: '=',
                     series: '=',
-                    periodicityActive: '=?'
+                    periodicityActive: '=?',
+                    periodicity: '=?'
                 },
                 controller: function ($scope) {
+                    $scope.loaded = false;
                     $scope.dateFormat = $filter('translate')('commons.format.date.moment');
                     $scope.tabular = [];
                     $scope.loading = true;
@@ -32,7 +34,12 @@
                     $scope.stats = {};
                     $scope.legendColours = ChartJs.getOptions().colours;
 
-                    $scope.$watchGroup(['indicators', 'currentIndicator', 'owners', 'periodicity', 'periodicityActive'], function () {
+                    $scope.$watchGroup(['indicators', 'currentIndicator', 'owners', 'periodicity', 'periodicityActive'], function (newValues, oldValues) {
+                        $scope.indicators = newValues[0];
+                        $scope.currentIndicator = newValues[1];
+                        $scope.owners = newValues[2];
+                        $scope.periodicity = newValues[3];
+                        $scope.periodicityActive = newValues[4];
                         if (!!$scope.periodicityActive.startDate && !!$scope.periodicityActive.endDate || !!currentIndicator) {
                             $scope.buildDatas();
                         }
@@ -124,7 +131,6 @@
                                 $scope.tabular.push(datas);
                             });
                             $scope.loading = false;
-                            console.log($scope.stats)
                         });
                     };
 
@@ -132,19 +138,8 @@
                         var modal = angular.element('#modal-' + uid);
                         modal.detach();
                         angular.element('body').append(modal);
-                        modal.openModal({
-                            complete: function () {
-                                modal.detach();
-                            }
-                        });
+                        modal.openModal();
                     };
-                    $scope.$on('qeventbus', function () {
-                        if (qeventbus.message === 'periodicityActive') {
-                            $scope.periodicityActive = qeventbus.data;
-                            $scope.buildDatas();
-                        }
-                    });
-                    $scope.buildDatas();
                 },
                 link: function () {
                     angular.element('select').material_select();

@@ -95,11 +95,11 @@
                     /* Refresh widget on periodicity change */
                     $scope.$on('qeventbus', function () {
                         if ("periodicityActive" === qeventbus.message) {
-                            $scope.startDate = qeventbus.data.startDate;
-                            $scope.endDate = qeventbus.data.endDate;
-                            $scope.ownersId = qeventbus.data.ownersId;
-                            if(angular.isDefined($scope.ownersId)){
-                               buildGraph();
+                            $scope.startDate = qeventbus.data.periodicityActive.startDate;
+                            $scope.endDate = qeventbus.data.periodicityActive.endDate;
+                            $scope.ownersId = qeventbus.data.periodicityActive.ownersId;
+                            if (angular.isDefined($scope.ownersId)) {
+                                buildGraph();
                             }
                         }
                     });
