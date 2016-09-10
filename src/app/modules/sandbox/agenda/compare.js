@@ -36,13 +36,13 @@
             };
         })
 
-        .controller('CompareEventsController', function ($scope, $translatePartialLoader, $log, $q, $filter, eventsRestAPI, statsRestAPI, eventCompareService, user, meta, $window) {
+        .controller('CompareEventsController', function ($scope, $routeParams, $translatePartialLoader, $log, $q, $filter, eventsRestAPI, statsRestAPI, eventCompareService, user, meta, $window, qeventbus) {
             $scope.loading = true;
             $scope.events = [];
-            $scope.eventsIds = [];
             $scope.meta = meta;
             $scope.series = [];
-            $scope.eventsIds = eventCompareService.get();
+            $scope.effectiveId = $routeParams.effectiveId;
+            $scope.eventsIds = eventCompareService.get() || [];
             $scope.periodicity = $scope.periodicity || 'season';
             $scope.periodicityActive = $scope.periodicityActive || {
                     label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
@@ -51,33 +51,40 @@
                     ownersId: $scope.ownersId
                 };
             $scope.periodicityActive.ownersId = $scope.periodicityActive.ownersId || $scope.ownersId;
-            eventCompareService.init();
-            $scope.$watch('periodicityActive', function () {
-                $scope.buildWidget();
-            });
-            if ($scope.eventsIds.length > 0) {
-                getEvents($scope.eventsIds, function (data) {
-                    if (data.error) {
-                        return;
-                    }
-                    $scope.events = data;
-                    $scope.series = $scope.events.map(function (p) {
-                        return p.label || p.type.label + ' ' + moment(p.startDate).format('LLLL');
-                    });
-                    $scope.eventsIds = $scope.events.map(function (p) {
-                        return p._id;
+            $scope.$watch('periodicityActive', function (newValue, oldValue) {
+                if (!angular.equals(oldValue, newValue)) {
+                    $scope.periodicityActive = newValue;
+                    qeventbus.prepForBroadcast('periodicityActive', {
+                        periodicityActive: newValue,
+                        periodicity: $scope.periodicity
                     });
                     $scope.buildWidget();
-                });
-            } else {
-                $scope.loading = false;
-            }
+                }
+            });
+
 
             $scope.doTheBack = function () {
                 $window.history.back();
             };
 
             $scope.buildWidget = function () {
+                if (eventCompareService.get() > 0) {
+                    getEvents(eventCompareService.get(), function (data) {
+                        if (data.error) {
+                            return;
+                        }
+                        $scope.events = data;
+                        $scope.series = $scope.events.map(function (p) {
+                            return p.label || p.type.label + ' ' + moment(p.startDate).format('LLLL');
+                        });
+                        $scope.eventsIds = $scope.events.map(function (p) {
+                            return p._id;
+                        });
+                        $scope.buildWidget();
+                    });
+                } else {
+                    $scope.loading = false;
+                }
                 $scope.stats = {
                     goals: {},
                     sanctions: {},
@@ -143,7 +150,7 @@
             /* Retrieve current effective and list player */
             function getEvents(eventsIds, callback) {
                 var requestEvent = {
-                    activityId: $scope.meta.activity._id,
+                    activityId: $scope.meta.sandbox.activity._id,
                     startDate: $scope.periodicityActive.startDate.valueOf(),
                     endDate: $scope.periodicityActive.endDate.valueOf(),
                     ownersandboxId: $scope.meta.sandbox._id,
@@ -168,11 +175,13 @@
                         });
                         callback(events);
                     } else {
-                        callback();
+                        callback([]);
                     }
                 });
             }
 
+            $scope.buildWidget();
         });
-})();
+})
+();
 
