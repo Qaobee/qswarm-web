@@ -66,7 +66,7 @@
             </div>
             <div class="col s12">    
                 <ul class="collection">
-                    <li class="collection-item avatar col s12" ng-repeat="player in players track by $index | filter:queryPlayer">
+                    <li class="collection-item avatar col s12" ng-repeat="player in players track by $index | filter:queryPlayer | orderBy:'name'">
                         <simple-avatar person="player" link="('#/private/viewPlayer/' + player._id)"></simple-avatar>
                         <a href="#/private/viewPlayer/{{player._id}}" class="title red-text text-lighten-1">{{player.firstname}} {{player.name}}</a> 
                         <span class="title  hide-on-small-only">{{player.positionType}}</span>
