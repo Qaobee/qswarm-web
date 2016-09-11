@@ -162,6 +162,10 @@
                                 e.birthdate = $filter('date')(e.birthdate, 'yyyy');
                                 e.age = moment().format('YYYY') - e.birthdate;
                             });
+                            
+                            $scope.players = $scope.players.sortBy(function (n) {
+                                return n.name;
+                            });
                         });
                     });
                 });
