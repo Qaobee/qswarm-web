@@ -24,7 +24,6 @@
          * @description Main controller of app/modules/commons/users/profile/pwd.html
          */
         .controller('PwdCtrl', function ($scope, $filter, EnvironmentConfig, $window, $translatePartialLoader, userRestAPI) {
-            $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
 
@@ -47,15 +46,9 @@
                 $scope.renew.code = $scope.user.account.activationCode;
                 $scope.renew.byPassActivationCode = true;
 
-                if ($scope.renew.passwd !== $scope.renew.passwdConfirm) {
-                    toastr.warning($filter('translate')('profile.message.passwd.different'));
-                    $window.Recaptcha.reload();
-                    $scope.renew = {};
-                    return;
-                }
                 userRestAPI.resetPasswd($scope.renew).success(function () {
                     $scope.resetPwdUser();
-                    toastr.success($filter('translate')('profile.message.updPasswd.success'));
+                    toastr.success($filter('translate')('profilePwdPage.form.success'));
                 }).error(function (error) {
                     $window.Recaptcha.reload();
                     if (error) {

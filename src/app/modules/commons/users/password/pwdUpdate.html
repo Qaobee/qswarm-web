@@ -35,11 +35,11 @@
                 <div class="row">
                     <div class="col m2 hide-on-small">&nbsp;</div>
                     <div class="col s12 m4 input-field">
-                        <label for="password" translate="profile.label.passwd1"></label>
-                        <input id="password" type="password" class="validate" ng-model="renew.passwd" required>
+                        <label for="password" translate="profilePwdPage.form.label.password"></label>
+                        <input id="password" type="password" class="validate" ng-model="renew.passwd" required tabindex="1">
 
                         <div ng-show="renew.passwd">
-                            <small translate='profile.message.passwd.strength'></small>
+                            <small translate='profilePwdPage.form.messageControl.passwdStrength'></small>
                             <div ng-hide="true" ng-password-strength="renew.passwd" strength="passStrength"
                                  inner-class="meter"></div>
                             <div class="progress grey lighten-2">
@@ -51,9 +51,13 @@
                     </div>
 
                     <div class="col s12 m4 input-field">
-                        <label for="passwordConfirm" translate="profile.label.passwd2"></label>
-                        <input id="passwordConfirm" type="password" class="validate" ng-model="renew.passwdConfirm"
-                               required>
+                        <input id="passwordConfirm" name="passwordConfirm" type="password" class="validate" ng-model="passwdConfirm" required passwd-check="password" tabindex="2">
+                        <label for="passwordConfirm">
+                            {{'profilePwdPage.form.label.passwordConfirm' | translate }} 
+                            <span class="colorAccent-text">*</span>
+                        </label>
+                        <span ng-show="pwdForm.passwordConfirm.$dirty && pwdForm.passwordConfirm.$error.pwmatch" class="small colorAccent-text" translate="profilePwdPage.form.messageControl.password.different"></span>
+                        
                     </div>
                     <div class="col m2 hide-on-small">&nbsp;</div>
                 </div>
@@ -85,7 +89,7 @@
                                                         src="https://www.google.com/recaptcha/api/img/clean/logo.png">
                             </div>
                             <div class="col s12 m6">
-                                <input type="text" id="recaptcha_response_field" name="recaptcha_response_field"/>
+                                <input type="text" id="recaptcha_response_field" name="recaptcha_response_field" tabindex="3"/>
                             </div>
                             <div class="col m6 hide-on-med-and-down">&nbsp;</div>
                         </div>
@@ -96,12 +100,12 @@
                 <!-- actions buttons -->
                 <div class="row">
                     <div class="col s12 center-align">
-                        <a ng-click="resetPwdUser()"
-                           class="btn red lighteen-1 white-text waves-effect waves-light center" style="max-width:50%"
-                           translate="commons.buttons.cancel"></a>
-                        <button class="btn green darken-1 waves-effect waves-light center" type="submit"
-                                ng-disabled="pwdForm.$invalid && !pwdForm.$dirty" translate="commons.buttons.validate">
-                            <i class="mdi-content-send right"></i>
+                        <button ng-click="resetPwdUser()"
+                           class="btn colorAccent white-text waves-effect waves-light center"
+                           translate="commons.buttons.cancel"></button>
+                        <button type="submit" ng-disabled="pwdForm.$invalid" translate="commons.buttons.validate"
+                                ng-class="{'btn btn-s waves-effect waves-white disabled': pwdForm.$invalid, 
+                                           'btn btn-s waves-effect waves-white colorSecondary': !pwdForm.$invalid}" tabindex="4">
                         </button>
                     </div>
                 </div>

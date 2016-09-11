@@ -1,4 +1,48 @@
 {	
+    "profilePage": {
+        "form": {
+            "title": "",
+            "label": {
+                "avatar": "Déposer la photo ici",
+                "name": "Name",
+                "firstname": "Firstname",
+                "login": "Login",
+                "email": "e-Mail",
+                "address": "Address",
+                "birthdate": "Birthdate",
+                "gender": {
+                    "title" : "Gender",
+                    "female" : "Female",
+                    "male" : "Male"
+                }
+            },
+            "messageControl": {
+                "emailDirty": "Invalid format email ",
+                "name": "Name is mandatory",
+                "firstname": "Firstname is mandatory",
+                "gender": "Gender is mandatory",
+                "birthDate": "Birthdate is mandatory",
+                "phone": "Phone number is mandatory",
+            }
+        }
+    },
+    "profilePwdPage": {
+        "form": {
+            "title": "",
+            "label": {
+                "password": "Nouveau mot de passe",
+                "passwordConfirm": "Confirmation nouveau mot de passe"
+            },
+            "messageControl": {
+                "password": {
+                    "short": "Le mot de passe que vous avez choisi est trop court",
+                    "different": "Les mots de passe ne correspondent pas"
+                },
+                "passwdStrength": "Password strength"
+            },
+            "success": "Votre mot de passe est mis à jour"
+        }
+    },
     "signupStartPage": {
         "title1": "Collect everything",
         "title2": "The first sports data collection tool in real time",

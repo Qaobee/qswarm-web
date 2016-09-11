@@ -1,4 +1,48 @@
 {
+    "profilePage": {
+        "form": {
+            "title": "Inscription",
+            "label": {
+                "avatar": "Déposer la photo ici",
+                "name": "Nom",
+                "firstname": "Prénom",
+                "login": "Identifiant",
+                "email": "e-Mail",
+                "address": "Adresse",
+                "birthdate": "Date de naissance",
+                "gender": {
+                    "title" : "Genre",
+                    "female" : "Femme",
+                    "male" : "Homme"
+                }
+            },
+            "messageControl": {
+                "emailDirty": "Format email invalide",
+                "name": "Le nom est obligatoire",
+                "firstname": "Le prénom est obligatoire",
+                "gender": "Le genre est obligatoire",
+                "birthDate": "La date de naissance est obligatoire",
+                "phone": "Le numéro de téléphone est obligatoire"
+            }
+        }
+    },
+    "profilePwdPage": {
+        "form": {
+            "title": "",
+            "label": {
+                "password": "Nouveau mot de passe",
+                "passwordConfirm": "Confirmation nouveau mot de passe"
+            },
+            "messageControl": {
+                "password": {
+                    "short": "Le mot de passe que vous avez choisi est trop court",
+                    "different": "Les mots de passe ne correspondent pas"
+                },
+                "passwdStrength": "Password strength"
+            },
+            "success": "Votre mot de passe est mis à jour"
+        }
+    },
     "signupStartPage": {
         "title1": "Captez l'instant",
         "title2": "Le premier assistant personnel de collecte et d'analyse en temps réel de données sportives",
