@@ -49,7 +49,7 @@
                 $scope.catAgeSelectOK = false;
                 $scope.searchCity = null;
                 $scope.createCity = null;
-                $scope.structure.label = '';
+                $scope.structure.label = null;
                 
                 $scope.categoryAge = null;
             };

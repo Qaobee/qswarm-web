@@ -19,14 +19,11 @@
                 <div class="collapsible-body">
 
                     <form name="findClubForm" class="container">
-
+                        <div class="row">&nbsp;</div>
                         <div class="row">
-                            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                            <div class="col input-field m3 s12">
-                                <label>{{'signupEndPage.tabFindClub.form.label.city' | translate}} <span class="red-text text-lighten-1">*</span></label>
-                            </div>
-
-                            <div class="input-field col m3 s12">
+                            <div class="col m2 hide-on-med-and-down">&nbsp;</div>
+                            <div class="col input-field m8 s12">
+                                <label for="searchCity">{{'signupEndPage.tabFindClub.form.label.city' | translate}} <span class="red-text text-lighten-1">*</span></label>
                                 <input type="text" id="searchCity" 
                                        ng-autocomplete 
                                        details="detailsSearchCity"
@@ -34,10 +31,10 @@
                                        options="optionsSearchCity" 
                                        placeholder="" />
                             </div>
-                            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                            <div class="col m2 hide-on-med-and-down">&nbsp;</div>
                         </div>
 
-                        <div class="row container" ng-if="structureSearch">
+                        <div class="row" ng-if="structureSearch">
                             <div class="input-field col s12 center-align">
                                 <div class="preloader-wrapper big active">
                                     <div class="spinner-layer">
@@ -57,17 +54,17 @@
 
                         <div ng-if="structureSelectOK">
 
-                            <div class="row container">
-                                <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                                <div class="input-field col m3 s12">
+                            <div class="row">
+                                <div class="col m2 hide-on-med-and-down">&nbsp;</div>
+                                <div class="input-field col m8 s12">
                                     <label>{{'signupEndPage.tabFindClub.form.label.selectClub' | translate}} <span class="red-text text-lighten-1">*</span></label>
                                </div>
-                                <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                                <div class="col m2 hide-on-med-and-down">&nbsp;</div>
                             </div>
 
                             <div class="row">
-                                <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                                <div class="input-field col m3 s12">
+                                <div class="col m2 hide-on-med-and-down">&nbsp;</div>
+                                <div class="input-field col m8 s12">
                                     <div ng-repeat="struct in listStructures track by $index">
                                         <input class="with-gap" 
                                                type="radio"
@@ -83,27 +80,43 @@
                                     </div>
                                     <div><span class="title colorAccent-text">{{messageErreur}}</span></div>
                                 </div>
-                                <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                                <div class="col m2 hide-on-med-and-down">&nbsp;</div>
                             </div>
                         </div>
 
                         <div ng-show="catAgeSelectOK">
-                            <div class="row">
-                                <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                                <div class="col input-field m3 s12"><label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span class="red-text text-lighten-1">*</span></label></div>
-                                <div class="input-field col s3">
-                                    <select name="categoryAgeSelect" ng-model="categoryAge" id="userCategoryAgeSelect" class="browser-default"
-                                        ng-options="cat.label for cat in valuesCategoryAge track by cat._id" required>
-                                        <option></option>
+                            <div class="row hide-on-large-only">
+                                <div class="col input-field s12">
+                                    <label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span class="red-text text-lighten-1">*</span></label>
+                                </div>
+                                <div class="col s12">&nbsp;</div>
+                                
+                                <div class="input-field col s12">
+                                    <select name="categoryAgeSelect" ng-model="categoryAge" id="userCategoryAgeSelect" material-select watch
+                                        required>
+                                        <option ng-repeat="cat in valuesCategoryAge track by cat._id">{{cat.label}}</option>
                                     </select>
                                 </div>
-                                <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                            </div>
+                            
+                            <div class="row hide-on-med-and-down">
+                                <div class="col m2 ">&nbsp;</div>
+                                <div class="col input-field m4">
+                                    <label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span class="red-text text-lighten-1">*</span></label>
+                                </div>
+                                <div class="input-field col m4">
+                                    <select name="categoryAgeSelect" ng-model="categoryAge" id="userCategoryAgeSelect" material-select watch
+                                        required>
+                                        <option ng-repeat="cat in valuesCategoryAge track by cat._id">{{cat.label}}</option>
+                                    </select>
+                                </div>
+                                <div class="col m2">&nbsp;</div>
                             </div>
                         </div>
 
                         <!-- actions buttons -->
                         <div class="row">&nbsp;</div>
-                        <div class="row container">
+                        <div class="row">
                             <div class="col s12 center">
                                 <a ng-click="openCancelModal()" class="waves-effect waves-white btn btn-s colorAccent">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
 
@@ -125,22 +138,19 @@
                 </div>
                 <div class="collapsible-body">
                     <form name="createStructureForm" class="container">
+                        <div class="row">&nbsp;</div>
                         <div class="row">
-                            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                            <div class="col input-field m3 s12">
-                                <label>{{'signupEndPage.tabFindClub.form.label.clubname' | translate}}  <span class="red-text text-lighten-1">*</span></label>
-                            </div>
-                            <div class="input-field col m3 s12">
+                            <div class="col m2 hide-on-med-and-down">&nbsp;</div>
+                            <div class="col m8 s12 input-field">                                
+                                <label for="userStructureLabel">{{'signupEndPage.tabFindClub.form.label.clubname' | translate}}  <span class="red-text text-lighten-1">*</span></label>
                                 <input type="text" id="userStructureLabel" class="validate" ng-model="structure.label" required>
                             </div>
-                            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                            <div class="col m2 hide-on-med-and-down">&nbsp;</div>
                         </div>
                         <div class="row">    
-                            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                            <div class="col input-field m3 s12">
-                                <label>{{'signupEndPage.tabFindClub.form.label.clubAddress' | translate}}  <span class="red-text text-lighten-1">*</span></label>
-                            </div>
-                            <div class="input-field col m3 s12">
+                            <div class="col m2 hide-on-med-and-down">&nbsp;</div>
+                            <div class="col m8 s12 input-field">
+                                <label for="createCity">{{'signupEndPage.tabFindClub.form.label.clubAddress' | translate}}  <span class="red-text text-lighten-1">*</span></label>
                                 <input type="text" id="createCity" 
                                        ng-autocomplete
                                        details="detailsCreateCity"
@@ -149,20 +159,36 @@
                                        required 
                                        placeholder=""/>
                             </div>
-                            <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                            <div class="col m2 hide-on-med-and-down">&nbsp;</div>
                         </div>
 
                         <div ng-show="catAgeSelectOK">
-                            <div class="row">
-                                <div class="col m3 hide-on-med-and-down">&nbsp;</div>
-                                <div class="col input-field m3 s12"><label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span class="red-text text-lighten-1">*</span></label></div>
-                                <div class="input-field col s3">
-                                    <select name="categoryAgeSelect" ng-model="categoryAge" id="userCategoryAgeSelect" class="browser-default"
-                                        ng-options="cat.label for cat in valuesCategoryAge track by cat._id" required>
-                                        <option></option>
+                            <div class="row hide-on-large-only">
+                                <div class="col input-field s12">
+                                    <label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span class="red-text text-lighten-1">*</span></label>
+                                </div>
+                                <div class="col s12">&nbsp;</div>
+                                
+                                <div class="input-field col s12">
+                                    <select name="categoryAgeSelect" ng-model="categoryAge" id="userCategoryAgeSelect" material-select watch
+                                        required>
+                                        <option ng-repeat="cat in valuesCategoryAge track by cat._id">{{cat.label}}</option>
                                     </select>
                                 </div>
-                                <div class="col m3 hide-on-med-and-down">&nbsp;</div>
+                            </div>
+                            
+                            <div class="row hide-on-med-and-down">
+                                <div class="col m2 ">&nbsp;</div>
+                                <div class="col input-field m4">
+                                    <label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span class="red-text text-lighten-1">*</span></label>
+                                </div>
+                                <div class="input-field col m4">
+                                    <select name="categoryAgeSelect" ng-model="categoryAge" id="userCategoryAgeSelect" material-select watch
+                                        required>
+                                        <option ng-repeat="cat in valuesCategoryAge track by cat._id">{{cat.label}}</option>
+                                    </select>
+                                </div>
+                                <div class="col m2">&nbsp;</div>
                             </div>
                         </div>
 

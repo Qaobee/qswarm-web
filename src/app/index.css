@@ -127,6 +127,14 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     margin: 0 0 5px 0;
 }
 
+.dropdown-content li > a, .dropdown-content li > span {
+    font-size: 16px;
+    color: #78BE78;
+    display: block;
+    line-height: 22px;
+    padding: 14px 16px;
+}
+
 button, input, optgroup, select, textarea {
     color: #546e7a;
 }
