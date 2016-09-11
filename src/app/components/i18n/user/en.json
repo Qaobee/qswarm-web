@@ -55,7 +55,10 @@
             }
         },
         "tabCreateClub" : {
-            "tabTitle":"Créer votre club"
+            "tabTitle":"Créer votre club",
+            "messageControl": {
+                "labelControl" : "Label club is mandatory and must have 3 characters minimum"
+            }
         },
         "errorPage" : {
             "title" : "Error !",

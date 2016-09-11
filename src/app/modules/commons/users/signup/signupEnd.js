@@ -273,8 +273,14 @@
             };
         
             /* Validate structureSection */
-            $scope.createStructure = function () { 
-                $scope.createSandBox();
+            $scope.createStructure = function () {
+                $log.debug($scope.structure.label.length);
+                if($scope.structure.label.length > 2){
+                    $scope.createSandBox();
+                } else {
+                    var erreur = $filter('translate')('signupEndPage.tabCreateClub.messageControl.labelControl');
+                    toastr.error(erreur);
+                }
             };
 
             /* Creates sandbox */

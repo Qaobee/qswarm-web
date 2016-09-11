@@ -54,7 +54,10 @@
             }
         },
         "tabCreateClub" : {
-            "tabTitle":"ou créer votre propre club"
+            "tabTitle":"ou créer votre propre club",
+            "messageControl": {
+                "labelControl" : "Le libellé du club est obligatoire et doit contenir au moins 3 caratères"
+            }
         },
         "errorPage" : {
             "title" : "Erreur !",
