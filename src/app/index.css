@@ -64,8 +64,10 @@
 }
 
 .btn, .btn-large, .btn-flat {
-    height: 24px;
-    line-height: 24px;
+    width:45%; 
+    height:40px; 
+    padding: 2px; 
+    max-width:200px;
 }
 
 input:not([type]):focus:not([readonly]) + label,

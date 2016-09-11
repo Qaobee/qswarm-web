@@ -144,16 +144,15 @@
         <!-- Buttons -->
         <div class="row center container">
             <div class="col s12">
-                <a href="" ng-click="cancelSignup()" class="modal-action modal-close waves-effect waves-white btn btn-s colorAccent" style="max-width:50%"
+                <button ng-click="cancelSignup()" 
+                        class="modal-action modal-close waves-effect waves-white btn btn-s colorAccent" 
                         translate="commons.buttons.cancel" tabindex="9">
-                </a>
-                <button type="submit"  style="max-width:50%"
+                </button>
+                <button type="submit"
                         translate="commons.buttons.validate" ng-disabled="signupStartPageForm.$invalid" tabindex="8"
                         ng-class="{'btn btn-s waves-effect waves-white disabled': signupStartPageForm.$invalid, 
                                   'btn btn-s waves-effect waves-white colorSecondary': !signupStartPageForm.$invalid}">
                 </button>
-                
-                
             </div>
         </div>
     </form>

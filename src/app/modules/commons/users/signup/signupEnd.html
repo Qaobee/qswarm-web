@@ -118,9 +118,9 @@
                         <div class="row">&nbsp;</div>
                         <div class="row">
                             <div class="col s12 center">
-                                <a ng-click="openCancelModal()" class="waves-effect waves-white btn btn-s colorAccent">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
+                                <button ng-click="openCancelModal()" class="waves-effect waves-white btn btn-s colorAccent">{{'commons.buttons.cancel' | translate }}</button>
 
-                                <button type="submit"  style="max-width:50%" ng-click="validateFindClubForm()"
+                                <button type="submit" ng-click="validateFindClubForm()"
                                     translate="commons.buttons.validate" ng-disabled="findClubForm.$invalid" tabindex="8"
                                     ng-class="{'btn btn-s waves-effect waves-white disabled': findClubForm.$invalid, 
                                               'btn btn-s waves-effect waves-white colorSecondary': !findClubForm.$invalid}">
@@ -196,9 +196,9 @@
                         <div class="row">&nbsp;</div>
                         <div class="row">
                             <div class="col s12 center">
-                                <a ng-click="openCancelModal()" class="waves-effect waves-white btn btn-s colorAccent">{{'commons.buttons.cancel' | translate }}</a>&nbsp;
+                                <button ng-click="openCancelModal()" class="waves-effect waves-white btn btn-s colorAccent">{{'commons.buttons.cancel' | translate }}</button>
 
-                                <button type="submit"  style="max-width:50%" ng-click="createStructure()" translate="commons.buttons.validate" 
+                                <button type="submit" ng-click="createStructure()" translate="commons.buttons.validate" 
                                         ng-disabled="createStructureForm.$invalid" tabindex="8"
                                         ng-class="{'btn btn-s waves-effect waves-white disabled': createStructureForm.$invalid, 
                                               'btn btn-s waves-effect waves-white colorSecondary': !createStructureForm.$invalid}">

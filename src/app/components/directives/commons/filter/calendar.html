@@ -40,12 +40,12 @@
     </div>
     <span ng-if="!popup">
         <div class="col s4 center" ng-if="periodicity=='month'">
-            <h6 class="blue-grey-text text-darken-2" ng-bind="periodicityActive.label"></h6>
+            <h6 class="colorMain-text" ng-bind="periodicityActive.label"></h6>
         </div>
     </span>
     <span ng-if="popup">
         <div class="col s3 center" ng-if="periodicity=='month'">
-            <h6 class="blue-grey-text text-darken-2" ng-bind="periodicityActive.label"></h6>
+            <h6 class="colorMain-text" ng-bind="periodicityActive.label"></h6>
         </div>
     </span>
     <div class="col s1 center" ng-if="periodicity=='month'">
@@ -63,12 +63,12 @@
     </div>
     <span ng-if="!popup">
         <div class="col s4 center" ng-if="periodicity=='quarter'">
-            <h6 class="blue-grey-text text-darken-2" ng-bind="periodicityActive.label"></h6>
+            <h6 class="colorMain-text" ng-bind="periodicityActive.label"></h6>
         </div>
     </span>
     <span ng-if="popup">
         <div class="col s3 center" ng-if="periodicity=='quarter'">
-            <h6 class="blue-grey-text text-darken-2" ng-bind="periodicityActive.label"></h6>
+            <h6 class="colorMain-text" ng-bind="periodicityActive.label"></h6>
         </div>
     </span>
     <div class="col s1 center" ng-if="periodicity=='quarter'">
@@ -86,12 +86,12 @@
     </div>
     <span ng-if="!popup">
         <div class="col s4 center" ng-if="periodicity=='season'">
-            <h6 class="blue-grey-text text-darken-2" ng-bind="periodicityActive.label"></h6>
+            <h6 class="colorMain-text" ng-bind="periodicityActive.label"></h6>
         </div>
     </span>
     <span ng-if="popup">
         <div class="col s3 center" ng-if="periodicity=='season'">
-            <h6 class="blue-grey-text text-darken-2" ng-bind="periodicityActive.label"></h6>
+            <h6 class="colorMain-text" ng-bind="periodicityActive.label"></h6>
         </div>
     </span>
     <div class="col s1 center" ng-if="periodicity=='season'">
@@ -136,7 +136,7 @@
             </a>
         </div>
         <div class="col s8 center">
-            <h6 class="blue-grey-text text-darken-2" ng-bind="periodicityActive.label"></h6>
+            <h6 class="colorMain-text" ng-bind="periodicityActive.label"></h6>
         </div>
         <div class="col s1 center" ng-if="periodicity=='month'">
             <a href="" ng-click="nextMonth()" class="btn-floating colorMain white-text right">
@@ -155,7 +155,7 @@
             </a>
         </div>
         <div class="col s8 center">
-            <h6 class="blue-grey-text text-darken-2" ng-bind="periodicityActive.label"></h6>
+            <h6 class="colorMain-text" ng-bind="periodicityActive.label"></h6>
         </div>
         <div class="col s1 center" ng-if="periodicity=='quarter'">
             <a href="" ng-click="nextQuarter()" class="btn-floating colorMain white-text right">
@@ -174,7 +174,7 @@
             </a>
         </div>
         <div class="col s8 center" ng-if="periodicity=='season'">{{periodicityActive.label}}
-            <h6 class="blue-grey-text text-darken-2" ng-bind="periodicityActive.label"></h6>
+            <h6 class="colorMain-text" ng-bind="periodicityActive.label"></h6>
         </div>
         <div class="col s1 center" ng-if="periodicity=='season'">
             <a href="" ng-click="nextSeason()" class="btn-floating colorMain white-text right">

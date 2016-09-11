@@ -30,16 +30,15 @@
             <wz-step title="{{'playerLabels.playerCivilSection' | translate }}"
                      template="app/components/directives/wizard/step.html">
                 <div class="col s12">
-                    <form name="playerCivilSection">
+                    <form name="playerCivilSection" novalidate>
                         <!-- Empty row -->
                         <div class="row">&nbsp;</div>
 
                         <div class="row">
                             <div class="col s12 m5 input-field">
-                                <label class="active">{{'playerLabels.playerFirstname' | translate }} <span
+                                <label>{{'playerLabels.playerFirstname' | translate }} <span
                                         class="red-text text-lighten-1">*</span></label>
-                                <input ng-model="player.firstname" name="playerFirstname" type="text" class="validate"
-                                       required
+                                <input ng-model="player.firstname" name="playerFirstname" type="text" class="validate" required
                                        ng-class="{ 'has-error' : playerCivilSection.playerFirstname.$invalid && !playerCivilSection.playerFirstname.$pristine }">
                                 <span class="small red-text text-lighten-1"
                                       ng-show="playerCivilSection.playerFirstname.$invalid && !playerCivilSection.playerFirstname.$pristine"
@@ -49,10 +48,8 @@
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
 
                             <div class="col s12 m6 input-field">
-                                <label class="active">{{'playerLabels.playerName' | translate }} <span
-                                        class="red-text text-lighten-1">*</span></label>
-                                <input ng-model="player.name" name="playerName" type="text"
-                                       class="validate form-control" required
+                                <label>{{'playerLabels.playerName' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                                <input ng-model="player.name" name="playerName" type="text" class="validate form-control" required
                                        ng-class="{ 'has-error' : playerCivilSection.playerName.$invalid && !playerCivilSection.playerName.$pristine }">
                                 <span class="small red-text text-lighten-1"
                                       ng-show="playerCivilSection.playerName.$invalid && !playerCivilSection.playerName.$pristine"
@@ -62,10 +59,8 @@
 
                         <div class="row">
                             <div class="col s12 m5 input-field">
-                                <label>{{'playerLabels.playerBirthdate' | translate }} <span
-                                        class="red-text text-lighten-1">*</span></label>
-                                <input id="playerBirthdate" class="datepicker" name="playerBirthdate" type="text"
-                                       ng-model="player.birthdate" required
+                                <label>{{'playerLabels.playerBirthdate' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                                <input id="playerBirthdate" class="datepicker" name="playerBirthdate" type="text" ng-model="player.birthdate" required
                                        ng-class="{ 'has-error' : playerCivilSection.playerBirthdate.$invalid && !playerCivilSection.playerBirthdate.$pristine }"/>
                                 <span class="small red-text text-lighten-1"
                                       ng-show="playerCivilSection.playerBirthdate.$invalid && !playerCivilSection.playerBirthdate.$pristine"
@@ -75,9 +70,9 @@
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
 
                             <div class="col m6 input-field hide-on-small-only">
-                                <i class="material-icons prefix blue-grey-text text-darken-2">mail</i>
-                                <label>{{'playerLabels.playerMail' | translate }}</label>
-                                <input type="email" name="email" class="validate" ng-model="player.contact.email"
+                                <i class="material-icons prefix colorMain-text">mail</i>
+                                <label for="emailInput">{{'playerLabels.playerMail' | translate }}</label>
+                                <input type="email" id="emailInput" name="email" class="validate" ng-model="player.contact.email"
                                        ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
                                        ng-class="{ 'invalid': playerCivilSection.email.$invalid }">
                                 <span ng-class="{'has-error': playerCivilSection.email.$dirty}"
@@ -113,17 +108,19 @@
 
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
 
-                            <div class="col m6 input-field hide-on-small-only">
-                                <i class="material-icons prefix blue-grey-text text-darken-2">phone</i>
-                                <label>{{'playerLabels.playerTelHome' | translate }}</label>
-                                <input type="tel" ui-mask="{{'commons.format.phone.pattern' | translate }}"
+                            <div class="col m1 input-field hide-on-small-only">
+                                <i class="material-icons prefix colorMain-text">phone</i>
+                                <label for="phoneHomeInput">{{'playerLabels.playerTelHome' | translate }}</label>
+                            </div>
+                            <div class="col m5 input-field hide-on-small-only">
+                                <input type="tel" id="phoneHomeInput" ui-mask="{{'commons.format.phone.pattern' | translate }}"
                                        class="validate" min="0" ng-model="player.contact.home">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col s12 m5 input-field">
-                                <label class="active" for="playerNationality">{{'playerLabels.playerNationality' |
+                                <label for="playerNationality">{{'playerLabels.playerNationality' |
                                     translate }}</label>
                                 <input type="text" id="playerNationality" class="form-control" ng-autocomplete
                                        ng-model="player.nationality" details="detailsCountry" options="optionsCountry"
@@ -132,19 +129,22 @@
 
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
 
-                            <div class="col s12 m6 input-field hide-on-small-only">
-                                <i class="material-icons prefix blue-grey-text text-darken-2">smartphone</i>
+                            <div class="col s1 input-field hide-on-small-only">
+                                <i class="material-icons prefix colorMain-text">smartphone</i>
                                 <label for="playerTelMobile">{{'playerLabels.playerTelMobile' | translate }}</label>
+                            </div>
+                            
+                            <div class="col s5 input-field hide-on-small-only">
                                 <input id="playerTelMobile" type="tel"
                                        ui-mask="{{'commons.format.phone.pattern' | translate }}"
                                        class="validate" min="0" ng-model="player.contact.cellphone">
                             </div>
+                            
                         </div>
 
                         <div class="row">
                             <div class="col s12 m5 input-field">
-                                <label class="active" for="playerBirthCity">{{'playerLabels.playerBirthCity' | translate
-                                    }}</label>
+                                <label for="playerBirthCity">{{'playerLabels.playerBirthCity' | translate}}</label>
                                 <input type="text" id="playerBirthCity" class="form-control" ng-autocomplete
                                        ng-model="player.birthCity" details="detailsCity" options="optionsCity"
                                        placeholder=""/>
@@ -153,7 +153,7 @@
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
 
                             <div class="col m6 input-field hide-on-small-only">
-                                <i class="material-icons prefix blue-grey-text text-darken-2">home</i>
+                                <i class="material-icons prefix colorMain-text">home</i>
                                 <label for="playerAddress">{{'playerLabels.playerAddress' | translate }}</label>
                                 <input type="text" id="Autocomplete" class="form-control" ng-autocomplete
                                        ng-model="player.address.formatedAddress" details="detailsAdr"
@@ -218,11 +218,11 @@
                         <div class="row">
                             <div class="col m3 hide-on-small-only">&nbsp;</div>
                             <div class="col m6 s12 center">
-                                <a href="" class="btn red lighteen-1 white-text" ng-click="doTheBack()">{{'commons.buttons.cancel'
-                                    | translate }}</a>&nbsp;
-                                <button class="btn white-text blue-grey darken-3" wz-next type="submit" name="next"
-                                        ng-disabled="playerCivilSection.$invalid">{{'commons.buttons.next' | translate
-                                    }}
+                                <button style="width:45%; height:40px; padding: 2px;" class="btn valign-wrapper colorAccent waves-effect waves-white white-text" ng-click="doTheBack()">{{'commons.buttons.cancel'| translate }}</button>&nbsp;
+                                <button style="width:45%; height:40px; padding: 2px;" class="btn valign-wrapper white-text colorMain" wz-next type="submit" name="next"
+                                        ng-class="{'btn btn-s waves-effect waves-white disabled': playerCivilSection.$invalid, 
+                                              'btn btn-s waves-effect waves-white colorSecondary': !playerCivilSection.$invalid}"
+                                        ng-disabled="playerCivilSection.$invalid">{{'commons.buttons.next' | translate}}
                                 </button>
                             </div>
                             <div class="col m3 hide-on-small-only">&nbsp;</div>
@@ -309,44 +309,27 @@
                     <div class="row">&nbsp;</div>
 
                     <!-- actions buttons desktop-->
-                    <div class="row hide-on-med-and-down">
-                        <div class="col m3">&nbsp;</div>
-                        <div class="col m6 center-align">
-                            <button class="btn red lighteen-1 white-text" ng-click="doTheBack()">
+                    <div class="row">
+                        <div class="col m3 hide-on-small-only">&nbsp;</div>
+                        <div class="col m6 s12 center-align">
+                            <button style="width:32%; height:40px; padding: 1px;" class="btn colorAccent waves-effect waves-white white-text" ng-click="doTheBack()">
                                 {{'commons.buttons.cancel' | translate }}
                             </button>
-                            &nbsp;
-                            <button class="btn white-text blue-grey darken-3" wz-previous type="submit" name="previous">
+                            
+                            <button style="width:32%; height:40px; padding: 1px;" class="btn white-text waves-effect waves-white colorMain" wz-previous type="submit" name="previous">
                                 {{'commons.buttons.previous' | translate }}
                             </button>
-                            &nbsp;
-                            <button wz-next class="btn white-text green darken-1"
-                                    ng-disabled="playerCaracterSection.$invalid">{{'commons.buttons.validate' |
-                                translate }}
+                            
+                            <button style="width:32%; height:40px; padding: 1px;" class="btn white-text colorMain" wz-next type="submit" name="next"
+                                    ng-class="{'btn btn-s waves-effect waves-white disabled': playerCaracterSection.$invalid, 
+                                          'btn btn-s waves-effect waves-white colorSecondary': !playerCaracterSection.$invalid}"
+                                    ng-disabled="playerCaracterSection.$invalid">{{'commons.buttons.validate' | translate}}
                             </button>
+                            
                         </div>
-                        <div class="col m3">&nbsp;</div>
+                        <div class="col m3 hide-on-small-only">&nbsp;</div>
                     </div>
 
-                    <!-- actions buttons on smartphone and tablet-->
-                    <div class="row hide-on-large-only center-align">
-                        <div class="col s4">
-                            <button class="btn red lighteen-1 white-text col s12" ng-click="doTheBack()">
-                                {{'commons.buttons.cancel' | translate }}
-                            </button>
-                        </div>
-                        <div class="col s4">
-                            <button class="btn white-text blue-grey darken-3 col s12" wz-previous type="submit"
-                                    name="previous">{{'commons.buttons.previous' | translate }}
-                            </button>
-                        </div>
-                        <div class="col s4">
-                            <button wz-next class="btn white-text colorSecondary col s12"
-                                    ng-disabled="playerCaracterSection.$invalid">{{'commons.buttons.validate' |
-                                translate }}
-                            </button>
-                        </div>
-                    </div>
                 </form>
             </wz-step>
         </wizard>

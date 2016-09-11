@@ -30,21 +30,21 @@
                     $scope.icon = '';
                     $scope.color1 = '';
                     $scope.color2 = '';
-                    $scope.textColor1 = 'blue-grey-text text-darken-2';
+                    $scope.textColor1 = 'colorMain-text';
                     $scope.textColor2 = 'white-text';
                     $scope.title = '';
 
                     if ($scope.event.link.type === 'cup') {
                         $scope.icon = 'album';
                         $scope.color1 = 'white';
-                        $scope.color2 = 'red lighten-1';
+                        $scope.color2 = 'colorAccent';
                         $scope.title = 'mainAgenda.eventType.cup';
                     }
 
                     if ($scope.event.link.type === 'friendlyGame') {
                         $scope.icon = 'flare';
                         $scope.color1 = 'white';
-                        $scope.color2 = 'light-green lighten-1';
+                        $scope.color2 = 'colorSecondary';
                         $scope.title = 'mainAgenda.eventType.friendlyGame';
                     }
 

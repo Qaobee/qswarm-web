@@ -124,13 +124,11 @@
             $scope.detailsCountry = '';
 
             $scope.optionsCity = {
-                types: '(cities)'
+                types: ['(cities)']
             };
             $scope.detailsCity = '';
 
-            $scope.optionsAdr = null;
-            $scope.detailsAdr = '';
-
+            
             /* Retrieve list of positions type */
             $scope.getListPositionType = function () {
                 activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.sandbox.activityId, $scope.meta.sandbox.structure.country._id, 'listPositionType').success(function (data) {
