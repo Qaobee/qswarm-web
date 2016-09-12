@@ -29,7 +29,7 @@
          */
         .controller('PayProfileCtrl', function ($scope, $filter, EnvironmentConfig, $translatePartialLoader, $translate,
                                                 $log, user, meta, $window, $routeParams, paymentAPI) {
-            $translatePartialLoader.addPart('profile');
+
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
             angular.element('#payMessageModal').openModal();

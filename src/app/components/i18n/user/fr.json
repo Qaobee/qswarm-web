@@ -1,4 +1,25 @@
 {
+     "profileMainPage": {
+        "tabs": {
+          "account": "Mon compte",
+          "sandbox": "Mes sandboxs",
+          "preference": "Préférences",
+          "profil": "Mon profil",
+          "password": "Mot de passe",
+          "billing": "Abonnement",
+          "notification": "Notifications",
+          "settings": "Paramétrage",
+          "sbSharing": "Invitations",
+          "sbMembers": "Gestion des utilisateurs",
+          "sbDefault" : "Sandbox par défaut",
+          "sbSwitch" : "Changer de sandbox",
+          "notificationSettings" : "Paramètrage des notifications"
+        }
+    },
+    "sbMemberMngtToast":{
+        "memberAdd": "{{firstname}} {{name}} a été ajouté comme utilisateur de votre sandbox",
+        "memberremove": "{{firstname}} {{name}} a été désactivé de votre sandbox" 
+    },
     "profilePage": {
         "form": {
             "title": "Inscription",

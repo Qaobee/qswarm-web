@@ -25,7 +25,6 @@
          */
         .controller('WriteProfileCtrl', function ($scope, $filter, EnvironmentConfig, $timeout, $window, $translatePartialLoader,
                                                   $translate, $rootScope, $log, personSrv, profileRestAPI) {
-            $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
 

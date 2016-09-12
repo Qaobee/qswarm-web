@@ -24,7 +24,6 @@
          * @description Main controller of app/modules/commons/users/profile/billing.html
          */
         .controller('BillingCtrl', function ($scope, $filter, EnvironmentConfig, $window, $translatePartialLoader, user, meta, downloadSrv) {
-            $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
             $scope.renew = {};

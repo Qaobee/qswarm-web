@@ -43,7 +43,6 @@
          */
         .controller('MainProfileCtrl', function ($scope, $filter, EnvironmentConfig, $translatePartialLoader, $translate, $rootScope, $log, 
                                                   $location, user, userRestAPI) {
-            $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
             $scope.user = user;

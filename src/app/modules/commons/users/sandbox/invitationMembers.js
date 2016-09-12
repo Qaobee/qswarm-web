@@ -25,7 +25,6 @@
          */
         .controller('SbInviteMemberCtrl', function ($scope, $filter, EnvironmentConfig, $window, $translatePartialLoader, 
                                                      userRestAPI, $log, meta, user) {
-            $translatePartialLoader.addPart('profile');
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
 
