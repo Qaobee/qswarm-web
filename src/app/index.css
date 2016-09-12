@@ -86,6 +86,14 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
   color: rgba(120, 190, 120, 1);
 }
 
+.switch label input[type=checkbox]:checked + .lever{
+    background-color: rgba(120, 190, 120, 0.8);
+}
+
+.switch label input[type=checkbox]:checked + .lever:after {
+    background-color: rgba(120, 190, 120, 1);
+}
+
 input:not([type]):focus:not([readonly]),
 input[type=text]:focus:not([readonly]),
 input[type=password]:focus:not([readonly]),

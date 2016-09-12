@@ -2,8 +2,8 @@
      "profileMainPage": {
         "tabs": {
           "account": "Mon compte",
-          "sandbox": "Mes sandboxs",
-          "preference": "Préférences",
+          "sandbox": "Mes espaces de travail",
+          "preference": "Mes préférences",
           "profil": "Mon profil",
           "password": "Mot de passe",
           "billing": "Abonnement",
@@ -11,18 +11,26 @@
           "settings": "Paramétrage",
           "sbSharing": "Invitations",
           "sbMembers": "Gestion des utilisateurs",
-          "sbDefault" : "Sandbox par défaut",
-          "sbSwitch" : "Changer de sandbox",
+          "sbDefault" : "Espace de travail par défaut",
+          "sbSwitch" : "Changer d'espace de travail",
           "notificationSettings" : "Paramètrage des notifications"
         }
     },
-    "sbMemberMngtToast":{
-        "memberAdd": "{{firstname}} {{name}} a été ajouté comme utilisateur de votre sandbox",
-        "memberremove": "{{firstname}} {{name}} a été désactivé de votre sandbox" 
+    "sbMemberMngtPage":{
+        "title": "Gestion des utilisateurs de mon espace de travail",
+        "label": {
+            "listMember": "Liste des utilisateurs",
+            "memberActif": "Membre activé",
+            "on": "Oui",
+            "off": "Non"
+        },
+        "messageControl": {
+            "memberAdd": "{{firstname}} {{name}} a été ajouté comme utilisateur à mon espace de travail",
+            "memberremove": "{{firstname}} {{name}} a été désactivé à mon espace de travail" 
+        }
     },
     "profilePage": {
         "form": {
-            "title": "Inscription",
             "label": {
                 "avatar": "Déposer la photo ici",
                 "name": "Nom",
