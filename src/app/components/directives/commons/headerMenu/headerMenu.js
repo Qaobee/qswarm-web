@@ -262,10 +262,13 @@
                                         var endDate = moment(plan.startPeriodDate).add(30, 'day');
                                         $scope.endTrial = $filter('number')(moment.duration(endDate.diff(moment())).asDays() - 1, 0);
                                         $scope.trialCountVal = {count: $scope.endTrial};
+                                        if( $scope.endTrial <=0) {
+                                            $location.path('/private/billing');
+                                        }
                                     }
                                 });
                                 if ($scope.notpaid) {
-                                    $location.path('/private/profile/billing');
+                                    $location.path('/private/billing');
                                 }
                                 $scope.loadMetaInfos();
                                 break;
