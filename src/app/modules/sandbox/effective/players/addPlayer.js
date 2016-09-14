@@ -46,15 +46,18 @@
             $translatePartialLoader.addPart('effective');
 
             $scope.effectiveId = $routeParams.effectiveId;
-
+            $scope.showBirthdate = true;
             $scope.user = user;
             $scope.meta = meta;
             $scope.positionsType = {};
             $scope.addPlayerTitle = true;
-
             // return button
             $scope.doTheBack = function () {
                 $window.history.back();
+            };
+
+            $scope.getToday = function() {
+                return new Date().toISOString().slice(0, 10);
             };
 
             //i18n datepicker
@@ -78,6 +81,7 @@
             $scope.close = $filter('translate')('commons.format.date.close');
             $scope.formatDate = $filter('translate')('commons.format.date.label');
             $scope.formatDateSubmit = $filter('translate')('commons.format.date.pattern');
+            $scope.formatDateMoment = $filter('translate')('commons.format.date.moment');
 
             //Initialisation du nouveau joueur
             $scope.player = {
@@ -95,26 +99,6 @@
                 address: {},
                 contact: {}
             };
-
-            var $inputDate = null;
-            $timeout(function () {
-                $inputDate = angular.element('#playerBirthdate').pickadate({
-                    format: $scope.formatDate,
-                    formatSubmit: $scope.formatDateSubmit,
-                    monthsFull: $scope.month,
-                    weekdaysFull: $scope.weekdaysFull,
-                    weekdaysLetter: $scope.weekdaysLetter,
-                    weekdaysShort: $scope.weekdaysShort,
-                    selectYears: 100,
-                    selectMonths: true,
-                    today: $scope.today,
-                    clear: $scope.clear,
-                    close: $scope.close
-                });
-
-                $scope.datePicker = $inputDate.pickadate('picker');
-            }, 100);
-
             /* init ngAutocomplete*/
             $scope.options = {};
             $scope.options.watchEnter = true;
@@ -138,7 +122,7 @@
 
             /* add player */
             $scope.checkAndformatPerson = function () {
-                $scope.player.birthdate = moment($scope.player.birthdate, 'DD/MM/YYYY').valueOf();
+                $scope.player.birthdate = moment($scope.player.birthdate, $scope.formatDateMoment).valueOf();
                 personSrv.formatAddress($scope.player.address).then(function (adr) {
                     $scope.player.address = adr;
 

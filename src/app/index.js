@@ -27,7 +27,7 @@
             'angular-google-analytics',
             'vTabs',
             'ngFileSaver',
-            'ui.date',
+       //     'ui.date',
 
             //* qaobee widget */
             'qaobee.filterCalendar',
@@ -68,7 +68,11 @@
         .config(function ($translateProvider, $translatePartialLoaderProvider, reCAPTCHAProvider, $httpProvider,
                           $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, AnalyticsProvider, ChartJsProvider) {
             AnalyticsProvider.setAccount(EnvironmentConfig.uaid).useDisplayFeatures(true).trackUrlParams(true);
-            tmhDynamicLocaleProvider.localeLocationPattern('i18n/angular-locale_{{locale}}.js');
+            if('development' === EnvironmentConfig.name) {
+                tmhDynamicLocaleProvider.localeLocationPattern('../bower_components/angular-i18n/angular-locale_{{locale}}.js');
+            } else {
+                tmhDynamicLocaleProvider.localeLocationPattern('i18n/angular-locale_{{locale}}.js');
+            }
             $translateProvider.useLoader('$translatePartialLoader', {
                 urlTemplate: 'app/components/i18n/{part}/{lang}.json'
             });
