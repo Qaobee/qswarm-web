@@ -255,6 +255,7 @@
                                 break;
                             case 'login' :
                                 $scope.user = qeventbus.data;
+                                $scope.endTrial = 999;
                                 angular.forEach($scope.user.account.listPlan, function (plan) {
                                     $scope.notpaid = plan.status === 'notpaid';
                                     if (plan.status === 'open') {
@@ -262,13 +263,12 @@
                                         var endDate = moment(plan.startPeriodDate).add(30, 'day');
                                         $scope.endTrial = $filter('number')(moment.duration(endDate.diff(moment())).asDays() - 1, 0);
                                         $scope.trialCountVal = {count: $scope.endTrial};
-                                        if( $scope.endTrial <=0) {
-                                            $location.path('/private/billing');
-                                        }
                                     }
                                 });
-                                if ($scope.notpaid) {
+                                if ($scope.notpaid || $scope.endTrial <=0) {
                                     $location.path('/private/billing');
+                                } else {
+                                    $location.path('/private');
                                 }
                                 $scope.loadMetaInfos();
                                 break;
@@ -292,7 +292,7 @@
                                         return n.status === 'notpaid';
                                     }).length > 0;
                                 if ($scope.notpaid) {
-                                    $location.path('/private/profile/billing');
+                                    $location.path('/private/billing');
                                 }
                                 $rootScope.user = data;
                                 break;
@@ -347,9 +347,7 @@
                                         }).length > 0);
                                     }
                                     if ($scope.notpaid) {
-                                        $location.path('/private/profile/billing');
-                                    } else {
-                                        $location.path('/private');
+                                        $location.path('/private/billing');
                                     }
                                 }
                             } else {
