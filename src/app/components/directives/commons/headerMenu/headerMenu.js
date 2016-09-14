@@ -37,6 +37,7 @@
                     $translatePartialLoader.addPart('commons');
                     $translatePartialLoader.addPart('menu');
                     $translatePartialLoader.addPart('user');
+                    $scope.hideTrial = false;
                     $scope.signin = {};
                     $scope.notifications = [];
                     $scope.hasnotif = false;
@@ -144,6 +145,11 @@
                      */
                     $rootScope.$on('$viewContentLoaded', function () {
                         // Detect touch screen and enable scrollbar if necessary
+                        if ($location.path() === '/') {
+                            $scope.hideTrial = true;
+                        } else {
+                            $scope.hideTrial = false;
+                        }
                         function is_touch_device() { // NOSONAR
                             try {
                                 document.createEvent('TouchEvent');
