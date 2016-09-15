@@ -38,8 +38,14 @@
                                     class="colorAccent-text">*</span></label>
                         </div>
                         <div class="input-field col s8">
-                            <input id="EventStartDate" name="EventStartDate" type="text" class="datepicker"
+                            <input id="EventStartDate" name="EventStartDate" type="text"
                                    ng-model="startDate" required
+                                   input-date data-today="today" data-first-day="1" data-clear="clear"
+                                   data-close="close"
+                                   data-format="{{formatDateSubmit}}" data-months-full="{{ month }}"
+                                   data-months-short="{{ monthShort }}" data-weekdays-full="{{ weekdaysFull }}"
+                                   data-weekdays-short="{{ weekdaysShort }}" data-weekdays-letter="{{ weekdaysLetter }}"
+                                   data-container="" data-select-years="selectYears"
                                    ng-class="{ 'has-error' : eventForm.EventStartDate.$invalid && !eventForm.EventStartDate.$pristine }"/>
                         </div>
                         <div class="small colorAccent-text col s12"
@@ -54,9 +60,6 @@
                             <input id="EventStartHours" input-clock data-twelvehour="false" data-donetext="{{close}}" data-default="now" type="text"
                                    ng-model="startHours" required
                                    ng-class="{ 'has-error' : eventForm.EventStartHours.$invalid && !eventForm.EventStartHours.$pristine }"/>
-                            
-                            <!--<input id="EventStartHours" class="timepicker" name="EventStartHours" type="text"
-                                   />-->
                         </div>
                         
                         <div class="small colorAccent-text col s12"
