@@ -189,7 +189,11 @@
                      *
                      */
                     $scope.openLogin = function () {
-                        angular.element('#modalLogin').openModal();
+                        angular.element('#modalLogin').openModal({
+                            complete : function() {
+                                setTimeout(function() { angular.element(".lean-overlay").remove(); })
+                            }
+                        });
                     };
 
 
@@ -380,7 +384,11 @@
                     $scope.openForgotPwd = function () {
                         delete($scope.infos);
                         angular.element('#modalLogin').closeModal();
-                        angular.element('#modalForgotPwd').openModal();
+                        angular.element('#modalForgotPwd').openModal({
+                            complete : function() {
+                                setTimeout(function() { angular.element(".lean-overlay").remove(); })
+                            }
+                        });
                     };
 
                     /**
@@ -394,7 +402,11 @@
                             if (data.status === true) {
                                 delete($scope.infos);
                                 angular.element('#modalForgotPwd').closeModal();
-                                angular.element('#modalForgotPwdOK').openModal();
+                                angular.element('#modalForgotPwdOK').openModal({
+                                    complete : function() {
+                                        setTimeout(function() { angular.element(".lean-overlay").remove(); })
+                                    }
+                                });
                             } else {
                                 toastr.warning(data.message);
                             }
