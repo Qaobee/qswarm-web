@@ -64,7 +64,6 @@
             $scope.effectives = [];
             $scope.currentEffective = {};
             $scope.compareList = {};
-
             /**
              * open compare screen
              *
