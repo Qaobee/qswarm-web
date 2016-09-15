@@ -39,10 +39,14 @@
                                 <label>{{'playerLabels.playerFirstname' | translate }} <span
                                         class="red-text text-lighten-1">*</span></label>
                                 <input ng-model="player.firstname" name="playerFirstname" type="text" class="validate" required
+                                       ng-pattern="'[a-zA-Z -]*'"
                                        ng-class="{ 'has-error' : playerCivilSection.playerFirstname.$invalid && !playerCivilSection.playerFirstname.$pristine }">
                                 <span class="small red-text text-lighten-1"
-                                      ng-show="playerCivilSection.playerFirstname.$invalid && !playerCivilSection.playerFirstname.$pristine"
+                                      ng-show="playerCivilSection.playerFirstname.$error.required && !playerCivilSection.playerFirstname.$pristine"
                                       translate="playerErrors.Firstname"></span>
+                                <span class="small red-text text-lighten-1"
+                                      ng-show="playerCivilSection.playerFirstname.$error.pattern && !playerCivilSection.playerFirstname.$pristine"
+                                      translate="playerErrors.wrong-char"></span>
                             </div>
 
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
@@ -50,10 +54,14 @@
                             <div class="col s12 m6 input-field">
                                 <label>{{'playerLabels.playerName' | translate }} <span class="red-text text-lighten-1">*</span></label>
                                 <input ng-model="player.name" name="playerName" type="text" class="validate form-control" required
+                                       ng-pattern="'[a-zA-Z -]*'"
                                        ng-class="{ 'has-error' : playerCivilSection.playerName.$invalid && !playerCivilSection.playerName.$pristine }">
                                 <span class="small red-text text-lighten-1"
-                                      ng-show="playerCivilSection.playerName.$invalid && !playerCivilSection.playerName.$pristine"
+                                      ng-show="playerCivilSection.playerName.$error.required && !playerCivilSection.playerName.$pristine"
                                       translate="playerErrors.Name"></span>
+                                <span class="small red-text text-lighten-1"
+                                      ng-show="playerCivilSection.playerName.$error.pattern && !playerCivilSection.playerName.$pristine"
+                                      translate="playerErrors.wrong-char"></span>
                             </div>
                         </div>
 

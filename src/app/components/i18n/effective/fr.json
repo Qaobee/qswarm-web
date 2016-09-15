@@ -114,7 +114,8 @@
     "BirthDate": "La date de naissance est obligatoire",
     "Gender": "Le genre est obligatoire",
     "emailDirty": "Format email invalide",
-    "PositionType": "La poste du joueur est obligatoire"
+    "PositionType": "La poste du joueur est obligatoire",
+    "wrong-char": "Caractères non autorisés"
   },
   "mainTeam": {
     "title": "Equipes de l'effectif "

@@ -115,7 +115,8 @@
     "BirthDate": "Birthdate is mandatory",
     "Gender": "Gender is mandatory",
     "emailDirty": "Mail format invalid",
-    "PositionType": "Position is mandatory"
+    "PositionType": "Position is mandatory",
+    "wrong-char": "Wrong chars"
   },
   "mainTeam": {
     "title": "Teams of effective"

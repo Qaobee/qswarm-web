@@ -35,9 +35,9 @@
                             <div>&nbsp;</div>
                             <div class="left-align">{{player.age}} {{'commons.format.ageYear' | translate }}</div>
                             <div>&nbsp;</div>
-                            <div class="left-align" ng-show="{{player.nationality !== null}}">{{'playerLabels.playerNationality' | translate }} {{player.nationality}}</div>
+                            <div class="left-align" ng-if="player.nationality">{{'playerLabels.playerNationality' | translate }} : {{player.nationality.label}}</div>
                             <div>&nbsp;</div>
-                            <div class="left-align" ng-show="{{player.birthCity !== null}}">{{'playerLabels.playerBirthCity' | translate }} {{player.birthCity}}</div>
+                            <div class="left-align" ng-if="player.birthCity">{{'playerLabels.playerBirthCity' | translate }} : {{player.birthCity}}</div>
                             <div>&nbsp;</div>
                             <div class="left-align" ng-if="mapShow">
                                 <a class="waves-effect waves-light modal-trigger red-text text-lighten-1" ng-click="openMap()">
