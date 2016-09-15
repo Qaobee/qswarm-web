@@ -89,7 +89,7 @@
                                     ng-model="event.link.type"
                                     required id="EventType" ng-change="changeEventType()"
                                     ng-class="{ 'has-error' : eventForm.eventType.$invalid && !eventForm.eventType.$pristine }">
-                                <option value="" selected>{{'eventLabels.selectType' | translate }}</option>
+                                <option value="" selected translate="eventLabels.selectType" disabled></option>
                                 <option ng-repeat="p in listEventType track by $index" value="{{p.code}}">{{p.label}}
                                 </option>
                             </select>
@@ -106,10 +106,11 @@
                     <div class="input-field col s10 m5">
                         <h6 class="colorAccent-text">{{'eventLabels.SectionActorsHome' | translate }} <span
                                 class="colorAccent-text">*</span></label></h6>
-                        <select class="browser-default blue-grey-text text-darken-1" ng-model="teamId"
-                                name="SectionActorsHome" ng-change="changeTeamHome()" ng-required="chooseAdversary"
+                        <select class="" ng-model="teamId"
+                                material-select name="SectionActorsHome" ng-change="changeTeamHome()"
+                                ng-required="chooseAdversary"
                                 ng-class="{ 'has-error' : eventForm.SectionActorsHome.$invalid && !eventForm.SectionActorsHome.$pristine }">
-                            <option value="" disabled selected>{{'eventLabels.Team' | translate }}</option>
+                            <option value="" disabled selected translate="eventLabels.Team"></option>
                             <option ng-repeat="p in listTeamHome track by $index" value="{{p._id}}">{{p.label}}</option>
                         </select>
                         <span class="small colorAccent-text col s12"
