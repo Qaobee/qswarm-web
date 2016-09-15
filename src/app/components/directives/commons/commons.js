@@ -28,7 +28,27 @@
                 }
             };
         })
-
+        .filter('searchFilter', function () {
+            return function (items, query) {
+                if (angular.isUndefined(query)) {
+                    return items;
+                } else {
+                    return items.filter(function (item) {
+                        var addr = false;
+                        if (angular.isDefined(item.address) && angular.isDefined(item.address.formatedAddress)) {
+                            addr = item.address.formatedAddress.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+                        }
+                        return addr
+                            || item.link.type.toLowerCase().indexOf(query.toLowerCase()) !== -1
+                            || item.participants.teamHome.label.toLowerCase().indexOf(query.toLowerCase()) !== -1
+                            || item.participants.teamVisitor.label.toLowerCase().indexOf(query.toLowerCase()) !== -1
+                            || item.label.toLowerCase().indexOf(query.toLowerCase()) !== -1
+                            || item.startDate.toLowerCase().indexOf(query.toLowerCase()) !== -1
+                            ;
+                    })
+                }
+            }
+        })
         /**
          * Directive pour vérifier que deux mots de passe sont identiques
          *
