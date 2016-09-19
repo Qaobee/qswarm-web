@@ -26,9 +26,7 @@
                 <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
                     <a class="white-text" href="#/pricing" translate="navbar.pricing"></a>
                 </li>
-                <li ng-class="{'active' : menuItem === 'signup'}" ng-show="signupAvailable">
-                    <a class="white-text" ng-click="openSignup()" translate="navbar.signup"></a>
-                </li>
+               
                 <li>
                     <a class="white-text" ng-click="openLogin()">
                         <i class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}
@@ -45,9 +43,7 @@
                 <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
                     <a class="blue-grey-text text-darken-2" href="#/pricing" translate="navbar.pricing"></a>
                 </li>
-                <li ng-show="signupAvailable" ng-class="{'active' : menuItem === 'signup'}">
-                    <a class="blue-grey-text text-darken-2" ng-click="openSignup()" translate="navbar.signup"></a>
-                </li>
+                
                 <li>
                     <a class="blue-grey-text text-darken-2" ng-click="openLogin()" translate="navbar.connect"></a>
                 </li>

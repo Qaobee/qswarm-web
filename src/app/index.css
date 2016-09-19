@@ -245,7 +245,15 @@ footer.page-footer {
     background: url("../assets/images/handball/Back01.jpg");
 }
 
-.hero, .hero-pricing, .hero-signup, .hero-signup-end {
+.hero {
+    background-size: cover;
+    width: 100%;
+    padding-top: 2%;
+    min-height: calc(70vh - 100px);
+    height: 100%;
+}
+
+.hero-pricing, .hero-signup, .hero-signup-end {
     background-size: cover;
     width: 100%;
     padding-top: 2%;

@@ -22,7 +22,8 @@
             "listMember": "Liste des utilisateurs",
             "memberActif": "Membre activé",
             "on": "Oui",
-            "off": "Non"
+            "off": "Non",
+            "invitePending": "Invitation en cours"
         },
         "messageControl": {
             "memberAdd": "{{firstname}} {{name}} a été ajouté comme utilisateur à mon espace de travail",

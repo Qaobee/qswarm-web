@@ -54,7 +54,7 @@
          * @class qaobee.public.public.PublicCtrl
          * @description Contrôleur de la page d'accueil publique
          */
-        .controller('PublicCtrl', function ($scope, $rootScope, $translatePartialLoader,qeventbus) {
+        .controller('PublicCtrl', function ($scope, $rootScope, $translatePartialLoader,$location, qeventbus) {
             $translatePartialLoader.addPart('public');
             $translatePartialLoader.addPart('commons');
             // asu = Allow SignUp
@@ -73,6 +73,15 @@
                     out_duration: 200
                 });
             });
+        
+            /**
+             *
+             * @returns {boolean}
+             */
+            $scope.openSignup = function () {
+                $location.path('/signupStart');
+                return false;
+            };
         })
 
         /**

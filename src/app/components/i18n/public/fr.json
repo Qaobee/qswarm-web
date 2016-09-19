@@ -1,7 +1,7 @@
 {
   "landing": {
-    "main-title": "Captez l'instant",
-    "sub-title": "Le premier assistant personnel de collecte et d'analyse en temps réel de données sportives",
+    "main-title": "Captez et améliorez les perfs de vos joueurs",
+    "sub-title": "Qu'attendez-vous ?",
     "manual-btn": "Mode d'emploi",
     "connect": "Restons connectés",
     "legals": "Mentions légales",
@@ -17,8 +17,8 @@
       }
     },
     "area-2": {
-      "title": "Améliorez vos performances",
-      "content": "Qaobee facilite l'acquisition et l'analyse des statistiques sportives"
+      "title": "Qaobee facilite l'acquisition et l'analyse de la donnée sportive",
+      "content": ""
     },
     "area-3": {
       "item-0": {
