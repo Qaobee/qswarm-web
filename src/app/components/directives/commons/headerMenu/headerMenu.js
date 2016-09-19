@@ -290,7 +290,7 @@
                     $scope.$on('qeventbus:menuItem', function () {
                         $scope.menuItem = qeventbus.data;
                     });
-                    scope.$on('qeventbus:refreshUser', function () {
+                    $scope.$on('qeventbus:refreshUser', function () {
                         var data = qeventbus.data;
                         data.isAdmin = false;
                         if (angular.isDefined(data.account) && data.account.habilitations !== null) {
