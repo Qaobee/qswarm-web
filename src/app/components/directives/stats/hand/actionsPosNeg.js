@@ -96,13 +96,11 @@
                     };
 
                     /* Refresh widget on periodicity change */
-                    $scope.$on('qeventbus', function () {
-                        if ("periodicityActive" === qeventbus.message) {
-                            $scope.startDate = qeventbus.data.periodicityActive.startDate;
-                            $scope.endDate = qeventbus.data.periodicityActive.endDate;
-                            $scope.ownersId = qeventbus.data.periodicityActive.ownersId;
-                            buildGraph();
-                        }
+                    $scope.$on('qeventbus:periodicityActive', function () {
+                        $scope.startDate = qeventbus.data.periodicityActive.startDate;
+                        $scope.endDate = qeventbus.data.periodicityActive.endDate;
+                        $scope.ownersId = qeventbus.data.periodicityActive.ownersId;
+                        buildGraph();
                     });
                 },
                 templateUrl: 'app/components/directives/stats/hand/actionsPosNeg.html'

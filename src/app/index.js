@@ -27,7 +27,7 @@
             'angular-google-analytics',
             'vTabs',
             'ngFileSaver',
-       //     'ui.date',
+            //     'ui.date',
 
             //* qaobee widget */
             'qaobee.filterCalendar',
@@ -68,7 +68,7 @@
         .config(function ($translateProvider, $translatePartialLoaderProvider, reCAPTCHAProvider, $httpProvider,
                           $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, AnalyticsProvider, ChartJsProvider) {
             AnalyticsProvider.setAccount(EnvironmentConfig.uaid).useDisplayFeatures(true).trackUrlParams(true);
-            if('development' === EnvironmentConfig.name) {
+            if ('development' === EnvironmentConfig.name) {
                 tmhDynamicLocaleProvider.localeLocationPattern('../bower_components/angular-i18n/angular-locale_{{locale}}.js');
             } else {
                 tmhDynamicLocaleProvider.localeLocationPattern('i18n/angular-locale_{{locale}}.js');
@@ -155,24 +155,18 @@
                 });
             });
             $scope.meta = {};
-            $scope.$on('qeventbus', function () {
-                switch (qeventbus.message) {
-                    case 'logoff' :
-                        delete $scope.user;
-                        delete $rootScope.user;
-                        delete $rootScope.meta;
-                        delete $window.sessionStorage.qaobeesession;
-                        break;
-                    case 'bg-color' :
-                        $scope.bgColor = qeventbus.data;
-                        break;
-                    case 'login' :
-                        $scope.user = qeventbus.data;
-                        $scope.meta.user = $scope.user;
-                        break;
-                    default:
-                        break;
-                }
+            $scope.$on('qeventbus:logoff', function () {
+                delete $scope.user;
+                delete $rootScope.user;
+                delete $rootScope.meta;
+                delete $window.sessionStorage.qaobeesession;
+            });
+            $scope.$on('qeventbus:bg-color', function () {
+                $scope.bgColor = qeventbus.data;
+            });
+            $scope.$on('qeventbus:login', function () {
+                $scope.user = qeventbus.data;
+                $scope.meta.user = $scope.user;
             });
             $scope.loaded = true;
         });

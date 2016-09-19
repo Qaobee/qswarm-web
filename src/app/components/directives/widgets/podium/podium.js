@@ -35,7 +35,7 @@
                     $translatePartialLoader.addPart('stats');
                     $translatePartialLoader.addPart('home');
                     $scope.noStat = false;
-                    $scope.loading = true; 
+                    $scope.loading = true;
 
                     /* getStats */
                     var getStats = function (ownersId, startDate, endDate) {
@@ -58,7 +58,7 @@
                             data = data.sortBy(function (n) {
                                 return n.value;
                             }, true);
-                            
+
                             if (angular.isArray(data) && data.length > 0) {
                                 $scope.noStat = true;
                                 if (data.length > $scope.nbitem) {
@@ -140,11 +140,9 @@
                         $scope.getEffective();
                     };
                     /* Refresh widget on periodicity change */
-                    $scope.$on('qeventbus', function () {
-                        if ("periodicityActive" === qeventbus.message) {
-                            $scope.noStat = false;
-                            buildWidget();
-                        }
+                    $scope.$on('qeventbus:periodicityActive', function () {
+                        $scope.noStat = false;
+                        buildWidget();
                     });
 
                 },

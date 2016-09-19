@@ -49,14 +49,12 @@
 
 
                     /* Refresh widget on periodicity change */
-                    $scope.$on('qeventbus', function () {
-                        if ('periodicityActive' === qeventbus.message) {
-                            $scope.startDate = qeventbus.data.periodicityActive.startDate;
-                            $scope.endDate = qeventbus.data.periodicityActive.endDate;
-                            $scope.ownersId = qeventbus.data.periodicityActive.ownersId;
-                            $scope.periodicityActive = qeventbus.data.periodicityActive;
-                            $scope.getEvents($scope.startDate.valueOf(), $scope.endDate.valueOf());
-                        }
+                    $scope.$on('qeventbus:periodicityActive', function () {
+                        $scope.startDate = qeventbus.data.periodicityActive.startDate;
+                        $scope.endDate = qeventbus.data.periodicityActive.endDate;
+                        $scope.ownersId = qeventbus.data.periodicityActive.ownersId;
+                        $scope.periodicityActive = qeventbus.data.periodicityActive;
+                        $scope.getEvents($scope.startDate.valueOf(), $scope.endDate.valueOf());
                     });
 
                     /* Retrieve list events */
