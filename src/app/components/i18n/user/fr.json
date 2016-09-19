@@ -30,6 +30,20 @@
             "memberremove": "{{firstname}} {{name}} a été désactivé à mon espace de travail" 
         }
     },
+    
+    "billingPage":{
+        "title": "Gestion des abonnements",
+        "label": {
+            "billingdate": "Date de paiement",
+            "billingnumber": "Numéro de facture",
+            "product": "Abonnement",
+            "price": "Prix",
+            "activity": "Activité",
+            "pay": "Souscrire",
+            "cardNumber": "N° de carte"
+        }
+    },
+    
     "profilePage": {
         "form": {
             "label": {
