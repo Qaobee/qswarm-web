@@ -41,7 +41,7 @@
 
     <div class="row" ng-if="events.length > 0">
         <ul>
-            <li class="col s12 m6 l4" ng-repeat="currentEvent in events | filter:query">
+            <li class="col s12 m6 l4" ng-repeat="currentEvent in events | searchFilter:query">
                 <event-card event="currentEvent" has-compare="true"></event-card>
             </li>
         </ul>

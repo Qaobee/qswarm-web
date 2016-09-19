@@ -31,9 +31,9 @@
 		   		<div class="col m2 hide-on-small">&nbsp;</div>
 				<div class="input-field col m4 s12">
 					<input id="password" type="password" class="validate" ng-model="renew.passwd" required>
-					<label for="password">{{'content.signup.label.password' | translate }}</label>
+					<label for="password" translate="profilePwdPage.form.label.password"></label>
 					<div ng-show="renew.passwd">
-						<small translate='modalSignupUp.passwd.strength'></small>
+						<small translate='profilePwdPage.form.messageControl.passwdStrength'></small>
 						<div ng-hide="true" ng-password-strength="renew.passwd" strength="passStrength" inner-class="meter"></div>
 						<div class="progress grey lighten-2">
 							<div class="determinate"
@@ -45,7 +45,7 @@
 		              
 				<div class="input-field col m4 s12">
 					<input id="passwordConfirm" type="password" class="validate" ng-model="renew.passwdConfirm" required>
-					<label for="passwordConfirm">{{'content.signup.label.passwordConfirm' | translate }}</label>
+					<label for="passwordConfirm" translate="profilePwdPage.form.label.passwordConfirm"></label>
 				</div>
 				<div class="col m2 hide-on-small">&nbsp;</div>
 			</div>

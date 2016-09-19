@@ -77,6 +77,7 @@
             $scope.close = $filter('translate')('commons.format.date.close');
             $scope.formatDate = $filter('translate')('commons.format.date.label');
             $scope.formatDateSubmit = $filter('translate')('commons.format.date.pattern');
+            $scope.formatDateMoment = $filter('translate')('commons.format.date.moment');
 
             /* init ngAutocomplete*/
             $scope.options = {};
@@ -100,38 +101,22 @@
                     $scope.positionsType = data;
                 });
             };
-
+            $scope.getToday = function() {
+                return new Date().toISOString().slice(0, 10);
+            };
             /* get person */
             $scope.getPerson = function () {
                 personRestAPI.getPerson($scope.playerId).success(function (person) {
                     $scope.player = person;
-                    $scope.player.birthdate = new Date(moment($scope.player.birthdate));
-
-                    var $inputDate = null;
-                    $timeout(function () {
-                        $inputDate = angular.element('#playerBirthdate').pickadate({
-                            format: $scope.formatDate,
-                            formatSubmit: $scope.formatDateSubmit,
-                            monthsFull: $scope.month,
-                            weekdaysFull: $scope.weekdaysFull,
-                            weekdaysLetter: $scope.weekdaysLetter,
-                            weekdaysShort: $scope.weekdaysShort,
-                            selectYears: 80,
-                            selectMonths: true,
-                            today: $scope.today,
-                            clear: $scope.clear,
-                            close: $scope.close
-                        });
-
-                        $scope.datePicker = $inputDate.pickadate('picker');
-                        $scope.datePicker.set('select', $scope.player.birthdate.valueOf());
-                    }, 100);
+                    $scope.player.birthdate = $scope.player.birthdate || moment().valueOf();
+                    $scope.player.birthdate = moment($scope.player.birthdate).toDate();
+                    $scope.showBirthdate = true;
                 });
             };
 
             /* update person */
             $scope.checkAndformatPerson = function () {
-                $scope.player.birthdate = moment($scope.player.birthdate, 'DD/MM/YYYY').valueOf();
+                $scope.player.birthdate = moment($scope.player.birthdate, $scope.formatDateMoment).valueOf();
                 personSrv.formatAddress($scope.player.address).then(function (adr) {
                     $scope.player.address = adr;
 

@@ -28,9 +28,8 @@
                         headers: {
                             'token': $window.sessionStorage.qaobeesession
                         },
-                        autoUpload: true,
+                        autoUpload: false,
                         queueLimit: 1
-
                     });
 
                     $scope.uploader.url = EnvironmentConfig.apiEndPoint + '/file/' + $scope.collection + '/avatar/' + $scope.person._id;
@@ -52,17 +51,20 @@
                         }
                     });
                     $scope.uploader.onWhenAddingFileFailed = function (item, filter, options) {
-                        $log.debug('onWhenAddingFileFailed', item, filter, options);
+                        if (filter.name == "queueLimit") {
+                            $scope.uploader.clearQueue();
+                            $scope.uploader.addToQueue(item);
+                        }
                     };
                     $scope.uploader.onAfterAddingFile = function (fileItem) {
-                        $log.info('onAfterAddingFile', fileItem);
+                        fileItem.upload();
                     };
                     $scope.uploader.onSuccessItem = function (fileItem, response) {
                         $scope.person.avatar = response.avatar;
                         $scope.uploader.clearQueue();
                     };
                     $scope.uploader.onErrorItem = function (fileItem, response, status, headers) {
-                        $log.info('onErrorItem', fileItem, response, status, headers);
+                        $log.error('onErrorItem', fileItem, response, status, headers);
                         toastr.error(response);
                     };
                 },

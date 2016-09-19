@@ -73,22 +73,18 @@
                 'commons.format.date.label',
                 'commons.format.date.pattern'
             ]).then(function (translations) {
-                $scope.datePicker = angular.element('#EventStartDate')
-                    .pickadate({
-                        format: translations['commons.format.date.label'],
-                        formatSubmit: translations['commons.format.date.pattern'],
-                        monthsFull: translations['commons.format.date.listMonth'].split(','),
-                        monthShort: translations['commons.format.date.listMonthShort'].split(','),
-                        weekdaysFull: translations['commons.format.date.listWeekdaysFull'].split(','),
-                        weekdaysLetter: translations['commons.format.date.listWeekdaysLetter'].split(','),
-                        weekdaysShort: translations['commons.format.date.listWeekdaysShort'].split(','),
-                        selectYears: 3,
-                        selectMonths: true,
-                        today: translations['commons.format.date.today'],
-                        clear: translations['commons.format.date.clear'],
-                        close: translations['commons.format.date.close']
-                    })
-                    .pickadate('picker');
+                $scope.format = translations['commons.format.date.label'];
+                $scope.formatSubmit = translations['commons.format.date.pattern'];
+                $scope.monthsFull = translations['commons.format.date.listMonth'].split(',');
+                $scope.monthShort = translations['commons.format.date.listMonthShort'].split(',');
+                $scope.weekdaysFull = translations['commons.format.date.listWeekdaysFull'].split(',');
+                $scope.weekdaysLetter = translations['commons.format.date.listWeekdaysLetter'].split(',');
+                $scope.weekdaysShort = translations['commons.format.date.listWeekdaysShort'].split(',');
+                $scope.selectYears = 3;
+                $scope.selectMonths = true;
+                $scope.today = translations['commons.format.date.today'];
+                $scope.clear = translations['commons.format.date.clear'];
+                $scope.close = translations['commons.format.date.close'];
             });
         
             //i18n timepicker

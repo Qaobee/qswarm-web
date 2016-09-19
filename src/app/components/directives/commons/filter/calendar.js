@@ -39,12 +39,13 @@
                     $scope.currentMonth = function () {
                         getCurrentMonth();
                     };
-                    $scope.$on('qeventbus', function () {
-                        if (qeventbus.message === 'periodicityActive') {
-                            $scope.periodicityActive = qeventbus.data.periodicityActive;
-                            $scope.periodicity = qeventbus.data.periodicity;
-                        }
+                    $scope.$on('qeventbus:periodicityActive', function () {
+                        $scope.periodicityActive = qeventbus.data.periodicityActive;
+                        $scope.periodicity = qeventbus.data.periodicity;
                     });
+                    /**
+                     *
+                     */
                     function getCurrentMonth() {
                         $scope.periodicity = 'month';
                         var start = moment('01/' + moment().format('MM/YYYY'), 'DD/MM/YYYY');

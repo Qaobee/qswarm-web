@@ -64,7 +64,6 @@
             $scope.effectives = [];
             $scope.currentEffective = {};
             $scope.compareList = {};
-
             /**
              * open compare screen
              *
@@ -100,20 +99,16 @@
                 }
             };
 
-            $scope.$on('qeventbus', function () {
-                if ('event.compare' === qeventbus.message) {
-                    $scope.compareList[qeventbus.data.id] = qeventbus.data.value;
-                    $scope.updateEventToCompare(qeventbus.data.id);
-                }
+            $scope.$on('qeventbus:event.compare', function () {
+                $scope.compareList[qeventbus.data.id] = qeventbus.data.value;
+                $scope.updateEventToCompare(qeventbus.data.id);
             });
 
             /* watch if periodicity change */
-            $scope.$watch('periodicityActive', function (newValue, oldValue) {
-                if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
-                    user.periodicity = $scope.periodicity;
-                    user.periodicityActive = $scope.periodicityActive;
-                    $scope.getEvents(moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').valueOf(), moment($scope.periodicityActive.endDate, 'DD/MM/YYYY').valueOf());
-                }
+            $scope.$on('qeventbus:periodicityActive', function () {
+                user.periodicity = $scope.periodicity;
+                user.periodicityActive = $scope.periodicityActive;
+                $scope.getEvents(moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').valueOf(), moment($scope.periodicityActive.endDate, 'DD/MM/YYYY').valueOf());
             });
 
             $scope.initAgenda = function () {

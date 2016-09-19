@@ -9,7 +9,7 @@
             <div class="row colorMain white-text center">
                 <div class="col m3 s12 center">
                     <avatar person="player" width="'100px'"></avatar>
-                    <span class="small">{{'effectiveLabels.effectiveAvatar' | translate }}</span>
+                    <span class="small" translate="effectiveLabels.effectiveAvatar"></span>
                 </div>
                 <div class="col m7 s12">
                     <br/>
@@ -39,10 +39,14 @@
                                 <label>{{'playerLabels.playerFirstname' | translate }} <span
                                         class="red-text text-lighten-1">*</span></label>
                                 <input ng-model="player.firstname" name="playerFirstname" type="text" class="validate" required
+                                       ng-pattern="'[a-zA-Z -]*'"
                                        ng-class="{ 'has-error' : playerCivilSection.playerFirstname.$invalid && !playerCivilSection.playerFirstname.$pristine }">
                                 <span class="small red-text text-lighten-1"
-                                      ng-show="playerCivilSection.playerFirstname.$invalid && !playerCivilSection.playerFirstname.$pristine"
+                                      ng-show="playerCivilSection.playerFirstname.$error.required && !playerCivilSection.playerFirstname.$pristine"
                                       translate="playerErrors.Firstname"></span>
+                                <span class="small red-text text-lighten-1"
+                                      ng-show="playerCivilSection.playerFirstname.$error.pattern && !playerCivilSection.playerFirstname.$pristine"
+                                      translate="playerErrors.wrong-char"></span>
                             </div>
 
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
@@ -50,17 +54,27 @@
                             <div class="col s12 m6 input-field">
                                 <label>{{'playerLabels.playerName' | translate }} <span class="red-text text-lighten-1">*</span></label>
                                 <input ng-model="player.name" name="playerName" type="text" class="validate form-control" required
+                                       ng-pattern="'[a-zA-Z -]*'"
                                        ng-class="{ 'has-error' : playerCivilSection.playerName.$invalid && !playerCivilSection.playerName.$pristine }">
                                 <span class="small red-text text-lighten-1"
-                                      ng-show="playerCivilSection.playerName.$invalid && !playerCivilSection.playerName.$pristine"
+                                      ng-show="playerCivilSection.playerName.$error.required && !playerCivilSection.playerName.$pristine"
                                       translate="playerErrors.Name"></span>
+                                <span class="small red-text text-lighten-1"
+                                      ng-show="playerCivilSection.playerName.$error.pattern && !playerCivilSection.playerName.$pristine"
+                                      translate="playerErrors.wrong-char"></span>
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row" ng-if="showBirthdate">
                             <div class="col s12 m5 input-field">
                                 <label>{{'playerLabels.playerBirthdate' | translate }} <span class="red-text text-lighten-1">*</span></label>
-                                <input id="playerBirthdate" class="datepicker" name="playerBirthdate" type="text" ng-model="player.birthdate" required
+                                <input id="playerBirthdate" name="playerBirthdate" type="text"
+                                       ng-model="player.birthdate" required
+                                       input-date data-today="today" data-first-day="1" data-clear="clear" data-close="close"
+                                       data-format="{{formatDateSubmit}}" data-months-full="{{ month }}"
+                                       data-months-short="{{ monthShort }}" data-weekdays-full="{{ weekdaysFull }}"
+                                       data-weekdays-short="{{ weekdaysShort }}" data-weekdays-letter="{{ weekdaysLetter }}"
+                                       max="{{getToday()}}" data-container="" data-select-years="90"
                                        ng-class="{ 'has-error' : playerCivilSection.playerBirthdate.$invalid && !playerCivilSection.playerBirthdate.$pristine }"/>
                                 <span class="small red-text text-lighten-1"
                                       ng-show="playerCivilSection.playerBirthdate.$invalid && !playerCivilSection.playerBirthdate.$pristine"

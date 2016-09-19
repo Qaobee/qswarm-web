@@ -21,7 +21,7 @@
             /* qaobee services */
             'qaobee.eventbus',
             'ng.deviceDetector',
-            
+
             /* qaobee Rest API */
             'notificationsRestAPI',
             'userRestAPI',
@@ -37,6 +37,7 @@
                     $translatePartialLoader.addPart('commons');
                     $translatePartialLoader.addPart('menu');
                     $translatePartialLoader.addPart('user');
+                    $scope.hideTrial = false;
                     $scope.signin = {};
                     $scope.notifications = [];
                     $scope.hasnotif = false;
@@ -144,6 +145,11 @@
                      */
                     $rootScope.$on('$viewContentLoaded', function () {
                         // Detect touch screen and enable scrollbar if necessary
+                        if ($location.path() === '/') {
+                            $scope.hideTrial = true;
+                        } else {
+                            $scope.hideTrial = false;
+                        }
                         function is_touch_device() { // NOSONAR
                             try {
                                 document.createEvent('TouchEvent');
@@ -183,7 +189,13 @@
                      *
                      */
                     $scope.openLogin = function () {
-                        angular.element('#modalLogin').openModal();
+                        angular.element('#modalLogin').openModal({
+                            complete: function () {
+                                setTimeout(function () {
+                                    angular.element(".lean-overlay").remove();
+                                })
+                            }
+                        });
                     };
 
 
@@ -195,18 +207,18 @@
                      */
                     $scope.loadMetaInfos = function () {
                         userRestAPI.getMetas().then(function (data) {
-                            
+
                             if (angular.isDefined(data.data) && data.data !== null) {
                                 $scope.meta = {
-                                    sandbox : data.data,
-                                    season : null
+                                    sandbox: data.data,
+                                    season: null
                                 };
                                 $scope.structure = data.data.structure;
-                                
+
                                 seasonsRestAPI.getSeasonCurrent($scope.meta.sandbox.activityId, $rootScope.user.country._id).then(function (season) {
                                     $scope.meta.season = season.data;
                                 });
-                                
+
                                 var eb = new vertx.EventBus(EnvironmentConfig.apiEndPoint + '/eventbus');
                                 eb.onopen = function () {
 
@@ -230,11 +242,11 @@
                                 eb.onclose = function () {
                                     eb = null;
                                 };
-                                
-                                
+
+
                             }
                         });
-                        
+
                     };
 
                     $scope.closeTrial = function () {
@@ -246,56 +258,55 @@
                      * @memberOf qaobee.directives.headerMenu
                      * @description Intercept qeventbus
                      */
-                    $scope.$on('qeventbus', function () {
-                        switch (qeventbus.message) {
-                            case 'logoff':
-                                delete $scope.user;
-                                delete $window.sessionStorage.qaobeesession;
-                                $location.path('/');
-                                break;
-                            case 'login' :
-                                $scope.user = qeventbus.data;
-                                angular.forEach($scope.user.account.listPlan, function (plan) {
-                                    $scope.notpaid = plan.status === 'notpaid';
-                                    if (plan.status === 'open') {
-                                        $scope.intrial = true;
-                                        var endDate = moment(plan.startPeriodDate).add(30, 'day');
-                                        $scope.endTrial = $filter('number')(moment.duration(endDate.diff(moment())).asDays() - 1, 0);
-                                        $scope.trialCountVal = {count: $scope.endTrial};
-                                    }
-                                });
-                                if ($scope.notpaid) {
-                                    $location.path('/private/profile/billing');
-                                }
-                                $scope.loadMetaInfos();
-                                break;
-                            case 'title' :
-                                $scope.title = qeventbus.data;
-                                break;
-                            case 'menuItem' :
-                                $scope.menuItem = qeventbus.data;
-                                break;
-                            case 'refreshUser' :
-                                var data = qeventbus.data;
-                                data.isAdmin = false;
-                                if (angular.isDefined(data.account) && data.account.habilitations !== null) {
-                                    data.account.habilitations.forEach(function (a) {
-                                        if (a.key === 'admin_qaobee') {
-                                            data.isAdmin = true;
-                                        }
-                                    });
-                                }
-                                $scope.notpaid = data.account.listPlan.filter(function (n) {
-                                        return n.status === 'notpaid';
-                                    }).length > 0;
-                                if ($scope.notpaid) {
-                                    $location.path('/private/profile/billing');
-                                }
-                                $rootScope.user = data;
-                                break;
-                            default :
-                                break;
+                    $scope.$on('qeventbus:logoff', function () {
+                        delete $scope.user;
+                        delete $window.sessionStorage.qaobeesession;
+                        $location.path('/');
+                    });
+                    $scope.$on('qeventbus:login', function () {
+                        $scope.user = qeventbus.data;
+                        $scope.endTrial = 999;
+                        angular.forEach($scope.user.account.listPlan, function (plan) {
+                            $scope.notpaid = plan.status === 'notpaid';
+                            if (plan.status === 'open') {
+                                $scope.intrial = true;
+                                var endDate = moment(plan.startPeriodDate).add(30, 'day');
+                                $scope.endTrial = $filter('number')(moment.duration(endDate.diff(moment())).asDays() - 1, 0);
+                                $scope.trialCountVal = {count: $scope.endTrial};
+                            }
+                        });
+                        if ($scope.notpaid || $scope.endTrial <= 0) {
+                            $location.path('/private/billing');
+                        } else {
+                            $location.path('/private');
                         }
+                        $scope.loadMetaInfos();
+                    });
+
+                    $scope.$on('qeventbus:title', function () {
+                        $scope.title = qeventbus.data;
+                    });
+
+                    $scope.$on('qeventbus:menuItem', function () {
+                        $scope.menuItem = qeventbus.data;
+                    });
+                    scope.$on('qeventbus:refreshUser', function () {
+                        var data = qeventbus.data;
+                        data.isAdmin = false;
+                        if (angular.isDefined(data.account) && data.account.habilitations !== null) {
+                            data.account.habilitations.forEach(function (a) {
+                                if (a.key === 'admin_qaobee') {
+                                    data.isAdmin = true;
+                                }
+                            });
+                        }
+                        $scope.notpaid = data.account.listPlan.filter(function (n) {
+                                return n.status === 'notpaid';
+                            }).length > 0;
+                        if ($scope.notpaid) {
+                            $location.path('/private/billing');
+                        }
+                        $rootScope.user = data;
                     });
 
                     /**
@@ -344,9 +355,7 @@
                                         }).length > 0);
                                     }
                                     if ($scope.notpaid) {
-                                        $location.path('/private/profile/billing');
-                                    } else {
-                                        $location.path('/private');
+                                        $location.path('/private/billing');
                                     }
                                 }
                             } else {
@@ -373,7 +382,13 @@
                     $scope.openForgotPwd = function () {
                         delete($scope.infos);
                         angular.element('#modalLogin').closeModal();
-                        angular.element('#modalForgotPwd').openModal();
+                        angular.element('#modalForgotPwd').openModal({
+                            complete: function () {
+                                setTimeout(function () {
+                                    angular.element(".lean-overlay").remove();
+                                })
+                            }
+                        });
                     };
 
                     /**
@@ -387,7 +402,13 @@
                             if (data.status === true) {
                                 delete($scope.infos);
                                 angular.element('#modalForgotPwd').closeModal();
-                                angular.element('#modalForgotPwdOK').openModal();
+                                angular.element('#modalForgotPwdOK').openModal({
+                                    complete: function () {
+                                        setTimeout(function () {
+                                            angular.element(".lean-overlay").remove();
+                                        })
+                                    }
+                                });
                             } else {
                                 toastr.warning(data.message);
                             }

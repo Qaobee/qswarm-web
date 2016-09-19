@@ -1,9 +1,9 @@
 (function () {
     'use strict';
     angular.module('qaobee.radar', [
-            'chart.js',
-            'statsRestAPI'
-        ])
+        'chart.js',
+        'statsRestAPI'
+    ])
 
         .directive('qaobeeRadarChart', function (statsRestAPI, $log, $q, $filter, $translatePartialLoader, qeventbus) {
             return {
@@ -69,11 +69,9 @@
                             $scope.loading = false;
                         });
                     };
-                    $scope.$on('qeventbus', function () {
-                       if(qeventbus.message === 'periodicityActive')  {
-                           $scope.periodicityActive = qeventbus.data.periodicityActive;
-                           $scope.buildDatas();
-                       }
+                    $scope.$on('qeventbus:periodicityActive', function () {
+                        $scope.periodicityActive = qeventbus.data.periodicityActive;
+                        $scope.buildDatas();
                     });
                 },
                 link: function ($scope) {
