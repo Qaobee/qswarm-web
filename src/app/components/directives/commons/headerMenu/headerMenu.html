@@ -23,13 +23,19 @@
             <a href="/#/" class="brand-logo"><img src="assets/images/logo-mini.png" height="30px"/></a>
 
             <ul class="right hide-on-med-and-down">
+                <li>
+                    <a class="white-text" href="#/about">
+                        {{'landing.contact.about' | translate}}
+                    </a>
+                </li>
+                
                 <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
                     <a class="white-text" href="#/pricing" translate="navbar.pricing"></a>
                 </li>
                
                 <li>
                     <a class="white-text" ng-click="openLogin()">
-                        <i class="fa fa-sign-in right"></i>{{'navbar.connect' | translate}}
+                        {{'navbar.connect' | translate}}
                     </a>
                 </li>
 
