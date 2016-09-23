@@ -9,30 +9,27 @@
             <i class="material-icons md-48">verified_user</i>
         </div>
         <div class="col m9 colorMain-text left-align">
-            <h5>{{'billingPage.title' | translate }}</h5>
+            <h5 translate="billingPage.title"></h5>
         </div>
-        
+
         <div class="col m2">
-            <button class="btn colorAccent white-text right" ng-click="doTheBack()">
-                {{'commons.buttons.back' | translate }}
-            </button>
+            <button class="btn colorAccent white-text right" ng-click="doTheBack()"
+                    translate="commons.buttons.back"></button>
         </div>
     </div>
-    
-    
+
+
     <!-- Entete -->
     <div class="row colorAccent-text colorBckgModal center hide-on-large-only">
         <div class="col s12">&nbsp;</div>
-        
+
         <div class="col s12 colorMain-text">
-            <h5>{{'billingPage.title' | translate }}</h5>
+            <h5 translate="billingPage.title"></h5>
         </div>
-        
+
         <div class="col s12">&nbsp;</div>
         <div class="col s12">
-            <button class="btn colorAccent white-text" ng-click="doTheBack()">
-                {{'commons.buttons.back' | translate }}
-            </button>
+            <button class="btn colorAccent white-text" ng-click="doTheBack()" translate="commons.buttons.back"></button>
         </div>
         <div class="col s12">&nbsp;</div>
     </div>
@@ -61,15 +58,14 @@
                     </td>
 
                     <td ng-if="plan.status === 'open' || plan.status === 'notpaid'" colspan="4">
-                         <a href="#/private/billing/pay/{{$index}}" class="btn waves-effect waves-white colorSecondary"
-                             translate="billingPage.label.pay">
-                         </a>
+                        <a href="#/private/billing/pay/{{$index}}" class="btn waves-effect waves-white colorSecondary"
+                           translate="billingPage.label.pay">
+                        </a>
                     </td>
                     <td ng-if="plan.status !== 'open' && plan.status !== 'notpaid'">
                         <table class="responsive-table">
                             <thead>
                             <tr>
-                                
                                 <th></th>
                             </tr>
                             </thead>
@@ -79,7 +75,6 @@
                                 <td ng-bind="s.paymentId"></td>
                                 <td>
                                     <span><i class="material-icons left" ng-if="plan.status==='pending'">autorenew</i> {{s.paidDate | date}}</span>
-
                                 </td>
                                 <td ng-bind="'xxxx xxxx xxxx ' + s.cardInfo.last4"></td>
                                 <td>
@@ -96,12 +91,12 @@
             </table>
         </div>
     </div>
-    
+
     <!-- medium and small view-->
     <div class="row hide-on-large-only">
         <div class="col s12">
             <table>
-                
+
                 <tbody>
                 <tr ng-repeat="plan in user.account.listPlan track by $index" class="colorBckgModal">
                     <td class="white colorMain-text" translate="billingPage.label.activity"></td>
@@ -114,12 +109,12 @@
                     <td class="center-align colorAccent-text">
                         <h5>{{plan.levelPlan}}</h5>
                     </td>
-                 </tr>
+                </tr>
                 <tr>
                     <td ng-if="plan.status === 'open' || plan.status === 'notpaid'" colspan="4">
-                         <a href="#/private/billing/pay/{{$index}}" class="btn waves-effect waves-white colorSecondary"
-                             translate="billingPage.label.pay">
-                         </a>
+                        <a href="#/private/billing/pay/{{$index}}" class="btn waves-effect waves-white colorSecondary"
+                           translate="billingPage.label.pay">
+                        </a>
                     </td>
                     <td ng-if="plan.status !== 'open' && plan.status !== 'notpaid'">
                         &nbsp;

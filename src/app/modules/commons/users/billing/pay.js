@@ -29,10 +29,16 @@
          */
         .controller('PayProfileCtrl', function ($scope, $filter, EnvironmentConfig, $translatePartialLoader, $translate,
                                                 $log, user, meta, $window, $routeParams, paymentAPI) {
-
+            $scope.willPay = false;
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
-            angular.element('#payMessageModal').openModal();
+            angular.element('#payMessageModal').openModal({
+                complete: function () {
+                    if (!$scope.willPay) {
+                        $scope.doTheBack();
+                    }
+                }
+            });
             $scope.user = user;
             $scope.modalClosed = false;
             $scope.index = $routeParams.index;
@@ -56,6 +62,7 @@
             };
 
             $scope.agree = function () {
+                $scope.willPay = true;
                 angular.element('#payMessageModal').closeModal();
                 $scope.modalClosed = true;
             };
