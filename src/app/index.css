@@ -1082,3 +1082,11 @@ table.super-fancy tr.foobar {
 .cnil-main p {
     text-align: justify;
 }
+input {
+    padding-left: 5px !important;
+    padding-right: -5px !important;
+}
+input.has-error {
+    border-bottom-color: #ea5350 !important;
+    color: #ea5350;
+}

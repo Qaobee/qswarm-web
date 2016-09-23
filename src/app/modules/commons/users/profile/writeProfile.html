@@ -2,14 +2,14 @@
 
     <!-- space between header menu and body-->
     <div class="row"></div>
-    
+
     <!-- Entete -->
     <div class="row">
         <div class="col s12">
             <div class="row colorMain white-text center">
                 <div class="col m3 s12 center">
                     <avatar person="user" width="'100px'" collection="User"></avatar>
-                    <span class="small">{{'profilePage.form.label.avatar' | translate }}</span>
+                    <span class="small" translate="profilePage.form.label.avatar"></span>
                 </div>
                 <div class="col m7 s12">
                     <br/>
@@ -22,159 +22,180 @@
             </div>
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col s12 card">
             <form name="profileForm" novalidate>
 
                 <!-- Empty row -->
                 <div class="row">&nbsp;</div>
-                
+
                 <div class="row">
-                	<div class="col m1 hide-on-small-only">&nbsp;</div>
-                	
-                	<!-- Column Left -->
-                	<div class="col s12 m4">
-                		<!-- Login -->
-                		<div class="row">
-	                		<div class="col s12 input-field">
-	                            <label for="userLogin"> {{'profilePage.form.label.login' | translate }}</label>
-	                            <input disabled type="text" id="userLogin" name="userLogin" ng-model="user.account.login"/>
-	                        </div>
+                    <div class="col m1 hide-on-small-only">&nbsp;</div>
+
+                    <!-- Column Left -->
+                    <div class="col s12 m4">
+                        <!-- Login -->
+                        <div class="row">
+                            <div class="col s12 input-field">
+                                <label for="userLogin" translate="profilePage.form.label.login"></label>
+                                <input disabled type="text" id="userLogin" name="userLogin"
+                                       ng-model="user.account.login"/>
+                            </div>
                         </div>
-                        
+
                         <!-- e-mail on Small -->
                         <div class="row hide-on-med-and-up">
-	                        <div class="col s12 input-field">
-		                        <label for="email"> {{'profilePage.form.label.email' | translate }} <span class="colorAccent-text">*</span></label>
-		                        <input type="email" id="email" name="email"
-		                               ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
-		                               class="validate"
-		                               required ng-model="user.contact.email"
-		                               ng-class="{ 'invalid': profileForm.email.$invalid }"/>
-		
-		                        <span ng-class="{'has-error': profileForm.email.$dirty && profileForm.email.$error.required}"
-		                             ng-hide="profileForm.email.$valid" class="small colorAccent-text"
-		                             translate="profilePage.form.messageControl.emailDirty"></span>
-	                    	</div>
-	                    </div>
-	                    
-	                    <!-- Gender -->
-		                <div class="row"  id="rowGender">
-		                    <div class="input-field col s3">
-		                        <label>{{'profilePage.form.label.gender.title' | translate }} <span class="colorAccent-text">*</span></label>
-		                    </div>
-		                    <div class="input-field col s9 center-align">
-		                        <input name="user.gender" class="with-gap" type="radio" id="userGenderF" value="gender.female" ng-model="user.gender" required/>
-		                        <label for="userGenderF">{{'profilePage.form.label.gender.female' | translate }}</label>
-		
-		                        <input name="user.gender" class="with-gap" type="radio" id="userGenderM" value="gender.male" ng-model="user.gender" required/>
-		                        <label for="userGenderM">{{'profilePage.form.label.gender.male' | translate }}</label>
-		                    </div>
-		                    <span class="small colorAccent-text"
-		                        ng-show="profileForm.gender.$invalid && !profileForm.gender.$pristine" translate="profilePage.form.messageControl.gender"></span>
-		                </div>
-		                
-		                <!-- Firstname -->
-		                <div class="row">
-		                	<div class="col s12 input-field">
-		                        <label for="userFirstname">{{'profilePage.form.label.firstname' | translate }} <span class="colorAccent-text">*</span></label>
-		                        <input ng-model="user.firstname" id="userFirstname" name="userFirstname" type="text" class="validate" required 
-		                             ng-class="{ 'has-error' : profileForm.userFirstname.$invalid && !profileForm.userFirstname.$pristine }">
-		                        <span class="small colorAccent-text"
-		                            ng-show="profileForm.userFirstname.$invalid && !profileForm.userFirstname.$pristine" translate="profilePage.form.messageControl.firstname"></span>
-		                    </div>
-		                </div>
-		                
-		                <!-- Name -->
-		                <div class="row">
-		                	<div class="col s12 input-field">
-		                        <label for="userName">{{'profilePage.form.label.name' | translate }} <span class="colorAccent-text">*</span></label>
-		                        <input ng-model="user.name" id="userName" name="userName" type="text" class="validate" required 
-		                             ng-class="{ 'has-error' : profileForm.userName.$invalid && !profileForm.userName.$pristine }">
-		                        <span class="small colorAccent-text"
-		                            ng-show="profileForm.userName.$invalid && !profileForm.userName.$pristine" translate="profilePage.form.messageControl.name"></span>
-		                    </div>
-		                </div>
-                	</div>
-                	
-                	<!-- Separator -->
-                	<div class="col m2 hide-on-small-only">&nbsp;</div>
-                	
-                	<!-- Column Right -->
-                	<div class="col s12 m4">
-                		<!-- e-mail on med and up -->
+                            <div class="col s12 input-field">
+                                <label for="email">{{'profilePage.form.label.email' | translate }} <span
+                                        class="colorAccent-text">*</span></label>
+                                <input type="email" id="email" name="email"
+                                       ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+                                       class="validate"
+                                       required ng-model="user.contact.email"
+                                       ng-class="{ 'invalid': profileForm.email.$invalid }"/>
+
+                                <span ng-class="{'has-error': profileForm.email.$dirty && profileForm.email.$error.required}"
+                                      ng-hide="profileForm.email.$valid" class="small colorAccent-text"
+                                      translate="profilePage.form.messageControl.emailDirty"></span>
+                            </div>
+                        </div>
+
+                        <!-- Gender -->
+                        <div class="row" id="rowGender">
+                            <div class="input-field col s3">
+                                <label>{{'profilePage.form.label.gender.title' | translate }} <span
+                                        class="colorAccent-text">*</span></label>
+                            </div>
+                            <div class="input-field col s9 center-align">
+                                <input name="user.gender" class="with-gap" type="radio" id="userGenderF"
+                                       value="gender.female" ng-model="user.gender" required/>
+                                <label for="userGenderF">{{'profilePage.form.label.gender.female' | translate }}</label>
+
+                                <input name="user.gender" class="with-gap" type="radio" id="userGenderM"
+                                       value="gender.male" ng-model="user.gender" required/>
+                                <label for="userGenderM">{{'profilePage.form.label.gender.male' | translate }}</label>
+                            </div>
+                            <span class="small colorAccent-text"
+                                  ng-show="profileForm.gender.$invalid && !profileForm.gender.$pristine"
+                                  translate="profilePage.form.messageControl.gender"></span>
+                        </div>
+
+                        <!-- Firstname -->
+                        <div class="row">
+                            <div class="col s12 input-field">
+                                <label for="userFirstname">{{'profilePage.form.label.firstname' | translate }} <span
+                                        class="colorAccent-text">*</span></label>
+                                <input ng-model="user.firstname" id="userFirstname" name="userFirstname" type="text"
+                                       class="validate" required
+                                       ng-class="{ 'has-error' : profileForm.userFirstname.$invalid && !profileForm.userFirstname.$pristine }">
+                                <span class="small colorAccent-text"
+                                      ng-show="profileForm.userFirstname.$invalid && !profileForm.userFirstname.$pristine"
+                                      translate="profilePage.form.messageControl.firstname"></span>
+                            </div>
+                        </div>
+
+                        <!-- Name -->
+                        <div class="row">
+                            <div class="col s12 input-field">
+                                <label for="userName">{{'profilePage.form.label.name' | translate }} <span
+                                        class="colorAccent-text">*</span></label>
+                                <input ng-model="user.name" id="userName" name="userName" type="text" class="validate"
+                                       required ng-pattern="'[a-zA-Z -]+'"
+                                       ng-class="{ 'has-error' : profileForm.userName.$invalid && !profileForm.userName.$pristine }">
+                                <span class="small colorAccent-text"
+                                      ng-show="profileForm.userName.$invalid && !profileForm.userName.$pristine"
+                                      translate="profilePage.form.messageControl.name"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Separator -->
+                    <div class="col m2 hide-on-small-only">&nbsp;</div>
+
+                    <!-- Column Right -->
+                    <div class="col s12 m4">
+                        <!-- e-mail on med and up -->
                         <div class="row hide-on-small-only">
-	                        <div class="col s12 input-field">
-		                        <label for="email"> {{'profilePage.form.label.email' | translate }} <span class="colorAccent-text">*</span></label>
-		                        <input type="email" id="email" name="email"
-		                               ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
-		                               class="validate"
-		                               required ng-model="user.contact.email"
-		                               ng-class="{ 'invalid': profileForm.email.$invalid }"/>
-		
-		                        <span ng-class="{'has-error': profileForm.email.$dirty && profileForm.email.$error.required}"
-		                             ng-hide="profileForm.email.$valid" class="small colorAccent-text"
-		                             translate="profilePage.form.messageControl.emailDirty"></span>
-	                    	</div>
-	                    </div>
-	                    
-	                    <!-- Birthdate -->
-	                    <div class="row" id="rowBirthdate">
-		                    <div class="col s12 input-field">
-		                        <label for="profilBirthdate">{{'profilePage.form.label.birthdate' | translate }} <span class="colorAccent-text">*</span></label>
+                            <div class="col s12 input-field">
+                                <label for="email"> {{'profilePage.form.label.email' | translate }} <span
+                                        class="colorAccent-text">*</span></label>
+                                <input type="email" id="email" name="email"
+                                       ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+                                       class="validate"
+                                       required ng-model="user.contact.email"
+                                       ng-class="{ 'invalid': profileForm.email.$invalid }"/>
+
+                                <span ng-class="{'has-error': profileForm.email.$dirty && profileForm.email.$error.required}"
+                                      ng-hide="profileForm.email.$valid" class="small colorAccent-text"
+                                      translate="profilePage.form.messageControl.emailDirty"></span>
+                            </div>
+                        </div>
+
+                        <!-- Birthdate -->
+                        <div class="row" id="rowBirthdate">
+                            <div class="col s12 input-field">
+                                <label for="profilBirthdate">{{'profilePage.form.label.birthdate' | translate }} <span
+                                        class="colorAccent-text">*</span></label>
                                 <input id="profilBirthdate" name="profilBirthdate" type="text" class="datepicker"
                                        ng-model="user.birthdate" required
                                        ng-class="{ 'has-error' : profileForm.profilBirthdate.$invalid && !profileForm.profilBirthdate.$pristine }"/>
-		                        
-		                        <span class="small colorAccent-text"
-		                            ng-show="profileForm.profilBirthdate.$invalid && !profileForm.profilBirthdate.$pristine" translate="profilePage.form.messageControl.birthDate">
+
+                                <span class="small colorAccent-text"
+                                      ng-show="profileForm.profilBirthdate.$invalid && !profileForm.profilBirthdate.$pristine"
+                                      translate="profilePage.form.messageControl.birthDate">
 		                        </span>
-		                    </div>
-		                </div>
-		                
-		                <!-- Address -->
-		                <div class="row">
-		                	<div class="col s12 input-field">
-	                            <input type="text" id="formatedAddress" name="formatedAddress" ng-autocomplete ng-model="temp.addr" details="temp.detailsAdr" 
-	                                   options="temp.optionsAdr" placeholder=""/>
-	                            <label for="userAddres">{{'profilePage.form.label.address' | translate }}</label>
-	                    	</div>
-		                </div>
-		                
-		                <!-- Phone -->
-		                <div class="row">
-		                	<div class="col s12 input-field">
-		                        <i class="material-icons prefix">phone</i>
-		                        <label for="userPhoneHome"><span class="colorAccent-text">*</span></label>
-		                        <input id="userPhoneHome" name="userPhoneHome" type="text" ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate" min="0" ng-model="user.contact.home" required>
-		                        <span class="small colorAccent-text"
-		                            ng-show="profileForm.userPhoneHome.$invalid && !profileForm.userPhoneHome.$pristine" translate="profilePage.form.messageControl.phone">
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="row">
+                            <div class="col s12 input-field">
+                                <input type="text" id="formatedAddress" name="formatedAddress" ng-autocomplete
+                                       ng-model="temp.addr" details="temp.detailsAdr"
+                                       options="temp.optionsAdr" placeholder=""/>
+                                <label for="userAddres">{{'profilePage.form.label.address' | translate }}</label>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="row">
+                            <div class="col s12 input-field">
+                                <i class="material-icons prefix">phone</i>
+                                <label for="userPhoneHome"><span class="colorAccent-text">*</span></label>
+                                <input id="userPhoneHome" name="userPhoneHome" type="text"
+                                       ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate"
+                                       min="0" ng-model="user.contact.home" required>
+                                <span class="small colorAccent-text"
+                                      ng-show="profileForm.userPhoneHome.$invalid && !profileForm.userPhoneHome.$pristine"
+                                      translate="profilePage.form.messageControl.phone">
 		                        </span>
-		                    </div>
-		                </div>
-		                
-                	</div>
-                	<div class="col m1 hide-on-small-only">&nbsp;</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col m1 hide-on-small-only">&nbsp;</div>
                 </div>
-                
+
 
                 <!-- actions buttons -->
                 <div class="row">
                     <div class="col s12 center-align">
-                        <button class="waves-effect waves-white btn btn-s colorAccent" ng-click="doTheBack()" translate="commons.buttons.cancel"></button>
-                        <button type="submit" ng-disabled="profileForm.$invalid" translate="commons.buttons.validate" ng-click="updateProfilUser()"
+                        <button class="waves-effect waves-white btn btn-s colorAccent" ng-click="doTheBack()"
+                                translate="commons.buttons.cancel"></button>
+                        <button type="submit" ng-disabled="profileForm.$invalid" translate="commons.buttons.validate"
+                                ng-click="updateProfilUser()"
                                 ng-class="{'btn btn-s waves-effect waves-white disabled': profileForm.$invalid, 
                                            'btn btn-s waves-effect waves-white colorSecondary': !profileForm.$invalid}">
-                            
+
                         </button>
                     </div>
                 </div>
-                
+
                 <script type="text/javascript">
-                	document.getElementById('rowGender').style.height=$("#rowBirthdate").height() + "px";
+                    document.getElementById('rowGender').style.height = $("#rowBirthdate").height() + "px";
                 </script>
-                
+
             </form>
         </div>
     </div>

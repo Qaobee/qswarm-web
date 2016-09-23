@@ -39,7 +39,7 @@
                                 <label>{{'playerLabels.playerFirstname' | translate }} <span
                                         class="red-text text-lighten-1">*</span></label>
                                 <input ng-model="player.firstname" name="playerFirstname" type="text" class="validate" required
-                                       ng-pattern="'[a-zA-Z -]*'"
+                                       ng-pattern="'[a-zA-Z -]+'"
                                        ng-class="{ 'has-error' : playerCivilSection.playerFirstname.$invalid && !playerCivilSection.playerFirstname.$pristine }">
                                 <span class="small red-text text-lighten-1"
                                       ng-show="playerCivilSection.playerFirstname.$error.required && !playerCivilSection.playerFirstname.$pristine"
@@ -54,7 +54,7 @@
                             <div class="col s12 m6 input-field">
                                 <label>{{'playerLabels.playerName' | translate }} <span class="red-text text-lighten-1">*</span></label>
                                 <input ng-model="player.name" name="playerName" type="text" class="validate form-control" required
-                                       ng-pattern="'[a-zA-Z -]*'"
+                                       ng-pattern="'[a-zA-Z -]+'"
                                        ng-class="{ 'has-error' : playerCivilSection.playerName.$invalid && !playerCivilSection.playerName.$pristine }">
                                 <span class="small red-text text-lighten-1"
                                       ng-show="playerCivilSection.playerName.$error.required && !playerCivilSection.playerName.$pristine"
