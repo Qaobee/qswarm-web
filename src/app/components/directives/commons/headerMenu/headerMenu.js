@@ -28,7 +28,7 @@
             'signupRestAPI',
             'seasonsRestAPI'
         ])
-        .directive('headerMenu', function (qeventbus, $rootScope, $cookieStore, $cookies,
+        .directive('headerMenu', function (qeventbus, $rootScope, $cookieStore, $cookies, $translate,
                                            $location, $window, $log, $translatePartialLoader, $filter, deviceDetector,
                                            signupRestAPI, userRestAPI, seasonsRestAPI, notificationsRestAPI, EnvironmentConfig) {
             return {
@@ -42,7 +42,7 @@
                     $scope.notifications = [];
                     $scope.hasnotif = false;
                     $scope.isProd = $window.location.hostname === 'www.qaobee.com';
-
+                    $scope.showCnil = $translate.use() == 'fr_FR';
                     /**
                      *
                      * @param viewLocation
@@ -145,11 +145,7 @@
                      */
                     $rootScope.$on('$viewContentLoaded', function () {
                         // Detect touch screen and enable scrollbar if necessary
-                        if ($location.path() === '/') {
-                            $scope.hideTrial = true;
-                        } else {
-                            $scope.hideTrial = false;
-                        }
+                        $scope.hideTrial = $location.path() === '/';
                         function is_touch_device() { // NOSONAR
                             try {
                                 document.createEvent('TouchEvent');

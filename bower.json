@@ -61,10 +61,10 @@
     "materialize-clockpicker": "~0.1.1"
   },
   "resolutions": {
-    "angular": "1.4.0-rc.2",
+    "angular": "1.5.2",
     "angular-cookies": "1.4.0-rc.2",
     "lodash": "^3.0.1",
-    "jquery": "~2.2.2",
+    "jquery": "2.1.4",
     "angular-materialize": "0.2.1"
   },
   "overrides": {

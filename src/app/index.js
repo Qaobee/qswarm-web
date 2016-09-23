@@ -51,6 +51,8 @@
             'qaobee.downloadService',
             'ui.dashboard',
             /* qaobee modules */
+            'qaobee.cnil',
+            'qaobee.cnil.module',
             'qaobee.public',
             'qaobee.home',
             'qaobee.effective',
