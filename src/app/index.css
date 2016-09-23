@@ -1050,11 +1050,12 @@ table.super-fancy tr.foobar {
 .cnil {
     position: relative;
     width: 100%;
-    min-height: 40px;
+    min-height: 65px;
     text-align: center;
     font-size: 14px;
     padding: 8px 64px 8px 8px;
     z-index: 1000;
+    margin-top: -15px;
 }
 
 .cnil-link {
