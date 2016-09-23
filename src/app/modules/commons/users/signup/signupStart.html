@@ -14,13 +14,15 @@
     </div>
 
     <form ng-submit="usernameTest()" name="signupStartPageForm">
+        <pre>{{signupStartPageForm | json}}</pre>
         <div class="row container">
 
             <!-- Firstname & Name -->
             <div class="col m1 hide-on-small-only">&nbsp;</div>
             <div class="col s12 m4 input-field">
-                <input id="firstname" type="text" class="validate" ng-model="signup.firstname" required tabindex="1"
-                       ng-pattern="'[a-zA-Z -]+'">
+                <input id="firstname" name="firstname" type="text" class="validate" ng-model="signup.firstname" required tabindex="1"
+                       ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'"
+                       ng-class="{ 'has-error' : signupStartPageForm.firstname.$invalid && !signupStartPageForm.firstname.$pristine }">
                 <label for="firstname">
                     {{'signupStartPage.form.label.firstname' | translate }}
                     <span class="colorAccent-text">*</span>
@@ -30,8 +32,9 @@
             <div class="col m2 hide-on-small-only">&nbsp;</div>
 
             <div class="col s12 m4 input-field">
-                <input id="name" type="text" class="validate" ng-model="signup.name" required tabindex="2"
-                       ng-pattern="'[a-zA-Z -]+'">
+                <input id="name" name="name" type="text" class="validate" ng-model="signup.name" required tabindex="2"
+                       ng-class="{ 'has-error' : signupStartPageForm.name.$invalid && !signupStartPageForm.name.$pristine }"
+                       ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
                 <label for="name">
                     {{'signupStartPage.form.label.name' | translate }}
                     <span class="colorAccent-text">*</span>
@@ -45,7 +48,8 @@
             <!-- Login & e-Mail -->
             <div class="col m1 hide-on-small-only">&nbsp;</div>
             <div class="col s12 m4 input-field">
-                <input id="login" type="text" class="validate" ng-model="signup.account.login" required tabindex="3"
+                <input id="login" name="login" type="text" class="validate" ng-model="signup.account.login" required tabindex="3"
+                       ng-class="{ 'has-error' : signupStartPageForm.login.$invalid && !signupStartPageForm.login.$pristine }"
                        ng-pattern="'[a-zA-Z]+'">
                 <label for="login">
                     {{'signupStartPage.form.label.login' | translate }}
@@ -58,6 +62,7 @@
             <div class="col s12 m4 input-field">
                 <input type="text" name="email" id="email" ng-model="signup.contact.email"
                        ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+                       ng-class="{ 'has-error' : signupStartPageForm.email.$invalid && !signupStartPageForm.email.$pristine }"
                        tabindex="4">
                 <label for="email">
                     {{'signupStartPage.form.label.email' | translate }}

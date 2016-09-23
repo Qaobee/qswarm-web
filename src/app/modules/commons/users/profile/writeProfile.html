@@ -87,7 +87,7 @@
                                 <label for="userFirstname">{{'profilePage.form.label.firstname' | translate }} <span
                                         class="colorAccent-text">*</span></label>
                                 <input ng-model="user.firstname" id="userFirstname" name="userFirstname" type="text"
-                                       class="validate" required ng-pattern="'[a-zA-Z -]+'"
+                                       class="validate" required ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'"
                                        ng-class="{ 'has-error' : profileForm.userFirstname.$invalid && !profileForm.userFirstname.$pristine }">
                                 <span class="small colorAccent-text"
                                       ng-show="profileForm.userFirstname.$invalid && !profileForm.userFirstname.$pristine"
@@ -101,7 +101,7 @@
                                 <label for="userName">{{'profilePage.form.label.name' | translate }} <span
                                         class="colorAccent-text">*</span></label>
                                 <input ng-model="user.name" id="userName" name="userName" type="text" class="validate"
-                                       required ng-pattern="'[a-zA-Z -]+'"
+                                       required ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'"
                                        ng-class="{ 'has-error' : profileForm.userName.$invalid && !profileForm.userName.$pristine }">
                                 <span class="small colorAccent-text"
                                       ng-show="profileForm.userName.$invalid && !profileForm.userName.$pristine"
