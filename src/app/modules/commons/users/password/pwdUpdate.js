@@ -53,11 +53,10 @@
                     $window.Recaptcha.reload();
                     if (error) {
                         if (error.code && error.code === 'CAPTCHA_EXCEPTION') {
-                            toastr.error($filter('translate')('popup.error.' + error.code));
+                            toastr.error($filter('translate')('signupStartPage.form.messageControl.' + error.code));
                         } else {
                             toastr.error(error.message);
                         }
-                        $scope.renew = {};
                     }
                 });
             };
