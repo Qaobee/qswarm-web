@@ -55,7 +55,7 @@
                 "address": "Adresse",
                 "birthdate": "Date de naissance",
                 "gender": {
-                    "title" : "Genre",
+                    "title" : "Civilité",
                     "female" : "Femme",
                     "male" : "Homme"
                 }
