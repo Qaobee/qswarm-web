@@ -87,7 +87,7 @@
                                 <label for="userFirstname">{{'profilePage.form.label.firstname' | translate }} <span
                                         class="colorAccent-text">*</span></label>
                                 <input ng-model="user.firstname" id="userFirstname" name="userFirstname" type="text"
-                                       class="validate" required
+                                       class="validate" required ng-pattern="'[a-zA-Z -]+'"
                                        ng-class="{ 'has-error' : profileForm.userFirstname.$invalid && !profileForm.userFirstname.$pristine }">
                                 <span class="small colorAccent-text"
                                       ng-show="profileForm.userFirstname.$invalid && !profileForm.userFirstname.$pristine"
