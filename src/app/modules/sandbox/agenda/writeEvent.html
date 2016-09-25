@@ -27,7 +27,7 @@
     </div>
 
     <div class="row">
-        <form class="col s12" ng-submit="checkAndformatEvent()" name="eventForm" novalidate
+        <form class="col s12" ng-submit="checkAndformatEvent()" name="eventForm" novalidate >
             <!-- Planning-->
             <div class="card-panel">
                 <div class="row">
@@ -42,7 +42,7 @@
                                    ng-model="startDate" required
                                    input-date data-today="today" data-first-day="1" data-clear="clear"
                                    data-close="close"
-                                   data-format="{{formatDateSubmit}}" data-months-full="{{ month }}"
+                                   data-format="{{formatSubmit}}" data-months-full="{{ month }}"
                                    data-months-short="{{ monthShort }}" data-weekdays-full="{{ weekdaysFull }}"
                                    data-weekdays-short="{{ weekdaysShort }}" data-weekdays-letter="{{ weekdaysLetter }}"
                                    data-container="" data-select-years="selectYears"
@@ -105,7 +105,7 @@
                 <div class="row">
                     <div class="input-field col s10 m5">
                         <h6 class="colorAccent-text">{{'eventLabels.SectionActorsHome' | translate }} <span
-                                class="colorAccent-text">*</span></label></h6>
+                                class="colorAccent-text">*</span></h6>
                         <select class="" ng-model="teamId"
                                 material-select name="SectionActorsHome" ng-change="changeTeamHome()"
                                 ng-required="chooseAdversary"
@@ -123,7 +123,7 @@
 
                     <div class="input-field col s10 m5" ng-show="chooseHome">
                         <h6 class="colorAccent-text">{{'eventLabels.SectionActorsAdversary' | translate }} <span
-                                class="colorAccent-text">*</span></label></h6>
+                                class="colorAccent-text">*</span></h6>
                         <input type="text" list="adversaries" name="SectionActorsAdversary" ng-model="adversaryLabel"
                                placeholder="{{'eventLabels.Adversary' | translate }}" ng-required="chooseHome"
                                ng-class="{ 'has-error' : eventForm.SectionActorsAdversary.$invalid && !eventForm.SectionActorsAdversary.$pristine }"/>
