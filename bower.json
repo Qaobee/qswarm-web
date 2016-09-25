@@ -16,21 +16,21 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "1.4.0-rc.2",
-    "angular-animate": "1.4.0-rc.2",
+    "angular": "1.5.8",
+    "angular-animate": "1.5.8",
     "angular-chart.js": "0.10.2",
-    "angular-cookies": "1.4.0-rc.2",
+    "angular-cookies": "1.5.8",
     "angular-dynamic-locale": "0.1.27",
     "angular-file-upload": "2.3.4",
-    "angular-i18n": "1.4.0-rc.2",
+    "angular-i18n": "1.5.8",
     "angular-loading-bar": "0.7.1",
-    "angular-mocks": "1.4.0-rc.2",
+    "angular-mocks": "1.5.8",
     "angular-re-captcha": "0.2.0",
-    "angular-resource": "1.4.0-rc.2",
-    "angular-route": "1.4.0-rc.2",
-    "angular-sanitize": "1.4.0-rc.2",
+    "angular-resource": "1.5.8",
+    "angular-route": "1.5.8",
+    "angular-sanitize": "1.5.8",
     "angular-selection-model": "~0.8.4",
-    "angular-touch": "1.4.0-rc.2",
+    "angular-touch": "1.5.8",
     "angular-translate": "2.7.0",
     "angular-translate-loader-partial": "2.7.0",
     "angular-translate-loader-static-files": "2.7.0",
@@ -61,10 +61,11 @@
     "materialize-clockpicker": "~0.1.1"
   },
   "resolutions": {
-    "angular-cookies": "1.4.0-rc.2",
+    "angular-cookies": "1.5.8",
     "lodash": "^3.0.1",
     "jquery": "2.1.4",
-    "angular-materialize": "0.2.1"
+    "angular-materialize": "0.2.1",
+    "angular": "^1.5.8"
   },
   "overrides": {
     "materialize-clockpicker": {
