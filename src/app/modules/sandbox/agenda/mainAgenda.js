@@ -49,21 +49,13 @@
             $translatePartialLoader.addPart('agenda');
 
             $scope.effectiveId = $routeParams.effectiveId;
-            $scope.user.effectiveDefault = $scope.effectiveId;
-
-            if (!user.periodicity) {
-                $scope.periodicity = 'quarter';
-                $scope.periodicityActive = {};
-            } else {
-                $scope.periodicity = user.periodicity;
-                $scope.periodicityActive = user.periodicityActive;
-            }
 
             $scope.events = [];
             $scope.owners = [];
             $scope.effectives = [];
             $scope.currentEffective = {};
-            $scope.compareList = {};
+            $scope.compareList = {};            
+        
             /**
              * open compare screen
              *
@@ -105,10 +97,13 @@
             });
 
             /* watch if periodicity change */
-            $scope.$on('qeventbus:periodicityActive', function () {
-                user.periodicity = $scope.periodicity;
-                user.periodicityActive = $scope.periodicityActive;
-                $scope.getEvents(moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').valueOf(), moment($scope.periodicityActive.endDate, 'DD/MM/YYYY').valueOf());
+            $scope.$watch('periodicityActive', function (newValue, oldValue) {
+                if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
+                    $scope.periodicityActive.ownersId = $scope.effectiveId;
+                    user.periodicity = $scope.periodicity;
+                    user.periodicityActive = $scope.periodicityActive;
+                    $scope.getEvents(moment(user.periodicityActive.startDate, 'DD/MM/YYYY').valueOf(), moment(user.periodicityActive.endDate, 'DD/MM/YYYY').valueOf());
+                }
             });
 
             $scope.initAgenda = function () {
