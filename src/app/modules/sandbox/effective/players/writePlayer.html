@@ -65,19 +65,13 @@
                             </div>
                         </div>
 
-                        <div class="row" ng-if="showBirthdate">
+                        <div class="row">
                             <div class="col s12 m5 input-field">
                                 <label>{{'playerLabels.playerBirthdate' | translate }} <span
                                         class="red-text text-lighten-1">*</span></label>
                                 <input id="playerBirthdate" name="playerBirthdate" type="text"
                                        ng-model="player.birthdate" required
-                                       input-date data-today="today" data-first-day="1" data-clear="clear"
-                                       data-close="close"
-                                       data-format="{{formatDateSubmit}}" data-months-full="{{ month }}"
-                                       data-months-short="{{ monthShort }}" data-weekdays-full="{{ weekdaysFull }}"
-                                       data-weekdays-short="{{ weekdaysShort }}"
-                                       data-weekdays-letter="{{ weekdaysLetter }}"
-                                       max="{{getToday()}}" data-container="" data-select-years="60"
+                                       class="datepicker"
                                        ng-class="{ 'has-error' : playerCivilSection.playerBirthdate.$invalid && !playerCivilSection.playerBirthdate.$pristine }"/>
                                 <span class="small red-text text-lighten-1"
                                       ng-if="playerCivilSection.playerBirthdate.$invalid && !playerCivilSection.playerBirthdate.$pristine"

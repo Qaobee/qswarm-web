@@ -40,7 +40,7 @@
          * @description Main controller for view addPlayer.html
          */
         .controller('AddPlayerControler', function ($log, $http, $scope, $timeout, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                    activityCfgRestAPI, personSrv, userRestAPI) {
+                                                    activityCfgRestAPI, personSrv, userRestAPI, $translate) {
 
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('effective');
@@ -56,32 +56,9 @@
                 $window.history.back();
             };
 
-            $scope.getToday = function() {
+            $scope.getToday = function () {
                 return new Date().toISOString().slice(0, 10);
             };
-
-            //i18n datepicker
-            var month = $filter('translate')('commons.format.date.listMonth');
-            $scope.month = month.split(',');
-
-            var monthShort = $filter('translate')('commons.format.date.listMonthShort');
-            $scope.monthShort = monthShort.split(',');
-
-            var weekdaysFull = $filter('translate')('commons.format.date.listWeekdaysFull');
-            $scope.weekdaysFull = weekdaysFull.split(',');
-
-            var weekdaysShort = $filter('translate')('commons.format.date.listWeekdaysShort');
-            $scope.weekdaysShort = weekdaysShort.split(',');
-
-            var weekdaysLetter = $filter('translate')('commons.format.date.listWeekdaysLetter');
-            $scope.weekdaysLetter = weekdaysLetter.split(',');
-
-            $scope.today = $filter('translate')('commons.format.date.today');
-            $scope.clear = $filter('translate')('commons.format.date.clear');
-            $scope.close = $filter('translate')('commons.format.date.close');
-            $scope.formatDate = $filter('translate')('commons.format.date.label');
-            $scope.formatDateSubmit = $filter('translate')('commons.format.date.pattern');
-            $scope.formatDateMoment = $filter('translate')('commons.format.date.moment');
 
             //Initialisation du nouveau joueur
             $scope.player = {
@@ -112,7 +89,7 @@
             };
             $scope.detailsCity = '';
 
-            
+
             /* Retrieve list of positions type */
             $scope.getListPositionType = function () {
                 activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.sandbox.activityId, $scope.meta.sandbox.structure.country._id, 'listPositionType').success(function (data) {
@@ -164,5 +141,33 @@
             };
             /* Primary, check if user connected */
             $scope.checkUserConnected();
+            $translate(['commons.format.date.listMonth',
+                'commons.format.date.listMonthShort',
+                'commons.format.date.listWeekdaysFull',
+                'commons.format.date.listWeekdaysShort',
+                'commons.format.date.listWeekdaysLetter',
+                'commons.format.date.today',
+                'commons.format.date.clear',
+                'commons.format.date.close',
+                'commons.format.date.label',
+                'commons.format.date.pattern'
+            ]).then(function (translations) {
+                angular.element('#playerBirthdate').pickadate({
+                        format: translations['commons.format.date.label'],
+                        formatSubmit: translations['commons.format.date.pattern'],
+                        monthsFull: translations['commons.format.date.listMonth'].split(','),
+                        monthShort: translations['commons.format.date.listMonthShort'].split(','),
+                        weekdaysFull: translations['commons.format.date.listWeekdaysFull'].split(','),
+                        weekdaysLetter: translations['commons.format.date.listWeekdaysLetter'].split(','),
+                        weekdaysShort: translations['commons.format.date.listWeekdaysShort'].split(','),
+                        selectYears: 100,
+                        selectMonths: true,
+                        max: true,
+                        today: translations['commons.format.date.today'],
+                        clear: translations['commons.format.date.clear'],
+                        close: translations['commons.format.date.close']
+                    })
+                    .pickadate('picker');
+            });
         });
 }());

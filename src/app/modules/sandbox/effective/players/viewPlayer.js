@@ -89,7 +89,7 @@
                     if (angular.isDefined($scope.player.address)) {
                         $scope.mapShow = true;
                     }
-                    $scope.player.age = moment().format('YYYY') - moment($scope.player.birthdate).format('YYYY');
+                    $scope.player.age = moment().year() - moment($scope.player.birthdate).year();
                 });
             };
 

@@ -36,7 +36,7 @@
                             <div class="left-align">{{player.age}} {{'commons.format.ageYear' | translate }}</div>
                             <div>&nbsp;</div>
                             <div class="left-align" ng-if="player.nationality">{{'playerLabels.playerNationality' |
-                                translate }} : {{player.nationality}}
+                                translate }} : {{player.nationality.label || player.nationality}}
                             </div>
                             <div>&nbsp;</div>
                             <div class="left-align" ng-if="player.birthCity">{{'playerLabels.playerBirthCity' |
