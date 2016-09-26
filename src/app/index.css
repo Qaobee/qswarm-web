@@ -191,6 +191,45 @@ input.has-error {
     color: #ea5350;
 }
 
+input:not([type]).invalid, input:not([type]):focus.invalid,
+input[type=text].invalid,
+input[type=text]:focus.invalid,
+input[type=password].invalid,
+input[type=password]:focus.invalid,
+input[type=email].invalid,
+input[type=email]:focus.invalid,
+input[type=url].invalid,
+input[type=url]:focus.invalid,
+input[type=time].invalid,
+input[type=time]:focus.invalid,
+input[type=date].invalid,
+input[type=date]:focus.invalid,
+input[type=datetime].invalid,
+input[type=datetime]:focus.invalid,
+input[type=datetime-local].invalid,
+input[type=datetime-local]:focus.invalid,
+input[type=tel].invalid,
+input[type=tel]:focus.invalid,
+input[type=number].invalid,
+input[type=number]:focus.invalid,
+input[type=search].invalid,
+input[type=search]:focus.invalid,
+textarea.materialize-textarea.invalid,
+textarea.materialize-textarea:focus.invalid {
+    border-bottom: 1px solid #ea5350;
+    box-shadow: 0 1px 0 0 #ea5350;
+}
+
+input.ng-invalid, input.ng-invalid + label {
+    content: attr(data-error);
+    color: #F44336;
+    opacity: 1;
+}
+input.ng-pristine, input.ng-pristine + label {
+    color: #646464;
+    opacity: 1;
+}
+>>>>>>> QSwarm-Web/master
 [type="radio"].with-gap:checked + label:after {
     border: 2px solid #546e7a;
     background-color: #546e7a;
@@ -756,7 +795,7 @@ table.super-fancy tr.foobar {
 }
 
 .widget-content {
-    margin: Opx;
+    margin: O;
     padding: 5px;
     width: 100%;
 }
