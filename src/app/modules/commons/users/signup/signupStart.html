@@ -1,14 +1,8 @@
-<div class="colorMain-text">
-    <div class="hero-signup white-text center-align">
-
-        <h2 class="title" translate="signupStartPage.title1"></h2>
-        <h5 class="title hide-on-small-only" translate="signupStartPage.title2"></h5>
-
-    </div>
+<div class="primary-text-color">
 
     <!-- Entete -->
     <div class="row">
-        <div class="col s12 colorAccent-text center">
+        <div class="col s12 accent-text-color center">
             <h4 translate="signupStartPage.form.title"></h4>
         </div>
     </div>
@@ -169,14 +163,14 @@
         <!-- Buttons -->
         <div class="row center container">
             <div class="col s12">
-                <button ng-click="cancelSignup()"
-                        class="modal-action modal-close waves-effect waves-white btn btn-s colorAccent"
+                <a ng-click="cancelSignup()"
+                        class="modal-action modal-close waves-effect waves-white btn dark-primary-color"
                         translate="commons.buttons.cancel" tabindex="9">
-                </button>
+                </a>
                 <button type="submit"
                         translate="commons.buttons.validate" ng-disabled="signupStartPageForm.$invalid" tabindex="8"
                         ng-class="{'btn btn-s waves-effect waves-white disabled': signupStartPageForm.$invalid, 
-                                  'btn btn-s waves-effect waves-white colorSecondary': !signupStartPageForm.$invalid}">
+                                  'btn btn-s waves-effect waves-white accent-color': !signupStartPageForm.$invalid}">
                 </button>
             </div>
         </div>

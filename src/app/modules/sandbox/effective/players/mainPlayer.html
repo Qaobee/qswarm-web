@@ -3,7 +3,7 @@
     <div class="row"></div>
 
     <!-- entete start -->
-    <div class="row colorMain white-text">
+    <div class="row dark-primary-color">
         <div class="col s2 left-align">
             <h5><i class="material-icons md-36">person</i></h5>
         </div>
@@ -24,9 +24,8 @@
     </div>
     <!-- entete end -->
 
-    <div class="row">
-        <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
-    </div>
+    <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
+
 
     <div class="row">
 
@@ -96,12 +95,12 @@
 
                 <div class="col m4 s12 center-align">
                     <br>
-                    <a href="#/private/addPlayer/{{meta.sandbox._id}}" class="waves-effect waves-light btn colorAccent">
+                    <a href="#/private/addPlayer/{{meta.sandbox._id}}" class="waves-effect waves-light btn accent-color">
                         <i class="material-icons">add</i>
                     </a>
 
                     <button ng-click="compare()" title="{{'mainEffective.buttons.compare' | translate}}"
-                            class="waves-effect waves-light btn colorAccent">
+                            class="waves-effect waves-light btn accent-color">
                         <i class="material-icons">recent_actors</i>
                     </button>
                 </div>
@@ -111,10 +110,10 @@
 
                 <ul>
                     <li class="col l3 m6 s12" ng-repeat="player in players | filter:queryPlayer">
-                        <div class="card white blue-grey-text text-darken-2">
+                        <div class="card white primary-text-color">
                             <div class="card-content center-align" style="height:48px;">
                                 <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}"
-                                                            class="blue-grey-text text-darken-2">
+                                                            class="primary-text-color">
                                     {{player.firstname}} {{player.name}}</a>
                                 </span>
                             </div>
@@ -123,7 +122,7 @@
                                     <avatar person="player" width="'50px'"></avatar>
                                 </a>
                             </div>
-                            <div class="card-content center-align colorMain" style="height:48px;">
+                            <div class="card-content center-align dark-primary-color" style="height:48px;">
                                 <h5>
                                     <small class="white-text">{{player.positionType}}</small>
                                 </h5>
@@ -131,7 +130,7 @@
 
                             <div class="card-action">
                                 <a href="#/private/playerStats/{{player._id}}"
-                                   class="waves-effect colorAccent-text">
+                                   class="waves-effect accent-text-color">
                                     <i class="fa fa-bar-chart"></i>
                                 </a>
 

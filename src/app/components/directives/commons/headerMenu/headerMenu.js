@@ -177,6 +177,9 @@
                      * @returns {boolean}
                      */
                     $scope.openSignup = function () {
+                        delete($scope.infos);
+                        angular.element('#modalLogin').closeModal();
+                        
                         $location.path('/signupStart');
                         return false;
                     };

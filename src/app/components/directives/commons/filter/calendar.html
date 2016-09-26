@@ -1,186 +1,144 @@
-<div class="col s12 hide-on-small-only grey lighten-2">
+
     <!-- Filter Zone start-->
-    <div class="col s12 center">&nbsp;</div>
-    <div class="col s1 center" ng-if="!popup">&nbsp;</div>
-
-    <!-- Periodicity selector -->
-    <span ng-if="!popup">
-        <div class="col s1 center colorAccent" style="margin:1px">
-            <a href="" ng-click="currentMonth()" class="white-text"><h6 translate="commons.periodicity.month"></h6></a>
+    <div class="row valign-wrapper hide-on-small-only light-primary-color">
+        <!-- Periodicity selector -->
+        <div class="col s4 center" >
+            <a href="" ng-click="currentMonth()" class="btn3 waves-effect waves-white accent-color" translate="commons.periodicity.month"></a>
+            <a href="" ng-click="currentQuarter()" class="btn3 waves-effect waves-white accent-color" translate="commons.periodicity.quarter"></a>
+            <a href="" ng-click="currentSeason()" class="btn3 waves-effect waves-white accent-color" translate="commons.periodicity.season"></a>
         </div>
 
-        <div class="col s1 center colorAccent" style="margin:1px">
-            <a href="" ng-click="currentQuarter()" class="white-text"><h6 translate="commons.periodicity.quarter"></h6></a>
-        </div>
-        <div class="col s1 center colorAccent" style="margin:1px">
-            <a href="" ng-click="currentSeason()" class="white-text"><h6
-                    translate="commons.periodicity.season"></h6></a>
-        </div>
-    </span>
-    <span ng-if="popup">
-        <div class="col s2 center colorAccent" style="margin:1px">
-            <a href="" ng-click="currentMonth()" class="white-text"><h6 translate="commons.periodicity.month"></h6></a>
+
+        <!-- Month Navigation-->
+        <div class="col s1 center" ng-if="periodicity=='month'">
+            <a href="" ng-click="previousMonth()" class="btn-floating dark-primary-color waves-effect waves-white">
+                <i class="material-icons">chevron_left</i>
+            </a>
         </div>
 
-        <div class="col s2 center colorAccent" style="margin:1px">
-            <a href="" ng-click="currentQuarter()" class="white-text"><h6 translate="commons.periodicity.quarter"></h6></a>
+        <div class="col s6 center" ng-if="periodicity=='month'">
+            <h5 class="primary-color-text" ng-bind="periodicityActive.label"></h5>
         </div>
-        <div class="col s2 center colorAccent" style="margin:1px">
-            <a href="" ng-click="currentSeason()" class="white-text"><h6
-                    translate="commons.periodicity.season"></h6></a>
-        </div>
-    </span>
 
-    <div class="col s1 center" ng-if="!popup">&nbsp;</div>
-    <!-- Month Navigation-->
-    <div class="col s1 center" ng-if="periodicity=='month'">
-        <a href="" ng-click="previousMonth()" class="btn-floating colorMain white-text left">
-            <i class="material-icons">chevron_left</i>
-        </a>
-    </div>
-    <span ng-if="!popup">
-        <div class="col s4 center" ng-if="periodicity=='month'">
-            <h6 class="colorMain-text" ng-bind="periodicityActive.label"></h6>
+        <div class="col s1 center" ng-if="periodicity=='month'">
+            <a href="" ng-click="nextMonth()" class="btn-floating dark-primary-color waves-effect waves-white">
+                <i class="material-icons">chevron_right</i>
+            </a>
         </div>
-    </span>
-    <span ng-if="popup">
-        <div class="col s3 center" ng-if="periodicity=='month'">
-            <h6 class="colorMain-text" ng-bind="periodicityActive.label"></h6>
-        </div>
-    </span>
-    <div class="col s1 center" ng-if="periodicity=='month'">
-        <a href="" ng-click="nextMonth()" class="btn-floating colorMain white-text right">
-            <i class="material-icons">chevron_right</i>
-        </a>
-    </div>
 
 
-    <!-- Quarter Navigation-->
-    <div class="col s1 center" ng-if="periodicity=='quarter'">
-        <a href="" ng-click="previousQuarter()" class="btn-floating colorMain white-text left">
-            <i class="material-icons">chevron_left</i>
-        </a>
-    </div>
-    <span ng-if="!popup">
-        <div class="col s4 center" ng-if="periodicity=='quarter'">
-            <h6 class="colorMain-text" ng-bind="periodicityActive.label"></h6>
+        <!-- Quarter Navigation-->
+        <div class="col s1 center" ng-if="periodicity=='quarter'">
+            <a href="" ng-click="previousQuarter()" class="btn-floating dark-primary-color waves-effect waves-white">
+                <i class="material-icons">chevron_left</i>
+            </a>
         </div>
-    </span>
-    <span ng-if="popup">
-        <div class="col s3 center" ng-if="periodicity=='quarter'">
-            <h6 class="colorMain-text" ng-bind="periodicityActive.label"></h6>
+
+        <div class="col s6 center" ng-if="periodicity=='quarter'">
+            <h5 class="primary-color-text" ng-bind="periodicityActive.label"></h5>
         </div>
-    </span>
-    <div class="col s1 center" ng-if="periodicity=='quarter'">
-        <a href="" ng-click="nextQuarter()" class="btn-floating colorMain white-text right">
-            <i class="material-icons">chevron_right</i>
-        </a>
+
+        <div class="col s1 center" ng-if="periodicity=='quarter'">
+            <a href="" ng-click="nextQuarter()" class="btn-floating dark-primary-color waves-effect waves-white">
+                <i class="material-icons">chevron_right</i>
+            </a>
+        </div>
+
+
+        <!-- Season Navigation-->
+        <div class="col s1 center" ng-if="periodicity=='season'">
+            <a href="" ng-click="previousSeason()" class="btn-floating dark-primary-color waves-effect waves-white">
+                <i class="material-icons">chevron_left</i>
+            </a>
+        </div>
+
+        <div class="col s6 center" ng-if="periodicity=='season'">
+            <h5 class="primary-color-text" ng-bind="periodicityActive.label"></h5>
+        </div>
+
+        <div class="col s1 center" ng-if="periodicity=='season'">
+            <a href="" ng-click="nextSeason()" class="btn-floating dark-primary-color waves-effect waves-white">
+                <i class="material-icons">chevron_right</i>
+            </a>
+        </div>
     </div>
 
-
-    <!-- Season Navigation-->
-    <div class="col s1 center" ng-if="periodicity=='season'">
-        <a href="" ng-click="previousSeason()" class="btn-floating colorMain white-text left">
-            <i class="material-icons">chevron_left</i>
-        </a>
-    </div>
-    <span ng-if="!popup">
-        <div class="col s4 center" ng-if="periodicity=='season'">
-            <h6 class="colorMain-text" ng-bind="periodicityActive.label"></h6>
-        </div>
-    </span>
-    <span ng-if="popup">
-        <div class="col s3 center" ng-if="periodicity=='season'">
-            <h6 class="colorMain-text" ng-bind="periodicityActive.label"></h6>
-        </div>
-    </span>
-    <div class="col s1 center" ng-if="periodicity=='season'">
-        <a href="" ng-click="nextSeason()" class="btn-floating colorMain white-text right">
-            <i class="material-icons">chevron_right</i>
-        </a>
-    </div>
-
-
-    <div class="col s12 center">&nbsp;</div>
-</div>
 
 <!-- view for tablet and phone -->
-<div class="col s12 hide-on-med-and-up grey lighten-2">
-    <div class="row">
-        <!-- Periodicity selector -->
-        <div class="col s1 center">&nbsp;</div>
-        <div class="col s3 center colorAccent" style="margin:1px">
-            <a href="" ng-click="currentMonth()" class="white-text"><h6 class="small"
-                                                                        translate="commons.periodicity.month"></h6></a>
-        </div>
-
-        <div class="col s4 center colorAccent" style="margin:1px">
-            <a href="" ng-click="currentQuarter()" class="white-text"><h6 class="small"
-                                                                          translate="commons.periodicity.quarter"></h6>
-            </a>
-        </div>
-        <div class="col s3 center colorAccent" style="margin:1px">
-            <a href="" ng-click="currentSeason()" class="white-text"><h6 class="small"
-                                                                         translate="commons.periodicity.season"></h6>
-            </a>
-        </div>
-        <div class="col s1 center">&nbsp;</div>
+<div class="row hide-on-med-and-up light-primary-color">
+    
+    <div class="col s12 center" >&nbsp;</div>
+    
+    <!-- Periodicity selector -->
+    <div class="col s12 center" >
+        <a href="" ng-click="currentMonth()" class="btn3 waves-effect waves-white accent-color" translate="commons.periodicity.month"></a>
+        <a href="" ng-click="currentQuarter()" class="btn3 waves-effect waves-white accent-color" translate="commons.periodicity.quarter"></a>
+        <a href="" ng-click="currentSeason()" class="btn3 waves-effect waves-white accent-color" translate="commons.periodicity.season"></a>
     </div>
+
 
     <!-- Month Navigation-->
-    <div class="row" ng-if="periodicity=='month'">
-        <div class="col s1 center">&nbsp;</div>
-        <div class="col s1 center" ng-if="periodicity=='month'">
-            <a href="" ng-click="previousMonth()" class="btn-floating colorMain white-text left">
-                <i class="material-icons">chevron_left</i>
-            </a>
-        </div>
-        <div class="col s8 center">
-            <h6 class="colorMain-text" ng-bind="periodicityActive.label"></h6>
-        </div>
-        <div class="col s1 center" ng-if="periodicity=='month'">
-            <a href="" ng-click="nextMonth()" class="btn-floating colorMain white-text right">
-                <i class="material-icons">chevron_right</i>
-            </a>
-        </div>
-        <div class="col s1 center">&nbsp;</div>
+    <div class="col s6 center" ng-if="periodicity=='month'">
+        <a href="" ng-click="previousMonth()" class="btn-floating dark-primary-color waves-effect waves-white">
+            <i class="material-icons">chevron_left</i>
+        </a>
     </div>
+    
+    <div class="col s6center" ng-if="periodicity=='month'">
+        <a href="" ng-click="nextMonth()" class="btn-floating dark-primary-color waves-effect waves-white">
+            <i class="material-icons">chevron_right</i>
+        </a>
+    </div>
+    
+    <div class="col s12 center" >&nbsp;</div>
+
+    <div class="col s12 center" ng-if="periodicity=='month'">
+        <h5 class="primary-color-text" ng-bind="periodicityActive.label"></h5>
+    </div>
+
+    
+
 
     <!-- Quarter Navigation-->
-    <div class="row" ng-if="periodicity=='quarter'">
-        <div class="col s1 center">&nbsp;</div>
-        <div class="col s1 center" ng-if="periodicity=='quarter'">
-            <a href="" ng-click="previousQuarter()" class="btn-floating colorMain white-text left">
-                <i class="material-icons">chevron_left</i>
-            </a>
-        </div>
-        <div class="col s8 center">
-            <h6 class="colorMain-text" ng-bind="periodicityActive.label"></h6>
-        </div>
-        <div class="col s1 center" ng-if="periodicity=='quarter'">
-            <a href="" ng-click="nextQuarter()" class="btn-floating colorMain white-text right">
-                <i class="material-icons">chevron_right</i>
-            </a>
-        </div>
-        <div class="col s1 center">&nbsp;</div>
+    <div class="col s6 center" ng-if="periodicity=='quarter'">
+        <a href="" ng-click="previousQuarter()" class="btn-floating dark-primary-color waves-effect waves-white">
+            <i class="material-icons">chevron_left</i>
+        </a>
+    </div>
+    
+    <div class="col s6 center" ng-if="periodicity=='quarter'">
+        <a href="" ng-click="nextQuarter()" class="btn-floating dark-primary-color waves-effect waves-white">
+            <i class="material-icons">chevron_right</i>
+        </a>
+    </div>
+    
+    <div class="col s12 center" >&nbsp;</div>
+
+    <div class="col s12 center" ng-if="periodicity=='quarter'">
+        <h5 class="primary-color-text" ng-bind="periodicityActive.label"></h5>
     </div>
 
+    
+
+
     <!-- Season Navigation-->
-    <div class="row" ng-if="periodicity=='season'">
-        <div class="col s1 center">&nbsp;</div>
-        <div class="col s1 enter">
-            <a href="" ng-click="previousSeason()" class="btn-floating colorMain white-text left">
-                <i class="material-icons">chevron_left</i>
-            </a>
-        </div>
-        <div class="col s8 center" ng-if="periodicity=='season'">{{periodicityActive.label}}
-            <h6 class="colorMain-text" ng-bind="periodicityActive.label"></h6>
-        </div>
-        <div class="col s1 center" ng-if="periodicity=='season'">
-            <a href="" ng-click="nextSeason()" class="btn-floating colorMain white-text right">
-                <i class="material-icons">chevron_right</i>
-            </a>
-        </div>
-        <div class="col s1 center">&nbsp;</div>
+    <div class="col s6 center" ng-if="periodicity=='season'">
+        <a href="" ng-click="previousSeason()" class="btn-floating dark-primary-color waves-effect waves-white">
+            <i class="material-icons">chevron_left</i>
+        </a>
     </div>
+    
+    <div class="col s6 center" ng-if="periodicity=='season'">
+        <a href="" ng-click="nextSeason()" class="btn-floating dark-primary-color waves-effect waves-white">
+            <i class="material-icons">chevron_right</i>
+        </a>
+    </div>
+    
+    <div class="col s12 center" >&nbsp;</div>
+
+    <div class="col s12 center" ng-if="periodicity=='season'">
+        <h5 class="primary-color-text" ng-bind="periodicityActive.label"></h5>
+    </div>
+
+    
 </div>

@@ -3,7 +3,7 @@
     <div class="row"></div>
 
     <!-- entete start tablet and sup-->
-    <div class="row colorMain white-text">
+    <div class="row dark-primary-color">
         <div class="col s2 left-align">
             <h5><i class="material-icons md-36">event</i></h5>
         </div>
@@ -14,8 +14,9 @@
         
         <div class="col s2">&nbsp;</div>
 
-        <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
     </div>
+    
+    <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
     <!-- entete end -->
 
     <div class="row center">
@@ -29,10 +30,10 @@
         </div>
         <div class="col m4 s12 center-align">
             <br>
-            <a href="#/private/addEvent/{{effectiveId}}" class="waves-effect waves-light btn colorAccent">
+            <a href="#/private/addEvent/{{effectiveId}}" class="waves-effect waves-light btn accent-color">
                 <i class="material-icons">add</i>
             </a>
-            <button ng-click="compare()" class="waves-effect waves-light btn colorAccent"
+            <button ng-click="compare()" class="waves-effect waves-light btn accent-color"
                title="{{'mainEffective.buttons.compare' | translate}}">
                 <i class="material-icons">recent_actors</i>&nbsp;
             </button>
@@ -51,7 +52,7 @@
         <div class="col s12">
             <div class="card">
                 <div class="row center">
-                    <a href="#/private/addEvent/{{effectiveId}}" class="colorMain-text">
+                    <a href="#/private/addEvent/{{effectiveId}}" class="primary-text-color">
                         <i class="fa fa-plus-square-o fa-5x"></i>
                         <h3 translate="mainAgenda.buttons.addEvent"></h3>
                     </a>
