@@ -3,7 +3,7 @@
     <div class="row"></div>
     
     <!-- entete start -->
-    <div class="row colorMain white-text">
+    <div class="row dark-primary-color">
         <div class="col s2 left-align">
             <h5><i class="material-icons md-36">group</i></h5>
         </div>
@@ -21,9 +21,7 @@
         
     </div>
     
-    <div class="row">
-        <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
-    </div>
+    <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
 
     <div class="row">
 
@@ -50,11 +48,11 @@
 
                 <div class="col s4 center-align">
                     <br>
-                    <a href="#/private/addTeam/{{false}}" class="waves-effect waves-light btn colorAccent">
+                    <a href="#/private/addTeam/{{false}}" class="waves-effect waves-light btn accent-color">
                         <i class="material-icons">add</i>
                     </a>
 
-                    <button ng-click="compare()" title="{{'mainEffective.buttons.compare' | translate}}" class="waves-effect waves-light btn colorAccent">
+                    <button ng-click="compare()" title="{{'mainEffective.buttons.compare' | translate}}" class="waves-effect waves-light btn accent-color">
                         <i class="material-icons">recent_actors</i>
                     </button>
                 </div>
@@ -64,14 +62,14 @@
                 <ul>
                     <li class="col l3 m6 s12" ng-repeat="team in listTeamHome | filter:queryTeam">
                         <!-- enable -->
-                        <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===true">
-                            <div class="card-content colorMain white-text center">
+                        <div class="card white" ng-show="team.enable===true">
+                            <div class="card-content dark-primary-color center">
                                 <span class="card-title">
                                     <a href="#/private/updateTeam/{{team._id}}/false" class="white-text"><small>{{team.label}}</small></a>
                                 </span>
                             </div>
                             <div class="card-action">
-                                <a href="#/private/teamStats/{{team._id}}" class="waves-effect colorAccent-text"><i
+                                <a href="#/private/teamStats/{{team._id}}" class="waves-effect accent-text-color"><i
                                         class="fa fa-bar-chart"></i></a>
                                 <div class="right">
                                     <input type="checkbox" ng-model="compareList[team._id]" name="compare"
@@ -82,14 +80,14 @@
                             </div>
                         </div>
                         <!-- disable -->
-                        <div class="card white blue-grey-text text-darken-2" ng-show="team.enable===false">
-                            <div class="card-content grey lighten-2 grey-text text-darken-2 center">
+                        <div class="card white" ng-show="team.enable===false">
+                            <div class="card-content light-primary-color center">
                                 <span class="card-title">
-                                    <a href="#/private/updateTeam/{{team._id}}/false" class="blue-grey-text text-darken-2"><small>{{team.label}}</small></a>
+                                    <a href="#/private/updateTeam/{{team._id}}/false" class="primary-text-color"><small>{{team.label}}</small></a>
                                 </span>
                             </div>
                             <div class="card-action">
-                                <a href="#/private/teamStats/{{team._id}}" class="waves-effect colorAccent-text"><i
+                                <a href="#/private/teamStats/{{team._id}}" class="waves-effect accent-text-color"><i
                                         class="fa fa-bar-chart"></i></a>
                                 
                                 <div class="right">

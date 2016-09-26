@@ -24,17 +24,17 @@
 
             <ul class="right hide-on-med-and-down">
                 <li>
-                    <a class="white-text" href="#/about">
+                    <a href="#/about">
                         {{'landing.contact.about' | translate}}
                     </a>
                 </li>
                 
                 <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
-                    <a class="white-text" href="#/pricing" translate="navbar.pricing"></a>
+                    <a href="#/pricing" translate="navbar.pricing"></a>
                 </li>
                
                 <li>
-                    <a class="white-text" ng-click="openLogin()">
+                    <a ng-click="openLogin()">
                         {{'navbar.connect' | translate}}
                     </a>
                 </li>
@@ -45,13 +45,13 @@
             <a href="#" data-activates="nav-mobileHC" class="button-collapse white-text">
                 <i class="material-icons">menu</i></a>
 
-            <ul id="nav-mobileHC" class="side-nav">
+            <ul id="nav-mobileHC" class="side-nav dark-primary-color">
                 <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
-                    <a class="blue-grey-text text-darken-2" href="#/pricing" translate="navbar.pricing"></a>
+                    <a class="white-text" href="#/pricing" translate="navbar.pricing"></a>
                 </li>
                 
                 <li>
-                    <a class="blue-grey-text text-darken-2" ng-click="openLogin()" translate="navbar.connect"></a>
+                    <a class="white-text" ng-click="openLogin()" translate="navbar.connect"></a>
                 </li>
             </ul>
             <!-- menu mobile end -->
@@ -61,7 +61,7 @@
 
 <!-- Menu Connected First header-->
 <div class="navbar-fixed" ng-if="user && !user.account.firstConnexion && !notpaid">
-    <nav class="top-nav colorSecondary visible-nav" role="navigation">
+    <nav class="top-nav default-primary-color visible-nav" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
                 <!-- Desktop and tablet-->
@@ -102,48 +102,18 @@
                 </ul>
 
                 <!-- Mobile navigation hamburger -->
-                <a href="#" data-activates="nav-mobile" class="button-collapse white-text"><i
-                        class="mdi-navigation-menu left"></i></a>
+                <a href="#" data-activates="nav-mobile" class="button-collapse white-text"><i class="material-icons">menu</i></a>
 
                 <!-- Mobile navigation -->
-                <ul id="nav-mobile" class="side-nav blue-grey darken-2">
-                    <li>
-                        <a href="#/private/" class="white-text light">
-                            <i class="mdi-action-home left"></i> {{'headerMenu.dashboard' | translate }}
-                        </a>
-                    </li>
+                <ul id="nav-mobile" class="side-nav dark-primary-color">
+                    <li><a href="#/private/" class="white-text"><i class="material-icons left white-text">home</i> {{'headerMenu.dashboard' | translate }}</a></li>
                     <li class="divider"></li>
-
-                    <li>
-                        <a href="#/private/players/{{meta.sandbox.effectiveDefault}}" class="white-text light">
-                            <i class="mdi-social-person left"></i> {{'headerMenu.players' | translate }}
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#/private/teams/{{meta.sandbox.effectiveDefault}}" class="white-text light">
-                            <i class="mdi-social-group left"></i> {{'headerMenu.teams' | translate }}
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#/private/agenda/{{meta.sandbox.effectiveDefault}}" class="white-text light">
-                            <i class="mdi-action-view-agenda left"></i> {{'headerMenu.calendar' | translate }}
-                        </a>
-                    </li>
-
+                    <li><a href="#/private/players/{{meta.sandbox.effectiveDefault}}" class="white-text"><i class="material-icons left white-text">person</i> {{'headerMenu.players' | translate }}</a></li>
+                    <li><a href="#/private/teams/{{meta.sandbox.effectiveDefault}}" class="white-text"><i class="material-icons left white-text">group</i> {{'headerMenu.teams' | translate }}</a></li>
+                    <li><a href="#/private/agenda/{{meta.sandbox.effectiveDefault}}" class="white-text"><i class="material-icons left white-text">event_note</i> {{'headerMenu.calendar' | translate }}</a></li>
                     <li class="divider"></li>
-
-                    <li>
-                        <a href="#/private/profile" class="white-text"><i
-                                class="mdi-social-person-outline left"></i></a>
-                    </li>
-
-                    <li>
-                        <a ng-click="logoff()" href="javascript:void(0);" class="white-text">
-                            <i class="mdi-action-exit-to-app left"></i> {{'navbar.disconnect' | translate}}
-                        </a>
-                    </li>
+                    <li><a href="#/private/profile" class="white-text"><i class="material-icons left">portrait</i></a></li>
+                    <li><a ng-click="logoff()" href="javascript:void(0);" class="white-text"><i class="material-icons">exit_to_app</i> {{'navbar.disconnect' | translate}}</a></li>
                 </ul>
 
             </div>
@@ -151,38 +121,45 @@
     </nav>
     <angular-feedback options="feedbackOptions" meta="meta"></angular-feedback>
 </div>
-<div class="navbar-fixed light-blue white-text trial" ng-if="intrial && !hideTrial">
-    <div class="row valign-wrapper">
-        <div class="col s4" style="font-size: 24px;" translate="headerMenu.trial.title"></div>
-        <div class="col s7" style="font-size: 20px;" translate="headerMenu.trial.content" translate-values="trialCountVal"></div>
-        <div class="col s1"><a href="javascript:void(0);" ng-click="closeTrial()" class="right"><i class="material-icons">close</i></a></div>
+
+<div class="navbar-fixed" ng-if="intrial && !hideTrial">
+    <div class="row light-primary-color">
+        <div class="col s12 center"><h4 translate="headerMenu.trial.title"></h4></div>
+        <div class="col s12 secondary-text-color center" translate="headerMenu.trial.content" translate-values="trialCountVal"></div>
+        <div class="col s12">&nbsp;</div>
+        <div class="col s12 center">
+            <a href="javascript:void(0);" ng-click="closeTrial()" class="btn-floating accent-color">
+                <i class="material-icons">close</i>
+            </a>
+        </div>
+        <div class="col s12">&nbsp;</div>
     </div>
 </div>
 
 <!-- Finalize signup -->
-    <nav class="top-nav top-nav-trans" role="navigation" ng-if="user && user.account.firstConnexion">
-        <div class="container">
-            <div class="nav-wrapper">
-                <a href="/#/" class="hide-on-med-and-down brand-logo">
-                    <img src="assets/images/logo-mini.png" height="30px"/>
-                </a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="https://twitter.com/Qaobee"
-                           target="_blank"
-                           class="white-text"><i
-                            class="fa fa-twitter-square fa-2x"></i></a></li>
-                </ul>
-                <a class="brand-logo white-text center">
-                    <span class="hide-on-med-and-down fa fa-sign-in"></span>
-                    <span translate="headerMenu.signup"></span>
-                </a>
-            </div>
+<nav class="top-nav dark-primary-color" role="navigation" ng-if="user && user.account.firstConnexion">
+    <div class="container">
+        <div class="nav-wrapper">
+            <a href="/#/" class="hide-on-med-and-down brand-logo">
+                <img src="assets/images/logo-mini.png" height="30px"/>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="https://twitter.com/Qaobee"
+                       target="_blank"
+                       class="white-text"><i
+                        class="fa fa-twitter-square fa-2x"></i></a></li>
+            </ul>
+            <a class="brand-logo white-text center">
+                <span class="hide-on-med-and-down fa fa-sign-in"></span>
+                <span translate="headerMenu.signup"></span>
+            </a>
         </div>
-    </nav>
+    </div>
+</nav>
 
 
 <!-- Modal login -->
-<div id="modalLogin" class="modal colorBckgModal colorMain-text">
+<div id="modalLogin" class="modal light-primary-color">
     <div class="modal-header center-align">
         <h5>
             <span class="fa fa-sign-in"></span>
@@ -208,19 +185,23 @@
                 </div>
             </div>
             <div class="row">
-                <div><a href="" class="colorAccent-text" ng-click="openForgotPwd()">{{'modal.login.label.forgotpasswd' | translate }}</a></div>
+                <div>
+                    <a href="" class="colorAccent-text" ng-click="openForgotPwd()">{{'modal.login.label.forgotpasswd' | translate }}</a>
+                    <a class="btn waves-effect waves-white light-primary-color right" ng-click="openSignup()" translate="navbar.signup"></a>
+                </div>
+                
             </div>
         </div>
 
         <div class="row center">
             <div class="col s12">&nbsp;</div>
             <div class="col s12">
-                <a href="#/" class="modal-action modal-close waves-effect waves-red btn btn-s colorAccent"
+                <a href="#/" class="modal-action modal-close waves-effect waves-white btn dark-primary-color"
                    translate="commons.buttons.cancel"></a>
                 <button type="submit"
                         translate="commons.buttons.validate" ng-disabled="loginForm.$invalid" tabindex="8"
-                        ng-class="{'btn btn-s waves-effect waves-white disabled': loginForm.$invalid, 
-                                  'btn btn-s waves-effect waves-white colorSecondary': !loginForm.$invalid}">
+                        ng-class="{'btn waves-effect waves-white disabled': loginForm.$invalid, 
+                                  'btn waves-effect waves-white accent-color': !loginForm.$invalid}">
                 </button>
                 
             </div>
@@ -229,7 +210,7 @@
 </div>
 
 <!-- Modal forgot password -->
-<div id="modalForgotPwd" class="modal colorBckgModal colorMain-text">
+<div id="modalForgotPwd" class="modal light-primary-color">
     <div class="modal-header center-align">
         <h5>
             <span class="fa fa-sign-in"></span>
@@ -259,12 +240,12 @@
         <div class="row center">
             <div class="col s12">&nbsp;</div>
             <div class="col s12">
-                <a href="#/" class="modal-action modal-close waves-effect waves-red btn btn-s colorAccent"
+                <a href="#/" class="modal-action modal-close waves-effect waves-white btn dark-primary-color"
                    translate="commons.buttons.cancel"></a>
-                <button type="submit"  style="max-width:50%"
+                <button type="submit"
                         translate="commons.buttons.validate" ng-disabled="renewPwdForm.$invalid" tabindex="8"
-                        ng-class="{'btn btn-s waves-effect waves-white disabled': renewPwdForm.$invalid, 
-                                  'btn btn-s waves-effect waves-white colorSecondary': !renewPwdForm.$invalid}">
+                        ng-class="{'btn waves-effect waves-white disabled': renewPwdForm.$invalid, 
+                                  'btn waves-effect waves-white accent-color': !renewPwdForm.$invalid}">
                 </button>
                 
             </div>
@@ -273,7 +254,7 @@
 </div>
 
 <!-- Modal RenewPwd OK ! -->
-<div id="modalForgotPwdOK" class="modal colorBckgModal colorMain-text">
+<div id="modalForgotPwdOK" class="modal light-primary-color">
     <div class="modal-header center-align">
         <h5>
             <span class="fa fa-sign-in"></span>
@@ -292,13 +273,13 @@
     <div class="row center">
         <div class="col s12">&nbsp;</div>
         <div class="col s12">
-            <a href="#/" class="modal-action modal-close waves-effect waves-red btn colorSecondary"
+            <a href="#/" class="modal-action modal-close waves-effect waves-white btn dark-primary-color"
                translate="commons.buttons.close"></a>
         </div>
     </div>
 </div>
 
-<div id='notificationDropdown' class='notification dropdown-content blue-grey lighten-4'>
+<div id='notificationDropdown' class='notification dropdown-content light-primary-color'>
     <div class="row" style="padding-left: 10px">
         <div class="col s12"><a href="#/notifications"
                                 class="waves-effect waves-teal btn-flat blue-grey-text text-darken-2">

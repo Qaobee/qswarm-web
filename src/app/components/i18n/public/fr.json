@@ -16,9 +16,11 @@
         "unsubscribe": "Se désinscrire"
       }
     },
-    "area-2": {
+    "part-2": {
       "title": "Qaobee facilite l'acquisition et l'analyse de la donnée sportive",
-      "content": ""
+      "capture": "Captez",
+      "analyze": "Analysez",
+      "progress": "Progressez"     
     },
     "area-3": {
       "item-0": {

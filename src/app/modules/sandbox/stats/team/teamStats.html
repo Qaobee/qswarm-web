@@ -3,106 +3,96 @@
     <!-- space between header menu and body-->
     <div class="row"></div>
     
-<!-- view desktop -->
+    <!-- Entete-->
+    <div class="row dark-primary-color valign-wrapper">
+        <div class="col m10 s12 center">
+            <h5>{{team.label}}</h5>
+        </div>
+        <div class="col m2 s12 center">
+            <button class="btn accent-color right" ng-click="doTheBack()"
+            translate="commons.buttons.back"></button>
+        </div>    
+    </div>
+            
+    <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
     
-    <!-- Resume-->
+            
+            
+    <!-- Stats goals/sanction/use start -->
     <div class="row">
-        <div class="col s12">
-            
-            <div class="row colorMain">
-                <div class="col l2 m1 white-text center hide-on-small-only">
-                    &nbsp;
-                </div>
-                <div class="col l8 m10 s12 white-text center-align">
-                    <h5>{{team.label}}</h5>
-                </div>
-                <div class="col l2 m1 s12 white-text center-align">
-                    <h5>
-                    <a href="" class="white-text waves-effect waves-light" ng-click="doTheBack()">
-                        <i class="fa fa-arrow-left"></i>   
-                    </a>
-                    </h5>
-                </div>
-                <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
-            </div>
-            <!-- Stats goals/sanction/use start -->
-            <div class="row">
-                
-                <div class="col s12 m12 l4">
-                    <stats-goals bind-to-id="goalScored" 
-                                 label="goalScored" 
-                                 sandbox-id="meta.sandbox._id">
-                    </stats-goals>
-                </div>
-                <div class="col s12 hide-on-large-only"><br/></div>
-                <div class="col s12 m12 l4">
-                    <stats-goals bind-to-id="goalConceded" 
-                                 label="goalConceded" 
-                                 sandbox-id="meta.sandbox._id">
-                    </stats-goals>
-                </div>
-                <div class="col s12 hide-on-large-only"><br/></div>
-                <div class="col s12 m12 l4">
-                    <stats-sanction></stats-sanction>
-                </div>
-            </div>
-            <!-- Stats goals/sanction/use end -->
 
-            
-            <!-- Stats shoot efficiency Start -->
-            <div class="row">
-                <div class="col s12 left-align grey-text text-ligthen-4">
-                    <h5><small>{{'stats.efficiency.efficiency' | translate }}</small></h5>
-                </div>
-                
-                <div class="col l3 m6 s12">
-                    <stats-efficiency bindtoid="gaugeEfficiencyGlobal" 
-                        label="efficiencyTotal" padding="25">
-                    </stats-efficiency>
-                </div>
-                
-                <div class="col l3 m6 s12">
-                    <stats-efficiency bindtoid="gaugeEfficiency9m" 
-                        label="efficiency9m" values="'values9m'" padding="25">
-                    </stats-efficiency>
-                </div>
-                
-                <div class="col l3 m6 s12">
-                    <stats-efficiency bindtoid="gaugeEfficiency6m" 
-                        label="efficiency6m" values="'values6m'" padding="25">
-                    </stats-efficiency>
-                </div>
-                
-                <div class="col l3 m6 s12">
-                    <stats-efficiency bindtoid="gaugeEfficiency7m" 
-                        label="efficiency7m" values="'values7m'" padding="25">
-                    </stats-efficiency>
-                </div>
-            </div>
-            <!-- Stats shoot efficiency end -->
-            
-            <!-- Stats actions pos/neg Start -->
-            <div class="row"> 
-                <div class="col s12 left-align grey-text text-ligthen-4">
-                    <h5><small>{{'stats.actionTab.title' | translate }}</small></h5>
-                </div>
-                <stats-actions-pos-neg></stats-actions-pos-neg>
-            </div>
-            <!-- Stats actions pos/neg end -->
-            
-            <!-- Stats event's list Start -->
-            <div class="row">
-                <div class="col s12 left-align grey-text text-ligthen-4" ng-if="collectes.length > 0">
-                    <h5><small>{{'stats.teamLabels.listCollect' | translate }}</small></h5>
-                </div>
-                <ul>
-                    <li class="col s12 m6 l4" ng-repeat="collecte in collectes track by $index">
-                        <event-card event="collecte.eventRef"></event-card>
-                    </li>
-                </ul>
-                </div>
-            </div>
-            <!-- Stats event's list Start -->
+        <div class="col s12 m12 l4">
+            <stats-goals bind-to-id="goalScored" 
+                         label="goalScored" 
+                         sandbox-id="meta.sandbox._id">
+            </stats-goals>
+        </div>
+        <div class="col s12 hide-on-large-only"><br/></div>
+        <div class="col s12 m12 l4">
+            <stats-goals bind-to-id="goalConceded" 
+                         label="goalConceded" 
+                         sandbox-id="meta.sandbox._id">
+            </stats-goals>
+        </div>
+        <div class="col s12 hide-on-large-only"><br/></div>
+        <div class="col s12 m12 l4">
+            <stats-sanction></stats-sanction>
         </div>
     </div>
+    <!-- Stats goals/sanction/use end -->
+
+            
+    <!-- Stats shoot efficiency Start -->
+    <div class="row">
+        <div class="col s12 left-align grey-text text-ligthen-4">
+            <h5><small>{{'stats.efficiency.efficiency' | translate }}</small></h5>
+        </div>
+
+        <div class="col l3 m6 s12">
+            <stats-efficiency bindtoid="gaugeEfficiencyGlobal" 
+                label="efficiencyTotal" padding="25">
+            </stats-efficiency>
+        </div>
+
+        <div class="col l3 m6 s12">
+            <stats-efficiency bindtoid="gaugeEfficiency9m" 
+                label="efficiency9m" values="'values9m'" padding="25">
+            </stats-efficiency>
+        </div>
+
+        <div class="col l3 m6 s12">
+            <stats-efficiency bindtoid="gaugeEfficiency6m" 
+                label="efficiency6m" values="'values6m'" padding="25">
+            </stats-efficiency>
+        </div>
+
+        <div class="col l3 m6 s12">
+            <stats-efficiency bindtoid="gaugeEfficiency7m" 
+                label="efficiency7m" values="'values7m'" padding="25">
+            </stats-efficiency>
+        </div>
+    </div>
+    <!-- Stats shoot efficiency end -->
+
+    <!-- Stats actions pos/neg Start -->
+    <div class="row"> 
+        <div class="col s12 left-align grey-text text-ligthen-4">
+            <h5><small>{{'stats.actionTab.title' | translate }}</small></h5>
+        </div>
+        <stats-actions-pos-neg></stats-actions-pos-neg>
+    </div>
+    <!-- Stats actions pos/neg end -->
+
+    <!-- Stats event's list Start -->
+    <div class="row">
+        <div class="col s12 left-align grey-text text-ligthen-4" ng-if="collectes.length > 0">
+            <h5><small>{{'stats.teamLabels.listCollect' | translate }}</small></h5>
+        </div>
+        <ul>
+            <li class="col s12 m6 l4" ng-repeat="collecte in collectes track by $index">
+                <event-card event="collecte.eventRef"></event-card>
+            </li>
+        </ul>
+    </div>
+    <!-- Stats event's list Start -->
 </div>

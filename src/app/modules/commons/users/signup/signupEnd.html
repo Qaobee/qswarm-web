@@ -1,10 +1,10 @@
 
-<div class="colorMain-text">
+<div class="primary-text-color">
     
     
     <!-- Entete -->
-    <div class="row">
-        <div class="col s12 colorSecondary white-text center">
+    <div class="row colorSecondary white-text">
+        <div class="col s12  center">
             <h5 translate="signupEndPage.title"></h5>
         </div>
     </div>
@@ -12,9 +12,9 @@
     <div class="row container">
         <ul class="collapsible" data-collapsible="accordion">
             <li>
-                <div class="collapsible-header colorBckgModal active" ng-click="resertForm()">
+                <div class="collapsible-header light-primary-color active" ng-click="resertForm()">
                     <i class="material-icons md-36 colorAccent-text">search</i>
-                    <h5>{{'signupEndPage.tabFindClub.tabTitle' | translate }}</h5>
+                    <h5 style="margin-top:0px;">{{'signupEndPage.tabFindClub.tabTitle' | translate }}</h5>
                 </div>
                 <div class="collapsible-body">
 
@@ -118,12 +118,12 @@
                         <div class="row">&nbsp;</div>
                         <div class="row">
                             <div class="col s12 center">
-                                <button ng-click="openCancelModal()" class="waves-effect waves-white btn btn-s colorAccent">{{'commons.buttons.cancel' | translate }}</button>
+                                <a ng-click="openCancelModal()" class="waves-effect waves-white btn dark-primary-color">{{'commons.buttons.cancel' | translate }}</a>
 
                                 <button type="submit" ng-click="validateFindClubForm()"
                                     translate="commons.buttons.validate" ng-disabled="findClubForm.$invalid" tabindex="8"
-                                    ng-class="{'btn btn-s waves-effect waves-white disabled': findClubForm.$invalid, 
-                                              'btn btn-s waves-effect waves-white colorSecondary': !findClubForm.$invalid}">
+                                    ng-class="{'btn waves-effect waves-white disabled': findClubForm.$invalid, 
+                                              'btn waves-effect waves-white accent-color': !findClubForm.$invalid}">
                                 </button>
                             </div>
                         </div>
@@ -132,9 +132,9 @@
             </li>   
 
             <li>
-                <div class="collapsible-header colorBckgModal" ng-click="resertForm()">
+                <div class="collapsible-header light-primary-color" ng-click="resertForm()">
                     <i class="material-icons md-36 colorAccent-text">add</i>
-                    <h5>{{'signupEndPage.tabCreateClub.tabTitle' | translate }}</h5>
+                    <h5 style="margin-top:0px;">{{'signupEndPage.tabCreateClub.tabTitle' | translate }}</h5>
                 </div>
                 <div class="collapsible-body">
                     <form name="createStructureForm" class="container">
@@ -196,12 +196,12 @@
                         <div class="row">&nbsp;</div>
                         <div class="row">
                             <div class="col s12 center">
-                                <button ng-click="openCancelModal()" class="waves-effect waves-white btn btn-s colorAccent">{{'commons.buttons.cancel' | translate }}</button>
+                                <a ng-click="openCancelModal()" class="waves-effect waves-white btn dark-primary-color">{{'commons.buttons.cancel' | translate }}</a>
 
                                 <button type="submit" ng-click="createStructure()" translate="commons.buttons.validate" 
                                         ng-disabled="createStructureForm.$invalid" tabindex="8"
                                         ng-class="{'btn waves-effect waves-white disabled': createStructureForm.$invalid, 
-                                              'btn btn-s waves-effect waves-white colorSecondary': !createStructureForm.$invalid}">
+                                              'btn waves-effect waves-white accent-color': !createStructureForm.$invalid}">
                                 </button>
                             </div>
                         </div>
@@ -215,7 +215,7 @@
     
     
    <!-- Modal Cancel SignUp -->
-<div id="modalCancel" class="modal colorBckgModal colorMain-text">
+<div id="modalCancel" class="modal light-primary-color">
 	<div class="modal-header center-align">
         <h5>
             <span class="fa fa-sign-in"></span>
@@ -232,15 +232,15 @@
 	<div class="center">
         <div class="col s12">&nbsp;</div>
 		<div class="col s12">
-			<a href="" ng-click="closeCancelModal()" class="modal-action modal-close waves-effect waves-red btn btn-s colorAccent" translate="modalSignupCancel.button.no"></a>
-			<a href="" ng-click="cancelSignup()" class="modal-action modal-close waves-effect waves-red btn btn-s colorSecondary" translate="modalSignupCancel.button.yes"></a>
+			<a href="" ng-click="closeCancelModal()" class="modal-action modal-close waves-effect waves-red btn dark-primary-color" translate="modalSignupCancel.button.no"></a>
+			<a href="" ng-click="cancelSignup()" class="modal-action modal-close waves-effect waves-red btn accent-color" translate="modalSignupCancel.button.yes"></a>
 		</div>
         <div class="col s12">&nbsp;</div>
 	</div>
 </div>
 
    <!-- Modal Creation InProgress -->
-<div id="modalCreate" class="modal colorBckgModal colorMain-text">
+<div id="modalCreate" class="modal light-primary-color">
 	<div class="modal-header center-align">
         <h5>
             <span class="fa fa-sign-in"></span>

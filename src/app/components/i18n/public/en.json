@@ -1,117 +1,189 @@
 {
   "landing": {
-    "main-title" : "Collect everything",
-    "sub-title" : "The first sports data collection tool in real time",
-    "manual-btn" : "How it works",
-    "about": "About us",
-    "legals" : "Legal information",
-    "area-2" : {
-      "title" : "Operate on sports data",
-      "content" : "Qaobee accompanies you in the collection and analysis of sports data."
-    },
-    "contact" : {
-      "email" : "Contact us",
-      "visit" : "Visit us",
-      "newsletter" : "Stay tuned",
-      "popin" : {
-        "title": "Subscribe to the newsletter",
+    "main-title": "Captez et améliorez les perfs de vos joueurs",
+    "sub-title": "Qu'attendez-vous ?",
+    "manual-btn": "Mode d'emploi",
+    "connect": "Restons connectés",
+    "legals": "Mentions légales",
+    "contact": {
+      "email": "Contactez-nous",
+      "visit": "Rendez-nous visite",
+      "about": "A propos",
+      "popin": {
+        "title": "Inscrivez vous à la newsletter",
         "email": "E-mail",
-        "subscribe": "Subscribe",
-        "unsubscribe": "Unsubscribe"
+        "subscribe": "S'inscrire",
+        "unsubscribe": "Se désinscrire"
       }
     },
-    "area-3" : {
-      "item-0" : {
-        "title" : "Free download",
-        "content" : "Available in the App Store and Google Play, Qaobee is the ideal solution for the management of sports data. It works on both phones and tablets, in training and competition."
+    "part-2": {
+      "title": "Qaobee facilite l'acquisition et l'analyse de la donnée sportive",
+      "capture": "Captez",
+      "analyze": "Analysez",
+      "progress": "Progressez"     
+    },
+    "area-3": {
+      "item-0": {
+        "title": "Téléchargement gratuit",
+        "content": "Disponible dans l'App Store et Google Play, Qaobee est la solution idéale pour la gestion des données sportives. Elle fonctionne aussi bien sur téléphone que sur tablette, à l'entraînement comme en compétition."
       },
-      "item-1" :{
-        "title" : "Data management",
-        "content" : "Qaobee converts sports data into strategic information and integrates easily with your business to simplify your life."
+      "item-1": {
+        "title": "Valorisation des données",
+        "content": "Qaobee transforme les données sportives en informations stratégiques et vous aide dans la prise de décision."
       },
-      "item-2" : {
-        "title" : "Workspace",
-        "content" : "Personalized dashboard, effective management, sporting calendar, reports and analysis meetings, Qaobee takes care of everything to enable you to focus on the essential: the performance of your group."
+      "item-2": {
+        "title": "Espace de travail",
+        "content": "Tableau de bord personnalisé, gestion de l'effectif, calendrier sportif, rapports et analyse des rencontres, Qaobee s'occupe de tout pour vous permettre de vous concentrer sur l'essentiel : la performance de votre groupe."
       },
-      "item-3" : {
-        "title" : "Automatic updates",
-        "content" : "The proposed regular free updates give you the most convenient features to optimize the management of your team."
+      "item-3": {
+        "title": "Amélioration continue",
+        "content": "Les mises à jour proposées régulièrement vous offrent des fonctionnalités toujours plus riches pour optimiser la gestion de votre équipe."
       }
     },
-    "area-4" : {
-      "title" : "Soon available.",
-      "content" : "Qaobee will be downloaded from the App Store and Google Play."
+    "area-4": {
+      "title": "Prochainement disponible.",
+      "content": "Téléchargez notre application sur votre mobile Android"
     }
   },
   "contact": {
-    "title": "Contact us",
-    "title2": "Do not hesitate to contact us",
+    "title": "Contactez nous",
+    "title2": "N'hésitez pas à nous contacter",
     "label": {
-      "name": "Name",
-      "email": "Email",
-      "subject": "Subject",
+      "name": "Nom",
+      "email": "E-mail",
+      "subject": "Sujet",
       "message": "Message",
-      "office": "Our offices",
-      "support": "Customer service",
-      "success": "Your message has been sent."
+      "office": "Nos bureaux",
+      "support": "Service client",
+      "success": "Votre message a été envoyé."
     },
     "ph": {
-      "name": "Enter your name",
-      "email": "Enter your email",
+      "name": "Saisissez votre nom",
+      "email": "Saisissez votre email",
       "subject": {
-        "line1": "Choose :",
-        "line2": "Customer service",
+        "line1": "Choisissez :",
+        "line2": "Service client",
         "line3": "Suggestions",
-        "line4": "User support"
+        "line4": "Support utilisateur"
       },
       "message": "Message"
     },
     "button": {
-      "send": "Send"
+      "send": "Envoyer"
     }
   },
   "pricing": {
-    "title": "Offers guide",
-    "desc": "Qaobee is for coaches and handball clubs.",
-    "subscribe-btn": "Subscribe",
-    "soon-btn": "Soon",
-    "team-subscribe": "You are a club and you want to subscribe to Qaobee to your coaches, <a href=\"mailto:contact@qaobee.com\">contact us</a>",
+    "title": "Notre offre",
+    "desc": "Qaobee s'adresse aux entraîneurs et aux clubs<span style=\"vertical-align: super; font-size: 50%;\">*</span> de handball",
+    "subscribe-btn": "Souscrire",
+    "soon-btn": "Prochainement",
+    "team-subscribe": "(*) Vous êtes un club et vous souhaitez souscrire à Qaobee pour vos entraîneurs, <a href=\"mailto:contact@qaobee.com\">contactez nous</a>",
     "trial": {
-      "title": "Qaobee is free for a month, so enjoy it now",
-      "btn": "Try for free"
+      "title": "Qaobee est gratuit pendant un mois, alors profitez-en dès à présent",
+      "btn": "Essayer gratuitement"
     },
     "offers": {
       "standard": {
         "title": "Standard",
         "price": "8",
-        "period": "per month",
-        "desc": "The workspace you need to practice with ease.",
+        "period": "par mois",
+        "desc": "L'espace de travail dont vous avez besoin pour entraîner en toute simplicité.",
         "detail": {
-          "title": "Standard contents",
-          "sub-title": "All these features:",
-          "line1": "Personalized dashboard",
-          "line2": "Workforce Management",
-          "line3": "Sports calendar",
-          "line4": "Training",
-          "line5": "Real time data collection",
-          "line6": "Statistical reports"
+          "title": "Standard comprend",
+          "sub-title": "Toutes ces fonctionnalités :",
+          "line1": "Gestion de son effectif et de ses équipes",
+          "line2": "Agenda partagé",
+          "line3": "Partage de son espace de travail avec d'autres entraîneurs",
+          "line4": "Collecte de données en temps réel",
+          "line5": "Statistiques par joueur, par équipe, par match"
         }
       },
       "team": {
         "title": "Team",
         "price": "12",
-        "period": "per user / per month",
-        "desc": "For coaches who work in teams.",
+        "period": "par utilisateur / par mois",
+        "desc": "Pour les entraîneurs qui travaillent en équipe.",
         "detail": {
-          "title": "Team contents",
-          "sub-title": "All <b>Standard</b>, and :",
-          "line1": "Sharing work space with 5 coaches",
-          "line2": "Managing the collaborative workforce",
-          "line3": "Collaborative agenda",
-          "line4": "Collaborative training",
+          "title": "Team comprends",
+          "sub-title": "Tout <b>Standard</b>, et :",
+          "line1": "Partage de son espace de travail avec 5 entraîneurs",
+          "line2": "Gestion de l'effectif collaboratif",
+          "line3": "Agenda collaboratif",
+          "line4": "Entraînement collaboratif",
           "line5": "Support"
         }
       }
     }
+  },
+  "about": {
+      "title": "Nous sommes <b>QaoBee</b>",
+      "company": {
+        "title": "La société",
+        "h1": "Nous sommes <b>QaoBee</b>",
+        "h2": "Qui et ce que nous sommes",
+        "p1": {
+          "title": "Nous sommes <b>QaoBee</b>",
+          "content": "<b>QaoBee</b> est une société de logiciels qui développe et édite des solutions numériques pour la communauté sportive. Nous sommes un groupe de bretons qui apprécient le sport, les nouvelles technologies, l'innovation, le travail d'équipe et de construire des choses dont nous pouvons être fiers. Pendant la semaine, nous nous réunissons pour créer des solutions innovantes pour simplifier et optimiser l'activité des directeurs sportifs.",
+          "contentq": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+          "contenta": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+          "contento": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna."
+        },
+        "p2": {
+          "title": "Titre 2",
+          "content": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+          "title1": "Lorem ipsum",
+          "content1": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+          "title2": "Lorem ipsum",
+          "content2": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+          "title3": "Lorem ipsum",
+          "content3": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna."
+        }
+      },
+      "xavier": {
+        "title": "Xavier MARIN<br /><small>Co-founder & CTO</small>",
+        "desc": "Je suis le geek de la bande, un amoureux des nouvelles technologies et un développeur passionné.",
+        "email": "xavier.marin@qaobee.com",
+        "twitter": "XavMarin",
+        "github": "giwi"
+      },
+      "christophe": {
+        "title": "Christophe KERVELLA<br /><small>Co-founder & CPIO</small>",
+        "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        "email": "christophe.kervella@qaobee.com",
+        "twitter": "ChrisKrvla",
+        "github": ""
+      },
+      "pascal": {
+        "title": "Pascal PELERIN<br /><small>Co-founder & CEO</small>",
+        "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        "email": "pascal.pelerin@qaobee.com",
+        "twitter": "",
+        "github": ""
+      },
+      "mathieu": {
+        "title": "Mathieu GARZUEL<br /><small>Co-founder & CMO</small>",
+        "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        "email": "mathieu.garzuel@qaobee.com",
+        "twitter": "",
+        "github": ""
+      },
+      "jerome": {
+        "title": "Jérôme ROU&Eacute;<br /><small>Co-founder & CDO</small>",
+        "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        "email": "jerome.roue@qaobee.com",
+        "twitter": "JeromeRoue",
+        "github": ""
+      },
+      "you": {
+        "title": "Vous<br /><small>Serez vous le prochain?</small>",
+        "desc": "<a href='/#hiring'>Rejoignez nous</a>",
+        "email": "contact@qaobee.com",
+        "twitter": "Qaobee",
+        "github": ""
+      },
+      "team": {
+        "title": "L'équipe",
+        "h2": "Faites connaissance avec nous"
+      }
   }
 }
