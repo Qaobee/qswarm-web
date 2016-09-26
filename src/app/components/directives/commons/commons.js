@@ -71,6 +71,32 @@
             };
         })
 
+        .directive('ageCheck', function () {
+            return {
+                require: 'ngModel',
+                link: function (scope, elem, attr, ngModel) {
+                    ngModel.$parsers.unshift(function (value) {
+                        if (angular.isDefined(value)) {
+                            var valid = moment(value, "DD/MM/YYYY").add(scope.$eval(attr.minAge), 'y').isBefore(moment());
+                            ngModel.$setValidity('ageCheck', valid);
+                            return valid ? value : undefined;
+                        }
+                        return undefined;
+                    });
+                    ngModel.$formatters.unshift(function (value) {
+                        if (angular.isDefined(value)) {
+                            var dateElem = moment(value, "DD/MM/YYYY");
+                            if (value.indexOf('/') === -1) {
+                                dateElem = moment(value);
+                            }
+                            ngModel.$setValidity('ageCheck', dateElem.add(scope.$eval(attr.minAge), 'y').isBefore(moment()));
+                        }
+                        return value;
+                    });
+                }
+            };
+        })
+
 //
     ;
 }());

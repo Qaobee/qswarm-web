@@ -44,6 +44,7 @@
         "gender": "Gender is mandatory",
         "birthDate": "Birthdate is mandatory",
         "phone": "Phone number is mandatory",
+        "ageCheck": "you must be at least 16 years old"
       }
     }
   },

@@ -87,11 +87,13 @@
                                 <label for="userFirstname">{{'profilePage.form.label.firstname' | translate }} <span
                                         class="colorAccent-text">*</span></label>
                                 <input ng-model="user.firstname" id="userFirstname" name="userFirstname" type="text"
-                                       class="validate" required ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'"
-                                       ng-class="{ 'has-error' : profileForm.userFirstname.$invalid && !profileForm.userFirstname.$pristine }">
+                                       class="validate" required ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
                                 <span class="small colorAccent-text"
                                       ng-show="profileForm.userFirstname.$invalid && !profileForm.userFirstname.$pristine"
                                       translate="profilePage.form.messageControl.firstname"></span>
+                                <span class="small colorAccent-text invalid"
+                                      ng-if="profileForm.userFirstname.$error.pattern"
+                                      translate="signupStartPage.form.messageControl.badchars"></span>
                             </div>
                         </div>
 
@@ -106,6 +108,9 @@
                                 <span class="small colorAccent-text"
                                       ng-show="profileForm.userName.$invalid && !profileForm.userName.$pristine"
                                       translate="profilePage.form.messageControl.name"></span>
+                                <span class="small colorAccent-text invalid"
+                                      ng-if="profileForm.userFirstname.$error.pattern"
+                                      translate="signupStartPage.form.messageControl.badchars"></span>
                             </div>
                         </div>
                     </div>
@@ -139,11 +144,15 @@
                                         class="colorAccent-text">*</span></label>
                                 <input id="profilBirthdate" name="profilBirthdate" type="text" class="datepicker"
                                        ng-model="user.birthdate" required
+                                       age-check min-age="{{16}}"
                                        ng-class="{ 'has-error' : profileForm.profilBirthdate.$invalid && !profileForm.profilBirthdate.$pristine }"/>
-
                                 <span class="small colorAccent-text"
-                                      ng-show="profileForm.profilBirthdate.$invalid && !profileForm.profilBirthdate.$pristine"
+                                      ng-if="profileForm.profilBirthdate.$error.required && !profileForm.profilBirthdate.$pristine"
                                       translate="profilePage.form.messageControl.birthDate">
+		                        </span>
+                                <span class="small colorAccent-text"
+                                      ng-if="profileForm.profilBirthdate.$error.ageCheck && !profileForm.profilBirthdate.$pristine"
+                                      translate="profilePage.form.messageControl.ageCheck">
 		                        </span>
                             </div>
                         </div>
