@@ -85,15 +85,45 @@
             $scope.detailsCountry = '';
 
             $scope.optionsCity = {
-                types: ['(cities)']
+                types: '(cities)'
             };
             $scope.detailsCity = '';
 
+            $scope.optionsAdr = null;
+            $scope.detailsAdr = '';
 
             /* Retrieve list of positions type */
             $scope.getListPositionType = function () {
                 activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.sandbox.activityId, $scope.meta.sandbox.structure.country._id, 'listPositionType').success(function (data) {
                     $scope.positionsType = data;
+                    $translate(['commons.format.date.listMonth',
+                        'commons.format.date.listMonthShort',
+                        'commons.format.date.listWeekdaysFull',
+                        'commons.format.date.listWeekdaysShort',
+                        'commons.format.date.listWeekdaysLetter',
+                        'commons.format.date.today',
+                        'commons.format.date.clear',
+                        'commons.format.date.close',
+                        'commons.format.date.label',
+                        'commons.format.date.pattern'
+                    ]).then(function (translations) {
+                        angular.element('#playerBirthdate').pickadate({
+                            format: translations['commons.format.date.label'],
+                            formatSubmit: translations['commons.format.date.pattern'],
+                            monthsFull: translations['commons.format.date.listMonth'].split(','),
+                            monthShort: translations['commons.format.date.listMonthShort'].split(','),
+                            weekdaysFull: translations['commons.format.date.listWeekdaysFull'].split(','),
+                            weekdaysLetter: translations['commons.format.date.listWeekdaysLetter'].split(','),
+                            weekdaysShort: translations['commons.format.date.listWeekdaysShort'].split(','),
+                            selectYears: 100,
+                            selectMonths: true,
+                            max: true,
+                            today: translations['commons.format.date.today'],
+                            clear: translations['commons.format.date.clear'],
+                            close: translations['commons.format.date.close']
+                        })
+                            .pickadate('picker');
+                    });
                 });
             };
 
@@ -141,33 +171,6 @@
             };
             /* Primary, check if user connected */
             $scope.checkUserConnected();
-            $translate(['commons.format.date.listMonth',
-                'commons.format.date.listMonthShort',
-                'commons.format.date.listWeekdaysFull',
-                'commons.format.date.listWeekdaysShort',
-                'commons.format.date.listWeekdaysLetter',
-                'commons.format.date.today',
-                'commons.format.date.clear',
-                'commons.format.date.close',
-                'commons.format.date.label',
-                'commons.format.date.pattern'
-            ]).then(function (translations) {
-                angular.element('#playerBirthdate').pickadate({
-                        format: translations['commons.format.date.label'],
-                        formatSubmit: translations['commons.format.date.pattern'],
-                        monthsFull: translations['commons.format.date.listMonth'].split(','),
-                        monthShort: translations['commons.format.date.listMonthShort'].split(','),
-                        weekdaysFull: translations['commons.format.date.listWeekdaysFull'].split(','),
-                        weekdaysLetter: translations['commons.format.date.listWeekdaysLetter'].split(','),
-                        weekdaysShort: translations['commons.format.date.listWeekdaysShort'].split(','),
-                        selectYears: 100,
-                        selectMonths: true,
-                        max: true,
-                        today: translations['commons.format.date.today'],
-                        clear: translations['commons.format.date.clear'],
-                        close: translations['commons.format.date.close']
-                    })
-                    .pickadate('picker');
-            });
+
         });
 }());
