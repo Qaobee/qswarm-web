@@ -49,7 +49,7 @@
             <div class="col s12 m4 input-field">
                 <input id="login" name="login" type="text" class="validate" ng-model="signup.account.login" required tabindex="3"
                        ng-class="{ 'has-error' : signupStartPageForm.login.$invalid && !signupStartPageForm.login.$pristine }"
-                       ng-pattern="'[a-zA-Z]+'">
+                       ng-pattern="'[a-zA-Z0-9_\-]{3,}'">
                 <label for="login">
                     {{'signupStartPage.form.label.login' | translate }}
                     <span class="colorAccent-text">*</span>
