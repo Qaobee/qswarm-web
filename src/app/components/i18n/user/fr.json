@@ -1,213 +1,208 @@
 {
-     "profileMainPage": {
-        "tabs": {
-          "account": "Mon compte",
-          "sandbox": "Mes espaces de travail",
-          "preference": "Mes préférences",
-          "profil": "Mon profil",
-          "password": "Mot de passe",
-          "billing": "Abonnement",
-          "notification": "Notifications",
-          "settings": "Paramétrage",
-          "sbSharing": "Invitations",
-          "sbMembers": "Gestion des utilisateurs",
-          "sbDefault" : "Espace de travail par défaut",
-          "sbSwitch" : "Changer d'espace de travail",
-          "notificationSettings" : "Paramètrage des notifications"
-        }
+  "profileMainPage": {
+    "tabs": {
+      "account": "Mon compte",
+      "sandbox": "Mes espaces de travail",
+      "preference": "Mes préférences",
+      "profil": "Mon profil",
+      "password": "Mot de passe",
+      "billing": "Abonnement",
+      "notification": "Notifications",
+      "settings": "Paramétrage",
+      "sbSharing": "Invitations",
+      "sbMembers": "Gestion des utilisateurs",
+      "sbDefault": "Espace de travail par défaut",
+      "sbSwitch": "Changer d'espace de travail",
+      "notificationSettings": "Paramètrage des notifications"
+    }
+  },
+  "sbMemberMngtPage": {
+    "title": "Gestion des utilisateurs de mon espace de travail",
+    "label": {
+      "listMember": "Liste des utilisateurs",
+      "memberActif": "Membre activé",
+      "on": "Oui",
+      "off": "Non",
+      "invitePending": "Invitation en cours"
     },
-    "sbMemberMngtPage":{
-        "title": "Gestion des utilisateurs de mon espace de travail",
+    "messageControl": {
+      "memberAdd": "{{firstname}} {{name}} a été ajouté comme utilisateur à mon espace de travail",
+      "memberremove": "{{firstname}} {{name}} a été désactivé à mon espace de travail"
+    }
+  },
+  "billingPage": {
+    "title": "Gestion des abonnements",
+    "label": {
+      "billingdate": "Date de paiement",
+      "billingnumber": "Numéro de facture",
+      "product": "Abonnement",
+      "price": "Prix",
+      "activity": "Activité",
+      "pay": "Souscrire",
+      "cardNumber": "N° de carte"
+    }
+  },
+  "profilePage": {
+    "form": {
+      "label": {
+        "avatar": "Déposer la photo ici",
+        "name": "Nom",
+        "firstname": "Prénom",
+        "login": "Identifiant",
+        "email": "e-Mail",
+        "address": "Adresse",
+        "birthdate": "Date de naissance",
+        "gender": {
+          "title": "Civilité",
+          "female": "Femme",
+          "male": "Homme"
+        }
+      },
+      "messageControl": {
+        "emailDirty": "Format email invalide",
+        "name": "Le nom est obligatoire",
+        "firstname": "Le prénom est obligatoire",
+        "gender": "Le genre est obligatoire",
+        "birthDate": "La date de naissance est obligatoire",
+        "phone": "Le numéro de téléphone est obligatoire"
+      }
+    }
+  },
+  "profilePwdPage": {
+    "form": {
+      "title": "",
+      "label": {
+        "password": "Nouveau mot de passe",
+        "passwordConfirm": "Confirmation nouveau mot de passe"
+      },
+      "messageControl": {
+        "password": {
+          "short": "Le mot de passe que vous avez choisi est trop court",
+          "different": "Les mots de passe ne correspondent pas"
+        },
+        "passwdStrength": "Password strength"
+      },
+      "success": "Votre mot de passe est mis à jour"
+    }
+  },
+  "signupStartPage": {
+    "title1": "Captez l'instant",
+    "title2": "Le premier assistant personnel de collecte et d'analyse en temps réel de données sportives",
+    "form": {
+      "title": "Inscription",
+      "label": {
+        "name": "Nom",
+        "firstname": "Prénom",
+        "login": "Identifiant",
+        "email": "e-Mail",
+        "password": "Mot de passe",
+        "passwordConfirm": "Confirmation",
+        "title": "Inscrivez-vous sur <b>Qaobee</b>"
+      },
+      "messageControl": {
+        "emailDirty": "Format email invalide",
+        "badchars": "Vous avez saisi des caractères non autorisés",
+        "nonunique": "Le nom d'utilisateur que vous avez choisi existe déjà",
+        "password": {
+          "short": "Le mot de passe que vous avez choisi est trop court",
+          "different": "Les mots de passe ne correspondent pas"
+        },
+        "passwdStrength": "Robustesse du mot de passe",
+        "unknown": "Erreur inconnue",
+        "CAPTCHA_EXCEPTION": "Le code de vérification est erroné"
+      }
+    }
+  },
+  "signupEndPage": {
+    "title": "Création de votre espace de travail",
+    "tabFindClub": {
+      "tabTitle": "Associez votre club à votre espace de travail",
+      "form": {
         "label": {
-            "listMember": "Liste des utilisateurs",
-            "memberActif": "Membre activé",
-            "on": "Oui",
-            "off": "Non",
-            "invitePending": "Invitation en cours"
-        },
-        "messageControl": {
-            "memberAdd": "{{firstname}} {{name}} a été ajouté comme utilisateur à mon espace de travail",
-            "memberremove": "{{firstname}} {{name}} a été désactivé à mon espace de travail" 
+          "city": "Indiquez votre ville",
+          "selectClub": "Sélectionnez votre club",
+          "clubname": "Nom",
+          "clubAddress": "Adresse",
+          "categoryAge": "Choisissez une catégorie d'âge"
         }
+      },
+      "list": {
+        "empty": "Aucun club trouvé",
+        "inProgress": "Recherche en cours...",
+        "create": "Créer un club"
+      },
+      "ph": {
+        "structureMandatory": "Un club doit être choisi",
+        "createLabelMandatory": "Nom du club à créer obligatoire",
+        "createAddressPlaceMandatory": "Rue du club à créer obligatoire",
+        "createAddressMandatory": "Adresse du club à créer obligatoire",
+        "categoryAgeMandatory": "La catégorie d'âge est obligatoire"
+      }
     },
-    
-    "billingPage":{
-        "title": "Gestion des abonnements",
-        "label": {
-            "billingdate": "Date de paiement",
-            "billingnumber": "Numéro de facture",
-            "product": "Abonnement",
-            "price": "Prix",
-            "activity": "Activité",
-            "pay": "Souscrire",
-            "cardNumber": "N° de carte"
-        }
+    "tabCreateClub": {
+      "tabTitle": "ou créer votre propre club",
+      "messageControl": {
+        "labelControl": "Le libellé du club est obligatoire et doit contenir au moins 3 caratères"
+      }
     },
-    
-    "profilePage": {
-        "form": {
-            "label": {
-                "avatar": "Déposer la photo ici",
-                "name": "Nom",
-                "firstname": "Prénom",
-                "login": "Identifiant",
-                "email": "e-Mail",
-                "address": "Adresse",
-                "birthdate": "Date de naissance",
-                "gender": {
-                    "title" : "Civilité",
-                    "female" : "Femme",
-                    "male" : "Homme"
-                }
-            },
-            "messageControl": {
-                "emailDirty": "Format email invalide",
-                "name": "Le nom est obligatoire",
-                "firstname": "Le prénom est obligatoire",
-                "gender": "Le genre est obligatoire",
-                "birthDate": "La date de naissance est obligatoire",
-                "phone": "Le numéro de téléphone est obligatoire"
-            }
-        }
+    "errorPage": {
+      "title": "Erreur !",
+      "text": "La validation de votre inscription n'a pu aboutir pour la raison suivante : ",
+      "buttonHome": "Accueil",
+      "ph": {
+        "unknown": "Erreur inconnue",
+        "noMessage": "Pas de message"
+      }
+    }
+  },
+  "signupStartDonePage": {
+    "title": "Compte créé !",
+    "line1": "Votre inscription est presque terminée !",
+    "line2": "Vous allez recevoir d'ici quelques minutes un e-mail pour valider votre compte Qaobee.",
+    "line3": "A très vite sur qaobee.com !",
+    "signature": "L'équipe Qaobee",
+    "buttonHome": "Accueil"
+  },
+  "modalSignupCancel": {
+    "title": "Abandon",
+    "question": "Etes-vous certain de vouloir interrompre votre inscription ?",
+    "button": {
+      "yes": "Oui",
+      "no": "Non"
+    }
+  },
+  "modalForgotPwdOk": {
+    "line1": "Votre demande de regénération de mot de passe est en cours !",
+    "line2": "Vous allez recevoir d'ici quelques minutes un e-mail pour modifier vos accès à votre compte Qaobee.",
+    "line3": "A très vite sur qaobee.com !"
+  },
+  "modalCreate": {
+    "title": "Création en cours...",
+    "stepCreateSpace": "Création de votre espace",
+    "stepCreatePlayers": "Création des joueurs",
+    "stepCreateTeam": "Création de votre équipe",
+    "stepCreateAdversaryTeam": "Création d'une équipe adverse",
+    "stepValidateAccount": "Validation de votre abonnement",
+    "stepFinished": "C'est prêt !"
+  },
+  "endPage": {
+    "title": "Compte créé !",
+    "text": {
+      "1": "Félicitations !",
+      "2": "Vous venez de finaliser la création de votre compte Qaobee !",
+      "3": "Pour vous aider à débuter, nous vous avons créé une équipe et un effectif.",
+      "4": "Connectez-vous dès à présent pour découvrir votre nouvel espace de travail !",
+      "signature": "L'équipe Qaobee."
     },
-    "profilePwdPage": {
-        "form": {
-            "title": "",
-            "label": {
-                "password": "Nouveau mot de passe",
-                "passwordConfirm": "Confirmation nouveau mot de passe"
-            },
-            "messageControl": {
-                "password": {
-                    "short": "Le mot de passe que vous avez choisi est trop court",
-                    "different": "Les mots de passe ne correspondent pas"
-                },
-                "passwdStrength": "Password strength"
-            },
-            "success": "Votre mot de passe est mis à jour"
-        }
-    },
-    "signupStartPage": {
-        "title1": "Captez l'instant",
-        "title2": "Le premier assistant personnel de collecte et d'analyse en temps réel de données sportives",
-        "form": {
-            "title": "Inscription",
-            "label": {
-                "name": "Nom",
-                "firstname": "Prénom",
-                "login": "Identifiant",
-                "email": "e-Mail",
-                "password": "Mot de passe",
-                "passwordConfirm": "Confirmation",
-                "title": "Inscrivez-vous sur <b>Qaobee</b>"
-            },
-            "messageControl": {
-                "emailDirty": "Format email invalide",
-                "nonunique": "Le nom d'utilisateur que vous avez choisi existe déjà",
-                "password": {
-                    "short": "Le mot de passe que vous avez choisi est trop court",
-                    "different": "Les mots de passe ne correspondent pas"
-                },
-                "passwdStrength": "Robustesse du mot de passe",
-                "unknown": "Erreur inconnue",
-                "CAPTCHA_EXCEPTION": "Le code de vérification est erroné"
-            }    
-        }
-    },
-    
-    "signupEndPage": {
-        "title": "Création de votre espace de travail",
-        "tabFindClub" : {
-            "tabTitle":"Associez votre club à votre espace de travail",
-            "form":{
-                "label" : {
-                    "city" : "Indiquez votre ville",
-                    "selectClub" : "Sélectionnez votre club",
-                    "clubname" : "Nom",
-                    "clubAddress" : "Adresse",
-                    "categoryAge" : "Choisissez une catégorie d'âge"
-                }
-            },
-            "list" : {
-                "empty" : "Aucun club trouvé",
-                "inProgress" : "Recherche en cours...",
-                "create" : "Créer un club"
-            },
-            "ph" : {
-                "structureMandatory" : "Un club doit être choisi",
-                "createLabelMandatory" : "Nom du club à créer obligatoire",
-                "createAddressPlaceMandatory" : "Rue du club à créer obligatoire",
-                "createAddressMandatory" : "Adresse du club à créer obligatoire",
-                "categoryAgeMandatory" : "La catégorie d'âge est obligatoire"
-            }
-        },
-        "tabCreateClub" : {
-            "tabTitle":"ou créer votre propre club",
-            "messageControl": {
-                "labelControl" : "Le libellé du club est obligatoire et doit contenir au moins 3 caratères"
-            }
-        },
-        "errorPage" : {
-            "title" : "Erreur !",
-            "text" : "La validation de votre inscription n'a pu aboutir pour la raison suivante : ",
-            "buttonHome" : "Accueil",
-            "ph" : {
-                "unknown" : "Erreur inconnue",
-                "noMessage" : "Pas de message"
-            }
-        }
-    },
-    
-	"signupStartDonePage" : {
-        "title" : "Compte créé !",
-		"line1" : "Votre inscription est presque terminée !",
-		"line2" : "Vous allez recevoir d'ici quelques minutes un e-mail pour valider votre compte Qaobee.",
-		"line3" : "A très vite sur qaobee.com !",
-        "signature" : "L'équipe Qaobee",
-        "buttonHome" : "Accueil" 
-	},
-	"modalSignupCancel" : {
-		"title" : "Abandon",
-		"question" : "Etes-vous certain de vouloir interrompre votre inscription ?",
-		"button" : {
-			"yes" : "Oui",
-			"no"  : "Non"
-		}
-	},
-    
-    "modalForgotPwdOk" : {
-		"line1" : "Votre demande de regénération de mot de passe est en cours !",
-		"line2" : "Vous allez recevoir d'ici quelques minutes un e-mail pour modifier vos accès à votre compte Qaobee.",
-		"line3" : "A très vite sur qaobee.com !"
-	},
-	"modalCreate" : {
-		"title" : "Création en cours...",
-		"stepCreateSpace" : "Création de votre espace",
-		"stepCreatePlayers" : "Création des joueurs",
-		"stepCreateTeam" : "Création de votre équipe",
-		"stepCreateAdversaryTeam" : "Création d'une équipe adverse",
-		"stepValidateAccount" : "Validation de votre abonnement",
-		"stepFinished" : "C'est prêt !"
-	},
-        
-	"endPage" : {
-		"title" : "Compte créé !",
-		"text" : {
-			"1" : "Félicitations !",
-			"2" : "Vous venez de finaliser la création de votre compte Qaobee !",
-			"3" : "Pour vous aider à débuter, nous vous avons créé une équipe et un effectif.",
-			"4" : "Connectez-vous dès à présent pour découvrir votre nouvel espace de travail !",
-			"signature" : "L'équipe Qaobee."
-		}, 
-		"buttonHome" : "Accueil" 
-	},
-	"renewPasswdPage" : {
-		"title" : "Regénération de mot de passe",
-		"line1" : "Veuillez inscrire un nouveau mot de passe",
-		"popup" : {
-			"success" : "Votre mot de passe est mis à jour",
-			"errorUnknown" : "Erreur inconnue",
-			"errorCode" : "Codes invalides"
-		}
-	}
+    "buttonHome": "Accueil"
+  },
+  "renewPasswdPage": {
+    "title": "Regénération de mot de passe",
+    "line1": "Veuillez inscrire un nouveau mot de passe",
+    "popup": {
+      "success": "Votre mot de passe est mis à jour",
+      "errorUnknown": "Erreur inconnue",
+      "errorCode": "Codes invalides"
+    }
+  }
 }

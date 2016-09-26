@@ -26,6 +26,9 @@
                     {{'signupStartPage.form.label.firstname' | translate }}
                     <span class="colorAccent-text">*</span>
                 </label>
+                <span class="small colorAccent-text invalid"
+                      ng-if="signupStartPageForm.firstname.$error.pattern"
+                      translate="signupStartPage.form.messageControl.badchars"></span>
             </div>
 
             <div class="col m2 hide-on-small-only">&nbsp;</div>
@@ -37,6 +40,9 @@
                     {{'signupStartPage.form.label.name' | translate }}
                     <span class="colorAccent-text">*</span>
                 </label>
+                <span class="small colorAccent-text invalid"
+                      ng-if="signupStartPageForm.name.$error.pattern"
+                      translate="signupStartPage.form.messageControl.badchars"></span>
             </div>
 
             <div class="col m1 hide-on-small-only">&nbsp;</div>
@@ -53,6 +59,9 @@
                     {{'signupStartPage.form.label.login' | translate }}
                     <span class="colorAccent-text">*</span>
                 </label>
+                <span class="small colorAccent-text invalid"
+                      ng-if="signupStartPageForm.login.$error.pattern"
+                      translate="signupStartPage.form.messageControl.badchars"></span>
             </div>
 
             <div class="col m2 hide-on-small-only">&nbsp;</div>
