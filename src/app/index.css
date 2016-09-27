@@ -314,6 +314,7 @@ footer.page-footer {
     line-height: normal;
     font-size: 1em;
     font-weight: normal;
+    word-break: normal;
 }
 
 #toast-container .toast {
