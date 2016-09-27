@@ -85,8 +85,8 @@
     background: url("../assets/images/handball/Home2.jpg") center 60%;
     max-height: 100vh;
     width: 100%;
-    height: 600px;
-    padding: 10vh 10vw 10vh 10vw;
+    height: 100vh;
+    padding: 5vh 10vw 10vh 10vw;
     text-align: center;
     position: relative;
 }
@@ -313,14 +313,11 @@ span.badge {
     position: relative;
 }
 
+
 footer.page-footer {
     margin: 0;
-    position: absolute;
-    width: 100%;
 }
-main {
-    margin-bottom: -20px;
-}
+
 .visible-nav {
     z-index: 30 !important;
     position: relative;
@@ -334,18 +331,19 @@ main {
     opacity: 0;
 }
 
-/* Toast */
+
+/* Toast */ 
 .toast-message {
     line-height: normal;
     font-size: 1em;
     font-weight: normal;
-    word-break: normal;
 }
 
 #toast-container .toast {
     display: block;
     height: auto;
 }
+
 
 /* Custom style for angular-file-uploader */
 .my-drop-zone {
@@ -360,6 +358,17 @@ main {
     border: dotted 3px green;
 }
 
+/*
+canvas {
+    background-color: #f3f3f3;
+    -webkit-box-shadow: 3px 3px 3px 0 #e3e3e3;
+    -moz-box-shadow: 3px 3px 3px 0 #e3e3e3;
+    box-shadow: 3px 3px 3px 0 #e3e3e3;
+    border: 1px solid #c3c3c3;
+    height: 100px;
+    margin: 6px 0 0 6px;
+}
+*/
 /* Custom style for angular-selection-model */
 /* Selection Model Styles */
 ul.fancy {
@@ -396,6 +405,7 @@ table.super-fancy tr.foobar {
 .banner-container {
     background: linear-gradient(to bottom, #f2f5f6 0, #ede3e3 46%, #ddd 100%);
     color: #666;
+    font-family: Arial;
     text-align: center;
 }
 
@@ -404,7 +414,7 @@ table.super-fancy tr.foobar {
 }
 
 .banner-container div.row div.col {
-    margin: 0;
+    margin: 0px;
 }
 
 .banner-close {
@@ -452,7 +462,7 @@ table.super-fancy tr.foobar {
 
 /** responsive RECAPTCHA*/
 #custom_recaptcha_widget .col {
-    padding: 0;
+    padding: 0px;
 }
 
 #custom_recaptcha_widget img#recaptcha_challenge_image,
@@ -808,7 +818,7 @@ table.super-fancy tr.foobar {
 }
 
 .widget-content {
-    margin: 0;
+    margin: O;
     padding: 5px;
     width: 100%;
 }
@@ -1038,42 +1048,4 @@ table.super-fancy tr.foobar {
 
 .cnil-main p {
     text-align: justify;
-}
-
-.card-image {
-    height: 200px;
-    filter: grayscale(100%);
-    border-top-left-radius: 12px !important;
-    border-top-right-radius: 12px !important;
-}
-
-.card-reveal img {
-    height: 150px;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    margin-left: auto;
-    margin-right: auto;
-    filter: grayscale(100%);
-}
-
-.card-reveal p {
-    text-align: left;
-}
-
-.close-card {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-}
-
-.aboutUs .card-content {
-    min-height: 170px
-}
-
-.aboutUs .card {
-    border-radius: 8px;
-}
-.aboutUs .card-transluscent {
-    background-color: rgba(255,255,255,0.8);
-    padding: 20px;
-    margin: 23px;
 }
