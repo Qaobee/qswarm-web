@@ -1093,6 +1093,9 @@ table.super-fancy tr.foobar {
 .aboutUs .card-content {
     min-height: 170px
 }
+.aboutUs .card-reveal {
+    text-align: center;
+}
 
 .aboutUs .card {
     border-radius: 8px;
