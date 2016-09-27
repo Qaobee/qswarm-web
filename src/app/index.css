@@ -86,15 +86,25 @@
 }
 
 .landing {
-    background: url("../assets/images/handball/Home2.jpg") center 60%;
     max-height: 100vh;
     width: 100%;
     height: 100vh;
     padding: 5vh 10vw 10vh 10vw;
     text-align: center;
     position: relative;
+    background: url("../assets/images/handball/Home2.jpg") fixed center 60%;
+    background-size: cover;
 }
 
+.landing h2, .landing h4, .landing h5, .about-container h2 {
+    text-shadow: -1px -1px 3px rgba(0, 0, 0, 0.5),
+    1px -1px 3px rgba(0, 0, 0, 0.5),
+    -1px 1px 3px rgba(0, 0, 0, 0.5),
+    1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+.price h4 {
+    text-shadow: none;
+}
 .landing-part-two {
     text-align: center;
     position: relative;
@@ -110,10 +120,10 @@
     margin-bottom: 20px;
 }
 
-.aboutUs .about-bg{
+.aboutUs .about-bg {
     max-height: 100%;
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
     text-align: center;
     background: url("../assets/images/backAbout.jpg") fixed;
     background-size: cover;
@@ -122,11 +132,13 @@
     bottom: 0;
     margin: 0;
     padding: 0;
+    filter: grayscale(70%);
 }
+
 .aboutUs .about-container {
     width: 80%;
     background-color: transparent;
-    position:relative;
+    position: relative;
     height: auto;
     margin-right: auto;
     margin-left: auto;
@@ -317,7 +329,6 @@ span.badge {
     position: relative;
 }
 
-
 footer.page-footer {
     margin: 0;
     position: absolute;
@@ -337,8 +348,7 @@ footer.page-footer {
     opacity: 0;
 }
 
-
-/* Toast */ 
+/* Toast */
 .toast-message {
     line-height: normal;
     font-size: 1em;
@@ -350,7 +360,6 @@ footer.page-footer {
     display: block;
     height: auto;
 }
-
 
 /* Custom style for angular-file-uploader */
 .my-drop-zone {
@@ -1077,8 +1086,9 @@ table.super-fancy tr.foobar {
 .aboutUs .card {
     border-radius: 8px;
 }
+
 .aboutUs .card-transluscent {
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     margin: 25px;
 }
