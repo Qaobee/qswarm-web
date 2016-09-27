@@ -6,10 +6,10 @@
     <!-- Entete -->
     <div class="row">
         <div class="col s12">
-            <div class="row colorMain white-text center">
+            <div class="row dark-primary-color center">
                 <div class="col m3 s12 center">
-                    <avatar person="user" width="'100px'" collection="User"></avatar>
-                    <span class="small" translate="profile.label.avatar"></span>
+                    <avatar person="user" width="'80px'" collection="User"></avatar>
+                    <span class="small" translate="profilePage.form.label.avatar"></span>
                 </div>
                 <div class="col m7 s12">
                     <br/>
@@ -24,40 +24,36 @@
     </div>
     
     <div class="row">
-        <div class="col s12 m4 l4">
-            <div class="card white colorMain-text">
-                <div class="card-content center-align colorMain">
-                    <span class="card-content title white-text" translate="profileMainPage.tabs.account"></span>
+        <div class="col s12">
+            <div class="card light-primary-color">
+                <div class="card-content center-align dark-primary-color">
+                    <span class="card-content title" translate="profileMainPage.tabs.account"></span>
                 </div>
                 <div class="card-content center-align">
                     <div class="row">
-                        <div class="col s12">
-                            <a href="#/private/profile/writeProfile" class="waves-effect waves-light colorAccent-text">
+                        <div class="col m4 s12">
+                            <br/>
+                            <a href="#/private/profile/writeProfile" class="waves-effect waves-light accent-text-color">
                                 <i class="material-icons md-48">account_box</i>
                             </a>
                             <br/>
                             {{'profileMainPage.tabs.profil' | translate }}
                             <br/>
-                            <br/>
                         </div>
 
-                        <div class="col s12 divider"></div>
-
-                        <div class="col s12">
+                        <div class="col m4 s12">
                             <br/>
-                            <a href="#/private/profile/changePwd" class="waves-effect waves-light colorAccent-text">
+                            <a href="#/private/profile/changePwd" class="waves-effect waves-light accent-text-color">
                                 <i class="material-icons md-48">https</i>
                             </a>
                             <br/>
                             {{'profileMainPage.tabs.password' | translate }}
                             <br/>
-                            <br/>
                         </div>
-                        <div class="col s12 divider"></div>
 
-                        <div class="col s12">
+                        <div class="col m4 s12">
                             <br/>
-                            <a href="#/private/billing" class="waves-effect waves-light colorAccent-text">
+                            <a href="#/private/billing" class="waves-effect waves-light accent-text-color">
                                 <i class="material-icons md-48">verified_user</i>
                             </a>
                             <br/>
@@ -71,27 +67,26 @@
         </div>
             
             
-        <div class="col s12 m4 l4">
-            <div class="card white colorMain-text">
-                <div class="card-content center-align colorMain">
-                    <span class="card-content title white-text">{{'profileMainPage.tabs.sandbox' | translate }}</span>
+        <div class="col m6 s12">
+             <div class="card light-primary-color">
+                <div class="card-content center-align dark-primary-color">
+                    <span class="card-content title">{{'profileMainPage.tabs.sandbox' | translate }}</span>
                 </div>
                 <div class="card-content center-align">
                     <div class="row">
-                        <div class="col s12">
-                            <a href="#/private/sbSwitch" class="waves-effect waves-light colorAccent-text">
+                        <div class="col m6 s12">
+                            <br/>
+                            <a href="#/private/sbSwitch" class="waves-effect waves-light accent-text-color">
                                 <i class="material-icons md-48">rotate_90_degrees_ccw</i>
                             </a>
                             <br/>
                             {{'profileMainPage.tabs.sbSwitch' | translate }}
                             <br/>
-                            <br/>
                         </div>
-                        <div class="col s12 divider"></div>
 
-                        <div class="col s12">
+                        <div class="col m6 s12">
                             <br/>
-                            <a href="#/private/sbMemberMgnt" class="waves-effect waves-light colorAccent-text">
+                            <a href="#/private/sbMemberMgnt" class="waves-effect waves-light accent-text-color">
                                 <i class="material-icons md-48">group</i>
                             </a>
                             <br/>
@@ -104,29 +99,25 @@
             </div>
         </div>
         
-        <div class="col s12 m4 l4">
-            <div class="card white colorMain-text">
-                <div class="card-content center-align colorMain">
-                    <span class="card-content title white-text">{{'profileMainPage.tabs.preference' | translate }}</span>
+        <div class="col m6 s12">
+             <div class="card light-primary-color">
+                <div class="card-content center-align dark-primary-color">
+                    <span class="card-content title">{{'profileMainPage.tabs.preference' | translate }}</span>
                 </div>
                 <div class="card-content center-align">
                     <div class="row">
-                        <div class="col s12">
-                            <span class="colorMain-text">
-                                <i class="material-icons md-48">settings_applications</i>
+                        <div class="col m6 s12">
+                            <br/>
+                            <span><i class="material-icons md-48">settings_applications</i>
                             </span>
                             <br/>
                             {{'profileMainPage.tabs.settings' | translate }}
                             <br/>
-                            <br/>
                         </div>
                         
-                        
-                        <div class="col s12 divider"></div>
-                        <div class="col s12">
+                        <div class="col m6 s12">
                             <br/>
-                            <span class="colorMain-text">
-                                <i class="material-icons md-48">notifications_active</i>
+                            <span><i class="material-icons md-48">notifications_active</i>
                             </span>
                             <br/>
                             {{'profileMainPage.tabs.notificationSettings' | translate }}

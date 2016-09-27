@@ -1,35 +1,35 @@
-<div class="container colorMain-text" ng-cloack>
+<div class="container primary-text-color" ng-cloack>
 
     <!-- space between header menu and body-->
     <div class="row hide-on-med-and-down"></div>
 
     <!-- Entete -->
-    <div class="row colorAccent-text colorBckgModal center valign-wrapper hide-on-med-and-down">
+    <div class="row light-primary-color center valign-wrapper hide-on-med-and-down">
         <div class="col m1">
-            <i class="material-icons md-48">verified_user</i>
+            <i class="material-icons md-48 accent-text-color ">verified_user</i>
         </div>
-        <div class="col m9 colorMain-text left-align">
+        <div class="col m9 left-align">
             <h5 translate="billingPage.title"></h5>
         </div>
 
         <div class="col m2">
-            <button class="btn colorAccent white-text right" ng-click="doTheBack()"
+            <button class="btn accent-color right" ng-click="doTheBack()"
                     translate="commons.buttons.back"></button>
         </div>
     </div>
 
 
     <!-- Entete -->
-    <div class="row colorAccent-text colorBckgModal center hide-on-large-only">
+    <div class="row light-primary-color center hide-on-large-only">
         <div class="col s12">&nbsp;</div>
 
-        <div class="col s12 colorMain-text">
+        <div class="col s12">
             <h5 translate="billingPage.title"></h5>
         </div>
 
         <div class="col s12">&nbsp;</div>
         <div class="col s12">
-            <button class="btn colorAccent white-text" ng-click="doTheBack()" translate="commons.buttons.back"></button>
+            <button class="btn accent-color" ng-click="doTheBack()" translate="commons.buttons.back"></button>
         </div>
         <div class="col s12">&nbsp;</div>
     </div>
@@ -49,16 +49,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="plan in user.account.listPlan track by $index" class="colorBckgModal">
+                <tr ng-repeat="plan in user.account.listPlan track by $index" class="light-primary-color">
                     <td class="center-align">
                         <h4>{{plan.activity.label | translate}}</h4>
                     </td>
-                    <td class="center-align colorAccent-text">
+                    <td class="center-align accent-text-color">
                         <h5>{{plan.levelPlan}}</h5>
                     </td>
 
                     <td ng-if="plan.status === 'open' || plan.status === 'notpaid'" colspan="4">
-                        <a href="#/private/billing/pay/{{$index}}" class="btn waves-effect waves-white colorSecondary"
+                        <a href="#/private/billing/pay/{{$index}}" class="btn waves-effect waves-white secondary-color"
                            translate="billingPage.label.pay">
                         </a>
                     </td>
@@ -98,21 +98,21 @@
             <table>
 
                 <tbody>
-                <tr ng-repeat="plan in user.account.listPlan track by $index" class="colorBckgModal">
-                    <td class="white colorMain-text" translate="billingPage.label.activity"></td>
+                <tr ng-repeat="plan in user.account.listPlan track by $index" class="light-primary-color">
+                    <td translate="billingPage.label.activity"></td>
                     <td class="center-align">
                         <h4>{{plan.activity.label | translate}}</h4>
                     </td>
                 </tr>
                 <tr>
-                    <td class="white colorMain-text" translate="billingPage.label.product"></td>
-                    <td class="center-align colorAccent-text">
+                    <td translate="billingPage.label.product"></td>
+                    <td class="center-align accent-text-color">
                         <h5>{{plan.levelPlan}}</h5>
                     </td>
                 </tr>
                 <tr>
                     <td ng-if="plan.status === 'open' || plan.status === 'notpaid'" colspan="4">
-                        <a href="#/private/billing/pay/{{$index}}" class="btn waves-effect waves-white colorSecondary"
+                        <a href="#/private/billing/pay/{{$index}}" class="btn waves-effect waves-white secondary-color"
                            translate="billingPage.label.pay">
                         </a>
                     </td>

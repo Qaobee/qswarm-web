@@ -3,22 +3,17 @@
     <div class="row"></div>
 
     <!-- Entete -->
-    <div class="row">
-        <div class="col s12">
-            <div class="row colorMain white-text center">
-                <div class="col m3 s12 center">
-                    <avatar person="player" width="'100px'"></avatar>
-                </div>
-                <div class="col m7 s12">
-                    <br/>
-                    <h4>{{player.firstname}} {{player.name}}</h4>
-                    <h6 ng-bind="player.positionType"></h6>
-                </div>
-                <div class="col m2 s12">
-                    <br/>
-                    <h4># {{player.status.squadnumber}}</h4>
-                </div>
-            </div>
+    <div class="row dark-primary-color valign-wrapper">
+        <div class="col m3 s12 center">
+            <avatar person="player" width="'75px'"></avatar>
+        </div>
+        <div class="col m7 s12 center">
+            <br/>
+            <h4>{{player.firstname}} {{player.name}} #{{player.status.squadnumber}}</h4>
+            <h6 ng-bind="player.positionType"></h6>
+        </div>
+        <div class="col m2 s12">
+            <button class="btn accent-color" ng-click="doTheBack()" translate="commons.buttons.back"></button>
         </div>
     </div>
 
@@ -26,12 +21,12 @@
     <div class="row card">
         <!--card-->
         <div class="col m12 s12 animated fadeInUp" style="-webkit-animation-duration:{{$index * 100}}ms">
-            <div class="card-content white">
-                <div class="center-align blue-grey-text text-darken-2">
+            <div class="card-content">
+                <div class="center-align">
                     <div class="row">
                         <div class="col m4 s12">
                             <div class="left-align"><h5 translate="playerLabels.playerCivilSection"></h5></div>
-                            <div class="divider red lighten-1"></div>
+                            <div class="divider accent-color"></div>
                             <div>&nbsp;</div>
                             <div class="left-align">{{player.age}} {{'commons.format.ageYear' | translate }}</div>
                             <div>&nbsp;</div>
@@ -44,16 +39,16 @@
                             </div>
                             <div>&nbsp;</div>
                             <div class="left-align" ng-if="mapShow">
-                                <a class="waves-effect waves-light modal-trigger red-text text-lighten-1"
+                                <a class="waves-effect waves-light modal-trigger accent-text-color"
                                    ng-click="openMap()">
                                     <i class="material-icons">location_on</i> {{player.address.formatedAddress}}
                                 </a>
                             </div>
                             <div ng-if="mapShow">&nbsp;</div>
                         </div>
-                        <div class="col m4 s12 grey lighten-4">
+                        <div class="col m4 s12 light-primary-color">
                             <div class="left-align"><h5 translate="playerLabels.playerCaracterSection"></h5></div>
-                            <div class="divider red lighten-1"></div>
+                            <div class="divider accent-color"></div>
                             <div>&nbsp;</div>
                             <div class="left-align">{{'playerLabels.playerWeight' | translate }} :
                                 {{player.status.weight}}
@@ -74,7 +69,7 @@
                         </div>
                         <div class="col m4 s12">
                             <div class="center-align"><h5 translate="playerLabels.playerContactSection"></h5></div>
-                            <div class="divider red lighten-1"></div>
+                            <div class="divider accent-color"></div>
                             <div>&nbsp;</div>
                             <div class="left-align"><i class="material-icons">phone</i> {{player.contact.home}}</div>
                             <div>&nbsp;</div>
@@ -83,29 +78,22 @@
                             </div>
                             <div>&nbsp;</div>
                             <div class="left-align"><a href="mailto:{{player.contact.email}}"
-                                                       class="red-text text-lighten-1"><i
+                                                       class="accent-text-color"><i
                                     class="material-icons">mail</i> {{player.contact.email}}</a></div>
                             <div>&nbsp;</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row colorMain">
-                    <div class="col s4 center-align">
-                        <a href="" ng-click="doTheBack()">
-                            <i class="white-text material-icons small tooltipped"
-                               data-position="top" data-delay="20"
-                               data-tooltip="{{'viewPlayer.buttons.returnViewPlayer' | translate }}">undo</i>
-                        </a>
-                    </div>
-                    <div class="col s4 center-align">
+                <div class="row dark-primary-color">
+                    <div class="col s6 center-align">
                         <a href="#/private/updatePlayer/{{player._id}}">
                             <i class="white-text material-icons small tooltipped"
                                data-position="top" data-delay="20"
                                data-tooltip="{{'viewPlayer.buttons.updatePlayer' | translate }}">mode_edit</i>
                         </a>
                     </div>
-                    <div class="col s4 center-align">
+                    <div class="col s6 center-align">
                         <a href="#/private/playerStats/{{player._id}}">
                             <i class="white-text small fa fa-bar-chart tooltipped"
                                data-position="top" data-delay="20"
@@ -123,7 +111,7 @@
 <!-- Modal map Player -->
 <div id="mapPlayer" class="modal modal-fixed-footer">
     <div class="modal-content">
-        <div class="blue-grey-text text-darken-2"><i class="material-icons">location_on</i>
+        <div class="primary-text-color"><i class="material-icons">location_on</i>
             {{player.address.formatedAddress}}
         </div>
         <br>
@@ -131,7 +119,7 @@
     </div>
     <div class="modal-footer">
         <a href="#/private/viewPlayer/{{player._id}}"
-           class="modal-action modal-close waves-effect waves-red btn btn-s colorAccent"
+           class="modal-action modal-close waves-effect waves-red btn accent-color"
            translate="commons.buttons.close"></a>
     </div>
 </div>

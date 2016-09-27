@@ -4,26 +4,22 @@
     <div class="row"></div>
 
     <!-- Entete -->
-    <div class="row">
-        <div class="col s12">
-            <div class="row colorMain white-text center">
-                <div class="col m3 s12 center">
-                    <avatar person="player" width="'100px'"></avatar>
-                    <span class="small" translate="effectiveLabels.effectiveAvatar"></span>
-                </div>
-                <div class="col m7 s12">
-                    <br/>
-                    <h4>{{player.firstname}} {{player.name}}</h4>
-                </div>
-                <div class="col m2 s12">
-                    <br/>&nbsp;
-                </div>
-            </div>
+    <div class="row dark-primary-color valign-wrapper">
+        <div class="col m3 s12 center">
+            <avatar person="player" width="'75px'"></avatar>
+        </div>
+        <div class="col m7 s12 center">
+            <br/>
+            <h4>{{player.firstname}} {{player.name}} #{{player.status.squadnumber}}</h4>
+            <h6 ng-bind="player.positionType"></h6>
+        </div>
+        <div class="col m2 s12">
+            <button class="btn accent-color" ng-click="doTheBack()" translate="commons.buttons.back"></button>
         </div>
     </div>
 
     <!-- body-->
-    <div class="row">
+    <div class="row primary-text-color">
         <wizard on-finish="checkAndformatPerson()" template="app/components/directives/wizard/wizard.html">
 
             <!-- step etat civil -->
@@ -37,14 +33,14 @@
                         <div class="row">
                             <div class="col s12 m5 input-field">
                                 <label>{{'playerLabels.playerFirstname' | translate }} <span
-                                        class="red-text text-lighten-1">*</span></label>
+                                        class="accent-text-color">*</span></label>
                                 <input ng-model="player.firstname" name="playerFirstname" type="text" class="validate"
                                        required
                                        ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
-                                <span class="small red-text text-lighten-1"
+                                <span class="small accent-text-color"
                                       ng-if="playerCivilSection.playerFirstname.$error.required && !playerCivilSection.playerFirstname.$pristine"
                                       translate="playerErrors.Firstname"></span>
-                                <span class="small red-text text-lighten-1"
+                                <span class="small accent-text-color"
                                       ng-if="playerCivilSection.playerFirstname.$error.pattern && !playerCivilSection.playerFirstname.$pristine"
                                       translate="playerErrors.wrong-char"></span>
                             </div>
@@ -52,14 +48,14 @@
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
 
                             <div class="col s12 m6 input-field">
-                                <label>{{'playerLabels.playerName' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                                <label>{{'playerLabels.playerName' | translate }} <span class="accent-text-color">*</span></label>
                                 <input ng-model="player.name" name="playerName" type="text"
                                        class="validate form-control" required
                                        ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
-                                <span class="small red-text text-lighten-1"
+                                <span class="small accent-text-color"
                                       ng-if="playerCivilSection.playerName.$error.required && !playerCivilSection.playerName.$pristine"
                                       translate="playerErrors.Name"></span>
-                                <span class="small red-text text-lighten-1"
+                                <span class="small accent-text-color"
                                       ng-if="playerCivilSection.playerName.$error.pattern && !playerCivilSection.playerName.$pristine"
                                       translate="playerErrors.wrong-char"></span>
                             </div>
@@ -68,12 +64,12 @@
                         <div class="row">
                             <div class="col s12 m5 input-field">
                                 <label>{{'playerLabels.playerBirthdate' | translate }} <span
-                                        class="red-text text-lighten-1">*</span></label>
+                                        class="accent-text-color">*</span></label>
                                 <input id="playerBirthdate" name="playerBirthdate" type="text"
                                        ng-model="player.birthdate" required
                                        class="datepicker"
                                        ng-class="{ 'has-error' : playerCivilSection.playerBirthdate.$invalid && !playerCivilSection.playerBirthdate.$pristine }"/>
-                                <span class="small red-text text-lighten-1"
+                                <span class="small accent-text-color"
                                       ng-if="playerCivilSection.playerBirthdate.$invalid && !playerCivilSection.playerBirthdate.$pristine"
                                       translate="playerErrors.BirthDate"></span>
                             </div>
@@ -81,14 +77,14 @@
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
 
                             <div class="col m6 input-field hide-on-small-only">
-                                <i class="material-icons prefix colorMain-text">mail</i>
+                                <i class="material-icons prefix  ">mail</i>
                                 <label for="emailInput" translate="playerLabels.playerMail"></label>
                                 <input type="email" id="emailInput" name="email" class="validate"
                                        ng-model="player.contact.email"
                                        ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
                                        ng-class="{ 'invalid': playerCivilSection.email.$invalid }">
                                 <span ng-class="{'has-error': playerCivilSection.email.$dirty}"
-                                      class="small red-text text-lighten-1"
+                                      class="small accent-text-color"
                                       ng-hide="playerCivilSection.email.$valid"
                                       translate="playerErrors.emailDirty"></span>
                             </div>
@@ -99,7 +95,7 @@
                                 <div class="row">
                                     <div class="input-field col s3">
                                         <label>{{'playerLabels.playerGender' | translate }} <span
-                                                class="red-text text-lighten-1">*</span></label>
+                                                class="accent-text-color">*</span></label>
                                     </div>
                                     <div class="input-field col s9 center-align">
                                         <input name="gender" class="with-gap" type="radio" id="playerGenderF"
@@ -112,7 +108,7 @@
                                                ng-model="player.gender" required/>
                                         <label for="playerGenderM" translate="playerLabels.playerGenderM"></label>
                                     </div>
-                                    <span class="small red-text text-lighten-1"
+                                    <span class="small accent-text-color"
                                           ng-if="playerCivilSection.gender.$invalid && !playerCivilSection.gender.$pristine"
                                           translate="playerErrors.Gender"></span>
                                 </div>
@@ -121,7 +117,7 @@
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
 
                             <div class="col m6 input-field hide-on-small-only">
-                                <i class="material-icons prefix colorMain-text">phone</i>
+                                <i class="material-icons prefix  ">phone</i>
                                 <label for="phoneHomeInput1" translate="playerLabels.playerTelHome"></label>
                                 <input type="tel" id="phoneHomeInput1"
                                        ui-mask="{{'commons.format.phone.pattern' | translate }}"
@@ -140,7 +136,7 @@
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
 
                             <div class="col m6 input-field hide-on-small-only">
-                                <i class="material-icons prefix colorMain-text">smartphone</i>
+                                <i class="material-icons prefix  ">smartphone</i>
                                 <label for="playerTelMobile1" translate="playerLabels.playerTelMobile"></label>
                                 <input id="playerTelMobile1" type="tel"
                                        ui-mask="{{'commons.format.phone.pattern' | translate }}"
@@ -160,7 +156,7 @@
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
 
                             <div class="col m6 input-field hide-on-small-only">
-                                <i class="material-icons prefix colorMain-text">home</i>
+                                <i class="material-icons prefix  ">home</i>
                                 <label for="playerAddress" translate="playerLabels.playerAddress"></label>
                                 <input type="text" id="Autocomplete" class="form-control" ng-autocomplete
                                        ng-model="player.address.formatedAddress" details="detailsAdr"
@@ -180,7 +176,7 @@
                                            ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
                                            ng-class="{'invalid': playerCivilSection.playerEmail.$invalid}">
                                     <span ng-class="{'has-error': playerCivilSection.playerEmail.$dirty}"
-                                          class="small red-text text-lighten-1"
+                                          class="small accent-text-color"
                                           ng-hide="playerCivilSection.playerEmail.$valid"
                                           translate="playerLabels.emailDirty"></span>
                                 </div>
@@ -227,14 +223,10 @@
                             <div class="col m3 hide-on-small-only">&nbsp;</div>
                             <div class="col m6 s12 center">
                                 <button style="width:45%; height:40px; padding: 2px;"
-                                        class="btn valign-wrapper colorAccent waves-effect waves-white white-text"
-                                        ng-click="doTheBack()" translate="commons.buttons.cancel"></button>
-                                &nbsp;
-                                <button style="width:45%; height:40px; padding: 2px;"
-                                        class="btn valign-wrapper white-text colorMain" wz-next type="submit"
+                                        wz-next type="submit"
                                         name="next"
-                                        ng-class="{'btn btn-s waves-effect waves-white disabled': playerCivilSection.$invalid, 
-                                              'btn btn-s waves-effect waves-white colorSecondary': !playerCivilSection.$invalid}"
+                                        ng-class="{'btn waves-effect waves-white disabled': playerCivilSection.$invalid, 
+                                              'btn waves-effect waves-white dark-primary-color': !playerCivilSection.$invalid}"
                                         ng-disabled="playerCivilSection.$invalid"
                                         translate="commons.buttons.next"></button>
                             </div>
@@ -254,14 +246,14 @@
 
                     <div class="row">
                         <div class="input-field col m1 s4"><label for="playerPositionType">{{'playerLabels.playerPositionType'
-                            | translate }} <span class="red-text text-lighten-1">*</span></label></div>
+                            | translate }} <span class="accent-text-color">*</span></label></div>
                         <div class="input-field col m4 s8">
                             <select class="browser-default" ng-model="player.status.positionType" required
                                     ng-class="{'has-error' : playerCaracterSection.playerPositionType.$invalid && !playerCaracterSection.playerPositionType.$pristine}"
                                     name="playerPositionType" id="playerPositionType"
                                     ng-options="p.code as p.label for p in positionsType">
                             </select>
-                            <span class="small red-text text-lighten-1"
+                            <span class="small accent-text-color"
                                   ng-if="playerCaracterSection.playerPositionType.$invalid && !playerCaracterSection.playerPositionType.$pristine"
                                   translate="playerErrors.PositionType"></span>
                         </div>
@@ -323,18 +315,15 @@
                     <div class="row">
                         <div class="col m3 hide-on-small-only">&nbsp;</div>
                         <div class="col m6 s12 center-align">
+                            
                             <button style="width:32%; height:40px; padding: 1px;"
-                                    class="btn colorAccent waves-effect waves-white white-text" ng-click="doTheBack()"
-                                    translate="commons.buttons.cancel"></button>
-
-                            <button style="width:32%; height:40px; padding: 1px;"
-                                    class="btn white-text waves-effect waves-white colorMain" wz-previous type="submit"
+                                    class="btn white-text waves-effect waves-white dark-primary-color" wz-previous type="submit"
                                     name="previous" translate="commons.buttons.previous"></button>
 
-                            <button style="width:32%; height:40px; padding: 1px;" class="btn white-text colorMain"
+                            <button style="width:32%; height:40px; padding: 1px;"
                                     wz-next type="submit" name="next"
-                                    ng-class="{'btn btn-s waves-effect waves-white disabled': playerCaracterSection.$invalid, 
-                                          'btn btn-s waves-effect waves-white colorSecondary': !playerCaracterSection.$invalid}"
+                                    ng-class="{'btn waves-effect waves-white disabled': playerCaracterSection.$invalid, 
+                                          'btn waves-effect waves-white accent-color': !playerCaracterSection.$invalid}"
                                     ng-disabled="playerCaracterSection.$invalid"
                                     translate="commons.buttons.validate"></button>
                         </div>

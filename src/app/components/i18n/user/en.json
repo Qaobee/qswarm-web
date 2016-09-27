@@ -21,6 +21,7 @@
     "memberremove": "{{firstname}} {{name}} a été désactivé de votre sandbox"
   },
   "profilePage": {
+    "title": "Modification du profil",
     "form": {
       "title": "",
       "label": {
@@ -49,6 +50,7 @@
     }
   },
   "profilePwdPage": {
+    "title": "Modification du mot de passe",
     "form": {
       "title": "",
       "label": {

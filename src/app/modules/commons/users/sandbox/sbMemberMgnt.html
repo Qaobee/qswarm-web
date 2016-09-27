@@ -4,39 +4,19 @@
     <div class="row hide-on-med-and-down"></div>
 
     <!-- Entete -->
-    <div class="row colorAccent-text colorBckgModal center valign-wrapper hide-on-med-and-down">
+    <div class="row light-primary-color center valign-wrapper hide-on-med-and-down">
         <div class="col m1">
-            <i class="material-icons md-48">group</i>
+            <i class="material-icons md-48 accent-text-color ">group</i>
         </div>
-        <div class="col m9 colorMain-text left-align">
-            <h5>{{'sbMemberMngtPage.title' | translate }}</h5>
+        <div class="col m9 left-align">
+            <h5 translate="sbMemberMngtPage.title"></h5>
         </div>
-        
-        <div class="col m2">
-            <button class="btn colorAccent white-text right" ng-click="doTheBack()">
-                {{'commons.buttons.back' | translate }}
-            </button>
-        </div>
-    </div>
-    
-    
-    <!-- Entete -->
-    <div class="row colorAccent-text colorBckgModal center hide-on-large-only">
-        <div class="col s12">&nbsp;</div>
-        
-        <div class="col s12 colorMain-text">
-            <h5>{{'sbMemberMngtPage.title' | translate }}</h5>
-        </div>
-        
-        <div class="col s12">&nbsp;</div>
-        <div class="col s12">
-            <button class="btn colorAccent white-text" ng-click="doTheBack()">
-                {{'commons.buttons.back' | translate }}
-            </button>
-        </div>
-        <div class="col s12">&nbsp;</div>
-    </div>
 
+        <div class="col m2">
+            <button class="btn accent-color right" ng-click="doTheBack()"
+                    translate="commons.buttons.back"></button>
+        </div>
+    </div>
 
     <div class="row">
         
@@ -47,9 +27,9 @@
         
         <ul>
             <li class="col l3 m6 s12" ng-repeat="member in sandbox.members">
-                <div class="card colorBckgModal colorMain-text">
+                <div class="card light-primary-color">
                     <div class="card-content center-align" style="height:48px;">
-                        <span class="card-title colorMain-text">
+                        <span class="card-title primary-text-color">
                             {{member.person.firstname}} {{member.person.name}}
                         </span>
                     </div>
@@ -57,12 +37,12 @@
                         <avatar person="member.person" width="'50px'"></avatar>
                     </div>
                     
-                    <div class="card-content center-align colorMain" style="height:48px;">
-                        <h5><small class="white-text">{{member.role.label}}</small></h5>
+                    <div class="card-content center-align dark-primary-color" style="height:48px;">
+                        <h5><small>{{member.role.label}}</small></h5>
                     </div>
 
                     <div class="card-action">
-                        <span class="colorMain-text">{{'sbMemberMngtPage.label.memberActif' | translate }}</span>
+                        <span class="primary-text-color">{{'sbMemberMngtPage.label.memberActif' | translate }}</span>
                         <div class="right"> 
                             <div class="switch">
                                 <label>
@@ -81,11 +61,11 @@
         </ul>
         <div class="col s12">&nbsp;</div>
         <div class="col s12 divider"></div>
-        <div class="col s10 colorMain-text">
+        <div class="col s10 primary-text-color">
             <h6>{{'sbMemberMngtPage.label.invitePending' | translate }}</h6>
         </div>
         <div class="col s2 center">
-            <a href="#/private/inviteMember" class="waves-effect waves-light btn right colorAccent white-text">
+            <a href="#/private/inviteMember" class="waves-effect waves-light btn right accent-color">
                 <i class="material-icons">share</i>
             </a>
         </div>

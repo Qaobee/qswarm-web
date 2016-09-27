@@ -37,21 +37,21 @@
                     if ($scope.event.link.type === 'cup') {
                         $scope.icon = 'album';
                         $scope.color1 = 'white';
-                        $scope.color2 = 'colorAccent';
+                        $scope.color2 = 'accent-color';
                         $scope.title = 'mainAgenda.eventType.cup';
                     }
 
                     if ($scope.event.link.type === 'friendlyGame') {
                         $scope.icon = 'flare';
                         $scope.color1 = 'white';
-                        $scope.color2 = 'colorSecondary';
+                        $scope.color2 = 'secondary-color';
                         $scope.title = 'mainAgenda.eventType.friendlyGame';
                     }
 
                     if ($scope.event.link.type === 'championship') {
                         $scope.icon = 'stars';
                         $scope.color1 = 'white';
-                        $scope.color2 = 'colorMain';
+                        $scope.color2 = 'dark-primary-color';
                         $scope.title = 'mainAgenda.eventType.championship';
                     }
 

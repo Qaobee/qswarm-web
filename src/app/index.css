@@ -60,6 +60,9 @@
 .accent-text-color         { 
     color: #ea5350 !important;
 }
+.light-text-color         { 
+    color: #BDBDBD !important;
+}
 .divider-color         { 
     border-color: #BDBDBD !important;
 }

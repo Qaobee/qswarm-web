@@ -43,6 +43,7 @@
     }
   },
   "profilePage": {
+    "title": "Modification du profil",
     "form": {
       "label": {
         "avatar": "Déposer la photo ici",
@@ -70,6 +71,7 @@
     }
   },
   "profilePwdPage": {
+    "title": "Modification du mot de passe",
     "form": {
       "title": "",
       "label": {

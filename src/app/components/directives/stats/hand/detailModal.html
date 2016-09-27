@@ -1,4 +1,4 @@
-<button class="btn waves-effect waves-light accent-color-color   modal-trigger" title="{{'stats.buttons.timeline' | translate}}"
+<button class="btn waves-effect waves-light accent-color   modal-trigger" title="{{'stats.buttons.timeline' | translate}}"
         ng-click="openDetail(uid)">
     <i class="material-icons">timeline</i>
 </button>
@@ -7,8 +7,8 @@
     <div class="modal-content compare-modale">
         <form name="myForm">
             <div class="row dark-primary-color valign-wrapper">
-                <div class="input-field col m2 s4">
-                    <label for="currentIndicator" translate="stats.label.indicator"></label>
+                <div class="col m2 s4">
+                    <h4 for="currentIndicator" translate="stats.label.indicator"></h4>
                 </div>
                 <div class="input-field col m4 s8">
                     <select class="browser-default" ng-model="currentIndicator" id="currentIndicator">
@@ -18,7 +18,7 @@
                     </select>
                     <br>
                 </div>
-                <div class="input-field col m6 s12"><h4 ng-bind="title" class="flow-text"></h4></div>
+                <div class="col m6 s12"><h4 ng-bind="title" class="center"></h4></div>
                 
             </div>
             <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
