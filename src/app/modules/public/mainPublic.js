@@ -9,12 +9,10 @@
      * @requires {@link https://docs.angularjs.org/api/ngRoute|ngRoute}
      * @requires {@link qaobee.public.publicSignup|qaobee.public.publicSignup}
      * @requires {@link qaobee.rest.public.publicRestAPI|qaobee.rest.public.publicRestAPI}
-     * @requires {@link https://github.com/mllrsohn/angular-re-captcha|reCAPTCHA}
      */
     angular.module('qaobee.public', [
             /* angular module */
             'ngRoute',
-            'reCAPTCHA',
             /* qaobee shared directives */
             'qaobee.headerMenu',
             /* qaobee Rest API */

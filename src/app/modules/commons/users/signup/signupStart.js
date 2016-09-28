@@ -6,7 +6,6 @@
         'personSRV',
         /* services */
         'locationAPI',
-        'reCAPTCHA',
         /* qaobee Rest API */
         'signupRestAPI'
     ])
@@ -22,16 +21,23 @@
         })
 
         .controller('SignupStartCtrl', function ($rootScope, $scope, $translatePartialLoader, $log, $routeParams,
-                                                 $window, $location, $filter, signupRestAPI, qeventbus) {
+                                                 $location, $filter, signupRestAPI, qeventbus, vcRecaptchaService) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
             qeventbus.prepForBroadcast('menuItem', 'signup');
-            /**
-             * @name $scope.cancelSignup
-             * @function
-             * @memberOf qaobee.directives.headerMenu
-             * @description Cancel user signup
-             */
+
+            $scope.signup = {};
+            $scope.widgetId = null;
+            $scope.setWidgetId = function (widgetId) {
+                console.info('Created widget ID: %s', widgetId);
+                $scope.widgetId = widgetId;
+            };
+            $scope.cbExpiration = function() {
+                console.info('Captcha expired. Resetting response object');
+                vcRecaptchaService.reload($scope.widgetId);
+                $scope.response = null;
+            };
+
             $scope.cancelSignup = function () {
                 delete $scope.signup;
                 $location.path('');
@@ -47,7 +53,7 @@
                 signupRestAPI.usernameTest($scope.signup.account.login).success(function (data) {
                     if (data.status === true) {
                         toastr.warning($filter('translate')('signupStartPage.form.messageControl.nonunique'));
-                        $window.Recaptcha.reload();
+                        vcRecaptchaService.reload($scope.widgetId);
                     } else {
                         $scope.signup.plan = {levelPlan: 'FREEMIUM'};
                         $scope.signup.name = $scope.signup.name.capitalize(true);
@@ -55,7 +61,7 @@
 
                         signupRestAPI.registerUser($scope.signup).success(function (data2) {
                             // On recharge le captcha en cas d'erreur ou pour une nouvelle inscription
-                            $window.Recaptcha.reload();
+                            vcRecaptchaService.reload($scope.widgetId);
                             if (data2 === null) {
                                 toastr.error($filter('translate')('signupStartPage.form.messageControl.unknown'));
                             } else {
@@ -64,7 +70,7 @@
                                 $location.path('/signupStartDone');
                             }
                         }).error(function (error) {
-                            $window.Recaptcha.reload();
+                            vcRecaptchaService.reload($scope.widgetId);
                             if (error.code && error.code === 'CAPTCHA_EXCEPTION') {
                                 toastr.error($filter('translate')('signupStartPage.form.messageControl.' + error.code));
                             } else {

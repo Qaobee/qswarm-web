@@ -5,6 +5,7 @@
       "apiEndPoint": "http://localhost:8888",
       "useLoaderCache": false,
       "debugEnabled": true,
+      "captchaKey" : "6Leb6gcUAAAAAD2WVTezEQOM7aKobB_VfApO7-yZ",
       "uaid" : "",
       "appMobile" : {
         "google" : "https://play.google.com/store/apps/details?id=com.qaobee.hand",
@@ -18,6 +19,7 @@
       "apiEndPoint": "",
       "useLoaderCache": true,
       "debugEnabled": true,
+      "captchaKey" : "6LdoTvMSAAAAAP4NTyay0WljN19Aq4Cl5pZELvIe",
       "uaid" : "UA-72906581-1",
       "appMobile" : {
         "google" : "https://play.google.com/store/apps/details?id=com.qaobee.hand",

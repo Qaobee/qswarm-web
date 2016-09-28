@@ -23,13 +23,20 @@
          * @class qaobee.user.profile.PwdCtrl
          * @description Main controller of app/modules/commons/users/profile/pwd.html
          */
-        .controller('PwdCtrl', function ($scope, $filter, EnvironmentConfig, $window, $translatePartialLoader, userRestAPI) {
+        .controller('PwdCtrl', function ($scope, $filter, EnvironmentConfig, vcRecaptchaService, $window, $translatePartialLoader, userRestAPI) {
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
-
-
             $scope.renew = {};
-
+            $scope.widgetId = null;
+            $scope.setWidgetId = function (widgetId) {
+                console.info('Created widget ID: %s', widgetId);
+                $scope.widgetId = widgetId;
+            };
+            $scope.cbExpiration = function () {
+                console.info('Captcha expired. Resetting response object');
+                vcRecaptchaService.reload($scope.widgetId);
+                $scope.response = null;
+            };
             // return button
             $scope.doTheBack = function () {
                 $window.history.back();
@@ -50,7 +57,7 @@
                     $scope.resetPwdUser();
                     toastr.success($filter('translate')('profilePwdPage.form.success'));
                 }).error(function (error) {
-                    $window.Recaptcha.reload();
+                    vcRecaptchaService.reload($scope.widgetId);
                     if (error) {
                         if (error.code && error.code === 'CAPTCHA_EXCEPTION') {
                             toastr.error($filter('translate')('signupStartPage.form.messageControl.' + error.code));

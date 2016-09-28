@@ -25,7 +25,6 @@
     "angular-i18n": "1.5.8",
     "angular-loading-bar": "0.7.1",
     "angular-mocks": "1.5.8",
-    "angular-re-captcha": "0.2.0",
     "angular-resource": "1.5.8",
     "angular-route": "1.5.8",
     "angular-sanitize": "1.5.8",
@@ -58,7 +57,8 @@
     "vertxbus": "*",
     "v-tabs": "~0.2.0",
     "angular-file-saver": "~1.1.0",
-    "materialize-clockpicker": "~0.1.1"
+    "materialize-clockpicker": "~0.1.1",
+    "angular-recaptcha": "^3.0.4"
   },
   "resolutions": {
     "angular-cookies": "1.5.8",

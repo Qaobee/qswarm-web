@@ -1,17 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('qaobee.user.pwdRenew', [
-        /* angular qaobee */
-
-        /* qaobee modules */
-
-        /* services */
-        'reCAPTCHA',
-
-        /* qaobee Rest API */
-        'userRestAPI'
-    ])
+    angular.module('qaobee.user.pwdRenew', ['userRestAPI'])
 
 
         .config(function ($routeProvider) {
@@ -21,11 +11,22 @@
             });
         })
 
-        .controller('PasswdCtrl', function ($rootScope, $scope, $timeout, $translatePartialLoader, $log, $routeParams, $window, $location, $filter, userRestAPI) {
+        .controller('PasswdCtrl', function ($rootScope, $scope, $timeout, $translatePartialLoader, $log, $routeParams,
+                                            vcRecaptchaService, $location, $filter, userRestAPI) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
 
             $scope.renew = {};
+            $scope.widgetId = null;
+            $scope.setWidgetId = function (widgetId) {
+                console.info('Created widget ID: %s', widgetId);
+                $scope.widgetId = widgetId;
+            };
+            $scope.cbExpiration = function () {
+                console.info('Captcha expired. Resetting response object');
+                vcRecaptchaService.reload($scope.widgetId);
+                $scope.response = null;
+            };
 
             userRestAPI.passwdCheck($routeParams.code, $routeParams.id).success(function (data) {
                 if (data === null) {
@@ -49,15 +50,15 @@
             $scope.renewPasswd = function () {
                 if ($scope.renew.passwd !== $scope.renew.passwdConfirm) {
                     toastr.warning($filter('translate')('profilePwdPage.form.messageControl.password.different'));
-                    $window.Recaptcha.reload();
+                    vcRecaptchaService.reload($scope.widgetId);
                     return;
                 }
                 userRestAPI.resetPasswd($scope.renew).success(function () {
-                    $window.Recaptcha.reload();
+                    vcRecaptchaService.reload($scope.widgetId);
                     toastr.success($filter('translate')('profilePwdPage.form.success'));
                     $location.path('/');
                 }).error(function (error) {
-                    $window.Recaptcha.reload();
+                    vcRecaptchaService.reload($scope.widgetId);
                     if (error) {
                         if (error.code && error.code === 'CAPTCHA_EXCEPTION') {
                             toastr.error($filter('translate')('signupStartPage.form.messageControl.' + error.code));
@@ -72,5 +73,4 @@
                 $location.path('/');
             };
         });
-
 }());

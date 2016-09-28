@@ -16,7 +16,6 @@
             'ngCookies',
             'ngAnimate',
             'pascalprecht.translate',
-            'reCAPTCHA',
             'tmh.dynamicLocale',
             'angularFileUpload',
             'ui.mask',
@@ -27,8 +26,7 @@
             'angular-google-analytics',
             'vTabs',
             'ngFileSaver',
-            //     'ui.date',
-
+            'vcRecaptcha',
             //* qaobee widget */
             'qaobee.filterCalendar',
             'qaobee.commonsDirectives',
@@ -67,7 +65,7 @@
             , 'qaobee.test'
         ])
 
-        .config(function ($translateProvider, $translatePartialLoaderProvider, reCAPTCHAProvider, $httpProvider,
+        .config(function ($translateProvider, $translatePartialLoaderProvider, $httpProvider, vcRecaptchaServiceProvider,
                           $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, AnalyticsProvider, ChartJsProvider) {
             AnalyticsProvider.setAccount(EnvironmentConfig.uaid).useDisplayFeatures(true).trackUrlParams(true);
             if ('development' === EnvironmentConfig.name) {
@@ -89,11 +87,15 @@
                 'de_CH': 'de'
             });
             $translateProvider.determinePreferredLanguage();
-            reCAPTCHAProvider.setPublicKey('6LdoTvMSAAAAAP4NTyay0WljN19Aq4Cl5pZELvIe');
-            reCAPTCHAProvider.setOptions({
-                theme: 'custom',
-                custom_theme_widget: 'custom_recaptcha_widget'
-            });
+            vcRecaptchaServiceProvider.setSiteKey(EnvironmentConfig.captchaKey);
+            vcRecaptchaServiceProvider.setTheme('light');
+            //vcRecaptchaServiceProvider.setSize('compact');
+            vcRecaptchaServiceProvider.setType('image');
+            /*   reCAPTCHAProvider.setPublicKey('6LdoTvMSAAAAAP4NTyay0WljN19Aq4Cl5pZELvIe');
+             reCAPTCHAProvider.setOptions({
+             theme: 'custom',
+             custom_theme_widget: 'custom_recaptcha_widget'
+             }); */
             $httpProvider.defaults.useXDomain = true;
             delete $httpProvider.defaults.headers.common['X-Requested-With'];
             $httpProvider.interceptors.push('httpInterceptor');
@@ -136,7 +138,8 @@
          * @class qaobee.qswarmweb
          * @description Contrôleur principal
          */
-        .controller('MainCtrl', function ($rootScope, $scope, $window, $translatePartialLoader, qeventbus, $timeout, EnvironmentConfig, $templateRequest, $sce, $compile, $log) {
+        .controller('MainCtrl', function ($rootScope, $scope, $window, $translatePartialLoader, qeventbus, $timeout,
+                                          EnvironmentConfig, $templateRequest, $sce, $compile) {
             /* i18n pour les formats de date, voir changement de la locale dans index.html */
             $translatePartialLoader.addPart('public');
             $translatePartialLoader.addPart('feedback');
