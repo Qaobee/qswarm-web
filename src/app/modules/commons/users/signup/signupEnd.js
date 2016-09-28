@@ -36,27 +36,27 @@
                                             signupRestAPI, locationAPI, personSrv) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
-        
-            $scope.initForm  = function () {
+
+            $scope.initForm = function () {
+                console.log('init')
                 $scope.listStructures = [];
                 $scope.structure = {};
                 $scope.structure.address = {};
                 $scope.messageErreur = '';
-                $scope.detailsSearchCity ='';
-                $scope.detailsCreateCity ='';
+                $scope.detailsSearchCity = '';
+                $scope.detailsCreateCity = '';
                 $scope.structureSelectOK = false;
-                $scope.creationFinished = false;        
+                $scope.creationFinished = false;
                 $scope.catAgeSelectOK = false;
-                $scope.searchCity = null;
-                $scope.createCity = null;
-                $scope.structure.label = null;
-                
-                $scope.categoryAge = null;
+                delete $scope.searchCity;
+                delete $scope.createCity;
+                delete $scope.structure.label;
+                delete $scope.categoryAge;
             };
-        
+
             $scope.creatClub = false;
             $scope.initForm();
-            
+
             // Verification user signup
             signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function (data) {
                 if (data === null) {
@@ -68,7 +68,7 @@
                 } else {
                     $rootScope.user = data;
                     $scope.user = data;
-                    
+
                     $scope.user.account.listPlan[0].activity = {};
                     $scope.user.account.listPlan[0].activity._id = 'ACT-HAND';
 
@@ -91,48 +91,48 @@
             $scope.optionsSearchCity = {
                 types: '(cities)'
             };
-            $scope.detailsSearchCity ='';
+            $scope.detailsSearchCity = '';
 
             // options pour ville nouvelle structure
             $scope.optionsCreateCity = {
                 types: 'geocode'
             };
-            $scope.detailsCreateCity ='';
+            $scope.detailsCreateCity = '';
 
             $scope.optionsAdr = null;
             $scope.detailsAdr = '';
 
             // Surveillance de la modification du retour de l'API Google sur l'adresse
             $scope.$watch('detailsSearchCity', function (newValue, oldValue) {
-                
+                console.log('watch 1')
                 if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
                     if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue)) {
                         return;
                     }
-                    
+
                     //place_changed
                     $scope.loadStructures();
                 }
-                
+
             });
 
             // Surveillance de la modification du retour de l'API Google sur l'adresse du club
             $scope.$watch('detailsCreateCity', function (newValue, oldValue) {
-                
+                console.log('watch 2')
                 if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
                     if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue)) {
                         return;
                     }
-                    
+
                     personSrv.formatAddress(newValue).then(function (adr) {
                         $scope.structure.address = adr;
-                        
+
                         angular.forEach(newValue.address_components, function (item) {
                             if (item.types.count('country') > 0) {
                                 $scope.structure.address.country = {};
                                 $scope.structure.address.country.label = item.long_name;
                                 $scope.structure.address.country.alpha2 = item.short_name;
-                                
+
                                 $scope.loadCategories();
                                 $scope.catAgeSelectOK = true;
                             }
@@ -140,12 +140,12 @@
                     });
                 }
             });
-        
+
             // Recherche du pays et liste des category age
             $scope.loadCategories = function () {
 
                 countryRestAPI.getAlpha2($scope.structure.address.country.alpha2).success(function (data) {
-                    
+
                     $scope.structure.country = data;
 
                     $log.debug($scope.structure);
@@ -172,10 +172,10 @@
                                 label: i.label + ' (' + tempAge + ')'
                             });
                         });
-                        $scope.categoryAge = '';
+                        delete $scope.categoryAge;
                     });
                 });
-            }
+            };
 
             // Update structure list
             $scope.loadStructures = function () {
@@ -183,11 +183,11 @@
                 // Recherche en cours...
                 $scope.structureSearch = true;
                 $scope.structure.address = {};
-                
+
                 var cityLocation = $scope.detailsSearchCity.geometry.location;
                 locationAPI.getLatLng(cityLocation.lat(), cityLocation.lng()).then(function (adr) {
                     angular.forEach(adr.data.results[0].address_components, function (item) {
-                        
+
                         if (item.types.count('postal_code') > 0) {
                             $scope.structure.address.zipcode = item.long_name;
                         }
@@ -202,7 +202,7 @@
                         }
                     });
                     $scope.loadCategories();
-                
+
                     // Recherche des structures
                     structureRestAPI.getList($scope.user.account.listPlan[0].activity._id, $scope.structure.address).success(function (data) {
                         $scope.listStructures = [];
@@ -237,10 +237,10 @@
                         $scope.structureSearch = false;
                     });
                 });
-                
+
             };
 
-            
+
             $scope.applyChangeStructure = function (value) {
                 if (!angular.isUndefined(value)) {
                     $scope.structure._id = value;
@@ -255,27 +255,22 @@
                     });
                 }
             };
-        
+
             // resert forms
             $scope.resertForm = function () {
-                if (!$scope.creatClub) {
-                    $scope.creatClub = true;
-                } else {
-                    $scope.creatClub = false;
-                }
-
+                $scope.creatClub = !$scope.creatClub;
                 $scope.initForm();
             };
-        
+
             // validate fincClubForm
             $scope.validateFindClubForm = function () {
                 $scope.createSandBox();
             };
-        
+
             /* Validate structureSection */
             $scope.createStructure = function () {
-                $log.debug($scope.structure.label.length);
-                if($scope.structure.label.length > 2){
+                console.log($scope.categoryAge)
+                if ($scope.structure.label.length > 2) {
                     $scope.createSandBox();
                 } else {
                     var erreur = $filter('translate')('signupEndPage.tabCreateClub.messageControl.labelControl');
@@ -287,13 +282,13 @@
             $scope.createSandBox = function () {
                 // Récupération CategoryAge
                 var catAge = {};
+                console.log($scope.categoryAge)
                 if (!angular.isUndefined($scope.categoryAgeResult)) {
-                    $scope.categoryAgeResult.forEach(function (item) {
-                        if (item.code === $scope.categoryAge._id) {
-                            catAge = item;
-                        }
-                    });
+                    catAge = $scope.categoryAgeResult.filter(function (item) {
+                        return item.code === $scope.categoryAge._id;
+                    })[0];
                 }
+                console.log(catAge, $scope.categoryAge)
 
                 // Ouverture Modal creation compte
                 $scope.openModalCreate();
