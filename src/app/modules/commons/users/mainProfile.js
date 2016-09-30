@@ -18,7 +18,6 @@
         'qaobee.user.billing',
         'qaobee.user.billing.pay',
         'qaobee.user.sbSwitch',
-        'qaobee.user.inviteMember',
         'qaobee.user.sbMemberMgnt',
         'paymentRestAPI',
         'ngAutocomplete',
