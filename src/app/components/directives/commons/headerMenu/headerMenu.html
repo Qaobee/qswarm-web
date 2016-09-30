@@ -17,7 +17,7 @@
 </div>
 
 <!-- Menu Not connected -->
-<nav class="top-nav top-nav-trans" role="navigation" ng-hide="user">
+<nav class="top-nav top-nav-trans dark-primary-color" role="navigation" ng-hide="user">
     <div class="container">
         <div class="nav-wrapper">
             <a href="/#/" class="brand-logo"><img src="assets/images/logo-mini.png" height="30px"/></a>
@@ -61,7 +61,7 @@
 
 <!-- Menu Connected First header-->
 <div class="navbar-fixed" ng-if="user && !user.account.firstConnexion && !notpaid">
-    <nav class="top-nav default-primary-color visible-nav" role="navigation">
+    <nav class="top-nav dark-primary-color visible-nav" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
                 <!-- Desktop and tablet-->
@@ -94,8 +94,8 @@
                            href='javascript:void(0);' data-constrainWidth="false" data-activates='notificationDropdown'
                            data-hover="false">
                             <i class="material-icons right"
-                               ng-class="{'red-text text-lighten-1 activeNotif':notifications.length}">{{notifications.length?'drafts':'email'}}</i>
-                            <span ng-if="notifications.length" class="new badge white-text red lighten-1"
+                               ng-class="{'accent-text-color activeNotif':notifications.length}">{{notifications.length?'drafts':'email'}}</i>
+                            <span ng-if="notifications.length" class="new badge accent-color"
                                   ng-bind="notifications.length"></span>
                         </a>
                     </li>
@@ -159,7 +159,7 @@
 
 
 <!-- Modal login -->
-<div id="modalLogin" class="modal light-primary-color">
+<div id="modalLogin" class="modal dark-primary-color">
     <div class="modal-header center-align">
         <h5>
             <span class="fa fa-sign-in"></span>
@@ -168,25 +168,25 @@
     </div>
     <form name="loginForm" ng-submit="login()">
         <div class="modal-content white">
-            <div class="row">
+            <div class="row ">
                 <div class="input-field col s12">
                     <input id="modal-login" type="text" class="validate" ng-model="signin.login" required>
                     <label for="modal-login">
                         {{'modal.login.label.login' | translate }}
-                        <span class="colorAccent-text">*</span>
+                        <span class="accent-text-color">*</span>
                     </label>
                 </div>
                 <div class="input-field col s12">
                     <input id="modal-password" type="password" class="validate" ng-model="signin.passwd" required>
                     <label for="modal-password">
                         {{'modal.login.label.password' | translate }}
-                        <span class="colorAccent-text">*</span>
+                        <span class="accent-text-color">*</span>
                     </label>
                 </div>
             </div>
             <div class="row">
                 <div>
-                    <a href="" class="colorAccent-text" ng-click="openForgotPwd()">{{'modal.login.label.forgotpasswd' | translate }}</a>
+                    <a href="" class="light-primary-color" ng-click="openForgotPwd()">{{'modal.login.label.forgotpasswd' | translate }}</a>
                     <a class="btn waves-effect waves-white light-primary-color right" ng-click="openSignup()" translate="navbar.signup"></a>
                 </div>
                 
@@ -196,7 +196,7 @@
         <div class="row center">
             <div class="col s12">&nbsp;</div>
             <div class="col s12">
-                <a href="#/" class="modal-action modal-close waves-effect waves-white btn dark-primary-color"
+                <a href="#/" class="modal-action modal-close waves-effect waves-white btn light-primary-color"
                    translate="commons.buttons.cancel"></a>
                 <button type="submit"
                         translate="commons.buttons.validate" ng-disabled="loginForm.$invalid" tabindex="8"
@@ -230,7 +230,7 @@
                     <input id="modal-login" type="text" class="validate" ng-model="infos.login" required>
                     <label for="modal-login">
                         {{'modal.login.label.login' | translate }}
-                        <span class="colorAccent-text">*</span>
+                        <span class="accent-text-color">*</span>
                     </label>
                 </div>
                 <div class="col m3 hide-on-small">&nbsp;</div>
