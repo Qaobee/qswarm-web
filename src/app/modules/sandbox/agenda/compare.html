@@ -28,11 +28,13 @@
                 </div>
 
                 <div class="col s2">
-                    <button class="btn accent-color right" ng-click="doTheBack()" translate="commons.buttons.back"></button>
+                    <button class="btn accent-color right" ng-click="doTheBack()"
+                            translate="commons.buttons.back"></button>
                 </div>
             </div>
-            
-            <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
+
+            <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive"
+                             meta="meta"></filter-calendar>
 
             <div class="row primary-text-color">
                 <table>
@@ -47,7 +49,8 @@
                     <tbody>
                     <tr>
                         <td><b>Buts</b></td>
-                        <td ng-repeat="p in events track by $index" class="center-align"><h3> {{stats.goals[p._id] || 0}}</h3>
+                        <td ng-repeat="p in events track by $index" class="center-align"><h3> {{stats.goals[p._id] ||
+                            0}}</h3>
                             <p ng-if="(stats.originShoot[p._id]||0)>0">{{ (stats.goals[p._id] || 0) *100 /
                                 stats.originShoot[p._id] | number : 2}} %</p>
                             <p ng-if="(stats.originShoot[p._id]||0)==0">na</p>
