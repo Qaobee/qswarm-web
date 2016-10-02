@@ -13,7 +13,9 @@
         "search-player": "Joueur",
         "settings": "Paramétrage",
         "signup": "Inscription",
+        "profil": "Profil",
         "notifications": {
+            "title": "Notifications",
             "mark-as-read": "Marquer comme lu",
             "mark-as-unread": "Marquer comme non lu",
             "delete": "Supprimer",

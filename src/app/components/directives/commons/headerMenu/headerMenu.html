@@ -64,8 +64,8 @@
     <nav class="top-nav dark-primary-color visible-nav" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
-                <!-- Desktop and tablet-->
-                <ul class="hide-on-small-only">
+                
+                <ul class="hide-on-med-and-down">
                     <li class="left"><a href="#/private/"><i class="material-icons left">home</i>
                         <span class="hide-on-med-and-down" translate="headerMenu.dashboard"></span></a>
                     </li>
@@ -104,16 +104,16 @@
                 <!-- Mobile navigation hamburger -->
                 <a href="#" data-activates="nav-mobile" class="button-collapse white-text"><i class="material-icons">menu</i></a>
 
-                <!-- Mobile navigation -->
                 <ul id="nav-mobile" class="side-nav dark-primary-color">
-                    <li><a href="#/private/" class="white-text"><i class="material-icons left white-text">home</i> {{'headerMenu.dashboard' | translate }}</a></li>
+                    <li><a href="#/private/" class="white-text">{{'headerMenu.dashboard' | translate }}</a></li>
                     <li class="divider"></li>
-                    <li><a href="#/private/players/{{meta.sandbox.effectiveDefault}}" class="white-text"><i class="material-icons left white-text">person</i> {{'headerMenu.players' | translate }}</a></li>
-                    <li><a href="#/private/teams/{{meta.sandbox.effectiveDefault}}" class="white-text"><i class="material-icons left white-text">group</i> {{'headerMenu.teams' | translate }}</a></li>
-                    <li><a href="#/private/agenda/{{meta.sandbox.effectiveDefault}}" class="white-text"><i class="material-icons left white-text">event_note</i> {{'headerMenu.calendar' | translate }}</a></li>
+                    <li><a href="#/private/players/{{meta.sandbox.effectiveDefault}}" class="white-text">{{'headerMenu.players' | translate }}</a></li>
+                    <li><a href="#/private/teams/{{meta.sandbox.effectiveDefault}}" class="white-text">{{'headerMenu.teams' | translate }}</a></li>
+                    <li><a href="#/private/agenda/{{meta.sandbox.effectiveDefault}}" class="white-text">{{'headerMenu.calendar' | translate }}</a></li>
                     <li class="divider"></li>
-                    <li><a href="#/private/profile" class="white-text"><i class="material-icons left">portrait</i></a></li>
-                    <li><a ng-click="logoff()" href="javascript:void(0);" class="white-text"><i class="material-icons">exit_to_app</i> {{'navbar.disconnect' | translate}}</a></li>
+                    <li><a href="#/notifications" class="white-text">{{'headerMenu.notifications.title' | translate}}</a></li>
+                    <li><a href="#/private/profile" class="white-text">{{'headerMenu.profil' | translate }}</a></li>
+                    <li><a ng-click="logoff()" href="javascript:void(0);" class="white-text">{{'navbar.disconnect' | translate}}</a></li>
                 </ul>
 
             </div>
@@ -184,7 +184,7 @@
                     </label>
                 </div>
             </div>
-            <div class="row">
+            <div class="row hide-on-small-only">
                 <div>
                     <a href="" class="light-primary-color" ng-click="openForgotPwd()">{{'modal.login.label.forgotpasswd' | translate }}</a>
                     <a class="btn waves-effect waves-white light-primary-color right" ng-click="openSignup()" translate="navbar.signup"></a>
