@@ -35,6 +35,7 @@
             'qaobee.radar',
             'qaobee.stat.detail.modal',
             'eventCard',
+            'qaobee.titlePageBar',
 
             /* qaobee shared services */
             'qaobee.utils',

@@ -3,34 +3,13 @@
     <div class="row"></div>
     
     <!-- Entete -->
-    <div class="row">
-        <div class="col s12">
-            <div class="row dark-primary-color center-align">
-                <div ng-hide="addTeamTitle">
-                    <div class="col s1">    
-                        <h5><i class="fa fa-pencil-square-o"></i></h5>
-                    </div>
-                    <div class="col s11" ng-hide="{{adversary}}">
-                        <h5>{{'updateTeam.titleHome' | translate }} {{team.label}}</h5>
-                    </div>
-                    <div class="col s11" ng-show="{{adversary}}">
-                        <h5>{{'updateTeam.titleAdversary' | translate }} {{team.label}}</h5>
-                    </div>
-                </div>
-                <div ng-show="addTeamTitle">
-                    <div class="col s1">    
-                        <h5><i class="fa fa-plus-square-o"></i></h5>
-                    </div>
-                    <div class="col s11" ng-hide="{{adversary}}">
-                        <h5>{{'addTeam.titleHome' | translate }} {{currentEffective.label}}</h5>
-                    </div>
-                    <div class="col s11" ng-show="{{adversary}}">
-                        <h5>{{'addTeam.titleAdversary' | translate }} {{currentEffective.label}}</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div ng-hide="addTeamTitle">
+        <title-page-bar icon="group" title="updateTeam.titleHome"></title-page-bar>
     </div>
+    
+    <div ng-show="addTeamTitle">
+        <title-page-bar icon="group" title="addTeam.titleHome"></title-page-bar>
+    </div>   
     
     <!-- form-->
     <div class="row">

@@ -9,46 +9,30 @@
     <div class="row">
         <div class="col s12">
             
-            <div class="row colorMain">
-                <div class="col l2 m1 s12 white-text center hide-on-small-only">
-                    &nbsp;
-                </div>
-                <div class="col l8 m10 s12 white-text center-align" ng-if="teamHome">
+            <title-page-bar icon="event" title="{{collecte.event.label}} : {{collecte.startDateLabel}}"></title-page-bar>
+            
+            <div class="row light-primary-color">
+                <div class="col s12 center-align" ng-if="teamHome">
                     <h5> 
                         <span ng-if="teamHome">
                             <a href="#/private/teamStats/{{collecte.event.participants.teamHome.id}}"
-                                class="red lighten-1 white-text">{{collecte.event.participants.teamHome.label}}
+                                class="accent-color btn">{{collecte.event.participants.teamHome.label}}
                             </a>
                         </span>
-                        <br class="hide-on-med-and-up">
                         - 
-                        <br class="hide-on-med-and-up">
                         {{collecte.event.participants.teamVisitor.label}}                   
                     </h5>
                 </div>
                 
-                <div class="col l8 m10 s12 white-text center-align" ng-if="teamVisitor">
-                    <h5>
+                <div class="col s12 center-align" ng-if="teamVisitor">
+
                         {{collecte.event.participants.teamHome.label}} 
-                        <br class="hide-on-med-and-up">
                         - 
-                        <br class="hide-on-med-and-up">
                         <span ng-if="teamVisitor">
                             <a href="#/private/teamStats/{{collecte.event.participants.teamVisitor.id}}"
-                                class="red lighten-1 white-text">{{collecte.event.participants.teamVisitor.label}}
+                                class="accent-color btn">{{collecte.event.participants.teamVisitor.label}}
                             </a>
                         </span>
-                    </h5>
-                </div>
-                <div class="col l2 m1 s12 white-text center-align">
-                    <h5>
-                    <a href="" class="white-text waves-effect waves-light" ng-click="doTheBack()">
-                        <i class="fa fa-arrow-left"></i>   
-                    </a>
-                    </h5>
-                </div>
-                <div class="col s12 blue-grey-text text-darken-2 grey lighten-2 center">
-                    <h6>{{collecte.event.label}} : {{collecte.startDateLabel}}</h6>
                 </div>
             </div>
  

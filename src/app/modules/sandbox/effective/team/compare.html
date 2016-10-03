@@ -7,39 +7,10 @@
         <div class="col s12">
 
             <!-- Header-->
-            <div class="row cardPlayer">
-                <div class="col l3 m3 center hide-on-small-only">
-                    &nbsp;
-                    <div ng-if="loading">
-                        <div class="preloader-wrapper small active ">
-                            <div class="spinner-layer spinner-blue-only">
-                                <div class="circle-clipper left">
-                                    <div class="circle"></div>
-                                </div>
-                                <div class="gap-patch">
-                                    <div class="circle"></div>
-                                </div>
-                                <div class="circle-clipper right">
-                                    <div class="circle"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col l7 m7 s12 white-text center">
-                    &nbsp;
-                </div>
-                <div class="col l2 m2 s12 white-text center">
-                    <h5>
-                        <a href="" class="black-text waves-effect waves-light" ng-click="doTheBack()">
-                            <i class="fa fa-arrow-left"></i>
-                        </a>
-                    </h5>
-                </div>
+            <title-page-bar icon="compare_arrows" title=""></title-page-bar>
 
                 <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive"
                                  meta="meta"></filter-calendar>
-            </div>
 
             <div class="row">
                 <table>

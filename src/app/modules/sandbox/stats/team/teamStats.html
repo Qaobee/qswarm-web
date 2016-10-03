@@ -4,15 +4,7 @@
     <div class="row"></div>
     
     <!-- Entete-->
-    <div class="row dark-primary-color valign-wrapper">
-        <div class="col m10 s12 center">
-            <h5>{{team.label}}</h5>
-        </div>
-        <div class="col m2 s12 center">
-            <button class="btn accent-color right" ng-click="doTheBack()"
-            translate="commons.buttons.back"></button>
-        </div>    
-    </div>
+    <title-page-bar icon="group" title="{{team.label}}"></title-page-bar>
             
     <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
     
