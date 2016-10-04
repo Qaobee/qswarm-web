@@ -16,7 +16,6 @@ buildscript {
     }
 }
 sonarqube {
-    check
     properties {
         // Sonar Specific properties
         // This is the display project name
