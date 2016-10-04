@@ -7,31 +7,7 @@
         <div class="col s12">
 
             <!-- Header-->
-            <div class="row dark-primary-color valign-wrapper">
-                <div class="col s10">
-                    <h5>&nbsp;</h5>
-                    <div ng-if="loading">
-                        <div class="preloader-wrapper small active ">
-                            <div class="spinner-layer spinner-blue-only">
-                                <div class="circle-clipper left">
-                                    <div class="circle"></div>
-                                </div>
-                                <div class="gap-patch">
-                                    <div class="circle"></div>
-                                </div>
-                                <div class="circle-clipper right">
-                                    <div class="circle"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col s2">
-                    <button class="btn accent-color right" ng-click="doTheBack()"
-                            translate="commons.buttons.back"></button>
-                </div>
-            </div>
+            <title-page-bar icon="compare_arrows" title=""></title-page-bar>
 
             <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive"
                              meta="meta"></filter-calendar>

@@ -3,18 +3,7 @@
     <div class="row"></div>
 
     <!-- entete start tablet and sup-->
-    <div class="row dark-primary-color">
-        <div class="col s2 left-align">
-            <h5><i class="material-icons md-36">event</i></h5>
-        </div>
-
-        <div class="col s8 center-align">
-            <h5>{{'mainAgenda.title' | translate }} {{currentEffective.label}}</h5>
-        </div>
-        
-        <div class="col s2">&nbsp;</div>
-
-    </div>
+    <title-page-bar icon="event" title="mainAgenda.title"></title-page-bar>
     
     <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
     <!-- entete end -->

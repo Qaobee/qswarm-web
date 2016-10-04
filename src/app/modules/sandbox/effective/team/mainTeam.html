@@ -3,25 +3,14 @@
     <div class="row"></div>
     
     <!-- entete start -->
-    <div class="row dark-primary-color">
-        <div class="col s2 left-align">
-            <h5><i class="material-icons md-36">group</i></h5>
-        </div>
-
-        <div class="col s8 center-align">
-            <h5>{{'mainTeam.title' | translate }} {{currentEffective.label}}</h5>
-        </div>
-        
-        <div class="col s2">&nbsp;</div>
-        
-        <v-tabs class="tabs" horizontal active="activeTabIndex">
-            <v-tab class="tab" ng-click="changeTabDefault(0)"><a ng-href="" ng-class="{'active': activeTabIndex === 0}" translate="tabTeam.dashboard"></a></v-tab>
-            <v-tab class="tab" ng-click="changeTabDefault(1)"><a ng-href="" ng-class="{'active': activeTabIndex === 1}">{{'tabTeam.ListTeam' | translate }} ({{listTeamHome.length}})</a></v-tab>
-        </v-tabs>
-        
-    </div>
+    <title-page-bar icon="group" title="mainTeam.title"></title-page-bar>
     
     <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
+    
+    <v-tabs class="tabs" horizontal active="activeTabIndex">
+        <v-tab class="tab" ng-click="changeTabDefault(0)"><a ng-href="" ng-class="{'secondary-color': activeTabIndex === 0}" translate="tabTeam.dashboard"></a></v-tab>
+        <v-tab class="tab" ng-click="changeTabDefault(1)"><a ng-href="" ng-class="{'secondary-color': activeTabIndex === 1}">{{'tabTeam.ListTeam' | translate }} ({{listTeamHome.length}})</a></v-tab>
+    </v-tabs>
 
     <div class="row">
 

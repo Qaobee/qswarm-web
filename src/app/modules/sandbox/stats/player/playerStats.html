@@ -4,18 +4,7 @@
     <div class="row"></div>
        
     <!-- Entete-->
-    <div class="row dark-primary-color valign-wrapper">
-        <div class="col l3 m3 center hide-on-small-only">
-            <avatar person="player" width="'50px'"></avatar>
-        </div>
-        <div class="col l7 m7 s12 center">
-            <h5>{{player.firstname}} {{player.name}}</h5>
-        </div>
-        <div class="col l2 m2 s12 center">
-            <button class="btn accent-color right" ng-click="doTheBack()"
-            translate="commons.buttons.back"></button>
-        </div>    
-    </div>
+    <title-page-bar icon="person" title="{{player.firstname}} {{player.name}}"></title-page-bar>
             
     <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
             

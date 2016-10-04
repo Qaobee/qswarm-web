@@ -3,20 +3,13 @@
     <div class="row"></div>
 
     <!-- Entete -->
-    <div class="row dark-primary-color valign-wrapper">
-        <div class="col s2 left-align">
-            <h5><i class="material-icons md-36">event</i></h5>
-        </div>
-        <div class="col s8 center-align ">
-            <h5 ng-hide="addEventTitle" translate="updateEvent.title"></h5>
-            <h5 ng-show="addEventTitle" translate="addEvent.title"></h5>
-        </div>
-
-        <div class="col s2">
-            <button class="btn accent-color right" ng-click="doTheBack()" translate="commons.buttons.back"></button>
-        </div>
+    <div ng-hide="addEventTitle">
+        <title-page-bar icon="event" title="updateEvent.title"></title-page-bar>
     </div>
-
+    
+    <div ng-show="addEventTitle">
+        <title-page-bar icon="event" title="addEvent.title"></title-page-bar>
+    </div>    
 
     <div class="row">
         <form class="col s12" ng-submit="checkAndformatEvent()" name="eventForm" novalidate >

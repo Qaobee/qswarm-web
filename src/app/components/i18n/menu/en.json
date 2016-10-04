@@ -12,8 +12,10 @@
     "search-event": "Event",
     "search-player": "Player",
     "settings": "Settings",
-        "signup": "Inscription",
+    "signup": "Inscription",
+    "profil": "Profil",
     "notifications": {
+      "title": "Notifications",
       "mark-as-read": "Mark as read",
       "mark-as-unread": "Mark as unread",
       "delete": "Delete",

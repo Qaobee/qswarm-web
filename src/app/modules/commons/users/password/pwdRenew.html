@@ -3,22 +3,7 @@
     <div class="row"></div>   
 
     <!-- Entete -->
-    <div class="row">
-        <div class="col s12">
-            <div class="row blue-grey darken-2 white-text center">
-                <div class="col s1">
-                    <br/>&nbsp;
-                </div>
-                <div class="col s10">
-                    <br/>
-                    <h5>{{ 'renewPasswdPage.title' | translate }}</h5>
-                </div>
-                <div class="col m2 s1">
-                    <br/>&nbsp;
-                </div>
-            </div>
-        </div>
-    </div>
+    <title-page-bar icon="cached" title="renewPasswdPage.title"></title-page-bar>
     
     <div class="row card bleu-grey-text text-darken-2">
     	<form ng-submit="renewPasswd()" name="renewForm">
@@ -63,9 +48,9 @@
 			
 			<div class="row center">
 	            <div class="col s12">
-	                <a href="" ng-click="cancelRenew()" class="modal-action modal-close waves-effect waves-red btn btn-s red" style="max-width:50%"
+	                <a href="" ng-click="cancelRenew()" class="modal-action modal-close btn light-primary-color"
 	                   translate="commons.buttons.cancel"></a>
-	                <button type="submit" class="btn btn-s waves-effect waves-red  green darken-1" style="max-width:50%"
+	                <button type="submit" class="btn accent-color"
 	                        translate="commons.buttons.validate"></button>
 	            </div>
         	</div>

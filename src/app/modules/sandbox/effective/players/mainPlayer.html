@@ -3,28 +3,16 @@
     <div class="row"></div>
 
     <!-- entete start -->
-    <div class="row dark-primary-color">
-        <div class="col s2 left-align">
-            <h5><i class="material-icons md-36">person</i></h5>
-        </div>
-
-        <div class="col s8 center-align">
-            <h5>{{'mainPlayer.title' | translate }} {{currentEffective.label}}</h5>
-        </div>
-
-        <div class="col s2">&nbsp;</div>
-
-        <v-tabs class="tabs" horizontal active="activeTabIndex">
-            <v-tab class="tab" ng-click="changeTabDefault(0)"><a ng-href="" ng-class="{'active': activeTabIndex === 0}">{{'tabEffectif.dashboard'
-                | translate }}</a></v-tab>
-            <v-tab class="tab" ng-click="changeTabDefault(1)"><a ng-href="" ng-class="{'active': activeTabIndex === 1}">{{'tabEffectif.Listplayer'
-                | translate }} ({{players.length}})</a></v-tab>
-        </v-tabs>
-
-    </div>
-    <!-- entete end -->
+    <title-page-bar icon="person" title="mainPlayer.title"></title-page-bar>
 
     <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
+
+    <v-tabs class="tabs" horizontal active="activeTabIndex">
+        <v-tab class="tab" ng-click="changeTabDefault(0)"><a ng-href="" ng-class="{'secondary-color': activeTabIndex === 0}">{{'tabEffectif.dashboard'
+            | translate }}</a></v-tab>
+        <v-tab class="tab" ng-click="changeTabDefault(1)"><a ng-href="" ng-class="{'secondary-color': activeTabIndex === 1}">{{'tabEffectif.Listplayer'
+            | translate }} ({{players.length}})</a></v-tab>
+    </v-tabs>
 
 
     <div class="row">
