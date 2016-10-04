@@ -75,13 +75,28 @@
                 /**
                  * @description desactivate an user to one sandbox
                  * @memberOf qaobee.components.restAPI.sandbox.config.sbShareRestAPI
-                 * @function inviteMemberToSandbox
+                 * @function desactivateMemberToSandbox
                  * @request {JsonObject} request : contains user Id et sandbox Id
                  * @returns {Object} com.qaobee.hive.business.model.sandbox
                  */
                 desactivateMemberToSandbox: function (request) {
                     return $http({
                         url: sbShareAPIURL + '/desactivateMember',
+                        method: 'POST',
+                        data: request
+                    });
+                },
+                
+                /**
+                 * @description activate an user to one sandbox
+                 * @memberOf qaobee.components.restAPI.sandbox.config.sbShareRestAPI
+                 * @function activateMemberToSandbox
+                 * @request {JsonObject} request : contains user Id et sandbox Id
+                 * @returns {Object} com.qaobee.hive.business.model.sandbox
+                 */
+                activateMemberToSandbox: function (request) {
+                    return $http({
+                        url: sbShareAPIURL + '/activateMember',
                         method: 'POST',
                         data: request
                     });

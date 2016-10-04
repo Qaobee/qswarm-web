@@ -41,15 +41,39 @@
             };
             
             $scope.updateMemberSandbox = function (memberId) {
+                var member = null;
+                var request = {
+                    "sandboxId": $scope.sandbox._id,
+                    "userId": memberId
+                };
                 
-                $log.debug('memberId',memberId);
-                var request = {};
-                sandboxRestAPI.desactivateMemberToSandbox(request).success(function (data) {
-                    toastr.success($filter('translate')('sbMemberMngtToast.memberAdd', {
-                        firstname: person.firstname,
-                        name: person.name
-                    }));                                           
-                });
+                if($scope.sandbox.members.length>0){
+                    $scope.sandbox.members.forEach(function (a) {
+                        
+                        if (a.personId === memberId) {
+                            member = a;
+                        }
+                    });
+                } 
+                
+                $log.debug('request',request);
+                if(member.status ==='activated') {
+                    sandboxRestAPI.desactivateMemberToSandbox(request).success(function (data) {
+                        toastr.success($filter('translate')('sbMemberMngtPage.messageControl.memberRemove', {
+                            firstname: member.person.firstname,
+                            name: member.person.name
+                        }));                                           
+                    });
+                } else {
+                    sandboxRestAPI.activateMemberToSandbox(request).success(function (data) {
+                        toastr.success($filter('translate')('sbMemberMngtPage.messageControl.memberAdd', {
+                            firstname: member.person.firstname,
+                            name: member.person.name
+                        }));                                           
+                    });
+                }
+                
+                
                 
             };
             

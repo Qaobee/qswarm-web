@@ -27,7 +27,7 @@
     },
     "messageControl": {
       "memberAdd": "{{firstname}} {{name}} a été ajouté comme utilisateur à mon espace de travail",
-      "memberremove": "{{firstname}} {{name}} a été désactivé à mon espace de travail"
+      "memberRemove": "{{firstname}} {{name}} a été désactivé de mon espace de travail"
     }
   },
   "billingPage": {

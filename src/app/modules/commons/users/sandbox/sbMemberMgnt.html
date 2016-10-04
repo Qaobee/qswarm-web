@@ -4,7 +4,7 @@
     <div class="row"><div class="col s12">&nbsp;</div></div>
 
     <!-- Entete -->
-    <title-page-bar icon="more" title="sbMemberMngtPage.title"></title-page-bar>
+    <title-page-bar icon="people" title="sbMemberMngtPage.title"></title-page-bar>
 
     <div class="row">
         
@@ -36,7 +36,7 @@
                                 <label>
                                   {{'sbMemberMngtPage.label.off' | translate }}
                                   <input type="checkbox" ng-click="updateMemberSandbox(member.person._id)"
-                                     ng-checked="member.status=='activate'">
+                                     ng-checked="member.status=='activated'">
                                   <span class="lever"></span>
                                     {{'sbMemberMngtPage.label.on' | translate }}
                                 </label>
