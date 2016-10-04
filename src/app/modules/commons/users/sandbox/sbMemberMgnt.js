@@ -56,9 +56,11 @@
                     });
                 } 
                 
-                $log.debug('request',request);
+                
                 if(member.status ==='activated') {
                     sandboxRestAPI.desactivateMemberToSandbox(request).success(function (data) {
+                        $log.debug('desactivateMemberToSandbox',data);
+                        $scope.sandbox = data;
                         toastr.success($filter('translate')('sbMemberMngtPage.messageControl.memberRemove', {
                             firstname: member.person.firstname,
                             name: member.person.name
@@ -66,6 +68,8 @@
                     });
                 } else {
                     sandboxRestAPI.activateMemberToSandbox(request).success(function (data) {
+                        $log.debug('activateMemberToSandbox',data);
+                        $scope.sandbox = data;
                         toastr.success($filter('translate')('sbMemberMngtPage.messageControl.memberAdd', {
                             firstname: member.person.firstname,
                             name: member.person.name

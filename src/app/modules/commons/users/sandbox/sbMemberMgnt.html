@@ -31,7 +31,7 @@
 
                     <div class="card-action">
                         <span class="primary-text-color">{{'sbMemberMngtPage.label.memberActif' | translate }}</span>
-                        <div class="right"> 
+                        <div class="right" ng-if="user._id !== member.person._id"> 
                             <div class="switch">
                                 <label>
                                   {{'sbMemberMngtPage.label.off' | translate }}
