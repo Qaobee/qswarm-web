@@ -22,7 +22,7 @@ node {
     sh 'git_stats generate -o docs/git'
 
     stage "Quality $version"
-    sh './gradlew sonarqube -x test -Dsonar.projectVersion=0.0.71 -Dsonar.login=marin.xavier -Dsonar.password=zaza66629!'
+    sh "./gradlew sonarqube -Dsonar.projectVersion=$version -Dsonar.login=marin.xavier -Dsonar.password=zaza66629!"
 
     stage "Docker $version"
     timeout(time: 30, unit: 'DAYS') {
