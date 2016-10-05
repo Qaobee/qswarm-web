@@ -30,6 +30,20 @@
       "memberRemove": "{{firstname}} {{name}} a été désactivé de mon espace de travail"
     }
   },
+  "switchSandboxPage": {
+    "title": "Changer d'espace de travail",
+    "label": {
+      "listSandbox": "Liste de vos espaces de travail",
+      "memberActif": "Membre activé",
+      "on": "Oui",
+      "off": "Non",
+      "invitePending": "Invitation en cours"
+    },
+    "messageControl": {
+      "sandboxMember": "Vous avez basculé sur l'espace de travail de {{firstname}} {{name}}",
+      "sandboxOwner": "Vous avez basculé sur votre espace de travail"
+    }
+  },
   "billingPage": {
     "title": "Gestion des abonnements",
     "label": {

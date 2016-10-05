@@ -102,23 +102,22 @@
     <nav class="top-nav dark-primary-color visible-nav" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
-                
+                <a href="/#/private/sbSwitch" class="brand-logo center"><span class="truncate">{{meta.sandbox.structure.label}}</span></a>
                 <ul class="hide-on-med-and-down">
-                    <li class="left"><a href="#/private/"><i class="material-icons left">home</i>
-                        <span class="hide-on-med-and-down" translate="headerMenu.dashboard"></span></a>
+                    <li class="left">
+                        <a href="#/private/"><i class="material-icons left" title="{{'headerMenu.dashboard' | translate}}">home</i></a>
                     </li>
 
-                    <li class="left"><a href="#/private/players/{{meta.sandbox.effectiveDefault}}"><i
-                            class="material-icons left">person</i>
-                        <span class="hide-on-med-and-down" translate="headerMenu.players"></span></a>
+                    <li class="left">
+                        <a href="#/private/players/{{meta.sandbox.effectiveDefault}}"><i class="material-icons left" title="{{'headerMenu.players' | translate}}">person</i></a>
                     </li>
 
-                    <li class="left"><a href="#/private/teams/{{meta.sandbox.effectiveDefault}}"><i class="material-icons left">group</i>
-                        <span class="hide-on-med-and-down" translate="headerMenu.teams"></span></a>
+                    <li class="left">
+                        <a href="#/private/teams/{{meta.sandbox.effectiveDefault}}"><i class="material-icons left" title="{{'headerMenu.teams' | translate}}">group</i></a>
                     </li>
 
-                    <li class="left"><a href="#/private/agenda/{{meta.sandbox.effectiveDefault}}"><i class="material-icons left">event_note</i>
-                        <span class="hide-on-med-and-down" translate="headerMenu.calendar"></span></a>
+                    <li class="left">
+                        <a href="#/private/agenda/{{meta.sandbox.effectiveDefault}}"><i class="material-icons left" title="{{'headerMenu.calendar' | translate}}">event_note</i></a>
                     </li>
 
                     <li class="right"><a ng-click="logoff()" href="javascript:void(0);"><i class="material-icons">exit_to_app</i></a>

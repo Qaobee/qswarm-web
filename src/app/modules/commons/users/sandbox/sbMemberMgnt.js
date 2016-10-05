@@ -32,7 +32,7 @@
             $scope.user = user;
             $scope.meta = meta;
         
-            /* Retrieve current event */
+            /* Retrieve sandbox user */
             $scope.getSandbox = function () {
 
                 sandboxRestAPI.getSandbox($scope.meta.sandbox._id).success(function (data) {
@@ -59,7 +59,6 @@
                 
                 if(member.status ==='activated') {
                     sandboxRestAPI.desactivateMemberToSandbox(request).success(function (data) {
-                        $log.debug('desactivateMemberToSandbox',data);
                         $scope.sandbox = data;
                         toastr.success($filter('translate')('sbMemberMngtPage.messageControl.memberRemove', {
                             firstname: member.person.firstname,
@@ -68,7 +67,6 @@
                     });
                 } else {
                     sandboxRestAPI.activateMemberToSandbox(request).success(function (data) {
-                        $log.debug('activateMemberToSandbox',data);
                         $scope.sandbox = data;
                         toastr.success($filter('translate')('sbMemberMngtPage.messageControl.memberAdd', {
                             firstname: member.person.firstname,
@@ -76,9 +74,6 @@
                         }));                                           
                     });
                 }
-                
-                
-                
             };
             
             // return button
@@ -97,7 +92,7 @@
                 userRestAPI.getUserById(user._id).success(function () {
                     $scope.getSandbox();
                 }).error(function () {
-                    $log.error('HomeControler : User not Connected');
+                    $log.error('SbMemberMgntCtrl : User not Connected');
                 });
             };
         

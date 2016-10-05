@@ -24,13 +24,21 @@
          * @description Main controller of app/modules/commons/users/sandbox/switchSandbox.html
          */
         .controller('SbSwitchCtrl', function ($scope, $filter, EnvironmentConfig, $window, $translatePartialLoader, 
-                                               userRestAPI, $log, meta, user) {
+                                               userRestAPI, sandboxRestAPI, $log, meta, user) {
 
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
 
+            $scope.listSandbox = [];
+        
+            /* Retrieve list sandbox */
+            $scope.getListSandbox = function () {
 
-            $scope.renew = {};
+                sandboxRestAPI.getSandboxSharingList($scope.meta.sandbox.activityId).success(function (data) {
+                    $scope.listSandbox = data.members;
+                    $log.debug(meta);
+                });
+            };
 
             // return button
             $scope.doTheBack = function () {
@@ -39,16 +47,15 @@
 
 
             $scope.$on('$destroy', function () {
-                delete $scope.user;
-                delete $scope.renew;
+                delete $scope.listSandbox;
             });
 
             /* check user connected */
             $scope.checkUserConnected = function () {
                 userRestAPI.getUserById(user._id).success(function () {
-                    
+                    $scope.getListSandbox();
                 }).error(function () {
-                    $log.error('HomeControler : User not Connected');
+                    $log.error('SbSwitchCtrl : User not Connected');
                 });
             };
             

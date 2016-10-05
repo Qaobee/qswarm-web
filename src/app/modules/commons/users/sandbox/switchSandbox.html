@@ -1,22 +1,57 @@
 <div class="container" ng-cloack>
 
     <!-- space between header menu and body-->
-    <div class="row"></div>
+    <div class="row"><div class="col s12">&nbsp;</div></div>
 
     <!-- Entete -->
-    <title-page-bar icon="group" title="switchSandbox.title"></title-page-bar>
+    <title-page-bar icon="group" title="switchSandboxPage.title"></title-page-bar>
 
     <div class="row">
-        <div class="col s12 card">
-            <div class="title">SB Switch</div>
+        <div class="col s12 accent-text-color">
+            <h6>{{'switchSandboxPage.label.listSandbox' | translate }}</h6>
         </div>
-    </div>
-    
-    <div class="row center-align">
-        <div class="col s12">
-            <button class="btn accent-color" ng-click="doTheBack()">
-                {{'commons.buttons.back' | translate }}
-            </button>
-        </div>
+        <div class="col s12 divider"></div>
+        <div class="col s12">&nbsp;</div>
+        <ul>
+            <li class="col m6 s12" ng-repeat="sb in listSandbox">
+                <div class="card " ng-if="user._id === sb.owner">
+                    <div class="card-title accent-color center-align">
+                        <span class="center-align truncate">
+                             {{sb.structure.label}}<br/>
+                        </span>
+                    </div>
+                    <div ng-repeat="member in sb.members">
+                        <div class="card-content primary-text-color" ng-if="member.role.label === 'Admin'">
+                            <span class="light-text-color right" >
+                                {{member.person.firstname}} {{member.person.name}}
+                            </span>
+                            <avatar person="member.person" width="'80px'"></avatar>
+                        </div>
+                    </div>
+                    <div class="card-action dark-primary-color">
+                        <a href="#/" class="btn accent-color" translate="commons.buttons.cancel"></a>
+                    </div>
+                </div>
+                
+                <div class="card " ng-if="user._id !== sb.owner">
+                    <div class="card-title secondary-color center-align">
+                        <span class="center-align truncate">
+                             {{sb.structure.label}}
+                        </span>
+                    </div>
+                    <div ng-repeat="member in sb.members">   
+                        <div class="card-content primary-text-color left-align" ng-if="member.role.label === 'Admin'">
+                            <span class="light-text-color right" >
+                                {{member.person.firstname}} {{member.person.name}}
+                            </span>
+                            <avatar person="member.person" width="'80px'"></avatar>
+                        </div>
+                    </div>
+                    <div class="card-action dark-primary-color">
+                        <a href="#/" class="btn accent-color" translate="commons.buttons.cancel"></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>
