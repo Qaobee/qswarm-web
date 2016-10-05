@@ -12,7 +12,7 @@ node {
     sh 'bower cache clean'
     sh 'npm install'
     sh 'bower install'
-    sh 'gulp'
+    sh 'gulp docker'
     sh 'mkdir -p dist/bower_components'
     sh 'cp -R bower_components/angular-i18n dist/bower_components/.'
     sh 'cp -R bower_components/momentjs dist/bower_components/.'
