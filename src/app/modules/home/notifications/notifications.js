@@ -97,7 +97,8 @@
              * @returns {string}
              */
             $scope.getAvatar = function (avatar) {
-                return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/' + $scope.collection + '/' + avatar : 'assets/images/user.png';
+                $log.debug('avatar',avatar);
+                return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/SB_Person/' + avatar : 'assets/images/user.png';
             };
             $scope.$on('qeventbus:notifications', function () {
                 $scope.getNotifications();

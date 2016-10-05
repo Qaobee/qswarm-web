@@ -37,6 +37,7 @@
                     $translatePartialLoader.addPart('commons');
                     $translatePartialLoader.addPart('menu');
                     $translatePartialLoader.addPart('user');
+                    $translatePartialLoader.addPart('home');
                     $scope.hideTrial = false;
                     $scope.signin = {};
                     $scope.notifications = [];
@@ -119,7 +120,7 @@
                      * @returns {string}
                      */
                     $scope.getAvatar = function (avatar) {
-                        return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/' + $scope.collection + '/' + avatar : 'assets/images/user.png';
+                        return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/SB_Person/' + avatar : 'assets/images/user.png';
                     };
                     // Si fermeture par clic sur Croix, cookie de téléchargement KO
                     /**

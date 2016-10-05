@@ -9,11 +9,11 @@
             <i class="material-icons right">forward</i></a>
         <ul class="collection primary-text-color">
             <li class="collection-item avatar" ng-repeat="n in notifications">
-                <img ng-src="{{getAvatar(n.from_user_id.avatar)}}" alt="" class="circle">
+                <img ng-src="{{getAvatar(n.senderId.avatar)}}" alt="" class="circle">
                 <a href="#/notifications/{{n._id}}" class="accent-text-color"><span class="title" ng-bind-html="n.title"></span></a>
                 <p>
                     <span class="truncate" ng-bind-html="n.content"></span>
-                    <small>{{n.from_user_id.firstname}} {{n.from_user_id.name}} <br /> {{n.timestamp | date : 'short'}} |
+                    <small>{{n.senderId.firstname}} {{n.senderId.name}} <br /> {{n.timestamp | date : 'short'}} |
                         <br />
                         <a href="javascript:void(0);" ng-click="markAsRead(n._id)" class="waves-effect waves-white accent-text-color">
                             <i class="tiny material-icons" ng-if="n.read"

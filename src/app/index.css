@@ -9,6 +9,10 @@
     display: none !important;
 }
 
+.material-icons.md-9 {
+    font-size: 9px;
+}
+
 .material-icons.md-18 {
     font-size: 18px;
 }
