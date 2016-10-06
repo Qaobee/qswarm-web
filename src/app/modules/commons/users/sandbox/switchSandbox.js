@@ -35,8 +35,14 @@
             $scope.getListSandbox = function () {
 
                 sandboxRestAPI.getSandboxSharingList($scope.meta.sandbox.activityId).success(function (data) {
-                    $scope.listSandbox = data.members;
-                    $log.debug($rootScope.meta);
+                    /* Select only sandbox where user is a member activated */
+                    data.members.forEach(function (a) {
+                        a.members.forEach(function (m) {
+                            if(m.person._id ===user._id && m.status === 'activated') {
+                                $scope.listSandbox.push(a);
+                            }
+                        });
+                    });
                 });
             };
         
