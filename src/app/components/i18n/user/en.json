@@ -2,8 +2,8 @@
   "profileMainPage": {
     "tabs": {
       "account": "Mon compte",
-      "sandbox": "Mes sandboxs",
-      "preference": "Préférences",
+      "sandbox": "Mes espaces de travail",
+      "preference": "Mes préférences",
       "profil": "Mon profil",
       "password": "Mot de passe",
       "billing": "Abonnement",
@@ -11,41 +11,76 @@
       "settings": "Paramétrage",
       "sbSharing": "Invitations",
       "sbMembers": "Gestion des utilisateurs",
-      "sbDefault": "Sandbox par défaut",
-      "sbSwitch": "Changer de sandbox",
+      "sbDefault": "Espace de travail par défaut",
+      "sbSwitch": "Changer d'espace de travail",
       "notificationSettings": "Paramètrage des notifications"
     }
   },
-  "sbMemberMngtToast": {
-    "memberAdd": "{{firstname}} {{name}} a été ajouté comme utilisateur de votre sandbox",
-    "memberremove": "{{firstname}} {{name}} a été désactivé de votre sandbox"
+  "sbMemberMngtPage": {
+    "title": "Gestion des utilisateurs de mon espace de travail",
+    "label": {
+      "listMember": "Liste des utilisateurs",
+      "memberActif": "Membre activé",
+      "on": "Oui",
+      "off": "Non",
+      "invitePending": "Invitation en cours"
+    },
+    "messageControl": {
+      "memberAdd": "{{firstname}} {{name}} a été ajouté comme utilisateur à mon espace de travail",
+      "memberRemove": "{{firstname}} {{name}} a été désactivé de mon espace de travail"
+    }
+  },
+  "switchSandboxPage": {
+    "title": "Changer d'espace de travail",
+    "label": {
+      "listSandbox": "Liste de vos espaces de travail",
+      "memberActif": "Membre activé",
+      "on": "Oui",
+      "off": "Non",
+      "invitePending": "Invitation en cours"
+    },
+    "messageControl": {
+      "sandboxMember": "Vous avez basculé sur l'espace de travail de {{firstname}} {{name}}",
+      "sandboxOwner": "Vous avez basculé sur votre espace de travail"
+    }
+  },
+  "billingPage": {
+    "title": "Gestion des abonnements",
+    "label": {
+      "billingdate": "Date de paiement",
+      "billingnumber": "Numéro de facture",
+      "product": "Abonnement",
+      "price": "Prix",
+      "activity": "Activité",
+      "pay": "Souscrire",
+      "cardNumber": "N° de carte"
+    }
   },
   "profilePage": {
     "title": "Modification du profil",
     "form": {
-      "title": "",
       "label": {
         "avatar": "Déposer la photo ici",
-        "name": "Name",
-        "firstname": "Firstname",
-        "login": "Login",
+        "name": "Nom",
+        "firstname": "Prénom",
+        "login": "Identifiant",
         "email": "e-Mail",
-        "address": "Address",
-        "birthdate": "Birthdate",
+        "address": "Adresse",
+        "birthdate": "Date de naissance",
         "gender": {
-          "title": "Gender",
-          "female": "Female",
-          "male": "Male"
+          "title": "Civilité",
+          "female": "Femme",
+          "male": "Homme"
         }
       },
       "messageControl": {
-        "emailDirty": "Invalid format email ",
-        "name": "Name is mandatory",
-        "firstname": "Firstname is mandatory",
-        "gender": "Gender is mandatory",
-        "birthDate": "Birthdate is mandatory",
-        "phone": "Phone number is mandatory",
-        "ageCheck": "you must be at least 16 years old"
+        "emailDirty": "Format email invalide",
+        "name": "Le nom est obligatoire",
+        "firstname": "Le prénom est obligatoire",
+        "gender": "Le genre est obligatoire",
+        "birthDate": "La date de naissance est obligatoire",
+        "phone": "Le numéro de téléphone est obligatoire",
+        "ageCheck": "Vous devez avoir au moins 16 ans"
       }
     }
   },
@@ -68,28 +103,28 @@
     }
   },
   "signupStartPage": {
-    "title1": "Collect everything",
-    "title2": "The first sports data collection tool in real time",
+    "title1": "Captez l'instant",
+    "title2": "Le premier assistant personnel de collecte et d'analyse en temps réel de données sportives",
     "form": {
-      "title": "Signup",
-      "Label": {
-        "name": "Name",
-        "firstname": "Firstname",
-        "login": "Login",
+      "title": "Inscription",
+      "label": {
+        "name": "Nom",
+        "firstname": "Prénom",
+        "login": "Identifiant",
         "email": "e-Mail",
-        "password": "Password",
-        "passwordConfirm": "Confirm passward",
-        "title": "Subsribe on <b>Qaobee</b>"
+        "password": "Mot de passe",
+        "passwordConfirm": "Confirmation",
+        "title": "Inscrivez-vous sur <b>Qaobee</b>"
       },
       "messageControl": {
-        "emailDirty": "Email format invalid",
-        "badchars": "you typed forbidden chars",
+        "emailDirty": "Format email invalide",
+        "badchars": "Vous avez saisi des caractères non autorisés",
         "nonunique": "Le nom d'utilisateur que vous avez choisi existe déjà",
         "password": {
           "short": "Le mot de passe que vous avez choisi est trop court",
           "different": "Les mots de passe ne correspondent pas"
         },
-        "passwdStrength": "Password strength",
+        "passwdStrength": "Robustesse du mot de passe",
         "unknown": "Erreur inconnue",
         "CAPTCHA_EXCEPTION": "Le code de vérification est erroné"
       }
@@ -98,18 +133,18 @@
   "signupEndPage": {
     "title": "Création de votre espace de travail",
     "tabFindClub": {
-      "tabTitle": "Recherchez votre club",
+      "tabTitle": "Associez votre club à votre espace de travail",
       "form": {
         "label": {
           "city": "Indiquez votre ville",
-          "selectClub": "Choose your club",
+          "selectClub": "Sélectionnez votre club",
           "clubname": "Nom",
           "clubAddress": "Adresse",
-          "categoryAge": "Age category"
+          "categoryAge": "Choisissez une catégorie d'âge"
         }
       },
       "list": {
-        "empty": "Aucune donnée trouvée",
+        "empty": "Aucun club trouvé",
         "inProgress": "Recherche en cours...",
         "create": "Créer un club"
       },
@@ -122,15 +157,15 @@
       }
     },
     "tabCreateClub": {
-      "tabTitle": "Créer votre club",
+      "tabTitle": "ou créer votre propre club",
       "messageControl": {
-        "labelControl": "Label club is mandatory and must have 3 characters minimum"
+        "labelControl": "Le libellé du club est obligatoire et doit contenir au moins 3 caratères"
       }
     },
     "errorPage": {
-      "title": "Error !",
+      "title": "Erreur !",
       "text": "La validation de votre inscription n'a pu aboutir pour la raison suivante : ",
-      "buttonHome": "Home",
+      "buttonHome": "Accueil",
       "ph": {
         "unknown": "Erreur inconnue",
         "noMessage": "Pas de message"
@@ -138,19 +173,19 @@
     }
   },
   "signupStartDonePage": {
-    "title": "Account created !",
+    "title": "Compte créé !",
     "line1": "Votre inscription est presque terminée !",
     "line2": "Vous allez recevoir d'ici quelques minutes un e-mail pour valider votre compte Qaobee.",
     "line3": "A très vite sur qaobee.com !",
-    "signature": "Qaobee's team",
-    "buttonHome": "Home"
+    "signature": "L'équipe Qaobee",
+    "buttonHome": "Accueil"
   },
   "modalSignupCancel": {
     "title": "Abandon",
-    "question": "Are you sure you want to interrupt your registration ?",
+    "question": "Etes-vous certain de vouloir interrompre votre inscription ?",
     "button": {
-      "yes": "Yes",
-      "no": "No"
+      "yes": "Oui",
+      "no": "Non"
     }
   },
   "modalForgotPwdOk": {
@@ -174,7 +209,7 @@
       "2": "Vous venez de finaliser la création de votre compte Qaobee !",
       "3": "Pour vous aider à débuter, nous vous avons créé une équipe et un effectif.",
       "4": "Connectez-vous dès à présent pour découvrir votre nouvel espace de travail !",
-      "signature": "L'équipe Qaobee"
+      "signature": "L'équipe Qaobee."
     },
     "buttonHome": "Accueil"
   },

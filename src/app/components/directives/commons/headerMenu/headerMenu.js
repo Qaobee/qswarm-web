@@ -308,6 +308,11 @@
                         }
                         $rootScope.user = data;
                     });
+                    
+                    /* watch meta.sandbox change */
+                    $scope.$on('qeventbus:sandboxChange', function () {
+                        $scope.meta.sandbox = qeventbus.data.sandbox;
+                    });
 
                     /**
                      * @name $scope.logoff

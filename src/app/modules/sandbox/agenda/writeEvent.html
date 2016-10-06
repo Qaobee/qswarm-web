@@ -25,12 +25,7 @@
                         <div class="input-field col s8">
                             <input id="EventStartDate" name="EventStartDate" type="text"
                                    ng-model="startDate" required
-                                   input-date data-today="today" data-first-day="1" data-clear="clear"
-                                   data-close="close"
-                                   data-format="{{formatSubmit}}" data-months-full="{{ month }}"
-                                   data-months-short="{{ monthShort }}" data-weekdays-full="{{ weekdaysFull }}"
-                                   data-weekdays-short="{{ weekdaysShort }}" data-weekdays-letter="{{ weekdaysLetter }}"
-                                   data-container="" data-select-years="selectYears"
+                                   class="datepicker"
                                    ng-class="{ 'has-error' : eventForm.EventStartDate.$invalid && !eventForm.EventStartDate.$pristine }"/>
                         </div>
                         <div class="small accent-text-color col s12"

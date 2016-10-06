@@ -23,8 +23,8 @@
          * @class qaobee.commons.users.sandbox.SbSwitchCtrl
          * @description Main controller of app/modules/commons/users/sandbox/switchSandbox.html
          */
-        .controller('SbSwitchCtrl', function ($scope, $filter, EnvironmentConfig, $window, $translatePartialLoader, 
-                                               userRestAPI, sandboxRestAPI, $log, meta, user) {
+        .controller('SbSwitchCtrl', function ($scope, $rootScope, $filter, EnvironmentConfig, $window, $translatePartialLoader, 
+                                               userRestAPI, sandboxRestAPI, $log, meta, user, qeventbus) {
 
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
@@ -36,8 +36,22 @@
 
                 sandboxRestAPI.getSandboxSharingList($scope.meta.sandbox.activityId).success(function (data) {
                     $scope.listSandbox = data.members;
-                    $log.debug(meta);
+                    $log.debug($rootScope.meta);
                 });
+            };
+        
+            /* change sandbox */
+            $scope.changeSandbox = function (sandboxId) {
+                if (angular.isDefined($rootScope.meta)) {
+                    $scope.listSandbox.forEach(function (a) {
+                        if (a._id === sandboxId) {
+                            $rootScope.meta.sandbox = a;
+                            qeventbus.prepForBroadcast('sandboxChange', {
+                                sandbox: a
+                            });
+                        }
+                    });
+                }
             };
 
             // return button

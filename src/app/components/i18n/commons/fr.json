@@ -54,7 +54,8 @@
       "next": "Suivant",
       "previous": "Précédent",
       "filter":"Filtrer",
-      "agree" : "Je suis d'accord"
+      "agree" : "Je suis d'accord",
+      "changeSB" : "Changer"
     },
     "settings": {
       "activity": {

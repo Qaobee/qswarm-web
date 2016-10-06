@@ -13,42 +13,42 @@
         <div class="col s12 divider"></div>
         <div class="col s12">&nbsp;</div>
         <ul>
-            <li class="col m6 s12" ng-repeat="sb in listSandbox">
-                <div class="card " ng-if="user._id === sb.owner">
+            <li class="col l4 m6 s12" ng-repeat="sb in listSandbox">
+                <div class="card dark-primary-color" ng-if="meta.sandbox._id === sb._id">
                     <div class="card-title accent-color center-align">
                         <span class="center-align truncate">
                              {{sb.structure.label}}<br/>
                         </span>
                     </div>
                     <div ng-repeat="member in sb.members">
-                        <div class="card-content primary-text-color" ng-if="member.role.label === 'Admin'">
-                            <span class="light-text-color right" >
+                        <div class="card-content" ng-if="member.role.label === 'Admin'">
+                            <h5 class="right light-text-color" >
                                 {{member.person.firstname}} {{member.person.name}}
-                            </span>
+                            </h5>
                             <avatar person="member.person" width="'80px'"></avatar>
                         </div>
                     </div>
-                    <div class="card-action dark-primary-color">
-                        <a href="#/" class="btn accent-color" translate="commons.buttons.cancel"></a>
+                    <div class="card-action light-primary-color">
+                        <a class="btn disabled" translate="commons.buttons.changeSB"></a>
                     </div>
                 </div>
                 
-                <div class="card " ng-if="user._id !== sb.owner">
+                <div class="card" ng-if="meta.sandbox._id !== sb._id">
                     <div class="card-title secondary-color center-align">
                         <span class="center-align truncate">
                              {{sb.structure.label}}
                         </span>
                     </div>
-                    <div ng-repeat="member in sb.members">   
-                        <div class="card-content primary-text-color left-align" ng-if="member.role.label === 'Admin'">
-                            <span class="light-text-color right" >
+                    <div ng-repeat="member in sb.members">
+                        <div class="card-content" ng-if="member.role.label === 'Admin'">
+                            <h5 class="right dark-text-color" >
                                 {{member.person.firstname}} {{member.person.name}}
-                            </span>
+                            </h5>
                             <avatar person="member.person" width="'80px'"></avatar>
                         </div>
                     </div>
-                    <div class="card-action dark-primary-color">
-                        <a href="#/" class="btn accent-color" translate="commons.buttons.cancel"></a>
+                    <div class="card-action light-primary-color">
+                        <a ng-click="changeSandbox(sb._id)" class="btn accent-color" translate="commons.buttons.changeSB"></a>
                     </div>
                 </div>
             </li>

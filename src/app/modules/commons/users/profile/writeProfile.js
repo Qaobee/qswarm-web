@@ -24,7 +24,7 @@
          * @description Main controller of app/modules/commons/users/profile/writeProfile.html
          */
         .controller('WriteProfileCtrl', function ($scope, $filter, EnvironmentConfig, $timeout, $window, $translatePartialLoader,
-                                                  $translate, $rootScope, $log, personSrv, profileRestAPI) {
+                                                  $translate, $rootScope, $location, $log, personSrv, profileRestAPI) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
 
@@ -108,15 +108,11 @@
                 updUser.birthdate = moment($scope.user.birthdate, 'DD/MM/YYYY').valueOf();
                 delete updUser.isAdmin;
 
-                if ($scope.temp.addr !== '' && angular.equals({}, $scope.user.address)) {
-                    toastr.error("Adresse inconnue");
-                    return;
-                }
 
                 profileRestAPI.update(updUser).success(function (data) {
-                    $translate('profile.popup.update.success').then(function (mess) {
+                    $translate('profilePage.form.success').then(function (mess) {
                         toastr.success(mess, data.firstname + ' ' + data.name);
-                        $scope.doTheBack();
+                        $location.path('/private/profile');
                     });
                 });
             };
