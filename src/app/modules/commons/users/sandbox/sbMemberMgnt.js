@@ -34,9 +34,13 @@
         
             /* Retrieve sandbox user */
             $scope.getSandbox = function () {
-
-                sandboxRestAPI.getSandbox($scope.meta.sandbox._id).success(function (data) {
-                    $scope.sandbox = data;
+                sandboxRestAPI.getSandboxSharingList($scope.meta.sandbox.activityId).success(function (data) {
+                    $scope.listSandbox = data.members;
+                    $scope.listSandbox.forEach(function (a) {
+                        if (a.owner === $scope.user._id) {
+                            $scope.sandbox = a;
+                        }
+                    });
                 });
             };
             
