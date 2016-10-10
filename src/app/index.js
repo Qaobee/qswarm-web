@@ -68,7 +68,12 @@
 
         .config(function ($translateProvider, $translatePartialLoaderProvider, $httpProvider, vcRecaptchaServiceProvider,
                           $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, AnalyticsProvider, ChartJsProvider) {
-            AnalyticsProvider.setAccount(EnvironmentConfig.uaid).useDisplayFeatures(true).trackUrlParams(true);
+            AnalyticsProvider
+                .setAccount(EnvironmentConfig.uaid)
+                .useDisplayFeatures(true)
+                .trackUrlParams(true)
+                .useEnhancedLinkAttribution(true)
+            ;
             if ('development' === EnvironmentConfig.name) {
                 tmhDynamicLocaleProvider.localeLocationPattern('../bower_components/angular-i18n/angular-locale_{{locale}}.js');
             } else {
@@ -124,7 +129,7 @@
                 colours: ['#03a9f4', '#0f9d58', '#ff5722', '#803690', '#FDB45C', '#949FB1', '#4D5360']
             });
         })
-        .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale) {
+        .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale, Analytics) {
             $locale.id = $translate.proposedLanguage();
             tmhDynamicLocale.set($locale.id);
             $rootScope.$on('$translatePartialLoaderStructureChanged', function () {
