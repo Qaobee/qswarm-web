@@ -1,17 +1,18 @@
 <div id="frame" ng-show="modalClosed"></div>
 <div class="row" ng-if="payError">
-    <h6 translate="profile.label.pay-error"></h6>
-    <button class="btn accent-color right" ng-click="doTheBack()"
-                    translate="commons.buttons.back"></button>
+    <h6 translate="billingPage.label.pay-modal.error"></h6>
+    <button class="btn accent-color right" ng-click="doTheBack()" translate="commons.buttons.back"></button>
 </div>
 <!-- Modal Structure -->
 <div id=payMessageModal class="modal">
     <div class="modal-content">
-        <h4>Attention</h4>
-        <p translate="profile.label.pay-modal"></p>
+        <h4 translate="billingPage.label.pay-modal.title"></h4>
+        <p translate="billingPage.label.pay-modal.content"></p>
     </div>
     <div class="modal-footer">
-        <a href="javascript:void(0);" class="modal-action modal-close waves-effect waves-red btn light-primary-color" ng-click="cancel()" translate="commons.buttons.cancel"></a>
-        <a href="javascript:void(0);" class="btn waves-effect waves-red  accent-color" ng-click="agree()"  translate="commons.buttons.agree"></a>
+        <a href="javascript:void(0);" class="modal-action modal-close waves-effect waves-red btn light-primary-color"
+           ng-click="cancel()" translate="commons.buttons.cancel"></a>
+        <a href="javascript:void(0);" class="btn waves-effect waves-red  accent-color" ng-click="agree()"
+           translate="commons.buttons.agree"></a>
     </div>
 </div>
