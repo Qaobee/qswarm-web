@@ -18,18 +18,19 @@
                 scope: {
                     icon: '@',
                     title: '@',
+                    displayBack: '=?'
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('commons');
-
+                    $scope.displayBack = $scope.displayBack || true;
                     $scope.icon = '';
                     $scope.title = '';
-                    
+
                     // return button
                     $scope.doTheBack = function () {
                         $window.history.back();
                     };
-                    
+
                 },
                 templateUrl: 'app/components/directives/commons/titlePageBar/titlePageBar.html'
             };

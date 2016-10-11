@@ -1095,3 +1095,7 @@ table.super-fancy tr.foobar {
     text-align: justify;
     text-indent: 10px;
 }
+
+.nav-wrapper a.brand-logo {
+    font-size: 150%;
+}
