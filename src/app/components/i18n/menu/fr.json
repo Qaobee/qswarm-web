@@ -26,7 +26,7 @@
       "content": "Vous pouvez vous abonner à tout moment en <a href=\"/#/private/billing/pay/0\" >cliquant ici</a>. Cette période expire dans <b>{{count}}</b> jour(s)."
     },
     "trial-ended": {
-      "content": "Votre période d'essai a expirée, abonez vous en <a href=\"/#/private/billing/pay/0\" >cliquant ici</a>."
+      "content": "Votre période d'essai a expirée, abonnez vous en <a href=\"/#/private/billing/pay/0\" >cliquant ici</a>."
     }
   },
   "navbar": {
