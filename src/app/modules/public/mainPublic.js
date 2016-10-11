@@ -103,8 +103,8 @@
          * @class qaobee.public.public.MentionslegalesCtrl
          * @description Contrôleur de la page "mentions légales"
          */
-        .controller('MentionslegalesCtrl', function () {
-
+        .controller('MentionslegalesCtrl', function (qeventbus) {
+            qeventbus.prepForBroadcast('menuItem', 'legal');
         })
 
         /**
