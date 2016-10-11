@@ -9,91 +9,68 @@
     <!-- Large view-->
     <div class="row hide-on-med-and-down">
         <div class="col s12">
-            <table>
-                <thead>
-                <tr>
-                    <th class="center-align" translate="billingPage.label.activity"></th>
-                    <th class="center-align" translate="billingPage.label.product"></th>
-                    <th class="center-align" translate="billingPage.label.price"></th>
-                    <th class="center-align" translate="billingPage.label.billingnumber"></th>
-                    <th class="center-align" translate="billingPage.label.billingdate"></th>
-                    <th class="center-align" translate="billingPage.label.cardNumber"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="plan in user.account.listPlan track by $index" class="light-primary-color">
-                    <td class="center-align">
-                        <h4>{{plan.activity.label | translate}}</h4>
-                    </td>
-                    <td class="center-align accent-text-color">
-                        <h5>{{plan.levelPlan}}</h5>
-                    </td>
+            <div class="row">
+                <div class="col m2 center-align" translate="billingPage.label.activity"></div>
+                <div class="col m2 center-align" translate="billingPage.label.product"></div>
+                <div class="col m1 center-align" translate="billingPage.label.price"></div>
+                <div class="col m2 center-align" translate="billingPage.label.billingnumber"></div>
+                <div class="col m2 center-align" translate="billingPage.label.billingdate"></div>
+                <div class="col m2 center-align" translate="billingPage.label.cardNumber"></div>
+            </div>
+            <div ng-repeat="plan in user.account.listPlan track by $index" class="row light-primary-color">
+                <div class="col m2 center-align">
+                    <h6>{{plan.activity.label | translate}}</h6>
+                </div>
+                <div class="col m2 center-align accent-text-color">
+                    <h6>{{plan.levelPlan}}</h6>
+                </div>
 
-                    <td ng-if="plan.status === 'open' || plan.status === 'notpaid'" colspan="4">
-                        <a href="#/private/billing/pay/{{$index}}" class="btn waves-effect waves-white secondary-color"
-                           translate="billingPage.label.pay">
-                        </a>
-                    </td>
-                    <td ng-if="plan.status !== 'open' && plan.status !== 'notpaid'">
-                        <table class="responsive-table">
-                            <thead>
-                            <tr>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr ng-repeat="s in plan.shippingList | orderBy : '-paidDate'">
-                                <td><span ng-bind="s.amountPaid"></span> €</td>
-                                <td ng-bind="s.paymentId"></td>
-                                <td>
-                                    <span><i class="material-icons left" ng-if="plan.status==='pending'">autorenew</i> {{s.paidDate | date}}</span>
-                                </td>
-                                <td ng-bind="'xxxx xxxx xxxx ' + s.cardInfo.last4"></td>
-                                <td>
-                                    <button ng-click="getBill($parent.$index, s.id, s.paymentId)"
-                                            class="waves-effect waves-teal btn-flat"><i class="material-icons">cloud_download</i>
-                                    </button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                <div ng-if="plan.status === 'open' || plan.status === 'notpaid'" class="col m8 center-align">
+                    <a href="#/private/billing/pay/{{$index}}" class="btn waves-effect waves-white secondary-color"
+                       translate="billingPage.label.pay">
+                    </a>
+                </div>
+
+                <div ng-if="plan.status !== 'open' && plan.status !== 'notpaid'">
+                    <span ng-repeat="s in plan.shippingList | orderBy : '-paidDate'">
+                        <div class="col m1 center-align"><span ng-bind="s.amountPaid"></span> €</div>
+                        <div class="col m2 center-align"><small>{{s.paymentId}}</small></div>
+                        <div class="col m2 center-align"><i class="material-icons left" ng-if="plan.status==='pending'">autorenew</i>
+                            {{s.paidDate | date}}
+                        </div>
+                        <div ng-bind="'xxxx xxxx xxxx ' + s.cardInfo.last4" class="col m2 center-align"></div>
+                        <button ng-click="getBill($parent.$index, s.id, s.paymentId)"
+                                class="waves-effect waves-teal btn-flat col m1 center-align"><i class="material-icons">cloud_download</i>
+                        </button>
+                    </span>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- medium and small view-->
     <div class="row hide-on-large-only">
         <div class="col s12">
-            <table>
-
-                <tbody>
-                <tr ng-repeat="plan in user.account.listPlan track by $index" class="light-primary-color">
-                    <td translate="billingPage.label.activity"></td>
-                    <td class="center-align">
-                        <h4>{{plan.activity.label | translate}}</h4>
-                    </td>
-                </tr>
-                <tr>
-                    <td translate="billingPage.label.product"></td>
-                    <td class="center-align accent-text-color">
-                        <h5>{{plan.levelPlan}}</h5>
-                    </td>
-                </tr>
-                <tr>
-                    <td ng-if="plan.status === 'open' || plan.status === 'notpaid'" colspan="4">
-                        <a href="#/private/billing/pay/{{$index}}" class="btn waves-effect waves-white secondary-color"
-                           translate="billingPage.label.pay">
-                        </a>
-                    </td>
-                    <td ng-if="plan.status !== 'open' && plan.status !== 'notpaid'">
-                        &nbsp;
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <div ng-repeat="plan in user.account.listPlan track by $index" class="light-primary-color row">
+                <h6 class="col s6 center-align">{{plan.activity.label | translate}}</h6>
+                <h6 class="col s6 center-align accent-text-color">{{plan.levelPlan}}</h6>
+                <div ng-if="plan.status === 'open' || plan.status === 'notpaid'" class="col s12">
+                    <a href="#/private/billing/pay/{{$index}}" class="btn waves-effect waves-white secondary-color"
+                       translate="billingPage.label.pay">
+                    </a>
+                </div>
+                <span ng-if="plan.status !== 'open' && plan.status !== 'notpaid'"
+                      ng-repeat="s in plan.shippingList | orderBy : '-paidDate'">
+                        <div class="col s2 center-align"><span ng-bind="s.amountPaid"></span> €</div>
+                        <div class="col s4 center-align"><i class="material-icons left" ng-if="plan.status==='pending'">autorenew</i>
+                            {{s.paidDate | date}}
+                        </div>
+                        <div ng-bind="'xxxx xxxx xxxx ' + s.cardInfo.last4" class="col s6 center-align"></div>
+                        <div class="col s6 center-align"><small>{{s.paymentId}}</small></div>
+                        <button ng-click="getBill($parent.$index, s.id, s.paymentId)"
+                                class="waves-effect waves-teal btn-flat col s6"><i class="material-icons">cloud_download</i>
+                        </button>
+                </span>
+            </div>
         </div>
     </div>
-</div>
