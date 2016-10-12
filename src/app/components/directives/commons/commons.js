@@ -30,24 +30,20 @@
         })
         .filter('searchFilter', function () {
             return function (items, query) {
-                if (angular.isUndefined(query)) {
-                    return items;
-                } else {
-                    return items.filter(function (item) {
-                        var addr = false;
-                        if (angular.isDefined(item.address) && angular.isDefined(item.address.formatedAddress)) {
-                            addr = item.address.formatedAddress.toLowerCase().indexOf(query.toLowerCase()) !== -1;
-                        }
-                        return addr
-                            || item.link.type.toLowerCase().indexOf(query.toLowerCase()) !== -1
-                            || item.participants.teamHome.label.toLowerCase().indexOf(query.toLowerCase()) !== -1
-                            || item.participants.teamVisitor.label.toLowerCase().indexOf(query.toLowerCase()) !== -1
-                            || item.label.toLowerCase().indexOf(query.toLowerCase()) !== -1
-                            || item.startDate.toLowerCase().indexOf(query.toLowerCase()) !== -1
-                            ;
-                    })
-                }
-            }
+                return angular.isUndefined(query) ? items : items.filter(function (item) {
+                    var searchMap = [
+                        item.link.type,
+                        angular.isDefined(item.participants.teamHome)?item.participants.teamHome.label: '',
+                        angular.isDefined(item.participants.teamVisitor)?item.participants.teamVisitor.label: '',
+                        item.label,
+                        item.startDate
+                    ];
+                    if (angular.isDefined(item.address) && angular.isDefined(item.address.formatedAddress)) {
+                        searchMap.push(item.address.formatedAddress);
+                    }
+                    return angular.isDefined(searchMap.find(new RegExp(query , 'i')));
+                });
+            };
         })
         /**
          * Directive pour vérifier que deux mots de passe sont identiques

@@ -18,7 +18,7 @@
                 scope: {
                     icon: '@',
                     title: '@',
-                    displayBack: '=?'
+                    displayBack: '@?'
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('commons');

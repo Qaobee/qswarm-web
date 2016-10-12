@@ -29,7 +29,6 @@
             userRestAPI.getCurrentUser().success(function (data) {
                 $rootScope.user = loadAdmin(data);
                 $scope.user = $rootScope.user;
-                console.log('back')
             });
             function loadAdmin(data) {
                 if (angular.isDefined(data.account) && data.account.habilitations !== null) {

@@ -9,7 +9,7 @@ angular.module('qaobee.cnil', [])
             domainParts.shift();
             var domain = '.' + domainParts.join('.');
             if('.' === domain) {
-                domain = 'localhost'
+                domain = 'localhost';
             }
             $cookies.put('cnil', 'true', {
                 path: '/',
