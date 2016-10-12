@@ -61,9 +61,6 @@
             'qaobee.stats',
             'qaobee.user.mainProfile',
             'qaobee.notifications'
-
-            /* A SUPPRIMER */
-            , 'qaobee.test'
         ])
 
         .config(function ($translateProvider, $translatePartialLoaderProvider, $httpProvider, vcRecaptchaServiceProvider,
@@ -95,13 +92,7 @@
             $translateProvider.determinePreferredLanguage();
             vcRecaptchaServiceProvider.setSiteKey(EnvironmentConfig.captchaKey);
             vcRecaptchaServiceProvider.setTheme('light');
-            //vcRecaptchaServiceProvider.setSize('compact');
             vcRecaptchaServiceProvider.setType('image');
-            /*   reCAPTCHAProvider.setPublicKey('6LdoTvMSAAAAAP4NTyay0WljN19Aq4Cl5pZELvIe');
-             reCAPTCHAProvider.setOptions({
-             theme: 'custom',
-             custom_theme_widget: 'custom_recaptcha_widget'
-             }); */
             $httpProvider.defaults.useXDomain = true;
             delete $httpProvider.defaults.headers.common['X-Requested-With'];
             $httpProvider.interceptors.push('httpInterceptor');
@@ -129,7 +120,7 @@
                 colours: ['#03a9f4', '#0f9d58', '#ff5722', '#803690', '#FDB45C', '#949FB1', '#4D5360']
             });
         })
-        .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale, Analytics) {
+        .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale) {
             $locale.id = $translate.proposedLanguage();
             tmhDynamicLocale.set($locale.id);
             $rootScope.$on('$translatePartialLoaderStructureChanged', function () {
@@ -146,7 +137,6 @@
          */
         .controller('MainCtrl', function ($rootScope, $scope, $window, $translatePartialLoader, qeventbus, $timeout,
                                           EnvironmentConfig, $templateRequest, $sce, $compile) {
-            /* i18n pour les formats de date, voir changement de la locale dans index.html */
             $translatePartialLoader.addPart('public');
             $translatePartialLoader.addPart('feedback');
             moment.locale($window.navigator.language);

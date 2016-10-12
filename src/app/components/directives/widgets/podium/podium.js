@@ -21,7 +21,7 @@
 
             });
         })
-        .directive('widgetPodium', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, effectiveSrv, qeventbus) {
+        .directive('widgetPodium', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, effectiveSrv) {
             return {
                 restrict: 'AE',
                 scope: {

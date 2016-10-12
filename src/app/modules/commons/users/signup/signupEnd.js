@@ -38,7 +38,6 @@
             $translatePartialLoader.addPart('commons');
 
             $scope.initForm = function () {
-                console.log('init')
                 $scope.listStructures = [];
                 $scope.structure = {};
                 $scope.structure.address = {};
@@ -104,7 +103,6 @@
 
             // Surveillance de la modification du retour de l'API Google sur l'adresse
             $scope.$watch('detailsSearchCity', function (newValue, oldValue) {
-                console.log('watch 1')
                 if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
                     if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue)) {
                         return;
@@ -118,7 +116,6 @@
 
             // Surveillance de la modification du retour de l'API Google sur l'adresse du club
             $scope.$watch('detailsCreateCity', function (newValue, oldValue) {
-                console.log('watch 2')
                 if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
                     if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue)) {
                         return;
@@ -269,7 +266,6 @@
 
             /* Validate structureSection */
             $scope.createStructure = function () {
-                console.log($scope.categoryAge)
                 if ($scope.structure.label.length > 2) {
                     $scope.createSandBox();
                 } else {
@@ -282,14 +278,11 @@
             $scope.createSandBox = function () {
                 // Récupération CategoryAge
                 var catAge = {};
-                console.log($scope.categoryAge)
                 if (!angular.isUndefined($scope.categoryAgeResult)) {
                     catAge = $scope.categoryAgeResult.filter(function (item) {
                         return item.code === $scope.categoryAge._id;
                     })[0];
                 }
-                console.log(catAge, $scope.categoryAge)
-
                 // Ouverture Modal creation compte
                 $scope.openModalCreate();
                 $log.debug($scope.structure);
