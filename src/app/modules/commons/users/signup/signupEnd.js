@@ -104,7 +104,6 @@
 
             // Surveillance de la modification du retour de l'API Google sur l'adresse
             $scope.$watch('detailsSearchCity', function (newValue, oldValue) {
-                console.log('watch 1')
                 if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
                     if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue)) {
                         return;
@@ -118,7 +117,6 @@
 
             // Surveillance de la modification du retour de l'API Google sur l'adresse du club
             $scope.$watch('detailsCreateCity', function (newValue, oldValue) {
-                console.log('watch 2')
                 if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
                     if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue)) {
                         return;

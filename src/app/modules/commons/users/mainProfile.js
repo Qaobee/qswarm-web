@@ -19,6 +19,7 @@
         'qaobee.user.billing.pay',
         'qaobee.user.sbSwitch',
         'qaobee.user.sbMemberMgnt',
+        'qaobee.user.sbSharing',
         'paymentRestAPI',
         'ngAutocomplete',
         'ngPasswordStrength',

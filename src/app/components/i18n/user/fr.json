@@ -16,6 +16,13 @@
       "notificationSettings": "Paramètrage des notifications"
     }
   },
+  "sbSharingPage": {
+    "title": "Partager espace de travail",
+    "label" : {
+        "byUser" : "Cherchez un utilisateur",
+        "byMail" : "Renseignez l'adresse mail de vos collaborateurs"
+    }
+  },
   "sbMemberMngtPage": {
     "title": "Gestion des utilisateurs de mon espace de travail",
     "label": {

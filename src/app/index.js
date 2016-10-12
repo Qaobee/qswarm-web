@@ -27,6 +27,8 @@
             'vTabs',
             'ngFileSaver',
             'vcRecaptcha',
+            'angular.chips',
+            
             //* qaobee widget */
             'qaobee.filterCalendar',
             'qaobee.commonsDirectives',

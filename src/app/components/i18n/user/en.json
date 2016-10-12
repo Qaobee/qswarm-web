@@ -16,6 +16,13 @@
       "notificationSettings": "Paramètrage des notifications"
     }
   },
+  "sbSharingPage": {
+    "title": "Partager espace de travail",
+    "label" : {
+        "byUser" : "Cherchez un utilisateur",
+        "byMail" : "Renseignez l'e-Mail de votre collègue"
+    }
+  },
   "sbMemberMngtPage": {
     "title": "Gestion des utilisateurs de mon espace de travail",
     "label": {
@@ -81,7 +88,8 @@
         "birthDate": "La date de naissance est obligatoire",
         "phone": "Le numéro de téléphone est obligatoire",
         "ageCheck": "Vous devez avoir au moins 16 ans"
-      }
+      },
+      "success": "Votre profil a été mis à jour"
     }
   },
   "profilePwdPage": {
