@@ -144,6 +144,7 @@
                         $scope.noStat = false;
                         buildWidget();
                     });
+                    buildWidget();
 
                 },
                 templateUrl: 'app/components/directives/widgets/podium/podium.html'
