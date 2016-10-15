@@ -18,7 +18,6 @@
                  * @param {String} seasonCode : le code saison souhaité
                  * @param {String} structureId : l'identifiant de la structure
                  * @returns {Array} com.qaobee.hive.business.model.commons.referencial.StructureCfg
-                 * FIXME : (mx) passer en requête POST
                  */
                 getCategoriesAgeStrList: function (seasonCode, structureId) {
                     return $http({
