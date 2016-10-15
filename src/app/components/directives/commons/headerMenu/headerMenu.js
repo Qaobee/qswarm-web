@@ -128,7 +128,7 @@
                             complete: function () {
                                 setTimeout(function () {
                                     angular.element(".lean-overlay").remove();
-                                });
+                                }, 500);
                             }
                         });
                     };
@@ -296,7 +296,7 @@
                             complete: function () {
                                 setTimeout(function () {
                                     angular.element(".lean-overlay").remove();
-                                });
+                                }, 500);
                             }
                         });
                     };
@@ -310,7 +310,7 @@
                                     complete: function () {
                                         setTimeout(function () {
                                             angular.element(".lean-overlay").remove();
-                                        });
+                                        }, 500);
                                     }
                                 });
                             } else {

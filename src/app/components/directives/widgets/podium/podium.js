@@ -145,7 +145,6 @@
                         buildWidget();
                     });
                     buildWidget();
-
                 },
                 templateUrl: 'app/components/directives/widgets/podium/podium.html'
             };
