@@ -8,29 +8,20 @@
      * <pre>
      * &lt;header-menu user=&quot;user&quot; /&gt;
      * @author Xavier MARIN
-     * @class qaobee.components.directives.qheaderMenu
-     * @requires {@link qaobee.components.services.qaobee.eventbus|qaobee.components.services.qaobee.eventbus}
-     * @requires {@link qaobee.components.directives.notifications|qaobee.components.directives.notifications}
-     * @requires {@link qaobee.components.restAPI.commons.users.user.userRestAPI|qaobee.components.restAPI.commons.users.user.userRestAPI}
-     * @copyright &lt;b&gt;QaoBee&lt;/b&gt;.
+     * @class qaobee.components.directives.headerMenu
      *
      */
     angular.module(
         'qaobee.headerMenu', [
-
-            /* qaobee services */
             'qaobee.eventbus',
-            'ng.deviceDetector',
-
-            /* qaobee Rest API */
             'notificationsRestAPI',
             'userRestAPI',
             'signupRestAPI',
             'seasonsRestAPI'
         ])
-        .directive('headerMenu', function (qeventbus, $rootScope, $cookieStore, $cookies, $translate,
-                                           $location, $window, $log, $translatePartialLoader, $filter, deviceDetector,
-                                           signupRestAPI, userRestAPI, seasonsRestAPI, notificationsRestAPI, EnvironmentConfig) {
+        .directive('headerMenu', function (qeventbus, $rootScope, $translate, $location, $window, $log,
+                                           $translatePartialLoader, $filter, signupRestAPI, userRestAPI,
+                                           seasonsRestAPI, notificationsRestAPI, EnvironmentConfig) {
             return {
                 restrict: 'AE',
                 controller: function ($scope) {
@@ -43,12 +34,8 @@
                     $scope.notifications = [];
                     $scope.hasnotif = false;
                     $scope.isProd = $window.location.hostname === 'www.qaobee.com';
-                    $scope.showCnil = $translate.use() == 'fr_FR';
-                    /**
-                     *
-                     * @param viewLocation
-                     * @returns {boolean}
-                     */
+                    $scope.showCnil = $translate.use() === 'fr_FR';
+
                     $scope.isActive = function (viewLocation) {
                         return viewLocation === $location.path();
                     };
@@ -87,11 +74,6 @@
                         return false;
                     };
 
-                    /**
-                     *
-                     * @param id
-                     * @returns {boolean}
-                     */
                     $scope.deleteNotification = function (id) {
                         notificationsRestAPI.del(id).then(function (data) {
                             if (data.data.status) {
@@ -101,49 +83,10 @@
                         return false;
                     };
 
-
-                    /*****************************************
-                     * Gestion de la bannière de téléchargement de l'appli mobile
-                     */
-                    // Par défaut, on n'affiche pas la bannière
-                    $scope.showBanner = false;
-                    if (deviceDetector.os === 'android') {
-                        var cookieDownload = $cookies.get('downloadApp');
-                        if (angular.isUndefined(cookieDownload)) {
-                            $scope.urlAppMobile = EnvironmentConfig.appMobile.google;
-                            $scope.showBanner = true;
-                        }
-                    }
-                    /**
-                     *
-                     * @param avatar
-                     * @returns {string}
-                     */
                     $scope.getAvatar = function (avatar) {
                         return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/SB_Person/' + avatar : 'assets/images/user.png';
                     };
-                    // Si fermeture par clic sur Croix, cookie de téléchargement KO
-                    /**
-                     *
-                     */
-                    $scope.closeBanner = function () {
-                        $cookies.put('downloadApp', "dlKO");
-                        $scope.showBanner = false;
-                    };
-                    // Si clic sur download, cookie de téléchargement OK + redirection
-                    /**
-                     *
-                     */
-                    $scope.openDownload = function () {
-                        $cookies.put('downloadApp', "dlOK");
-                        $window.location.href = $scope.urlAppMobile;
-                        $scope.showBanner = false;
-                    };
 
-
-                    /**
-                     * @description initialization materialize components
-                     */
                     $rootScope.$on('$viewContentLoaded', function () {
                         // Detect touch screen and enable scrollbar if necessary
                         $scope.hideTrial = $location.path() === '/';
@@ -173,38 +116,23 @@
 
                     });
 
-                    /**
-                     *
-                     * @returns {boolean}
-                     */
                     $scope.openSignup = function () {
                         delete($scope.infos);
                         angular.element('#modalLogin').closeModal();
-                        
                         $location.path('/signupStart');
                         return false;
                     };
 
-                    /**
-                     *
-                     */
                     $scope.openLogin = function () {
                         angular.element('#modalLogin').openModal({
                             complete: function () {
                                 setTimeout(function () {
                                     angular.element(".lean-overlay").remove();
-                                })
+                                }, 500);
                             }
                         });
                     };
 
-
-                    /**
-                     * @name $scope.loadMetaInfos
-                     * @function
-                     * @memberOf qaobee.directives.headerMenu
-                     * @description Load meta information such as current season, current structure and current activity
-                     */
                     $scope.loadMetaInfos = function () {
                         userRestAPI.getMetas().then(function (data) {
 
@@ -252,17 +180,16 @@
                     $scope.closeTrial = function () {
                         $scope.intrial = false;
                     };
-                    /**
-                     * @name $scope.$on
-                     * @function
-                     * @memberOf qaobee.directives.headerMenu
-                     * @description Intercept qeventbus
-                     */
+
                     $scope.$on('qeventbus:logoff', function () {
+                        delete $rootScope.user;
+                        delete $rootScope.meta;
                         delete $scope.user;
+                        delete $scope.intrial;
                         delete $window.sessionStorage.qaobeesession;
                         $location.path('/');
                     });
+
                     $scope.$on('qeventbus:login', function () {
                         $scope.user = qeventbus.data;
                         $scope.endTrial = 999;
@@ -307,36 +234,20 @@
                             $location.path('/private/billing');
                         }
                         $rootScope.user = data;
+                        $scope.user = data;
                     });
-                    
-                    /* watch meta.sandbox change */
+
                     $scope.$on('qeventbus:sandboxChange', function () {
                         $scope.meta.sandbox = qeventbus.data.sandbox;
                     });
 
-                    /**
-                     * @name $scope.logoff
-                     * @function
-                     * @memberOf qaobee.directives.headerMenu
-                     * @description Disconnection
-                     */
                     $scope.logoff = function () {
                         userRestAPI.logoff().success(function (data) {
                             qeventbus.prepForBroadcast('logoff', data);
-                            delete $rootScope.user;
-                            delete $rootScope.meta;
-                            delete $scope.user;
-                            delete $scope.intrial;
                             return false;
                         });
                     };
 
-                    /**
-                     * @name $scope.login
-                     * @function
-                     * @memberOf qaobee.QaobeeSwarnApp.ModalInstanceCtrl
-                     * @description Validate login form
-                     */
                     $scope.login = function () {
                         userRestAPI.logon($scope.signin.login, $scope.signin.passwd).success(function (data) {
                             angular.element('#modalLogin').closeModal();
@@ -378,12 +289,6 @@
                         });
                     };
 
-                    /**
-                     * @name $scope.cancelSignup
-                     * @function
-                     * @memberOf qaobee.directives.headerMenu
-                     * @description Cancel user signup
-                     */
                     $scope.openForgotPwd = function () {
                         delete($scope.infos);
                         angular.element('#modalLogin').closeModal();
@@ -391,17 +296,11 @@
                             complete: function () {
                                 setTimeout(function () {
                                     angular.element(".lean-overlay").remove();
-                                })
+                                }, 500);
                             }
                         });
                     };
 
-                    /**
-                     * @name $scope.renewPwd
-                     * @function
-                     * @memberOf qaobee.directives.headerMenu
-                     * @description Ask for paswword renew
-                     */
                     $scope.renewPwd = function () {
                         userRestAPI.forgotPasswd($scope.infos.login).success(function (data) {
                             if (data.status === true) {
@@ -411,7 +310,7 @@
                                     complete: function () {
                                         setTimeout(function () {
                                             angular.element(".lean-overlay").remove();
-                                        })
+                                        }, 500);
                                     }
                                 });
                             } else {

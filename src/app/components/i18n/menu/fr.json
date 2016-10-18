@@ -1,31 +1,34 @@
 {
-    "headerMenu": {
-        "dashboard": "Accueil",
-        "stats": "Statistiques",
-        "players": "Mes joueurs",
-        "teams": "Mes équipes",
-        "training": "Entraînements",
-        "championship": "Compétition",
-        "calendar": "Agenda",
-        "notification": "Messages",
-        "search": "Rechercher",
-        "search-event": "Evènement",
-        "search-player": "Joueur",
-        "settings": "Paramétrage",
-        "signup": "Inscription",
-        "profil": "Profil",
-        "notifications": {
-            "title": "Notifications",
-            "mark-as-read": "Marquer comme lu",
-            "mark-as-unread": "Marquer comme non lu",
-            "delete": "Supprimer",
-            "new": "Nouveaux"
-        },
-        "trial": {
-            "title": "Vous êtes en période d'essai.",
-            "content": "Vous pouvez vous abonner à tout moment en <a href=\"/#/private/billing/pay/0\" >cliquant ici</a>. Cette période expire dans <b>{{count}}</b> jour(s)."
-        }
+  "headerMenu": {
+    "dashboard": "Accueil",
+    "stats": "Statistiques",
+    "players": "Mes joueurs",
+    "teams": "Mes équipes",
+    "training": "Entraînements",
+    "championship": "Compétition",
+    "calendar": "Agenda",
+    "notification": "Messages",
+    "search": "Rechercher",
+    "search-event": "Evènement",
+    "search-player": "Joueur",
+    "settings": "Paramétrage",
+    "signup": "Inscription",
+    "profil": "Profil",
+    "notifications": {
+      "title": "Notifications",
+      "mark-as-read": "Marquer comme lu",
+      "mark-as-unread": "Marquer comme non lu",
+      "delete": "Supprimer",
+      "new": "Nouveaux"
     },
+    "trial": {
+      "title": "Vous êtes en période d'essai.",
+      "content": "Vous pouvez vous abonner à tout moment en <a href=\"/#/private/billing/pay/0\" >cliquant ici</a>. Cette période expire dans <b>{{count}}</b> jour(s)."
+    },
+    "trial-ended": {
+      "content": "Votre période d'essai a expirée, abonnez vous en <a href=\"/#/private/billing/pay/0\" >cliquant ici</a>."
+    }
+  },
   "navbar": {
     "welcome": "Bienvenue",
     "connect": "Connexion",
@@ -37,18 +40,18 @@
   },
   "modal": {
     "login": {
-        "label": {
-            "login": "Identifiant",
-            "password": "Mot de passe",
-            "signin": "Se connecter",
-            "forgotpasswd": "Mot de passe oublié ?",
-            "forgotpasswdmess": "Ce sont des choses qui arrivent, donnez-nous votre identifiant de connexion, nous le réinitialiserons pour vous!",
-            "title": "Connectez vous sur <b>Qaobee</b>",
-            "forgotpasswdcancel": "Attendez, je m'en rappelle à présent!"
-        },
-        "messageControl": {
-            "unregistreduser" : "Votre compte n'a pas encore été activé. Consultez votre messagerie"
-        }
+      "label": {
+        "login": "Identifiant",
+        "password": "Mot de passe",
+        "signin": "Se connecter",
+        "forgotpasswd": "Mot de passe oublié ?",
+        "forgotpasswdmess": "Ce sont des choses qui arrivent, donnez-nous votre identifiant de connexion, nous le réinitialiserons pour vous!",
+        "title": "Connectez vous sur <b>Qaobee</b>",
+        "forgotpasswdcancel": "Attendez, je m'en rappelle à présent!"
+      },
+      "messageControl": {
+        "unregistreduser": "Votre compte n'a pas encore été activé. Consultez votre messagerie"
+      }
     }
   }
 }

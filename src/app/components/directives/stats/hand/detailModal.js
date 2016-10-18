@@ -34,7 +34,7 @@
                     $scope.stats = {};
                     $scope.legendColours = ChartJs.getOptions().colours;
 
-                    $scope.$watchGroup(['indicators', 'currentIndicator', 'owners', 'periodicity', 'periodicityActive'], function (newValues, oldValues) {
+                    $scope.$watchGroup(['indicators', 'currentIndicator', 'owners', 'periodicity', 'periodicityActive'], function (newValues) {
                         $scope.indicators = newValues[0];
                         $scope.currentIndicator = newValues[1];
                         $scope.owners = newValues[2];

@@ -21,7 +21,7 @@
 
             });
         })
-        .directive('widgetPodium', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, effectiveSrv, qeventbus) {
+        .directive('widgetPodium', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, effectiveSrv) {
             return {
                 restrict: 'AE',
                 scope: {
@@ -144,7 +144,7 @@
                         $scope.noStat = false;
                         buildWidget();
                     });
-
+                    buildWidget();
                 },
                 templateUrl: 'app/components/directives/widgets/podium/podium.html'
             };

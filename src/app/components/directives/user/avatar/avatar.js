@@ -50,8 +50,8 @@
                             return '|jpg|png|jpeg|gif|'.indexOf(type) !== -1;
                         }
                     });
-                    $scope.uploader.onWhenAddingFileFailed = function (item, filter, options) {
-                        if (filter.name == "queueLimit") {
+                    $scope.uploader.onWhenAddingFileFailed = function (item, filter) {
+                        if (filter.name === "queueLimit") {
                             $scope.uploader.clearQueue();
                             $scope.uploader.addToQueue(item);
                         }

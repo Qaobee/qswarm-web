@@ -23,9 +23,23 @@
          * @class qaobee.user.profile.BillingCtrl
          * @description Main controller of app/modules/commons/users/profile/billing.html
          */
-        .controller('BillingCtrl', function ($scope, $filter, EnvironmentConfig, $window, $translatePartialLoader, user, meta, downloadSrv) {
+        .controller('BillingCtrl', function ($rootScope, $scope, $filter, EnvironmentConfig, $window, $translatePartialLoader, user, meta, downloadSrv, userRestAPI) {
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
+            userRestAPI.getCurrentUser().success(function (data) {
+                $rootScope.user = loadAdmin(data);
+                $scope.user = $rootScope.user;
+            });
+            function loadAdmin(data) {
+                if (angular.isDefined(data.account) && data.account.habilitations !== null) {
+                    data.account.habilitations.forEach(function (a) {
+                        if (a.key === 'admin_qaobee') {
+                            data.isAdmin = true;
+                        }
+                    });
+                }
+                return data;
+            }
             $scope.renew = {};
             // return button
             $scope.doTheBack = function () {

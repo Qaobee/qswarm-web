@@ -24,7 +24,7 @@
         /**
          * @class qaobee.modules.home.notifications.NotificationControler
          */
-        .controller('NotificationControler', function ($log, $scope, $translatePartialLoader, $routeParams, EnvironmentConfig, notificationsRestAPI, qeventbus) {
+        .controller('NotificationControler', function ($log, $scope, $translatePartialLoader, $routeParams, EnvironmentConfig, notificationsRestAPI) {
             $translatePartialLoader.addPart('home');
             $scope.notifications = [];
             $scope.id = $routeParams.id;

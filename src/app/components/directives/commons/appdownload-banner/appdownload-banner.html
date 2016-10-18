@@ -1,0 +1,16 @@
+<div class="banner-container" ng-if="showBanner">
+    <div class="row valign-wrapper">
+        <div class="col s1" ng-click="closeBanner()"><span class="banner-close"> <i
+                class="material-icons prefix">close</i></span></div>
+        <div class="col s3" ng-click="openDownload()"><a class="banner-img-dl"><img
+                src="assets/images/logo-download.png"/></a></div>
+        <div class="col s4">
+            <p class="banner-appl">
+                <span class="banner-appl-title">QSwarm Hand</span><br>
+                <span class="banner-appl-author">Qaobee</span>
+            </p>
+        </div>
+        <div class="col s4"><a ng-click="openDownload()" class="banner-btn-dl">Télécharger</a>
+        </div>
+    </div>
+</div>

@@ -53,13 +53,14 @@
     "ng-device-detector": "~2.0.2",
     "angular-send-feedback": "Giwi/angular-feedback#~1.0.3",
     "malhar-angular-dashboard": "Giwi/malhar-angular-dashboard#~2.0.2",
-    "angular-google-analytics": "~1.1.6",
+    "angular-google-analytics": "~1.1.7",
     "vertxbus": "*",
     "v-tabs": "~0.2.0",
     "angular-file-saver": "~1.1.0",
     "materialize-clockpicker": "~0.1.1",
     "angular-recaptcha": "^3.0.4",
-    "angular-chips": "^1.0.8"
+    "angular-chips": "^1.0.8",
+    "materialize": "^0.97.7"
   },
   "resolutions": {
     "angular-cookies": "1.5.8",

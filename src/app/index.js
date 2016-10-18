@@ -63,14 +63,16 @@
             'qaobee.stats',
             'qaobee.user.mainProfile',
             'qaobee.notifications'
-
-            /* A SUPPRIMER */
-            , 'qaobee.test'
         ])
 
         .config(function ($translateProvider, $translatePartialLoaderProvider, $httpProvider, vcRecaptchaServiceProvider,
                           $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, AnalyticsProvider, ChartJsProvider) {
-            AnalyticsProvider.setAccount(EnvironmentConfig.uaid).useDisplayFeatures(true).trackUrlParams(true);
+            AnalyticsProvider
+                .setAccount(EnvironmentConfig.uaid)
+                .useDisplayFeatures(true)
+                .trackUrlParams(true)
+                .useEnhancedLinkAttribution(true)
+            ;
             if ('development' === EnvironmentConfig.name) {
                 tmhDynamicLocaleProvider.localeLocationPattern('../bower_components/angular-i18n/angular-locale_{{locale}}.js');
             } else {
@@ -92,13 +94,7 @@
             $translateProvider.determinePreferredLanguage();
             vcRecaptchaServiceProvider.setSiteKey(EnvironmentConfig.captchaKey);
             vcRecaptchaServiceProvider.setTheme('light');
-            //vcRecaptchaServiceProvider.setSize('compact');
             vcRecaptchaServiceProvider.setType('image');
-            /*   reCAPTCHAProvider.setPublicKey('6LdoTvMSAAAAAP4NTyay0WljN19Aq4Cl5pZELvIe');
-             reCAPTCHAProvider.setOptions({
-             theme: 'custom',
-             custom_theme_widget: 'custom_recaptcha_widget'
-             }); */
             $httpProvider.defaults.useXDomain = true;
             delete $httpProvider.defaults.headers.common['X-Requested-With'];
             $httpProvider.interceptors.push('httpInterceptor');
@@ -143,7 +139,6 @@
          */
         .controller('MainCtrl', function ($rootScope, $scope, $window, $translatePartialLoader, qeventbus, $timeout,
                                           EnvironmentConfig, $templateRequest, $sce, $compile) {
-            /* i18n pour les formats de date, voir changement de la locale dans index.html */
             $translatePartialLoader.addPart('public');
             $translatePartialLoader.addPart('feedback');
             moment.locale($window.navigator.language);

@@ -3,8 +3,8 @@
     angular.module(
         'qaobee.commonsDirectives', [])
     /**
-     * @class qaobee.components.directives.quniqueusername
-     * @description Directive de test de l'unicité du username
+     * @class qaobee.components.directives.uniqueusername
+     * @description Check username uniqueness
      */
         .directive('uniqueusername', function (userInfosAPI, $log) {
             return {
@@ -28,32 +28,36 @@
                 }
             };
         })
+
+        /**
+         * Search filter for events
+         *
+         * @param items collection of events
+         * @param query the search string
+         */
         .filter('searchFilter', function () {
             return function (items, query) {
-                if (angular.isUndefined(query)) {
-                    return items;
-                } else {
-                    return items.filter(function (item) {
-                        var addr = false;
-                        if (angular.isDefined(item.address) && angular.isDefined(item.address.formatedAddress)) {
-                            addr = item.address.formatedAddress.toLowerCase().indexOf(query.toLowerCase()) !== -1;
-                        }
-                        return addr
-                            || item.link.type.toLowerCase().indexOf(query.toLowerCase()) !== -1
-                            || item.participants.teamHome.label.toLowerCase().indexOf(query.toLowerCase()) !== -1
-                            || item.participants.teamVisitor.label.toLowerCase().indexOf(query.toLowerCase()) !== -1
-                            || item.label.toLowerCase().indexOf(query.toLowerCase()) !== -1
-                            || item.startDate.toLowerCase().indexOf(query.toLowerCase()) !== -1
-                            ;
-                    })
-                }
-            }
+                return angular.isUndefined(query) ? items : items.filter(function (item) {
+                    var searchMap = [
+                        item.link.type,
+                        angular.isDefined(item.participants.teamHome) ? item.participants.teamHome.label : '',
+                        angular.isDefined(item.participants.teamVisitor) ? item.participants.teamVisitor.label : '',
+                        item.label,
+                        item.startDate
+                    ];
+                    if (angular.isDefined(item.address) && angular.isDefined(item.address.formatedAddress)) {
+                        searchMap.push(item.address.formatedAddress);
+                    }
+                    return angular.isDefined(searchMap.find(new RegExp(query, 'i')));
+                });
+            };
         })
         /**
-         * Directive pour vérifier que deux mots de passe sont identiques
+         * Directive for passwords matching
          *
          * @author Xavier MARIN
-         * @class qaobee.components.directives.qpasswdCheck
+         * @class qaobee.components.directives.passwdCheck
+         * @param ngModel ngModel
          * @copyright <b>QaoBee</b>.
          */
         .directive('passwdCheck', function () {
@@ -71,6 +75,16 @@
             };
         })
 
+        /**
+         * Check age from a date
+         *
+         * @author Xavier MARIN
+         * @class qaobee.components.directives.ageCheck
+         * @param ngModel date
+         * @param minAge minAge attribute
+         * @return ageCheck form validation
+         *
+         */
         .directive('ageCheck', function () {
             return {
                 require: 'ngModel',
@@ -97,6 +111,12 @@
             };
         })
 
+        /**
+         * Format input for numbers only
+         *
+         * @author Xavier MARIN
+         * @class qaobee.components.directives.numbersOnly
+         */
         .directive('numbersOnly', function () {
             return {
                 require: 'ngModel',
@@ -104,7 +124,6 @@
                     function fromUser(text) {
                         if (text) {
                             var transformedInput = text.replace(/[^0-9]/g, '');
-
                             if (transformedInput !== text) {
                                 ngModelCtrl.$setViewValue(transformedInput);
                                 ngModelCtrl.$render();
@@ -117,8 +136,5 @@
                     ngModelCtrl.$parsers.push(fromUser);
                 }
             };
-        })
-
-//
-    ;
+        });
 }());

@@ -24,10 +24,10 @@
          * @description Main controller of app/modules/commons/users/profile/writeProfile.html
          */
         .controller('WriteProfileCtrl', function ($scope, $filter, EnvironmentConfig, $timeout, $window, $translatePartialLoader,
-                                                  $translate, $rootScope, $location, $log, personSrv, profileRestAPI) {
+                                                  $translate, $rootScope, $location, $log, personSrv, profileRestAPI, user) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
-
+            $scope.user = angular.copy(user);
             // return button
             /**
              * Do the back
@@ -110,6 +110,7 @@
 
 
                 profileRestAPI.update(updUser).success(function (data) {
+                    $rootScope.user = $scope.user;
                     $translate('profilePage.form.success').then(function (mess) {
                         toastr.success(mess, data.firstname + ' ' + data.name);
                         $location.path('/private/profile');

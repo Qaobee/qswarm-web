@@ -38,7 +38,6 @@
             $translatePartialLoader.addPart('commons');
 
             $scope.initForm = function () {
-                console.log('init')
                 $scope.listStructures = [];
                 $scope.structure = {};
                 $scope.structure.address = {};
@@ -267,7 +266,6 @@
 
             /* Validate structureSection */
             $scope.createStructure = function () {
-                console.log($scope.categoryAge)
                 if ($scope.structure.label.length > 2) {
                     $scope.createSandBox();
                 } else {
@@ -280,14 +278,11 @@
             $scope.createSandBox = function () {
                 // Récupération CategoryAge
                 var catAge = {};
-                console.log($scope.categoryAge)
                 if (!angular.isUndefined($scope.categoryAgeResult)) {
                     catAge = $scope.categoryAgeResult.filter(function (item) {
                         return item.code === $scope.categoryAge._id;
                     })[0];
                 }
-                console.log(catAge, $scope.categoryAge)
-
                 // Ouverture Modal creation compte
                 $scope.openModalCreate();
                 $log.debug($scope.structure);

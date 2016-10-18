@@ -1,21 +1,5 @@
 <!-- Bannière Download appli mobile -->
-<div class="banner-container" ng-if="showBanner">
-    <div class="row valign-wrapper">
-        <div class="col s1" ng-click="closeBanner()"><span class="banner-close"> <i
-                class="material-icons prefix">close</i></span></div>
-        <div class="col s3" ng-click="openDownload()"><a class="banner-img-dl"><img
-                src="assets/images/logo-download.png"/></a></div>
-        <div class="col s4">
-            <p class="banner-appl">
-                <span class="banner-appl-title">QSwarm Hand</span><br>
-                <span class="banner-appl-author">Qaobee</span>
-            </p>
-        </div>
-        <div class="col s4"><a ng-click="openDownload()" class="banner-btn-dl">Télécharger</a>
-        </div>
-    </div>
-</div>
-
+<appdownload-banner></appdownload-banner>
 <!-- Menu Not connected -->
 <nav class="top-nav top-nav-trans dark-primary-color" role="navigation" ng-hide="user">
     <div class="container">
@@ -158,10 +142,11 @@
     <angular-feedback options="feedbackOptions" meta="meta"></angular-feedback>
 </div>
 
-<div class="navbar-fixed" ng-if="intrial && !hideTrial">
+<div class="navbar-fixed trial-banner" ng-if="intrial && !hideTrial">
     <div class="row light-primary-color">
         <div class="col s12 center"><h4 translate="headerMenu.trial.title"></h4></div>
-        <div class="col s12 secondary-text-color center" translate="headerMenu.trial.content" translate-values="trialCountVal"></div>
+        <div class="col s12 secondary-text-color center" translate="headerMenu.trial.content" translate-values="trialCountVal" ng-if="trialCountVal.count > 0"></div>
+        <div class="col s12 secondary-text-color center" translate="headerMenu.trial-ended.content" ng-if="trialCountVal.count <= 0"></div>
         <div class="col s12">&nbsp;</div>
         <div class="col s12 center">
             <a href="javascript:void(0);" ng-click="closeTrial()" class="btn-floating accent-color">

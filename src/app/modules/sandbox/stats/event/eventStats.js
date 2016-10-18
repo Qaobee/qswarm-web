@@ -6,9 +6,6 @@
      * @class qaobee.modules.stats.eventStats
      * @author Christophe Kervella
      * @copyright <b>QaoBee</b>.
-     * @requires {@link https://docs.angularjs.org/api/ngRoute|ngRoute}
-     * @requires {@link qaobee.components.restAPI.sandbox.effective.effectiveRestAPI|qaobee.components.restAPI.sandbox.effective.effectiveRestAPI}
-     * @requires {@link qaobee.components.restAPI.sandbox.effective.personRestAPI|qaobee.components.restAPI.sandbox.effective.personRestAPI}
      */
     angular.module('qaobee.eventStats', [
         /* qaobee services */
@@ -83,12 +80,10 @@
                 collecteRestAPI.getCollecte($routeParams.collecteId).success(function (data) {
                     if (angular.isDefined(data)) {
                         $scope.collecte.event = data.eventRef;
-
                         $scope.collecte.startDate = data.startDate;
                         $scope.collecte.endDate = data.endDate;
                         $scope.collecte.startDateLabel = moment(data.startDate).format('LLLL');
                         $scope.collecte.endDateLabel = moment(data.endDate).format('LLLL');
-
                         if ($scope.collecte.event.owner.teamId === $scope.collecte.event.participants.teamHome.id) {
                             $scope.teamHome = true;
                             $scope.teamVisitor = false;
@@ -96,12 +91,10 @@
                             $scope.teamHome = false;
                             $scope.teamVisitor = true;
                         }
-
                         var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status');
                         $scope.stats = [];
                         effectiveSrv.getPersons(data.players, listField).then(function (players) {
                             $scope.players = players;
-
                             $scope.players.forEach(function (player) {
                                 if (angular.isDefined(player.status.positionType)) {
                                     player.positionType = $filter('translate')('stats.positionType.value.' + player.status.positionType);
@@ -118,14 +111,11 @@
                                     redCard: 0
                                 };
                             });
-
                             var listFieldsGroupBy = Array.create('owner', 'code');
-                            var indicators = Array.create('originShootAtt', 'goalScored', 'yellowCard',
-                                'exclTmp', 'redCard', 'originShootDef', 'goalConceded',
-                                'actDefPos', 'actDefNeg', 'actAttPos', 'actAttNeg');
-
                             var search = {
-                                listIndicators: indicators,
+                                listIndicators: ['originShootAtt', 'goalScored', 'yellowCard',
+                                    'exclTmp', 'redCard', 'originShootDef', 'goalConceded',
+                                    'actDefPos', 'actDefNeg', 'actAttPos', 'actAttNeg'],
                                 listOwners: data.players,
                                 startDate: data.startDate.valueOf(),
                                 endDate: data.endDate.valueOf(),
@@ -171,9 +161,8 @@
                             });
 
                             /* ALL PERS-ACT-DEF-POS */
-                            indicators = Array.create('neutralization', 'forceDef', 'contre', 'interceptionOk');
                             search = {
-                                listIndicators: indicators,
+                                listIndicators: ['neutralization', 'forceDef', 'contre', 'interceptionOk'],
                                 listOwners: data.players,
                                 startDate: data.startDate.valueOf(),
                                 endDate: data.endDate.valueOf(),
@@ -196,9 +185,8 @@
                             });
 
                             /* ALL PERS-ACT-DEF-NEG */
-                            indicators = Array.create('penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition');
                             search = {
-                                listIndicators: indicators,
+                                listIndicators: ['penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition'],
                                 listOwners: data.players,
                                 startDate: data.startDate.valueOf(),
                                 endDate: data.endDate.valueOf(),
@@ -221,9 +209,8 @@
                             });
 
                             /* ALL PERS-ACT-OFF-POS */
-                            indicators = Array.create('penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec');
                             search = {
-                                listIndicators: indicators,
+                                listIndicators: ['penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec'],
                                 listOwners: data.players,
                                 startDate: data.startDate.valueOf(),
                                 endDate: data.endDate.valueOf(),
@@ -246,9 +233,8 @@
                             });
 
                             /* ALL PERS-ACT-OFF-NEG */
-                            indicators = Array.create('forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt');
                             search = {
-                                listIndicators: indicators,
+                                listIndicators: ['forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt'],
                                 listOwners: data.players,
                                 startDate: data.startDate.valueOf(),
                                 endDate: data.endDate.valueOf(),
