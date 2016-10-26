@@ -43,6 +43,34 @@
                 },
                 
                 /**
+                 * @description Retrieve all sandbox sharing for one user for admin request
+                 * @function getSandboxSharingList
+                 * @memberOf qaobee.components.restAPI.sandbox.config.sbShareRestAPI
+                 * @param userId
+                 * @returns {Array}    list of sandbox
+                 */
+                getSandboxSharingListAdmin: function (userId) {
+                    return $http({
+                        url: sbShareAPIURL + '/listAdmin?userId='+userId,
+                        method: 'GET'
+                    });
+                },
+                
+                /**
+                 * @description Retrieve all sandbox for one user for admin request
+                 * @function getListByOwner
+                 * @memberOf qaobee.components.restAPI.sandbox.config.sandboxRestAPI
+                 * @param userId
+                 * @returns {Array}    list of sandbox
+                 */
+                getListByOwner: function (ownerId) {
+                    return $http({
+                        url: sandboxAPIURL + '/sandbox/getListByOwner?owner='+ownerId,
+                        method: 'GET'
+                    });
+                },
+                
+                /**
                  * @description Retrieve all invitations for one sandbox
                  * @function getInvitationToSandboxList
                  * @memberOf qaobee.components.restAPI.sandbox.config.sbShareRestAPI

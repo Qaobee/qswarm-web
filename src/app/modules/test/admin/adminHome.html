@@ -1,0 +1,36 @@
+<div class="container">
+<!-- body start-->
+	<div class="row"><div class="col s12"></div></div>
+	
+	<v-tabs class="tabs" horizontal active="activeTabIndex">
+        <v-tab class="tab" ><a ng-href="" ng-class="{'secondary-color': activeTabIndex === 0}">User</a></v-tab>
+        <v-tab class="tab" ><a ng-href="" ng-class="{'secondary-color': activeTabIndex === 1}">SandBox</a></v-tab>
+        <v-tab class="tab" ><a ng-href="" ng-class="{'secondary-color': activeTabIndex === 2}">SandBox Person</a></v-tab>
+        <v-tab class="tab" ><a ng-href="" ng-class="{'secondary-color': activeTabIndex === 3}">SandBox Effective</a></v-tab>
+        <v-tab class="tab" ><a ng-href="" ng-class="{'secondary-color': activeTabIndex === 4}">SandBox Team</a></v-tab>
+    </v-tabs>
+    
+    <div class="row">
+
+        <v-pages class="vPages--default" active="activeTabIndex">
+            <v-page>
+            	<ng-include src="'app/modules/test/admin/adminUser.html'" /> 
+            </v-page>
+            <v-page>
+            	<ng-include src="'app/modules/test/admin/adminSandbox.html'" />
+            </v-page>
+            <v-page>
+            	<ng-include src="'app/modules/test/admin/adminPerson.html'" />
+            </v-page>
+            <v-page>
+            	<ng-include src="'app/modules/test/admin/adminEffective.html'" />
+            </v-page>
+            <v-page>
+            	<ng-include src="'app/modules/test/admin/adminTeam.html'" />
+            </v-page>
+        </v-pages>
+
+    </div>
+
+    <!-- body end-->
+</div>

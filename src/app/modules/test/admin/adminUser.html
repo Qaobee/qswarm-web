@@ -1,0 +1,152 @@
+<!-- USER -->
+<div class="row">
+   	<div class="row">
+		<div class="col s4"><h3>Infos USER</h3></div>
+		<div class="col s1"><a href="" ng-click="refreshUser();"><i class="green-text small material-icons">autorenew</i></a></div>
+		<div class="col s2">
+			<div class="col s3"><i class="red-text small material-icons">undo</i></div>
+			<div class="col s5"><ul><li>--</li></ul></div>
+		</div>
+		<div class="col s2">
+			<div class="col s3"><i class="green-text small material-icons">redo</i></div>
+			<div class="col s5"><ul><li>Sandbox</li></ul></div>
+		</div>
+		<div class="col s3"><input size="30" value="db.getCollection('User').find({'_id': '{{user._id}}'})"/></div>
+	</div>
+	<div class="row">
+		<!-- Infos personne -->
+		<div class="col s6">
+			<div class="row card-panel">
+				<div class="col s12"><b><u>Infos personnelles</u></b></div>
+				<div class="col s6">ID</div><div class="col s6">: {{user._id}}</div>
+				<div class="col s6">gender</div><div class="col s6">: {{user.gender}}</div>
+				<div class="col s6">name</div><div class="col s6">: {{user.name}}</div>
+				<div class="col s6">firstname</div><div class="col s6">: {{user.firstname}}</div>
+				<div class="col s6">birthdate</div><div class="col s6">: {{user.birthdate}}</div>
+				<div class="col s6">effectiveDefault</div><div class="col s6">: {{user.effectiveDefault}}</div>
+			</div>
+		</div>
+		<!-- Contact -->
+		<div class="col s6">
+			<div class="row card-panel">
+				<div class="col s12"><b><u>Contact</u></b></div>
+				<div class="col s6">contact.home</div><div class="col s6">: {{user.contact.home}}</div>
+				<div class="col s6">contact.office</div><div class="col s6">: {{user.contact.office}}</div>
+				<div class="col s6">contact.cellphone</div><div class="col s6">: {{user.contact.cellphone}}</div>
+				<div class="col s6">contact.email</div><div class="col s6">: {{user.contact.email}}</div>
+				<div class="col s6">contact.fax</div><div class="col s6">: {{user.contact.fax}}</div>
+				<div class="col s6">contact.webSite</div><div class="col s6">: {{user.contact.webSite}}</div>
+				<div class="col s6">contact.facebook</div><div class="col s6">: {{user.contact.facebook}}</div>
+				<div class="col s6">contact.googleplus</div><div class="col s6">: {{user.contact.googleplus}}</div>
+				<div class="col s6">contact.twitter</div><div class="col s6">: {{user.contact.twitter}}</div>
+			</div>
+		</div>
+		<!-- Adresse -->
+		<div class="col s6">
+			<div class="row card-panel">
+				<div class="col s12"><b><u>Adresse</u></b></div>
+				<div class="col s12 center"><i><u>User.Address</u></i></div>
+				<div class="col s6">formatedAddress</div><div class="col s6">: {{user.address.formatedAddress}}</div>
+				<div class="col s6">place</div><div class="col s6">: {{user.address.place}}</div>
+				<div class="col s6">zipcode</div><div class="col s6">: {{user.address.zipcode}}</div>
+				<div class="col s6">city</div><div class="col s6">: {{user.address.city}}</div>
+				<div class="col s6">country</div><div class="col s6">: {{user.address.country}}</div>
+				<div class="col s12 center"><i><u>User.country</u></i></div>
+				<div class="col s6">_id</div><div class="col s6">: {{user.country._id}}</div>
+				<div class="col s6">codeOSCE</div><div class="col s6">: {{user.country.codeOSCE}}</div>
+				<div class="col s6">label</div><div class="col s6">: {{user.country.label}}</div>
+				<div class="col s6">local</div><div class="col s6">: {{user.country.local}}</div>
+				<div class="col s12 center"><i><u>User.nationality</u></i></div>
+				<div class="col s6">_id</div><div class="col s6">: {{user.nationality._id}}</div>
+				<div class="col s6">codeOSCE</div><div class="col s6">: {{user.nationality.codeOSCE}}</div>
+				<div class="col s6">label</div><div class="col s6">: {{user.nationality.label}}</div>
+				<div class="col s6">local</div><div class="col s6">: {{user.nationality.local}}</div>
+			</div>
+		</div>
+	</div>
+	<!-- SEPARATEUR -->
+	<div class="row">
+		<div class="col s12"><hr></hr></div>
+	</div>
+	<div class="row">
+		<!-- Infos account -->
+		<div class="col s6">
+			<div class="row card-panel">
+				<div class="col s12"><b><u>Account Identifiers</u></b></div>
+				<div class="col s6">account._id</div><div class="col s6">: {{user.account._id}}</div>
+				<div class="col s6">account.login</div><div class="col s6">: {{user.account.login}}</div>
+				<div class="col s6">account.passwd</div><div class="col s6">: {{user.account.passwd}}</div>
+				<div class="col s6">account.password</div><div class="col s6">: {{user.account.password}}</div>
+				<div class="col s6">account.habilitations</div><div class="col s6">: {{user.account.habilitations}}</div>
+			</div>
+		</div>
+		<div class="col s6">
+			<div class="row card-panel">
+				<div class="col s12"><b><u>Account Activation</u></b></div>
+				<div class="col s6">account.activationCode</div><div class="col s6">: {{user.account.activationCode}}</div>
+				<div class="col s6">account.activationPasswd</div><div class="col s6">: {{user.account.activationPasswd}}</div>
+				<div class="col s6">account.salt</div><div class="col s6">: {{user.account.salt}}</div>
+				<div class="col s6">account.active</div><div class="col s6">: {{user.account.active}}</div>
+				<div class="col s6">account.firstConnexion</div><div class="col s6">: {{user.account.firstConnexion}}</div>
+			</div>
+		</div>
+		<div class="col s6">
+			<div class="row card-panel">
+				<div class="col s12"><b><u>Account Dates/Token</u></b></div>
+				<div class="col s6">account.expirationDate</div><div class="col s6">: {{user.account.expirationDate}}</div>
+				<div class="col s6">account.timestamp</div><div class="col s6">: {{user.account.timestamp}}</div>
+				<div class="col s6">account.token</div><div class="col s6">: {{user.account.token}}</div>
+				<div class="col s6">account.tokenRenewDate</div><div class="col s6">: {{user.account.tokenRenewDate}}</div>
+				<div class="col s6">account.mobileToken</div><div class="col s6">: {{user.account.mobileToken}}</div>
+			</div>
+		</div>
+	</div>
+	<!-- SEPARATEUR -->
+	<div class="row">
+		<div class="col s12"><hr></hr></div>
+	</div>
+	<!-- Infos Plans -->
+	<div class="row">
+		<!-- Infos account -->
+		<div class="col s12">
+			<div class="row card-panel">
+				<div class="col s2">account.listPlan :</div>
+				<div class="col s4">
+					<select name="planSelect" id="planSelect" ng-model="planSelected" class="browser-default blue-grey-text text-darken-1" 
+                           	ng-options="plan.levelPlan for plan in user.account.listPlan" ng-change="changePlan();">
+                       </select>
+				</div>
+			</div>
+		</div>
+		<div class="col s4">
+			<div class="row card-panel">
+				<div class="col s12"><b><u>Plan infos</u></b></div>
+				<div class="col s6">paymentId</div><div class="col s6">: {{currentPlan.paymentId}}</div>
+				<div class="col s6">levelPlan</div><div class="col s6">: {{currentPlan.levelPlan}}</div>
+				<div class="col s6">amount</div><div class="col s6">: {{currentPlan.amount}}</div>
+				<div class="col s6">status</div><div class="col s6">: {{currentPlan.status}}</div>
+				<div class="col s6">periodicity</div><div class="col s6">: {{currentPlan.periodicity}}</div>
+				<div class="col s6">paymentURL</div><div class="col s6">: {{currentPlan.paymentURL}}</div>
+			</div>
+		</div>
+		<div class="col s4">
+			<div class="row card-panel">
+				<div class="col s12"><b><u>Plan Dates</u></b></div>
+				<div class="col s6">paidDate</div><div class="col s6">: {{currentPlan.paidDate}}</div>
+				<div class="col s6">startPeriodeDate</div><div class="col s6">: {{currentPlan.startPeriodeDate}}</div>
+				<div class="col s6">endPeriodeDate</div><div class="col s6">: {{currentPlan.endPeriodeDate}}</div>
+			</div>
+		</div>
+		<div class="col s4">
+			<div class="row card-panel">
+				<div class="col s12"><b><u>Plan activity</u></b></div>
+				<div class="col s6">activity._id</div><div class="col s6">: {{currentPlan.activity._id}}</div>
+				<div class="col s6">activity.code</div><div class="col s6">: {{currentPlan.activity.code}}</div>
+				<div class="col s6">activity.label</div><div class="col s6">: {{currentPlan.activity.label}}</div>
+				<div class="col s6">activity.enable</div><div class="col s6">: {{currentPlan.activity.enable}}</div>
+				<div class="col s6">activity.activityType</div><div class="col s6">: {{currentPlan.activity.activityType}}</div>
+			</div>
+		</div>
+	</div>
+<!-- Fin USER -->
+</div>

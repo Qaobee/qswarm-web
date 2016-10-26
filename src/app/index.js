@@ -62,7 +62,8 @@
             'qaobee.agenda',
             'qaobee.stats',
             'qaobee.user.mainProfile',
-            'qaobee.notifications'
+            'qaobee.notifications',
+            'qaobee.test'
         ])
 
         .config(function ($translateProvider, $translatePartialLoaderProvider, $httpProvider, vcRecaptchaServiceProvider,

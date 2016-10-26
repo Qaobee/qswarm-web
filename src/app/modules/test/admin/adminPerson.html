@@ -1,0 +1,50 @@
+<!-- SB Person -->
+<div id="infosSBPerson" class="row">
+   	<div class="row">
+		<div class="col s5"><h3>Infos Sandbox Person</h3></div>
+		<div class="col s2">
+			<div class="col s3"><i class="red-text small material-icons">undo</i></div>
+			<div class="col s5"><ul><li>Sandbox</li></ul></div>
+		</div>
+		<div class="col s2">
+			<div class="col s3"><i class="green-text small material-icons">redo</i></div>
+			<div class="col s5"><ul><li>--</li></ul></div>
+		</div>
+		<div class="col s3"><input size="30" value="db.getCollection('SB_Person').find({'sandboxId': '{{currentSB._id}}'})"/></div>
+	</div>
+	<div class="row card-panel" ng-repeat="person in SBPersons">
+		<div class="col s4 card-panel">
+			<div class="col s12"><input size="30" value="db.getCollection('SB_Person').find({'_id': '{{person._id}}'})"></div>
+			<div class="col s3">_id</div><div class="col s9">: {{person._id}}</div>
+			<div class="col s3">name</div><div class="col s9">: {{person.name}}</div>
+			<div class="col s3">firstname</div><div class="col s9">: {{person.firstname}}</div>
+			<div class="col s3">gender</div><div class="col s9">: {{person.gender}}</div>
+			<div class="col s3">birthdate</div><div class="col s9">: {{person.birthdateFormatted}}</div>
+			<div class="col s3">birthcity</div><div class="col s9">: {{person.birthcity}}</div>
+			<div class="col s3">nationality</div><div class="col s9">: {{person.nationality}}</div>
+		</div>
+		<div class="col s4 card-panel">
+			<div class="col s3">formatedAdd</div><div class="col s9">: {{person.address.formatedAddress}}</div>
+			<div class="col s3">lat</div><div class="col s9">: {{person.address.lat}}</div>
+			<div class="col s3">lng</div><div class="col s9">: {{person.address.lng}}</div>
+			<div class="col s3">place</div><div class="col s9">: {{person.address.place}}</div>
+			<div class="col s3">city</div><div class="col s9">: {{person.address.city}}</div>
+			<div class="col s3">country</div><div class="col s9">: {{person.address.country}}</div>
+			<div class="col s3">zipcode</div><div class="col s9">: {{person.address.zipcode}}</div>
+		</div>
+		<div class="col s4 card-panel">
+			<div class="col s6">home</div><div class="col s6">: {{person.contact.home}}</div>
+			<div class="col s6">office</div><div class="col s6">: {{person.contact.office}}</div>
+			<div class="col s6">cellphone</div><div class="col s6">: {{person.contact.cellphone}}</div>
+			<div class="col s6">email</div><div class="col s6">: {{person.contact.email}}</div>
+			<div class="col s6">avail...value</div><div class="col s6">: {{person.status.availability.value}}</div>
+			<div class="col s6">avail...cause</div><div class="col s6">: {{person.status.availability.cause}}</div>
+			<div class="col s6">stateForm</div><div class="col s6">: {{person.status.stateForm}}</div>
+			<div class="col s6">weight</div><div class="col s6">: {{person.status.weight}}</div>
+			<div class="col s6">height</div><div class="col s6">: {{person.status.height}}</div>
+			<div class="col s6">squadnumber</div><div class="col s6">: {{person.status.squadnumber}}</div>
+			<div class="col s6">positionType</div><div class="col s6">: {{person.status.positionType}}</div>
+			<div class="col s6">laterality</div><div class="col s6">: {{person.status.laterality}}</div>
+		</div>
+	</div>
+</div>

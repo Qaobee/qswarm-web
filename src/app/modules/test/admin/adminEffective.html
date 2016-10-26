@@ -1,0 +1,69 @@
+<!-- SB Effective -->
+<div id="infosSBEffective" class="row">
+	<div class="row">
+		<div class="col s5"><h3>Infos Sandbox Effective</h3></div>
+		<div class="col s2">
+			<div class="col s3"><i class="red-text small material-icons">undo</i></div>
+			<div class="col s5"><ul><li>SandboxCfg</li></ul></div>
+		</div>
+		<div class="col s2">
+			<div class="col s3"><i class="green-text small material-icons">redo</i></div>
+			<div class="col s5"><ul><li>SandboxTeam</li></ul></div>
+		</div>
+		<div class="col s3"><input size="30" value="db.getCollection('SB_Effective').find({'sandBoxCfgId': '{{currentSBCfg._id}}'})"/></div>
+	</div>
+	<div class="row card-panel">
+		<div class="col s4">Change SandBox Effective : </div>
+		<div class="col s4">
+			<select name="sandboxEffectiveSelect" id="sandboxEffectiveSelect" ng-model="sandboxEffectiveSelected" class="browser-default blue-grey-text text-darken-1" 
+                	ng-options="sbEffective.label for sbEffective in SBListEffectives" ng-change="changeSandboxEffective();">
+            </select>
+		</div>
+		<div class="col s1"><a href="" ng-click="changeSandboxEffective();"><i class="green-text small material-icons">autorenew</i></a></div>
+	</div>
+	<div class="row">
+		<div class="col s6">
+			<div class="row card-panel">
+				<div class="col s12"><b><u>Infos</u></b></div>
+				<div class="col s6">_id</div><div class="col s6">: {{currentSBEffective._id}}</div>
+				<div class="col s6">sandBoxCfgId</div><div class="col s6">: {{currentSBEffective.sandBoxCfgId}}</div>
+				<div class="col s6">label</div><div class="col s6">: {{currentSBEffective.label}}</div>
+			</div>
+		</div>
+		<div class="col s6">
+			<div class="row card-panel">
+				<div class="col s12"><b><u>CategoryAge</u></b></div>
+				<div class="col s6">code</div><div class="col s6">: {{currentSBEffective.categoryAge.code}}</div>
+				<div class="col s6">label</div><div class="col s6">: {{currentSBEffective.categoryAge.label}}</div>
+				<div class="col s6">ageMax</div><div class="col s6">: {{currentSBEffective.categoryAge.ageMax}}</div>
+				<div class="col s6">ageMin</div><div class="col s6">: {{currentSBEffective.categoryAge.ageMin}}</div>
+				<div class="col s6">genre</div><div class="col s6">: {{currentSBEffective.categoryAge.genre}}</div>
+				<div class="col s6">order</div><div class="col s6">: {{currentSBEffective.categoryAge.order}}</div>
+			</div>
+		</div>
+		<div class="col s12">
+			<div class="row card-panel">
+				<div class="col s12"><b><u>Sandbox Effective Members</u></b></div>
+				<div class="col s12">
+					<table class="bordered highlight">
+						<tr>
+							<th rowspan="2">personId</th>
+							<th rowspan="2"><i>SB Personn</i></th>
+							<th colspan="2">role.*</th>
+						</tr>
+						<tr>
+							<th>code</th>
+							<th>label</th>
+						</tr>
+						<tr ng-repeat="member in currentSBEffective.members">
+							<td>{{member.personId}}</td>
+							<td><input size="40" value="db.getCollection('SB_Person').find({'_id':'{{member.personId}}'})"></td>
+							<td>{{member.role.code}}</td>
+							<td>{{member.role.label}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

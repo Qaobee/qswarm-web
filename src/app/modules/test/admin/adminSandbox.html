@@ -1,0 +1,40 @@
+<!-- Infos SANDBOX -->
+<div id="infosSB" class="row">
+	<div class="col s12">
+    	<div class="row">
+			<div class="col s5"><h3>Infos SANDBOX</h3></div>
+			<div class="col s2">
+				<div class="col s3"><i class="red-text small material-icons">undo</i></div>
+				<div class="col s5"><ul><li>User</li></ul></div>
+			</div>
+			<div class="col s2">
+				<div class="col s3"><i class="green-text small material-icons">redo</i></div>
+				<div class="col s5">
+					<ul>
+						<li>SandboxCfg</li>
+						<li>SandboxPerson</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col s3"><input size="30" value="db.getCollection('SB_SandBox').find({'owner' : '{{user._id}}'})"/></div>
+		</div>
+		<div class="row card-panel">
+			<div class="col s2">Change SandBox : </div>
+			<div class="col s4">
+				<select name="sandboxSelect" id="sandboxSelect" ng-model="sandboxSelected" class="browser-default blue-grey-text text-darken-1" 
+                    	ng-options="sb.activityId for sb in sandboxes" ng-change="changeSandbox();">
+                </select>
+			</div>
+			<div class="col s1"><a href="" ng-click="changeSandbox();"><i class="green-text small material-icons">autorenew</i></a></div>
+			<div class="col s2">&nbsp;</div>
+			<div class="col s3"><input size="30" value="db.getCollection('SB_SandBox').find({'_id' : '{{currentSB._id}}'})"/></div>
+		</div>
+		<div class="row card-panel">
+			<div class="col s12"><b><u>Sandbox information</u></b></div>
+			<div class="col s4">_id</div><div class="col s4">: {{currentSB._id}}</div><div class="col s4">&nbsp;</div>
+			<div class="col s4">activityId</div><div class="col s4">: {{currentSB.activityId}}</div><div class="col s4">&nbsp;</div>
+			<div class="col s4">owner</div><div class="col s4">: {{currentSB.owner}}</div><div class="col s4">&nbsp;</div>
+			<div class="col s4">sandboxCfgId (active)</div><div class="col s4">: {{currentSB.sandboxCfgId}}</div><div class="col s4">&nbsp;</div>
+		</div>
+	</div>
+</div>
