@@ -52,7 +52,35 @@
                  */
                 getInvitationToSandboxList: function (sandboxId, status) {
                     return $http({
-                        url: sbShareAPIURL + '/listInvitation?sandboxId='+sandboxId+'&status='+status,
+                        url: sbShareAPIURL + '/listInvitation?sandboxId='+sandboxId+'&invitationStatus='+status,
+                        method: 'GET'
+                    });
+                },
+                
+                /**
+                 * @description Abandon an invitation
+                 * @function removeInvitationToSandbox
+                 * @memberOf qaobee.components.restAPI.sandbox.config.sbShareRestAPI
+                 * @param invitationId
+                 * @returns {Invitation}    an invitation object
+                 */
+                removeInvitationToSandbox: function (invitationId) {
+                    return $http({
+                        url: sbShareAPIURL + '/removeInvitation?invitationId='+invitationId,
+                        method: 'GET'
+                    });
+                },
+                
+                /**
+                 * @description revive an invitation
+                 * @function reviveInvitation
+                 * @memberOf qaobee.components.restAPI.sandbox.config.sbShareRestAPI
+                 * @param invitationId
+                 * @returns {Invitation}    an invitation object
+                 */
+                reviveInvitation: function (invitationId) {
+                    return $http({
+                        url: sbShareAPIURL + '/reviveInvitation?invitationId='+invitationId,
                         method: 'GET'
                     });
                 },

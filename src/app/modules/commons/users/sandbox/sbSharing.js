@@ -33,7 +33,7 @@
             $scope.meta = meta;
         
             /*list of mail to sharing */
-            $scope.sharingList = null;
+            $scope.sharingList = [];
             /*call back method for chip renderer*/
             $scope.render = function(val) {
                 return { email: val}
@@ -42,21 +42,24 @@
             $scope.deleteChip = function(val) {
                 return true;
             }
-        
-        
-            /* Retrieve sandbox user */
-            $scope.loadUser = function (newValue) {
-                angular.element('#searchByUser').autocomplete({
-                    data: {
-                      "Apple": null,
-                      "Microsoft": null,
-                      "Google": 'http://placehold.it/250x250'
-                    }
-                });
-            };
             
             $scope.sendInvitation = function () {
-                $log.debug('sharingList',$scope.sharingList);  
+                
+                
+                $scope.sharingList.forEach(function (a) {
+                    var request = {
+                        sandboxId : $scope.meta.sandbox._id,
+                        role_code : 'member',
+                        email : a.email
+                    };
+                    $log.debug('request',request); 
+                    
+                    sandboxRestAPI.inviteMemberToSandbox(request).success(function () {
+                        toastr.success($filter('translate')('sbSharingPage.messageControl.success'));    
+                    }).error(function () {
+                        toastr.error($filter('translate')('sbSharingPage.messageControl.error'));
+                    });
+                });
             };
             
             // return button
@@ -72,7 +75,7 @@
             /* check user connected */
             $scope.checkUserConnected = function () {
                 userRestAPI.getUserById(user._id).success(function () {
-                    
+                    $log.debug('sharingList',$scope.sharingList);
                 }).error(function () {
                     $log.error('SbSharingCtrl : User not Connected');
                 });

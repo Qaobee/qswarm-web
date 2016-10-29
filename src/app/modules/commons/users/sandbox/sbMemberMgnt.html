@@ -8,7 +8,7 @@
 
     <div class="row">
         
-        <div class="col s12 accent-text-color">
+        <div class="col s12 primary-text-color">
             <h6>{{'sbMemberMngtPage.label.listMember' | translate }}</h6>
         </div>
         
@@ -25,7 +25,7 @@
                         <avatar person="member.person" width="'50px'"></avatar>
                     </div>
                     
-                    <div class="card-content center-align dark-primary-color" style="height:48px;">
+                    <div class="card-content center-align accent-color" style="height:48px;">
                         <h5><small>{{member.role.label}}</small></h5>
                     </div>
 
@@ -49,7 +49,7 @@
         </ul>
         <div class="col s12">&nbsp;</div>
         <div class="col s12 divider"></div>
-        <div class="col s10 accent-text-color">
+        <div class="col s10 primary-text-color">
             <h6>{{'sbMemberMngtPage.label.invitePending' | translate }}</h6>
         </div>
         <div class="col s2 center">
@@ -57,6 +57,31 @@
                 <i class="material-icons">share</i>
             </a>
         </div>
+        <ul>
+            <li class="col l3 m6 s12" ng-repeat="invite in invitationList">
+                <div class="card">
+                    
+                    <div class="card-content center-align dark-primary-color">
+                        <span>{{invite.userEmail}}</span>
+                        <br>
+                        <br>
+                        <i class="material-icons md-36 secondary-text-color">share</i>
+                        <br>
+                        <br>
+                        <span>{{'sbMemberMngtPage.label.invitationDate' | translate }} {{ invite.invitationDate | date : format : timezone}}</span>
+                    </div>
+
+                    <div class="card-action center-align">
+                        <a href="" class="btn-floating dark-primary-color" ng-click="removeInvitation(invite._id)">
+                            <i class="material-icons">delete_forever</i>
+                        </a>
+                        <a href="" class="btn-floating accent-color" ng-click="reviveInvitation(invite._id)">
+                            <i class="material-icons">cached</i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
     
 </div>

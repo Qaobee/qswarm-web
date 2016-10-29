@@ -30,7 +30,8 @@
       "memberActif": "Active member",
       "on": "Yes",
       "off": "No",
-      "invitePending": "Invitation request pending"
+      "invitePending": "Invitation request pending",
+      "invitationDate": "Invitation envoyée le"
     },
     "messageControl": {
       "memberAdd": "{{firstname}} {{name}} has been added to your workspace",

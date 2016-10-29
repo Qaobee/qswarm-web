@@ -43,6 +43,31 @@
                     });
                 });
             };
+        
+            /* Remove an invitation */
+            $scope.removeInvitation = function (invitationId) {
+                $log.debug('invitationId',invitationId);
+                sandboxRestAPI.removeInvitationToSandbox(invitationId).success(function (data) {
+                    
+                    $scope.getInvitationToSandboxList();
+                    toastr.success($filter('translate')('sbMemberMngtPage.messageControl.memberRemove', {}));    
+                });
+            };
+        
+            /* Revive an invitation */
+            $scope.reviveInvitation = function (invitationId) {
+                sandboxRestAPI.reviveInvitation(invitationId).success(function (data) {
+                    $scope.getInvitationToSandboxList();
+                    toastr.success($filter('translate')('sbMemberMngtPage.messageControl.memberRemove', {}));    
+                });
+            };
+        
+            /* Retrieve pending invitation list */
+            $scope.getInvitationToSandboxList = function () {
+                sandboxRestAPI.getInvitationToSandboxList($scope.meta.sandbox._id, 'waiting').success(function (data) {
+                    $scope.invitationList = data;
+                });
+            };
             
             $scope.updateMemberSandbox = function (memberId) {
                 var member = null;
@@ -95,6 +120,7 @@
             $scope.checkUserConnected = function () {
                 userRestAPI.getUserById(user._id).success(function () {
                     $scope.getSandbox();
+                    $scope.getInvitationToSandboxList();
                 }).error(function () {
                     $log.error('SbMemberMgntCtrl : User not Connected');
                 });

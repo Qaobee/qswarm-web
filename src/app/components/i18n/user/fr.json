@@ -21,6 +21,10 @@
     "label" : {
         "byUser" : "Cherchez un utilisateur",
         "byMail" : "Renseignez l'adresse mail de vos collaborateurs"
+    },
+    "messageControl": {
+      "success": "Les invitations ont été bien envoyées",
+      "error": "Ooops, les invitations n'ont pu être envoyées"
     }
   },
   "sbMemberMngtPage": {
@@ -30,7 +34,8 @@
       "memberActif": "Membre activé",
       "on": "Oui",
       "off": "Non",
-      "invitePending": "Invitation en cours"
+      "invitePending": "Invitation en cours",
+      "invitationDate": "Envoyée le"
     },
     "messageControl": {
       "memberAdd": "{{firstname}} {{name}} a été ajouté comme utilisateur à mon espace de travail",
