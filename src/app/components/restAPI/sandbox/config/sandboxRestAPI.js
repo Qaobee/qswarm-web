@@ -16,7 +16,7 @@
                 
                 /**
                  * @description Retrieve all sandbox sharing for one user
-                 * @function getSandboxSharingList
+                 * @function getSandbox
                  * @memberOf qaobee.components.restAPI.sandbox.config.sbShareRestAPI
                  * @param activityId
                  * @returns {Array}    list of sandbox

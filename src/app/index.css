@@ -1091,14 +1091,14 @@ table.super-fancy tr.foobar {
 .cnil-main p {
     text-align: justify;
 }
-<<<<<<< HEAD
 
 .default-chip {
     border: 2px solid #607d8b;
     border-radius: 4px;
     background: #ffffff;
     padding: 5px;
-=======
+}
+
 .legal p {
     text-align: justify;
     text-indent: 10px;
@@ -1121,5 +1121,4 @@ table.super-fancy tr.foobar {
     -o-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
     filter:progid:DXImageTransform.Microsoft.Shadow(color=rgba(0, 0, 0, 0.12), Direction=180, Strength=10);
->>>>>>> QSwarm-Web/master
 }

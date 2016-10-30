@@ -64,7 +64,7 @@
              * @description initialization materialize components
              */
             $rootScope.$on('$viewContentLoaded', function () {
-                angular.element('.modal-trigger').leanModal({
+                angular.element('.modal').modal({
                     dismissible: true,
                     opacity: 0.7,
                     in_duration: 600,

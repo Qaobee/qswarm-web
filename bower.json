@@ -60,7 +60,7 @@
     "materialize-clockpicker": "~0.1.1",
     "angular-recaptcha": "^3.0.4",
     "angular-chips": "^1.0.8",
-    "materialize": "^0.97.7"
+    "materialize": "^0.97.8"
   },
   "resolutions": {
     "angular-cookies": "1.5.8",

@@ -118,19 +118,13 @@
 
                     $scope.openSignup = function () {
                         delete($scope.infos);
-                        angular.element('#modalLogin').closeModal();
+                        angular.element('#modalLogin').modal('close');
                         $location.path('/signupStart');
                         return false;
                     };
 
                     $scope.openLogin = function () {
-                        angular.element('#modalLogin').openModal({
-                            complete: function () {
-                                setTimeout(function () {
-                                    angular.element(".lean-overlay").remove();
-                                }, 500);
-                            }
-                        });
+                        angular.element('#modalLogin').modal('open');
                     };
 
                     $scope.loadMetaInfos = function () {
@@ -250,7 +244,7 @@
 
                     $scope.login = function () {
                         userRestAPI.logon($scope.signin.login, $scope.signin.passwd).success(function (data) {
-                            angular.element('#modalLogin').closeModal();
+                            angular.element('#modalLogin').modal('close');
                             if (data.account.active) {
                                 $scope.notpaid = data.account.listPlan.filter(function (n) {
                                         return n.status === 'notpaid';
@@ -291,28 +285,16 @@
 
                     $scope.openForgotPwd = function () {
                         delete($scope.infos);
-                        angular.element('#modalLogin').closeModal();
-                        angular.element('#modalForgotPwd').openModal({
-                            complete: function () {
-                                setTimeout(function () {
-                                    angular.element(".lean-overlay").remove();
-                                }, 500);
-                            }
-                        });
+                        angular.element('#modalLogin').modal('close');
+                        angular.element('#modalForgotPwd').modal('open');
                     };
 
                     $scope.renewPwd = function () {
                         userRestAPI.forgotPasswd($scope.infos.login).success(function (data) {
                             if (data.status === true) {
                                 delete($scope.infos);
-                                angular.element('#modalForgotPwd').closeModal();
-                                angular.element('#modalForgotPwdOK').openModal({
-                                    complete: function () {
-                                        setTimeout(function () {
-                                            angular.element(".lean-overlay").remove();
-                                        }, 500);
-                                    }
-                                });
+                                angular.element('#modalForgotPwd').modal('close');
+                                angular.element('#modalForgotPwdOK').modal('open');
                             } else {
                                 toastr.warning(data.message);
                             }
