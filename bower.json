@@ -56,7 +56,7 @@
     "angular-google-analytics": "~1.1.7",
     "vertxbus": "*",
     "v-tabs": "~0.2.0",
-    "angular-file-saver": "~1.1.0",
+    "angular-file-saver": "1.1.2",
     "materialize-clockpicker": "~0.1.1",
     "angular-recaptcha": "^3.0.4",
     "angular-chips": "^1.0.8",
