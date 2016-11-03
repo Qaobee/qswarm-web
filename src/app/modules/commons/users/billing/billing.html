@@ -39,9 +39,9 @@
                             {{s.paidDate | date}}
                         </div>
                         <div ng-bind="'xxxx xxxx xxxx ' + s.cardInfo.last4" class="col m2 center-align"></div>
-                        <button ng-click="getBill($parent.$index, s.id, s.paymentId)"
+                        <a ng-href="{{getBill($parent.$index, s.id)}}" target="_blank"
                                 class="waves-effect waves-teal btn-flat col m1 center-align"><i class="material-icons">cloud_download</i>
-                        </button>
+                        </a>
                     </span>
                 </div>
             </div>

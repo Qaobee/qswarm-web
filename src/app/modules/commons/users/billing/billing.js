@@ -40,6 +40,7 @@
                 }
                 return data;
             }
+
             $scope.renew = {};
             // return button
             $scope.doTheBack = function () {
@@ -49,8 +50,10 @@
                 delete $scope.user;
             });
 
-            $scope.getBill = function (id, pay_id, bill_name) {
-                downloadSrv.getPdf('/api/1/commons/users/profile/billpdf?plan_id=' + id + '&pay_id=' + pay_id, bill_name + '-Qaobee.pdf');
+            $scope.getBill = function (id, pay_id) {
+                return EnvironmentConfig.apiEndPoint + '/api/1/commons/users/profile/billpdf?plan_id=' + id
+                    + '&pay_id=' + pay_id
+                    + '&token=' + $window.sessionStorage.qaobeesession;
             };
         });
 }());
