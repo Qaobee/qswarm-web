@@ -32,43 +32,48 @@
             $scope.willPay = false;
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
-            angular.element('#payMessageModal').openModal({
-                complete: function () {
-                    if (!$scope.willPay) {
-                        $scope.doTheBack();
-                    }
-                }
-            });
             $scope.user = user;
             $scope.modalClosed = false;
             $scope.index = $routeParams.index;
             $scope.plan = $scope.user.account.listPlan[0];
-            paymentAPI.getPaymentURL($scope.index).then(function (data) {
-                if (!!data.data) {
-                    $scope.paymentUrl = data.data;
-                    angular.element('#frame').html('<iframe class="payplug-frame" height="100%" src="' + data.data.payment_url + '"></iframe>');
-                } else {
-                    $scope.payError = true;
-                }
 
-            });
             $scope.doTheBack = function () {
                 $window.history.back();
             };
 
             $scope.cancel = function () {
-                angular.element('#payMessageModal').closeModal();
+                angular.element('#payMessageModal').modal('close');
                 $scope.doTheBack();
             };
 
             $scope.agree = function () {
                 $scope.willPay = true;
-                angular.element('#payMessageModal').closeModal();
+                angular.element('#payMessageModal').modal('close');
                 $scope.modalClosed = true;
             };
 
             $scope.$on('$destroy', function () {
                 delete $scope.user;
+            });
+
+            angular.element(document).ready(function () {
+                angular.element('#payMessageModal').modal({
+                    complete: function () {
+                        if (!$scope.willPay) {
+                            $scope.doTheBack();
+                        }
+                    }
+                });
+                angular.element('#payMessageModal').modal('open');
+                paymentAPI.getPaymentURL($scope.index).then(function (data) {
+                    if (!!data.data) {
+                        $scope.paymentUrl = data.data;
+                        angular.element('#frame').html('<iframe class="payplug-frame" height="100%" src="' + data.data.payment_url + '"></iframe>');
+                    } else {
+                        $scope.payError = true;
+                    }
+
+                });
             });
 
         })

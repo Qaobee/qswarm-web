@@ -2,6 +2,7 @@
     'use strict';
     (function ($) {
         $(document).ready(function () {
+            $('.modal').modal();
             // Plugin initialization
             $('.dropdown-button').dropdown({
                     inDuration: 300,

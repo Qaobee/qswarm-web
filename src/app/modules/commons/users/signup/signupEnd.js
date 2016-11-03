@@ -36,6 +36,22 @@
                                             signupRestAPI, locationAPI, personSrv) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
+            $scope.creatClub = false;
+            /* init ngAutocomplete*/
+            $scope.options = {};
+            $scope.options.watchEnter = true;
+            /// options pour ville structure
+            $scope.optionsSearchCity = {
+                types: '(cities)'
+            };
+            $scope.detailsSearchCity = '';
+            // options pour ville nouvelle structure
+            $scope.optionsCreateCity = {
+                types: 'geocode'
+            };
+            $scope.detailsCreateCity = '';
+            $scope.optionsAdr = null;
+            $scope.detailsAdr = '';
 
             $scope.initForm = function () {
                 $scope.listStructures = [];
@@ -52,8 +68,6 @@
                 delete $scope.structure.label;
                 delete $scope.categoryAge;
             };
-
-            $scope.creatClub = false;
             $scope.initForm();
 
             // Verification user signup
@@ -83,31 +97,12 @@
                 $location.path('/signup/error');
             });
 
-            /* init ngAutocomplete*/
-            $scope.options = {};
-            $scope.options.watchEnter = true;
-            /// options pour ville structure
-            $scope.optionsSearchCity = {
-                types: '(cities)'
-            };
-            $scope.detailsSearchCity = '';
-
-            // options pour ville nouvelle structure
-            $scope.optionsCreateCity = {
-                types: 'geocode'
-            };
-            $scope.detailsCreateCity = '';
-
-            $scope.optionsAdr = null;
-            $scope.detailsAdr = '';
-
             // Surveillance de la modification du retour de l'API Google sur l'adresse
             $scope.$watch('detailsSearchCity', function (newValue, oldValue) {
                 if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
                     if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue)) {
                         return;
                     }
-
                     //place_changed
                     $scope.loadStructures();
                 }
@@ -120,10 +115,8 @@
                     if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue)) {
                         return;
                     }
-
                     personSrv.formatAddress(newValue).then(function (adr) {
                         $scope.structure.address = adr;
-
                         angular.forEach(newValue.address_components, function (item) {
                             if (item.types.count('country') > 0) {
                                 $scope.structure.address.country = {};
@@ -140,12 +133,8 @@
 
             // Recherche du pays et liste des category age
             $scope.loadCategories = function () {
-
                 countryRestAPI.getAlpha2($scope.structure.address.country.alpha2).success(function (data) {
-
                     $scope.structure.country = data;
-
-                    $log.debug($scope.structure);
                     activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.user.account.listPlan[0].activity._id, data._id, 'listCategoryAge').success(function (data2) {
                         $scope.categoryAgeResult = data2;
                         $scope.valuesCategoryAge = [];
@@ -285,8 +274,6 @@
                 }
                 // Ouverture Modal creation compte
                 $scope.openModalCreate();
-                $log.debug($scope.structure);
-
                 signupRestAPI.finalizeSignup($scope.user, $routeParams.code, $scope.structure, $scope.user.account.listPlan[0].activity._id, catAge).success(function (data) {
                     if (false === data.status) {
                         toastr.error('Pb');
@@ -297,22 +284,22 @@
                         delete $scope.user;
                     }
                 }).error(function (data) {
-                    angular.element('#modalCreate').closeModal();
+                    angular.element('#modalCreate').modal('close');
                     $scope.messageErreur = data.message;
                     $window.location.href = '/#/signup/error';
                 });
             };
 
             $scope.openCancelModal = function () {
-                angular.element('#modalCancel').openModal();
+                angular.element('#modalCancel').modal('open');
             };
 
             $scope.closeCancelModal = function () {
-                angular.element('#modalCancel').closeModal();
+                angular.element('#modalCancel').modal('close');
             };
 
             $scope.cancelSignup = function () {
-                angular.element('#modalCancel').closeModal();
+                angular.element('#modalCancel').modal('close');
                 delete($scope.signup);
                 toastr.info('A bientôt !');
                 $location.path('/');
@@ -336,7 +323,7 @@
             };
 
             $scope.openModalCreate = function () {
-                angular.element('#modalCreate').openModal({dismissible: false});
+                angular.element('#modalCreate').modal('open');
                 angular.element('.owl-carousel').owlCarousel($scope.owlOptions);
             };
 
@@ -345,10 +332,15 @@
                     while (!$scope.creationFinished) {
                         // Attente fin de la création en base Mongo
                     }
-                    angular.element('#modalCreate').closeModal();
+                    angular.element('#modalCreate').modal('close');
                     $window.location.href = '/#/signup/end';
                 }
             }
+
+            angular.element(document).ready(function () {
+                angular.element('#modalCreate').modal({dismissible: false});
+                angular.element('#modalCancel').modal();
+            });
 
         })
 
