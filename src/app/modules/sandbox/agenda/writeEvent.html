@@ -50,7 +50,7 @@
                                     class="accent-text-color">*</span></label>
                         </div>
                         <div class="input-field col s8">
-                            <input id="EventStartHours" input-clock data-twelvehour="false" data-donetext="{{close}}" data-default="now" type="text"
+                            <input id="EventStartHours" input-clock data-twelvehour="false" data-donetext="{{'commons.format.date.close' | translate}}" type="text"
                                    ng-model="startHours" required
                                    ng-class="{ 'has-error' : eventForm.EventStartHours.$invalid && !eventForm.EventStartHours.$pristine }"/>
                         </div>

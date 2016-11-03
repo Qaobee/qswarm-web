@@ -57,6 +57,7 @@
     "vertxbus": "*",
     "v-tabs": "~0.2.0",
     "angular-file-saver": "1.1.2",
+    "materialize-clockpicker": "Giwi/materialize-clockpicker#^0.1.2",
     "angular-recaptcha": "^3.0.4",
     "angular-chips": "^1.0.8",
     "materialize": "^0.97.8"
@@ -67,5 +68,13 @@
     "jquery": "2.1.4",
     "angular-materialize": "0.2.1",
     "angular": "^1.5.8"
+  },
+  "overrides": {
+    "materialize-clockpicker": {
+      "main": [
+        "dist/js/materialize.clockpicker.js",
+        "dist/css/materialize.clockpicker.css"
+      ]
+    }
   }
 }
