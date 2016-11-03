@@ -102,7 +102,7 @@
 
             /* add player */
             $scope.checkAndformatPerson = function () {
-                $scope.player.birthdate = moment($scope.player.birthdate, $scope.formatDateMoment).valueOf();
+                $scope.player.birthdate = moment($scope.player.birthdate, 'DD/MM/YYYY').valueOf();
                 personSrv.formatAddress($scope.player.address).then(function (adr) {
                     $scope.player.address = adr;
 

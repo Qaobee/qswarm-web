@@ -66,7 +66,7 @@
                     google.maps.event.trigger($scope.map, 'resize');
                 }, 0);
 
-                angular.element('#mapPlayer').openModal();
+                angular.element('#mapPlayer').modal('open');
             };
 
             /* get person */

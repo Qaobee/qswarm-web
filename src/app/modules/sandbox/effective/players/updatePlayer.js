@@ -40,7 +40,7 @@
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('stats');
-            $scope.maxDate = new Date().toISOString();
+            //$scope.maxDate = new Date().toISOString();
             $scope.playerId = $routeParams.playerId;
             $scope.user = user;
             $scope.meta = meta;
@@ -83,12 +83,14 @@
                     $scope.player.birthdate = $scope.player.birthdate || moment().valueOf();
                     $scope.player.birthdate = moment($scope.player.birthdate).toDate();
                     $scope.showBirthdate = true;
+                    $scope.datePicker = angular.element('#playerBirthdate').pickadate('picker');
+                    $scope.datePicker.set('select',$scope.player.birthdate.valueOf());
                 });
             };
 
             /* update person */
             $scope.checkAndformatPerson = function () {
-                $scope.player.birthdate = moment($scope.player.birthdate, $scope.formatDateMoment).valueOf();
+                $scope.player.birthdate = moment($scope.player.birthdate, 'DD/MM/YYYY').valueOf();
                 personSrv.formatAddress($scope.player.address).then(function (adr) {
                     $scope.player.address = adr;
 
