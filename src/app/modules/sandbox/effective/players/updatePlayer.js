@@ -40,7 +40,7 @@
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('stats');
-            //$scope.maxDate = new Date().toISOString();
+            $scope.maxDate = new Date().toISOString();
             $scope.playerId = $routeParams.playerId;
             $scope.user = user;
             $scope.meta = meta;
