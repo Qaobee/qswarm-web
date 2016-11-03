@@ -36,21 +36,17 @@
          * @description Main controller for view updatePlayer.html
          */
         .controller('UpdatePlayerControler', function ($log, $scope, $timeout, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                       activityCfgRestAPI, personRestAPI, personSrv, userRestAPI, $translate) {
-
+                                                       activityCfgRestAPI, personRestAPI, personSrv, userRestAPI) {
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('stats');
-
+            $scope.maxDate = new Date().toISOString();
             $scope.playerId = $routeParams.playerId;
-
             $scope.user = user;
             $scope.meta = meta;
             $scope.player = {};
             $scope.positionsType = {};
-
             $scope.addPlayerTitle = false;
-
             // return button
             $scope.doTheBack = function () {
                 $window.history.back();
@@ -87,36 +83,6 @@
                     $scope.player.birthdate = $scope.player.birthdate || moment().valueOf();
                     $scope.player.birthdate = moment($scope.player.birthdate).toDate();
                     $scope.showBirthdate = true;
-                    $translate(['commons.format.date.listMonth',
-                        'commons.format.date.listMonthShort',
-                        'commons.format.date.listWeekdaysFull',
-                        'commons.format.date.listWeekdaysShort',
-                        'commons.format.date.listWeekdaysLetter',
-                        'commons.format.date.today',
-                        'commons.format.date.clear',
-                        'commons.format.date.close',
-                        'commons.format.date.label',
-                        'commons.format.date.pattern'
-                    ]).then(function (translations) {
-                        $scope.datePicker = angular.element('#playerBirthdate')
-                            .pickadate({
-                                format: translations['commons.format.date.label'],
-                                formatSubmit: translations['commons.format.date.pattern'],
-                                monthsFull: translations['commons.format.date.listMonth'].split(','),
-                                monthShort: translations['commons.format.date.listMonthShort'].split(','),
-                                weekdaysFull: translations['commons.format.date.listWeekdaysFull'].split(','),
-                                weekdaysLetter: translations['commons.format.date.listWeekdaysLetter'].split(','),
-                                weekdaysShort: translations['commons.format.date.listWeekdaysShort'].split(','),
-                                selectYears: 100,
-                                selectMonths: true,
-                                max: true,
-                                today: translations['commons.format.date.today'],
-                                clear: translations['commons.format.date.clear'],
-                                close: translations['commons.format.date.close']
-                            })
-                            .pickadate('picker')
-                            .set('select',$scope.player.birthdate.valueOf());
-                    });
                 });
             };
 

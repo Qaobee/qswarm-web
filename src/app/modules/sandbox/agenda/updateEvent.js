@@ -39,7 +39,7 @@
          * @description Main controller for view mainAgenda.html
          */
         .controller('UpdateEventControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                      $translate, eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, userRestAPI, personSrv) {
+                                                      eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, userRestAPI, personSrv) {
 
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('agenda');
@@ -57,41 +57,7 @@
             $scope.startDate = '';
             $scope.startHours = '';
             $scope.location = 'home';
-            /****************************************
-             * start Datapicker et timepicker
-             ***************************************/
-            //i18n datepicker
-            $translate(['commons.format.date.listMonth',
-                'commons.format.date.listMonthShort',
-                'commons.format.date.listWeekdaysFull',
-                'commons.format.date.listWeekdaysShort',
-                'commons.format.date.listWeekdaysLetter',
-                'commons.format.date.today',
-                'commons.format.date.clear',
-                'commons.format.date.close',
-                'commons.format.date.label',
-                'commons.format.date.pattern'
-            ]).then(function (translations) {
-                $scope.datePicker = angular.element('#EventStartDate')
-                    .pickadate({
-                        format: translations['commons.format.date.label'],
-                        formatSubmit: translations['commons.format.date.pattern'],
-                        monthsFull: translations['commons.format.date.listMonth'].split(','),
-                        monthShort: translations['commons.format.date.listMonthShort'].split(','),
-                        weekdaysFull: translations['commons.format.date.listWeekdaysFull'].split(','),
-                        weekdaysLetter: translations['commons.format.date.listWeekdaysLetter'].split(','),
-                        weekdaysShort: translations['commons.format.date.listWeekdaysShort'].split(','),
-                        selectYears: 100,
-                        selectMonths: true,
-                        today: translations['commons.format.date.today'],
-                        clear: translations['commons.format.date.clear'],
-                        close: translations['commons.format.date.close']
-                    })
-                    .pickadate('picker');
-            });
-
-            //i18n timepicker
-            $scope.close = $filter('translate')('commons.format.date.close');
+            $scope.minDate = new Date().toISOString();
 
             /****************************************
              * end Datapicker et timepicker

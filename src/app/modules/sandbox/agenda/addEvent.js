@@ -40,7 +40,7 @@
          * @description Main controller for view mainAgenda.html
          */
         .controller('AddEventControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                   $translate, eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, userRestAPI, personSrv) {
+                                                   eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, userRestAPI, personSrv) {
 
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('agenda');
@@ -60,35 +60,7 @@
             $scope.startDate = '';
             $scope.startHours = '';
             $scope.location = 'home';
-
-            //i18n datepicker
-            $translate(['commons.format.date.listMonth',
-                'commons.format.date.listMonthShort',
-                'commons.format.date.listWeekdaysFull',
-                'commons.format.date.listWeekdaysShort',
-                'commons.format.date.listWeekdaysLetter',
-                'commons.format.date.today',
-                'commons.format.date.clear',
-                'commons.format.date.close',
-                'commons.format.date.label',
-                'commons.format.date.pattern'
-            ]).then(function (translations) {
-                $scope.format = translations['commons.format.date.label'];
-                $scope.formatSubmit = translations['commons.format.date.pattern'];
-                $scope.monthsFull = translations['commons.format.date.listMonth'].split(',');
-                $scope.monthShort = translations['commons.format.date.listMonthShort'].split(',');
-                $scope.weekdaysFull = translations['commons.format.date.listWeekdaysFull'].split(',');
-                $scope.weekdaysLetter = translations['commons.format.date.listWeekdaysLetter'].split(',');
-                $scope.weekdaysShort = translations['commons.format.date.listWeekdaysShort'].split(',');
-                $scope.selectYears = 3;
-                $scope.selectMonths = true;
-                $scope.today = translations['commons.format.date.today'];
-                $scope.clear = translations['commons.format.date.clear'];
-                $scope.close = translations['commons.format.date.close'];
-            });
-        
-            //i18n timepicker
-            $scope.close = $filter('translate')('commons.format.date.close');
+            $scope.minDate = new Date().toISOString();
 
             $scope.addEventTitle = true;
 
@@ -162,9 +134,7 @@
 
                 /* get effective */
                 effectiveRestAPI.getEffective($scope.effectiveId).success(function (data) {
-
                     var effective = data;
-
                     if (angular.isDefined(effective)) {
                         /* add event */
                         eventsRestAPI.addEvent($scope.event).success(function (event) {
@@ -187,7 +157,6 @@
                 start.hour(moment($scope.startHours, 'HH').hour());
                 start.minutes(moment($scope.startHours, 'm mm').minutes());
                 $scope.event.startDate = moment(start).valueOf();
-
 
                 /* add team Id to owner */
                 if (angular.isDefined($scope.teamId)) {

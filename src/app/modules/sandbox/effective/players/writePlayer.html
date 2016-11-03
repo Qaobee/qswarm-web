@@ -68,6 +68,19 @@
                                 <input id="playerBirthdate" name="playerBirthdate" type="text"
                                        ng-model="player.birthdate" required
                                        class="datepicker"
+                                       input-date
+                                       format="{{'commons.format.date.label' | translate}}"
+                                       months-full="{{ ('commons.format.date.listMonth' | translate).split(',')}}"
+                                       months-short="{{ ('commons.format.date.listMonthShort' | translate).split(',')}}"
+                                       weekdays-full="{{ ('commons.format.date.listWeekdaysFull' | translate).split(',') }}"
+                                       weekdays-short="{{ ('commons.format.date.listWeekdaysShort' | translate).split(',') }}"
+                                       weekdays-letter="{{ ('commons.format.date.listWeekdaysLetter' | translate).split(',') }}"
+                                       max="{{ maxDate }}"
+                                       today="('commons.format.date.today' | translate)"
+                                       first-day="1"
+                                       clear="('commons.format.date.clear' | translate)"
+                                       close="('commons.format.date.close' | translate)"
+                                       select-years="15"
                                        ng-class="{ 'has-error' : playerCivilSection.playerBirthdate.$invalid && !playerCivilSection.playerBirthdate.$pristine }"/>
                                 <span class="small accent-text-color"
                                       ng-if="playerCivilSection.playerBirthdate.$invalid && !playerCivilSection.playerBirthdate.$pristine"
