@@ -8,7 +8,7 @@
       "captchaKey" : "6LcTjvcSAAAAABAnHBqs95JQCdYNXToXMA30ksEF",
       "uaid" : "UA-72906581-1",
       "appMobile" : {
-        "google" : "https://play.google.com/store/apps/details?id=com.qaobee.hand",
+        "google" : "https://play.google.com/apps/testing/com.qaobee.hand",
         "apple" : ""
       }
     }
@@ -22,7 +22,7 @@
       "captchaKey" : "6LcTjvcSAAAAABAnHBqs95JQCdYNXToXMA30ksEF",
       "uaid" : "UA-72906581-1",
       "appMobile" : {
-        "google" : "https://play.google.com/store/apps/details?id=com.qaobee.hand",
+        "google" : "https://play.google.com/apps/testing/com.qaobee.hand",
         "apple" : ""
       }
     }
