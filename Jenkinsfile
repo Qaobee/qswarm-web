@@ -4,14 +4,14 @@ import hudson.model.*
 node {
     def rancherCli = 'v0.8.6'
 
-    stage 'Checkout' {
+    stage('Checkout') {
         git credentialsId: 'b74a476d-7464-429c-ab8e-7ebbe03bcd1f', url: 'git@gitlab.com:qaobee/qswarm-web.git'
         sh 'git fetch --tags'
         def version = version()
         echo("Building $version")
     }
 
-    stage "Build $version" {
+    stage("Build $version") {
         sh 'rm -fr node_modules'
         sh 'rm -fr bower_components'
         sh 'npm cache clean'
@@ -24,16 +24,16 @@ node {
         sh 'cp -R bower_components/momentjs dist/bower_components/.'
     }
 
-    stage "Doc $version" {
+    stage("Doc $version") {
         sh 'gulp jsdoc'
         sh 'git_stats generate -o docs/git'
     }
 
-    stage "Quality $version" {
+    stage("Quality $version") {
         sh "./gradlew sonarqube -Dsonar.projectVersion=$version -Dsonar.login=marin.xavier -Dsonar.password=zaza66629!"
     }
 
-    stage "Docker $version" {
+    stage("Docker $version") {
         timeout(time: 30, unit: 'DAYS') {
             input 'Build docker ?'
         }
@@ -46,7 +46,7 @@ node {
         sh "git push origin --tags"
     }
 
-    stage "Deploy $version in REC" {
+    stage("Deploy $version in REC") {
         sh "wget https://github.com/rancher/rancher-compose/releases/download/$rancherCli/rancher-compose-linux-amd64-$rancherCli" + ".tar.gz"
         sh "tar -zxf rancher-compose-linux-amd64-$rancherCli" + ".tar.gz"
         sh "rm -f rancher-compose-linux-amd64-$rancherCli" + ".tar.gz"
