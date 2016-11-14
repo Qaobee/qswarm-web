@@ -7,7 +7,7 @@ node {
     stage('Checkout') {
         git credentialsId: 'b74a476d-7464-429c-ab8e-7ebbe03bcd1f', url: 'git@gitlab.com:qaobee/qswarm-web.git'
         sh 'git fetch --tags'
-        version = version()
+        version = this.version()
         echo("Building $version")
     }
 
