@@ -1,5 +1,6 @@
-FROM nginx:1.9.12
+FROM nginx:1.11.5-alpine
 MAINTAINER Xavier MARIN <marin.xavier@gmail.com>
+RUN apk add --update bash && rm -rf /var/cache/apk/*
 COPY dist/ /data/www
 COPY bower_components/angular-i18n /data/www/bower_components/angular-i18n
 COPY bower_components/momentjs /data/www/bower_components/momentjs
