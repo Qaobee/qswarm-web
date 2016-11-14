@@ -1,8 +1,13 @@
 <div class="card accent-color">
     <div class="card-content dark-primary-color">
-        <span class="card-title"><i class="fa fa-calendar"></i> {{'mainAgenda.next_event'  | translate}}</span>
+        <span class="card-title">
+            <i class="fa fa-calendar"></i> {{'mainAgenda.next_event'  | translate}}
+            <a href="#/private/addEvent/{{meta.sandbox.effectiveDefault}}" class="white-text right" ng-if="events.length > 0">
+                <i class="fa fa-plus-square-o"></i>
+            </a>
+        </span>
     </div>
-    <div class="card-content" style="overflow-y: auto; height:255px;">
+    <div class="card-content" style="overflow-y: auto; height:255px;" ng-if="events.length > 0">
         <div ng-repeat="e in events track by $index" class="row">
             <div class="col s2" style="padding:10px;">
                 <h5 class="center-align">{{e.startDate | date : "dd"}}</h5>
@@ -13,6 +18,15 @@
                 <h6>{{e.label}} <small>{{e.title | translate}}</small></h6>
                 {{e.participants.teamHome.label}} / {{e.participants.teamVisitor.label}}
             </div>
+        </div>
+    </div>
+    
+    <div class="card-content" style="overflow-y: auto; height:255px;" ng-if="events.length === 0">
+        <div class="col s12 center">
+            <a href="#/private/addEvent/{{meta.sandbox.effectiveDefault}}" class="primary-text-color">
+                <i class="fa fa-plus-square-o fa-3x"></i>
+                <h4 translate="mainAgenda.buttons.addEvent"></h4>
+            </a>
         </div>
     </div>
 </div>

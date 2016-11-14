@@ -138,7 +138,7 @@
                         var modal = angular.element('#modal-' + uid);
                         modal.detach();
                         angular.element('body').append(modal);
-                        modal.openModal();
+                        modal.modal('open');
                     };
                 },
                 link: function () {
