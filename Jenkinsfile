@@ -1,13 +1,22 @@
 #!/usr/bin/env groovy
 import hudson.model.*
-
+def version() {
+    def v = sh(returnStdout: true, script: 'git describe --abbrev=0 --tags').trim().substring(1).tokenize('.').toArray()
+    def gitVersion = [
+            major: v[0].toInteger(),
+            minor: v[1].toInteger(),
+            patch: v[2].toInteger() + 1
+    ]
+    def version = 'v' + gitVersion.values().join('.')
+    return version
+}
 node {
     def rancherCli = 'v0.8.6'
-
+    def version = '';
     stage('Checkout') {
         git credentialsId: 'b74a476d-7464-429c-ab8e-7ebbe03bcd1f', url: 'git@gitlab.com:qaobee/qswarm-web.git'
         sh 'git fetch --tags'
-        def version = version()
+        version = version()
         echo("Building $version")
     }
 
@@ -82,16 +91,4 @@ node {
         sh 'rm -fr dist'
         sh 'rm -fr docs'
     }
-}
-
-
-def version() {
-    def v = sh(returnStdout: true, script: 'git describe --abbrev=0 --tags').trim().substring(1).tokenize('.').toArray()
-    def gitVersion = [
-            major: v[0].toInteger(),
-            minor: v[1].toInteger(),
-            patch: v[2].toInteger() + 1
-    ]
-    def version = 'v' + gitVersion.values().join('.')
-    return version
 }
