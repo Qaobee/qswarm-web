@@ -190,6 +190,19 @@
       }
     }
   },
+  "invitationPage": {
+    "title": "Création de votre espace de travail",
+    
+    "errorPage": {
+      "title": "Erreur !",
+      "text": "La validation de votre inscription n'a pu aboutir pour la raison suivante : ",
+      "buttonHome": "Accueil",
+      "ph": {
+        "unknown": "Erreur inconnue",
+        "noMessage": "Pas de message"
+      }
+    }
+  },
   "signupStartDonePage": {
     "title": "Compte créé !",
     "line1": "Votre inscription est presque terminée !",

@@ -100,6 +100,20 @@
                 },
                 
                 /**
+                 * @description get an invitation
+                 * @function getInvitationToSandbox
+                 * @memberOf qaobee.components.restAPI.sandbox.config.sbShareRestAPI
+                 * @param invitationId
+                 * @returns {Invitation}    an invitation object
+                 */
+                getInvitationToSandbox: function (invitationId) {
+                    return $http({
+                        url: sbShareAPIURL + '/getInvitation?invitationId='+invitationId,
+                        method: 'GET'
+                    });
+                },
+                
+                /**
                  * @description revive an invitation
                  * @function reviveInvitation
                  * @memberOf qaobee.components.restAPI.sandbox.config.sbShareRestAPI
