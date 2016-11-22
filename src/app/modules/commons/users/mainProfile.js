@@ -20,6 +20,7 @@
         'qaobee.user.sbSwitch',
         'qaobee.user.sbMemberMgnt',
         'qaobee.user.sbSharing',
+        'qaobee.user.invitation',
         'paymentRestAPI',
         'ngAutocomplete',
         'ngPasswordStrength',
