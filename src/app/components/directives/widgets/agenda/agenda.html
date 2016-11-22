@@ -1,10 +1,11 @@
 <div class="card accent-color">
     <div class="card-content dark-primary-color">
         <span class="card-title">
-            <i class="fa fa-calendar"></i> {{'mainAgenda.next_event'  | translate}}
+            <small><i class="fa fa-calendar"></i> &nbsp; {{'mainAgenda.next_event'  | translate}}
             <a href="#/private/addEvent/{{meta.sandbox.effectiveDefault}}" class="white-text right" ng-if="events.length > 0">
                 <i class="fa fa-plus-square-o"></i>
             </a>
+            </small>    
         </span>
     </div>
     <div class="card-content" style="overflow-y: auto; height:255px;" ng-if="events.length > 0">
@@ -21,11 +22,12 @@
         </div>
     </div>
     
-    <div class="card-content" style="overflow-y: auto; height:255px;" ng-if="events.length === 0">
+    <div class="card-content white" style="overflow-y: auto; height:255px;" ng-if="events.length === 0">
         <div class="col s12 center">
-            <a href="#/private/addEvent/{{meta.sandbox.effectiveDefault}}" class="primary-text-color">
+            <br><br>
+            <a href="#/private/addEvent/{{meta.sandbox.effectiveDefault}}" class="accent-text-color">
                 <i class="fa fa-plus-square-o fa-3x"></i>
-                <h4 translate="mainAgenda.buttons.addEvent"></h4>
+                <h5 translate="mainAgenda.buttons.addEvent"></h5>
             </a>
         </div>
     </div>

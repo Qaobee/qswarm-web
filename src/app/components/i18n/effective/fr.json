@@ -50,7 +50,7 @@
       "Listplayer": "Liste des joueurs"
   },
     "mainPlayer": {
-    "title": "Joueurs de l'effectif",
+    "title": "Mes joueurs",
     "buttons": {
       "addEffective": "Ajouter un effectif",
       "updateEffective": "Editer un effectif",
@@ -118,7 +118,7 @@
     "wrong-char": "Caractères non autorisés"
   },
   "mainTeam": {
-    "title": "Equipes de l'effectif "
+    "title": "Mes équipes"
   },
     "tabTeam": {
       "dashboard": "Tableau de bord",

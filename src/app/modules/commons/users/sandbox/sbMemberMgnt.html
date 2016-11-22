@@ -16,9 +16,9 @@
         <ul>
             <li class="col l3 m6 s12" ng-repeat="member in sandbox.members">
                 <div class="card">
-                    <div class="card-content center-align" style="height:48px;">
+                    <div class="card-content center-align light-primary-color" style="height:48px;">
                         <span class="card-title primary-text-color">
-                            {{member.person.firstname}} {{member.person.name}}
+                            <small>{{member.person.firstname}} {{member.person.name}}</small>
                         </span>
                     </div>
                     <div class="card-content center-align" style="height:48px;">
@@ -60,10 +60,12 @@
         <ul>
             <li class="col l3 m6 s12" ng-repeat="invite in invitationList">
                 <div class="card">
-                    
-                    <div class="card-content center-align dark-primary-color">
-                        <span>{{invite.userEmail}}</span>
-                        <br>
+                    <div class="card-content center-align dark-primary-color" style="height:48px;">
+                        <span class="card-title">
+                            <small>{{invite.userEmail}}</small>
+                        </span>
+                    </div>
+                    <div class="card-content center-align">
                         <br>
                         <i class="material-icons md-36 secondary-text-color">send</i>
                         <br>
@@ -71,7 +73,7 @@
                         <span>{{'sbMemberMngtPage.label.invitationDate' | translate }} {{ invite.invitationDate | date : format : timezone}}</span>
                     </div>
 
-                    <div class="card-action center-align">
+                    <div class="card-action center-align light-primary-color">
                         <a href="" class="btn-floating dark-primary-color" ng-click="removeInvitation(invite._id)">
                             <i class="material-icons">delete_forever</i>
                         </a>

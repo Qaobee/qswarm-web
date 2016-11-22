@@ -1,10 +1,11 @@
 {
   "profileMainPage": {
+      "title":"Mon profil",
     "tabs": {
       "account": "Mon compte",
       "sandbox": "Mes espaces de travail",
       "preference": "Mes préférences",
-      "profil": "Mon profil",
+      "profil": "Mes données",
       "password": "Mot de passe",
       "billing": "Abonnement",
       "notification": "Notifications",
