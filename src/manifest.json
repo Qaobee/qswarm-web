@@ -1,0 +1,11 @@
+{
+  "name": "Qaobee",
+  "short_name": "Qaobee",
+  "icons": [{
+    "src": "assets/images/qaobee-logoRouge.png",
+    "sizes": "200x200",
+    "type": "image/png"
+  }],
+  "start_url": "/#",
+  "display": "standalone"
+}
