@@ -3,8 +3,13 @@
 
 ## 2016-11-22
 
-## 2016-11-14
+## 2016-11-20
+> + #QHBWEB-3 (*par [Xavier MARIN](marin.xavier@gmail.com) à 21:12 [view commit](https://gitlab.com/qaobee/qaobee-swarn/commit/9df0449613d094aa056689567891f39fba180dad)*)
+> + Merge branch 'master' of https://gitlab.com/qaobee/qswarm-web (*par [Xavier MARIN](marin.xavier@gmail.com) à 21:10 [view commit](https://gitlab.com/qaobee/qaobee-swarn/commit/ae9eb2a03e58c888a1ffd32c1b119855189cef35)*)
 > + clean (*par [Xavier MARIN](marin.xavier@gmail.com) à 21:07 [view commit](https://gitlab.com/qaobee/qaobee-swarn/commit/b58d78a2e6391716e3cc2a98fd1e90c6bc0d8680)*)
+> + Link invitation (*par [ck7](ch.kervella@gmail.com) à 23:41 [view commit](https://gitlab.com/qaobee/qaobee-swarn/commit/851c65f07b80110fb8e09964b243894084f6704a)*)
+
+## 2016-11-14
 
 ## 2016-11-13
 > + jenkins + alpine (*par [Xavier MARIN](marin.xavier@gmail.com) à 11:51 [view commit](https://gitlab.com/qaobee/qaobee-swarn/commit/4393088a04c62e7af2bb0075dd3697222d2e41cc)*)
@@ -93,10 +98,3 @@
 > + Activate - desactivate user sandbox (*par [Christophe Kervella](ch.kervella@gmail.com) à 00:28 [view commit](https://gitlab.com/qaobee/qaobee-swarn/commit/7d265eded45d7c1098bbe0189c88eed9c6b5406f)*)
 > + Activate - deactivate user to sandbox (*par [Christophe Kervella](ch.kervella@gmail.com) à 00:14 [view commit](https://gitlab.com/qaobee/qaobee-swarn/commit/bfc92dd0ce212e77516f3658ae2201b07d88a95e)*)
 > + jenkins (*par [Xavier MARIN](marin.xavier@gmail.com) à 22:25 [view commit](https://gitlab.com/qaobee/qaobee-swarn/commit/0823f5f4655c2721bb7a870ebba29bc582ca2915)*)
-
-## 2016-10-02
-> + jenkins (*par [Xavier MARIN](marin.xavier@gmail.com) à 21:55 [view commit](https://gitlab.com/qaobee/qaobee-swarn/commit/ba7af25ce181929e83ef75093f330118cf7c31d3)*)
-> + jenkins (*par [Xavier MARIN](marin.xavier@gmail.com) à 21:28 [view commit](https://gitlab.com/qaobee/qaobee-swarn/commit/d2cb735878f82c1d3ce05a9b84452fa178ef8cc5)*)
-> + Merge remote-tracking branch 'origin/master' (*par [Xavier MARIN](marin.xavier@gmail.com) à 21:22 [view commit](https://gitlab.com/qaobee/qaobee-swarn/commit/46b74fa5b2a83fdaa24245d5be2d54b7264fa913)*)
-> + jenkins (*par [Xavier MARIN](marin.xavier@gmail.com) à 21:22 [view commit](https://gitlab.com/qaobee/qaobee-swarn/commit/e3fada19b84789201a9813ca5313eb4e79ffe80f)*)
-> + Directive titlePageBar (*par [Christophe Kervella](ch.kervella@gmail.com) à 00:14 [view commit](https://gitlab.com/qaobee/qaobee-swarn/commit/28ebef83cffd66799e1ad1f2fb1885e1a6d9d943)*)
