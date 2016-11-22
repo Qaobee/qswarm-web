@@ -4,6 +4,7 @@
 ## 2016-11-22
 
 ## 2016-11-20
+> + Resolves QHBWEB-3 (*par [Xavier MARIN](marin.xavier@gmail.com) à 21:16 [view commit](https://gitlab.com/qaobee/qaobee-swarn/commit/f46845456daa3577b8299219344aa3133114a8de)*)
 > + #QHBWEB-3 (*par [Xavier MARIN](marin.xavier@gmail.com) à 21:12 [view commit](https://gitlab.com/qaobee/qaobee-swarn/commit/9df0449613d094aa056689567891f39fba180dad)*)
 > + Merge branch 'master' of https://gitlab.com/qaobee/qswarm-web (*par [Xavier MARIN](marin.xavier@gmail.com) à 21:10 [view commit](https://gitlab.com/qaobee/qaobee-swarn/commit/ae9eb2a03e58c888a1ffd32c1b119855189cef35)*)
 > + clean (*par [Xavier MARIN](marin.xavier@gmail.com) à 21:07 [view commit](https://gitlab.com/qaobee/qaobee-swarn/commit/b58d78a2e6391716e3cc2a98fd1e90c6bc0d8680)*)
