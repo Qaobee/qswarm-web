@@ -14,9 +14,6 @@
             $routeProvider.when('/signupStart', {
                 controller: 'SignupStartCtrl',
                 templateUrl: 'app/modules/commons/users/signup/signupStart.html'
-            }).when('/signupStartDone', {
-                controller: 'SignupStartDoneCtrl',
-                templateUrl: 'app/modules/commons/users/signup/signupStartDone.html'
             });
         })
 
@@ -67,7 +64,8 @@
                             } else {
                                 delete $scope.signup;
                                 delete $scope.passwdConfirm;
-                                $location.path('/signupStartDone');
+                                $rootScope.user = data2.person;
+                                $location.path('/signup/'+data2.person._id+'/'+data2.person.account.activationCode);
                             }
                         }).error(function (error) {
                             vcRecaptchaService.reload($scope.widgetId);
@@ -80,15 +78,6 @@
                         });
                     }
                 });
-            };
-        })
-
-        .controller('SignupStartDoneCtrl', function ($rootScope, $scope, $log, $translatePartialLoader, $location, EnvironmentConfig) {
-            $translatePartialLoader.addPart('user');
-            $scope.url = EnvironmentConfig.appMobile;
-            $scope.goHome = function () {
-                delete($rootScope.user);
-                $location.path('/');
             };
         });
 

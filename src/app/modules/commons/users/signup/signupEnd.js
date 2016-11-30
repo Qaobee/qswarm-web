@@ -11,13 +11,17 @@
         'activityCfgRestAPI',
         'countryRestAPI',
         'structureRestAPI',
-        'signupRestAPI'
+        'signupRestAPI',
+        'userRestAPI'
     ])
 
         .config(function ($routeProvider) {
-            $routeProvider.when('/signup/end', {
+            $routeProvider.when('/signup/end/:id/:code?', {
                 controller: 'SignupEndCtrl',
                 templateUrl: 'app/modules/commons/users/signup/signupEndDone.html'
+            }).when('/signupStartDone', {
+                controller: 'SignupStartDoneCtrl',
+                templateUrl: 'app/modules/commons/users/signup/signupStartDone.html'
             }).when('/signup/cancel', {
                 controller: 'SignupCancelCtrl',
                 templateUrl: 'app/modules/commons/users/signup/signupEndCancel.html'
@@ -70,32 +74,22 @@
             };
             $scope.initForm();
 
-            // Verification user signup
-            signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function (data) {
-                if (data === null) {
-                    $rootScope.messageErreur = '';
-                    $location.path('/signup/error');
-                } else if (true === data.error) {
-                    $rootScope.messageErreur = data.message;
-                    $location.path('/signup/error');
-                } else {
-                    $rootScope.user = data;
-                    $scope.user = data;
+            $scope.checkUser = function () {
+                if(angular.isDefined($rootScope.user) && $routeParams.id===$rootScope.user._id && $routeParams.code===$rootScope.user.account.activationCode && $rootScope.user.account.active===false) {
+                    $scope.user = $rootScope.user;
 
                     $scope.user.account.listPlan[0].activity = {};
                     $scope.user.account.listPlan[0].activity._id = 'ACT-HAND';
 
                     // Déclaration du user en mode connecté
-                    $window.sessionStorage.qaobeesession = data.account.token;
-                }
-            }).error(function (error) {
-                if (error != null) {
-                    $rootScope.messageErreur = error.message;
+                    $window.sessionStorage.qaobeesession = $scope.user.account.token;
+                    
                 } else {
                     $rootScope.messageErreur = $filter('translate')('errorPage.ph.unknown');
+                    $location.path('/signup/error');
                 }
-                $location.path('/signup/error');
-            });
+            };
+            $scope.checkUser();
 
             // Surveillance de la modification du retour de l'API Google sur l'adresse
             $scope.$watch('detailsSearchCity', function (newValue, oldValue) {
@@ -333,7 +327,7 @@
                         // Attente fin de la création en base Mongo
                     }
                     angular.element('#modalCreate').modal('close');
-                    $window.location.href = '/#/signup/end';
+                    $window.location.href = '/#/signupStartDone';
                 }
             }
 
@@ -344,18 +338,53 @@
 
         })
 
-        .controller('SignupEndCtrl', function ($rootScope, $scope, $log, $translatePartialLoader, $location, EnvironmentConfig) {
+        
+
+        .controller('SignupStartDoneCtrl', function ($rootScope, $scope, $log, $translatePartialLoader, $window, $location, EnvironmentConfig) {
             $translatePartialLoader.addPart('user');
-            $rootScope.user = {account: {firstConnexion: true}};
-
             $scope.url = EnvironmentConfig.appMobile;
-
             $scope.goHome = function () {
                 delete($rootScope.user);
                 $location.path('/');
             };
         })
+    
+        .controller('SignupEndCtrl', function ($rootScope, $scope, $window, $routeParams, $log, $translatePartialLoader, $location, EnvironmentConfig, signupRestAPI, qeventbus) {
+            $translatePartialLoader.addPart('user');
+            // Verification user signup
+             signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function (data) {
+                if (data === null) {
+                    $rootScope.messageErreur = '';
+                    $location.path('/signup/error');
+                } else if (true === data.error) {
+                    $rootScope.messageErreur = data.message;
+                    $location.path('/signup/error');
+                } else {
+                    $rootScope.user = data;
+                    $scope.user = data;
+                    $log.debug('user',data);
 
+                    $scope.user.account.listPlan[0].activity = {};
+                    $scope.user.account.listPlan[0].activity._id = 'ACT-HAND';
+
+                    // Déclaration du user en mode connecté
+                    $window.sessionStorage.qaobeesession = data.account.token;
+                    
+                    $rootScope.notLogged = false;
+                    qeventbus.prepForBroadcast('login', data);
+                    
+                }
+            }).error(function (error) {
+                if (error != null) {
+                    $rootScope.messageErreur = error.message;
+                } else {
+                    $rootScope.messageErreur = $filter('translate')('errorPage.ph.unknown');
+                }
+                $location.path('/signup/error');
+            });
+            
+        })
+    
         .controller('SignupCancelCtrl', function () {
         })
 
