@@ -1,0 +1,67 @@
+<!-- START PRICING TABLE CONTAINER -->
+<div class="light-primary-color">
+    <div class="row default-primary-color pricing" style="margin-bottom:0px;">
+        <div class="col s12  center-align">
+            <h3 class="title" translate="pricing.title"></h3>
+            
+        </div>
+
+        <div class="col s12">&nbsp;</div>
+        <div class="col s12 ">
+            <div class="row">
+                <div class="col s12"><h5 class="title primary-text-color" translate="pricing.desc"></h5></div>
+             
+                <div class="col s12">
+                    <div class="card-title dark-primary-color">
+                        <h5 translate="pricing.offers.standard.title"></h5>
+                    </div>
+                    <div class="card-content light-primary-color">
+                        <div class="row"> 
+                            <div class="price center-align col s12 accent-text-color">
+                                <h4>{{'pricing.offers.standard.price' | translate}} € {{'pricing.offers.standard.period' | translate}} </h4>
+                                <h5 class="center-align col s12 primary-text-color">{{'pricing.trial.title'  | translate}}</h5>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="row">
+                            <div class="center-align col s12"> 
+                                <img src="../../../assets/images/icons/pricing-teams-M.png" title="{{'pricing.offers.standard.detail.line1' | translate}}">
+                                <img src="../../../assets/images/icons/pricing-agenda-M.png" title="{{'pricing.offers.standard.detail.line2' | translate}}">
+                                <img src="../../../assets/images/icons/pricing-stats-M.png" title="{{'pricing.offers.standard.detail.line4' | translate}}">
+                                <img src="../../../assets/images/icons/pricing-share-M.png" title="{{'pricing.offers.standard.detail.line3' | translate}}">
+                            </div>
+                        </div>
+                        <div class="row" ng-show="subscribeButton">
+                            <div class="center-align col s12"> 
+                                <a class="btn waves-effect waves-light accent-color"
+                                    href="#/signupStart" translate="pricing.subscribe-btn">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- actions buttons -->
+                        <div class="row" ng-show="invitationButton">
+                            <div class="col s12 center-align">
+                                <button type="submit" translate="commons.buttons.accept"
+                                        class="btn waves-effect waves-white accent-color"
+                                        ng-click="acceptInvitation()">
+                                </button>
+                                
+                                <button type="submit" translate="commons.buttons.refuse"
+                                        class="btn waves-effect waves-white light-primary-color"
+                                        ng-click="refuseInvitation()">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">&nbsp;</div>
+                    </div>
+                </div>
+                <div class="col s12">
+                    <p class="center-align white-text" translate="pricing.team-subscribe"></p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+

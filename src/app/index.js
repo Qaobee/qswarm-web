@@ -37,6 +37,7 @@
             'qaobee.radar',
             'qaobee.stat.detail.modal',
             'eventCard',
+            'pricing',
             'qaobee.titlePageBar',
 
             /* qaobee shared services */

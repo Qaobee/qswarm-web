@@ -84,33 +84,15 @@
     },
     "offers": {
       "standard": {
-        "title": "Standard",
-        "price": "8",
+        "title": "Bronze",
+        "price": "5",
         "period": "par mois",
         "desc": "L'espace de travail dont vous avez besoin pour entraîner en toute simplicité.",
         "detail": {
-          "title": "Standard comprend",
-          "sub-title": "Toutes ces fonctionnalités :",
-          "line1": "Gestion de son effectif et de ses équipes",
+          "line1": "Gérer ses joueurs et ses équipes",
           "line2": "Agenda partagé",
           "line3": "Partage de son espace de travail avec d'autres entraîneurs",
-          "line4": "Collecte de données en temps réel",
-          "line5": "Statistiques par joueur, par équipe, par match"
-        }
-      },
-      "team": {
-        "title": "Team",
-        "price": "12",
-        "period": "par utilisateur / par mois",
-        "desc": "Pour les entraîneurs qui travaillent en équipe.",
-        "detail": {
-          "title": "Team comprends",
-          "sub-title": "Tout <b>Standard</b>, et :",
-          "line1": "Partage de son espace de travail avec 5 entraîneurs",
-          "line2": "Gestion de l'effectif collaboratif",
-          "line3": "Agenda collaboratif",
-          "line4": "Entraînement collaboratif",
-          "line5": "Support"
+          "line4": "Statistiques par joueur, par équipe, par match"
         }
       }
     }

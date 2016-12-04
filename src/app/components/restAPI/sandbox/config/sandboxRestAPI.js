@@ -170,6 +170,21 @@
                         method: 'POST',
                         data: request
                     });
+                },
+                
+                /**
+                 * @description accept or refuse invitation to join sandbox
+                 * @memberOf qaobee.components.restAPI.sandbox.config.sbShareRestAPI
+                 * @function confirmInvitationToSandbox
+                 * @request {JsonObject} request : contains user Id and invitation Id and answer
+                 * @returns {Object} com.qaobee.hive.business.model.sandbox
+                 */
+                confirmInvitationToSandbox: function (request) {
+                    return $http({
+                        url: sbShareAPIURL + '/confirm',
+                        method: 'POST',
+                        data: request
+                    });
                 }
             };
         });

@@ -14,7 +14,7 @@
         .config(function ($routeProvider) {
             $routeProvider.when('/invitation/:invitationId', {
                 controller: 'InvitationCtrl',
-                templateUrl: 'app/modules/commons/users/invitation/invitation.html'
+                templateUrl: 'app/modules/commons/users/invitation/invitationStart.html'
             });
         })
 
@@ -25,18 +25,6 @@
             $translatePartialLoader.addPart('commons');
         
             $scope.invitationId = $routeParams.invitationId;
-            $log.debug('invitationId',$scope.invitationId);    
             
-        
-            /* Remove an invitation */
-            $scope.getInvitation = function () {    
-                sandboxRestAPI.getInvitationToSandbox($scope.invitationId).success(function (data) {
-                    
-                    $log.debug('invitation',data);
-                });
-            };
-        
-            $scope.getInvitation();
-        
         });
     }());

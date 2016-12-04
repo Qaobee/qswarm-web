@@ -55,7 +55,9 @@
             "previous" : "Previous",
             "filter":"Filter",
             "agree" : "I agree",
-            "changeSB" : "Change"
+            "changeSB" : "Change",
+            "accept" : "Accept",
+            "refuse" : "Refuse"  
         },
         "settings" : {
             "activity": {
