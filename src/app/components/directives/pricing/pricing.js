@@ -28,11 +28,16 @@
                     $translatePartialLoader.addPart('commons');
                     $translatePartialLoader.addPart('public');
                     
-                    /* Remove an invitation */
+                    /* an invitation */
                     $scope.getInvitation = function () {    
                         sandboxRestAPI.getInvitationToSandbox($scope.invitationId).success(function (data) {
                             $scope.invitation = data;
-                            $log.debug('invitation',data);
+                            if($scope.invitation.status!=="waiting"){
+                                $log.debug('invitation',data);
+                                $location.path('/invitationError');
+                            }
+                        }).error(function () {
+                           $location.path('/invitationError');
                         });
                     };
                     
@@ -45,19 +50,17 @@
                     }
                     
                     $scope.acceptInvitation = function () {
-                        $log.debug('accept',$scope.invitationId);
+                        $location.path('/subscribeStart');
                     };
                     
                     $scope.refuseInvitation = function () {
-                        $log.debug('refuse',$scope.invitationId);
                         var request = {
                             invitationId: $scope.invitation._id,
                             userId: $scope.invitation.senderId,
                             answer: "refused"
                         };
                         sandboxRestAPI.confirmInvitationToSandbox(request).success(function (data) {
-                            $log.debug('invitation',data);
-                            $location.path('/');
+                            $location.path('/invitationCancel');
                         });
                     };
                 },

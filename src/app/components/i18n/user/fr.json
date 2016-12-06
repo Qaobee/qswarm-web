@@ -195,14 +195,19 @@
     "title": "Création de votre espace de travail",
     
     "errorPage": {
-      "title": "Erreur !",
-      "text": "La validation de votre inscription n'a pu aboutir pour la raison suivante : ",
+      "title": "Ooops !",
+      "text": "Votre invitation n'est plus valide ",
       "buttonHome": "Accueil",
       "ph": {
         "unknown": "Erreur inconnue",
         "noMessage": "Pas de message"
       }
     }
+  },
+  "invitationCancel": {
+    "title": "Merci de votre visite",
+    "text": "Nous n'avons pas eu le temps de nous connaître. Laissez nous votre avec le bouton feedback",
+    "buttonHome": "Accueil"  
   },
   "signupStartDonePage": {
     "title": "Compte créé !",
