@@ -20,11 +20,18 @@
     <meta name="keywords" content="Sport, Data, analysis"/>
     <meta name="robots" content="index, follow"/>
     <meta name=viewport content="width=device-width, initial-scale=1">
-    <link rel="icon" href="favicon.ico"/>
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
     <meta http-equiv="Pragma" content="no-cache"/>
     <meta http-equiv="Expires" content="0"/>
-
+    <script language="JavaScript">
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                    .register('./service-worker.js')
+                    .then(function() { console.log('Service Worker Registered'); });
+        }
+    </script>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="favicon.ico"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">

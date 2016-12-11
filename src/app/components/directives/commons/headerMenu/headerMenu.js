@@ -20,8 +20,8 @@
             'seasonsRestAPI'
         ])
         .directive('headerMenu', function (qeventbus, $rootScope, $translate, $location, $window, $log,
-                                           $translatePartialLoader, $filter, signupRestAPI, userRestAPI,
-                                           seasonsRestAPI, notificationsRestAPI, EnvironmentConfig) {
+                                           $translatePartialLoader, $filter, signupRestAPI, userRestAPI,$sce,
+                                           seasonsRestAPI, notificationsRestAPI, EnvironmentConfig, webNotifications) {
             return {
                 restrict: 'AE',
                 controller: function ($scope) {
@@ -35,11 +35,18 @@
                     $scope.hasnotif = false;
                     $scope.isProd = $window.location.hostname === 'www.qaobee.com';
                     $scope.showCnil = $translate.use() === 'fr_FR';
-
+                    $scope.notifDisplayed = [];
+                    $scope.notificationOptions = {
+                        icon: "/assets/images/qaobee-logoRouge.png",
+                        timeout: 5000
+                    };
                     $scope.isActive = function (viewLocation) {
                         return viewLocation === $location.path();
                     };
-
+                    function renderHTML(html_code) {
+                        var decoded = angular.element('<textarea />').html(html_code).text();
+                        return $sce.trustAsHtml(decoded);
+                    }
                     /**
                      *
                      */
@@ -54,6 +61,11 @@
                                 });
                                 $scope.notifications.forEach(function (n) {
                                     n.content = n.content.stripTags().truncate(30);
+                                    if ($scope.notifDisplayed.findIndex(n._id) === -1) {
+                                        $scope.notifDisplayed.push(n._id);
+                                        $scope.notificationOptions.body = renderHTML(n.content);
+                                        webNotifications.create(renderHTML(n.title), $scope.notificationOptions);
+                                    }
                                 });
                                 $scope.hasnotif = ($scope.notifications.length > 0);
                             }

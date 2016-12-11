@@ -28,6 +28,7 @@
             'ngFileSaver',
             'vcRecaptcha',
             'angular.chips',
+            'webNotifications',
             
             //* qaobee widget */
             'qaobee.filterCalendar',

@@ -6,7 +6,7 @@ var conf = require('./conf');
 var replace = require('gulp-replace');
 var gulp = require('gulp');
 var imagemin = require('gulp-imagemin');
-
+var deleteEmpty = require('delete-empty');
 var $ = require('gulp-load-plugins')({
     pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
 });
@@ -37,7 +37,7 @@ gulp.task('html', ['inject', 'partials'], function () {
     };
 
     var htmlFilter = $.filter('*.html', {restore: true});
-    var jsFilter = $.filter('**/*.js', {restore: true});
+    var jsFilter = $.filter('app/**/*.js', {restore: true});
     var cssFilter = $.filter('**/*.css', {restore: true});
     var assets;
 
@@ -89,10 +89,14 @@ gulp.task('other', function () {
 
     return gulp.src([
             path.join(conf.paths.src, '/**/*'),
-            path.join('!' + conf.paths.src, '/**/*.{html,css,js}')
+            path.join('!' + conf.paths.src, '/**/*.{html,css,js}'),
+           // path.join(conf.paths.src, '/service-worker.js')
         ])
         .pipe(fileFilter)
         .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
+});
+gulp.task('delete-empty-directories', function() {
+    deleteEmpty.sync(path.join(conf.paths.dist, '/'));
 });
 gulp.task('i18n', function () {
     return gulp.src([
@@ -115,4 +119,16 @@ gulp.task('images', function () {
         .pipe(gulp.dest('dist/assets/images'))
 });
 
-gulp.task('build', ['html', 'fonts', 'other', 'i18n', 'momentjs', 'images']);
+gulp.task('generate-service-worker', function(callback) {
+    var path = require('path');
+    var swPrecache = require('sw-precache');
+    var rootDir = 'app';
+
+    swPrecache.write(path.join(conf.paths.dist, 'service-worker.js'), {
+        staticFileGlobs: [conf.paths.dist + '/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff}'],
+        stripPrefix: conf.paths.dist,
+        maximumFileSizeToCacheInBytes: 800
+    }, callback);
+});
+
+gulp.task('build', ['html', 'fonts', 'other', 'i18n', 'momentjs', 'images', 'delete-empty-directories', 'generate-service-worker']);
