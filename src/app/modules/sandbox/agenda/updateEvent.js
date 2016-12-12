@@ -139,7 +139,7 @@
                         $scope.startDate = moment($scope.event.startDate).toDate();
                         $scope.startHours = moment($scope.startDate).hour()+':'+moment($scope.startDate).minute();
                         $scope.datePicker = angular.element('#EventStartDate').pickadate('picker');
-                        $log.debug('datePicker',$scope.startDate.valueOf());
+                        
                         $scope.datePicker.set('select', $scope.startDate.valueOf());
                         
                         

@@ -19,6 +19,8 @@
                     alignment: 'left'
                 }
             );
+            
+            $('.slider').slider({full_width: true});
             // end of document ready
         });
         $.easing['jswing'] = $.easing['swing'];

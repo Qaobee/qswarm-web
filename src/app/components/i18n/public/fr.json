@@ -73,8 +73,10 @@
     }
   },
   "pricing": {
-    "title": "Notre offre",
-    "desc": "",
+    "titleTarif": "Notre offre",
+    "titleInvite": "Rejoins-moi sur Qaobee",
+    "descTarif": "",
+    "descInvite": "",
     "subscribe-btn": "Souscrire",
     "soon-btn": "Prochainement",
     "team-subscribe": "(*) Vous êtes un club et vous souhaitez souscrire à Qaobee pour vos entraîneurs, <a href=\"mailto:contact@qaobee.com\">contactez nous</a>",
@@ -84,15 +86,44 @@
     },
     "offers": {
       "standard": {
-        "title": "Qaobee s'adresse aux entraîneurs et aux clubs (<span style=\"vertical-align: super; font-size: 50%;\">*</span>)  de handball",
+        "titleTarif": "Qaobee s'adresse aux entraîneurs et aux clubs (<span style=\"vertical-align: super; font-size: 50%;\">*</span>)  de handball",
+        "priceInvite" : "puis 5",
         "price": "pour 5",
-        "period": "par mois",
+        "period": "/ mois",
         "desc": "L'espace de travail dont vous avez besoin pour entraîner en toute simplicité.",
-        "detail": {
-          "line1": "Gérer ses joueurs et ses équipes",
-          "line2": "Agenda partagé",
-          "line3": "Partage de son espace de travail avec d'autres entraîneurs",
-          "line4": "Statistiques par joueur, par équipe, par match"
+        "appWeb": "Web",  
+        "teamWeb": {
+          "title": "Joueurs / Equipes",
+          "detail": "Ajouter un joueur, consulter la fiche détaillée d'un joueur, modifier toutes les informations d'un joueur. Gérer vos équipes"
+        },
+        "agendaWeb": {
+          "title": "Agenda",
+          "detail": "Planifier les matchs amicaux, les matchs de coupe et les matchs de championnat."
+        },
+        "statsWeb": {
+          "title": "Analyse des statistiques",
+          "detail": "Consultez les performances d'un joueur. Efficacité au tir, impacts préférentiels,temps de jeu, agressivité, apport offensif et défensif. Comparez les performances de vos joueurs entre-eux. Profitez des mêmes fonctionnalités au niveau des équipes et des matchs."
+        },
+        "shareWeb": {
+          "title": "Espace de travail partagé",
+          "detail": "Travaillez en équipe sur votre effectif. Qaobee HB vous donne la possibilité d'inviter d'autres entraîneurs à vous rejoindre sur votre espace."
+        },
+        "appMob": "Mobile",  
+        "teamMob": {
+          "title": "Joueurs",
+          "detail": "Ajouter un joueur à la dernière minute. Consulter les données minimales de vos joueurs."
+        },
+        "agendaMob": {
+          "title": "Agenda",
+          "detail": "Ajouter ou modifier rapidement un match"
+        },
+        "collectMob": {
+          "title": "Collecte",
+          "detail": "collectez tous les faits de jeu de vos joueurs, de votre lors d'un match"
+        },
+        "statsMob": {
+          "title": "Les statistiques du match en temp réel",
+          "detail": "Vous pouvez consulter les statistiques d'un match en même que vous collectez les informations. A la mi-temps, vous pourrez argumenter votre discours en vous appuyant sur les statistiques collectées."
         }
       }
     }

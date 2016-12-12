@@ -1,0 +1,285 @@
+<div class="primary-text-color">
+
+
+    <!-- Entete -->
+    <div class="row colorSecondary white-text">
+        <div class="col s12  center">
+            <h5 translate="signupEndPage.title"></h5>
+        </div>
+    </div>
+
+    <div class="row container">
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header light-primary-color active" ng-click="resertForm()">
+                    <i class="material-icons md-36 colorAccent-text">search</i>
+                    <h5 style="margin-top:0px;">{{'signupEndPage.tabFindClub.tabTitle' | translate }}</h5>
+                </div>
+                <div class="collapsible-body">
+
+                    <form name="findClubForm" class="container">
+                        <div class="row">&nbsp;</div>
+                        <div class="row">
+                            <div class="col m2 hide-on-med-and-down">&nbsp;</div>
+                            <div class="col input-field m8 s12">
+                                <label for="searchCity">{{'signupEndPage.tabFindClub.form.label.city' | translate}}
+                                    <span class="red-text text-lighten-1">*</span></label>
+                                <input type="text" id="searchCity"
+                                       ng-autocomplete
+                                       details="detailsSearchCity"
+                                       ng-model="searchCity"
+                                       options="optionsSearchCity"
+                                       placeholder=""/>
+                            </div>
+                            <div class="col m2 hide-on-med-and-down">&nbsp;</div>
+                        </div>
+
+                        <div class="row" ng-if="structureSearch">
+                            <div class="input-field col s12 center-align">
+                                <div class="preloader-wrapper big active">
+                                    <div class="spinner-layer">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="structureSelectOK">
+
+                            <div class="row">
+                                <div class="col m2 hide-on-med-and-down">&nbsp;</div>
+                                <div class="input-field col m8 s12">
+                                    <label>{{'signupEndPage.tabFindClub.form.label.selectClub' | translate}} <span
+                                            class="red-text text-lighten-1">*</span></label>
+                                </div>
+                                <div class="col m2 hide-on-med-and-down">&nbsp;</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col m2 hide-on-med-and-down">&nbsp;</div>
+                                <div class="input-field col m8 s12">
+                                    <div ng-repeat="struct in listStructures track by $index">
+                                        <input class="with-gap"
+                                               type="radio"
+                                               id="structure.{{struct._id}}"
+                                               value="{{struct._id}}"
+                                               ng-model="structure._id"
+                                               ng-change="applyChangeStructure()"
+                                               required/>
+                                        <label for="structure.{{struct._id}}">
+                                            <span class="title colorAccent-text">{{struct.label}}</span>
+                                            <span>{{struct.address.place}} {{struct.address.zipcode}} {{struct.address.city}}</span>
+                                        </label>
+                                    </div>
+                                    <div><span class="title colorAccent-text">{{messageErreur}}</span></div>
+                                </div>
+                                <div class="col m2 hide-on-med-and-down">&nbsp;</div>
+                            </div>
+                        </div>
+
+                        <div ng-show="catAgeSelectOK">
+                            <div class="row hide-on-large-only">
+                                <div class="col input-field s12">
+                                    <label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span
+                                            class="red-text text-lighten-1">*</span></label>
+                                </div>
+                                <div class="col s12">&nbsp;</div>
+
+                                <div class="input-field col s12">
+                                    <select name="categoryAgeSelect" ng-model="categoryAge" id="userCategoryAgeSelect"
+                                            material-select
+                                            required
+                                            ng-options="cat as cat.label for cat in valuesCategoryAge track by cat._id">
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row hide-on-med-and-down">
+                                <div class="col m2 ">&nbsp;</div>
+                                <div class="col input-field m4">
+                                    <label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span
+                                            class="red-text text-lighten-1">*</span></label>
+                                </div>
+                                <div class="input-field col m4">
+                                    <select name="categoryAgeSelect" ng-model="categoryAge" id="userCategoryAgeSelect"
+                                            material-select watch
+                                            required
+                                            ng-options="cat as cat.label for cat in valuesCategoryAge track by cat._id">
+                                    </select>
+                                </div>
+                                <div class="col m2">&nbsp;</div>
+                            </div>
+                        </div>
+
+                        <!-- actions buttons -->
+                        <div class="row">&nbsp;</div>
+                        <div class="row">
+                            <div class="col s12 center">
+                                <a ng-click="openCancelModal()" class="waves-effect waves-white btn dark-primary-color">{{'commons.buttons.cancel'
+                                    | translate }}</a>
+
+                                <button type="submit" ng-click="validateFindClubForm()"
+                                        translate="commons.buttons.validate" ng-disabled="findClubForm.$invalid"
+                                        tabindex="8"
+                                        ng-class="{'btn waves-effect waves-white disabled': findClubForm.$invalid,
+                                              'btn waves-effect waves-white accent-color': !findClubForm.$invalid}">
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+
+            <li>
+                <div class="collapsible-header light-primary-color" ng-click="resertForm()">
+                    <i class="material-icons md-36 colorAccent-text">add</i>
+                    <h5 style="margin-top:0px;">{{'signupEndPage.tabCreateClub.tabTitle' | translate }}</h5>
+                </div>
+                <div class="collapsible-body">
+                    <form name="createStructureForm" class="container">
+                        <div class="row">&nbsp;</div>
+                        <div class="row">
+                            <div class="col m2 hide-on-med-and-down">&nbsp;</div>
+                            <div class="col m8 s12 input-field">
+                                <label for="userStructureLabel">{{'signupEndPage.tabFindClub.form.label.clubname' |
+                                    translate}} <span class="red-text text-lighten-1">*</span></label>
+                                <input type="text" id="userStructureLabel" class="validate" ng-model="structure.label"
+                                       required>
+                            </div>
+                            <div class="col m2 hide-on-med-and-down">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col m2 hide-on-med-and-down">&nbsp;</div>
+                            <div class="col m8 s12 input-field">
+                                <label for="createCity">{{'signupEndPage.tabFindClub.form.label.clubAddress' |
+                                    translate}} <span class="red-text text-lighten-1">*</span></label>
+                                <input type="text" id="createCity"
+                                       ng-autocomplete
+                                       details="detailsCreateCity"
+                                       ng-model="createCity"
+                                       options="optionsCreateCity"
+                                       required
+                                       placeholder=""/>
+                            </div>
+                            <div class="col m2 hide-on-med-and-down">&nbsp;</div>
+                        </div>
+
+                        <div ng-if="catAgeSelectOK">
+                            <div class="row hide-on-large-only">
+                                <div class="col input-field s12">
+                                    <label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span
+                                            class="red-text text-lighten-1">*</span></label>
+                                </div>
+                                <div class="col s12">&nbsp;</div>
+
+                                <div class="input-field col s12">
+                                    <select name="categoryAgeSelect" ng-model="categoryAge" id="userCategoryAgeSelect"
+                                            material-select watch
+                                            required>
+                                        <option ng-repeat="cat in valuesCategoryAge track by cat._id">{{cat.label}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row hide-on-med-and-down">
+                                <div class="col m2 ">&nbsp;</div>
+                                <div class="col input-field m4">
+                                    <label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span
+                                            class="red-text text-lighten-1">*</span></label>
+                                </div>
+                                <div class="input-field col m4">
+                                    <select name="categoryAgeSelect" ng-model="categoryAge" id="userCategoryAgeSelect"
+                                            material-select watch
+                                            required>
+                                        <option ng-repeat="cat in valuesCategoryAge track by cat._id">{{cat.label}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col m2">&nbsp;</div>
+                            </div>
+                        </div>
+
+                        <!-- actions buttons -->
+                        <div class="row">&nbsp;</div>
+                        <div class="row">
+                            <div class="col s12 center">
+                                <button ng-click="openCancelModal()"
+                                        class="waves-effect waves-white btn dark-primary-color"
+                                        translate="commons.buttons.cancel"></button>
+
+                                <button ng-click="createStructure()" translate="commons.buttons.validate"
+                                        ng-disabled="createStructureForm.$invalid" tabindex="8"
+                                        ng-class="{'btn waves-effect waves-white disabled': createStructureForm.$invalid, 
+                                              'btn waves-effect waves-white accent-color': !createStructureForm.$invalid}">
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- body end-->
+</div>
+
+
+<!-- Modal Cancel SignUp -->
+<div id="modalCancel" class="modal light-primary-color">
+    <div class="modal-header center-align">
+        <h5>
+            <span class="fa fa-sign-in"></span>
+            <span translate="modalSignupCancel.title"></span>
+        </h5>
+    </div>
+    <div class="modal-content white">
+        <div class="row">
+            <div class="col s12" translate="modalSignupCancel.question"></div>
+        </div>
+    </div>
+    <div class="center">
+        <div class="col s12">&nbsp;</div>
+        <div class="col s12">
+            <a href="" ng-click="closeCancelModal()"
+               class="modal-action modal-close waves-effect waves-red btn dark-primary-color"
+               translate="modalSignupCancel.button.no"></a>
+            <a href="" ng-click="cancelSignup()"
+               class="modal-action modal-close waves-effect waves-red btn accent-color"
+               translate="modalSignupCancel.button.yes"></a>
+        </div>
+        <div class="col s12">&nbsp;</div>
+    </div>
+</div>
+
+<!-- Modal Creation InProgress -->
+<div id="modalCreate" class="modal light-primary-color">
+    <div class="modal-header center-align">
+        <h5>
+            <span class="fa fa-sign-in"></span>
+            <span translate="modalCreate.title"></span>
+        </h5>
+    </div>
+
+    <div class="owl-carousel white" style="height:200px">
+        <div style="padding-top:80px;text-align:center"><h4 class="colorMain-text"><i class="fa fa-home"></i>
+            {{'modalCreate.stepCreateSpace' | translate}}</h4></div>
+        <div style="padding-top:80px;text-align:center"><h4 class="colorAccent-text"><i class="fa fa-user"></i>
+            {{'modalCreate.stepCreatePlayers' | translate}}</h4></div>
+        <div style="padding-top:80px;text-align:center"><h4 class="colorSecondary-text"><i class="fa fa-user"></i>
+            {{'modalCreate.stepCreateTeam' | translate}}</h4></div>
+        
+        <div style="padding-top:80px;text-align:center"><h4 class="colorSecondary-text"><i
+                class="fa fa-check-square-o"></i> {{'modalCreate.stepFinished' | translate}}</h4></div>
+    </div>
+    <div class="center">
+        <div class="col s12">&nbsp;</div>
+    </div>
+</div>
