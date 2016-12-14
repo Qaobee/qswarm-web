@@ -40,6 +40,7 @@
                                             signupRestAPI, locationAPI, personSrv) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
+            $scope.vm = {};
             $scope.creatClub = false;
             /* init ngAutocomplete*/
             $scope.options = {};
@@ -59,23 +60,20 @@
 
             $scope.initForm = function () {
                 $scope.listStructures = [];
-                $scope.structure = {};
-                $scope.structure.address = {};
-                $scope.messageErreur = '';
+                $scope.structure = {
+                    address : {}
+                };
                 $scope.detailsSearchCity = '';
                 $scope.detailsCreateCity = '';
-                $scope.structureSelectOK = false;
                 $scope.creationFinished = false;
-                $scope.catAgeSelectOK = false;
-                delete $scope.searchCity;
-                delete $scope.createCity;
-                delete $scope.structure.label;
-                delete $scope.categoryAge;
             };
             $scope.initForm();
 
             $scope.checkUser = function () {
-                if(angular.isDefined($rootScope.user) && $routeParams.id===$rootScope.user._id && $routeParams.code===$rootScope.user.account.activationCode && $rootScope.user.account.active===false) {
+                if (angular.isDefined($rootScope.user)
+                    && $routeParams.id === $rootScope.user._id
+                    && $routeParams.code === $rootScope.user.account.activationCode
+                    && $rootScope.user.account.active === false) {
                     $scope.user = $rootScope.user;
 
                     $scope.user.account.listPlan[0].activity = {};
@@ -83,7 +81,7 @@
 
                     // Déclaration du user en mode connecté
                     $window.sessionStorage.qaobeesession = $scope.user.account.token;
-                    
+
                 } else {
                     $rootScope.messageErreur = $filter('translate')('errorPage.ph.unknown');
                     $location.path('/signup/error');
@@ -209,10 +207,8 @@
                                 $scope.listStructures = [];
                             }
                         }
-
                         $scope.structureSearch = false;
                         $scope.structureSelectOK = true;
-
                     }).error(function () {
                         $scope.structureSearch = false;
                     });
@@ -221,16 +217,12 @@
             };
 
 
-            $scope.applyChangeStructure = function (value) {
-                if (!angular.isUndefined(value)) {
-                    $scope.structure._id = value;
-                }
-
-                if (!angular.isUndefined($scope.listStructures)) {
+            $scope.applyChangeStructure = function () {
+                if (angular.isDefined($scope.listStructures)) {
                     $scope.listStructures.forEach(function (item) {
-                        if (item._id === $scope.structure._id) {
-                            $scope.structure = item;
+                        if (item._id === $scope.vm.selectedStructure) {
                             $scope.catAgeSelectOK = true;
+                            $scope.structure = item;
                         }
                     });
                 }
@@ -338,7 +330,6 @@
 
         })
 
-        
 
         .controller('SignupStartDoneCtrl', function ($rootScope, $scope, $log, $translatePartialLoader, $window, $location, EnvironmentConfig) {
             $translatePartialLoader.addPart('user');
@@ -348,11 +339,11 @@
                 $location.path('/');
             };
         })
-    
+
         .controller('SignupEndCtrl', function ($rootScope, $scope, $window, $routeParams, $log, $translatePartialLoader, $location, EnvironmentConfig, signupRestAPI, qeventbus) {
             $translatePartialLoader.addPart('user');
             // Verification user signup
-             signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function (data) {
+            signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function (data) {
                 if (data === null) {
                     $rootScope.messageErreur = '';
                     $location.path('/signup/error');
@@ -362,17 +353,17 @@
                 } else {
                     $rootScope.user = data;
                     $scope.user = data;
-                    $log.debug('user',data);
+                    $log.debug('user', data);
 
                     $scope.user.account.listPlan[0].activity = {};
                     $scope.user.account.listPlan[0].activity._id = 'ACT-HAND';
 
                     // Déclaration du user en mode connecté
                     $window.sessionStorage.qaobeesession = data.account.token;
-                    
+
                     $rootScope.notLogged = false;
                     qeventbus.prepForBroadcast('login', data);
-                    
+
                 }
             }).error(function (error) {
                 if (error != null) {
@@ -382,9 +373,9 @@
                 }
                 $location.path('/signup/error');
             });
-            
+
         })
-    
+
         .controller('SignupCancelCtrl', function () {
         })
 
