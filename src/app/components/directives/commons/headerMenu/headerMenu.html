@@ -8,9 +8,7 @@
 
             <ul class="right hide-on-med-and-down">
                 <li>
-                    <a href="#/about">
-                        {{'landing.contact.about' | translate}}
-                    </a>
+                    <a href="#/about" translate="landing.contact.about"></a>
                 </li>
 
                 <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
@@ -18,14 +16,12 @@
                 </li>
 
                 <li>
-                    <a class="waves-effect waves-white secondary-color" ng-click="openSignup()">{{'navbar.signup' |
-                        translate}}</a>
+                    <a class="waves-effect waves-white secondary-color" ng-click="openSignup()"
+                       translate="navbar.signup"></a>
                 </li>
 
                 <li>
-                    <a ng-click="openLogin()">
-                        {{'navbar.connect' | translate}}
-                    </a>
+                    <a ng-click="openLogin()" translate="navbar.connect"></a>
                 </li>
 
             </ul>
@@ -137,13 +133,18 @@
                 <ul id="nav-mobile" class="side-nav dark-primary-color">
                     <li><a href="#/private/" class="white-text" translate="headerMenu.dashboard"></a></li>
                     <li class="divider"></li>
-                    <li><a href="#/private/players/{{meta.sandbox.effectiveDefault}}" class="white-text" translate="headerMenu.players"></a></li>
-                    <li><a href="#/private/teams/{{meta.sandbox.effectiveDefault}}" class="white-text" translate="headerMenu.teams"></a></li>
-                    <li><a href="#/private/agenda/{{meta.sandbox.effectiveDefault}}" class="white-text" translate="headerMenu.calendar"></a></li>
+                    <li><a href="#/private/players/{{meta.sandbox.effectiveDefault}}" class="white-text"
+                           translate="headerMenu.players"></a></li>
+                    <li><a href="#/private/teams/{{meta.sandbox.effectiveDefault}}" class="white-text"
+                           translate="headerMenu.teams"></a></li>
+                    <li><a href="#/private/agenda/{{meta.sandbox.effectiveDefault}}" class="white-text"
+                           translate="headerMenu.calendar"></a></li>
                     <li class="divider"></li>
-                    <li><a href="#/notifications" class="white-text" translate="headerMenu.notifications.title"></a></li>
+                    <li><a href="#/notifications" class="white-text" translate="headerMenu.notifications.title"></a>
+                    </li>
                     <li><a href="#/private/profile" class="white-text" translate="headerMenu.profil"></a></li>
-                    <li><a ng-click="logoff()" href="javascript:void(0);" class="white-text" translate="navbar.disconnect"></a></li>
+                    <li><a ng-click="logoff()" href="javascript:void(0);" class="white-text"
+                           translate="navbar.disconnect"></a></li>
                 </ul>
 
             </div>
