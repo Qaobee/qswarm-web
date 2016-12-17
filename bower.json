@@ -60,15 +60,15 @@
     "materialize-clockpicker": "Giwi/materialize-clockpicker#^0.1.2",
     "angular-recaptcha": "^3.0.4",
     "angular-chips": "^1.0.8",
-    "materialize": "^0.97.8",
+    "materialize": "0.97.8",
     "angular-web-notifications": "^0.1.2"
   },
   "resolutions": {
     "angular-cookies": "1.5.8",
     "lodash": "^3.0.1",
     "jquery": "2.1.4",
-    "angular-materialize": "0.2.1",
-    "angular": "^1.5.8"
+    "angular": "^1.5.8",
+    "angular-materialize": "0.2.1"
   },
   "overrides": {
     "materialize-clockpicker": {

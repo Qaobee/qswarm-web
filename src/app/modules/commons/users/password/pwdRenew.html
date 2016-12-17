@@ -1,60 +1,62 @@
 <div class="container">
-<!-- body start-->
-    <div class="row"></div>   
+    <!-- body start-->
+    <div class="row"></div>
 
     <!-- Entete -->
     <title-page-bar icon="cached" title="renewPasswdPage.title"></title-page-bar>
-    
+
     <div class="row card bleu-grey-text text-darken-2">
-    	<form ng-submit="renewPasswd()" name="renewForm">
-    		<div class="row">
-    			<div class="col m1 hide-on-smmall">&nbsp;</div>
-    			<div class="col s10 m10"><h6>{{ 'renewPasswdPage.line1' | translate }}</h6></div>
-    			<div class="col m1 hide-on-smmall">&nbsp;</div>
-    		</div>
-    		<div class="row">
-		   		<div class="col m2 hide-on-small">&nbsp;</div>
-				<div class="input-field col m4 s12">
-					<input id="password" type="password" class="validate" ng-model="renew.passwd" required>
-					<label for="password" translate="profilePwdPage.form.label.password"></label>
-					<div ng-show="renew.passwd">
-						<small translate='profilePwdPage.form.messageControl.passwdStrength'></small>
-						<div ng-hide="true" ng-password-strength="renew.passwd" strength="passStrength" inner-class="meter"></div>
-						<div class="progress grey lighten-2">
-							<div class="determinate"
-								ng-class="{'red' : passStrength < 33, 'orange': passStrength >= 33 && passStrength < 66, 'green' : passStrength >= 66}"
-								style="width: {{passStrength}}%"></div>
-						</div>
-					</div>
-				</div>
-		              
-				<div class="input-field col m4 s12">
-					<input id="passwordConfirm" type="password" class="validate" ng-model="renew.passwdConfirm" required>
-					<label for="passwordConfirm" translate="profilePwdPage.form.label.passwordConfirm"></label>
-				</div>
-				<div class="col m2 hide-on-small">&nbsp;</div>
-			</div>
-			
-			<div class="row">
-				<div class="col m2 hide-on-small">&nbsp;</div>
-				<div class="input-field col s12 m8">
-					<div vc-recaptcha ng-model="renew.captcha"
-						 on-create="setWidgetId(widgetId)"
-						 on-expire="cbExpiration()"
-					></div>
-				</div>
-				<div class="col m4 hide-on-small">&nbsp;</div>
-			</div>
-			
-			<div class="row center">
-	            <div class="col s12">
-	                <a href="" ng-click="cancelRenew()" class="modal-action modal-close btn light-primary-color"
-	                   translate="commons.buttons.cancel"></a>
-	                <button type="submit" class="btn accent-color"
-	                        translate="commons.buttons.validate"></button>
-	            </div>
-        	</div>
-    	</form>
-    </div> 
-    
+        <form ng-submit="renewPasswd()" name="renewForm">
+            <div class="row">
+                <div class="col m1 hide-on-smmall">&nbsp;</div>
+                <div class="col s10 m10"><h6 translate="renewPasswdPage.line1"></h6></div>
+                <div class="col m1 hide-on-smmall">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col m2 hide-on-small">&nbsp;</div>
+                <div class="input-field col m4 s12">
+                    <input id="password" type="password" class="validate" ng-model="renew.passwd" required>
+                    <label for="password" translate="profilePwdPage.form.label.password"></label>
+                    <div ng-show="renew.passwd">
+                        <small translate='profilePwdPage.form.messageControl.passwdStrength'></small>
+                        <div ng-hide="true" ng-password-strength="renew.passwd" strength="passStrength"
+                             inner-class="meter"></div>
+                        <div class="progress grey lighten-2">
+                            <div class="determinate"
+                                 ng-class="{'red' : passStrength < 33, 'orange': passStrength >= 33 && passStrength < 66, 'green' : passStrength >= 66}"
+                                 style="width: {{passStrength}}%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-field col m4 s12">
+                    <input id="passwordConfirm" type="password" class="validate" ng-model="renew.passwdConfirm"
+                           required>
+                    <label for="passwordConfirm" translate="profilePwdPage.form.label.passwordConfirm"></label>
+                </div>
+                <div class="col m2 hide-on-small">&nbsp;</div>
+            </div>
+
+            <div class="row">
+                <div class="col m2 hide-on-small">&nbsp;</div>
+                <div class="input-field col s12 m8">
+                    <div vc-recaptcha ng-model="renew.captcha"
+                         on-create="setWidgetId(widgetId)"
+                         on-expire="cbExpiration()"
+                    ></div>
+                </div>
+                <div class="col m4 hide-on-small">&nbsp;</div>
+            </div>
+
+            <div class="row center">
+                <div class="col s12">
+                    <button ng-click="cancelRenew()" class="modal-action modal-close btn light-primary-color"
+                            translate="commons.buttons.cancel"></button>
+                    <button type="submit" class="btn accent-color" ng-disabled="renewForm.$invalid"
+                            translate="commons.buttons.validate"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+
 </div>
