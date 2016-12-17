@@ -3,7 +3,7 @@ import hudson.model.*
 
 node {
     def rancherCli = 'v0.8.6'
-    def version = '';
+    def version = ''
     stage('Checkout') {
         git credentialsId: 'b74a476d-7464-429c-ab8e-7ebbe03bcd1f', url: 'git@gitlab.com:qaobee/qswarm-web.git'
         sh 'git fetch --tags'
