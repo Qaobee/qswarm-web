@@ -29,7 +29,7 @@
             'vcRecaptcha',
             'angular.chips',
             'webNotifications',
-            
+
             //* qaobee widget */
             'qaobee.filterCalendar',
             'qaobee.commonsDirectives',
@@ -125,7 +125,7 @@
                 colours: ['#03a9f4', '#0f9d58', '#ff5722', '#803690', '#FDB45C', '#949FB1', '#4D5360']
             });
         })
-        .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale) {
+        .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale, $window) {
             $locale.id = $translate.proposedLanguage();
             tmhDynamicLocale.set($locale.id);
             $rootScope.$on('$translatePartialLoaderStructureChanged', function () {
@@ -134,6 +134,7 @@
             if (top.location.href !== self.location.href) {
                 top.location.href = self.location.href;
             }
+            $rootScope.isMobile = $window.outerWidth <= 600;
         })
 
         /**
@@ -150,7 +151,13 @@
                 ajaxURL: EnvironmentConfig.apiEndPoint + '/api/1/commons/feedback/send',
                 initButtonText: 'Feedback',
                 postHTML: false,
-                tpl: {}
+                tpl: {
+                    description: 'app/components/feedback/description.html',
+                    highlighter: 'app/components/feedback/highlighter.html',
+                    overview: 'app/components/feedback/overview.html',
+                    submitSuccess: 'app/components/feedback/submitSuccess.html',
+                    submitError: 'app/components/feedback/submitError.html'
+                }
             };
             ['description', 'highlighter', 'overview', 'submitSuccess', 'submitError'].forEach(function (i) {
                 $templateRequest($sce.getTrustedResourceUrl('app/components/feedback/' + i + '.html')).then(function (tpl) {

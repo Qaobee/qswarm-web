@@ -17,10 +17,11 @@
             'notificationsRestAPI',
             'userRestAPI',
             'signupRestAPI',
-            'seasonsRestAPI'
+            'seasonsRestAPI',
+            'angular-send-feedback'
         ])
         .directive('headerMenu', function (qeventbus, $rootScope, $translate, $location, $window, $log,
-                                           $translatePartialLoader, $filter, signupRestAPI, userRestAPI,$sce,
+                                           $translatePartialLoader, $filter, signupRestAPI, userRestAPI, $sce,
                                            seasonsRestAPI, notificationsRestAPI, EnvironmentConfig, webNotifications) {
             return {
                 restrict: 'AE',
@@ -29,6 +30,7 @@
                     $translatePartialLoader.addPart('menu');
                     $translatePartialLoader.addPart('user');
                     $translatePartialLoader.addPart('home');
+                    $scope.desktop = !$rootScope.isMobile;
                     $scope.hideTrial = false;
                     $scope.signin = {};
                     $scope.notifications = [];
@@ -40,6 +42,7 @@
                         icon: "/assets/images/qaobee-logoRouge.png",
                         timeout: 5000
                     };
+
                     $scope.isActive = function (viewLocation) {
                         return viewLocation === $location.path();
                     };
@@ -47,6 +50,7 @@
                         var decoded = angular.element('<textarea />').html(html_code).text();
                         return $sce.trustAsHtml(decoded);
                     }
+
                     /**
                      *
                      */

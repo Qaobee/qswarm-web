@@ -12,15 +12,16 @@
                         {{'landing.contact.about' | translate}}
                     </a>
                 </li>
-                
+
                 <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
                     <a href="#/pricing" translate="navbar.pricing"></a>
                 </li>
-               
+
                 <li>
-                    <a class="waves-effect waves-white secondary-color" ng-click="openSignup()">{{'navbar.signup' | translate}}</a>
+                    <a class="waves-effect waves-white secondary-color" ng-click="openSignup()">{{'navbar.signup' |
+                        translate}}</a>
                 </li>
-                
+
                 <li>
                     <a ng-click="openLogin()">
                         {{'navbar.connect' | translate}}
@@ -37,7 +38,7 @@
                 <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
                     <a class="white-text" href="#/pricing" translate="navbar.pricing"></a>
                 </li>
-                
+
                 <li>
                     <a class="white-text" ng-click="openLogin()" translate="navbar.connect"></a>
                 </li>
@@ -49,11 +50,11 @@
 
 <!-- Menu dropdown notifications -->
 <div id='notificationDropdown' class='notification dropdown-content'>
-    
+
     <div class="row" style="padding-left: 10px">
         <div class="col s12">
             <a href="#/notifications" class="btn-flat primary-text-color">
-            {{'notifications.more' | translate}} <i class="material-icons right">forward</i></a>
+                {{'notifications.more' | translate}} <i class="material-icons right">forward</i></a>
         </div>
     </div>
     <div ng-repeat="n in notifications" class="primary-text-color">
@@ -63,7 +64,7 @@
             </div>
             <div class="col s10">
                 <a href="#/notifications/{{n._id}}" class="accent-text-color left" ng-bind-html="n.title"></a>
-                
+
                 <br/><span class="truncate" ng-bind-html="n.content"></span>
                 <br/>
                 <small> {{n.senderId.firstname}} | {{n.timestamp | date : 'short'}}</small>
@@ -73,12 +74,12 @@
                     <i class="material-icons left" ng-if="n.read"
                        title="{{'headerMenu.notifications.mark-as-unread' | translate}}">visibility_off</i>
                     <i class="material-icons left" ng-if="!n.read"
-                        title="{{'headerMenu.notifications.mark-as-read' | translate}}">visibility</i>
+                       title="{{'headerMenu.notifications.mark-as-read' | translate}}">visibility</i>
                 </a>
                 <a href="javascript:void(0);" ng-click="deleteNotification(n._id)" class="accent-text-color">
                     <i class="material-icons left" title="{{'headerMenu.notifications.delete' | translate}}">delete</i>
                 </a>
-                
+
             </div>
             <div class="col s12 divider"></div>
         </div>
@@ -93,19 +94,23 @@
                 <a href="/#/private/sbSwitch" class="brand-logo center truncate">{{meta.sandbox.structure.label}}</a>
                 <ul class="hide-on-med-and-down">
                     <li class="left">
-                        <a href="#/private/"><i class="material-icons left" title="{{'headerMenu.dashboard' | translate}}">home</i></a>
+                        <a href="#/private/"><i class="material-icons left"
+                                                title="{{'headerMenu.dashboard' | translate}}">home</i></a>
                     </li>
 
                     <li class="left">
-                        <a href="#/private/players/{{meta.sandbox.effectiveDefault}}"><i class="material-icons left" title="{{'headerMenu.players' | translate}}">person</i></a>
+                        <a href="#/private/players/{{meta.sandbox.effectiveDefault}}"><i class="material-icons left"
+                                                                                         title="{{'headerMenu.players' | translate}}">person</i></a>
                     </li>
 
                     <li class="left">
-                        <a href="#/private/teams/{{meta.sandbox.effectiveDefault}}"><i class="material-icons left" title="{{'headerMenu.teams' | translate}}">group</i></a>
+                        <a href="#/private/teams/{{meta.sandbox.effectiveDefault}}"><i class="material-icons left"
+                                                                                       title="{{'headerMenu.teams' | translate}}">group</i></a>
                     </li>
 
                     <li class="left">
-                        <a href="#/private/agenda/{{meta.sandbox.effectiveDefault}}"><i class="material-icons left" title="{{'headerMenu.calendar' | translate}}">event_note</i></a>
+                        <a href="#/private/agenda/{{meta.sandbox.effectiveDefault}}"><i class="material-icons left"
+                                                                                        title="{{'headerMenu.calendar' | translate}}">event_note</i></a>
                     </li>
 
                     <li class="right"><a ng-click="logoff()" href="javascript:void(0);"><i class="material-icons">exit_to_app</i></a>
@@ -120,7 +125,8 @@
                            data-hover="false">
                             <i class="material-icons right"
                                ng-class="{'accent-text-color activeNotif':notifications.length}">{{notifications.length?'drafts':'email'}}</i>
-                            <span ng-if="notifications.length" class="new badge accent-color" ng-bind="notifications.length"></span>
+                            <span ng-if="notifications.length" class="new badge accent-color"
+                                  ng-bind="notifications.length"></span>
                         </a>
                     </li>
                 </ul>
@@ -129,28 +135,32 @@
                 <a href="#" data-activates="nav-mobile" class="button-collapse white-text"><i class="material-icons">menu</i></a>
 
                 <ul id="nav-mobile" class="side-nav dark-primary-color">
-                    <li><a href="#/private/" class="white-text">{{'headerMenu.dashboard' | translate }}</a></li>
+                    <li><a href="#/private/" class="white-text" translate="headerMenu.dashboard"></a></li>
                     <li class="divider"></li>
-                    <li><a href="#/private/players/{{meta.sandbox.effectiveDefault}}" class="white-text">{{'headerMenu.players' | translate }}</a></li>
-                    <li><a href="#/private/teams/{{meta.sandbox.effectiveDefault}}" class="white-text">{{'headerMenu.teams' | translate }}</a></li>
-                    <li><a href="#/private/agenda/{{meta.sandbox.effectiveDefault}}" class="white-text">{{'headerMenu.calendar' | translate }}</a></li>
+                    <li><a href="#/private/players/{{meta.sandbox.effectiveDefault}}" class="white-text" translate="headerMenu.players"></a></li>
+                    <li><a href="#/private/teams/{{meta.sandbox.effectiveDefault}}" class="white-text" translate="headerMenu.teams"></a></li>
+                    <li><a href="#/private/agenda/{{meta.sandbox.effectiveDefault}}" class="white-text" translate="headerMenu.calendar"></a></li>
                     <li class="divider"></li>
-                    <li><a href="#/notifications" class="white-text">{{'headerMenu.notifications.title' | translate}}</a></li>
-                    <li><a href="#/private/profile" class="white-text">{{'headerMenu.profil' | translate }}</a></li>
-                    <li><a ng-click="logoff()" href="javascript:void(0);" class="white-text">{{'navbar.disconnect' | translate}}</a></li>
+                    <li><a href="#/notifications" class="white-text" translate="headerMenu.notifications.title"></a></li>
+                    <li><a href="#/private/profile" class="white-text" translate="headerMenu.profil"></a></li>
+                    <li><a ng-click="logoff()" href="javascript:void(0);" class="white-text" translate="navbar.disconnect"></a></li>
                 </ul>
 
             </div>
         </div>
     </nav>
-    <angular-feedback options="feedbackOptions" meta="meta"></angular-feedback>
+    <div ng-if="desktop">
+        <angular-feedback options="feedbackOptions" meta="meta"></angular-feedback>
+    </div>
 </div>
 
 <div class="navbar-fixed trial-banner" ng-if="intrial && !hideTrial">
     <div class="row light-primary-color">
         <div class="col s12 center"><h4 translate="headerMenu.trial.title"></h4></div>
-        <div class="col s12 secondary-text-color center" translate="headerMenu.trial.content" translate-values="trialCountVal" ng-if="trialCountVal.count > 0"></div>
-        <div class="col s12 secondary-text-color center" translate="headerMenu.trial-ended.content" ng-if="trialCountVal.count <= 0"></div>
+        <div class="col s12 secondary-text-color center" translate="headerMenu.trial.content"
+             translate-values="trialCountVal" ng-if="trialCountVal.count > 0"></div>
+        <div class="col s12 secondary-text-color center" translate="headerMenu.trial-ended.content"
+             ng-if="trialCountVal.count <= 0"></div>
         <div class="col s12">&nbsp;</div>
         <div class="col s12 center">
             <a href="javascript:void(0);" ng-click="closeTrial()" class="btn-floating accent-color">
@@ -211,10 +221,11 @@
             </div>
             <div class="row hide-on-small-only">
                 <div>
-                    <a href="" class="light-text-color left" ng-click="openForgotPwd()" translate="modal.login.label.forgotpasswd"></a>
+                    <a href="" class="light-text-color left" ng-click="openForgotPwd()"
+                       translate="modal.login.label.forgotpasswd"></a>
                     <a href="" class="secondary-text-color right" ng-click="openSignup()" translate="navbar.signup"></a>
                 </div>
-                
+
             </div>
         </div>
 
@@ -228,7 +239,7 @@
                         ng-class="{'btn waves-effect waves-white disabled': loginForm.$invalid, 
                                   'btn waves-effect waves-white accent-color': !loginForm.$invalid}">
                 </button>
-                
+
             </div>
         </div>
     </form>
@@ -272,7 +283,7 @@
                         ng-class="{'btn waves-effect waves-white disabled': renewPwdForm.$invalid, 
                                   'btn waves-effect waves-white accent-color': !renewPwdForm.$invalid}">
                 </button>
-                
+
             </div>
         </div>
     </form>
@@ -304,4 +315,4 @@
     </div>
 </div>
 
-<cnil link="/#/cnil" ></cnil>
+<cnil link="/#/cnil"></cnil>
