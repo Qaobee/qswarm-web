@@ -57,12 +57,6 @@
             $scope.startDate = '';
             $scope.startHours = '';
             $scope.location = 'home';
-            //$scope.minDate = new Date().toISOString();
-
-            /****************************************
-             * end Datapicker et timepicker
-             ***************************************/
-
             $scope.addEventTitle = false;
             // return button
             $scope.doTheBack = function () {
@@ -137,12 +131,12 @@
                     if (angular.isDefined($scope.event.startDate)) {
 
                         $scope.startDate = moment($scope.event.startDate).toDate();
-                        $scope.startHours = moment($scope.startDate).hour()+':'+moment($scope.startDate).minute();
+                        $scope.startHours = moment($scope.startDate).hour() + ':' + moment($scope.startDate).minute();
                         $scope.datePicker = angular.element('#EventStartDate').pickadate('picker');
-                        
+
                         $scope.datePicker.set('select', $scope.startDate.valueOf());
-                        
-                        
+
+
                     }
 
                     /* View participants management */

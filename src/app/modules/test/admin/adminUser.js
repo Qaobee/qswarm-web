@@ -2,11 +2,6 @@
     'use strict';
 
     angular.module('qaobee.test.adminUser', [
-        /* angular qaobee */
-
-        /* qaobee modules */
-
-        /* qaobee Rest API */
         'userRestAPI',
         'sandboxRestAPI',
         'sandboxCfgRestAPI',
@@ -17,20 +12,16 @@
 
         .config(function ($routeProvider) {
             $routeProvider
-            	.when('/test/adminUser/get/:id?', {
-            		controller: 'adminUserCtrl',
-            		templateUrl: 'app/modules/test/admin/adminHome.html'
-            	})
+                .when('/test/adminUser/get/:id?', {
+                    controller: 'adminUserCtrl',
+                    templateUrl: 'app/modules/test/admin/adminHome.html'
+                })
                 .when('/test/adminUser/getLogin/:login?', {
                     controller: 'adminUserLoginCtrl',
                     templateUrl: 'app/modules/test/admin/adminHome.html'
                 });
         })
-        
-//        .controller('adminUserHomeCtrl', function ($scope, $log) {
-//        	$log.debug('ici');
-//        })
-        
+
         .controller('adminUserLoginCtrl', function ($scope, $routeParams, $log, $location, userRestAPI) {
             var userLogin = $routeParams.login;
             // Recherche du User
@@ -49,15 +40,15 @@
             });
         })
 
-        .controller('adminUserCtrl', function ($scope, $routeParams, $log, userRestAPI, sandboxRestAPI, sandboxCfgRestAPI, personRestAPI, effectiveRestAPI, teamRestAPI) { 
-        	$scope.activeTabIndex = 0;
-        	
-        	$scope.user = {};
+        .controller('adminUserCtrl', function ($scope, $routeParams, $log, userRestAPI, sandboxRestAPI, sandboxCfgRestAPI, personRestAPI, effectiveRestAPI, teamRestAPI) {
+            $scope.activeTabIndex = 0;
+
+            $scope.user = {};
             $scope.currentPlan = {};
             $scope.planSelected = {};
 
             $scope.searchUser = function (userId) {
-            	
+
                 // User
                 $scope.user = {};
                 // SB
@@ -118,26 +109,24 @@
                         toastr.info('Sandboxes refreshed');
 
                         // Recherche de Shared SandBox
-                        sandboxRestAPI.getSandboxSharingListAdmin($scope.user._id).success(function (dataShared){
-                        	if (true === data.error) {
+                        sandboxRestAPI.getSandboxSharingListAdmin($scope.user._id).success(function (dataShared) {
+                            $log.info(dataShared);
+                            if (true === data.error) {
                                 toastr.error(data.message);
-                            } else {
-                            	
                             }
-                        	
                         }).error(function (error) {
-                        	if (error != null) {
-		                        toastr.error(error.message);
-		                    } else {
-		                        toastr.error('Problème getSandboxSharingListAdmin');
-		                    }
+                            if (error != null) {
+                                toastr.error(error.message);
+                            } else {
+                                toastr.error('Problème getSandboxSharingListAdmin');
+                            }
                         });
-                        
+
                         // Recherche de SB_Personn
                         $scope.searchSandboxPerson($scope.currentSB);
                         // Recherche effective
                         $scope.searchSandboxEffective($scope.currentSB);
-                        
+
                     }
                 }).error(function (error) {
                     if (error != null) {
@@ -180,7 +169,7 @@
                         toastr.error(data.message);
                     } else {
                         $scope.SBListEffectives = data;
-$log.error(data);
+                        $log.error(data);
                         $scope.currentSBEffective = $scope.SBListEffectives[0];
                         $scope.sandboxEffectiveSelected = $scope.currentSBEffective;
 

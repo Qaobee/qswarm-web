@@ -23,7 +23,7 @@
          * @class qaobee.commons.users.sandbox.SbMemberMgntCtrl
          * @description Main controller of app/modules/commons/users/sandbox/switchSandbox.html
          */
-        .controller('SbMemberMgntCtrl', function ($scope, $filter, EnvironmentConfig, $window, $translatePartialLoader, 
+        .controller('SbMemberMgntCtrl', function ($scope, $filter, EnvironmentConfig, $window, $translatePartialLoader,
                                                   userRestAPI, sandboxRestAPI, $log, meta, user) {
 
             $translatePartialLoader.addPart('commons');
@@ -31,7 +31,7 @@
 
             $scope.user = user;
             $scope.meta = meta;
-        
+
             /* Retrieve sandbox user */
             $scope.getSandbox = function () {
                 sandboxRestAPI.getSandboxSharingList($scope.meta.sandbox.activityId).success(function (data) {
@@ -43,56 +43,55 @@
                     });
                 });
             };
-        
+
             /* Remove an invitation */
             $scope.removeInvitation = function (invitationId) {
-                $log.debug('invitationId',invitationId);
-                sandboxRestAPI.removeInvitationToSandbox(invitationId).success(function (data) {
-                    
+                $log.debug('invitationId', invitationId);
+                sandboxRestAPI.removeInvitationToSandbox(invitationId).success(function () {
                     $scope.getInvitationToSandboxList();
-                    toastr.success($filter('translate')('sbMemberMngtPage.messageControl.memberRemove', {}));    
+                    toastr.success($filter('translate')('sbMemberMngtPage.messageControl.memberRemove', {}));
                 });
             };
-        
+
             /* Revive an invitation */
             $scope.reviveInvitation = function (invitationId) {
-                sandboxRestAPI.reviveInvitation(invitationId).success(function (data) {
+                sandboxRestAPI.reviveInvitation(invitationId).success(function () {
                     $scope.getInvitationToSandboxList();
-                    toastr.success($filter('translate')('sbMemberMngtPage.messageControl.memberRemove', {}));    
+                    toastr.success($filter('translate')('sbMemberMngtPage.messageControl.memberRemove', {}));
                 });
             };
-        
+
             /* Retrieve pending invitation list */
             $scope.getInvitationToSandboxList = function () {
                 sandboxRestAPI.getInvitationToSandboxList($scope.meta.sandbox._id, 'waiting').success(function (data) {
                     $scope.invitationList = data;
                 });
             };
-            
+
             $scope.updateMemberSandbox = function (memberId) {
                 var member = null;
                 var request = {
                     "sandboxId": $scope.sandbox._id,
                     "userId": memberId
                 };
-                
-                if($scope.sandbox.members.length>0){
+
+                if ($scope.sandbox.members.length > 0) {
                     $scope.sandbox.members.forEach(function (a) {
-                        
+
                         if (a.personId === memberId) {
                             member = a;
                         }
                     });
-                } 
-                
-                
-                if(member.status ==='activated') {
+                }
+
+
+                if (member.status === 'activated') {
                     sandboxRestAPI.desactivateMemberToSandbox(request).success(function (data) {
                         $scope.sandbox = data;
                         toastr.success($filter('translate')('sbMemberMngtPage.messageControl.memberRemove', {
                             firstname: member.person.firstname,
                             name: member.person.name
-                        }));                                           
+                        }));
                     });
                 } else {
                     sandboxRestAPI.activateMemberToSandbox(request).success(function (data) {
@@ -100,11 +99,11 @@
                         toastr.success($filter('translate')('sbMemberMngtPage.messageControl.memberAdd', {
                             firstname: member.person.firstname,
                             name: member.person.name
-                        }));                                           
+                        }));
                     });
                 }
             };
-            
+
             // return button
             $scope.doTheBack = function () {
                 $window.history.back();
@@ -115,7 +114,7 @@
                 delete $scope.user;
                 delete $scope.renew;
             });
-        
+
             /* check user connected */
             $scope.checkUserConnected = function () {
                 userRestAPI.getUserById(user._id).success(function () {
@@ -125,11 +124,10 @@
                     $log.error('SbMemberMgntCtrl : User not Connected');
                 });
             };
-        
-            
-            
+
+
             /* Primary, check if user connected */
             $scope.checkUserConnected();
-            
+
         });
 }());

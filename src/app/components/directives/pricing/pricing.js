@@ -9,7 +9,6 @@
      * @copyright &lt;b&gt;QaoBee&lt;/b&gt;.
      *
      */
-
     angular.module('pricing', ['sandboxRestAPI'])
 
         .directive('pricing', function ($translatePartialLoader, $timeout, $location, $document, $log, $q, $filter, sandboxRestAPI, qeventbus) {
@@ -20,46 +19,46 @@
                     public: '@'
                 },
                 controller: function ($scope) {
-                    
+
                     $scope.subscribeButton = false;
                     $scope.invitationButton = false;
                     $scope.invitation = {};
-                                 
+
                     $translatePartialLoader.addPart('commons');
                     $translatePartialLoader.addPart('public');
-                    
+
                     /* an invitation */
-                    $scope.getInvitation = function () {    
+                    $scope.getInvitation = function () {
                         sandboxRestAPI.getInvitationToSandbox($scope.invitationId).success(function (data) {
                             $scope.invitation = data;
-                            if($scope.invitation.status!=="waiting"){
-                                $log.debug('invitation',data);
+                            if ($scope.invitation.status !== "waiting") {
+                                $log.debug('invitation', data);
                                 $location.path('/invitationError');
                             }
                         }).error(function () {
-                           $location.path('/invitationError');
+                            $location.path('/invitationError');
                         });
                     };
-                    
-                    if($scope.public==='true'){
+
+                    if ($scope.public === 'true') {
                         qeventbus.prepForBroadcast('menuItem', 'pricing');
                         $scope.subscribeButton = true;
                     } else {
                         $scope.invitationButton = true;
                         $scope.getInvitation();
                     }
-                    
+
                     $scope.acceptInvitation = function () {
                         $location.path('/subscribeStart');
                     };
-                    
+
                     $scope.refuseInvitation = function () {
                         var request = {
                             invitationId: $scope.invitation._id,
                             userId: $scope.invitation.senderId,
                             answer: "refused"
                         };
-                        sandboxRestAPI.confirmInvitationToSandbox(request).success(function (data) {
+                        sandboxRestAPI.confirmInvitationToSandbox(request).success(function () {
                             $location.path('/invitationCancel');
                         });
                     };

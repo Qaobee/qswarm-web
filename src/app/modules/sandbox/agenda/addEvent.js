@@ -60,8 +60,6 @@
             $scope.startDate = '';
             $scope.startHours = '';
             $scope.location = 'home';
-            //$scope.minDate = new Date().toISOString();
-
             $scope.addEventTitle = true;
 
             // return button

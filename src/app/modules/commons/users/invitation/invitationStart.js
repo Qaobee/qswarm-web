@@ -31,26 +31,29 @@
         })
 
         .controller('InvitationCtrl', function ($rootScope, $scope, $translatePartialLoader, $log,
-                                            $routeParams, $window, $location, $filter,
-                                            sandboxRestAPI) {
+                                                $routeParams) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
-        
+
             $scope.invitationId = $routeParams.invitationId;
-            
-        }).controller('InvitationErrorCtrl', function ($rootScope, $scope, $location, $translatePartialLoader, $log, $filter) {
+
+        }).controller('InvitationErrorCtrl', function ($rootScope, $scope, $location, $translatePartialLoader) {
+        $translatePartialLoader.addPart('user');
+
+        $scope.goHome = function () {
+            $location.path('/');
+        };
+    })
+
+        .controller('InvitatioCancelCtrl', function ($rootScope, $scope, $location, $translatePartialLoader) {
             $translatePartialLoader.addPart('user');
 
             $scope.goHome = function () {
                 $location.path('/');
             };
-        }).controller('InvitatioCancelCtrl', function ($rootScope, $scope, $location, $translatePartialLoader, $log, $filter) {
-            $translatePartialLoader.addPart('user');
+        })
 
-            $scope.goHome = function () {
-                $location.path('/');
-            };
-        }).controller('SubscribeStartCtrl', function ($rootScope, $scope, $location, $translatePartialLoader, $log, $filter,signupRestAPI, vcRecaptchaService) {
+        .controller('SubscribeStartCtrl', function ($rootScope, $scope, $location, $translatePartialLoader, signupRestAPI, vcRecaptchaService) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
 
@@ -60,7 +63,7 @@
                 console.info('Created widget ID: %s', widgetId);
                 $scope.widgetId = widgetId;
             };
-            $scope.cbExpiration = function() {
+            $scope.cbExpiration = function () {
                 console.info('Captcha expired. Resetting response object');
                 vcRecaptchaService.reload($scope.widgetId);
                 $scope.response = null;
@@ -96,7 +99,7 @@
                                 delete $scope.signup;
                                 delete $scope.passwdConfirm;
                                 $rootScope.user = data2.person;
-                                $location.path('/subscribeEnd/'+data2.person._id+'/'+data2.person.account.activationCode);
+                                $location.path('/subscribeEnd/' + data2.person._id + '/' + data2.person.account.activationCode);
                             }
                         }).error(function (error) {
                             vcRecaptchaService.reload($scope.widgetId);
@@ -110,7 +113,9 @@
                     }
                 });
             };
-        }).controller('SubscribeEndCtrl', function ($rootScope, $scope, $location, $translatePartialLoader, $log, $filter, signupRestAPI) {
+        })
+
+        .controller('SubscribeEndCtrl', function ($rootScope, $scope, $location, $translatePartialLoader, $log, $filter, signupRestAPI) {
             $translatePartialLoader.addPart('user');
             $scope.creatClub = false;
             /* init ngAutocomplete*/
@@ -147,7 +152,7 @@
             $scope.initForm();
 
             $scope.checkUser = function () {
-                if(angular.isDefined($rootScope.user) && $routeParams.id===$rootScope.user._id && $routeParams.code===$rootScope.user.account.activationCode && $rootScope.user.account.active===false) {
+                if (angular.isDefined($rootScope.user) && $routeParams.id === $rootScope.user._id && $routeParams.code === $rootScope.user.account.activationCode && $rootScope.user.account.active === false) {
                     $scope.user = $rootScope.user;
 
                     $scope.user.account.listPlan[0].activity = {};
@@ -155,7 +160,7 @@
 
                     // Déclaration du user en mode connecté
                     $window.sessionStorage.qaobeesession = $scope.user.account.token;
-                    
+
                 } else {
                     $rootScope.messageErreur = $filter('translate')('errorPage.ph.unknown');
                     $location.path('/signup/error');
@@ -407,7 +412,5 @@
                 angular.element('#modalCreate').modal({dismissible: false});
                 angular.element('#modalCancel').modal();
             });
-
-            
         });
-    }());
+}());
