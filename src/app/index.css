@@ -411,32 +411,6 @@ footer.page-footer {
     border: dotted 3px green;
 }
 
-/* Custom style for angular-selection-model */
-/* Selection Model Styles */
-ul.fancy {
-    padding: 0;
-    list-style-type: none;
-}
-
-ul.fancy li {
-    cursor: pointer;
-    padding: 5px 10px;
-}
-
-ul.fancy li.selected {
-    color: lavenderblush;
-    background-color: #428BCA;
-}
-
-table.super-fancy td {
-    cursor: pointer;
-}
-
-table.super-fancy tr.foobar {
-    color: white;
-    background-image: url('img/29.png'), url('img/53.png'), url('img/79.png');
-}
-
 @media only screen and (max-width: 600px) {
     .container {
         width: 90%;
