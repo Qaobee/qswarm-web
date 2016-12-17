@@ -14,7 +14,7 @@
         'personRestAPI',
         'locationAPI'])
 
-        .factory('personSrv', function ($log, $q, locationAPI, personRestAPI, effectiveRestAPI) {
+        .factory('personSrv', function ($q, locationAPI, personRestAPI, effectiveRestAPI) {
 
             /* Format address */
             var formatAddress = function (address) {
@@ -24,7 +24,6 @@
                 // Formattage de l'adresse à partir du FormatedAddress
                 if (angular.isDefined(address.formatedAddress) && !address.formatedAddress.isBlank()) {
                     locationAPI.get(address.formatedAddress).then(function (adr) {
-                        $log.debug(adr);
                         address.lat = adr.data.results[0].geometry.location.lat;
                         address.lng = adr.data.results[0].geometry.location.lng;
                         angular.forEach(adr.data.results[0].address_components, function (item) {
