@@ -21,7 +21,7 @@ sonarqube {
         // This is the display project name
         property 'sonar.projectName', 'QSwarmWeb'
         // This is the Sonar Server
-        property 'sonar.host.url', 'http://build.qaobee.com:9000'
+        property 'sonar.host.url', 'http://vps288382.ovh.net:9000'
         property 'sonar.projectKey', 'com.qaobee:qswarm-web'
         property 'sonar.profile', 'Sonar way'
         property 'sonar.language', 'js'
