@@ -14,15 +14,16 @@
     angular.module(
         'qaobee.headerMenu', [
             'qaobee.eventbus',
+            'qaobee.headerNotifications',
             'notificationsRestAPI',
             'userRestAPI',
             'signupRestAPI',
             'seasonsRestAPI',
             'angular-send-feedback'
         ])
-        .directive('headerMenu', function (qeventbus, $rootScope, $translate, $location, $window, $log,
+        .directive('headerMenu', function (qeventbus, $rootScope, $translate, $location, $window,
                                            $translatePartialLoader, $filter, signupRestAPI, userRestAPI, $sce,
-                                           seasonsRestAPI, notificationsRestAPI, EnvironmentConfig, webNotifications) {
+                                           seasonsRestAPI) {
             return {
                 restrict: 'AE',
                 controller: function ($scope) {
@@ -33,76 +34,11 @@
                     $scope.desktop = !$rootScope.isMobile;
                     $scope.hideTrial = false;
                     $scope.signin = {};
-                    $scope.notifications = [];
-                    $scope.hasnotif = false;
                     $scope.isProd = $window.location.hostname === 'www.qaobee.com';
                     $scope.showCnil = $translate.use() === 'fr_FR';
-                    $scope.notifDisplayed = [];
-                    $scope.notificationOptions = {
-                        icon: "/assets/images/qaobee-logoRouge.png",
-                        timeout: 5000
-                    };
-
                     $scope.isActive = function (viewLocation) {
                         return viewLocation === $location.path();
                     };
-                    function renderHTML(html_code) {
-                        var decoded = angular.element('<textarea />').html(html_code).text();
-                        return $sce.trustAsHtml(decoded);
-                    }
-
-                    /**
-                     *
-                     */
-                    function getNotifications() {
-                        if (!$scope.user) {
-                            return;
-                        }
-                        notificationsRestAPI.getUserNotifications().then(function (data) {
-                            if (!!data.data && !data.data.error) {
-                                $scope.notifications = data.data.filter(function (n) {
-                                    return !n.read;
-                                });
-                                $scope.notifications.forEach(function (n) {
-                                    n.content = n.content.stripTags().truncate(30);
-                                    if ($scope.notifDisplayed.findIndex(n._id) === -1) {
-                                        $scope.notifDisplayed.push(n._id);
-                                        $scope.notificationOptions.body = renderHTML(n.content);
-                                        webNotifications.create(renderHTML(n.title), $scope.notificationOptions);
-                                    }
-                                });
-                                $scope.hasnotif = ($scope.notifications.length > 0);
-                            }
-                        });
-                    }
-
-                    /**
-                     *
-                     * @param id
-                     * @returns {boolean}
-                     */
-                    $scope.markAsRead = function (id) {
-                        notificationsRestAPI.markAsRead(id).then(function (data) {
-                            if (data.data.status) {
-                                getNotifications();
-                            }
-                        });
-                        return false;
-                    };
-
-                    $scope.deleteNotification = function (id) {
-                        notificationsRestAPI.del(id).then(function (data) {
-                            if (data.data.status) {
-                                getNotifications();
-                            }
-                        });
-                        return false;
-                    };
-
-                    $scope.getAvatar = function (avatar) {
-                        return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/SB_Person/' + avatar : 'assets/images/user.png';
-                    };
-
                     $rootScope.$on('$viewContentLoaded', function () {
                         // Detect touch screen and enable scrollbar if necessary
                         $scope.hideTrial = $location.path() === '/';
@@ -114,13 +50,10 @@
                                 return false;
                             }
                         }
-
                         if (is_touch_device()) {
                             angular.element('#nav-mobile').css({overflow: 'auto'});
                         }
-
                         angular.element('.dropdown-button').dropdown();
-
                         angular.element('.button-collapse').sideNav({
                             // Default is 240
                             menuWidth: 240,
@@ -129,7 +62,6 @@
                             // Closes side-nav on <a> clicks, useful for Angular/Meteor
                             closeOnClick: true
                         });
-
                     });
 
                     $scope.openSignup = function () {
@@ -145,46 +77,17 @@
 
                     $scope.loadMetaInfos = function () {
                         userRestAPI.getMetas().then(function (data) {
-
                             if (angular.isDefined(data.data) && data.data !== null) {
                                 $scope.meta = {
                                     sandbox: data.data,
                                     season: null
                                 };
                                 $scope.structure = data.data.structure;
-
                                 seasonsRestAPI.getSeasonCurrent($scope.meta.sandbox.activityId, $rootScope.user.country._id).then(function (season) {
                                     $scope.meta.season = season.data;
                                 });
-
-                                var eb = new vertx.EventBus(EnvironmentConfig.apiEndPoint + '/eventbus');
-                                eb.onopen = function () {
-
-                                    eb.registerHandler('qaobee.notification.' + $scope.user._id, function (message) {
-                                        if (!!message.title) {
-                                            toastr.info(message.content.stripTags().truncate(30), message.title);
-                                        }
-                                        qeventbus.prepForBroadcast('notifications', message);
-                                        getNotifications();
-                                    });
-                                    eb.registerHandler('qaobee.notification.' + $rootScope.meta.sandbox._id, function (message) {
-                                        if (!!message.title) {
-                                            toastr.info(message.content.stripTags().truncate(30), message.title);
-                                        }
-                                        qeventbus.prepForBroadcast('notifications', message);
-                                        getNotifications();
-                                    });
-                                };
-
-                                getNotifications();
-                                eb.onclose = function () {
-                                    eb = null;
-                                };
-
-
                             }
                         });
-
                     };
 
                     $scope.closeTrial = function () {
@@ -270,6 +173,7 @@
                                 $rootScope.notLogged = false;
                                 $scope.user = data;
                                 qeventbus.prepForBroadcast('login', data);
+                                qeventbus.prepForBroadcast('notifications', message);
                                 // is it his first visit?
                                 if (angular.isDefined(data.account.firstConnexion) && data.account.firstConnexion === true) {
                                     $location.path('/firstconnection');
@@ -319,7 +223,7 @@
                         });
                     };
                     if (!!$scope.user) {
-                        getNotifications();
+                        qeventbus.prepForBroadcast('notifications', {});
                     }
                 },
                 templateUrl: 'app/components/directives/commons/headerMenu/headerMenu.html'

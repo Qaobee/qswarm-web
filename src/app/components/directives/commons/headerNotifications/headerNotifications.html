@@ -1,0 +1,43 @@
+<a class='dropdown-button' data-beloworigin="true" dropdown data-alignment="right"
+   href='javascript:void(0);' data-constrainWidth="false" data-activates='notificationDropdown'
+   data-hover="false">
+    <i class="material-icons right"
+       ng-class="{'accent-text-color activeNotif':notifications.length}">{{notifications.length?'drafts':'email'}}</i>
+    <span ng-if="notifications.length" class="new badge accent-color"
+          ng-bind="notifications.length"></span>
+</a>
+<div id='notificationDropdown' class='notification dropdown-content'>
+    <div class="row" style="padding-left: 10px">
+        <div class="col s12">
+            <a href="#/notifications" class="btn-flat primary-text-color" style="min-width: 100%">
+                {{'notifications.more' | translate}} <i class="material-icons right">forward</i></a>
+        </div>
+    </div>
+    <div ng-repeat="n in notifications" class="primary-text-color">
+        <div class="row">
+            <div class="col s2">
+                <img ng-src="{{getAvatar(n.senderId.avatar)}}" alt="" class="circle" width="30px">
+            </div>
+            <div class="col s10">
+                <a href="#/notifications/{{n._id}}" class="accent-text-color left" ng-bind-html="n.title"></a>
+
+                <br/><span class="truncate" ng-bind-html="n.content"></span>
+                <br/>
+                <small> {{n.senderId.firstname}} | {{n.timestamp | date : 'short'}}</small>
+                <br/>
+                <a href="javascript:void(0);" ng-click="markAsRead(n._id)"
+                   class="accent-text-color">
+                    <i class="material-icons left" ng-if="n.read"
+                       title="{{'headerMenu.notifications.mark-as-unread' | translate}}">visibility_off</i>
+                    <i class="material-icons left" ng-if="!n.read"
+                       title="{{'headerMenu.notifications.mark-as-read' | translate}}">visibility</i>
+                </a>
+                <a href="javascript:void(0);" ng-click="deleteNotification(n._id)" class="accent-text-color">
+                    <i class="material-icons left" title="{{'headerMenu.notifications.delete' | translate}}">delete</i>
+                </a>
+
+            </div>
+            <div class="col s12 divider"></div>
+        </div>
+    </div>
+</div>
