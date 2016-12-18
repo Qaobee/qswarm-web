@@ -9,28 +9,34 @@
     </div>
     <div class="card-content light-primary-color" style="overflow-y: auto; height:255px;">
 
-        <a href="#/notifications" class="waves-effect waves-white btn-flat primary-text-color ">{{'notifications.more' | translate}} 
+        <a href="#/notifications" class="waves-effect waves-white btn-flat primary-text-color" style="min-width: 100%">{{'notifications.more'
+            | translate}}
             <i class="material-icons right">forward</i></a>
         <ul class="collection primary-text-color">
-            <li class="collection-item avatar" ng-repeat="n in notifications">
+            <li class="collection-item avatar" ng-repeat="n in notifications track by $index">
                 <img ng-src="{{getAvatar(n.senderId.avatar)}}" alt="" class="circle">
-                <a href="#/notifications/{{n._id}}" class="accent-text-color"><span class="title" ng-bind-html="n.title"></span></a>
+                <a href="#/notifications/{{n._id}}" class="accent-text-color"><span class="title"
+                                                                                    ng-bind-html="n.title"></span></a>
                 <p>
                     <span class="truncate" ng-bind-html="n.content"></span>
-                    <small>{{n.senderId.firstname}} {{n.senderId.name}} <br /> {{n.timestamp | date : 'short'}} |
-                        <br />
-                        <a href="javascript:void(0);" ng-click="markAsRead(n._id)" class="waves-effect waves-white accent-text-color">
-                            <i class="tiny material-icons" ng-if="n.read"
-                               title="{{'headerMenu.notifications.mark-as-unread' | translate}}">visibility_off</i>
-                            <i class="tiny material-icons" ng-if="!n.read"
-                                title="{{'headerMenu.notifications.mark-as-read' | translate}}">visibility</i>
+                    <small>{{n.senderId.firstname}} {{n.senderId.name}} <br/>
+                        {{n.timestamp | date : 'short'}} <br/>
+                        <a href="#/notifications/{{n._id}}" class="waves-effect waves-white accent-text-color"
+                           title="{{'notifications.more' | translate}}">
+                            <i class="fa fa-fw fa-2x fa-external-link-square"></i>
                         </a>
-                        <a href="javascript:void(0);" ng-click="deleteNotification(n._id)" class="waves-effect waves-white accent-text-color">
-                            <i class="tiny material-icons" title="{{'headerMenu.notifications.delete' | translate}}">delete</i>
+                        <a href="javascript:void(0);" ng-click="markAsRead(n._id)"
+                           title="{{n.read && ('headerMenu.notifications.mark-as-unread' | translate) || ('headerMenu.notifications.mark-as-read' | translate)}}"
+                           class="waves-effect waves-white accent-text-color">
+                            <i ng-class="{'fa fa-fw fa-2x fa-envelope' : !n.read, 'fa fa-fw fa-2x fa-envelope-open' : n.read}"></i>
+                        </a>
+                        <a href="javascript:void(0);" ng-click="deleteNotification(n._id)"
+                           title="{{'headerMenu.notifications.delete' | translate}}"
+                           class="waves-effect waves-white accent-text-color">
+                            <i class="fa fa-fw fa-2x fa-trash"></i>
                         </a>
                     </small>
                 </p>
-                <a href="#/notifications/{{n._id}}" class="secondary-content "><i class="material-icons md-36 secondary-text-color">forward</i></a>
             </li>
         </ul>
     </div>
