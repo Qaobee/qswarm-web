@@ -19,6 +19,9 @@
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
                     $scope.stats = {};
+                    /**
+                     * Build graphs
+                     */
                     $scope.buildDatas = function () {
                         $scope.stats = {};
                         $scope.loading = true;

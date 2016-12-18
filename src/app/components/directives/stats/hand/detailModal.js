@@ -33,19 +33,11 @@
                     $scope.periodicityActive.ownersId = $scope.periodicityActive.owners || $scope.owners;
                     $scope.stats = {};
                     $scope.legendColours = ChartJs.getOptions().colours;
-
-                    $scope.$watchGroup(['indicators', 'currentIndicator', 'owners', 'periodicity', 'periodicityActive'], function (newValues) {
-                        $scope.indicators = newValues[0];
-                        $scope.currentIndicator = newValues[1];
-                        $scope.owners = newValues[2];
-                        $scope.periodicity = newValues[3];
-                        $scope.periodicityActive = newValues[4];
-                        if (!!$scope.periodicityActive.startDate && !!$scope.periodicityActive.endDate || !!currentIndicator) {
-                            $scope.buildDatas();
-                        }
-                    });
                     $scope.stats = {};
 
+                    /**
+                     * Build graphs
+                     */
                     $scope.buildDatas = function () {
                         $scope.loading = true;
                         $scope.noData = false;
@@ -134,15 +126,39 @@
                         });
                     };
 
+                    /**
+                     * Open modal
+                     * @param uid
+                     */
                     $scope.openDetail = function (uid) {
                         var modal = angular.element('#modal-' + uid);
                         modal.detach();
                         angular.element('body').append(modal);
-                        modal.modal('open');
+                        angular.element('#modal-' + uid).modal('open');
                     };
+
+                    /**
+                     * Close modal
+                     * @param uid
+                     */
+                    $scope.close  = function (uid) {
+                        angular.element('#modal-' + uid).modal('close');
+                    };
+
+                    $scope.$watchGroup(['indicators', 'currentIndicator', 'owners', 'periodicity', 'periodicityActive'], function (newValues) {
+                        $scope.indicators = newValues[0];
+                        $scope.currentIndicator = newValues[1];
+                        $scope.owners = newValues[2];
+                        $scope.periodicity = newValues[3];
+                        $scope.periodicityActive = newValues[4];
+                        if (!!$scope.periodicityActive.startDate && !!$scope.periodicityActive.endDate || !!currentIndicator) {
+                            $scope.buildDatas();
+                        }
+                    });
                 },
                 link: function () {
                     angular.element('select').material_select();
+                    angular.element('.modal').modal();
                 },
                 templateUrl: 'app/components/directives/stats/hand/detailModal.html'
             };
