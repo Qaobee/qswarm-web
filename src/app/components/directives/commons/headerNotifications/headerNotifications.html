@@ -16,7 +16,7 @@
     <div ng-repeat="n in notifications" class="primary-text-color">
         <div class="row">
             <div class="col s2">
-                <img ng-src="{{getAvatar(n.senderId.avatar)}}" alt="" class="circle" width="30px">
+                <img ng-src="{{getAvatar(n.senderId.avatar)}}" alt="{{n.senderId.firstname}} {{n.senderId.name}}" class="circle" width="30px">
             </div>
             <div class="col s10">
                 <a href="#/notifications/{{n._id}}" class="accent-text-color left" ng-bind-html="n.title"></a>

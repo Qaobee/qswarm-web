@@ -14,7 +14,7 @@
             <i class="material-icons right">forward</i></a>
         <ul class="collection primary-text-color">
             <li class="collection-item avatar" ng-repeat="n in notifications track by $index">
-                <img ng-src="{{getAvatar(n.senderId.avatar)}}" alt="" class="circle">
+                <img ng-src="{{getAvatar(n.senderId.avatar)}}" alt="{{n.senderId.firstname}} {{n.senderId.name}}" class="circle">
                 <a href="#/notifications/{{n._id}}" class="accent-text-color"><span class="title"
                                                                                     ng-bind-html="n.title"></span></a>
                 <p>
