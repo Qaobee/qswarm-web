@@ -5,9 +5,8 @@
             'qaobee.eventbus',
             'notificationsRestAPI'
         ])
-        .directive('headerNotifications', function (qeventbus, $rootScope, $translate, $location, $window, $log,
-                                                    $translatePartialLoader, $filter, signupRestAPI, userRestAPI, $sce,
-                                                    seasonsRestAPI, notificationsRestAPI, EnvironmentConfig, webNotifications) {
+        .directive('headerNotifications', function (qeventbus, $rootScope, $sce, notificationsRestAPI,
+                                                    EnvironmentConfig, webNotifications) {
             return {
                 restrict: 'AE',
                 scope: {
