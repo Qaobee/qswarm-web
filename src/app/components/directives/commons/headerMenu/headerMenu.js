@@ -50,6 +50,7 @@
                                 return false;
                             }
                         }
+
                         if (is_touch_device()) {
                             angular.element('#nav-mobile').css({overflow: 'auto'});
                         }
@@ -173,7 +174,7 @@
                                 $rootScope.notLogged = false;
                                 $scope.user = data;
                                 qeventbus.prepForBroadcast('login', data);
-                                qeventbus.prepForBroadcast('notifications', message);
+                                qeventbus.prepForBroadcast('notifications', {});
                                 // is it his first visit?
                                 if (angular.isDefined(data.account.firstConnexion) && data.account.firstConnexion === true) {
                                     $location.path('/firstconnection');

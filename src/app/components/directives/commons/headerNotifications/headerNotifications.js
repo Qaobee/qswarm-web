@@ -10,7 +10,8 @@
             return {
                 restrict: 'AE',
                 scope: {
-                    user: '=?'
+                    user: '=',
+                    meta: '='
                 },
                 controller: function ($scope) {
                     $scope.notifications = [];
@@ -21,8 +22,8 @@
                         timeout: 5000
                     };
 
-                    $scope.$watch('user', function (newUser, oldUser) {
-                        if (oldUser || !angular.equals(newUser, oldUser)) {
+                    $scope.$watchGroup(['user', 'meta'], function (newValues, oldValues) {
+                        if ((oldValues[0] && oldValues[1]) || (!angular.equals(newValues[0], oldValues[0]) && !angular.equals(newValues[1], oldValues[1]))) {
                             getNotifications();
                             var eb = new vertx.EventBus(EnvironmentConfig.apiEndPoint + '/eventbus');
                             eb.onopen = function () {
@@ -33,7 +34,7 @@
                                     qeventbus.prepForBroadcast('notifications', message);
                                     getNotifications();
                                 });
-                                eb.registerHandler('qaobee.notification.' + $rootScope.meta.sandbox._id, function (message) {
+                                eb.registerHandler('qaobee.notification.' + $scope.meta.sandbox._id, function (message) {
                                     if (!!message.title) {
                                         toastr.info(message.content.stripTags().truncate(30), message.title);
                                     }
