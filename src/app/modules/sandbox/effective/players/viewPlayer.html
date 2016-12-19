@@ -21,6 +21,14 @@
             </div>
         </div>
     </div>
+    <div class="row card">
+        <!--card-->
+        <div class="col m12 s12 animated fadeInUp" style="-webkit-animation-duration:{{$index * 100}}ms">
+            <div class="card-content" ng-if="player">
+                <player-stats player="player" meta="meta" user="user"></player-stats>
+            </div>
+        </div>
+    </div>
 </div>
 
 

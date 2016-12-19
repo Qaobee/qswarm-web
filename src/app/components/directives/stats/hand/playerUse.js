@@ -47,22 +47,16 @@
                                     aggregat: 'AVG',
                                     listFieldsGroupBy: listFieldsGroupBy
                                 };
-
-                                $log.debug('Yep', search);
                                 /* Appel stats API */
                                 statsRestAPI.getStatGroupBy(search).success(function (playtime) {
                                     if (angular.isArray(playtime) && playtime.length > 0) {
-
                                         playtime.forEach(function (a) {
                                             result.playTimeAvg = a.value;
                                         });
-
                                         /* Stats Count by indicator */
                                         var indicators = [];
                                         indicators.push('holder');
-
                                         var listFieldsGroupBy = Array.create('code');
-
                                         var search = {
                                             listIndicators: indicators,
                                             listOwners: ownersId,

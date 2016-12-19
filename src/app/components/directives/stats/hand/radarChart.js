@@ -23,6 +23,9 @@
                      * Build graphs
                      */
                     $scope.buildDatas = function () {
+                        if (!$scope.owners) {
+                            return;
+                        }
                         $scope.stats = {};
                         $scope.loading = true;
                         $scope.data = [];

@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('qaobee.playerInfos', ['effectiveRestAPI', 'personRestAPI'])
+    angular.module('qaobee.playerInfos', [])
 
         .directive('playerInfos', function ($filter, $timeout) {
             return {

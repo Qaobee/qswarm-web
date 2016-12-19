@@ -17,7 +17,9 @@
         'effectiveRestAPI',
         'personRestAPI',
         'userRestAPI',
-        'qaobee.playerInfos'])
+        'qaobee.playerInfos',
+        'qaobee.playerStats'
+    ])
 
         .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/viewPlayer/:playerId', {
@@ -34,24 +36,19 @@
          * @class qaobee.modules.sandbox.effective.ViewPlayerControler
          * @description Main controller for view viewPlayer.html
          */
-        .controller('ViewPlayerControler', function ($log, $scope, $document, $timeout, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                     effectiveRestAPI, personRestAPI, userRestAPI) {
-
+        .controller('ViewPlayerControler', function (personRestAPI, $translatePartialLoader, $routeParams, $window , $scope, user, meta) {
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('stats');
-
             $scope.playerId = $routeParams.playerId;
-
             $scope.user = user;
             $scope.meta = meta;
-
             personRestAPI.getPerson($routeParams.playerId).success(function (person) {
                 $scope.player = person;
             });
-
-
-            // return button
+            /**
+             * Back Button
+             */
             $scope.doTheBack = function () {
                 $window.history.back();
             };

@@ -1,0 +1,115 @@
+<filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
+
+<!-- Stats goals/sanction/use start -->
+<div class="row">
+
+    <div class="col s12 m12 l4" ng-show="player.status.positionType!=='goalkeeper'">
+        <stats-goals bind-to-id="goalScored"
+                     label="goalScored"
+                     sandbox-id="meta.sandbox._id">
+        </stats-goals>
+    </div>
+    <div class="col s12 m12 l4" ng-show="player.status.positionType==='goalkeeper'">
+        <stats-goals bind-to-id="goalConceded"
+                     label="goalConceded"
+                     sandbox-id="meta.sandbox._id">
+        </stats-goals>
+    </div>
+
+    <div class="col s12 hide-on-large-only"><br/></div>
+
+    <div class="col s12 m12 l4">
+        <stats-player-use sandbox-id="meta.sandbox._id"></stats-player-use>
+    </div>
+
+    <div class="col s12 hide-on-large-only"><br/></div>
+
+    <div class="col s12 m12 l4">
+        <stats-sanction></stats-sanction>
+    </div>
+</div>
+<!-- Stats goals/sanction/use end -->
+
+
+<!-- Stats shoot efficiency Start -->
+<div class="row">
+    <div class="col s12 left-align grey-text text-ligthen-2">
+        <h5>
+            <small translate="stats.efficiency.efficiency"></small>
+        </h5>
+    </div>
+
+    <div class="col l3 m6 s12">
+        <stats-efficiency bindtoid="gaugeEfficiencyGlobal"
+                          label="efficiencyTotal" padding="25" noStatEff="noStatEff">
+        </stats-efficiency>
+    </div>
+
+    <div class="col l3 m6 s12">
+        <stats-efficiency bindtoid="gaugeEfficiency9m"
+                          label="efficiency9m" values="'values9m'" padding="25">
+        </stats-efficiency>
+    </div>
+
+    <div class="col l3 m6 s12">
+        <stats-efficiency bindtoid="gaugeEfficiency6m"
+                          label="efficiency6m" values="'values6m'" padding="25">
+        </stats-efficiency>
+    </div>
+
+    <div class="col l3 m6 s12">
+        <stats-efficiency bindtoid="gaugeEfficiency7m"
+                          label="efficiency7m" values="'values7m'" padding="25">
+        </stats-efficiency>
+    </div>
+</div>
+<!-- Stats shoot efficiency end -->
+<div class="row">
+    <div class="col s12 left-align grey-text text-ligthen-2">
+        <h5>
+            <small translate="stats.actionTab.title"></small>
+        </h5>
+    </div>
+    <div class="col s12 m6 l3">
+        <qaobee-radar-chart title="{{'stats.actionTab.attack' | translate}} {{'stats.actionTab.positive' | translate}}"
+                            owners="playersIds" series="series" periodicity-active="periodicityActive"
+                            indicators="['penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec']"></qaobee-radar-chart>
+    </div>
+    <div class="col s12 m6 l3">
+        <qaobee-radar-chart title="{{'stats.actionTab.attack' | translate}} {{'stats.actionTab.negative' | translate}}"
+                            owners="playersIds" series="series" periodicity-active="periodicityActive"
+                            indicators="['forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt']"></qaobee-radar-chart>
+    </div>
+    <div class="col s12 m6 l3">
+        <qaobee-radar-chart title="{{'stats.actionTab.defense' | translate}} {{'stats.actionTab.positive' | translate}}"
+                            owners="playersIds" series="series" meta="meta" periodicity-active="periodicityActive"
+                            indicators="['neutralization', 'forceDef', 'contre', 'interceptionOk']"></qaobee-radar-chart>
+    </div>
+    <div class="col s12 m6 l3">
+        <qaobee-radar-chart title="{{'stats.actionTab.defense' | translate}} {{'stats.actionTab.negative' | translate}}"
+                            owners="playersIds" series="series" periodicity-active="periodicityActive"
+                            indicators="['penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition']"></qaobee-radar-chart>
+    </div>
+</div>
+<!-- Stats actions pos/neg Start
+<div class="row">
+
+    <stats-actions-pos-neg></stats-actions-pos-neg>
+</div>
+-->
+<!-- Stats actions pos/neg end -->
+
+<!-- Stats event's list Start -->
+<div class="row">
+    <div class="col s12 left-align grey-text text-ligthen-2" ng-if="collectes.length > 0">
+        <h5>
+            <small translate="stats.teamLabels.listCollect"></small>
+        </h5>
+    </div>
+    <ul>
+        <li class="col s12 m6 l4" ng-repeat="collecte in collectes track by $index">
+            <event-card event="collecte.eventRef"></event-card>
+        </li>
+    </ul>
+</div>
+<!-- Stats event's list Start -->

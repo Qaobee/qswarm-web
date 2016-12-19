@@ -39,6 +39,9 @@
                      * Build graphs
                      */
                     $scope.buildDatas = function () {
+                        if (!$scope.owners) {
+                            return;
+                        }
                         $scope.loading = true;
                         $scope.noData = false;
                         $scope.stats = {};
@@ -118,7 +121,6 @@
                                             datas.push($scope.tab[id][i]);
                                         }
                                     }
-
                                 });
                                 $scope.tabular.push(datas);
                             });
@@ -141,7 +143,7 @@
                      * Close modal
                      * @param uid
                      */
-                    $scope.close  = function (uid) {
+                    $scope.close = function (uid) {
                         angular.element('#modal-' + uid).modal('close');
                     };
 
