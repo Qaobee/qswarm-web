@@ -10,25 +10,24 @@
             'seasonsRestAPI'])
 
         .provider('meta', function () {
-            this.$get = function ($log, $rootScope, userRestAPI, seasonsRestAPI, $location, $q, $window) {
+            this.$get = function ($log, $rootScope, userRestAPI, seasonsRestAPI, $location, $q, $window, user) {
                 var deferred = $q.defer();
                 if (angular.isDefined($rootScope.meta)) {
                     deferred.resolve($rootScope.meta);
                 } else {
-
                     var token = $window.sessionStorage.qaobeesession;
-
                     if (token !== null && angular.isDefined(token)) {
                         userRestAPI.getMetas().success(function (data) {
                             if (angular.isDefined(data) && data !== null) {
                                 $rootScope.meta = {
-                                    sandbox : data,
-                                    season : null
+                                    sandbox: data,
+                                    season: null
                                 };
-                                
-                                seasonsRestAPI.getSeasonCurrent($rootScope.meta.sandbox.activityId, $rootScope.user.country._id).then(function (season) {
-                                    $rootScope.meta.season = season.data;
-                                    deferred.resolve($rootScope.meta);
+                                user.then(function (u) {
+                                    seasonsRestAPI.getSeasonCurrent(data.activityId, u.country._id).then(function (season) {
+                                        $rootScope.meta.season = season.data;
+                                        deferred.resolve($rootScope.meta);
+                                    });
                                 });
                             }
                         });
