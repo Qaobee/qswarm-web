@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" ng-if="player">
     <div class="row"></div>
     <div class="row dark-primary-color valign-wrapper">
-        <div class="col m3 s12 center" ng-if="player">
+        <div class="col m3 s12 center">
             <avatar person="player" width="'75px'"></avatar>
         </div>
         <div class="col m7 s12 center">
@@ -16,7 +16,7 @@
     <div class="row card">
         <!--card-->
         <div class="col m12 s12 animated fadeInUp" style="-webkit-animation-duration:{{$index * 100}}ms">
-            <div class="card-content" ng-if="player">
+            <div class="card-content">
                 <player-infos player="player"></player-infos>
             </div>
         </div>
@@ -24,11 +24,14 @@
     <div class="row card">
         <!--card-->
         <div class="col m12 s12 animated fadeInUp" style="-webkit-animation-duration:{{$index * 100}}ms">
-            <div class="card-content" ng-if="player">
+            <div class="card-content">
                 <player-stats player="player" meta="meta" user="user"></player-stats>
             </div>
         </div>
     </div>
+    <div class="fixed-action-btn">
+        <a href="#/private/updatePlayer/{{player._id}}" class="btn-large btn-floating red">
+            <i class="large material-icons">mode_edit</i>
+        </a>
+    </div>
 </div>
-
-
