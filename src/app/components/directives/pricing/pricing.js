@@ -32,7 +32,6 @@
                         sandboxRestAPI.getInvitationToSandbox($scope.invitationId).success(function (data) {
                             $scope.invitation = data;
                             if ($scope.invitation.status !== "waiting") {
-                                $log.debug('invitation', data);
                                 $location.path('/invitationError');
                             }
                         }).error(function () {
@@ -49,7 +48,7 @@
                     }
 
                     $scope.acceptInvitation = function () {
-                        $location.path('/subscribeStart');
+                        $location.path('/subscribeStart/'+$scope.invitationId);
                     };
 
                     $scope.refuseInvitation = function () {

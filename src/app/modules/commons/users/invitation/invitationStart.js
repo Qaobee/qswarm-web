@@ -21,7 +21,7 @@
             }).when('/invitationCancel', {
                 controller: 'InvitatioCancelCtrl',
                 templateUrl: 'app/modules/commons/users/invitation/invitationCancel.html'
-            }).when('/subscribeStart', {
+            }).when('/subscribeStart/:invitationId', {
                 controller: 'SubscribeStartCtrl',
                 templateUrl: 'app/modules/commons/users/invitation/subscribeStart.html'
             }).when('/subscribeEnd/:id/:code?', {
@@ -37,13 +37,15 @@
 
             $scope.invitationId = $routeParams.invitationId;
 
-        }).controller('InvitationErrorCtrl', function ($rootScope, $scope, $location, $translatePartialLoader) {
-        $translatePartialLoader.addPart('user');
+        })
+        
+        .controller('InvitationErrorCtrl', function ($rootScope, $scope, $location, $translatePartialLoader) {
+            $translatePartialLoader.addPart('user');
 
-        $scope.goHome = function () {
-            $location.path('/');
-        };
-    })
+            $scope.goHome = function () {
+                $location.path('/');
+            };
+        })
 
         .controller('InvitatioCancelCtrl', function ($rootScope, $scope, $location, $translatePartialLoader) {
             $translatePartialLoader.addPart('user');
@@ -53,11 +55,28 @@
             };
         })
 
-        .controller('SubscribeStartCtrl', function ($rootScope, $scope, $location, $translatePartialLoader, signupRestAPI, vcRecaptchaService) {
+        .controller('SubscribeStartCtrl', function ($rootScope, $routeParams, $scope, $location, $translatePartialLoader, signupRestAPI, vcRecaptchaService, sandboxRestAPI) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
-
+        
+            $scope.invitationId = $routeParams.invitationId;
             $scope.signup = {};
+            $scope.signup.contact = {};
+        
+        
+            sandboxRestAPI.getInvitationToSandbox($scope.invitationId).success(function (data) {
+                $scope.invitation = data;
+                if ($scope.invitation.status !== "waiting") {
+                    $location.path('/invitationError');
+                }
+                $scope.signup.contact.email = $scope.invitation.userEmail;
+            }).error(function () {
+                $location.path('/invitationError');
+            });
+
+            
+            
+        
             $scope.widgetId = null;
             $scope.setWidgetId = function (widgetId) {
                 console.info('Created widget ID: %s', widgetId);
@@ -115,8 +134,11 @@
             };
         })
 
-        .controller('SubscribeEndCtrl', function ($rootScope, $scope, $location, $translatePartialLoader, $log, $filter, signupRestAPI) {
+        .controller('SubscribeEndCtrl', function ($rootScope, $routeParams, $scope, $location, $translatePartialLoader, $log, $filter, 
+                                                   signupRestAPI, countryRestAPI, locationAPI, activityCfgRestAPI, structureRestAPI, $window) {
             $translatePartialLoader.addPart('user');
+            $translatePartialLoader.addPart('commons');
+        
             $scope.creatClub = false;
             /* init ngAutocomplete*/
             $scope.options = {};
@@ -206,10 +228,11 @@
             $scope.loadCategories = function () {
                 countryRestAPI.getAlpha2($scope.structure.address.country.alpha2).success(function (data) {
                     $scope.structure.country = data;
+                    
                     activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.user.account.listPlan[0].activity._id, data._id, 'listCategoryAge').success(function (data2) {
                         $scope.categoryAgeResult = data2;
                         $scope.valuesCategoryAge = [];
-
+                        $log.debug('cate', data2);
                         var dataSort = data2.sortBy(function (o) {
                             return -1 * o.order;
                         });
