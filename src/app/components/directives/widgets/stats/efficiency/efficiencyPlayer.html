@@ -20,8 +20,10 @@
         </div>
 
         <div ng-if="!loading">
-            <div class="center-align" ng-show="noStat">
-                <h2 class="">{{efficiency | number : 0}} <small>%</small> </h2>
+            <div class="center-align" ng-if="noStat">
+                <h2 class="">{{efficiency | number : 0}}
+                    <small>%</small>
+                </h2>
                 <h5 class="right-align">{{nbGoal}} buts / {{nbShoot}} tirs</h5>
             </div>
             <div class="center-align" ng-hide="noStat">{{'stats.resumeTab.noData' | translate }}</div>

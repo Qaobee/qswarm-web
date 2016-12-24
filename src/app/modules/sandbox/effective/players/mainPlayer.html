@@ -8,9 +8,11 @@
     <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
 
     <v-tabs class="tabs" horizontal active="activeTabIndex">
-        <v-tab class="tab" ng-click="changeTabDefault(0)"><a ng-href="" ng-class="{'secondary-color': activeTabIndex === 0}">{{'tabEffectif.dashboard'
+        <v-tab class="tab" ng-click="changeTabDefault(0)"><a ng-href=""
+                                                             ng-class="{'secondary-color': activeTabIndex === 0}">{{'tabEffectif.dashboard'
             | translate }}</a></v-tab>
-        <v-tab class="tab" ng-click="changeTabDefault(1)"><a ng-href="" ng-class="{'secondary-color': activeTabIndex === 1}">{{'tabEffectif.Listplayer'
+        <v-tab class="tab" ng-click="changeTabDefault(1)"><a ng-href=""
+                                                             ng-class="{'secondary-color': activeTabIndex === 1}">{{'tabEffectif.Listplayer'
             | translate }} ({{players.length}})</a></v-tab>
     </v-tabs>
 
@@ -48,25 +50,25 @@
                 </div>
 
 
-                <div class="col s12 m6 l3">
+                <div class="col s12 m6">
                     <qaobee-radar-chart
                             title="{{'stats.actionTab.attack' | translate}} {{'stats.actionTab.positive' | translate}}"
                             owners="tabOwner" series="series" periodicity-active="periodicityActive"
                             indicators="['penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec']"></qaobee-radar-chart>
                 </div>
-                <div class="col s12 m6 l3">
+                <div class="col s12 m6">
                     <qaobee-radar-chart
                             title="{{'stats.actionTab.attack' | translate}} {{'stats.actionTab.negative' | translate}}"
                             owners="tabOwner" series="series" meta="meta" periodicity-active="periodicityActive"
                             indicators="['forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt']"></qaobee-radar-chart>
                 </div>
-                <div class="col s12 m6 l3">
+                <div class="col s12 m6">
                     <qaobee-radar-chart
                             title="{{'stats.actionTab.defense' | translate}} {{'stats.actionTab.positive' | translate}}"
                             owners="tabOwner" series="series" periodicity-active="periodicityActive"
                             indicators="['neutralization', 'forceDef', 'contre', 'interceptionOk']"></qaobee-radar-chart>
                 </div>
-                <div class="col s12 m6 l3">
+                <div class="col s12 m6">
                     <qaobee-radar-chart
                             title="{{'stats.actionTab.defense' | translate}} {{'stats.actionTab.negative' | translate}}"
                             owners="tabOwner" series="series" meta="meta" periodicity-active="periodicityActive"
@@ -83,7 +85,8 @@
 
                 <div class="col m4 s12 center-align">
                     <br>
-                    <a href="#/private/addPlayer/{{meta.sandbox._id}}" class="waves-effect waves-light btn accent-color">
+                    <a href="#/private/addPlayer/{{meta.sandbox._id}}"
+                       class="waves-effect waves-light btn accent-color">
                         <i class="material-icons">add</i>
                     </a>
 

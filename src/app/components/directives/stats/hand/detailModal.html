@@ -1,11 +1,12 @@
-<button class="btn waves-effect waves-light accent-color   modal-trigger" title="{{'stats.buttons.timeline' | translate}}"
+<button class="btn waves-effect waves-light accent-color   modal-trigger"
+        title="{{'stats.buttons.timeline' | translate}}"
         ng-click="openDetail(uid)">
     <i class="material-icons">timeline</i>
 </button>
 
 <div id="modal-{{uid}}" class="modal graph-modal">
     <div class="modal-header right">
-            <button class="waves-effect waves-teal btn-flat fa fa-fw fa-close" ng-click="close(uid)"></button>
+        <button class="waves-effect waves-teal btn-flat fa fa-fw fa-close" ng-click="close(uid)"></button>
     </div>
     <div class="modal-content compare-modale">
         <form name="myForm">
@@ -22,9 +23,10 @@
                     <br>
                 </div>
                 <div class="col m6 s12"><h4 ng-bind="title" class="center"></h4></div>
-                
+
             </div>
-            <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive" meta="meta"></filter-calendar>
+            <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive"
+                             meta="meta"></filter-calendar>
             <div class="row" ng-if="loading">
                 <div class="col s12">
                     <div class="preloader-wrapper big active">
@@ -47,9 +49,11 @@
                     <h6 class="center-align" translate="stats.resumeTab.noData"></h6>
                 </div>
             </div>
-            <canvas ng-if="!noData" id="bar" class="chart chart-bar" chart-data="data"
-                    height="200" chart-labels="labels" chart-series="series">
-            </canvas>
+            <div class="q-modal-chart">
+                <canvas ng-if="!noData" id="bar" class="chart chart-bar" chart-data="data"
+                        chart-labels="labels" chart-series="series">
+                </canvas>
+            </div>
             <ul ng-if="!noData" class="bar-legend">
                 <li ng-repeat="p in series track by $index">
                     <span class="bar-legend-icon" style="background-color:{{legendColours[$index]}}"></span>

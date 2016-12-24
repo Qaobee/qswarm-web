@@ -121,8 +121,7 @@
             Chart.defaults.global.responsive = true;
             ChartJsProvider.setOptions({
                 responsive: true,
-                maintainAspectRatio: false,
-                colours: ['#03a9f4', '#0f9d58', '#ff5722', '#803690', '#FDB45C', '#949FB1', '#4D5360']
+                maintainAspectRatio: false
             });
         })
         .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale, $window) {
