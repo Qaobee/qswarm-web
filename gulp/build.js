@@ -54,6 +54,7 @@ gulp.task('html', ['inject', 'partials'], function () {
         .pipe(cssFilter)
         .pipe(replace(/font\/[^\/]+\/([^\/]+)/g, 'fonts/$1'))
         .pipe(replace(/fonts\/[^\/]+\/([^\/]+)/g, 'fonts/$1'))
+        .pipe(replace(/fonts\/fonts\//g, 'fonts/'))
         .pipe($.sourcemaps.init())
         .pipe($.minifyCss({processImport: false}))
         .pipe($.sourcemaps.write('maps'))
@@ -77,7 +78,7 @@ gulp.task('html', ['inject', 'partials'], function () {
 // Custom fonts are handled by the "other" task
 gulp.task('fonts', function () {
     return gulp.src([path.join('bower_components', '/**/*')])
-        .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
+        .pipe($.filter('**/*.{eot,svg,ttf,otf,woff,woff2}'))
         .pipe($.flatten())
         .pipe(gulp.dest(path.join(conf.paths.dist, '/fonts/')));
 });
