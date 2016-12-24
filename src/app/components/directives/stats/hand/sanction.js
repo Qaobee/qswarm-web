@@ -29,8 +29,8 @@
                             nbRedCard: 0
                         };
 
-                        var indicators = Array.create('yellowCard', 'exclTmp', 'redCard');
-                        var listFieldsGroupBy = Array.create('owner', 'code');
+                        var indicators = ['yellowCard', 'exclTmp', 'redCard'];
+                        var listFieldsGroupBy = ['owner', 'code'];
 
                         var search = {
                             listIndicators: indicators,

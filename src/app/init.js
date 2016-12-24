@@ -2,6 +2,7 @@
     'use strict';
     (function ($) {
         $(document).ready(function () {
+            Sugar.extend();
             $('.modal').modal();
             // Plugin initialization
             $('.dropdown-button').dropdown({

@@ -51,7 +51,7 @@
                             return $filter('translate')('stats.label.' + i);
                         });
                         var search = {
-                            listIndicators: Array.create($scope.currentIndicator),
+                            listIndicators: [$scope.currentIndicator],
                             listOwners: $scope.owners,
                             startDate: $scope.periodicityActive.startDate.valueOf(),
                             endDate: $scope.periodicityActive.endDate.valueOf(),
@@ -60,7 +60,7 @@
                         var promises = [];
                         $scope.owners.forEach(function (id) {
                             var tSearch = angular.copy(search);
-                            tSearch.listOwners = Array.create(id);
+                            tSearch.listOwners = [id];
                             promises.push(statsRestAPI.getListDetailValue(tSearch).success(function (data, status, headers, config) {
                                 if (angular.isArray(data) && data.length > 0) {
                                     angular.forEach(data, function (value) {

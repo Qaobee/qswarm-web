@@ -113,7 +113,7 @@
          */
         .controller('ContactCtrl', function ($scope, publicRestAPI, $filter, $translatePartialLoader) {
             $translatePartialLoader.addPart('landing');
-            $scope.subjects = Array.create();
+            $scope.subjects = [];
             $scope.subjects.push({
                 id: 'service',
                 label: $filter('translate')('contact.ph.subject.line2')

@@ -147,7 +147,7 @@
                     effectiveSrv.getListId($scope.currentEffective, 'player').then(function (listId) {
                         $scope.ownersId = listId;
                         $scope.initPeriodicityActive();
-                        var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact');
+                        var listField = ['_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact'];
 
                         effectiveSrv.getPersons(listId, listField).then(function (players) {
 
@@ -162,7 +162,7 @@
                                 e.birthdate = $filter('date')(e.birthdate, 'yyyy');
                                 e.age = moment().format('YYYY') - e.birthdate;
                             });
-                            
+
                             $scope.players = $scope.players.sortBy(function (n) {
                                 return n.name;
                             });

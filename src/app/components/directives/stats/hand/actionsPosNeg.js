@@ -37,10 +37,10 @@
 
 
                         /* Search parameters Efficiently global */
-                        var listFieldsGroupBy = Array.create('owner');
+                        var listFieldsGroupBy = ['owner'];
 
                         /* ALL PERS-ACT-DEF-POS */
-                        var indicators = Array.create('neutralization', 'forceDef', 'contre', 'interceptionOk');
+                        var indicators = ['neutralization', 'forceDef', 'contre', 'interceptionOk'];
                         statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
                             if (!$scope.noStat && result > 0) {
                                 $scope.noStat = true;
@@ -50,7 +50,7 @@
                         });
 
                         /* ALL PERS-ACT-DEF-NEG */
-                        indicators = Array.create('penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition');
+                        indicators = ['penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition'];
                         statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
                             if (!$scope.noStat && result > 0) {
                                 $scope.noStat = true;
@@ -60,7 +60,7 @@
                         });
 
                         /* ALL PERS-ACT-OFF-POS */
-                        indicators = Array.create('penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec');
+                        indicators = ['penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec'];
                         statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
                             if (!$scope.noStat && result > 0) {
                                 $scope.noStat = true;
@@ -70,7 +70,7 @@
                         });
 
                         /* ALL PERS-ACT-OFF-NEG */
-                        indicators = Array.create('forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt');
+                        indicators = ['forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt'];
                         statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
                             if (!$scope.noStat && result > 0) {
                                 $scope.noStat = true;

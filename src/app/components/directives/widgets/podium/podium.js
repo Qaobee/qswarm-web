@@ -43,7 +43,7 @@
                         /* Stats Count by indicator */
                         var indicators = [];
                         indicators.push($scope.indicator);
-                        var listFieldsGroupBy = Array.create('owner');
+                        var listFieldsGroupBy = ['owner'];
                         var search = {
                             listIndicators: indicators,
                             listOwners: ownersId,
@@ -97,7 +97,7 @@
                     };
 
                     $scope.getInfosPlayer = function () {
-                        var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status');
+                        var listField = ['_id', 'name', 'firstname', 'avatar', 'status'];
                         var listId = [];
 
                         $scope.players.forEach(function (e) {

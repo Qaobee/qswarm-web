@@ -106,7 +106,7 @@
                     $scope.currentEffective = data;
 
                     effectiveSrv.getListId($scope.currentEffective, 'player').then(function (listId) {
-                        var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact');
+                        var listField = ['_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact'];
 
                         effectiveSrv.getPersons(listId, listField).then(function (players) {
                             $scope.players = players;

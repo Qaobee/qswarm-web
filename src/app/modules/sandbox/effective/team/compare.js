@@ -85,14 +85,14 @@
                 if ($scope.teamsIds.length === 0) {
                     return;
                 }
-                var listFieldsGroupBy = Array.create('code');
+                var listFieldsGroupBy = ['code'];
                 var promises = [];
                 var startDate = $scope.periodicityActive.startDate.valueOf();
                 var endDate = $scope.periodicityActive.endDate.valueOf();
                 $scope.selectedIds.forEach(function (id) {
                     promises.push(statsRestAPI.getStatGroupBy({
-                        listIndicators: Array.create('goalScored', 'goalConceded'),
-                        listOwners: Array.create(id),
+                        listIndicators: ['goalScored', 'goalConceded'],
+                        listOwners: [id],
                         startDate: startDate.valueOf(),
                         endDate: endDate.valueOf(),
                         aggregat: 'COUNT',
@@ -105,8 +105,8 @@
                         }
                     }));
                     promises.push(statsRestAPI.getStatGroupBy({
-                        listIndicators: Array.create('originShootAtt', 'originShootDef'),
-                        listOwners: Array.create(id),
+                        listIndicators: ['originShootAtt', 'originShootDef'],
+                        listOwners: [id],
                         startDate: startDate.valueOf(),
                         endDate: endDate.valueOf(),
                         aggregat: 'COUNT',
@@ -119,8 +119,8 @@
                         }
                     }));
                     promises.push(statsRestAPI.getStatGroupBy({
-                        listIndicators: Array.create('yellowCard', 'exclTmp', 'redCard'),
-                        listOwners: Array.create(id),
+                        listIndicators: ['yellowCard', 'exclTmp', 'redCard'],
+                        listOwners: [id],
                         startDate: startDate.valueOf(),
                         endDate: endDate.valueOf(),
                         aggregat: 'COUNT',

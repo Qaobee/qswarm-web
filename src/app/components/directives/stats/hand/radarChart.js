@@ -51,7 +51,7 @@
                         var promises = [];
                         $scope.owners.forEach(function (id) {
                             var tSearch = angular.copy(search);
-                            tSearch.listOwners = Array.create(id);
+                            tSearch.listOwners = [id];
                             promises.push(statsRestAPI.getStatGroupBy(tSearch).success(function (data, status, headers, config) {
                                 if (angular.isArray(data) && data.length > 0) {
                                     angular.forEach(data, function (value) {

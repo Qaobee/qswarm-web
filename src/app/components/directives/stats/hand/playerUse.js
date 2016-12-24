@@ -36,8 +36,8 @@
 
                                 result.nbGame = data.length;
                                 $scope.noStat = true;
-                                var indicators = Array.create('totalPlayTime');
-                                var listFieldsGroupBy = Array.create('owner', 'code');
+                                var indicators = ['totalPlayTime'];
+                                var listFieldsGroupBy = ['owner', 'code'];
 
                                 var search = {
                                     listIndicators: indicators,
@@ -56,7 +56,7 @@
                                         /* Stats Count by indicator */
                                         var indicators = [];
                                         indicators.push('holder');
-                                        var listFieldsGroupBy = Array.create('code');
+                                        var listFieldsGroupBy = ['code'];
                                         var search = {
                                             listIndicators: indicators,
                                             listOwners: ownersId,

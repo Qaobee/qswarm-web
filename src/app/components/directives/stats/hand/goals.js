@@ -53,7 +53,7 @@
                                     indicators.push('goalConceded');
                                 }
 
-                                var listFieldsGroupBy = Array.create('code');
+                                var listFieldsGroupBy = ['code'];
 
                                 var search = {
                                     listIndicators: indicators,

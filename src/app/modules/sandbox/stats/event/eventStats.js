@@ -91,7 +91,7 @@
                             $scope.teamHome = false;
                             $scope.teamVisitor = true;
                         }
-                        var listField = Array.create('_id', 'name', 'firstname', 'avatar', 'status');
+                        var listField = ['_id', 'name', 'firstname', 'avatar', 'status'];
                         $scope.stats = [];
                         effectiveSrv.getPersons(data.players, listField).then(function (players) {
                             $scope.players = players;
@@ -111,7 +111,7 @@
                                     redCard: 0
                                 };
                             });
-                            var listFieldsGroupBy = Array.create('owner', 'code');
+                            var listFieldsGroupBy = ['owner', 'code'];
                             var search = {
                                 listIndicators: ['originShootAtt', 'goalScored', 'yellowCard',
                                     'exclTmp', 'redCard', 'originShootDef', 'goalConceded',
