@@ -31,7 +31,7 @@
                     $scope.widgetTitle = $scope.widgetTitle || 'stats.efficiency.efficiencyTotal';
 
                     /* efficiency */
-                    var getEfficiency = function (ownersId, startDate, endDate, values) {
+                    var getEfficiency = function (ownersId, startDate, endDate) {
                         var deferred = $q.defer();
                         var result = {
                             nbShoot: 0,
