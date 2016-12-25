@@ -21,57 +21,33 @@
                     bindtoid: '@',
                     label: '@',
                     padding: '@',
-                    values: "=?"
+                    values: "=?",
+                    widgetTitle:  '=?'
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
                     $scope.noStat = false;
                     $scope.loading = true;
-                    $scope.widgetTitle = 'stats.efficiency.efficiencyTotal';
+                    $scope.widgetTitle = $scope.widgetTitle || 'stats.efficiency.efficiencyTotal';
 
                     /* efficiency */
                     var getEfficiency = function (ownersId, startDate, endDate, values) {
                         var deferred = $q.defer();
-                        var search = {};
                         var result = {
                             nbShoot: 0,
                             nbGoal: 0,
                             efficiency: 0
                         };
-
-                        /* Search parameters Efficiently global */
-                        if (angular.isDefined(values)) {
-                            var valuesDist = '';
-
-                            //OriginShoot
-                            if (values === 'values9m') {
-                                valuesDist = ['BACKLEFT9', 'CENTER9', 'BACKRIGHT9'];
-                            }
-                            if (values === 'values7m') {
-                                valuesDist = ['PENALTY'];
-                            }
-                            if (values === 'values6m') {
-                                valuesDist = ['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING'];
-                            }
-
-                            search = {
-                                listIndicators: ['originShootAtt'],
-                                listOwners: ownersId,
-                                startDate: startDate.valueOf(),
-                                endDate: endDate.valueOf(),
-                                values: valuesDist,
-                                aggregat: 'COUNT',
-                                listFieldsGroupBy: ['owner', 'code', 'shootSeqId']
-                            };
-                        } else {
-                            search = {
-                                listIndicators: ['originShootAtt'],
-                                listOwners: ownersId,
-                                startDate: startDate.valueOf(),
-                                endDate: endDate.valueOf(),
-                                aggregat: 'COUNT',
-                                listFieldsGroupBy: ['owner', 'code', 'shootSeqId']
-                            };
+                        var search = {
+                            listIndicators: ['originShootAtt'],
+                            listOwners: ownersId,
+                            startDate: startDate.valueOf(),
+                            endDate: endDate.valueOf(),
+                            aggregat: 'COUNT',
+                            listFieldsGroupBy: ['owner', 'code', 'shootSeqId']
+                        };
+                        if(!!$scope.values) {
+                            search.values = $scope.values;
                         }
                         var listShootSeqId = [];
 

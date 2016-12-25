@@ -201,6 +201,7 @@
 
 .btn-floating {
     width: 40px;
+    min-width: 0%;
     height: 40px;
     line-height: 40px;
     padding: 0;
@@ -1146,4 +1147,28 @@ footer.page-footer {
 }
 .q-modal-chart {
     height: 200px;
+}
+input[type=checkbox] ~ .card-toggle {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition:all 1s ease;
+    -moz-transition:all 1s ease;
+    -o-transition:all 1s ease;
+    transition:all 1s ease;
+
+}
+input[type=checkbox]:checked ~ .card-toggle {
+    max-height: 500px;
+    opacity: 1;
+}
+input[type=checkbox] + .card-title .fa{
+     transform-origin:50% 50%;
+     -webkit-transition:all .5s ease;
+     -moz-transition:all .5s ease;
+     -o-transition:all .5s ease;
+     transition:all .5s ease;
+ }
+input[type=checkbox]:checked + .card-title .fa {
+    transform: rotate(-180deg);
 }

@@ -4,6 +4,7 @@
         $(document).ready(function () {
             Sugar.extend();
             $('.modal').modal();
+            $('.collapsible').collapsible();
             // Plugin initialization
             $('.dropdown-button').dropdown({
                     inDuration: 300,

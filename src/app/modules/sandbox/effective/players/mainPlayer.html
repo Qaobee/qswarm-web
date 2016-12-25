@@ -9,8 +9,8 @@
 
     <v-tabs class="tabs" horizontal active="activeTabIndex">
         <v-tab class="tab" ng-click="changeTabDefault(0)"><a ng-href=""
-                                                             ng-class="{'secondary-color': activeTabIndex === 0}">{{'tabEffectif.dashboard'
-            | translate }}</a></v-tab>
+                                                             ng-class="{'secondary-color': activeTabIndex === 0}"
+                                                             translate="tabEffectif.dashboard"></a></v-tab>
         <v-tab class="tab" ng-click="changeTabDefault(1)"><a ng-href=""
                                                              ng-class="{'secondary-color': activeTabIndex === 1}">{{'tabEffectif.Listplayer'
             | translate }} ({{players.length}})</a></v-tab>
@@ -27,15 +27,19 @@
                 </div>
 
                 <div class="col s12 m6 l3" style="margin-top:15px;">
-                    <widget-efficiency-player-nine meta="meta" user="user"></widget-efficiency-player-nine>
+                    <widget-efficiency-player meta="meta" user="user" values="['BACKLEFT9', 'CENTER9', 'BACKRIGHT9']"
+                                              widget-title="'stats.efficiency.efficiency9m'"></widget-efficiency-player>
                 </div>
 
                 <div class="col s12 m6 l3" style="margin-top:15px;">
-                    <widget-efficiency-player-six meta="meta" user="user"></widget-efficiency-player-six>
+                    <widget-efficiency-player meta="meta" user="user"
+                                              values="['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING']"
+                                              widget-title="'stats.efficiency.efficiency6m'"></widget-efficiency-player>
                 </div>
 
                 <div class="col s12 m6 l3" style="margin-top:15px;">
-                    <widget-efficiency-player-seven meta="meta" user="user"></widget-efficiency-player-seven>
+                    <widget-efficiency-player meta="meta" user="user" values="['PENALTY']"
+                                              widget-title="'stats.efficiency.efficiency7m'"></widget-efficiency-player>
                 </div>
 
 

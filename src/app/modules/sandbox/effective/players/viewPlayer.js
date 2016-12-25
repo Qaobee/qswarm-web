@@ -43,9 +43,11 @@
             $scope.playerId = $routeParams.playerId;
             $scope.user = user;
             $scope.meta = meta;
+            $scope.showDetail = false;
             personRestAPI.getPerson($routeParams.playerId).success(function (person) {
                 $scope.player = person;
             });
+
             /**
              * Back Button
              */

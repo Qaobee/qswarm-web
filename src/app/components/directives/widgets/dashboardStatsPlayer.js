@@ -3,15 +3,12 @@
     angular.module('qaobee.dashboard.statsPlayer', [
         'qaobee.widgets.agenda',
         'qaobee.widgets.efficiencyPlayer',
-        'qaobee.widgets.efficiencyPlayer9m',
-        'qaobee.widgets.efficiencyPlayer7m',
-        'qaobee.widgets.efficiencyPlayer6m',
         'qaobee.widgets.podium',
         'qaobee.widgets.notifications',
         'statsEfficiency']);
 
     angular.module('qaobee.widgets.dashboard.statsPlayer', ['qaobee.widgets.agenda', 'qaobee.widgets.podium', 'qaobee.widgets.notifications',
-        'qaobee.widgets.efficiencyPlayer', 'qaobee.widgets.efficiencyPlayer9m', 'qaobee.widgets.efficiencyPlayer7m', 'qaobee.widgets.efficiencyPlayer6m'])
+        'qaobee.widgets.efficiencyPlayer'])
         .factory('widgetDefinitionsStatsPlayer', function () {
             return {
                 get: function () {

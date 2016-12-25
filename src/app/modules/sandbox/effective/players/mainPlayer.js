@@ -183,8 +183,6 @@
 
             /* Primary, check if user connected */
             $scope.checkUserConnected();
-
-
         })
     //
     ;

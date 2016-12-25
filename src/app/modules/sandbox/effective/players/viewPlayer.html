@@ -1,4 +1,4 @@
-<div class="container" ng-if="player">
+<div class="container" ng-if="player" xmlns="http://www.w3.org/1999/html">
     <div class="row"></div>
     <div class="row dark-primary-color valign-wrapper">
         <div class="col m3 s12 center">
@@ -15,23 +15,26 @@
     </div>
     <div class="row card">
         <!--card-->
-        <div class="col m12 s12 animated fadeInUp" style="-webkit-animation-duration:{{$index * 100}}ms">
-            <div class="card-content">
+        <div class="col m12 s12">
+            <input type="checkbox" ng-model="showDetail" />
+            <span class="card-title activator grey-text text-darken-4" ng-click="showDetail = !showDetail">
+                <i class="fa fa-fw fa-chevron-down"></i>
+                {{'playerLabels.playerCivilSection' | translate}}</span>
+
+            <div class="card-content right-align card-toggle" >
                 <player-infos player="player"></player-infos>
+                <a href="#/private/updatePlayer/{{player._id}}" class="btn-large btn-floating red">
+                    <i class="large material-icons">mode_edit</i>
+                </a>
             </div>
         </div>
     </div>
     <div class="row card">
         <!--card-->
-        <div class="col m12 s12 animated fadeInUp" style="-webkit-animation-duration:{{$index * 100}}ms">
+        <div class="col m12 s12 animated fadeIn">
             <div class="card-content">
                 <player-stats player="player" meta="meta" user="user"></player-stats>
             </div>
         </div>
-    </div>
-    <div class="fixed-action-btn">
-        <a href="#/private/updatePlayer/{{player._id}}" class="btn-large btn-floating red">
-            <i class="large material-icons">mode_edit</i>
-        </a>
     </div>
 </div>
