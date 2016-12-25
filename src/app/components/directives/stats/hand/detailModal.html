@@ -1,4 +1,4 @@
-<button class="btn waves-effect waves-light accent-color   modal-trigger"
+<button class="btn-large btn-floating red modal-trigger"
         title="{{'stats.buttons.timeline' | translate}}"
         ng-click="openDetail(uid)">
     <i class="material-icons">timeline</i>
@@ -28,7 +28,7 @@
             <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive"
                              meta="meta"></filter-calendar>
             <div class="row" ng-if="loading">
-                <div class="col s12">
+                <div class="col s12 center">
                     <div class="preloader-wrapper big active">
                         <div class="spinner-layer spinner-green-only">
                             <div class="circle-clipper left">
@@ -51,6 +51,7 @@
             </div>
             <div class="q-modal-chart">
                 <canvas ng-if="!noData" id="bar" class="chart chart-bar" chart-data="data"
+                        chart-options="chartOpts"
                         chart-labels="labels" chart-series="series">
                 </canvas>
             </div>

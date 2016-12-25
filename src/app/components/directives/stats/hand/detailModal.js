@@ -33,8 +33,16 @@
                     $scope.periodicityActive.ownersId = $scope.periodicityActive.owners || $scope.owners;
                     $scope.stats = {};
                     $scope.legendColours = ChartJs.getOptions().colours;
-                    $scope.stats = {};
-
+                    $scope.chartOpts = {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    fixedStepSize: 1,
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    };
                     /**
                      * Build graphs
                      */
@@ -69,7 +77,6 @@
                                             $scope.stats[time] = [];
                                             $scope.stats[time][config.data.listOwners[0]] = 0;
                                         }
-
                                         $scope.stats[time][config.data.listOwners[0]] += parseInt(value.value);
                                     });
                                 }
@@ -124,6 +131,7 @@
                                 });
                                 $scope.tabular.push(datas);
                             });
+                            $scope.chartOpts.scales.yAxes[0].ticks.fixedStepSize = Math.ceil($scope.tabular.flatten().max() / 10);
                             $scope.loading = false;
                         });
                     };

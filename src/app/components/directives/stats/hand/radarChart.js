@@ -19,11 +19,11 @@
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
                     $scope.stats = {};
-                    $scope.max = 1;
                     $scope.radarOpts  = {
                         scale: {
                             ticks : {
-                                fixedStepSize : 1
+                                fixedStepSize : 1,
+                                beginAtZero : true
                             }
                         }
                     };
@@ -74,14 +74,13 @@
                                         if (!$scope.stats[id][i]) {
                                             datas.push(0);
                                         } else {
-                                            $scope.max = Math.max($scope.max, $scope.stats[id][i]);
                                             datas.push($scope.stats[id][i]);
                                         }
                                     }
                                 });
                                 $scope.data.push(datas);
                             });
-                            $scope.radarOpts.scale.ticks.fixedStepSize = Math.ceil($scope.max / 10);
+                            $scope.radarOpts.scale.ticks.fixedStepSize = Math.ceil($scope.data.flatten().max() / 10);
                             $scope.loading = false;
                         });
                     };
