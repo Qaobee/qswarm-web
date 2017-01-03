@@ -55,7 +55,7 @@
             };
         })
 
-        .controller('SubscribeStartCtrl', function ($rootScope, $routeParams, $scope, $location, $translatePartialLoader, signupRestAPI, vcRecaptchaService, sandboxRestAPI) {
+        .controller('SubscribeStartCtrl', function ($rootScope, $routeParams, $scope, $filter, $location, $translatePartialLoader, signupRestAPI, vcRecaptchaService, sandboxRestAPI) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
         
