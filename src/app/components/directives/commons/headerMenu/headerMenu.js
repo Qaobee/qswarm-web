@@ -40,7 +40,6 @@
                         return viewLocation === $location.path();
                     };
                     $rootScope.$on('$viewContentLoaded', function () {
-                        // Detect touch screen and enable scrollbar if necessary
                         $scope.hideTrial = $location.path() === '/';
                         function is_touch_device() { // NOSONAR
                             try {
@@ -56,11 +55,8 @@
                         }
                         angular.element('.dropdown-button').dropdown();
                         angular.element('.button-collapse').sideNav({
-                            // Default is 240
                             menuWidth: 240,
-                            // Choose the horizontal origin
                             edge: 'left',
-                            // Closes side-nav on <a> clicks, useful for Angular/Meteor
                             closeOnClick: true
                         });
                     });
