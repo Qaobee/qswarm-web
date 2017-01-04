@@ -24,7 +24,7 @@
             }).when('/subscribeStart/:invitationId', {
                 controller: 'SubscribeStartCtrl',
                 templateUrl: 'app/modules/commons/users/invitation/subscribeStart.html'
-            }).when('/subscribeEnd/:id/:code?', {
+            }).when('/subscribeEnd/:id/:code/:invitationId?', {
                 controller: 'SubscribeEndCtrl',
                 templateUrl: 'app/modules/commons/users/invitation/subscribeEnd.html'
             });
@@ -116,7 +116,7 @@
                                 delete $scope.signup;
                                 delete $scope.passwdConfirm;
                                 $rootScope.user = data2.person;
-                                $location.path('/subscribeEnd/' + data2.person._id + '/' + data2.person.account.activationCode);
+                                $location.path('/subscribeEnd/' + data2.person._id + '/' + data2.person.account.activationCode + '/' + $scope.invitationId);
                             }
                         }).error(function (error) {
                             vcRecaptchaService.reload($scope.widgetId);
@@ -133,9 +133,11 @@
         })
 
         .controller('SubscribeEndCtrl', function ($rootScope, $routeParams, $scope, $location, $translatePartialLoader, $log, $filter,
-                                                  signupRestAPI, countryRestAPI, locationAPI, activityCfgRestAPI, structureRestAPI, $window) {
+                                                  sandboxRestAPI, signupRestAPI, countryRestAPI, locationAPI, activityCfgRestAPI, structureRestAPI, $window) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
+        
+            $scope.invitationId = $routeParams.invitationId;
 
             $scope.creatClub = false;
             /* init ngAutocomplete*/
@@ -370,10 +372,21 @@
                     if (false === data.status) {
                         toastr.error('Pb');
                     } else {
-                        $scope.creationFinished = true;
-                        delete $rootScope.user;
-                        delete $rootScope.meta;
-                        delete $scope.user;
+                        var request = {
+                            'invitationId': $scope.invitationId,
+                            'userId': $scope.user._id,
+                            'answer':'accepted'
+                        };
+                        sandboxRestAPI.confirmInvitationToSandbox(request).success(function (data) {
+                            $scope.creationFinished = true;
+                            delete $rootScope.user;
+                            delete $rootScope.meta;
+                            delete $scope.user;
+                        }).error(function (data) {
+                            angular.element('#modalCreate').modal('close');
+                            $scope.messageErreur = data.message;
+                            $window.location.href = '/#/signup/error';
+                        });
                     }
                 }).error(function (data) {
                     angular.element('#modalCreate').modal('close');
