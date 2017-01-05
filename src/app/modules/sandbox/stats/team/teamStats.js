@@ -70,7 +70,7 @@
                 $scope.getTeam();
             };
 
-            /* watch if periodicity change */
+            /* watch if periodicity change
             $scope.$watch('periodicityActive', function (newValue, oldValue) {
                 if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
                     $scope.periodicityActive.ownersId = $scope.ownersId;
@@ -83,7 +83,7 @@
                     $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
                 }
             });
-
+            */
             /* get team */
             $scope.getTeam = function () {
 

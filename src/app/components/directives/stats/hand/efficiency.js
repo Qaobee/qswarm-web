@@ -12,22 +12,18 @@
 
     angular.module('statsEfficiency', ['statsRestAPI', 'qaobee.eventbus'])
 
-        .directive('statsEfficiency', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, qeventbus) {
+        .directive('statsEfficiency', function ($translatePartialLoader, statsRestAPI, qeventbus, $q) {
             return {
                 restrict: 'AE',
                 scope: {
                     bindtoid: "@",
-                    ownersId: "=?",
                     values: "=?",
                     label: "@",
-                    startDate: "=?",
-                    endDate: "=?",
                     padding: "=?"
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
                     $scope.noStat = true;
-
                     $scope.efficiencyGlobalCol = [{id: 'dataG', type: 'gauge', color: '#42a5f5'}];
                     $scope.efficiencyGlobalData = [{dataG: 0}];
                     $scope.efficiency9mCol = [{id: 'data9', type: 'gauge', color: '#42a5f5'}];
@@ -137,7 +133,9 @@
                     };
 
                     var buildGraph = function () {
-
+                        if(angular.isUndefined($scope.startDate) || angular.isUndefined($scope.ownersId)) {
+                            return;
+                        }
                         $scope.efficiencyGlobalCol = [{id: 'dataG', type: 'gauge', color: '#42a5f5'}];
                         $scope.efficiencyGlobalData = [{dataG: 0}];
                         $scope.efficiency9mCol = [{id: 'data9', type: 'gauge', color: '#42a5f5'}];
@@ -191,11 +189,19 @@
                             });
                         }
                     };
-                    /* Refresh widget on periodicity change */
+
                     $scope.$on('qeventbus:periodicityActive', function () {
-                        $scope.startDate = qeventbus.data.periodicityActive.startDate;
-                        $scope.endDate = qeventbus.data.periodicityActive.endDate;
-                        $scope.ownersId = qeventbus.data.periodicityActive.ownersId;
+                        if (!angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
+                            $scope.noStat = false;
+                            $scope.periodicityActive = qeventbus.data.periodicityActive;
+                            $scope.startDate = $scope.periodicityActive.startDate;
+                            $scope.endDate = $scope.periodicityActive.endDate;
+                            buildGraph();
+                        }
+                    });
+
+                    $scope.$on('qeventbus:ownersId', function () {
+                        $scope.ownersId = qeventbus.data.ownersId;
                         buildGraph();
                     });
                 },

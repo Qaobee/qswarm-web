@@ -14,7 +14,7 @@
                     periodicityActive: '=?',
                     periodicity: '=?'
                 },
-                controller: function ($scope) {
+                controller: function ($scope, qeventbus) {
                     $scope.loaded = false;
                     $scope.dateFormat = $filter('translate')('commons.format.date.moment');
                     $scope.tabular = [];
@@ -23,14 +23,6 @@
                     $translatePartialLoader.addPart('commons');
                     $scope.uid = qaobeeUtils.guid();
                     $scope.currentIndicator = $scope.indicators[0];
-                    $scope.periodicity = $scope.periodicity || 'season';
-                    $scope.periodicityActive = $scope.periodicityActive || {
-                            label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
-                            startDate: moment($scope.meta.season.startDate),
-                            endDate: moment($scope.meta.season.endDate),
-                            ownersId: $scope.owners
-                        };
-                    $scope.periodicityActive.ownersId = $scope.periodicityActive.owners || $scope.owners;
                     $scope.stats = {};
                     $scope.legendColours = ChartJs.getOptions().colours;
                     $scope.chartOpts = {
@@ -155,13 +147,15 @@
                         angular.element('#modal-' + uid).modal('close');
                     };
 
-                    $scope.$watchGroup(['indicators', 'currentIndicator', 'owners', 'periodicity', 'periodicityActive'], function (newValues) {
+                    $scope.$watchGroup(['indicators', 'currentIndicator', 'owners'], function (newValues) {
                         $scope.indicators = newValues[0];
                         $scope.currentIndicator = newValues[1];
                         $scope.owners = newValues[2];
-                        $scope.periodicity = newValues[3];
-                        $scope.periodicityActive = newValues[4];
-                        if (!!$scope.periodicityActive.startDate && !!$scope.periodicityActive.endDate || !!currentIndicator) {
+                        $scope.buildDatas();
+                    });
+                    $scope.$on('qeventbus:periodicityActive', function () {
+                        if (!angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
+                            $scope.periodicityActive = qeventbus.data.periodicityActive;
                             $scope.buildDatas();
                         }
                     });

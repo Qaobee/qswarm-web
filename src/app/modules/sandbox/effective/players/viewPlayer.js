@@ -12,8 +12,6 @@
      * @copyright <b>QaoBee</b>.
      */
     angular.module('qaobee.viewPlayer', [
-
-        /* qaobee Rest API */
         'effectiveRestAPI',
         'personRestAPI',
         'userRestAPI',
@@ -36,7 +34,7 @@
          * @class qaobee.modules.sandbox.effective.ViewPlayerControler
          * @description Main controller for view viewPlayer.html
          */
-        .controller('ViewPlayerControler', function (personRestAPI, $translatePartialLoader, $routeParams, $window , $scope, user, meta) {
+        .controller('ViewPlayerControler', function (personRestAPI, $translatePartialLoader, $routeParams, $window, $scope, user, meta) {
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('stats');

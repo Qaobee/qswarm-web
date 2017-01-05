@@ -11,8 +11,8 @@
             });
         })
 
-        .controller('PasswdCtrl', function ($rootScope, $scope, $timeout, $translatePartialLoader, $log, $routeParams,
-                                            vcRecaptchaService, $location, $filter, userRestAPI) {
+        .controller('PasswdCtrl', function (userRestAPI, $scope, $translatePartialLoader, $routeParams,
+                                            vcRecaptchaService, $location, $filter) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
 

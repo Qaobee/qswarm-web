@@ -33,8 +33,7 @@
             });
         })
 
-        .controller('ExternalInvitationCtrl', function ($rootScope, $scope, $translatePartialLoader, $log,
-                                                $routeParams) {
+        .controller('ExternalInvitationCtrl', function ($scope, $translatePartialLoader, $routeParams) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
 
@@ -42,8 +41,7 @@
 
         })
     
-        .controller('InternalInvitationCtrl', function ($rootScope, $scope, $translatePartialLoader, $log,
-                                                $routeParams, sandboxRestAPI, userRestAPI, $location) {
+        .controller('InternalInvitationCtrl', function ($scope, $translatePartialLoader, $routeParams, sandboxRestAPI, userRestAPI, $location) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
 
@@ -86,7 +84,7 @@
 
         })
 
-        .controller('InvitationErrorCtrl', function ($rootScope, $scope, $location, $translatePartialLoader) {
+        .controller('InvitationErrorCtrl', function ($scope, $location, $translatePartialLoader) {
             $translatePartialLoader.addPart('user');
 
             $scope.goHome = function () {
@@ -94,7 +92,7 @@
             };
         })
 
-        .controller('InvitatioCancelCtrl', function ($rootScope, $scope, $location, $translatePartialLoader) {
+        .controller('InvitatioCancelCtrl', function ($scope, $location, $translatePartialLoader) {
             $translatePartialLoader.addPart('user');
 
             $scope.goHome = function () {
@@ -183,7 +181,7 @@
                                                   sandboxRestAPI, signupRestAPI, countryRestAPI, locationAPI, activityCfgRestAPI, structureRestAPI, $window) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
-        
+
             $scope.invitationId = $routeParams.invitationId;
 
             $scope.creatClub = false;
@@ -422,7 +420,7 @@
                         var request = {
                             'invitationId': $scope.invitationId,
                             'userId': $scope.user._id,
-                            'answer':'accepted'
+                            'answer': 'accepted'
                         };
                         sandboxRestAPI.confirmInvitationToSandbox(request).success(function (data) {
                             $scope.creationFinished = true;

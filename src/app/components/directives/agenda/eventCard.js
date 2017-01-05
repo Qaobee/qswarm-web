@@ -12,7 +12,7 @@
 
     angular.module('eventCard', ['collecteRestAPI'])
 
-        .directive('eventCard', function ($translatePartialLoader, $timeout, $document, $log, $q, $filter, collecteRestAPI, qeventbus) {
+        .directive('eventCard', function ($translatePartialLoader, collecteRestAPI, qeventbus, $document, $timeout) {
             return {
                 restrict: 'E',
                 scope: {
@@ -103,7 +103,6 @@
                             $scope.map = new google.maps.Map($scope.map, myOptions);
                             google.maps.event.trigger($scope.map, 'resize');
                         }, 0);
-
                         angular.element('#modalEvent-' + $scope.event._id).modal('open');
                     };
                 },

@@ -12,7 +12,7 @@
 
     angular.module('statsActionsPosNeg', ['statsSRV', 'qaobee.eventbus'])
 
-        .directive('statsActionsPosNeg', function ($translatePartialLoader, $log, $q, $filter, statsSrv, qeventbus) {
+        .directive('statsActionsPosNeg', function ($translatePartialLoader, qeventbus, statsSrv) {
             return {
                 restrict: 'E',
                 scope: {
@@ -82,6 +82,9 @@
 
 
                     var buildGraph = function () {
+                        if(angular.isUndefined($scope.startDate) || angular.isUndefined($scope.ownersId)) {
+                            return;
+                        }
                         $scope.defenseCol = [{"id": "Positive", "index": 0, "type": 'donut', "color": '#9ccc65'},
                             {"id": "Negative", "index": 1, "type": 'donut', "color": '#ef5350'}];
                         $scope.defenseData = [{"Positive": 0}, {"Negative": 0}];
@@ -95,12 +98,18 @@
                         getActions($scope.ownersId, $scope.startDate, $scope.endDate);
                     };
 
-                    /* Refresh widget on periodicity change */
-                    $scope.$on('qeventbus:periodicityActive', function () {
-                        $scope.startDate = qeventbus.data.periodicityActive.startDate;
-                        $scope.endDate = qeventbus.data.periodicityActive.endDate;
-                        $scope.ownersId = qeventbus.data.periodicityActive.ownersId;
+                    $scope.$on('qeventbus:ownersId', function () {
+                        $scope.ownersId = qeventbus.data.ownersId;
                         buildGraph();
+                    });
+                    $scope.$on('qeventbus:periodicityActive', function () {
+                        if (!angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
+                            $scope.noStat = false;
+                            $scope.periodicityActive = qeventbus.data.periodicityActive;
+                            $scope.startDate = $scope.periodicityActive.startDate;
+                            $scope.endDate = $scope.periodicityActive.endDate;
+                            buildGraph();
+                        }
                     });
                 },
                 templateUrl: 'app/components/directives/stats/hand/actionsPosNeg.html'

@@ -19,7 +19,10 @@ String.prototype.replaceAll = function (find, replace) {
     var str = this;
     return str.replace(new RegExp(find, 'g'), replace);
 };
-
+Number.prototype.padLeft = function (n,str){
+    return Array(n-String(this).length+1).join(str||'0')+this;
+}
+/*
 function ensureP(txt) {
     'use strict';
     if (txt.startsWith('<p>')) {
@@ -28,7 +31,7 @@ function ensureP(txt) {
         return txt;
     }
 }
-
+*/
 /**
  * Ouvre une popup modale
  *
@@ -39,6 +42,7 @@ function ensureP(txt) {
  * @param question la question à poser
  * @param callback
  */
+/*
 function modalConfirm(heading, question, callback) {
     'use strict';
     angular.element('#modal-title').html(heading);
@@ -48,7 +52,7 @@ function modalConfirm(heading, question, callback) {
         angular.element('#myModal').modal('hide');
     });
     angular.element('#myModal').modal('show');
-}
+}*/
 /**
  * Calcule le nombre d'années entre le timestamp actuel et un timestamp (antérieur)
  *
@@ -59,7 +63,8 @@ function modalConfirm(heading, question, callback) {
  * @returns nombre d'années
  * @deprecated
  */
+/*
 function dateDiff(timestamp) {
     'use strict';
     return Math.floor((new Date().getTime() - timestamp) / (365.25 * 24 * 3600 * 1000));
-}
+}*/

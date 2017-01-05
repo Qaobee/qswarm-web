@@ -7,7 +7,7 @@
      * @class qaobee.user.changePwd
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('qaobee.user.billing', ['qaobee.downloadService'])
+    angular.module('qaobee.user.billing', [])
 
         .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/billing', {
@@ -23,13 +23,16 @@
          * @class qaobee.user.profile.BillingCtrl
          * @description Main controller of app/modules/commons/users/profile/billing.html
          */
-        .controller('BillingCtrl', function ($rootScope, $scope, $filter, EnvironmentConfig, $window, $translatePartialLoader, user, meta, downloadSrv, userRestAPI) {
+        .controller('BillingCtrl', function ($rootScope, $scope, EnvironmentConfig, $window, $translatePartialLoader, user, meta, userRestAPI) {
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
+            $scope.renew = {};
+
             userRestAPI.getCurrentUser().success(function (data) {
                 $rootScope.user = loadAdmin(data);
                 $scope.user = $rootScope.user;
             });
+
             function loadAdmin(data) {
                 if (angular.isDefined(data.account) && data.account.habilitations !== null) {
                     data.account.habilitations.forEach(function (a) {
@@ -41,11 +44,11 @@
                 return data;
             }
 
-            $scope.renew = {};
             // return button
             $scope.doTheBack = function () {
                 $window.history.back();
             };
+
             $scope.$on('$destroy', function () {
                 delete $scope.user;
             });

@@ -30,7 +30,6 @@
                     $scope.doTheBack = function () {
                         $window.history.back();
                     };
-
                 },
                 templateUrl: 'app/components/directives/commons/titlePageBar/titlePageBar.html'
             };

@@ -9,197 +9,169 @@
      * @copyright &lt;b&gt;QaoBee&lt;/b&gt;.
      *
      */
-
     angular.module('qaobee.filterCalendar', ['qaobee.eventbus'])
-
-        .directive('filterCalendar', function ($translatePartialLoader, qeventbus) {
+        .factory('filterCalendarSrv', function () {
+            return {
+                getDefault: function (startDate, endDate) {
+                    return {
+                        label: moment(startDate, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment(endDate, 'DD/MM/YYYY').format('MMMM YYYY'),
+                        startDate: startDate,
+                        endDate: endDate
+                    };
+                },
+                getMonth: function (startDate, endDate) {
+                    return {
+                        label: moment(startDate, 'DD/MM/YYYY').format('MMMM YYYY'),
+                        startDate: startDate,
+                        endDate: endDate
+                    };
+                },
+                calculateMonth: function (currentQuarter) {
+                    return ((currentQuarter - 1) * 3 + 1).padLeft(2);
+                }
+            };
+        })
+        .directive('filterCalendar', function ($translatePartialLoader, qeventbus, filterCalendarSrv) {
             return {
                 restrict: 'E',
                 scope: {
-                    periodicity: "=",
-                    periodicityActive: "=",
                     meta: "=",
                     popup: "=?"
                 },
-                controller: function ($scope) {
+                controller: function ($scope, $rootScope) {
                     $translatePartialLoader.addPart('commons');
                     var periodicity = {
                         month: getCurrentMonth,
-                        quarter: getCurrentQuarter(),
-                        season: getCurrentSeason()
+                        quarter: getCurrentQuarter(true),
+                        season: getCurrentSeason(true)
                     };
+                    if (angular.isDefined($rootScope.periodicityActive)) {
+                        $scope.periodicityActive = $rootScope.periodicityActive;
+                    }
+                    if (angular.isDefined($rootScope.periodicityActive)) {
+                        $scope.periodicity = $rootScope.periodicity;
+                    }
+
                     if ($scope.periodicityActive && !$scope.periodicityActive.label) {
                         periodicity[$scope.periodicity].call();
-                        /* generate calendar by month */
                         $scope.currentMonth = function () {
-                            getCurrentMonth();
+                            getCurrentMonth(true);
                         };
                     }
-                    /* generate calendar by month */
-                    $scope.currentMonth = function () {
-                        getCurrentMonth();
-                    };
-                    $scope.$on('qeventbus:periodicityActive', function () {
-                        $scope.periodicityActive = qeventbus.data.periodicityActive;
-                        $scope.periodicity = qeventbus.data.periodicity;
+
+                    $scope.$watch('meta', function () {
+                        if (angular.isDefined($scope.meta) && angular.isDefined($scope.meta.season)) {
+                            $scope.periodicity = 'season';
+                            $scope.periodicityActive = filterCalendarSrv.getDefault(moment($scope.meta.season.startDate), moment($scope.meta.season.endDate));
+                            if (angular.isDefined($rootScope.periodicityActive)) {
+                                $scope.periodicityActive = $rootScope.periodicityActive;
+                            }
+                            if (angular.isDefined($rootScope.periodicityActive)) {
+                                $scope.periodicity = $rootScope.periodicity;
+                            }
+                            updateDatas();
+                        }
                     });
+
                     /**
-                     *
+                     * Update datas
                      */
-                    function getCurrentMonth() {
+                    function updateDatas(noUpdt) {
+                        if (!noUpdt) {
+                            $rootScope.periodicityActive = $scope.periodicityActive;
+                            $rootScope.periodicity = $scope.periodicity;
+                            qeventbus.prepForBroadcast('periodicityActive', {
+                                periodicityActive: $scope.periodicityActive,
+                                periodicity: $scope.periodicity,
+                                self: 'filterCalendar'
+                            });
+                        }
+                    }
+
+                    $scope.currentMonth = function () {
+                        getCurrentMonth(true);
+                    };
+
+                    function getCurrentMonth(noUpdt) {
                         $scope.periodicity = 'month';
                         var start = moment('01/' + moment().format('MM/YYYY'), 'DD/MM/YYYY');
                         var end = moment(start).add(1, 'months').subtract(1, 'ms');
-
-                        $scope.periodicityActive = {
-                            label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY'),
-                            startDate: start,
-                            endDate: end
-                        };
+                        $scope.periodicityActive = filterCalendarSrv.getMonth(start, end);
+                        updateDatas(noUpdt);
                     }
 
-                    /* Previous month */
-                    $scope.previousMonth = function (/* index */) {
+                    $scope.previousMonth = function (noUpdt) {
                         $scope.periodicity = 'month';
                         var start = moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').subtract(1, 'month');
                         var end = moment(start).add(1, 'months').subtract(1, 'ms');
-
-                        $scope.periodicityActive = {
-                            label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY'),
-                            startDate: start,
-                            endDate: end
-                        };
+                        $scope.periodicityActive = filterCalendarSrv.getMonth(start, end);
+                        updateDatas(noUpdt);
                     };
 
-                    /* Next month */
-                    $scope.nextMonth = function (/* index */) {
+                    $scope.nextMonth = function (noUpdt) {
                         $scope.periodicity = 'month';
                         var start = moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').add(1, 'month');
                         var end = moment(start).add(1, 'months').subtract(1, 'ms');
-
-                        $scope.periodicityActive = {
-                            label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY'),
-                            startDate: start,
-                            endDate: end
-                        };
+                        $scope.periodicityActive = filterCalendarSrv.getMonth(start, end);
+                        updateDatas(noUpdt);
                     };
 
-                    /* generate calendar by quarter */
                     $scope.currentQuarter = function () {
-                        getCurrentQuarter();
+                        getCurrentQuarter(true);
                     };
 
-                    function getCurrentQuarter() {
+                    function getCurrentQuarter(noUpdt) {
                         $scope.periodicity = 'quarter';
-                        var quarter;
-                        var currentQuarter = moment().quarter();
-                        var year = moment().year();
-
-                        switch (currentQuarter) {
-                            case 2:
-                                quarter = {
-                                    label: moment('01/04/' + year, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment('/01/07/' + year, 'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
-                                    startDate: moment('/01/04/' + year, 'DD/MM/YYYY'),
-                                    endDate: moment('/01/07/' + year, 'DD/MM/YYYY').subtract(1, 'ms')
-                                };
-                                break;
-                            case 3:
-                                quarter = {
-                                    label: moment('/01/07/' + year, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment('/01/10/' + year, 'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
-                                    startDate: moment('/01/07/' + year, 'DD/MM/YYYY'),
-                                    endDate: moment('/01/10/' + year, 'DD/MM/YYYY').subtract(1, 'ms')
-                                };
-                                break;
-                            case 4:
-                                quarter = {
-                                    label: moment('/01/10/' + year, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment('/01/01/' + (year + 1), 'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
-                                    startDate: moment('/01/10/' + year, 'DD/MM/YYYY'),
-                                    endDate: moment('/01/01/' + (year + 1), 'DD/MM/YYYY').subtract(1, 'ms')
-                                };
-                                break;
-                            // case 1
-                            default:
-                                quarter = {
-                                    label: moment('01/01/' + year, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment('01/04/' + year, 'DD/MM/YYYY').subtract(1, 'ms').format('MMMM YYYY'),
-                                    startDate: moment('01/01/' + year, 'DD/MM/YYYY'),
-                                    endDate: moment('/01/04/' + year, 'DD/MM/YYYY').subtract(1, 'ms')
-                                };
-                                break;
-                        }
-
-                        /* Current quarter */
-                        $scope.periodicityActive = quarter;
+                        var start = moment('/01/' + filterCalendarSrv.calculateMonth(moment().quarter()) + '/' + moment().year(), 'DD/MM/YYYY');
+                        var end = angular.copy(start).add(3, 'month').subtract(1, 'ms');
+                        $scope.periodicityActive = filterCalendarSrv.getDefault(start, end);
+                        updateDatas(noUpdt);
                     }
 
-                    /* Previous quarter */
-                    $scope.previousQuarter = function () {
+                    $scope.previousQuarter = function (noUpdt) {
                         $scope.periodicity = 'quarter';
                         var start = moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').subtract(3, 'month');
                         var end = moment($scope.periodicityActive.endDate, 'DD/MM/YYYY').subtract(3, 'month');
-
-                        $scope.periodicityActive = {
-                            label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment(end, 'DD/MM/YYYY').format('MMMM YYYY'),
-                            startDate: start,
-                            endDate: end
-                        };
+                        $scope.periodicityActive = filterCalendarSrv.getDefault(start, end);
+                        updateDatas(noUpdt);
                     };
 
-                    /* Next quarter */
-                    $scope.nextQuarter = function () {
+                    $scope.nextQuarter = function (noUpdt) {
                         $scope.periodicity = 'quarter';
                         var start = moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').add(3, 'month');
                         var end = moment($scope.periodicityActive.endDate, 'DD/MM/YYYY').add(3, 'month');
-
-                        $scope.periodicityActive = {
-                            label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment(end, 'DD/MM/YYYY').format('MMMM YYYY'),
-                            startDate: start,
-                            endDate: end
-                        };
+                        $scope.periodicityActive = filterCalendarSrv.getDefault(start, end);
+                        updateDatas(noUpdt);
                     };
 
-                    /* generate calendar by season */
                     $scope.currentSeason = function () {
-                        getCurrentSeason();
+                        getCurrentSeason(true);
                     };
-                    function getCurrentSeason() {
+
+                    function getCurrentSeason(noUpdt) {
                         $scope.periodicity = 'season';
                         if (angular.isUndefined($scope.meta)) {
                             return;
                         }
-                        $scope.periodicityActive = {
-                            index: 1,
-                            label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
-                            startDate: moment($scope.meta.season.startDate),
-                            endDate: moment($scope.meta.season.endDate)
-                        };
+                        $scope.periodicityActive = filterCalendarSrv.getDefault(moment($scope.meta.season.startDate), moment($scope.meta.season.endDate));
+                        updateDatas(noUpdt);
                     }
 
-                    /* Previous season */
-                    $scope.previousSeason = function () {
+                    $scope.previousSeason = function (noUpdt) {
                         $scope.periodicity = 'season';
                         var start = moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').subtract(1, 'year');
                         var end = moment($scope.periodicityActive.endDate, 'DD/MM/YYYY').subtract(1, 'year');
-
-                        $scope.periodicityActive = {
-                            label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment(end, 'DD/MM/YYYY').format('MMMM YYYY'),
-                            startDate: start,
-                            endDate: end
-                        };
+                        $scope.periodicityActive = filterCalendarSrv.getDefault(start, end);
+                        updateDatas(noUpdt);
                     };
 
-                    /* Next season */
-                    $scope.nextSeason = function () {
+                    $scope.nextSeason = function (noUpdt) {
                         $scope.periodicity = 'season';
                         var start = moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').add(1, 'year');
                         var end = moment($scope.periodicityActive.endDate, 'DD/MM/YYYY').add(1, 'year');
-
-                        $scope.periodicityActive = {
-                            label: moment(start, 'DD/MM/YYYY').format('MMMM YYYY') + ' - ' + moment(end, 'DD/MM/YYYY').format('MMMM YYYY'),
-                            startDate: start,
-                            endDate: end
-                        };
+                        $scope.periodicityActive = filterCalendarSrv.getDefault(start, end);
+                        updateDatas(noUpdt);
                     };
-
                 },
                 templateUrl: 'app/components/directives/commons/filter/calendar.html'
             };
