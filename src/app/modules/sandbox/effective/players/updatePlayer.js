@@ -88,8 +88,10 @@
                     $scope.birthdate = $scope.player.birthdate || moment().valueOf();
                     $scope.birthdate = moment($scope.birthdate).toDate();
                     $scope.showBirthdate = true;
-                    angular.element('#playerBirthdate').pickadate('picker').set('select', $scope.birthdate.valueOf());
-                    $scope.datePicker = angular.element('#playerBirthdate').pickadate('picker');
+                    $timeout(function () {
+                        angular.element('#playerBirthdate').pickadate('picker').set('select', $scope.birthdate.valueOf());
+                        $scope.datePicker = angular.element('#playerBirthdate').pickadate('picker');
+                    }, 1000);
                 });
             };
 
