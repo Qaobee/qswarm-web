@@ -51,7 +51,7 @@
                     ownersId: $scope.ownersId
                 };
             $scope.periodicityActive.ownersId = $scope.periodicityActive.ownersId || $scope.ownersId;
-            $scope.$watch('periodicityActive', function (newValue, oldValue) {
+         /*   $scope.$watch('periodicityActive', function (newValue, oldValue) {
                 if (!angular.equals(oldValue, newValue)) {
                     $scope.periodicityActive = newValue;
                     qeventbus.prepForBroadcast('periodicityActive', {
@@ -61,7 +61,7 @@
                     $scope.buildWidget();
                 }
             });
-
+*/
 
             $scope.doTheBack = function () {
                 $window.history.back();

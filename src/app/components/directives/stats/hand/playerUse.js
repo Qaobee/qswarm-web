@@ -33,7 +33,6 @@
                         /* get nbCollecte */
                         statsSrv.getMatchsPlayer(startDate, endDate, $scope.sandboxId, ownersId[0]).then(function (data) {
                             if (angular.isArray(data) && data.length > 0) {
-
                                 result.nbGame = data.length;
                                 $scope.noStat = true;
                                 var indicators = ['totalPlayTime'];
@@ -65,7 +64,6 @@
                                             aggregat: 'COUNT',
                                             listFieldsGroupBy: listFieldsGroupBy
                                         };
-
                                         /* Appel stats API */
                                         statsRestAPI.getStatGroupBy(search).success(function (holder) {
                                             if (angular.isArray(holder) && holder.length > 0) {
@@ -81,17 +79,17 @@
                                 $scope.noStat = false;
                             }
                         });
-
                         return deferred.promise;
                     };
 
                     var buildWidget = function () {
+                        if(angular.isUndefined($scope.startDate) || angular.isUndefined($scope.ownersId)) {
+                            return;
+                        }
                         $scope.nbHolder = 0;
                         $scope.nbGame = 0;
                         $scope.playTimeAvg = 0;
-
                         $scope.title = 'stats.resumeTab.' + $scope.label;
-
                         getStats($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
                             $log.debug('result', result);
                             $scope.nbHolder = result.nbHolder;
@@ -100,12 +98,18 @@
                         });
                     };
 
-                    /* Refresh widget on periodicity change */
-                    $scope.$on('qeventbus:periodicityActive', function () {
-                        $scope.startDate = qeventbus.data.periodicityActive.startDate;
-                        $scope.endDate = qeventbus.data.periodicityActive.endDate;
-                        $scope.ownersId = qeventbus.data.periodicityActive.ownersId;
+                    $scope.$on('qeventbus:ownersId', function () {
+                        $scope.ownersId = qeventbus.data.ownersId;
                         buildWidget();
+                    });
+                    $scope.$on('qeventbus:periodicityActive', function () {
+                        if (!angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
+                            $scope.noStat = false;
+                            $scope.periodicityActive = qeventbus.data.periodicityActive;
+                            $scope.startDate = $scope.periodicityActive.startDate;
+                            $scope.endDate = $scope.periodicityActive.endDate;
+                            buildWidget();
+                        }
                     });
                 },
                 templateUrl: 'app/components/directives/stats/hand/playerUse.html'

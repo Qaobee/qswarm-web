@@ -31,7 +31,7 @@
                      * Build graphs
                      */
                     $scope.buildDatas = function () {
-                        if (!$scope.owners) {
+                        if(angular.isUndefined($scope.startDate) || angular.isUndefined($scope.owners)) {
                             return;
                         }
                         $scope.stats = {};
@@ -84,9 +84,15 @@
                             $scope.loading = false;
                         });
                     };
+
                     $scope.$on('qeventbus:periodicityActive', function () {
-                        $scope.periodicityActive = qeventbus.data.periodicityActive;
-                        $scope.buildDatas();
+                        if (!angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
+                            $scope.noStat = false;
+                            $scope.periodicityActive = qeventbus.data.periodicityActive;
+                            $scope.startDate = $scope.periodicityActive.startDate;
+                            $scope.endDate = $scope.periodicityActive.endDate;
+                            $scope.buildDatas();
+                        }
                     });
                 },
                 link: function ($scope) {

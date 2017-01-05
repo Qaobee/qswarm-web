@@ -22,13 +22,12 @@
                     label: '@',
                     padding: '@',
                     values: "=?",
-                    widgetTitle:  '=?'
+                    widgetTitle: '=?'
                 },
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
                     $scope.noStat = false;
-                    $scope.loading = true;
-                    $scope.widgetTitle = $scope.widgetTitle || 'stats.efficiency.efficiencyTotal';
+                    $scope.widgetTitle = $scope.widgetTitle || 'stats.efficiency.efficiencyTotal';
 
                     /* efficiency */
                     var getEfficiency = function (ownersId, startDate, endDate) {
@@ -46,7 +45,7 @@
                             aggregat: 'COUNT',
                             listFieldsGroupBy: ['owner', 'code', 'shootSeqId']
                         };
-                        if(!!$scope.values) {
+                        if (!!$scope.values) {
                             search.values = $scope.values;
                         }
                         var listShootSeqId = [];
@@ -87,6 +86,10 @@
                     };
 
                     var buildGraph = function () {
+                        if(angular.isUndefined($scope.startDate) || angular.isUndefined($scope.ownersId)) {
+                            return;
+                        }
+                        $scope.loading = true;
                         $scope.efficiency = 0;
                         $scope.nbShoot = 0;
                         $scope.nbGoal = 0;
@@ -101,10 +104,11 @@
                     $scope.$on('qeventbus:periodicityActive', function () {
                         $scope.startDate = qeventbus.data.periodicityActive.startDate;
                         $scope.endDate = qeventbus.data.periodicityActive.endDate;
-                        $scope.ownersId = qeventbus.data.periodicityActive.ownersId;
-                        if (angular.isDefined($scope.ownersId)) {
-                            buildGraph();
-                        }
+                        buildGraph();
+                    });
+                    $scope.$on('qeventbus:ownersId', function () {
+                        $scope.ownersId = qeventbus.data.ownersId;
+                        buildGraph();
                     });
                 },
                 templateUrl: 'app/components/directives/widgets/stats/efficiency/efficiencyPlayer.html'

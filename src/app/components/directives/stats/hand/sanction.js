@@ -67,6 +67,9 @@
                     };
 
                     var buildWidget = function () {
+                        if(angular.isUndefined($scope.startDate) || angular.isUndefined($scope.ownersId)) {
+                            return;
+                        }
                         $scope.nbYellowCard = 0;
                         $scope.nbExclTmp = 0;
                         $scope.nbRedCard = 0;
@@ -80,12 +83,18 @@
                         });
                     };
 
-                    /* Refresh widget on periodicity change */
-                    $scope.$on('qeventbus:periodicityActive', function () {
-                        $scope.startDate = qeventbus.data.periodicityActive.startDate;
-                        $scope.endDate = qeventbus.data.periodicityActive.endDate;
-                        $scope.ownersId = qeventbus.data.periodicityActive.ownersId;
+                    $scope.$on('qeventbus:ownersId', function () {
+                        $scope.ownersId = qeventbus.data.ownersId;
                         buildWidget();
+                    });
+                    $scope.$on('qeventbus:periodicityActive', function () {
+                        if (!angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
+                            $scope.noStat = false;
+                            $scope.periodicityActive = qeventbus.data.periodicityActive;
+                            $scope.startDate = $scope.periodicityActive.startDate;
+                            $scope.endDate = $scope.periodicityActive.endDate;
+                            buildWidget();
+                        }
                     });
 
                 },

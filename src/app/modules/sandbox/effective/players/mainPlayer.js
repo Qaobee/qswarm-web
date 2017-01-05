@@ -110,47 +110,18 @@
                 }
             };
 
-            /* watch if periodicity change */
-            $scope.$watch('periodicityActive', function (newValue, oldValue) {
-                if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
-                    $scope.periodicityActive.ownersId = $scope.ownersId;
-                    user.periodicity = $scope.periodicity;
-                    user.periodicityActive = $scope.periodicityActive;
-                    qeventbus.prepForBroadcast('periodicityActive', {
-                        periodicityActive: $scope.periodicityActive,
-                        periodicity: $scope.periodicity
-                    });
-                }
-            });
-
-            /* init periodicity active */
-            $scope.initPeriodicityActive = function () {
-
-                if ($scope.initPeriodicity) {
-                    $scope.periodicity = 'season';
-                    $scope.periodicityActive = {
-                        label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
-                        startDate: moment($scope.meta.season.startDate),
-                        endDate: moment($scope.meta.season.endDate),
-                        ownersId: $scope.ownersId
-                    };
-                    $scope.initPeriodicity = false;
-                }
-            };
-
             /* Retrieve current effective and list player */
             $scope.getPlayers = function () {
-
                 effectiveSrv.getEffective($scope.effectiveId).then(function (data) {
                     $scope.currentEffective = data;
-
                     effectiveSrv.getListId($scope.currentEffective, 'player').then(function (listId) {
                         $scope.ownersId = listId;
-                        $scope.initPeriodicityActive();
+                        qeventbus.prepForBroadcast('ownersId', {
+                            ownersId: listId
+                        });
                         var listField = ['_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact'];
 
                         effectiveSrv.getPersons(listId, listField).then(function (players) {
-
                             $scope.players = players;
                             $scope.players.forEach(function (e) {
                                 if (angular.isDefined(e.status.positionType)) {
@@ -158,11 +129,9 @@
                                 } else {
                                     e.positionType = '';
                                 }
-
                                 e.birthdate = $filter('date')(e.birthdate, 'yyyy');
                                 e.age = moment().format('YYYY') - e.birthdate;
                             });
-
                             $scope.players = $scope.players.sortBy(function (n) {
                                 return n.name;
                             });
@@ -174,7 +143,6 @@
             /* check user connected */
             $scope.checkUserConnected = function () {
                 userRestAPI.getUserById(user._id).success(function (/* data */) {
-
                     $scope.getPlayers();
                 }).error(function (/* data */) {
                     $log.error('MainPlayerControler : User not Connected');

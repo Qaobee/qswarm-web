@@ -21,7 +21,7 @@
 
             });
         })
-        .directive('widgetPodium', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, effectiveSrv) {
+        .directive('widgetPodium', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, effectiveSrv, qeventbus) {
             return {
                 restrict: 'AE',
                 scope: {
@@ -35,7 +35,6 @@
                     $translatePartialLoader.addPart('stats');
                     $translatePartialLoader.addPart('home');
                     $scope.noStat = false;
-                    $scope.loading = true;
 
                     /* getStats */
                     var getStats = function (ownersId, startDate, endDate) {
@@ -124,27 +123,28 @@
                     };
 
                     var buildWidget = function () {
+                        if(angular.isUndefined($scope.startDate) || angular.isUndefined($scope.ownersId)) {
+                            return;
+                        }
+                        $scope.loading = true;
                         $scope.players = [];
                         $scope.title = 'stats.resumeTab.' + $scope.label;
-
-                        if (!$scope.user.periodicity) {
-                            $scope.periodicity = 'season';
-                            $scope.startDate = moment($scope.meta.season.startDate);
-                            $scope.endDate = moment($scope.meta.season.endDate);
-                        } else {
-                            $scope.startDate = $scope.user.periodicityActive.startDate;
-                            $scope.endDate = $scope.user.periodicityActive.endDate;
-                            $scope.ownersId = $scope.user.periodicityActive.ownersId;
-                        }
-
                         $scope.getEffective();
                     };
                     /* Refresh widget on periodicity change */
-                    $scope.$on('qeventbus:periodicityActive', function () {
-                        $scope.noStat = false;
+                    $scope.$on('qeventbus:ownersId', function () {
+                        $scope.ownersId = qeventbus.data.ownersId;
                         buildWidget();
                     });
-                    buildWidget();
+                    $scope.$on('qeventbus:periodicityActive', function () {
+                        if (!angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
+                            $scope.noStat = false;
+                            $scope.periodicityActive = qeventbus.data.periodicityActive;
+                            $scope.startDate = $scope.periodicityActive.startDate;
+                            $scope.endDate = $scope.periodicityActive.endDate;
+                            buildWidget();
+                        }
+                    });
                 },
                 templateUrl: 'app/components/directives/widgets/podium/podium.html'
             };

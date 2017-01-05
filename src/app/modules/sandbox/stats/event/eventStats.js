@@ -64,7 +64,7 @@
                 $window.history.back();
             };
 
-            /* watch if periodicity change */
+            /* watch if periodicity change
             $scope.$watch('periodicityActive', function (newValue, oldValue) {
                 if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
                     qeventbus.prepForBroadcast('periodicityActive', {
@@ -73,7 +73,7 @@
                     });
                 }
             });
-
+            */
             /* get collect */
             $scope.getCollecte = function () {
                 /* get collect */
