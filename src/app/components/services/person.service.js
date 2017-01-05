@@ -19,7 +19,10 @@
             /* Format address */
             var formatAddress = function (address) {
                 var deferred = $q.defer();
-
+                if(angular.isUndefined(address) || address === null) {
+                    deferred.resolve(address);
+                    return deferred.promise;
+                }
                 // TODO : à factoriser sur les conditions address.formatedAddress et address.formatted_address
                 // Formattage de l'adresse à partir du FormatedAddress
                 if (angular.isDefined(address.formatedAddress) && !address.formatedAddress.isBlank()) {

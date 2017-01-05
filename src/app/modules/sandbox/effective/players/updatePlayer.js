@@ -17,7 +17,9 @@
         /* qaobee Rest API */
         'effectiveRestAPI',
         'personRestAPI',
-        'userRestAPI'])
+        'userRestAPI',
+        'countryRestAPI'
+    ])
 
         .config(function ($routeProvider, metaProvider, userProvider) {
 
@@ -36,7 +38,7 @@
          * @description Main controller for view updatePlayer.html
          */
         .controller('UpdatePlayerControler', function ($log, $scope, $timeout, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                       activityCfgRestAPI, personRestAPI, personSrv, userRestAPI) {
+                                                       activityCfgRestAPI, personRestAPI, personSrv, countryRestAPI) {
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('stats');
@@ -45,6 +47,7 @@
             $scope.user = user;
             $scope.meta = meta;
             $scope.player = {};
+            $scope.countryList = [];
             $scope.positionsType = {};
             $scope.addPlayerTitle = false;
             // return button
@@ -58,39 +61,41 @@
                 types: 'geocode'
             };
             $scope.detailsCountry = '';
-
             $scope.optionsCity = {
                 types: '(cities)'
             };
             $scope.detailsCity = '';
-
             $scope.optionsAdr = null;
             $scope.detailsAdr = '';
-
+            countryRestAPI.getList().then(function (data) {
+                data.data.forEach(function (item) {
+                    $scope.countryList.push(item);
+                });
+            });
             /* Retrieve list of positions type */
             $scope.getListPositionType = function () {
                 activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.sandbox.activityId, $scope.meta.sandbox.structure.country._id, 'listPositionType').success(function (data) {
                     $scope.positionsType = data;
                 });
             };
-            $scope.getToday = function() {
+            $scope.getToday = function () {
                 return new Date().toISOString().slice(0, 10);
             };
             /* get person */
             $scope.getPerson = function () {
                 personRestAPI.getPerson($scope.playerId).success(function (person) {
                     $scope.player = person;
-                    $scope.player.birthdate = $scope.player.birthdate || moment().valueOf();
-                    $scope.player.birthdate = moment($scope.player.birthdate).toDate();
+                    $scope.birthdate = $scope.player.birthdate || moment().valueOf();
+                    $scope.birthdate = moment($scope.birthdate).toDate();
                     $scope.showBirthdate = true;
-                    angular.element('#playerBirthdate').pickadate('picker').set('select',$scope.player.birthdate.valueOf());
+                    angular.element('#playerBirthdate').pickadate('picker').set('select', $scope.birthdate.valueOf());
                     $scope.datePicker = angular.element('#playerBirthdate').pickadate('picker');
                 });
             };
 
             /* update person */
             $scope.checkAndformatPerson = function () {
-                $scope.player.birthdate = moment($scope.player.birthdate, 'DD/MM/YYYY').valueOf();
+                $scope.player.birthdate = moment($scope.birthdate, 'DD/MM/YYYY').valueOf();
                 personSrv.formatAddress($scope.player.address).then(function (adr) {
                     $scope.player.address = adr;
 
@@ -104,18 +109,10 @@
                         $window.history.back();
                     });
                 });
+
             };
 
-            /* check user connected */
-            $scope.checkUserConnected = function () {
-                userRestAPI.getUserById(user._id).success(function () {
-                    $scope.getListPositionType();
-                    $scope.getPerson();
-                }).error(function () {
-                    $log.error('UpdatePlayerControler : User not Connected');
-                });
-            };
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
+            $scope.getListPositionType();
+            $scope.getPerson();
         });
 }());

@@ -23,6 +23,13 @@
                         url: countryApiURL + '/getAlpha2/?alpha2=' + alpha2,
                         method: 'GET'
                     });
+                },
+                getList: function () {
+                    var language = window.navigator.userLanguage || window.navigator.language;
+                    return $http({
+                        url: countryApiURL + '/getList/?local=' + language,
+                        method: 'GET'
+                    });
                 }
 
             };

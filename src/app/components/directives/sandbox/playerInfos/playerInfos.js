@@ -27,7 +27,7 @@
                     };
 
                     $scope.$watch('player', function (newValue, oldValue) {
-                        if (!angular.equals(oldValue, newValue)) {
+                        if (angular.isDefined(oldValue) || !angular.equals(oldValue, newValue)) {
                             if (angular.isDefined($scope.player.status.positionType)) {
                                 $scope.player.positionType = $filter('translate')('stats.positionType.value.' + $scope.player.status.positionType);
                             } else {

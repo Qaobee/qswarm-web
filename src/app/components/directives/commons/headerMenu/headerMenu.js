@@ -112,11 +112,11 @@
                                 $scope.trialCountVal = {count: $scope.endTrial};
                             }
                         });
-                        if ($scope.notpaid || $scope.endTrial <= 0) {
+            /*            if ($scope.notpaid || $scope.endTrial <= 0) {
                             $location.path('/private/billing');
                         } else {
                             $location.path('/private');
-                        }
+                        }*/
                         $scope.loadMetaInfos();
                     });
 

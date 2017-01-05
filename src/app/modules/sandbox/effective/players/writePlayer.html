@@ -36,7 +36,7 @@
                                         class="accent-text-color">*</span></label>
                                 <input ng-model="player.firstname" name="playerFirstname" type="text" class="validate"
                                        required
-                                       ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
+                                       ng-pattern="'[0-9a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
                                 <span class="small accent-text-color"
                                       ng-if="playerCivilSection.playerFirstname.$error.required && !playerCivilSection.playerFirstname.$pristine"
                                       translate="playerErrors.Firstname"></span>
@@ -48,10 +48,11 @@
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
 
                             <div class="col s12 m6 input-field">
-                                <label>{{'playerLabels.playerName' | translate }} <span class="accent-text-color">*</span></label>
+                                <label>{{'playerLabels.playerName' | translate }} <span
+                                        class="accent-text-color">*</span></label>
                                 <input ng-model="player.name" name="playerName" type="text"
                                        class="validate form-control" required
-                                       ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
+                                       ng-pattern="'[0-9a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
                                 <span class="small accent-text-color"
                                       ng-if="playerCivilSection.playerName.$error.required && !playerCivilSection.playerName.$pristine"
                                       translate="playerErrors.Name"></span>
@@ -66,7 +67,7 @@
                                 <label>{{'playerLabels.playerBirthdate' | translate }} <span
                                         class="accent-text-color">*</span></label>
                                 <input id="playerBirthdate" name="playerBirthdate" type="text"
-                                       ng-model="player.birthdate" required
+                                       ng-model="birthdate" required
                                        class="datepicker"
                                        input-date
                                        format="{{'commons.format.date.label' | translate}}"
@@ -140,10 +141,11 @@
 
                         <div class="row">
                             <div class="col s12 m5 input-field">
-                                <label for="playerNationality" translate="playerLabels.playerNationality"></label>
-                                <input type="text" id="playerNationality" class="form-control" ng-autocomplete
-                                       ng-model="player.nationality" details="detailsCountry" options="optionsCountry"
-                                       placeholder=""/>
+                                <select material-select watch
+                                        ng-model="player.nationality"
+                                        ng-options="c as c.label for c in countryList track by c._id">
+                                </select>
+                                <label translate="playerLabels.playerNationality"></label>
                             </div>
 
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
@@ -328,9 +330,10 @@
                     <div class="row">
                         <div class="col m3 hide-on-small-only">&nbsp;</div>
                         <div class="col m6 s12 center-align">
-                            
+
                             <button style="width:32%; height:40px; padding: 1px;"
-                                    class="btn white-text waves-effect waves-white dark-primary-color" wz-previous type="submit"
+                                    class="btn white-text waves-effect waves-white dark-primary-color" wz-previous
+                                    type="submit"
                                     name="previous" translate="commons.buttons.previous"></button>
 
                             <button style="width:32%; height:40px; padding: 1px;"
