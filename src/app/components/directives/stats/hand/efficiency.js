@@ -12,7 +12,7 @@
 
     angular.module('statsEfficiency', ['statsRestAPI', 'qaobee.eventbus'])
 
-        .directive('statsEfficiency', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, qeventbus) {
+        .directive('statsEfficiency', function ($translatePartialLoader, statsRestAPI, qeventbus, $q) {
             return {
                 restrict: 'AE',
                 scope: {

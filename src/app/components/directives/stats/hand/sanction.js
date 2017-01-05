@@ -12,7 +12,7 @@
 
     angular.module('statsSanction', ['statsSRV', 'statsRestAPI', 'qaobee.eventbus'])
 
-        .directive('statsSanction', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, statsSrv, qeventbus) {
+        .directive('statsSanction', function ($translatePartialLoader, statsRestAPI, statsSrv, qeventbus, $q) {
             return {
                 restrict: 'E',
 

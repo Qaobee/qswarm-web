@@ -5,7 +5,7 @@
         'statsRestAPI'
     ])
 
-        .directive('qaobeeRadarChart', function (statsRestAPI, $log, $q, $filter, $translatePartialLoader, qeventbus) {
+        .directive('qaobeeRadarChart', function (statsRestAPI, $translatePartialLoader, qeventbus, $filter, $q) {
             return {
                 restrict: 'E',
                 scope: {

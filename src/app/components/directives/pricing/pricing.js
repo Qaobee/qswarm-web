@@ -11,7 +11,7 @@
      */
     angular.module('pricing', ['sandboxRestAPI'])
 
-        .directive('pricing', function ($translatePartialLoader, $timeout, $location, $document, $log, $q, $filter, sandboxRestAPI, qeventbus) {
+        .directive('pricing', function ($translatePartialLoader, qeventbus, $location, sandboxRestAPI) {
             return {
                 restrict: 'E',
                 scope: {
@@ -19,14 +19,11 @@
                     public: '@'
                 },
                 controller: function ($scope) {
-
                     $scope.subscribeButton = false;
                     $scope.invitationButton = false;
                     $scope.invitation = {};
-
                     $translatePartialLoader.addPart('commons');
                     $translatePartialLoader.addPart('public');
-
                     /* an invitation */
                     $scope.getInvitation = function () {
                         sandboxRestAPI.getInvitationToSandbox($scope.invitationId).success(function (data) {
@@ -48,7 +45,7 @@
                     }
 
                     $scope.acceptInvitation = function () {
-                        $location.path('/subscribeStart/'+$scope.invitationId);
+                        $location.path('/subscribeStart/' + $scope.invitationId);
                     };
 
                     $scope.refuseInvitation = function () {

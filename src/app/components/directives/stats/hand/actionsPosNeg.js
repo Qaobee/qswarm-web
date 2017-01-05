@@ -12,7 +12,7 @@
 
     angular.module('statsActionsPosNeg', ['statsSRV', 'qaobee.eventbus'])
 
-        .directive('statsActionsPosNeg', function ($translatePartialLoader, $log, $q, $filter, statsSrv, qeventbus) {
+        .directive('statsActionsPosNeg', function ($translatePartialLoader, qeventbus, statsSrv) {
             return {
                 restrict: 'E',
                 scope: {

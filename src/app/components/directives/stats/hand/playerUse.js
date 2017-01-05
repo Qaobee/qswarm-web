@@ -12,7 +12,7 @@
 
     angular.module('statsPlayerUse', ['statsSRV', 'statsRestAPI', 'qaobee.eventbus'])
 
-        .directive('statsPlayerUse', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, statsSrv, qeventbus) {
+        .directive('statsPlayerUse', function ($translatePartialLoader, statsRestAPI, statsSrv, qeventbus, $q) {
             return {
                 restrict: 'E',
                 scope: {
@@ -91,7 +91,6 @@
                         $scope.playTimeAvg = 0;
                         $scope.title = 'stats.resumeTab.' + $scope.label;
                         getStats($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
-                            $log.debug('result', result);
                             $scope.nbHolder = result.nbHolder;
                             $scope.nbGame = result.nbGame;
                             $scope.playTimeAvg = result.playTimeAvg;

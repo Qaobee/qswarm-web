@@ -12,7 +12,7 @@
 
     angular.module('statsGoals', ['statsSRV', 'statsRestAPI', 'qaobee.eventbus'])
 
-        .directive('statsGoals', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, statsSrv, qeventbus) {
+        .directive('statsGoals', function ($translatePartialLoader, statsRestAPI, statsSrv, qeventbus, $q) {
             return {
                 restrict: 'E',
                 scope: {
