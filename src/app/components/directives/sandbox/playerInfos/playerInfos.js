@@ -8,7 +8,7 @@
                 scope: {
                     player: "="
                 },
-                controller: function ($scope) {
+                controller: function ($scope, $document) {
                     $scope.mapShow = false;
                     $scope.openMap = function () {
                         $timeout(function () {
@@ -20,6 +20,11 @@
                             };
                             $scope.map = ($document.find('#ngMapPlayer'))[0];
                             $scope.map = new google.maps.Map($scope.map, myOptions);
+                            new google.maps.Marker({
+                                position: myLatLng,
+                                map: $scope.map,
+                                title: $scope.player.firstname + ' ' + $scope.player.name
+                            });
                             google.maps.event.trigger($scope.map, 'resize');
                         }, 0);
 
@@ -27,7 +32,7 @@
                     };
 
                     $scope.$watch('player', function (newValue, oldValue) {
-                        if (angular.isDefined(oldValue) || !angular.equals(oldValue, newValue)) {
+                        if (angular.isDefined(oldValue) || !angular.equals(oldValue, newValue)) {
                             if (angular.isDefined($scope.player.status.positionType)) {
                                 $scope.player.positionType = $filter('translate')('stats.positionType.value.' + $scope.player.status.positionType);
                             } else {
