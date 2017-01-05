@@ -12,9 +12,12 @@
     ])
 
         .config(function ($routeProvider) {
-            $routeProvider.when('/invitation/:invitationId', {
-                controller: 'InvitationCtrl',
+            $routeProvider.when('/externalInvitation/:invitationId', {
+                controller: 'ExternalInvitationCtrl',
                 templateUrl: 'app/modules/commons/users/invitation/invitationStart.html'
+            }).when('/internalInvitation/:invitationId', {
+                controller: 'InternalInvitationCtrl',
+                templateUrl: 'app/modules/commons/users/invitation/internalInvitation.html'
             }).when('/invitationError', {
                 controller: 'InvitationErrorCtrl',
                 templateUrl: 'app/modules/commons/users/invitation/invitationError.html'
@@ -30,12 +33,56 @@
             });
         })
 
-        .controller('InvitationCtrl', function ($rootScope, $scope, $translatePartialLoader, $log,
+        .controller('ExternalInvitationCtrl', function ($rootScope, $scope, $translatePartialLoader, $log,
                                                 $routeParams) {
             $translatePartialLoader.addPart('user');
             $translatePartialLoader.addPart('commons');
 
             $scope.invitationId = $routeParams.invitationId;
+
+        })
+    
+        .controller('InternalInvitationCtrl', function ($rootScope, $scope, $translatePartialLoader, $log,
+                                                $routeParams, sandboxRestAPI, userRestAPI, $location) {
+            $translatePartialLoader.addPart('user');
+            $translatePartialLoader.addPart('commons');
+
+            $scope.invitationId = $routeParams.invitationId;
+        
+            sandboxRestAPI.getInvitationToSandbox($scope.invitationId).success(function (data) {
+                $scope.invitation = data;
+                if ($scope.invitation.status !== "waiting") {
+                    $location.path('/invitationError');
+                }
+                
+                
+            }).error(function () {
+                $location.path('/invitationError');
+            });
+        
+            $scope.acceptInvitation = function () {
+                var request = {
+                    invitationId: $scope.invitation._id,
+                    userId: $scope.invitation.userId,
+                    answer: "accepted"
+                };
+                
+                sandboxRestAPI.confirmInvitationToSandbox(request).success(function () {
+                    $location.path('/private');
+                });
+            };
+        
+            $scope.refuseInvitation = function () {
+                var request = {
+                    invitationId: $scope.invitation._id,
+                    userId: $scope.invitation.userId,
+                    answer: "refused"
+                };
+                sandboxRestAPI.confirmInvitationToSandbox(request).success(function () {
+                    $location.path('/private');
+                });
+            };
+
 
         })
 

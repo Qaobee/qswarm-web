@@ -193,6 +193,10 @@
   },
   "invitationPage": {
     "title": "Création de votre espace de travail",
+    "internal" : {
+        "title": "Partage d'espace de travail" 
+        
+    },
     
     "errorPage": {
       "title": "Ooops !",
