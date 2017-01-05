@@ -13,7 +13,7 @@
             /* angular module */
             'angularFileUpload'
         ])
-        .directive('avatar', function (FileUploader, $window, $rootScope, $log, EnvironmentConfig) {
+        .directive('avatar', function (FileUploader, $window, EnvironmentConfig, $log) {
             return {
                 restrict: 'AE',
                 scope: {

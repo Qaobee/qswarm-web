@@ -19,7 +19,7 @@
      */
     angular.module('qaobee.widgets.agenda', [])
 
-        .directive('widgetCalendar', function ($filter, $translatePartialLoader, qeventbus, eventsRestAPI) {
+        .directive('widgetCalendar', function ($translatePartialLoader, eventsRestAPI, qeventbus) {
             return {
                 restrict: 'AE',
                 scope: {
@@ -46,7 +46,6 @@
 
                     $scope.startDate = $scope.periodicityActive.startDate;
                     $scope.endDate = $scope.periodicityActive.endDate;
-
 
                     /* Refresh widget on periodicity change */
                     $scope.$on('qeventbus:periodicityActive', function () {

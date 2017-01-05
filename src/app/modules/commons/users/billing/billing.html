@@ -34,7 +34,7 @@
                 <div ng-if="plan.status !== 'open' && plan.status !== 'notpaid'">
                     <span ng-repeat="s in plan.shippingList | orderBy : '-paidDate'">
                         <div class="col m1 center-align"><span ng-bind="s.amountPaid"></span> €</div>
-                        <div class="col m2 center-align"><small>{{s.paymentId}}</small></div>
+                        <div class="col m2 center-align"><small ng-bind="s.paymentId"></small></div>
                         <div class="col m2 center-align"><i class="material-icons left" ng-if="plan.status==='pending'">autorenew</i>
                             {{s.paidDate | date}}
                         </div>

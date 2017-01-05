@@ -17,8 +17,7 @@
             $routeProvider.when('/private/billing/pay/:index', {
                 controller: 'PayProfileCtrl',
                 resolve: {
-                    user: userProvider.$get,
-                    meta: metaProvider.$get
+                    user: userProvider.$get
                 },
                 templateUrl: 'app/modules/commons/users/billing/pay.html'
             });
@@ -27,8 +26,7 @@
          * @class qaobee.user.billing.PayProfileCtrl
          * @description Main controller of app/modules/commons/users/billing/pay.html
          */
-        .controller('PayProfileCtrl', function ($scope, $filter, EnvironmentConfig, $translatePartialLoader, $translate,
-                                                $log, user, meta, $window, $routeParams, paymentAPI) {
+        .controller('PayProfileCtrl', function ($scope, paymentAPI, $routeParams, $window, $translatePartialLoader, user) {
             $scope.willPay = false;
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');

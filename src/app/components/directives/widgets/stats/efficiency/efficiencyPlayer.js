@@ -12,7 +12,7 @@
 
     angular.module('qaobee.widgets.efficiencyPlayer', ['effectifSRV', 'statsRestAPI', 'qaobee.eventbus'])
 
-        .directive('widgetEfficiencyPlayer', function ($translatePartialLoader, $log, $q, $filter, statsRestAPI, effectiveSrv, qeventbus) {
+        .directive('widgetEfficiencyPlayer', function ($translatePartialLoader, statsRestAPI, effectiveSrv, qeventbus, $q) {
             return {
                 restrict: 'AE',
                 scope: {
