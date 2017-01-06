@@ -11,7 +11,7 @@
 
             <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive"
                              meta="meta"></filter-calendar>
-
+<pre>{{stats | json}}</pre>
             <div class="row primary-text-color">
                 <table>
                     <thead>
@@ -45,32 +45,28 @@
                         <qaobee-radar-chart
                                 title="{{'stats.actionTab.attack' | translate}} {{'stats.actionTab.positive' | translate}}"
                                 owners="playersIds" series="series"
-                                start-date="periodicityActive.startDate" meta="meta"
-                                end-date="periodicityActive.endDate"
+                                periodicity-active="periodicityActive" meta="meta"
                                 indicators="['penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec']"></qaobee-radar-chart>
                     </div>
                     <div class="col s12 m6">
                         <qaobee-radar-chart
                                 title="{{'stats.actionTab.attack' | translate}} {{'stats.actionTab.negative' | translate}}"
                                 owners="playersIds" series="series"
-                                start-date="periodicityActive.startDate" meta="meta"
-                                end-date="periodicityActive.endDate"
+                                periodicity-active="periodicityActive" meta="meta"
                                 indicators="['forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt']"></qaobee-radar-chart>
                     </div>
                     <div class="col s12 m6">
                         <qaobee-radar-chart
                                 title="{{'stats.actionTab.defense' | translate}} {{'stats.actionTab.positive' | translate}}"
                                 owners="playersIds" series="series"
-                                start-date="periodicityActive.startDate" meta="meta"
-                                end-date="periodicityActive.endDate"
+                                periodicity-active="periodicityActive" meta="meta"
                                 indicators="['neutralization', 'forceDef', 'contre', 'interceptionOk']"></qaobee-radar-chart>
                     </div>
                     <div class="col s12 m6">
                         <qaobee-radar-chart
                                 title="{{'stats.actionTab.defense' | translate}} {{'stats.actionTab.negative' | translate}}"
                                 owners="playersIds" series="series"
-                                start-date="periodicityActive.startDate" meta="meta"
-                                end-date="periodicityActive.endDate"
+                                periodicity-active="periodicityActive" meta="meta"
                                 indicators="['penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition']"></qaobee-radar-chart>
                     </div>
                 </div>
