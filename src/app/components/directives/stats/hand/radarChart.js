@@ -86,7 +86,7 @@
                     };
 
                     $scope.$on('qeventbus:periodicityActive', function () {
-                        if (!angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
+                        if (angular.isDefined(qeventbus.data.periodicityActive) && ($scope.periodicityActive || !angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive))) {
                             $scope.noStat = false;
                             $scope.periodicityActive = qeventbus.data.periodicityActive;
                             $scope.startDate = $scope.periodicityActive.startDate;

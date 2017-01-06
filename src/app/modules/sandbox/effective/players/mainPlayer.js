@@ -72,8 +72,6 @@
             $scope.effectives = [];
             $scope.compareList = {};
             $scope.currentEffective = {};
-            $scope.initPeriodicity = true;
-
             if (user.mainPlayerTabId) {
                 $scope.activeTabIndex = user.mainPlayerTabId;
             } else {
@@ -84,7 +82,6 @@
             $scope.changeTabDefault = function (tabId) {
                 user.mainPlayerTabId = tabId;
             };
-
 
             $scope.compare = function () {
                 if (Object.keys($scope.compareList).length > 1) {

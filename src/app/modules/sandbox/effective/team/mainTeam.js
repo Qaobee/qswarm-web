@@ -76,35 +76,6 @@
                 }
             };
 
-            /* watch if periodicity change
-            $scope.$watch('periodicityActive', function (newValue, oldValue) {
-                if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
-                    $scope.periodicityActive.ownersId = $scope.ownersId;
-                    user.periodicity = $scope.periodicity;
-                    user.periodicityActive = $scope.periodicityActive;
-                    qeventbus.prepForBroadcast('periodicityActive', {
-                        periodicityActive: $scope.periodicityActive,
-                        periodicity: $scope.periodicity
-                    });
-                }
-            });
-            */
-            /* init periodicity active */
-            $scope.initPeriodicityActive = function () {
-                if (!user.periodicity) {
-                    $scope.periodicity = 'season';
-                    $scope.periodicityActive = {
-                        label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
-                        startDate: moment($scope.meta.season.startDate),
-                        endDate: moment($scope.meta.season.endDate),
-                        ownersId: $scope.ownersId
-                    };
-                } else {
-                    $scope.periodicity = user.periodicity;
-                    $scope.periodicityActive = user.periodicityActive;
-                }
-            };
-
             $scope.updateTeamToCompare = function (id) {
                 var count = 0;
                 if ($scope.compareList[id]) {
@@ -131,22 +102,16 @@
                 });
                 effectiveSrv.getEffective($scope.meta.sandbox.effectiveDefault).then(function (data) {
                     $scope.currentEffective = data;
+                    effectiveSrv.getListId($scope.currentEffective, 'player').then(function (listId) {
+                        $scope.ownersId = listId;
+                        qeventbus.prepForBroadcast('ownersId', {
+                            ownersId: listId
+                        });
+                    });
                 });
             };
 
-
-            /* check user connected */
-            $scope.checkUserConnected = function () {
-                userRestAPI.getUserById(user._id).success(function () {
-                    $scope.getListTeamHome();
-                    $scope.initPeriodicityActive();
-                }).error(function () {
-                    $log.error('MainTeamControler : User not Connected');
-                });
-            };
-
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
+            $scope.getListTeamHome();
         });
 }());
 

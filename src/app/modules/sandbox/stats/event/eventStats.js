@@ -36,10 +36,10 @@
                                             collecteRestAPI, personRestAPI, statsRestAPI, effectiveSrv, statsSrv, userRestAPI, qeventbus) {
             $translatePartialLoader.addPart('home');
             $translatePartialLoader.addPart('stats');
-
             $scope.user = user;
             $scope.meta = meta;
             $scope.ownersId = [];
+            $scope.players = [];
             $scope.teamHome = false;
             $scope.teamVisitor = true;
             $scope.collecte = {
@@ -51,29 +51,11 @@
                 endDateLabel: ""
             };
 
-            $scope.periodicityActive = {
-                startDate: moment(new Date()),
-                endDate: moment(new Date()),
-                ownersId: []
-            };
-
-            $scope.players = [];
-
             // return button
             $scope.doTheBack = function () {
                 $window.history.back();
             };
 
-            /* watch if periodicity change
-            $scope.$watch('periodicityActive', function (newValue, oldValue) {
-                if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
-                    qeventbus.prepForBroadcast('periodicityActive', {
-                        periodicityActive: $scope.periodicityActive,
-                        periodicity: $scope.periodicity
-                    });
-                }
-            });
-            */
             /* get collect */
             $scope.getCollecte = function () {
                 /* get collect */
@@ -259,28 +241,21 @@
                             $scope.players = $scope.players.sortBy(function (n) {
                                 return n.positionType;
                             });
-                            $log.debug('$scope.players', $scope.players);
                         });
 
                         $scope.ownersId.push(data.eventRef._id);
-                        $scope.periodicityActive = {
-                            startDate: data.startDate,
-                            endDate: data.endDate,
+                        qeventbus.prepForBroadcast('ownersId', {
                             ownersId: $scope.ownersId
-                        };
+                        });
+                        qeventbus.prepForBroadcast('periodicityActive', {
+                            periodicityActive: {startDate: data.startDate, endDate: data.endDate},
+                            periodicity: 'custom',
+                            self: 'filterCalendar'
+                        });
                     }
                 });
             };
 
-            /* check user connected */
-            $scope.checkUserConnected = function () {
-                userRestAPI.getUserById(user._id).success(function () {
-                    $scope.getCollecte();
-                }).error(function () {
-                    $log.error('EventStats : User not Connected');
-                });
-            };
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
+            $scope.getCollecte();
         });
 }());

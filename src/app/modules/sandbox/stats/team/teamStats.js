@@ -32,8 +32,7 @@
         /**
          * @class qaobee.modules.home.HomeControler
          */
-        .controller('TeamStats', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                           teamRestAPI, personRestAPI, statsRestAPI, statsSrv, userRestAPI, qeventbus) {
+        .controller('TeamStats', function (qeventbus, teamRestAPI, meta, user, $log, $scope, $routeParams, $window, $translatePartialLoader) {
             $translatePartialLoader.addPart('home');
             $translatePartialLoader.addPart('stats');
             $translatePartialLoader.addPart('agenda');
@@ -41,6 +40,7 @@
             $scope.user = user;
             $scope.meta = meta;
             $scope.ownersId = [];
+            $scope.collectes = [];
             $scope.ownersId.push($routeParams.teamId);
 
             // return button
@@ -48,76 +48,11 @@
                 $window.history.back();
             };
 
-            //Initialization event
-            $scope.initStats = function () {
-
-                $scope.collectes = [];
-
-                if (!user.periodicity) {
-                    $scope.periodicity = 'season';
-                    $scope.periodicityActive = {
-                        label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
-                        startDate: moment($scope.meta.season.startDate),
-                        endDate: moment($scope.meta.season.endDate),
-                        ownersId: $scope.ownersId
-                    };
-                } else {
-                    $scope.periodicity = user.periodicity;
-                    $scope.periodicityActive = user.periodicityActive;
-                }
-
-                $scope.periodicityActive.ownersId = $scope.ownersId;
-                $scope.getTeam();
-            };
-
-            /* watch if periodicity change
-            $scope.$watch('periodicityActive', function (newValue, oldValue) {
-                if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
-                    $scope.periodicityActive.ownersId = $scope.ownersId;
-                    user.periodicity = $scope.periodicity;
-                    user.periodicityActive = $scope.periodicityActive;
-                    qeventbus.prepForBroadcast('periodicityActive', {
-                        periodicityActive: $scope.periodicityActive,
-                        periodicity: $scope.periodicity
-                    });
-                    $scope.getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
-                }
+            teamRestAPI.getTeam($routeParams.teamId).success(function (team) {
+                $scope.team = team;
+                qeventbus.prepForBroadcast('ownersId', {
+                    ownersId: $scope.ownersId
+                });
             });
-            */
-            /* get team */
-            $scope.getTeam = function () {
-
-                /* get team */
-                teamRestAPI.getTeam($routeParams.teamId).success(function (team) {
-                    $scope.team = team;
-                });
-            };
-
-            /* get statistic for one player */
-            $scope.getStats = function (ownersId, startDate, endDate) {
-
-                $scope.collectes = [];
-
-                /* get nbCollecte */
-                statsSrv.getMatchsTeams(startDate, endDate, $scope.meta.sandbox._id, $routeParams.teamId).then(function (data) {
-                    if (angular.isArray(data) && data.length > 0) {
-                        data.forEach(function (e) {
-                            e.eventRef.startDate = moment(e.eventRef.startDate).format('LLLL');
-                            $scope.collectes.push(e);
-                        });
-                    }
-                });
-            };
-
-            /* check user connected */
-            $scope.checkUserConnected = function () {
-                userRestAPI.getUserById(user._id).success(function () {
-                    $scope.initStats();
-                }).error(function () {
-                    $log.error('TeamStats : User not Connected');
-                });
-            };
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
         });
 }());

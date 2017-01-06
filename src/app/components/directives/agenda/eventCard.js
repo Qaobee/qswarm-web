@@ -22,11 +22,9 @@
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('commons');
                     $translatePartialLoader.addPart('agenda');
-
                     $scope.compareList = {};
                     $scope.isCollected = false;
                     $scope.mapShow = false;
-
                     $scope.icon = '';
                     $scope.color1 = '';
                     $scope.color2 = '';
@@ -101,10 +99,17 @@
                             };
                             $scope.map = ($document.find('#mapEvent-' + $scope.event._id))[0];
                             $scope.map = new google.maps.Map($scope.map, myOptions);
+                            new google.maps.Marker({
+                                position: myLatLng,
+                                map: $scope.map,
+                                title: $scope.event.address.formatedAddress
+                            });
                             google.maps.event.trigger($scope.map, 'resize');
                         }, 0);
                         angular.element('#modalEvent-' + $scope.event._id).modal('open');
                     };
+                }, link: function () {
+                    angular.element('.modal').modal();
                 },
                 templateUrl: 'app/components/directives/agenda/eventCard.html'
             };

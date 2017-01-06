@@ -40,27 +40,19 @@
          * @class qaobee.modules.sandbox.agenda.MainAgendaControler
          * @description Main controller for view mainAgenda.html
          */
-        .controller('MainAgendaController', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                      eventsRestAPI, effectiveRestAPI, userRestAPI, eventCompareService, qeventbus) {
-            $scope.user = user;
+        .controller('MainAgendaController', function (qeventbus, $filter, meta, eventCompareService, effectiveRestAPI, eventsRestAPI,
+                                                      $scope, $routeParams, $translatePartialLoader, $location) {
             $scope.meta = meta;
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('agenda');
-
             $scope.effectiveId = $routeParams.effectiveId;
-
             $scope.events = [];
             $scope.owners = [];
             $scope.effectives = [];
             $scope.currentEffective = {};
-            $scope.compareList = {};            
-        
-            /**
-             * open compare screen
-             *
-             * @returns {boolean}
-             */
+            $scope.compareList = {};
+
             $scope.compare = function () {
                 if (Object.keys($scope.compareList).length > 0) {
                     $location.path('/private/agenda/compare/' + $scope.effectiveId);
@@ -69,11 +61,7 @@
                     toastr.info($filter('translate')('compare.event-min'));
                 }
             };
-            /**
-             * Update ids in compare list
-             *
-             * @param id
-             */
+
             $scope.updateEventToCompare = function (id) {
                 var count = 0;
                 if ($scope.compareList[id]) {
@@ -96,25 +84,13 @@
                 $scope.updateEventToCompare(qeventbus.data.id);
             });
 
-            /* watch if periodicity change */
-            $scope.$watch('periodicityActive', function (newValue, oldValue) {
-                if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
-                    $scope.periodicityActive.ownersId = $scope.effectiveId;
-                    user.periodicity = $scope.periodicity;
-                    user.periodicityActive = $scope.periodicityActive;
-                    $scope.getEvents(moment(user.periodicityActive.startDate, 'DD/MM/YYYY').valueOf(), moment(user.periodicityActive.endDate, 'DD/MM/YYYY').valueOf());
+            $scope.$on('qeventbus:periodicityActive', function () {
+                if ($scope.periodicityActive || !angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
+                    $scope.getEvents(moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').valueOf(), moment($scope.periodicityActive.endDate, 'DD/MM/YYYY').valueOf());
                 }
             });
 
-            $scope.initAgenda = function () {
-                if (user.periodicityActive) {
-                    $scope.getEvents(moment(user.periodicityActive.startDate, 'DD/MM/YYYY').valueOf(), moment(user.periodicityActive.endDate, 'DD/MM/YYYY').valueOf());
-                }
-            };
-
-            /* Retrieve list events */
             $scope.getEvents = function (startDate, endDate) {
-
                 var requestEvent = {
                     activityId: $scope.meta.sandbox.activityId,
                     startDate: startDate,
@@ -124,7 +100,6 @@
                     type: ['cup', 'friendlyGame', 'championship', 'training']
 
                 };
-
                 eventsRestAPI.getListEvents(requestEvent).success(function (data) {
                     $scope.events = data.sortBy(function (n) {
                         return n.startDate;
@@ -136,15 +111,11 @@
                 });
             };
 
-            /* Retrieve list effective */
             $scope.getEffectives = function () {
-
                 effectiveRestAPI.getListEffective($scope.meta.sandbox._id, $scope.currentCategory).success(function (data) {
                     $scope.effectives = data.sortBy(function (n) {
                         return n.label;
                     });
-
-                    /* retrieve the current effective */
                     data.forEach(function (a) {
                         if (a._id === $scope.effectiveId) {
                             $scope.currentEffective = a;
@@ -152,22 +123,7 @@
                     });
                 });
             };
-
-            /* check user connected */
-            $scope.checkUserConnected = function () {
-                userRestAPI.getUserById(user._id).success(function () {
-                    $scope.getEffectives();
-                    $scope.initAgenda();
-                }).error(function () {
-                    $log.error('MainAgendaControler : User not Connected');
-                });
-            };
-
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
-
-        })
-    //
-    ;
+            $scope.getEffectives();
+        });
 }());
 

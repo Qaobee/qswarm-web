@@ -2,166 +2,203 @@
 
     <!-- space between header menu and body-->
     <div class="row"></div>
-    
-<!-- view desktop -->
-    
+
+    <!-- view desktop -->
+
     <!-- Resume-->
     <div class="row">
         <div class="col s12">
-            
-            <title-page-bar icon="event" title="{{collecte.event.label}} : {{collecte.startDateLabel}}"></title-page-bar>
-            
+
+            <title-page-bar icon="event"
+                            title="{{collecte.event.label}} : {{collecte.startDateLabel}}"></title-page-bar>
+
             <div class="row light-primary-color">
                 <div class="col s12 center-align" ng-if="teamHome">
                     <h5> 
                         <span ng-if="teamHome">
                             <a href="#/private/teamStats/{{collecte.event.participants.teamHome.id}}"
-                                class="accent-color btn">{{collecte.event.participants.teamHome.label}}
+                               class="accent-color btn">{{collecte.event.participants.teamHome.label}}
                             </a>
                         </span>
-                        - 
-                        {{collecte.event.participants.teamVisitor.label}}                   
+                        -
+                        {{collecte.event.participants.teamVisitor.label}}
                     </h5>
                 </div>
-                
+
                 <div class="col s12 center-align" ng-if="teamVisitor">
 
-                        {{collecte.event.participants.teamHome.label}} 
-                        - 
-                        <span ng-if="teamVisitor">
+                    {{collecte.event.participants.teamHome.label}}
+                    -
+                    <span ng-if="teamVisitor">
                             <a href="#/private/teamStats/{{collecte.event.participants.teamVisitor.id}}"
-                                class="accent-color btn">{{collecte.event.participants.teamVisitor.label}}
+                               class="accent-color btn">{{collecte.event.participants.teamVisitor.label}}
                             </a>
                         </span>
                 </div>
             </div>
- 
+
             <!-- Stats goals/sanction/use start -->
             <div class="row">
-                
+
                 <div class="col s12 m12 l4">
-                    <stats-goals bind-to-id="goalScored" 
-                                 label="goalScored" 
+                    <stats-goals bind-to-id="goalScored"
+                                 label="goalScored"
                                  sandbox-id="meta.sandbox._id">
                     </stats-goals>
                 </div>
                 <div class="col s12 hide-on-large-only"><br/></div>
                 <div class="col s12 m12 l4">
-                    <stats-goals bind-to-id="goalConceded" 
-                                 label="goalConceded" 
+                    <stats-goals bind-to-id="goalConceded"
+                                 label="goalConceded"
                                  sandbox-id="meta.sandbox._id">
                     </stats-goals>
                 </div>
                 <div class="col s12 hide-on-large-only"><br/></div>
                 <div class="col s12 m12 l4">
-                    <stats-sanction></stats-sanction> 
+                    <stats-sanction></stats-sanction>
                 </div>
             </div>
             <!-- Stats goals/sanction/use end -->
 
-            
+
             <!-- Stats shoot efficiency Start -->
             <div class="row">
                 <div class="col s12 left-align grey-text text-ligthen-4">
-                    <h5><small translate="stats.efficiency.efficiency"></small></h5>
+                    <h5>
+                        <small translate="stats.efficiency.efficiency"></small>
+                    </h5>
                 </div>
-                
+
                 <div class="col l3 m6 s12">
-                    <stats-efficiency bindtoid="gaugeEfficiencyGlobal" 
-                        label="efficiencyTotal" padding="25">
+                    <stats-efficiency bindtoid="gaugeEfficiencyGlobal"
+                                      label="efficiencyTotal" padding="25">
                     </stats-efficiency>
                 </div>
-                
+
                 <div class="col l3 m6 s12">
-                    <stats-efficiency bindtoid="gaugeEfficiency9m" 
-                        label="efficiency9m" values="'values9m'" padding="25">
+                    <stats-efficiency bindtoid="gaugeEfficiency9m"
+                                      label="efficiency9m" values="'values9m'" padding="25">
                     </stats-efficiency>
                 </div>
-                
+
                 <div class="col l3 m6 s12">
-                    <stats-efficiency bindtoid="gaugeEfficiency6m" 
-                        label="efficiency6m" values="'values6m'" padding="25">
+                    <stats-efficiency bindtoid="gaugeEfficiency6m"
+                                      label="efficiency6m" values="'values6m'" padding="25">
                     </stats-efficiency>
                 </div>
-                
+
                 <div class="col l3 m6 s12">
-                    <stats-efficiency bindtoid="gaugeEfficiency7m" 
-                        label="efficiency7m" values="'values7m'" padding="25">
+                    <stats-efficiency bindtoid="gaugeEfficiency7m"
+                                      label="efficiency7m" values="'values7m'" padding="25">
                     </stats-efficiency>
                 </div>
             </div>
             <!-- Stats shoot efficiency end -->
-            
+
             <!-- Stats actions pos/neg Start -->
-            <div class="row"> 
+            <div class="row">
                 <div class="col s12 left-align grey-text text-ligthen-4">
-                    <h5><small translate="stats.actionTab.title"></small></h5>
+                    <h5>
+                        <small translate="stats.actionTab.title"></small>
+                    </h5>
                 </div>
                 <stats-actions-pos-neg></stats-actions-pos-neg>
             </div>
             <!-- Stats actions pos/neg End -->
-            
+
             <!-- Stats participants Start -->
             <div class="row" ng-if="players.length > 0">
-                <div class="col s12 white-text colorMain"><h5><i class="fa fa-bar-chart"></i> {{'stats.eventLabels.listPlayers' | translate }}</h5></div>
+                <div class="col s12 white-text colorMain"><h5><i class="fa fa-bar-chart"></i>
+                    {{'stats.eventLabels.listPlayers' | translate }}</h5></div>
                 <div class=" card col s12">
                     <!-- player -->
                     <table class="bordered responsive-table highlight">
                         <thead>
-                            <tr class="light-green lighten-1 white-text">
-                                <th data-field="player" translate="stats.eventLabels.player"></th>
-                                <th data-field="positionType" translate="stats.eventLabels.position"></th>
-                                <th class="center-align" data-field="efficiency" translate="stats.eventLabels.efficiency"></th>
-                                <th class="center-align" data-field="efficiency" translate="stats.eventLabels.shoot"></th>
-                                <th class="center-align" data-field="yellowCard" translate="stats.eventLabels.yellowCard"></th>
-                                <th class="center-align" data-field="exclusion" translate="stats.eventLabels.exclusion"></th>
-                                <th class="center-align" data-field="redCard" translate="stats.eventLabels.redCard"></th>
-                                <th class="center-align" data-field="attack" translate="stats.eventLabels.attack"></th>
-                                <th class="center-align" data-field="defense" translate="stats.eventLabels.defense"></th>
-                            </tr>
+                        <tr class="light-green lighten-1 white-text">
+                            <th data-field="player" translate="stats.eventLabels.player"></th>
+                            <th data-field="positionType" translate="stats.eventLabels.position"></th>
+                            <th class="center-align" data-field="efficiency"
+                                translate="stats.eventLabels.efficiency"></th>
+                            <th class="center-align" data-field="efficiency" translate="stats.eventLabels.shoot"></th>
+                            <th class="center-align" data-field="yellowCard"
+                                translate="stats.eventLabels.yellowCard"></th>
+                            <th class="center-align" data-field="exclusion"
+                                translate="stats.eventLabels.exclusion"></th>
+                            <th class="center-align" data-field="redCard" translate="stats.eventLabels.redCard"></th>
+                            <th class="center-align" data-field="attack" translate="stats.eventLabels.attack"></th>
+                            <th class="center-align" data-field="defense" translate="stats.eventLabels.defense"></th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="player in players | filter:{$:'!goalkeeper'}">
-                                <td>{{player.name}} - {{player.firstname}}</td>
-                                <td>{{player.positionType}}</td>
-                                <td class="center-align">{{(player.stats.goalScored/player.stats.originShootAtt)*100 | number : 0}} %</td>
-                                <td class="center-align">{{player.stats.goalScored}} / {{player.stats.originShootAtt}}</td>
-                                <td ng-show="player.stats.yellowCard>0" class="center-align"><span class="badge amber accent-3">{{player.stats.yellowCard}}</span></td>
-                                <td ng-hide="player.stats.yellowCard>0" class="center-align"></td>
-                                <td ng-show="player.stats.exclTmp>0" class="center-align"><span class="badge red lighten-2">{{player.stats.exclTmp}}</span></td>
-                                <td ng-hide="player.stats.exclTmp>0" class="center-align"></td>
-                                <td ng-show="player.stats.redCard>0" class="center-align"><span class="badge red darken-2">{{player.stats.redCard}}</span></td>
-                                <td ng-hide="player.stats.redCard>0" class="center-align"></td>
-                                <td class="center-align">{{player.stats.actAttPos}} / {{player.stats.actAttNeg}}</td>
-                                <td class="center-align">{{player.stats.actDefPos}} / {{player.stats.actDefNeg}}</td>
-                            </tr>
+                        <tr ng-repeat="player in players | filter:{$:'!goalkeeper'}">
+                            <td>{{player.name}} - {{player.firstname}}</td>
+                            <td>{{player.positionType}}</td>
+                            <td class="center-align" ng-if="player.stats.originShootAtt > 0">
+                                {{(player.stats.goalScored/player.stats.originShootAtt)*100 | number : 0}} %
+                            </td>
+                            <td class="center-align" ng-if="player.stats.originShootAtt === 0"></td>
+                            <td class="center-align" ng-if="player.stats.originShootAtt > 0">{{player.stats.goalScored}}
+                                / {{player.stats.originShootAtt}}
+                            </td>
+                            <td class="center-align" ng-if="player.stats.originShootAtt === 0"></td>
+                            <td ng-if="player.stats.yellowCard>0" class="center-align"><span
+                                    class="badge amber accent-3">{{player.stats.yellowCard}}</span></td>
+                            <td ng-if="!player.stats.yellowCard>0" class="center-align"></td>
+                            <td ng-if="player.stats.exclTmp>0" class="center-align"><span class="badge red lighten-2">{{player.stats.exclTmp}}</span>
+                            </td>
+                            <td ng-if="!player.stats.exclTmp>0" class="center-align"></td>
+                            <td ng-if="player.stats.redCard>0" class="center-align"><span class="badge red darken-2">{{player.stats.redCard}}</span>
+                            </td>
+                            <td ng-if="!player.stats.redCard>0" class="center-align"></td>
+                            <td class="center-align" ng-if="player.stats.actAttNeg">{{player.stats.actAttPos}} /
+                                {{player.stats.actAttNeg}}
+                            </td>
+                            <td class="center-align" ng-if="!player.stats.actAttNeg"></td>
+                            <td class="center-align" ng-if="player.stats.actDefNeg">{{player.stats.actDefPos}} /
+                                {{player.stats.actDefNeg}}
+                            </td>
+                            <td class="center-align" ng-if="!player.stats.actDefNeg"></td>
+                        </tr>
                         </tbody>
                     </table>
-                    
+
                     <!-- goalkeeper -->
                     <table class="bordered responsive-table highlight">
                         <thead>
-                            <tr class="red lighten-1 white-text">
-                                <th data-field="player">{{'stats.eventLabels.goalkeeper' | translate }}</th>
-                                <th class="center-align" data-field="efficiency">{{'stats.eventLabels.efficiencyGoal' | translate }}</th>
-                                <th class="center-align" data-field="efficiency">{{'stats.eventLabels.stop' | translate }}</th>
-                                <th class="center-align" data-field="yellowCard">{{'stats.eventLabels.yellowCard' | translate }}</th>
-                                <th class="center-align" data-field="exclusion">{{'stats.eventLabels.exclusion' | translate }}</th>
-                                <th class="center-align" data-field="redCard">{{'stats.eventLabels.redCard' | translate }}</th>
-                            </tr>
+                        <tr class="red lighten-1 white-text">
+                            <th data-field="player" translate="stats.eventLabels.goalkeeper"></th>
+                            <th class="center-align" data-field="efficiency"
+                                translate="stats.eventLabels.efficiencyGoal"></th>
+                            <th class="center-align" data-field="efficiency" translate="stats.eventLabels.stop"></th>
+                            <th class="center-align" data-field="yellowCard"
+                                translate="stats.eventLabels.yellowCard"></th>
+                            <th class="center-align" data-field="exclusion"
+                                translate="stats.eventLabels.exclusion"></th>
+                            <th class="center-align" data-field="redCard" translate="stats.eventLabels.redCard"></th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="player in players | filter:{$:'goalkeeper'}">
-                                <td>{{player.name}} - {{player.firstname}}</td>
-                                <td class="center-align">>{{((player.stats.originShootDef-player.stats.goalConceded)/player.stats.originShootDef)*100 | number : 0}} %</td>
-                                <td class="center-align">{{(player.stats.originShootDef-player.stats.goalConceded)}}/{{player.stats.originShootDef}}</td>
-                                <td ng-show="player.stats.yellowCard>0" class="center-align"><span class="badge amber accent-3">{{player.stats.yellowCard}}</span></td>
-                                <td ng-hide="player.stats.yellowCard>0" class="center-align"></td>
-                                <td ng-show="player.stats.exclTmp>0" class="center-align"><span class="badge red lighten-2">{{player.stats.exclTmp}}</span></td>
-                                <td ng-hide="player.stats.exclTmp>0" class="center-align"></td>
-                                <td ng-show="player.stats.redCard>0" class="center-align"><span class="badge red darken-2">{{player.stats.redCard}}</span></td>
-                                <td ng-hide="player.stats.redCard>0" class="center-align"></td>
-                            </tr>
+                        <tr ng-repeat="player in players | filter:{$:'goalkeeper'}">
+                            <td>{{player.name}} - {{player.firstname}}</td>
+                            <td class="center-align" ng-if="player.stats.originShootDef > 0">
+                                {{((player.stats.originShootDef-player.stats.goalConceded)/player.stats.originShootDef)*100
+                                | number : 0}} %
+                            </td>
+                            <td class="center-align" ng-if="player.stats.originShootDef === 0"></td>
+                            <td class="center-align" ng-if="player.stats.originShootDef > 0">
+                                {{(player.stats.originShootDef-player.stats.goalConceded)}}/{{player.stats.originShootDef}}
+                            </td>
+                            <td class="center-align" ng-if="player.stats.originShootDef === 0"></td>
+                            <td ng-if="player.stats.yellowCard>0" class="center-align"><span
+                                    class="badge amber accent-3">{{player.stats.yellowCard}}</span></td>
+                            <td ng-if="!player.stats.yellowCard>0" class="center-align"></td>
+                            <td ng-if="player.stats.exclTmp>0" class="center-align"><span class="badge red lighten-2">{{player.stats.exclTmp}}</span>
+                            </td>
+                            <td ng-if="!player.stats.exclTmp>0" class="center-align"></td>
+                            <td ng-if="player.stats.redCard>0" class="center-align"><span class="badge red darken-2">{{player.stats.redCard}}</span>
+                            </td>
+                            <td ng-if="!player.stats.redCard>0" class="center-align"></td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

@@ -43,25 +43,6 @@
             $scope.series = [];
             $scope.effectiveId = $routeParams.effectiveId;
             $scope.eventsIds = eventCompareService.get() || [];
-            $scope.periodicity = $scope.periodicity || 'season';
-            $scope.periodicityActive = $scope.periodicityActive || {
-                    label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
-                    startDate: moment($scope.meta.season.startDate),
-                    endDate: moment($scope.meta.season.endDate),
-                    ownersId: $scope.ownersId
-                };
-            $scope.periodicityActive.ownersId = $scope.periodicityActive.ownersId || $scope.ownersId;
-         /*   $scope.$watch('periodicityActive', function (newValue, oldValue) {
-                if (!angular.equals(oldValue, newValue)) {
-                    $scope.periodicityActive = newValue;
-                    qeventbus.prepForBroadcast('periodicityActive', {
-                        periodicityActive: newValue,
-                        periodicity: $scope.periodicity
-                    });
-                    $scope.buildWidget();
-                }
-            });
-*/
 
             $scope.doTheBack = function () {
                 $window.history.back();
@@ -71,6 +52,7 @@
                 if (eventCompareService.get() > 0) {
                     getEvents(eventCompareService.get(), function (data) {
                         if (data.error) {
+                            console.error(data)
                             return;
                         }
                         $scope.events = data;
@@ -98,6 +80,9 @@
                 var promises = [];
                 var startDate = $scope.periodicityActive.startDate.valueOf();
                 var endDate = $scope.periodicityActive.endDate.valueOf();
+                qeventbus.prepForBroadcast('ownersId', {
+                    ownersId: $scope.eventsIds
+                });
                 $scope.eventsIds.forEach(function (id) {
                     promises.push(statsRestAPI.getStatGroupBy({
                         listIndicators: ['goalScored', 'goalConceded'],
@@ -180,6 +165,13 @@
                 });
             }
 
+            $scope.$on('qeventbus:periodicityActive', function () {
+                if ($scope.periodicityActive || !angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
+                    $scope.periodicityActive = qeventbus.data.periodicityActive;
+                    console.log($scope.periodicityActive)
+                    $scope.buildWidget();
+                }
+            });
             $scope.buildWidget();
         });
 })();

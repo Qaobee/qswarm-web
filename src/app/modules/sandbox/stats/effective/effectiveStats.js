@@ -53,17 +53,7 @@
                 });
             };
 
-            /* check user connected */
-            $scope.checkUserConnected = function () {
-
-                userRestAPI.getUserById(user._id).success(function (/* data */) {
-                    $scope.getEffective();
-                }).error(function (/* data */) {
-                    $log.error('EffectiveStats : User not Connected');
-                });
-            };
-
             /* Primary, check if user connected */
-            $scope.checkUserConnected();
+            $scope.getEffective();
         });
 }());
