@@ -76,7 +76,6 @@
                     $scope.getEffective = function () {
                         effectiveSrv.getEffective($scope.meta.sandbox.effectiveDefault).then(function (data) {
                             $scope.currentEffective = data;
-
                             effectiveSrv.getListId($scope.currentEffective, 'player').then(function (listId) {
                                 $scope.ownersId = listId;
                                 getStats($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {

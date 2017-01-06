@@ -51,8 +51,10 @@
          * @class qaobee.modules.sandbox.effective.MainPlayerControler
          * @description Main controller for view mainPlayer.html
          */
-        .controller('MainPlayerController', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, $window, user, meta,
-                                                      effectiveRestAPI, effectiveSrv, userRestAPI, playerCompareService, widgetDefinitionsMainPlayer, defaultWidgetsMainPlayer, $timeout, qeventbus) {
+        .controller('MainPlayerController', function ($scope, $routeParams, $translatePartialLoader, $location, $filter,
+                                                      user, meta, effectiveRestAPI, effectiveSrv, userRestAPI,
+                                                      playerCompareService, widgetDefinitionsMainPlayer,
+                                                      defaultWidgetsMainPlayer, qeventbus) {
 
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('commons');
@@ -139,19 +141,6 @@
                     });
                 });
             };
-
-            /* check user connected */
-            $scope.checkUserConnected = function () {
-                userRestAPI.getUserById(user._id).success(function (/* data */) {
-                    $scope.getPlayers();
-                }).error(function (/* data */) {
-                    $log.error('MainPlayerControler : User not Connected');
-                });
-            };
-
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
-        })
-    //
-    ;
+            $scope.getPlayers();
+        });
 }());
