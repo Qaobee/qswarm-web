@@ -49,20 +49,18 @@
             };
 
             $scope.buildWidget = function () {
-                if (eventCompareService.get() > 0) {
-                    getEvents(eventCompareService.get(), function (data) {
+                if ($scope.eventsIds.length > 0) {
+                    getEvents($scope.eventsIds, function (data) {
                         if (data.error) {
-                            console.error(data)
                             return;
                         }
                         $scope.events = data;
                         $scope.series = $scope.events.map(function (p) {
                             return p.label || p.type.label + ' ' + moment(p.startDate).format('LLLL');
                         });
-                        $scope.eventsIds = $scope.events.map(function (p) {
-                            return p._id;
+                        qeventbus.prepForBroadcast('ownersId', {
+                            ownersId: $scope.eventsIds
                         });
-                        $scope.buildWidget();
                     });
                 } else {
                     $scope.loading = false;
@@ -147,7 +145,7 @@
                     if (angular.isArray(data.data) && data.data.length > 0) {
                         var events = [];
                         data.data.forEach(function (t) {
-                            if (eventsIds.any(t._id)) {
+                            if (eventsIds.some(t._id)) {
                                 events.push(t);
                             }
                         });
@@ -166,9 +164,8 @@
             }
 
             $scope.$on('qeventbus:periodicityActive', function () {
-                if ($scope.periodicityActive || !angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
+                if (!$scope.periodicityActive || !angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
                     $scope.periodicityActive = qeventbus.data.periodicityActive;
-                    console.log($scope.periodicityActive)
                     $scope.buildWidget();
                 }
             });
