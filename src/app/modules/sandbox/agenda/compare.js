@@ -22,7 +22,7 @@
             var compareList = [];
             return {
                 get: function () {
-                    return $window.sessionStorage.eventCompareList ? JSON.parse($window.sessionStorage.teamCompareList) : compareList;
+                    return $window.sessionStorage.eventCompareList ? JSON.parse($window.sessionStorage.eventCompareList) : compareList;
                 },
                 add: function (pId) {
                     compareList.push(pId);

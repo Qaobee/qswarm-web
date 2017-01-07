@@ -22,7 +22,7 @@
             var compareList = [];
             return {
                 get: function () {
-                    return $window.sessionStorage.playerCompareList ? JSON.parse($window.sessionStorage.teamCompareList) : compareList;
+                    return $window.sessionStorage.playerCompareList ? JSON.parse($window.sessionStorage.playerCompareList) : compareList;
                 },
                 add: function (pId) {
                     compareList.push(pId);
@@ -141,10 +141,8 @@
             }
 
             $scope.$on('qeventbus:periodicityActive', function () {
-                if (!$scope.periodicityActive || !angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
-                    $scope.periodicityActive = qeventbus.data.periodicityActive;
-                    $scope.buildWidget();
-                }
+                $scope.periodicityActive = qeventbus.data.periodicityActive;
+                $scope.buildWidget();
             });
         });
 })();

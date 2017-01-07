@@ -19,11 +19,11 @@
                     $translatePartialLoader.addPart('stats');
                     $scope.stats = {};
                     $scope.noStat = false;
-                    $scope.radarOpts  = {
+                    $scope.radarOpts = {
                         scale: {
-                            ticks : {
-                                fixedStepSize : 1,
-                                beginAtZero : true
+                            ticks: {
+                                fixedStepSize: 1,
+                                beginAtZero: true
                             }
                         }
                     };
@@ -32,7 +32,7 @@
                      */
                     $scope.buildDatas = function () {
                         $scope.noStat = false;
-                        if(angular.isUndefined($scope.startDate) || angular.isUndefined($scope.owners)) {
+                        if (angular.isUndefined($scope.startDate) || angular.isUndefined($scope.owners)) {
                             return;
                         }
                         $scope.stats = {};
@@ -88,7 +88,7 @@
                     };
 
                     $scope.$on('qeventbus:periodicityActive', function () {
-                        if (angular.isDefined(qeventbus.data.periodicityActive) && ($scope.periodicityActive || !angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive))) {
+                        if (angular.isDefined(qeventbus.data.periodicityActive) && (angular.isUndefined($scope.periodicityActive) || !angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive))) {
                             $scope.noStat = false;
                             $scope.periodicityActive = qeventbus.data.periodicityActive;
                             $scope.startDate = $scope.periodicityActive.startDate;
