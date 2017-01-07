@@ -11,7 +11,6 @@
                 scope: {
                     indicators: '=',
                     owners: '=',
-                    periodicityActive: '=',
                     title: '@',
                     series: '=',
                     meta: '='
