@@ -4,14 +4,16 @@
             <div class="left-align"><h5 translate="playerLabels.playerCivilSection"></h5></div>
             <div class="divider accent-color"></div>
             <div>&nbsp;</div>
-            <div class="left-align">{{player.age}} {{'commons.format.ageYear' | translate }}</div>
-            <div>&nbsp;</div>
-            <div class="left-align" ng-if="player.nationality">{{'playerLabels.playerNationality' |
-                translate }} : {{player.nationality.label || player.nationality}}
+            <div class="left-align light-text-color">{{'playerLabels.playerAge' | translate }} : 
+                <span class="primary-text-color">{{player.age}} {{'commons.format.ageYear' | translate }}</span>
             </div>
             <div>&nbsp;</div>
-            <div class="left-align" ng-if="player.birthCity">{{'playerLabels.playerBirthCity' |
-                translate }} : {{player.birthCity}}
+            <div class="left-align light-text-color" ng-if="player.nationality">{{'playerLabels.playerNationality' | translate }} : 
+                <span class="primary-text-color">{{player.nationality.label || player.nationality}}</span>
+            </div>
+            <div>&nbsp;</div>
+            <div class="left-align light-text-color" ng-if="player.birthCity">{{'playerLabels.playerBirthCity' | translate }} : 
+                <span class="primary-text-color">{{player.birthCity}}</span>
             </div>
             <div>&nbsp;</div>
             <div class="left-align" ng-if="mapShow">
@@ -22,24 +24,24 @@
             </div>
             <div ng-if="mapShow">&nbsp;</div>
         </div>
-        <div class="col m4 s12 light-primary-color">
+        <div class="col m4 s12">
             <div class="left-align"><h5 translate="playerLabels.playerCaracterSection"></h5></div>
             <div class="divider accent-color"></div>
             <div>&nbsp;</div>
-            <div class="left-align">{{'playerLabels.playerWeight' | translate }} :
-                {{player.status.weight}}
+            <div class="left-align light-text-color">{{'playerLabels.playerWeight' | translate }} :
+                <span class="primary-text-color">{{player.status.weight}}</span>
             </div>
             <div>&nbsp;</div>
-            <div class="left-align">{{'playerLabels.playerHeight' | translate }} :
-                {{player.status.height}}
+            <div class="left-align light-text-color">{{'playerLabels.playerHeight' | translate }} :
+                <span class="primary-text-color">{{player.status.height}}</span>
             </div>
             <div>&nbsp;</div>
-            <div class="left-align">{{'playerLabels.playerLaterality' | translate }} :
-                {{player.status.laterality}}
+            <div class="left-align light-text-color">{{'playerLabels.playerLaterality' | translate }} :
+                <span class="primary-text-color">{{player.status.laterality}}</span>
             </div>
             <div>&nbsp;</div>
-            <div class="left-align">{{'playerLabels.playerPositionType' | translate }} :
-                {{player.positionType}}
+            <div class="left-align light-text-color">{{'playerLabels.playerPositionType' | translate }} :
+                <span class="primary-text-color">{{player.positionType}}</span>
             </div>
             <div>&nbsp;</div>
         </div>
@@ -47,12 +49,12 @@
             <div class="center-align"><h5 translate="playerLabels.playerContactSection"></h5></div>
             <div class="divider accent-color"></div>
             <div>&nbsp;</div>
-            <div class="left-align"><i class="fa fa-fw fa-phone"></i> {{player.contact.home}}</div>
+            <div class="left-align"><i class="fa fa-fw fa-phone light-text-color"></i> {{player.contact.home}}</div>
             <div>&nbsp;</div>
-            <div class="left-align"><i class="fa fa-fw fa-mobile"></i> {{player.contact.cellphone}}</div>
+            <div class="left-align"><i class="fa fa-fw fa-mobile light-text-color"></i> {{player.contact.cellphone}}</div>
             <div>&nbsp;</div>
             <div class="left-align"><a href="mailto:{{player.contact.email}}"
-                                       class="accent-text-color"><i class="fa fa-fw fa-envelope"></i>
+                                       class="accent-text-color"><i class="fa fa-fw fa-envelope light-text-color"></i>
                 {{player.contact.email}}</a></div>
             <div>&nbsp;</div>
         </div>

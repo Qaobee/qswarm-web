@@ -187,8 +187,8 @@
     border-radius: 12px !important;
 }
 
-.card .card-content, .card .card-title {
-    border-radius: 8px 8px 0 0;
+.card, .card .card-title {
+    border-radius: 4px 4px 0 0;
 }
 
 .btn, .btn-large, .btn-flat {
@@ -420,6 +420,9 @@ footer.page-footer {
     border: dotted 3px green;
 }
 
+.container {
+    width: 90%;
+}
 @media only screen and (max-width: 600px) {
     .container {
         width: 90%;
@@ -430,11 +433,17 @@ footer.page-footer {
     .brand-logo {
         max-width: 30%;
     }
+    .container {
+        width: 90%;
+    }
 }
 
 @media only screen and (max-width: 769px) {
     .brand-logo {
         max-width: 70%;
+    }
+    .container {
+        width: 80%;
     }
 }
 

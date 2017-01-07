@@ -106,7 +106,8 @@
     "playerTelMobile": "Mobile",
     "playerTelHome": "Maison",
     "playerAddress": "Adresse",
-    "playerMail": "Email"
+    "playerMail": "Email",
+    "playerAge": "Age"  
   },
   "playerErrors": {
     "Firstname": "Le prénom du joueur est obligatoire",

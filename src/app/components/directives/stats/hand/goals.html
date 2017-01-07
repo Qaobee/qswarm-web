@@ -1,44 +1,35 @@
-<div class="card primary-text-color" ng-if="bindToId==='goalScored'">
+<div class="card primary-text-color" >
     <div class="card-title dark-primary-color center">
-        <span class="title"><small>{{'stats.resumeTab.goalScored' | translate }}</small></span>
+        <span class="title" ng-if="bindToId==='goalScored'"><small>{{'stats.resumeTab.goalScored' | translate }}</small></span>
+        <span class="title" ng-if="bindToId==='goalConceded'"><small>{{'stats.resumeTab.goalConceded' | translate }}</small></span>
     </div>
     <!-- 
     <div class="card-image waves-effect waves-block waves-light">
         <img src="/assets/images/handball/ballon-filet.jpeg">
     </div>
     -->
-    <div class="card-content white primary-text-color">
-        <div class="row center">
-            <div class="col s4"><h6>{{'stats.resumeTab.goal' | translate }}</h6></div>
-            <div class="col s4"><h6>{{'stats.resumeTab.goalAvgLight' | translate }}</h6></div>
-            <div class="col s4"><h6>{{'stats.resumeTab.frequence' | translate }}</h6></div>
-            <div class="col s4 light-green white-text" ng-show="noStat"><h6>{{nbGoal}}</h6></div>
-            <div class="col s4 light-green darken-1 white-text" ng-show="noStat"><h6>{{goalAvg | number : 2}}</h6></div>
-            <div class="col s4 light-green white-text" ng-show="noStat"><h6>{{totalPlayTime/60/nbGoal | number : 0}} {{'stats.resumeTab.minute' | translate }}</h6></div>
-            <div class="col s12 light-green darken-1 white-text" ng-hide="noStat"><h6>{{'stats.resumeTab.noData' | translate }}</h6></div>
-        </div>
-    </div>
-</div>
-
-<div class="card primary-text-color" ng-if="bindToId==='goalConceded'">
-    <div class="card-title dark-primary-color center">
-        <span class="title"><small>{{'stats.resumeTab.goalConceded' | translate }}</small></span>
-    </div>
-    <!--
-    <div class="card-image waves-effect waves-block waves-light">
-        <img src="/assets/images/handball/ballon-fillet.jpeg">
-    </div>
-    -->
     
     <div class="card-content white primary-text-color">
-        <div class="row center">
-            <div class="col s4"><h6>{{'stats.resumeTab.goal' | translate }}</h6></div>
-            <div class="col s4"><h6>{{'stats.resumeTab.goalAvgLight' | translate }}</h6></div>
-            <div class="col s4"><h6>{{'stats.resumeTab.frequence' | translate }}</h6></div>
-            <div class="col s4 red darken-1 white-text" ng-show="noStat"><h6>{{nbGoal}}</h6></div>
-            <div class="col s4 red lighten-1 white-text" ng-show="noStat"><h6>{{goalAvg | number : 2}}</h6></div>
-            <div class="col s4 red darken-1 white-text" ng-show="noStat"><h6>{{totalPlayTime/60/nbGoal | number : 0}} {{'stats.resumeTab.minute' | translate }}</h6></div>
-            <div class="col s12 red lighten-1 white-text" ng-hide="noStat"><h6>{{'stats.resumeTab.noData' | translate }}</h6></div>
+        <div class="row center valign-wrapper" ng-show="noStat">
+            <div class="col s1 valign">&nbsp;</div>
+            <div class="col s5 left-align light-text-color"><h6>{{'stats.resumeTab.goal' | translate }}</h6></div>
+            <div class="col s5 light-primary-color valign"><h4>{{nbGoal}}</h4></div>
+            <div class="col s1 valign">&nbsp;</div>
+        </div>
+        <div class="row center valign-wrapper" ng-show="noStat">
+            <div class="col s1 valign">&nbsp;</div>
+            <div class="col s5 left-align light-text-color"><h6>{{'stats.resumeTab.frequence' | translate }}</h6></div>
+            <div class="col s5 light-primary-color valign"><h4>{{totalPlayTime/60/nbGoal | number : 0}} '</h4> </div>
+            <div class="col s1 valign">&nbsp;</div>
+        </div>
+        <div class="row center valign-wrapper" ng-show="noStat">
+            <div class="col s1 valign">&nbsp;</div>
+            <div class="col s5 left-align light-text-color"><h6>{{'stats.resumeTab.goalAvgLight' | translate }}</h6></div>
+            <div class="col s5 secondary-color valign"><h4>{{goalAvg | number : 2}}</h4></div>
+            <div class="col s1 valign">&nbsp;</div>
+        </div>
+        <div class="row center" ng-hide="noStat">
+            <div class="col s12" ng-hide="noStat"><h6>{{'stats.resumeTab.noData' | translate }}</h6></div>
         </div>
     </div>
 </div>

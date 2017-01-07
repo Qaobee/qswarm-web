@@ -9,14 +9,27 @@
     -->
     
     <div class="card-content white primary-text-color">
-        <div class="row center">
-            <div class="col s4 "><h6>{{'stats.resumeTab.gamePlayed' | translate }}</h6></div>
-            <div class="col s4 "><h6>{{'stats.resumeTab.holder' | translate }}</h6></div>
-            <div class="col s4 "><h6><small>{{'stats.resumeTab.playTime' | translate }}</small></h6></div>
-            <div class="col s4 light-blue lighten-1 white-text" ng-show="noStat"><h6>{{nbGame}}</h6></div>
-            <div class="col s4 light-blue lighten-2 white-text" ng-show="noStat"><h6>{{nbHolder}}</h6></div>
-            <div class="col s4 light-blue lighten-1 white-text" ng-show="noStat"><h6>{{playTimeAvg/60 | number : 0}} {{'stats.resumeTab.minute' | translate }}</h6></div>
-            <div class="col s12 light-blue lighten-2 white-text" ng-hide="noStat"><h6>{{'stats.resumeTab.noData' | translate }}</h6></div>
+        <div class="row center valign-wrapper" ng-show="noStat">
+            <div class="col s1 valign">&nbsp;</div>
+            <div class="col s5 left-align light-text-color"><h6>{{'stats.resumeTab.gamePlayed' | translate }}</h6></div>
+            <div class="col s5 light-primary-color valign"><h4>{{nbGame}}</h4></div>
+            <div class="col s1 valign">&nbsp;</div>
+        </div>
+        <div class="row center valign-wrapper" ng-show="noStat">
+            <div class="col s1 valign">&nbsp;</div>
+            <div class="col s5 left-align light-text-color"><h6>{{'stats.resumeTab.holder' | translate }}</h6></div>
+            <div class="col s5 light-primary-color valign"><h4>{{nbHolder}}</h4></div>
+            <div class="col s1 valign">&nbsp;</div>
+        </div>
+        <div class="row center valign-wrapper" ng-show="noStat">
+            <div class="col s1 valign">&nbsp;</div>
+            <div class="col s5 left-align light-text-color"><h6>{{'stats.resumeTab.playTime' | translate }}</h6></div>
+            <div class="col s5 dark-primary-color valign"><h4>{{playTimeAvg/60 | number : 0}} '</h4> </div>
+            <div class="col s1 valign">&nbsp;</div>
+        </div>    
+        <div class="row center" ng-hide="noStat">
+            <div class="col s12" ng-hide="noStat"><h6>{{'stats.resumeTab.noData' | translate }}</h6></div>
         </div>
     </div>
+    
 </div>

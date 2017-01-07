@@ -17,9 +17,9 @@
         <!--card-->
         <div class="col m12 s12">
             <input type="checkbox" ng-model="showDetail" />
-            <span class="card-title activator grey-text text-darken-4" ng-click="showDetail = !showDetail">
+            <span class="card-title activator accent-text-color" ng-click="showDetail = !showDetail">
                 <i class="fa fa-fw fa-chevron-down"></i>
-                {{'playerLabels.playerCivilSection' | translate}}</span>
+                <span class="primary-text-color">{{'playerLabels.playerCivilSection' | translate}}</span></span>
 
             <div class="card-content right-align card-toggle" >
                 <player-infos player="player"></player-infos>

@@ -38,7 +38,28 @@
             <small translate="stats.efficiency.efficiency"></small>
         </h5>
     </div>
+    
+    <div class="col s12 m6 l3" style="margin-top:15px;">
+        <widget-efficiency-player meta="meta" user="user"></widget-efficiency-player>
+    </div>
 
+    <div class="col s12 m6 l3" style="margin-top:15px;">
+        <widget-efficiency-player meta="meta" user="user" values="['BACKLEFT9', 'CENTER9', 'BACKRIGHT9']"
+                                  widget-title="'stats.efficiency.efficiency9m'"></widget-efficiency-player>
+    </div>
+
+    <div class="col s12 m6 l3" style="margin-top:15px;">
+        <widget-efficiency-player meta="meta" user="user"
+                                  values="['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING']"
+                                  widget-title="'stats.efficiency.efficiency6m'"></widget-efficiency-player>
+    </div>
+
+    <div class="col s12 m6 l3" style="margin-top:15px;">
+        <widget-efficiency-player meta="meta" user="user" values="['PENALTY']"
+                                  widget-title="'stats.efficiency.efficiency7m'"></widget-efficiency-player>
+    </div>
+
+    <!--
     <div class="col l3 m6 s12">
         <stats-efficiency bindtoid="gaugeEfficiencyGlobal"
                           label="efficiencyTotal" padding="25" noStatEff="noStatEff">
@@ -62,6 +83,7 @@
                           label="efficiency7m" values="'values7m'" padding="25">
         </stats-efficiency>
     </div>
+    -->
 </div>
 <!-- Stats shoot efficiency end -->
 <div class="row">
