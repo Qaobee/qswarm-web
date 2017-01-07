@@ -18,17 +18,19 @@
         });
     })
 
-        .factory('playerCompareService', function () {
+        .factory('playerCompareService', function ($window) {
             var compareList = [];
             return {
                 get: function () {
-                    return compareList;
+                    return $window.sessionStorage.playerCompareList ? JSON.parse($window.sessionStorage.teamCompareList) : compareList;
                 },
                 add: function (pId) {
                     compareList.push(pId);
+                    $window.sessionStorage.playerCompareList = JSON.stringify(compareList);
                 },
                 remove: function (pId) {
                     compareList.remove(pId);
+                    $window.sessionStorage.playerCompareList = JSON.stringify(compareList);
                 },
                 init: function () {
                     compareList = [];
@@ -69,7 +71,6 @@
             };
 
             $scope.buildWidget = function () {
-                console.log('build')
                 $scope.stats = {
                     goals: {},
                     sanctions: {},
@@ -134,7 +135,6 @@
             /* Retrieve current effective and list player */
             function getPlayers(selectedPlayerids, callback) {
                 var listField = ['_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact'];
-
                 effectiveSrv.getPersons(selectedPlayerids, listField).then(function (players) {
                     callback(players);
                 });
@@ -146,7 +146,6 @@
                     $scope.buildWidget();
                 }
             });
-
         });
 })();
 

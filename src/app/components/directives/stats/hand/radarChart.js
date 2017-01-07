@@ -18,6 +18,7 @@
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
                     $scope.stats = {};
+                    $scope.noStat = false;
                     $scope.radarOpts  = {
                         scale: {
                             ticks : {
@@ -30,6 +31,7 @@
                      * Build graphs
                      */
                     $scope.buildDatas = function () {
+                        $scope.noStat = false;
                         if(angular.isUndefined($scope.startDate) || angular.isUndefined($scope.owners)) {
                             return;
                         }
@@ -58,7 +60,6 @@
                                         $scope.stats[config.data.listOwners[0]][value._id.code] = value.value;
                                     });
                                 }
-                                $scope.noData = Object.isEmpty($scope.stats);
                             }));
                         });
 
@@ -79,6 +80,8 @@
                                 });
                                 $scope.data.push(datas);
                             });
+
+                            $scope.noStat = !Object.isEmpty($scope.stats);
                             $scope.radarOpts.scale.ticks.fixedStepSize = Math.ceil($scope.data.flatten().max() / 10);
                             $scope.loading = false;
                         });
@@ -93,12 +96,9 @@
                             $scope.buildDatas();
                         }
                     });
-                },
-                link: function ($scope) {
-                    $scope.$watchGroup(['indicators', 'owners', 'title'], function () {
-                        if (angular.isDefined($scope.periodicityActive) && !!$scope.periodicityActive.startDate && !!$scope.periodicityActive.endDate) {
-                            $scope.buildDatas();
-                        }
+                    $scope.$on('qeventbus:ownersId', function () {
+                        $scope.owners = qeventbus.data.ownersId;
+                        $scope.buildDatas();
                     });
                 },
                 templateUrl: 'app/components/directives/stats/hand/radarChart.html'

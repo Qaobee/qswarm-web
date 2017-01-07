@@ -39,7 +39,7 @@
                      * Build graphs
                      */
                     $scope.buildDatas = function () {
-                        if (!$scope.owners) {
+                        if (!$scope.owners || angular.isUndefined($scope.periodicityActive)) {
                             return;
                         }
                         $scope.loading = true;
@@ -147,12 +147,11 @@
                         angular.element('#modal-' + uid).modal('close');
                     };
 
-                    $scope.$watchGroup(['indicators', 'currentIndicator', 'owners'], function (newValues) {
-                        $scope.indicators = newValues[0];
-                        $scope.currentIndicator = newValues[1];
-                        $scope.owners = newValues[2];
+                    $scope.$on('qeventbus:ownersId', function () {
+                        $scope.owners = qeventbus.data.ownersId;
                         $scope.buildDatas();
                     });
+
                     $scope.$on('qeventbus:periodicityActive', function () {
                         if (angular.isDefined(qeventbus.data.periodicityActive) && (!angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive))) {
                             $scope.periodicityActive = qeventbus.data.periodicityActive;
