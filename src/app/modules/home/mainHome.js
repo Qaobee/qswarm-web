@@ -12,10 +12,10 @@
      * @requires {@link qaobee.components.widgets.event.widget.nextEvent|qaobee.components.widgets.event.widget.nextEvent}
      */
     angular.module('qaobee.home', [
-            /* qaobee services */
-            'effectifSRV',
-            /* qaobee Rest API */
-            'userRestAPI'])
+        /* qaobee services */
+        'effectifSRV',
+        /* qaobee Rest API */
+        'userRestAPI'])
 
         .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private', {
@@ -31,57 +31,26 @@
         /**
          * @class qaobee.modules.home.HomeControler
          */
-        .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta, $window,
-                                               userRestAPI, widgetDefinitionsHome, defaultWidgetsHome, qeventbus) {
+        .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $filter, user, meta, effectiveSrv, effectiveRestAPI, sandboxRestAPI, qeventbus) {
             $translatePartialLoader.addPart('home');
             $translatePartialLoader.addPart('stats');
             $translatePartialLoader.addPart('agenda');
             $translatePartialLoader.addPart('effective');
             $scope.user = user;
             $scope.meta = meta;
-            $scope.activeTabIndex =0;
+            $scope.activeTabIndex = 0;
+            $scope.listId = [];
 
-            /* watch if periodicity change
-            $scope.$watch('periodicityActive', function (newValue, oldValue) {
-                if (angular.isDefined(newValue) && !angular.equals(newValue, oldValue)) {
-                    $scope.periodicityActive.ownersId = $scope.ownersId;
-                    user.periodicity = $scope.periodicity;
-                    user.periodicityActive = $scope.periodicityActive;
-                    qeventbus.prepForBroadcast('periodicityActive', {
-                        periodicityActive: $scope.periodicityActive,
-                        periodicity: $scope.periodicity
+            $scope.getEffective = function (id) {
+                effectiveSrv.getEffective(id).then(function (data) {
+                    effectiveSrv.getListId(data, 'player').then(function (listId) {
+                        $scope.listId = listId.union($scope.listId);
+                        qeventbus.prepForBroadcast('ownersId', {
+                            ownersId: $scope.listId
+                        });
                     });
-                }
-            });*/
-            /* init periodicity active */
-            $scope.initPeriodicityActive = function() {
-                if (!user.periodicity) {
-                    $scope.periodicity = 'season';
-                    $scope.periodicityActive = {
-                        label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
-                        startDate: moment($scope.meta.season.startDate),
-                        endDate: moment($scope.meta.season.endDate),
-                        ownersId: $scope.ownersId
-                    };
-                    user.periodicity = $scope.periodicity;
-                    user.periodicityActive = $scope.periodicityActive;
-                } else {
-                    $scope.periodicity = user.periodicity;
-                    $scope.periodicityActive = user.periodicityActive;
-                }
-            };
-
-            /* check user connected */
-            $scope.checkUserConnected = function () {
-                userRestAPI.getUserById(user._id).success(function () {
-                    $scope.initPeriodicityActive();
-                }).error(function () {
-                    $log.error('HomeControler : User not Connected');
                 });
             };
-
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
-
+            $scope.getEffective($scope.meta.sandbox.effectiveDefault);
         });
 }());

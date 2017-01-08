@@ -130,26 +130,16 @@
                 user.effectiveTabId = tabId;
             };
 
-            /* check user connected */
-            $scope.checkUserConnected = function () {
+            $scope.getEffectives();
+            $scope.getListTeamHome();
+            $timeout(function () {
+                if (user.effectiveTabId) {
+                    angular.element('ul.tabs').tabs('select_tab', user.effectiveTabId);
+                } else {
+                    angular.element('ul.tabs').tabs('select_tab', 'playerList');
+                }
+            }, 100);
 
-                userRestAPI.getUserById(user._id).success(function () {
-                    $scope.getEffectives();
-                    $scope.getListTeamHome();
-                    $timeout(function () {
-                        if (user.effectiveTabId) {
-                            angular.element('ul.tabs').tabs('select_tab', user.effectiveTabId);
-                        } else {
-                            angular.element('ul.tabs').tabs('select_tab', 'playerList');
-                        }
-                    }, 100);
-                }).error(function () {
-                    $log.error('MainEffectiveControler : User not Connected');
-                });
-            };
-
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
         });
 }());
 
