@@ -133,11 +133,9 @@
                     /* Refresh widget on periodicity change */
                     $scope.$on('qeventbus:ownersId', function () {
                         $scope.ownersId = qeventbus.data.ownersId;
-                        console.log($scope.ownersId)
                         buildWidget();
                     });
                     $scope.$on('qeventbus:periodicityActive', function () {
-                        console.log($scope.periodicityActive, qeventbus.data.periodicityActive)
                         if (!angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
                             $scope.noStat = false;
                             $scope.periodicityActive = qeventbus.data.periodicityActive;

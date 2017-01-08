@@ -10,3 +10,4 @@ src/app/config.js
 .vscode
 .sonar
 .gradle
+build
