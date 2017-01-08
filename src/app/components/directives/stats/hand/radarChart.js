@@ -121,7 +121,6 @@
                     };
 
                     $scope.$on('qeventbus:periodicityActive', function () {
-                        console.log('event')
                         if (angular.isDefined(qeventbus.data.periodicityActive) && (angular.isUndefined($scope.periodicityActive) || !angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive))) {
                             $scope.noStat = false;
                             $scope.periodicityActive = qeventbus.data.periodicityActive;
