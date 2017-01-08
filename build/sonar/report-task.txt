@@ -1,0 +1,5 @@
+projectKey=com.qaobee:qswarm-web
+serverUrl=https://build.qaobee.com/sonar
+dashboardUrl=https://build.qaobee.com/sonar/dashboard/index/com.qaobee:qswarm-web
+ceTaskId=AVkSNUQ2xlmg8FABq5Y1
+ceTaskUrl=https://build.qaobee.com/sonar/api/ce/task?id=AVkSNUQ2xlmg8FABq5Y1
