@@ -18,17 +18,19 @@
             });
         })
 
-        .factory('eventCompareService', function () {
+        .factory('eventCompareService', function ($window) {
             var compareList = [];
             return {
                 get: function () {
-                    return compareList;
+                    return $window.sessionStorage.eventCompareList ? JSON.parse($window.sessionStorage.eventCompareList) : compareList;
                 },
                 add: function (pId) {
                     compareList.push(pId);
+                    $window.sessionStorage.eventCompareList = JSON.stringify(compareList);
                 },
                 remove: function (pId) {
                     compareList.remove(pId);
+                    $window.sessionStorage.eventCompareList = JSON.stringify(compareList);
                 },
                 init: function () {
                     compareList = [];
@@ -36,7 +38,8 @@
             };
         })
 
-        .controller('CompareEventsController', function ($scope, $routeParams, $translatePartialLoader, $log, $q, $filter, eventsRestAPI, statsRestAPI, eventCompareService, user, meta, $window, qeventbus) {
+        .controller('CompareEventsController', function ($scope, $routeParams, $translatePartialLoader, $q, eventsRestAPI,
+                                                         statsRestAPI, eventCompareService, user, meta, $window, qeventbus) {
             $scope.loading = true;
             $scope.events = [];
             $scope.meta = meta;

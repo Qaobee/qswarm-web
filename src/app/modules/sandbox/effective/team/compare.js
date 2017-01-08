@@ -5,8 +5,8 @@
         'statsSRV',
         'statsRestAPI',
         'qaobee.commonsConfig'
-    ]).config(function ($routeProvider, metaProvider, userProvider) {
-
+    ])
+        .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/team/compare/:effectiveId', {
                 controller: 'TeamCompareController',
                 resolve: {
@@ -18,17 +18,19 @@
             });
         })
 
-        .factory('teamCompareService', function () {
+        .factory('teamCompareService', function ($window) {
             var compareList = [];
             return {
                 get: function () {
-                    return compareList;
+                    return $window.sessionStorage.teamCompareList ? JSON.parse($window.sessionStorage.teamCompareList) : compareList;
                 },
                 add: function (pId) {
                     compareList.push(pId);
+                    $window.sessionStorage.teamCompareList = JSON.stringify(compareList);
                 },
                 remove: function (pId) {
                     compareList.remove(pId);
+                    $window.sessionStorage.teamCompareList = JSON.stringify(compareList);
                 },
                 init: function () {
                     compareList = [];
@@ -36,7 +38,7 @@
             };
         })
 
-        .controller('TeamCompareController', function ($scope, $translatePartialLoader, $log, $q, $filter, teamRestAPI, statsRestAPI, teamCompareService, user, meta, $window, $routeParams) {
+        .controller('TeamCompareController', function (qeventbus, $scope, $translatePartialLoader, $q, teamRestAPI, statsRestAPI, teamCompareService, user, meta, $window, $routeParams) {
             $scope.loading = true;
             $scope.effectiveId = $routeParams.effectiveId;
             $scope.teams = [];
@@ -44,23 +46,16 @@
             $scope.meta = meta;
             $scope.series = [];
             $scope.selectedIds = teamCompareService.get();
-            $scope.periodicity = $scope.periodicity || 'season';
-            $scope.periodicityActive = $scope.periodicityActive || {
-                    label: moment($scope.meta.season.startDate).format('MMMM YYYY') + ' - ' + moment($scope.meta.season.endDate).format('MMMM YYYY'),
-                    startDate: moment($scope.meta.season.startDate),
-                    endDate: moment($scope.meta.season.endDate),
-                    ownersId: $scope.ownersId
-                };
-            $scope.periodicityActive.ownersId = $scope.periodicityActive.ownersId || $scope.ownersId;
 
             if ($scope.selectedIds.length > 0) {
+                $scope.teamsIds = angular.copy($scope.selectedIds);
                 getTeams($scope.selectedIds, function (data) {
                     $scope.teams = data;
                     $scope.series = $scope.teams.map(function (p) {
                         return p.label;
                     });
-                    $scope.teamsIds = $scope.teams.map(function (p) {
-                        return p._id;
+                    qeventbus.prepForBroadcast('ownersId', {
+                        ownersId: $scope.selectedIds
                     });
                     $scope.buildWidget();
                 });
@@ -71,10 +66,6 @@
             $scope.doTheBack = function () {
                 $window.history.back();
             };
-
-            $scope.$watch('periodicityActive', function () {
-                $scope.buildWidget();
-            });
 
             $scope.buildWidget = function () {
                 $scope.stats = {
@@ -144,7 +135,7 @@
                     var teams = [];
                     if (angular.isArray(data.data) && data.data.length > 0) {
                         data.data.forEach(function (t) {
-                            if (selectedIds.any(t._id)) {
+                            if (selectedIds.some(t._id)) {
                                 teams.push(t);
                             }
                         });
@@ -153,6 +144,10 @@
                 });
             }
 
+            $scope.$on('qeventbus:periodicityActive', function () {
+                $scope.periodicityActive = qeventbus.data.periodicityActive;
+                $scope.buildWidget();
+            });
         });
 })();
 

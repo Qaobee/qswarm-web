@@ -41,7 +41,7 @@
          * @class qaobee.modules.sandbox.effective.team.MainTeamControler
          * @description Main controller for view mainTeam.html
          */
-        .controller('MainTeamController', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, $window, qeventbus,
+        .controller('MainTeamController', function ($scope, $routeParams, $translatePartialLoader, $location, $filter, qeventbus,
                                                     user, meta, effectiveSrv, teamRestAPI, userRestAPI, teamCompareService) {
 
             $translatePartialLoader.addPart('effective');

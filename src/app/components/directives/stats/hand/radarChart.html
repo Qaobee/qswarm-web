@@ -1,6 +1,6 @@
 <div class="card white">
     <div class="card-title dark-primary-color activator center">
-        <small>{{title}}<i class="small material-icons right">more_vert</i></small>
+        <small>{{title}}<i class="small material-icons right" ng-if="noStat">more_vert</i></small>
     </div>
     <div class="card-content center-align">
         <div ng-if="loading">
@@ -18,15 +18,15 @@
                 </div>
             </div>
         </div>
-        <p ng-if="noData" translate="stats.resumeTab.noData"></p>
+        <p ng-if="!noStat" translate="stats.resumeTab.noData"></p>
         <div class="q-radar-chart">
-            <canvas id="radar" class="chart chart-radar" ng-if="!noData"
+            <canvas id="radar" class="chart chart-radar" ng-if="noStat"
                     chart-options="radarOpts"
                     chart-legend="{{series}}" chart-series="series" chart-data="data" chart-labels="labels"
                     ng-if="!loading">
             </canvas>
         </div>
-        <div class="right-align" ng-if="!noData">
+        <div class="right-align" ng-if="noStat">
             <qaobee-stat-detail-modal indicators="indicators" title="title" meta="meta" series="series" owners="owners"
                                       periodicity-active="periodicityActive" periodicity="periodicity"
             ></qaobee-stat-detail-modal>
