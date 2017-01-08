@@ -11,22 +11,11 @@
     <div class="modal-content compare-modale">
         <form name="myForm">
             <div class="row dark-primary-color valign-wrapper">
-                <div class="col m2 s4">
-                    <h4 for="currentIndicator" translate="stats.label.indicator"></h4>
-                </div>
-                <div class="input-field col m4 s8">
-                    <select class="browser-default" ng-model="currentIndicator" id="currentIndicator">
-                        <option ng-repeat="i in indicators" value="{{i}}" ng-selected="currentIndicator === i">
-                            {{'stats.label.' + i | translate}}
-                        </option>
-                    </select>
-                    <br>
+                <div class="col m6 s12">
+                    <h4>{{'stats.label.' + currentIndicator | translate}}</h4>
                 </div>
                 <div class="col m6 s12"><h4 ng-bind="title" class="center"></h4></div>
-
             </div>
-            <filter-calendar periodicity="periodicity" periodicity-active="periodicityActive"
-                             meta="meta"></filter-calendar>
             <div class="row" ng-if="loading">
                 <div class="col s12 center">
                     <div class="preloader-wrapper big active">
@@ -54,13 +43,11 @@
                         chart-options="chartOpts"
                         chart-labels="labels" chart-series="series">
                 </canvas>
+             <!--   <select material-select watch ng-change="buildDatas()"
+                        ng-model="currentIndicator"
+                        ng-options="i as ('stats.label.' + i | translate) for i in indicators track by $index">
+                </select>-->
             </div>
-            <ul ng-if="!noData" class="bar-legend">
-                <li ng-repeat="p in series track by $index">
-                    <span class="bar-legend-icon" style="background-color:{{legendColours[$index]}}"></span>
-                    <span class="bar-legend-text" ng-bind="p"></span>
-                </li>
-            </ul>
             <table>
                 <thead>
                 <tr>
@@ -70,8 +57,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="l in indicatorLabels track by $index">
-                    <td><b ng-bind="l"></b></td>
+                <tr ng-repeat="l in indicators track by $index" ng-class="{'red lighten-3' : l === currentIndicator}" ng-click="buildDatas(l);">
+                    <td><b translate="stats.label.{{l}}"></b></td>
                     <td ng-repeat="d in tabular track by $index" data-field="{{d[$parent.$index]}}"
                         class="center-align">
                         {{d[$parent.$index]}}

@@ -34,7 +34,13 @@
                                 qeventbus.prepForBroadcast('ownersId', {
                                     ownersId: $scope.ownersId
                                 });
+                                qeventbus.prepForBroadcast('periodicityActive', {
+                                    periodicityActive: $scope.periodicityActive,
+                                    periodicity: $scope.periodicity,
+                                    self: 'playerStats'
+                                });
                             });
+
 
                         }
                     });

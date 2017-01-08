@@ -2,7 +2,7 @@
     'use strict';
     angular.module('qaobee.stat.detail.modal', ['statsRestAPI'])
 
-        .directive('qaobeeStatDetailModal', function ($q, $filter, $translatePartialLoader, qaobeeUtils, statsRestAPI, ChartJs) {
+        .directive('qaobeeStatDetailModal', function ($q, $filter, $translatePartialLoader, qaobeeUtils, statsRestAPI, ChartJs, filterCalendarSrv) {
             return {
                 restrict: 'E',
                 scope: {
@@ -11,10 +11,9 @@
                     meta: '=',
                     owners: '=',
                     series: '=',
-                    periodicityActive: '=?',
-                    periodicity: '=?'
+                    distinct: '='
                 },
-                controller: function ($scope, qeventbus) {
+                controller: function ($scope, qeventbus, $timeout) {
                     $scope.loaded = false;
                     $scope.dateFormat = $filter('translate')('commons.format.date.moment');
                     $scope.tabular = [];
@@ -33,12 +32,16 @@
                                     beginAtZero: true
                                 }
                             }]
-                        }
+                        },
+                        legend: {display: $scope.distinct}
                     };
                     /**
                      * Build graphs
                      */
-                    $scope.buildDatas = function () {
+                    $scope.buildDatas = function (ind) {
+                        if(angular.isDefined(ind)) {
+                            $scope.currentIndicator = ind;
+                        }
                         if (!$scope.owners || angular.isUndefined($scope.periodicityActive)) {
                             return;
                         }
@@ -158,10 +161,17 @@
                             $scope.buildDatas();
                         }
                     });
+                    $timeout(function () {
+                        if (angular.isDefined(filterCalendarSrv.getValue())) {
+                            $scope.periodicityActive = filterCalendarSrv.getValue().periodicityActive;
+                            $scope.buildDatas();
+                        }
+                    });
                 },
                 link: function () {
                     angular.element('select').material_select();
                     angular.element('.modal').modal();
+
                 },
                 templateUrl: 'app/components/directives/stats/hand/detailModal.html'
             };

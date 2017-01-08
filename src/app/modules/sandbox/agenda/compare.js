@@ -38,7 +38,7 @@
             };
         })
 
-        .controller('CompareEventsController', function ($scope, $routeParams, $translatePartialLoader, $q, eventsRestAPI,
+        .controller('CompareEventsController', function ($scope, $routeParams, $translatePartialLoader, $q, eventsRestAPI, $timeout,
                                                          statsRestAPI, eventCompareService, user, meta, $window, qeventbus) {
             $scope.loading = true;
             $scope.events = [];
@@ -52,21 +52,20 @@
             };
 
             $scope.buildWidget = function () {
+                $scope.series = [];
+                $scope.events = [];
                 if ($scope.eventsIds.length > 0) {
-                    getEvents($scope.eventsIds, function (data) {
-                        if (data.error) {
-                            return;
-                        }
-                        $scope.events = data;
-                        $scope.series = $scope.events.map(function (p) {
-                            return p.label || p.type.label + ' ' + moment(p.startDate).format('LLLL');
-                        });
-                        qeventbus.prepForBroadcast('ownersId', {
-                            ownersId: $scope.eventsIds
+                    $scope.eventsIds.forEach(function (e) {
+                        eventsRestAPI.getEvent(e).then(function (evt) {
+                            $scope.events.push(evt.data);
+                            $scope.series.push(evt.data.label || evt.data.type.label + ' ' + moment(evt.data.startDate).format('LLLL'));
                         });
                     });
                 } else {
                     $scope.loading = false;
+                }
+                if (angular.isUndefined($scope.periodicityActive) || angular.isUndefined($scope.eventsIds)) {
+                    return;
                 }
                 $scope.stats = {
                     goals: {},
@@ -81,9 +80,7 @@
                 var promises = [];
                 var startDate = $scope.periodicityActive.startDate.valueOf();
                 var endDate = $scope.periodicityActive.endDate.valueOf();
-                qeventbus.prepForBroadcast('ownersId', {
-                    ownersId: $scope.eventsIds
-                });
+
                 $scope.eventsIds.forEach(function (id) {
                     promises.push(statsRestAPI.getStatGroupBy({
                         listIndicators: ['goalScored', 'goalConceded'],
@@ -126,49 +123,20 @@
                                 $scope.stats.sanctions[data.config.data.listOwners[0]] = a.value;
                             });
                         }
+
                     }));
                 });
                 $q.all(promises).then(function () {
                     $scope.loading = false;
+                    qeventbus.prepForBroadcast('ownersId', {
+                        ownersId: $scope.eventsIds
+                    });
                 });
             };
 
-            /* Retrieve current effective and list player */
-            function getEvents(eventsIds, callback) {
-                var requestEvent = {
-                    activityId: $scope.meta.sandbox.activity._id,
-                    startDate: $scope.periodicityActive.startDate.valueOf(),
-                    endDate: $scope.periodicityActive.endDate.valueOf(),
-                    ownersandboxId: $scope.meta.sandbox._id,
-                    ownereffectiveId: $scope.effectiveId,
-                    type: ['cup', 'friendlyGame', 'championship', 'training']
-                };
-
-                eventsRestAPI.getListEvents(requestEvent).then(function (data) {
-                    if (angular.isArray(data.data) && data.data.length > 0) {
-                        var events = [];
-                        data.data.forEach(function (t) {
-                            if (eventsIds.some(t._id)) {
-                                events.push(t);
-                            }
-                        });
-                        events = events.sortBy(function (n) {
-                            return n.startDate;
-                        });
-
-                        events.forEach(function (a) {
-                            a.startDate = moment(a.startDate).format('LLLL');
-                        });
-                        callback(events);
-                    } else {
-                        callback([]);
-                    }
-                });
-            }
-
             $scope.$on('qeventbus:periodicityActive', function () {
-                if (!$scope.periodicityActive || !angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
-                    $scope.periodicityActive = qeventbus.data.periodicityActive;
+                if (angular.isDefined(qeventbus.data.periodicityActive) && !angular.equals(qeventbus.data.periodicityActive, $scope.periodicityActive)) {
+                    $scope.periodicityActive = angular.copy(qeventbus.data.periodicityActive);
                     $scope.buildWidget();
                 }
             });

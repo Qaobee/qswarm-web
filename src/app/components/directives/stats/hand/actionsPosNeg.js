@@ -12,7 +12,7 @@
 
     angular.module('statsActionsPosNeg', ['statsSRV', 'qaobee.eventbus'])
 
-        .directive('statsActionsPosNeg', function ($translatePartialLoader, qeventbus, statsSrv) {
+        .directive('statsActionsPosNeg', function ($translatePartialLoader, qeventbus, statsSrv, $timeout, filterCalendarSrv) {
             return {
                 restrict: 'E',
                 scope: {
@@ -22,11 +22,9 @@
                 controller: function ($scope) {
                     $translatePartialLoader.addPart('stats');
                     $scope.noStat = false;
-
                     $scope.defenseCol = [{"id": "Positive", "index": 0, "type": 'donut', "color": '#9ccc65'},
                         {"id": "Negative", "index": 1, "type": 'donut', "color": '#ef5350'}];
                     $scope.defenseData = [{"Positive": 0}, {"Negative": 0}];
-
                     $scope.attackCol = [{"id": "Positive", "index": 0, "type": 'donut', "color": '#9ccc65'},
                         {"id": "Negative", "index": 1, "type": 'donut', "color": '#ef5350'}];
                     $scope.attackData = [{"Positive": 0}, {"Negative": 0}];
@@ -34,11 +32,8 @@
 
                     /* actions */
                     var getActions = function (ownersId, startDate, endDate) {
-
-
                         /* Search parameters Efficiently global */
                         var listFieldsGroupBy = ['owner'];
-
                         /* ALL PERS-ACT-DEF-POS */
                         var indicators = ['neutralization', 'forceDef', 'contre', 'interceptionOk'];
                         statsSrv.countAllInstanceIndicators(indicators, ownersId, startDate, endDate, listFieldsGroupBy).then(function (result) {
@@ -82,20 +77,17 @@
 
 
                     var buildGraph = function () {
-                        if(angular.isUndefined($scope.startDate) || angular.isUndefined($scope.ownersId)) {
+                        if(angular.isUndefined($scope.periodicityActive) || angular.isUndefined($scope.ownersId)) {
                             return;
                         }
                         $scope.defenseCol = [{"id": "Positive", "index": 0, "type": 'donut', "color": '#9ccc65'},
                             {"id": "Negative", "index": 1, "type": 'donut', "color": '#ef5350'}];
                         $scope.defenseData = [{"Positive": 0}, {"Negative": 0}];
-
                         $scope.attackCol = [{"id": "Positive", "index": 0, "type": 'donut', "color": '#9ccc65'},
                             {"id": "Negative", "index": 1, "type": 'donut', "color": '#ef5350'}];
                         $scope.attackData = [{"Positive": 0}, {"Negative": 0}];
-
                         $scope.noStat = false;
-
-                        getActions($scope.ownersId, $scope.startDate, $scope.endDate);
+                        getActions($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate);
                     };
 
                     $scope.$on('qeventbus:ownersId', function () {
@@ -106,8 +98,12 @@
                         if (!angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
                             $scope.noStat = false;
                             $scope.periodicityActive = qeventbus.data.periodicityActive;
-                            $scope.startDate = $scope.periodicityActive.startDate;
-                            $scope.endDate = $scope.periodicityActive.endDate;
+                            buildGraph();
+                        }
+                    });
+                    $timeout(function () {
+                        if (angular.isDefined(filterCalendarSrv.getValue())) {
+                            $scope.periodicityActive = filterCalendarSrv.getValue().periodicityActive;
                             buildGraph();
                         }
                     });

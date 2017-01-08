@@ -86,6 +86,7 @@
 
             $scope.$on('qeventbus:periodicityActive', function () {
                 if ($scope.periodicityActive || !angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
+                    $scope.periodicityActive = qeventbus.data.periodicityActive;
                     $scope.getEvents(moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').valueOf(), moment($scope.periodicityActive.endDate, 'DD/MM/YYYY').valueOf());
                 }
             });

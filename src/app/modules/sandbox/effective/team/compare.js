@@ -126,6 +126,12 @@
                 });
                 $q.all(promises).then(function () {
                     $scope.loading = false;
+                    getTeams($scope.selectedIds, function (data) {
+                        $scope.teams = data;
+                        $scope.series = $scope.teams.map(function (p) {
+                            return p.label;
+                        });
+                    });
                 });
             };
 

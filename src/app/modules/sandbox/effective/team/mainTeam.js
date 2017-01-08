@@ -42,7 +42,8 @@
          * @description Main controller for view mainTeam.html
          */
         .controller('MainTeamController', function ($scope, $routeParams, $translatePartialLoader, $location, $filter, qeventbus,
-                                                    user, meta, effectiveSrv, teamRestAPI, userRestAPI, teamCompareService) {
+                                                    user, meta, effectiveSrv, teamRestAPI, userRestAPI, teamCompareService,
+                                                    $timeout, filterCalendarSrv) {
 
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('commons');
@@ -107,11 +108,21 @@
                         qeventbus.prepForBroadcast('ownersId', {
                             ownersId: listId
                         });
+                        qeventbus.prepForBroadcast('periodicityActive', {
+                            periodicityActive: $scope.periodicityActive,
+                            periodicity: $scope.periodicity,
+                            self: 'MainTeamController'
+                        });
                     });
                 });
             };
-
-            $scope.getListTeamHome();
+            $timeout(function () {
+                if (angular.isDefined(filterCalendarSrv.getValue())) {
+                    $scope.periodicityActive = filterCalendarSrv.getValue().periodicityActive;
+                    $scope.periodicity = filterCalendarSrv.getValue().periodicity;
+                    $scope.getListTeamHome();
+                }
+            });
         });
 }());
 

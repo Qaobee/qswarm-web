@@ -12,7 +12,7 @@
 
     angular.module('qaobee.widgets.efficiencyPlayer', ['effectifSRV', 'statsRestAPI', 'qaobee.eventbus'])
 
-        .directive('widgetEfficiencyPlayer', function ($translatePartialLoader, statsRestAPI, effectiveSrv, qeventbus, $q) {
+        .directive('widgetEfficiencyPlayer', function ($translatePartialLoader, statsRestAPI, effectiveSrv, qeventbus, $q, $timeout, filterCalendarSrv) {
             return {
                 restrict: 'AE',
                 scope: {
@@ -86,7 +86,7 @@
                     };
 
                     var buildGraph = function () {
-                        if(angular.isUndefined($scope.startDate) || angular.isUndefined($scope.ownersId)) {
+                        if(angular.isUndefined($scope.periodicityActive) || angular.isUndefined($scope.ownersId)) {
                             return;
                         }
                         $scope.loading = true;
@@ -94,7 +94,7 @@
                         $scope.nbShoot = 0;
                         $scope.nbGoal = 0;
                         $scope.title = 'stats.efficiency.' + $scope.label;
-                        getEfficiency($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
+                        getEfficiency($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate).then(function (result) {
                             $scope.nbShoot = result.nbShoot;
                             $scope.nbGoal = result.nbGoal;
                             $scope.efficiency = result.efficiency;
@@ -104,14 +104,19 @@
                     $scope.$on('qeventbus:periodicityActive', function () {
                         if (angular.isUndefined($scope.periodicityActive) || !angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
                             $scope.periodicityActive = qeventbus.data.periodicityActive;
-                            $scope.startDate = qeventbus.data.periodicityActive.startDate;
-                            $scope.endDate = qeventbus.data.periodicityActive.endDate;
                             buildGraph();
                         }
                     });
                     $scope.$on('qeventbus:ownersId', function () {
                         $scope.ownersId = qeventbus.data.ownersId;
                         buildGraph();
+                    });
+
+                    $timeout(function () {
+                        if (angular.isDefined(filterCalendarSrv.getValue())) {
+                            $scope.periodicityActive = filterCalendarSrv.getValue().periodicityActive;
+                            buildGraph();
+                        }
                     });
                 },
                 templateUrl: 'app/components/directives/widgets/stats/efficiency/efficiencyPlayer.html'

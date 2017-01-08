@@ -78,7 +78,7 @@
                             $scope.currentEffective = data;
                             effectiveSrv.getListId($scope.currentEffective, 'player').then(function (listId) {
                                 $scope.ownersId = listId;
-                                getStats($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
+                                getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate).then(function (result) {
                                     result.forEach(function (e) {
                                         var player = {
                                             _id: e._id.owner[4],
@@ -122,9 +122,10 @@
                     };
 
                     var buildWidget = function () {
-                        if(angular.isUndefined($scope.startDate) || angular.isUndefined($scope.ownersId)) {
+                        if(angular.isUndefined($scope.periodicityActive) || angular.isUndefined($scope.ownersId)) {
                             return;
                         }
+
                         $scope.loading = true;
                         $scope.players = [];
                         $scope.title = 'stats.resumeTab.' + $scope.label;
@@ -139,8 +140,6 @@
                         if (!angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
                             $scope.noStat = false;
                             $scope.periodicityActive = qeventbus.data.periodicityActive;
-                            $scope.startDate = $scope.periodicityActive.startDate;
-                            $scope.endDate = $scope.periodicityActive.endDate;
                             buildWidget();
                         }
                     });

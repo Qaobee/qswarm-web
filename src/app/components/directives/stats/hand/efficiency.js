@@ -12,7 +12,7 @@
 
     angular.module('statsEfficiency', ['statsRestAPI', 'qaobee.eventbus'])
 
-        .directive('statsEfficiency', function ($translatePartialLoader, statsRestAPI, qeventbus, $q) {
+        .directive('statsEfficiency', function ($translatePartialLoader, statsRestAPI, qeventbus, $q, filterCalendarSrv) {
             return {
                 restrict: 'AE',
                 scope: {
@@ -21,7 +21,7 @@
                     label: "@",
                     padding: "=?"
                 },
-                controller: function ($scope) {
+                controller: function ($scope, $timeout) {
                     $translatePartialLoader.addPart('stats');
                     $scope.noStat = true;
                     $scope.efficiencyGlobalCol = [{id: 'dataG', type: 'gauge', color: '#42a5f5'}];
@@ -133,7 +133,7 @@
                     };
 
                     var buildGraph = function () {
-                        if(angular.isUndefined($scope.startDate) || angular.isUndefined($scope.ownersId)) {
+                        if(angular.isUndefined($scope.periodicityActive) || angular.isUndefined($scope.ownersId)) {
                             return;
                         }
                         $scope.efficiencyGlobalCol = [{id: 'dataG', type: 'gauge', color: '#42a5f5'}];
@@ -150,7 +150,7 @@
                         $scope.title = 'stats.efficiency.' + $scope.label;
 
                         if (angular.isDefined($scope.values)) {
-                            getEfficiency($scope.ownersId, $scope.startDate, $scope.endDate, $scope.values).then(function (result) {
+                            getEfficiency($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate, $scope.values).then(function (result) {
                                 $scope.nbShoot = result.nbShoot;
                                 $scope.nbGoal = result.nbGoal;
 
@@ -177,12 +177,10 @@
 
                             });
                         } else {
-                            getEfficiency($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
+                            getEfficiency($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate).then(function (result) {
                                 $scope.nbShoot = result.nbShoot;
                                 $scope.nbGoal = result.nbGoal;
-
                                 $scope.efficiencyGlobalData.push({dataG: result.efficiency});
-
                                 getColorGauge(result.efficiency).then(function (color) {
                                     $scope.efficiencyGlobalCol[0].color = color;
                                 });
@@ -194,8 +192,6 @@
                         if (!angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
                             $scope.noStat = false;
                             $scope.periodicityActive = qeventbus.data.periodicityActive;
-                            $scope.startDate = $scope.periodicityActive.startDate;
-                            $scope.endDate = $scope.periodicityActive.endDate;
                             buildGraph();
                         }
                     });
@@ -203,6 +199,13 @@
                     $scope.$on('qeventbus:ownersId', function () {
                         $scope.ownersId = qeventbus.data.ownersId;
                         buildGraph();
+                    });
+
+                    $timeout(function () {
+                        if (angular.isDefined(filterCalendarSrv.getValue())) {
+                            $scope.periodicityActive = filterCalendarSrv.getValue().periodicityActive;
+                            buildGraph();
+                        }
                     });
                 },
                 templateUrl: 'app/components/directives/stats/hand/efficiency.html'

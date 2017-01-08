@@ -31,7 +31,7 @@
              * @private
              */
             sharedService.broadcastItem = function () {
-                $rootScope.$broadcast('qeventbus:'+this.message);
+                $rootScope.$broadcast('qeventbus:' + this.message);
             };
 
             return sharedService;

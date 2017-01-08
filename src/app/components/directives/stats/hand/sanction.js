@@ -12,7 +12,7 @@
 
     angular.module('statsSanction', ['statsSRV', 'statsRestAPI', 'qaobee.eventbus'])
 
-        .directive('statsSanction', function ($translatePartialLoader, statsRestAPI, statsSrv, qeventbus, $q) {
+        .directive('statsSanction', function ($translatePartialLoader, statsRestAPI, statsSrv, qeventbus, $q, $timeout, filterCalendarSrv) {
             return {
                 restrict: 'E',
 
@@ -67,7 +67,7 @@
                     };
 
                     var buildWidget = function () {
-                        if(angular.isUndefined($scope.startDate) || angular.isUndefined($scope.ownersId)) {
+                        if (angular.isUndefined($scope.periodicityActive) || angular.isUndefined($scope.ownersId)) {
                             return;
                         }
                         $scope.nbYellowCard = 0;
@@ -76,7 +76,7 @@
 
                         $scope.title = 'stats.resumeTab.' + $scope.label;
 
-                        getStats($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
+                        getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate).then(function (result) {
                             $scope.nbYellowCard = result.nbYellowCard;
                             $scope.nbExclTmp = result.nbExclTmp;
                             $scope.nbRedCard = result.nbRedCard;
@@ -91,8 +91,13 @@
                         if (!angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
                             $scope.noStat = false;
                             $scope.periodicityActive = qeventbus.data.periodicityActive;
-                            $scope.startDate = $scope.periodicityActive.startDate;
-                            $scope.endDate = $scope.periodicityActive.endDate;
+                            buildWidget();
+                        }
+                    });
+
+                    $timeout(function () {
+                        if (angular.isDefined(filterCalendarSrv.getValue())) {
+                            $scope.periodicityActive = filterCalendarSrv.getValue().periodicityActive;
                             buildWidget();
                         }
                     });

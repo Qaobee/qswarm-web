@@ -31,7 +31,7 @@
         /**
          * @class qaobee.modules.home.HomeControler
          */
-        .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $filter, user, meta, effectiveSrv, effectiveRestAPI, sandboxRestAPI, qeventbus) {
+        .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $filter, user, meta, effectiveSrv, effectiveRestAPI, sandboxRestAPI, qeventbus, filterCalendarSrv, $timeout) {
             $translatePartialLoader.addPart('home');
             $translatePartialLoader.addPart('stats');
             $translatePartialLoader.addPart('agenda');
@@ -48,9 +48,20 @@
                         qeventbus.prepForBroadcast('ownersId', {
                             ownersId: $scope.listId
                         });
+                        qeventbus.prepForBroadcast('periodicityActive', {
+                            periodicityActive: $scope.periodicityActive,
+                            periodicity: $scope.periodicity,
+                            self: 'HomeControler'
+                        });
                     });
                 });
             };
-            $scope.getEffective($scope.meta.sandbox.effectiveDefault);
+            $timeout(function () {
+                if (angular.isDefined(filterCalendarSrv.getValue())) {
+                    $scope.periodicityActive = filterCalendarSrv.getValue().periodicityActive;
+                    $scope.periodicity = filterCalendarSrv.getValue().periodicity;
+                    $scope.getEffective($scope.meta.sandbox.effectiveDefault);
+                }
+            });
         });
 }());

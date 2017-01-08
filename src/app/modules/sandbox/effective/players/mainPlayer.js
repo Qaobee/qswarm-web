@@ -54,7 +54,7 @@
         .controller('MainPlayerController', function ($scope, $routeParams, $translatePartialLoader, $location, $filter,
                                                       user, meta, effectiveRestAPI, effectiveSrv, userRestAPI,
                                                       playerCompareService, widgetDefinitionsMainPlayer,
-                                                      defaultWidgetsMainPlayer, qeventbus) {
+                                                      defaultWidgetsMainPlayer, qeventbus, $timeout, filterCalendarSrv) {
 
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('commons');
@@ -118,6 +118,11 @@
                         qeventbus.prepForBroadcast('ownersId', {
                             ownersId: listId
                         });
+                        qeventbus.prepForBroadcast('periodicityActive', {
+                            periodicityActive: $scope.periodicityActive,
+                            periodicity: $scope.periodicity,
+                            self: 'MainPlayerController'
+                        });
                         var listField = ['_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact'];
 
                         effectiveSrv.getPersons(listId, listField).then(function (players) {
@@ -138,6 +143,12 @@
                     });
                 });
             };
-            $scope.getPlayers();
+            $timeout(function () {
+                if (angular.isDefined(filterCalendarSrv.getValue())) {
+                    $scope.periodicityActive = filterCalendarSrv.getValue().periodicityActive;
+                    $scope.periodicity = filterCalendarSrv.getValue().periodicity;
+                    $scope.getPlayers();
+                }
+            });
         });
 }());

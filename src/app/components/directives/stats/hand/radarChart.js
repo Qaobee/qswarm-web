@@ -5,16 +5,18 @@
         'statsRestAPI'
     ])
 
-        .directive('qaobeeRadarChart', function (statsRestAPI, $translatePartialLoader, effectiveSrv, qeventbus, $filter, $q) {
+        .directive('qaobeeRadarChart', function (statsRestAPI, $translatePartialLoader, effectiveSrv, qeventbus, $filter, $q, filterCalendarSrv) {
             return {
                 restrict: 'E',
                 scope: {
                     indicators: '=',
                     title: '@',
                     meta: '=',
-                    distinct: '=?'
+                    distinct: '=?',
+                    series: '=?',
+                    owners: '=?'
                 },
-                controller: function ($scope) {
+                controller: function ($scope, $timeout) {
                     $translatePartialLoader.addPart('stats');
                     $scope.stats = {};
                     $scope.noStat = false;
@@ -25,20 +27,20 @@
                                 fixedStepSize: 1,
                                 beginAtZero: true
                             }
-                        }
+                        },
+                        legend: {display: $scope.distinct}
                     };
                     /**
                      * Build graphs
                      */
                     $scope.buildDatas = function () {
                         $scope.noStat = false;
-                        if (angular.isUndefined($scope.startDate) || angular.isUndefined($scope.owners)) {
+                        if (angular.isUndefined($scope.periodicityActive) || angular.isUndefined($scope.owners)) {
                             return;
                         }
                         $scope.stats = {};
                         $scope.loading = true;
                         $scope.data = [];
-                        $scope.series = [];
                         $scope.labels = $scope.indicators.map(function (i) {
                             return $filter('translate')('stats.label.' + i);
                         });
@@ -51,23 +53,17 @@
                             listFieldsGroupBy: ['code']
                         };
                         var promises = [];
-                        var listField = ['_id', 'name', 'firstname', 'avatar', 'status', 'birthdate', 'contact'];
                         if ($scope.distinct) {
                             $scope.owners.forEach(function (id) {
                                 var tSearch = angular.copy(search);
                                 tSearch.listOwners = [id];
                                 promises.push(statsRestAPI.getStatGroupBy(tSearch).success(function (data, status, headers, config) {
                                     if (angular.isArray(data) && data.length > 0) {
-                                        angular.forEach(data, function (value) {
-                                            $scope.stats[config.data.listOwners[0]] = {};
+                                        data.forEach(function (value) {
+                                            $scope.stats[config.data.listOwners[0]] = $scope.stats[config.data.listOwners[0]] || {};
                                             $scope.stats[config.data.listOwners[0]][value._id.code] = value.value;
                                         });
                                     }
-                                }));
-                                promises.push(effectiveSrv.getPersons(tSearch.listOwners, listField).then(function (players) {
-                                    players.forEach(function (player) {
-                                        $scope.series.push(player.firstname + ' ' + player.name);
-                                    });
                                 }));
                             });
                         } else {
@@ -75,7 +71,7 @@
                             promises.push(statsRestAPI.getStatGroupBy(tSearch).success(function (data) {
                                 if (angular.isArray(data) && data.length > 0) {
                                     data.forEach(function (value) {
-                                        $scope.stats[0] = {};
+                                        $scope.stats[0] = $scope.stats[0] || {};
                                         $scope.stats[0][value._id.code] = value.value;
                                     });
                                 }
@@ -114,18 +110,22 @@
                                 });
                                 $scope.data.push(datas);
                             }
-                            $scope.noStat = !Object.isEmpty($scope.stats);
                             $scope.radarOpts.scale.ticks.fixedStepSize = Math.ceil($scope.data.flatten().max() / 10);
                             $scope.loading = false;
+                            $scope.noStat = !Object.isEmpty($scope.stats);
                         });
                     };
+                    $timeout(function () {
+                        if (angular.isDefined(filterCalendarSrv.getValue())) {
+                            $scope.periodicityActive = filterCalendarSrv.getValue().periodicityActive;
+                            $scope.buildDatas();
+                        }
+                    });
 
                     $scope.$on('qeventbus:periodicityActive', function () {
-                        if (angular.isDefined(qeventbus.data.periodicityActive) && (angular.isUndefined($scope.periodicityActive) || !angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive))) {
+                        if (angular.isDefined(qeventbus.data.periodicityActive)) {
                             $scope.noStat = false;
                             $scope.periodicityActive = qeventbus.data.periodicityActive;
-                            $scope.startDate = $scope.periodicityActive.startDate;
-                            $scope.endDate = $scope.periodicityActive.endDate;
                             $scope.buildDatas();
                         }
                     });

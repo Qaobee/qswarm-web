@@ -12,7 +12,7 @@
 
     angular.module('statsGoals', ['statsSRV', 'statsRestAPI', 'qaobee.eventbus'])
 
-        .directive('statsGoals', function ($translatePartialLoader, statsRestAPI, statsSrv, qeventbus, $q) {
+        .directive('statsGoals', function ($translatePartialLoader, statsRestAPI, statsSrv, qeventbus, $q, filterCalendarSrv) {
             return {
                 restrict: 'E',
                 scope: {
@@ -20,7 +20,7 @@
                     label: "@",
                     sandboxId: "=?"
                 },
-                controller: function ($scope) {
+                controller: function ($scope, $timeout) {
                     $translatePartialLoader.addPart('stats');
                     $scope.noStat = false;
 
@@ -85,17 +85,15 @@
                     };
 
                     var buildWidget = function () {
-                        if(angular.isUndefined($scope.startDate) || angular.isUndefined($scope.ownersId)) {
+                        if(angular.isUndefined($scope.periodicityActive) || angular.isUndefined($scope.ownersId)) {
                             return;
                         }
                         $scope.nbGoal = 0;
                         $scope.nbGame = 0;
                         $scope.goalAvg = 0;
                         $scope.totalPlayTime = 0;
-
                         $scope.title = 'stats.resumeTab.' + $scope.label;
-
-                        getStats($scope.ownersId, $scope.startDate, $scope.endDate).then(function (result) {
+                        getStats($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate).then(function (result) {
                             $scope.nbGoal = result.nbGoal;
                             $scope.nbGame = result.nbGame;
                             $scope.goalAvg = $scope.nbGoal / $scope.nbGame;
@@ -110,8 +108,13 @@
                         if (!angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
                             $scope.noStat = false;
                             $scope.periodicityActive = qeventbus.data.periodicityActive;
-                            $scope.startDate = $scope.periodicityActive.startDate;
-                            $scope.endDate = $scope.periodicityActive.endDate;
+                            buildWidget();
+                        }
+                    });
+
+                    $timeout(function () {
+                        if (angular.isDefined(filterCalendarSrv.getValue())) {
+                            $scope.periodicityActive = filterCalendarSrv.getValue().periodicityActive;
                             buildWidget();
                         }
                     });
