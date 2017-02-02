@@ -65,14 +65,11 @@
                     };
 
                     var periodicity = {
-                        month: getCurrentMonth,
+                        month: getCurrentMonth(true),
                         quarter: getCurrentQuarter(true),
                         season: getCurrentSeason(true)
                     };
 
-                    $scope.currentMonth = function () {
-                        getCurrentMonth(true);
-                    };
                     if (angular.isDefined($rootScope.periodicityActive)) {
                         $scope.periodicityActive = $rootScope.periodicityActive;
                     }
@@ -112,7 +109,7 @@
                     }
 
                     $scope.currentMonth = function () {
-                        getCurrentMonth(true);
+                        getCurrentMonth(false);
                     };
 
                     function getCurrentMonth(noUpdt) {
@@ -140,7 +137,7 @@
                     };
 
                     $scope.currentQuarter = function () {
-                        getCurrentQuarter(true);
+                        getCurrentQuarter(false);
                     };
 
                     function getCurrentQuarter(noUpdt) {
@@ -168,7 +165,7 @@
                     };
 
                     $scope.currentSeason = function () {
-                        getCurrentSeason(true);
+                        getCurrentSeason(false);
                     };
 
                     function getCurrentSeason(noUpdt) {
