@@ -2,7 +2,7 @@
 import hudson.model.*
 
 node {
-    def rancherCli = 'v0.8.6'
+    def rancherCli = 'v0.12.2'
     def version = ''
     stage('Checkout') {
         git credentialsId: 'b74a476d-7464-429c-ab8e-7ebbe03bcd1f', url: 'git@gitlab.com:qaobee/qswarm-web.git'
@@ -53,16 +53,15 @@ node {
         sh "cat > docker-compose.yml <<EOC\n" +
                 "qswarmweb:\n" +
                 "  environment:\n" +
-                "    HIVE_URL: http://hive:8080\n" +
-                "  log_driver: ''\n" +
+                "    HIVE_URL: http://backend:8080\n" +
                 "  labels:\n" +
                 "    io.rancher.container.pull_image: always\n" +
                 "    io.rancher.scheduler.affinity:host_label: tag=web\n" +
-                "    io.rancher.container.dns: 'true'\n" +
                 "  image: registry.gitlab.com/qaobee/qswarm-web:$version\n" +
                 "  links:\n" +
-                "  - qaobee-hive:hive\n" +
-                "  net: host\n" +
+                "  - qaobee-hive:backend\n" +
+                "  ports:\n" +
+                "  - 80:80/tcp\n" +
                 "EOC"
         sh "./rancher-compose-$rancherCli/rancher-compose \\\n" +
                 "--url http://vps234741.ovh.net:8080 \\\n" +
