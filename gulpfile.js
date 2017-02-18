@@ -11,7 +11,6 @@ var wrench = require('wrench');
 var conf = require('./gulp/conf');
 var gulpNgConfig = require('gulp-ng-config');
 var jsdoc = require("gulp-jsdoc");
-var sonar = require("gulp-sonar");
 var util = require("gulp-util");
 /**
  *  This will load all js or coffee files in the gulp directory
