@@ -55,54 +55,5 @@ gulp.task('docker', ['clean', 'conf-docker'], function () {
 
 gulp.task('jsdoc', [], function () {
     return gulp.src(conf.paths.src + '/**/*.js')
-        .pipe(jsdoc('./docs/jsdoc'))
-});
-gulp.task('plato', [], function () {
-    return gulp.src(conf.paths.src + '/**/*.js')
-        .pipe(plato('docs/plato', {
-            jshint: {
-                options: {
-                    strict: true
-                }
-            },
-            complexity: {
-                trycatch: true
-            }
-        }));
-});
-gulp.task('sonar', function () {
-    var options = {
-        sonar: {
-            host: {
-                url: 'http://flufy.hd.free.fr/sonarqube'
-            },
-            jdbc: {
-                url: 'jdbc:mysql://localhost:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance',
-                username: 'sonar',
-                password: 'sonar'
-            },
-            projectKey: 'com.qaobee:qswarm-web:1.0.0',
-            projectName: 'QSwarmWeb',
-            projectVersion: '1.0.0',
-            // comma-delimited string of source directories
-            sources: 'src/app',
-            language: 'js',
-            sourceEncoding: 'UTF-8',
-            javascript: {
-                lcov: {
-                    reportPath: 'test/sonar_report/lcov.info'
-                }
-            },
-            exec: {
-                // All these properties will be send to the child_process.exec method (see: https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback )
-                // Increase the amount of data allowed on stdout or stderr (if this value is exceeded then the child process is killed, and the gulp-sonar will fail).
-                maxBuffer: 1024 * 1024
-            }
-        }
-    };
-
-    // gulp source doesn't matter, all files are referenced in options object above
-    return gulp.src('thisFileDoesNotExist.js', {read: false})
-        .pipe(sonar(options))
-        .on('error', util.log);
+        .pipe(jsdoc('./build/docs/jsdoc'))
 });
