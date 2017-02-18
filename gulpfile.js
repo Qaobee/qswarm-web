@@ -10,7 +10,6 @@ var gulp = require('gulp');
 var wrench = require('wrench');
 var conf = require('./gulp/conf');
 var gulpNgConfig = require('gulp-ng-config');
-var plato = require('gulp-plato');
 var jsdoc = require("gulp-jsdoc");
 var sonar = require("gulp-sonar");
 var util = require("gulp-util");
