@@ -17,13 +17,9 @@ buildscript {
 }
 sonarqube {
     properties {
-        // Sonar Specific properties
-        // This is the display project name
         property 'sonar.projectName', 'QSwarmWeb'
-        // This is the Sonar Server
         property 'sonar.host.url', 'http://build.qaobee.com:9000'
         property 'sonar.projectKey', 'com.qaobee:qswarm-web'
-        property 'sonar.profile', 'Sonar way'
         property 'sonar.language', 'js'
         property 'sonar.sources', 'src/app'
     }
