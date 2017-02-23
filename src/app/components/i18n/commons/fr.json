@@ -53,11 +53,11 @@
       "back": "Retour",
       "next": "Suivant",
       "previous": "Précédent",
-      "filter":"Filtrer",
-      "agree" : "Je suis d'accord",
-      "changeSB" : "Changer",
-      "accept" : "Accepter",
-      "refuse" : "Refuser"    
+      "filter": "Filtrer",
+      "agree": "Je suis d'accord",
+      "changeSB": "Changer",
+      "accept": "Accepter",
+      "refuse": "Refuser"
     },
     "settings": {
       "activity": {

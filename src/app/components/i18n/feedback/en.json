@@ -33,8 +33,8 @@
       "heading": "Sadly an error occurred while sending your feedback. Please try again."
     },
     "submit-success": {
-      "heading" : "Thank you for your feedback. We value every piece of feedback we receive.",
-      "sub" : "We cannot respond individually to every one, but we will use your comments as we strive to improve your experience."
+      "heading": "Thank you for your feedback. We value every piece of feedback we receive.",
+      "sub": "We cannot respond individually to every one, but we will use your comments as we strive to improve your experience."
     }
   }
 }

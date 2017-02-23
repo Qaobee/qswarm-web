@@ -3,10 +3,10 @@
     "common": {
       "next": "Suivant",
       "back": "Retour",
-      "submit" : "Envoyer",
-      "ok" : "Ok",
-      "error" : {
-        "desc" : "Vous devez saisir une description description."
+      "submit": "Envoyer",
+      "ok": "Ok",
+      "error": {
+        "desc": "Vous devez saisir une description description."
       }
     },
     "highlighter": {
@@ -14,10 +14,10 @@
       "highlight-title": "Mettez en évidence les zones importantes pour votre feedback",
       "blackout-title": "Masquez des informations personnelles."
     },
-    "description" : {
+    "description": {
       "heading": "Feedback vous permet de nous envoyer des suggestions à propos de notre site. Vous pouvez nous signaler des problèmes ou nous faire part de vos idées pour améliorer nos produits.",
-      "desc" : "Commencez par écrire une brève description description:",
-      "highlight" : "Ensuite, identifiez les zones sur la page correspondant à votre description."
+      "desc": "Commencez par écrire une brève description description:",
+      "highlight": "Ensuite, identifiez les zones sur la page correspondant à votre description."
     },
     "overview": {
       "desc": "Description",
@@ -27,14 +27,14 @@
       "page-info": "Page",
       "timestamp": "Date",
       "page-structure": "Structure de la page",
-      "screenshot" : "Capture d'écran"
+      "screenshot": "Capture d'écran"
     },
     "submit-error": {
       "heading": "Malheuresement, une erreur s'est produite lors de l'envoi de votre feedback. Veuillez recommencer."
     },
     "submit-success": {
-      "heading" : "Merci pour votre feedback. Nous regardons attentivement chacun d'eux",
-      "sub" : "Nous ne pouvons pas répondre individuellement à chacun, mais nous utiliserons votre commentaire pour améliorer votre expérience."
+      "heading": "Merci pour votre feedback. Nous regardons attentivement chacun d'eux",
+      "sub": "Nous ne pouvons pas répondre individuellement à chacun, mais nous utiliserons votre commentaire pour améliorer votre expérience."
     }
   }
 }

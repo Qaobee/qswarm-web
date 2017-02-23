@@ -40,18 +40,18 @@
   },
   "modal": {
     "login": {
-        "label": {
-            "login": "Login",
-            "password": "Password",
-            "signin": "Login",
-            "forgotpasswd": "Forgot password?",
-            "forgotpasswdmess": "These are things that happen, give us your login and we will reset it for you!",
-            "title": "Log on to <b>Qaobee</b>",
-            "forgotpasswdcancel": "Wait, I remember now!"
-        ,
+      "label": {
+        "login": "Login",
+        "password": "Password",
+        "signin": "Login",
+        "forgotpasswd": "Forgot password?",
+        "forgotpasswdmess": "These are things that happen, give us your login and we will reset it for you!",
+        "title": "Log on to <b>Qaobee</b>",
+        "forgotpasswdcancel": "Wait, I remember now!",
         "messageControl": {
-            "unregistreduser" : "Your account is not activate. look your mail"
+          "unregistreduser": "Your account is not activate. look your mail"
         }
+      }
     }
   }
 }

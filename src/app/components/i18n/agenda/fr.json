@@ -1,56 +1,56 @@
 {
-	"mainAgenda" : {
-		"title" : "Mon agenda",
-		"next_event" : "Prochains événements",
-		"buttons" : {
-			"addEvent" : "Ajouter un évènement", 
-			"updateEvent" : "Editer un évènement", 
-			"dropdownEffective" : "Changer d'effectif"
-		}, 
-        "eventType" : {
-			"cup" : "Coupe", 
-			"championship" : "Championnat", 
-			"friendlyGame" : "Match amical", 
-			"training" : "Entraînement", 
-			"other" : "Autre"
-		}
-	}, 
-	"addEvent" : {
-		"title" : "Ajout d'un évènement", 
-		"toastSuccess" : "L'évènement {{label}} a été ajouté", 
-		"toastError" : "Erreur, l'évènement n'a pas été créé"
-	}, 
-	"updateEvent" : {
-		"title" : "Mise à jour d'un évènement", 
-		"toastSuccess" : "L'évènement {{label}} a été modifié", 
-		"toastError" : "Erreur, l'évènement n'a pas été modifié"
-	}, 
-	"eventLabels" : {
-		"Team" : "Sélectionner son équipe...", 
-		"Adversary" : "Sélectionner un adversaire...",
-        "Type" : "Type", 
-		"selectType" : "Choix type évènement...", 
-		"Label" : "Libellé", 
-		"LabelPlaceHolder" : "1ére journée... Coupe de France...", 
-		"StartDate" : "Date début", 
-		"EndDate" : "Date fin", 
-		"StartHour" : "Heure début", 
-		"EndHour" : "Heure fin", 
-		"Address" : "Adresse", 
-		"Home" : "A domicile", 
-		"Visitor" : "A l'extérieur", 
-		"SectionIdentity" : "Evènement", 
-		"SectionActorsHome" : "Mon équipe",
-        "SectionActorsAdversary" : "Adversaire", 
-		"SectionPlaning" : "Planification", 
-		"SectionPlace" : "Localisation"
-	},
-    "eventErrors" : {
-		"Type" : "La type d'événement est obligatoire", 
-		"Label" : "Le libellé de l'événement est obligatoire",  
-		"StartDate" : "La date de l'événement est obligatoire", 
-		"StartHour" : "L'heure de l'événement est obligatoire",
-        "teamHome" : "Le choix de son équipe est obligatoire",
-        "adversary" : "L'adversaire est obligatoire"
-	}
+  "mainAgenda": {
+    "title": "Mon agenda",
+    "next_event": "Prochains événements",
+    "buttons": {
+      "addEvent": "Ajouter un évènement",
+      "updateEvent": "Editer un évènement",
+      "dropdownEffective": "Changer d'effectif"
+    },
+    "eventType": {
+      "cup": "Coupe",
+      "championship": "Championnat",
+      "friendlyGame": "Match amical",
+      "training": "Entraînement",
+      "other": "Autre"
+    }
+  },
+  "addEvent": {
+    "title": "Ajout d'un évènement",
+    "toastSuccess": "L'évènement {{label}} a été ajouté",
+    "toastError": "Erreur, l'évènement n'a pas été créé"
+  },
+  "updateEvent": {
+    "title": "Mise à jour d'un évènement",
+    "toastSuccess": "L'évènement {{label}} a été modifié",
+    "toastError": "Erreur, l'évènement n'a pas été modifié"
+  },
+  "eventLabels": {
+    "Team": "Sélectionner son équipe...",
+    "Adversary": "Sélectionner un adversaire...",
+    "Type": "Type",
+    "selectType": "Choix type évènement...",
+    "Label": "Libellé",
+    "LabelPlaceHolder": "1ére journée... Coupe de France...",
+    "StartDate": "Date début",
+    "EndDate": "Date fin",
+    "StartHour": "Heure début",
+    "EndHour": "Heure fin",
+    "Address": "Adresse",
+    "Home": "A domicile",
+    "Visitor": "A l'extérieur",
+    "SectionIdentity": "Evènement",
+    "SectionActorsHome": "Mon équipe",
+    "SectionActorsAdversary": "Adversaire",
+    "SectionPlaning": "Planification",
+    "SectionPlace": "Localisation"
+  },
+  "eventErrors": {
+    "Type": "La type d'événement est obligatoire",
+    "Label": "Le libellé de l'événement est obligatoire",
+    "StartDate": "La date de l'événement est obligatoire",
+    "StartHour": "L'heure de l'événement est obligatoire",
+    "teamHome": "Le choix de son équipe est obligatoire",
+    "adversary": "L'adversaire est obligatoire"
+  }
 }

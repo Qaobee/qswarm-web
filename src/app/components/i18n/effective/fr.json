@@ -4,7 +4,7 @@
     "buttons": {
       "addEffective": "Ajouter un effectif",
       "updateEffective": "Editer un effectif",
-      "effectiveDefault": "Choisir effectif par défaut",    
+      "effectiveDefault": "Choisir effectif par défaut",
       "addPlayer": "Ajouter un joueur",
       "viewPlayer": "Voir la fiche du joueur",
       "addTeamHome": "Ajouter une équipe",
@@ -46,10 +46,10 @@
     "CategoryAge": "La catégorie d'âge de l'effectif est obligatoire"
   },
   "tabEffectif": {
-      "dashboard": "Tableau de bord",
-      "Listplayer": "Liste des joueurs"
+    "dashboard": "Tableau de bord",
+    "Listplayer": "Liste des joueurs"
   },
-    "mainPlayer": {
+  "mainPlayer": {
     "title": "Mes joueurs",
     "buttons": {
       "addEffective": "Ajouter un effectif",
@@ -107,7 +107,7 @@
     "playerTelHome": "Maison",
     "playerAddress": "Adresse",
     "playerMail": "Email",
-    "playerAge": "Age"  
+    "playerAge": "Age"
   },
   "playerErrors": {
     "Firstname": "Le prénom du joueur est obligatoire",
@@ -121,9 +121,9 @@
   "mainTeam": {
     "title": "Mes équipes"
   },
-    "tabTeam": {
-      "dashboard": "Tableau de bord",
-      "ListTeam": "Liste des équipes"
+  "tabTeam": {
+    "dashboard": "Tableau de bord",
+    "ListTeam": "Liste des équipes"
   },
   "addTeam": {
     "titleHome": "Ajout d'une équipe à l'effectif",
@@ -151,10 +151,10 @@
   },
   "compare": {
     "player-max": "Vous ne pouvez sélectionner que {{max}} joueurs",
-    "player-min" : "Vous devez sélectionner au moins deux joueurs",
-    "event-max" : "Vous ne pouvez sélectionner que {{max}} événements",
-    "event-min" : "Vous devez sélectionner au moins un événement",
-    "team-max" : "Vous ne pouvez sélectionner que {{max}} équipes",
-    "team-min" : "Vous devez sélectionner au moins deux équipes"
+    "player-min": "Vous devez sélectionner au moins deux joueurs",
+    "event-max": "Vous ne pouvez sélectionner que {{max}} événements",
+    "event-min": "Vous devez sélectionner au moins un événement",
+    "team-max": "Vous ne pouvez sélectionner que {{max}} équipes",
+    "team-min": "Vous devez sélectionner au moins deux équipes"
   }
 }

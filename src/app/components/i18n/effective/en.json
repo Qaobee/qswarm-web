@@ -4,7 +4,7 @@
     "buttons": {
       "addEffective": "Add effective",
       "updateEffective": "Edit effective",
-      "effectiveDefault": "Choose default effective",    
+      "effectiveDefault": "Choose default effective",
       "addPlayer": "Add player",
       "addTeamHome": "Add team",
       "addTeamAdversary": "Add adversary",
@@ -46,22 +46,22 @@
     "CategoryAge": "Effective age category is mandatory"
   },
   "tabEffectif": {
-      "dashboard": "Dashboard",
-      "Listplayer": "Players list"
+    "dashboard": "Dashboard",
+    "Listplayer": "Players list"
   },
-    "mainPlayer": {
+  "mainPlayer": {
     "title": "Effective's players",
-        "buttons": {
-          "addEffective": "Add effective",
-          "updateEffective": "Edit effective",
-          "addPlayer": "Add player",
-          "addTeamHome": "Add team",
-          "addTeamAdversary": "Add adversary",
-          "viewPlayer": "View player sheet",
-          "viewStatsEffective": "View stats of effective",
-          "dropdownEffective": "Change effective",
-          "compare": "Compare"
-        }
+    "buttons": {
+      "addEffective": "Add effective",
+      "updateEffective": "Edit effective",
+      "addPlayer": "Add player",
+      "addTeamHome": "Add team",
+      "addTeamAdversary": "Add adversary",
+      "viewPlayer": "View player sheet",
+      "viewStatsEffective": "View stats of effective",
+      "dropdownEffective": "Change effective",
+      "compare": "Compare"
+    }
   },
   "addPlayer": {
     "title": "Add a person",
@@ -87,7 +87,6 @@
     "playerName": "Name",
     "playerFirstname": "Firstname",
     "playerGender": "Gender",
-    ,
     "playerGenderM": "Male",
     "playerGenderF": "Female",
     "playerBirthdate": "Birthdate",
@@ -108,7 +107,7 @@
     "playerTelHome": "Home",
     "playerAddress": "Address",
     "playerMail": "E-mail",
-    "playerAge": "Age"  
+    "playerAge": "Age"
   },
   "playerErrors": {
     "Firstname": "Firstname is mandatory",
@@ -122,9 +121,9 @@
   "mainTeam": {
     "title": "Teams of effective"
   },
-    "tabTeam": {
-      "dashboard": "Dashboard",
-      "ListTeam": "Team's list"
+  "tabTeam": {
+    "dashboard": "Dashboard",
+    "ListTeam": "Team's list"
   },
   "addTeam": {
     "titleHome": "Add team for effective",
@@ -149,13 +148,13 @@
   "teamErrors": {
     "label": "Team label id mandatory",
     "activation": "Activate or desactivate team"
-  }
+  },
   "compare": {
     "player-max": "You can select at most {{max}} players",
     "player-min": "You have to select at least two players",
-    "event-max" : "You can select at most {{max}} events",
-    "event-min" : "You have to select at least one event",
-    "team-max" : "You can select at most {{max}} teams",
-    "team-min" : "You have to select at least two teams"
+    "event-max": "You can select at most {{max}} events",
+    "event-min": "You have to select at least one event",
+    "team-max": "You can select at most {{max}} teams",
+    "team-min": "You have to select at least two teams"
   }
 }

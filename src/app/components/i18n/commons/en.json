@@ -1,93 +1,93 @@
 {
-    "commons": {
-        "format": {
-            "weight": "lb",
-            "height": "in",
-            "ageYear": "years",
-            "date": {
-                "pattern": "MM/dd/yyyy",
-                "label": "mm/dd/yyyy",
-                "moment": "MM/DD/YYYY",
-                "listMonth": "January,February,March,April,May,June,July,August,September,October,November,December",
-                "listMonthShort":"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
-                "listWeekdaysFull":"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday",
-                "listWeekdaysLetter":"S,M,T,W,T,F,S",
-                "listWeekdaysShort": "Sun,Mon,Tue,Wed,Thu,Fri,Sat",
-                "today":"",
-                "clear":"Clear",
-                "close":"Close"
-            },
-            "hours": {
-                "pattern": "HH:i",
-                "label": "HH:i a"
-            },
-            "phone": {
-                "pattern": "(999) 999-9999"
-            }
-        },
-        "periodicity" : {
-            "month": "Month",
-            "quarter": "Quarter",
-            "season": "Season"
-        }, 
-        "footer": {
-            "link": {
-                "about": "About",
-                "contact": "Contact us",
-                "legalmentions": "Terms of use"
-            }
-        },
-        "popup": {
-            "warning": {
-                "unregistreduser": "You have not verified your e-mail."
-            }
-        },
-        "toolBar": {
-            "share": "Share",
-            "pdfExport": "Export to PDF"
-        },
-        "buttons": {
-            "validate": "Validate",
-            "cancel": "Cancel",
-            "close" : "Close",
-            "back" : "Return",
-            "next" : "Next",
-            "previous" : "Previous",
-            "filter":"Filter",
-            "agree" : "I agree",
-            "changeSB" : "Change",
-            "accept" : "Accept",
-            "refuse" : "Refuse"  
-        },
-        "settings" : {
-            "activity": {
-                "archery"	: "Archery",
-            	"badminton"	: "Badminton",
-            	"baseball"	: "Baseball",
-            	"basketball": "Basketball",
-            	"bobsleigh"	: "Bobsleigh",
-            	"boxing"	: "Boxing",
-            	"combined"	: "Combined",
-            	"curling"	: "Curling",
-            	"cycling"	: "Cycling",
-            	"dance"		: "Dance",
-            	"fencing"	: "Fencing",
-            	"fight"		: "Fight",
-            	"football"	: "Football",
-                "handball"	: "Handball",
-                "hockey"	: "Hockey",
-                "horsing"	: "Horsing",
-                "judo"		: "Judo",
-                "luge"		: "Luge",
-                "ping"		: "Ping-Pong",
-                "rowing"	: "Rowing",
-                "rugbyball"	: "Rugbyball",
-                "shooting"	: "Shooting",
-                "sprint"	: "Sprint",
-                "swim"		: "Swimming",
-                "tennis"	: "Tennis",
-                "volleyball" : "Volleyball"
-            }
-        }
+  "commons": {
+    "format": {
+      "weight": "lb",
+      "height": "in",
+      "ageYear": "years",
+      "date": {
+        "pattern": "MM/dd/yyyy",
+        "label": "mm/dd/yyyy",
+        "moment": "MM/DD/YYYY",
+        "listMonth": "January,February,March,April,May,June,July,August,September,October,November,December",
+        "listMonthShort": "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
+        "listWeekdaysFull": "Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday",
+        "listWeekdaysLetter": "S,M,T,W,T,F,S",
+        "listWeekdaysShort": "Sun,Mon,Tue,Wed,Thu,Fri,Sat",
+        "today": "",
+        "clear": "Clear",
+        "close": "Close"
+      },
+      "hours": {
+        "pattern": "HH:i",
+        "label": "HH:i a"
+      },
+      "phone": {
+        "pattern": "(999) 999-9999"
+      }
+    },
+    "periodicity": {
+      "month": "Month",
+      "quarter": "Quarter",
+      "season": "Season"
+    },
+    "footer": {
+      "link": {
+        "about": "About",
+        "contact": "Contact us",
+        "legalmentions": "Terms of use"
+      }
+    },
+    "popup": {
+      "warning": {
+        "unregistreduser": "You have not verified your e-mail."
+      }
+    },
+    "toolBar": {
+      "share": "Share",
+      "pdfExport": "Export to PDF"
+    },
+    "buttons": {
+      "validate": "Validate",
+      "cancel": "Cancel",
+      "close": "Close",
+      "back": "Return",
+      "next": "Next",
+      "previous": "Previous",
+      "filter": "Filter",
+      "agree": "I agree",
+      "changeSB": "Change",
+      "accept": "Accept",
+      "refuse": "Refuse"
+    },
+    "settings": {
+      "activity": {
+        "archery": "Archery",
+        "badminton": "Badminton",
+        "baseball": "Baseball",
+        "basketball": "Basketball",
+        "bobsleigh": "Bobsleigh",
+        "boxing": "Boxing",
+        "combined": "Combined",
+        "curling": "Curling",
+        "cycling": "Cycling",
+        "dance": "Dance",
+        "fencing": "Fencing",
+        "fight": "Fight",
+        "football": "Football",
+        "handball": "Handball",
+        "hockey": "Hockey",
+        "horsing": "Horsing",
+        "judo": "Judo",
+        "luge": "Luge",
+        "ping": "Ping-Pong",
+        "rowing": "Rowing",
+        "rugbyball": "Rugbyball",
+        "shooting": "Shooting",
+        "sprint": "Sprint",
+        "swim": "Swimming",
+        "tennis": "Tennis",
+        "volleyball": "Volleyball"
+      }
     }
+  }
 }

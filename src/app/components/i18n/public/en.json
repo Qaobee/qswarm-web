@@ -20,7 +20,7 @@
       "title": "Qaobee facilite l'acquisition et l'analyse de la donnée sportive",
       "capture": "Captez",
       "analyze": "Analysez",
-      "progress": "Progressez"     
+      "progress": "Progressez"
     },
     "area-3": {
       "item-0": {
@@ -98,74 +98,74 @@
     }
   },
   "about": {
-      "title": "Nous sommes <b>QaoBee</b>",
-      "company": {
-        "title": "La société",
-        "h1": "Nous sommes <b>QaoBee</b>",
-        "h2": "Qui et ce que nous sommes",
-        "p1": {
-          "title": "Nous sommes <b>QaoBee</b>",
-          "content": "<b>QaoBee</b> est une société de logiciels qui développe et édite des solutions numériques pour la communauté sportive. Nous sommes un groupe de bretons qui apprécient le sport, les nouvelles technologies, l'innovation, le travail d'équipe et de construire des choses dont nous pouvons être fiers. Pendant la semaine, nous nous réunissons pour créer des solutions innovantes pour simplifier et optimiser l'activité des directeurs sportifs.",
-          "contentq": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-          "contenta": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-          "contento": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna."
-        },
-        "p2": {
-          "title": "Titre 2",
-          "content": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-          "title1": "Lorem ipsum",
-          "content1": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-          "title2": "Lorem ipsum",
-          "content2": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-          "title3": "Lorem ipsum",
-          "content3": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna."
-        }
+    "title": "Nous sommes <b>QaoBee</b>",
+    "company": {
+      "title": "La société",
+      "h1": "Nous sommes <b>QaoBee</b>",
+      "h2": "Qui et ce que nous sommes",
+      "p1": {
+        "title": "Nous sommes <b>QaoBee</b>",
+        "content": "<b>QaoBee</b> est une société de logiciels qui développe et édite des solutions numériques pour la communauté sportive. Nous sommes un groupe de bretons qui apprécient le sport, les nouvelles technologies, l'innovation, le travail d'équipe et de construire des choses dont nous pouvons être fiers. Pendant la semaine, nous nous réunissons pour créer des solutions innovantes pour simplifier et optimiser l'activité des directeurs sportifs.",
+        "contentq": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        "contenta": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        "contento": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna."
       },
-      "xavier": {
-        "title": "Xavier MARIN<br /><small>Co-founder & CTO</small>",
-        "desc": "Je suis le geek de la bande, un amoureux des nouvelles technologies et un développeur passionné.",
-        "email": "xavier.marin@qaobee.com",
-        "twitter": "XavMarin",
-        "github": "giwi"
-      },
-      "christophe": {
-        "title": "Christophe KERVELLA<br /><small>Co-founder & CPIO</small>",
-        "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-        "email": "christophe.kervella@qaobee.com",
-        "twitter": "ChrisKrvla",
-        "github": ""
-      },
-      "pascal": {
-        "title": "Pascal PELERIN<br /><small>Co-founder & CEO</small>",
-        "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-        "email": "pascal.pelerin@qaobee.com",
-        "twitter": "",
-        "github": ""
-      },
-      "mathieu": {
-        "title": "Mathieu GARZUEL<br /><small>Co-founder & CMO</small>",
-        "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-        "email": "mathieu.garzuel@qaobee.com",
-        "twitter": "",
-        "github": ""
-      },
-      "jerome": {
-        "title": "Jérôme ROU&Eacute;<br /><small>Co-founder & CDO</small>",
-        "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-        "email": "jerome.roue@qaobee.com",
-        "twitter": "JeromeRoue",
-        "github": ""
-      },
-      "you": {
-        "title": "Vous<br /><small>Serez vous le prochain?</small>",
-        "desc": "<a href='/#hiring'>Rejoignez nous</a>",
-        "email": "contact@qaobee.com",
-        "twitter": "Qaobee",
-        "github": ""
-      },
-      "team": {
-        "title": "L'équipe",
-        "h2": "Faites connaissance avec nous"
+      "p2": {
+        "title": "Titre 2",
+        "content": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        "title1": "Lorem ipsum",
+        "content1": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        "title2": "Lorem ipsum",
+        "content2": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        "title3": "Lorem ipsum",
+        "content3": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna."
       }
+    },
+    "xavier": {
+      "title": "Xavier MARIN<br /><small>Co-founder & CTO</small>",
+      "desc": "Je suis le geek de la bande, un amoureux des nouvelles technologies et un développeur passionné.",
+      "email": "xavier.marin@qaobee.com",
+      "twitter": "XavMarin",
+      "github": "giwi"
+    },
+    "christophe": {
+      "title": "Christophe KERVELLA<br /><small>Co-founder & CPIO</small>",
+      "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+      "email": "christophe.kervella@qaobee.com",
+      "twitter": "ChrisKrvla",
+      "github": ""
+    },
+    "pascal": {
+      "title": "Pascal PELERIN<br /><small>Co-founder & CEO</small>",
+      "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+      "email": "pascal.pelerin@qaobee.com",
+      "twitter": "",
+      "github": ""
+    },
+    "mathieu": {
+      "title": "Mathieu GARZUEL<br /><small>Co-founder & CMO</small>",
+      "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+      "email": "mathieu.garzuel@qaobee.com",
+      "twitter": "",
+      "github": ""
+    },
+    "jerome": {
+      "title": "Jérôme ROU&Eacute;<br /><small>Co-founder & CDO</small>",
+      "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+      "email": "jerome.roue@qaobee.com",
+      "twitter": "JeromeRoue",
+      "github": ""
+    },
+    "you": {
+      "title": "Vous<br /><small>Serez vous le prochain?</small>",
+      "desc": "<a href='/#hiring'>Rejoignez nous</a>",
+      "email": "contact@qaobee.com",
+      "twitter": "Qaobee",
+      "github": ""
+    },
+    "team": {
+      "title": "L'équipe",
+      "h2": "Faites connaissance avec nous"
+    }
   }
 }

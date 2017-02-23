@@ -13,9 +13,9 @@ var $ = require('gulp-load-plugins')({
 
 gulp.task('partials', function () {
     return gulp.src([
-            path.join(conf.paths.src, '/app/**/*.html'),
-            path.join(conf.paths.tmp, '/serve/app/**/*.html')
-        ])
+        path.join(conf.paths.src, '/app/**/*.html'),
+        path.join(conf.paths.tmp, '/serve/app/**/*.html')
+    ])
         .pipe($.minifyHtml({
             empty: true,
             spare: true,
@@ -37,7 +37,7 @@ gulp.task('html', ['inject', 'partials'], function () {
     };
 
     var htmlFilter = $.filter('*.html', {restore: true});
-    var jsFilter = $.filter('app/**/*.js', {restore: true});
+    var jsFilter = $.filter('**/*.js', {restore: true});
     var cssFilter = $.filter('**/*.css', {restore: true});
     var assets;
 
@@ -47,8 +47,8 @@ gulp.task('html', ['inject', 'partials'], function () {
         .pipe($.rev())
         .pipe(jsFilter)
         .pipe($.sourcemaps.init())
-        .pipe($.ngAnnotate({ single_quotes: true}))
-        .pipe($.uglify({mangle: {toplevel: true, except: ['user', 'meta']}}))
+        .pipe($.ngAnnotate({single_quotes: true}))
+        .pipe($.uglify({mangle: {toplevel: true, preserveComments: false, except: ['user', 'meta']}}))
         .pipe($.sourcemaps.write('maps'))
         .pipe(jsFilter.restore)
         .pipe(cssFilter)
@@ -89,20 +89,19 @@ gulp.task('other', function () {
     });
 
     return gulp.src([
-            path.join(conf.paths.src, '/**/*'),
-            path.join('!' + conf.paths.src, '/**/*.{html,css,js}'),
-           // path.join(conf.paths.src, '/service-worker.js')
-        ])
+        path.join(conf.paths.src, '/**/*'),
+        path.join('!' + conf.paths.src, '/**/*.{html,css,js}')
+    ])
         .pipe(fileFilter)
         .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
 });
-gulp.task('delete-empty-directories', function() {
+gulp.task('delete-empty-directories', function () {
     deleteEmpty.sync(path.join(conf.paths.dist, '/'));
 });
 gulp.task('i18n', function () {
     return gulp.src([
-            'bower_components/angular-i18n/*'
-        ])
+        'bower_components/angular-i18n/*'
+    ])
         .pipe(gulp.dest(conf.paths.dist + '/i18n/'));
 });
 gulp.task('momentjs', function () {
@@ -115,12 +114,12 @@ gulp.task('clean', function () {
     return $.del([path.join(conf.paths.dist, '/'), path.join(conf.paths.tmp, '/')]);
 });
 gulp.task('images', function () {
-    return  gulp.src('src/assets/images/**/*')
+    return gulp.src('src/assets/images/**/*')
         .pipe(imagemin())
         .pipe(gulp.dest('dist/assets/images'))
 });
 
-gulp.task('generate-service-worker', function(callback) {
+gulp.task('generate-service-worker', function (callback) {
     var path = require('path');
     var swPrecache = require('sw-precache');
     var rootDir = 'app';

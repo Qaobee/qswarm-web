@@ -1,36 +1,36 @@
 {
-    "dashboard": {
-        "event": "Prochain événement",
-        "stats": "Statistiques événement",
-        "player": "Statistiques joueur",
-        "teams": "Statistiques équipes",
-        "widgetTopScored": {
-            "title": "Top buteurs"
-        },
-        "widgetTopUsed": {
-            "title": "Les + utilisés"
-        },
-        "widgetNotifications": {
-            "title": "Notifications"
-        },
-        "widgetEfficiencyGB": {
-            "title": "Efficacité au tir"
-        },
-        "widgetEfficiencyNine": {
-            "title": "Efficacité 9 mètres"
-        },
-        "widgetEfficiencySeven": {
-            "title": "Efficacité à 7 mètres"
-        },
-        "widgetEfficiencySix": {
-            "title": "Efficacité à 6 mètres"
-        },
-        "actionTitle": {
-            "defaultScreen": "Retour à l'écran par défaut"
-        }
+  "dashboard": {
+    "event": "Prochain événement",
+    "stats": "Statistiques événement",
+    "player": "Statistiques joueur",
+    "teams": "Statistiques équipes",
+    "widgetTopScored": {
+      "title": "Top buteurs"
     },
-    "notifications" : {
-        "nodata" : "Pas de nouvelle, bonne nouvelle!",
-        "more" : "Voir plus"
+    "widgetTopUsed": {
+      "title": "Les + utilisés"
+    },
+    "widgetNotifications": {
+      "title": "Notifications"
+    },
+    "widgetEfficiencyGB": {
+      "title": "Efficacité au tir"
+    },
+    "widgetEfficiencyNine": {
+      "title": "Efficacité 9 mètres"
+    },
+    "widgetEfficiencySeven": {
+      "title": "Efficacité à 7 mètres"
+    },
+    "widgetEfficiencySix": {
+      "title": "Efficacité à 6 mètres"
+    },
+    "actionTitle": {
+      "defaultScreen": "Retour à l'écran par défaut"
     }
+  },
+  "notifications": {
+    "nodata": "Pas de nouvelle, bonne nouvelle!",
+    "more": "Voir plus"
+  }
 }

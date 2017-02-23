@@ -1,56 +1,56 @@
 {
-    "mainAgenda": {
-        "title": "Planning",
-        "next_event" : "Next events",
-        "buttons" : {
-            "addEvent": "Add event",
-            "updateEvent": "Update event",
-            "dropdownEffective": "Change effective"
-        },
-        "eventType" : {
-            "cup": "Cup",
-            "championship": "Championship",
-            "friendlyGame": "Friendly Game",
-            "training": "Training",
-            "other": "Other"
-        }
+  "mainAgenda": {
+    "title": "Planning",
+    "next_event": "Next events",
+    "buttons": {
+      "addEvent": "Add event",
+      "updateEvent": "Update event",
+      "dropdownEffective": "Change effective"
     },
-    "addEvent": {
-        "title": "create event",
-        "toastSuccess":"Event {{label}} has been created",
-        "toastError":"Error, event can't create"
-    },
-    "updateEvent": {
-        "title": "Update event",
-        "toastSuccess":"Event {{label}} was updated",
-        "toastError":"Error, event can't update"
-    },
-    "eventLabels": {
-        "Team": "Select my team",
-        "Adversary": "Choice adversary",
-        "Type" : "Event type", 
-        "selectType": "Choice Event Type",
-        "Label": "Label",
-        "LabelPlaceHolder": "1st journey... League Cup...",
-        "StartDate": "Start date",
-        "EndDate": "End date",
-        "StartHour": "Start hour",
-        "EndHour": "End hour",
-        "Address": "Address",
-        "Home": "Home",
-        "Visitor":"Outside",
-        "SectionIdentity":"Event",
-		"SectionActorsHome" : "My team",
-        "SectionActorsAdversary" : "Adversary", 
-        "SectionPlaning":"Planning",
-        "SectionPlace":"Location"
-    },
-    "eventErrors" : {
-		"Type" : "Event type mandatory", 
-		"Label" : "Event label mandatory",  
-		"StartDate" : "Event start date mandatory", 
-		"StartHour" : "Event hour mandatory",
-        "teamHome" : "Team mandatory",
-        "adversary" : "Adversary mandatory"
-	}
+    "eventType": {
+      "cup": "Cup",
+      "championship": "Championship",
+      "friendlyGame": "Friendly Game",
+      "training": "Training",
+      "other": "Other"
+    }
+  },
+  "addEvent": {
+    "title": "create event",
+    "toastSuccess": "Event {{label}} has been created",
+    "toastError": "Error, event can't create"
+  },
+  "updateEvent": {
+    "title": "Update event",
+    "toastSuccess": "Event {{label}} was updated",
+    "toastError": "Error, event can't update"
+  },
+  "eventLabels": {
+    "Team": "Select my team",
+    "Adversary": "Choice adversary",
+    "Type": "Event type",
+    "selectType": "Choice Event Type",
+    "Label": "Label",
+    "LabelPlaceHolder": "1st journey... League Cup...",
+    "StartDate": "Start date",
+    "EndDate": "End date",
+    "StartHour": "Start hour",
+    "EndHour": "End hour",
+    "Address": "Address",
+    "Home": "Home",
+    "Visitor": "Outside",
+    "SectionIdentity": "Event",
+    "SectionActorsHome": "My team",
+    "SectionActorsAdversary": "Adversary",
+    "SectionPlaning": "Planning",
+    "SectionPlace": "Location"
+  },
+  "eventErrors": {
+    "Type": "Event type mandatory",
+    "Label": "Event label mandatory",
+    "StartDate": "Event start date mandatory",
+    "StartHour": "Event hour mandatory",
+    "teamHome": "Team mandatory",
+    "adversary": "Adversary mandatory"
+  }
 }
