@@ -13,7 +13,7 @@
             <li>
                 <div class="collapsible-header light-primary-color active" ng-click="resertForm()">
                     <i class="material-icons md-36 colorAccent-text">search</i>
-                    <h5 style="margin-top:0px;">{{'signupEndPage.tabFindClub.tabTitle' | translate }}</h5>
+                    <h5 style="margin-top:0px;" translate="signupEndPage.tabFindClub.tabTitle"></h5>
                 </div>
                 <div class="collapsible-body">
 
@@ -85,7 +85,7 @@
                             </div>
                         </div>
 
-                        <div ng-show="structure._id">
+                        <div ng-if="structure._id">
                             <div class="row hide-on-large-only">
                                 <div class="col input-field s12">
                                     <label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span
@@ -123,8 +123,8 @@
                         <div class="row">&nbsp;</div>
                         <div class="row">
                             <div class="col s12 center">
-                                <a ng-click="openCancelModal()" class="waves-effect waves-white btn dark-primary-color">{{'commons.buttons.cancel'
-                                    | translate }}</a>
+                                <a ng-click="openCancelModal()" class="waves-effect waves-white btn dark-primary-color"
+                                   translate="commons.buttons.cancel"></a>
 
                                 <button type="submit" ng-click="validateFindClubForm()"
                                         translate="commons.buttons.validate" ng-disabled="findClubForm.$invalid"
@@ -275,7 +275,7 @@
             {{'modalCreate.stepCreatePlayers' | translate}}</h4></div>
         <div style="padding-top:80px;text-align:center"><h4 class="colorSecondary-text"><i class="fa fa-user"></i>
             {{'modalCreate.stepCreateTeam' | translate}}</h4></div>
-        
+
         <div style="padding-top:80px;text-align:center"><h4 class="colorSecondary-text"><i
                 class="fa fa-check-square-o"></i> {{'modalCreate.stepFinished' | translate}}</h4></div>
     </div>

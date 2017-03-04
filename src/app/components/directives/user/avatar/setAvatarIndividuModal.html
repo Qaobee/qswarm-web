@@ -9,7 +9,7 @@
             <div nv-file-over="" nv-file-drop="" uploader="uploader" class="my-drop-zone">
                 <img ng-src="{{getAvatar(person.avatar)}}" class="img-thumbnail img-responsive" />
 
-                <div ng-show="showSpinner" class="text-center overlayed-spinner">
+                <div ng-if="showSpinner" class="text-center overlayed-spinner">
                     <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
                 </div>
             </div>

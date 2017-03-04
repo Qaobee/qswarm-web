@@ -1,34 +1,28 @@
 <div class="card white">
     <div class="card-title dark-primary-color center">
-        <span class="white-text title"><small>{{'stats.resumeTab.sanctions' | translate }}</small></span>
+        <span class="white-text title"><small translate="stats.resumeTab.sanctions"></small></span>
     </div>
-    
-    <!--
-    <div class="card-image waves-effect waves-block waves-light">
-        <img src="/assets/images/handball/sanction.jpeg">
-    </div>
-    -->
     <div class="card-content white primary-text-color">
-        <div class="row center valign-wrapper" ng-show="noStat">
+        <div class="row center valign-wrapper" ng-if="noStat">
             <div class="col s1 valign">&nbsp;</div>
-            <div class="col s5 left-align light-text-color"><h6>{{'stats.sanction.yellowCard' | translate }}</h6></div>
+            <div class="col s5 left-align light-text-color"><h6 translate="stats.sanction.yellowCard"></h6></div>
             <div class="col s5 light-primary-color valign"><h4>{{nbYellowCard}}</h4></div>
             <div class="col s1 valign">&nbsp;</div>
         </div>
-        <div class="row center valign-wrapper" ng-show="noStat">
+        <div class="row center valign-wrapper" ng-if="noStat">
             <div class="col s1 valign">&nbsp;</div>
-            <div class="col s5 left-align light-text-color"><h6>{{'stats.sanction.excluTempo' | translate }}</h6></div>
+            <div class="col s5 left-align light-text-color"><h6 translate="stats.sanction.excluTempo"></h6></div>
             <div class="col s5 light-primary-color valign"><h4>{{nbExclTmp}}</h4></div>
             <div class="col s1 valign">&nbsp;</div>
         </div>
-        <div class="row center valign-wrapper" ng-show="noStat">
+        <div class="row center valign-wrapper" ng-if="noStat">
             <div class="col s1 valign">&nbsp;</div>
-            <div class="col s5 left-align light-text-color"><h6>{{'stats.sanction.redCard' | translate }}</h6></div>
+            <div class="col s5 left-align light-text-color"><h6 translate="stats.sanction.redCard"></h6></div>
             <div class="col s5 accent-color valign"><h4>{{nbRedCard}}</h4></div>
             <div class="col s1 valign">&nbsp;</div>
-        </div>    
-        <div class="row center" ng-hide="noStat">
-            <div class="col s12" ng-hide="noStat"><h6>{{'stats.resumeTab.noData' | translate }}</h6></div>
+        </div>
+        <div class="row center" ng-if="!noStat">
+            <div class="col s12"><h6 translate="stats.resumeTab.noData"></h6></div>
         </div>
     </div>
 </div>        

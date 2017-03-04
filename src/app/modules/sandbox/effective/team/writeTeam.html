@@ -3,11 +3,11 @@
     <div class="row"></div>
     
     <!-- Entete -->
-    <div ng-hide="addTeamTitle">
+    <div ng-if="!addTeamTitle">
         <title-page-bar icon="group" title="updateTeam.titleHome"></title-page-bar>
     </div>
     
-    <div ng-show="addTeamTitle">
+    <div ng-if="addTeamTitle">
         <title-page-bar icon="group" title="addTeam.titleHome"></title-page-bar>
     </div>   
     
@@ -26,7 +26,7 @@
                                    required
                                    ng-class="{ 'has-error' : teamForm.teamLabel.$invalid && !teamForm.teamLabel.$pristine }">
                         <span class="small red-text text-lighten-1"
-                                    ng-show="teamForm.teamLabel.$invalid && !teamForm.teamLabel.$pristine" translate="teamErrors.label"></span>
+                                    ng-if="teamForm.teamLabel.$invalid && !teamForm.teamLabel.$pristine" translate="teamErrors.label"></span>
                         </div>
                         
                         <div class="input-field col s2">

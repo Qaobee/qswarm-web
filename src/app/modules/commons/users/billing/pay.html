@@ -1,4 +1,4 @@
-<div id="frame" ng-show="modalClosed"></div>
+<div id="frame" ng-if="modalClosed"></div>
 <div class="row" ng-if="payError">
     <h6 translate="billingPage.label.pay-modal.error"></h6>
     <button class="btn accent-color right" ng-click="doTheBack()" translate="commons.buttons.back"></button>

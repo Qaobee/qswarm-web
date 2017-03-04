@@ -3,13 +3,13 @@
         <div class="card-title dark-primary-color center">
             <span class="title"><small translate="stats.actionTab.defense"></small></span>
         </div>
-        <div class="card-content" ng-show="noStat">
+        <div class="card-content" ng-if="noStat">
             <c3chart bindto-id="chartActionsDef" chart-columns="defenseCol" chart-data="defenseData" 
                      padding-top="40" padding-bottom="40" padding-right="40" padding-left="40">
                 <chart-donut width="40"/>
             </c3chart>
         </div>
-        <div class="card-content center-align accent-text-color" ng-hide="noStat"
+        <div class="card-content center-align accent-text-color" ng-if="!noStat"
              translate="stats.resumeTab.noData"></div>
     </div>
 </div>
@@ -19,13 +19,13 @@
         <div class="card-title dark-primary-color center">
             <span class="title"><small translate="stats.actionTab.attack"></small></span>
         </div>
-        <div class="card-content" ng-show="noStat">
+        <div class="card-content" ng-if="noStat">
             <c3chart bindto-id="chartActionsAtt" chart-columns="attackCol" chart-data="attackData" 
                      padding-top="40" padding-bottom="40" padding-right="40" padding-left="40">
                 <chart-donut width="40"/>
             </c3chart>
         </div>
-        <div class="card-content center-align accent-text-color" ng-hide="noStat"
+        <div class="card-content center-align accent-text-color" ng-if="!noStat"
              translate="stats.resumeTab.noData"></div>
     </div>
 </div>  

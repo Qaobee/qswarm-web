@@ -4,11 +4,11 @@
         <h5 class="card-content center {{color2}} {{textColor2}}" style="height:48px;">
             <span class="left"><i class="material-icons">{{icon}}</i></span>
             <span><small>{{title | translate }}</small></span>
-            <span class="right" ng-hide="isCollected">
+            <span class="right" ng-if="!isCollected">
                 <a href="#/private/updateEvent/{{event._id}}" class="{{textColor2}} waves-effect waves-light"><i
                         class="material-icons">mode_edit</i></a>
             </span>
-            <span class="right" ng-show="isCollected">
+            <span class="right" ng-if="isCollected">
                 <a href="#/private/eventStats/{{collectId}}" class="{{textColor2}} waves-effect waves-light"><i
                         class="fa fa-bar-chart"></i></a>
             </span>
@@ -22,7 +22,7 @@
             <a ng-if="mapShow" class="waves-effect waves-light accent-text-color right" ng-click="openMap()">
                 <i class="material-icons">location_on</i>
             </a>
-            <span ng-if="hasCompare" ng-show="isCollected" class="right">&nbsp;
+            <span ng-if="hasCompare" ng-if="isCollected" class="right">&nbsp;
                 <input type="checkbox" ng-model="compareList[event._id]" name="compare"
                        ng-change="updateEventToCompare(event._id)"
                        ng-checked="compareList[event._id]" id="compare-{{event._id}}"/>

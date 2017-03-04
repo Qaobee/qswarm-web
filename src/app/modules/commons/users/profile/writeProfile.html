@@ -59,7 +59,7 @@
                                        ng-class="{ 'invalid': profileForm.email.$invalid }"/>
 
                                 <span ng-class="{'has-error': profileForm.email.$dirty && profileForm.email.$error.required}"
-                                      ng-hide="profileForm.email.$valid" class="small accent-text-color"
+                                      ng-if="!profileForm.email.$valid" class="small accent-text-color"
                                       translate="profilePage.form.messageControl.emailDirty"></span>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                                 <label for="userGenderM">{{'profilePage.form.label.gender.male' | translate }}</label>
                             </div>
                             <span class="small accent-text-color"
-                                  ng-show="profileForm.gender.$invalid && !profileForm.gender.$pristine"
+                                  ng-if="profileForm.gender.$invalid && !profileForm.gender.$pristine"
                                   translate="profilePage.form.messageControl.gender"></span>
                         </div>
 
@@ -92,7 +92,7 @@
                                 <input ng-model="user.firstname" id="userFirstname" name="userFirstname" type="text"
                                        class="validate" required ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
                                 <span class="small accent-text-color"
-                                      ng-show="profileForm.userFirstname.$invalid && !profileForm.userFirstname.$pristine"
+                                      ng-if="profileForm.userFirstname.$invalid && !profileForm.userFirstname.$pristine"
                                       translate="profilePage.form.messageControl.firstname"></span>
                                 <span class="small accent-text-color invalid"
                                       ng-if="profileForm.userFirstname.$error.pattern"
@@ -109,7 +109,7 @@
                                        required ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'"
                                        ng-class="{ 'has-error' : profileForm.userName.$invalid && !profileForm.userName.$pristine }">
                                 <span class="small accent-text-color"
-                                      ng-show="profileForm.userName.$invalid && !profileForm.userName.$pristine"
+                                      ng-if="profileForm.userName.$invalid && !profileForm.userName.$pristine"
                                       translate="profilePage.form.messageControl.name"></span>
                                 <span class="small accent-text-color invalid"
                                       ng-if="profileForm.userName.$error.pattern"
@@ -135,7 +135,7 @@
                                        ng-class="{ 'invalid': profileForm.email.$invalid }"/>
 
                                 <span ng-class="{'has-error': profileForm.email.$dirty && profileForm.email.$error.required}"
-                                      ng-hide="profileForm.email.$valid" class="small accent-text-color"
+                                      ng-if="!profileForm.email.$valid" class="small accent-text-color"
                                       translate="profilePage.form.messageControl.emailDirty"></span>
                             </div>
                         </div>
@@ -179,7 +179,7 @@
                                        ui-mask="{{'commons.format.phone.pattern' | translate }}" class="validate"
                                        min="0" ng-model="user.contact.home" required>
                                 <span class="small accent-text-color"
-                                      ng-show="profileForm.userPhoneHome.$invalid && !profileForm.userPhoneHome.$pristine"
+                                      ng-if="profileForm.userPhoneHome.$invalid && !profileForm.userPhoneHome.$pristine"
                                       translate="profilePage.form.messageControl.phone">
 		                        </span>
                             </div>

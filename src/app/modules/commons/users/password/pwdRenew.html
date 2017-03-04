@@ -17,7 +17,7 @@
                 <div class="input-field col m4 s12">
                     <input id="password" type="password" class="validate" ng-model="renew.passwd" required>
                     <label for="password" translate="profilePwdPage.form.label.password"></label>
-                    <div ng-show="renew.passwd">
+                    <div ng-if="renew.passwd">
                         <small translate='profilePwdPage.form.messageControl.passwdStrength'></small>
                         <div ng-hide="true" ng-password-strength="renew.passwd" strength="passStrength"
                              inner-class="meter"></div>

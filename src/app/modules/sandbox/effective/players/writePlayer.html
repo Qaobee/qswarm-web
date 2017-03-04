@@ -99,7 +99,7 @@
                                        ng-class="{ 'invalid': playerCivilSection.email.$invalid }">
                                 <span ng-class="{'has-error': playerCivilSection.email.$dirty}"
                                       class="small accent-text-color"
-                                      ng-hide="playerCivilSection.email.$valid"
+                                      ng-if="!playerCivilSection.email.$valid"
                                       translate="playerErrors.emailDirty"></span>
                             </div>
                         </div>
@@ -192,7 +192,7 @@
                                            ng-class="{'invalid': playerCivilSection.playerEmail.$invalid}">
                                     <span ng-class="{'has-error': playerCivilSection.playerEmail.$dirty}"
                                           class="small accent-text-color"
-                                          ng-hide="playerCivilSection.playerEmail.$valid"
+                                          ng-if="!playerCivilSection.playerEmail.$valid"
                                           translate="playerLabels.emailDirty"></span>
                                 </div>
                             </div>

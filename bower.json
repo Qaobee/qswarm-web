@@ -58,7 +58,7 @@
     "v-tabs": "~0.2.0",
     "angular-file-saver": "1.1.2",
     "materialize-clockpicker": "Giwi/materialize-clockpicker#^0.1.2",
-    "angular-recaptcha": "^3.0.4",
+    "angular-recaptcha": "^4.0.3",
     "angular-chips": "^1.0.8",
     "materialize": "^0.97.8",
     "angular-web-notifications": "^0.1.2"

@@ -1,34 +1,29 @@
 <div class="card primary-text-color">
     <div class="card-title center dark-primary-color">
-        <span class="title"><small>{{'stats.resumeTab.usePlayer' | translate }}</small></span>
+        <span class="title"><small translate="stats.resumeTab.usePlayer"></small></span>
     </div>
-    <!--
-    <div class="card-image waves-effect waves-block waves-light">
-        <img src="/assets/images/handball/usePlayer.jpeg">
-    </div>                        
-    -->
     
     <div class="card-content white primary-text-color">
-        <div class="row center valign-wrapper" ng-show="noStat">
+        <div class="row center valign-wrapper" ng-if="noStat">
             <div class="col s1 valign">&nbsp;</div>
-            <div class="col s5 left-align light-text-color"><h6>{{'stats.resumeTab.gamePlayed' | translate }}</h6></div>
+            <div class="col s5 left-align light-text-color"><h6 translate="stats.resumeTab.gamePlayed"></h6></div>
             <div class="col s5 light-primary-color valign"><h4>{{nbGame}}</h4></div>
             <div class="col s1 valign">&nbsp;</div>
         </div>
-        <div class="row center valign-wrapper" ng-show="noStat">
+        <div class="row center valign-wrapper" ng-if="noStat">
             <div class="col s1 valign">&nbsp;</div>
-            <div class="col s5 left-align light-text-color"><h6>{{'stats.resumeTab.holder' | translate }}</h6></div>
+            <div class="col s5 left-align light-text-color"><h6 translate="stats.resumeTab.holder"></h6></div>
             <div class="col s5 light-primary-color valign"><h4>{{nbHolder}}</h4></div>
             <div class="col s1 valign">&nbsp;</div>
         </div>
-        <div class="row center valign-wrapper" ng-show="noStat">
+        <div class="row center valign-wrapper" ng-if="noStat">
             <div class="col s1 valign">&nbsp;</div>
-            <div class="col s5 left-align light-text-color"><h6>{{'stats.resumeTab.playTime' | translate }}</h6></div>
+            <div class="col s5 left-align light-text-color"><h6 translate="stats.resumeTab.playTime"></h6></div>
             <div class="col s5 dark-primary-color valign"><h4>{{playTimeAvg/60 | number : 0}} '</h4> </div>
             <div class="col s1 valign">&nbsp;</div>
         </div>    
-        <div class="row center" ng-hide="noStat">
-            <div class="col s12" ng-hide="noStat"><h6>{{'stats.resumeTab.noData' | translate }}</h6></div>
+        <div class="row center" ng-if="!noStat">
+            <div class="col s12"><h6 translate="stats.resumeTab.noData"></h6></div>
         </div>
     </div>
     

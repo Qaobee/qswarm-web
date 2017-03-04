@@ -26,7 +26,7 @@
                 </h2>
                 <h5 class="right-align">{{nbGoal}} buts / {{nbShoot}} tirs</h5>
             </div>
-            <div class="center-align" ng-hide="noStat" translate="stats.resumeTab.noData"></div>
+            <div class="center-align" ng-if="!noStat" translate="stats.resumeTab.noData"></div>
         </div>
     </div>
 </div>

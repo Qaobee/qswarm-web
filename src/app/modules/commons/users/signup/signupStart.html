@@ -70,7 +70,7 @@
                 </label>
                 <span ng-class="{'has-error': signupStartPageForm.email.$dirty && signupStartPageForm.email.$error.required}"
                       class="small colorAccent-text"
-                      ng-hide="signupStartPageForm.email.$valid"
+                      ng-if="!signupStartPageForm.email.$valid"
                       translate="signupStartPage.form.messageControl.emailDirty"></span>
             </div>
             <div class="col m1 hide-on-small-only">&nbsp;</div>
@@ -86,7 +86,7 @@
                     {{'signupStartPage.form.label.password' | translate }}
                     <span class="colorAccent-text">*</span>
                 </label>
-                <div ng-show="signup.account.passwd">
+                <div ng-if="signup.account.passwd">
                     <small translate='signupStartPage.form.messageControl.passwdStrength'></small>
                     <div ng-hide="true" ng-password-strength="signup.account.passwd" strength="passStrength"
                          inner-class="meter"></div>
@@ -108,7 +108,7 @@
                     {{'signupStartPage.form.label.passwordConfirm' | translate }}
                     <span class="colorAccent-text">*</span>
                 </label>
-                <span ng-show="signupStartPageForm.passwordConfirm.$dirty && signupStartPageForm.passwordConfirm.$error.pwmatch"
+                <span ng-if="signupStartPageForm.passwordConfirm.$dirty && signupStartPageForm.passwordConfirm.$error.pwmatch"
                       class="small colorAccent-text"
                       translate="signupStartPage.form.messageControl.password.different"></span>
             </div>

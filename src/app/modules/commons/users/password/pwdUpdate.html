@@ -21,7 +21,7 @@
                         <label for="password" translate="profilePwdPage.form.label.password"></label>
                         <input id="password" type="password" class="validate" ng-model="renew.passwd" required tabindex="1">
 
-                        <div ng-show="renew.passwd">
+                        <div ng-if="renew.passwd">
                             <small translate='profilePwdPage.form.messageControl.passwdStrength'></small>
                             <div ng-hide="true" ng-password-strength="renew.passwd" strength="passStrength"
                                  inner-class="meter"></div>
@@ -39,7 +39,7 @@
                             <span class="accent-text-color">*</span>
                         </label>
                         <input id="passwordConfirm" name="passwordConfirm" type="password" class="validate" ng-model="passwdConfirm" required passwd-check="password" tabindex="2">
-                        <span ng-show="pwdForm.passwordConfirm.$dirty && pwdForm.passwordConfirm.$error.pwmatch" class="small accent-text-color" translate="profilePwdPage.form.messageControl.password.different"></span>
+                        <span ng-if="pwdForm.passwordConfirm.$dirty && pwdForm.passwordConfirm.$error.pwmatch" class="small accent-text-color" translate="profilePwdPage.form.messageControl.password.different"></span>
                         
                     </div>
                     <div class="col m2 hide-on-small">&nbsp;</div>

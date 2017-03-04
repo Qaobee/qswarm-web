@@ -51,7 +51,7 @@
                 <ul>
                     <li class="col l3 m6 s12" ng-repeat="team in listTeamHome | filter:queryTeam">
                         <!-- enable -->
-                        <div class="card white" ng-show="team.enable===true">
+                        <div class="card white" ng-if="team.enable">
                             <div class="card-content dark-primary-color center">
                                 <span class="card-title">
                                     <a href="#/private/updateTeam/{{team._id}}/false" class="white-text"><small>{{team.label}}</small></a>
@@ -69,7 +69,7 @@
                             </div>
                         </div>
                         <!-- disable -->
-                        <div class="card white" ng-show="team.enable===false">
+                        <div class="card white" ng-if="!team.enable">
                             <div class="card-content light-primary-color center">
                                 <span class="card-title">
                                     <a href="#/private/updateTeam/{{team._id}}/false" class="primary-text-color"><small>{{team.label}}</small></a>
