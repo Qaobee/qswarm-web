@@ -36,7 +36,9 @@
     "administration": "Administration",
     "signup": "Create an account",
     "param": "Settings",
-    "pricing": "Pricing"
+    "pricing": "Pricing",
+    "concept": "Concept",
+    "contact" : "Contact"
   },
   "modal": {
     "login": {

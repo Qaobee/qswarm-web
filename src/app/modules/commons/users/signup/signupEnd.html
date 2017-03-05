@@ -22,8 +22,8 @@
                         <div class="row">
                             <div class="col m2 hide-on-med-and-down">&nbsp;</div>
                             <div class="col input-field m8 s12">
-                                <label for="searchCity">{{'signupEndPage.tabFindClub.form.label.city' | translate}}
-                                    <span class="red-text text-lighten-1">*</span></label>
+                                <label for="searchCity" class="mandatory"
+                                       translate="signupEndPage.tabFindClub.form.label.city"></label>
                                 <input type="text" id="searchCity"
                                        ng-autocomplete
                                        details="detailsSearchCity"
@@ -53,12 +53,11 @@
                         </div>
 
                         <div ng-if="structureSelectOK">
-
                             <div class="row">
                                 <div class="col m2 hide-on-med-and-down">&nbsp;</div>
                                 <div class="input-field col m8 s12">
-                                    <label>{{'signupEndPage.tabFindClub.form.label.selectClub' | translate}} <span
-                                            class="red-text text-lighten-1">*</span></label>
+                                    <label class="mandatory"
+                                           translate="signupEndPage.tabFindClub.form.label.selectClub"></label>
                                 </div>
                                 <div class="col m2 hide-on-med-and-down">&nbsp;</div>
                             </div>
@@ -85,11 +84,11 @@
                             </div>
                         </div>
 
-                        <div ng-if="structure._id">
+                        <div ng-show="structure._id">
                             <div class="row hide-on-large-only">
                                 <div class="col input-field s12">
-                                    <label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span
-                                            class="red-text text-lighten-1">*</span></label>
+                                    <label class="mandatory"
+                                           translate="signupEndPage.tabFindClub.form.label.categoryAge"></label>
                                 </div>
                                 <div class="col s12">&nbsp;</div>
 
@@ -105,8 +104,8 @@
                             <div class="row hide-on-med-and-down">
                                 <div class="col m2 ">&nbsp;</div>
                                 <div class="col input-field m4">
-                                    <label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span
-                                            class="red-text text-lighten-1">*</span></label>
+                                    <label class="mandatory"
+                                           translate="signupEndPage.tabFindClub.form.label.categoryAge"></label>
                                 </div>
                                 <div class="input-field col m4">
                                     <select name="categoryAgeSelect" ng-model="categoryAge" id="userCategoryAgeSelect"
@@ -141,7 +140,7 @@
             <li>
                 <div class="collapsible-header light-primary-color" ng-click="resertForm()">
                     <i class="material-icons md-36 colorAccent-text">add</i>
-                    <h5 style="margin-top:0px;">{{'signupEndPage.tabCreateClub.tabTitle' | translate }}</h5>
+                    <h5 style="margin-top:0px;" translate="signupEndPage.tabCreateClub.tabTitle"></h5>
                 </div>
                 <div class="collapsible-body">
                     <form name="createStructureForm" class="container">
@@ -149,8 +148,8 @@
                         <div class="row">
                             <div class="col m2 hide-on-med-and-down">&nbsp;</div>
                             <div class="col m8 s12 input-field">
-                                <label for="userStructureLabel">{{'signupEndPage.tabFindClub.form.label.clubname' |
-                                    translate}} <span class="red-text text-lighten-1">*</span></label>
+                                <label for="userStructureLabel" class="mandatory"
+                                       translate="signupEndPage.tabFindClub.form.label.clubname"></label>
                                 <input type="text" id="userStructureLabel" class="validate" ng-model="structure.label"
                                        required>
                             </div>
@@ -159,8 +158,8 @@
                         <div class="row">
                             <div class="col m2 hide-on-med-and-down">&nbsp;</div>
                             <div class="col m8 s12 input-field">
-                                <label for="createCity">{{'signupEndPage.tabFindClub.form.label.clubAddress' |
-                                    translate}} <span class="red-text text-lighten-1">*</span></label>
+                                <label for="createCity" class="mandatory"
+                                       translate="signupEndPage.tabFindClub.form.label.clubAddress"></label>
                                 <input type="text" id="createCity"
                                        ng-autocomplete
                                        details="detailsCreateCity"
@@ -175,8 +174,8 @@
                         <div ng-if="catAgeSelectOK">
                             <div class="row hide-on-large-only">
                                 <div class="col input-field s12">
-                                    <label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span
-                                            class="red-text text-lighten-1">*</span></label>
+                                    <label class="mandatory"
+                                           translate="signupEndPage.tabFindClub.form.label.categoryAge"></label>
                                 </div>
                                 <div class="col s12">&nbsp;</div>
 
@@ -193,8 +192,8 @@
                             <div class="row hide-on-med-and-down">
                                 <div class="col m2 ">&nbsp;</div>
                                 <div class="col input-field m4">
-                                    <label>{{'signupEndPage.tabFindClub.form.label.categoryAge' | translate}} <span
-                                            class="red-text text-lighten-1">*</span></label>
+                                    <label class="mandatory"
+                                           translate="signupEndPage.tabFindClub.form.label.categoryAge"></label>
                                 </div>
                                 <div class="input-field col m4">
                                     <select name="categoryAgeSelect" ng-model="categoryAge" id="userCategoryAgeSelect"

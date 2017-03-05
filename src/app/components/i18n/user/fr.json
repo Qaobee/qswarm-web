@@ -132,7 +132,7 @@
         "login": "Identifiant",
         "email": "e-Mail",
         "password": "Mot de passe",
-        "passwordConfirm": "Confirmation",
+        "passwordConfirm": "Confirmation du mot de passe",
         "title": "Inscrivez-vous sur <b>Qaobee</b>"
       },
       "messageControl": {

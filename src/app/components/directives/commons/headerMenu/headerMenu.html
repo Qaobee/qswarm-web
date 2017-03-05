@@ -6,15 +6,23 @@
         <div class="nav-wrapper">
             <a href="/#/" class="brand-logo"><img src="assets/images/logo-mini.png" height="30px"/></a>
 
-            <ul class="right hide-on-med-and-down">
-                <li>
+            <ul class="left hide-on-med-and-down" style="margin-left: 200px;">
+                <li ng-class="{'active' : menuItem === 'concept'}">
+                    <a href="#/concept" translate="navbar.concept"></a>
+                </li>
+                <li ng-class="{'active' : menuItem === 'about'}">
                     <a href="#/about" translate="landing.contact.about"></a>
                 </li>
-
-                <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
-                    <a href="#/pricing" translate="navbar.pricing"></a>
+                <li ng-class="{'active' : menuItem === 'contact'}">
+                    <a href="#/contact" translate="navbar.contact"></a>
                 </li>
 
+            <!--    <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
+                    <a href="#/pricing" translate="navbar.pricing"></a>
+                </li>
+-->
+            </ul>
+            <ul class="right hide-on-med-and-down">
                 <li>
                     <a class="waves-effect waves-white secondary-color" ng-click="openSignup()"
                        translate="navbar.signup"></a>
@@ -31,9 +39,18 @@
                 <i class="material-icons">menu</i></a>
 
             <ul id="nav-mobileHC" class="side-nav dark-primary-color">
+                <li ng-class="{'active' : menuItem === 'concept'}">
+                    <a class="white-text" href="#/concept" translate="navbar.concept"></a>
+                </li>
+                <li ng-class="{'active' : menuItem === 'about'}">
+                    <a class="white-text" href="#/about" translate="landing.contact.about"></a>
+                </li>
+                <li ng-class="{'active' : menuItem === 'contact'}">
+                    <a class="white-text" href="#/contact" translate="navbar.contact"></a>
+                </li><!--
                 <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
                     <a class="white-text" href="#/pricing" translate="navbar.pricing"></a>
-                </li>
+                </li>-->
 
                 <li>
                     <a class="white-text" ng-click="openLogin()" translate="navbar.connect"></a>

@@ -36,7 +36,9 @@
     "administration": "Administration",
     "signup": "S'inscrire",
     "param": "Paramétrage",
-    "pricing": "Tarifs"
+    "pricing": "Tarifs",
+    "concept": "Le concept",
+    "contact" : "Contact"
   },
   "modal": {
     "login": {

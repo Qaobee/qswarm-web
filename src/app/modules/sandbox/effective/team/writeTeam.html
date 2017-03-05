@@ -1,46 +1,52 @@
 <div class="container">
-<!-- body start-->
+    <!-- body start-->
     <div class="row"></div>
-    
+
     <!-- Entete -->
     <div ng-if="!addTeamTitle">
         <title-page-bar icon="group" title="updateTeam.titleHome"></title-page-bar>
     </div>
-    
+
     <div ng-if="addTeamTitle">
         <title-page-bar icon="group" title="addTeam.titleHome"></title-page-bar>
-    </div>   
-    
+    </div>
+
     <!-- form-->
     <div class="row">
         <form novalidate name="teamForm">
             <div class="card-panel">
                 <!-- Team home -->
                 <div class="row">
-                        <!-- input field -->
-                        <div class="input-field col s2">
-                            <label for="teamLabel">{{'teamLabels.label' | translate }} <span class="red-text text-lighten-1">*</span></label>
-                        </div>
-                        <div class="input-field col s10">
-                            <input name="teamLabel" id="teamLabel" type="text" ng-model="team.label" class="validate left-align" 
-                                   required
-                                   ng-class="{ 'has-error' : teamForm.teamLabel.$invalid && !teamForm.teamLabel.$pristine }">
+                    <!-- input field -->
+                    <div class="input-field col s2">
+                        <label for="teamLabel">{{'teamLabels.label' | translate }} <span
+                                class="red-text text-lighten-1">*</span></label>
+                    </div>
+                    <div class="input-field col s10">
+                        <input name="teamLabel" id="teamLabel" type="text" ng-model="team.label"
+                               class="validate left-align"
+                               required
+                               ng-class="{ 'has-error' : teamForm.teamLabel.$invalid && !teamForm.teamLabel.$pristine }">
                         <span class="small red-text text-lighten-1"
-                                    ng-if="teamForm.teamLabel.$invalid && !teamForm.teamLabel.$pristine" translate="teamErrors.label"></span>
-                        </div>
-                        
-                        <div class="input-field col s2">
-                            <label >{{'teamLabels.activation' | translate }} <span class="red-text text-lighten-1">*</span></label>
-                        </div>
-                        <div class="input-field col s10">
-                            <input class="with-gap" name="activation" type="radio" ng-model="team.enable" id="teamStatusT" ng-value="true" required/>
-                            <label for="teamStatusT">{{'teamLabels.enable' | translate }}</label>
-                            <input class="with-gap" name="activation" type="radio" ng-model="team.enable" id="teamStatusF" ng-value="false" required/>
-                            <label for="teamStatusF">{{'teamLabels.disable' | translate }}</label>
-                        </div>  
+                              ng-if="teamForm.teamLabel.$invalid && !teamForm.teamLabel.$pristine"
+                              translate="teamErrors.label"></span>
+                    </div>
+
+                    <div class="input-field col s2">
+                        <label>{{'teamLabels.activation' | translate }} <span
+                                class="red-text text-lighten-1">*</span></label>
+                    </div>
+                    <div class="input-field col s10">
+                        <input class="with-gap" name="activation" type="radio" ng-model="team.enable" id="teamStatusT"
+                               ng-value="true" required/>
+                        <label for="teamStatusT" translate="teamLabels.enable"></label>
+                        <input class="with-gap" name="activation" type="radio" ng-model="team.enable" id="teamStatusF"
+                               ng-value="false" required/>
+                        <label for="teamStatusF" translate="teamLabels.disable"></label>
+                    </div>
                 </div>
             </div>
-            
+
             <!-- Hidden for moment-->
             <div class="card-panel" ng-if="adversary==='HIDDEN-HIDDEN'">
                 <div class="row">
@@ -49,54 +55,59 @@
                         <h5>{{'teamLabels.teamsAdversary' | translate }}</h5>
                     </div>
                     <div class="col s1 grey lighten-4" ng-if="adversary==='false'">
-                        <a href="#/private/addTeam/{{true}}/{{team._id}}" class="red-text text-lighten-1 left-align tooltipped" data-position="left" data-delay="20" data-tooltip="{{'mainEffective.buttons.addTeamAdversary' | translate }}">
+                        <a href="#/private/addTeam/{{true}}/{{team._id}}"
+                           class="red-text text-lighten-1 left-align tooltipped" data-position="left" data-delay="20"
+                           data-tooltip="{{'mainEffective.buttons.addTeamAdversary' | translate }}">
                             <h5><i class="fa fa-plus-square-o"></i></h5>
                         </a>
                     </div>
 
-                    <div class="col s12 center-align">  
+                    <div class="col s12 center-align">
                         <table>
                             <body>
-                                <tr ng-repeat="adversary in listTeamAdversary"
-                                    selection-model
-                                    selection-model-type="checkbox"
-                                    selection-model-mode="multiple-additive"
-                                    selection-model-selected-attribute="checked"
-                                    selection-model-on-change="changed(adversary)"
-                                    class="col m4 s12">
-                                    <td>                                    
-                                        <input type="checkbox" id="{{$index + 1}}"/> 
-                                        <label for="{{$index + 1}}">
-                                            <a href="#/private/updateTeam/{{adversary._id}}/true">
-                                                <span ng-if="adversary.enable===true" class="red-text text-lighten-1">{{adversary.label}}</span>
-                                                <span ng-if="adversary.enable===false" class="blue-grey-text text-darken-2">{{adversary.label}}</span>
-                                            </a>
-                                        </label>
-                                        <p ng-if="adversary.enable===false" class="blue-grey-text text-darken-2" style="margin-left:35px">{{'teamLabels.disable' | translate }}</p>
-                                        <p ng-if="adversary.enable===true" class="blue-grey-text text-darken-2" style="margin-left:35px">{{'teamLabels.enable' | translate }}</p>
-                                    </td>
-                                </tr>
+                            <tr ng-repeat="adversary in listTeamAdversary"
+                                selection-model
+                                selection-model-type="checkbox"
+                                selection-model-mode="multiple-additive"
+                                selection-model-selected-attribute="checked"
+                                selection-model-on-change="changed(adversary)"
+                                class="col m4 s12">
+                                <td>
+                                    <input type="checkbox" id="{{$index + 1}}"/>
+                                    <label for="{{$index + 1}}">
+                                        <a href="#/private/updateTeam/{{adversary._id}}/true">
+                                            <span ng-if="adversary.enable===true" class="red-text text-lighten-1">{{adversary.label}}</span>
+                                            <span ng-if="adversary.enable===false" class="blue-grey-text text-darken-2">{{adversary.label}}</span>
+                                        </a>
+                                    </label>
+                                    <p ng-if="adversary.enable===false" class="blue-grey-text text-darken-2"
+                                       style="margin-left:35px">{{'teamLabels.disable' | translate }}</p>
+                                    <p ng-if="adversary.enable===true" class="blue-grey-text text-darken-2"
+                                       style="margin-left:35px">{{'teamLabels.enable' | translate }}</p>
+                                </td>
+                            </tr>
                             </body>
                         </table>
                     </div>
                 </div>
             </div>
-                
+
             <!-- actions buttons -->
             <div class="row">
                 <div class="col s12 center-align">
-                    <a class="waves-effect waves-white btn dark-primary-color" ng-click="doTheBack()" translate="commons.buttons.cancel"></a>
-                    <button type="submit" ng-click="writeTeam()" translate="commons.buttons.validate" 
+                    <a class="waves-effect waves-white btn dark-primary-color" ng-click="doTheBack()"
+                       translate="commons.buttons.cancel"></a>
+                    <button type="submit" ng-click="writeTeam()" translate="commons.buttons.validate"
                             ng-disabled="teamForm.$invalid" tabindex="8"
                             ng-class="{'btn waves-effect waves-white disabled': teamForm.$invalid, 
                                        'btn waves-effect waves-white accent-color': !teamForm.$invalid}">
                     </button>
                 </div>
             </div>
-            
+
         </form>
     </div>
-    
-    
-<!-- body end-->
+
+
+    <!-- body end-->
 </div>

@@ -11,13 +11,13 @@
      * @requires {@link qaobee.rest.public.publicRestAPI|qaobee.rest.public.publicRestAPI}
      */
     angular.module('qaobee.public', [
-            /* angular module */
-            'ngRoute',
-            /* qaobee shared directives */
-            'qaobee.headerMenu',
-            /* qaobee Rest API */
-            'publicRestAPI'
-        ])
+        /* angular module */
+        'ngRoute',
+        /* qaobee shared directives */
+        'qaobee.headerMenu',
+        /* qaobee Rest API */
+        'publicRestAPI'
+    ])
 
         .config(function ($routeProvider) {
             $routeProvider.when('/', {
@@ -26,7 +26,7 @@
             }).when('/!', {
                 controller: 'PublicCtrl',
                 templateUrl: 'app/modules/public/mainPublic.html'
-            }).when('/how', {
+            }).when('/concept', {
                 controller: 'HowCtrl',
                 templateUrl: 'app/modules/public/how.html'
             }).when('/legals', {
@@ -52,7 +52,7 @@
          * @class qaobee.public.public.PublicCtrl
          * @description Contrôleur de la page d'accueil publique
          */
-        .controller('PublicCtrl', function ($scope, $rootScope, $translatePartialLoader,$location, qeventbus) {
+        .controller('PublicCtrl', function ($scope, $rootScope, $translatePartialLoader, $location, qeventbus) {
             $translatePartialLoader.addPart('public');
             $translatePartialLoader.addPart('commons');
             // asu = Allow SignUp
@@ -71,7 +71,6 @@
                     out_duration: 200
                 });
             });
-        
             /**
              *
              * @returns {boolean}
