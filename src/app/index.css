@@ -1205,9 +1205,18 @@ input[type=checkbox]:checked + .card-title .fa {
     background: darkslategrey url("http://i.vimeocdn.com/video/462316114_1280x720.jpg") no-repeat center center;
     -webkit-background-size: cover;
     height: calc(100vh - 64px);
+    width: 100%;
     background-blend-mode: multiply;
+    margin: 0;
+    padding: 0;
 }
-
+.hero > div {
+    width: 100%;
+    height: 100%;
+}
+.hero > div > div {
+    width: 100%;
+}
 .home-concept {
     background: url("../assets/images/handball/Home1.png") center center no-repeat;
     background-size: cover;
@@ -1224,7 +1233,6 @@ input[type=checkbox]:checked + .card-title .fa {
 /* Home */
 .hero-title {
     line-height: 1.5em;
-    margin-top: 20%;
 }
 
 div.home-bg1 {
