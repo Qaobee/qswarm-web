@@ -1299,3 +1299,15 @@ div.home-bg2 {
 .home {
     margin-top: 40px;
 }
+
+.btn-sm {
+    min-width: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.mailing {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
