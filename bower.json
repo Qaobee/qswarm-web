@@ -61,7 +61,8 @@
     "angular-recaptcha": "^4.0.3",
     "angular-chips": "^1.0.8",
     "materialize": "^0.97.8",
-    "angular-web-notifications": "^0.1.2"
+    "angular-web-notifications": "^0.1.2",
+    "angular-scroll-animate": "^0.9.9"
   },
   "resolutions": {
     "angular-cookies": "1.5.10",

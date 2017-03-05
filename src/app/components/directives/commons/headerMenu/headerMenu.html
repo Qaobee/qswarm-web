@@ -7,20 +7,20 @@
             <a href="/#/" class="brand-logo"><img src="assets/images/logo-mini.png" height="30px"/></a>
 
             <ul class="left hide-on-med-and-down" style="margin-left: 200px;">
-                <li ng-class="{'active' : menuItem === 'concept'}">
-                    <a href="#/concept" translate="navbar.concept"></a>
-                </li>
-                <li ng-class="{'active' : menuItem === 'about'}">
-                    <a href="#/about" translate="landing.contact.about"></a>
+                <li ng-class="{'active' : menuItem === 'about'}" >
+                    <a href="" translate="navbar.concept"  ng-click="gotoAnchor('concept')"></a>
                 </li>
                 <li ng-class="{'active' : menuItem === 'contact'}">
-                    <a href="#/contact" translate="navbar.contact"></a>
+                    <a href="" translate="navbar.contact" ng-click="gotoAnchor('contact')"></a>
+                </li>
+                <li ng-class="{'active' : menuItem === 'about'}">
+                    <a href="#about" translate="landing.contact.about"></a>
                 </li>
 
-            <!--    <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
-                    <a href="#/pricing" translate="navbar.pricing"></a>
-                </li>
--->
+                <!--    <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
+                        <a href="#/pricing" translate="navbar.pricing"></a>
+                    </li>
+    -->
             </ul>
             <ul class="right hide-on-med-and-down">
                 <li>

@@ -41,8 +41,8 @@
       }
     },
     "area-4": {
-      "title": "Prochainement disponible.",
-      "content": "Téléchargez notre application sur votre mobile Android"
+      "iphone": "Bientôt disponible sur l'App Store",
+      "android": "Disponible sur Google Play"
     }
   },
   "contact": {

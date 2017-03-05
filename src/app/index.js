@@ -29,6 +29,7 @@
             'vcRecaptcha',
             'angular.chips',
             'webNotifications',
+            'angular-scroll-animate',
 
             //* qaobee widget */
             'qaobee.filterCalendar',

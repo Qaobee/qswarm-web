@@ -1,0 +1,56 @@
+<div class="container">
+    <h2 translate="contact.title2" class="center-align"></h2>
+    <div id="ngMap"></div>
+    <div class="row">
+        <div class="col m4 s12">
+            <ul class="fa-ul">
+                <li><strong>Qaobee SARL</strong></li>
+                <li><i class="fa-li fa fa-map-marker"></i> 20, rue Cuirassé Bretagne, 29200 BREST</li>
+                <li><i class="fa-li fa fa-phone"></i> (+33) 2.98.03.88.35</li>
+                <li><i class="fa-li fa fa-envelope"></i> <a href="mailto:contact@qaobee.com">contact@qaobee.com</a></li>
+            </ul>
+        </div>
+        <div class="col m8 s12">
+            <form>
+                <div class="row">
+                    <div class="col s6">
+                        <div class="input-field">
+                            <input type="text" class="validate" ng-model="contact.name" id="name"
+                                   required="required"/>
+                            <label translate="contact.label.name" for="name"></label>
+                        </div>
+                        <div class="input-field">
+                            <input type="email" class="validate" ng-model="contact.email" required="required"
+                                   id="email"/>
+                            <label translate="contact.label.email" for="email"></label>
+                        </div>
+                        <div class="input-field">
+                            <select  ng-model="contact.subject" material-select watch>
+                                <option value="" disabled selected translate="contact.label.subject"></option>
+                                <option value="service" translate="contact.ph.subject.line2"></option>
+                                <option value="suggestions" translate="contact.ph.subject.line3"></option>
+                                <option value="product" translate="contact.ph.subject.line4"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class="input-field">
+                            <label translate="contact.label.message" for="message"></label>
+                            <textarea ng-model="contact.message" class="materialize-textarea"
+                                      required="required" id="message"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col m6 s6">&nbsp;</div>
+                    <div class="col m6 s6 ">
+                        <button ng-click="validate()" class="pull-right btn btn-success"><span
+                                class="fa fa-paper-plane"></span> {{'contact.button.send' |
+                            translate}}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

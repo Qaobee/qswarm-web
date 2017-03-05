@@ -5,6 +5,7 @@
             Sugar.extend();
             $('.modal').modal();
             $('.collapsible').collapsible();
+            $('.materialize-textarea').trigger('autoresize');
             // Plugin initialization
             $('.dropdown-button').dropdown({
                     inDuration: 300,

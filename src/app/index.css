@@ -1201,16 +1201,18 @@ input[type=checkbox]:checked + .card-title .fa {
 }
 
 .hero {
-    background: url("../assets/images/handball/Back02.jpeg") center center no-repeat;
     background-size: cover;
+    background: darkslategrey url("http://i.vimeocdn.com/video/462316114_1280x720.jpg") no-repeat center center;
     -webkit-background-size: cover;
     height: calc(100vh - 64px);
+    background-blend-mode: multiply;
 }
+
 .home-concept {
     background: url("../assets/images/handball/Home1.png") center center no-repeat;
     background-size: cover;
     -webkit-background-size: cover;
-    height: 500px;
+    height: 300px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1222,7 +1224,7 @@ input[type=checkbox]:checked + .card-title .fa {
 /* Home */
 .hero-title {
     line-height: 1.5em;
-    margin-top: 10%;
+    margin-top: 20%;
 }
 
 div.home-bg1 {
@@ -1234,6 +1236,7 @@ div.home-bg1 {
     margin: 0;
     padding: 0;
 }
+
 div.home-bg2 {
     height: 250px;
     width: auto;
@@ -1256,6 +1259,7 @@ div.home-bg2 {
     position: relative;
     text-align: center;
 }
+
 .icon-block > li > i {
     text-align: center;
     position: absolute;
@@ -1292,8 +1296,9 @@ div.home-bg2 {
 .icon-block > li:first-child:after {
     content: none;
 }
+
 .icon-block:after {
-    display: none!important;
+    display: none !important;
 }
 
 .home {
@@ -1310,4 +1315,31 @@ div.home-bg2 {
     position: fixed;
     right: 10px;
     bottom: 10px;
+}
+
+#ngMap {
+    height: 100%;
+    width: 100%;
+    min-height: 300px;
+}
+
+.social-icons {
+    display: table; /* Allow the centering to work */
+    margin: 0 auto;
+    height: 4em;
+}
+
+.social-icons > li {
+    list-style: none;
+    float: left;
+    position: relative;
+    padding: 2em;
+}
+
+.social-icons > li > a > i.fa {
+    font-size: 3em;
+}
+
+.hidden {
+    visibility: hidden;
 }

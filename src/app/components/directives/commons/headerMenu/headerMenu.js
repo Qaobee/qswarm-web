@@ -21,7 +21,7 @@
             'seasonsRestAPI',
             'angular-send-feedback'
         ])
-        .directive('headerMenu', function (qeventbus, $rootScope, $translate, $location, $window,
+        .directive('headerMenu', function (qeventbus, $rootScope, $translate, $location, $window, anchorSmoothScroll,
                                            $translatePartialLoader, $filter, signupRestAPI, userRestAPI, $sce,
                                            seasonsRestAPI) {
             return {
@@ -36,6 +36,11 @@
                     $scope.signin = {};
                     $scope.isProd = $window.location.hostname === 'www.qaobee.com';
                     $scope.showCnil = $translate.use() === 'fr_FR';
+                    $scope.gotoAnchor = function (x) {
+                        $location.hash(x);
+                        $scope.menuItem = x;
+                        anchorSmoothScroll.scrollTo(x);
+                    };
                     $scope.isActive = function (viewLocation) {
                         return viewLocation === $location.path();
                     };

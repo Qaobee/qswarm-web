@@ -26,15 +26,15 @@
             }).when('/!', {
                 controller: 'PublicCtrl',
                 templateUrl: 'app/modules/public/mainPublic.html'
-            }).when('/concept', {
+           /* }).when('/concept', {
                 controller: 'HowCtrl',
-                templateUrl: 'app/modules/public/how.html'
+                templateUrl: 'app/modules/public/how.html'*/
             }).when('/legals', {
                 controller: 'MentionslegalesCtrl',
                 templateUrl: 'app/modules/public/legal.html'
-            }).when('/contact', {
+         /*   }).when('/contact', {
                 controller: 'ContactCtrl',
-                templateUrl: 'app/modules/public/contact.html'
+                templateUrl: 'app/modules/public/contact.html'*/
             }).when('/pricing', {
                 controller: 'PricingCtrl',
                 templateUrl: 'app/modules/public/pricing.html'
@@ -59,7 +59,15 @@
             $rootScope.signupAvailable = true;
             delete $rootScope.user;
             qeventbus.prepForBroadcast('menuItem', 'home');
+            $scope.animateElementIn = function($el) {
+                $el.removeClass('hidden');
+                $el.addClass('animated fadeInLeft'); // this example leverages animate.css classes
+            };
 
+            $scope.animateElementOut = function($el) {
+                $el.addClass('hidden');
+                $el.removeClass('animated fadeInLeft'); // this example leverages animate.css classes
+            };
             /**
              * @description initialization materialize components
              */
@@ -110,21 +118,51 @@
          * @class qaobee.public.public.ContactCtrl
          * @description Contrôleur de la page "contactez nous"
          */
-        .controller('ContactCtrl', function ($scope, publicRestAPI, $filter, $translatePartialLoader) {
-            $translatePartialLoader.addPart('landing');
-            $scope.subjects = [];
-            $scope.subjects.push({
-                id: 'service',
-                label: $filter('translate')('contact.ph.subject.line2')
-            });
-            $scope.subjects.push({
-                id: 'suggestions',
-                label: $filter('translate')('contact.ph.subject.line3')
-            });
-            $scope.subjects.push({
-                id: 'product',
-                label: $filter('translate')('contact.ph.subject.line4')
-            });
+        .controller('ContactCtrl', function ($scope, publicRestAPI, $filter, $translatePartialLoader, qeventbus, $timeout) {
+            qeventbus.prepForBroadcast('menuItem', 'contact');
+            $translatePartialLoader.addPart('public');
+            var address = '20, rue Cuirassé Bretagne, 29200 BREST';
+
+            function initialize() {
+                var geocoder = new google.maps.Geocoder();
+                var latlng = new google.maps.LatLng(-34.397, 150.644);
+                var myOptions = {
+                    zoom: 16,
+                    center: latlng,
+                    mapTypeControl: false,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var map = new google.maps.Map(document.getElementById("ngMap"), myOptions);
+
+                if (geocoder) {
+                    geocoder.geocode({'address': address}, function (results, status) {
+                        if (status === google.maps.GeocoderStatus.OK) {
+                            if (status !== google.maps.GeocoderStatus.ZERO_RESULTS) {
+                                map.setCenter(results[0].geometry.location);
+                                console.log(results)
+
+                                var infowindow = new google.maps.InfoWindow({
+                                    content: '<b>Qaobee</b><br />' + address,
+                                    size: new google.maps.Size(150, 50)
+                                });
+
+                                var marker = new google.maps.Marker({
+                                    position: results[0].geometry.location,
+                                    map: map,
+                                    title: 'Qaobee'
+                                });
+                                google.maps.event.addListener(marker, 'click', function () {
+                                    infowindow.open(map, marker);
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+            $timeout(function () {
+                initialize();
+            }, 0);
+
 
             $scope.contact = {};
             /**

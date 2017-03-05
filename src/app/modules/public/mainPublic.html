@@ -2,11 +2,11 @@
     <div class="container hero-text-container">
         <div class="row">
             <div class="col s12 center-align">
-                <h1 class="hero-title primary-text-color">Qaobee</h1>
+                <img src="assets/images/logo-mini.png" height="70px" class="hero-title"/>
                 <div class="row">
                     <div class="col s12">
                         <div class="center-align">
-                            <h5 class="header col s12 light" translate="landing.main-title"></h5>
+                            <h5 class="header col s12 accent-text-color" translate="landing.main-title"></h5>
                         </div>
                     </div>
                 </div>
@@ -18,7 +18,8 @@
     <!--   Icon Section   -->
     <div class="row">
         <div class="col m6 hide-on-small-and-down">
-            <div class="home-bg1"></div>
+            <div class="home-bg1 hidden" when-visible="animateElementIn"
+                 when-not-visible="animateElementOut"></div>
         </div>
 
         <div class="col s12 m6">
@@ -42,25 +43,44 @@
     </div>
 </div>
 
-<div class="home home-concept section">
-    <div class="container hero-container">
-        <div class="row">
-            <div class="col s4 center-align">
-                <div class="row">
-                    <div class="col s12">
-                        <div class="center-align">
-                            <h5 class="header col s12 light">Découvrez le concept</h5>
-                            <h6 translate="landing.area-3.item-2.title" class="title"></h6>
-                            <p class="light left-align container" translate="landing.area-3.item-2.content"></p>
-                            <h6 translate="landing.area-3.item-0.title" class="title"></h6>
-                            <p class="light left-align container" translate="landing.area-3.item-0.content"></p>
-                            <h6 translate="landing.area-3.item-3.title" class="title"></h6>
-                            <p class="light left-align container" translate="landing.area-3.item-3.content"></p>
-                        </div>
+<div class="home section" id="concept">
+    <div class="row">
+        <div class="col m6 s12 center-align">
+            <div class="row">
+                <div class="col s12">
+                    <div class="center-align">
+                        <h5 class="header col s12 light">Découvrez le concept</h5>
+                        <h6 translate="landing.area-3.item-2.title" class="title"></h6>
+                        <p class="light left-align container" translate="landing.area-3.item-2.content"></p>
+                        <h6 translate="landing.area-3.item-0.title" class="title"></h6>
+                        <p class="light left-align container" translate="landing.area-3.item-0.content"></p>
+                        <h6 translate="landing.area-3.item-3.title" class="title"></h6>
+                        <p class="light left-align container" translate="landing.area-3.item-3.content"></p>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col m6 hide-on-small-and-down">
+            <div class="home-concept"></div>
+        </div>
+    </div>
+</div>
+
+<div class="home section container center-align" id="contact">
+    <h5 class="primary-text-color" translate="landing.connect"></h5>
+    <div class="valign-wrapper">
+        <ul class="social-icons center-align valign">
+            <li><a href="https://twitter.com/Qaobee" target="_blank" class="accent-text-color"><i
+                    class="fa fa-twitter-square fa-fw"></i><br/>Twitter</a></li>
+            <li><a href="https://www.facebook.com/qaobee" target="_blank" class="accent-text-color"><i
+                    class="fa fa-facebook-square fa-fw"></i><br/>Facebook</a></li>
+            <li><a href="https://plus.google.com/+Qaobee/about" target="_blank" class="accent-text-color"><i
+                    class="fa fa-google-plus-square fa-fw"></i><br/>Google +</a></li>
+            <li><a href="mailto:contact@qaobee.com" class="accent-text-color"><i
+                    class="fa fa-envelope-square fa-fw"></i><br/>E-mail</a></li>
+            <li><a href="javascript:void(0);" data-target="modalSubMailingList" class="accent-text-color"><i
+                    class="fa fa-fw fa-pencil-square"></i><br/>Newsletter</a></li>
+        </ul>
     </div>
 </div>
 
@@ -68,7 +88,8 @@
     <!--   Icon Section   -->
     <div class="row">
         <div class="col m6 hide-on-small-and-down">
-            <div class="home-bg2"></div>
+            <div class="home-bg2 hidden" when-visible="animateElementIn"
+                 when-not-visible="animateElementOut"></div>
         </div>
 
         <div class="col s12 m6">
@@ -80,13 +101,13 @@
                     <a href="https://play.google.com/apps/testing/com.qaobee.hand" target="_blank"
                        class="accent-text-color">
                         <i class="fa fa-android fa-fw fa-2x"></i><br/>
-                        Disponible sur Google Play
+                        {{ 'landing.area-4.android' | translate}}
                     </a>
                 </div>
                 <div class="col s12 m6 center">
                     <a href="#" target="_blank" class="accent-text-color">
                         <i class="fa fa-apple fa-fw fa-2x"></i><br/>
-                        Bientôt disponible sur l'App Store
+                        {{ 'landing.area-4.iphone' | translate}}
                     </a>
                 </div>
             </div>
@@ -94,7 +115,7 @@
     </div>
 </div>
 <button data-target="modalSubMailingList" class="waves-effect waves-light btn-flat btn-sm accent-color mailing"><i
-        class="fa fa-envelope-o"></i> Newsletter
+        class="fa fa-pencil-square fa-fw"></i> Newsletter
 </button>
 <div id="modalSubMailingList" class="modal">
     <div class="modal-header center-align ">
