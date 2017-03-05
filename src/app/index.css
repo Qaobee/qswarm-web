@@ -1250,6 +1250,12 @@ div.home-bg2 {
 .icon-block {
     counter-reset: step;
 }
+p {
+    text-align: justify;
+}
+.icon-block + p {
+    margin-top: 150px;
+}
 
 .icon-block > li {
     list-style-type: none;

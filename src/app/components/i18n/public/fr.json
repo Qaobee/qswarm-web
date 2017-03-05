@@ -43,6 +43,10 @@
     "area-4": {
       "iphone": "Bientôt disponible sur l'App Store",
       "android": "Disponible sur Google Play"
+    },
+    "area-5": {
+      "title": "Pourquoi utiliser Qaobee",
+      "content": "Vous êtes un coach et vous peuvez <span class=\"accent-text-color\">capter</span> des statistiques depuis votre mobile ou votre tablette. Ces statistiques sont remontée dans notre interface Web avec laquelle vous pourrez les <span class=\"accent-text-color\">analyser</span>. Fort de ces métriques, vous allez pouvoir optimiser vos entraînements pour faire <span class=\"accent-text-color\">progresser</span> vos joueurs."
     }
   },
   "contact": {
