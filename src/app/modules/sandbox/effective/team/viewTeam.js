@@ -14,7 +14,8 @@
         /* qaobee Rest API */
         'teamRestAPI',
         'userRestAPI',
-        'qaobee.teamStats'])
+        'qaobee.teamStats',
+        'qaobee.teamInfos'])
 
         .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/viewTeam/:teamId/:adversary', {
@@ -36,6 +37,7 @@
 
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('effective');
+            $scope.showDetail = false;
 
             $scope.teamId = $routeParams.teamId;
             $scope.adversary = $routeParams.adversary;

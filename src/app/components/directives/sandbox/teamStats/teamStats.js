@@ -18,6 +18,7 @@
                 controller: function ($scope) {
                     $scope.ownersId = [];
                     $scope.series = [];
+                    $scope.ownersId.push($scope.team._id);
 
                     $scope.$watch('team', function (newValue, oldValue) {
                         if (oldValue || !angular.equals(oldValue, newValue)) {

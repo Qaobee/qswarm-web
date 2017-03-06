@@ -1,0 +1,63 @@
+ 
+            <div class="row">
+                        <!-- input field -->
+                        <div class="input-field col s2">
+                            <label for="teamLabel">{{'teamLabels.label' | translate }}</label>
+                        </div>
+                        <div class="input-field col s10">
+                            <input name="teamLabel" id="teamLabel" type="text" ng-model="team.label" class="validate left-align" disabled >
+                        </div>
+                        
+                        <div class="input-field col s2">
+                            <label >{{'teamLabels.activation' | translate }} </label>
+                        </div>
+                        <div class="input-field col s10">
+                            <input class="with-gap" name="activation" type="radio" ng-model="team.enable" id="teamStatusT" ng-value="true" disabled/>
+                            <label for="teamStatusT">{{'teamLabels.enable' | translate }}</label>
+                            <input class="with-gap" name="activation" type="radio" ng-model="team.enable" id="teamStatusF" ng-value="false" disabled/>
+                            <label for="teamStatusF">{{'teamLabels.disable' | translate }}</label>
+                        </div>  
+                </div>
+            
+            
+            <!-- Hidden for moment-->
+            <div class="card-panel" ng-if="adversary==='HIDDEN-HIDDEN'">
+                <div class="row">
+                    <!-- List team adversary -->
+                    <div class="col s11 grey lighten-4 blue-grey-text text-darken-2">
+                        <h5>{{'teamLabels.teamsAdversary' | translate }}</h5>
+                    </div>
+                    <div class="col s1 grey lighten-4" ng-if="adversary==='false'">
+                        <a href="#/private/addTeam/{{true}}/{{team._id}}" class="red-text text-lighten-1 left-align tooltipped" data-position="left" data-delay="20" data-tooltip="{{'mainEffective.buttons.addTeamAdversary' | translate }}">
+                            <h5><i class="fa fa-plus-square-o"></i></h5>
+                        </a>
+                    </div>
+
+                    <div class="col s12 center-align">  
+                        <table>
+                            <body>
+                                <tr ng-repeat="adversary in listTeamAdversary"
+                                    selection-model
+                                    selection-model-type="checkbox"
+                                    selection-model-mode="multiple-additive"
+                                    selection-model-selected-attribute="checked"
+                                    selection-model-on-change="changed(adversary)"
+                                    class="col m4 s12">
+                                    <td>                                    
+                                        <input type="checkbox" id="{{$index + 1}}"/> 
+                                        <label for="{{$index + 1}}">
+                                            <a href="#/private/updateTeam/{{adversary._id}}/true">
+                                                <span ng-if="adversary.enable===true" class="red-text text-lighten-1">{{adversary.label}}</span>
+                                                <span ng-if="adversary.enable===false" class="blue-grey-text text-darken-2">{{adversary.label}}</span>
+                                            </a>
+                                        </label>
+                                        <p ng-if="adversary.enable===false" class="blue-grey-text text-darken-2" style="margin-left:35px">{{'teamLabels.disable' | translate }}</p>
+                                        <p ng-if="adversary.enable===true" class="blue-grey-text text-darken-2" style="margin-left:35px">{{'teamLabels.enable' | translate }}</p>
+                                    </td>
+                                </tr>
+                            </body>
+                        </table>
+                    </div>
+                </div>
+            </div>
+      
