@@ -38,7 +38,8 @@
     "param": "Paramétrage",
     "pricing": "Tarifs",
     "concept": "Le concept",
-    "contact" : "Contact"
+    "contact" : "Contact",
+    "download" : "Téléchargement"
   },
   "modal": {
     "login": {

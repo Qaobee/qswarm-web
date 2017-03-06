@@ -7,15 +7,18 @@
             <a href="/#/" class="brand-logo"><img src="assets/images/logo-mini.png" height="30px"/></a>
 
             <ul class="left hide-on-med-and-down" style="margin-left: 200px;">
-                <li ng-class="{'active' : menuItem === 'about'}" >
+                <li ng-class="{'active' : menuItem === 'concept'}" >
                     <a href="" translate="navbar.concept"  ng-click="gotoAnchor('concept')"></a>
                 </li>
                 <li ng-class="{'active' : menuItem === 'contact'}">
                     <a href="" translate="navbar.contact" ng-click="gotoAnchor('contact')"></a>
                 </li>
+                <li ng-class="{'active' : menuItem === 'download'}">
+                    <a href="" translate="navbar.download" ng-click="gotoAnchor('download')"></a>
+                </li><!--
                 <li ng-class="{'active' : menuItem === 'about'}">
                     <a href="#about" translate="landing.contact.about"></a>
-                </li>
+                </li>-->
 
                 <!--    <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
                         <a href="#/pricing" translate="navbar.pricing"></a>
@@ -44,10 +47,10 @@
                 </li>
                 <li ng-class="{'active' : menuItem === 'about'}">
                     <a class="white-text" href="#/about" translate="landing.contact.about"></a>
-                </li>
+                </li><!--
                 <li ng-class="{'active' : menuItem === 'contact'}">
                     <a class="white-text" href="#/contact" translate="navbar.contact"></a>
-                </li><!--
+                </li>--><!--
                 <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
                     <a class="white-text" href="#/pricing" translate="navbar.pricing"></a>
                 </li>-->

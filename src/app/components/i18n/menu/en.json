@@ -38,7 +38,8 @@
     "param": "Settings",
     "pricing": "Pricing",
     "concept": "Concept",
-    "contact" : "Contact"
+    "contact" : "Contact",
+    "download" : "Download"
   },
   "modal": {
     "login": {
