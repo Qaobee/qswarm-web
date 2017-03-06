@@ -21,7 +21,6 @@
         /* qaobee module */
         'qaobee.effectiveStats',
         'qaobee.eventStats',
-        'qaobee.playerStats',
         'qaobee.teamStats',
 
         /* c3 angular directive */

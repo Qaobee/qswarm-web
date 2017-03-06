@@ -1,17 +1,17 @@
 (function () {
     'use strict';
-    angular.module('qaobee.playerStats', [
+    angular.module('qaobee.teamStats', [
         'statsSRV',
         'statsRestAPI',
         'qaobee.eventbus',
         'qaobee.filterCalendar'
     ])
 
-        .directive('playerStats', function ($filter, qeventbus, $timeout) {
+        .directive('teamStats', function ($filter, qeventbus, $timeout) {
             return {
                 restrict: 'E',
                 scope: {
-                    player: "=",
+                    team: "=",
                     meta : '=',
                     user : '='
                 },
@@ -19,17 +19,10 @@
                     $scope.ownersId = [];
                     $scope.series = [];
 
-                    $scope.$watch('player', function (newValue, oldValue) {
+                    $scope.$watch('team', function (newValue, oldValue) {
                         if (oldValue || !angular.equals(oldValue, newValue)) {
-                            $scope.ownersId.push($scope.player._id);
-                            $scope.playersIds = $scope.ownersId;
-                            $scope.player.birthdate = new Date(moment($scope.player.birthdate));
-                            if (angular.isDefined($scope.player.status.positionType)) {
-                                $scope.player.positionType = $filter('translate')('stats.positionType.value.' + $scope.player.status.positionType);
-                            } else {
-                                $scope.player.positionType = '';
-                            }
-                            $scope.series.push($scope.player.firstname + ' ' + $scope.player.name);
+                            $scope.ownersId.push($scope.team._id);
+                            
                             $timeout(function() {
                                 qeventbus.prepForBroadcast('ownersId', {
                                     ownersId: $scope.ownersId
@@ -37,15 +30,13 @@
                                 qeventbus.prepForBroadcast('periodicityActive', {
                                     periodicityActive: $scope.periodicityActive,
                                     periodicity: $scope.periodicity,
-                                    self: 'playerStats'
+                                    self: 'teamStats'
                                 });
                             });
-
-
                         }
                     });
                 },
-                templateUrl: 'app/components/directives/sandbox/playerStats/playerStats.html'
+                templateUrl: 'app/components/directives/sandbox/teamStats/teamStats.html'
             };
         });
 }());

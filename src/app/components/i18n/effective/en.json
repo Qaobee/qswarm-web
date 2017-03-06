@@ -138,6 +138,7 @@
     "toastError": "Error, the team {{label}} can't be update"
   },
   "teamLabels": {
+    "teamSheet" : "Team sheet",  
     "label": "Label",
     "enable": "Activate",
     "disable": "Disactivate",

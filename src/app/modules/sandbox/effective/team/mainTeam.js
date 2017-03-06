@@ -14,6 +14,7 @@
         'ngAutocomplete',
         'qaobee.compare.team',
         /* qaobee modules */
+        'qaobee.viewTeam',
         'qaobee.addTeam',
         'qaobee.updateTeam',
 

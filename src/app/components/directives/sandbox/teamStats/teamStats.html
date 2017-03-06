@@ -1,0 +1,97 @@
+<div class="container" ng-cloack>     
+            
+    <!-- Stats goals/sanction/use start -->
+    <div class="row">
+
+        <div class="col s12 m12 l4">
+            <stats-goals bind-to-id="goalScored" 
+                         label="goalScored" 
+                         sandbox-id="meta.sandbox._id">
+            </stats-goals>
+        </div>
+        <div class="col s12 hide-on-large-only"><br/></div>
+        <div class="col s12 m12 l4">
+            <stats-goals bind-to-id="goalConceded" 
+                         label="goalConceded" 
+                         sandbox-id="meta.sandbox._id">
+            </stats-goals>
+        </div>
+        <div class="col s12 hide-on-large-only"><br/></div>
+        <div class="col s12 m12 l4">
+            <stats-sanction></stats-sanction>
+        </div>
+    </div>
+    <!-- Stats goals/sanction/use end -->
+
+            
+    <!-- Stats shoot efficiency Start -->
+    <div class="row">
+        <div class="col s12 left-align grey-text text-ligthen-2">
+            <h5>
+                <small translate="stats.efficiency.efficiency"></small>
+            </h5>
+        </div>
+
+        <div class="col s12 m6 l3" style="margin-top:15px;">
+            <widget-efficiency-player meta="meta" user="user"></widget-efficiency-player>
+        </div>
+
+        <div class="col s12 m6 l3" style="margin-top:15px;">
+            <widget-efficiency-player meta="meta" user="user" values="['BACKLEFT9', 'CENTER9', 'BACKRIGHT9']"
+                                      widget-title="'stats.efficiency.efficiency9m'"></widget-efficiency-player>
+        </div>
+
+        <div class="col s12 m6 l3" style="margin-top:15px;">
+            <widget-efficiency-player meta="meta" user="user"
+                                      values="['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING']"
+                                      widget-title="'stats.efficiency.efficiency6m'"></widget-efficiency-player>
+        </div>
+
+        <div class="col s12 m6 l3" style="margin-top:15px;">
+            <widget-efficiency-player meta="meta" user="user" values="['PENALTY']"
+                                      widget-title="'stats.efficiency.efficiency7m'"></widget-efficiency-player>
+        </div>
+    </div>
+    <!-- Stats shoot efficiency end -->
+
+    <!-- Stats actions pos/neg Start -->
+    <div class="row"> 
+        <div class="col s12 left-align grey-text text-ligthen-4">
+            <h5><small>{{'stats.actionTab.title' | translate }}</small></h5>
+        </div>
+        <div class="col s12 m6">
+        <qaobee-radar-chart title="{{'stats.actionTab.attack' | translate}} {{'stats.actionTab.positive' | translate}}"
+                            meta="meta"
+                            indicators="['penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec']"></qaobee-radar-chart>
+    </div>
+    <div class="col s12 m6">
+        <qaobee-radar-chart title="{{'stats.actionTab.attack' | translate}} {{'stats.actionTab.negative' | translate}}"
+                            meta="meta"
+                            indicators="['forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt']"></qaobee-radar-chart>
+    </div>
+    <div class="col s12 m6">
+        <qaobee-radar-chart title="{{'stats.actionTab.defense' | translate}} {{'stats.actionTab.positive' | translate}}"
+                            meta="meta"
+                            indicators="['neutralization', 'forceDef', 'contre', 'interceptionOk']"></qaobee-radar-chart>
+    </div>
+    <div class="col s12 m6">
+        <qaobee-radar-chart title="{{'stats.actionTab.defense' | translate}} {{'stats.actionTab.negative' | translate}}"
+                            meta="meta"
+                            indicators="['penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition']"></qaobee-radar-chart>
+    </div>
+    </div>
+    <!-- Stats actions pos/neg end -->
+
+    <!-- Stats event's list Start -->
+    <div class="row">
+        <div class="col s12 left-align grey-text text-ligthen-4" ng-if="collectes.length > 0">
+            <h5><small>{{'stats.teamLabels.listCollect' | translate }}</small></h5>
+        </div>
+        <ul>
+            <li class="col s12 m6 l4" ng-repeat="collecte in collectes track by $index">
+                <event-card event="collecte.eventRef"></event-card>
+            </li>
+        </ul>
+    </div>
+    <!-- Stats event's list Start -->
+</div>

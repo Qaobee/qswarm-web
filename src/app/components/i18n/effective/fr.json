@@ -138,6 +138,7 @@
     "toastError": "Erreur, l'équipe {{label}} n'a pas été modifiée"
   },
   "teamLabels": {
+    "teamSheet" : "Fiche équipe",  
     "label": "Libellé",
     "enable": "Activé",
     "disable": "Désactivé",

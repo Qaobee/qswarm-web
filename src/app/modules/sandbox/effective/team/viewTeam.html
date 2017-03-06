@@ -1,7 +1,6 @@
-<div class="container" ng-if="player" xmlns="http://www.w3.org/1999/html">
+<div class="container" xmlns="http://www.w3.org/1999/html">
     <div class="row"></div>
-    
-    <title-page-bar icon="person" title="{{player.firstname}} {{player.name}}"></title-page-bar>
+    <title-page-bar icon="group" title="{{team.label}}"></title-page-bar>
     
     <div class="row card">
         <!--card-->
@@ -9,11 +8,11 @@
             <input type="checkbox" ng-model="showDetail" />
             <span class="card-title activator accent-text-color" ng-click="showDetail = !showDetail">
                 <i class="fa fa-fw fa-chevron-down"></i>
-                <span class="primary-text-color" translate="playerLabels.playerCivilSection"></span></span>
+                <span class="primary-text-color" translate="teamLabels.teamSheet"></span></span>
 
             <div class="card-content right-align card-toggle" >
                 <player-infos player="player"></player-infos>
-                <a href="#/private/updatePlayer/{{player._id}}" class="btn-large btn-floating red">
+                <a href="#/private/updateTeam/{{team._id}}/false" class="btn-large btn-floating red">
                     <i class="large material-icons">mode_edit</i>
                 </a>
             </div>
@@ -23,7 +22,7 @@
         <!--card-->
         <div class="col m12 s12 animated fadeIn">
             <div class="card-content">
-                <player-stats player="player" meta="meta" user="user"></player-stats>
+                <team-stats team="team" meta="meta" user="user"></team-stats>
             </div>
         </div>
     </div>
