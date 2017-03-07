@@ -41,7 +41,7 @@
 
             $scope.cancel = function () {
                 angular.element('#payMessageModal').modal('close');
-                $location.path('/private/billing');
+                $scope.modalClosed = true;
             };
 
             $scope.agree = function () {
@@ -49,10 +49,6 @@
                 angular.element('#payMessageModal').modal('close');
                 $scope.modalClosed = true;
             };
-
-            $scope.$on('$destroy', function () {
-                delete $scope.user;
-            });
 
             angular.element(document).ready(function () {
                 angular.element('#payMessageModal').modal({
@@ -70,10 +66,7 @@
                     } else {
                         $scope.payError = true;
                     }
-
                 });
             });
-
-        })
-    ;
+        });
 }());
