@@ -26,7 +26,7 @@
          * @class qaobee.user.billing.PayProfileCtrl
          * @description Main controller of app/modules/commons/users/billing/pay.html
          */
-        .controller('PayProfileCtrl', function ($scope, paymentAPI, $routeParams, $window, $translatePartialLoader, user) {
+        .controller('PayProfileCtrl', function ($scope, paymentAPI, $routeParams, $window, $translatePartialLoader, user, $location) {
             $scope.willPay = false;
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
@@ -41,7 +41,7 @@
 
             $scope.cancel = function () {
                 angular.element('#payMessageModal').modal('close');
-                $scope.doTheBack();
+                $location.path('/private/billing');
             };
 
             $scope.agree = function () {
