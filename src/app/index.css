@@ -54,10 +54,13 @@
     background: #ea5350 !important;
     color: #FFFFFF;
 }
+
 .btn.call-to-action {
-    background:  rgb(120, 190, 120); !important;
+    background: rgb(120, 190, 120);
+!important;
     color: #FFFFFF;
 }
+
 .secondary-color {
     background: #78BE78 !important;
     color: #FFFFFF;
@@ -1213,10 +1216,12 @@ input[type=checkbox]:checked + .card-title .fa {
     margin: 0;
     padding: 0;
 }
+
 .hero > div {
     width: 100%;
     height: 100%;
 }
+
 .hero > div > div {
     width: 100%;
 }
@@ -1224,6 +1229,7 @@ input[type=checkbox]:checked + .card-title .fa {
 .hero .btn {
     margin-top: 20px;
 }
+
 .home-concept {
     background: url("../assets/images/handball/Home1.png") center center no-repeat;
     background-size: cover;
@@ -1265,9 +1271,11 @@ div.home-bg2 {
 .icon-block {
     counter-reset: step;
 }
+
 p {
     text-align: justify;
 }
+
 .icon-block + p {
     margin-top: 150px;
 }
@@ -1363,4 +1371,85 @@ p {
 
 .hidden {
     visibility: hidden;
+}
+
+/* Real sample */
+slide-wrapper {
+    position: relative;
+    display: block;
+    min-height: 300px;
+    overflow: hidden;
+    width: 100%;
+}
+
+slide-wrapper ul {
+    list-style: none;
+    padding: 0;
+    float: left;
+}
+
+slide-wrapper ul.slide {
+    list-style: none;
+    padding: 0;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+    margin: inherit;
+    float: inherit;
+}
+
+slide-wrapper ul.slide.touch {
+    -webkit-transition: none;
+    transition: none;
+}
+
+slide-wrapper ul.slide li {
+    float: left;
+}
+
+slide-wrapper ul.bullets {
+    margin-top: -5px;
+}
+
+slide-wrapper ul.bullets li {
+    width: 15px;
+    height: 15px;
+    background-color: #e1e1e1;
+    border: 1px solid #bbbbbb;
+    border-radius: 50%;
+    float: left;
+    margin: 5px;
+    cursor: pointer;
+}
+
+slide-wrapper ul.bullets li.active {
+    background-color: #78BE78;
+}
+
+.device {
+    position: relative;
+    left: 25%;
+    padding: 56px 10px 0px;
+    border-radius: 30px;
+    background: #37474F;
+    display: -ms-flexbox;
+    display: flex;
+    box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .7);
+    width: 200px !important;
+}
+
+.device:before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .2);
+    top: 24px;
+    left: calc(50% - 5px);
+}
+
+.device .screenshot {
+    width: 200px;
+    height: 200px;
+    border-radius: 4px 4px 0 0;
 }
