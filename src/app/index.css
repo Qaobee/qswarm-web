@@ -1202,7 +1202,7 @@ input[type=checkbox]:checked + .card-title .fa {
 
 .hero {
     background-size: cover;
-    background: darkslategrey url("http://i.vimeocdn.com/video/462316114_1280x720.jpg") no-repeat center center;
+    background: #8B6914 url("../assets/images/handball/zone5.jpg") no-repeat center center;
     -webkit-background-size: cover;
     height: calc(100vh - 64px);
     width: 100%;
