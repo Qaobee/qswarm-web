@@ -54,7 +54,10 @@
     background: #ea5350 !important;
     color: #FFFFFF;
 }
-
+.btn.call-to-action {
+    background:  rgb(120, 190, 120); !important;
+    color: #FFFFFF;
+}
 .secondary-color {
     background: #78BE78 !important;
     color: #FFFFFF;
@@ -1202,11 +1205,11 @@ input[type=checkbox]:checked + .card-title .fa {
 
 .hero {
     background-size: cover;
-    background: #8B6914 url("../assets/images/handball/zone5.jpg") no-repeat center center;
+    background: #333333 url("../assets/images/handball/zone2.jpg") no-repeat center center;
     -webkit-background-size: cover;
     height: calc(100vh - 64px);
     width: 100%;
-    background-blend-mode: multiply;
+    background-blend-mode: overlay;
     margin: 0;
     padding: 0;
 }
