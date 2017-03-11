@@ -1214,7 +1214,7 @@ input[type=checkbox]:checked + .card-title .fa {
 
 .zone1 {
     background-size: cover;
-    background: darkslategrey url("../assets/images/handball/zone2.jpg") no-repeat center center;
+    background: #636363 url("../assets/images/handball/zone2.jpg") no-repeat center center;
     -webkit-background-size: cover;
     height: calc(100vh - 64px);
     width: 100%;
