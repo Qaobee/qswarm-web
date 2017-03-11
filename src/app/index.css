@@ -1206,9 +1206,15 @@ input[type=checkbox]:checked + .card-title .fa {
     display: inline !important;
 }
 
-.hero {
+/* Home public zone 1 */
+
+.zone1-title {
+    line-height: 1.5em;
+}
+
+.zone1 {
     background-size: cover;
-    background: #333333 url("../assets/images/handball/zone2.jpg") no-repeat center center;
+    background: darkslategrey url("../assets/images/handball/zone2.jpg") no-repeat center center;
     -webkit-background-size: cover;
     height: calc(100vh - 64px);
     width: 100%;
@@ -1217,17 +1223,52 @@ input[type=checkbox]:checked + .card-title .fa {
     padding: 0;
 }
 
-.hero > div {
+.zone1 > div {
     width: 100%;
     height: 100%;
 }
 
-.hero > div > div {
+.zone1 > div > div {
     width: 100%;
 }
 
-.hero .btn {
+.zone1 .btn {
     margin-top: 20px;
+}
+
+/* Home public zone 3 */
+.zone3-title {
+    line-height: 1em;
+}
+
+.zone3 {
+    background-size: cover;
+    background: darkslategrey url("../assets/images/handball/zone5.jpg") no-repeat center center;
+    -webkit-background-size: cover;
+    height: calc(100vh - 64px);
+    width: 100%;
+    background-blend-mode: overlay;
+    margin: 0;
+    padding: 0;
+}
+
+.zone3 > div {
+    width: 100%;
+    height: 100%;
+}
+
+.zone3 > div > div {
+    width: 100%;
+}
+
+.zone3 .btn {
+    margin-top: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .zone1-text-container, .zone2-text-container {
+        width: 100%;
+    }
 }
 
 .home-concept {
@@ -1235,17 +1276,6 @@ input[type=checkbox]:checked + .card-title .fa {
     background-size: cover;
     -webkit-background-size: cover;
     height: 400px;
-}
-
-@media only screen and (max-width: 600px) {
-    .hero-text-container {
-        width: 100%;
-    }
-}
-
-/* Home */
-.hero-title {
-    line-height: 1.5em;
 }
 
 div.home-bg1 {
