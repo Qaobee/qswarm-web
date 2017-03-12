@@ -19,7 +19,7 @@
     },
     "part-2": {
       "title": "Découvrez le concept",
-      "capture": "Captez",
+      "capture": "Observez",
       "analyze": "Analysez",
       "progress": "Progressez"
     },
@@ -96,7 +96,7 @@
         "price": "pour 5",
         "period": "/ mois",
         "desc": "L'espace de travail dont vous avez besoin pour entraîner en toute simplicité.",
-        "appWeb": "Web",
+        "appWeb": "Une application Web pour",
         "teamWeb": {
           "title": "Joueurs / Equipes",
           "detail": "Ajouter un joueur, consulter la fiche détaillée d'un joueur, modifier toutes les informations d'un joueur. Gérer vos équipes"
@@ -113,7 +113,7 @@
           "title": "Espace de travail partagé",
           "detail": "Travaillez en équipe sur votre effectif. Qaobee HB vous donne la possibilité d'inviter d'autres entraîneurs à vous rejoindre sur votre espace."
         },
-        "appMob": "Mobile",
+        "appMob": "Une application mobile pour",
         "teamMob": {
           "title": "Joueurs",
           "detail": "Ajouter un joueur à la dernière minute. Consulter les données minimales de vos joueurs."
@@ -123,12 +123,12 @@
           "detail": "Ajouter ou modifier rapidement un match"
         },
         "collectMob": {
-          "title": "Collecte",
-          "detail": "collectez tous les faits de jeu de vos joueurs, de votre lors d'un match"
+          "title": "Enregistrer les performances de vos joueurs",
+          "detail": "Collectez l'origine et l'impact des tirs, les actions positives et négatives en attaque et en défense, les sanctions disciplinaires, le temps de jeu..."
         },
         "statsMob": {
-          "title": "Les statistiques du match en temp réel",
-          "detail": "Vous pouvez consulter les statistiques d'un match en même que vous collectez les informations. A la mi-temps, vous pourrez argumenter votre discours en vous appuyant sur les statistiques collectées."
+          "title": "Consulter les statistiques du match en temp réel",
+          "detail": "Vous pouvez consulter en temps réel les statistiques d'un match. A la mi-temps, vous pourrez argumenter votre discours en vous appuyant sur les statistiques collectées."
         }
       }
     }

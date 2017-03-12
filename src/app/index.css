@@ -1314,7 +1314,7 @@ p {
     list-style-type: none;
     width: 33%;
     float: left;
-    font-size: 12px;
+    font-size: 22px;
     position: relative;
     text-align: center;
 }
@@ -1444,6 +1444,7 @@ slide-wrapper ul.bullets li {
     width: 15px;
     height: 15px;
     background-color: #e1e1e1;
+    background:DarkSlateGray;
     border: 1px solid #bbbbbb;
     border-radius: 50%;
     float: left;
