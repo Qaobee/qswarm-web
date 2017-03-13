@@ -1,53 +1,50 @@
 <!-- Bannière Download appli mobile -->
 <appdownload-banner></appdownload-banner>
 <!-- Menu Not connected -->
-<nav class="top-nav top-nav-trans dark-primary-color" role="navigation" ng-if="!user">
-    <div class="container">
-        <div class="nav-wrapper">
-            <a href="/#/" class="brand-logo"><img src="assets/images/logo-mini.png" height="30px"/></a>
-
-            <ul class="left hide-on-med-and-down" style="margin-left: 200px;">
-                <li ng-class="{'active' : menuItem === 'concept'}" >
-                    <a href="" translate="navbar.concept"  ng-click="gotoAnchor('concept')"></a>
-                </li>
-                <li ng-class="{'active' : menuItem === 'contact'}">
-                    <a href="" translate="navbar.contact" ng-click="gotoAnchor('contact')"></a>
-                </li>
-                <li ng-class="{'active' : menuItem === 'download'}">
-                    <a href="" translate="navbar.download" ng-click="gotoAnchor('download')"></a>
-                </li><!--
+<div class="navbar-fixed" ng-if="!user">
+    <nav class="top-nav top-nav-trans dark-primary-color" role="navigation">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/#/" class="brand-logo"><img src="assets/images/logo-mini.png" height="30px"/></a>
+                <ul class="left hide-on-med-and-down" style="margin-left: 200px;" ng-if=" menuItem !== 'signup'">
+                    <li ng-class="{'active' : menuItem === 'concept'}">
+                        <a href="" translate="navbar.concept" ng-click="gotoAnchor('concept')"></a>
+                    </li>
+                    <li ng-class="{'active' : menuItem === 'download'}">
+                        <a href="" translate="navbar.download" ng-click="gotoAnchor('download')"></a>
+                    </li><!--
                 <li ng-class="{'active' : menuItem === 'about'}">
                     <a href="#about" translate="landing.contact.about"></a>
                 </li>-->
 
-                <!--    <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
-                        <a href="#/pricing" translate="navbar.pricing"></a>
+                    <!--    <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
+                            <a href="#/pricing" translate="navbar.pricing"></a>
+                        </li>
+        -->
+                </ul>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a class="waves-effect waves-white secondary-color" ng-click="openSignup()"
+                           translate="navbar.signup"></a>
                     </li>
-    -->
-            </ul>
-            <ul class="right hide-on-med-and-down">
-                <li>
-                    <a class="waves-effect waves-white secondary-color" ng-click="openSignup()"
-                       translate="navbar.signup"></a>
-                </li>
 
-                <li>
-                    <a ng-click="openLogin()" translate="navbar.connect"></a>
-                </li>
+                    <li>
+                        <a ng-click="openLogin()" translate="navbar.connect"></a>
+                    </li>
 
-            </ul>
+                </ul>
 
-            <!-- menu mobile start -->
-            <a href="#" data-activates="nav-mobileHC" class="button-collapse white-text">
-                <i class="material-icons">menu</i></a>
+                <!-- menu mobile start -->
+                <a href="#" data-activates="nav-mobileHC" class="button-collapse white-text">
+                    <i class="material-icons">menu</i></a>
 
-            <ul id="nav-mobileHC" class="side-nav dark-primary-color">
-                <li ng-class="{'active' : menuItem === 'concept'}">
-                    <a class="white-text" href="#/concept" translate="navbar.concept"></a>
-                </li>
-                <li ng-class="{'active' : menuItem === 'about'}">
-                    <a class="white-text" href="#/about" translate="landing.contact.about"></a>
-                </li><!--
+                <ul id="nav-mobileHC" class="side-nav dark-primary-color">
+                    <li ng-class="{'active' : menuItem === 'concept'}">
+                        <a class="white-text" href="#/concept" translate="navbar.concept"></a>
+                    </li>
+                    <li ng-class="{'active' : menuItem === 'about'}">
+                        <a class="white-text" href="#/about" translate="landing.contact.about"></a>
+                    </li><!--
                 <li ng-class="{'active' : menuItem === 'contact'}">
                     <a class="white-text" href="#/contact" translate="navbar.contact"></a>
                 </li>--><!--
@@ -55,15 +52,15 @@
                     <a class="white-text" href="#/pricing" translate="navbar.pricing"></a>
                 </li>-->
 
-                <li>
-                    <a class="white-text" ng-click="openLogin()" translate="navbar.connect"></a>
-                </li>
-            </ul>
-            <!-- menu mobile end -->
+                    <li>
+                        <a class="white-text" ng-click="openLogin()" translate="navbar.connect"></a>
+                    </li>
+                </ul>
+                <!-- menu mobile end -->
+            </div>
         </div>
-    </div>
-</nav>
-
+    </nav>
+</div>
 <!-- Menu Connected First header-->
 <div class="navbar-fixed" ng-if="user && !user.account.firstConnexion && !notpaid">
     <nav class="top-nav dark-primary-color visible-nav" role="navigation">

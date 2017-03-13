@@ -17,9 +17,10 @@
         })
 
         .service('anchorSmoothScroll', function () {
-            this.scrollTo = function (eID) {
+            this.scrollTo = function (eID, topPadding) {
+                topPadding = topPadding || 0;
                 var startY = currentYPosition();
-                var stopY = elmYPosition(eID);
+                var stopY = elmYPosition(eID) - topPadding;
                 var distance = stopY > startY ? stopY - startY : startY - stopY;
                 if (distance < 100) {
                     scrollTo(0, stopY);

@@ -39,7 +39,7 @@
                     $scope.gotoAnchor = function (x) {
                         $location.hash(x);
                         $scope.menuItem = x;
-                        anchorSmoothScroll.scrollTo(x);
+                        anchorSmoothScroll.scrollTo(x, 60);
                     };
                     $scope.isActive = function (viewLocation) {
                         return viewLocation === $location.path();
