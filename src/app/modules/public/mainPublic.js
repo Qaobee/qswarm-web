@@ -59,15 +59,7 @@
             $rootScope.signupAvailable = true;
             delete $rootScope.user;
             qeventbus.prepForBroadcast('menuItem', 'home');
-            $scope.animateElementIn = function($el) {
-                $el.removeClass('hidden');
-                $el.addClass('animated fadeInLeft'); // this example leverages animate.css classes
-            };
 
-            $scope.animateElementOut = function($el) {
-                $el.addClass('hidden');
-                $el.removeClass('animated fadeInLeft'); // this example leverages animate.css classes
-            };
             /**
              * @description initialization materialize components
              */

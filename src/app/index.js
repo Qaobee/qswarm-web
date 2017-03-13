@@ -29,7 +29,6 @@
             'vcRecaptcha',
             'angular.chips',
             'webNotifications',
-            'angular-scroll-animate',
             'slideWrapper',
 
             //* qaobee widget */
