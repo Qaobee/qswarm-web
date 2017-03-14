@@ -26,6 +26,7 @@ sonarqube {
         property 'sonar.projectKey', 'com.qaobee:qswarm-web'
         property 'sonar.language', 'js'
         property 'sonar.sources', 'src/app'
+        property 'sonar.coverage.exclusions', '**/*'
     }
 }
 
