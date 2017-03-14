@@ -1262,7 +1262,7 @@ input[type=checkbox]:checked + .card-title .fa {
 }
 
 .zone3 .btn {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 @media only screen and (max-width: 600px) {
