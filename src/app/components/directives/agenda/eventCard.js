@@ -99,7 +99,7 @@
                             };
                             $scope.map = ($document.find('#mapEvent-' + $scope.event._id))[0];
                             $scope.map = new google.maps.Map($scope.map, myOptions);
-                            new google.maps.Marker({
+                            new google.maps.Marker({// NOSONAR
                                 position: myLatLng,
                                 map: $scope.map,
                                 title: $scope.event.address.formatedAddress

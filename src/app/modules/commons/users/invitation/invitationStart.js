@@ -422,7 +422,7 @@
                             'userId': $scope.user._id,
                             'answer': 'accepted'
                         };
-                        sandboxRestAPI.confirmInvitationToSandbox(request).success(function (data) {
+                        sandboxRestAPI.confirmInvitationToSandbox(request).success(function () {
                             $scope.creationFinished = true;
                             delete $rootScope.user;
                             delete $rootScope.meta;

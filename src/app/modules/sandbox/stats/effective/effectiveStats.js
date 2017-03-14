@@ -7,8 +7,6 @@
      * @author Christophe Kervella
      * @copyright <b>QaoBee</b>.
      * @requires {@link https://docs.angularjs.org/api/ngRoute|ngRoute}
-     * @requires {@link qaobee.components.restAPI.sandbox.effective.effectiveRestAPI|qaobee.components.restAPI.sandbox.effective.effectiveRestAPI}
-     * @requires {@link qaobee.components.restAPI.sandbox.effective.personRestAPI|qaobee.components.restAPI.sandbox.effective.personRestAPI}
      */
     angular.module('qaobee.effectiveStats', [
         /* qaobee Rest API */
@@ -30,8 +28,8 @@
         /**
          * @class qaobee.modules.home.HomeControler
          */
-        .controller('EffectiveStats', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                effectiveRestAPI, personRestAPI, userRestAPI) {
+        .controller('EffectiveStats', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location,
+                                                $rootScope, $q, $filter, user, meta, effectiveRestAPI) {
             $translatePartialLoader.addPart('home');
             $translatePartialLoader.addPart('stats');
 

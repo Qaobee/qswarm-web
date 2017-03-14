@@ -26,7 +26,7 @@
          * @class qaobee.user.billing.PayProfileCtrl
          * @description Main controller of app/modules/commons/users/billing/pay.html
          */
-        .controller('PayProfileCtrl', function ($scope, paymentAPI, $routeParams, $window, $translatePartialLoader, user, $location) {
+        .controller('PayProfileCtrl', function ($scope, paymentAPI, $routeParams, $window, $translatePartialLoader, user) {
             $scope.willPay = false;
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');

@@ -85,7 +85,7 @@
                 } else {
                     teamCompareService.remove(id);
                 }
-                Object.keys($scope.compareList, function () {
+                Sugar.Object.keys($scope.compareList, function () {
                     count++;
                 });
                 if (count > 3 && $scope.compareList[id]) {

@@ -20,7 +20,7 @@
                             };
                             $scope.map = ($document.find('#ngMapPlayer'))[0];
                             $scope.map = new google.maps.Map($scope.map, myOptions);
-                            new google.maps.Marker({
+                            new google.maps.Marker({ //NOSONAR
                                 position: myLatLng,
                                 map: $scope.map,
                                 title: $scope.player.firstname + ' ' + $scope.player.name
