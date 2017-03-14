@@ -1569,3 +1569,72 @@ slide-wrapper ul.bullets li.active {
 .upper slide-wrapper ul.bullets {
     margin-top: -30px;
 }
+
+icon-block {
+    counter-reset: step;
+}
+
+p {
+    text-align: justify;
+}
+
+
+.icon-conceptH > li {
+    list-style-type: none;
+    width: 33%;
+    float: left;
+    font-size: 22px;
+    position: relative;
+    text-align: center;
+}
+
+.icon-conceptH > li > i {
+    text-align: center;
+    position: absolute;
+    top: 15px;
+    width: 100%;
+    left: 0;
+    font-size: 52px;
+}
+
+.icon-conceptH > li:before {
+    width: 80px;
+    height: 80px;
+    content: '';
+    line-height: 50px;
+    border: 2px solid #78BE78;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 5%;
+    background-color: #78BE78;
+}
+
+.icon-concept > li {
+    list-style-type: none;
+    float: left;
+    position: relative;
+    text-align: center;
+}
+
+.icon-concept > li > i {
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    left: 0;
+    font-size: 52px;
+}
+
+.icon-concept > li:before {
+    width: 80px;
+    height: 80px;
+    content: '';
+    line-height: 50px;
+    border: 2px solid #607d8b;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 5%;
+    background-color: #607d8b;
+}

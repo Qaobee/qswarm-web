@@ -1,6 +1,6 @@
 {
   "landing": {
-    "main-title": "Maitrisez le moindre détail",
+    "main-title": "Connaissez-vous vraiment les performances de vos joueurs ?",
     "calltoaction":"Démarrer maintenant !",  
     "sub-title": "Qu'attendez-vous ?",
     "manual-btn": "Mode d'emploi",
@@ -98,20 +98,21 @@
         "desc": "L'espace de travail dont vous avez besoin pour entraîner en toute simplicité.",
         "appWeb": "Une application Web pour",
         "teamWeb": {
-          "title": "Joueurs / Equipes",
-          "detail": "Ajouter un joueur, consulter la fiche détaillée d'un joueur, modifier toutes les informations d'un joueur. Gérer vos équipes"
+          "title": "Gérer vos joueurs / vos équipes",
+          "detail": "Ajouter un joueur, consulter la fiche détaillée d'un joueur, modifier toutes les informations d'un joueur. Gérer de la même façon vos équipes"
         },
         "agendaWeb": {
-          "title": "Agenda",
+          "title": "Planifier vos matchs",
           "detail": "Planifier les matchs amicaux, les matchs de coupe et les matchs de championnat."
         },
         "statsWeb": {
-          "title": "Analyse des statistiques",
+          "title": "Analyser les statistiques",
           "detail": "Consultez les performances d'un joueur. Efficacité au tir, impacts préférentiels,temps de jeu, agressivité, apport offensif et défensif. Comparez les performances de vos joueurs entre-eux. Profitez des mêmes fonctionnalités au niveau des équipes et des matchs."
         },
         "shareWeb": {
-          "title": "Espace de travail partagé",
-          "detail": "Travaillez en équipe sur votre effectif. Qaobee HB vous donne la possibilité d'inviter d'autres entraîneurs à vous rejoindre sur votre espace."
+          "title": "Un espace de travail partagé",
+          "detail": "Travaillez en équipe sur le même effectif",
+          "detail2": "Qaobee HB vous donne la possibilité d'inviter d'autres entraîneurs à votre espace."
         },
         "appMob": "Une application mobile pour",
         "teamMob": {
