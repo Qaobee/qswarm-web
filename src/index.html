@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="qswarmWeb" ng-cloak translate-cloak>
+<html ng-app="qswarmWeb" translate-cloak>
 <head>
     <!--
 
@@ -25,11 +25,9 @@
     <meta http-equiv="Expires" content="0"/>
     <script language="JavaScript">
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker
-                .register('./service-worker.js')
-                .then(function () {
-                    console.log('Service Worker Registered');
-                });
+            navigator.serviceWorker.register('./service-worker.js').then(function () {
+                console.log('Service Worker Registered');
+            });
         }
     </script>
     <style>
@@ -39,7 +37,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1000;
+            z-index: 1000
         }
 
         #loader {
@@ -53,10 +51,9 @@
             border-radius: 50%;
             border: 3px solid transparent;
             border-top-color: #3498db;
-
-            -webkit-animation: spin 2s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
-            animation: spin 2s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
-            z-index: 1001;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+            z-index: 1001
         }
 
         #loader:before {
@@ -69,9 +66,8 @@
             border-radius: 50%;
             border: 3px solid transparent;
             border-top-color: #e74c3c;
-
-            -webkit-animation: spin 3s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
-            animation: spin 3s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+            -webkit-animation: spin 3s linear infinite;
+            animation: spin 3s linear infinite
         }
 
         #loader:after {
@@ -84,34 +80,33 @@
             border-radius: 50%;
             border: 3px solid transparent;
             border-top-color: #f9c922;
-
-            -webkit-animation: spin 1.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
-            animation: spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+            -webkit-animation: spin 1.5s linear infinite;
+            animation: spin 1.5s linear infinite
         }
 
         @-webkit-keyframes spin {
             0% {
-                -webkit-transform: rotate(0deg); /* Chrome, Opera 15+, Safari 3.1+ */
-                -ms-transform: rotate(0deg); /* IE 9 */
-                transform: rotate(0deg); /* Firefox 16+, IE 10+, Opera */
+                -webkit-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                transform: rotate(0deg)
             }
             100% {
-                -webkit-transform: rotate(360deg); /* Chrome, Opera 15+, Safari 3.1+ */
-                -ms-transform: rotate(360deg); /* IE 9 */
-                transform: rotate(360deg); /* Firefox 16+, IE 10+, Opera */
+                -webkit-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                transform: rotate(360deg)
             }
         }
 
         @keyframes spin {
             0% {
-                -webkit-transform: rotate(0deg); /* Chrome, Opera 15+, Safari 3.1+ */
-                -ms-transform: rotate(0deg); /* IE 9 */
-                transform: rotate(0deg); /* Firefox 16+, IE 10+, Opera */
+                -webkit-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                transform: rotate(0deg)
             }
             100% {
-                -webkit-transform: rotate(360deg); /* Chrome, Opera 15+, Safari 3.1+ */
-                -ms-transform: rotate(360deg); /* IE 9 */
-                transform: rotate(360deg); /* Firefox 16+, IE 10+, Opera */
+                -webkit-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                transform: rotate(360deg)
             }
         }
 
@@ -121,74 +116,68 @@
             width: 51%;
             height: 100%;
             background: #222;
-            z-index: 1000;
+            z-index: 1000
         }
 
         #loader-wrapper .loader-section.section-left {
-            left: 0;
+            left: 0
         }
 
         #loader-wrapper .loader-section.section-right {
-            right: 0;
+            right: 0
         }
 
-        /* Loaded styles */
         .loaded #loader-wrapper .loader-section.section-left {
-            -webkit-transform: translateX(-100%); /* Chrome, Opera 15+, Safari 3.1+ */
-            -ms-transform: translateX(-100%); /* IE 9 */
-            transform: translateX(-100%); /* Firefox 16+, IE 10+, Opera */
-
-            -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000); /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
-            transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000); /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
+            -webkit-transform: translateX(-100%);
+            -ms-transform: translateX(-100%);
+            transform: translateX(-100%);
+            -webkit-transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+            transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000)
         }
 
         .loaded #loader-wrapper .loader-section.section-right {
-            -webkit-transform: translateX(100%); /* Chrome, Opera 15+, Safari 3.1+ */
-            -ms-transform: translateX(100%); /* IE 9 */
-            transform: translateX(100%); /* Firefox 16+, IE 10+, Opera */
-
-            -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000); /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
-            transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000); /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
+            -webkit-transform: translateX(100%);
+            -ms-transform: translateX(100%);
+            transform: translateX(100%);
+            -webkit-transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+            transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000)
         }
 
         .loaded #loader {
             opacity: 0;
-
-            -webkit-transition: all 0.3s ease-out; /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
-            transition: all 0.3s ease-out; /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
-
+            -webkit-transition: all .3s ease-out;
+            transition: all .3s ease-out
         }
 
         .loaded #loader-wrapper {
             visibility: hidden;
-
-            -webkit-transform: translateY(-100%); /* Chrome, Opera 15+, Safari 3.1+ */
-            -ms-transform: translateY(-100%); /* IE 9 */
-            transform: translateY(-100%); /* Firefox 16+, IE 10+, Opera */
-
-            -webkit-transition: all 0.3s 1s ease-out; /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
-            transition: all 0.3s 1s ease-out; /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
+            -webkit-transform: translateY(-100%);
+            -ms-transform: translateY(-100%);
+            transform: translateY(-100%);
+            -webkit-transition: all .3s 1s ease-out;
+            transition: all .3s 1s ease-out
         }
+
         .loader-logo {
             width: 100%;
             position: absolute;
-            top:20%;
+            top: 20%;
             left: 0;
             bottom: 0;
             right: 0;
-            z-index: 999999;
+            z-index: 999999
         }
+
         .loader-logo img {
             margin-left: auto;
             margin-right: auto;
-            display: block;
+            display: block
         }
     </style>
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="favicon.ico"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css"/>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
@@ -220,7 +209,6 @@
             <div id="loader"></div>
             <div class="loader-section section-left"></div>
             <div class="loader-section section-right"></div>
-
         </div>
         <div ng-view class="view-animate" autoscroll="true"></div>
     </div>
@@ -234,10 +222,11 @@
                         class="fa fa-twitter-square fa-2x fa-fw"></i></a>
                 <a href="https://www.facebook.com/qaobee" target="_blank" class="white-text"><i
                         class="fa fa-facebook-square fa-2x fa-fw"></i></a>
-                <a href="https://plus.google.com/+Qaobee/about" target="_blank" class="white-text"><i class="fa fa-google-plus-square fa-2x fa-fw"></i></a>
+                <a href="https://plus.google.com/+Qaobee/about" target="_blank" class="white-text"><i
+                        class="fa fa-google-plus-square fa-2x fa-fw"></i></a>
                 <a href="mailto:contact@qaobee.com" class="white-text"><i
                         class="fa fa-envelope fa-2x fa-fw"></i></a>
-                <a href="" data-target="modalSubMailingList" 
+                <a href="" data-target="modalSubMailingList"
                    class="white-text"><i class="fa fa-pencil-square fa-2x fa-fw"></i></a>
             </div>
         </div>
@@ -249,20 +238,6 @@
             </span></div>
     </div>
 </footer>
-
-<div class="fs-loader" ng-if="!loaded">
-    <h1>Qaobee</h1>
-    <div class="show-area">
-        <ul class="board">
-            <li><i class="material-icons">check_circle</i> Feeding unicorns</li>
-            <li><i class="material-icons">check_circle</i> Polishing gems</li>
-            <li><i class="material-icons">check_circle</i> Diging under the rainbow</li>
-            <li><i class="material-icons">check_circle</i> Finding dwarf's gold</li>
-            <li><i class="material-icons">check_circle</i> Feeling happy</li>
-        </ul>
-    </div>
-</div>
-    
 <div id="modalSubMailingList" class="modal dark-primary-color">
     <div class="modal-header center-align ">
         <h5>
@@ -280,19 +255,18 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <label for="mce-EMAIL" translate="landing.contact.popin.email"></label>
-                        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" class="validate"
-                               required>
+                        <input type="email" value="" name="EMAIL" class="email validate" id="mce-EMAIL" required>
                     </div>
-                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                     <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                        <input type="text" name="b_d55c6a8036c505a3675d0b352_883987d33d" tabindex="-1" value="">
+                        <input type="text" name="b_d55c6a8036c505a3675d0b352_883987d33d" tabindex="-1" value=""/>
                     </div>
 
                 </div>
                 <div class="row center">
                     <div class="col s12">&nbsp;</div>
                     <div class="col s12">
-                        <a href="#/" class="modal-action modal-close waves-effect waves-white btn light-primary-color" translate="commons.buttons.cancel"></a>
+                        <a href="#/" class="modal-action modal-close waves-effect waves-white btn light-primary-color"
+                           translate="commons.buttons.cancel"></a>
                         <button type="submit" class="btn waves-effect waves-white accent-color" value="Subscribe"
                                 name="subscribe"
                                 translate="commons.buttons.validate"></button>
@@ -301,7 +275,7 @@
             </form>
         </div>
     </div>
-</div>    
+</div>
 <!-- build:js(src) scripts/vendor.js -->
 <!-- bower:js -->
 <!-- run `gulp inject` to automatically populate bower script dependencies -->
