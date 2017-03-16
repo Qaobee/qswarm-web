@@ -1243,7 +1243,7 @@ input[type=checkbox]:checked + .card-title .fa {
 
 .zone3 {
     background-size: cover;
-    background: darkslategrey url("../assets/images/handball/zone5.jpg") no-repeat center center;
+    background: darkslategrey url("../assets/images/handball/zone5.jpg") no-repeat  80%;
     -webkit-background-size: cover;
     height: calc(100vh - 64px);
     width: 100%;
@@ -1581,9 +1581,7 @@ p {
 
 .icon-conceptH > li {
     list-style-type: none;
-    width: 33%;
     float: left;
-    font-size: 22px;
     position: relative;
     text-align: center;
 }
@@ -1602,7 +1600,7 @@ p {
     height: 80px;
     content: '';
     line-height: 50px;
-    border: 2px solid #78BE78;
+    border: 1px solid #37474F;
     display: block;
     text-align: center;
     margin: 0 auto 10px auto;
@@ -1631,10 +1629,14 @@ p {
     height: 80px;
     content: '';
     line-height: 50px;
-    border: 2px solid #607d8b;
+    border: 1px solid #37474F;
     display: block;
     text-align: center;
     margin: 0 auto 10px auto;
     border-radius: 5%;
     background-color: #607d8b;
+}
+
+#download {
+    border: 1px solid #37474F;
 }
