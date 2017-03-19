@@ -1,8 +1,8 @@
 {
   "landing": {
-    "main-title": "Connaissez-vous la performance de vos joueurs ?",
+    "main-title": "Boostez la performance de votre équipe",
     "calltoaction":"Démarrez",  
-    "sub-title": "Qaobee HB permet aux entraîneurs de handball de collecter les statistiques de leurs joueurs durant les matchs, ou les entraînements",
+    "sub-title": "Coachs, entraîneurs de handball, collectez les statistiques de vos joueurs durant les matchs, ou les entraînements",
     "manual-btn": "Mode d'emploi",
     "connect": "Restons connectés",
     "legals": "Mentions légales",
@@ -26,7 +26,7 @@
     "area-3": {
       "item-0": {
         "title": "Téléchargez l'application de collecte",
-        "content": "Disponible sur Google Play et bientôt sur l'App Store, Qaobee est la solution idéale pour l'analyse des données sportives liées au handball. L'application fonctionne aussi bien sur téléphone que sur tablette."
+        "content": "Disponible sur Google Play et bientôt sur l'App Store, Qaobee HB est la solution idéale pour l'analyse des données sportives liées au handball. L'application fonctionne aussi bien sur téléphone que sur tablette."
       },
       "item-1": {
         "title": "Valorisation des données",
@@ -91,15 +91,18 @@
     },
     "offers": {
       "standard": {
-        "titleTarif": "Qaobee s'adresse aux entraîneurs et aux clubs (<span style=\"vertical-align: super; font-size: 50%;\">*</span>)  de handball",
+        "titleTarif": "Qaobee HB s'adresse aux entraîneurs et aux clubs (<span style=\"vertical-align: super; font-size: 50%;\">*</span>)  de handball",
         "priceInvite": "puis 5",
         "price": "pour 5",
         "period": "/ mois",
         "desc": "L'espace de travail dont vous avez besoin pour entraîner en toute simplicité.",
-        "appWeb": "Une application Web pour",
+        "appWeb": {
+            "title":"Analysez les forces et faiblesses de vos joueurs",
+            "intro":"Après avoir collecté les statistiques de vos joueurs, connectez-vous sur notre site web (qaobee.com) et profitez des fonctionnalités d'analyse et de comparaison pour vos joueurs et vos équipes" 
+        },
         "teamWeb": {
-          "title": "Gérez vos joueurs / vos équipes",
-          "detail": "Ajouter un joueur, consulter la fiche détaillée d'un joueur, modifier toutes les informations d'un joueur. Gérer de la même façon vos équipes"
+          "title": "Gérez vos joueurs, vos équipes, votre agenda",   
+          "detail": "<ul><li>Ajoutez un nouveau joueur, modifiez ses informations, consultez sa fiche détaillée</li><li>Vous pouvez suivre autant de joueur que vous le souhaitez</li><li>Gérer de la même façon vos équipes</li><li>Planifiez vos matchs amicaux, vos matchs de coupe et vos matchs de championnat</li></ul>"
         },
         "agendaWeb": {
           "title": "Planifiez vos matchs",
@@ -107,14 +110,15 @@
         },
         "statsWeb": {
           "title": "Analysez les statistiques",
-          "detail": "Consultez les performances de vos joueurs. Efficacité au tir, impacts préférentiels,temps de jeu, agressivité, apport offensif et défensif. Comparez les performances de vos joueurs entre-eux. Profitez des mêmes fonctionnalités au niveau des équipes et des matchs."
+          "detail": "<ul><li>Consultez les performances de vos joueurs</li><li> Accèdez à leurs statistiques : Efficacité au tir, temps de jeu, agressivité, apport offensif et défensif</li> <li>Comparez vos joueurs </li> <li>Profitez des mêmes fonctionnalités de statisitques et de comparaison au niveau des équipes</li></ul>"
         },
         "shareWeb": {
-          "title": "Un espace de travail partagé",
-          "detail": "Travaillez en équipe avec le même effectif",
-          "detail2": "L'application Web vous donne la possibilité d'inviter d'autres entraîneurs à votre espace. Rendez-vous dans le menu de votre profil. Vos collaborateurs peuvent aussi vous partager leur espace. A tout moment, vous pouvez basculer d'un espace à l'autre toujours via le menu Profil"
+          "title": "Progressez de manière collaborative",
+          "intro":"Qaobee handball vous permet de partager votre espace avec d'autres entraîneurs. Ainsi vous pouvez collaborer à plusieurs sur le même effectif et déceler les axes d'amélioration en équipe",    
+          "detail": "Travaillez avec d'autres coachs",
+          "detail2": "Invitez d'autres coachs de handball à votre espace. Rendez-vous dans le menu de votre profil. Vos collaborateurs peuvent aussi vous partager leur espace. A tout moment, vous pouvez basculer d'un espace à l'autre toujours via le menu Profil"
         },
-        "appMob": "Une application mobile pour",
+        "appMob": "Collectez les stats de vos joueurs",
         "teamMob": {
           "title": "Joueurs",
           "detail": "Ajouter un joueur à la dernière minute. Consulter les données minimales de vos joueurs."
@@ -124,12 +128,13 @@
           "detail": "Ajouter ou modifier rapidement un match"
         },
         "collectMob": {
-          "title": "Enregistrez les performances de vos joueurs",
-          "detail": "Collectez l'origine et l'impact des tirs, les actions positives et négatives en attaque et en défense, les sanctions disciplinaires, le temps de jeu..."
+          "title": "Avec Qaobee Handball, vous disposez d'une cinquantaine d'indicateurs",
+          "intro": "Téléchargez l'application Qaobee HB sur votre téléphone ou votre tablette et commencez à collecter les actions de jeu de vos joueurs durant les matchs",    
+          "detail": "<ul><li>Tir préférentiel : origine et impact des tirs</li> <li>Actions positives et négatives en attaque : Décalage, passe décisive, force, marché, reprise... </li> <li>Actions positives et négatives en défense : contre, interception, mauvais placement, interception ratée... </li> <li>Sanctions disciplinaires : carton jaune et rouge, deux minutes</li><li>Statut du joueur : titulaire, remplaçant, temps de jeu...</li></ul>"
         },
         "statsMob": {
-          "title": "Consultez les statistiques du match en temp réel",
-          "detail": "Vous pouvez consulter en temps réel les statistiques d'un match. A la mi-temps, adaptez votre discours en vous appuyant sur les statistiques collectées."
+          "title": "Consultez les statistiques d'un match en temp réel",
+          "detail": "<ul><li>Vous pouvez consulter en temps réel les statistiques d'un match</li><li> A tout moment, adaptez votre discours en vous appuyant sur les statistiques des données collectées</li></ul>"
         }
       }
     }

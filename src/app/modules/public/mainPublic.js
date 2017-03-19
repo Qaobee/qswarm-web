@@ -26,29 +26,23 @@
             }).when('/!', {
                 controller: 'PublicCtrl',
                 templateUrl: 'app/modules/public/mainPublic.html'
-           /* }).when('/concept', {
-                controller: 'HowCtrl',
-                templateUrl: 'app/modules/public/how.html'*/
             }).when('/legals', {
                 controller: 'MentionslegalesCtrl',
                 templateUrl: 'app/modules/public/legal.html'
-         /*   }).when('/contact', {
-                controller: 'ContactCtrl',
-                templateUrl: 'app/modules/public/contact.html'*/
             }).when('/pricing', {
                 controller: 'PricingCtrl',
                 templateUrl: 'app/modules/public/pricing.html'
             }).when('/about', {
                 controller: 'AboutCtrl',
                 templateUrl: 'app/modules/public/aboutUs.html'
+            }).when('/contact', {
+                controller: 'ContactCtrl',
+                templateUrl: 'app/modules/public/contact.html'
             });
+            
         })
 
-        .controller('HowCtrl', function () {
-
-        })
-
-        /**
+       /**
          * @class qaobee.public.public.PublicCtrl
          * @description Contrôleur de la page d'accueil publique
          */
@@ -90,6 +84,14 @@
         })
 
         /**
+         * @class qaobee.public.public.AboutCtrl
+         * @description Contrôleur de la page "à propos"
+         */
+        .controller('ContactCtrl', function ($scope) {
+           
+        })
+
+        /**
          * @class qaobee.public.public.PricingCtrl
          * @description Contrôleur de la page "nos tarifs"
          */
@@ -106,68 +108,4 @@
             qeventbus.prepForBroadcast('menuItem', 'legal');
         })
 
-        /**
-         * @class qaobee.public.public.ContactCtrl
-         * @description Contrôleur de la page "contactez nous"
-         */
-        .controller('ContactCtrl', function ($scope, publicRestAPI, $filter, $translatePartialLoader, qeventbus, $timeout) {
-            qeventbus.prepForBroadcast('menuItem', 'contact');
-            $translatePartialLoader.addPart('public');
-            var address = '20, rue Cuirassé Bretagne, 29200 BREST';
-
-            function initialize() {
-                var geocoder = new google.maps.Geocoder();
-                var latlng = new google.maps.LatLng(-34.397, 150.644);
-                var myOptions = {
-                    zoom: 16,
-                    center: latlng,
-                    mapTypeControl: false,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
-                var map = new google.maps.Map(document.getElementById("ngMap"), myOptions);
-
-                if (geocoder) {
-                    geocoder.geocode({'address': address}, function (results, status) {
-                        if (status === google.maps.GeocoderStatus.OK && status !== google.maps.GeocoderStatus.ZERO_RESULTS) {
-                            map.setCenter(results[0].geometry.location);
-                            var infowindow = new google.maps.InfoWindow({
-                                content: '<b>Qaobee</b><br />' + address,
-                                size: new google.maps.Size(150, 50)
-                            });
-
-                            var marker = new google.maps.Marker({
-                                position: results[0].geometry.location,
-                                map: map,
-                                title: 'Qaobee'
-                            });
-                            google.maps.event.addListener(marker, 'click', function () {
-                                infowindow.open(map, marker);
-                            });
-                        }
-                    });
-                }
-            }
-            $timeout(function () {
-                initialize();
-            }, 0);
-
-
-            $scope.contact = {};
-            /**
-             * @name $scope.validate
-             * @function
-             * @memberOf qaobee.public.public.ContactCtrl
-             * @description Envoi un email
-             */
-            $scope.validate = function () {
-                publicRestAPI.sendMail($scope.contact).success(function () {
-                    $scope.contact = {};
-                    toastr.success($filter('translate')('content.contact.label.success'));
-                });
-            };
-            $scope.$on('$destroy', function () {
-                delete $scope.subjects;
-                delete $scope.contact;
-            });
-        });
 }());

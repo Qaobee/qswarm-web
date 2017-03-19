@@ -25,7 +25,7 @@ angular.module('qaobee.cnil', [])
             restrict: 'E',
             replace: false,
             controller: 'CnilController',
-            templateUrl: 'app/components/directives/cnil/cnil.html',
+            templateUrl: 'app/components/directives/public/cnil/cnil.html',
             scope: {
                 link: '@'
             }
