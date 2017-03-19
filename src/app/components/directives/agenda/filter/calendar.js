@@ -193,7 +193,7 @@
                         $scope.updateDatas(noUpdt);
                     };
                 },
-                templateUrl: 'app/components/directives/commons/filter/calendar.html'
+                templateUrl: 'app/components/directives/agenda/filter/calendar.html'
             };
         });
 }());

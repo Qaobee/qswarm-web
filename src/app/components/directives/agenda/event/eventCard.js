@@ -111,7 +111,7 @@
                 }, link: function () {
                     angular.element('.modal').modal();
                 },
-                templateUrl: 'app/components/directives/agenda/eventCard.html'
+                templateUrl: 'app/components/directives/agenda/event/eventCard.html'
             };
         });
 }());

@@ -119,7 +119,7 @@
                         }
                     });
                 },
-                templateUrl: 'app/components/directives/widgets/stats/efficiency/efficiencyPlayer.html'
+                templateUrl: 'app/components/directives/stats/hand/shoots/efficiencyPlayer.html'
             };
         });
 }());

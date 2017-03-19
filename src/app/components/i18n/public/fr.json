@@ -1,7 +1,7 @@
 {
   "landing": {
     "main-title": "Connaissez-vous la performance de vos joueurs ?",
-    "calltoaction":"Démarrer",  
+    "calltoaction":"Démarrez",  
     "sub-title": "Qaobee HB permet aux entraîneurs de handball de collecter les statistiques de leurs joueurs durant les matchs, ou les entraînements",
     "manual-btn": "Mode d'emploi",
     "connect": "Restons connectés",
@@ -17,7 +17,7 @@
         "unsubscribe": "Se désinscrire"
       }
     },
-    "part-2": {
+    "concept": {
       "title": "Découvrez le concept",
       "capture": "Collectez",
       "analyze": "Analysez",
@@ -25,7 +25,7 @@
     },
     "area-3": {
       "item-0": {
-        "title": "Télécharger l'application de collecte",
+        "title": "Téléchargez l'application de collecte",
         "content": "Disponible sur Google Play et bientôt sur l'App Store, Qaobee est la solution idéale pour l'analyse des données sportives liées au handball. L'application fonctionne aussi bien sur téléphone que sur tablette."
       },
       "item-1": {
@@ -98,20 +98,20 @@
         "desc": "L'espace de travail dont vous avez besoin pour entraîner en toute simplicité.",
         "appWeb": "Une application Web pour",
         "teamWeb": {
-          "title": "Gérer vos joueurs / vos équipes",
+          "title": "Gérez vos joueurs / vos équipes",
           "detail": "Ajouter un joueur, consulter la fiche détaillée d'un joueur, modifier toutes les informations d'un joueur. Gérer de la même façon vos équipes"
         },
         "agendaWeb": {
-          "title": "Planifier vos matchs",
+          "title": "Planifiez vos matchs",
           "detail": "Planifier les matchs amicaux, les matchs de coupe et les matchs de championnat."
         },
         "statsWeb": {
-          "title": "Analyser les statistiques",
+          "title": "Analysez les statistiques",
           "detail": "Consultez les performances de vos joueurs. Efficacité au tir, impacts préférentiels,temps de jeu, agressivité, apport offensif et défensif. Comparez les performances de vos joueurs entre-eux. Profitez des mêmes fonctionnalités au niveau des équipes et des matchs."
         },
         "shareWeb": {
           "title": "Un espace de travail partagé",
-          "detail": "Travailler en équipe avec le même effectif",
+          "detail": "Travaillez en équipe avec le même effectif",
           "detail2": "L'application Web vous donne la possibilité d'inviter d'autres entraîneurs à votre espace. Rendez-vous dans le menu de votre profil. Vos collaborateurs peuvent aussi vous partager leur espace. A tout moment, vous pouvez basculer d'un espace à l'autre toujours via le menu Profil"
         },
         "appMob": "Une application mobile pour",
@@ -124,11 +124,11 @@
           "detail": "Ajouter ou modifier rapidement un match"
         },
         "collectMob": {
-          "title": "Enregistrer les performances de vos joueurs",
+          "title": "Enregistrez les performances de vos joueurs",
           "detail": "Collectez l'origine et l'impact des tirs, les actions positives et négatives en attaque et en défense, les sanctions disciplinaires, le temps de jeu..."
         },
         "statsMob": {
-          "title": "Consulter les statistiques du match en temp réel",
+          "title": "Consultez les statistiques du match en temp réel",
           "detail": "Vous pouvez consulter en temps réel les statistiques d'un match. A la mi-temps, adaptez votre discours en vous appuyant sur les statistiques collectées."
         }
       }

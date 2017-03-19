@@ -108,7 +108,7 @@
                         }
                     });
                 },
-                templateUrl: 'app/components/directives/stats/hand/actionsPosNeg.html'
+                templateUrl: 'app/components/directives/stats/hand/actions/actionsPosNeg.html'
             };
         });
 }());

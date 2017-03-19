@@ -103,7 +103,7 @@
                     });
 
                 },
-                templateUrl: 'app/components/directives/stats/hand/sanction.html'
+                templateUrl: 'app/components/directives/stats/hand/sanctions/sanction.html'
             };
         });
 }());

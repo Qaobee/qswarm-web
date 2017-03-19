@@ -208,7 +208,7 @@
                         }
                     });
                 },
-                templateUrl: 'app/components/directives/stats/hand/efficiency.html'
+                templateUrl: 'app/components/directives/stats/hand/shoots/efficiency.html'
             };
         });
 }());
