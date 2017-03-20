@@ -1,4 +1,4 @@
-<!-- Bannière Download appli mobile -->
+<!-- Bannière Download appcollaborate-->
 <appdownload-banner></appdownload-banner>
 <!-- Menu Not connected -->
 <div class="navbar-fixed" ng-if="!user">
@@ -8,30 +8,23 @@
                 <a href="/#/" class="brand-logo"><img src="assets/images/logo-mini.png" height="30px"/></a>
                 <ul class="left hide-on-med-and-down" style="margin-left: 200px;" ng-if=" menuItem !== 'signup'">
                     <li ng-class="{'active' : menuItem === 'concept'}">
-                        <a href="" translate="navbar.concept" ng-click="gotoAnchor('concept')"></a>
+                        <a href="javascript:void(0)" translate="navbar.concept" ng-click="gotoAnchor('concept')"></a>
                     </li>
                     <li ng-class="{'active' : menuItem === 'download'}">
-                        <a href="" translate="navbar.download" ng-click="gotoAnchor('download')"></a>
-                    </li><!--
-                <li ng-class="{'active' : menuItem === 'about'}">
-                    <a href="#about" translate="landing.contact.about"></a>
-                </li>-->
-
-                    <!--    <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
-                            <a href="#/pricing" translate="navbar.pricing"></a>
-                        </li>
-        -->
+                        <a href="javascript:void(0)" translate="navbar.download" ng-click="gotoAnchor('download')"></a>
+                    </li>
+                    <li ng-class="{'active' : menuItem === 'collaborate'}">
+                        <a href="javascript:void(0)" translate="navbar.collaborate" ng-click="gotoAnchor('collaborate')"></a>
+                    </li>
                 </ul>
                 <ul class="right hide-on-med-and-down">
                     <li>
                         <a class="waves-effect waves-white secondary-color" ng-click="openSignup()"
                            translate="navbar.signup"></a>
                     </li>
-
                     <li>
                         <a ng-click="openLogin()" translate="navbar.connect"></a>
                     </li>
-
                 </ul>
 
                 <!-- menu mobile start -->
@@ -40,17 +33,14 @@
 
                 <ul id="nav-mobileHC" class="side-nav dark-primary-color">
                     <li ng-class="{'active' : menuItem === 'concept'}">
-                        <a href="" class="white-text" translate="navbar.concept" ng-click="gotoAnchor('concept')"></a>
+                        <a href="javascript:void(0)" class="white-text" translate="navbar.concept" ng-click="gotoAnchor('concept')"></a>
                     </li>
                     <li ng-class="{'active' : menuItem === 'download'}">
-                        <a href="" class="white-text" translate="navbar.download" ng-click="gotoAnchor('download')"></a>
-                    </li><!--
-                <li ng-class="{'active' : menuItem === 'contact'}">
-                    <a class="white-text" href="#/contact" translate="navbar.contact"></a>
-                </li>--><!--
-                <li ng-class="{'active' : menuItem === 'pricing'}" ng-if="!isProd">
-                    <a class="white-text" href="#/pricing" translate="navbar.pricing"></a>
-                </li>-->
+                        <a href="javascript:void(0)" class="white-text" translate="navbar.download" ng-click="gotoAnchor('download')"></a>
+                    </li>
+                    <li ng-class="{'active' : menuItem === 'collaborate'}">
+                        <a href="javascript:void(0)" class="white-text" translate="navbar.collaborate" ng-click="gotoAnchor('collaborate')"></a>
+                    </li>
                     <li>
                         <a class="waves-effect waves-white secondary-color" ng-click="openSignup()"
                            translate="navbar.signup"></a>

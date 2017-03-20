@@ -39,7 +39,8 @@
     "pricing": "Tarifs",
     "concept": "Le concept",
     "contact" : "Contact",
-    "download" : "Téléchargement"
+    "download" : "Téléchargement",
+    "collaborate" : "Collaborez"
   },
   "modal": {
     "login": {

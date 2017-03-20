@@ -5,6 +5,16 @@
  *
  * Made By MaterializeCSS.com
  */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
@@ -379,12 +389,6 @@ button, input, optgroup, select, textarea {
 
 span.badge {
     position: relative;
-}
-
-footer.page-footer {
-    margin: 0;
-    position: absolute;
-    width: 100%;
 }
 
 .visible-nav {
@@ -1243,7 +1247,7 @@ input[type=checkbox]:checked + .card-title .fa {
 
 .zone3 {
     background-size: cover;
-    background: darkslategrey url("../assets/images/handball/zone5.jpg") no-repeat  80%;
+    background: darkslategrey url("../assets/images/handball/zone5.jpg") no-repeat 80%;
     -webkit-background-size: cover;
     height: calc(100vh - 64px);
     width: 100%;
@@ -1443,13 +1447,13 @@ slide-wrapper ul.bullets {
 slide-wrapper ul.bullets li {
     width: 15px;
     height: 15px;
-    background-color: #e1e1e1;
-    background:DarkSlateGray;
+    background: DarkSlateGray;
     border: 1px solid #bbbbbb;
     border-radius: 50%;
     float: left;
     margin: 5px;
     cursor: pointer;
+    z-index: 999999;
 }
 
 slide-wrapper ul.bullets li.active {
@@ -1459,7 +1463,7 @@ slide-wrapper ul.bullets li.active {
 .device {
     position: relative;
     left: 25%;
-    padding: 56px 10px 0px;
+    padding: 56px 10px 0;
     border-radius: 30px;
     background: #37474F;
     display: -ms-flexbox;
@@ -1479,9 +1483,50 @@ slide-wrapper ul.bullets li.active {
     left: calc(50% - 5px);
 }
 
-.device .screenshot {
+.screenshot .desc {
+    position: absolute;
+    background-color: rgba(33, 33, 33, 0.7);
+    bottom: 3rem;
+    width: 70%;
+    margin-left: 30%;
+    padding: 1rem;
+    border-radius: 10px 0 0 10px;
+}
+
+@media only screen and (max-width: 769px) {
+    .screenshot .desc {
+        position: relative;
+        bottom: 0;
+        padding: 1rem;
+        background-color: transparent;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 2rem;
+        border-radius: 0;
+    }
+
+    slide-wrapper ul.bullets {
+        position: absolute;
+        top: 0;
+    }
+
+    slide-wrapper {
+        margin-top: 1rem;
+        height: auto;
+    }
+}
+
+.device .screenshot > li {
+    min-height: 200px;
+    background-color: white;
+    border-radius: 4px 4px 0 0;
+}
+
+.laptop .screenshot {
     width: 200px;
-    height: 200px;
+    height: 500px;
+    overflow: hidden;
+    background-color: white;
     border-radius: 4px 4px 0 0;
 }
 
@@ -1570,7 +1615,7 @@ slide-wrapper ul.bullets li.active {
     margin-top: -30px;
 }
 
-icon-block {
+.icon-block {
     counter-reset: step;
 }
 
@@ -1578,65 +1623,100 @@ p {
     text-align: justify;
 }
 
-
-.icon-conceptH > li {
-    list-style-type: none;
-    float: left;
-    position: relative;
+.icon-conceptH {
+    height: 100%;
+    vertical-align: middle;
     text-align: center;
 }
 
-.icon-conceptH > li > i {
-    text-align: center;
-    position: absolute;
-    top: 15px;
-    width: 100%;
-    left: 0;
-    font-size: 52px;
-}
-
-.icon-conceptH > li:before {
-    width: 80px;
-    height: 80px;
-    content: '';
-    line-height: 50px;
-    border: 1px solid #37474F;
-    display: block;
-    text-align: center;
-    margin: 0 auto 10px auto;
+.icon-conceptH .fa {
+    height: 5rem;
+    width: 5rem;
+    font-size: 3rem !important;
+    padding-top: 1rem;
+    margin: 10px;
     border-radius: 5%;
     background-color: #78BE78;
 }
 
-.icon-concept > li {
-    list-style-type: none;
-    float: left;
-    position: relative;
+.icon-concept {
+    height: 100%;
+    vertical-align: middle;
     text-align: center;
 }
 
-.icon-concept > li > i {
-    text-align: center;
-    position: absolute;
-    top: 10px;
-    width: 100%;
-    left: 0;
-    font-size: 52px;
-}
-
-.icon-concept > li:before {
-    width: 80px;
-    height: 80px;
-    content: '';
-    line-height: 50px;
-    border: 1px solid #37474F;
-    display: block;
-    text-align: center;
-    margin: 0 auto 10px auto;
+.icon-concept .fa {
+    height: 5rem;
+    width: 5rem;
+    font-size: 2rem !important;
+    padding-top: 1rem;
+    margin: 10px;
     border-radius: 5%;
     background-color: #607d8b;
 }
 
 #download {
     border: 1px solid #37474F;
+}
+
+.outter-arrow {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    margin-left: -20px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+}
+
+.bounce {
+    -moz-animation: bounce 2s infinite;
+    -webkit-animation: bounce 2s infinite;
+    animation: bounce 2s infinite;
+    color: white;
+    padding-top: 5px;
+}
+
+span#top {
+    position: absolute;
+    top: 0;
+}
+
+.toTop {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    background-color: #607d8b;
+    color: white;
+    width: 50px;
+    height: 50px;
+    line-height: 44px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 50%;
+    -webkit-filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5));
+    -moz-filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5));
+    -ms-filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5));
+    -o-filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.fade.ng-enter {
+    transition: 0.25s linear all;
+    opacity: 0;
+}
+
+.fade.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
+.fade.ng-leave {
+    transition: 0.25s linear all;
+    opacity: 1;
+}
+
+.fade.ng-leave.ng-leave-active {
+    opacity: 0;
 }
