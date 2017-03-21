@@ -25,7 +25,7 @@
                     scrollTo(0, stopY);
                     return;
                 }
-                var speed = Math.round(distance / 100);
+                var speed = Math.round(distance / 50);
                 if (speed >= 20) {
                     speed = 20;
                 }

@@ -8,7 +8,7 @@
 body {
     display: flex;
     min-height: 100vh;
-    flex-direction: column;
+    flex-direction: column;;
 }
 
 main {
@@ -1211,20 +1211,68 @@ input[type=checkbox]:checked + .card-title .fa {
 }
 
 /* Home public zone 1 */
-
+.nav-top-menu {
+    margin-left: 200px;
+}
+.nav-top-menu > li a {
+    float: left;
+    position: relative;
+}
+.nav-top-menu > li.active {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.nav-top-menu > li a::after {
+    content: ">";
+    position: absolute;
+    font-size: 20px;
+    top: 50%;
+    margin-top: -32px;
+    right: -5px;
+}
+.nav-top-menu > li:last-child a::after {
+    content: '';
+}
 .zone1-title {
     line-height: 1.5em;
 }
 
 .zone1 {
-    background-size: cover;
-    background: #636363 url("../assets/images/handball/zone2.jpg") no-repeat center center;
+    background: #636363 url("../assets/images/handball/rsz_d5d4ex-large.jpg") no-repeat center center;
     -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
     height: calc(100vh - 64px);
     width: 100%;
     background-blend-mode: overlay;
     margin: 0;
     padding: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .zone1 {
+        background: #636363 url("../assets/images/handball/rsz_2d5d4ex-small.jpg") no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        height: calc(100vh - 64px);
+        width: 100%;
+        background-blend-mode: overlay;
+        margin: 0;
+        padding: 0;
+    }
+}
+@media only screen and (max-width: 992px) and (min-width: 601px){
+    .zone1 {
+        background: #636363 url("../assets/images/handball/rsz_1d5d4ex-medium.jpg") no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        height: calc(100vh - 64px);
+        width: 100%;
+        background-blend-mode: overlay;
+        margin: 0;
+        padding: 0;
+    }
 }
 
 .zone1 > div {
@@ -1493,7 +1541,7 @@ slide-wrapper ul.bullets li.active {
     border-radius: 10px 0 0 10px;
 }
 
-@media only screen and (max-width: 769px) {
+@media only screen and (max-width: 600px) {
     .screenshot .desc {
         position: relative;
         bottom: 0;
@@ -1505,14 +1553,21 @@ slide-wrapper ul.bullets li.active {
         border-radius: 0;
     }
 
+
     slide-wrapper ul.bullets {
         position: absolute;
         top: 0;
     }
-
+    .device > slide-wrapper ul.bullets {
+        margin-top: -5px;
+        position: relative;
+    }
     slide-wrapper {
         margin-top: 1rem;
         height: auto;
+    }
+    .device > slide-wrapper {
+        margin-top: 0;
     }
 }
 

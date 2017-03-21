@@ -1,7 +1,10 @@
 {
   "landing": {
     "main-title": "Boostez la performance de votre équipe",
-    "calltoaction":"Démarrez",  
+    "calltoaction":  {
+      "android" : "Android",
+      "iphone" : "Bientôt sur IPhone"
+    },
     "sub-title": "Coachs, entraîneurs de handball, collectez les statistiques de vos joueurs durant les matchs, ou les entraînements",
     "manual-btn": "Mode d'emploi",
     "connect": "Restons connectés",
@@ -25,7 +28,7 @@
     },
     "area-3": {
       "item-0": {
-        "title": "Téléchargez l'application de collecte",
+        "title": "Téléchargez l'application de collecte de données",
         "content": "Disponible sur Google Play et bientôt sur l'App Store, Qaobee HB est la solution idéale pour l'analyse des données sportives liées au handball. L'application fonctionne aussi bien sur téléphone que sur tablette."
       },
       "item-1": {
@@ -113,7 +116,7 @@
           "detail": "<ul><li>Consultez les performances de vos joueurs</li><li> Accèdez à leurs statistiques : Efficacité au tir, temps de jeu, agressivité, apport offensif et défensif</li> <li>Comparez vos joueurs </li> <li>Profitez des mêmes fonctionnalités de statisitques et de comparaison au niveau des équipes</li></ul>"
         },
         "shareWeb": {
-          "title": "Progressez de manière collaborative",
+          "title": "Collaborez pour progresser",
           "intro":"Qaobee handball vous permet de partager votre espace avec d'autres entraîneurs. Ainsi vous pouvez collaborer à plusieurs sur le même effectif et déceler les axes d'amélioration en équipe",    
           "detail": "Travaillez avec d'autres coachs",
           "detail2": "Invitez d'autres coachs de handball à votre espace. Rendez-vous dans le menu de votre profil. Vos collaborateurs peuvent aussi vous partager leur espace. A tout moment, vous pouvez basculer d'un espace à l'autre toujours via le menu Profil"
@@ -133,7 +136,7 @@
           "detail": "<ul><li>Tir préférentiel : origine et impact des tirs</li> <li>Actions positives et négatives en attaque : Décalage, passe décisive, force, marché, reprise... </li> <li>Actions positives et négatives en défense : contre, interception, mauvais placement, interception ratée... </li> <li>Sanctions disciplinaires : carton jaune et rouge, deux minutes</li><li>Statut du joueur : titulaire, remplaçant, temps de jeu...</li></ul>"
         },
         "statsMob": {
-          "title": "Consultez les statistiques d'un match en temp réel",
+          "title": "Consultez les statistiques d'un match en temps réel",
           "detail": "<ul><li>Vous pouvez consulter en temps réel les statistiques d'un match</li><li> A tout moment, adaptez votre discours en vous appuyant sur les statistiques des données collectées</li></ul>"
         }
       }

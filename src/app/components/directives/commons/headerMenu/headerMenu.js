@@ -36,10 +36,17 @@
                     $scope.signin = {};
                     $scope.isProd = $window.location.hostname === 'www.qaobee.com';
                     $scope.showCnil = $translate.use() === 'fr_FR';
+                    if( $location.hash() !=='') {
+                        $location.hash('')
+                    }
                     $scope.gotoAnchor = function (x) {
-                        $location.hash(x);
-                        $scope.menuItem = x;
-                        anchorSmoothScroll.scrollTo(x, 60);
+                        try {
+                            $location.hash(x);
+                            $scope.menuItem = x;
+                            anchorSmoothScroll.scrollTo(x, 60);
+                        } catch (e) {
+                            $log.debug(e);
+                        }
                     };
                     $scope.isActive = function (viewLocation) {
                         return viewLocation === $location.path();
@@ -132,6 +139,7 @@
                     $scope.$on('qeventbus:menuItem', function () {
                         $scope.menuItem = qeventbus.data;
                     });
+
                     $scope.$on('qeventbus:refreshUser', function () {
                         var data = qeventbus.data;
                         data.isAdmin = false;

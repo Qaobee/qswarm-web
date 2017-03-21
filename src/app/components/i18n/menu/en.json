@@ -40,6 +40,8 @@
     "concept": "Concept",
     "contact" : "Contact",
     "download" : "Download",
+    "collect" : "Collect",
+    "progress" : "Progress",
     "collaborate" : "Collaborate"
   },
   "modal": {
