@@ -106,7 +106,7 @@
          * @class qaobee.public.public.AboutCtrl
          * @description Contrôleur de la page "à propos"
          */
-        .controller('ContactCtrl', function ($scope) {
+        .controller('ContactCtrl', function () {
 
         })
 
@@ -125,6 +125,5 @@
          */
         .controller('MentionslegalesCtrl', function (qeventbus) {
             qeventbus.prepForBroadcast('menuItem', 'legal');
-        })
-
+        });
 }());
