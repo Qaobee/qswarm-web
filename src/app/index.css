@@ -1540,6 +1540,20 @@ slide-wrapper ul.bullets li.active {
     padding: 1rem;
     border-radius: 10px 0 0 10px;
 }
+
+@media only screen and (max-width: 992px) {
+    .screenshot .desc {
+        position: absolute;
+        background-color: rgba(33, 33, 33, 0.7);
+        bottom: 3rem;
+        width: 100%;
+        margin-left: 0;
+        padding: 1rem;
+        border-radius: 0;
+        color: white;
+    }
+}
+
 @media only screen and (max-width: 600px) {
     .screenshot .desc {
         position: relative;
@@ -1570,18 +1584,7 @@ slide-wrapper ul.bullets li.active {
     }
 }
 
-@media only screen and (max-width: 992px) {
-    .screenshot .desc {
-        position: absolute;
-        background-color: rgba(33, 33, 33, 0.7);
-        bottom: 3rem;
-        width: 100%;
-        margin-left: 0;
-        padding: 1rem;
-        border-radius: 0;
-        color: white;
-    }
-}
+
 .device .screenshot > li {
     min-height: 200px;
     background-color: white;
