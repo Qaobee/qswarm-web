@@ -1214,13 +1214,16 @@ input[type=checkbox]:checked + .card-title .fa {
 .nav-top-menu {
     margin-left: 200px;
 }
+
 .nav-top-menu > li a {
     float: left;
     position: relative;
 }
+
 .nav-top-menu > li.active {
     background-color: rgba(0, 0, 0, 0.1);
 }
+
 .nav-top-menu > li a::after {
     content: ">";
     position: absolute;
@@ -1229,9 +1232,11 @@ input[type=checkbox]:checked + .card-title .fa {
     margin-top: -32px;
     right: -5px;
 }
+
 .nav-top-menu > li:last-child a::after {
     content: '';
 }
+
 .zone1-title {
     line-height: 1.5em;
 }
@@ -1261,7 +1266,8 @@ input[type=checkbox]:checked + .card-title .fa {
         padding: 0;
     }
 }
-@media only screen and (max-width: 992px) and (min-width: 601px){
+
+@media only screen and (max-width: 992px) and (min-width: 601px) {
     .zone1 {
         background: #383838 url("../assets/images/handball/rsz_1d5d4ex-medium.jpg") no-repeat center center;
         -webkit-background-size: cover;
@@ -1566,24 +1572,25 @@ slide-wrapper ul.bullets li.active {
         border-radius: 0;
     }
 
-
     slide-wrapper ul.bullets {
         position: absolute;
         top: 0;
     }
+
     .device > slide-wrapper ul.bullets {
         margin-top: -5px;
         position: relative;
     }
+
     slide-wrapper {
         margin-top: 1rem;
         height: auto;
     }
+
     .device > slide-wrapper {
         margin-top: 0;
     }
 }
-
 
 .device .screenshot > li {
     min-height: 200px;
@@ -1799,6 +1806,7 @@ span#top {
     text-align: center;
     height: 60px;
 }
+
 .play-ico img {
     width: 7rem;
 }
@@ -1808,5 +1816,9 @@ span#top {
 }
 
 .social-icons img {
-    width: 3rem;
+    width: 4rem;
+}
+
+.stores img {
+    width: 8rem;
 }
