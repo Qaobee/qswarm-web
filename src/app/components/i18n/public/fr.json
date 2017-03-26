@@ -28,8 +28,8 @@
     },
     "area-3": {
       "item-0": {
-        "title": "Téléchargez l'application de collecte de données",
-        "content": "Disponible sur Google Play et bientôt sur l'App Store, Qaobee HB est la solution idéale pour l'analyse des données sportives liées au handball. L'application fonctionne aussi bien sur smartphone que sur tablette."
+        "title": "Téléchargez Qaobee HB",
+        "content": "Qaobee HB permet au coach d'handball de collecter et d'analyser les statistiques de ses joueurs. <br/>L'application fonctionne sur smartphone et sur tablette."
       },
       "item-1": {
         "title": "Valorisation des données",
@@ -131,12 +131,23 @@
           "detail": "Ajouter ou modifier rapidement un match"
         },
         "collectMob": {
-          "title": "Avec Qaobee Handball, vous disposez d'une cinquantaine d'indicateurs",
-          "intro": "Téléchargez l'application Qaobee HB sur votre téléphone ou votre tablette et commencez à collecter les actions de jeu de vos joueurs durant les matchs",    
-          "detail": "<ul><li>Tir préférentiel : origine et impact des tirs</li> <li>Actions positives et négatives en attaque : Décalage, passe décisive, force, marché, reprise... </li> <li>Actions positives et négatives en défense : contre, interception, mauvais placement, interception ratée... </li> <li>Sanctions disciplinaires : carton jaune et rouge, deux minutes</li><li>Statut du joueur : titulaire, remplaçant, temps de jeu...</li></ul>"
+          "title": "Une cinquantaine d'indicateurs à votre disposition",
+          "intro": "Téléchargez notre application Qaobee HB sur votre téléphone ou votre tablette et commencez à collecter les actions de jeu de vos joueurs durant les matchs",    
+          "detail": {
+              "shootTitle": "Tir préférentiel",
+              "shoot": " Identifiez les préférences de tirs de vos joueurs en indiquant l'origine et l'impact de leur tirs <br/>Pour vos gardiens, observez les points forts et leur poins faible en précisant l'origine et l'impact des tirs adverses",
+              "attackTitle": "Performance offensive",
+              "attack": "Collectez les actions positives et négatives de vos joueurs lors des phases d'attaque <br/> Décalage, passe décisive, force, marché, reprise, perte de balle...",
+              "defenseTitle": "Performance défensive",
+              "defense": "Collectez les actions positives et négatives de vos joueurs lors des phases de défense <br/> Contre, interception, neutralisation, mauvais placement, interception ratée...",
+              "disciplineTitle": "Discipline",
+              "discipline": "Mesurez l'agressivité et le sang-froid de vos joueurs <br/> Carton jaune, deux minutes, carton rouge",
+              "statusTitle": "Coaching",
+              "status": "Quels sont vos joueurs les plus souvent titularisés, les remplaçants, leurs temps de jeu, les rotations..."
+          }
         },
         "statsMob": {
-          "title": "Consultez les statistiques d'un match en temps réel",
+          "title": "Consultez les statistiques en temps réel ou après le match",
           "detail": "<ul><li>Vous pouvez consulter en temps réel les statistiques d'un match</li><li> A tout moment, adaptez votre discours en vous appuyant sur les statistiques des données collectées</li></ul>"
         }
       }
