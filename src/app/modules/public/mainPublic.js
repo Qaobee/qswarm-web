@@ -81,12 +81,6 @@
                 angular.element($window).scroll(function () {
                     $scope.toTop = this.pageYOffset >= angular.element($window).height() / 2;
                 });
-                angular.element('.modal').modal({
-                    dismissible: true,
-                    opacity: 0.7,
-                    in_duration: 600,
-                    out_duration: 200
-                });
             }, 1);
         })
 
