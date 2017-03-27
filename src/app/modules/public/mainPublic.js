@@ -51,7 +51,7 @@
             $translatePartialLoader.addPart('public');
             $translatePartialLoader.addPart('commons');
 
-            $scope.parts = ['01', '02', '03', '04', '08', '06', '07'];
+            $scope.parts = ['01', '02', '03', '04', '05', '06', '07','08'];
             $scope.toTop = false;
             // asu = Allow SignUp
             $rootScope.signupAvailable = true;

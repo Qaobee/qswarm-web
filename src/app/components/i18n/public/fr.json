@@ -26,31 +26,15 @@
       "analyze": "Analysez",
       "progress": "Progressez"
     },
-    "area-3": {
-      "item-0": {
+    "area-4": {
+        "iphone": "Bientôt disponible sur l'App Store",
+        "android": "Disponible sur Google Play",
         "title": "Téléchargez Qaobee HB",
         "content": "Qaobee HB permet au coach d'handball de collecter et d'analyser les statistiques de ses joueurs. <br/>L'application fonctionne sur smartphone et sur tablette."
-      },
-      "item-1": {
-        "title": "Valorisation des données",
-        "content": "Qaobee transforme les données sportives en informations stratégiques et vous aide dans la prise de décision."
-      },
-      "item-2": {
-        "title": "Espace de travail",
-        "content": "Tableau de bord personnalisé, gestion de l'effectif, calendrier sportif, rapports et analyse des rencontres, Qaobee s'occupe de tout pour vous permettre de vous concentrer sur l'essentiel : la performance de votre groupe."
-      },
-      "item-3": {
-        "title": "Amélioration continue",
-        "content": "Les mises à jour proposées régulièrement vous offrent des fonctionnalités toujours plus riches pour optimiser la gestion de votre équipe."
-      }
     },
-    "area-4": {
-      "iphone": "Bientôt disponible sur l'App Store",
-      "android": "Disponible sur Google Play"
-    },
-    "area-5": {
-      "title": "Pourquoi utiliser Qaobee",
-      "content": "Vous êtes coach et vous souhaitez <span class=\"accent-text-color\">capter</span> des statistiques depuis votre mobile ou votre tablette. Ces statistiques sont remontées dans notre interface Web avec laquelle vous pourrez les <span class=\"accent-text-color\">analyser</span>. Fort de ces métriques, vous pourrez optimiser vos entraînements et faire <span class=\"accent-text-color\">progresser</span> vos joueurs."
+    "area-6": {
+      "title": "Inscrivez-vous à notre newsletter",
+      "content": "Restez informé des nouvelles fonctionnalités de notre solution et de l'actualité de Qaobee"
     }
   },
   "contact": {
@@ -100,8 +84,8 @@
         "period": "/ mois",
         "desc": "L'espace de travail dont vous avez besoin pour entraîner en toute simplicité.",
         "appWeb": {
-            "title":"Analysez les forces et faiblesses de vos joueurs",
-            "intro":"Après avoir collecté les statistiques de vos joueurs, connectez-vous sur notre site web (qaobee.com) et profitez des fonctionnalités d'analyse et de comparaison pour vos joueurs et vos équipes" 
+            "title":"Collectez les statistiques et consultez les immédiatemment",
+            "intro":"Grâce à l'application de collecte <b>Qaobee HB</b>, accédez aux statistiques de vos joueurs ou de votre équipe en temps réel durant un match. Argumentez votre discours d'avant match, pendant un temps mort ou à la mi-temps d'une rencontre." 
         },
         "teamWeb": {
           "title": "Gérez vos joueurs, vos équipes, votre agenda",   
@@ -112,14 +96,16 @@
           "detail": "Planifier les matchs amicaux, les matchs de coupe et les matchs de championnat."
         },
         "statsWeb": {
-          "title": "Analysez les statistiques",
-          "detail": "<ul><li>Consultez les performances de vos joueurs</li><li> Accèdez à leurs statistiques : Efficacité au tir, temps de jeu, agressivité, apport offensif et défensif</li> <li>Comparez vos joueurs </li> <li>Profitez des mêmes fonctionnalités de statisitques et de comparaison au niveau des équipes</li></ul>"
+          "title": "Analysez vos statistiques sur notre application Web",
+          "detail": "En vous rendant sur notre application Web (qaobee.com), consultez les performances de vos joueurs match après match <br/>  Efficacité au tir, temps de jeu, agressivité, apport offensif et défensif <br/>Profitez des outils de comparaison entre joueurs et entre équipes <br/>Profitez des mêmes fonctionnalités au niveau de vos équipes"
         },
         "shareWeb": {
-          "title": "Collaborez pour progresser",
-          "intro":"Qaobee handball vous permet de partager votre espace avec d'autres entraîneurs. Ainsi vous pouvez collaborer à plusieurs sur le même effectif et déceler les axes d'amélioration en équipe",    
-          "detail": "Travaillez avec d'autres coachs",
-          "detail2": "Invitez d'autres coachs de handball à votre espace. Rendez-vous dans le menu de votre profil. Vos collaborateurs peuvent aussi vous partager leur espace. A tout moment, vous pouvez basculer d'un espace à l'autre toujours via le menu Profil"
+          "title": "Collaborez et progresser",
+          "intro":"Partagez votre effectif avec d'autres entraîneurs",    
+          "item1Title": "Travaillez avec d'autres coachs de handball",
+          "item1Detail" : "Collaborez à plusieurs sur le même effectif, les mêmes joueurs, les mêmes statistiques et déceler les axes d'amélioration en équipe", 
+          "item2Title": "Travaillez sur plusieurs effectifs avec d'autres coachs",
+          "item2Detail": "Invitez d'autres coachs de handball sur votre espace. Vos collaborateurs peuvent aussi vous partager leur espace. Basculez d'un espace à l'autre en un clic"
         },
         "appMob": "Collectez les stats de vos joueurs",
         "teamMob": {
