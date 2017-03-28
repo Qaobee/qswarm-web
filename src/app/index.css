@@ -19,7 +19,7 @@ main {
     width: 100vw;
     margin-left: 0 !important;
     margin-right: 0 !important;
-    padding: 0 !important;
+    padding: 1rem;
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -1399,10 +1399,6 @@ nav img.social-icon {
     margin-top: 10px;
     -webkit-filter: grayscale(100%); filter: grayscale(100%);
 }
-.home {
-    margin: 40px 1rem 1rem;
-}
-
 .btn-sm {
     min-width: 0;
     padding-left: 15px;
