@@ -4,13 +4,22 @@
 <div class="navbar-fixed" ng-if="!user">
     <nav class="top-nav top-nav-trans dark-primary-color" role="navigation">
         <div class="container">
-            <a href="/#/" class="brand-logo"><img src="assets/images/logo-mini.png" height="30px" ng-click="menuItem = ''" alt="Qaobee"/></a>
+            <a href="/#/" class="brand-logo"><img src="assets/images/logo-mini.png" height="30px"
+                                                  ng-click="menuItem = ''" alt="Qaobee"/></a>
             <div class="nav-wrapper">
                 <ul class="left hide-on-med-and-down nav-top-menu" ng-if=" menuItem !== 'signup'">
-                    <li><a class="dropdown-header-button" href="#!" data-activates="dropdown-header"><span translate="navbar.concept"></span> <i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-header-button" href="#!" data-activates="dropdown-header"><span
+                            translate="navbar.concept"></span> <i class="material-icons right">arrow_drop_down</i></a>
+                    </li>
                     <li><a href="#/about">A propos</a></li>
                 </ul>
                 <ul class="right hide-on-med-and-down">
+                    <li><a href="https://twitter.com/Qaobee" target="_blank" class="accent-text-color"
+                           rel="noopener"> <img src="assets/images/Twitter.png" class="social-icon"></a></li>
+                    <li><a href="https://www.facebook.com/qaobee" target="_blank" class="accent-text-color"
+                           rel="noopener"><img src="assets/images/facebook.png" class="social-icon"></a></li>
+                    <li><a href="mailto:contact@qaobee.com" class="accent-text-color">
+                        <img src="assets/images/Gmail.png" class="social-icon"></a></li>
                     <li>
                         <a class="waves-effect waves-white secondary-color" ng-click="openSignup()"
                            translate="navbar.signup"></a>
@@ -26,22 +35,28 @@
 
                 <ul id="nav-mobileHC" class="side-nav dark-primary-color">
                     <li ng-class="{'active' : menuItem === 'concept'}">
-                        <a href="javascript:void(0)" class="white-text" translate="navbar.concept" ng-click="gotoAnchor('concept')"></a>
+                        <a href="javascript:void(0)" class="white-text" translate="navbar.concept"
+                           ng-click="gotoAnchor('concept')"></a>
                     </li>
                     <li ng-class="{'active' : menuItem === 'download'}">
-                        <a href="javascript:void(0)" class="white-text" translate="navbar.download" ng-click="gotoAnchor('download')"></a>
+                        <a href="javascript:void(0)" class="white-text" translate="navbar.download"
+                           ng-click="gotoAnchor('download')"></a>
                     </li>
                     <li ng-class="{'active' : menuItem === 'collect'}">
-                        <a href="javascript:void(0)" class="white-text" translate="navbar.collect" ng-click="gotoAnchor('collect')"></a>
+                        <a href="javascript:void(0)" class="white-text" translate="navbar.collect"
+                           ng-click="gotoAnchor('collect')"></a>
                     </li>
                     <li ng-class="{'active' : menuItem === 'progress'}">
-                        <a href="javascript:void(0)" class="white-text" translate="navbar.progress" ng-click="gotoAnchor('progress')"></a>
+                        <a href="javascript:void(0)" class="white-text" translate="navbar.progress"
+                           ng-click="gotoAnchor('progress')"></a>
                     </li>
                     <li ng-class="{'active' : menuItem === 'collaborate'}">
-                        <a href="javascript:void(0)" class="white-text" translate="navbar.collaborate" ng-click="gotoAnchor('collaborate')"></a>
+                        <a href="javascript:void(0)" class="white-text" translate="navbar.collaborate"
+                           ng-click="gotoAnchor('collaborate')"></a>
                     </li>
                     <li ng-class="{'active' : menuItem === 'contact'}">
-                        <a href="javascript:void(0)" class="white-text" translate="navbar.contact" ng-click="gotoAnchor('contact')"></a>
+                        <a href="javascript:void(0)" class="white-text" translate="navbar.contact"
+                           ng-click="gotoAnchor('contact')"></a>
                     </li>
                     <li>
                         <a class="waves-effect waves-white secondary-color" ng-click="openSignup()"

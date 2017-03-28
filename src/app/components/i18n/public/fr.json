@@ -34,7 +34,7 @@
     },
     "area-6": {
       "title": "Inscrivez-vous à notre newsletter",
-      "content": "Restez informé des nouvelles fonctionnalités de notre solution et de l'actualité de Qaobee"
+      "content": "Restez informé(e) des nouvelles fonctionnalités de notre solution et de l'actualité de Qaobee"
     }
   },
   "contact": {
@@ -89,7 +89,7 @@
         },
         "teamWeb": {
           "title": "Gérez vos joueurs, vos équipes, votre agenda",   
-          "detail": "<ul><li>Ajoutez un nouveau joueur, modifiez ses informations, consultez sa fiche détaillée</li><li>Vous pouvez suivre autant de joueur que vous le souhaitez</li><li>Gérer de la même façon vos équipes</li><li>Planifiez vos matchs amicaux, vos matchs de coupe et vos matchs de championnat</li></ul>"
+          "detail": "<ul><li>Ajoutez un nouveau joueur, modifiez ses informations, consultez sa fiche détaillée</li><li>Suivez autant de joueurs que vous le souhaitez</li><li>Gérez de la même façon vos équipes </li><li>Planifiez vos matchs amicaux, vos matchs de coupe et vos matchs de championnat</li></ul>"
         },
         "agendaWeb": {
           "title": "Planifiez vos matchs",
@@ -100,10 +100,10 @@
           "detail": "En vous rendant sur notre application Web (qaobee.com), consultez les performances de vos joueurs match après match <br/>  Efficacité au tir, temps de jeu, agressivité, apport offensif et défensif <br/>Profitez des outils de comparaison entre joueurs et entre équipes <br/>Profitez des mêmes fonctionnalités au niveau de vos équipes"
         },
         "shareWeb": {
-          "title": "Collaborez et progresser",
+          "title": "Collaborez et progressez",
           "intro":"Partagez votre effectif avec d'autres entraîneurs",    
           "item1Title": "Travaillez avec d'autres coachs de handball",
-          "item1Detail" : "Collaborez à plusieurs sur le même effectif, les mêmes joueurs, les mêmes statistiques et déceler les axes d'amélioration en équipe", 
+          "item1Detail" : "Collaborez à plusieurs sur le même effectif, les mêmes joueurs, les mêmes statistiques et décelez les axes d'amélioration en équipe",
           "item2Title": "Travaillez sur plusieurs effectifs avec d'autres coachs",
           "item2Detail": "Invitez d'autres coachs de handball sur votre espace. Vos collaborateurs peuvent aussi vous partager leur espace. Basculez d'un espace à l'autre en un clic"
         },

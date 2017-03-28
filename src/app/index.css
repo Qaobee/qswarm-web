@@ -15,6 +15,13 @@ main {
     flex: 1 0 auto;
 }
 
+.container-full {
+    width: 100vw;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+}
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
@@ -65,11 +72,6 @@ main {
     color: #FFFFFF;
 }
 
-.btn.call-to-action {
-    background: rgb(120, 190, 120);
-!important;
-    color: #FFFFFF;
-}
 
 .secondary-color {
     background: #78BE78 !important;
@@ -1331,7 +1333,7 @@ p {
     text-align: justify;
 }
 
-.icon-block + p {
+.icon-block  p {
     margin-top: 150px;
 }
 
@@ -1343,8 +1345,15 @@ p {
     position: relative;
     text-align: center;
 }
+.icon-block {
+    margin: 0;
+    padding: 0;
+}
+.icon-block > li > a {
+    color: #37474F;
+}
 
-.icon-block > li > i {
+.icon-block > li i {
     text-align: center;
     position: absolute;
     top: 25px;
@@ -1385,8 +1394,13 @@ p {
     display: none !important;
 }
 
+nav img.social-icon {
+    height: 40px;
+    margin-top: 10px;
+    -webkit-filter: grayscale(100%); filter: grayscale(100%);
+}
 .home {
-    margin-top: 40px;
+    margin: 40px 1rem 1rem;
 }
 
 .btn-sm {
@@ -1408,17 +1422,10 @@ p {
 }
 
 .social-icons {
-    display: table; /* Allow the centering to work */
     margin: 0 auto;
     height: 4em;
 }
 
-.social-icons > li {
-    list-style: none;
-    float: left;
-    position: relative;
-    padding: 2em;
-}
 
 .social-icons > li > a > i.fa {
     font-size: 3em;
@@ -1481,6 +1488,10 @@ slide-wrapper ul.bullets li.active {
     background-color: #78BE78;
 }
 
+.outerdevice {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
 .device {
     position: relative;
     left: 40%;
@@ -1668,8 +1679,6 @@ p {
 
 .icon-conceptH {
     height: 100%;
-    vertical-align: middle;
-    text-align: center;
 }
 
 .icon-conceptH .fa {
@@ -1766,12 +1775,30 @@ span#top {
 
 .play-ico {
     position: absolute;
-    bottom: 15rem;
+    bottom: 10rem;
     left: 50%;
     margin-left: -100px;
     width: 200px;
     text-align: center;
     height: 60px;
+}
+
+.btn.call-to-action {
+    background: #ea5350;
+    color: #FFFFFF;
+    font-size: 1.5em;
+    min-width: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 100%;
+}
+.download-btn {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.download-btn i.fa {
+    font-size: 2rem;
 }
 
 .play-ico img {
