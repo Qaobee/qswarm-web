@@ -1398,6 +1398,11 @@ nav img.social-icon {
     height: 40px;
     margin-top: 10px;
     -webkit-filter: grayscale(100%); filter: grayscale(100%);
+    vertical-align: middle;
+}
+nav img.social-icon.no-margin {
+    height: 40px;
+    margin-top: 0;
 }
 .btn-sm {
     min-width: 0;
