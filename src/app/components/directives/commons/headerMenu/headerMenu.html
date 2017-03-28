@@ -4,17 +4,26 @@
 <div class="navbar-fixed" ng-if="!user">
     <nav class="top-nav top-nav-trans dark-primary-color" role="navigation">
         <div class="container">
+            <a href="/#/" class="brand-logo"><img src="assets/images/logo-mini.png" height="30px" ng-click="menuItem = ''"/></a>
             <div class="nav-wrapper">
-                <a href="/#/" class="brand-logo"><img src="assets/images/logo-mini.png" height="30px"/></a>
-                <ul class="left hide-on-med-and-down" style="margin-left: 200px;" ng-if=" menuItem !== 'signup'">
+                <ul class="left hide-on-med-and-down nav-top-menu" ng-if=" menuItem !== 'signup'">
                     <li ng-class="{'active' : menuItem === 'concept'}">
                         <a href="javascript:void(0)" translate="navbar.concept" ng-click="gotoAnchor('concept')"></a>
                     </li>
                     <li ng-class="{'active' : menuItem === 'download'}">
                         <a href="javascript:void(0)" translate="navbar.download" ng-click="gotoAnchor('download')"></a>
                     </li>
+                    <li ng-class="{'active' : menuItem === 'collect'}">
+                        <a href="javascript:void(0)" translate="navbar.collect" ng-click="gotoAnchor('collect')"></a>
+                    </li>
+                    <li ng-class="{'active' : menuItem === 'progress'}">
+                        <a href="javascript:void(0)" translate="navbar.progress" ng-click="gotoAnchor('progress')"></a>
+                    </li>
                     <li ng-class="{'active' : menuItem === 'collaborate'}">
                         <a href="javascript:void(0)" translate="navbar.collaborate" ng-click="gotoAnchor('collaborate')"></a>
+                    </li>
+                    <li ng-class="{'active' : menuItem === 'contact'}">
+                        <a href="javascript:void(0)" translate="navbar.contact" ng-click="gotoAnchor('contact')"></a>
                     </li>
                 </ul>
                 <ul class="right hide-on-med-and-down">
@@ -38,8 +47,17 @@
                     <li ng-class="{'active' : menuItem === 'download'}">
                         <a href="javascript:void(0)" class="white-text" translate="navbar.download" ng-click="gotoAnchor('download')"></a>
                     </li>
+                    <li ng-class="{'active' : menuItem === 'collect'}">
+                        <a href="javascript:void(0)" class="white-text" translate="navbar.collect" ng-click="gotoAnchor('collect')"></a>
+                    </li>
+                    <li ng-class="{'active' : menuItem === 'progress'}">
+                        <a href="javascript:void(0)" class="white-text" translate="navbar.progress" ng-click="gotoAnchor('progress')"></a>
+                    </li>
                     <li ng-class="{'active' : menuItem === 'collaborate'}">
                         <a href="javascript:void(0)" class="white-text" translate="navbar.collaborate" ng-click="gotoAnchor('collaborate')"></a>
+                    </li>
+                    <li ng-class="{'active' : menuItem === 'contact'}">
+                        <a href="javascript:void(0)" class="white-text" translate="navbar.contact" ng-click="gotoAnchor('contact')"></a>
                     </li>
                     <li>
                         <a class="waves-effect waves-white secondary-color" ng-click="openSignup()"
@@ -58,8 +76,8 @@
 <div class="navbar-fixed" ng-if="user && !user.account.firstConnexion && !notpaid">
     <nav class="top-nav dark-primary-color visible-nav" role="navigation">
         <div class="container">
+            <a href="/#/private/sbSwitch" class="brand-logo center truncate">{{meta.sandbox.structure.label}}</a>
             <div class="nav-wrapper">
-                <a href="/#/private/sbSwitch" class="brand-logo center truncate">{{meta.sandbox.structure.label}}</a>
                 <ul class="hide-on-med-and-down">
                     <li class="left">
                         <a href="#/private/"><i class="material-icons left"

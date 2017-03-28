@@ -8,7 +8,7 @@
 body {
     display: flex;
     min-height: 100vh;
-    flex-direction: column;
+    flex-direction: column;;
 }
 
 main {
@@ -1132,10 +1132,10 @@ span.badge {
 }
 
 .trial-banner > div {
-    -moz-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
-    -webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
-    -o-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
-    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
+    -moz-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    -o-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     filter: progid:DXImageTransform.Microsoft.Shadow(color=rgba(0, 0, 0, 0.12), Direction=180, Strength=10);
 }
 
@@ -1211,20 +1211,65 @@ input[type=checkbox]:checked + .card-title .fa {
 }
 
 /* Home public zone 1 */
+.nav-top-menu {
+    margin-left: 200px;
+}
+
+.nav-top-menu > li a {
+    float: left;
+    position: relative;
+}
+
+.nav-top-menu > li.active {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.nav-top-menu > li:last-child a::after {
+    content: '';
+}
 
 .zone1-title {
     line-height: 1.5em;
 }
 
 .zone1 {
-    background-size: cover;
-    background: #636363 url("../assets/images/handball/zone2.jpg") no-repeat center center;
+    background: #383838 url("../assets/images/handball/rsz_d5d4ex-large.jpg") no-repeat center center;
     -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
     height: calc(100vh - 64px);
     width: 100%;
     background-blend-mode: overlay;
     margin: 0;
     padding: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .zone1 {
+        background: #383838 url("../assets/images/handball/rsz_2d5d4ex-small.jpg") no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        height: calc(100vh - 64px);
+        width: 100%;
+        background-blend-mode: overlay;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 992px) and (min-width: 601px) {
+    .zone1 {
+        background: #383838 url("../assets/images/handball/rsz_1d5d4ex-medium.jpg") no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        height: calc(100vh - 64px);
+        width: 100%;
+        background-blend-mode: overlay;
+        margin: 0;
+        padding: 0;
+    }
 }
 
 .zone1 > div {
@@ -1462,7 +1507,7 @@ slide-wrapper ul.bullets li.active {
 
 .device {
     position: relative;
-    left: 25%;
+    left: 40%;
     padding: 56px 10px 0;
     border-radius: 30px;
     background: #37474F;
@@ -1493,7 +1538,20 @@ slide-wrapper ul.bullets li.active {
     border-radius: 10px 0 0 10px;
 }
 
-@media only screen and (max-width: 769px) {
+@media only screen and (max-width: 992px) {
+    .screenshot .desc {
+        position: absolute;
+        background-color: rgba(33, 33, 33, 0.7);
+        bottom: 3rem;
+        width: 100%;
+        margin-left: 0;
+        padding: 1rem;
+        border-radius: 0;
+        color: white;
+    }
+}
+
+@media only screen and (max-width: 600px) {
     .screenshot .desc {
         position: relative;
         bottom: 0;
@@ -1510,9 +1568,18 @@ slide-wrapper ul.bullets li.active {
         top: 0;
     }
 
+    .device > slide-wrapper ul.bullets {
+        margin-top: -5px;
+        position: relative;
+    }
+
     slide-wrapper {
         margin-top: 1rem;
         height: auto;
+    }
+
+    .device > slide-wrapper {
+        margin-top: 0;
     }
 }
 
@@ -1636,7 +1703,7 @@ p {
     padding-top: 1rem;
     margin: 10px;
     border-radius: 5%;
-    background-color: #78BE78;
+    background-color: #ea5350;
 }
 
 .icon-concept {
@@ -1652,7 +1719,7 @@ p {
     padding-top: 1rem;
     margin: 10px;
     border-radius: 5%;
-    background-color: #607d8b;
+    background-color: #37474F;
 }
 
 #download {
@@ -1665,7 +1732,7 @@ p {
     left: 50%;
     width: 60px;
     height: 60px;
-    margin-left: -20px;
+    margin-left: -30px;
     border: 2px solid #ffffff;
     border-radius: 50%;
 }
@@ -1719,4 +1786,30 @@ span#top {
 
 .fade.ng-leave.ng-leave-active {
     opacity: 0;
+}
+
+.play-ico {
+    position: absolute;
+    bottom: 15rem;
+    left: 50%;
+    margin-left: -100px;
+    width: 200px;
+    text-align: center;
+    height: 60px;
+}
+
+.play-ico img {
+    width: 7rem;
+}
+
+.home-title {
+    margin-top: -15rem;
+}
+
+.social-icons img {
+    width: 4rem;
+}
+
+.stores img {
+    width: 14rem;
 }

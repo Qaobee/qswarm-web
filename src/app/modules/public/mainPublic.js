@@ -42,37 +42,32 @@
 
         })
 
-       /**
+        /**
          * @class qaobee.public.public.PublicCtrl
          * @description Contrôleur de la page d'accueil publique
          */
         .controller('PublicCtrl', function ($scope, $rootScope, $translatePartialLoader, $location, qeventbus,
-                                            $window, $timeout, anchorSmoothScroll) {
+                                            $window, $log, $timeout, anchorSmoothScroll) {
             $translatePartialLoader.addPart('public');
             $translatePartialLoader.addPart('commons');
 
-            $scope.parts = ['01', '02', '03', '04', '05', '06', '07'];
+            $scope.parts = ['01', '02', '03', '04', '05', '06', '07','08'];
             $scope.toTop = false;
             // asu = Allow SignUp
             $rootScope.signupAvailable = true;
             delete $rootScope.user;
-            qeventbus.prepForBroadcast('menuItem', 'home');
+
             $scope.gotoAnchor = function (x) {
-                $location.hash(x);
-                $scope.menuItem = x;
-                anchorSmoothScroll.scrollTo(x, 60);
+                try {
+                    $location.hash(x);
+                    $scope.menuItem = x;
+                    qeventbus.prepForBroadcast('menuItem', x);
+                    anchorSmoothScroll.scrollTo(x, 60);
+                } catch (e) {
+                    $log.debug(e);
+                }
             };
-            /**
-             * @description initialization materialize components
-             */
-            $rootScope.$on('$viewContentLoaded', function () {
-                angular.element('.modal').modal({
-                    dismissible: true,
-                    opacity: 0.7,
-                    in_duration: 600,
-                    out_duration: 200
-                });
-            });
+
             /**
              *
              * @returns {boolean}
@@ -82,8 +77,8 @@
                 return false;
             };
 
-            $timeout(function() {
-                angular.element($window).scroll(function() {
+            $timeout(function () {
+                angular.element($window).scroll(function () {
                     $scope.toTop = this.pageYOffset >= angular.element($window).height() / 2;
                 });
             }, 1);
@@ -101,7 +96,7 @@
          * @class qaobee.public.public.AboutCtrl
          * @description Contrôleur de la page "à propos"
          */
-        .controller('ContactCtrl', function ($scope) {
+        .controller('ContactCtrl', function () {
 
         })
 
@@ -120,6 +115,5 @@
          */
         .controller('MentionslegalesCtrl', function (qeventbus) {
             qeventbus.prepForBroadcast('menuItem', 'legal');
-        })
-
+        });
 }());

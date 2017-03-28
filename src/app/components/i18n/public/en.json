@@ -4,6 +4,10 @@
     "sub-title": "Qu'attendez-vous ?",
     "manual-btn": "Mode d'emploi",
     "connect": "Restons connectés",
+    "calltoaction":  {
+      "android" : "Android",
+      "iphone" : "Soon on IPhone"
+    },
     "legals": "Mentions légales",
     "contact": {
       "email": "Contactez-nous",

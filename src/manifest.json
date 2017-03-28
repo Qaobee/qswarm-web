@@ -1,11 +1,15 @@
 {
   "name": "Qaobee",
   "short_name": "Qaobee",
-  "icons": [{
-    "src": "assets/images/qaobee-logoRouge.png",
-    "sizes": "200x200",
-    "type": "image/png"
-  }],
+  "background_color": "#222222",
+  "theme_color": "#EA5350",
+  "icons": [
+    {
+      "src": "assets/images/qaobee-logoRouge.png",
+      "sizes": "200x200",
+      "type": "image/png"
+    }
+  ],
   "start_url": "/#",
   "display": "standalone"
 }
