@@ -1811,6 +1811,10 @@ span#top {
     margin-top: -15rem;
 }
 
+.row.social-icons {
+    max-width: 50%;
+}
+
 .social-icons img {
     width: 4rem;
 }
