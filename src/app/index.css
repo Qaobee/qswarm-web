@@ -1583,6 +1583,7 @@ slide-wrapper ul.bullets li.active {
 .laptop {
     width: 100%;
     position: relative;
+    margin-top: 1rem;
 }
 
 .laptop:before {
