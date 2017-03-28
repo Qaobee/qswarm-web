@@ -112,6 +112,10 @@ main {
 .aboutUs  {
     padding-top: 10px;
 }
+
+.aboutUs > .container .row {
+    margin-bottom: 0;
+}
 .top-nav-trans {
     position: relative;
     z-index: 30;
@@ -1585,9 +1589,10 @@ slide-wrapper ul.bullets li.active {
 }
 
 .laptop {
-    width: 100%;
+    width: calc(100% - 2rem);
     position: relative;
-    margin-top: 1rem;
+    margin: 1rem;
+    padding-bottom: 2rem;
 }
 
 .laptop:before {
