@@ -10,19 +10,13 @@
             $('.dropdown-button').dropdown({
                     inDuration: 300,
                     outDuration: 225,
-                    // Does not change width of dropdown to that of the activator
                     constrain_width: false,
-                    // Activate on hover
                     hover: true,
-                    // Spacing from edge
                     gutter: 0,
-                    // Displays dropdown below the button
                     belowOrigin: false,
-                    // Displays dropdown with edge aligned to the left of button
                     alignment: 'left'
                 }
             );
-            
             $('.slider').slider({full_width: true});
             // end of document ready
         });

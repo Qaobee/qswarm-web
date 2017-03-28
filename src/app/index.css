@@ -100,26 +100,16 @@ main {
     color: #eceff1 !important;
 }
 
-/* Public site */
 
-.aboutUs .card-content {
-    min-height: 170px
+.aboutUs img.activator {
+    width: 12rem;
+    filter: grayscale(100%);
+    border-radius: 5px !important;
+    margin: 10px auto 0;
 }
-
-.aboutUs .card-transluscent {
-    background-color: rgba(96, 125, 139, 0.5);
-    padding: 20px;
-    margin: 3vh 15vw 3vh 15vw;
-    text-align: center;
-    color: #ffffff;
+.aboutUs  {
+    padding-top: 10px;
 }
-
-.aboutUs-part-two {
-    text-align: left;
-    position: relative;
-    padding: 3vh 7vw 3vh 7vw;
-}
-
 .top-nav-trans {
     position: relative;
     z-index: 30;
@@ -177,30 +167,10 @@ main {
     margin-bottom: 5vh;
 }
 
-.aboutUs {
-    max-height: 100%;
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    background: url("../assets/images/handball/Pricing.jpg") fixed;
-    background-size: cover;
-    position: relative;
-    top: 0;
-    bottom: 0;
-    margin: 0;
-    padding: 0;
-
-}
-
 /* Override Materializecss */
 
 .card {
     border-radius: 8px;
-}
-
-.aboutUs img {
-    filter: grayscale(100%);
-    border-radius: 12px !important;
 }
 
 .card, .card .card-title {
@@ -859,7 +829,13 @@ span.badge {
     padding: 0;
     margin: 0;
 }
+#dropdown-header.dropdown-content {
+    min-width: 200px !important;
+}
 
+#dropdown-header.dropdown-content a {
+    width: 100%;
+}
 .notification:after {
     content: '';
     display: block;

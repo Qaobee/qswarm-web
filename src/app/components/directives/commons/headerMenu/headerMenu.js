@@ -22,7 +22,7 @@
             'angular-send-feedback'
         ])
         .directive('headerMenu', function (qeventbus, $rootScope, $translate, $location, $window, anchorSmoothScroll,
-                                           $translatePartialLoader, $filter, signupRestAPI, userRestAPI, $sce,
+                                           $translatePartialLoader, $filter, signupRestAPI, userRestAPI, $sce, $log,
                                            seasonsRestAPI) {
             return {
                 restrict: 'AE',
@@ -36,11 +36,12 @@
                     $scope.signin = {};
                     $scope.isProd = $window.location.hostname === 'www.qaobee.com';
                     $scope.showCnil = $translate.use() === 'fr_FR';
-                    if( $location.hash() !=='') {
+                    if ($location.hash() !== '') {
                         $location.hash('')
                     }
                     $scope.gotoAnchor = function (x) {
                         try {
+                            $location.path('/');
                             $location.hash(x);
                             $scope.menuItem = x;
                             anchorSmoothScroll.scrollTo(x, 60);
@@ -53,6 +54,17 @@
                     };
                     $rootScope.$on('$viewContentLoaded', function () {
                         $scope.hideTrial = $location.path() === '/';
+                        angular.element('.dropdown-header-button').dropdown({
+                                inDuration: 300,
+                                outDuration: 225,
+                                constrain_width: false,
+                                hover: false,
+                                gutter: 0,
+                                belowOrigin: false,
+                                alignment: 'left',
+                                stopPropagation: true
+                            }
+                        );
                         function is_touch_device() { // NOSONAR
                             try {
                                 document.createEvent('TouchEvent');
