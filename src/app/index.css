@@ -1267,66 +1267,10 @@ input[type=checkbox]:checked + .card-title .fa {
     margin-top: 20px;
 }
 
-/* Home public zone 3 */
-.zone3-title {
-    line-height: 1em;
-}
-
-.zone3 {
-    background-size: cover;
-    background: darkslategrey url("../assets/images/handball/zone5.jpg") no-repeat 80%;
-    -webkit-background-size: cover;
-    height: calc(100vh - 64px);
-    width: 100%;
-    background-blend-mode: overlay;
-    margin: 0;
-    padding: 0;
-}
-
-.zone3 > div {
-    width: 100%;
-    height: 100%;
-}
-
-.zone3 > div > div {
-    width: 100%;
-}
-
-.zone3 .btn {
-    margin-top: 10px;
-}
-
 @media only screen and (max-width: 600px) {
     .zone1-text-container, .zone2-text-container {
         width: 100%;
     }
-}
-
-.home-concept {
-    background: url("../assets/images/handball/Home1.png") center center no-repeat;
-    background-size: cover;
-    -webkit-background-size: cover;
-    height: 400px;
-}
-
-div.home-bg1 {
-    height: 250px;
-    width: auto;
-    background: url("../assets/images/home2.jpg") no-repeat right bottom;
-    -webkit-background-size: cover;
-    background-size: cover;
-    margin: 0;
-    padding: 0;
-}
-
-div.home-bg2 {
-    height: 250px;
-    width: auto;
-    background: url("../assets/images/home3.jpg") no-repeat right bottom;
-    -webkit-background-size: cover;
-    background-size: cover;
-    margin: 0;
-    padding: 0;
 }
 
 .icon-block {
@@ -1495,6 +1439,14 @@ slide-wrapper ul.bullets li.active {
 .outerdevice {
     padding-top: 1rem;
     padding-bottom: 2rem;
+   /* background: #383838 url("../assets/images/handball/rsz_d5d4ex-large.jpg") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    height: auto;
+    width: 100%;
+    background-blend-mode: luminosity;
+    margin: 0; */
 }
 .device {
     position: relative;
@@ -1589,9 +1541,9 @@ slide-wrapper ul.bullets li.active {
 }
 
 .laptop {
-    width: calc(100% - 2rem);
+    width: calc(100% - 4rem);
     position: relative;
-    margin: 1rem;
+    margin: 2rem;
     padding-bottom: 2rem;
 }
 
@@ -1810,7 +1762,10 @@ span#top {
 .home-title {
     margin-top: -15rem;
 }
-
+.home {
+    margin-top: 2rem;
+    padding: 1rem;
+}
 .row.social-icons {
     max-width: 50%;
 }
