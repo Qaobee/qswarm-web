@@ -1,16 +1,29 @@
 <div class="home dark-primary-color">
-    <div class="row">
-        <div class="col s12 center-align">
-            <h3 translate="landing.area-6.title"></h3>
-        </div>
-        <div class="col s12 center-align">
+    <h3 translate="landing.area-6.title" class="center"></h3>
+    <div class="container row">
+        <div class="col s12 m6">
+            <img src="assets/images/Livejournal.png" class="responsive-img left" alt="icone" style="max-width: 5rem; vertical-align: middle"/>
             <h5 class="hide-on-small-only" translate="landing.area-6.content"></h5>
         </div>
-        
-        <div class="col s12 center">
-                <a href="javascript:void(0);" data-target="modalSubMailingList" class="accent-text-color">
-                    <img src="assets/images/Livejournal.png" class="responsive-img" alt="icone"><br/>
-                    <span class="white-text">Newsletter</span></a>
-        </div>
+
+        <form action="//qaobee.us13.list-manage.com/subscribe/post?u=d55c6a8036c505a3675d0b352&amp;id=883987d33d"
+              class="col m6"
+              method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank"
+              novalidate>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input type="email" value="" name="EMAIL" class="email validate" id="mce-EMAIL"
+                           required>
+                    <label for="mce-EMAIL" translate="landing.contact.popin.email"></label>
+                </div>
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_d55c6a8036c505a3675d0b352_883987d33d" tabindex="-1" value="">
+                </div>
+                <div class="col s6" style="margin-top: 1.5rem;">
+                    <button type="submit" class="btn btn-sm waves-effect waves-light green darken-1" value="Subscribe"
+                            name="subscribe">{{'commons.buttons.validate' | translate}}<i class="material-icons right">send</i></button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
