@@ -1625,7 +1625,7 @@ slide-wrapper ul.bullets li.active {
 
 .upper slide-wrapper ul.bullets {
     margin-top: -40px;
-    z-index: 1000;
+    z-index: 800;
     position: absolute;
 }
 
