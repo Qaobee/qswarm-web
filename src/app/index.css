@@ -1766,6 +1766,14 @@ span#top {
     margin-top: 2rem;
     padding: 1rem;
 }
+
+@media only screen and (max-width: 600px) {
+    .home {
+        margin-top: 1rem;
+        padding: 0;
+        width: 100%;
+    }
+}
 .row.social-icons {
     max-width: 50%;
 }
