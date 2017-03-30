@@ -14,18 +14,18 @@
                     <li><a href="#/about">A propos</a></li>
                 </ul>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="https://twitter.com/Qaobee" target="_blank" class="accent-text-color"
-                           rel="noopener"> <img src="assets/images/Twitter.png" class="social-icon"></a></li>
+                    <li><a href="https://twitter.com/Qaobee" target="_blank" class="accent-text-color" alt="icon"
+                           rel="noopener"><img src="assets/images/Twitter.png" class="social-icon" alt="icon"></a></li>
                     <li><a href="https://www.facebook.com/qaobee" target="_blank" class="accent-text-color"
-                           rel="noopener"><img src="assets/images/facebook.png" class="social-icon"></a></li>
-                    <li><a href="mailto:contact@qaobee.com" class="accent-text-color">
-                        <img src="assets/images/Gmail.png" class="social-icon"></a></li>
+                           rel="noopener"><img src="assets/images/facebook.png" class="social-icon" alt="icon"></a></li>
                     <li>
-                        <a class="waves-effect waves-white secondary-color" ng-click="openSignup()"
+                        <a href="javascript:void(0)" class="waves-effect waves-white secondary-color"
+                           ng-click="openSignup()"
                            translate="navbar.signup"></a>
                     </li>
                     <li>
-                        <a ng-click="openLogin()" translate="navbar.connect"></a>
+                        <a href="javascript:void(0)" ng-click="openLogin()" data-target="modalLogin"
+                           translate="navbar.connect"></a>
                     </li>
                 </ul>
 
@@ -59,12 +59,19 @@
                            ng-click="gotoAnchor('contact')"></a>
                     </li>
                     <li>
-                        <a class="waves-effect waves-white secondary-color" ng-click="openSignup()"
+                        <a href="javascript:void(0)" class="waves-effect waves-white secondary-color"
+                           ng-click="openSignup()"
                            translate="navbar.signup"></a>
                     </li>
                     <li>
-                        <a class="white-text" ng-click="openLogin()" translate="navbar.connect"></a>
+                        <a href="javascript:void(0)" class="white-text" translate="navbar.connect"></a>
                     </li>
+                    <li><a href="https://twitter.com/Qaobee" target="_blank" class="white-text"
+                           rel="noopener"><img src="assets/images/Twitter.png" class="social-icon no-margin" alt="icon">
+                        Twitter</a></li>
+                    <li><a href="https://www.facebook.com/qaobee" target="_blank" class="white-text"
+                           rel="noopener"><img src="assets/images/facebook.png" class="social-icon no-margin"
+                                               alt="icon"> Facebook</a></li>
                 </ul>
                 <!-- menu mobile end -->
             </div>
@@ -183,9 +190,7 @@
             </a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="https://twitter.com/Qaobee"
-                       target="_blank"
-                       class="white-text"><i
-                        class="fa fa-twitter-square fa-2x"></i></a></li>
+                       target="_blank" class="white-text"><i class="fa fa-twitter-square fa-2x"></i></a></li>
             </ul>
             <a class="brand-logo white-text center">
                 <span class="hide-on-med-and-down fa fa-sign-in"></span>
@@ -208,25 +213,25 @@
         <div class="modal-content white">
             <div class="row ">
                 <div class="input-field col s12">
-                    <input id="modal-login" type="text" class="validate" ng-model="signin.login" required>
-                    <label for="modal-login">
+                    <input id="modalloginfield" type="text" class="validate" ng-model="signin.login" required>
+                    <label for="modalloginfield">
                         {{'modal.login.label.login' | translate }}
                         <span class="accent-text-color">*</span>
                     </label>
                 </div>
                 <div class="input-field col s12">
                     <input id="modal-password" type="password" class="validate" ng-model="signin.passwd" required>
-                    <label for="modal-password">
-                        {{'modal.login.label.password' | translate }}
+                    <label for="modal-password">{{'modal.login.label.password' | translate }}
                         <span class="accent-text-color">*</span>
                     </label>
                 </div>
             </div>
             <div class="row hide-on-small-only">
                 <div>
-                    <a href="" class="light-text-color left" ng-click="openForgotPwd()"
+                    <a href="javascript:void(0);" class="light-text-color left" ng-click="openForgotPwd()"
                        translate="modal.login.label.forgotpasswd"></a>
-                    <a href="" class="secondary-text-color right" ng-click="openSignup()" translate="navbar.signup"></a>
+                    <a href="javascript:void(0);" class="secondary-text-color right" ng-click="openSignup()"
+                       translate="navbar.signup"></a>
                 </div>
 
             </div>

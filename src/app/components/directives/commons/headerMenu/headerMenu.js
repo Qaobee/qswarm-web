@@ -93,6 +93,7 @@
                     };
 
                     $scope.openLogin = function () {
+                        angular.element('#modalLogin').modal();
                         angular.element('#modalLogin').modal('open');
                     };
 
