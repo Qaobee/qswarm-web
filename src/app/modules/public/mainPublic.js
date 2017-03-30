@@ -88,8 +88,9 @@
          * @class qaobee.public.public.AboutCtrl
          * @description Contrôleur de la page "à propos"
          */
-        .controller('AboutCtrl', function ($scope) {
-            $scope.crew = ['pascal', 'mathieu', 'christophe', 'xavier', 'jerome', 'you'];
+        .controller('AboutCtrl', function ($scope, $rootScope, $translatePartialLoader) {
+            
+            $translatePartialLoader.addPart('public');
         })
 
         /**

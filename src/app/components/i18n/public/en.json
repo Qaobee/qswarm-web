@@ -1,13 +1,13 @@
 {
   "landing": {
-    "main-title": "Captez et améliorez les perfs de vos joueurs",
-    "sub-title": "Qu'attendez-vous ?",
-    "manual-btn": "Mode d'emploi",
-    "connect": "Restons connectés",
+    "main-title": "Boostez la performance de votre équipe",
     "calltoaction":  {
       "android" : "Android",
-      "iphone" : "Soon on IPhone"
+      "iphone" : "Bientôt sur IPhone"
     },
+    "sub-title": "Coachs, entraîneurs de handball, collectez les statistiques de vos joueurs durant les matchs, ou les entraînements",
+    "manual-btn": "Mode d'emploi",
+    "connect": "Restons connectés",
     "legals": "Mentions légales",
     "contact": {
       "email": "Contactez-nous",
@@ -20,33 +20,21 @@
         "unsubscribe": "Se désinscrire"
       }
     },
-    "part-2": {
-      "title": "Qaobee facilite l'acquisition et l'analyse de la donnée sportive",
-      "capture": "Captez",
+    "concept": {
+      "title": "Découvrez le concept",
+      "capture": "Collectez",
       "analyze": "Analysez",
       "progress": "Progressez"
     },
-    "area-3": {
-      "item-0": {
-        "title": "Téléchargement gratuit",
-        "content": "Disponible dans l'App Store et Google Play, Qaobee est la solution idéale pour la gestion des données sportives. Elle fonctionne aussi bien sur téléphone que sur tablette, à l'entraînement comme en compétition."
-      },
-      "item-1": {
-        "title": "Valorisation des données",
-        "content": "Qaobee transforme les données sportives en informations stratégiques et vous aide dans la prise de décision."
-      },
-      "item-2": {
-        "title": "Espace de travail",
-        "content": "Tableau de bord personnalisé, gestion de l'effectif, calendrier sportif, rapports et analyse des rencontres, Qaobee s'occupe de tout pour vous permettre de vous concentrer sur l'essentiel : la performance de votre groupe."
-      },
-      "item-3": {
-        "title": "Amélioration continue",
-        "content": "Les mises à jour proposées régulièrement vous offrent des fonctionnalités toujours plus riches pour optimiser la gestion de votre équipe."
-      }
-    },
     "area-4": {
-      "iphone": "Soon available on the App Store",
-      "android": "Available on Google Play"
+        "iphone": "Bientôt disponible sur l'App Store",
+        "android": "Disponible sur Google Play",
+        "title": "Téléchargez Qaobee HB",
+        "content": "Qaobee HB permet au coach d'handball de collecter et d'analyser les statistiques de ses joueurs. <br/>L'application fonctionne sur smartphone et sur tablette."
+    },
+    "area-6": {
+      "title": "Inscrivez-vous à notre newsletter",
+      "content": "Restez informé(e) des nouvelles fonctionnalités de notre solution et de l'actualité de Qaobee"
     }
   },
   "contact": {
@@ -77,26 +65,76 @@
     }
   },
   "pricing": {
-    "title": "Notre offre",
-    "desc": "Qaobee s'adresse aux entraîneurs et aux clubs<span style=\"vertical-align: super; font-size: 50%;\">*</span> de handball",
+    "titleTarif": "Notre offre",
+    "titleInvite": "Rejoins-moi sur Qaobee",
+    "descTarif": "",
+    "descInvite": "",
     "subscribe-btn": "Souscrire",
     "soon-btn": "Prochainement",
     "team-subscribe": "(*) Vous êtes un club et vous souhaitez souscrire à Qaobee pour vos entraîneurs, <a href=\"mailto:contact@qaobee.com\">contactez nous</a>",
     "trial": {
-      "title": "Qaobee est gratuit pendant un mois, alors profitez-en dès à présent",
+      "title": "Le premier mois est gratuit",
       "btn": "Essayer gratuitement"
     },
     "offers": {
       "standard": {
-        "title": "Bronze",
-        "price": "5",
-        "period": "par mois",
+        "titleTarif": "Qaobee HB s'adresse aux entraîneurs et aux clubs (<span style=\"vertical-align: super; font-size: 50%;\">*</span>)  de handball",
+        "priceInvite": "puis 5",
+        "price": "pour 5",
+        "period": "/ mois",
         "desc": "L'espace de travail dont vous avez besoin pour entraîner en toute simplicité.",
-        "detail": {
-          "line1": "Gérer ses joueurs et ses équipes",
-          "line2": "Agenda partagé",
-          "line3": "Partage de son espace de travail avec d'autres entraîneurs",
-          "line4": "Statistiques par joueur, par équipe, par match"
+        "appWeb": {
+            "title":"Collectez les statistiques et consultez les immédiatemment",
+            "intro":"Grâce à l'application de collecte <b>Qaobee HB</b>, accédez aux statistiques de vos joueurs ou de votre équipe en temps réel durant un match. Argumentez votre discours d'avant match, pendant un temps mort ou à la mi-temps d'une rencontre." 
+        },
+        "teamWeb": {
+          "title": "Gérez vos joueurs, vos équipes, votre agenda",   
+          "detail": "<ul><li>Ajoutez un nouveau joueur, modifiez ses informations, consultez sa fiche détaillée</li><li>Suivez autant de joueurs que vous le souhaitez</li><li>Gérez de la même façon vos équipes </li><li>Planifiez vos matchs amicaux, vos matchs de coupe et vos matchs de championnat</li></ul>"
+        },
+        "agendaWeb": {
+          "title": "Planifiez vos matchs",
+          "detail": "Planifier les matchs amicaux, les matchs de coupe et les matchs de championnat."
+        },
+        "statsWeb": {
+          "title": "Analysez vos statistiques sur notre application Web",
+          "detail": "En vous rendant sur notre application Web (qaobee.com), consultez les performances de vos joueurs match après match <br/>  Efficacité au tir, temps de jeu, agressivité, apport offensif et défensif <br/>Profitez des outils de comparaison entre joueurs et entre équipes <br/>Profitez des mêmes fonctionnalités au niveau de vos équipes"
+        },
+        "shareWeb": {
+          "title": "Collaborez et progressez",
+          "intro":"Partagez votre effectif avec d'autres entraîneurs",    
+          "item1Title": "Travaillez avec d'autres coachs de handball",
+          "item1Detail" : "Collaborez à plusieurs sur le même effectif, les mêmes joueurs, les mêmes statistiques et décelez les axes d'amélioration en équipe",
+          "item2Title": "Travaillez sur plusieurs effectifs avec d'autres coachs",
+          "item2Detail": "Invitez d'autres coachs de handball sur votre espace. Vos collaborateurs peuvent aussi vous partager leur espace. Basculez d'un espace à l'autre en un clic"
+        },
+        "appMob": "Collectez les stats de vos joueurs",
+        "teamMob": {
+          "title": "Joueurs",
+          "detail": "Ajouter un joueur à la dernière minute. Consulter les données minimales de vos joueurs."
+        },
+        "agendaMob": {
+          "title": "Agenda",
+          "detail": "Ajouter ou modifier rapidement un match"
+        },
+        "collectMob": {
+          "title": "Une cinquantaine d'indicateurs à votre disposition",
+          "intro": "Téléchargez notre application Qaobee HB sur votre téléphone ou votre tablette et commencez à collecter les actions de jeu de vos joueurs durant les matchs",    
+          "detail": {
+              "shootTitle": "Tir préférentiel",
+              "shoot": " Identifiez les préférences de tirs de vos joueurs en indiquant l'origine et l'impact de leur tirs <br/>Pour vos gardiens, observez leurs points forts et leurs points faibles en précisant l'origine et l'impact des tirs adverses",
+              "attackTitle": "Performance offensive",
+              "attack": "Collectez les actions positives et négatives de vos joueurs lors des phases d'attaque <br/> Décalage, passe décisive, force, marché, reprise, perte de balle...",
+              "defenseTitle": "Performance défensive",
+              "defense": "Collectez les actions positives et négatives de vos joueurs lors des phases de défense <br/> Contre, interception, neutralisation, mauvais placement, interception ratée...",
+              "disciplineTitle": "Discipline",
+              "discipline": "Mesurez l'agressivité et le sang-froid de vos joueurs <br/> Carton jaune, deux minutes, carton rouge",
+              "statusTitle": "Coaching",
+              "status": "Quels sont vos joueurs les plus souvent titularisés, les remplaçants, leurs temps de jeu, les rotations..."
+          }
+        },
+        "statsMob": {
+          "title": "Consultez les statistiques en temps réel ou après le match",
+          "detail": "<ul><li>Vous pouvez consulter en temps réel les statistiques d'un match</li><li> A tout moment, adaptez votre discours en vous appuyant sur les statistiques des données collectées</li></ul>"
         }
       }
     }
@@ -126,46 +164,34 @@
       }
     },
     "xavier": {
-      "title": "Xavier MARIN<br /><small>Co-founder & CTO</small>",
-      "desc": "Je suis le geek de la bande, un amoureux des nouvelles technologies et un développeur passionné.",
-      "email": "xavier.marin@qaobee.com",
-      "twitter": "XavMarin",
-      "github": "giwi"
+      "title": "Xavier",
+      "desc": "Bon les gars, aujourd'hui on y va cool...",
+      "role": "Le coach"
     },
     "christophe": {
-      "title": "Christophe KERVELLA<br /><small>Co-founder & CPIO</small>",
-      "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-      "email": "christophe.kervella@qaobee.com",
-      "twitter": "ChrisKrvla",
-      "github": ""
+      "title": "Christophe",
+      "desc": "Bon les gars, aujourd'hui on y vas cool...",
+      "role": "Le prépa. physique"
     },
     "pascal": {
-      "title": "Pascal PELERIN<br /><small>Co-founder & CEO</small>",
-      "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-      "email": "pascal.pelerin@qaobee.com",
-      "twitter": "",
-      "github": ""
+      "title": "Pascal",
+      "desc": "Bon les gars, aujourd'hui on y va cool...",
+      "role": "Le coach"
     },
     "mathieu": {
-      "title": "Mathieu GARZUEL<br /><small>Co-founder & CMO</small>",
-      "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-      "email": "mathieu.garzuel@qaobee.com",
-      "twitter": "",
-      "github": ""
+      "title": "Mathieu",
+      "desc": "Bon les gars, aujourd'hui on y va cool...",
+      "role": "Le coach"
     },
     "jerome": {
-      "title": "Jérôme ROU&Eacute;<br /><small>Co-founder & CDO</small>",
-      "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-      "email": "jerome.roue@qaobee.com",
-      "twitter": "JeromeRoue",
-      "github": ""
+      "title": "Jérôme",
+      "desc": "Bon les gars, aujourd'hui on y va cool...",
+      "role": "Le coach"
     },
-    "you": {
-      "title": "Vous<br /><small>Serez vous le prochain?</small>",
-      "desc": "<a href='/#hiring'>Rejoignez nous</a>",
-      "email": "contact@qaobee.com",
-      "twitter": "Qaobee",
-      "github": ""
+    "florent": {
+      "title": "Florent",
+      "desc": "Bon les gars, aujourd'hui on y va cool...",
+      "role": "Le coach"
     },
     "team": {
       "title": "L'équipe",

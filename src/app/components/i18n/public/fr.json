@@ -140,7 +140,7 @@
     }
   },
   "about": {
-    "title": "Nous sommes <b>QaoBee</b>",
+    "title": "L'équipe <b>Qaobee</b>",
     "company": {
       "title": "La société",
       "h1": "Nous sommes <b>QaoBee</b>",
@@ -164,46 +164,34 @@
       }
     },
     "xavier": {
-      "title": "Xavier MARIN<br /><small>Co-founder & CTO</small>",
-      "desc": "Je suis le geek de la bande, un amoureux des nouvelles technologies et un développeur passionné.",
-      "email": "xavier.marin@qaobee.com",
-      "twitter": "XavMarin",
-      "github": "giwi"
+      "title": "Xavier",
+      "desc": "Il est à 100% au tir quand y'a pas de gardien..",
+      "role": "Le technicien"
     },
     "christophe": {
-      "title": "Christophe KERVELLA<br /><small>Co-founder & CPIO</small>",
-      "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-      "email": "christophe.kervella@qaobee.com",
-      "twitter": "ChrisKrvla",
-      "github": ""
+      "title": "Christophe",
+      "desc": "Bon les gars, aujourd'hui on y vas cool...",
+      "role": "Le prépa. physique"
     },
     "pascal": {
-      "title": "Pascal PELERIN<br /><small>Co-founder & CEO</small>",
-      "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-      "email": "pascal.pelerin@qaobee.com",
-      "twitter": "",
-      "github": ""
+      "title": "Pascal",
+      "desc": "Seule la victoire est belle...",
+      "role": "Le coach"
     },
     "mathieu": {
-      "title": "Mathieu GARZUEL<br /><small>Co-founder & CMO</small>",
-      "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-      "email": "mathieu.garzuel@qaobee.com",
-      "twitter": "",
-      "github": ""
+      "title": "Mathieu",
+      "desc": "Pas de commentaires, question suivante...",
+      "role": "Le chargé de presse"
     },
     "jerome": {
-      "title": "Jérôme ROU&Eacute;<br /><small>Co-founder & CDO</small>",
-      "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-      "email": "jerome.roue@qaobee.com",
-      "twitter": "JeromeRoue",
-      "github": ""
+      "title": "Jérôme",
+      "desc": "Allez les gars, on leur marche sur la tête...",
+      "role": "Le prépa. mental"
     },
-    "you": {
-      "title": "Vous<br /><small>Serez vous le prochain?</small>",
-      "desc": "<a href='/#hiring'>Rejoignez nous</a>",
-      "email": "contact@qaobee.com",
-      "twitter": "Qaobee",
-      "github": ""
+    "florent": {
+      "title": "Florent",
+      "desc": "L'enclenchement A23 dans les 5 dernières minutes...",
+      "role": "Le tacticien"
     },
     "team": {
       "title": "L'équipe",
