@@ -135,6 +135,10 @@ main {
     padding-top: 10px;
 }
 
+.aboutUs .card-content h5 {
+    margin-bottom: 4rem;
+}
+
 .aboutUs > .container .row {
     margin-bottom: 0;
 }
