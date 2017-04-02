@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-content secondary-color">
+        <span class="card-title">
+            <small><i class="fa fa-fw fa-bar-chart"></i> &nbsp; {{'collecte.title'  | translate}}</small>    
+        </span>
+    </div>
+    <div class="card-content" style="overflow-y: auto; height:255px;" ng-if="collectes.length > 0">
+        <div ng-repeat="e in collectes track by $index" class="row white primary-text-color">
+            <div class="col s2"><i class="material-icons">{{e.icon}}</i></div>
+            <div class="col s10"><a href="#/private/eventStats/{{e._id}}"><span>{{e.eventRef.label}}</span></a></div>
+            <div class="col s2"></div>
+            <div class="col s10 ">
+                <span>{{e.eventRef.participants.teamHome.label}} VS {{e.eventRef.participants.teamVisitor.label}}</span>
+                <hr/>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card-content white" style="overflow-y: auto; height:255px;" ng-if="collectes.length === 0">
+        <br/><br/><br/>
+        <div class="col s12 center"><h5>{{'collecte.empty'  | translate}}</h5></div>
+    </div>
+</div>

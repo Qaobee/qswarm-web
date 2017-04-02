@@ -32,6 +32,7 @@
             'slideWrapper',
 
             //* qaobee widget */
+            'qaobee.widgets.collecte',
             'qaobee.filterCalendar',
             'qaobee.commonsDirectives',
             'qaobee.headerMenu',

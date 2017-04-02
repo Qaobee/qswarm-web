@@ -1,0 +1,13 @@
+{
+  "collecte": {
+      "title": "Mes collectes",
+      "eventType": {
+          "cup": "Coupe",
+          "championship": "Championnat",
+          "friendlyGame": "Match amical",
+          "training": "Entraînement",
+          "other": "Autre"
+        },
+      "empty": "Aucune collecte sur la période"
+    }
+}
