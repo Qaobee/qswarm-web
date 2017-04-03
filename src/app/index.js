@@ -23,7 +23,6 @@
             'ui.materialize',
             'ng.deviceDetector',
             'angular-send-feedback',
-            'angular-google-analytics',
             'vTabs',
             'ngFileSaver',
             'vcRecaptcha',
@@ -70,13 +69,7 @@
         ])
 
         .config(function ($translateProvider, $translatePartialLoaderProvider, $httpProvider, vcRecaptchaServiceProvider,
-                          $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, AnalyticsProvider, ChartJsProvider) {
-            AnalyticsProvider
-                .setAccount(EnvironmentConfig.uaid)
-                .useDisplayFeatures(true)
-                .trackUrlParams(true)
-                .useEnhancedLinkAttribution(true)
-            ;
+                          $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, ChartJsProvider) {
             if ('development' === EnvironmentConfig.name) {
                 tmhDynamicLocaleProvider.localeLocationPattern('../bower_components/angular-i18n/angular-locale_{{locale}}.js');
             } else {

@@ -53,7 +53,6 @@
     "ng-device-detector": "3.0.1",
     "angular-send-feedback": "Giwi/angular-feedback#~1.0.3",
     "malhar-angular-dashboard": "Giwi/malhar-angular-dashboard#~2.0.2",
-    "angular-google-analytics": "~1.1.7",
     "vertxbus": "*",
     "v-tabs": "~0.2.0",
     "angular-file-saver": "1.1.2",
