@@ -63,46 +63,61 @@
 
             <!-- Stats shoot efficiency Start -->
             <div class="row">
-                <div class="col s12 left-align grey-text text-ligthen-4">
+                <div class="col s12 left-align grey-text text-ligthen-2">
                     <h5>
                         <small translate="stats.efficiency.efficiency"></small>
                     </h5>
                 </div>
 
-                <div class="col l3 m6 s12">
-                    <stats-efficiency bindtoid="gaugeEfficiencyGlobal"
-                                      label="efficiencyTotal" padding="25">
-                    </stats-efficiency>
+                <div class="col s12 m6 l3" style="margin-top:15px;">
+                    <widget-efficiency-player meta="meta" user="user"></widget-efficiency-player>
                 </div>
 
-                <div class="col l3 m6 s12">
-                    <stats-efficiency bindtoid="gaugeEfficiency9m"
-                                      label="efficiency9m" values="'values9m'" padding="25">
-                    </stats-efficiency>
+                <div class="col s12 m6 l3" style="margin-top:15px;">
+                    <widget-efficiency-player meta="meta" user="user" values="['BACKLEFT9', 'CENTER9', 'BACKRIGHT9']"
+                                              widget-title="'stats.efficiency.efficiency9m'"></widget-efficiency-player>
                 </div>
 
-                <div class="col l3 m6 s12">
-                    <stats-efficiency bindtoid="gaugeEfficiency6m"
-                                      label="efficiency6m" values="'values6m'" padding="25">
-                    </stats-efficiency>
+                <div class="col s12 m6 l3" style="margin-top:15px;">
+                    <widget-efficiency-player meta="meta" user="user"
+                                              values="['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING']"
+                                              widget-title="'stats.efficiency.efficiency6m'"></widget-efficiency-player>
                 </div>
 
-                <div class="col l3 m6 s12">
-                    <stats-efficiency bindtoid="gaugeEfficiency7m"
-                                      label="efficiency7m" values="'values7m'" padding="25">
-                    </stats-efficiency>
+                <div class="col s12 m6 l3" style="margin-top:15px;">
+                    <widget-efficiency-player meta="meta" user="user" values="['PENALTY']"
+                                              widget-title="'stats.efficiency.efficiency7m'"></widget-efficiency-player>
                 </div>
             </div>
             <!-- Stats shoot efficiency end -->
 
             <!-- Stats actions pos/neg Start -->
             <div class="row">
-                <div class="col s12 left-align grey-text text-ligthen-4">
+                <div class="col s12 left-align grey-text text-ligthen-2">
                     <h5>
                         <small translate="stats.actionTab.title"></small>
                     </h5>
                 </div>
-                <stats-actions-pos-neg></stats-actions-pos-neg>
+                <div class="col s12 m6">
+                    <qaobee-radar-chart title="{{'stats.actionTab.attack' | translate}} {{'stats.actionTab.positive' | translate}}"
+                                        meta="meta"
+                                        indicators="['penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec']"></qaobee-radar-chart>
+                </div>
+                <div class="col s12 m6">
+                    <qaobee-radar-chart title="{{'stats.actionTab.attack' | translate}} {{'stats.actionTab.negative' | translate}}"
+                                        meta="meta"
+                                        indicators="['forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt']"></qaobee-radar-chart>
+                </div>
+                <div class="col s12 m6">
+                    <qaobee-radar-chart title="{{'stats.actionTab.defense' | translate}} {{'stats.actionTab.positive' | translate}}"
+                                        meta="meta"
+                                        indicators="['neutralization', 'forceDef', 'contre', 'interceptionOk']"></qaobee-radar-chart>
+                </div>
+                <div class="col s12 m6">
+                    <qaobee-radar-chart title="{{'stats.actionTab.defense' | translate}} {{'stats.actionTab.negative' | translate}}"
+                                        meta="meta"
+                                        indicators="['penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition']"></qaobee-radar-chart>
+                </div>
             </div>
             <!-- Stats actions pos/neg End -->
 
@@ -131,7 +146,7 @@
                         </thead>
                         <tbody>
                         <tr ng-repeat="player in players | filter:{$:'!goalkeeper'}">
-                            <td>{{player.name}} - {{player.firstname}}</td>
+                            <td><a href="#/private/viewPlayer/{{player._id}}">{{player.name}} - {{player.firstname}}</a></td>
                             <td>{{player.positionType}}</td>
                             <td class="center-align" ng-if="player.stats.originShootAtt > 0">
                                 {{(player.stats.goalScored/player.stats.originShootAtt)*100 | number : 0}} %
