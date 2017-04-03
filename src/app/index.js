@@ -69,7 +69,7 @@
         ])
 
         .config(function ($translateProvider, $translatePartialLoaderProvider, $httpProvider, vcRecaptchaServiceProvider,
-                          $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, ChartJsProvider) {
+                          $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, ChartJsProvider,$locationProvider) {
             if ('development' === EnvironmentConfig.name) {
                 tmhDynamicLocaleProvider.localeLocationPattern('../bower_components/angular-i18n/angular-locale_{{locale}}.js');
             } else {
@@ -118,11 +118,14 @@
                 maintainAspectRatio: false
             });
         })
-        .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale, $window) {
+        .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale, $window, $location) {
             $locale.id = $translate.proposedLanguage();
             tmhDynamicLocale.set($locale.id);
             $rootScope.$on('$translatePartialLoaderStructureChanged', function () {
                 $translate.refresh();
+            });
+            $rootScope.$on('$locationChangeSuccess', function() {
+                $window.ga('send', 'pageview', $location.path());
             });
             if (top.location.href !== self.location.href) {
                 top.location.href = self.location.href;
