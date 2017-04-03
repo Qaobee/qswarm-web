@@ -51,9 +51,7 @@
             };
 
             //Initialization team
-            $scope.team = {};
-            $scope.listTeamAdversary = {};
-            $scope.listTeamAdversaryUpdate = [];
+            
 
             /* get team */
             $scope.getTeam = function () {
@@ -63,8 +61,9 @@
                     $scope.team = team;
                     $scope.team.enable = $scope.team.enable ? true : false;
 
+                    /*
                     if ($scope.adversary === 'false') {
-                        /* Retrieve list of adversary of effective */
+                        /* Retrieve list of adversary of effective 
                         teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'all', null).success(function (data) {
                             $scope.listTeamAdversary = data.sortBy(function (n) {
                                 return n.label;
@@ -84,19 +83,9 @@
                             }
                         });
                     }
+                    */
                 });
             };
-
-            
-            /* check user connected */
-            $scope.checkUserConnected = function () {
-                userRestAPI.getUserById(user._id).success(function () {
-                    $scope.getTeam();
-                }).error(function () {
-                    $log.error('MainEffectiveControler : User not Connected');
-                });
-            };
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
+            $scope.getTeam();
         });
 }());
