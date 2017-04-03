@@ -1,7 +1,7 @@
 {
   "mainAgenda": {
     "title": "Mon agenda",
-    "next_event": "Prochains événements",
+    "next_event": "Mes événements",
     "buttons": {
       "addEvent": "Ajouter un évènement",
       "updateEvent": "Editer un évènement",
