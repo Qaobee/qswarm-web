@@ -39,7 +39,7 @@
          * @description Main controller for view mainAgenda.html
          */
         .controller('UpdateEventControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                      eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, userRestAPI, personSrv) {
+                                                      eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, userRestAPI, personSrv, $timeout) {
 
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('agenda');
@@ -285,19 +285,9 @@
                     });
                 }
             };
-
-            /* check user connected */
-            $scope.checkUserConnected = function () {
-
-                userRestAPI.getUserById(user._id).success(function () {
-                    $scope.getListTeamHome();
-                }).error(function () {
-                    $log.error('UpdateEventControler : User not Connected');
-                });
-            };
-
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
+            $timeout(function () {
+                $scope.getListTeamHome();
+            });
         })
     //
     ;

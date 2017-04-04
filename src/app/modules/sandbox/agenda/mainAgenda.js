@@ -41,7 +41,7 @@
          * @description Main controller for view mainAgenda.html
          */
         .controller('MainAgendaController', function (qeventbus, $filter, meta, eventCompareService, effectiveRestAPI, eventsRestAPI,
-                                                      $scope, $routeParams, $translatePartialLoader, $location) {
+                                                      $scope, $routeParams, $translatePartialLoader, $location, $timeout) {
             $scope.meta = meta;
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('commons');
@@ -124,7 +124,9 @@
                     });
                 });
             };
-            $scope.getEffectives();
+            $timeout(function () {
+                $scope.getEffectives();
+            });
         });
 }());
 
