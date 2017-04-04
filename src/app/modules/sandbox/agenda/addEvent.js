@@ -40,7 +40,7 @@
          * @description Main controller for view mainAgenda.html
          */
         .controller('AddEventControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                   eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, userRestAPI, personSrv) {
+                                                   eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, userRestAPI, personSrv, $timeout) {
 
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('agenda');
@@ -52,7 +52,7 @@
             $scope.meta = meta;
             $scope.listEventType = {};
             $scope.listTeamHome = {};
-            $scope.teamId = '';
+            $scope.data = {teamId : ''};
             $scope.listTeamAdversary = {};
             $scope.adversaryLabel = '';
             $scope.chooseAdversary = false;
@@ -105,8 +105,9 @@
 
             /* on change event type, calculate the value for chooseAdversary */
             $scope.changeTeamHome = function () {
+                console.log( $scope.data.teamId)
 
-                teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.meta.sandbox.effectiveDefault, 'true', $scope.teamId).success(function (data) {
+                teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.meta.sandbox.effectiveDefault, 'true', $scope.data.teamId).success(function (data) {
                     $scope.listTeamAdversary = data.sortBy(function (n) {
                         return n.label;
                     });
@@ -118,7 +119,6 @@
 
             /* on change event type, calculate the value for chooseAdversary */
             $scope.changeEventType = function () {
-
                 if ($scope.event.link.type === 'training' || $scope.event.link.type === 'other') {
                     $scope.chooseAdversary = false;
                     $scope.chooseHome = false;
@@ -155,10 +155,10 @@
                 start.hour(moment($scope.startHours, 'HH').hour());
                 start.minutes(moment($scope.startHours, 'm mm').minutes());
                 $scope.event.startDate = moment(start).valueOf();
-
+                console.log( $scope.data.teamId)
                 /* add team Id to owner */
-                if (angular.isDefined($scope.teamId)) {
-                    $scope.event.owner.teamId = $scope.teamId;
+                if (angular.isDefined($scope.data.teamId)) {
+                    $scope.event.owner.teamId = $scope.data.teamId;
                 }
 
                 /* add participants event */
@@ -167,7 +167,7 @@
                 var adversary = {};
 
                 angular.forEach($scope.listTeamHome, function (item) {
-                    if (item._id === $scope.teamId) {
+                    if (item._id === $scope.data.teamId) {
                         team = item;
                     }
                 });
@@ -224,23 +224,18 @@
                     }
 
                     $scope.event.participants = participants;
+                    $scope.event.seasonCode = meta.season.code;
                     personSrv.formatAddress($scope.event.address).then(function (adr) {
                         $scope.event.address = adr;
                         $scope.writeEvent();
                     });
                 }
             };
-            /* check user connected */
-            $scope.checkUserConnected = function () {
-                userRestAPI.getUserById(user._id).success(function () {
-                    $scope.getListTeamHome();
-                    $scope.getListEventType();
-                }).error(function () {
-                    $log.error('AddEventControler : User not Connected');
-                });
-            };
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
+
+            $timeout(function () {
+                $scope.getListTeamHome();
+                $scope.getListEventType();
+            });
         })
     //
     ;
