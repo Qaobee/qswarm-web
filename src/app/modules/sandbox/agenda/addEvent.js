@@ -161,13 +161,13 @@
 
                 angular.forEach($scope.listTeamHome, function (item) {
                     if (item._id === $scope.data.teamId) {
-                        team = angular.copy(item);
+                        team = item;
                     }
                 });
                 console.log($scope.data.adversaryLabel)
                 angular.forEach($scope.listTeamAdversary, function (item) {
                     if (item.label === $scope.data.adversaryLabel) {
-                        adversary = angular.copy(item);
+                        adversary = item;
                     }
                 });
                 //new adversary
@@ -187,13 +187,13 @@
                         adversary = data;
                         if ($scope.location === 'home') {
                             participants = {
-                                teamHome: {id: team._id, label: team.label},
-                                teamVisitor: {id: adversary._id, label: adversary.label}
+                                teamHome: {_id: team._id, label: team.label},
+                                teamVisitor: {_id: adversary._id, label: adversary.label}
                             };
                         } else {
                             participants = {
-                                teamVisitor: {id: team._id, label: team.label},
-                                teamHome: {id: adversary._id, label: adversary.label}
+                                teamVisitor: {_id: team._id, label: team.label},
+                                teamHome: {_id: adversary._id, label: adversary.label}
                             };
                         }
 
@@ -209,13 +209,13 @@
                     console.log('existing team',adversary)
                     if ($scope.location === 'home') {
                         participants = {
-                            teamHome: {id: team._id, label: team.label},
-                            teamVisitor: {id: adversary._id, label: adversary.label}
+                            teamHome: {_id: team._id, label: team.label},
+                            teamVisitor: {_id: adversary._id, label: adversary.label}
                         };
                     } else {
                         participants = {
-                            teamVisitor: {id: team._id, label: team.label},
-                            teamHome: {id: adversary._id, label: adversary.label}
+                            teamVisitor: {_id: team._id, label: team.label},
+                            teamHome: {_id: adversary._id, label: adversary.label}
                         };
                     }
 
@@ -234,5 +234,3 @@
     //
     ;
 }());
-
-

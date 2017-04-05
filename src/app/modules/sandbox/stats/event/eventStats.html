@@ -14,9 +14,9 @@
 
             <div class="row light-primary-color">
                 <div class="col s12 center-align" ng-if="teamHome">
-                    <h5> 
+                    <h5>
                         <span ng-if="teamHome">
-                            <a href="#/private/viewTeam/{{collecte.event.participants.teamHome.id}}/false"
+                            <a href="#/private/viewTeam/{{collecte.event.participants.teamHome._id}}/false"
                                class="accent-color btn">{{collecte.event.participants.teamHome.label}}
                             </a>
                         </span>
@@ -30,7 +30,7 @@
                     {{collecte.event.participants.teamHome.label}}
                     -
                     <span ng-if="teamVisitor">
-                            <a href="#/private/viewTeam/{{collecte.event.participants.teamVisitor.id}}/false"
+                            <a href="#/private/viewTeam/{{collecte.event.participants.teamVisitor._id}}/false"
                                class="accent-color btn">{{collecte.event.participants.teamVisitor.label}}
                             </a>
                         </span>

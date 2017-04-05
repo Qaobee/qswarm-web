@@ -139,8 +139,8 @@
                     }
 
                     /* Participant Home/Visitor management */
-                    if (angular.isDefined($scope.event.participants.teamHome.id)) {
-                        $scope.data.teamId = $scope.event.participants.teamHome.id;
+                    if (angular.isDefined($scope.event.participants.teamHome._id)) {
+                        $scope.data.teamId = $scope.event.participants.teamHome._id;
 
                         var teamFound = $scope.listTeamHome.find(function (n) {
                             return n._id === $scope.data.teamId;
@@ -151,7 +151,7 @@
                             $scope.data.adversaryLabel = $scope.event.participants.teamVisitor.label;
                         } else {
                             $scope.location = 'outside';
-                            $scope.data.teamId = $scope.event.participants.teamVisitor.id;
+                            $scope.data.teamId = $scope.event.participants.teamVisitor._id;
                             $scope.data.adversaryLabel = $scope.event.participants.teamHome.label;
                         }
                         $scope.getListAdversary($scope.data.teamId);
@@ -223,13 +223,13 @@
                         /* Participant Home/Visitor management */
                         if ($scope.location === 'home') {
                             participants = {
-                                teamHome: {id: team._id, label: team.label},
-                                teamVisitor: {id: adversary._id, label: adversary.label}
+                                teamHome: {_id: team._id, label: team.label},
+                                teamVisitor: {_id: adversary._id, label: adversary.label}
                             };
                         } else {
                             participants = {
-                                teamVisitor: {id: team._id, label: team.label},
-                                teamHome: {id: adversary._id, label: adversary.label}
+                                teamVisitor: {_id: team._id, label: team.label},
+                                teamHome: {_id: adversary._id, label: adversary.label}
                             };
                         }
                         $scope.event.participants = participants;
@@ -243,13 +243,13 @@
                     /* Participant Home/Visitor management */
                     if ($scope.location === 'home') {
                         participants = {
-                            teamHome: {id: team._id, label: team.label},
-                            teamVisitor: {id: adversary._id, label: adversary.label}
+                            teamHome: {_id: team._id, label: team.label},
+                            teamVisitor: {_id: adversary._id, label: adversary.label}
                         };
                     } else {
                         participants = {
-                            teamVisitor: {id: team._id, label: team.label},
-                            teamHome: {id: adversary._id, label: adversary.label}
+                            teamVisitor: {_id: team._id, label: team.label},
+                            teamHome: {_id: adversary._id, label: adversary.label}
                         };
                     }
                     $scope.event.participants = participants;
