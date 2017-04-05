@@ -14,8 +14,7 @@
     angular.module('qaobee.updateEffective', [
         'activityCfgRestAPI',
         'effectiveRestAPI',
-        'personRestAPI',
-        'userRestAPI'])
+        'personRestAPI'])
 
         .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/updateEffective/:effectiveId', {
@@ -32,8 +31,9 @@
          * @class qaobee.modules.sandbox.effective.UpdateEffectiveControler
          * @description Main controller for view updateEffective.html
          */
-        .controller('UpdateEffectiveControler', function ($log, $window, $scope, $routeParams, $http, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                          activityCfgRestAPI, effectiveRestAPI, personRestAPI, userRestAPI) {
+        .controller('UpdateEffectiveControler', function ($log, $window, $scope, $routeParams, $http, $translatePartialLoader,
+                                                          $location, $rootScope, $q, $filter, user, meta,
+                                                          activityCfgRestAPI, effectiveRestAPI, personRestAPI) {
 
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('effective');
@@ -149,17 +149,8 @@
                 }
             };
 
-            /* check user connected */
-            $scope.checkUserConnected = function () {
-                userRestAPI.getUserById(user._id).success(function () {
-                    $scope.getListCategoryAge();
-                    $scope.getEffective();
-                }).error(function () {
-                    $log.error('UpdateEffectiveControler : User not Connected');
-                });
-            };
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
+            $scope.getListCategoryAge();
+            $scope.getEffective();
         })
     //
     ;

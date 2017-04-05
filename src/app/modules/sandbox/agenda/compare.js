@@ -38,7 +38,7 @@
             };
         })
 
-        .controller('CompareEventsController', function ($scope, $routeParams, $translatePartialLoader, $q, eventsRestAPI, $timeout,
+        .controller('CompareEventsController', function ($scope, $routeParams, $translatePartialLoader, $q, eventsRestAPI,
                                                          statsRestAPI, eventCompareService, user, meta, $window, qeventbus) {
             $scope.loading = true;
             $scope.events = [];

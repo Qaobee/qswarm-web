@@ -113,7 +113,6 @@
                 });
 
             };
-
             $scope.getListPositionType();
             $scope.getPerson();
         });

@@ -12,8 +12,7 @@
      */
     angular.module('qaobee.updateTeam', [
         /* qaobee Rest API */
-        'teamRestAPI',
-        'userRestAPI'])
+        'teamRestAPI'])
 
         .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/updateTeam/:teamId/:adversary', {
@@ -30,8 +29,8 @@
          * @class qaobee.modules.sandbox.effective.UpdateTeamControler
          * @description Main controller for view writeTeam.html
          */
-        .controller('UpdateTeamControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                     teamRestAPI, userRestAPI) {
+        .controller('UpdateTeamControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader,
+                                                     $location, $rootScope, $q, $filter, user, meta, teamRestAPI) {
 
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('effective');
@@ -124,15 +123,6 @@
                 });
             };
 
-            /* check user connected */
-            $scope.checkUserConnected = function () {
-                userRestAPI.getUserById(user._id).success(function () {
-                    $scope.getTeam();
-                }).error(function () {
-                    $log.error('MainEffectiveControler : User not Connected');
-                });
-            };
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
+            $scope.getTeam();
         });
 }());

@@ -48,8 +48,8 @@
         /**
          * @class qaobee.modules.home.HomeControler
          */
-        .controller('MainStats', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                           effectiveRestAPI, personRestAPI, eventsRestAPI, userRestAPI) {
+        .controller('MainStats', function ($log, $scope, $translatePartialLoader, $location, $rootScope, $q, $filter,
+                                           user, meta, $timeout) {
             $translatePartialLoader.addPart('home');
             $translatePartialLoader.addPart('stats');
 
@@ -68,15 +68,8 @@
                 });
             };
 
-            /* check user connected */
-            $scope.checkUserConnected = function () {
-                userRestAPI.getUserById(user._id).success(function () {
-                    $scope.showGraph();
-                }).error(function () {
-                    $log.error('MainStats : User not Connected');
-                });
-            };
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
+            $timeout(function () {
+                $scope.showGraph();
+            });
         });
 }());

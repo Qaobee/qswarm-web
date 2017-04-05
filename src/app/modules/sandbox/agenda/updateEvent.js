@@ -20,8 +20,8 @@
         'eventsRestAPI',
         'effectiveRestAPI',
         'teamRestAPI',
-        'locationAPI',
-        'userRestAPI'])
+        'locationAPI'
+    ])
 
         .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/updateEvent/:eventId', {
@@ -39,7 +39,7 @@
          * @description Main controller for view mainAgenda.html
          */
         .controller('UpdateEventControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                      eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, userRestAPI, personSrv, $timeout) {
+                                                      eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, personSrv) {
 
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('agenda');
@@ -171,12 +171,9 @@
 
             /* Create a new event and add to effective */
             $scope.writeEvent = function () {
-
                 /* get effective */
                 effectiveRestAPI.getEffective($scope.meta.sandbox.effectiveDefault).success(function (data) {
-
                     var effective = data;
-
                     if (angular.isDefined(effective)) {
                         /* update event */
                         eventsRestAPI.updateEvent($scope.event).success(function (event) {
@@ -200,31 +197,26 @@
                 start.hour(moment($scope.startHours, 'HH').hour());
                 start.minutes(moment($scope.startHours, 'm mm').minutes());
                 $scope.event.startDate = moment(start).valueOf();
-
                 /* add team Id to owner */
                 if (angular.isDefined($scope.teamId)) {
                     $scope.event.owner.teamId = $scope.teamId;
                 }
-
                 /* add participants event */
                 var participants = {};
                 var adversary = {};
                 var team = {};
-
                 /* Team home */
                 angular.forEach($scope.listTeamHome, function (item) {
                     if (item._id === $scope.teamId) {
                         team = item;
                     }
                 });
-
                 /* adversary */
                 angular.forEach($scope.listTeamAdversary, function (item) {
                     if (item.label === $scope.adversaryLabel) {
                         adversary = item;
                     }
                 });
-
                 //new adversary
                 if (angular.isUndefined(adversary.label)) {
                     adversary = {
@@ -239,7 +231,6 @@
                     /* add new adversary */
                     teamRestAPI.addTeam(adversary).success(function (data) {
                         adversary = data;
-
                         /* Participant Home/Visitor management */
                         if ($scope.location === 'home') {
                             participants = {
@@ -252,15 +243,12 @@
                                 teamHome: {id: adversary._id, label: adversary.label}
                             };
                         }
-
                         $scope.event.participants = participants;
-
                         /* address management */
                         personSrv.formatAddress($scope.event.address).then(function (adr) {
                             $scope.event.address = adr;
                             $scope.writeEvent();
                         });
-
                     });
                 } else {
                     /* Participant Home/Visitor management */
@@ -275,9 +263,7 @@
                             teamHome: {id: adversary._id, label: adversary.label}
                         };
                     }
-
                     $scope.event.participants = participants;
-
                     /* address management */
                     personSrv.formatAddress($scope.event.address).then(function (adr) {
                         $scope.event.address = adr;
@@ -285,12 +271,8 @@
                     });
                 }
             };
-            $timeout(function () {
-                $scope.getListTeamHome();
-            });
+            $scope.getListTeamHome();
         })
     //
     ;
 }());
-
-

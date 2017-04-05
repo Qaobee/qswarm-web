@@ -14,8 +14,7 @@
         /* qaobee services */
         'effectifSRV',
         /* qaobee Rest API */
-        'teamRestAPI',
-        'userRestAPI'])
+        'teamRestAPI'])
 
         .config(function ($routeProvider, metaProvider, userProvider) {
 
@@ -40,18 +39,17 @@
          * @class qaobee.modules.sandbox.effective.AddTeamControler
          * @description Main controller for view addTeam.html
          */
-        .controller('AddTeamControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                  userRestAPI, teamRestAPI, effectiveSrv) {
+        .controller('AddTeamControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader,
+                                                  $location, $rootScope, $q, $filter, user, meta, userRestAPI,
+                                                  teamRestAPI, effectiveSrv) {
 
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('effective');
 
             $scope.adversary = $routeParams.adversary;
             $scope.teamId = $routeParams.teamId;
-
             $scope.user = user;
             $scope.meta = meta;
-
             $scope.addTeamTitle = true;
             $scope.currentEffective = {};
 
@@ -96,15 +94,6 @@
                 });
             };
 
-            /* check user connected */
-            $scope.checkUserConnected = function () {
-                userRestAPI.getUserById(user._id).success(function () {
-                    $scope.getEffective();
-                }).error(function () {
-                    $log.error('AddTeamControler : User not Connected');
-                });
-            };
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
+            $scope.getEffective();
         });
 }());

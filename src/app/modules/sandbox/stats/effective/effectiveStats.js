@@ -45,13 +45,10 @@
             $scope.effective = {};
             /* Retrieve list effective */
             $scope.getEffective = function () {
-
                 effectiveRestAPI.getEffective($scope.effectiveId).success(function (data) {
                     $scope.effective = data;
                 });
             };
-
-            /* Primary, check if user connected */
             $scope.getEffective();
         });
 }());

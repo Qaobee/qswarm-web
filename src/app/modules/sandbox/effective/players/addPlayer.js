@@ -39,8 +39,8 @@
          * @class qaobee.modules.sandbox.effective.AddPlayerControler
          * @description Main controller for view addPlayer.html
          */
-        .controller('AddPlayerControler', function ($log, $http, $scope, $timeout, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                    activityCfgRestAPI, personSrv, userRestAPI) {
+        .controller('AddPlayerControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader,
+                                                    $location, $rootScope, $q, $filter, user, meta, activityCfgRestAPI, personSrv) {
 
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('effective');
@@ -133,17 +133,6 @@
                     });
                 });
             };
-
-            /* check user connected */
-            $scope.checkUserConnected = function () {
-                userRestAPI.getUserById(user._id).success(function () {
-                    $scope.getListPositionType();
-                }).error(function () {
-                    $log.error('AddPlayerControler : User not Connected');
-                });
-            };
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
-
+            $scope.getListPositionType();
         });
 }());

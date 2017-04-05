@@ -32,8 +32,8 @@
          * @class qaobee.modules.sandbox.effective.ViewTeamControler
          * @description Main controller for view viewTeam.html
          */
-        .controller('ViewTeamControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                     teamRestAPI, userRestAPI) {
+        .controller('ViewTeamControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader,
+                                                   $location, $rootScope, $q, $filter, user, meta, teamRestAPI) {
 
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('effective');
@@ -49,41 +49,12 @@
             $scope.doTheBack = function () {
                 $window.history.back();
             };
-
-            //Initialization team
-            
-
             /* get team */
             $scope.getTeam = function () {
-
                 /* get team */
                 teamRestAPI.getTeam($scope.teamId).success(function (team) {
                     $scope.team = team;
                     $scope.team.enable = $scope.team.enable ? true : false;
-
-                    /*
-                    if ($scope.adversary === 'false') {
-                        /* Retrieve list of adversary of effective 
-                        teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.user.effectiveDefault, 'all', null).success(function (data) {
-                            $scope.listTeamAdversary = data.sortBy(function (n) {
-                                return n.label;
-                            });
-
-                            if ($scope.listTeamAdversary.length > 0) {
-                                $scope.listTeamAdversary.forEach(function (a) {
-                                    a.modified = false;
-                                    if (angular.isDefined(a.linkTeamId)) {
-                                        a.checked = false;
-                                        var trouve = a.linkTeamId.find(function (n) {
-                                            return n === team._id;
-                                        });
-                                        a.checked = angular.isDefined(trouve);
-                                    }
-                                });
-                            }
-                        });
-                    }
-                    */
                 });
             };
             $scope.getTeam();

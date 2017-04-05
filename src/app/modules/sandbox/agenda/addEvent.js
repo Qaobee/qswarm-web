@@ -20,8 +20,7 @@
         'eventsRestAPI',
         'effectiveRestAPI',
         'teamRestAPI',
-        'locationAPI',
-        'userRestAPI'])
+        'locationAPI'])
 
 
         .config(function ($routeProvider, metaProvider, userProvider) {
@@ -40,19 +39,17 @@
          * @description Main controller for view mainAgenda.html
          */
         .controller('AddEventControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                   eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, userRestAPI, personSrv, $timeout) {
+                                                   eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, personSrv) {
 
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('agenda');
             $translatePartialLoader.addPart('effective');
-
             $scope.effectiveId = $routeParams.effectiveId;
-
             $scope.user = user;
             $scope.meta = meta;
             $scope.listEventType = {};
             $scope.listTeamHome = {};
-            $scope.data = {teamId : ''};
+            $scope.data = {teamId: ''};
             $scope.listTeamAdversary = {};
             $scope.adversaryLabel = '';
             $scope.chooseAdversary = false;
@@ -61,6 +58,10 @@
             $scope.startHours = '';
             $scope.location = 'home';
             $scope.addEventTitle = true;
+            $scope.options = {};
+            $scope.options.watchEnter = true;
+            $scope.optionsAdr = null;
+            $scope.detailsAdr = '';
 
             // return button
             $scope.doTheBack = function () {
@@ -77,13 +78,6 @@
                 address: {},
                 link: {}
             };
-
-            /* init ngAutocomplete*/
-            $scope.options = {};
-            $scope.options.watchEnter = true;
-
-            $scope.optionsAdr = null;
-            $scope.detailsAdr = '';
 
             /* Retrieve list of team of effective */
             $scope.getListTeamHome = function () {
@@ -105,7 +99,7 @@
 
             /* on change event type, calculate the value for chooseAdversary */
             $scope.changeTeamHome = function () {
-                console.log( $scope.data.teamId)
+                console.log($scope.data.teamId)
 
                 teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.meta.sandbox.effectiveDefault, 'true', $scope.data.teamId).success(function (data) {
                     $scope.listTeamAdversary = data.sortBy(function (n) {
@@ -155,7 +149,7 @@
                 start.hour(moment($scope.startHours, 'HH').hour());
                 start.minutes(moment($scope.startHours, 'm mm').minutes());
                 $scope.event.startDate = moment(start).valueOf();
-                console.log( $scope.data.teamId)
+                console.log($scope.data.teamId)
                 /* add team Id to owner */
                 if (angular.isDefined($scope.data.teamId)) {
                     $scope.event.owner.teamId = $scope.data.teamId;
@@ -232,10 +226,8 @@
                 }
             };
 
-            $timeout(function () {
-                $scope.getListTeamHome();
-                $scope.getListEventType();
-            });
+            $scope.getListTeamHome();
+            $scope.getListEventType();
         })
     //
     ;

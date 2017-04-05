@@ -15,8 +15,7 @@
         /* qaobee Rest API */
         'activityCfgRestAPI',
         'effectiveRestAPI',
-        'personRestAPI',
-        'userRestAPI'])
+        'personRestAPI'])
 
         .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/addEffective/:sandBoxCfgId', {
@@ -33,8 +32,9 @@
          * @class qaobee.modules.sandbox.effective.AddEffectiveControler
          * @description Main controller for view addEffective.html
          */
-        .controller('AddEffectiveControler', function ($log, $scope, $window, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                                       activityCfgRestAPI, effectiveRestAPI, personRestAPI, userRestAPI) {
+        .controller('AddEffectiveControler', function ($log, $scope, $window, $routeParams, $translatePartialLoader,
+                                                       $location, $rootScope, $q, $filter, user, meta,
+                                                       activityCfgRestAPI, effectiveRestAPI, personRestAPI) {
 
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('effective');
@@ -142,18 +142,8 @@
                 }
             };
 
-            /* check user connected */
-            $scope.checkUserConnected = function () {
-                userRestAPI.getUserById(user._id).success(function () {
-                    $scope.getListCategoryAge();
-                    $scope.getListPersonSandbox();
-                }).error(function () {
-                    $log.error('AddEffectiveControler : User not Connected');
-                });
-            };
-
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
+            $scope.getListCategoryAge();
+            $scope.getListPersonSandbox();
         })
     //
     ;
