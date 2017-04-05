@@ -49,7 +49,7 @@
             $scope.meta = meta;
             $scope.listEventType = {};
             $scope.listTeamHome = {};
-            $scope.data = {teamId: ''};
+            $scope.data = {teamId: '', adversaryLabel : ''};
             $scope.listTeamAdversary = {};
             $scope.adversaryLabel = '';
             $scope.chooseAdversary = false;
@@ -100,14 +100,13 @@
             /* on change event type, calculate the value for chooseAdversary */
             $scope.changeTeamHome = function () {
                 console.log($scope.data.teamId)
-
+                $scope.data.adversaryLabel = '';
+                $scope.chooseHome = true;
                 teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.meta.sandbox.effectiveDefault, 'true', $scope.data.teamId).success(function (data) {
                     $scope.listTeamAdversary = data.sortBy(function (n) {
                         return n.label;
                     });
                 });
-                $scope.adversaryLabel = '';
-                $scope.chooseHome = true;
             };
 
 
@@ -162,19 +161,19 @@
 
                 angular.forEach($scope.listTeamHome, function (item) {
                     if (item._id === $scope.data.teamId) {
-                        team = item;
+                        team = angular.copy(item);
                     }
                 });
-
+                console.log($scope.data.adversaryLabel)
                 angular.forEach($scope.listTeamAdversary, function (item) {
-                    if (item.label === $scope.adversaryLabel) {
-                        adversary = item;
+                    if (item.label === $scope.data.adversaryLabel) {
+                        adversary = angular.copy(item);
                     }
                 });
                 //new adversary
                 if (angular.isUndefined(adversary.label)) {
                     adversary = {
-                        "label": $scope.adversaryLabel,
+                        "label": $scope.data.adversaryLabel,
                         "sandboxId": $scope.meta.sandbox._id,
                         "effectiveId": $scope.meta.sandbox.effectiveDefault,
                         "linkTeamId": [team._id],
@@ -182,6 +181,7 @@
                         "adversary": true
                     };
 
+                    console.log('add team',adversary)
                     /* add team */
                     teamRestAPI.addTeam(adversary).success(function (data) {
                         adversary = data;
@@ -205,6 +205,8 @@
 
                     });
                 } else {
+
+                    console.log('existing team',adversary)
                     if ($scope.location === 'home') {
                         participants = {
                             teamHome: {id: team._id, label: team.label},

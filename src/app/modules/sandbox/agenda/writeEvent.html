@@ -116,7 +116,7 @@
                     <div class="input-field col s10 m5" ng-if="chooseHome">
                         <h6 class="accent-text-color">{{'eventLabels.SectionActorsAdversary' | translate }} <span
                                 class="accent-text-color">*</span></h6>
-                        <input type="text" list="adversaries" name="SectionActorsAdversary" ng-model="adversaryLabel"
+                        <input type="text" list="adversaries" name="SectionActorsAdversary" ng-model="data.adversaryLabel"
                                placeholder="{{'eventLabels.Adversary' | translate }}" ng-required="chooseHome"
                                ng-class="{ 'has-error' : eventForm.SectionActorsAdversary.$invalid && !eventForm.SectionActorsAdversary.$pristine }"/>
                         <span class="small accent-text-color col s12"

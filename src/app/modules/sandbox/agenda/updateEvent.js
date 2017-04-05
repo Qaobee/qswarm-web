@@ -49,15 +49,14 @@
             $scope.meta = meta;
             $scope.listEventType = {};
             $scope.listTeamHome = {};
-            $scope.teamId = '';
             $scope.listTeamAdversary = {};
-            $scope.adversaryLabel = '';
             $scope.chooseAdversary = false;
             $scope.chooseHome = false;
             $scope.startDate = '';
             $scope.startHours = '';
             $scope.location = 'home';
             $scope.addEventTitle = false;
+            $scope.data = {teamId: '', adversaryLabel : ''};
             // return button
             $scope.doTheBack = function () {
                 $window.history.back();
@@ -100,19 +99,17 @@
 
             /* on change event type, calculate the value for chooseAdversary */
             $scope.changeTeamHome = function () {
-
-                teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.meta.sandbox.effectiveDefault, 'true', $scope.teamId).success(function (data) {
+                $scope.data.adversaryLabel = '';
+                $scope.chooseHome = true;
+                teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.meta.sandbox.effectiveDefault, 'true', $scope.data.teamId).success(function (data) {
                     $scope.listTeamAdversary = data.sortBy(function (n) {
                         return n.label;
                     });
                 });
-                $scope.adversaryLabel = '';
-                $scope.chooseHome = true;
             };
 
             /* on change event type, calculate the value for chooseAdversary */
             $scope.changeEventType = function () {
-
                 if ($scope.event.link.type === 'training' || $scope.event.link.type === 'other') {
                     $scope.chooseAdversary = false;
                     $scope.chooseHome = false;
@@ -123,20 +120,14 @@
 
             /* Retrieve current event */
             $scope.getEvent = function () {
-
                 eventsRestAPI.getEvent($scope.eventId).success(function (data) {
                     $scope.event = data;
-
                     /* Formatage des dates et heures */
                     if (angular.isDefined($scope.event.startDate)) {
-
                         $scope.startDate = moment($scope.event.startDate).toDate();
                         $scope.startHours = moment($scope.startDate).hour() + ':' + moment($scope.startDate).minute();
                         $scope.datePicker = angular.element('#EventStartDate').pickadate('picker');
-
                         $scope.datePicker.set('select', $scope.startDate.valueOf());
-
-
                     }
 
                     /* View participants management */
@@ -149,23 +140,22 @@
 
                     /* Participant Home/Visitor management */
                     if (angular.isDefined($scope.event.participants.teamHome.id)) {
-                        $scope.teamId = $scope.event.participants.teamHome.id;
+                        $scope.data.teamId = $scope.event.participants.teamHome.id;
 
                         var teamFound = $scope.listTeamHome.find(function (n) {
-                            return n._id === $scope.teamId;
+                            return n._id === $scope.data.teamId;
                         });
 
                         if (angular.isDefined(teamFound)) {
                             $scope.location = 'home';
-                            $scope.adversaryLabel = $scope.event.participants.teamVisitor.label;
+                            $scope.data.adversaryLabel = $scope.event.participants.teamVisitor.label;
                         } else {
                             $scope.location = 'outside';
-                            $scope.teamId = $scope.event.participants.teamVisitor.id;
-                            $scope.adversaryLabel = $scope.event.participants.teamHome.label;
+                            $scope.data.teamId = $scope.event.participants.teamVisitor.id;
+                            $scope.data.adversaryLabel = $scope.event.participants.teamHome.label;
                         }
-                        $scope.getListAdversary($scope.teamId);
+                        $scope.getListAdversary($scope.data.teamId);
                     }
-
                 });
             };
 
@@ -191,15 +181,14 @@
 
             /* Format event */
             $scope.checkAndformatEvent = function () {
-
                 /* Convert start event to long */
                 var start = moment($scope.startDate, 'DD/MM/YYYY');
                 start.hour(moment($scope.startHours, 'HH').hour());
                 start.minutes(moment($scope.startHours, 'm mm').minutes());
                 $scope.event.startDate = moment(start).valueOf();
                 /* add team Id to owner */
-                if (angular.isDefined($scope.teamId)) {
-                    $scope.event.owner.teamId = $scope.teamId;
+                if (angular.isDefined($scope.data.teamId)) {
+                    $scope.event.owner.teamId = $scope.data.teamId;
                 }
                 /* add participants event */
                 var participants = {};
@@ -207,20 +196,20 @@
                 var team = {};
                 /* Team home */
                 angular.forEach($scope.listTeamHome, function (item) {
-                    if (item._id === $scope.teamId) {
+                    if (item._id === $scope.data.teamId) {
                         team = item;
                     }
                 });
                 /* adversary */
                 angular.forEach($scope.listTeamAdversary, function (item) {
-                    if (item.label === $scope.adversaryLabel) {
+                    if (item.label === $scope.data.adversaryLabel) {
                         adversary = item;
                     }
                 });
                 //new adversary
                 if (angular.isUndefined(adversary.label)) {
                     adversary = {
-                        "label": $scope.adversaryLabel,
+                        "label": $scope.data.adversaryLabel,
                         "sandboxId": $scope.meta.sandbox._id,
                         "effectiveId": $scope.meta.sandbox.effectiveDefault,
                         "linkTeamId": [team._id],
