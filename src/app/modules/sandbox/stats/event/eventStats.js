@@ -38,7 +38,7 @@
             $translatePartialLoader.addPart('stats');
             $scope.user = user;
             $scope.meta = meta;
-            $scope.ownersId = [];
+            
             $scope.players = [];
             $scope.teamHome = false;
             $scope.teamVisitor = true;
@@ -66,7 +66,7 @@
                         $scope.collecte.endDate = data.endDate;
                         $scope.collecte.startDateLabel = moment(data.startDate).format('LLLL');
                         $scope.collecte.endDateLabel = moment(data.endDate).format('LLLL');
-                        if ($scope.collecte.event.owner.teamId === $scope.collecte.event.participants.teamHome.id) {
+                        if ($scope.collecte.event.owner.teamId === $scope.collecte.event.participants.teamHome._id) {
                             $scope.teamHome = true;
                             $scope.teamVisitor = false;
                         } else {
@@ -77,6 +77,7 @@
                         $scope.stats = [];
                         effectiveSrv.getPersons(data.players, listField).then(function (players) {
                             $scope.players = players;
+                            
                             $scope.players.forEach(function (player) {
                                 if (angular.isDefined(player.status.positionType)) {
                                     player.positionType = $filter('translate')('stats.positionType.value.' + player.status.positionType);
@@ -242,15 +243,10 @@
                                 return n.positionType;
                             });
                         });
-
+                        $scope.ownersId = [];
                         $scope.ownersId.push(data.eventRef._id);
                         qeventbus.prepForBroadcast('ownersId', {
                             ownersId: $scope.ownersId
-                        });
-                        qeventbus.prepForBroadcast('periodicityActive', {
-                            periodicityActive: {startDate: data.startDate, endDate: data.endDate},
-                            periodicity: 'custom',
-                            self: 'filterCalendar'
                         });
                     }
                 });
