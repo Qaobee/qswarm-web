@@ -21,7 +21,7 @@
 
             });
         })
-        .directive('widgetPodium', function ($translatePartialLoader, statsRestAPI, effectiveSrv, qeventbus, $filter, $q) {
+        .directive('widgetPodium', function ($translatePartialLoader, statsRestAPI, effectiveSrv, qeventbus, $filter, $q, $log) {
             return {
                 restrict: 'AE',
                 scope: {
@@ -84,8 +84,24 @@
                                             _id: e._id.owner[4],
                                             value: e.value
                                         };
-                                        $scope.players.push(player);
+                                        /* Suppression doublon */
+                                        var trouve = false;
+                                        $scope.players.forEach(function (a) {
+                                           if(a._id === player._id) {
+                                               a.value = a.value + player.value;
+                                               trouve = true;
+                                           } 
+                                        });
+                                        
+                                        if(!trouve) {
+                                            $scope.players.push(player);
+                                        }
+                                        
                                     });
+                                    
+                                    $scope.players = $scope.players.sortBy(function (n) {
+                                        return n.value;
+                                    }, true);
 
                                     $scope.getInfosPlayer();
                                 });
