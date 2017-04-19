@@ -127,21 +127,7 @@
 
                     $scope.$on('qeventbus:login', function () {
                         $scope.user = qeventbus.data;
-                        $scope.endTrial = 999;
-                        angular.forEach($scope.user.account.listPlan, function (plan) {
-                            $scope.notpaid = plan.status === 'notpaid';
-                            if (plan.status === 'open') {
-                                $scope.intrial = true;
-                                var endDate = moment(plan.startPeriodDate).add(30, 'day');
-                                $scope.endTrial = $filter('number')(moment.duration(endDate.diff(moment())).asDays() - 1, 0);
-                                $scope.trialCountVal = {count: $scope.endTrial};
-                            }
-                        });
-                        if ($scope.notpaid || $scope.endTrial <= 0) {
-                            $location.path('/private/billing');
-                        } else {
-                            $location.path('/private');
-                        }
+                        $location.path('/private');
                         $scope.loadMetaInfos();
                     });
 
