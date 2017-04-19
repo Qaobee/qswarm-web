@@ -78,7 +78,7 @@
 
     </div>
 
-    <div class="card-reveal">
+    <div class="card-reveal dark-primary-color">
         <span class="card-title" ng-if="indicator==='goalScored'"> 
             <i class="fa fa-futbol-o left"></i>
             {{'dashboard.widgetTopScored.title' | translate}} 
@@ -90,11 +90,11 @@
             {{'dashboard.widgetTopUsed.title' | translate}} 
             <i class="material-icons right">close</i>
         </span>
-        <table>
+        <table class="white primary-text-color striped">
             <tbody>
             <tr ng-repeat="player in players track by $index">
-                <td ng-bind="$index"></td>
-                <td><b>{{player.firstname}} {{player.name}}</b></td>
+                <td ng-bind="{{$index+1}}"></td>
+                <td><a href="#/private/viewPlayer/{{player._id}}" class="accent-text-color">{{player.firstname}} {{player.name}}</a></td>
                 <td class="center-align" ng-bind="player.value" ng-if="indicator==='goalScored'"></td>
                 <td class="center-align" ng-if="indicator==='totalPlayTime'">{{player.value/60 | number : 0}} '</td>
             </tr>
