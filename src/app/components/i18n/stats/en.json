@@ -70,7 +70,8 @@
     "eventLabels": {
       "listPlayers": "Player list",
       "goalkeeper": "Goalkeeper",
-      "holder": "Holder",    
+      "holder": "Holder",
+      "note": "Note",
       "playTime": "Playtime",    
       "player": "Player",
       "position": "Position",

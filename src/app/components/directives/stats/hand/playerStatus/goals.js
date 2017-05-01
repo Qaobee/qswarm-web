@@ -48,9 +48,9 @@
                                 /* Stats Count by indicator */
                                 var indicators = [];
                                 if ($scope.bindToId === 'goalScored') {
-                                    indicators.push('goalScored');
+                                    indicators = ['goalScored','originShootAtt']
                                 } else {
-                                    indicators.push('goalConceded');
+                                    indicators = ['goalConceded','originShootDef']
                                 }
 
                                 var listFieldsGroupBy = ['code'];
@@ -69,7 +69,13 @@
                                     if (angular.isArray(data) && data.length > 0) {
                                         data.forEach(function (a) {
                                             $scope.noStat = true;
-                                            result.nbGoal = a.value;
+                                            if(a._id.code ==='goalScored' || a._id.code ==='goalConceded' ){
+                                                result.nbGoal = a.value;
+                                            } else {
+                                                result.nbShoot = a.value;
+                                            }
+                                            
+                                            
                                         });
                                         deferred.resolve(result);
                                     } else {
