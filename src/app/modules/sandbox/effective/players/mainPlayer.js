@@ -53,8 +53,8 @@
          */
         .controller('MainPlayerController', function ($scope, $routeParams, $translatePartialLoader, $location, $filter,
                                                       user, meta, effectiveRestAPI, effectiveSrv, userRestAPI,
-                                                      playerCompareService, widgetDefinitionsMainPlayer,
-                                                      defaultWidgetsMainPlayer, qeventbus, $timeout, filterCalendarSrv) {
+                                                      playerCompareService,
+                                                      qeventbus, $timeout, filterCalendarSrv) {
 
             $translatePartialLoader.addPart('effective');
             $translatePartialLoader.addPart('commons');

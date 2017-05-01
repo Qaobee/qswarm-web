@@ -10,7 +10,7 @@
      *
      */
 
-    angular.module('statsSanction', ['statsSRV', 'statsRestAPI', 'qaobee.eventbus'])
+    angular.module('qaobee.widget.statsSanction', ['statsSRV', 'statsRestAPI', 'qaobee.eventbus'])
 
         .directive('statsSanction', function ($translatePartialLoader, statsRestAPI, statsSrv, qeventbus, $q, $timeout, filterCalendarSrv) {
             return {

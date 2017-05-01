@@ -3,16 +3,16 @@
     /**
      * Created by cke on 13/04/16.
      *
-     * efficiencyPlayer directive<br />
+     * efficiencyGoalkeeper directive<br />
      *
      * @author christophe Kervella
      * @copyright &lt;b&gt;QaoBee&lt;/b&gt;.
      *
      */
 
-    angular.module('qaobee.widgets.efficiencyPlayer', ['effectifSRV', 'statsRestAPI', 'qaobee.eventbus'])
+    angular.module('qaobee.widgets.efficiencyGoalkeeper', ['effectifSRV', 'statsRestAPI', 'qaobee.eventbus'])
 
-        .directive('widgetEfficiencyPlayer', function ($log, $translatePartialLoader, statsRestAPI, effectiveSrv, qeventbus, $q, $timeout, filterCalendarSrv) {
+        .directive('widgetEfficiencyGoalkeeper', function ($log, $translatePartialLoader, statsRestAPI, effectiveSrv, qeventbus, $q, $timeout, filterCalendarSrv) {
             return {
                 restrict: 'AE',
                 scope: {
@@ -38,19 +38,23 @@
                             efficiency: 0
                         };
                         var search = {
-                            listIndicators: ['originShootAtt'],
+                            listIndicators: ['originShootDef'],
                             listOwners: ownersId,
                             startDate: startDate.valueOf(),
                             endDate: endDate.valueOf(),
                             aggregat: 'COUNT',
                             listFieldsGroupBy: ['owner', 'code', 'shootSeqId']
                         };
+                        
+                        $log.debug('search',search);
+                        
                         if (!!$scope.values) {
                             search.values = $scope.values;
                         }
                         var listShootSeqId = [];
 
                         statsRestAPI.getStatGroupBy(search).success(function (dataOri) {
+                            $log.debug('dataOri',dataOri);
                             if (dataOri && dataOri.length) {
                                 $scope.noStat = true;
                                 result.nbShoot = dataOri.length;
@@ -60,7 +64,7 @@
 
                                 search = {};
                                 search = {
-                                    listIndicators: ['goalScored'],
+                                    listIndicators: ['goalConceded'],
                                     listOwners: ownersId,
                                     startDate: startDate.valueOf(),
                                     endDate: endDate.valueOf(),
@@ -95,11 +99,11 @@
                         $scope.efficiency = 0;
                         $scope.nbShoot = 0;
                         $scope.nbGoal = 0;
-                        
+                        $scope.title = 'stats.efficiency.' + $scope.label;
                         getEfficiency($scope.ownersId, $scope.periodicityActive.startDate, $scope.periodicityActive.endDate).then(function (result) {
                             $scope.nbShoot = result.nbShoot;
-                            $scope.nbGoal = result.nbGoal;
-                            $scope.efficiency = result.efficiency;
+                            $scope.nbGoal = result.nbShoot - result.nbGoal;
+                            $scope.efficiency = 100 - result.efficiency;
                         });
                     };
                     /* Refresh widget on periodicity change */
@@ -121,7 +125,7 @@
                         }
                     });
                 },
-                templateUrl: 'app/components/directives/stats/hand/shoots/efficiencyPlayer.html'
+                templateUrl: 'app/components/directives/stats/hand/shoots/efficiencyGoalkeeper.html'
             };
         });
 }());

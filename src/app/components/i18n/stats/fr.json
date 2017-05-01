@@ -20,6 +20,8 @@
     },
     "efficiency": {
       "efficiency": "Efficacité au tir",
+      "efficiencyGoalkeeper": "Efficacité Gardien",
+      "efficiencyGoalkeeperDesc": "L'efficacité du gardien est déterminée par le rapport nombre d'arrêts / nombre de tirs",
       "efficiencyTotal": "Globale",
       "efficiency9m": "9 mètres",
       "efficiency6m": "6 mètres",

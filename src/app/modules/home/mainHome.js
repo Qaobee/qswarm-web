@@ -31,7 +31,7 @@
         /**
          * @class qaobee.modules.home.HomeControler
          */
-        .controller('HomeControler', function ($log, $scope, $translatePartialLoader, $filter, user, meta, effectiveSrv, effectiveRestAPI, sandboxRestAPI, qeventbus, filterCalendarSrv, $timeout) {
+        .controller('HomeControler', function ($scope, $translatePartialLoader, $filter, user, meta, effectiveSrv, effectiveRestAPI, sandboxRestAPI, qeventbus, filterCalendarSrv, $timeout) {
             $translatePartialLoader.addPart('home');
             $translatePartialLoader.addPart('stats');
             $translatePartialLoader.addPart('agenda');

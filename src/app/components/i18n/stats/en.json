@@ -20,6 +20,8 @@
     },
     "efficiency": {
       "efficiency": "Shoot's efficiency",
+      "efficiencyGoalkeeper": "Goalkeeper's efficiency",
+      "efficiencyGoalkeeperDesc": "Number stop on number shoot",
       "efficiencyTotal": "Global",
       "efficiency9m": "9 mètres",
       "efficiency6m": "6 mètres",

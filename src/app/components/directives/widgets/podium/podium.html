@@ -11,6 +11,12 @@
             <small translate="dashboard.widgetTopUsed.title"></small>
             <i class="material-icons right">more_vert</i>
         </span>
+        
+        <span class="activator card-title" ng-if="indicator==='holder'">
+            <i class="fa fa-star-o left"></i>
+            <small translate="dashboard.widgetTopHolder.title"></small>
+            <i class="material-icons right">more_vert</i>
+        </span>
 
     </div>
     <div class="card-content" style="overflow-y: auto; height:258px">
@@ -43,7 +49,7 @@
                     <br>
                     <h5 class="hide-on-med-and-up">&nbsp;</h5>
                     <h4 class="white-text" ng-if="indicator==='totalPlayTime'">{{players[0].value/60 | number : 0}} '</h4>
-                    <h4 class="white-text" ng-if="indicator==='goalScored'">{{players[0].value}} </h4>
+                    <h4 class="white-text" ng-if="indicator!=='totalPlayTime'">{{players[0].value}} </h4>
                 </div>
                 <div class="col s4" style="background-image:url(/assets/images/trophy2.png); 
                                            background-repeat:no-repeat; 
@@ -56,7 +62,7 @@
                     <br>
                     <h5 class="hide-on-med-and-up">&nbsp;</h5>
                     <h4 class="white-text" ng-if="indicator==='totalPlayTime'">{{players[1].value/60 | number : 0}} '</h4>
-                    <h4 class="white-text" ng-if="indicator==='goalScored'">{{players[1].value}}</h4>
+                    <h4 class="white-text" ng-if="indicator!=='totalPlayTime'">{{players[1].value}}</h4>
                 </div>
 
                 <div class="col s4" style="background-image:url(/assets/images/trophy3.png); 
@@ -70,7 +76,7 @@
                     <br>
                     <h5 class="hide-on-med-and-up">&nbsp;</h5>
                     <h4 class="white-text" ng-if="indicator==='totalPlayTime'">{{players[2].value/60 | number : 0}} '</h4>
-                    <h4 class="white-text" ng-if="indicator==='goalScored'">{{players[2].value}}</h4>
+                    <h4 class="white-text" ng-if="indicator!=='totalPlayTime'">{{players[2].value}}</h4>
                 </div>
             </div>
         </div>
