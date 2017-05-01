@@ -10,7 +10,7 @@
      *
      */
 
-    angular.module('statsGoals', ['statsSRV', 'statsRestAPI', 'qaobee.eventbus'])
+    angular.module('qaobee.widget.statsGoals', ['statsSRV', 'statsRestAPI', 'qaobee.eventbus'])
 
         .directive('statsGoals', function ($translatePartialLoader, statsRestAPI, statsSrv, qeventbus, $q, filterCalendarSrv) {
             return {

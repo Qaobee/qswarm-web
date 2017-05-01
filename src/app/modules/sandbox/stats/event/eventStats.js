@@ -91,15 +91,45 @@
                                     goalConceded: 0,
                                     yellowCard: 0,
                                     exclTmp: 0,
-                                    redCard: 0
+                                    redCard: 0,
+                                    holder: 0,
+                                    totalPlayTime : 0
                                 };
                             });
-                            var listFieldsGroupBy = ['owner', 'code'];
+                            var listFieldsGroupBy = ['owner'];
+                            var search = {
+                                listIndicators: ['totalPlayTime'],
+                                listOwners: data.players,
+                                startDate: data.startDate.valueOf(),
+                                endDate: data.endDate.valueOf(),
+                                aggregat: 'SUM',
+                                listFieldsGroupBy: listFieldsGroupBy
+                            }
                             /* Appel stats API */
+                            statsRestAPI.getStatGroupBy(search).success(function (dataShoot) {
+                                
+                                if (angular.isArray(dataShoot) && dataShoot.length > 0) {
+                                    
+                                    dataShoot.forEach(function (a) {
+                                        var i = -1;
+                                        a._id.owner.forEach(function (b) {
+                                            i = $scope.players.findIndex(function (n) {
+                                                return n._id === b;
+                                            });
+                                        });
+                                        
+                                        $scope.players[i].stats['totalPlayTime'] = a.value;
+                                        
+                                    });
+                                }
+                            });
+                            
+                            /* Appel stats API */
+                            listFieldsGroupBy = ['owner', 'code'];
                             statsRestAPI.getStatGroupBy({
                                 listIndicators: ['originShootAtt', 'goalScored', 'yellowCard',
                                     'exclTmp', 'redCard', 'originShootDef', 'goalConceded',
-                                    'actDefPos', 'actDefNeg', 'actAttPos', 'actAttNeg'],
+                                    'actDefPos', 'actDefNeg', 'actAttPos', 'actAttNeg', 'holder'],
                                 listOwners: data.players,
                                 startDate: data.startDate.valueOf(),
                                 endDate: data.endDate.valueOf(),
@@ -107,7 +137,7 @@
                                 listFieldsGroupBy: listFieldsGroupBy
                             }).success(function (dataShoot) {
                                 if (angular.isArray(dataShoot) && dataShoot.length > 0) {
-
+                                    
                                     dataShoot.forEach(function (a) {
                                         var i = -1;
                                         a._id.owner.forEach(function (b) {

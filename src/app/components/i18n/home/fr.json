@@ -10,6 +10,9 @@
     "widgetTopUsed": {
       "title": "Les + utilisés"
     },
+    "widgetTopHolder": {
+      "title": "Les + titularisés"
+    },
     "widgetNotifications": {
       "title": "Notifications"
     },

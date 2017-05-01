@@ -54,6 +54,7 @@
 
                         /* Appel stats API */
                         statsRestAPI.getStatGroupBy(search).success(function (data) {
+                            $log.debug(search);
                             data = data.sortBy(function (n) {
                                 return n.value;
                             }, true);

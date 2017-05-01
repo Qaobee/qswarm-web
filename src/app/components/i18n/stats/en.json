@@ -20,6 +20,8 @@
     },
     "efficiency": {
       "efficiency": "Shoot's efficiency",
+      "efficiencyGoalkeeper": "Goalkeeper's efficiency",
+      "efficiencyGoalkeeperDesc": "Number stop on number shoot",
       "efficiencyTotal": "Global",
       "efficiency9m": "9 mètres",
       "efficiency6m": "6 mètres",
@@ -68,6 +70,8 @@
     "eventLabels": {
       "listPlayers": "Player list",
       "goalkeeper": "Goalkeeper",
+      "holder": "Holder",    
+      "playTime": "Playtime",    
       "player": "Player",
       "position": "Position",
       "efficiency": "Efficiency",
@@ -78,6 +82,7 @@
       "defense": "Defense (+/-)",
       "yellowCard": "YC",
       "exclusion": "2'",
+      "sanction": "Sanction",
       "redCard": "RC"
     },
     "label": {

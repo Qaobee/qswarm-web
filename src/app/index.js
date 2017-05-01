@@ -30,6 +30,13 @@
             'webNotifications',
             'slideWrapper',
 
+            /* qaobee shared services */
+            'qaobee.utils',
+            'qaobee.commonsConfig',
+            'qaobee.config',
+            'qaobee.eventbus',
+            'qaobee.httpModule',
+
             //* qaobee widget */
             'qaobee.widgets.collecte',
             'qaobee.filterCalendar',
@@ -41,19 +48,15 @@
             'eventCard',
             'pricing',
             'qaobee.titlePageBar',
-
-            /* qaobee shared services */
-            'qaobee.utils',
-            'qaobee.commonsConfig',
-            'qaobee.config',
-            'qaobee.eventbus',
-            'qaobee.httpModule',
-            'qaobee.widgets.dashboard.home',
-            'qaobee.widgets.dashboard.mainPlayer',
-            'qaobee.widgets.dashboard.mainTeam',
-            'qaobee.widgets.dashboard.statsPlayer',
+            'qaobee.widgets.agenda',
+            'qaobee.widgets.efficiencyPlayer',
+            'qaobee.widgets.efficiencyGoalkeeper',
+            'qaobee.widgets.podium',
+            'qaobee.widgets.notifications',
             'qaobee.widgets.goalHeatMap',
+            'statsEfficiency',
             'ui.dashboard',
+
             /* qaobee modules */
             'qaobee.cnil',
             'qaobee.cnil.module',
@@ -63,7 +66,10 @@
             'qaobee.teams',
             'qaobee.players',
             'qaobee.agenda',
-            'qaobee.stats',
+            'qaobee.eventStats',
+            'qaobee.widget.statsSanction',
+            'qaobee.widget.statsGoals',
+            'qaobee.widget.statsPlayerUse',
             'qaobee.user.mainProfile',
             'qaobee.notifications',
             'qaobee.test'
