@@ -127,7 +127,7 @@
 
                     $scope.$on('qeventbus:login', function () {
                         $scope.user = qeventbus.data;
-                        $location.path('/private');
+                     //   $location.path('/private');
                         $scope.loadMetaInfos();
                     });
 
@@ -152,9 +152,9 @@
                         $scope.notpaid = data.account.listPlan.filter(function (n) {
                                 return n.status === 'notpaid';
                             }).length > 0;
-                        if ($scope.notpaid) {
+                        /*if ($scope.notpaid) {
                             $location.path('/private/billing');
-                        }
+                        }*/
                         $rootScope.user = data;
                         $scope.user = data;
                     });
@@ -193,9 +193,9 @@
                                             return n.key === 'admin_qaobee';
                                         }).length > 0);
                                     }
-                                    if ($scope.notpaid) {
+                                 /*   if ($scope.notpaid) {
                                         $location.path('/private/billing');
-                                    }
+                                    }*/
                                 }
                             } else {
                                 toastr.warning($filter('translate')('modal.login.messageControl.unregistreduser'));

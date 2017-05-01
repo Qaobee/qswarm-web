@@ -52,6 +52,7 @@
             'qaobee.widgets.dashboard.mainPlayer',
             'qaobee.widgets.dashboard.mainTeam',
             'qaobee.widgets.dashboard.statsPlayer',
+            'qaobee.widgets.goalHeatMap',
             'ui.dashboard',
             /* qaobee modules */
             'qaobee.cnil',

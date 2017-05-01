@@ -1,0 +1,143 @@
+{
+  "ACT-HAND": {
+    "goal": {
+      "outside-right": {
+        "x": 23,
+        "y": 8,
+        "count": 0
+      },
+      "outside-left": {
+        "x": 1,
+        "y": 8,
+        "count": 0
+      },
+      "outside-top": {
+        "x": 12,
+        "y": 1,
+        "count": 0
+      },
+      "top-pole": {
+        "x": 12,
+        "y": 3.5,
+        "count": 0
+      },
+      "right-pole": {
+        "x": 19,
+        "y": 12,
+        "count": 0
+      },
+      "left-pole": {
+        "x": 5,
+        "y": 12,
+        "count": 0
+      },
+      "RDOWN": {
+        "x": 16.5,
+        "y": 16,
+        "count": 0
+      },
+      "CDOWN": {
+        "x": 12,
+        "y": 16,
+        "count": 0
+      },
+      "LDOWN": {
+        "x": 7.5,
+        "y": 16,
+        "count": 0
+      },
+      "RMIDDLE": {
+        "x": 16.5,
+        "y": 12,
+        "count": 0
+      },
+      "CMIDDLE": {
+        "x": 12,
+        "y": 12,
+        "count": 0
+      },
+      "LMIDDLE": {
+        "x": 7.5,
+        "y": 12,
+        "count": 0
+      },
+      "RUP": {
+        "x": 16.5,
+        "y": 7,
+        "count": 0
+      },
+      "CUP": {
+        "x": 12,
+        "y": 7,
+        "count": 0
+      },
+      "LUP": {
+        "x": 7.5,
+        "y": 7,
+        "count": 0
+      }
+    },
+    "ground": {
+      "bottom-center": {
+        "x": 12,
+        "y": 16,
+        "count": 0
+      },
+      "bottom-left": {
+        "x": 4,
+        "y": 15,
+        "count": 0
+      },
+      "bottom-right": {
+        "x": 20,
+        "y": 15,
+        "count": 0
+      },
+      "corner-right": {
+        "x": 21,
+        "y": 3,
+        "count": 0
+      },
+      "top-right": {
+        "x": 18,
+        "y": 8,
+        "count": 0
+      },
+      "top-center": {
+        "x": 12,
+        "y": 8,
+        "count": 0
+      },
+      "top-left": {
+        "x": 6,
+        "y": 8,
+        "count": 0
+      },
+      "corner-left": {
+        "x": 3,
+        "y": 3,
+        "count": 0
+      },
+      "outside-left": {
+        "x": 0,
+        "y": 12,
+        "count": 0
+      },
+      "outside-right": {
+        "x": 24,
+        "y": 12,
+        "count": 0
+      },
+      "outside-corner-right": {
+        "x": 24,
+        "y": 1,
+        "count": 0
+      },
+      "outside-corner-left": {
+        "x": 0,
+        "y": 1,
+        "count": 0
+      }
+    }
+  }
+}
