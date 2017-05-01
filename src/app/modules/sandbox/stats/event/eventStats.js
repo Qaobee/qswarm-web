@@ -93,7 +93,12 @@
                                     exclTmp: 0,
                                     redCard: 0,
                                     holder: 0,
-                                    totalPlayTime : 0
+                                    totalPlayTime : 0,
+                                    actAttPos : 0,
+                                    actAttNeg : 0,
+                                    actDefPos : 0,
+                                    actDefNeg : 0,
+                                    note : 0
                                 };
                             });
                             var listFieldsGroupBy = ['owner'];
@@ -145,7 +150,7 @@
                                                 return n._id === b;
                                             });
                                         });
-                                        $scope.players[i].stats[a._id.code] = a.value;
+                                        $scope.players[i].stats[a._id.code] += a.value;
                                     });
                                 }
                             });
@@ -167,7 +172,7 @@
                                                 return n._id === b;
                                             });
                                         });
-                                        $scope.players[i].stats.actDefPos = a.value;
+                                        $scope.players[i].stats.actDefPos += a.value;
                                     });
                                 }
                             });
@@ -190,7 +195,7 @@
                                                 return n._id === b;
                                             });
                                         });
-                                        $scope.players[i].stats.actDefNeg = a.value;
+                                        $scope.players[i].stats.actDefNeg += a.value;
                                     });
                                 }
                             });
@@ -212,7 +217,7 @@
                                                 return n._id === b;
                                             });
                                         });
-                                        $scope.players[i].stats.actAttPos = a.value;
+                                        $scope.players[i].stats.actAttPos += a.value;
                                     });
                                 }
                             });
@@ -243,7 +248,9 @@
                             $scope.players = $scope.players.sortBy(function (n) {
                                 return n.positionType;
                             });
+                            
                         });
+                        
                         $scope.ownersId = [];
                         $scope.ownersId.push(data.eventRef._id);
                         qeventbus.prepForBroadcast('ownersId', {
