@@ -46,15 +46,13 @@
                             listFieldsGroupBy: ['owner', 'code', 'shootSeqId']
                         };
                         
-                        $log.debug('search',search);
-                        
                         if (!!$scope.values) {
                             search.values = $scope.values;
                         }
                         var listShootSeqId = [];
 
                         statsRestAPI.getStatGroupBy(search).success(function (dataOri) {
-                            $log.debug('dataOri',dataOri);
+                            
                             if (dataOri && dataOri.length) {
                                 $scope.noStat = true;
                                 result.nbShoot = dataOri.length;

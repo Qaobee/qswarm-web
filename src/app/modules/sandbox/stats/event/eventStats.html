@@ -151,56 +151,39 @@
 
             <!-- Stats participants Start -->
             <div class="row" ng-if="players.length > 0">
-                <div class="col s12 white-text colorMain"><h5><i class="fa fa-bar-chart"></i>
+                <div class="col s12 dark-primary-color"><h5><i class="fa fa-bar-chart"></i>
                     {{'stats.eventLabels.listPlayers' | translate }}</h5></div>
                 <div class=" card col s12">
                     <!-- player -->
                     <table class="bordered responsive-table highlight">
                         <thead>
-                        <tr class="light-green lighten-1 white-text">
+                        <tr class="light-primary-color">
                             <th data-field="player" translate="stats.eventLabels.player"></th>
-                            <th data-field="positionType" translate="stats.eventLabels.position"></th>
-                            <th class="center-align" data-field="efficiency"
-                                translate="stats.eventLabels.efficiency"></th>
-                            <th class="center-align" data-field="efficiency" translate="stats.eventLabels.shoot"></th>
-                            <th class="center-align" data-field="yellowCard"
-                                translate="stats.eventLabels.yellowCard"></th>
-                            <th class="center-align" data-field="exclusion"
-                                translate="stats.eventLabels.exclusion"></th>
-                            <th class="center-align" data-field="redCard" translate="stats.eventLabels.redCard"></th>
+                            <th class="center-align" data-field="holder" translate="stats.eventLabels.holder"></th>
+                            <th class="center-align" data-field="holder" translate="stats.eventLabels.playTime"></th>
+                            <th class="center-align" data-field="efficiency" translate="stats.eventLabels.efficiency"></th>
+                            <th class="center-align" data-field="yellowCard" translate="stats.eventLabels.sanction"></th>
                             <th class="center-align" data-field="attack" translate="stats.eventLabels.attack"></th>
                             <th class="center-align" data-field="defense" translate="stats.eventLabels.defense"></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="player in players | filter:{$:'!goalkeeper'}">
-                            <td><a href="#/private/viewPlayer/{{player._id}}">{{player.name}} - {{player.firstname}}</a></td>
-                            <td>{{player.positionType}}</td>
-                            <td class="center-align" ng-if="player.stats.originShootAtt > 0">
-                                {{(player.stats.goalScored/player.stats.originShootAtt)*100 | number : 0}} %
+                            <td><a href="#/private/viewPlayer/{{player._id}}" class="accent-text-color">{{player.name}} {{player.firstname}}</a></td>
+                            <td class="center-align"><span ng-if="player.stats.holder>0"><i class="fa fa-star-o"></i></span></td>
+                            <td class="center-align"><span ng-if="player.stats.totalPlayTime>0">{{player.stats.totalPlayTime/60 | number : 0}} '</span></td>
+                            <td class="center-align">
+                                <span ng-if="player.stats.originShootAtt > 0">{{player.stats.goalScored}} / {{player.stats.originShootAtt}} <span class="light-text-color">({{(player.stats.goalScored/player.stats.originShootAtt)*100 | number : 0}} %)</span></span>
                             </td>
-                            <td class="center-align" ng-if="player.stats.originShootAtt === 0"></td>
-                            <td class="center-align" ng-if="player.stats.originShootAtt > 0">{{player.stats.goalScored}}
-                                / {{player.stats.originShootAtt}}
+                            
+                            <td class="right-align">
+                                <span ng-if="player.stats.yellowCard>0"><i class="material-icons yellow-text text-darken-2">sim_card_alert</i></span>
+                                <span class="badge" ng-if="player.stats.exclTmp>0"><i class="fa fa-hand-peace-o"></i> &nbsp; {{player.stats.exclTmp}}</span>
+                                <span ng-if="player.stats.redCard>0"><i class="material-icons red-text text-lighten-2">sim_card_alert</i></span>
                             </td>
-                            <td class="center-align" ng-if="player.stats.originShootAtt === 0"></td>
-                            <td ng-if="player.stats.yellowCard>0" class="center-align"><span
-                                    class="badge amber accent-3">{{player.stats.yellowCard}}</span></td>
-                            <td ng-if="!player.stats.yellowCard>0" class="center-align"></td>
-                            <td ng-if="player.stats.exclTmp>0" class="center-align"><span class="badge red lighten-2">{{player.stats.exclTmp}}</span>
-                            </td>
-                            <td ng-if="!player.stats.exclTmp>0" class="center-align"></td>
-                            <td ng-if="player.stats.redCard>0" class="center-align"><span class="badge red darken-2">{{player.stats.redCard}}</span>
-                            </td>
-                            <td ng-if="!player.stats.redCard>0" class="center-align"></td>
-                            <td class="center-align" ng-if="player.stats.actAttNeg">{{player.stats.actAttPos}} /
-                                {{player.stats.actAttNeg}}
-                            </td>
-                            <td class="center-align" ng-if="!player.stats.actAttNeg"></td>
-                            <td class="center-align" ng-if="player.stats.actDefNeg">{{player.stats.actDefPos}} /
-                                {{player.stats.actDefNeg}}
-                            </td>
-                            <td class="center-align" ng-if="!player.stats.actDefNeg"></td>
+                            
+                            <td class="center-align"><span ng-if="player.stats.actAttNeg">{{player.stats.actAttPos}} / {{player.stats.actAttNeg}}</span></td>
+                            <td class="center-align"><span ng-if="player.stats.actDefNeg">{{player.stats.actDefPos}} / {{player.stats.actDefNeg}}</span></td>
                         </tr>
                         </tbody>
                     </table>
@@ -208,39 +191,32 @@
                     <!-- goalkeeper -->
                     <table class="bordered responsive-table highlight">
                         <thead>
-                        <tr class="red lighten-1 white-text">
-                            <th data-field="player" translate="stats.eventLabels.goalkeeper"></th>
-                            <th class="center-align" data-field="efficiency"
-                                translate="stats.eventLabels.efficiencyGoal"></th>
-                            <th class="center-align" data-field="efficiency" translate="stats.eventLabels.stop"></th>
-                            <th class="center-align" data-field="yellowCard"
-                                translate="stats.eventLabels.yellowCard"></th>
-                            <th class="center-align" data-field="exclusion"
-                                translate="stats.eventLabels.exclusion"></th>
-                            <th class="center-align" data-field="redCard" translate="stats.eventLabels.redCard"></th>
+                        <tr class="light-primary-color">
+                            <th data-field="player" translate="stats.eventLabels.player"></th>
+                            <th class="center-align" data-field="holder" translate="stats.eventLabels.holder"></th>
+                            <th class="center-align" data-field="holder" translate="stats.eventLabels.playTime"></th>
+                            <th class="center-align" data-field="efficiency" translate="stats.eventLabels.efficiencyGoal"></th>
+                            <th class="center-align" data-field="yellowCard" translate="stats.eventLabels.sanction"></th>
+                            <th class="center-align" data-field="attack" translate="stats.eventLabels.attack"></th>
+                            <th class="center-align" data-field="defense" translate="stats.eventLabels.defense"></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="player in players | filter:{$:'goalkeeper'}">
-                            <td>{{player.name}} - {{player.firstname}}</td>
-                            <td class="center-align" ng-if="player.stats.originShootDef > 0">
-                                {{((player.stats.originShootDef-player.stats.goalConceded)/player.stats.originShootDef)*100
-                                | number : 0}} %
+                            <td><a href="#/private/viewPlayer/{{player._id}}" class="accent-text-color">{{player.name}} {{player.firstname}}</a></td>
+                            <td class="center-align"><span ng-if="player.stats.holder>0"><i class="fa fa-star-o"></i></span></td>
+                            <td class="center-align"><span ng-if="player.stats.totalPlayTime>0">{{player.stats.totalPlayTime/60 | number : 0}} '</span></td>
+                            <td class="center-align">
+                                <span ng-if="player.stats.originShootDef > 0">{{player.stats.originShootDef-player.stats.goalConceded}} / {{player.stats.originShootDef}} <span class="light-text-color">
+                                    ({{((player.stats.originShootDef-player.stats.goalConceded)/player.stats.originShootDef)*100 | number : 0}} %)</span></span>
                             </td>
-                            <td class="center-align" ng-if="player.stats.originShootDef === 0"></td>
-                            <td class="center-align" ng-if="player.stats.originShootDef > 0">
-                                {{(player.stats.originShootDef-player.stats.goalConceded)}}/{{player.stats.originShootDef}}
+                           <td class="right-align">
+                                <span ng-if="player.stats.yellowCard>0"><i class="material-icons yellow-text text-darken-2">sim_card_alert</i></span>
+                                <span class="badge" ng-if="player.stats.exclTmp>0"><i class="fa fa-hand-peace-o"></i> &nbsp; {{player.stats.exclTmp}}</span>
+                                <span ng-if="player.stats.redCard>0"><i class="material-icons red-text text-lighten-2">sim_card_alert</i></span>
                             </td>
-                            <td class="center-align" ng-if="player.stats.originShootDef === 0"></td>
-                            <td ng-if="player.stats.yellowCard>0" class="center-align"><span
-                                    class="badge amber accent-3">{{player.stats.yellowCard}}</span></td>
-                            <td ng-if="!player.stats.yellowCard>0" class="center-align"></td>
-                            <td ng-if="player.stats.exclTmp>0" class="center-align"><span class="badge red lighten-2">{{player.stats.exclTmp}}</span>
-                            </td>
-                            <td ng-if="!player.stats.exclTmp>0" class="center-align"></td>
-                            <td ng-if="player.stats.redCard>0" class="center-align"><span class="badge red darken-2">{{player.stats.redCard}}</span>
-                            </td>
-                            <td ng-if="!player.stats.redCard>0" class="center-align"></td>
+                            <td class="center-align"><span ng-if="player.stats.actAttNeg">{{player.stats.actAttPos}} / {{player.stats.actAttNeg}}</span></td>
+                            <td class="center-align"><span ng-if="player.stats.actDefNeg">{{player.stats.actDefPos}} / {{player.stats.actDefNeg}}</span></td>
                         </tr>
                         </tbody>
                     </table>
