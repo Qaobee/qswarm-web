@@ -40,7 +40,7 @@
          * @description Main controller for view addPlayer.html
          */
         .controller('AddPlayerControler', function ($log, $http, $scope, $routeParams, $window, $translatePartialLoader,
-                                                    $location, $rootScope, $q, $filter, user, meta, activityCfgRestAPI, personSrv) {
+                                                    $location, $rootScope, $q, $filter, user, meta, activityCfgRestAPI, countryRestAPI, personSrv) {
 
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('effective');
@@ -50,8 +50,11 @@
             $scope.showBirthdate = true;
             $scope.user = user;
             $scope.meta = meta;
+
             $scope.positionsType = {};
             $scope.addPlayerTitle = true;
+            $scope.countryList = [];
+        
             // return button
             $scope.doTheBack = function () {
                 $window.history.back();
@@ -83,26 +86,37 @@
             $scope.optionsCountry = {
                 types: 'geocode'
             };
+                
             $scope.detailsCountry = '';
-
-            $scope.optionsCity = {
-                types: '(cities)'
-            };
-            $scope.detailsCity = '';
-
             $scope.optionsAdr = null;
             $scope.detailsAdr = '';
+            
+            countryRestAPI.getList().then(function (data) {
+                data.data.forEach(function (item) {
+                    $scope.countryList.push(item);
+                });
+                
+                $scope.countryList = $scope.countryList.sortBy(function (n) {
+                    return n.label;
+                });
+            });
 
+        
             /* Retrieve list of positions type */
             $scope.getListPositionType = function () {
                 activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.sandbox.activityId, $scope.meta.sandbox.structure.country._id, 'listPositionType').success(function (data) {
                     $scope.positionsType = data;
+                    
+                    $scope.positionsType = $scope.positionsType.sortBy(function (n) {
+                        return n.label;
+                    });
                 });
             };
 
             /* add player */
             $scope.checkAndformatPerson = function () {
-                $scope.player.birthdate = moment($scope.player.birthdate, 'DD/MM/YYYY').valueOf();
+                
+                $scope.player.birthdate = moment($scope.birthdate, 'DD/MM/YYYY').valueOf();
                 personSrv.formatAddress($scope.player.address).then(function (adr) {
                     $scope.player.address = adr;
 

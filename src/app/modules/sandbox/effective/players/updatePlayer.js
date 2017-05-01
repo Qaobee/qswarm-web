@@ -48,6 +48,7 @@
             $scope.meta = meta;
             $scope.player = {};
             $scope.countryList = [];
+
             $scope.positionsType = {};
             $scope.addPlayerTitle = false;
             // return button
@@ -60,27 +61,45 @@
             $scope.optionsCountry = {
                 types: 'geocode'
             };
+                
             $scope.detailsCountry = '';
-            $scope.optionsCity = {
-                types: '(cities)'
-            };
-            $scope.detailsCity = '';
             $scope.optionsAdr = null;
             $scope.detailsAdr = '';
+            
             countryRestAPI.getList().then(function (data) {
                 data.data.forEach(function (item) {
                     $scope.countryList.push(item);
                 });
+                $scope.countryList = $scope.countryList.sortBy(function (n) {
+                    return n.label;
+                });
             });
+        
+            // Recherche liste category age
+            $scope.loadCategories = function () {
+                activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.user.account.listPlan[0].activity._id, $scope.user.country._id, 'listCategoryAge').success(function (data) {
+                    $scope.categoryAgeResult = data;
+                    var dataSort = data.sortBy(function (o) {
+                        return -1 * o.order;
+                    });
+                });
+            };
+        
             /* Retrieve list of positions type */
             $scope.getListPositionType = function () {
                 activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.sandbox.activityId, $scope.meta.sandbox.structure.country._id, 'listPositionType').success(function (data) {
                     $scope.positionsType = data;
+                    
+                    $scope.positionsType = $scope.positionsType.sortBy(function (n) {
+                        return n.label;
+                    });   
                 });
             };
+        
             $scope.getToday = function () {
                 return new Date().toISOString().slice(0, 10);
             };
+        
             /* get person */
             $scope.getPerson = function () {
                 personRestAPI.getPerson($scope.playerId).success(function (person) {
@@ -92,12 +111,13 @@
                         angular.element('#playerBirthdate').pickadate('picker').set('select', $scope.birthdate.valueOf());
                         $scope.datePicker = angular.element('#playerBirthdate').pickadate('picker');
                     }, 1000);
+                    $scope.getListPositionType();
                 });
             };
 
             /* update person */
             $scope.checkAndformatPerson = function () {
-                $scope.player.birthdate = moment($scope.birthdate, 'DD/MM/YYYY').valueOf();
+               $scope.player.birthdate = moment($scope.birthdate, 'DD/MM/YYYY').valueOf();
                 personSrv.formatAddress($scope.player.address).then(function (adr) {
                     $scope.player.address = adr;
 
@@ -113,7 +133,7 @@
                 });
 
             };
-            $scope.getListPositionType();
+            
             $scope.getPerson();
         });
 }());

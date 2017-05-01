@@ -23,12 +23,7 @@
                         if (oldValue || !angular.equals(oldValue, newValue)) {
                             $scope.ownersId.push($scope.player._id);
                             $scope.playersIds = $scope.ownersId;
-                            $scope.player.birthdate = new Date(moment($scope.player.birthdate));
-                            if (angular.isDefined($scope.player.status.positionType)) {
-                                $scope.player.positionType = $filter('translate')('stats.positionType.value.' + $scope.player.status.positionType);
-                            } else {
-                                $scope.player.positionType = '';
-                            }
+                            
                             $scope.series.push($scope.player.firstname + ' ' + $scope.player.name);
                             $timeout(function() {
                                 qeventbus.prepForBroadcast('ownersId', {
