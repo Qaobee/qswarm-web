@@ -2,16 +2,34 @@
     <div class="card-title dark-primary-color center">
         <span class="title"><small translate="stats.resumeTab.goalScored"></small></span>
     </div>
+    <!-- <img src="http://formation.upyupy.fr/i/cours/panneau.gif"
+          alt="Orientation" width="374" height="162" border="0" usemap="#panneaux" />
+     <map name="panneaux" id="panneaux">
+         <area shape="rect" coords="92,19,261,66" href="page-contact.html" alt="Contact" />
+         <area shape="circle" coords="314,105,44" href="page-faq.html" alt="FAQ" />
+         <area shape="poly" coords="18,100,42,83,190,103,183,148,36,132" href="page-home.html" alt="Accueil" />
+     </map>-->
+
     <div class="card-content white primary-text-color">
         <div class="row">
             <div class="col s12 m8">
+                <div class="heatmap-image" id="goalHeat"></div>
                 <div class="heatmap-container" style="height:{{heightGoal}}px;" id="goal">
-                    <img class="heatmap-image" ng-src="assets/images/handball/hand_goal.png"
-                         style="height:{{heightGoal}}px;" sb-load="onImgLoad($event)"/>
-                    <div class="heatmap"></div>
-                    <div class="heatmap-image"
-                         style="z-index:5; background-color: #000; opacity: .5;height:{{heightGoal}}px;"></div>
+                    <div class="heatmap-image">
+                    <img class="" src="assets/images/handball/hand_goal.png"
+                         height="{{heightGoal}}px;" usemap="#goalMap"
+                         sb-load="onImgLoad($event)"/>
+
+                    <map id="goalMap" name="goalMap">
+                        <area style="border: red solid 2px"
+                              shape="rect" coords="{{area.coords.join()}}"
+                              ng-repeat="area in goalMap"
+                              ng-click="displayBubbleGoal(area.description)"
+                              href="javascript:void(0)"
+                        />
+                    </map></div>
                 </div>
+
                 <div class="heatmap-container" style="height:{{heightGround}}px;" id="ground">
                     <img class="heatmap-image" ng-src="assets/images/handball/zone_attaque.png"
                          style="height:{{heightGround}}px;" sb-load="onImgLoad($event)"/>
