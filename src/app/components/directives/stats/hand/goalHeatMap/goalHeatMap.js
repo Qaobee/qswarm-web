@@ -32,37 +32,16 @@
                     $scope.onImgLoad = function () {
                         if (angular.isDefined(filterCalendarSrv.getValue())) {
                             $scope.periodicityActive = filterCalendarSrv.getValue().periodicityActive;
-                            $scope.dimsGoal = $scope.getElementDimensions(angular.element('#goal img'));
+                            $scope.dimsGoal = $scope.getElementDimensions(angular.element('#bgGoal'));
                             $scope.dimsGround = $scope.getElementDimensions(angular.element('#ground img'));
-                            //  angular.element(angular.element('#goal').children(2)[1]).attr('id', $scope.goalUid);
-                            //angular.element('#goal img').attr('usemap', '#goalMap');
-                            $scope.goalMap = [
-                                {coords: [445, 39, 497, 287], description: 'outside-right'},
-                                {coords: [1, 39, 53, 289], description: 'outside-left'},
-                                {coords: [0, 1, 497, 36], description: 'outside-top'},
-                                {coords: [55, 38, 442, 77], description: 'top-pole'},
-                                {coords: [393, 81, 442, 285], description: 'right-pole'},
-                                {coords: [56, 81, 105, 287], description: 'left-pole'},
-                                {coords: [299, 220, 389, 286], description: 'RDOWN'},
-                                {coords: [202, 218, 295, 287], description: 'CDOWN'},
-                                {coords: [108, 220, 198, 286], description: 'LDOWN'},
-                                {coords: [298, 148, 390, 216], description: 'RMIDDLE'},
-                                {coords: [202, 148, 295, 217], description: 'CMIDDLE'},
-                                {coords: [108, 147, 198, 216], description: 'LMIDDLE'},
-                                {coords: [298, 79, 390, 146], description: 'RUP'},
-                                {coords: [202, 79, 295, 146], description: 'CUP'},
-                                {coords: [108, 79, 199, 145], description: 'LUP'}
-                            ];
                             angular.element('#goalHeat').attr('style', 'width:' + $scope.dimsGoal.width + 'px;height:' + $scope.dimsGoal.height + 'px');
-                            angular.element('#goal img').attr('style', 'width:' + $scope.dimsGoal.width + 'px;height:' + $scope.dimsGoal.height + 'px');
-                            imageMapResize();
                             $scope.hGoal = new Heatmap({
                                 element: 'goalHeat',
                                 size: 200,
                                 opacity: 1,
                                 gradient: 'classic',
                                 shadow: 'large',
-                                zIndex: 1
+                                zIndex: -1
                             });
                             $scope.groundUid = qaobeeUtils.guid();
                             angular.element(angular.element('#ground').children(2)[1]).attr('id', $scope.groundUid);
@@ -75,10 +54,12 @@
                                 shadow: 'large',
                                 zIndex: 10
                             });
+
+                            //
                             nbImgs++;
                             if (nbImgs === 2) {
                                 $scope.buildAll();
-                                imageMapResize('#goalMap');
+                                imageMapResize();
                             }
                         }
                     };
@@ -91,7 +72,23 @@
                     $scope.goalUid = qaobeeUtils.guid();
                     $scope.succeededGoals = true;
                     $scope.stopedGoals = true;
-                    $scope.goalMap = [];
+                    $scope.goalMap = [
+                        {coords: [891, 2, 1000, 575], description: 'outside-right'},
+                        {coords: [0, 0, 106, 574], description: 'outside-left'},
+                        {coords: [109, 3, 887, 73], description: 'outside-top'},
+                        {coords: [216, 80, 782, 157], description: 'top-pole'},
+                        {coords: [785, 81, 886, 57], description: 'right-pole'},
+                        {coords: [110, 80, 210, 573], description: 'left-pole'},
+                        {coords: [598, 440, 783, 577], description: 'RDOWN'},
+                        {coords: [404, 438, 591, 575], description: 'CDOWN'},
+                        {coords: [216, 438, 400, 577], description: 'LDOWN'},
+                        {coords: [598, 299, 781, 435], description: 'RMIDDLE'},
+                        {coords: [404, 298, 592, 435], description: 'CMIDDLE'},
+                        {coords: [215, 297, 403, 433], description: 'LMIDDLE'},
+                        {coords: [594, 161, 781, 297], description: 'RUP'},
+                        {coords: [404, 160, 596, 292], description: 'CUP'},
+                        {coords: [216, 159, 397, 296], description: 'LUP'}
+                    ];
                     $scope.indicator = {
                         impactShoot: 'impactShootAtt',
                         stopGK: 'stopGKAtt',
@@ -177,8 +174,11 @@
                     };
 
                     $scope.displayBubbleGoal = function (count) {
-                        console.log(count)
-                    }
+                        var val = 0;
+                        if ($scope.goalSerie[count]) {
+                            val = $scope.goalSerie[count].count;
+                        }
+                    };
 
 
                     $scope.build = function (e, type, serie) {
