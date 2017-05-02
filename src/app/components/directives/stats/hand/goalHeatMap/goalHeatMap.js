@@ -173,11 +173,16 @@
                         });
                     };
 
-                    $scope.displayBubbleGoal = function (count) {
-                        var val = 0;
+                    $scope.displayBubbleGoal = function (count,$event) {
+                       $scope.val = 0;
                         if ($scope.goalSerie[count]) {
-                            val = $scope.goalSerie[count].count;
+                            $scope.val = $scope.goalSerie[count].count;
                         }
+                        var tooltipSpan = angular.element('#tooltip-span');
+                        var x = $event.clientX,
+                            y = $event.clientY;
+                        tooltipSpan.attr('style', 'top: '+ (y + 20) + 'px; left: ' +(x + 20) + 'px; display:block;');
+                        console.log($scope.val, $event)
                     };
 
 

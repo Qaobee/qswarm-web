@@ -9,33 +9,35 @@
          <area shape="circle" coords="314,105,44" href="page-faq.html" alt="FAQ" />
          <area shape="poly" coords="18,100,42,83,190,103,183,148,36,132" href="page-home.html" alt="Accueil" />
      </map>-->
-
     <div class="card-content white primary-text-color">
         <div class="row">
             <div class="col s12 m8">
                 <div class="heatmap-container" style="height:{{heightGoal}}px;" id="goal">
                     <img class="heatmap-image" src="assets/images/handball/hand_goal.png"
-                         height="{{heightGoal}}px;"id="bgGoal"
+                         height="{{heightGoal}}px;" id="bgGoal"
                          sb-load="onImgLoad($event)"/>
 
                     <div class="heatmap" id="goalHeat"></div>
                     <img class="heatmap-image transparent" src="assets/images/handball/hand_goal.png"
-                          usemap="#goalMap"
+                         usemap="#goalMap"
                          height="{{heightGoal}}px;"/>
 
-                  <!--  <img class="heatmap-image" src="https://cartodb-basemaps-b.global.ssl.fastly.net/dark_all/3/3/2.png"
-                         id="transGoal"
-                         height="{{dimsGoal.height}}px;" usemap="#goalMap" />--><!-- <img class="heatmap-image" src="http://www4-fr.fnac-static.com/nav/images/dot.gif"
+                    <!--  <img class="heatmap-image" src="https://cartodb-basemaps-b.global.ssl.fastly.net/dark_all/3/3/2.png"
+                           id="transGoal"
+                           height="{{dimsGoal.height}}px;" usemap="#goalMap" />--><!-- <img class="heatmap-image" src="http://www4-fr.fnac-static.com/nav/images/dot.gif"
                          id="transGoal"
                          height="{{heightGoal}}px;" usemap="#goalMap" />-->
                     <map id="goalMap" name="goalMap" class="heatmap-map">
                         <area shape="rect" coords="{{area.coords.join()}}"
                               style="z-index: 99"
                               ng-repeat="area in goalMap"
-                              ng-click="displayBubbleGoal(area.description)"
+                              ng-click="displayBubbleGoal(area.description, $event)"
                               href="javascript:void(0)"
                         />
                     </map>
+                    <span id="tooltip-span" class="material-tooltip">
+       {{val}}
+    </span>
                 </div>
 
                 <div class="heatmap-container" style="height:{{heightGround}}px;" id="ground">

@@ -1851,3 +1851,12 @@ span#top {
     transform: translate(-50%, -50%);
     position: absolute;
 }
+#tooltip-span {
+    display:none;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    width: 100px;
+    height: 20px;
+    z-index: 99;
+    position:fixed;
+}
