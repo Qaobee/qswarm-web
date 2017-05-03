@@ -33,11 +33,12 @@
          * @class qaobee.modules.home.HomeControler
          */
         .controller('EventStats', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
-                                            collecteRestAPI, personRestAPI, statsRestAPI, effectiveSrv, statsSrv, userRestAPI, qeventbus) {
+                                            collecteRestAPI, personRestAPI, statsRestAPI, effectiveSrv, statsSrv, userRestAPI, qeventbus, $timeout) {
             $translatePartialLoader.addPart('home');
             $translatePartialLoader.addPart('stats');
             $scope.user = user;
             $scope.meta = meta;
+            $scope.instance = {};
 
             $scope.players = [];
             $scope.teamHome = false;
@@ -101,6 +102,7 @@
                                     note : 0
                                 };
                             });
+                            $scope.instance.refresh();
                             var listFieldsGroupBy = ['owner'];
                             var search = {
                                 listIndicators: ['totalPlayTime'],
@@ -109,7 +111,7 @@
                                 endDate: data.endDate.valueOf(),
                                 aggregat: 'SUM',
                                 listFieldsGroupBy: listFieldsGroupBy
-                            }
+                            };
                             /* Appel stats API */
                             statsRestAPI.getStatGroupBy(search).success(function (dataShoot) {
                                 
@@ -259,7 +261,8 @@
                     }
                 });
             };
-
-            $scope.getCollecte();
+            $timeout(function () {
+                $scope.getCollecte();
+            });
         });
 }());
