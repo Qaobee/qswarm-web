@@ -37,33 +37,29 @@
                         $scope.buildAll();
                     };
                     $scope.onImgLoad = function () {
-                        if (angular.isDefined(filterCalendarSrv.getValue())) {
-                            $scope.periodicityActive = filterCalendarSrv.getValue().periodicityActive;
-                            $scope.dimsGoal = $scope.getElementDimensions(angular.element('#bgGoal'));
-                            $scope.dimsGround = $scope.getElementDimensions(angular.element('#bgGround'));
-                            angular.element('#goalHeat').attr('style', 'width:' + $scope.dimsGoal.width + 'px;height:' + $scope.dimsGoal.height + 'px');
-                            $scope.hGoal = new Heatmap({
-                                element: 'goalHeat',
-                                size: 200,
-                                opacity: 1,
-                                gradient: 'classic',
-                                shadow: 'large',
-                                zIndex: -1
-                            });
-                            angular.element('#groundHeat').attr('style', 'width:' + $scope.dimsGround.width + 'px;height:' + $scope.dimsGround.height + 'px');
-                            $scope.hGround = new Heatmap({
-                                element: 'groundHeat',
-                                size: 400,
-                                opacity: 1,
-                                gradient: 'classic',
-                                shadow: 'large',
-                                zIndex: -1
-                            });
-                            nbImgs++;
-                            if (nbImgs === 2) {
-                                $scope.buildAll();
-                                imageMapResize();
-                            }
+                        $scope.dimsGoal = $scope.getElementDimensions(angular.element('#bgGoal'));
+                        $scope.dimsGround = $scope.getElementDimensions(angular.element('#bgGround'));
+                        angular.element('#goalHeat').attr('style', 'width:' + $scope.dimsGoal.width + 'px;height:' + $scope.dimsGoal.height + 'px');
+                        $scope.hGoal = new Heatmap({
+                            element: 'goalHeat',
+                            size: 200,
+                            opacity: 1,
+                            gradient: 'classic',
+                            shadow: 'large',
+                            zIndex: -1
+                        });
+                        angular.element('#groundHeat').attr('style', 'width:' + $scope.dimsGround.width + 'px;height:' + $scope.dimsGround.height + 'px');
+                        $scope.hGround = new Heatmap({
+                            element: 'groundHeat',
+                            size: 400,
+                            opacity: 1,
+                            gradient: 'classic',
+                            shadow: 'large',
+                            zIndex: -1
+                        });
+                        nbImgs++;
+                        if (nbImgs === 2) {
+                            $scope.buildAll();
                         }
                     };
                 },
@@ -155,13 +151,16 @@
                                 Object.keys($scope.groundSerie).forEach(function (k) {
                                     $scope.hGround.add.Point($scope.groundSerie[k].x * $scope.dimsGround.width / 24, $scope.groundSerie[k].y * $scope.dimsGround.height / 18, $scope.groundSerie[k].count);
                                 });
+
+                                imageMapResize();
                             }
                         });
                     };
 
                     $scope.displayBubbleGoal = function (count, $event) {
                         $scope.val.goal = 0;
-                        if ($scope.goalSerie[count]) {
+                        if (!$scope.dimsGoal) return;
+                        if ($scope.goalSerie && $scope.goalSerie[count]) {
                             $scope.val.goal = $scope.goalSerie[count].count;
                         }
                         var tooltipSpan = angular.element('#goalTooltip');
@@ -173,7 +172,8 @@
 
                     $scope.displayBubbleGround = function (count, $event) {
                         $scope.val.ground = 0;
-                        if ($scope.groundSerie[count]) {
+                        if (!$scope.dimsGround) return;
+                        if ($scope.groundSerie && $scope.groundSerie[count]) {
                             $scope.val.ground = $scope.groundSerie[count].count;
                         }
                         var tooltipSpan = angular.element('#groundTooltip');

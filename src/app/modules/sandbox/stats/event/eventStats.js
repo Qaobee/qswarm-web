@@ -39,7 +39,7 @@
             $scope.user = user;
             $scope.meta = meta;
             $scope.instance = {};
-
+            $scope.ownersId = [];
             $scope.players = [];
             $scope.teamHome = false;
             $scope.teamVisitor = true;
@@ -78,7 +78,9 @@
                         $scope.stats = [];
                         effectiveSrv.getPersons(data.players, listField).then(function (players) {
                             $scope.players = players;
-
+                            $scope.players = $scope.players.sortBy(function (n) {
+                                return n.positionType;
+                            });
                             $scope.players.forEach(function (player) {
                                 if (angular.isDefined(player.status.positionType)) {
                                     player.positionType = $filter('translate')('stats.positionType.value.' + player.status.positionType);
@@ -114,9 +116,7 @@
                             };
                             /* Appel stats API */
                             statsRestAPI.getStatGroupBy(search).success(function (dataShoot) {
-                                
                                 if (angular.isArray(dataShoot) && dataShoot.length > 0) {
-                                    
                                     dataShoot.forEach(function (a) {
                                         var i = -1;
                                         a._id.owner.forEach(function (b) {
@@ -124,9 +124,7 @@
                                                 return n._id === b;
                                             });
                                         });
-                                        
                                         $scope.players[i].stats['totalPlayTime'] = a.value;
-                                        
                                     });
                                 }
                             });
@@ -144,7 +142,6 @@
                                 listFieldsGroupBy: listFieldsGroupBy
                             }).success(function (dataShoot) {
                                 if (angular.isArray(dataShoot) && dataShoot.length > 0) {
-                                    
                                     dataShoot.forEach(function (a) {
                                         var i = -1;
                                         a._id.owner.forEach(function (b) {
@@ -189,7 +186,6 @@
                                 listFieldsGroupBy: listFieldsGroupBy
                             }).success(function (dataActDefNeg) {
                                 if (angular.isArray(dataActDefNeg) && dataActDefNeg.length > 0) {
-
                                     dataActDefNeg.forEach(function (a) {
                                         var i = -1;
                                         a._id.owner.forEach(function (b) {
@@ -234,7 +230,6 @@
                                 listFieldsGroupBy: listFieldsGroupBy
                             }).success(function (dataActAttNeg) {
                                 if (angular.isArray(dataActAttNeg) && dataActAttNeg.length > 0) {
-
                                     dataActAttNeg.forEach(function (a) {
                                         var i = -1;
                                         a._id.owner.forEach(function (b) {
@@ -246,14 +241,9 @@
                                     });
                                 }
                             });
-
-                            $scope.players = $scope.players.sortBy(function (n) {
-                                return n.positionType;
-                            });
                             
                         });
-                        
-                        $scope.ownersId = [];
+
                         $scope.ownersId.push(data.eventRef._id);
                         qeventbus.prepForBroadcast('ownersId', {
                             ownersId: $scope.ownersId
