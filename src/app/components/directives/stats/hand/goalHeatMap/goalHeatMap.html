@@ -1,18 +1,12 @@
 <div class="card primary-text-color">
     <div class="card-title dark-primary-color center">
-        <span class="title"><small translate="stats.resumeTab.goalScored"></small></span>
+        <span class="title"><small translate="stats.typoGoal"></small></span>
     </div>
-    <!-- <img src="http://formation.upyupy.fr/i/cours/panneau.gif"
-          alt="Orientation" width="374" height="162" border="0" usemap="#panneaux" />
-     <map name="panneaux" id="panneaux">
-         <area shape="rect" coords="92,19,261,66" href="page-contact.html" alt="Contact" />
-         <area shape="circle" coords="314,105,44" href="page-faq.html" alt="FAQ" />
-         <area shape="poly" coords="18,100,42,83,190,103,183,148,36,132" href="page-home.html" alt="Accueil" />
-     </map>-->
     <div class="card-content white primary-text-color">
         <div class="row">
             <div class="col s12 m8">
                 <div class="heatmap-container" style="height:{{heightGoal}}px;" id="goal">
+                    <span id="goalTooltip" class="tooltip-span">{{val.goal}}</span>
                     <img class="heatmap-image" src="assets/images/handball/hand_goal.png"
                          height="{{heightGoal}}px;" id="bgGoal"
                          sb-load="onImgLoad($event)"/>
@@ -21,32 +15,36 @@
                     <img class="heatmap-image transparent" src="assets/images/handball/hand_goal.png"
                          usemap="#goalMap"
                          height="{{heightGoal}}px;"/>
-
-                    <!--  <img class="heatmap-image" src="https://cartodb-basemaps-b.global.ssl.fastly.net/dark_all/3/3/2.png"
-                           id="transGoal"
-                           height="{{dimsGoal.height}}px;" usemap="#goalMap" />--><!-- <img class="heatmap-image" src="http://www4-fr.fnac-static.com/nav/images/dot.gif"
-                         id="transGoal"
-                         height="{{heightGoal}}px;" usemap="#goalMap" />-->
                     <map id="goalMap" name="goalMap" class="heatmap-map">
-                        <area shape="rect" coords="{{area.coords.join()}}"
+                        <area shape="{{area.shape}}" coords="{{area.coords.join()}}"
                               style="z-index: 99"
                               ng-repeat="area in goalMap"
                               ng-click="displayBubbleGoal(area.description, $event)"
                               href="javascript:void(0)"
                         />
                     </map>
-                    <span id="tooltip-span" class="material-tooltip">
-       {{val}}
-    </span>
                 </div>
 
-                <div class="heatmap-container" style="height:{{heightGround}}px;" id="ground">
-                    <img class="heatmap-image" ng-src="assets/images/handball/zone_attaque.png"
-                         style="height:{{heightGround}}px;" sb-load="onImgLoad($event)"/>
-                    <div class="heatmap"></div>
-                    <div class="heatmap-image"
-                         style="z-index:5; background-color: #000; opacity: .5;height:{{heightGround}}px;"></div>
+                <div class="heatmap-container" style="height:{{heightGoal}}px;" id="ground">
+                    <span id="groundTooltip" class="tooltip-span">{{val.ground}}</span>
+                    <img class="heatmap-image" src="assets/images/handball/zone_attaque.png"
+                         height="{{heightGround}}px;" id="bgGround"
+                         sb-load="onImgLoad($event)"/>
+
+                    <div class="heatmap" id="groundHeat"></div>
+                    <img class="heatmap-image transparent" src="assets/images/handball/zone_attaque.png"
+                         usemap="#groundMap"
+                         height="{{heightGround}}px;"/>
+                    <map id="groundMap" name="groundMap" class="heatmap-map">
+                        <area shape="{{area.shape}}" coords="{{area.coords.join()}}"
+                              style="z-index: 99"
+                              ng-repeat="area in groundMap"
+                              ng-click="displayBubbleGround(area.description, $event)"
+                              href="javascript:void(0)"
+                        />
+                    </map>
                 </div>
+
             </div>
             <div class="col s12 m4">
                 <p>
@@ -54,22 +52,22 @@
                            ng-checked="(indicator.impactShoot === 'impactShootAtt')"
                            ng-value="{impactShoot : 'impactShootAtt', stopGK : 'stopGKAtt',originShoot : 'originShootAtt', goalType:'goalScored'}"
                     />
-                    <label for="myTeam">Mon équipe</label>
+                    <label for="myTeam" translate="stats.myteam"></label>
                 </p>
                 <p>
                     <input name="group1" type="radio" id="adverssary" ng-model="indicator" ng-change="buildAll()"
                            ng-checked="(indicator.impactShoot === 'impactShootDef')"
                            ng-value="{impactShoot : 'impactShootDef', stopGK : 'stopGKDef',originShoot : 'originShootDef', goalType:'goalConceded'}"
                     />
-                    <label for="adverssary">Adversaire(s)</label>
+                    <label for="adverssary" translate="stats.adversary"></label>
                 </p>
                 <p>
                     <input type="checkbox" id="succeeded" ng-model="succeededGoals" ng-click="buildAll()"/>
-                    <label for="succeeded">Buts marqués</label>
+                    <label for="succeeded" translate="stats.label.goalScored"></label>
                 </p>
                 <p>
                     <input type="checkbox" id="stoped" ng-model="stopedGoals" ng-click="buildAll()"/>
-                    <label for="stoped">Buts arrêtés</label>
+                    <label for="stoped" translate="stats.label.stopOk"></label>
                 </p>
             </div>
         </div>

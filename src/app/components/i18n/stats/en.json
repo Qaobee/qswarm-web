@@ -59,6 +59,8 @@
       "resume": "Synthesis"
     },
     "typoGoal": "Typologie des buts",
+    "adversary": "Adversary",
+    "myteam": "My team",
     "sanction": {
       "yellowCard": "Yellow card",
       "excluTempo": "2 minutes",

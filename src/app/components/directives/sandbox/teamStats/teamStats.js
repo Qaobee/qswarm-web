@@ -18,7 +18,7 @@
                 controller: function ($scope) {
                     $scope.ownersId = [];
                     $scope.series = [];
-                    
+                    $scope.instance = {};
                     $scope.$watch('team', function (newValue, oldValue) {
                         if (oldValue || !angular.equals(oldValue, newValue)) {
                             $scope.ownersId = [];
@@ -32,6 +32,7 @@
                                     periodicity: $scope.periodicity,
                                     self: 'teamStats'
                                 });
+                                $scope.instance.refresh();
                             });
                         }
                     });

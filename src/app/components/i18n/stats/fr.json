@@ -59,6 +59,8 @@
       "resume": "Résumé"
     },
     "typoGoal": "Typologie des buts",
+    "adversary": "Adversaire",
+    "myteam": "Mon équipe",
     "sanction": {
       "yellowCard": "Avertissement",
       "excluTempo": "2 minutes",

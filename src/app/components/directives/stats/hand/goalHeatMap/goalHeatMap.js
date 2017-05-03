@@ -24,16 +24,23 @@
                 scope: {
                     meta: '=',
                     ownersId: '=',
-                    datas: '@'
+                    datas: '@',
+                    startDate: '=',
+                    endDate: '=',
+                    instance: '='
                 },
                 link: function ($scope) {
                     var nbImgs = 0;
-
+                    $translatePartialLoader.addPart('stats');
+                    $scope.internalControl = $scope.instance || {};
+                    $scope.internalControl.refresh = function () {
+                        $scope.buildAll();
+                    };
                     $scope.onImgLoad = function () {
                         if (angular.isDefined(filterCalendarSrv.getValue())) {
                             $scope.periodicityActive = filterCalendarSrv.getValue().periodicityActive;
                             $scope.dimsGoal = $scope.getElementDimensions(angular.element('#bgGoal'));
-                            $scope.dimsGround = $scope.getElementDimensions(angular.element('#ground img'));
+                            $scope.dimsGround = $scope.getElementDimensions(angular.element('#bgGround'));
                             angular.element('#goalHeat').attr('style', 'width:' + $scope.dimsGoal.width + 'px;height:' + $scope.dimsGoal.height + 'px');
                             $scope.hGoal = new Heatmap({
                                 element: 'goalHeat',
@@ -43,19 +50,15 @@
                                 shadow: 'large',
                                 zIndex: -1
                             });
-                            $scope.groundUid = qaobeeUtils.guid();
-                            angular.element(angular.element('#ground').children(2)[1]).attr('id', $scope.groundUid);
-                            angular.element('#' + $scope.groundUid).attr('style', 'width:' + $scope.dimsGround.width + 'px;height:' + $scope.dimsGround.height + 'px');
+                            angular.element('#groundHeat').attr('style', 'width:' + $scope.dimsGround.width + 'px;height:' + $scope.dimsGround.height + 'px');
                             $scope.hGround = new Heatmap({
-                                element: $scope.groundUid,
+                                element: 'groundHeat',
                                 size: 400,
                                 opacity: 1,
                                 gradient: 'classic',
                                 shadow: 'large',
-                                zIndex: 10
+                                zIndex: -1
                             });
-
-                            //
                             nbImgs++;
                             if (nbImgs === 2) {
                                 $scope.buildAll();
@@ -72,23 +75,10 @@
                     $scope.goalUid = qaobeeUtils.guid();
                     $scope.succeededGoals = true;
                     $scope.stopedGoals = true;
-                    $scope.goalMap = [
-                        {coords: [891, 2, 1000, 575], description: 'outside-right'},
-                        {coords: [0, 0, 106, 574], description: 'outside-left'},
-                        {coords: [109, 3, 887, 73], description: 'outside-top'},
-                        {coords: [216, 80, 782, 157], description: 'top-pole'},
-                        {coords: [785, 81, 886, 57], description: 'right-pole'},
-                        {coords: [110, 80, 210, 573], description: 'left-pole'},
-                        {coords: [598, 440, 783, 577], description: 'RDOWN'},
-                        {coords: [404, 438, 591, 575], description: 'CDOWN'},
-                        {coords: [216, 438, 400, 577], description: 'LDOWN'},
-                        {coords: [598, 299, 781, 435], description: 'RMIDDLE'},
-                        {coords: [404, 298, 592, 435], description: 'CMIDDLE'},
-                        {coords: [215, 297, 403, 433], description: 'LMIDDLE'},
-                        {coords: [594, 161, 781, 297], description: 'RUP'},
-                        {coords: [404, 160, 596, 292], description: 'CUP'},
-                        {coords: [216, 159, 397, 296], description: 'LUP'}
-                    ];
+                    $scope.val = {
+                        goal: 0,
+                        ground: 0
+                    };
                     $scope.indicator = {
                         impactShoot: 'impactShootAtt',
                         stopGK: 'stopGKAtt',
@@ -102,6 +92,8 @@
                     });
                     promise.then(function (data) {
                         $scope.coordinates = data;
+                        $scope.goalMap = $scope.coordinates[$scope.activityId].goalMap;
+                        $scope.groundMap = $scope.coordinates[$scope.activityId].groundMap;
                     });
 
                     $scope.getElementDimensions = function (target) {
@@ -112,18 +104,19 @@
                     };
 
                     $scope.buildAll = function () {
-                        if (angular.isUndefined($scope.periodicityActive) || angular.isUndefined($scope.ownersId) || angular.isUndefined($scope.hGoal) || angular.isUndefined($scope.hGround) || $scope.ownersId.length === 0) {
+                        if (angular.isUndefined($scope.ownersId) || angular.isUndefined($scope.hGoal) || angular.isUndefined($scope.hGround) || $scope.ownersId.length === 0) {
                             return;
                         }
-
+                        angular.element('#goalTooltip').attr('style', 'visibility: hidden;');
+                        angular.element('#groundTooltip').attr('style', 'visibility: hidden;');
                         if (!!$scope.hGoal) $scope.hGoal.clear();
                         if (!!$scope.hGround) $scope.hGround.clear();
                         $scope.sequence = {};
                         var search = {
                             listIndicators: [$scope.indicator.impactShoot, $scope.indicator.originShoot, $scope.indicator.stopGK, $scope.indicator.goalType, 'pole'],
                             listOwners: $scope.ownersId,
-                            startDate: $scope.periodicityActive.startDate.valueOf(),
-                            endDate: $scope.periodicityActive.endDate.valueOf(),
+                            startDate: $scope.startDate.valueOf(),
+                            endDate: $scope.endDate.valueOf(),
                             aggregat: 'COUNT',
                             listFieldsGroupBy: ['owner', 'code', 'shootSeqId', 'value']
                         };
@@ -162,29 +155,33 @@
                                 Object.keys($scope.groundSerie).forEach(function (k) {
                                     $scope.hGround.add.Point($scope.groundSerie[k].x * $scope.dimsGround.width / 24, $scope.groundSerie[k].y * $scope.dimsGround.height / 18, $scope.groundSerie[k].count);
                                 });
-                                /*Object.keys($scope.coordinates[$scope.activityId]['goal']).forEach(function (k) {
-                                 console.log(k, $scope.coordinates[$scope.activityId]['goal'][k].x * $scope.dimsGoal.width / 24,
-                                 $scope.coordinates[$scope.activityId]['goal'][k].y * $scope.dimsGoal.height / 18)
-                                 $scope.hGoal.add.Point($scope.coordinates[$scope.activityId]['goal'][k].x * $scope.dimsGoal.width / 24,
-                                 $scope.coordinates[$scope.activityId]['goal'][k].y * $scope.dimsGoal.height / 18,
-                                 Math.random()*10);
-                                 });*/
                             }
                         });
                     };
 
-                    $scope.displayBubbleGoal = function (count,$event) {
-                       $scope.val = 0;
+                    $scope.displayBubbleGoal = function (count, $event) {
+                        $scope.val.goal = 0;
                         if ($scope.goalSerie[count]) {
-                            $scope.val = $scope.goalSerie[count].count;
+                            $scope.val.goal = $scope.goalSerie[count].count;
                         }
-                        var tooltipSpan = angular.element('#tooltip-span');
-                        var x = $event.clientX,
-                            y = $event.clientY;
-                        tooltipSpan.attr('style', 'top: '+ (y + 20) + 'px; left: ' +(x + 20) + 'px; display:block;');
-                        console.log($scope.val, $event)
+                        var tooltipSpan = angular.element('#goalTooltip');
+                        var tooltipDims = $scope.getElementDimensions(tooltipSpan);
+                        var x = $event.originalEvent.offsetX - tooltipDims.width / 2;
+                        var y = $event.originalEvent.offsetY + $scope.dimsGoal.height - tooltipDims.height - 20;
+                        tooltipSpan.attr('style', 'top: ' + y + 'px; left: ' + x + 'px; visibility: visible;');
                     };
 
+                    $scope.displayBubbleGround = function (count, $event) {
+                        $scope.val.ground = 0;
+                        if ($scope.groundSerie[count]) {
+                            $scope.val.ground = $scope.groundSerie[count].count;
+                        }
+                        var tooltipSpan = angular.element('#groundTooltip');
+                        var tooltipDims = $scope.getElementDimensions(tooltipSpan);
+                        var x = $event.originalEvent.offsetX - tooltipDims.width / 2;
+                        var y = $event.originalEvent.offsetY + $scope.dimsGround.height - tooltipDims.height - 20;
+                        tooltipSpan.attr('style', 'top: ' + y + 'px; left: ' + x + 'px; visibility: visible;');
+                    };
 
                     $scope.build = function (e, type, serie) {
                         if (serie[e.value]) {
@@ -199,13 +196,6 @@
                         return serie;
                     };
 
-                    /* Refresh widget on periodicity change */
-                    $scope.$on('qeventbus:periodicityActive', function () {
-                        if (angular.isUndefined($scope.periodicityActive) || !angular.equals($scope.periodicityActive, qeventbus.data.periodicityActive)) {
-                            $scope.periodicityActive = qeventbus.data.periodicityActive;
-                            $scope.buildAll();
-                        }
-                    });
                     $scope.$on('qeventbus:ownersId', function () {
                         $scope.ownersId = qeventbus.data.ownersId;
                         $scope.buildAll();
