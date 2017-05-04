@@ -18,6 +18,7 @@
                 controller: function ($scope) {
                     $scope.ownersId = [];
                     $scope.series = [];
+                    $scope.instance = {};
 
                     $scope.$watch('player', function (newValue, oldValue) {
                         if (oldValue || !angular.equals(oldValue, newValue)) {
@@ -34,6 +35,7 @@
                                     periodicity: $scope.periodicity,
                                     self: 'playerStats'
                                 });
+                                $scope.instance.refresh();
                             });
 
 

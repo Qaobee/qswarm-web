@@ -37,6 +37,7 @@
     "after": false,
     "afterEach": false,
     "expect": false,
-    "Sugar": false
+    "Sugar": false,
+    "Heatmap": false
   }
 }

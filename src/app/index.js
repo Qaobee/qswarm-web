@@ -28,7 +28,7 @@
             'vcRecaptcha',
             'angular.chips',
             'webNotifications',
-            'slideWrapper',            
+            'slideWrapper',
 
             /* qaobee shared services */
             'qaobee.utils',
@@ -36,7 +36,7 @@
             'qaobee.config',
             'qaobee.eventbus',
             'qaobee.httpModule',
-            
+
             //* qaobee widget */
             'qaobee.widgets.collecte',
             'qaobee.filterCalendar',
@@ -53,9 +53,10 @@
             'qaobee.widgets.efficiencyGoalkeeper',
             'qaobee.widgets.podium',
             'qaobee.widgets.notifications',
+            'qaobee.widgets.goalHeatMap',
             'statsEfficiency',
             'ui.dashboard',
-            
+
             /* qaobee modules */
             'qaobee.cnil',
             'qaobee.cnil.module',

@@ -1824,3 +1824,57 @@ span#top {
 .stores img {
     width: 14rem;
 }
+
+.heatmap-container {
+    width: 100%;
+    position: relative;
+}
+
+.heatmap-image {
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.heatmap-image.transparent {
+    opacity: 0;
+}
+
+.heatmap {
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.tooltip-span {
+    visibility: hidden;
+    width: 50px;
+    height: 30px;
+    z-index: 99;
+    position: absolute;
+    background-color: #37474F;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    bottom: 125%;
+    left: 50%;
+    font-weight: bold;
+}
+
+.tooltip-span::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    z-index: 99;
+    border: 5px solid transparent;
+    border-top-color: #555;
+}

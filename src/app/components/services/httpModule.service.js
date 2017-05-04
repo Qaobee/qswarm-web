@@ -35,6 +35,7 @@
                         }
                     }
                     if (!config.url.startsWith('app')
+                        && !config.url.startsWith('assets')
                         && !config.url.startsWith('http')
                         && !config.url.startsWith('isteven-multi-select')
                         && !config.url.startsWith('ng-table')) {
