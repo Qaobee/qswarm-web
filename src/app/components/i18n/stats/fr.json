@@ -70,7 +70,7 @@
       "listCollect": "Evénements concernés"
     },
     "eventLabels": {
-      "listPlayers": "Liste joueurs",
+      "listPlayers": "Feuille de match",
       "goalkeeper": "Gardien",
       "player": "Joueur",
       "playTime": "Temps de jeu",    
