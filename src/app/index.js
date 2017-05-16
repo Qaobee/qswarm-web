@@ -76,7 +76,7 @@
         ])
 
         .config(function ($translateProvider, $translatePartialLoaderProvider, $httpProvider, vcRecaptchaServiceProvider,
-                          $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, ChartJsProvider,$locationProvider) {
+                          $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, ChartJsProvider) {
             if ('development' === EnvironmentConfig.name) {
                 tmhDynamicLocaleProvider.localeLocationPattern('../bower_components/angular-i18n/angular-locale_{{locale}}.js');
             } else {
@@ -146,8 +146,7 @@
          */
         .controller('MainCtrl', function ($rootScope, $scope, $window, $translatePartialLoader, qeventbus, $timeout,
                                           EnvironmentConfig, $templateRequest, $sce, $compile) {
-            $translatePartialLoader.addPart('public');
-            $translatePartialLoader.addPart('feedback');
+            $translatePartialLoader.addPart('public').addPart('feedback');
             moment.locale($window.navigator.language);
             $scope.loaded = false;
             $scope.feedbackOptions = {

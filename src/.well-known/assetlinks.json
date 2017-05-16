@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.qaobee.hand",
+    "sha256_cert_fingerprints":
+    ["6D:0A:A9:85:C0:DB:E8:94:43:16:49:F2:AA:45:5B:93:B3:E0:C1:10:85:F9:A5:CF:D7:D9:CF:5B:2C:65:01:32"]
+  }
+}]

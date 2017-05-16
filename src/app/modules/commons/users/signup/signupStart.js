@@ -18,9 +18,8 @@
         })
 
         .controller('SignupStartCtrl', function ($rootScope, $scope, $translatePartialLoader, $log, $routeParams,
-                                                 $location, $filter, signupRestAPI, qeventbus, vcRecaptchaService) {
-            $translatePartialLoader.addPart('user');
-            $translatePartialLoader.addPart('commons');
+                                                 $location, $translate, signupRestAPI, qeventbus, vcRecaptchaService) {
+            $translatePartialLoader.addPart('user').addPart('commons');
             qeventbus.prepForBroadcast('menuItem', 'signup');
 
             $scope.signup = {};
@@ -50,7 +49,7 @@
             $scope.usernameTest = function () {
                 signupRestAPI.usernameTest($scope.signup.account.login).success(function (data) {
                     if (data.status === true) {
-                        toastr.warning($filter('translate')('signupStartPage.form.messageControl.nonunique'));
+                        toastr.warning($translate.instant('signupStartPage.form.messageControl.nonunique'));
                         vcRecaptchaService.reload($scope.widgetId);
                     } else {
                         $scope.signup.plan = {levelPlan: 'FREEMIUM'};
@@ -61,7 +60,7 @@
                             // On recharge le captcha en cas d'erreur ou pour une nouvelle inscription
                             vcRecaptchaService.reload($scope.widgetId);
                             if (data2 === null) {
-                                toastr.error($filter('translate')('signupStartPage.form.messageControl.unknown'));
+                                toastr.error($translate.instant('signupStartPage.form.messageControl.unknown'));
                             } else {
                                 delete $scope.signup;
                                 delete $scope.passwdConfirm;
@@ -71,7 +70,7 @@
                         }).error(function (error) {
                             vcRecaptchaService.reload($scope.widgetId);
                             if (error.code && error.code === 'CAPTCHA_EXCEPTION') {
-                                toastr.error($filter('translate')('signupStartPage.form.messageControl.' + error.code));
+                                toastr.error($translate.instant('signupStartPage.form.messageControl.' + error.code));
                             } else {
                                 $rootScope.errMessSend = true;
                                 toastr.error(error.message);

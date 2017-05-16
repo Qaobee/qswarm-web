@@ -17,12 +17,14 @@
             </div>
             <div class="row">
                 <div class="col s12 center-align">
-                <h5>{{'signupEndPage.errorPage.text' | translate }}<br> {{message}}</h5>
+                    <h5>{{'signupEndPage.errorPage.text' | translate }}<br> <span ng-if="!message">
+                        {{'signupEndPage.errorPage.ph.unknown' | translate}}
+                    </span>{{message}}</h5>
                 </div>
             </div>
             <div class="row">
                 <div class="center col s12">
-                <a href="" class="btn white-text secondary-color" ng-click="goHome()" translate="signupEndPage.errorPage.buttonHome"></a>&nbsp;
+                <a href="javascript:void(0);" class="btn white-text secondary-color" ng-click="getLink()" translate="signupEndPage.errorPage.buttonHome"></a>&nbsp;
                 </div>
             </div>
         </div>

@@ -31,11 +31,9 @@
         /**
          * @class qaobee.modules.home.HomeControler
          */
-        .controller('HomeControler', function ($scope, $translatePartialLoader, $filter, user, meta, effectiveSrv, effectiveRestAPI, sandboxRestAPI, qeventbus, filterCalendarSrv, $timeout) {
-            $translatePartialLoader.addPart('home');
-            $translatePartialLoader.addPart('stats');
-            $translatePartialLoader.addPart('agenda');
-            $translatePartialLoader.addPart('effective');
+        .controller('HomeControler', function ($scope, $translatePartialLoader, user, meta, effectiveSrv, effectiveRestAPI,
+                                               sandboxRestAPI, qeventbus, filterCalendarSrv, $timeout) {
+            $translatePartialLoader.addPart('home').addPart('stats').addPart('agenda').addPart('effective');
             $scope.user = user;
             $scope.meta = meta;
             $scope.activeTabIndex = 0;

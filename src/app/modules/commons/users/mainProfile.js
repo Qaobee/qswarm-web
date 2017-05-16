@@ -25,7 +25,7 @@
         'ngAutocomplete',
         'ngPasswordStrength',
         'sandboxRestAPI'
-        
+
     ])
 
         .config(function ($routeProvider, metaProvider, userProvider) {
@@ -42,25 +42,23 @@
          * @class qaobee.user.profile.MainProfileCtrl
          * @description Main controller of app/modules/commons/users/profile/mainProfil.html
          */
-        .controller('MainProfileCtrl', function ($scope, $filter, EnvironmentConfig, $translatePartialLoader, $translate, $rootScope, $log, 
-                                                  $location, user, userRestAPI) {
-            $translatePartialLoader.addPart('commons');
-            $translatePartialLoader.addPart('user');
+        .controller('MainProfileCtrl', function ($scope, $translatePartialLoader, $log, user, userRestAPI) {
+            $translatePartialLoader.addPart('commons').addPart('user');
             $scope.user = user;
             $scope.$on('$destroy', function () {
                 delete $scope.user;
             });
-        
-        
+
+
             /* check user connected */
             $scope.checkUserConnected = function () {
                 userRestAPI.getUserById(user._id).success(function () {
-                    
+
                 }).error(function () {
                     $log.error('MainProfileCtrl : User not Connected');
                 });
             };
-            
+
             /* Primary, check if user connected */
             $scope.checkUserConnected();
         });

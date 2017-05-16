@@ -14,7 +14,6 @@ body {
 main {
     flex: 1 0 auto;
 }
-
 .container-full {
     width: 100vw;
     margin-left: 0 !important;
@@ -22,7 +21,7 @@ main {
     padding: 1rem;
 }
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .translate-cloak {
     display: none !important;
 }
 

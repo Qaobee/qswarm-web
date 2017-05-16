@@ -22,15 +22,11 @@
             'angular-send-feedback'
         ])
         .directive('headerMenu', function (qeventbus, $rootScope, $translate, $location, $window, anchorSmoothScroll,
-                                           $translatePartialLoader, $filter, signupRestAPI, userRestAPI, $sce, $log,
-                                           seasonsRestAPI) {
+                                           $translatePartialLoader, signupRestAPI, userRestAPI, $sce, $log, seasonsRestAPI) {
             return {
                 restrict: 'AE',
                 controller: function ($scope) {
-                    $translatePartialLoader.addPart('commons');
-                    $translatePartialLoader.addPart('menu');
-                    $translatePartialLoader.addPart('user');
-                    $translatePartialLoader.addPart('home');
+                    $translatePartialLoader.addPart('commons').addPart('menu').addPart('user').addPart('home');
                     $scope.desktop = !$rootScope.isMobile;
                     $scope.hideTrial = false;
                     $scope.signin = {};
@@ -127,9 +123,7 @@
 
                     $scope.$on('qeventbus:login', function () {
                         $scope.user = qeventbus.data;
-                        if('/' ===  $location.path()) {
-                            $location.path('/private');
-                        }
+                        $location.path('/private');
                         $scope.loadMetaInfos();
                     });
 
@@ -155,8 +149,8 @@
                                 return n.status === 'notpaid';
                             }).length > 0;
                         /*if ($scope.notpaid) {
-                            $location.path('/private/billing');
-                        }*/
+                         $location.path('/private/billing');
+                         }*/
                         $rootScope.user = data;
                         $scope.user = data;
                     });
@@ -195,18 +189,18 @@
                                             return n.key === 'admin_qaobee';
                                         }).length > 0);
                                     }
-                                 /*   if ($scope.notpaid) {
-                                        $location.path('/private/billing');
-                                    }*/
+                                    /*   if ($scope.notpaid) {
+                                     $location.path('/private/billing');
+                                     }*/
                                 }
                             } else {
-                                toastr.warning($filter('translate')('modal.login.messageControl.unregistreduser'));
+                                toastr.warning($translate.instant('modal.login.messageControl.unregistreduser'));
                             }
                         }).error(function (error) {
                             if (error) {
                                 $rootScope.errMessSend = true;
                                 if (error.code && error.code === 'NON_ACTIVE') {
-                                    toastr.warning($filter('translate')('modal.login.messageControl.unregistreduser'));
+                                    toastr.warning($translate.instant('modal.login.messageControl.unregistreduser'));
                                 } else {
                                     toastr.error(error.message);
                                 }
