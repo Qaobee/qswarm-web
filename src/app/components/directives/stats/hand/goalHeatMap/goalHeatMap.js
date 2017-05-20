@@ -27,7 +27,8 @@
                     datas: '@',
                     startDate: '=',
                     endDate: '=',
-                    instance: '='
+                    instance: '=',
+                    isTeam: '='
                 },
                 link: function ($scope) {
                     var nbImgs = 0;
@@ -42,7 +43,7 @@
                         angular.element('#goalHeat').attr('style', 'width:' + $scope.dimsGoal.width + 'px;height:' + $scope.dimsGoal.height + 'px');
                         $scope.hGoal = new Heatmap({
                             element: 'goalHeat',
-                            size: 200,
+                            size: 100,
                             opacity: 1,
                             gradient: 'classic',
                             shadow: 'large',
@@ -51,7 +52,7 @@
                         angular.element('#groundHeat').attr('style', 'width:' + $scope.dimsGround.width + 'px;height:' + $scope.dimsGround.height + 'px');
                         $scope.hGround = new Heatmap({
                             element: 'groundHeat',
-                            size: 400,
+                            size: 100,
                             opacity: 1,
                             gradient: 'classic',
                             shadow: 'large',

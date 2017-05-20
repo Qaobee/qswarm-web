@@ -1,7 +1,5 @@
 <filter-calendar meta="meta"></filter-calendar>
-<goal-heat-map meta="meta" owners-id="ownersId" datas="assets/heatmap.json"
-               start-date="periodicityActive.startDate" end-date="periodicityActive.endDate" instance="instance"
-></goal-heat-map>
+
 <!-- Stats goals/sanction/use start -->
 <div class="row">
 
@@ -32,6 +30,9 @@
 </div>
 <!-- Stats goals/sanction/use end -->
 
+<goal-heat-map meta="meta" owners-id="ownersId" datas="assets/heatmap.json"
+               start-date="periodicityActive.startDate" end-date="periodicityActive.endDate" instance="instance" 
+               is-team="false"></goal-heat-map>
 
 <!-- Stats shoot efficiency Start -->
 <div class="row" ng-if="player.status.positionType!=='goalkeeper'">

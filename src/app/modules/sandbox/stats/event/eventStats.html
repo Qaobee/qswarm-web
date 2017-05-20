@@ -11,9 +11,7 @@
 
             <title-page-bar icon="event"
                             title="{{collecte.event.label}} : {{collecte.startDateLabel}}"></title-page-bar>
-            <goal-heat-map meta="meta" owners-id="ownersId" datas="assets/heatmap.json"
-                           start-date="collecte.startDate" end-date="collecte.endDate" instance="instance"
-            ></goal-heat-map>
+            
             <div class="row light-primary-color">
                 <div class="col s12 center-align" ng-if="teamHome">
                     <h5>
@@ -61,6 +59,11 @@
                 </div>
             </div>
             <!-- Stats goals/sanction/use end -->
+            
+            <goal-heat-map meta="meta" owners-id="ownersId" datas="assets/heatmap.json"
+                           start-date="collecte.startDate" end-date="collecte.endDate" 
+                           instance="instance"
+                           is-team="true"></goal-heat-map>
 
 
             <!-- Stats shoot efficiency Start -->
