@@ -64,7 +64,8 @@
     "angular-slick": "^0.2.1",
     "angular-slide-wrapper": "^0.1.8",
     "heat": "^1.0.0",
-    "image-map-resizer": "^1.0.3"
+    "image-map-resizer": "^1.0.3",
+    "angular-payments": "*"
   },
   "resolutions": {
     "angular-cookies": "1.5.10",

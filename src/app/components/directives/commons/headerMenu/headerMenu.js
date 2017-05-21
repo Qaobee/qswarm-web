@@ -123,7 +123,7 @@
 
                     $scope.$on('qeventbus:login', function () {
                         $scope.user = qeventbus.data;
-                        $location.path('/private');
+                      //  $location.path('/private');
                         $scope.loadMetaInfos();
                     });
 

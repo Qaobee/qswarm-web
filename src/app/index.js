@@ -56,6 +56,7 @@
             'qaobee.widgets.goalHeatMap',
             'statsEfficiency',
             'ui.dashboard',
+            'angularPayments',
 
             /* qaobee modules */
             'qaobee.cnil',
@@ -124,6 +125,7 @@
                 responsive: true,
                 maintainAspectRatio: false
             });
+            window.Stripe.setPublishableKey('pk_test_9Fc4Bc9dUkSK9vSzTTVVQgP5');
         })
         .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale, $window, $location) {
             $locale.id = $translate.proposedLanguage();

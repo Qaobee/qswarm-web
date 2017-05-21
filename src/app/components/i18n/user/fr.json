@@ -65,12 +65,15 @@
       "product": "Abonnement",
       "price": "Prix",
       "activity": "Activité",
-      "pay": "Souscrire",
-      "cardNumber": "N° de carte",
-      "pay-modal": {
-        "title": "Attention",
-        "content": "Vous êtes sur le point de souscrire à une offre Qaobee, notre partenaire de paiement vous demandra votre carte de crédit",
-        "error": "Une erreur s'est produite durant la transaction."
+      "pay": {
+        "title": "Souscrire",
+        "content": "Vous êtes sur le point de souscrire à une offre Qaobee.",
+        "name": "Nom du porteur",
+        "cardNumber": "N° de carte",
+        "expiry": "Expire le",
+        "cvc" : "Code de vérification",
+        "email" : "E-mail",
+        "pay" : "Payer"
       }
     }
   },

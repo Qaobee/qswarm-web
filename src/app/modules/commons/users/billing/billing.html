@@ -15,7 +15,7 @@
                 <div class="col m1 center-align" translate="billingPage.label.price"></div>
                 <div class="col m2 center-align" translate="billingPage.label.billingnumber"></div>
                 <div class="col m2 center-align" translate="billingPage.label.billingdate"></div>
-                <div class="col m2 center-align" translate="billingPage.label.cardNumber"></div>
+                <div class="col m2 center-align" translate="billingPage.label.pay.cardNumber"></div>
             </div>
             <div ng-repeat="plan in user.account.listPlan track by $index" class="row light-primary-color">
                 <div class="col m2 center-align">
@@ -27,7 +27,7 @@
 
                 <div ng-if="plan.status === 'open' || plan.status === 'notpaid'" class="col m8 center-align">
                     <a href="#/private/billing/pay/{{$index}}" class="btn waves-effect waves-white secondary-color"
-                       translate="billingPage.label.pay">
+                       translate="billingPage.label.pay.title">
                     </a>
                 </div>
 
@@ -74,3 +74,4 @@
             </div>
         </div>
     </div>
+</div>
