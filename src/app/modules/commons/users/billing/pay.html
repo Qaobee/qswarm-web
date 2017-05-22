@@ -5,54 +5,51 @@
 
     <!-- Entete -->
     <title-page-bar icon="verified_user" title="billingPage.label.pay.title" display-back="{{true}}"></title-page-bar>
-    <p translate="billingPage.label.pay.content"></p>
+    <h4 class="center">{{'billingPage.label.pay.content' | translate}} <b>{{plan.levelPlan}}</b></h4>
     <h2 ng-if="message">{{message}}</h2>
     <div class="row" ng-if="!paid">
-        <div class="col s12 m4 offset-m4">
+        <div class="col s12 m6 offset-m3">
             <div class="card-panel">
                 <form stripe-form="handleStripe" name="stripeForm" class="card-form">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="prefix fa fa-fw fa-user"></i>
-                            <label for="name" translate="billingPage.label.pay.name"></label>
-                            <input type="text" id="name" required="true">
+                    <div class="credit-card" ng-class="stripeForm.number.$card.type">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="prefix fa fa-fw fa-credit-card"></i>
+                                <label for="cardn" translate="billingPage.label.pay.cardNumber"></label>
+                                <input type="text" name="number" id="cardn" ng-model="number" payments-validate="card"
+                                       payments-format="card" payments-type-model="type"
+                                       ng-class="stripeForm.number.$card.type" required="true"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="prefix fa fa-fw fa-user"></i>
+                                <label for="name" translate="billingPage.label.pay.name"></label>
+                                <input type="text" id="name" ng-model="name" required="true">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="prefix fa fa-fw fa-calendar"></i>
+                                <label for="exp" translate="billingPage.label.pay.expiry"></label>
+                                <input type="text" id="exp" ng-model="expiry" payments-validate="expiry"
+                                       payments-format="expiry" required="true"/>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="prefix fa fa-fw fa-lock"></i>
+                                <label for="cvc" translate="billingPage.label.pay.cvc">CVC</label>
+                                <input type="text" id="cvc" ng-model="cvc" payments-validate="cvc" payments-format="cvc"
+                                       payments-type-model="type" required="true"/>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <i class="prefix fa fa-fw fa-envelope"></i>
-                            <label for="email" translate="billingPage.label.pay.email"></label>
-                            <input type="text" id="email" required="true">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="prefix fa fa-fw fa-credit-card"></i>
-                            <label for="cardn" translate="billingPage.label.pay.cardNumber"></label>
-                            <input type="text" name="number" id="cardn" ng-model="number" payments-validate="card"
-                                   payments-format="card" payments-type-model="type"
-                                   ng-class="stripeForm.number.$card.type" required="true"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <i class="prefix fa fa-fw fa-calendar"></i>
-                            <label for="exp"translate="billingPage.label.pay.expiry"></label>
-                            <input type="text" id="exp" ng-model="expiry" payments-validate="expiry"
-                                   payments-format="expiry" required="true"/>
-                        </div>
-                        <div class="input-field col s6">
-                            <i class="prefix fa fa-fw fa-lock"></i>
-                            <label for="cvc"translate="billingPage.label.pay.cvc">CVC</label>
-                            <input type="text" id="cvc" ng-model="cvc" payments-validate="cvc" payments-format="cvc"
-                                   payments-type-model="type" required="true"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <a class="btn waves-effect waves-white light-primary-color pull-left" href="#/private/billing/"  translate="commons.buttons.cancel">
+                            <a class="btn waves-effect waves-white light-primary-color pull-left"
+                               href="#/private/billing/" translate="commons.buttons.cancel">
                             </a>
-                            <button ng-if='paid==false' type="submit" class="btn waves-effect waves-white secondary-color pull-right"
+                            <button ng-if='paid==false' type="submit"
+                                    class="btn waves-effect waves-white secondary-color pull-right"
                                     ng-disabled="stripeForm.$invalid || inProgress">
                                 {{'billingPage.label.pay.pay' | translate}} {{plan.amountPaid}} €
                             </button>

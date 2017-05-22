@@ -35,6 +35,7 @@
             $scope.plan = $scope.user.account.listPlan[$routeParams.index];
             $scope.paid = false;
             $scope.inProgress = false;
+            $scope.name = $scope.user.firstname + ' ' + $scope.user.name
 
             $scope.doTheBack = function () {
                 $window.history.back();
