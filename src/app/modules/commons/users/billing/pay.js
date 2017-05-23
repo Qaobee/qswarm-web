@@ -26,7 +26,7 @@
          * @class qaobee.user.billing.PayProfileCtrl
          * @description Main controller of app/modules/commons/users/billing/pay.html
          */
-        .controller('PayProfileCtrl', function ($scope, paymentAPI, $routeParams, $window, $translatePartialLoader, user) {
+        .controller('PayProfileCtrl', function ($scope, paymentAPI, $routeParams, $window, $translatePartialLoader, user, $location) {
             $scope.willPay = false;
             $translatePartialLoader.addPart('commons').addPart('user');
             $scope.user = user;
@@ -59,18 +59,14 @@
                         $scope.inProgress = false;
                         if (data.data.status) {
                             toastr.success('Paiement ok');
-                        //    $scope.paid = true;
+                            $location.path('/private/billing');
                         } else {
-                            console.log(data)
                             toastr.error(data.data.message);
                         }
                     }, function (data) {
                         $scope.inProgress = false;
-                        console.error(data)
                         toastr.error(data.data.message);
-
                     });
-
                 }
             };
         });
