@@ -123,10 +123,11 @@
                     $scope.$on('qeventbus:login', function () {
                         $scope.user = qeventbus.data;
                         $scope.endTrial = 999;
+                        $scope.notpaid = data.account.listPlan.filter(function (n) {
+                                return n.status === 'notpaid' || n.status === 'canceled';
+                            }).length > 0;
                         angular.forEach($scope.user.account.listPlan, function (plan) {
-                            $scope.notpaid = data.account.listPlan.filter(function (n) {
-                                    return n.status === 'notpaid';
-                                }).length > 0;
+
                             if (plan.status === 'trialing') {
                                 $scope.intrial = true;
                                 var endDate = moment(plan.endPeriodDate);
@@ -189,7 +190,7 @@
                             angular.element('#modalLogin').modal('close');
                             if (data.account.active) {
                                 $scope.notpaid = data.account.listPlan.filter(function (n) {
-                                        return n.status === 'open';
+                                        return n.status === 'open' || n.status === 'canceled';
                                     }).length > 0;
                                 $window.sessionStorage.qaobeesession = data.account.token;
                                 $rootScope.user = data;

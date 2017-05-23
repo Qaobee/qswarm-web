@@ -60,7 +60,7 @@
   "billingPage": {
     "title": "Gestion des abonnements",
     "label": {
-      "billingdate": "Date de souscription",
+      "billingdate": "Dernier paiement",
       "billingnumber": "Numéro de souscription",
       "product": "Abonnement",
       "price": "Prix",

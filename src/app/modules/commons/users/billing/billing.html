@@ -25,18 +25,20 @@
                     <h6>{{plan.levelPlan}} </h6>
                 </div>
 
-                <div ng-if="plan.status === 'open'" class="col m8 center-align">
+                <div ng-if="plan.status === 'open' || plan.status === 'canceled'" class="col m8 center-align">
                     <a href="#/private/billing/pay/{{$index}}" class="btn waves-effect waves-white secondary-color"
                        translate="billingPage.label.pay.title">
                     </a>
                 </div>
-
-                <div ng-if="plan.status !== 'open'">
+                <div ng-if="plan.status !== 'open' && plan.status !== 'canceled'">
                     <div class="col m1 center-align"><span ng-bind="plan.amountPaid"></span> €</div>
                     <div class="col m2 center-align">
                         <small ng-bind="plan.paymentId"></small>
                     </div>
-                    <div class="col m2 center-align" ng-if="plan.status!=='trialing'">{{plan.paidDate | date}}</div>
+                    <div class="col m2 center-align" ng-if="plan.status!=='trialing' && plan.status!=='canceled'">
+                        {{plan.paidDate | date}}
+                    </div>
+                    <div class="col m2 center-align" ng-if="plan.status==='canceled'"></div>
                     <div class="col m2 center-align" ng-if="plan.status==='trialing'"
                          translate="billingPage.label.trial"></div>
                     <div ng-bind="'xxxx xxxx xxxx ' + plan.cardInfo.last4" class="col m2 center-align"></div>
@@ -53,15 +55,16 @@
             <div ng-repeat="plan in user.account.listPlan track by $index" class="light-primary-color row">
                 <h6 class="col s6 center-align">{{plan.activity.label | translate}}</h6>
                 <h6 class="col s6 center-align accent-text-color">{{plan.levelPlan}}</h6>
-                <div ng-if="plan.status === 'open'" class="col s12">
+                <div ng-if="plan.status === 'open' || plan.status === 'canceled'" class="col s12">
                     <a href="#/private/billing/pay/{{$index}}" class="btn waves-effect waves-white secondary-color"
                        translate="billingPage.label.pay">
                     </a>
                 </div>
-                <span ng-if="plan.status !== 'open'">
+                <span ng-if="plan.status !== 'open' && plan.status !== 'canceled'">
                         <div class="col s2 center-align"><span ng-bind="plan.amountPaid"></span> €</div>
-                        <div class="col s4 center-align" ng-if="plan.status!=='trialing'">{{plan.paidDate | date}}</div>
+                        <div class="col s4 center-align" ng-if="plan.status!=='trialing' && plan.status!=='canceled'">{{plan.paidDate | date}}</div>
                         <div ng-bind="'xxxx xxxx xxxx ' + plan.cardInfo.last4" class="col s6 center-align"></div>
+                    <div class="col s6 center-align" ng-if="plan.status==='canceled'"></div>
                     <div class="col s6 center-align" ng-if="plan.status==='trialing'"
                          translate="billingPage.label.trial"></div>
                         <div class="col s6 center-align"><small>{{plan.paymentId}}</small></div>
