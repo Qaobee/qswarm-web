@@ -60,11 +60,12 @@
   "billingPage": {
     "title": "Gestion des abonnements",
     "label": {
-      "billingdate": "Date de paiement",
-      "billingnumber": "Numéro de facture",
+      "billingdate": "Date de souscription",
+      "billingnumber": "Numéro de souscription",
       "product": "Abonnement",
       "price": "Prix",
       "activity": "Activité",
+      "trial" : "En période d'essai",
       "pay": {
         "title": "Souscrire",
         "content": "Vous êtes sur le point de souscrire à une offre Qaobee.",

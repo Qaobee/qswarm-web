@@ -42,6 +42,9 @@
             };
 
             $scope.handleStripe = function (status, response) {
+                if($scope.inProgress) {
+                    return;
+                }
                 $scope.inProgress = true;
                 if (response.error) {
                     $scope.paid = false;
@@ -58,11 +61,13 @@
                             toastr.success('Paiement ok');
                         //    $scope.paid = true;
                         } else {
-                            toastr.error('Paiement Ko : ' + data.data.message);
-
+                            console.log(data)
+                            toastr.error(data.data.message);
                         }
                     }, function (data) {
+                        $scope.inProgress = false;
                         console.error(data)
+                        toastr.error(data.data.message);
 
                     });
 

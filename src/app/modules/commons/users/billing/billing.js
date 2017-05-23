@@ -23,9 +23,10 @@
          * @class qaobee.user.profile.BillingCtrl
          * @description Main controller of app/modules/commons/users/profile/billing.html
          */
-        .controller('BillingCtrl', function ($rootScope, $scope, EnvironmentConfig, $window, $translatePartialLoader, user, meta, userRestAPI) {
-            $translatePartialLoader.addPart('commons');
-            $translatePartialLoader.addPart('user');
+        .controller('BillingCtrl', function ($rootScope, $scope, EnvironmentConfig, $window, $translatePartialLoader,
+                                             user, meta, userRestAPI, qeventbus) {
+            $translatePartialLoader.addPart('commons').addPart('user');
+            qeventbus.prepForBroadcast('menuItem', 'billing');
             $scope.renew = {};
 
             userRestAPI.getCurrentUser().success(function (data) {

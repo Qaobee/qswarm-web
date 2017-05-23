@@ -67,6 +67,7 @@
       "activity": "Activité",
       "pay": "Souscrire",
       "cardNumber": "N° de carte",
+      "trial" : "En période d'essai",
       "pay-modal" : {
         "title" : "Attention",
         "content" : "Vous êtes sur le point de souscrire à une offre Qaobee, notre partenaire de paiement vous demandra votre carte de crédit",

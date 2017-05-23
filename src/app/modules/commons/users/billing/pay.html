@@ -50,7 +50,9 @@
                             </a>
                             <button ng-if='paid==false' type="submit"
                                     class="btn waves-effect waves-white secondary-color pull-right"
-                                    ng-disabled="stripeForm.$invalid || inProgress">
+                                    ng-disabled="stripeForm.$invalid"><div class="progress" ng-if="inProgress">
+                                <div class="indeterminate"></div>
+                            </div>
                                 {{'billingPage.label.pay.pay' | translate}} {{plan.amountPaid}} €
                             </button>
                         </div>

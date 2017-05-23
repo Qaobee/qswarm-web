@@ -4,7 +4,7 @@
     <div class="row hide-on-med-and-down"></div>
 
     <!-- Entete -->
-    <title-page-bar icon="verified_user" title="billingPage.title" display-back="{{false}}"></title-page-bar>
+    <title-page-bar icon="verified_user" title="billingPage.title" display-back="{{true}}"></title-page-bar>
 
     <!-- Large view-->
     <div class="row hide-on-med-and-down">
@@ -22,27 +22,26 @@
                     <h6>{{plan.activity.label | translate}}</h6>
                 </div>
                 <div class="col m2 center-align accent-text-color">
-                    <h6>{{plan.levelPlan}}</h6>
+                    <h6>{{plan.levelPlan}} </h6>
                 </div>
 
-                <div ng-if="plan.status === 'open' || plan.status === 'notpaid'" class="col m8 center-align">
+                <div ng-if="plan.status === 'open'" class="col m8 center-align">
                     <a href="#/private/billing/pay/{{$index}}" class="btn waves-effect waves-white secondary-color"
                        translate="billingPage.label.pay.title">
                     </a>
                 </div>
 
-                <div ng-if="plan.status !== 'open' && plan.status !== 'notpaid'">
-                    <span ng-repeat="s in plan.shippingList | orderBy : '-paidDate'">
-                        <div class="col m1 center-align"><span ng-bind="s.amountPaid"></span> €</div>
-                        <div class="col m2 center-align"><small ng-bind="s.paymentId"></small></div>
-                        <div class="col m2 center-align"><i class="material-icons left" ng-if="plan.status==='pending'">autorenew</i>
-                            {{s.paidDate | date}}
-                        </div>
-                        <div ng-bind="'xxxx xxxx xxxx ' + s.cardInfo.last4" class="col m2 center-align"></div>
-                        <a ng-href="{{getBill($parent.$index, s.id)}}" target="_blank"
-                                class="waves-effect waves-teal btn-flat col m1 center-align"><i class="material-icons">cloud_download</i>
-                        </a>
-                    </span>
+                <div ng-if="plan.status !== 'open'">
+                    <div class="col m1 center-align"><span ng-bind="plan.amountPaid"></span> €</div>
+                    <div class="col m2 center-align">
+                        <small ng-bind="plan.paymentId"></small>
+                    </div>
+                    <div class="col m2 center-align" ng-if="plan.status!=='trialing'">{{plan.paidDate | date}}</div>
+                    <div class="col m2 center-align" ng-if="plan.status==='trialing'"
+                         translate="billingPage.label.trial"></div>
+                    <div ng-bind="'xxxx xxxx xxxx ' + plan.cardInfo.last4" class="col m2 center-align"></div>
+                    <span class="badge white-text"
+                          ng-class="{'green': plan.status === 'trialing', 'red': plan.status === 'canceled'}">{{plan.status}}</span>
                 </div>
             </div>
         </div>
@@ -54,22 +53,21 @@
             <div ng-repeat="plan in user.account.listPlan track by $index" class="light-primary-color row">
                 <h6 class="col s6 center-align">{{plan.activity.label | translate}}</h6>
                 <h6 class="col s6 center-align accent-text-color">{{plan.levelPlan}}</h6>
-                <div ng-if="plan.status === 'open' || plan.status === 'notpaid'" class="col s12">
+                <div ng-if="plan.status === 'open'" class="col s12">
                     <a href="#/private/billing/pay/{{$index}}" class="btn waves-effect waves-white secondary-color"
                        translate="billingPage.label.pay">
                     </a>
                 </div>
-                <span ng-if="plan.status !== 'open' && plan.status !== 'notpaid'"
-                      ng-repeat="s in plan.shippingList | orderBy : '-paidDate'">
-                        <div class="col s2 center-align"><span ng-bind="s.amountPaid"></span> €</div>
-                        <div class="col s4 center-align"><i class="material-icons left" ng-if="plan.status==='pending'">autorenew</i>
-                            {{s.paidDate | date}}
-                        </div>
-                        <div ng-bind="'xxxx xxxx xxxx ' + s.cardInfo.last4" class="col s6 center-align"></div>
-                        <div class="col s6 center-align"><small>{{s.paymentId}}</small></div>
-                        <button ng-click="getBill($parent.$index, s.id, s.paymentId)"
-                                class="waves-effect waves-teal btn-flat col s6"><i class="material-icons">cloud_download</i>
-                        </button>
+                <span ng-if="plan.status !== 'open'">
+                        <div class="col s2 center-align"><span ng-bind="plan.amountPaid"></span> €</div>
+                        <div class="col s4 center-align" ng-if="plan.status!=='trialing'">{{plan.paidDate | date}}</div>
+                        <div ng-bind="'xxxx xxxx xxxx ' + plan.cardInfo.last4" class="col s6 center-align"></div>
+                    <div class="col s6 center-align" ng-if="plan.status==='trialing'"
+                         translate="billingPage.label.trial"></div>
+                        <div class="col s6 center-align"><small>{{plan.paymentId}}</small></div>
+
+                    <span class="badge white-text"
+                          ng-class="{'green': plan.status === 'trialing', 'red': plan.status === 'canceled'}">{{plan.status}}</span>
                 </span>
             </div>
         </div>
