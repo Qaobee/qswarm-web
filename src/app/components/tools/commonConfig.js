@@ -7,8 +7,23 @@
             'qaobee.eventbus',
             /* qaobee Rest API */
             'userRestAPI',
-            'seasonsRestAPI'])
-
+            'seasonsRestAPI',
+            'paramsRestAPI'])
+        .provider('paramService', function () {
+            this.$get = function ($rootScope, paramsRestAPI, $q) {
+                var deferred = $q.defer();
+                if (angular.isDefined($rootScope.params)) {
+                    deferred.resolve($rootScope.params);
+                } else {
+                    paramsRestAPI.getParams().success(function (data) {
+                        if (angular.isDefined(data) && data !== null) {
+                            $rootScope.params = data;
+                        }
+                    });
+                }
+                return deferred.promise;
+            };
+        })
         .provider('meta', function () {
             this.$get = function ($log, $rootScope, userRestAPI, seasonsRestAPI, $location, $q, $window, user) {
                 var deferred = $q.defer();

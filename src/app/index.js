@@ -76,13 +76,16 @@
             'qaobee.test'
         ])
 
+
         .config(function ($translateProvider, $translatePartialLoaderProvider, $httpProvider, vcRecaptchaServiceProvider,
                           $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, ChartJsProvider) {
+
             if ('development' === EnvironmentConfig.name) {
                 tmhDynamicLocaleProvider.localeLocationPattern('../bower_components/angular-i18n/angular-locale_{{locale}}.js');
             } else {
                 tmhDynamicLocaleProvider.localeLocationPattern('i18n/angular-locale_{{locale}}.js');
             }
+
             $translateProvider.useLoader('$translatePartialLoader', {
                 urlTemplate: 'app/components/i18n/{part}/{lang}.json'
             });
@@ -125,7 +128,6 @@
                 responsive: true,
                 maintainAspectRatio: false
             });
-            window.Stripe.setPublishableKey('pk_test_9Fc4Bc9dUkSK9vSzTTVVQgP5');
         })
         .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale, $window, $location) {
             $locale.id = $translate.proposedLanguage();
@@ -133,7 +135,7 @@
             $rootScope.$on('$translatePartialLoaderStructureChanged', function () {
                 $translate.refresh();
             });
-            $rootScope.$on('$locationChangeSuccess', function() {
+            $rootScope.$on('$locationChangeSuccess', function () {
                 $window.ga('send', 'pageview', $location.path());
             });
             if (top.location.href !== self.location.href) {

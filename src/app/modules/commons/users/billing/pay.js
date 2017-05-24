@@ -13,11 +13,12 @@
         'paymentRestAPI'
     ])
 
-        .config(function ($routeProvider, metaProvider, userProvider) {
+        .config(function ($routeProvider, metaProvider, userProvider, paramServiceProvider) {
             $routeProvider.when('/private/billing/pay/:index', {
                 controller: 'PayProfileCtrl',
                 resolve: {
-                    user: userProvider.$get
+                    user: userProvider.$get,
+                    params: paramServiceProvider.$get
                 },
                 templateUrl: 'app/modules/commons/users/billing/pay.html'
             });
@@ -27,7 +28,7 @@
          * @description Main controller of app/modules/commons/users/billing/pay.html
          */
         .controller('PayProfileCtrl', function ($rootScope, $scope, paymentAPI, $routeParams, $window, $translatePartialLoader,
-                                                qeventbus, user, $location, userRestAPI) {
+                                                qeventbus, user, $location, userRestAPI, paramsRestAPI, params) {
             $scope.willPay = false;
             $translatePartialLoader.addPart('commons').addPart('user');
             $scope.user = user;
@@ -37,6 +38,8 @@
             $scope.paid = false;
             $scope.inProgress = false;
             $scope.name = $scope.user.firstname + ' ' + $scope.user.name;
+
+            window.Stripe.setPublishableKey(params.pay_api_key);
 
             $scope.doTheBack = function () {
                 $window.history.back();
