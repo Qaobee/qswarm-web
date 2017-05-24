@@ -60,9 +60,7 @@
                     paymentAPI.pay(payInfo).then(function (data) {
                         $scope.inProgress = false;
                         if (data.data.status) {
-                            toastr.success('Paiement ok');
                             var token = $window.sessionStorage.qaobeesession;
-
                             if (token !== null && angular.isDefined(token)) {
                                 userRestAPI.getCurrentUser().success(function (data) {
                                     angular.merge($rootScope.user, data);

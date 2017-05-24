@@ -60,7 +60,7 @@
   "billingPage": {
     "title": "Gestion des abonnements",
     "label": {
-      "billingdate": "Dernier paiement",
+      "billingdate": "Date de souscription",
       "billingnumber": "Numéro de souscription",
       "product": "Abonnement",
       "price": "Prix",
@@ -75,6 +75,14 @@
         "cvc" : "Code de vérification",
         "email" : "E-mail",
         "pay" : "Payer"
+      },
+      "status" : {
+        "open" : "Période d'essai jusqu'au {{value}}",
+        "canceled" : "Annulé",
+        "trialing": "Période d'essai jusqu'au {{value}}",
+        "active" : "Activé",
+        "past_due" : "Paiement échoué",
+        "unpaid" : "Non payé"
       }
     }
   },

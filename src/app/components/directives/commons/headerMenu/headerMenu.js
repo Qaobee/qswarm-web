@@ -126,15 +126,17 @@
                         $scope.notpaid = $scope.user.account.listPlan.filter(function (n) {
                                 return n.status === 'notpaid' || n.status === 'canceled';
                             }).length > 0;
-                        console.log($scope.notpaid)
                         angular.forEach($scope.user.account.listPlan, function (plan) {
 
                             if (plan.status === 'trialing') {
                                 $scope.intrial = true;
                                 var endDate = moment(plan.endPeriodDate);
                                 $scope.endTrial = moment.duration(moment().diff(endDate)).asDays() - 1;
-                                $scope.trialCountVal = {count: $filter('number')($scope.endTrial, 0), intCount: $scope.endTrial};
-                                if($scope.endTrial > 30) {
+                                $scope.trialCountVal = {
+                                    count: $filter('number')($scope.endTrial, 0),
+                                    intCount: $scope.endTrial
+                                };
+                                if ($scope.endTrial > 30) {
                                     $scope.hideTrial = true;
                                 }
                             }
@@ -142,7 +144,7 @@
                         if ($scope.notpaid || $scope.endTrial <= 0) {
                             $location.path('/private/billing');
                         } else {
-                            $location.path('/private');
+                           // $location.path('/private');
                         }
                         $scope.loadMetaInfos();
                     });
@@ -169,7 +171,7 @@
                                 return n.status === 'notpaid';
                             }).length > 0;
                         if ($scope.notpaid) {
-                         $location.path('/private/billing');
+                            $location.path('/private/billing');
                         }
                         $rootScope.user = data;
                         $scope.user = data;
@@ -210,7 +212,9 @@
                                         }).length > 0);
                                     }
                                     if ($scope.notpaid) {
-                                     $location.path('/private/billing');
+                                        $location.path('/private/billing');
+                                    } else {
+                                        location.path('/private');
                                     }
                                 }
                             } else {
