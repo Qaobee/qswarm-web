@@ -26,7 +26,9 @@
             $scope.widgetId = null;
             $scope.setWidgetId = function (widgetId) {
                 console.info('Created widget ID: %s', widgetId);
-                vcRecaptchaService.reset();
+                if(!!vcRecaptchaService && vcRecaptchaService.reset) {
+                    vcRecaptchaService.reset();
+                }
                 $scope.widgetId = widgetId;
             };
             $scope.cbExpiration = function() {

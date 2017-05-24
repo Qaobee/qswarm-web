@@ -43,8 +43,7 @@
                                                   $location, $rootScope, $q, $filter, user, meta, userRestAPI,
                                                   teamRestAPI, effectiveSrv) {
 
-            $translatePartialLoader.addPart('commons');
-            $translatePartialLoader.addPart('effective');
+            $translatePartialLoader.addPart('commons').addPart('effective');
 
             $scope.adversary = $routeParams.adversary;
             $scope.teamId = $routeParams.teamId;

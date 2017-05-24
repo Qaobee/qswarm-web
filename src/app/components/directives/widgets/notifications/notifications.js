@@ -37,6 +37,7 @@
                     $scope.markAsRead = function (id) {
                         notificationsRestAPI.markAsRead(id).then(function (data) {
                             if (data.data.status) {
+                                qeventbus.prepForBroadcast('refreshNotificationHeader');
                                 $scope.getNotifications();
                             }
                         });
@@ -51,6 +52,7 @@
                     $scope.deleteNotification = function (id) {
                         notificationsRestAPI.del(id).then(function (data) {
                             if (data.data.status) {
+                                qeventbus.prepForBroadcast('refreshNotificationHeader');
                                 $scope.getNotifications();
                             }
                         });

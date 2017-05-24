@@ -108,7 +108,7 @@
                     };
 
                     $scope.closeTrial = function () {
-                        $scope.intrial = false;
+                        $scope.hideTrial = true;
                     };
 
                     $scope.$on('qeventbus:logoff', function () {
@@ -123,9 +123,10 @@
                     $scope.$on('qeventbus:login', function () {
                         $scope.user = qeventbus.data;
                         $scope.endTrial = 999;
-                        $scope.notpaid = data.account.listPlan.filter(function (n) {
+                        $scope.notpaid = $scope.user.account.listPlan.filter(function (n) {
                                 return n.status === 'notpaid' || n.status === 'canceled';
                             }).length > 0;
+                        console.log($scope.notpaid)
                         angular.forEach($scope.user.account.listPlan, function (plan) {
 
                             if (plan.status === 'trialing') {

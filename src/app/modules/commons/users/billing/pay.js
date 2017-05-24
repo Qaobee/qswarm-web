@@ -26,7 +26,8 @@
          * @class qaobee.user.billing.PayProfileCtrl
          * @description Main controller of app/modules/commons/users/billing/pay.html
          */
-        .controller('PayProfileCtrl', function ($scope, paymentAPI, $routeParams, $window, $translatePartialLoader, user, $location) {
+        .controller('PayProfileCtrl', function ($rootScope, $scope, paymentAPI, $routeParams, $window, $translatePartialLoader,
+                                                qeventbus, user, $location, userRestAPI) {
             $scope.willPay = false;
             $translatePartialLoader.addPart('commons').addPart('user');
             $scope.user = user;
@@ -35,20 +36,21 @@
             $scope.plan = $scope.user.account.listPlan[$routeParams.index];
             $scope.paid = false;
             $scope.inProgress = false;
-            $scope.name = $scope.user.firstname + ' ' + $scope.user.name
+            $scope.name = $scope.user.firstname + ' ' + $scope.user.name;
 
             $scope.doTheBack = function () {
                 $window.history.back();
             };
 
             $scope.handleStripe = function (status, response) {
-                if($scope.inProgress) {
+                if ($scope.inProgress) {
                     return;
                 }
                 $scope.inProgress = true;
                 if (response.error) {
                     $scope.paid = false;
-                    $scope.message = "Error from Stripe.com"
+                    console.error(response.error);
+                    $scope.message = 'Error from Stripe.com';
                 } else {
                     var payInfo = {
                         token: response.id,
@@ -59,7 +61,18 @@
                         $scope.inProgress = false;
                         if (data.data.status) {
                             toastr.success('Paiement ok');
-                            $location.path('/private/billing');
+                            var token = $window.sessionStorage.qaobeesession;
+
+                            if (token !== null && angular.isDefined(token)) {
+                                userRestAPI.getCurrentUser().success(function (data) {
+                                    angular.merge($rootScope.user, data);
+                                    qeventbus.prepForBroadcast('login', $rootScope.user);
+                                    qeventbus.prepForBroadcast('refreshUser', $rootScope.user);
+                                    $location.path('/private/billing');
+                                });
+                            } else {
+                                $location.path('/');
+                            }
                         } else {
                             toastr.error(data.data.message);
                         }

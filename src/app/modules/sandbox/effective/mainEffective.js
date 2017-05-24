@@ -56,9 +56,7 @@
         .controller('MainEffectiveControler', function ($log, $scope, $routeParams, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
                                                         effectiveRestAPI, effectiveSrv, teamRestAPI, userRestAPI, $timeout) {
 
-            $translatePartialLoader.addPart('effective');
-            $translatePartialLoader.addPart('stats');
-            $translatePartialLoader.addPart('commons');
+            $translatePartialLoader.addPart('effective').addPart('stats').addPart('commons');
 
             $scope.effectiveId = $routeParams.effectiveId;
             $scope.user.effectiveDefault = $scope.effectiveId;

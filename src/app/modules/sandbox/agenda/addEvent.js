@@ -41,9 +41,7 @@
         .controller('AddEventControler', function ($log, $scope, $routeParams, $window, $translatePartialLoader, $location, $rootScope, $q, $filter, user, meta,
                                                    eventsRestAPI, effectiveRestAPI, activityCfgRestAPI, teamRestAPI, locationAPI, personSrv) {
 
-            $translatePartialLoader.addPart('commons');
-            $translatePartialLoader.addPart('agenda');
-            $translatePartialLoader.addPart('effective');
+            $translatePartialLoader.addPart('commons').addPart('agenda').addPart('effective');
             $scope.effectiveId = $routeParams.effectiveId;
             $scope.user = user;
             $scope.meta = meta;
