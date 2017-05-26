@@ -74,7 +74,15 @@
         "expiry": "Expire le",
         "cvc" : "Code de vérification",
         "email" : "E-mail",
-        "pay" : "Payer"
+        "pay" : "Payer",
+        "error_code" : {
+          "incorrect_cvc" : "Le code de vérification de votre carte est erroné",
+          "card_declined" : "Votre carte a été refusée {{reason}}",
+          "expired_card" : "Votre carte est expirée",
+          "processing_error" : "Une erreur s'est produite",
+          "incorrect_number" : "Ce numéro de carte est invalide",
+          "fraudulent" : " : Tentative de fraude détectée"
+        }
       },
       "status" : {
         "open" : "Période d'essai jusqu'au {{value}}",

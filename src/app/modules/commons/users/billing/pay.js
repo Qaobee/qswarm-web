@@ -27,8 +27,9 @@
          * @class qaobee.user.billing.PayProfileCtrl
          * @description Main controller of app/modules/commons/users/billing/pay.html
          */
-        .controller('PayProfileCtrl', function ($rootScope, $scope, paymentAPI, $routeParams, $window, $translatePartialLoader,
-                                                qeventbus, user, $location, userRestAPI, paramsRestAPI, params) {
+        .controller('PayProfileCtrl', function ($rootScope, $scope, paymentAPI, $routeParams, $window, $translate,
+                                                $translatePartialLoader, qeventbus, user, $location, userRestAPI,
+                                                paramsRestAPI, params) {
             $scope.willPay = false;
             $translatePartialLoader.addPart('commons').addPart('user');
             $scope.user = user;
@@ -46,6 +47,7 @@
             };
 
             $scope.handleStripe = function (status, response) {
+                console.log(response)
                 if ($scope.inProgress) {
                     return;
                 }
@@ -61,6 +63,7 @@
                         planId: parseInt($routeParams.index)
                     };
                     paymentAPI.pay(payInfo).then(function (data) {
+                        console.log(data.data)
                         $scope.inProgress = false;
                         if (data.data.status) {
                             var token = $window.sessionStorage.qaobeesession;
@@ -75,7 +78,15 @@
                                 $location.path('/');
                             }
                         } else {
-                            toastr.error(data.data.message);
+                            if(!!data.data.code) {
+                                var val = '';
+                                if(!!data.data.decline_code && 'fraudulent' === data.data.decline_code) {
+                                    val =$translate.instant('billingPage.label.pay.error_code.fraudulent');
+                                }
+                                toastr.error($translate.instant('billingPage.label.pay.error_code.' + data.data.code, {reason: val}));
+                            } else {
+                                toastr.error(data.data.message);
+                            }
                         }
                     }, function (data) {
                         $scope.inProgress = false;
