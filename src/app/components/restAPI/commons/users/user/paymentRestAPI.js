@@ -26,7 +26,17 @@
                             plan_id: planId
                         }
                     });
+                },
+                pay: function (data) {
+                    return $http({
+                        url: paymentURL + '/pay',
+                        method: 'POST',
+                        data: {
+                            data: data
+                        }
+                    });
                 }
+
             };
         });
 }());

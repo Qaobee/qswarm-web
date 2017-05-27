@@ -56,6 +56,7 @@
             'qaobee.widgets.goalHeatMap',
             'statsEfficiency',
             'ui.dashboard',
+            'angularPayments',
 
             /* qaobee modules */
             'qaobee.cnil',
@@ -75,13 +76,16 @@
             'qaobee.test'
         ])
 
+
         .config(function ($translateProvider, $translatePartialLoaderProvider, $httpProvider, vcRecaptchaServiceProvider,
                           $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, ChartJsProvider) {
+
             if ('development' === EnvironmentConfig.name) {
                 tmhDynamicLocaleProvider.localeLocationPattern('../bower_components/angular-i18n/angular-locale_{{locale}}.js');
             } else {
                 tmhDynamicLocaleProvider.localeLocationPattern('i18n/angular-locale_{{locale}}.js');
             }
+
             $translateProvider.useLoader('$translatePartialLoader', {
                 urlTemplate: 'app/components/i18n/{part}/{lang}.json'
             });
@@ -131,7 +135,7 @@
             $rootScope.$on('$translatePartialLoaderStructureChanged', function () {
                 $translate.refresh();
             });
-            $rootScope.$on('$locationChangeSuccess', function() {
+            $rootScope.$on('$locationChangeSuccess', function () {
                 $window.ga('send', 'pageview', $location.path());
             });
             if (top.location.href !== self.location.href) {

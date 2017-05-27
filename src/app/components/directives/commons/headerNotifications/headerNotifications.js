@@ -91,6 +91,7 @@
                     $scope.markAsRead = function (id) {
                         notificationsRestAPI.markAsRead(id).then(function (data) {
                             if (data.data.status) {
+                                qeventbus.prepForBroadcast('refreshNotificationWidget');
                                 getNotifications();
                             }
                         });
@@ -105,6 +106,7 @@
                     $scope.deleteNotification = function (id) {
                         notificationsRestAPI.del(id).then(function (data) {
                             if (data.data.status) {
+                                qeventbus.prepForBroadcast('refreshNotificationWidget');
                                 getNotifications();
                             }
                         });
@@ -121,6 +123,9 @@
                     };
 
                     $scope.$on('qeventbus:notifications', function () {
+                        getNotifications();
+                    });
+                    $scope.$on('qeventbus:refreshNotificationHeader', function () {
                         getNotifications();
                     });
                 },

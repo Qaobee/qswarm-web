@@ -36,12 +36,8 @@
                                                        $location, $rootScope, $q, $filter, user, meta,
                                                        activityCfgRestAPI, effectiveRestAPI, personRestAPI) {
 
-            $translatePartialLoader.addPart('commons');
-            $translatePartialLoader.addPart('effective');
-            $translatePartialLoader.addPart('stats');
-
+            $translatePartialLoader.addPart('commons').addPart('effective').addPart('stats');
             $scope.sandBoxCfgId = $routeParams.sandBoxCfgId;
-
             $scope.user = user;
             $scope.meta = meta;
             $scope.effective = {};

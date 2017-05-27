@@ -110,12 +110,10 @@
                         <a href="#/private/"><i class="material-icons left"
                                                 title="{{'headerMenu.dashboard' | translate}}">home</i></a>
                     </li>
-
                     <li class="left">
                         <a href="#/private/players/{{meta.sandbox.effectiveDefault}}">
                             <i class="material-icons left" title="{{'headerMenu.players' | translate}}">person</i></a>
                     </li>
-
                     <li class="left">
                         <a href="#/private/teams/{{meta.sandbox.effectiveDefault}}">
                             <i class="material-icons left" title="{{'headerMenu.teams' | translate}}">group</i></a>
@@ -165,13 +163,13 @@
     </div>
 </div>
 
-<div class="navbar-fixed trial-banner" ng-if="intrial && !hideTrial">
+<div class="navbar-fixed trial-banner" ng-if="user && !hideTrial && menuItem !== 'billing'">
     <div class="row light-primary-color">
         <div class="col s12 center"><h4 translate="headerMenu.trial.title"></h4></div>
         <div class="col s12 secondary-text-color center" translate="headerMenu.trial.content"
-             translate-values="trialCountVal" ng-if="trialCountVal.count > 0"></div>
+             translate-values="trialCountVal" ng-if="trialCountVal.intCount > 0"></div>
         <div class="col s12 secondary-text-color center" translate="headerMenu.trial-ended.content"
-             ng-if="trialCountVal.count <= 0"></div>
+             ng-if="trialCountVal.intCount <= 0"></div>
         <div class="col s12">&nbsp;</div>
         <div class="col s12 center">
             <a href="javascript:void(0);" ng-click="closeTrial()" class="btn-floating accent-color">
@@ -323,6 +321,5 @@
         </div>
     </div>
 </div>
-
 <cnil link="/#/cnil"></cnil>
 <script src="https://embed.small.chat/T03M9RYHUG5EQA0KT4.js" async></script>

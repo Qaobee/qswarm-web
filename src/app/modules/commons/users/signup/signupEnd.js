@@ -340,7 +340,7 @@
             };
         })
 
-        .controller('SignupEndCtrl', function ($rootScope, $scope, $window, $routeParams, $log, $translatePartialLoader,$filter,
+        .controller('SignupEndCtrl', function ($rootScope, $scope, $window, $routeParams, $log, $translatePartialLoader, $filter,
                                                $location, EnvironmentConfig, signupRestAPI, qeventbus, mobileLinks, detectUtils) {
             $translatePartialLoader.addPart('user');
             // Verification user signup
@@ -378,6 +378,15 @@
                 }
                 $location.path('/signup/error');
             });
+
+            $scope.getLink = function () {
+                if (detectUtils.isAndroid()) {
+                    $window.location.href = mobileLinks.android;
+                    console.log('android')
+                } else {
+                    $location.path('/private');
+                }
+            }
 
         })
 

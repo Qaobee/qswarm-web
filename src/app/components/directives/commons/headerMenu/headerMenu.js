@@ -22,7 +22,7 @@
             'angular-send-feedback'
         ])
         .directive('headerMenu', function (qeventbus, $rootScope, $translate, $location, $window, anchorSmoothScroll,
-                                           $translatePartialLoader, signupRestAPI, userRestAPI, $sce, $log, seasonsRestAPI) {
+                                           $translatePartialLoader, $filter, signupRestAPI, userRestAPI, $sce, $log, seasonsRestAPI) {
             return {
                 restrict: 'AE',
                 controller: function ($scope) {
@@ -49,7 +49,6 @@
                         return viewLocation === $location.path();
                     };
                     $rootScope.$on('$viewContentLoaded', function () {
-                        $scope.hideTrial = $location.path() === '/';
                         angular.element('.dropdown-header-button').dropdown({
                                 inDuration: 300,
                                 outDuration: 225,
@@ -109,7 +108,7 @@
                     };
 
                     $scope.closeTrial = function () {
-                        $scope.intrial = false;
+                        $scope.hideTrial = true;
                     };
 
                     $scope.$on('qeventbus:logoff', function () {
@@ -123,7 +122,30 @@
 
                     $scope.$on('qeventbus:login', function () {
                         $scope.user = qeventbus.data;
-                        $location.path('/private');
+                        $scope.endTrial = 999;
+                        $scope.notpaid = $scope.user.account.listPlan.filter(function (n) {
+                                return n.status === 'notpaid' || n.status === 'canceled';
+                            }).length > 0;
+                        angular.forEach($scope.user.account.listPlan, function (plan) {
+
+                            if (plan.status === 'trialing') {
+                                $scope.intrial = true;
+                                var endDate = moment(plan.endPeriodDate);
+                                $scope.endTrial = moment.duration(moment().diff(endDate)).asDays() - 1;
+                                $scope.trialCountVal = {
+                                    count: $filter('number')($scope.endTrial, 0),
+                                    intCount: $scope.endTrial
+                                };
+                                if ($scope.endTrial > 30) {
+                                    $scope.hideTrial = true;
+                                }
+                            }
+                        });
+                        if ($scope.notpaid || $scope.endTrial <= 0) {
+                            $location.path('/private/billing');
+                        } else {
+                           // $location.path('/private');
+                        }
                         $scope.loadMetaInfos();
                     });
 
@@ -148,9 +170,9 @@
                         $scope.notpaid = data.account.listPlan.filter(function (n) {
                                 return n.status === 'notpaid';
                             }).length > 0;
-                        /*if ($scope.notpaid) {
-                         $location.path('/private/billing');
-                         }*/
+                        if ($scope.notpaid) {
+                            $location.path('/private/billing');
+                        }
                         $rootScope.user = data;
                         $scope.user = data;
                     });
@@ -171,7 +193,7 @@
                             angular.element('#modalLogin').modal('close');
                             if (data.account.active) {
                                 $scope.notpaid = data.account.listPlan.filter(function (n) {
-                                        return n.status === 'notpaid';
+                                        return n.status === 'open' || n.status === 'canceled';
                                     }).length > 0;
                                 $window.sessionStorage.qaobeesession = data.account.token;
                                 $rootScope.user = data;
@@ -189,18 +211,20 @@
                                             return n.key === 'admin_qaobee';
                                         }).length > 0);
                                     }
-                                    /*   if ($scope.notpaid) {
-                                     $location.path('/private/billing');
-                                     }*/
+                                    if ($scope.notpaid) {
+                                        $location.path('/private/billing');
+                                    } else {
+                                        location.path('/private');
+                                    }
                                 }
                             } else {
-                                toastr.warning($translate.instant('modal.login.messageControl.unregistreduser'));
+                                toastr.warning($filter('translate')('modal.login.messageControl.unregistreduser'));
                             }
                         }).error(function (error) {
                             if (error) {
                                 $rootScope.errMessSend = true;
                                 if (error.code && error.code === 'NON_ACTIVE') {
-                                    toastr.warning($translate.instant('modal.login.messageControl.unregistreduser'));
+                                    toastr.warning($filter('translate')('modal.login.messageControl.unregistreduser'));
                                 } else {
                                     toastr.error(error.message);
                                 }

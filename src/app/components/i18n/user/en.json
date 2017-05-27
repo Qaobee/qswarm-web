@@ -60,17 +60,38 @@
   "billingPage": {
     "title": "Gestion des abonnements",
     "label": {
-      "billingdate": "Date de paiement",
+      "billingdate": "Date de souscription",
       "billingnumber": "Numéro de facture",
       "product": "Abonnement",
       "price": "Prix",
       "activity": "Activité",
-      "pay": "Souscrire",
       "cardNumber": "N° de carte",
-      "pay-modal" : {
-        "title" : "Attention",
-        "content" : "Vous êtes sur le point de souscrire à une offre Qaobee, notre partenaire de paiement vous demandra votre carte de crédit",
-        "error" : "Une erreur s'est produite durant la transaction."
+      "trial" : "En période d'essai",
+      "pay": {
+        "title": "Souscrire",
+        "content": "Vous êtes sur le point de souscrire à une offre Qaobee.",
+        "name": "Nom du porteur",
+        "cardNumber": "N° de carte",
+        "expiry": "Expire le",
+        "cvc" : "Code de vérification",
+        "email" : "E-mail",
+        "pay" : "Payer",
+        "error_code" : {
+          "incorrect_cvc" : "Le code de vérification de votre carte est erroné",
+          "card_declined" : "Votre carte a été refusée {{reason}}",
+          "expired_card" : "Votre carte est expirée",
+          "processing_error" : "Une erreur s'est produite",
+          "incorrect_number" : "Ce numéro de carte est invalide",
+          "fraudulent" : " : Tentative de fraude détectée"
+        }
+      },
+      "status" : {
+        "open" : "Période d'essai jusqu'au {{value}}",
+        "canceled" : "Annulé",
+        "trialing": "Période d'essai jusqu'au {{value}}",
+        "active" : "Activé",
+        "past_due" : "Paiement échoué",
+        "unpaid" : "Non payé"
       }
     }
   },

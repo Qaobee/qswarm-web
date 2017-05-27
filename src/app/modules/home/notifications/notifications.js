@@ -24,7 +24,8 @@
         /**
          * @class qaobee.modules.home.notifications.NotificationControler
          */
-        .controller('NotificationControler', function ($log, $scope, $translatePartialLoader, $routeParams, EnvironmentConfig, notificationsRestAPI) {
+        .controller('NotificationControler', function ($log, $scope, $translatePartialLoader, $routeParams, qeventbus,
+                                                       EnvironmentConfig, notificationsRestAPI) {
             $translatePartialLoader.addPart('home');
             $scope.notifications = [];
             $scope.id = $routeParams.id;
@@ -72,6 +73,7 @@
             $scope.markAsRead = function (id) {
                 notificationsRestAPI.markAsRead(id).then(function (data) {
                     if (data.data.status) {
+                        qeventbus.prepForBroadcast('refreshNotificationHeader');
                         $scope.getNotifications();
                     }
                 });
@@ -86,6 +88,7 @@
             $scope.deleteNotification = function (id) {
                 notificationsRestAPI.del(id).then(function (data) {
                     if (data.data.status) {
+                        qeventbus.prepForBroadcast('refreshNotificationHeader');
                         $scope.getNotifications();
                     }
                 });
@@ -101,6 +104,10 @@
                 return (avatar) ? EnvironmentConfig.apiEndPoint + '/file/SB_Person/' + avatar : 'assets/images/user.png';
             };
             $scope.$on('qeventbus:notifications', function () {
+                $scope.getNotifications();
+            });
+
+            $scope.$on('qeventbus:refreshNotificationWidget', function () {
                 $scope.getNotifications();
             });
             $scope.getNotifications();

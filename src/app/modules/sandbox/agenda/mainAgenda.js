@@ -43,9 +43,7 @@
         .controller('MainAgendaController', function (qeventbus, $filter, meta, eventCompareService, effectiveRestAPI, eventsRestAPI,
                                                       $scope, $routeParams, $translatePartialLoader, $location) {
             $scope.meta = meta;
-            $translatePartialLoader.addPart('effective');
-            $translatePartialLoader.addPart('commons');
-            $translatePartialLoader.addPart('agenda');
+            $translatePartialLoader.addPart('effective').addPart('commons').addPart('agenda');
             $scope.effectiveId = $routeParams.effectiveId;
             $scope.events = [];
             $scope.owners = [];
