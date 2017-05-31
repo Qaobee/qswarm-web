@@ -32,6 +32,7 @@
                                                 paramsRestAPI, params) {
             $scope.willPay = false;
             $translatePartialLoader.addPart('commons').addPart('user');
+            qeventbus.prepForBroadcast('menuItem', 'billing');
             $scope.user = user;
             $scope.modalClosed = false;
             $scope.index = $routeParams.index;

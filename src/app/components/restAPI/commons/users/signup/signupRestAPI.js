@@ -64,6 +64,20 @@
                             categoryAge: categoryAge
                         }
                     });
+                },
+                /**
+                 * @memberOf qaobee.components.restAPI.commons.users.user.signupRestAPI
+                 * @function mailResend
+                 * @param login user login
+                 * @description re-emit a register mail
+                 * @returns {Object} status
+                 */
+                mailResend: function(login) {
+                    return $http({
+                        url: signupURL + '/mailResend',
+                        method: 'POST',
+                        data: {login : login}
+                    });
                 }
             };
         });

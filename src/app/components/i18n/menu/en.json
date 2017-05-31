@@ -38,11 +38,11 @@
     "param": "Settings",
     "pricing": "Pricing",
     "concept": "Concept",
-    "contact" : "Contact",
-    "download" : "Download",
-    "collect" : "Collect",
-    "progress" : "Progress",
-    "collaborate" : "Collaborate"
+    "contact": "Contact",
+    "download": "Download",
+    "collect": "Collect",
+    "progress": "Progress",
+    "collaborate": "Collaborate"
   },
   "modal": {
     "login": {
@@ -55,7 +55,10 @@
         "title": "Log on to <b>Qaobee</b>",
         "forgotpasswdcancel": "Wait, I remember now!",
         "messageControl": {
-          "unregistreduser": "Your account is not activate. look your mail"
+          "unregistreduser": {
+            "title": "Your account is not activated.",
+            "content": "our account is not activated. Take a look at your mail-box or click on 'validate' to re-emit an email."
+          }
         }
       }
     }

@@ -48,6 +48,12 @@
                     $scope.isActive = function (viewLocation) {
                         return viewLocation === $location.path();
                     };
+
+                    $scope.mailResend = function () {
+                        angular.element('#modalMailResend').modal('close');
+                        signupRestAPI.mailResend($scope.signin.login);
+                    };
+
                     $rootScope.$on('$viewContentLoaded', function () {
                         angular.element('.dropdown-header-button').dropdown({
                                 inDuration: 300,
@@ -215,13 +221,16 @@
                                     }
                                 }
                             } else {
-                                toastr.warning($filter('translate')('modal.login.messageControl.unregistreduser'));
+                                angular.element('#modalMailResend').modal();
+                                angular.element('#modalMailResend').modal('open');
+                                // toastr.warning($filter('translate')('modal.login.messageControl.unregistreduser'));
                             }
                         }).error(function (error) {
                             if (error) {
                                 $rootScope.errMessSend = true;
                                 if (error.code && error.code === 'NON_ACTIVE') {
-                                    toastr.warning($filter('translate')('modal.login.messageControl.unregistreduser'));
+                                    angular.element('#modalMailResend').modal();
+                                    angular.element('#modalMailResend').modal('open');
                                 } else {
                                     toastr.error(error.message);
                                 }

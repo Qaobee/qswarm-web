@@ -38,8 +38,9 @@
         .controller('SignupCtrl', function ($rootScope, $scope, $translatePartialLoader, $log,
                                             $routeParams, $window, $location, $translate,
                                             activityRestAPI, activityCfgRestAPI, countryRestAPI, structureRestAPI,
-                                            signupRestAPI, locationAPI, personSrv) {
+                                            signupRestAPI, locationAPI, personSrv, qeventbus) {
             $translatePartialLoader.addPart('user').addPart('commons');
+            qeventbus.prepForBroadcast('menuItem', 'signup');
             $scope.vm = {};
             $scope.creatClub = false;
             /* init ngAutocomplete*/
@@ -331,8 +332,10 @@
         })
 
 
-        .controller('SignupStartDoneCtrl', function ($rootScope, $scope, $log, $translatePartialLoader, $window, $location, EnvironmentConfig) {
+        .controller('SignupStartDoneCtrl', function ($rootScope, $scope, $translatePartialLoader,
+                                                     $location, qeventbus, EnvironmentConfig) {
             $translatePartialLoader.addPart('user');
+            qeventbus.prepForBroadcast('menuItem', 'signup');
             $scope.url = EnvironmentConfig.appMobile;
             $scope.goHome = function () {
                 delete($rootScope.user);
@@ -343,6 +346,7 @@
         .controller('SignupEndCtrl', function ($rootScope, $scope, $window, $routeParams, $log, $translatePartialLoader, $filter,
                                                $location, EnvironmentConfig, signupRestAPI, qeventbus, mobileLinks, detectUtils) {
             $translatePartialLoader.addPart('user');
+            qeventbus.prepForBroadcast('menuItem', 'signup');
             // Verification user signup
 
             signupRestAPI.firstConnectionCheck($routeParams.id, $routeParams.code).success(function (data) {
@@ -393,10 +397,11 @@
         .controller('SignupCancelCtrl', function () {
         })
 
-        .controller('SignupErrorCtrl', function ($rootScope, $scope, $location, $translatePartialLoader, $log, $translate,
-                                                 $window, mobileLinks, detectUtils) {
+        .controller('SignupErrorCtrl', function ($rootScope, $scope, $location, $translatePartialLoader, $log,
+                                                 $window, mobileLinks, detectUtils, qeventbus) {
 
             $translatePartialLoader.addPart('user');
+            qeventbus.prepForBroadcast('menuItem', 'signup');
             $scope.message = $rootScope.messageErreur;
             if (angular.isUndefined($scope.message) || $scope.message === null || "" === $scope.message) {
                 delete $scope.message;
@@ -405,7 +410,7 @@
             $scope.getLink = function () {
                 if (detectUtils.isAndroid()) {
                     $window.location.href = mobileLinks.android;
-                    console.log('android')
+                    $log.debug('android')
                 } else {
                     $location.path('/private');
                 }

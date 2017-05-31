@@ -38,11 +38,11 @@
     "param": "Paramétrage",
     "pricing": "Tarifs",
     "concept": "Le concept",
-    "contact" : "Contact",
-    "download" : "Téléchargez",
-    "collect" : "Collectez",
-    "progress" : "Analysez",
-    "collaborate" : "Collaborez"
+    "contact": "Contact",
+    "download": "Téléchargez",
+    "collect": "Collectez",
+    "progress": "Analysez",
+    "collaborate": "Collaborez"
   },
   "modal": {
     "login": {
@@ -56,7 +56,10 @@
         "forgotpasswdcancel": "Attendez, je m'en rappelle à présent!"
       },
       "messageControl": {
-        "unregistreduser": "Votre compte n'a pas encore été activé. Consultez votre messagerie"
+        "unregistreduser": {
+          "title": "Votre compte n'est pas encore actif",
+          "content": "Votre compte n'a pas encore été activé. Consultez votre messagerie ou cliquez sur 'valider' pour renvoyer un email"
+        }
       }
     }
   }
