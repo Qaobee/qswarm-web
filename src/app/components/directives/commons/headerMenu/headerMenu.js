@@ -127,24 +127,21 @@
                                 return n.status === 'notpaid' || n.status === 'canceled';
                             }).length > 0;
                         angular.forEach($scope.user.account.listPlan, function (plan) {
-
-                            if (plan.status === 'trialing') {
-                                $scope.intrial = true;
-                                var endDate = moment(plan.endPeriodDate);
-                                $scope.endTrial = moment.duration(moment().diff(endDate)).asDays() - 1;
-                                $scope.trialCountVal = {
-                                    count: $filter('number')($scope.endTrial, 0),
-                                    intCount: $scope.endTrial
-                                };
-                                if ($scope.endTrial > 30) {
-                                    $scope.hideTrial = true;
-                                }
+                            $scope.intrial = true;
+                            var endDate = moment(plan.endPeriodDate);
+                            $scope.endTrial = moment.duration(moment().diff(endDate)).asDays() - 1;
+                            $scope.trialCountVal = {
+                                count: $filter('number')($scope.endTrial, 0),
+                                intCount: $scope.endTrial
+                            };
+                            if ($scope.endTrial > 30) {
+                                $scope.hideTrial = true;
                             }
                         });
                         if ($scope.notpaid || $scope.endTrial <= 0) {
                             $location.path('/private/billing');
                         } else {
-                            $location.path('/private');
+                            // $location.path('/private');
                         }
                         $scope.loadMetaInfos();
                     });
