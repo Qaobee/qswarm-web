@@ -147,7 +147,7 @@
                         if ($scope.notpaid || $scope.endTrial <= 0) {
                             $location.path('/private/billing');
                         } else {
-                            // $location.path('/private');
+                            $location.path('/private');
                         }
                         $scope.loadMetaInfos();
                     });
@@ -217,7 +217,7 @@
                                     if ($scope.notpaid) {
                                         $location.path('/private/billing');
                                     } else {
-                                        location.path('/private');
+                                        $location.path('/private');
                                     }
                                 }
                             } else {
