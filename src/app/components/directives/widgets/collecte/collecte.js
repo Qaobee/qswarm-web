@@ -19,7 +19,7 @@
      */
     angular.module('qaobee.widgets.collecte', [])
 
-        .directive('widgetCollecte', function ($translatePartialLoader, collecteRestAPI, qeventbus,$log) {
+        .directive('widgetCollecte', function ($translatePartialLoader, collecteRestAPI, qeventbus) {
             return {
                 restrict: 'AE',
                 scope: {
