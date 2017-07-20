@@ -48,7 +48,6 @@
             };
 
             $scope.handleStripe = function (status, response) {
-                console.log(response)
                 if ($scope.inProgress) {
                     return;
                 }
@@ -64,7 +63,6 @@
                         planId: parseInt($routeParams.index)
                     };
                     paymentAPI.pay(payInfo).then(function (data) {
-                        console.log(data.data)
                         $scope.inProgress = false;
                         if (data.data.status) {
                             var token = $window.sessionStorage.qaobeesession;
