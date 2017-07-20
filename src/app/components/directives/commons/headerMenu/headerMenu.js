@@ -33,7 +33,7 @@
                     $scope.isProd = $window.location.hostname === 'www.qaobee.com';
                     $scope.showCnil = $translate.use() === 'fr_FR';
                     if ($location.hash() !== '') {
-                        $location.hash('')
+                        $location.hash('');
                     }
                     $scope.gotoAnchor = function (x) {
                         try {
@@ -223,7 +223,6 @@
                             } else {
                                 angular.element('#modalMailResend').modal();
                                 angular.element('#modalMailResend').modal('open');
-                                // toastr.warning($filter('translate')('modal.login.messageControl.unregistreduser'));
                             }
                         }).error(function (error) {
                             if (error) {
