@@ -106,8 +106,12 @@
                         }
                         angular.element('#goalTooltip').attr('style', 'visibility: hidden;');
                         angular.element('#groundTooltip').attr('style', 'visibility: hidden;');
-                        if (!!$scope.hGoal) $scope.hGoal.clear();
-                        if (!!$scope.hGround) $scope.hGround.clear();
+                        if (!!$scope.hGoal) {
+                            $scope.hGoal.clear();
+                        }
+                        if (!!$scope.hGround) {
+                            $scope.hGround.clear();
+                        }
                         $scope.sequence = {};
                         var search = {
                             listIndicators: [$scope.indicator.impactShoot, $scope.indicator.originShoot, $scope.indicator.stopGK, $scope.indicator.goalType, 'pole'],
@@ -160,7 +164,9 @@
 
                     $scope.displayBubbleGoal = function (count, $event) {
                         $scope.val.goal = 0;
-                        if (!$scope.dimsGoal) return;
+                        if (!$scope.dimsGoal) {
+                            return;
+                        }
                         if ($scope.goalSerie && $scope.goalSerie[count]) {
                             $scope.val.goal = $scope.goalSerie[count].count;
                         }
@@ -173,7 +179,9 @@
 
                     $scope.displayBubbleGround = function (count, $event) {
                         $scope.val.ground = 0;
-                        if (!$scope.dimsGround) return;
+                        if (!$scope.dimsGround) {
+                            return;
+                        }
                         if ($scope.groundSerie && $scope.groundSerie[count]) {
                             $scope.val.ground = $scope.groundSerie[count].count;
                         }
