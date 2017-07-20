@@ -79,7 +79,7 @@
             $scope.loadCategories = function () {
                 activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.user.account.listPlan[0].activity._id, $scope.user.country._id, 'listCategoryAge').success(function (data) {
                     $scope.categoryAgeResult = data;
-                    var dataSort = data.sortBy(function (o) {
+                    data.sortBy(function (o) {
                         return -1 * o.order;
                     });
                 });
