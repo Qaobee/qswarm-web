@@ -97,7 +97,6 @@
 
             /* on change event type, calculate the value for chooseAdversary */
             $scope.changeTeamHome = function () {
-                console.log($scope.data.teamId)
                 $scope.data.adversaryLabel = '';
                 $scope.chooseHome = true;
                 teamRestAPI.getListTeamAdversary($scope.meta.sandbox._id, $scope.meta.sandbox.effectiveDefault, 'true', $scope.data.teamId).success(function (data) {
@@ -146,7 +145,6 @@
                 start.hour(moment($scope.startHours, 'HH').hour());
                 start.minutes(moment($scope.startHours, 'm mm').minutes());
                 $scope.event.startDate = moment(start).valueOf();
-                console.log($scope.data.teamId)
                 /* add team Id to owner */
                 if (angular.isDefined($scope.data.teamId)) {
                     $scope.event.owner.teamId = $scope.data.teamId;
@@ -162,7 +160,6 @@
                         team = item;
                     }
                 });
-                console.log($scope.data.adversaryLabel)
                 angular.forEach($scope.listTeamAdversary, function (item) {
                     if (item.label === $scope.data.adversaryLabel) {
                         adversary = item;
@@ -179,7 +176,6 @@
                         "adversary": true
                     };
 
-                    console.log('add team',adversary)
                     /* add team */
                     teamRestAPI.addTeam(adversary).success(function (data) {
                         adversary = data;
@@ -203,8 +199,6 @@
 
                     });
                 } else {
-
-                    console.log('existing team',adversary)
                     if ($scope.location === 'home') {
                         participants = {
                             teamHome: {_id: team._id, label: team.label},
