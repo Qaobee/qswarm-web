@@ -386,11 +386,10 @@
             $scope.getLink = function () {
                 if (detectUtils.isAndroid()) {
                     $window.location.href = mobileLinks.android;
-                    console.log('android')
                 } else {
                     $location.path('/private');
                 }
-            }
+            };
 
         })
 
@@ -410,11 +409,10 @@
             $scope.getLink = function () {
                 if (detectUtils.isAndroid()) {
                     $window.location.href = mobileLinks.android;
-                    $log.debug('android')
                 } else {
                     $location.path('/private');
                 }
-            }
+            };
         });
 
 }());
