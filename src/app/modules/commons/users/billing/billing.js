@@ -36,7 +36,7 @@
             $scope.user =user;
             $scope.user.account.listPlan.forEach(function(p) {
                 p.formatedEndTrialDate = $filter('date')(p.endPeriodDate);
-            })
+            });
 
         });
 }());
