@@ -46,11 +46,11 @@
                                 result.totalPlayTime = totalTime;
 
                                 /* Stats Count by indicator */
-                                var indicators = [];
+                                var indicators;
                                 if ($scope.bindToId === 'goalScored') {
-                                    indicators = ['goalScored','originShootAtt']
+                                    indicators = ['goalScored','originShootAtt'];
                                 } else {
-                                    indicators = ['goalConceded','originShootDef']
+                                    indicators = ['goalConceded','originShootDef'];
                                 }
 
                                 var listFieldsGroupBy = ['code'];
