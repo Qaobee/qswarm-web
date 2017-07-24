@@ -11,7 +11,7 @@
     ])
 
         .config(function ($routeProvider) {
-            $routeProvider.when('/signupStart', {
+            $routeProvider.when('/signup', {
                 controller: 'SignupStartCtrl',
                 templateUrl: 'app/modules/commons/users/signup/signupStart.html'
             });
@@ -54,7 +54,7 @@
                         toastr.warning($translate.instant('signupStartPage.form.messageControl.nonunique'));
                         vcRecaptchaService.reload($scope.widgetId);
                     } else {
-                        $scope.signup.plan = {levelPlan: 'FREEMIUM'};
+                        $scope.signup.plan = {levelPlan: 'FREEMIUM', activity: {_id : 'ACT-HAND'}};
                         $scope.signup.name = $scope.signup.name.capitalize(true);
                         $scope.signup.firstname = $scope.signup.firstname.capitalize(true);
 
@@ -67,7 +67,7 @@
                                 delete $scope.signup;
                                 delete $scope.passwdConfirm;
                                 $rootScope.user = data2.person;
-                                $location.path('/signup/'+data2.person._id+'/'+data2.person.account.activationCode);
+                                $location.path('/signupStartDone');
                             }
                         }).error(function (error) {
                             vcRecaptchaService.reload($scope.widgetId);
