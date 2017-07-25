@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('qaobee.user.signup.start', [
+    angular.module('qaobee.user.signup.user', [
         /* qaobee modules */
         'personSRV',
         /* services */
@@ -11,14 +11,23 @@
     ])
 
         .config(function ($routeProvider) {
-            $routeProvider.when('/signup', {
-                controller: 'SignupStartCtrl',
-                templateUrl: 'app/modules/commons/users/signup/signupStart.html'
+            $routeProvider.when('/signup/user', {
+                controller: 'SignupUserCtrl',
+                resolve: {
+                    single: true
+                },
+                templateUrl: 'app/modules/commons/users/signup/signupUser.html'
+            }).when('/signup/club', {
+                controller: 'SignupUserCtrl',
+                resolve: {
+                    single: false
+                },
+                templateUrl: 'app/modules/commons/users/signup/signupUser.html'
             });
         })
 
-        .controller('SignupStartCtrl', function ($rootScope, $scope, $translatePartialLoader, $log, $routeParams,
-                                                 $location, $translate, signupRestAPI, qeventbus, vcRecaptchaService) {
+        .controller('SignupUserCtrl', function ($rootScope, $scope, $translatePartialLoader, $log, $routeParams, single,
+                                                $location, $translate, signupRestAPI, qeventbus, vcRecaptchaService) {
             $translatePartialLoader.addPart('user').addPart('commons');
             qeventbus.prepForBroadcast('menuItem', 'signup');
 
@@ -26,12 +35,12 @@
             $scope.widgetId = null;
             $scope.setWidgetId = function (widgetId) {
                 console.info('Created widget ID: %s', widgetId);
-                if(!!vcRecaptchaService && vcRecaptchaService.reset) {
+                if (!!vcRecaptchaService && vcRecaptchaService.reset) {
                     vcRecaptchaService.reset();
                 }
                 $scope.widgetId = widgetId;
             };
-            $scope.cbExpiration = function() {
+            $scope.cbExpiration = function () {
                 console.info('Captcha expired. Resetting response object');
                 vcRecaptchaService.reload($scope.widgetId);
                 $scope.response = null;
@@ -54,12 +63,11 @@
                         toastr.warning($translate.instant('signupStartPage.form.messageControl.nonunique'));
                         vcRecaptchaService.reload($scope.widgetId);
                     } else {
-                        $scope.signup.plan = {levelPlan: 'FREEMIUM', activity: {_id : 'ACT-HAND'}};
+                        $scope.signup.plan = {levelPlan: 'FREEMIUM', activity: {_id: 'ACT-HAND'}};
                         $scope.signup.name = $scope.signup.name.capitalize(true);
                         $scope.signup.firstname = $scope.signup.firstname.capitalize(true);
 
                         signupRestAPI.registerUser($scope.signup).success(function (data2) {
-                            // On recharge le captcha en cas d'erreur ou pour une nouvelle inscription
                             vcRecaptchaService.reload($scope.widgetId);
                             if (data2 === null) {
                                 toastr.error($translate.instant('signupStartPage.form.messageControl.unknown'));
@@ -67,7 +75,11 @@
                                 delete $scope.signup;
                                 delete $scope.passwdConfirm;
                                 $rootScope.user = data2.person;
-                                $location.path('/signupStartDone');
+                                if(single) {
+                                    $location.path('/signup/user/done');
+                                } else {
+
+                                }
                             }
                         }).error(function (error) {
                             vcRecaptchaService.reload($scope.widgetId);
@@ -82,5 +94,4 @@
                 });
             };
         });
-
 }());

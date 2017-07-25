@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('qaobee.user.signup.end', [
+    angular.module('qaobee.user.signup', [
         /* qaobee modules */
         'personSRV',
         /* services */
@@ -20,8 +20,8 @@
             $routeProvider.when('/signup/end/:id/:code?', {
                 controller: 'SignupEndCtrl',
                 templateUrl: 'app/modules/commons/users/signup/signupEndDone.html'
-            }).when('/signupStartDone', {
-                controller: 'SignupStartDoneCtrl',
+            }).when('/signup/user/done', {
+                controller: 'SignupUserDoneCtrl',
                 templateUrl: 'app/modules/commons/users/signup/signupStartDone.html'
             }).when('/signup/cancel', {
                 controller: 'SignupCancelCtrl',
@@ -33,6 +33,17 @@
                 controller: 'SignupCtrl',
                 templateUrl: 'app/modules/commons/users/signup/signupEnd.html'
             });
+        })
+
+        .controller('SignupUserDoneCtrl', function ($rootScope, $scope, $translatePartialLoader,
+                                                    $location, qeventbus, EnvironmentConfig) {
+            $translatePartialLoader.addPart('user');
+            qeventbus.prepForBroadcast('menuItem', 'signup');
+            $scope.url = EnvironmentConfig.appMobile;
+            $scope.goHome = function () {
+                delete($rootScope.user);
+                $location.path('/');
+            };
         })
 
         .controller('SignupCtrl', function ($rootScope, $scope, $translatePartialLoader, $log,
@@ -329,18 +340,6 @@
                 angular.element('#modalCancel').modal();
             });
 
-        })
-
-
-        .controller('SignupStartDoneCtrl', function ($rootScope, $scope, $translatePartialLoader,
-                                                     $location, qeventbus, EnvironmentConfig) {
-            $translatePartialLoader.addPart('user');
-            qeventbus.prepForBroadcast('menuItem', 'signup');
-            $scope.url = EnvironmentConfig.appMobile;
-            $scope.goHome = function () {
-                delete($rootScope.user);
-                $location.path('/');
-            };
         })
 
         .controller('SignupEndCtrl', function ($rootScope, $scope, $window, $routeParams, $log, $translatePartialLoader, $filter,
