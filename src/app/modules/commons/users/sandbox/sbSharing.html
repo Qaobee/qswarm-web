@@ -16,17 +16,8 @@
                 <h5 translate="sbSharingPage.label.byMail"></h5>
             </div>
         </div>
-            <pre>{{h.sharingList | json}}</pre><chips ng-model="sharingList">
-            <chip-tmpl>
-                <div class="default-chip">
-                    {{chip}}
-                    <span class="glyphicon glyphicon-remove" remove-chip></span>
-                </div>
-            </chip-tmpl>
-            <input chip-control />
-        </chips>
         <div class="row">
-            <chips ng-model="h.sharingList" render="render(data)" class="col s12">
+            <chips ng-model="sharingList" render="render(data)" class="col s12">
                 <chip-tmpl >
                     <div class="default-chip valign-wrapper">
                         <i class="material-icons prefix" remove-chip="deleteChip(data)">contact_mail</i>

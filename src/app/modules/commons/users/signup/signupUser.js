@@ -2,11 +2,6 @@
     'use strict';
 
     angular.module('qaobee.user.signup.user', [
-        /* qaobee modules */
-        'personSRV',
-        /* services */
-        'locationAPI',
-        /* qaobee Rest API */
         'signupRestAPI'
     ])
 
@@ -14,19 +9,23 @@
             $routeProvider.when('/signup/user', {
                 controller: 'SignupUserCtrl',
                 resolve: {
-                    single: function() {return true;}
+                    single: function () {
+                        return true;
+                    }
                 },
                 templateUrl: 'app/modules/commons/users/signup/signupUser.html'
             }).when('/signup/club', {
                 controller: 'SignupUserCtrl',
                 resolve: {
-                    single: function() {return false;}
+                    single: function () {
+                        return false;
+                    }
                 },
                 templateUrl: 'app/modules/commons/users/signup/signupUser.html'
             });
         })
 
-        .controller('SignupUserCtrl', function ($rootScope, $scope, $translatePartialLoader, $log, $routeParams, single,
+        .controller('SignupUserCtrl', function ($rootScope, $scope, $translatePartialLoader, single, $window,
                                                 $location, $translate, signupRestAPI, qeventbus, vcRecaptchaService) {
             $translatePartialLoader.addPart('user').addPart('commons');
             qeventbus.prepForBroadcast('menuItem', 'signup');
@@ -63,35 +62,36 @@
                         toastr.warning($translate.instant('signupStartPage.form.messageControl.nonunique'));
                         vcRecaptchaService.reload($scope.widgetId);
                     } else {
-                        $scope.signup.plan = {levelPlan: single?'FREEMIUM':'CLUB_1', activity: {_id: 'ACT-HAND'}};
+                        $scope.signup.plan = {levelPlan: single ? 'FREEMIUM' : 'CLUB_1', activity: {_id: 'ACT-HAND'}};
                         $scope.signup.name = $scope.signup.name.capitalize(true);
                         $scope.signup.firstname = $scope.signup.firstname.capitalize(true);
-
-                        signupRestAPI.registerUser($scope.signup).success(function (data2) {
-                            vcRecaptchaService.reload($scope.widgetId);
-                            if (data2 === null) {
-                                toastr.error($translate.instant('signupStartPage.form.messageControl.unknown'));
-                            } else {
-                                delete $scope.signup;
-                                delete $scope.passwdConfirm;
-                                $rootScope.user = data2.person;
-                                if(single) {
-                                    $location.path('/signup/user/done');
+                        if (single) {
+                            signupRestAPI.registerUser($scope.signup).success(function (data2) {
+                                vcRecaptchaService.reload($scope.widgetId);
+                                if (data2 === null) {
+                                    toastr.error($translate.instant('signupStartPage.form.messageControl.unknown'));
                                 } else {
-                                    $location.path('/signup/club/structure');
+                                    delete $scope.signup;
+                                    delete $scope.passwdConfirm;
+                                    $rootScope.user = data2.person;
+                                    $location.path('/signup/done');
                                 }
-                            }
-                        }).error(function (error) {
-                            vcRecaptchaService.reload($scope.widgetId);
-                            if (error.code && error.code === 'CAPTCHA_EXCEPTION') {
-                                toastr.error($translate.instant('signupStartPage.form.messageControl.' + error.code));
-                            } else {
-                                $rootScope.errMessSend = true;
-                                toastr.error(error.message);
-                            }
-                        });
+                            }).error(function (error) {
+                                vcRecaptchaService.reload($scope.widgetId);
+                                if (error.code && error.code === 'CAPTCHA_EXCEPTION') {
+                                    toastr.error($translate.instant('signupStartPage.form.messageControl.' + error.code));
+                                } else {
+                                    $rootScope.errMessSend = true;
+                                    toastr.error(error.message);
+                                }
+                            });
+                        } else {
+                            $window.sessionStorage.signup = JSON.stringify($scope.signup);
+                            $location.path('/signup/club/structure');
+                        }
                     }
                 });
+                return false;
             };
         });
 }());

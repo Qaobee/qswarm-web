@@ -16,7 +16,6 @@
                     <h5 style="margin-top:0px;" translate="signupEndPage.tabFindClub.tabTitle"></h5>
                 </div>
                 <div class="collapsible-body">
-
                     <form name="findClubForm" class="container">
                         <div class="row">&nbsp;</div>
                         <div class="row">
@@ -83,41 +82,16 @@
                                 <div class="col m2 hide-on-med-and-down">&nbsp;</div>
                             </div>
                         </div>
-
-                        <div ng-show="structure._id">
-                            <div class="row hide-on-large-only">
-                                <div class="col input-field s12">
-                                    <label class="mandatory"
-                                           translate="signupEndPage.tabFindClub.form.label.categoryAge"></label>
-                                </div>
-                                <div class="col s12">&nbsp;</div>
-
-                                <div class="input-field col s12">
-                                    <select name="categoryAgeSelect" ng-model="categoryAge" id="userCategoryAgeSelect"
-                                            material-select watch
-                                            required
-                                            ng-options="cat as cat.label for cat in valuesCategoryAge track by cat._id">
-                                    </select>
-                                </div>
+                        <div class="row container" ng-if="structureSelectOK">
+                            <div class="col m1 hide-on-small-only">&nbsp;</div>
+                            <div class="col s12 m10 input-field">
+                                <div vc-recaptcha ng-model="signup.captcha"
+                                     on-create="setWidgetId(widgetId)"
+                                     on-expire="cbExpiration()"
+                                ></div>
                             </div>
-
-                            <div class="row hide-on-med-and-down">
-                                <div class="col m2 ">&nbsp;</div>
-                                <div class="col input-field m4">
-                                    <label class="mandatory"
-                                           translate="signupEndPage.tabFindClub.form.label.categoryAge"></label>
-                                </div>
-                                <div class="input-field col m4">
-                                    <select name="categoryAgeSelect" ng-model="categoryAge" id="userCategoryAgeSelect"
-                                            material-select watch
-                                            required
-                                            ng-options="cat as cat.label for cat in valuesCategoryAge track by cat._id">
-                                    </select>
-                                </div>
-                                <div class="col m2">&nbsp;</div>
-                            </div>
+                            <div class="col m1 hide-on-small-only">&nbsp;</div>
                         </div>
-
                         <!-- actions buttons -->
                         <div class="row">&nbsp;</div>
                         <div class="row">
@@ -126,7 +100,8 @@
                                    translate="commons.buttons.cancel"></a>
 
                                 <button type="submit" ng-click="validateFindClubForm()"
-                                        translate="commons.buttons.validate" ng-disabled="findClubForm.$invalid"
+                                        translate="commons.buttons.validate"
+                                        ng-disabled="findClubForm.$invalid || !structureSelectOK"
                                         tabindex="8"
                                         ng-class="{'btn waves-effect waves-white disabled': findClubForm.$invalid,
                                               'btn waves-effect waves-white secondary-color': !findClubForm.$invalid}">
@@ -206,7 +181,16 @@
                                 <div class="col m2">&nbsp;</div>
                             </div>
                         </div>
-
+                        <div class="row container">
+                            <div class="col m1 hide-on-small-only">&nbsp;</div>
+                            <div class="col s12 m10 input-field">
+                                <div vc-recaptcha ng-model="signup.captcha"
+                                     on-create="setWidgetId(widgetId)"
+                                     on-expire="cbExpiration()"
+                                ></div>
+                            </div>
+                            <div class="col m1 hide-on-small-only">&nbsp;</div>
+                        </div>
                         <!-- actions buttons -->
                         <div class="row">&nbsp;</div>
                         <div class="row">
@@ -217,7 +201,7 @@
 
                                 <button ng-click="createStructure()" translate="commons.buttons.validate"
                                         ng-disabled="createStructureForm.$invalid" tabindex="8"
-                                        ng-class="{'btn waves-effect waves-white disabled': createStructureForm.$invalid, 
+                                        ng-class="{'btn waves-effect waves-white disabled': createStructureForm.$invalid,
                                               'btn waves-effect waves-white secondary-color': !createStructureForm.$invalid}">
                                 </button>
                             </div>
@@ -229,7 +213,6 @@
     </div>
     <!-- body end-->
 </div>
-
 
 <!-- Modal Cancel SignUp -->
 <div id="modalCancel" class="modal light-primary-color">
@@ -254,31 +237,6 @@
                class="modal-action modal-close waves-effect waves-red btn accent-color"
                translate="modalSignupCancel.button.yes"></a>
         </div>
-        <div class="col s12">&nbsp;</div>
-    </div>
-</div>
-
-<!-- Modal Creation InProgress -->
-<div id="modalCreate" class="modal light-primary-color">
-    <div class="modal-header center-align">
-        <h5>
-            <span class="fa fa-sign-in"></span>
-            <span translate="modalCreate.title"></span>
-        </h5>
-    </div>
-
-    <div class="owl-carousel white" style="height:200px">
-        <div style="padding-top:80px;text-align:center"><h4 class="colorMain-text"><i class="fa fa-home"></i>
-            {{'modalCreate.stepCreateSpace' | translate}}</h4></div>
-        <div style="padding-top:80px;text-align:center"><h4 class="colorAccent-text"><i class="fa fa-user"></i>
-            {{'modalCreate.stepCreatePlayers' | translate}}</h4></div>
-        <div style="padding-top:80px;text-align:center"><h4 class="colorSecondary-text"><i class="fa fa-user"></i>
-            {{'modalCreate.stepCreateTeam' | translate}}</h4></div>
-
-        <div style="padding-top:80px;text-align:center"><h4 class="colorSecondary-text"><i
-                class="fa fa-check-square-o"></i> {{'modalCreate.stepFinished' | translate}}</h4></div>
-    </div>
-    <div class="center">
         <div class="col s12">&nbsp;</div>
     </div>
 </div>

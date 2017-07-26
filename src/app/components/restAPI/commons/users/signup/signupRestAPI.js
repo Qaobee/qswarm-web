@@ -27,6 +27,14 @@
                         data: u
                     });
                 },
+                registerUserMulti: function (u, s) {
+                    u.origin = 'web';
+                    return $http({
+                        url: '/api/2/commons/multi/signup/register',
+                        method: 'PUT',
+                        data: {user: u, structure : s }
+                    });
+                },
 
                 /**
                  * @memberOf qaobee.components.restAPI.commons.users.user.signupRestAPI
