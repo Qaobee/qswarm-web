@@ -14,13 +14,13 @@
             $routeProvider.when('/signup/user', {
                 controller: 'SignupUserCtrl',
                 resolve: {
-                    single: true
+                    single: function() {return true;}
                 },
                 templateUrl: 'app/modules/commons/users/signup/signupUser.html'
             }).when('/signup/club', {
                 controller: 'SignupUserCtrl',
                 resolve: {
-                    single: false
+                    single: function() {return false;}
                 },
                 templateUrl: 'app/modules/commons/users/signup/signupUser.html'
             });
@@ -30,7 +30,7 @@
                                                 $location, $translate, signupRestAPI, qeventbus, vcRecaptchaService) {
             $translatePartialLoader.addPart('user').addPart('commons');
             qeventbus.prepForBroadcast('menuItem', 'signup');
-
+            $scope.single = single;
             $scope.signup = {};
             $scope.widgetId = null;
             $scope.setWidgetId = function (widgetId) {
@@ -63,7 +63,7 @@
                         toastr.warning($translate.instant('signupStartPage.form.messageControl.nonunique'));
                         vcRecaptchaService.reload($scope.widgetId);
                     } else {
-                        $scope.signup.plan = {levelPlan: 'FREEMIUM', activity: {_id: 'ACT-HAND'}};
+                        $scope.signup.plan = {levelPlan: single?'FREEMIUM':'CLUB_1', activity: {_id: 'ACT-HAND'}};
                         $scope.signup.name = $scope.signup.name.capitalize(true);
                         $scope.signup.firstname = $scope.signup.firstname.capitalize(true);
 
@@ -78,7 +78,7 @@
                                 if(single) {
                                     $location.path('/signup/user/done');
                                 } else {
-
+                                    $location.path('/signup/club/structure');
                                 }
                             }
                         }).error(function (error) {

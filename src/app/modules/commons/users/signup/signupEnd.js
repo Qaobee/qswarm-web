@@ -17,11 +17,11 @@
         .value('mobileLinks', {android: 'intent://qaobee/signup/#Intent;scheme=qaobee;package=com.qaobee.hand;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.qaobee.hand;end'})
 
         .config(function ($routeProvider) {
-            $routeProvider.when('/signup/end/:id/:code?', {
-                controller: 'SignupEndCtrl',
+            $routeProvider.when('/signup/club/structure', {
+                controller: 'SignupCtrl',
                 templateUrl: 'app/modules/commons/users/signup/signupEndDone.html'
             }).when('/signup/user/done', {
-                controller: 'SignupUserDoneCtrl',
+                controller: 'SignupEndCtrl',
                 templateUrl: 'app/modules/commons/users/signup/signupStartDone.html'
             }).when('/signup/cancel', {
                 controller: 'SignupCancelCtrl',
@@ -29,9 +29,6 @@
             }).when('/signup/error', {
                 controller: 'SignupErrorCtrl',
                 templateUrl: 'app/modules/commons/users/signup/signupEndError.html'
-            }).when('/signup/:id/:code?', {
-                controller: 'SignupCtrl',
-                templateUrl: 'app/modules/commons/users/signup/signupEnd.html'
             });
         })
 
