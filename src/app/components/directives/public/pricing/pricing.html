@@ -1,189 +1,119 @@
 <!-- START PRICING TABLE CONTAINER -->
 <div class="light-primary-color">
-    <div class="row default-primary-color pricing" style="margin-bottom:0px;">
-        <div class="col s12  center-align">
+    <div class="row default-primary-color pricing">
+        <div class="col s12  center-align accent-text-color">
             <h3 class="title" translate="pricing.titleTarif" ng-if="public==='true'"></h3>
             <h3 class="title" translate="pricing.titleInvite" ng-if="public==='false'"></h3>
+        </div>
+
+        <div class="col s12 dark-text-color"><h5 translate="pricing.descTarif"></h5></div>
+        
+    </div>
+    <div class="row white pricing">
+        <div class="col s12 m3 light-primary-color" style="border: dotted 1px rgba(0, 0, 0, .3);">
+            <h4 translate="pricing.titleIndividual"></h4>
+        </div>
+        <div class="col s12 m9 light-primary-color" style="border: dotted 1px rgba(0, 0, 0, .3);">
+            <h4 translate="pricing.titleClub"></h4>
+        </div>
+        
+        <div class="col s12 m3 default-primary-color">
+            <i class="fa fa-fw fa-user fa-3x white-text" style="padding:2px;"></i>&nbsp;
+            <h5 translate="pricing.titleIndividualPlan"></h5>
+            
+        </div>
+        <div class="col s12 m3 dark-primary-color">
+            <i class="fa fa-fw fa-user-plus fa-3x white-text" style="padding:2px;"></i>&nbsp;
+            <h5 translate="pricing.titleClubSmallPlan"></h5>
+        </div>
+        <div class="col s12 m3 secondary-color">
+            <i class="fa fa-fw fa-user-times fa-3x white-text" style="padding:2px;"></i>&nbsp;
+            <h5 translate="pricing.titleClubMediumPlan"></h5>
+            
+        </div>
+        <div class="col s12 m3 accent-color">
+            <i class="fa fa-fw fa-users fa-3x white-text" style="padding:2px;"></i>&nbsp;
+            <h5 translate="pricing.titleClubLargePlan"></h5>
             
         </div>
 
+        <div class="col s12 m3" style="border: dotted 1px rgba(0, 0, 0, .3);">
+            <h3 translate="pricing.priceIndividualPlanM"></h3>
+            <h6 class="right" translate="pricing.priceIndividualPlanA"></h6>
+            <p>&nbsp;</p>
+            <h5 class="light-text-color" translate="pricing.conditionIndividualPlan"></h5>
+        </div>
+        <div class="col s12 m3" style="border: dotted 1px rgba(0, 0, 0, .3);">
+            <h3 translate="pricing.priceClubSmallPlanM"></h3>
+            <h6 class="right" translate="pricing.priceClubSmallPlanA"></h6>
+            <p>&nbsp;</p>
+            <h5 translate="pricing.conditionClubSmallPlan"></h5>
+        </div>
+        <div class="col s12 m3" style="border: dotted 1px rgba(0, 0, 0, .3);">
+            <h3 translate="pricing.priceClubMediumPlanM"></h3>
+            <h6 class="right" translate="pricing.priceClubMediumPlanA"></h6>
+            <p>&nbsp;</p>
+            <h5 class="secondary-text-color" translate="pricing.conditionClubMediumPlan"></h5>
+        </div>
+        <div class="col s12 m3" style="border: dotted 1px rgba(0, 0, 0, .3);">
+            <h3 translate="pricing.priceClubLargePlanM"></h3>
+            <h6 class="right" translate="pricing.priceClubLargePlanA"></h6>
+            <p>&nbsp;</p>
+            <h5 class="accent-text-color" translate="pricing.conditionClubLargePlan"></h5>
+        </div>
+        
+        
         <div class="col s12">&nbsp;</div>
-        <div class="col s12 ">
-            <div class="row">
-                <div class="col s12">
-                    <div class="card-title dark-primary-color">
-                        <img src="../../../assets/images/icons/home-camera-M.png" title="{{'landing.part-2.capture' | translate}}" width="25%" height="25%" class="hide-on-med-and-up"> &nbsp;
-                        <img src="../../../assets/images/icons/home-stats-M.png" title="{{'landing.part-2.analyze' | translate}}" width="25%" height="25%" class="hide-on-med-and-up"> &nbsp;
-                        <img src="../../../assets/images/icons/home-progress-M.png" title="{{'landing.part-2.progress' | translate}}" width="25%" height="25%" class="hide-on-med-and-up">
-                        <img src="../../../assets/images/icons/home-camera-M.png" title="{{'landing.part-2.capture' | translate}}" class="hide-on-small-only"> &nbsp;
-                        <img src="../../../assets/images/icons/home-stats-M.png" title="{{'landing.part-2.analyze' | translate}}" class="hide-on-small-only"> &nbsp;
-                        <img src="../../../assets/images/icons/home-progress-M.png" title="{{'landing.part-2.progress' | translate}}" class="hide-on-small-only">
-                    </div>
+        
+        <div class="col s12 m3">
+            <a href="javascript:void(0)" ng-click="openSignup()" translate="commons.buttons.validate"
+                        class="btn waves-effect waves-white default-primary-color">
+                </a>
+        </div>
+        <div class="col s12 m3">
+            <a href="javascript:void(0)" ng-click="openSignup()" translate="commons.buttons.validate"
+                        class="btn waves-effect waves-white dark-primary-color">
+                </a>
 
-                    <div class="card-content dark-text-color white" >
-                        <div class="row" ng-if="public==='true'"> 
-                            <div class="price center-align col s12 accent-text-color">
-                                <h4>{{'pricing.offers.standard.price' | translate}} € {{'pricing.offers.standard.period' | translate}} </h4>
-                                <h4 class="center-align col s12 primary-text-color">{{'pricing.trial.title'  | translate}}</h4>
-                            </div>
-                            
-                        </div>
-                        <div class="row" ng-if="public==='false'"> 
-                            <div class="price center-align col s12 accent-text-color" ng-if="public==='false'">
-                                <h3>{{'pricing.trial.title'  | translate}}</h3>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col s12 l6">
-                                <div class="row"> 
-                                    <div class="col s4">
-                                        <img src="../../../assets/images/icons/pricing-http-M.png" width="90%" height="90%" class="hide-on-med-and-up">
-                                        <img src="../../../assets/images/icons/pricing-http-M.png" class="hide-on-small-only">
-                                    </div>
-                                    <div class="col s8 left-align secondary-text-color">
-                                        <h5>{{'pricing.offers.standard.appWeb' | translate}}</h5>
-                                    </div>
-
-                                    <div class="col s4">&nbsp;</div>
-                                    <div class="col s8 secondary-text-color"><hr></div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col s4">
-                                        <img src="../../../assets/images/icons/pricing-teams-M.png" width="75%" height="75%" class="hide-on-med-and-up">
-                                        <img src="../../../assets/images/icons/pricing-teams-M.png" class="hide-on-small-only">
-                                    </div>
-                                    <div class="col s8 left-align">
-                                        <h5>{{'pricing.offers.standard.teamWeb.title' | translate}}</h5>
-                                        <span>{{'pricing.offers.standard.teamWeb.detail' | translate}}</span>
-                                    </div>
-                                </div>
-                                <div class="row">    
-                                    <div class="col s4">
-                                        <img src="../../../assets/images/icons/pricing-agenda-M.png" width="75%" height="75%" class="hide-on-med-and-up">
-                                        <img src="../../../assets/images/icons/pricing-agenda-M.png" class="hide-on-small-only">
-                                    </div>
-                                    <div class="col s8 left-align">    
-                                        <h5>{{'pricing.offers.standard.agendaWeb.title' | translate}}</h5>
-                                        <span>{{'pricing.offers.standard.agendaWeb.detail' | translate}}</span>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s4">
-                                        <img src="../../../assets/images/icons/pricing-stats-M.png" width="75%" height="75%" class="hide-on-med-and-up">
-                                        <img src="../../../assets/images/icons/pricing-stats-M.png" class="hide-on-small-only">
-                                    </div>
-                                    <div class="col s8 left-align">
-                                        <h5>{{'pricing.offers.standard.statsWeb.title' | translate}}</h5>
-                                        <span>{{'pricing.offers.standard.statsWeb.detail' | translate}}</span>
-                                    </div>
-                                </div>    
-                                <div class="row">
-                                    <div class="col s4">
-                                        <img src="../../../assets/images/icons/pricing-share-M.png" width="75%" height="75%" class="hide-on-med-and-up">
-                                        <img src="../../../assets/images/icons/pricing-share-M.png" class="hide-on-small-only">
-                                    </div>
-                                    <div class="col s8 left-align">
-                                        <h5>{{'pricing.offers.standard.shareWeb.title' | translate}}</h5>
-                                        <span>{{'pricing.offers.standard.shareWeb.detail' | translate}}</span>
-                                    </div>
-                                </div>
-
-                                <div class="row"><div class="col s12">&nbsp;</div></div>
-                            </div>
-                            <div class="col s12 l6">
-                                <div class="row"> 
-                                    <div class="col s4">
-                                        <img src="../../../assets/images/icons/pricing-mobile-M.png" width="90%" height="90%" class="hide-on-med-and-up">
-                                        <img src="../../../assets/images/icons/pricing-mobile-M.png" class="hide-on-small-only">
-                                    </div>
-                                    <div class="col s8 left-align secondary-text-color">
-                                        <h5>{{'pricing.offers.standard.appMob' | translate}}</h5>
-                                    </div>
-
-                                    <div class="col s4">&nbsp;</div>
-                                    <div class="col s8 secondary-text-color"><hr></div>
-                                </div>
-                                 <div class="row">
-                                    <div class="col s4">
-                                        <img src="../../../assets/images/icons/pricing-teams-M.png" width="75%" height="75%" class="hide-on-med-and-up">
-                                        <img src="../../../assets/images/icons/pricing-teams-M.png" class="hide-on-small-only">
-                                    </div>
-                                    <div class="col s8 left-align">
-                                        <h5>{{'pricing.offers.standard.teamMob.title' | translate}}</h5>
-                                        <span>{{'pricing.offers.standard.teamMob.detail' | translate}}</span>
-                                    </div>
-                                </div>
-                                <div class="row">    
-                                    <div class="col s4">
-                                        <img src="../../../assets/images/icons/pricing-agenda-M.png" width="75%" height="75%" class="hide-on-med-and-up">
-                                        <img src="../../../assets/images/icons/pricing-agenda-M.png" class="hide-on-small-only">
-                                    </div>
-                                    <div class="col s8 left-align">    
-                                        <h5>{{'pricing.offers.standard.agendaMob.title' | translate}}</h5>
-                                        <span>{{'pricing.offers.standard.agendaMob.detail' | translate}}</span>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s4">
-                                        <img src="../../../assets/images/icons/pricing-stats-M.png" width="75%" height="75%" class="hide-on-med-and-up">
-                                        <img src="../../../assets/images/icons/pricing-stats-M.png" class="hide-on-small-only">
-                                    </div>
-                                    <div class="col s8 left-align">
-                                        <h5>{{'pricing.offers.standard.statsMob.title' | translate}}</h5>
-                                        <span>{{'pricing.offers.standard.statsMob.detail' | translate}}</span>
-                                    </div>
-                                </div>
-                                <div class="row">    
-                                    <div class="col s4">
-                                        <img src="../../../assets/images/icons/pricing-camera-M.png" width="75%" height="75%" class="hide-on-med-and-up">
-                                        <img src="../../../assets/images/icons/pricing-camera-M.png" class="hide-on-small-only">
-                                    </div>
-                                    <div class="col s8 left-align">    
-                                        <h5>{{'pricing.offers.standard.collectMob.title' | translate}}</h5>
-                                        <span>{{'pricing.offers.standard.collectMob.detail' | translate}}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                            
-                        <div class="row" ng-if="public==='false'">
-                            <div class="center-align col s12"> 
-                                <h3 class="center-align col s12 secondary-text-color">{{'pricing.offers.standard.priceInvite' | translate}} € {{'pricing.offers.standard.period' | translate}} </h3>
-                            </div>
-                        </div>
-                        <div class="row" ng-if="subscribeButton">
-                            <div class="center-align col s12"> 
-                                <a class="btn waves-effect waves-light accent-color"
-                                    href="#/signupStart" translate="pricing.subscribe-btn">
-                                </a>
-                            </div>
-                        </div>
-                        <!-- actions buttons -->
-                        <div class="row" ng-if="invitationButton">
-                            <div class="col s12 center-align">
-                                <button type="submit" translate="commons.buttons.accept"
-                                        class="btn waves-effect waves-white accent-color"
-                                        ng-click="acceptInvitation()">
-                                </button>
-                                &nbsp;
-                                <button type="submit" translate="commons.buttons.refuse"
-                                        class="btn waves-effect waves-white light-primary-color"
-                                        ng-click="refuseInvitation()">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="row">&nbsp;</div>
-                    </div>
-                    
-                </div>
-                <div class="col s12" ng-if="public==='true'">
-                    <p class="center-align white-text" translate="pricing.team-subscribe"></p>
-                </div>
-            </div>
-            
+        </div>
+        <div class="col s12 m3">
+            <a href="javascript:void(0)" ng-click="openSignup()" translate="commons.buttons.validate"
+                        class="btn waves-effect waves-white secondary-color">
+                </a>
+        </div>
+        <div class="col s12 m3">
+            <a href="javascript:void(0)" ng-click="openSignup()" translate="commons.buttons.validate"
+                        class="btn waves-effect waves-white accent-color">
+                </a>
+        </div>
+        
+        <div class="col s12">&nbsp;</div>
+        
+        <div class="col s12 m3 left-align" style="border: dotted 1px rgba(0, 0, 0, .3);">
+            <p><i class="fa fa-fw fa-check-square" style="padding:2px;"></i> <span translate="pricing.features.gerer"></span></p>
+            <p><i class="fa fa-fw fa-check-square" style="padding:2px;"></i> <span translate="pricing.features.collecter"></span></p>
+            <p><i class="fa fa-fw fa-check-square" style="padding:2px;"></i> <span translate="pricing.features.analyser"></span></p>
+            <p>&nbsp;</p>
+        </div>
+        <div class="col s12 m3 left-align" style="border: dotted 1px rgba(0, 0, 0, .3);">
+            <p><i class="fa fa-fw fa-check-square" style="padding:2px;"></i> <span translate="pricing.features.gerer"></span></p>
+            <p><i class="fa fa-fw fa-check-square" style="padding:2px;"></i> <span translate="pricing.features.collecter"></span></p>
+            <p><i class="fa fa-fw fa-check-square" style="padding:2px;"></i> <span translate="pricing.features.analyser"></span></p>
+            <p><i class="fa fa-fw fa-check-square" style="padding:2px;"></i> <span translate="pricing.features.collaborer"></span></p>
+        </div>
+        <div class="col s12 m3 left-align" style="border: dotted 1px rgba(0, 0, 0, .3);">
+            <p><i class="fa fa-fw fa-check-square" style="padding:2px;"></i> <span translate="pricing.features.gerer"></span></p>
+            <p><i class="fa fa-fw fa-check-square" style="padding:2px;"></i> <span translate="pricing.features.collecter"></span></p>
+            <p><i class="fa fa-fw fa-check-square" style="padding:2px;"></i> <span translate="pricing.features.analyser"></span></p>
+            <p><i class="fa fa-fw fa-check-square" style="padding:2px;"></i> <span translate="pricing.features.collaborer"></span></p>
+        </div>
+        <div class="col s12 m3 left-align" style="border: dotted 1px rgba(0, 0, 0, .3);">
+            <p><i class="fa fa-fw fa-check-square" style="padding:2px;"></i> <span translate="pricing.features.gerer"></span></p>
+            <p><i class="fa fa-fw fa-check-square" style="padding:2px;"></i> <span translate="pricing.features.collecter"></span></p>
+            <p><i class="fa fa-fw fa-check-square" style="padding:2px;"></i> <span translate="pricing.features.analyser"></span></p>
+            <p><i class="fa fa-fw fa-check-square" style="padding:2px;"></i> <span translate="pricing.features.collaborer"></span></p>
         </div>
     </div>
+    
 </div>
 

@@ -42,7 +42,8 @@
     "download": "Download",
     "collect": "Collect",
     "progress": "Progress",
-    "collaborate": "Collaborate"
+    "collaborate": "Collaborate",
+    "aboutUs":"About us"
   },
   "modal": {
     "login": {

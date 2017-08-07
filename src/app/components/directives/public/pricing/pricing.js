@@ -59,7 +59,7 @@
                         });
                     };
                 },
-                templateUrl: 'app/components/directives/pricing/pricing.html'
+                templateUrl: 'app/components/directives/public/pricing/pricing.html'
             };
         });
 }());
