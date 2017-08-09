@@ -75,17 +75,17 @@
       
     "titleClub": "Club",  
     
-    "titleClubLargePlan":"Large",
+    "titleClubLargePlan":"Team XL",
     "priceClubLargePlanM": "<b>48 €</b> / mois",
     "priceClubLargePlanA": "<b>486 €</b> / an",
     "conditionClubLargePlan": "11 utilisateurs et plus",  
       
-    "titleClubMediumPlan":"Medium",
+    "titleClubMediumPlan":"Team M",
     "priceClubMediumPlanM": "<b>36 €</b> / mois",
     "priceClubMediumPlanA": "<b>389 €</b> / an",
     "conditionClubMediumPlan": "Entre 6 et 10 utilisateurs",
       
-    "titleClubSmallPlan":"Small",  
+    "titleClubSmallPlan":"Team S",  
     "priceClubSmallPlanM": "<b>30 €</b> / mois",
     "priceClubSmallPlanA": "<b>324 €</b> / an",
     "conditionClubSmallPlan": "5 utilisateurs max",
@@ -98,10 +98,10 @@
     "team-subscribe": "(*) Vous êtes un club et vous souhaitez souscrire à Qaobee pour vos entraîneurs, <a href=\"mailto:contact@qaobee.com\">contactez nous</a>",
     
     "features":{
-        "gerer":"Gérer les joueurs, les équipes, l'agenda",
-        "collecter": "Collecter les statistiques de ses joueurs",
-        "analyser":"Analyser les performances",
-        "collaborer": "Travailler en équipe, partager les statistiques"
+        "individual":"Vous souhaitez mesurer les performances de vos joueurs. ",
+        "clubSmall": "Vous êtes un groupe de 4 à 5 entraîneurs ou coachs issus du même club ou de différents clubs.<br><br>Vous êtes un club dont quelques entraîneurs sont intéressés par une solution permettant de collecter et analyser les performances de leurs joueurs.<br><br>L'offre <b>Team S</b> s'adapte à votre besoin en vous permettant de créer un compte Qaobee HB avec 5 utilisateurs maximum.<br><br>",
+        "clubMedium":"Analyser les performances, match après match, de vos joueurs, de vos équipes",
+        "clubLarge": "Partager votre espace de travail avec vos collègues"
     }
   },
   "about": {
