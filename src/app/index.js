@@ -46,7 +46,6 @@
             'qaobee.radar',
             'qaobee.stat.detail.modal',
             'eventCard',
-            'pricing',
             'qaobee.titlePageBar',
             'qaobee.widgets.agenda',
             'qaobee.widgets.efficiencyPlayer',
