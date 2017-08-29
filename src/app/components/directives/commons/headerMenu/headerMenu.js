@@ -89,7 +89,7 @@
                     $scope.openSignup = function () {
                         delete($scope.infos);
                         angular.element('#modalLogin').modal('close');
-                        $location.path('/signupStart');
+                        $location.path('/signup');
                         return false;
                     };
 

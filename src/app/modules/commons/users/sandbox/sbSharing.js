@@ -7,7 +7,7 @@
      * @class qaobee.commons.users.sandbox.sbSharing
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('qaobee.user.sbSharing', [])
+    angular.module('qaobee.user.sbSharing', ['angular.chips'])
 
         .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/sbSharing', {
@@ -24,10 +24,9 @@
          * @description Main controller of app/modules/commons/users/sandbox/switchSandbox.html
          */
         .controller('SbSharingCtrl', function ($scope, $filter, EnvironmentConfig, $window, $translatePartialLoader,
-                                               userRestAPI, sandboxRestAPI, $log, meta, user) {
+                                               userRestAPI, sandboxRestAPI, meta, user) {
 
-            $translatePartialLoader.addPart('commons');
-            $translatePartialLoader.addPart('user');
+            $translatePartialLoader.addPart('commons').addPart('user');
 
             $scope.user = user;
             $scope.meta = meta;
@@ -50,38 +49,18 @@
                         role_code: 'member',
                         email: a.email
                     };
-                    $log.debug('request', request);
-
                     sandboxRestAPI.inviteMemberToSandbox(request).success(function () {
                         toastr.success($filter('translate')('sbSharingPage.messageControl.success'));
                     }).error(function () {
                         toastr.error($filter('translate')('sbSharingPage.messageControl.error'));
                     });
                 });
+                return false;
             };
 
             // return button
             $scope.doTheBack = function () {
                 $window.history.back();
             };
-
-
-            $scope.$on('$destroy', function () {
-                delete $scope.user;
-            });
-
-            /* check user connected */
-            $scope.checkUserConnected = function () {
-                userRestAPI.getUserById(user._id).success(function () {
-                    $log.debug('sharingList', $scope.sharingList);
-                }).error(function () {
-                    $log.error('SbSharingCtrl : User not Connected');
-                });
-            };
-
-
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
-
         });
 }());

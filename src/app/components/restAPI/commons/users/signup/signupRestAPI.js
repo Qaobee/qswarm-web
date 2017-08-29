@@ -7,7 +7,7 @@
      * @author Xavier MARIN
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('signupRestAPI', []).value('signupURL', '/api/1/commons/users/signup')
+    angular.module('signupRestAPI', []).value('signupURL', '/api/2/commons/users/signup')
 
         .factory('signupRestAPI', function ($http, signupURL) {
             return {
@@ -27,6 +27,14 @@
                         data: u
                     });
                 },
+                registerUserMulti: function (u, s) {
+                    u.origin = 'web';
+                    return $http({
+                        url: '/api/2/commons/multi/signup/register',
+                        method: 'PUT',
+                        data: {user: u, structure : s }
+                    });
+                },
 
                 /**
                  * @memberOf qaobee.components.restAPI.commons.users.user.signupRestAPI
@@ -37,32 +45,20 @@
                  */
                 usernameTest: function (login) {
                     return $http({
-                        url: signupURL + '/logintest',
-                        method: 'POST',
-                        data: {
-                            login: login
-                        }
-                    });
-                },
-
-                firstConnectionCheck: function (id, code) {
-                    return $http({
-                        url: signupURL + '/firstconnectioncheck?id=' + id + '&code=' + code,
+                        url: signupURL + '/test/'+login,
                         method: 'GET'
                     });
                 },
-
-                finalizeSignup: function (user, captcha, structure, activity, categoryAge) {
+                /**
+                 *
+                 * @param id
+                 * @param code
+                 * @returns {*}
+                 */
+                firstConnectionCheck: function (id, code) {
                     return $http({
-                        url: signupURL + '/finalize',
-                        method: 'POST',
-                        data: {
-                            user: user,
-                            code: captcha,
-                            structure: structure,
-                            activity: activity,
-                            categoryAge: categoryAge
-                        }
+                        url: signupURL + '/firstconnectioncheck/' + id + '/' + code,
+                        method: 'GET'
                     });
                 },
                 /**

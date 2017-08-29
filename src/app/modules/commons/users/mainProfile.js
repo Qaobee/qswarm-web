@@ -10,8 +10,7 @@
     angular.module('qaobee.user.mainProfile', [
 
         /* qaobee modules */
-        'qaobee.user.signup.start',
-        'qaobee.user.signup.end',
+        'qaobee.user.signup',
         'qaobee.user.pwdRenew',
         'qaobee.user.pwdUpdate',
         'qaobee.user.writeProfile',

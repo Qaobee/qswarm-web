@@ -4,6 +4,8 @@
     <div class="row">
         <div class="col s12 accent-text-color center">
             <h4 translate="signupStartPage.form.title"></h4>
+            <h3 ng-if="single"><span class="fa fa-fw fa-user"></span> Offre individuelle</h3>
+            <h3 ng-if="!single"><span class="fa fa-fw fa-users"></span> Offre collective</h3>
         </div>
     </div>
 
@@ -41,8 +43,7 @@
             <div class="col m1 hide-on-small-only">&nbsp;</div>
             <div class="col s12 m4 input-field">
                 <input id="login" name="login" type="text" class="validate" ng-model="signup.account.login" required
-                       tabindex="3"
-                       ng-pattern="'[a-zA-Z0-9_\-]{3,}'">
+                       tabindex="3" ng-pattern="'[a-zA-Z0-9_\-]{3,}'">
                 <label for="login" class="mandatory" translate="signupStartPage.form.label.login"></label>
                 <span class="small colorAccent-text invalid"
                       ng-if="signupStartPageForm.login.$error.pattern"
@@ -99,7 +100,7 @@
         </div>
 
         <!-- Captcha -->
-        <div class="row container">
+        <div class="row container" ng-if="single">
             <div class="col m1 hide-on-small-only">&nbsp;</div>
             <div class="col s12 m10 input-field">
                 <div vc-recaptcha ng-model="signup.captcha"

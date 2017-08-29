@@ -58,7 +58,7 @@
     "angular-file-saver": "1.1.2",
     "materialize-clockpicker": "Giwi/materialize-clockpicker#^0.1.2",
     "angular-recaptcha": "^4.0.3",
-    "angular-chips": "^1.0.8",
+    "angular-chips": "1.0.11",
     "materialize": "0.98.0",
     "angular-web-notifications": "^0.1.2",
     "angular-slick": "^0.2.1",

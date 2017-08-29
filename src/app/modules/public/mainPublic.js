@@ -6,17 +6,12 @@
      * @class qaobee.public.public
      * @author Xavier MARIN
      * @copyright <b>QaoBee</b>.
-     * @requires {@link https://docs.angularjs.org/api/ngRoute|ngRoute}
-     * @requires {@link qaobee.public.publicSignup|qaobee.public.publicSignup}
-     * @requires {@link qaobee.rest.public.publicRestAPI|qaobee.rest.public.publicRestAPI}
      */
     angular.module('qaobee.public', [
         /* angular module */
         'ngRoute',
         /* qaobee shared directives */
-        'qaobee.headerMenu',
-        /* qaobee Rest API */
-        'publicRestAPI'
+        'qaobee.headerMenu'
     ])
 
         .config(function ($routeProvider) {
@@ -73,7 +68,7 @@
              * @returns {boolean}
              */
             $scope.openSignup = function () {
-                $location.path('/signupStart');
+                $location.path('/signup');
                 return false;
             };
 
