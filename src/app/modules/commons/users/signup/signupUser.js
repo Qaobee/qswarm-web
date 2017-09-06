@@ -6,7 +6,7 @@
     ])
 
         .config(function ($routeProvider) {
-            $routeProvider.when('/signup/user', {
+            $routeProvider.when('/signupStartCoach', {
                 controller: 'SignupUserCtrl',
                 resolve: {
                     single: function () {
@@ -14,7 +14,7 @@
                     }
                 },
                 templateUrl: 'app/modules/commons/users/signup/signupUser.html'
-            }).when('/signup/club', {
+            }).when('/signupStartTeam/:teamPlan', {
                 controller: 'SignupUserCtrl',
                 resolve: {
                     single: function () {
@@ -25,7 +25,7 @@
             });
         })
 
-        .controller('SignupUserCtrl', function ($rootScope, $scope, $translatePartialLoader, single, $window,
+        .controller('SignupUserCtrl', function ($rootScope, $scope, $translatePartialLoader, single, $window,$routeParams,
                                                 $location, $translate, signupRestAPI, qeventbus, vcRecaptchaService) {
             $translatePartialLoader.addPart('user').addPart('commons');
             qeventbus.prepForBroadcast('menuItem', 'signup');
@@ -62,7 +62,7 @@
                         toastr.warning($translate.instant('signupStartPage.form.messageControl.nonunique'));
                         vcRecaptchaService.reload($scope.widgetId);
                     } else {
-                        $scope.signup.plan = {levelPlan: single ? 'FREEMIUM' : 'CLUB_1', activity: {_id: 'ACT-HAND'}};
+                        $scope.signup.plan = {levelPlan: single ? 'FREEMIUM' : $routeParams.teamPlan, activity: {_id: 'ACT-HAND'}};
                         $scope.signup.name = $scope.signup.name.capitalize(true);
                         $scope.signup.firstname = $scope.signup.firstname.capitalize(true);
                         if (single) {
