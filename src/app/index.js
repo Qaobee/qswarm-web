@@ -29,6 +29,7 @@
             'angular.chips',
             'webNotifications',
             'slideWrapper',
+            'angular-intro',
 
             /* qaobee shared services */
             'qaobee.utils',

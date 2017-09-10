@@ -31,13 +31,73 @@
         /**
          * @class qaobee.modules.home.HomeControler
          */
-        .controller('HomeControler', function ($scope, $translatePartialLoader, user, meta, effectiveSrv, effectiveRestAPI,
+        .controller('HomeControler', function ($scope, $translatePartialLoader, user, meta, effectiveSrv, effectiveRestAPI, 
                                                sandboxRestAPI, qeventbus, filterCalendarSrv, $timeout) {
             $translatePartialLoader.addPart('home').addPart('stats').addPart('agenda').addPart('effective');
             $scope.user = user;
             $scope.meta = meta;
             $scope.activeTabIndex = 0;
             $scope.listId = [];
+        
+            $scope.CompletedEvent = function () {
+        console.log("Completed Event called");
+    };
+
+    $scope.ExitEvent = function () {
+        console.log("Exit Event called");
+    };
+
+    $scope.ChangeEvent = function (targetElement) {
+        console.log("Change Event called");
+        console.log(targetElement);
+    };
+
+    $scope.BeforeChangeEvent = function (targetElement) {
+        console.log("Before Change Event called");
+        console.log(targetElement);
+    };
+
+    $scope.AfterChangeEvent = function (targetElement) {
+        console.log("After Change Event called");
+        console.log(targetElement);
+    };
+
+    $scope.IntroOptions = {
+        steps:[
+        {
+            element: document.querySelector('#step1'),
+            intro: '<h3 class="primary-color center">Bienvenu dans votre espace de travail<h3> <h5 class="accent-color center">Bienvenu dans votre espace de travail<h5>'
+        },
+        {
+            element: document.querySelectorAll('#step2')[0],
+            intro: "<strong>You</strong> can also <em>include</em> HTML",
+            position: 'bottom'
+        },
+        {
+            element: '#step3',
+            intro: 'More features, more fun.',
+            position: 'bottom'
+        },
+        {
+            element: '#step4',
+            intro: '<h3 class="primary-color center">Bienvenu dans votre espace de travail<h3> <h5 class="accent-color center">Bienvenu dans votre espace de travail<h5>',
+            position: 'bottom'
+        },
+        {
+            element: '#step5',
+            intro: 'Get it, use it.'
+        }
+        ],
+        showStepNumbers: true,
+        showBullets: true,
+        exitOnOverlayClick: true,
+        exitOnEsc:true,
+        nextLabel: '<strong>NEXT!</strong>',
+        prevLabel: '<span style="color:green">Previous</span>',
+        skipLabel: 'Exit',
+        doneLabel: 'Thanks'
+    };
+
 
             $scope.getEffective = function (id) {
                 effectiveSrv.getEffective(id).then(function (data) {
