@@ -54,7 +54,7 @@
 
             <div class="col s12 m4 input-field">
                 <input type="text" name="email" id="email" ng-model="signup.contact.email"
-                       ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+                       ng-pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
                        tabindex="4">
                 <label for="email" class="mandatory" translate="signupStartPage.form.label.email"></label>
                 <span ng-class="{'has-error': signupStartPageForm.email.$dirty && signupStartPageForm.email.$error.required}"
