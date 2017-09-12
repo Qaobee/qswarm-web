@@ -118,6 +118,7 @@
                     };
 
                     $scope.$on('qeventbus:logoff', function () {
+                        $log.debug('[headerMenu] : logoff event', qeventbus.data);
                         delete $rootScope.user;
                         delete $rootScope.meta;
                         delete $scope.user;
@@ -127,6 +128,7 @@
                     });
 
                     $scope.$on('qeventbus:login', function () {
+                        $log.debug('[headerMenu] : login event', qeventbus.data);
                         $scope.user = qeventbus.data;
                         $scope.endTrial = 999;
                         angular.forEach($scope.user.account.listPlan, function (plan) {
@@ -142,6 +144,7 @@
                             }
                         });
                         $scope.loadMetaInfos();
+                        $log.debug('[headerMenu] : login event : account.status', $scope.user.account.status);
                         switch ( $scope.user.account.status) {
                             case 'NOT_PAID':
                                 $scope.notpaid = true;
@@ -149,6 +152,7 @@
                                 break;
                             case 'TRIAL_ENDED':
                                 $scope.endTrial = 0;
+                                $scope.notpaid = true;
                                 $location.path('/private/billing');
                                 break;
                             default:
@@ -163,14 +167,17 @@
                     });
 
                     $scope.$on('qeventbus:title', function () {
+                        $log.debug('[headerMenu] : title event', qeventbus.data);
                         $scope.title = qeventbus.data;
                     });
 
                     $scope.$on('qeventbus:menuItem', function () {
+                        $log.debug('[headerMenu] : menuItem event', qeventbus.data);
                         $scope.menuItem = qeventbus.data;
                     });
 
                     $scope.$on('qeventbus:refreshUser', function () {
+                        $log.debug('[headerMenu] : refreshUser event', qeventbus.data);
                         var data = qeventbus.data;
                         data.isAdmin = false;
                         if (angular.isDefined(data.account) && data.account.habilitations !== null) {
@@ -191,6 +198,7 @@
                     });
 
                     $scope.$on('qeventbus:sandboxChange', function () {
+                        $log.debug('[headerMenu] : sandboxChange event', qeventbus.data);
                         $scope.meta.sandbox = qeventbus.data.sandbox;
                     });
 

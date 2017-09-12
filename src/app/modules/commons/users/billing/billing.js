@@ -36,7 +36,6 @@
             $scope.user =user;
             $scope.user.account.listPlan.forEach(function(p) {
                 p.formatedEndTrialDate = $filter('date')(p.endPeriodDate);
-                console.log(p.endPeriodDate , moment().valueOf())
                 p.inTrial = p.endPeriodDate > moment().valueOf();
             });
 
