@@ -66,6 +66,7 @@
       "price": "Prix",
       "activity": "Activité",
       "trial" : "En période d'essai",
+      "trialEnded": "Période d'essai terminée",
       "pay": {
         "title": "Souscrire",
         "content": "Vous êtes sur le point de souscrire à une offre Qaobee.",

@@ -19,12 +19,15 @@
             </div>
             <div ng-repeat="plan in user.account.listPlan track by $index" class="row light-primary-color">
                 <div class="col m2 center-align">
-                    <h6>{{plan.activity.label | translate}}</h6>
+                    <h6 translate="{{plan.activity.label}}"></h6>
                 </div>
                 <div class="col m2 center-align accent-text-color">
                     <h6>{{plan.levelPlan}}<br/>
+                        <span ng-if="plan.inTrial">
                         <small translate="{{'billingPage.label.status.' + plan.status}}"
                                translate-values="{value: plan.formatedEndTrialDate}"></small>
+                        </span>
+                        <span ng-if="!plan.inTrial" translate="billingPage.label.trialEnded"></span>
                     </h6>
                 </div>
 
@@ -55,10 +58,13 @@
     <div class="row hide-on-large-only">
         <div class="col s12">
             <div ng-repeat="plan in user.account.listPlan track by $index" class="light-primary-color row">
-                <h6 class="col s6 center-align">{{plan.activity.label | translate}}</h6>
+                <h6 class="col s6 center-align" translate="{{plan.activity.label}}"></h6>
                 <h6 class="col s6 center-align accent-text-color">{{plan.levelPlan}}<br/>
+                    <span ng-if="plan.inTrial">
                     <small translate="{{'billingPage.label.status.' + plan.status}}"
-                           translate-values="{value: plan.formatedEndTrialDate}"></small></h6>
+                           translate-values="{value: plan.formatedEndTrialDate}"></small></span>
+                    <span ng-if="!plan.inTrial" translate="billingPage.label.trialEnded"></span>
+                </h6>
                 <div ng-if="plan.status === 'open' || plan.status === 'canceled'" class="col s12">
                     <a href="#/private/billing/pay/{{$index}}" class="btn waves-effect waves-white secondary-color"
                        translate="billingPage.label.pay">

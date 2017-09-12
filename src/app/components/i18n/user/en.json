@@ -66,7 +66,8 @@
       "price": "Prix",
       "activity": "Activité",
       "cardNumber": "N° de carte",
-      "trial" : "En période d'essai",
+      "trial" : "Trial period",
+      "trialEnded": "Trial period ended",
       "pay": {
         "title": "Souscrire",
         "content": "Vous êtes sur le point de souscrire à une offre Qaobee.",

@@ -129,9 +129,6 @@
                     $scope.$on('qeventbus:login', function () {
                         $scope.user = qeventbus.data;
                         $scope.endTrial = 999;
-                        $scope.notpaid = $scope.user.account.listPlan.filter(function (n) {
-                                return n.status === 'notpaid' || n.status === 'canceled';
-                            }).length > 0;
                         angular.forEach($scope.user.account.listPlan, function (plan) {
                             $scope.intrial = true;
                             var endDate = moment(plan.endPeriodDate);
@@ -144,12 +141,25 @@
                                 $scope.hideTrial = true;
                             }
                         });
-                        if ($scope.notpaid || $scope.endTrial <= 0) {
-                            $location.path('/private/billing');
-                        } else {
-                            $location.path('/private');
-                        }
                         $scope.loadMetaInfos();
+                        switch ( $scope.user.account.status) {
+                            case 'NOT_PAID':
+                                $scope.notpaid = true;
+                                $location.path('/private/billing');
+                                break;
+                            case 'TRIAL_ENDED':
+                                $scope.endTrial = 0;
+                                $location.path('/private/billing');
+                                break;
+                            default:
+                                // is it his first visit?
+                                qeventbus.prepForBroadcast('notifications', {});
+                                if (angular.isDefined(data.account.firstConnexion) && data.account.firstConnexion === true) {
+                                    $location.path('/firstconnection');
+                                } else {
+                                    $location.path('/private');
+                                }
+                        }
                     });
 
                     $scope.$on('qeventbus:title', function () {
@@ -203,23 +213,6 @@
                                 $rootScope.notLogged = false;
                                 $scope.user = data;
                                 qeventbus.prepForBroadcast('login', data);
-                                qeventbus.prepForBroadcast('notifications', {});
-                                // is it his first visit?
-                                if (angular.isDefined(data.account.firstConnexion) && data.account.firstConnexion === true) {
-                                    $location.path('/firstconnection');
-                                } else {
-                                    data.isAdmin = false;
-                                    if (angular.isDefined(data.account) && data.account.habilitations !== null) {
-                                        data.isAdmin = (data.account.habilitations.filter(function (n) {
-                                            return n.key === 'admin_qaobee';
-                                        }).length > 0);
-                                    }
-                                    if ($scope.notpaid) {
-                                        $location.path('/private/billing');
-                                    } else {
-                                        $location.path('/private');
-                                    }
-                                }
                             } else {
                                 angular.element('#modalMailResend').modal();
                                 angular.element('#modalMailResend').modal('open');

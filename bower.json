@@ -59,7 +59,7 @@
     "materialize-clockpicker": "Giwi/materialize-clockpicker#^0.1.2",
     "angular-recaptcha": "^4.0.3",
     "angular-chips": "1.0.11",
-    "materialize": "0.98.0",
+    "materialize": "0.100.2",
     "angular-web-notifications": "^0.1.2",
     "angular-slick": "^0.2.1",
     "angular-slide-wrapper": "^0.1.8",
@@ -75,7 +75,7 @@
     "angular": "1.5.10",
     "angular-materialize": "0.2.2",
     "angular-translate": "^2.13.1",
-    "materialize": "0.98.0"
+    "materialize": "0.100.2"
   },
   "overrides": {
     "materialize-clockpicker": {
