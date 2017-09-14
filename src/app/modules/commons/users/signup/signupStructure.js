@@ -23,13 +23,13 @@
 
         .controller('SignupStructureCtrl', function ($rootScope, $scope, $translatePartialLoader, $window, $location,
                                                      $translate, vcRecaptchaService, structureRestAPI, signupRestAPI,
-                                                     locationAPI, personSrv, qeventbus) {
+                                                     locationAPI, personSrv, qeventbus, $log) {
             $translatePartialLoader.addPart('user').addPart('commons');
             if (angular.isUndefined($window.sessionStorage.signup)) {
                 $location.path('/signup/club');
             } else {
                 $scope.signup = JSON.parse($window.sessionStorage.signup);
-                console.log($scope.signup)
+                $log.debug('[qaobee.user.signup.structure] SignupStructureCtrl - signup', $scope.signup);
             }
             qeventbus.prepForBroadcast('menuItem', 'signup');
             $scope.vm = {};
@@ -228,6 +228,6 @@
                 vcRecaptchaService.reload($scope.widgetId);
                 $scope.response = null;
             };
-        })
+        });
 }());
 

@@ -7,9 +7,6 @@
      * @author Christophe Kervella
      * @copyright <b>QaoBee</b>.
      * @requires {@link https://docs.angularjs.org/api/ngRoute|ngRoute}
-     * @requires {@link qaobee.components.restAPI.sandbox.effective.effectiveRestAPI|qaobee.components.restAPI.sandbox.effective.effectiveRestAPI}
-     * @requires {@link qaobee.components.restAPI.sandbox.effective.personRestAPI|qaobee.components.restAPI.sandbox.effective.personRestAPI}
-     * @requires {@link qaobee.components.widgets.event.widget.nextEvent|qaobee.components.widgets.event.widget.nextEvent}
      */
     angular.module('qaobee.home', [
         /* qaobee services */
@@ -31,36 +28,33 @@
         /**
          * @class qaobee.modules.home.HomeControler
          */
-        .controller('HomeControler', function ($scope, $translatePartialLoader, user, meta, effectiveSrv, effectiveRestAPI, 
-                                               sandboxRestAPI, qeventbus, filterCalendarSrv, $timeout) {
+        .controller('HomeControler', function ($scope, $translatePartialLoader, user, meta, effectiveSrv, effectiveRestAPI,
+                                               sandboxRestAPI, qeventbus, filterCalendarSrv, $timeout, $log) {
             $translatePartialLoader.addPart('home').addPart('stats').addPart('agenda').addPart('effective');
             $scope.user = user;
             $scope.meta = meta;
             $scope.activeTabIndex = 0;
             $scope.listId = [];
-        
+
             $scope.CompletedEvent = function () {
-        console.log("Completed Event called");
-    };
+                $log.debug('[qaobee.home] - Completed Event called');
+            };
 
-    $scope.ExitEvent = function () {
-        console.log("Exit Event called");
-    };
+            $scope.ExitEvent = function () {
+                $log.debug('[qaobee.home] - Exit Event called');
+            };
 
-    $scope.ChangeEvent = function (targetElement) {
-        console.log("Change Event called");
-        console.log(targetElement);
-    };
+            $scope.ChangeEvent = function (targetElement) {
+                $log.debug('[qaobee.home] - Change Event called', targetElement);
+            };
 
-    $scope.BeforeChangeEvent = function (targetElement) {
-        console.log("Before Change Event called");
-        console.log(targetElement);
-    };
+            $scope.BeforeChangeEvent = function (targetElement) {
+                $log.debug('[qaobee.home] - Before Change Event called', targetElement);
+            };
 
-    $scope.AfterChangeEvent = function (targetElement) {
-        console.log("After Change Event called");
-        console.log(targetElement);
-    };
+            $scope.AfterChangeEvent = function (targetElement) {
+                $log.debug('[qaobee.home] - After Change Event called', targetElement);
+            };
 
     $scope.IntroOptions = {
         steps:[
@@ -98,7 +92,6 @@
         skipLabel: 'Annuler',
         doneLabel: 'Merci'
     };
-
 
             $scope.getEffective = function (id) {
                 effectiveSrv.getEffective(id).then(function (data) {

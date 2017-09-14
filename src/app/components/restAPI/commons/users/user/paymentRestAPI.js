@@ -12,21 +12,10 @@
         .factory('paymentAPI', function ($http, paymentURL) {
             return {
                 /**
-                 * @memberOf qaobee.components.restAPI..commons.users.paymentAPI
-                 * @function getPaymentURL
-                 * @description Récupération de l'url pour le paiement en ligne
-                 * @param {String} planId
-                 * @returns {Object} status
+                 *
+                 * @param data
+                 * @returns {*}
                  */
-                getPaymentURL: function (planId) {
-                    return $http({
-                        url: paymentURL + '/pay',
-                        method: 'POST',
-                        data: {
-                            plan_id: planId
-                        }
-                    });
-                },
                 pay: function (data) {
                     return $http({
                         url: paymentURL + '/pay',
@@ -34,6 +23,17 @@
                         data: {
                             data: data
                         }
+                    });
+                },
+                /**
+                 *
+                 * @param planId
+                 * @returns {*}
+                 */
+                unsubscribe: function (planId) {
+                    return $http({
+                        url: paymentURL + '/unsubscribe/' + planId,
+                        method: 'GET'
                     });
                 }
 

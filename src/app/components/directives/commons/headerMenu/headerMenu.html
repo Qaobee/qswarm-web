@@ -8,7 +8,8 @@
                                                   ng-click="menuItem = ''" alt="Qaobee"/></a>
             <div class="nav-wrapper">
                 <ul class="left hide-on-med-and-down nav-top-menu" ng-if=" menuItem !== 'signup'">
-                    <li><a class="dropdown-header-button" href="javascript:void(0)" data-activates="dropdown-header"><span
+                    <li><a class="dropdown-header-button" href="javascript:void(0)"
+                           data-activates="dropdown-header"><span
                             translate="navbar.concept"></span> <i class="material-icons right">arrow_drop_down</i></a>
                     </li>
                     <li><a href="#/pricing" translate="navbar.pricing"/></li>
@@ -100,6 +101,15 @@
     </li>
 </ul>
 <!-- Menu Connected First header-->
+<div class="navbar-fixed" ng-if="user && !user.account.firstConnexion && notpaid">
+    <nav class="top-nav top-nav-trans dark-primary-color" role="navigation">
+        <div class="container">
+            <a href="/#/" class="brand-logo">
+                <img src="assets/images/logo-mini.png" height="30px" ng-click="menuItem = ''" alt="Qaobee"/>
+            </a>
+        </div>
+    </nav>
+</div>
 <div class="navbar-fixed" ng-if="user && !user.account.firstConnexion && !notpaid">
     <nav class="top-nav dark-primary-color visible-nav" role="navigation">
         <div class="container">
@@ -332,7 +342,8 @@
     </div>
     <div class="row center">
         <div class="col s12"></div>
-        <div class="col s12"><a href="#/" class="modal-action modal-close waves-effect waves-white btn light-primary-color"
+        <div class="col s12"><a href="#/"
+                                class="modal-action modal-close waves-effect waves-white btn light-primary-color"
                                 translate="commons.buttons.cancel"></a>
             <button type="submit" class="btn waves-effect waves-white secondary-color"
                     ng-click="mailResend()"

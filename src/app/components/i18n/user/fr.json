@@ -66,6 +66,7 @@
       "price": "Prix",
       "activity": "Activité",
       "trial" : "En période d'essai",
+      "trialEnded": "Période d'essai terminée",
       "pay": {
         "title": "Souscrire",
         "content": "Vous êtes sur le point de souscrire à une offre Qaobee.",
@@ -75,6 +76,7 @@
         "cvc" : "Code de vérification",
         "email" : "E-mail",
         "pay" : "Payer",
+        "unsubscribe": "Cloturer",
         "error_code" : {
           "incorrect_cvc" : "Le code de vérification de votre carte est erroné",
           "card_declined" : "Votre carte a été refusée {{reason}}",
