@@ -65,37 +65,38 @@
     $scope.IntroOptions = {
         steps:[
         {
-            element: document.querySelector('#step1'),
-            intro: '<h3 class="primary-color center">Bienvenu dans votre espace de travail<h3> <h5 class="accent-color center">Bienvenu dans votre espace de travail<h5>'
+            element: '#step1',
+            intro: '<div class="row"><div class="card col s12"><div class="card-title dark-primary-color center-align"><b>Bienvenue sur Qaobee !</b></div><div class="card-title center"><br> <i class="fa fa-fw fa-star fa-2x accent-text-color"></i><br>Prenons quelques instants pour découvrir les principales fonctionnalités de l\'application.<br>&nbsp;</div></div></div>'
         },
         {
-            element: document.querySelectorAll('#step2')[0],
-            intro: "<strong>You</strong> can also <em>include</em> HTML",
+            element: '#step2',
+            intro: '<div class="row"><div class="card col s12"><div class="card-title dark-primary-color center-align"><b>Restez à l\'affût</b> </span></div><div class="card-title center"><br><i class="fa fa-bell fa-2x accent-text-color"></i> <br>Les notifications .... <br>&nbsp;</div></div></div>',
             position: 'bottom'
         },
         {
             element: '#step3',
-            intro: 'More features, more fun.',
+            intro: '<div class="row"><div class="card col s12"><div class="card-title dark-primary-color center-align"><b>Planifiez vos matchs !</b></span></div><div class="card-title center"><br> <i class="fa fa-fw fa-calendar fa-2x accent-text-color"></i> <br>Les événements .... <br>&nbsp;</div></div></div>',
             position: 'bottom'
         },
         {
             element: '#step4',
-            intro: '<h3 class="primary-color center">Bienvenu dans votre espace de travail<h3> <h5 class="accent-color center">Bienvenu dans votre espace de travail<h5>',
+            intro: '<div class="row"><div class="card col s12"><div class="card-title dark-primary-color center-align"><b>Consultez vos stats !</b> </span></div><div class="card-title center"><br><i class="fa fa-fw fa-bar-chart fa-2x accent-text-color"></i> <br>Les collectes .... <br>&nbsp;</div></div></div>',
             position: 'bottom'
         },
         {
             element: '#step5',
-            intro: 'Get it, use it.'
+            intro: '<div class="row"><div class="card col s12"><div class="card-title dark-primary-color center-align"><b>Félicitations !</b></span></div><div class="card-title center"><br> <i class="fa fa-fw fa-star fa-2x accent-text-color"></i> <br>Bientôt vous serez incollable sur les stats de vos joueurs <br>&nbsp;</div><div class="card-title center"><br> Rendez-vous sur Google play store et téléchargez notre application de collecte pour tablette ou smartphone.<br><a href="https://play.google.com/store/apps/details?id=com.qaobee.hand" target="_blank" class="light-text-color" rel="noopener"> <img src="assets/images/googleplay.png" class="responsive-img" style="width: 15rem;" alt="play store logo"/></a><br>&nbsp;</div></div></div>'
         }
         ],
-        showStepNumbers: true,
-        showBullets: true,
+        showStepNumbers: false,
+        showBullets: false,
         exitOnOverlayClick: true,
         exitOnEsc:true,
-        nextLabel: '<strong>NEXT!</strong>',
-        prevLabel: '<span style="color:green">Previous</span>',
-        skipLabel: 'Exit',
-        doneLabel: 'Thanks'
+        showProgress:true,
+        nextLabel: '<span>Suivant</span>',
+        prevLabel: '<span>Précédent</span>',
+        skipLabel: 'Annuler',
+        doneLabel: 'Merci'
     };
 
 
