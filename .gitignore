@@ -11,3 +11,4 @@ src/app/config.js
 .sonar
 .gradle
 build
+package-lock.json
