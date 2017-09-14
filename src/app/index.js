@@ -136,6 +136,7 @@
                 $translate.refresh();
             });
             $rootScope.$on('$locationChangeSuccess', function () {
+                $log.debug('qswarmWeb index - run - $locationChangeSuccess', $location.path());
                 $window.ga('send', 'pageview', $location.path());
             });
             if (top.location.href !== self.location.href) {

@@ -144,7 +144,7 @@
                             }
                         });
                         $scope.loadMetaInfos();
-                        $log.debug('[headerMenu] : login event : account.status', $scope.user.account.status);
+                        $log.debug('[headerMenu] : login event : account.status', $scope.user);
                         switch ( $scope.user.account.status) {
                             case 'NOT_PAID':
                                 $scope.notpaid = true;
@@ -158,7 +158,7 @@
                             default:
                                 // is it his first visit?
                                 qeventbus.prepForBroadcast('notifications', {});
-                                if (angular.isDefined(data.account.firstConnexion) && data.account.firstConnexion === true) {
+                                if (angular.isDefined($scope.user.account.firstConnexion) && $scope.user.account.firstConnexion === true) {
                                     $location.path('/firstconnection');
                                 } else {
                                     $location.path('/private');

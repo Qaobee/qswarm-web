@@ -76,7 +76,8 @@
         "expiry": "Expire le",
         "cvc" : "Code de vérification",
         "email" : "E-mail",
-        "pay" : "Payer",
+        "pay" : "Pay",
+        "unsubscribe": "Unsubscribe",
         "error_code" : {
           "incorrect_cvc" : "Le code de vérification de votre carte est erroné",
           "card_declined" : "Votre carte a été refusée {{reason}}",

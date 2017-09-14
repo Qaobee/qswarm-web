@@ -28,8 +28,9 @@
          * @description Main controller of app/modules/commons/users/billing/pay.html
          */
         .controller('PayProfileCtrl', function ($rootScope, $scope, paymentAPI, $routeParams, $window, $translate,
-                                                $translatePartialLoader, qeventbus, user, $location, userRestAPI,
+                                                $translatePartialLoader, qeventbus, user, $location, userRestAPI, $log,
                                                 paramsRestAPI, params) {
+            $log.debug('[qaobee.user.billing.pay] - PayProfileCtrl');
             $scope.willPay = false;
             $translatePartialLoader.addPart('commons').addPart('user');
             qeventbus.prepForBroadcast('menuItem', 'billing');
