@@ -44,10 +44,59 @@
 
             window.Stripe.setPublishableKey(params.pay_api_key);
 
+            /**
+             * Back button
+             */
             $scope.doTheBack = function () {
                 $window.history.back();
             };
 
+            /**
+             * Pay the bill
+             */
+            $scope.doPay = function () {
+                var payInfo = {
+                    token: response.id,
+                    user_id: $scope.user._id,
+                    planId: parseInt($routeParams.index)
+                };
+                paymentAPI.pay(payInfo).then(function (data) {
+                    $scope.inProgress = false;
+                    if (data.data.status) {
+                        var token = $window.sessionStorage.qaobeesession;
+                        if (token !== null && angular.isDefined(token)) {
+                            userRestAPI.getCurrentUser().success(function (data) {
+                                angular.merge($rootScope.user, data);
+                                qeventbus.prepForBroadcast('login', $rootScope.user);
+                                qeventbus.prepForBroadcast('refreshUser', $rootScope.user);
+                                $location.path('/private/billing');
+                            });
+                        } else {
+                            $location.path('/');
+                        }
+                    } else {
+                        if (!!data.data.code) {
+                            var val = '';
+                            if (!!data.data.decline_code && 'fraudulent' === data.data.decline_code) {
+                                val = $translate.instant('billingPage.label.pay.error_code.fraudulent');
+                            }
+                            toastr.error($translate.instant('billingPage.label.pay.error_code.' + data.data.code, {reason: val}));
+                        } else {
+                            toastr.error(data.data.message);
+                        }
+                    }
+                }, function (data) {
+                    $scope.inProgress = false;
+                    toastr.error(data.data.message);
+                });
+            };
+
+            /**
+             * Handle Stripe response
+             *
+             * @param status
+             * @param response
+             */
             $scope.handleStripe = function (status, response) {
                 if ($scope.inProgress) {
                     return;
@@ -58,40 +107,7 @@
                     console.error(response.error);
                     $scope.message = 'Error from Stripe.com';
                 } else {
-                    var payInfo = {
-                        token: response.id,
-                        user_id: $scope.user._id,
-                        planId: parseInt($routeParams.index)
-                    };
-                    paymentAPI.pay(payInfo).then(function (data) {
-                        $scope.inProgress = false;
-                        if (data.data.status) {
-                            var token = $window.sessionStorage.qaobeesession;
-                            if (token !== null && angular.isDefined(token)) {
-                                userRestAPI.getCurrentUser().success(function (data) {
-                                    angular.merge($rootScope.user, data);
-                                    qeventbus.prepForBroadcast('login', $rootScope.user);
-                                    qeventbus.prepForBroadcast('refreshUser', $rootScope.user);
-                                    $location.path('/private/billing');
-                                });
-                            } else {
-                                $location.path('/');
-                            }
-                        } else {
-                            if(!!data.data.code) {
-                                var val = '';
-                                if(!!data.data.decline_code && 'fraudulent' === data.data.decline_code) {
-                                    val =$translate.instant('billingPage.label.pay.error_code.fraudulent');
-                                }
-                                toastr.error($translate.instant('billingPage.label.pay.error_code.' + data.data.code, {reason: val}));
-                            } else {
-                                toastr.error(data.data.message);
-                            }
-                        }
-                    }, function (data) {
-                        $scope.inProgress = false;
-                        toastr.error(data.data.message);
-                    });
+                    $scope.doPay();
                 }
             };
         });
