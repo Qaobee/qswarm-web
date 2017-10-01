@@ -43,7 +43,6 @@
 
                         /* Appel stats API */
                         statsRestAPI.getStatGroupBy(search).success(function (data) {
-                            $log.debug("data",data);
                             if (angular.isArray(data) && data.length > 0) {
                                 $scope.noStat = true;
                                 data.forEach(function (a) {
@@ -69,6 +68,9 @@
 
                     var buildWidget = function () {
                         if (angular.isUndefined($scope.periodicityActive) || angular.isUndefined($scope.ownersId)) {
+                            return;
+                        }
+                        if ($scope.ownersId.length===0) {
                             return;
                         }
                         $scope.nbYellowCard = 0;

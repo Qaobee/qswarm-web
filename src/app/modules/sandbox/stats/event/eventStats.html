@@ -166,11 +166,11 @@
                             <th data-field="player" translate="stats.eventLabels.player"></th>
                             <th class="center-align" data-field="holder" translate="stats.eventLabels.holder"></th>
                             <th class="center-align" data-field="playTime" translate="stats.eventLabels.playTime"></th>
-                            <th class="center-align" data-field="note" translate="stats.eventLabels.note"></th>
                             <th class="center-align" data-field="efficiency" translate="stats.eventLabels.efficiency"></th>
                             <th class="center-align" data-field="sanction" translate="stats.eventLabels.sanction"></th>
                             <th class="center-align" data-field="attack" translate="stats.eventLabels.attack"></th>
                             <th class="center-align" data-field="defense" translate="stats.eventLabels.defense"></th>
+                            <th class="center-align" data-field="note" translate="stats.eventLabels.note"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -178,7 +178,6 @@
                             <td><a href="#/private/viewPlayer/{{player._id}}" class="accent-text-color">{{player.name}} {{player.firstname}}</a></td>
                             <td class="center-align"><span ng-if="player.stats.holder>0"><i class="fa fa-star-o"></i></span></td>
                             <td class="center-align"><span ng-if="player.stats.totalPlayTime>0">{{player.stats.totalPlayTime/60 | number : 0}} '</span></td>
-                            <td class="center-align"><span ng-if="player.stats.totalPlayTime>0">{{player.stats.goalScored - (player.stats.originShootAtt-player.stats.goalScored) + player.stats.actAttPos + player.stats.actDefPos - player.stats.actAttNeg - player.stats.actDefNeg}}</span></td>
                             <td class="center-align">
                                 <span ng-if="player.stats.originShootAtt > 0">{{player.stats.goalScored}} / {{player.stats.originShootAtt}} <span class="light-text-color">({{(player.stats.goalScored/player.stats.originShootAtt)*100 | number : 0}} %)</span></span>
                             </td>
@@ -189,8 +188,10 @@
                                 <span ng-if="player.stats.redCard>0"><i class="material-icons red-text text-lighten-2">sim_card_alert</i></span>
                             </td>
                             
-                            <td class="center-align"><span ng-if="player.stats.actAttNeg">{{player.stats.actAttPos}} / {{player.stats.actAttNeg}}</span></td>
-                            <td class="center-align"><span ng-if="player.stats.actDefNeg">{{player.stats.actDefPos}} / {{player.stats.actDefNeg}}</span></td>
+                            <td class="center-align"><span ng-if="player.stats.actAttPos+player.stats.actAttNeg>0">{{player.stats.actAttPos}} / {{player.stats.actAttNeg}}</span></td>
+                            <td class="center-align"><span ng-if="player.stats.actDefPos+player.stats.actDefNeg>0">{{player.stats.actDefPos}} / {{player.stats.actDefNeg}}</span></td>
+                            <td class="center-align" ng-class="{'secondary-color':getNotePlayer(player)>5, 'accent-color':getNotePlayer(player)<0, 'default-primary-color':getNotePlayer(player)>=0 && getNotePlayer(player)<=4}"><span ng-if="player.stats.totalPlayTime>0">{{getNotePlayer(player)}}</span></td>
+                            
                         </tr>
                         </tbody>
                     </table>
@@ -202,11 +203,11 @@
                             <th data-field="player" translate="stats.eventLabels.goalkeeper"></th>
                             <th class="center-align" data-field="holder" translate="stats.eventLabels.holder"></th>
                             <th class="center-align" data-field="playTime" translate="stats.eventLabels.playTime"></th>
-                            <th class="center-align" data-field="note" translate="stats.eventLabels.note"></th>
                             <th class="center-align" data-field="efficiency" translate="stats.eventLabels.efficiencyGoal"></th>
                             <th class="center-align" data-field="sanction" translate="stats.eventLabels.sanction"></th>
                             <th class="center-align" data-field="attack" translate="stats.eventLabels.attack"></th>
                             <th class="center-align" data-field="defense" translate="stats.eventLabels.defense"></th>
+                            <th class="center-align" data-field="note" translate="stats.eventLabels.note"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -214,7 +215,7 @@
                             <td><a href="#/private/viewPlayer/{{player._id}}" class="accent-text-color">{{player.name}} {{player.firstname}}</a></td>
                             <td class="center-align"><span ng-if="player.stats.holder>0"><i class="fa fa-star-o"></i></span></td>
                             <td class="center-align"><span ng-if="player.stats.totalPlayTime>0">{{player.stats.totalPlayTime/60 | number : 0}} '</span></td>
-                            <td class="center-align"><span ng-if="player.stats.totalPlayTime>0">{{player.stats.note}}</span></td>
+                            
                             <td class="center-align">
                                 <span ng-if="player.stats.originShootDef > 0">{{player.stats.originShootDef-player.stats.goalConceded}} / {{player.stats.originShootDef}} <span class="light-text-color">
                                     ({{((player.stats.originShootDef-player.stats.goalConceded)/player.stats.originShootDef)*100 | number : 0}} %)</span></span>
@@ -226,6 +227,8 @@
                             </td>
                             <td class="center-align"><span ng-if="player.stats.actAttNeg">{{player.stats.actAttPos}} / {{player.stats.actAttNeg}}</span></td>
                             <td class="center-align"><span ng-if="player.stats.actDefNeg">{{player.stats.actDefPos}} / {{player.stats.actDefNeg}}</span></td>
+                            <td class="center-align secondary-color"><span ng-if="player.stats.totalPlayTime>0">{{getNoteGoalKeeper(player)}}</span></td>
+                            
                         </tr>
                         </tbody>
                     </table>

@@ -56,15 +56,27 @@
             $scope.doTheBack = function () {
                 $window.history.back();
             };
+        
+            /* */
+            $scope.getNotePlayer = function (player) {
+                return player.stats.goalScored - (player.stats.originShootAtt-player.stats.goalScored) + player.stats.actAttPos + player.stats.actDefPos - player.stats.actAttNeg - player.stats.actDefNeg;
+            };
+        
+            /* */
+            $scope.getNoteGoalKeeper = function (player) {
+                return player.stats.originShootDef - (player.stats.originShootDef-player.stats.goalConceded) + player.stats.actAttPos + player.stats.actDefPos - player.stats.actAttNeg - player.stats.actDefNeg;
+            };
 
             /* get collect */
             $scope.getCollecte = function () {
                 /* get collect */
                 collecteRestAPI.getCollecte($routeParams.collecteId).success(function (data) {
                     if (angular.isDefined(data)) {
+                        
                         $scope.collecte.event = data.eventRef;
-                        $scope.collecte.startDate = data.startDate;
-                        $scope.collecte.endDate = data.endDate;
+                        $scope.collecte.startDate = moment(data.startDate).subtract(5,'m').valueOf();
+                        $scope.collecte.endDate = moment(data.endDate).add(5,'m').valueOf();
+                        
                         $scope.collecte.startDateLabel = moment(data.startDate).format('LLLL');
                         $scope.collecte.endDateLabel = moment(data.endDate).format('LLLL');
                         if ($scope.collecte.event.owner.teamId === $scope.collecte.event.participants.teamHome._id) {
@@ -109,15 +121,15 @@
                             var search = {
                                 listIndicators: ['totalPlayTime'],
                                 listOwners: data.players,
-                                startDate: data.startDate.valueOf(),
-                                endDate: data.endDate.valueOf(),
+                                startDate: $scope.collecte.startDate,
+                                endDate: $scope.collecte.endDate,
                                 aggregat: 'SUM',
                                 listFieldsGroupBy: listFieldsGroupBy
                             };
                             /* Appel stats API */
-                            statsRestAPI.getStatGroupBy(search).success(function (dataShoot) {
-                                if (angular.isArray(dataShoot) && dataShoot.length > 0) {
-                                    dataShoot.forEach(function (a) {
+                            statsRestAPI.getStatGroupBy(search).success(function (dataTime) {
+                                if (angular.isArray(dataTime) && dataTime.length > 0) {
+                                    dataTime.forEach(function (a) {
                                         var i = -1;
                                         a._id.owner.forEach(function (b) {
                                             i = $scope.players.findIndex(function (n) {
@@ -130,14 +142,15 @@
                             });
                             
                             /* Appel stats API */
+                            
                             listFieldsGroupBy = ['owner', 'code'];
                             statsRestAPI.getStatGroupBy({
                                 listIndicators: ['originShootAtt', 'goalScored', 'yellowCard',
                                     'exclTmp', 'redCard', 'originShootDef', 'goalConceded',
                                     'actDefPos', 'actDefNeg', 'actAttPos', 'actAttNeg', 'holder'],
                                 listOwners: data.players,
-                                startDate: data.startDate.valueOf(),
-                                endDate: data.endDate.valueOf(),
+                                startDate: $scope.collecte.startDate,
+                                endDate: $scope.collecte.endDate,
                                 aggregat: 'COUNT',
                                 listFieldsGroupBy: listFieldsGroupBy
                             }).success(function (dataShoot) {
@@ -158,8 +171,8 @@
                             statsRestAPI.getStatGroupBy({
                                 listIndicators: ['neutralization', 'forceDef', 'contre', 'interceptionOk'],
                                 listOwners: data.players,
-                                startDate: data.startDate.valueOf(),
-                                endDate: data.endDate.valueOf(),
+                                startDate: $scope.collecte.startDate,
+                                endDate: $scope.collecte.endDate,
                                 aggregat: 'COUNT',
                                 listFieldsGroupBy: listFieldsGroupBy
                             }).success(function (dataActDefPos) {
@@ -180,8 +193,8 @@
                             statsRestAPI.getStatGroupBy({
                                 listIndicators: ['penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition'],
                                 listOwners: data.players,
-                                startDate: data.startDate.valueOf(),
-                                endDate: data.endDate.valueOf(),
+                                startDate: $scope.collecte.startDate,
+                                endDate: $scope.collecte.endDate,
                                 aggregat: 'COUNT',
                                 listFieldsGroupBy: listFieldsGroupBy
                             }).success(function (dataActDefNeg) {
@@ -202,8 +215,8 @@
                             statsRestAPI.getStatGroupBy({
                                 listIndicators: ['penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec'],
                                 listOwners: data.players,
-                                startDate: data.startDate.valueOf(),
-                                endDate: data.endDate.valueOf(),
+                                startDate: $scope.collecte.startDate,
+                                endDate: $scope.collecte.endDate,
                                 aggregat: 'COUNT',
                                 listFieldsGroupBy: listFieldsGroupBy
                             }).success(function (dataActAttPos) {
@@ -224,8 +237,8 @@
                             statsRestAPI.getStatGroupBy({
                                 listIndicators: ['forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt'],
                                 listOwners: data.players,
-                                startDate: data.startDate.valueOf(),
-                                endDate: data.endDate.valueOf(),
+                                startDate: $scope.collecte.startDate,
+                                endDate: $scope.collecte.endDate,
                                 aggregat: 'COUNT',
                                 listFieldsGroupBy: listFieldsGroupBy
                             }).success(function (dataActAttNeg) {

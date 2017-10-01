@@ -49,7 +49,7 @@
                             search.values = $scope.values;
                         }
                         var listShootSeqId = [];
-
+                        
                         statsRestAPI.getStatGroupBy(search).success(function (dataOri) {
                             if (dataOri && dataOri.length) {
                                 $scope.noStat = true;
@@ -57,7 +57,10 @@
                                 dataOri.forEach(function (e) {
                                     listShootSeqId.push(e._id.shootSeqId);
                                 });
-
+                                
+                                $log.debug("search",search);
+                                $log.debug("data",dataOri);
+                                $log.debug("listShootSeqId",listShootSeqId);
                                 search = {};
                                 search = {
                                     listIndicators: ['goalScored'],
