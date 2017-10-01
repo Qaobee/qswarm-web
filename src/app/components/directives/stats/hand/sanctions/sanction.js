@@ -12,7 +12,7 @@
 
     angular.module('qaobee.widget.statsSanction', ['statsSRV', 'statsRestAPI', 'qaobee.eventbus'])
 
-        .directive('statsSanction', function ($translatePartialLoader, statsRestAPI, statsSrv, qeventbus, $q, $timeout, filterCalendarSrv) {
+        .directive('statsSanction', function ($translatePartialLoader, statsRestAPI, statsSrv, qeventbus, $q, $log, $timeout, filterCalendarSrv) {
             return {
                 restrict: 'E',
 
@@ -43,17 +43,18 @@
 
                         /* Appel stats API */
                         statsRestAPI.getStatGroupBy(search).success(function (data) {
+                            $log.debug("data",data);
                             if (angular.isArray(data) && data.length > 0) {
                                 $scope.noStat = true;
                                 data.forEach(function (a) {
                                     if (a._id.code === 'yellowCard') {
-                                        result.nbYellowCard = a.value;
+                                        result.nbYellowCard++; 
                                     }
                                     if (a._id.code === 'exclTmp') {
-                                        result.nbExclTmp = a.value;
+                                        result.nbExclTmp++;
                                     }
                                     if (a._id.code === 'redCard') {
-                                        result.nbRedCard = a.value;
+                                        result.nbRedCard++;
                                     }
                                 });
                                 deferred.resolve(result);
