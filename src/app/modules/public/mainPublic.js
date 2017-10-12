@@ -11,10 +11,11 @@
         /* angular module */
         'ngRoute',
         /* qaobee shared directives */
-        'qaobee.headerMenu'
+        'qaobee.headerMenu',
+        'ezfb'
     ])
 
-        .config(function ($routeProvider) {
+        .config(function ($routeProvider, ezfbProvider) {
             $routeProvider.when('/', {
                 controller: 'PublicCtrl',
                 templateUrl: 'app/modules/public/mainPublic.html'
@@ -33,8 +34,13 @@
             }).when('/contact', {
                 controller: 'ContactCtrl',
                 templateUrl: 'app/modules/public/contact.html'
+            }).when('/news', {
+                controller: 'NewsCtrl',
+                templateUrl: 'app/modules/public/news.html'
             });
-
+            ezfbProvider.setInitParams({
+                appId: '239177912791979', version: 'v2.3'
+            });
         })
 
         /**
@@ -46,7 +52,7 @@
             $translatePartialLoader.addPart('public');
             $translatePartialLoader.addPart('commons');
 
-            $scope.parts = ['01', '02', '04', '03', '05', '06', '07','08'];
+            $scope.parts = ['01', '02', '04', '03', '05', '06', '07', '08'];
             $scope.toTop = false;
             // asu = Allow SignUp
             $rootScope.signupAvailable = true;
@@ -81,16 +87,22 @@
 
         /**
          * @class qaobee.public.public.AboutCtrl
-         * @description Contrôleur de la page "à propos"
+         * @description About page controller
          */
-        .controller('AboutCtrl', function ($scope, $rootScope, $translatePartialLoader) {
-            
+        .controller('AboutCtrl', function ($translatePartialLoader) {
+            $translatePartialLoader.addPart('public');
+        })
+        /**
+         * @class qaobee.public.public.NewsCtrl
+         * @description News page controller
+         */
+        .controller('NewsCtrl', function ($translatePartialLoader) {
             $translatePartialLoader.addPart('public');
         })
 
         /**
          * @class qaobee.public.public.AboutCtrl
-         * @description Contrôleur de la page "à propos"
+         * @description Contact page controller
          */
         .controller('ContactCtrl', function () {
 

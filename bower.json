@@ -66,7 +66,8 @@
     "heat": "^1.0.0",
     "image-map-resizer": "^1.0.3",
     "angular-payments": "*",
-    "angular-intro.js": "^3.3.0"
+    "angular-intro.js": "^3.3.0",
+    "angular-easyfb": "^1.5.2"
   },
   "resolutions": {
     "angular-cookies": "1.5.10",

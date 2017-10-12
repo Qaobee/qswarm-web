@@ -43,7 +43,8 @@
     "collect": "Collectez",
     "progress": "Analysez",
     "collaborate": "Collaborez",
-    "aboutUs":"A propos"      
+    "aboutUs": "A propos",
+    "news": "Actualités"
   },
   "modal": {
     "login": {
