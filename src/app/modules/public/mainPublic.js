@@ -12,7 +12,8 @@
         'ngRoute',
         /* qaobee shared directives */
         'qaobee.headerMenu',
-        'ezfb'
+        'ezfb',
+        'paramsRestAPI'
     ])
 
         .config(function ($routeProvider, ezfbProvider) {
@@ -112,9 +113,51 @@
          * @class qaobee.public.public.PricingCtrl
          * @description Contrôleur de la page "nos tarifs"
          */
-        .controller('PricingCtrl', function ($scope, qeventbus, $translatePartialLoader) {
+        .controller('PricingCtrl', function ($scope, qeventbus, $translatePartialLoader, paramsRestAPI, $log) {
             $translatePartialLoader.addPart('public');
             qeventbus.prepForBroadcast('menuItem', 'pricing');
+            $scope.params = {
+                FREEMIUM: {
+                    color: 'default-primary-color',
+                    icon: 'fa-user',
+                    link: '/#/signupStartCoach'
+                },
+                TEAMS: {
+                    color: 'dark-primary-color',
+                    icon: 'fa-user-plus',
+                    link: '/#/signupStartTeam/TEAMS'
+                },
+                TEAMM: {
+                    color: 'secondary-color',
+                    icon: 'fa-user-times',
+                    link: '/#/signupStartTeam/TEAMM'
+                },
+                TEAMXL: {
+                    color: 'accent-color',
+                    icon: 'fa-users',
+                    link: '/#/signupStartTeam/TEAMXL'
+                }
+
+            };
+
+            $scope.getPlanView = function (p) {
+                if ($scope.params.hasOwnProperty(p)) {
+                    return $scope.params[p];
+                } else {
+                    return {
+                        color: '',
+                        icon: '',
+                        link: ''
+                    };
+                }
+            };
+            paramsRestAPI.getParams().success(function (data) {
+                $log.debug('[PricingCtrl] - retrieve params', data);
+                $scope.plans = data.plan;
+            }).error(function (err) {
+                $log.error('[PricingCtrl] - retrieve params : ', err);
+            });
+
         })
 
         /**

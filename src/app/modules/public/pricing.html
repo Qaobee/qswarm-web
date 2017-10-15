@@ -7,115 +7,38 @@
         </div>
 
         <div class="col s12 dark-text-color"><h5 translate="pricing.descTarif"></h5></div>
-        
+
     </div>
     <div class="row white pricing">
-        
-        <div class="card col s12 m6 l3">
-            <div class="card-title default-primary-color center-align">
-                <i class="fa fa-fw fa-user fa-2x white-text" style="padding:2px;"></i>&nbsp;
-                <h5 translate="pricing.titleIndividualPlan"></h5>
+
+        <div class="card col s12 m6 l3" ng-repeat="(plan, p) in plans">
+            <div class="card-title center-align" ng-class="getPlanView(plan).color">
+                <i class="fa fa-fw fa-2x white-text" ng-class="getPlanView(plan).icon" style="padding:2px;"></i>&nbsp;
+                <h5 translate="{{'pricing.offers.' + plan + '.title'}}"></h5>
             </div>
             <div class="card-title white dark-text-color" style="height:200px;">
-                <span class="light-text-color activator">{{'pricing.conditionIndividualPlan' | translate}}<i class="material-icons right">help</i></span>
-                <h4 translate="pricing.priceIndividualPlanM"></h4>
-                <h5 class="right" translate="pricing.priceIndividualPlanA"></h5 >
+                <span class="light-text-color activator">{{'pricing.offers.' + plan + '.desc' | translate}}
+                    <i class="material-icons right">help</i></span>
+                <h4><b>{{p.price}} €</b><span translate="pricing.monthly"></span></h4>
+                <h5 class="right"><b>{{p.price_y}} €</b><span translate="pricing.yearly"></span></h5>
             </div>
             <div class="card-reveal center-align">
-              <span class="card-title default-primary-color"><i class="fa fa-fw fa-user" style="padding:2px;"></i>&nbsp; {{'pricing.titleIndividualPlan' | translate}}<i class="material-icons right">close</i></span>
-                <br><br>    
-              <h6 class=" light-text-color" translate="pricing.features.individual"></h6>
-                <br><br>    
-                <a href="/#/signupStartCoach" translate="commons.buttons.subscribe"
-                    class="btn waves-effect waves-white default-primary-color">
+                <span class="card-title" ng-class="getPlanView(plan).color">
+                    <i class="fa fa-fw" ng-class="getPlanView(plan).icon" style="padding:2px;"></i>
+                    &nbsp; {{'pricing.offers.' + plan + '.title' | translate}}<i
+                        class="material-icons right">close</i></span>
+                <br><br>
+                <h6 class=" light-text-color" translate="{{'pricing.offers.' + plan + '.features'}}"></h6>
+                <br><br>
+                <a ng-href="getPlanView(plan).link" translate="commons.buttons.subscribe"
+                   class="btn waves-effect waves-white" ng-class="getPlanView(plan).color">
                 </a>
                 <br><br>
             </div>
-            
+
             <div class="card-action">
-              <a href="/#/signupStartCoach" translate="commons.buttons.subscribe"
-                    class="btn waves-effect waves-white default-primary-color">
-                </a>
-            </div>
-        </div>
-        
-        <div class="card col s12 m6 l3">
-            <div class="card-title dark-primary-color center-align">
-                <i class="fa fa-fw fa-user-plus fa-2x white-text" style="padding:2px;"></i>&nbsp;
-                <h5 translate="pricing.titleClubSmallPlan"></h5>
-            </div>
-            <div class="card-title white dark-text-color" style="height:200px;">
-                <span class=" light-text-color activator">{{'pricing.conditionClubSmallPlan' | translate}}<i class="material-icons right">helpt</i></span>
-                <h4 translate="pricing.priceClubSmallPlanM"></h4>
-                <h5 class="right" translate="pricing.priceClubSmallPlanA"></h5>
-            </div>
-            <div class="card-reveal left-align">
-              <span class="card-title dark-primary-color"><i class="fa fa-fw fa-user-plus" style="padding:2px;"></i>&nbsp; {{'pricing.titleClubSmallPlan' | translate}}<i class="material-icons right">close</i></span>
-                <br><br>
-              <h6 class=" light-text-color" translate="pricing.features.clubSmall"></h6>
-                <br><br>    
-                <a href="/#/signupStartTeam/TEAMS" translate="commons.buttons.subscribe"
-                    class="btn waves-effect waves-white dark-primary-color">
-                </a>
-                <br><br>
-            </div>
-            <div class="card-action">
-              <a href="/#/signupStartTeam/TEAMS" translate="commons.buttons.subscribe"
-                    class="btn waves-effect waves-white dark-primary-color">
-                </a>
-            </div>
-        </div>
-        
-        <div class="card col s12 m6 l3">
-            <div class="card-title secondary-color center-align">
-                <i class="fa fa-fw fa-user-times fa-2x white-text" style="padding:2px;"></i>&nbsp;
-                <h5 translate="pricing.titleClubMediumPlan"></h5>
-            </div>
-            <div class="card-title white dark-text-color" style="height:200px;">
-                <span class="light-text-color activator">{{'pricing.conditionClubMediumPlan' | translate}}<i class="material-icons right">help</i></span>
-                <h4 translate="pricing.priceClubMediumPlanM"></h4>
-                <h5 class="right" translate="pricing.priceClubMediumPlanA"></h5>
-            </div>
-            <div class="card-reveal left-align">
-              <span class="card-title secondary-color"><i class="fa fa-fw fa-user-times" style="padding:2px;"></i>&nbsp; {{'pricing.titleClubMediumPlan' | translate}}<i class="material-icons right">close</i></span>
-                <br><br>
-              <h6 class=" light-text-color" translate="pricing.features.clubMedium"></h6>
-                <br><br>    
-                <a href="/#/signupStartTeam/TEAMM" translate="commons.buttons.subscribe"
-                    class="btn waves-effect waves-white secondary-color">
-                </a>
-                <br><br>
-            </div>
-            <div class="card-action">
-              <a href="/#/signupStartTeam/TEAMM" translate="commons.buttons.subscribe"
-                    class="btn waves-effect waves-white secondary-color">
-                </a>
-            </div>
-        </div>
-        
-        <div class="card col s12 m6 l3">
-            <div class="card-title accent-color center-align">
-                <i class="fa fa-fw fa-users fa-2x white-text" style="padding:2px;"></i>&nbsp;
-                <h5 translate="pricing.titleClubLargePlan"></h5>
-            </div>
-            <div class="card-title white dark-text-color" style="height:200px;">
-                <span class="light-text-color activator">{{'pricing.conditionClubLargePlan' | translate}}<i class="material-icons right">help</i></span>
-                <h4 translate="pricing.priceClubLargePlanM"></h4>
-                <h5 class="right" translate="pricing.priceClubLargePlanA"></h5>
-            </div>
-            <div class="card-reveal left-align">
-              <span class="card-title accent-color"><i class="fa fa-fw fa-user-times" style="padding:2px;"></i>&nbsp; {{'pricing.titleClubLargePlan' | translate}}<i class="material-icons right">close</i></span>
-                <br><br>
-              <h6 class=" light-text-color" translate="pricing.features.clubLarge"></h6>
-                <br><br>    
-                <a href="/#/signupStartTeam/TEAMXL" translate="commons.buttons.subscribe"
-                    class="btn waves-effect waves-white accent-color">
-                </a>
-                <br><br>
-            </div>
-            <div class="card-action">
-              <a href="/#/signupStartTeam/TEAMXL" translate="commons.buttons.subscribe"
-                    class="btn waves-effect waves-white accent-color">
+                <a ng-href="getPlanView(plan).link" translate="commons.buttons.subscribe"
+                   class="btn waves-effect waves-white" ng-class="getPlanView(plan).color">
                 </a>
             </div>
         </div>

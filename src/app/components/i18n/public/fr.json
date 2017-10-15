@@ -1,9 +1,9 @@
 {
   "landing": {
     "main-title": "Boostez la performance de votre équipe",
-    "calltoaction":  {
-      "android" : "Android",
-      "iphone" : "Bientôt sur IPhone"
+    "calltoaction": {
+      "android": "Android",
+      "iphone": "Bientôt sur IPhone"
     },
     "sub-title": "Coachs, entraîneurs de handball, collectez les statistiques de vos joueurs durant les matchs, ou les entraînements",
     "manual-btn": "Mode d'emploi",
@@ -27,10 +27,10 @@
       "progress": "Progressez"
     },
     "area-4": {
-        "iphone": "Bientôt disponible sur l'App Store",
-        "android": "Disponible sur Google Play",
-        "title": "Téléchargez Qaobee HB",
-        "content": "Qaobee HB permet au coach d'handball de collecter et d'analyser les statistiques de ses joueurs. <br/>L'application fonctionne sur smartphone et sur tablette."
+      "iphone": "Bientôt disponible sur l'App Store",
+      "android": "Disponible sur Google Play",
+      "title": "Téléchargez Qaobee HB",
+      "content": "Qaobee HB permet au coach d'handball de collecter et d'analyser les statistiques de ses joueurs. <br/>L'application fonctionne sur smartphone et sur tablette."
     },
     "area-6": {
       "title": "Inscrivez-vous à notre newsletter",
@@ -67,42 +67,34 @@
   "pricing": {
     "titleTarif": "Nos offres",
     "descTarif": "Bénéficier d'un mois d'essai gratuit sur l'ensemble de nos offres",
-    "titleIndividual": "Coach",
-    "titleIndividualPlan": "Individual",
-    "priceIndividualPlanM": "<b>8 €</b> / mois",
-    "priceIndividualPlanA": "<b>87 €</b> / an",
-    "conditionIndividualPlan": "1 seul utilisateur",
-      
-    "titleClub": "Club",  
-    
-    "titleClubLargePlan":"Team XL",
-    "priceClubLargePlanM": "<b>48 €</b> / mois",
-    "priceClubLargePlanA": "<b>486 €</b> / an",
-    "conditionClubLargePlan": "11 utilisateurs et plus",  
-      
-    "titleClubMediumPlan":"Team M",
-    "priceClubMediumPlanM": "<b>36 €</b> / mois",
-    "priceClubMediumPlanA": "<b>389 €</b> / an",
-    "conditionClubMediumPlan": "Entre 6 et 10 utilisateurs",
-      
-    "titleClubSmallPlan":"Team S",  
-    "priceClubSmallPlanM": "<b>30 €</b> / mois",
-    "priceClubSmallPlanA": "<b>324 €</b> / an",
-    "conditionClubSmallPlan": "5 utilisateurs max",
-      
-    "titleInvite": "Rejoins-moi sur Qaobee",
-    
+    "yearly" : " / an",
+    "monthly" : " / mois",
+    "offers": {
+      "FREEMIUM": {
+        "title": "Individual",
+        "desc": "1 seul utilisateur",
+        "features": "Vous souhaitez mesurer les performances de vos joueurs."
+      },
+      "TEAMS": {
+        "title": "Team S",
+        "desc": "5 utilisateurs max",
+        "features": "Vous êtes un groupe de 4 à 5 entraîneurs ou coachs issus du même club ou de différents clubs.<br><br>Vous êtes un club dont quelques entraîneurs sont intéressés par une solution permettant de collecter et analyser les performances de leurs joueurs.<br><br>L'offre <b>Team S</b> s'adapte à votre besoin en vous permettant de créer un compte Qaobee HB avec 5 utilisateurs maximum."
+      },
+      "TEAMM": {
+        "title": "Team M",
+        "desc": "Entre 6 et 10 utilisateurs",
+        "features": "Analyser les performances, match après match, de vos joueurs, de vos équipes."
+      },
+      "TEAMXL": {
+        "title": "Team M",
+        "desc": "11 utilisateurs et plus",
+        "features": "Partager votre espace de travail avec vos collègues."
+      }
+    },
     "descInvite": "",
     "subscribe-btn": "Souscrire",
     "soon-btn": "Prochainement",
-    "team-subscribe": "(*) Vous êtes un club et vous souhaitez souscrire à Qaobee pour vos entraîneurs, <a href=\"mailto:contact@qaobee.com\">contactez nous</a>",
-    
-    "features":{
-        "individual":"Vous souhaitez mesurer les performances de vos joueurs. ",
-        "clubSmall": "Vous êtes un groupe de 4 à 5 entraîneurs ou coachs issus du même club ou de différents clubs.<br><br>Vous êtes un club dont quelques entraîneurs sont intéressés par une solution permettant de collecter et analyser les performances de leurs joueurs.<br><br>L'offre <b>Team S</b> s'adapte à votre besoin en vous permettant de créer un compte Qaobee HB avec 5 utilisateurs maximum.<br><br>",
-        "clubMedium":"Analyser les performances, match après match, de vos joueurs, de vos équipes",
-        "clubLarge": "Partager votre espace de travail avec vos collègues"
-    }
+    "team-subscribe": "(*) Vous êtes un club et vous souhaitez souscrire à Qaobee pour vos entraîneurs, <a href=\"mailto:contact@qaobee.com\">contactez nous</a>"
   },
   "about": {
     "title": "L'équipe <b>Qaobee</b>",
