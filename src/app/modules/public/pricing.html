@@ -30,14 +30,14 @@
                 <br><br>
                 <h6 class=" light-text-color" translate="{{'pricing.offers.' + plan + '.features'}}"></h6>
                 <br><br>
-                <a ng-href="getPlanView(plan).link" translate="commons.buttons.subscribe"
+                <a ng-href="{{getPlanView(plan).link}}" translate="commons.buttons.subscribe"
                    class="btn waves-effect waves-white" ng-class="getPlanView(plan).color">
                 </a>
                 <br><br>
             </div>
 
             <div class="card-action">
-                <a ng-href="getPlanView(plan).link" translate="commons.buttons.subscribe"
+                <a ng-href="{{getPlanView(plan).link}}" translate="commons.buttons.subscribe"
                    class="btn waves-effect waves-white" ng-class="getPlanView(plan).color">
                 </a>
             </div>
