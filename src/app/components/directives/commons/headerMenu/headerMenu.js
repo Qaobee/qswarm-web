@@ -22,7 +22,8 @@
             'angular-send-feedback'
         ])
         .directive('headerMenu', function (qeventbus, $rootScope, $translate, $location, $window, anchorSmoothScroll,
-                                           $translatePartialLoader, $filter, signupRestAPI, userRestAPI, $sce, $log, seasonsRestAPI) {
+                                           $translatePartialLoader, $filter, signupRestAPI, userRestAPI, $sce, $log,
+                                           seasonsRestAPI) {
             return {
                 restrict: 'AE',
                 controller: function ($scope) {
@@ -42,7 +43,7 @@
                             $scope.menuItem = x;
                             anchorSmoothScroll.scrollTo(x, 60);
                         } catch (e) {
-                            $log.debug(e);
+                            $log.error('[headerMenu] gotoAnchor', e);
                         }
                     };
                     $scope.isActive = function (viewLocation) {

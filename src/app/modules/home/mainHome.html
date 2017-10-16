@@ -1,35 +1,38 @@
 <div class="container" ng-intro-options="IntroOptions" ng-intro-method="callMe"
      ng-intro-oncomplete="CompletedEvent" ng-intro-onexit="ExitEvent"
      ng-intro-onchange="ChangeEvent" ng-intro-onbeforechange="BeforeChangeEvent"
-     ng-intro-autostart="launchIntoJs()">
-<!-- body start-->
-    <div class="row"><div class="col s12">&nbsp;</div></div>
-    
-    <filter-calendar meta="meta"></filter-calendar>
-       
-    
+     ng-intro-autostart="launchIntroJs()">
+    <!-- body start-->
     <div class="row">
-        
-        <div class="col s12 l4" id=step2>
-            <widget-notifications meta="meta" user="user" ></widget-notifications>
-        </div>
-        
-        <div class="col s12 l4" id=step3>
-            <widget-calendar meta="meta" user="user" ></widget-calendar>
-        </div>
-        
-        <div class="col s12 l4" id=step4>
-            <widget-collecte meta="meta" user="user" ></widget-collecte>
-        </div>
-        
-        <div class="col s12 l6">
-            <widget-podium meta="meta" user="user" indicator="goalScored" nbitem="10" stataggregat="COUNT" ></widget-podium>
-        </div>
-    
-        <div class="col s12 l6">
-            <widget-podium meta="meta" user="user" indicator="totalPlayTime" nbitem="10" stataggregat="SUM" ></widget-podium>
-        </div>
-        
+        <div class="col s12">&nbsp;</div>
     </div>
-  
+
+    <filter-calendar meta="meta"></filter-calendar>
+
+    <div class="row">
+
+        <div class="col s12 l4" id=step2>
+            <widget-notifications meta="meta" user="user"></widget-notifications>
+        </div>
+
+        <div class="col s12 l4" id=step3>
+            <widget-calendar meta="meta" user="user"></widget-calendar>
+        </div>
+
+        <div class="col s12 l4" id=step4>
+            <widget-collecte meta="meta" user="user"></widget-collecte>
+        </div>
+
+        <div class="col s12 l6">
+            <widget-podium meta="meta" user="user" indicator="goalScored" nbitem="10"
+                           stataggregat="COUNT"></widget-podium>
+        </div>
+
+        <div class="col s12 l6">
+            <widget-podium meta="meta" user="user" indicator="totalPlayTime" nbitem="10"
+                           stataggregat="SUM"></widget-podium>
+        </div>
+
+    </div>
+
 </div>

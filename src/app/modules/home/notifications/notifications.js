@@ -25,7 +25,7 @@
          * @class qaobee.modules.home.notifications.NotificationControler
          */
         .controller('NotificationControler', function ($log, $scope, $translatePartialLoader, $routeParams, qeventbus,
-                                                       EnvironmentConfig, notificationsRestAPI) {
+                                                       $timeout, EnvironmentConfig, notificationsRestAPI) {
             $translatePartialLoader.addPart('home');
             $scope.notifications = [];
             $scope.id = $routeParams.id;
@@ -110,7 +110,10 @@
             $scope.$on('qeventbus:refreshNotificationWidget', function () {
                 $scope.getNotifications();
             });
-            $scope.getNotifications();
+
+            $timeout(function () {
+                $scope.getNotifications();
+            }, 0);
 
         });
 }());

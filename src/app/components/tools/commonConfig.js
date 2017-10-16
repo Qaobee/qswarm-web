@@ -127,9 +127,7 @@
                 if (angular.isDefined($rootScope.user)) {
                     deferred.resolve($rootScope.user);
                 } else {
-
                     var token = $window.sessionStorage.qaobeesession;
-
                     if (token !== null && angular.isDefined(token)) {
                         userRestAPI.getCurrentUser().success(function (data) {
                             $rootScope.user = loadAdmin(data);
@@ -157,9 +155,7 @@
                 if (angular.isDefined($rootScope.meta)) {
                     deferred.resolve($rootScope.meta);
                 } else {
-
                     var token = $window.sessionStorage.qaobeesession;
-
                     if (token !== null && angular.isDefined(token)) {
                         userRestAPI.getMetas().success(function (data) {
                             if (angular.isDefined(data) && data !== null) {

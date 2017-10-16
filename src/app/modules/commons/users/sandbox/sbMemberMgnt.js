@@ -24,7 +24,7 @@
          * @description Main controller of app/modules/commons/users/sandbox/switchSandbox.html
          */
         .controller('SbMemberMgntCtrl', function ($scope, $filter, EnvironmentConfig, $window, $translatePartialLoader,
-                                                  userRestAPI, sandboxRestAPI, $log, meta, user) {
+                                                  userRestAPI, sandboxRestAPI, $log, meta, user, $timeout) {
 
             $translatePartialLoader.addPart('commons');
             $translatePartialLoader.addPart('user');
@@ -109,25 +109,18 @@
                 $window.history.back();
             };
 
-
             $scope.$on('$destroy', function () {
                 delete $scope.user;
                 delete $scope.renew;
             });
 
-            /* check user connected */
-            $scope.checkUserConnected = function () {
+            $timeout(function () {
                 userRestAPI.getUserById(user._id).success(function () {
                     $scope.getSandbox();
                     $scope.getInvitationToSandboxList();
                 }).error(function () {
                     $log.error('SbMemberMgntCtrl : User not Connected');
                 });
-            };
-
-
-            /* Primary, check if user connected */
-            $scope.checkUserConnected();
-
+            }, 0);
         });
 }());

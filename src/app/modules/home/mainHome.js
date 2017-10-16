@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     /**
-     * Module Gérant la partie publique du site
+     * Main page module
      *
      * @class qaobee.modules.home.mainHome
      * @author Christophe Kervella
@@ -37,6 +37,13 @@
 
             $scope.CompletedEvent = function () {
                 $log.debug('[qaobee.home] - Completed Event called');
+                var user = angular.copy($scope.user);
+                user.account.firstConnexion = false;
+                profileRestAPI.update(user).success(function (data) {
+                    $log.debug('[HomeControler] - launchIntoJs - update', data);
+                    $rootScope.user = user;
+                    $scope.user = user;
+                });
             };
 
             $scope.ExitEvent = function () {
@@ -91,21 +98,20 @@
                 skipLabel: 'Annuler',
                 doneLabel: 'Merci'
             };
-        
-            $scope.launchIntoJs = function (){
-                $log.debug($scope.user.account);
-                if($scope.user.account.firstConnexion){
-                    //$scope.user.account.firstConnexion = false;
-                    profileRestAPI.update($scope.user).success(function (data) {
-                        
-                        $rootScope.user = $scope.user;
-                    });
-                    return true;    
-                } else {
-                    return false;
-                }  
-            };
 
+            /**
+             * Test if we have to launch introjs
+             *
+             * @returns {boolean}
+             */
+            $scope.launchIntroJs = function (){
+                return $scope.user.account.firstConnexion;
+            };
+            /**
+             * Get effective
+             *
+             * @param id
+             */
             $scope.getEffective = function (id) {
                 effectiveSrv.getEffective(id).then(function (data) {
                     effectiveSrv.getListId(data, 'player').then(function (listId) {
@@ -121,12 +127,13 @@
                     });
                 });
             };
+
             $timeout(function () {
                 if (angular.isDefined(filterCalendarSrv.getValue())) {
                     $scope.periodicityActive = filterCalendarSrv.getValue().periodicityActive;
                     $scope.periodicity = filterCalendarSrv.getValue().periodicity;
                     $scope.getEffective($scope.meta.sandbox.effectiveDefault);
                 }
-            });
+            },0);
         });
 }());
