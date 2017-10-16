@@ -1,4 +1,27 @@
 {
+  "intro": {
+    "step1": {
+      "title": "Bienvenue sur Qaobee !",
+      "desc": "Prenons quelques instants pour découvrir les principales fonctionnalités de l'application."
+    },
+    "step2": {
+      "title": "Restez à l'affût",
+      "desc": "Les notifications ..."
+    },
+    "step3": {
+      "title": "Planifiez vos matchs !",
+      "desc": "Les événements ..."
+    },
+    "step4": {
+      "title": "Consultez vos stats !",
+      "desc": "Les collectes ..."
+    },
+    "step5": {
+      "title": "Félicitations !",
+      "desc": "Bientôt vous serez incollable sur les stats de vos joueurs.",
+      "desc2": "Rendez-vous sur Google play store et téléchargez notre application de collecte pour tablette ou smartphone."
+    }
+  },
   "dashboard": {
     "event": "Prochain événement",
     "stats": "Statistiques événement",
