@@ -104,16 +104,22 @@
     </li>
 </ul>
 <!-- Menu Connected First header-->
-<div class="navbar-fixed" ng-if="user && !user.account.firstConnexion && notpaid">
+<div class="navbar-fixed" ng-if="user && notpaid">
     <nav class="top-nav top-nav-trans dark-primary-color" role="navigation">
         <div class="container">
             <a href="/#/" class="brand-logo">
                 <img src="assets/images/logo-mini.png" height="30px" ng-click="menuItem = ''" alt="Qaobee"/>
             </a>
+            <div class="nav-wrapper">
+                <ul class="hide-on-med-and-down">
+            <li class="right"><a ng-click="logoff()" href="javascript:void(0);"><i class="material-icons">exit_to_app</i></a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 </div>
-<div class="navbar-fixed" ng-if="user && !user.account.firstConnexion && !notpaid">
+<div class="navbar-fixed" ng-if="user && !notpaid">
     <nav class="top-nav dark-primary-color visible-nav" role="navigation">
         <div class="container">
             <a href="/#/private/sbSwitch" class="brand-logo center truncate">{{meta.sandbox.structure.label}}</a>
@@ -180,9 +186,7 @@
     <div class="row light-primary-color">
         <div class="col s12 center"><h4 translate="headerMenu.trial.title"></h4></div>
         <div class="col s12 secondary-text-color center" translate="headerMenu.trial.content"
-             translate-values="trialCountVal" ng-if="trialCountVal.intCount > 0"></div>
-        <div class="col s12 secondary-text-color center" translate="headerMenu.trial-ended.content"
-             ng-if="trialCountVal.intCount <= 0"></div>
+             translate-values="trialCountVal" ng-if="trialCountVal.intCount < 0"></div>
         <div class="col s12">&nbsp;</div>
         <div class="col s12 center">
             <a href="javascript:void(0);" ng-click="closeTrial()" class="btn-floating accent-color">
@@ -192,21 +196,6 @@
         <div class="col s12">&nbsp;</div>
     </div>
 </div>
-
-<!-- Finalize signup -->
-<nav class="top-nav dark-primary-color" role="navigation" ng-if="user && user.account.firstConnexion">
-    <div class="container">
-        <div class="nav-wrapper">
-            <a href="/#/" class="hide-on-med-and-down brand-logo">
-                <img src="assets/images/logo-mini.png" height="30px" alt="Qaobee"/>
-            </a>
-            <a class="brand-logo white-text center">
-                <span class="hide-on-med-and-down fa fa-sign-in"></span>
-                <span translate="headerMenu.signup"></span>
-            </a>
-        </div>
-    </div>
-</nav>
 
 
 <!-- Modal login -->

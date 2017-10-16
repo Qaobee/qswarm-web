@@ -32,14 +32,11 @@
         })
 
         .controller('SignupDoneCtrl', function ($rootScope, $scope, $translatePartialLoader,
-                                                $location, qeventbus, EnvironmentConfig) {
+                                                qeventbus, EnvironmentConfig) {
             $translatePartialLoader.addPart('user');
             qeventbus.prepForBroadcast('menuItem', 'signup');
             $scope.url = EnvironmentConfig.appMobile;
-            $scope.goHome = function () {
-                delete $rootScope.user;
-                $location.path('/');
-            };
+            
         })
         .controller('SignupEndCtrl', function ($rootScope, $scope, $window, $routeParams, $translatePartialLoader, $filter,
                                                $location, EnvironmentConfig, signupRestAPI, qeventbus, mobileLinks, detectUtils) {
