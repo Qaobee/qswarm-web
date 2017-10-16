@@ -35,7 +35,83 @@
     "area-6": {
       "title": "Inscrivez-vous à notre newsletter",
       "content": "Restez informé(e) des nouvelles fonctionnalités de notre solution et de l'actualité de Qaobee"
-    }
+    },
+      "detail": {
+        "titleTarif": "Notre offre",
+        "titleInvite": "Rejoins-moi sur Qaobee",
+        "descTarif": "",
+        "descInvite": "",
+        "subscribe-btn": "Souscrire",
+        "soon-btn": "Prochainement",
+        "team-subscribe": "(*) Vous êtes un club et vous souhaitez souscrire à Qaobee pour vos entraîneurs, <a href=\"mailto:contact@qaobee.com\">contactez nous</a>",
+        "trial": {
+          "title": "Le premier mois est gratuit",
+          "btn": "Essayer gratuitement"
+        },
+        "offers": {
+          "standard": {
+            "titleTarif": "Qaobee HB s'adresse aux entraîneurs et aux clubs (<span style=\"vertical-align: super; font-size: 50%;\">*</span>)  de handball",
+            "priceInvite": "puis 5",
+            "price": "pour 5",
+            "period": "/ mois",
+            "desc": "L'espace de travail dont vous avez besoin pour entraîner en toute simplicité.",
+            "appWeb": {
+                "title":"Collectez les statistiques et consultez les immédiatemment",
+                "intro":"Grâce à l'application de collecte <b>Qaobee HB</b>, accédez aux statistiques de vos joueurs ou de votre équipe en temps réel durant un match. Argumentez votre discours d'avant match, pendant un temps mort ou à la mi-temps d'une rencontre." 
+            },
+            "teamWeb": {
+              "title": "Gérez vos joueurs, vos équipes, votre agenda",   
+              "detail": "<ul><li>Ajoutez un nouveau joueur, modifiez ses informations, consultez sa fiche détaillée</li><li>Suivez autant de joueurs que vous le souhaitez</li><li>Gérez de la même façon vos équipes </li><li>Planifiez vos matchs amicaux, vos matchs de coupe et vos matchs de championnat</li></ul>"
+            },
+            "agendaWeb": {
+              "title": "Planifiez vos matchs",
+              "detail": "Planifier les matchs amicaux, les matchs de coupe et les matchs de championnat."
+            },
+            "statsWeb": {
+              "title": "Analysez vos statistiques sur notre application Web",
+              "detail": "En vous rendant sur notre application Web (qaobee.com), consultez les performances de vos joueurs match après match <br/>  Efficacité au tir, temps de jeu, agressivité, apport offensif et défensif <br/>Profitez des outils de comparaison entre joueurs et entre équipes <br/>Profitez des mêmes fonctionnalités au niveau de vos équipes"
+            },
+            "shareWeb": {
+              "title": "Collaborez et progressez",
+              "intro":"Partagez votre effectif avec d'autres entraîneurs",    
+              "item1Title": "Travaillez avec d'autres coachs de handball",
+              "item1Detail" : "Collaborez à plusieurs sur le même effectif, les mêmes joueurs, les mêmes statistiques et décelez les axes d'amélioration en équipe",
+              "item2Title": "Travaillez sur plusieurs effectifs avec d'autres coachs",
+              "item2Detail": "Invitez d'autres coachs de handball sur votre espace. Vos collaborateurs peuvent aussi vous partager leur espace. Basculez d'un espace à l'autre en un clic"
+            },
+            "appMob": "Collectez les stats de vos joueurs",
+            "teamMob": {
+              "title": "Joueurs",
+              "detail": "Ajouter un joueur à la dernière minute. Consulter les données minimales de vos joueurs."
+            },
+            "agendaMob": {
+              "title": "Agenda",
+              "detail": "Ajouter ou modifier rapidement un match"
+            },
+            "collectMob": {
+              "title": "Une cinquantaine d'indicateurs à votre disposition",
+              "intro": "Téléchargez notre application Qaobee HB sur votre téléphone ou votre tablette et commencez à collecter les actions de jeu de vos joueurs durant les matchs",    
+              "detail": {
+                  "shootTitle": "Tir préférentiel",
+                  "shoot": " Identifiez les préférences de tirs de vos joueurs en indiquant l'origine et l'impact de leur tirs <br/>Pour vos gardiens, observez leurs points forts et leurs points faibles en précisant l'origine et l'impact des tirs adverses",
+                  "attackTitle": "Performance offensive",
+                  "attack": "Collectez les actions positives et négatives de vos joueurs lors des phases d'attaque <br/> Décalage, passe décisive, force, marché, reprise, perte de balle...",
+                  "defenseTitle": "Performance défensive",
+                  "defense": "Collectez les actions positives et négatives de vos joueurs lors des phases de défense <br/> Contre, interception, neutralisation, mauvais placement, interception ratée...",
+                  "disciplineTitle": "Discipline",
+                  "discipline": "Mesurez l'agressivité et le sang-froid de vos joueurs <br/> Carton jaune, deux minutes, carton rouge",
+                  "statusTitle": "Coaching",
+                  "status": "Quels sont vos joueurs les plus souvent titularisés, les remplaçants, leurs temps de jeu, les rotations..."
+              }
+            },
+            "statsMob": {
+              "title": "Consultez les statistiques en temps réel ou après le match",
+              "detail": "<ul><li>Vous pouvez consulter en temps réel les statistiques d'un match</li><li> A tout moment, adaptez votre discours en vous appuyant sur les statistiques des données collectées</li></ul>"
+            }
+          }
+        }
+      }
+
   },
   "contact": {
     "title": "Contactez nous",
