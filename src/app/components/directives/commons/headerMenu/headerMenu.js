@@ -142,8 +142,7 @@
                                 if($scope.endTrial < 0) {
                                     $scope.endTrial = 0;
                                     $scope.notpaid = true;
-                                    $location.path('/private/billing');
-                                    return;
+                                    $scope.user.account.status = 'NOT_PAID'
                                 }
                                 $scope.trialCountVal = {
                                     count: $filter('number')($scope.endTrial, 0),
