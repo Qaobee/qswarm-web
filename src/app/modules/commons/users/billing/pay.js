@@ -54,7 +54,7 @@
             /**
              * Pay the bill
              */
-            $scope.doPay = function () {
+            $scope.doPay = function (response) {
                 var payInfo = {
                     token: response.id,
                     user_id: $scope.user._id,
@@ -107,7 +107,7 @@
                     console.error(response.error);
                     $scope.message = 'Error from Stripe.com';
                 } else {
-                    $scope.doPay();
+                    $scope.doPay(response);
                 }
             };
         });

@@ -32,7 +32,7 @@
              * return button
              */
             $scope.doTheBack = function () {
-                $window.history.back();
+                $location.path('/private/profile');
             };
 
             /**

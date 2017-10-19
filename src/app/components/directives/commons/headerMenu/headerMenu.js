@@ -130,9 +130,12 @@
                     $scope.$on('qeventbus:login', function () {
                         $scope.user = qeventbus.data;
                         $scope.endTrial = 999;
+                        $log.debug('[headerMenu] qeventbus:login', $scope.user.account);
+                        $scope.hideTrial = true;
                         if($scope.user.account.status === 'TRIAL'){
                             angular.forEach($scope.user.account.listPlan, function (plan) {
                                 $scope.intrial = true;
+                                $scope.hideTrial = false;
                                 var endDate = moment(plan.endPeriodDate);
                                 $scope.endTrial = moment.duration(moment().diff(endDate)).asDays() - 1;
                                 $scope.trialCountVal = {

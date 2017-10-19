@@ -1,5 +1,6 @@
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
+import se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask
 
 group 'com.qaobee'
 version '0.1'
@@ -30,7 +31,7 @@ sonarqube {
     }
 }
 
-task gitChangelogTask(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
+task gitChangelogTask(type: GitChangelogTask) {
     filePath = "build/docs/changelog/index.html"
     templateContent = new File('changelog.mustache').getText('UTF-8')
     fromRef = getVersion(-5)
