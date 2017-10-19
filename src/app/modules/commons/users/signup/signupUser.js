@@ -25,7 +25,7 @@
             });
         })
 
-        .controller('SignupUserCtrl', function ($rootScope, $scope, $translatePartialLoader, single, $window,$routeParams,
+        .controller('SignupUserCtrl', function ($rootScope, $scope, $log, $translatePartialLoader, single, $window,$routeParams,
                                                 $location, $translate, signupRestAPI, qeventbus, vcRecaptchaService) {
             $translatePartialLoader.addPart('user').addPart('commons');
             qeventbus.prepForBroadcast('menuItem', 'signup');
@@ -71,9 +71,10 @@
                                 if (data2 === null) {
                                     toastr.error($translate.instant('signupStartPage.form.messageControl.unknown'));
                                 } else {
+                                    $log.debug("ererer coucouc");
                                     delete $scope.signup;
                                     delete $scope.passwdConfirm;
-                                    $rootScope.user = data2.person;
+                                    //$rootScope.user = data2.person;
                                     $location.path('/signup/done');
                                 }
                             }).error(function (error) {
