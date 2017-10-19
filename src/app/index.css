@@ -1903,8 +1903,7 @@ span#top {
 .credit-card {
     background-color: #171a1c;
     border-radius: 1rem;
-    padding: 2rem;
-    padding-bottom: 3rem;
+    padding: 2rem 2rem 3rem;
     font-size: 32px;
     background-position: center, bottom 0.5em right 0.5em;
     background-size: cover, 4em auto;
