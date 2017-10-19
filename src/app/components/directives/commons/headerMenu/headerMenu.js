@@ -133,15 +133,23 @@
                         $log.debug('[headerMenu] qeventbus:login', $scope.user.account);
                         $scope.hideTrial = true;
                         if($scope.user.account.status === 'TRIAL'){
+                            $scope.hideTrial = false;
                             angular.forEach($scope.user.account.listPlan, function (plan) {
                                 $scope.intrial = true;
-                                $scope.hideTrial = false;
                                 var endDate = moment(plan.endPeriodDate);
-                                $scope.endTrial = moment.duration(moment().diff(endDate)).asDays() - 1;
+                                $scope.endTrial = moment.duration(endDate.diff(moment())).asDays() - 1;
+                                $log.debug('[headerMenu] qeventbus:login', $scope.endTrial, endDate, moment());
+                                if($scope.endTrial < 0) {
+                                    $scope.endTrial = 0;
+                                    $scope.notpaid = true;
+                                    $location.path('/private/billing');
+                                    return;
+                                }
                                 $scope.trialCountVal = {
-                                    count: $filter('number')($scope.endTrial*-1, 0),
+                                    count: $filter('number')($scope.endTrial, 0),
                                     intCount: $scope.endTrial
                                 };
+                                $log.debug('[headerMenu] qeventbus:login', $scope.trialCountVal);
                             });
                         }
                         $scope.loadMetaInfos();
