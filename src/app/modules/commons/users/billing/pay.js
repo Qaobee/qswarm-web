@@ -29,10 +29,12 @@
          */
         .controller('PayProfileCtrl', function ($rootScope, $scope, paymentAPI, $routeParams, $window, $translate,
                                                 $translatePartialLoader, qeventbus, user, $location, userRestAPI, $log,
-                                                paramsRestAPI, params) {
-            $log.debug('[qaobee.user.billing.pay] - PayProfileCtrl');
-            $scope.willPay = false;
+                                                params) {
+
+            window.Stripe.setPublishableKey(params.pay_api_key);
             $translatePartialLoader.addPart('commons').addPart('user');
+            $log.debug('[qaobee.user.billing.pay] - PayProfileCtrl', $routeParams.index);
+            $scope.willPay = false;
             qeventbus.prepForBroadcast('menuItem', 'billing');
             $scope.user = user;
             $scope.modalClosed = false;
@@ -41,8 +43,6 @@
             $scope.paid = false;
             $scope.inProgress = false;
             $scope.name = $scope.user.firstname + ' ' + $scope.user.name;
-
-            window.Stripe.setPublishableKey(params.pay_api_key);
 
             /**
              * Back button

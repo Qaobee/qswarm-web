@@ -35,9 +35,9 @@
                 </div>
 
                 <div ng-if="plan.status === 'open' || plan.status === 'canceled'" class="col m8 center-align">
-                    <button ng-click="pay($index)"
+                    <a ng-click="pay($index)"
                             class="btn waves-effect waves-white secondary-color pull-right"
-                            translate="billingPage.label.pay.title"></button>
+                            translate="billingPage.label.pay.title"></a>
                 </div>
                 <div ng-if="plan.status !== 'canceled' && plan.status !== 'open'">
                     <div class="col m1 center-align"><span
