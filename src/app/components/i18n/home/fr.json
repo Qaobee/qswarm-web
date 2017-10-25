@@ -2,19 +2,19 @@
   "intro": {
     "step1": {
       "title": "Bienvenue sur Qaobee !",
-      "desc": "Prenons quelques instants pour découvrir les principales fonctionnalités de l'application."
+      "desc": "<b>Vous bénéficiez d'un mois gratuit à compter de la date de création de votre compte</b>.<br> Prenons quelques instants pour découvrir les principales fonctionnalités de l'application."
     },
     "step2": {
       "title": "Restez à l'affût",
-      "desc": "Les notifications ..."
+      "desc": "Les notifications vous permettent de suivre l'actualité de votre compte, voir vos dernières collectes, où, si vous partagez votre espace avec un autre utilisateur, suivre les dernières mises à jour."
     },
     "step3": {
       "title": "Planifiez vos matchs !",
-      "desc": "Les événements ..."
+      "desc": "Préparez les matchs à venir dans votre agenda. Vous pouvez enregistrer les matchs amicaux, de championnat ou de coupe, pour l'ensemble de vos équipes"
     },
     "step4": {
       "title": "Consultez vos stats !",
-      "desc": "Les collectes ..."
+      "desc": "Les collectes réalisées via notre application mobile sont synchronisées avec votre compte Web. Vous pouvez ansi retrouvez toutes les stats de vos joueurs, de vos équipes ou d'un match en particulier"
     },
     "step5": {
       "title": "Félicitations !",
