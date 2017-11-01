@@ -1132,6 +1132,10 @@ span.badge {
     text-align: justify;
     text-indent: 10px;
 }
+div.legal .container ul > li{
+    list-style: disc !important;
+    margin-left: 2em;
+}
 
 .nav-wrapper a.brand-logo {
     font-size: 150%;

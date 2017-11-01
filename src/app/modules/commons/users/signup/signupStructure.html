@@ -183,11 +183,20 @@
                         </div>
                         <div class="row container">
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
-                            <div class="col s12 m10 input-field">
+                            <div class="col s6 m5">
                                 <div vc-recaptcha ng-model="signup.captcha"
                                      on-create="setWidgetId(widgetId)"
                                      on-expire="cbExpiration()"
                                 ></div>
+                            </div>
+                            <div class="col s6 m5">
+                                <input type="checkbox" id="cgv" required="true" ng-model="cgv"/>
+                                <label for="cgv">Accèpter les <a href="#/legal-agreement" target="_blank">conditions
+                                    de
+                                    service</a>
+                                    et la <a href="#/privacy-policy" target="_blank">politique
+                                        de
+                                        confidentialité</a></label>
                             </div>
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
                         </div>
@@ -200,7 +209,7 @@
                                         translate="commons.buttons.cancel"></button>
 
                                 <button ng-click="createStructure()" translate="commons.buttons.validate"
-                                        ng-disabled="createStructureForm.$invalid" tabindex="8"
+                                        ng-disabled="createStructureForm.$invalid && !cgv" tabindex="8"
                                         ng-class="{'btn waves-effect waves-white disabled': createStructureForm.$invalid,
                                               'btn waves-effect waves-white secondary-color': !createStructureForm.$invalid}">
                                 </button>

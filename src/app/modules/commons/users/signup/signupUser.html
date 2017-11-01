@@ -102,11 +102,20 @@
         <!-- Captcha -->
         <div class="row container" ng-if="single">
             <div class="col m1 hide-on-small-only">&nbsp;</div>
-            <div class="col s12 m10 input-field">
+            <div class="col s6 m5">
                 <div vc-recaptcha ng-model="signup.captcha"
                      on-create="setWidgetId(widgetId)"
                      on-expire="cbExpiration()"
                 ></div>
+            </div>
+            <div class="col s6 m5">
+                <input type="checkbox" id="cgv" required="true" ng-model="cgv"/>
+                <label for="cgv">Accèpter les <a href="#/legal-agreement" target="_blank">conditions
+                de
+                service</a>
+                    et la <a href="#/privacy-policy" target="_blank">politique
+                    de
+                    confidentialité</a></label>
             </div>
             <div class="col m1 hide-on-small-only">&nbsp;</div>
         </div>
@@ -119,7 +128,8 @@
                    translate="commons.buttons.cancel" tabindex="9">
                 </a>
                 <button type="submit"
-                        translate="commons.buttons.validate" ng-disabled="signupStartPageForm.$invalid" tabindex="8"
+                        translate="commons.buttons.validate" ng-disabled="signupStartPageForm.$invalid && !cgv"
+                        tabindex="8"
                         ng-class="{'btn btn-s waves-effect waves-white disabled': signupStartPageForm.$invalid, 
                                   'btn btn-s waves-effect waves-white secondary-color': !signupStartPageForm.$invalid}">
                 </button>

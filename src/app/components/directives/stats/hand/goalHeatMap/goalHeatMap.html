@@ -49,26 +49,27 @@
         </div>
         <div class="row" ng-if="isTeam">
             <div class="col s12 center">
-                    <input name="group1" type="radio" id="myTeam" ng-model="indicator" ng-change="buildAll()"
-                           ng-checked="(indicator.impactShoot === 'impactShootAtt')"
-                           ng-value="{impactShoot : 'impactShootAtt', stopGK : 'stopGKAtt',originShoot : 'originShootAtt', goalType:'goalScored'}"
-                    />
-                    <label for="myTeam" translate="stats.myteam"></label>
-                
-                    <input name="group1" type="radio" id="adverssary" ng-model="indicator" ng-change="buildAll()"
-                           ng-checked="(indicator.impactShoot === 'impactShootDef')"
-                           ng-value="{impactShoot : 'impactShootDef', stopGK : 'stopGKDef',originShoot : 'originShootDef', goalType:'goalConceded'}"
-                    />
-                    <label for="adverssary" translate="stats.adversary"></label>
+                <input name="group1" type="radio" id="myTeam" ng-model="indicator" ng-change="buildAll()"
+                       ng-checked="(indicator.impactShoot === 'impactShootAtt')"
+                       ng-value="{impactShoot : 'impactShootAtt', stopGK : 'stopGKAtt',originShoot : 'originShootAtt', goalType:'goalScored'}"
+                />
+                <label for="myTeam" translate="stats.myteam"></label>
+
+                <input name="group1" type="radio" id="adverssary" ng-model="indicator" ng-change="buildAll()"
+                       ng-checked="(indicator.impactShoot === 'impactShootDef')"
+                       ng-value="{impactShoot : 'impactShootDef', stopGK : 'stopGKDef',originShoot : 'originShootDef', goalType:'goalConceded'}"
+                />
+                <label for="adverssary" translate="stats.adversary"></label>
             </div>
-        </div>    
+        </div>
         <div class="row">
             <div class="col s12 center">
-                    <input type="checkbox" class="filled-in" id="succeeded" ng-model="succeededGoals" ng-click="buildAll()"/>
-                    <label for="succeeded" translate="stats.label.goalScored"></label>
-                
-                    <input type="checkbox" class="filled-in" id="stoped" ng-model="stopedGoals" ng-click="buildAll()"/>
-                    <label for="stoped" translate="stats.label.stopOk"></label>
+                <input type="checkbox" class="filled-in" id="succeeded" ng-model="succeededGoals"
+                       ng-click="buildAll()"/>
+                <label for="succeeded" translate="stats.label.goalScored"></label>
+
+                <input type="checkbox" class="filled-in" id="stoped" ng-model="stopedGoals" ng-click="buildAll()"/>
+                <label for="stoped" translate="stats.label.stopOk"></label>
             </div>
         </div>
     </div>

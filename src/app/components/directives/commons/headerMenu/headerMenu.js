@@ -130,7 +130,7 @@
                     $scope.$on('qeventbus:login', function () {
                         $scope.user = qeventbus.data;
                         $scope.endTrial = 999;
-                        $log.debug('[headerMenu] qeventbus:login', $scope.user.account);
+                        $log.debug('[headerMenu] qeventbus:login', $scope.user.account, $location.path());
                         $scope.hideTrial = true;
                         if($scope.user.account.status === 'TRIAL'){
                             $scope.hideTrial = false;

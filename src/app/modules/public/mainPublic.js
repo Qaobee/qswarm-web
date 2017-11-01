@@ -38,6 +38,12 @@
             }).when('/news', {
                 controller: 'NewsCtrl',
                 templateUrl: 'app/modules/public/news.html'
+            }).when('/privacy-policy', {
+                controller: 'PrivacyCtrl',
+                templateUrl: 'app/modules/public/privacy-policy.html'
+            }).when('/legal-agreement', {
+                controller: 'LegalAgreementCtrl',
+                templateUrl: 'app/modules/public/legal-agreement.html'
             });
             ezfbProvider.setInitParams({
                 appId: '239177912791979', version: 'v2.3'
@@ -166,5 +172,9 @@
          */
         .controller('MentionslegalesCtrl', function (qeventbus) {
             qeventbus.prepForBroadcast('menuItem', 'legal');
+        })
+        .controller('PrivacyCtrl', function () {
+        })
+        .controller('LegalAgreementCtrl', function () {
         });
 }());
