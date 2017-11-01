@@ -10,8 +10,8 @@
 
     <div class="row" ng-if="!paid">
         <div class="col s12 l6 offset-l3">
-            <form stripe-form="handleStripe" name="stripeForm" class="card-form2">
-                <div class="credit-card2" ng-class="stripeForm.number.$card.type">
+            <form stripe-form="handleStripe" name="stripeForm" class="card-form">
+                <div class="credit-card" ng-class="stripeForm.number.$card.type">
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="prefix fa fa-fw fa-credit-card"></i>
