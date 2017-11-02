@@ -5,7 +5,6 @@
 
     <!-- Entete -->
     <title-page-bar icon="verified_user" title="billingPage.title" display-back="{{true}}"></title-page-bar>
-
     <!-- Large view-->
     <div class="row hide-on-med-and-down">
         <div class="col s12">
@@ -56,7 +55,7 @@
                             <div class="progress" ng-if="inProgress">
                                 <div class="indeterminate"></div>
                             </div>
-                            {{'billingPage.label.pay.unsubscribe' | translate}}
+                            {{'billingPage.label.pay.unsubscribe.button' | translate}}
                         </button>
                     </div>
                 </div>
@@ -92,7 +91,7 @@
                             <div class="progress" ng-if="inProgress">
                                 <div class="indeterminate"></div>
                             </div>
-                            {{'billingPage.label.pay.unsubscribe' | translate}}
+                            {{'billingPage.label.pay.unsubscribe.button' | translate}}
                         </button>
                     </div>
                     <div class="col s6 center-align" ng-if="plan.status==='canceled'"></div>
@@ -102,5 +101,16 @@
                 </span>
             </div>
         </div>
+    </div>
+</div>
+<div id="unsubscribeModal" class="modal">
+    <div class="modal-content">
+        <h4 translate="billingPage.label.pay.unsubscribe.title"></h4>
+        <p translate="billingPage.label.pay.unsubscribe.content"></p>
+    </div>
+    <div class="modal-footer">
+        <button class="modal-action modal-close waves-effect waves-white btn dark-primary-color"
+                translate="commons.buttons.cancel"></button>
+        <button class="modal-action modal-close btn waves-effect waves-white accent-color" ng-click="agree()" translate="commons.buttons.validate"></button>
     </div>
 </div>

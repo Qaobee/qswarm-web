@@ -45,22 +45,35 @@
                 $location.path('/private/billing/pay/' + planId);
             };
 
+            $scope.agree = function () {
+                $log.debug('[qaobee.user.billing] - agree', $scope.planId);
+
+                if (angular.isDefined($scope.planId)) {
+                    $scope.inProgress = true;
+                    paymentAPI.unsubscribe($scope.planId).then(function (data) {
+                        $scope.inProgress = false;
+                        $log.debug('[qaobee.user.billing] - agree', data);
+                        delete $scope.planId;
+                        $window.location.reload();
+                    }, function (data) {
+                        $scope.inProgress = false;
+                        toastr.error(data.data.message);
+                        delete $scope.planId;
+                    });
+                }
+            };
             /**
              * Leave the offer
              *
              * @param planId
              */
             $scope.unsubscribe = function (planId) {
+                $scope.planId = planId;
                 $log.debug('[qaobee.user.billing] - unsubscribe', planId);
-                $scope.inProgress = true;
-                paymentAPI.unsubscribe(planId).then(function (data) {
-                    $scope.inProgress = false;
-                    $log.debug('[qaobee.user.billing] - unsubscribe', data);
-                    $window.location.reload();
-                }, function (data) {
-                    $scope.inProgress = false;
-                    toastr.error(data.data.message);
+                angular.element('#unsubscribeModal').modal({
+                    dismissible: false
                 });
+                angular.element('#unsubscribeModal').modal('open');
             };
 
             $scope.user = user;

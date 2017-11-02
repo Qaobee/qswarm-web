@@ -29,7 +29,7 @@
          */
         .controller('PayProfileCtrl', function ($rootScope, $scope, paymentAPI, $routeParams, $window, $translate,
                                                 $translatePartialLoader, qeventbus, user, $location, userRestAPI, $log,
-                                                params) {
+                                                params, $timeout) {
 
             window.Stripe.setPublishableKey(params.pay_api_key);
             $translatePartialLoader.addPart('commons').addPart('user');
@@ -43,7 +43,6 @@
             $scope.paid = false;
             $scope.inProgress = false;
             $scope.name = $scope.user.firstname + ' ' + $scope.user.name;
-
             /**
              * Back button
              */
@@ -61,6 +60,7 @@
                     planId: parseInt($routeParams.index)
                 };
                 paymentAPI.pay(payInfo).then(function (data) {
+                    $log.debug('[qaobee.user.billing.pay] - doPay', payInfo, data);
                     $scope.inProgress = false;
                     if (data.data.status) {
                         var token = $window.sessionStorage.qaobeesession;
@@ -69,7 +69,17 @@
                                 angular.merge($rootScope.user, data);
                                 qeventbus.prepForBroadcast('login', $rootScope.user);
                                 qeventbus.prepForBroadcast('refreshUser', $rootScope.user);
-                                $location.path('/private/billing');
+                                angular.element('#modalPaimentSuccess').modal({
+                                    dismissible: false,
+                                    complete: function() {
+                                        $log.debug('[qaobee.user.billing.pay] - doPay - popup close');
+                                        $timeout(function(){
+                                            $location.path('/private/billing');
+                                        });
+                                    }
+                                });
+                                $scope.paid = true;
+                                angular.element('#modalPaimentSuccess').modal('open');
                             });
                         } else {
                             $location.path('/');

@@ -65,7 +65,7 @@
       "product": "Abonnement",
       "price": "Prix",
       "activity": "Activité",
-      "trial" : "En période d'essai",
+      "trial": "En période d'essai",
       "trialEnded": "Période d'essai terminée",
       "pay": {
         "title": "Souscrire",
@@ -73,26 +73,34 @@
         "name": "Nom du porteur",
         "cardNumber": "N° de carte",
         "expiry": "Expire le",
-        "cvc" : "Code de vérification",
-        "email" : "E-mail",
-        "pay" : "Payer",
-        "unsubscribe": "Cloturer",
-        "error_code" : {
-          "incorrect_cvc" : "Le code de vérification de votre carte est erroné",
-          "card_declined" : "Votre carte a été refusée {{reason}}",
-          "expired_card" : "Votre carte est expirée",
-          "processing_error" : "Une erreur s'est produite",
-          "incorrect_number" : "Ce numéro de carte est invalide",
-          "fraudulent" : " : Tentative de fraude détectée"
+        "cvc": "Code de vérification",
+        "email": "E-mail",
+        "pay": "Payer",
+        "success": {
+          "title": "Félicitations!!",
+          "content": "Le paiement a été effectué avec succès et nous vous en remercions :)"
+        },
+        "unsubscribe": {
+          "button": "Cloturer",
+          "title": "Attention !",
+          "content": "Vous êtes sur le point de résilier votre abonnement. Êtes vous sur?"
+        },
+        "error_code": {
+          "incorrect_cvc": "Le code de vérification de votre carte est erroné",
+          "card_declined": "Votre carte a été refusée {{reason}}",
+          "expired_card": "Votre carte est expirée",
+          "processing_error": "Une erreur s'est produite",
+          "incorrect_number": "Ce numéro de carte est invalide",
+          "fraudulent": " : Tentative de fraude détectée"
         }
       },
-      "status" : {
-        "open" : "Période d'essai jusqu'au {{value}}",
-        "canceled" : "Annulé",
+      "status": {
+        "open": "Période d'essai jusqu'au {{value}}",
+        "canceled": "Annulé",
         "trialing": "Période d'essai jusqu'au {{value}}",
-        "active" : "Activé",
-        "past_due" : "Paiement échoué",
-        "unpaid" : "Non payé"
+        "active": "Activé",
+        "past_due": "Paiement échoué",
+        "unpaid": "Non payé"
       }
     }
   },

@@ -1,6 +1,6 @@
 {
   "profileMainPage": {
-      "title":"Mon profil",
+    "title": "Mon profil",
     "tabs": {
       "account": "Mon compte",
       "sandbox": "Mes espaces de travail",
@@ -19,9 +19,9 @@
   },
   "sbSharingPage": {
     "title": "Partager espace de travail",
-    "label" : {
-        "byUser" : "Cherchez un utilisateur",
-        "byMail" : "Renseignez l'adresse mail de vos collaborateurs"
+    "label": {
+      "byUser": "Cherchez un utilisateur",
+      "byMail": "Renseignez l'adresse mail de vos collaborateurs"
     },
     "messageControl": {
       "success": "Les invitations ont été bien envoyées",
@@ -66,7 +66,7 @@
       "price": "Prix",
       "activity": "Activité",
       "cardNumber": "N° de carte",
-      "trial" : "Trial period",
+      "trial": "Trial period",
       "trialEnded": "Trial period ended",
       "pay": {
         "title": "Souscrire",
@@ -74,26 +74,34 @@
         "name": "Nom du porteur",
         "cardNumber": "N° de carte",
         "expiry": "Expire le",
-        "cvc" : "Code de vérification",
-        "email" : "E-mail",
-        "pay" : "Pay",
-        "unsubscribe": "Unsubscribe",
-        "error_code" : {
-          "incorrect_cvc" : "Le code de vérification de votre carte est erroné",
-          "card_declined" : "Votre carte a été refusée {{reason}}",
-          "expired_card" : "Votre carte est expirée",
-          "processing_error" : "Une erreur s'est produite",
-          "incorrect_number" : "Ce numéro de carte est invalide",
-          "fraudulent" : " : Tentative de fraude détectée"
+        "cvc": "Code de vérification",
+        "email": "E-mail",
+        "pay": "Pay",
+        "success": {
+          "title": "Well done!!",
+          "content": "Thank you, your payment is successful :)"
+        },
+        "unsubscribe": {
+          "button": "Unsubscribe",
+          "title": "Warning !",
+          "content": "You are about to unsubscribe. Are you sure?"
+        },
+        "error_code": {
+          "incorrect_cvc": "Le code de vérification de votre carte est erroné",
+          "card_declined": "Votre carte a été refusée {{reason}}",
+          "expired_card": "Votre carte est expirée",
+          "processing_error": "Une erreur s'est produite",
+          "incorrect_number": "Ce numéro de carte est invalide",
+          "fraudulent": " : Tentative de fraude détectée"
         }
       },
-      "status" : {
-        "open" : "Période d'essai jusqu'au {{value}}",
-        "canceled" : "Annulé",
+      "status": {
+        "open": "Période d'essai jusqu'au {{value}}",
+        "canceled": "Annulé",
         "trialing": "Période d'essai jusqu'au {{value}}",
-        "active" : "Activé",
-        "past_due" : "Paiement échoué",
-        "unpaid" : "Non payé"
+        "active": "Activé",
+        "past_due": "Paiement échoué",
+        "unpaid": "Non payé"
       }
     }
   },
@@ -216,7 +224,6 @@
   },
   "invitationPage": {
     "title": "Création de votre espace de travail",
-    
     "errorPage": {
       "title": "Erreur !",
       "text": "La validation de votre inscription n'a pu aboutir pour la raison suivante : ",
@@ -230,7 +237,7 @@
   "invitationCancel": {
     "title": "Merci de votre visite",
     "text": "Nous n'avons pas eu le temps de nous connaître. Laissez nous votre avec le bouton feedback",
-    "buttonHome": "Accueil"  
+    "buttonHome": "Accueil"
   },
   "signupStartDonePage": {
     "title": "Félicitation ! Votre compte est créé !",

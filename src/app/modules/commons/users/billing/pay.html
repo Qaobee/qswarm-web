@@ -5,7 +5,7 @@
 
     <!-- Entete -->
     <title-page-bar icon="verified_user" title="billingPage.label.pay.title" display-back="{{true}}"></title-page-bar>
-    <h4 class="center">{{'billingPage.label.pay.content' | translate}} <b>{{plan.levelPlan}}</b></h4>
+    <h4 class="center" ng-if="!paid">{{'billingPage.label.pay.content' | translate}} <b>{{plan.levelPlan}}</b></h4>
     <h2 ng-if="message">{{message}}</h2>
 
     <div class="row" ng-if="!paid">
@@ -48,8 +48,7 @@
                     <div class="col s12">
                         <div class="pull-right">
                             <input type="checkbox" id="cgv" required="true" ng-model="cgv"/>
-                            <label for="cgv">Accèpter les <a href="#/legal-agreement" target="_blank">conditions de service</a>
-                                et la <a href="#/privacy-policy" target="_blank">politique de confidentialité</a></label>
+                            <label for="cgv" translate="commons.legals.gcu"></label>
                         </div>
                     </div>
                 </div>
@@ -70,5 +69,18 @@
                 </div>
             </form>
         </div>
+    </div>
+</div>
+<div id="modalPaimentSuccess" class="modal">
+    <div class="modal-content">
+        <h5>
+            <span class="fa fa-thumbs-o-up"></span>
+            <span translate="billingPage.label.pay.success.title"></span>
+        </h5>
+        <p translate="billingPage.label.pay.success.content"></p>
+    </div>
+    <div class="modal-footer">
+        <button class="modal-action modal-close waves-effect waves-white btn dark-primary-color"
+           translate="commons.buttons.close"></button>
     </div>
 </div>

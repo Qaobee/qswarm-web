@@ -166,7 +166,9 @@
                             default:
                                 // is it his first visit?
                                 qeventbus.prepForBroadcast('notifications', {});
-                                $location.path('/private');
+                                if($location.path() === '/') {
+                                    $location.path('/private');
+                                }
                         }
                     });
 

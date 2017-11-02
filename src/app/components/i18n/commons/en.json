@@ -46,6 +46,9 @@
       "share": "Share",
       "pdfExport": "Export to PDF"
     },
+    "legals" : {
+      "gcu": "Accept the <a href=\"#/legal-agreement\" target=\"_blank\">GCU</a> and the <a href=\"#/privacy-policy\" target=\"_blank\">privacy policy</a>"
+    },
     "buttons": {
       "validate": "Validate",
       "cancel": "Cancel",
