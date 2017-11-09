@@ -7,7 +7,7 @@
      * @class qaobee.user.changePwd
      * @copyright <b>QaoBee</b>.
      */
-    angular.module('qaobee.user.billing', ['qaobee.user.billing.pay'])
+    angular.module('qaobee.user.billing', [])
 
         .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/billing', {

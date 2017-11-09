@@ -73,6 +73,8 @@
             'qaobee.widget.statsPlayerUse',
             'qaobee.user.mainProfile',
             'qaobee.notifications',
+            'qaobee.user.billing.pay',
+            'qaobee.user.billing',
             'qaobee.test'
         ])
 
@@ -137,6 +139,18 @@
             });
             $rootScope.$on('$locationChangeSuccess', function () {
                 $log.debug('qswarmWeb index - run - $locationChangeSuccess', $location.path());
+                if($rootScope.user && !$location.path().match(/\/private\/billing.*/)) {
+                    switch ($rootScope.user.account.status) {
+                        case 'NOT_PAID':
+                            $location.path('/private/billing');
+                            break;
+                        case 'TRIAL_ENDED':
+                            $location.path('/private/billing');
+                            break;
+                        default:
+                            break;
+                    }
+                }
                 $window.ga('send', 'pageview', $location.path());
             });
             if (top.location.href !== self.location.href) {
