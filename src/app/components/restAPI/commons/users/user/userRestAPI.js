@@ -131,6 +131,13 @@
                         url: userURL + '/userByLogin?login=' + login,
                         method: 'GET'
                     });
+                },
+                decrypt: function (id, hash) {
+                    return $http({
+                        url: userURL + '/decrypt',
+                        method: 'POST',
+                        data: {_id: id, secret: hash}
+                    });
                 }
             };
         });

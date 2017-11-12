@@ -75,6 +75,7 @@
             'qaobee.notifications',
             'qaobee.user.billing.pay',
             'qaobee.user.billing',
+            'qaobee.user.sso',
             'qaobee.test'
         ])
 
