@@ -140,7 +140,8 @@
             });
             $rootScope.$on('$locationChangeSuccess', function () {
                 $log.debug('qswarmWeb index - run - $locationChangeSuccess', $location.path());
-                if($rootScope.user && !$location.path().match(/\/private\/billing.*/)) {
+                if($rootScope.user && !$location.path().match(/\/private\/billing.*/) && !$location.path().match(/\/sso/) ) {
+                    $log.debug('qswarmWeb index - run - $locationChangeSuccess', $rootScope.user.account.status);
                     switch ($rootScope.user.account.status) {
                         case 'NOT_PAID':
                             $location.path('/private/billing');
