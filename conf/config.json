@@ -18,7 +18,7 @@
       "name": "docker",
       "apiEndPoint": "",
       "useLoaderCache": true,
-      "debugEnabled": true,
+      "debugEnabled": false,
       "captchaKey" : "6LcTjvcSAAAAABAnHBqs95JQCdYNXToXMA30ksEF",
       "uaid" : "UA-72906581-1",
       "appMobile" : {

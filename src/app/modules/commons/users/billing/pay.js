@@ -13,12 +13,11 @@
         'paymentRestAPI'
     ])
 
-        .config(function ($routeProvider, metaProvider, userProvider, paramServiceProvider) {
+        .config(function ($routeProvider, metaProvider, userProvider) {
             $routeProvider.when('/private/billing/pay/:index', {
                 controller: 'PayProfileCtrl',
                 resolve: {
-                    user: userProvider.$get,
-                    params: paramServiceProvider.$get
+                    user: userProvider.$get
                 },
                 templateUrl: 'app/modules/commons/users/billing/pay.html'
             });
@@ -29,20 +28,39 @@
          */
         .controller('PayProfileCtrl', function ($rootScope, $scope, paymentAPI, $routeParams, $window, $translate,
                                                 $translatePartialLoader, qeventbus, user, $location, userRestAPI, $log,
-                                                params, $timeout) {
-
-            window.Stripe.setPublishableKey(params.pay_api_key);
+                                                $timeout, paramsRestAPI) {
             $translatePartialLoader.addPart('commons').addPart('user');
             $log.debug('[qaobee.user.billing.pay] - PayProfileCtrl', $routeParams.index);
-            $scope.willPay = false;
             qeventbus.prepForBroadcast('menuItem', 'billing');
+
+            $scope.willPay = false;
             $scope.user = user;
+            $log.debug('[qaobee.user.billing.pay] -', user);
+
             $scope.modalClosed = false;
             $scope.index = $routeParams.index;
             $scope.plan = $scope.user.account.listPlan[$routeParams.index];
             $scope.paid = false;
             $scope.inProgress = false;
             $scope.name = $scope.user.firstname + ' ' + $scope.user.name;
+
+            $scope.init = function() {
+                if (angular.isUndefined($rootScope.params)) {
+                    paramsRestAPI.getParams().success(function (data) {
+                        if (angular.isDefined(data) && data !== null) {
+                            $rootScope.params = data;
+                            window.Stripe.setPublishableKey($rootScope.params.pay_api_key);
+                        }
+                    });
+                } else {
+                    window.Stripe.setPublishableKey($rootScope.params.pay_api_key);
+                }
+            };
+
+            $timeout(function(){
+                $scope.init();
+            });
+
             /**
              * Back button
              */
