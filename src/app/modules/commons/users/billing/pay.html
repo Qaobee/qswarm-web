@@ -47,11 +47,29 @@
                 <div class="row">
                     <div class="col s12">
                         <div class="pull-right">
+                            <b translate="billingPage.label.pay.interval"></b>
+                            <div class="switch billing-switch">
+                                <label>
+                                    <span translate="billingPage.label.pay.monthly"></span>
+                                    <input type="checkbox" ng-click="updateInterval()"
+                                           ng-checked="yearly">
+                                    <span class="lever"></span>
+                                    <span translate="billingPage.label.pay.yearly"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s12">
+                        <div class="pull-right">
                             <input type="checkbox" id="cgv" required="true" ng-model="cgv"/>
                             <label for="cgv" translate="commons.legals.gcu"></label>
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="input-field col s12">
                         <a class="btn waves-effect waves-white light-primary-color pull-left"
@@ -63,7 +81,7 @@
                             <span class="progress" ng-if="inProgress">
                                 <span class="indeterminate"></span>
                             </span>
-                            {{'billingPage.label.pay.pay' | translate}} {{plan.amountPaid}} €
+                            {{'billingPage.label.pay.pay' | translate}} {{getAmountToPay(plan)}} €
                         </button>
                     </div>
                 </div>
@@ -81,6 +99,6 @@
     </div>
     <div class="modal-footer">
         <button class="modal-action modal-close waves-effect waves-white btn dark-primary-color"
-           translate="commons.buttons.close"></button>
+                translate="commons.buttons.close"></button>
     </div>
 </div>

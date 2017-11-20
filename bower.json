@@ -70,12 +70,9 @@
     "angular-easyfb": "^1.5.2"
   },
   "resolutions": {
-    "angular-cookies": "1.5.11",
     "lodash": "^3.0.1",
-    "jquery": "2.1.4",
     "angular": "1.5.11",
     "angular-materialize": "0.2.2",
-    "angular-translate": "^2.13.1",
     "materialize": "0.100.2"
   },
   "overrides": {

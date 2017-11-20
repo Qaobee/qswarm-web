@@ -36,7 +36,7 @@
             $scope.willPay = false;
             $scope.user = user;
             $log.debug('[qaobee.user.billing.pay] -', user);
-
+            $scope.yearly = false;
             $scope.modalClosed = false;
             $scope.index = $routeParams.index;
             $scope.plan = $scope.user.account.listPlan[$routeParams.index];
@@ -44,7 +44,7 @@
             $scope.inProgress = false;
             $scope.name = $scope.user.firstname + ' ' + $scope.user.name;
 
-            $scope.init = function() {
+            $scope.init = function () {
                 if (angular.isUndefined($rootScope.params)) {
                     paramsRestAPI.getParams().success(function (data) {
                         if (angular.isDefined(data) && data !== null) {
@@ -57,7 +57,7 @@
                 }
             };
 
-            $timeout(function(){
+            $timeout(function () {
                 $scope.init();
             });
 
@@ -68,6 +68,22 @@
                 $window.history.back();
             };
 
+            $scope.updateInterval = function () {
+                $scope.yearly = !$scope.yearly;
+                $log.debug('[qaobee.user.billing.pay] - updateInterval', $rootScope.params.plan[$scope.plan.levelPlan], $scope.yearly);
+                if ($rootScope.params) {
+                    if ($scope.yearly) {
+                        $scope.plan.amountPaid = $rootScope.params.plan[$scope.plan.levelPlan].price_y;
+                    } else {
+                        $scope.plan.amountPaid = $rootScope.params.plan[$scope.plan.levelPlan].price;
+                    }
+                }
+                $log.debug('[qaobee.user.billing.pay] - updateInterval', $scope.plan.amountPaid);
+            };
+
+            $scope.getAmountToPay = function () {
+                return $scope.plan.amountPaid;
+            };
             /**
              * Pay the bill
              */
@@ -75,7 +91,9 @@
                 var payInfo = {
                     token: response.id,
                     user_id: $scope.user._id,
-                    planId: parseInt($routeParams.index)
+                    planId: parseInt($routeParams.index),
+                    levelPlan: $scope.plan.levelPlan,
+                    yearly: $scope.yearly
                 };
                 paymentAPI.pay(payInfo).then(function (data) {
                     $log.debug('[qaobee.user.billing.pay] - doPay', payInfo, data);
@@ -89,9 +107,9 @@
                                 qeventbus.prepForBroadcast('refreshUser', $rootScope.user);
                                 angular.element('#modalPaimentSuccess').modal({
                                     dismissible: false,
-                                    complete: function() {
+                                    complete: function () {
                                         $log.debug('[qaobee.user.billing.pay] - doPay - popup close');
-                                        $timeout(function(){
+                                        $timeout(function () {
                                             $location.path('/private/billing');
                                         });
                                     }

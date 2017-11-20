@@ -20,9 +20,7 @@
                     return $http({
                         url: paymentURL + '/pay',
                         method: 'POST',
-                        data: {
-                            data: data
-                        }
+                        data: data
                     });
                 },
                 /**

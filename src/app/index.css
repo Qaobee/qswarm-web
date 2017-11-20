@@ -1958,3 +1958,9 @@ span#top {
     -o-transition: opacity 0.1s ease-out;
     transition: opacity 0.1s ease-out;
 }
+
+
+.billing-switch label span {
+    color: #000;
+    font-weight: bold;
+}

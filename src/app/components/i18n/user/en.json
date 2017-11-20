@@ -77,6 +77,9 @@
         "cvc": "Code de vérification",
         "email": "E-mail",
         "pay": "Pay",
+        "interval": "Interval",
+        "monthly": "monthly",
+        "yearly": "yearly",
         "success": {
           "title": "Well done!!",
           "content": "Thank you, your payment is successful :)"
