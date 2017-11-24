@@ -1,6 +1,7 @@
 'use strict';
-
+var git = require('git-rev-sync');
 var path = require('path');
+var swPrecache = require('sw-precache');
 var gulp = require('gulp');
 var conf = require('./conf');
 var replace = require('gulp-replace');
@@ -55,9 +56,9 @@ gulp.task('html', ['inject', 'partials'], function () {
         .pipe(replace(/font\/[^\/]+\/([^\/]+)/g, 'fonts/$1'))
         .pipe(replace(/fonts\/[^\/]+\/([^\/]+)/g, 'fonts/$1'))
         .pipe(replace(/fonts\/fonts\//g, 'fonts/'))
-        .pipe($.sourcemaps.init())
+       // .pipe($.sourcemaps.init())
         .pipe($.minifyCss({processImport: false}))
-        .pipe($.sourcemaps.write('maps'))
+     //   .pipe($.sourcemaps.write('maps'))
         .pipe(cssFilter.restore)
         .pipe(assets.restore())
         .pipe($.useref())
@@ -100,13 +101,17 @@ gulp.task('delete-empty-directories', function () {
 });
 gulp.task('i18n', function () {
     return gulp.src([
-        'bower_components/angular-i18n/*'
+        'bower_components/angular-i18n/fr*',
+        'bower_components/angular-i18n/en*',
+        'bower_components/angular-i18n/angular-locale_fr*',
+        'bower_components/angular-i18n/angular-locale_en*'
     ])
-        .pipe(gulp.dest(conf.paths.dist + '/i18n/'));
+    .pipe(gulp.dest(conf.paths.dist + '/bower_components/angular-i18n/'));
 });
 gulp.task('momentjs', function () {
     return gulp.src([
-        'bower_components/momentjs/locale/*'
+        'bower_components/momentjs/locale/fr*',
+        'bower_components/momentjs/locale/en*'
     ])
         .pipe(gulp.dest(conf.paths.dist + '/bower_components/momentjs/locale/'));
 });
@@ -120,15 +125,18 @@ gulp.task('images', function () {
 });
 
 gulp.task('generate-service-worker', function (callback) {
-    var path = require('path');
-    var swPrecache = require('sw-precache');
-    var rootDir = 'app';
-
     swPrecache.write(path.join(conf.paths.dist, 'service-worker.js'), {
-        staticFileGlobs: [conf.paths.dist + '/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff}'],
-        stripPrefix: conf.paths.dist,
-        maximumFileSizeToCacheInBytes: 800
+        staticFileGlobs: [conf.paths.dist + '/**/*.{json,js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}'],
+        stripPrefix: conf.paths.dist + '/',
+        verbose: true,
+        cacheId: 'qaobee_' + getTag()
     }, callback);
 });
 
 gulp.task('build', ['html', 'fonts', 'other', 'i18n', 'momentjs', 'images', 'delete-empty-directories', 'generate-service-worker']);
+
+
+function getTag() {
+    var revs = git.tag(false).replace('v', '').split('.');
+    return revs[0] + '.' + revs[1] + '.' + (1 + parseInt(revs[2]));
+}

@@ -72,5 +72,8 @@
     "node": ">=0.10.0"
   },
   "author": "Qaobee Inc",
-  "license": "BSD-2-Clause"
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "git-rev-sync": "^1.9.1"
+  }
 }
