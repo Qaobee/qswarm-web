@@ -1964,3 +1964,7 @@ span#top {
     color: #000;
     font-weight: bold;
 }
+
+.picker__footer .picker__clear, .picker__footer .picker__close:nth-child(0n+2){
+    display: none;
+}

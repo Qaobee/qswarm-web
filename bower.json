@@ -56,7 +56,6 @@
     "vertxbus": "*",
     "v-tabs": "~0.2.0",
     "angular-file-saver": "1.1.2",
-    "materialize-clockpicker": "Giwi/materialize-clockpicker#^0.1.2",
     "angular-recaptcha": "^4.0.3",
     "angular-chips": "1.0.11",
     "materialize": "0.100.2",
@@ -76,12 +75,6 @@
     "materialize": "0.100.2"
   },
   "overrides": {
-    "materialize-clockpicker": {
-      "main": [
-        "dist/js/materialize.clockpicker.js",
-        "dist/css/materialize.clockpicker.css"
-      ]
-    },
     "font-awesome": {
       "main": [
         "css/font-awesome.css"

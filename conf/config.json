@@ -2,7 +2,7 @@
   "local": {
     "EnvironmentConfig": {
       "name": "development",
-      "apiEndPoint": "http://192.168.60.46:8888",
+      "apiEndPoint": "http://localhost:8888",
       "useLoaderCache": false,
       "debugEnabled": true,
       "captchaKey" : "6LcTjvcSAAAAABAnHBqs95JQCdYNXToXMA30ksEF",

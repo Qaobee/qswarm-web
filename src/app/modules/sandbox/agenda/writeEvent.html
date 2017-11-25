@@ -51,7 +51,8 @@
                         </div>
                         <div class="input-field col s8">
                             <input id="EventStartHours" input-clock data-twelvehour="false"
-                                   data-donetext="{{'commons.format.date.close' | translate}}" type="text"
+                                   data-donetext="{{'commons.buttons.validate' | translate}}" type="text"
+                                   data-autoclose
                                    ng-model="startHours" required
                                    ng-class="{ 'has-error' : eventForm.EventStartHours.$invalid && !eventForm.EventStartHours.$pristine }"/>
                         </div>
@@ -133,7 +134,7 @@
             <div style="padding:10px;">
                 <div class="row">
                     <h6 class="accent-text-color col s12" translate="eventLabels.SectionPlace"></h6>
-                    <div class="input-field col m2 s4">
+                    <div class="col m2 s4">
                         <i class="material-icons prefix">home</i>
                         <label for="formatedAddress" translate="eventLabels.Address"></label>
                     </div>
@@ -142,7 +143,7 @@
                                details="detailsAdr" options="optionsAdr" placeholder=""/>
                     </div>
 
-                    <div class="input-field col m6 s12 center-align">
+                    <div class="col m6 s12 center-align">
                         <input name="location" class="with-gap" checked="checked" type="radio" id="home"
                                value="home" ng-model="location"/>
                         <label for="home" translate="eventLabels.Home"></label>
