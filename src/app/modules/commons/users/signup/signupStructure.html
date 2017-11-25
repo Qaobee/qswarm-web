@@ -20,7 +20,7 @@
                         <div class="row">&nbsp;</div>
                         <div class="row">
                             <div class="col m2 hide-on-med-and-down">&nbsp;</div>
-                            <div class="col input-field m8 s12">
+                            <div class="col m8 s12">
                                 <label for="searchCity" class="mandatory"
                                        translate="signupEndPage.tabFindClub.form.label.city"></label>
                                 <input type="text" id="searchCity"
@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="row" ng-if="structureSearch">
-                            <div class="input-field col s12 center-align">
+                            <div class="col s12 center-align">
                                 <div class="preloader-wrapper big active">
                                     <div class="spinner-layer">
                                         <div class="circle-clipper left">
@@ -54,7 +54,7 @@
                         <div ng-if="structureSelectOK">
                             <div class="row">
                                 <div class="col m2 hide-on-med-and-down">&nbsp;</div>
-                                <div class="input-field col m8 s12">
+                                <div class="col m8 s12">
                                     <label class="mandatory"
                                            translate="signupEndPage.tabFindClub.form.label.selectClub"></label>
                                 </div>
@@ -62,7 +62,7 @@
                             </div>
                             <div class="row">
                                 <div class="col m2 hide-on-med-and-down">&nbsp;</div>
-                                <div class="input-field col m8 s12">
+                                <div class="col m8 s12">
                                     <div ng-repeat="struct in listStructures track by $index">
                                         <input class="with-gap"
                                                name="structureGrp"
@@ -84,7 +84,7 @@
                         </div>
                         <div class="row container" ng-if="structureSelectOK">
                             <div class="col m1 hide-on-small-only">&nbsp;</div>
-                            <div class="col s12 m10 input-field">
+                            <div class="col s12 m10">
                                 <div vc-recaptcha ng-model="signup.captcha"
                                      on-create="setWidgetId(widgetId)"
                                      on-expire="cbExpiration()"
@@ -122,7 +122,7 @@
                         <div class="row">&nbsp;</div>
                         <div class="row">
                             <div class="col m2 hide-on-med-and-down">&nbsp;</div>
-                            <div class="col m8 s12 input-field">
+                            <div class="col m8 s12">
                                 <label for="userStructureLabel" class="mandatory"
                                        translate="signupEndPage.tabFindClub.form.label.clubname"></label>
                                 <input type="text" id="userStructureLabel" class="validate" ng-model="structure.label"
@@ -132,7 +132,7 @@
                         </div>
                         <div class="row">
                             <div class="col m2 hide-on-med-and-down">&nbsp;</div>
-                            <div class="col m8 s12 input-field">
+                            <div class="col m8 s12">
                                 <label for="createCity" class="mandatory"
                                        translate="signupEndPage.tabFindClub.form.label.clubAddress"></label>
                                 <input type="text" id="createCity"
@@ -148,13 +148,13 @@
 
                         <div ng-if="catAgeSelectOK">
                             <div class="row hide-on-large-only">
-                                <div class="col input-field s12">
+                                <div class="col s12">
                                     <label class="mandatory"
                                            translate="signupEndPage.tabFindClub.form.label.categoryAge"></label>
                                 </div>
                                 <div class="col s12">&nbsp;</div>
 
-                                <div class="input-field col s12">
+                                <div class="col s12">
                                     <select name="categoryAgeSelect" ng-model="categoryAge" id="userCategoryAgeSelect"
                                             material-select watch
                                             required>
@@ -166,11 +166,11 @@
 
                             <div class="row hide-on-med-and-down">
                                 <div class="col m2 ">&nbsp;</div>
-                                <div class="col input-field m4">
+                                <div class="col m4">
                                     <label class="mandatory"
                                            translate="signupEndPage.tabFindClub.form.label.categoryAge"></label>
                                 </div>
-                                <div class="input-field col m4">
+                                <div class="col m4">
                                     <select name="categoryAgeSelect" ng-model="categoryAge" id="userCategoryAgeSelect"
                                             material-select watch
                                             required>

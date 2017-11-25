@@ -20,310 +20,309 @@
 
     <!-- body-->
     <div class="row primary-text-color">
-                <div class="col s12">
-                    <form name="playerCivilSection" ng-submit="checkAndformatPerson()" novalidate>
-                        <!-- Empty row -->
-                        <div class="row">&nbsp;</div>
+        <div class="col s12">
+            <form name="playerCivilSection" ng-submit="checkAndformatPerson()" novalidate>
+                <!-- Empty row -->
+                <div class="row">&nbsp;</div>
 
-                        <div class="row">
-                            <div class="col s12 m5 input-field">
-                                <label>{{'playerLabels.playerFirstname' | translate }} <span
-                                        class="accent-text-color">*</span></label>
-                                <input ng-model="player.firstname" name="playerFirstname" type="text" class="validate"
-                                       required
-                                       ng-pattern="'[0-9a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
-                                <span class="small accent-text-color"
-                                      ng-if="playerCivilSection.playerFirstname.$error.required && !playerCivilSection.playerFirstname.$pristine"
-                                      translate="playerErrors.Firstname"></span>
-                                <span class="small accent-text-color"
-                                      ng-if="playerCivilSection.playerFirstname.$error.pattern && !playerCivilSection.playerFirstname.$pristine"
-                                      translate="playerErrors.wrong-char"></span>
-                            </div>
-
-                            <div class="col m1 hide-on-small-only">&nbsp;</div>
-                                
-                            <div class="col s12 m6 input-field hide-on-small-only">
-                                <i class="material-icons prefix  ">mail</i>
-                                <label for="emailInput" translate="playerLabels.playerMail"></label>
-                                <input type="email" id="emailInput" name="email" class="validate"
-                                       ng-model="player.contact.email"
-                                       ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
-                                       ng-class="{ 'invalid': playerCivilSection.email.$invalid }">
-                                <span ng-class="{'has-error': playerCivilSection.email.$dirty}"
-                                      class="small accent-text-color"
-                                      ng-if="!playerCivilSection.email.$valid"
-                                      translate="playerErrors.emailDirty"></span>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col s12 m5 input-field">
-                                <label>{{'playerLabels.playerName' | translate }} <span
-                                        class="accent-text-color">*</span></label>
-                                <input ng-model="player.name" name="playerName" type="text"
-                                       class="validate form-control" required
-                                       ng-pattern="'[0-9a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
-                                <span class="small accent-text-color"
-                                      ng-if="playerCivilSection.playerName.$error.required && !playerCivilSection.playerName.$pristine"
-                                      translate="playerErrors.Name"></span>
-                                <span class="small accent-text-color"
-                                      ng-if="playerCivilSection.playerName.$error.pattern && !playerCivilSection.playerName.$pristine"
-                                      translate="playerErrors.wrong-char"></span>
-                            </div>
-
-                            <div class="col m1 hide-on-small-only">&nbsp;</div>
-                                
-                            <div class="col m6 input-field hide-on-small-only">
-                                <i class="material-icons prefix  ">phone</i>
-                                <label for="phoneHomeInput1"></label>
-                                <input type="tel" id="phoneHomeInput1"
-                                       ui-mask="{{'commons.format.phone.pattern' | translate }}"
-                                       class="validate" min="0" ng-model="player.contact.home">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col s12 m5">
-                                
-                                <label>{{'playerLabels.playerBirthdate' | translate }} <span
-                                        class="accent-text-color">*</span></label>
-                                <input id="playerBirthdate" name="playerBirthdate" type="text"
-                                       ng-model="birthdate" required
-                                       class="datepicker"
-                                       input-date
-                                       format="{{'commons.format.date.label' | translate}}"
-                                       months-full="{{ ('commons.format.date.listMonth' | translate).split(',')}}"
-                                       months-short="{{ ('commons.format.date.listMonthShort' | translate).split(',')}}"
-                                       weekdays-full="{{ ('commons.format.date.listWeekdaysFull' | translate).split(',') }}"
-                                       weekdays-short="{{ ('commons.format.date.listWeekdaysShort' | translate).split(',') }}"
-                                       weekdays-letter="{{ ('commons.format.date.listWeekdaysLetter' | translate).split(',') }}"
-                                       today="('commons.format.date.today' | translate)"
-                                       first-day="1"
-                                       max="{{ maxDate }}"
-                                       clear="('commons.format.date.clear' | translate)"
-                                       close="('commons.format.date.close' | translate)"
-                                       select-years="25"
-                                       ng-class="{ 'has-error' : playerCivilSection.playerBirthdate.$invalid && !playerCivilSection.playerBirthdate.$pristine }"/>
-                                <span class="small accent-text-color"
-                                      ng-if="playerCivilSection.playerBirthdate.$invalid && !playerCivilSection.playerBirthdate.$pristine"
-                                      translate="playerErrors.BirthDate"></span>
-                                
-                            </div>
-
-                            <div class="col m1 hide-on-small-only">&nbsp;</div>
-                            
-                            <div class="col m6 input-field hide-on-small-only">
-                                <i class="material-icons prefix  ">smartphone</i>
-                                <label for="playerTelMobile1"></label>
-                                <input id="playerTelMobile1" type="tel"
-                                       ui-mask="{{'commons.format.phone.pattern' | translate }}"
-                                       class="validate" min="0" ng-model="player.contact.cellphone">
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-                            <div class="input-field col m1 s4">
-                                <label for="playerNationality">{{'playerLabels.playerNationality'
-                                | translate }} <span class="accent-text-color">*</span></label>
-                            </div>
-                            <div class="col m4 s12 input-field">
-                                <select class="browser-default" ng-model="player.nationality" name="playerNationality"
-                                    ng-options="c as c.label for c in countryList track by c._id">
-                                </select>
-                            </div>
-
-                            <div class="col m1 hide-on-small-only">&nbsp;</div>
-
-                            <div class="col m6 input-field hide-on-small-only">
-                                <i class="material-icons prefix  ">home</i>
-                                <label for="playerAddress"></label>
-                                <input type="text" id="Autocomplete" class="form-control" ng-autocomplete
-                                       ng-model="player.address.formatedAddress" details="detailsAdr"
-                                       options="optionsAdr" placeholder=""/>
-                            </div>
-
-                        </div>
-                        
-                        <div class="row hide-on-med-and-up">
-                            <div class="col s12">
-                                <div class="input-field col s2">
-                                    <i class="material-icons prefix">mail</i>
-                                    <label for="playerLabels.playerMail"></label>
-                                </div>
-                                <div class="input-field col s10">
-                                    <input type="email" name="playerEmail" id="playerMail" class="validate"
-                                           ng-model="player.contact.email"
-                                           ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
-                                           ng-class="{'invalid': playerCivilSection.playerEmail.$invalid}">
-                                    <span ng-class="{'has-error': playerCivilSection.playerEmail.$dirty}"
-                                          class="small accent-text-color"
-                                          ng-if="!playerCivilSection.playerEmail.$valid"
-                                          translate="playerLabels.emailDirty"></span>
-                                </div>
-                            </div>
-                            <div class="col s12">
-                                <div class="input-field col s2">
-                                    <i class="material-icons prefix">phone</i>
-                                    
-                                </div>
-                                <div class="input-field col s10">
-                                    <input id="playerTelHome" type="tel"
-                                           ui-mask="{{'commons.format.phone.pattern' | translate }}"
-                                           class="validate" min="0" ng-model="player.contact.home">
-                                </div>
-                            </div>
-                            <div class="col s12">
-                                <div class="input-field col s2">
-                                    <i class="material-icons prefix">smartphone</i>
-                                </div>
-                                <div class="input-field col s10">
-                                    <input id="playerTelMobile" type="tel"
-                                           ui-mask="{{'commons.format.phone.pattern' | translate }}"
-                                           class="validate" min="0" ng-model="player.contact.cellphone">
-                                </div>
-                            </div>
-                            <div class="col s12">
-                                <div class="input-field col s2">
-                                    <i class="material-icons prefix">home</i>
-                                </div>
-                                <div class="input-field col s10">
-                                    <input type="text" id="Autocomplete" class="form-control" ng-autocomplete
-                                           id="playerAddress"
-                                           ng-model="player.address.formatedAddress" details="detailsAdr"
-                                           options="optionsAdr" placeholder=""/>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="input-field col m1 s4">
-                                <label for="playerPositionType">{{'playerLabels.playerPositionType'
-                                | translate }} <span class="accent-text-color">*</span></label>
-                            </div>
-                            <div class="input-field col m4 s8">
-                                <select class="browser-default" ng-model="player.status.positionType" required
-                                    ng-class="{'has-error' : playerCaracterSection.playerPositionType.$invalid && !playerCaracterSection.playerPositionType.$pristine}"
-                                    name="playerPositionType" id="playerPositionType"
-                                    ng-options="p.code as p.label for p in positionsType">
-                                </select>
-                                <span class="small accent-text-color"
-                                      ng-if="playerCivilSection.playerPositionType.$invalid && !playerCivilSection.playerPositionType.$pristine"
-                                      translate="playerErrors.PositionType"></span>
-                            </div>
-
-                            <div class="col m1 hide-on-small-only">&nbsp;</div>
-                            
-                            <div class="input-field col m6 s12">&nbsp;</div>
-
-                        </div>
-
-                        
-                        <div class="row light-primary-color">
-                            <div class="col m5 s12">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        
-                                        <label>{{'playerLabels.playerGender' | translate }} <span
-                                                class="accent-text-color">*</span></label>
-                                    </div>
-
-                                    <div class="col s12">&nbsp;</div>
-
-                                    <div class="input-field col s12 left-align">
-                                        <input name="gender" class="with-gap" type="radio" id="playerGenderF"
-                                               value="{{'playerLabels.playerGenderF' | translate }}"
-                                               ng-model="player.gender" required/>
-                                        <label for="playerGenderF" translate="playerLabels.playerGenderF"></label>
-
-                                        <input name="gender" class="with-gap" type="radio" id="playerGenderM"
-                                               value="{{'playerLabels.playerGenderM' | translate }}"
-                                               ng-model="player.gender" required/>
-                                        <label for="playerGenderM" translate="playerLabels.playerGenderM"></label>
-                                    </div>
-                                            <span class="small accent-text-color"
-                                                  ng-if="playerCivilSection.gender.$invalid && !playerCivilSection.gender.$pristine"
-                                                  translate="playerErrors.Gender">
-                                            </span>
-                                </div>
-                            </div>
-                            
-                            <div class="col m1 hide-on-small-only">&nbsp;</div>
-                            
-                            <div class="col m6 s12">
-                                <div class="row">
-
-                                    <div class="input-field col s12">
-                                        
-                                        <label translate="playerLabels.playerLaterality"></label>
-                                    </div>
-
-                                    <div class="col s12">&nbsp;</div>
-
-                                    <div class="input-field col s12 left-align">
-                                        <input name="laterality" class="with-gap" type="radio" id="playerLateralityA"
-                                               value="{{'playerLabels.playerLateralityA' | translate }}"
-                                               ng-model="player.status.laterality"/>
-                                        <label for="playerLateralityA" translate="playerLabels.playerLateralityA"></label>
-
-                                        <input name="laterality" class="with-gap" type="radio" id="playerLateralityL"
-                                               value="{{'playerLabels.playerLateralityL' | translate }}"
-                                               ng-model="player.status.laterality"/>
-                                        <label for="playerLateralityL" translate="playerLabels.playerLateralityL"></label>
-
-                                        <input name="laterality" class="with-gap" type="radio" id="playerLateralityR"
-                                               value="{{'playerLabels.playerLateralityR' | translate }}"
-                                               ng-model="player.status.laterality"/>
-                                        <label for="playerLateralityR" translate="playerLabels.playerLateralityR"></label>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col m12 hide-on-small-only">&nbsp;</div>
-                        
-                            <div class="input-field col m4 s12">
-                                <label class="active" for="playerSquadNumber"
-                                       translate="playerLabels.playerSquadNumber"></label>
-                                <input id="playerSquadNumber" type="text" class="validate" numbers-only
-                                       ng-model="player.status.squadnumber">
-                            </div>
-
-                            <div class="input-field col m4 s12">
-                                <label class="active" for="playerWeight" translate="playerLabels.playerWeight"></label>
-                                <input id="playerWeight" type="text" class="validate" numbers-only
-                                       ng-model="player.status.weight" value="player.status.weight">
-                            </div>
-
-                            <div class="input-field col m4 s12">
-                                <label class="active" for="playerHeight" translate="playerLabels.playerHeight"></label>
-                                <input id="playerHeight" type="text" numbers-only class="validate"
-                                       ng-model="player.status.height">
-                            </div>
-                            
-                            <div class="col m12 hide-on-small-only">&nbsp;</div>
-                        </div>
-
-                    <div class="row">&nbsp;</div>
-
-                    <!-- actions buttons desktop-->
-                    <div class="row">
-                        <div class="col m3 hide-on-small-only">&nbsp;</div>
-                        <div class="col m6 s12 center-align">
-                            <a class="waves-effect waves-white btn dark-primary-color" ng-click="doTheBack()"
-                                translate="commons.buttons.cancel"></a>
-                            
-                            <button style="width:32%; height:40px; padding: 1px;"
-                                    type="submit"
-                                    ng-class="{'btn waves-effect waves-white disabled': playerCivilSection.$invalid, 
-                                          'btn waves-effect waves-white secondary-color': !playerCivilSection.$invalid}"
-                                    ng-disabled="playerCivilSection.$invalid"
-                                    translate="commons.buttons.validate"></button>
-                        </div>
-                        <div class="col m3 hide-on-small-only">&nbsp;</div>
+                <div class="row">
+                    <div class="col s12 m5">
+                        <label>{{'playerLabels.playerFirstname' | translate }} <span
+                                class="accent-text-color">*</span></label>
+                        <input ng-model="player.firstname" name="playerFirstname" type="text" class="validate"
+                               required
+                               ng-pattern="'[0-9a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'"/>
+                        <span class="small accent-text-color"
+                              ng-if="playerCivilSection.playerFirstname.$error.required && !playerCivilSection.playerFirstname.$pristine"
+                              translate="playerErrors.Firstname"></span>
+                        <span class="small accent-text-color"
+                              ng-if="playerCivilSection.playerFirstname.$error.pattern && !playerCivilSection.playerFirstname.$pristine"
+                              translate="playerErrors.wrong-char"></span>
                     </div>
 
-                </form>
-        </div>        
+                    <div class="col m1 hide-on-small-only">&nbsp;</div>
+
+                    <div class="col s12 m6 hide-on-small-only">
+                        <i class="material-icons prefix  ">mail</i>
+                        <label for="emailInput" translate="playerLabels.playerMail"></label>
+                        <input type="email" id="emailInput" name="email" class="validate"
+                               ng-model="player.contact.email"
+                               ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+                               ng-class="{ 'invalid': playerCivilSection.email.$invalid }">
+                        <span ng-class="{'has-error': playerCivilSection.email.$dirty}"
+                              class="small accent-text-color"
+                              ng-if="!playerCivilSection.email.$valid"
+                              translate="playerErrors.emailDirty"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s12 m5">
+                        <label>{{'playerLabels.playerName' | translate }} <span
+                                class="accent-text-color">*</span></label>
+                        <input ng-model="player.name" name="playerName" type="text"
+                               class="validate form-control" required
+                               ng-pattern="'[0-9a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
+                        <span class="small accent-text-color"
+                              ng-if="playerCivilSection.playerName.$error.required && !playerCivilSection.playerName.$pristine"
+                              translate="playerErrors.Name"></span>
+                        <span class="small accent-text-color"
+                              ng-if="playerCivilSection.playerName.$error.pattern && !playerCivilSection.playerName.$pristine"
+                              translate="playerErrors.wrong-char"></span>
+                    </div>
+
+                    <div class="col m1 hide-on-small-only">&nbsp;</div>
+
+                    <div class="col m6 hide-on-small-only">
+                        <i class="material-icons prefix  ">phone</i>
+                        <label for="phoneHomeInput1"></label>
+                        <input type="tel" id="phoneHomeInput1"
+                               ui-mask="{{'commons.format.phone.pattern' | translate }}"
+                               class="validate" min="0" ng-model="player.contact.home">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s12 m5">
+
+                        <label>{{'playerLabels.playerBirthdate' | translate }} <span
+                                class="accent-text-color">*</span></label>
+                        <input id="playerBirthdate" name="playerBirthdate" type="text"
+                               ng-model="birthdate" required
+                               class="datepicker"
+                               input-date
+                               format="{{'commons.format.date.label' | translate}}"
+                               months-full="{{ ('commons.format.date.listMonth' | translate).split(',')}}"
+                               months-short="{{ ('commons.format.date.listMonthShort' | translate).split(',')}}"
+                               weekdays-full="{{ ('commons.format.date.listWeekdaysFull' | translate).split(',') }}"
+                               weekdays-short="{{ ('commons.format.date.listWeekdaysShort' | translate).split(',') }}"
+                               weekdays-letter="{{ ('commons.format.date.listWeekdaysLetter' | translate).split(',') }}"
+                               today="('commons.format.date.today' | translate)"
+                               first-day="1"
+                               max="{{ maxDate }}"
+                               clear="('commons.format.date.clear' | translate)"
+                               close="('commons.format.date.close' | translate)"
+                               select-years="25"
+                               ng-class="{ 'has-error' : playerCivilSection.playerBirthdate.$invalid && !playerCivilSection.playerBirthdate.$pristine }"/>
+                        <span class="small accent-text-color"
+                              ng-if="playerCivilSection.playerBirthdate.$invalid && !playerCivilSection.playerBirthdate.$pristine"
+                              translate="playerErrors.BirthDate"></span>
+
+                    </div>
+
+                    <div class="col m1 hide-on-small-only">&nbsp;</div>
+
+                    <div class="col m6 hide-on-small-only">
+                        <i class="material-icons prefix  ">smartphone</i>
+                        <label for="playerTelMobile1"></label>
+                        <input id="playerTelMobile1" type="tel"
+                               ui-mask="{{'commons.format.phone.pattern' | translate }}"
+                               class="validate" min="0" ng-model="player.contact.cellphone">
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col m1 s4">
+                        <label>{{'playerLabels.playerNationality'
+                            | translate }} <span class="accent-text-color">*</span></label>
+                    </div>
+                    <div class="col m4 s12">
+                        <select class="browser-default" ng-model="player.nationality" name="playerNationality"
+                                ng-options="c as c.label for c in countryList track by c._id">
+                        </select>
+                    </div>
+
+                    <div class="col m1 hide-on-small-only">&nbsp;</div>
+
+                    <div class="col m6 hide-on-small-only">
+                        <i class="material-icons prefix  ">home</i>
+                        <label for="playerAddress"></label>
+                        <input type="text" id="Autocomplete" class="form-control" ng-autocomplete
+                               ng-model="player.address.formatedAddress" details="detailsAdr"
+                               options="optionsAdr" placeholder=""/>
+                    </div>
+
+                </div>
+
+                <div class="row hide-on-med-and-up">
+                    <div class="col s12">
+                        <div class="col s2">
+                            <i class="material-icons prefix">mail</i>
+                        </div>
+                        <div class="col s10">
+                            <input type="email" name="playerEmail" id="playerMail" class="validate"
+                                   ng-model="player.contact.email"
+                                   ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+                                   ng-class="{'invalid': playerCivilSection.playerEmail.$invalid}">
+                            <span ng-class="{'has-error': playerCivilSection.playerEmail.$dirty}"
+                                  class="small accent-text-color"
+                                  ng-if="!playerCivilSection.playerEmail.$valid"
+                                  translate="playerLabels.emailDirty"></span>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="col s2">
+                            <i class="material-icons prefix">phone</i>
+
+                        </div>
+                        <div class="col s10">
+                            <input id="playerTelHome" type="tel"
+                                   ui-mask="{{'commons.format.phone.pattern' | translate }}"
+                                   class="validate" min="0" ng-model="player.contact.home">
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="col s2">
+                            <i class="material-icons prefix">smartphone</i>
+                        </div>
+                        <div class="col s10">
+                            <input id="playerTelMobile" type="tel"
+                                   ui-mask="{{'commons.format.phone.pattern' | translate }}"
+                                   class="validate" min="0" ng-model="player.contact.cellphone">
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="col s2">
+                            <i class="material-icons prefix">home</i>
+                        </div>
+                        <div class="col s10">
+                            <input type="text" id="Autocomplete" class="form-control" ng-autocomplete
+                                   id="playerAddress"
+                                   ng-model="player.address.formatedAddress" details="detailsAdr"
+                                   options="optionsAdr" placeholder=""/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col m1 s4">
+                        <label for="playerPositionType">{{'playerLabels.playerPositionType'
+                            | translate }} <span class="accent-text-color">*</span></label>
+                    </div>
+                    <div class="col m4 s8">
+                        <select class="browser-default" ng-model="player.status.positionType" required
+                                ng-class="{'has-error' : playerCaracterSection.playerPositionType.$invalid && !playerCaracterSection.playerPositionType.$pristine}"
+                                name="playerPositionType" id="playerPositionType"
+                                ng-options="p.code as p.label for p in positionsType">
+                        </select>
+                        <span class="small accent-text-color"
+                              ng-if="playerCivilSection.playerPositionType.$invalid && !playerCivilSection.playerPositionType.$pristine"
+                              translate="playerErrors.PositionType"></span>
+                    </div>
+
+                    <div class="col m1 hide-on-small-only">&nbsp;</div>
+
+                    <div class="col m6 s12">&nbsp;</div>
+
+                </div>
+
+
+                <div class="row light-primary-color">
+                    <div class="col m5 s12">
+                        <div class="row">
+                            <div class="col s12">
+
+                                <label>{{'playerLabels.playerGender' | translate }} <span
+                                        class="accent-text-color">*</span></label>
+                            </div>
+
+                            <div class="col s12">&nbsp;</div>
+
+                            <div class="col s12 left-align">
+                                <input name="gender" class="with-gap" type="radio" id="playerGenderF"
+                                       value="{{'playerLabels.playerGenderF' | translate }}"
+                                       ng-model="player.gender" required/>
+                                <label for="playerGenderF" translate="playerLabels.playerGenderF"></label>
+
+                                <input name="gender" class="with-gap" type="radio" id="playerGenderM"
+                                       value="{{'playerLabels.playerGenderM' | translate }}"
+                                       ng-model="player.gender" required/>
+                                <label for="playerGenderM" translate="playerLabels.playerGenderM"></label>
+                            </div>
+                            <span class="small accent-text-color"
+                                  ng-if="playerCivilSection.gender.$invalid && !playerCivilSection.gender.$pristine"
+                                  translate="playerErrors.Gender">
+                                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col m1 hide-on-small-only">&nbsp;</div>
+
+                    <div class="col m6 s12">
+                        <div class="row">
+
+                            <div class="col s12">
+
+                                <label translate="playerLabels.playerLaterality"></label>
+                            </div>
+
+                            <div class="col s12">&nbsp;</div>
+
+                            <div class="col s12 left-align">
+                                <input name="laterality" class="with-gap" type="radio" id="playerLateralityA"
+                                       value="{{'playerLabels.playerLateralityA' | translate }}"
+                                       ng-model="player.status.laterality"/>
+                                <label for="playerLateralityA" translate="playerLabels.playerLateralityA"></label>
+
+                                <input name="laterality" class="with-gap" type="radio" id="playerLateralityL"
+                                       value="{{'playerLabels.playerLateralityL' | translate }}"
+                                       ng-model="player.status.laterality"/>
+                                <label for="playerLateralityL" translate="playerLabels.playerLateralityL"></label>
+
+                                <input name="laterality" class="with-gap" type="radio" id="playerLateralityR"
+                                       value="{{'playerLabels.playerLateralityR' | translate }}"
+                                       ng-model="player.status.laterality"/>
+                                <label for="playerLateralityR" translate="playerLabels.playerLateralityR"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col m12 hide-on-small-only">&nbsp;</div>
+
+                    <div class="col m4 s12">
+                        <label class="active" for="playerSquadNumber"
+                               translate="playerLabels.playerSquadNumber"></label>
+                        <input id="playerSquadNumber" type="text" class="validate" numbers-only
+                               ng-model="player.status.squadnumber">
+                    </div>
+
+                    <div class="col m4 s12">
+                        <label class="active" for="playerWeight" translate="playerLabels.playerWeight"></label>
+                        <input id="playerWeight" type="text" class="validate" numbers-only
+                               ng-model="player.status.weight" value="player.status.weight">
+                    </div>
+
+                    <div class="col m4 s12">
+                        <label class="active" for="playerHeight" translate="playerLabels.playerHeight"></label>
+                        <input id="playerHeight" type="text" numbers-only class="validate"
+                               ng-model="player.status.height">
+                    </div>
+
+                    <div class="col m12 hide-on-small-only">&nbsp;</div>
+                </div>
+
+                <div class="row">&nbsp;</div>
+
+                <!-- actions buttons desktop-->
+                <div class="row">
+                    <div class="col m3 hide-on-small-only">&nbsp;</div>
+                    <div class="col m6 s12 center-align">
+                        <a class="waves-effect waves-white btn dark-primary-color" ng-click="doTheBack()"
+                           translate="commons.buttons.cancel"></a>
+
+                        <button style="width:32%; height:40px; padding: 1px;"
+                                type="submit"
+                                ng-class="{'btn waves-effect waves-white disabled': playerCivilSection.$invalid,
+                                          'btn waves-effect waves-white secondary-color': !playerCivilSection.$invalid}"
+                                ng-disabled="playerCivilSection.$invalid"
+                                translate="commons.buttons.validate"></button>
+                    </div>
+                    <div class="col m3 hide-on-small-only">&nbsp;</div>
+                </div>
+
+            </form>
+        </div>
     </div>
     <!-- body end-->
 </div>

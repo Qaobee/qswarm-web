@@ -12,7 +12,7 @@
 
             <!-- Firstname & Name -->
             <div class="col m1 hide-on-small-only">&nbsp;</div>
-            <div class="col s12 m4 input-field">
+            <div class="col s12 m4">
                 <input id="firstname" name="firstname" type="text" class="validate" ng-model="signup.firstname" required
                        tabindex="1"
                        ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
@@ -27,7 +27,7 @@
 
             <div class="col m2 hide-on-small-only">&nbsp;</div>
 
-            <div class="col s12 m4 input-field">
+            <div class="col s12 m4">
                 <input id="name" name="name" type="text" class="validate" ng-model="signup.name" required tabindex="2"
                        ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
                 <label for="name">
@@ -45,7 +45,7 @@
         <div class="row container">
             <!-- Login & e-Mail -->
             <div class="col m1 hide-on-small-only">&nbsp;</div>
-            <div class="col s12 m4 input-field">
+            <div class="col s12 m4">
                 <input id="login" name="login" type="text" class="validate" ng-model="signup.account.login" required
                        tabindex="3"
                        ng-pattern="'[a-zA-Z0-9_\-]{3,}'">
@@ -60,7 +60,7 @@
 
             <div class="col m2 hide-on-small-only">&nbsp;</div>
 
-            <div class="col s12 m4 input-field">
+            <div class="col s12 m4">
                 <input type="text" name="email" id="email" ng-model="signup.contact.email"
                        ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
                        tabindex="4">
@@ -79,7 +79,7 @@
         <div class="row container">
             <!-- Password & confirm -->
             <div class="col m1 hide-on-small-only">&nbsp;</div>
-            <div class="col s12 m4 input-field">
+            <div class="col s12 m4">
                 <input id="password" type="password" class="validate" ng-model="signup.account.passwd" required
                        tabindex="5">
                 <label for="password">
@@ -93,7 +93,7 @@
                     <div class="progress grey lighten-2">
                         <div class="determinate"
                              ng-class="{'red' : passStrength < 33, 'orange': passStrength >= 33 && passStrength < 66, 'green' : passStrength >= 66}"
-                             style="width: {{passStrength}}%">
+                             style="width: {{ passStrength }}%">
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
 
             <div class="col m2 hide-on-small-only">&nbsp;</div>
 
-            <div class="col s12 m4 input-field">
+            <div class="col s12 m4">
                 <input id="passwordConfirm" name="passwordConfirm" type="password" class="validate"
                        ng-model="passwdConfirm" required tabindex="6" passwd-check="password">
                 <label for="passwordConfirm">
@@ -118,7 +118,7 @@
         <!-- Captcha -->
         <div class="row container">
             <div class="col m1 hide-on-small-only">&nbsp;</div>
-            <div class="col s12 m10 input-field">
+            <div class="col s12 m10">
                 <div vc-recaptcha ng-model="signup.captcha"
                      on-create="setWidgetId(widgetId)"
                      on-expire="cbExpiration()"
@@ -131,8 +131,8 @@
         <div class="row center container">
             <div class="col s12">
                 <a ng-click="cancelSignup()"
-                        class="modal-action modal-close waves-effect waves-white btn dark-primary-color"
-                        translate="commons.buttons.cancel" tabindex="9">
+                   class="modal-action modal-close waves-effect waves-white btn dark-primary-color"
+                   translate="commons.buttons.cancel" tabindex="9">
                 </a>
                 <button type="submit"
                         translate="commons.buttons.validate" ng-disabled="signupStartPageForm.$invalid" tabindex="8"

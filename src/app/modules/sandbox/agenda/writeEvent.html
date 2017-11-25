@@ -18,11 +18,11 @@
                 <div class="row">
                     <div class="col m6 s12">
                         <h6 class="accent-text-color" translate="eventLabels.SectionPlaning"></h6>
-                        <div class="input-field col s4">
+                        <div class="col s4">
                             <label>{{'eventLabels.StartDate' | translate }} <span
                                     class="accent-text-color">*</span></label>
                         </div>
-                        <div class="input-field col s8">
+                        <div class="col s8">
                             <input id="EventStartDate" name="EventStartDate" type="text"
                                    input-date
                                    format="{{'commons.format.date.label' | translate}}"
@@ -45,11 +45,11 @@
                              ng-if="eventForm.EventStartDate.$invalid && !eventForm.EventStartDate.$pristine"
                              translate="eventErrors.StartDate"></div>
 
-                        <div class="input-field col s4">{{monthsFull}}
+                        <div class="col s4">{{monthsFull}}
                             <label>{{'eventLabels.StartHour' | translate }} <span
                                     class="accent-text-color">*</span></label>
                         </div>
-                        <div class="input-field col s8">
+                        <div class="col s8">
                             <input id="EventStartHours" input-clock data-twelvehour="false"
                                    data-donetext="{{'commons.buttons.validate' | translate}}" type="text"
                                    data-autoclose
@@ -64,22 +64,22 @@
                     <!-- EventType -->
                     <div class="col m6 s12">
                         <h6 class="accent-text-color" translate="eventLabels.SectionIdentity"></h6>
-                        <div class="input-field col s3">
+                        <div class="col s3">
                             <label>{{'eventLabels.Label' | translate }} <span
                                     class="accent-text-color">*</span></label>
                         </div>
-                        <div class="input-field col s9">
+                        <div class="col s9">
                             <input name="eventLabel" type="text" ng-model="event.label" required
                                    ng-class="{ 'has-error' : eventForm.eventLabel.$invalid && !eventForm.eventLabel.$pristine }">
                             <span class="small accent-text-color"
                                   ng-if="eventForm.eventLabel.$invalid && !eventForm.eventLabel.$pristine"
                                   translate="eventErrors.Label"></span>
                         </div>
-                        <div class="input-field col s3">
+                        <div class="col s3">
                             <label>{{'eventLabels.Type' | translate }} <span
                                     class="accent-text-color">*</span></label>
                         </div>
-                        <div class="input-field col s9">
+                        <div class="col s9">
                             <select material-select watch name="eventType" ng-model="event.link.type"
                                     required id="EventType" ng-change="changeEventType()"
                                     ng-class="{ 'has-error' : eventForm.eventType.$invalid && !eventForm.eventType.$pristine }">
@@ -97,10 +97,11 @@
             <!-- Participants -->
             <div class="light-primary-color" ng-if="chooseAdversary" style="padding:10px;">
                 <div class="row">
-                    <div class="input-field col s10 m5">
+                    <div class="col s10 m5">
                         <h6 class="accent-text-color">{{'eventLabels.SectionActorsHome' | translate }} <span
                                 class="accent-text-color">*</span></h6>
-                        <select ng-model="data.teamId" material-select name="SectionActorsHome" ng-change="changeTeamHome()"
+                        <select ng-model="data.teamId" material-select name="SectionActorsHome"
+                                ng-change="changeTeamHome()"
                                 ng-required="chooseAdversary" watch
                                 ng-class="{ 'has-error' : eventForm.SectionActorsHome.$invalid && !eventForm.SectionActorsHome.$pristine }">
                             <option value="" disabled selected translate="eventLabels.Team"></option>
@@ -110,14 +111,15 @@
                               ng-if="eventForm.SectionActorsHome.$invalid && !eventForm.SectionActorsHome.$pristine"
                               translate="eventErrors.teamHome"></span>
                     </div>
-                    <div class="input-field col s2 m1">
+                    <div class="col s2 m1">
                         &nbsp;
                     </div>
 
-                    <div class="input-field col s10 m5" ng-if="chooseHome">
+                    <div class="col s10 m5" ng-if="chooseHome">
                         <h6 class="accent-text-color">{{'eventLabels.SectionActorsAdversary' | translate }} <span
                                 class="accent-text-color">*</span></h6>
-                        <input type="text" list="adversaries" name="SectionActorsAdversary" ng-model="data.adversaryLabel"
+                        <input type="text" list="adversaries" name="SectionActorsAdversary"
+                               ng-model="data.adversaryLabel"
                                placeholder="{{'eventLabels.Adversary' | translate }}" ng-required="chooseHome"
                                ng-class="{ 'has-error' : eventForm.SectionActorsAdversary.$invalid && !eventForm.SectionActorsAdversary.$pristine }"/>
                         <span class="small accent-text-color col s12"
@@ -138,7 +140,7 @@
                         <i class="material-icons prefix">home</i>
                         <label for="formatedAddress" translate="eventLabels.Address"></label>
                     </div>
-                    <div class="input-field col m4 s8">
+                    <div class="col m4 s8">
                         <input type="text" id="formatedAddress" ng-autocomplete ng-model="event.address.formatedAddress"
                                details="detailsAdr" options="optionsAdr" placeholder=""/>
                     </div>

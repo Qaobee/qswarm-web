@@ -209,14 +209,14 @@
     <form name="loginForm" ng-submit="login()">
         <div class="modal-content white">
             <div class="row ">
-                <div class="input-field col s12">
+                <div class="col s12">
                     <input id="modalloginfield" type="text" class="validate" ng-model="signin.login" required>
                     <label for="modalloginfield">
                         {{'modal.login.label.login' | translate }}
                         <span class="accent-text-color">*</span>
                     </label>
                 </div>
-                <div class="input-field col s12">
+                <div class="col s12">
                     <input id="modal-password" type="password" class="validate" ng-model="signin.passwd" required>
                     <label for="modal-password">{{'modal.login.label.password' | translate }}
                         <span class="accent-text-color">*</span>
@@ -267,7 +267,7 @@
             </div>
             <div class="row">
                 <div class="col m3 hide-on-small">&nbsp;</div>
-                <div class="input-field col s12 m6">
+                <div class="col s12 m6">
                     <input id="modal-login" type="text" class="validate" ng-model="infos.login" required>
                     <label for="modal-login">
                         {{'modal.login.label.login' | translate }}

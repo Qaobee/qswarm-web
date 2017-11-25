@@ -5,7 +5,7 @@
 
     <!-- Entete -->
     <title-page-bar icon="https" title="profilePwdPage.title"></title-page-bar>
-    
+
     <div class="row">
         <div class="col s12 card">
 
@@ -17,9 +17,10 @@
                 <!-- password -->
                 <div class="row">
                     <div class="col m2 hide-on-small">&nbsp;</div>
-                    <div class="col s12 m4 input-field">
+                    <div class="col s12 m4">
                         <label for="password" translate="profilePwdPage.form.label.password"></label>
-                        <input id="password" type="password" class="validate" ng-model="renew.passwd" required tabindex="1">
+                        <input id="password" type="password" class="validate" ng-model="renew.passwd" required
+                               tabindex="1">
 
                         <div ng-if="renew.passwd">
                             <small translate='profilePwdPage.form.messageControl.passwdStrength'></small>
@@ -33,21 +34,24 @@
                         </div>
                     </div>
 
-                    <div class="col s12 m4 input-field">
+                    <div class="col s12 m4">
                         <label for="passwordConfirm">
-                            {{'profilePwdPage.form.label.passwordConfirm' | translate }} 
+                            {{'profilePwdPage.form.label.passwordConfirm' | translate }}
                             <span class="accent-text-color">*</span>
                         </label>
-                        <input id="passwordConfirm" name="passwordConfirm" type="password" class="validate" ng-model="passwdConfirm" required passwd-check="password" tabindex="2">
-                        <span ng-if="pwdForm.passwordConfirm.$dirty && pwdForm.passwordConfirm.$error.pwmatch" class="small accent-text-color" translate="profilePwdPage.form.messageControl.password.different"></span>
-                        
+                        <input id="passwordConfirm" name="passwordConfirm" type="password" class="validate"
+                               ng-model="passwdConfirm" required passwd-check="password" tabindex="2">
+                        <span ng-if="pwdForm.passwordConfirm.$dirty && pwdForm.passwordConfirm.$error.pwmatch"
+                              class="small accent-text-color"
+                              translate="profilePwdPage.form.messageControl.password.different"></span>
+
                     </div>
                     <div class="col m2 hide-on-small">&nbsp;</div>
                 </div>
 
                 <div class="row">
                     <div class="col m2 hide-on-small">&nbsp;</div>
-                    <div class="input-field col s12 m8">
+                    <div class="col s12 m8">
                         <div vc-recaptcha ng-model="renew.captcha"
                              on-create="setWidgetId(widgetId)"
                              on-expire="cbExpiration()"
@@ -59,10 +63,11 @@
                 <!-- actions buttons -->
                 <div class="row">
                     <div class="col s12 center-align">
-                        
+
                         <button type="submit" ng-disabled="pwdForm.$invalid" translate="commons.buttons.validate"
                                 ng-class="{'btn waves-effect waves-white disabled': pwdForm.$invalid, 
-                                           'btn waves-effect waves-white accent-color': !pwdForm.$invalid}" tabindex="4">
+                                           'btn waves-effect waves-white accent-color': !pwdForm.$invalid}"
+                                tabindex="4">
                         </button>
                     </div>
                 </div>

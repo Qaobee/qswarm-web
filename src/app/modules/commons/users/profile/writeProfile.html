@@ -4,9 +4,9 @@
     <div class="row"></div>
 
     <!-- Entete -->
-    
+
     <title-page-bar icon="account_box" title="profilePage.title"></title-page-bar>
-    
+
     <div class="row">
         <div class="col s12">
             <div class="row dark-primary-color center">
@@ -40,7 +40,7 @@
                     <div class="col s12 m4">
                         <!-- Login -->
                         <div class="row">
-                            <div class="col s12 input-field">
+                            <div class="col s12">
                                 <label for="userLogin" translate="profilePage.form.label.login"></label>
                                 <input disabled type="text" id="userLogin" name="userLogin"
                                        ng-model="user.account.login"/>
@@ -49,7 +49,7 @@
 
                         <!-- e-mail on Small -->
                         <div class="row hide-on-med-and-up">
-                            <div class="col s12 input-field">
+                            <div class="col s12">
                                 <label for="email">{{'profilePage.form.label.email' | translate }} <span
                                         class="accent-text-color">*</span></label>
                                 <input type="email" id="email" name="email"
@@ -66,11 +66,11 @@
 
                         <!-- Gender -->
                         <div class="row" id="rowGender">
-                            <div class="input-field col s3">
+                            <div class="col s3">
                                 <label>{{'profilePage.form.label.gender.title' | translate }} <span
                                         class="accent-text-color">*</span></label>
                             </div>
-                            <div class="input-field col s9 center-align">
+                            <div class="col s9 center-align">
                                 <input name="user.gender" class="with-gap" type="radio" id="userGenderF"
                                        value="gender.female" ng-model="user.gender" required/>
                                 <label for="userGenderF">{{'profilePage.form.label.gender.female' | translate }}</label>
@@ -86,11 +86,12 @@
 
                         <!-- Firstname -->
                         <div class="row">
-                            <div class="col s12 input-field">
+                            <div class="col s12">
                                 <label for="userFirstname">{{'profilePage.form.label.firstname' | translate }} <span
                                         class="accent-text-color">*</span></label>
                                 <input ng-model="user.firstname" id="userFirstname" name="userFirstname" type="text"
-                                       class="validate" required ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
+                                       class="validate" required
+                                       ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
                                 <span class="small accent-text-color"
                                       ng-if="profileForm.userFirstname.$invalid && !profileForm.userFirstname.$pristine"
                                       translate="profilePage.form.messageControl.firstname"></span>
@@ -102,11 +103,12 @@
 
                         <!-- Name -->
                         <div class="row">
-                            <div class="col s12 input-field">
+                            <div class="col s12">
                                 <label for="userName">{{'profilePage.form.label.name' | translate }} <span
                                         class="accent-text-color">*</span></label>
                                 <input ng-model="user.name" id="userName" name="userName" type="text" class="validate"
-                                       required ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'"
+                                       required
+                                       ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'"
                                        ng-class="{ 'has-error' : profileForm.userName.$invalid && !profileForm.userName.$pristine }">
                                 <span class="small accent-text-color"
                                       ng-if="profileForm.userName.$invalid && !profileForm.userName.$pristine"
@@ -125,7 +127,7 @@
                     <div class="col s12 m4">
                         <!-- e-mail on med and up -->
                         <div class="row hide-on-small-only">
-                            <div class="col s12 input-field">
+                            <div class="col s12">
                                 <label for="email"> {{'profilePage.form.label.email' | translate }} <span
                                         class="accent-text-color">*</span></label>
                                 <input type="email" id="email" name="email"
@@ -142,7 +144,7 @@
 
                         <!-- Birthdate -->
                         <div class="row" id="rowBirthdate">
-                            <div class="col s12 input-field">
+                            <div class="col s12">
                                 <label for="profilBirthdate">{{'profilePage.form.label.birthdate' | translate }} <span
                                         class="accent-text-color">*</span></label>
                                 <input id="profilBirthdate" name="profilBirthdate" type="text" class="datepicker"
@@ -162,17 +164,17 @@
 
                         <!-- Address -->
                         <div class="row">
-                            <div class="col s12 input-field">
+                            <div class="col s12">
+                                <label for="formatedAddress" translate="profilePage.form.label.address"></label>
                                 <input type="text" id="formatedAddress" name="formatedAddress" ng-autocomplete
                                        ng-model="temp.addr" details="temp.detailsAdr"
                                        options="temp.optionsAdr" placeholder=""/>
-                                <label for="userAddres">{{'profilePage.form.label.address' | translate }}</label>
                             </div>
                         </div>
 
                         <!-- Phone -->
                         <div class="row">
-                            <div class="col s12 input-field">
+                            <div class="col s12">
                                 <i class="material-icons prefix">phone</i>
                                 <label for="userPhoneHome"><span class="accent-text-color">*</span></label>
                                 <input id="userPhoneHome" name="userPhoneHome" type="text"
@@ -193,7 +195,7 @@
                 <!-- actions buttons -->
                 <div class="row">
                     <div class="col s12 center-align">
-                        
+
                         <button type="submit" ng-disabled="profileForm.$invalid" translate="commons.buttons.validate"
                                 ng-click="updateProfilUser()"
                                 ng-class="{'btn waves-effect waves-white disabled': profileForm.$invalid, 

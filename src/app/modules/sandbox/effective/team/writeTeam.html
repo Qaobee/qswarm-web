@@ -18,11 +18,11 @@
                 <!-- Team home -->
                 <div class="row">
                     <!-- input field -->
-                    <div class="input-field col s2">
+                    <div class=" col s2">
                         <label for="teamLabel">{{'teamLabels.label' | translate }} <span
                                 class="red-text text-lighten-1">*</span></label>
                     </div>
-                    <div class="input-field col s10">
+                    <div class="col s10">
                         <input name="teamLabel" id="teamLabel" type="text" ng-model="team.label"
                                class="validate left-align"
                                required
@@ -32,11 +32,11 @@
                               translate="teamErrors.label"></span>
                     </div>
 
-                    <div class="input-field col s2">
+                    <div class="col s2">
                         <label>{{'teamLabels.activation' | translate }} <span
                                 class="red-text text-lighten-1">*</span></label>
                     </div>
-                    <div class="input-field col s10">
+                    <div class="col s10">
                         <input class="with-gap" name="activation" type="radio" ng-model="team.enable" id="teamStatusT"
                                ng-value="true" required/>
                         <label for="teamStatusT" translate="teamLabels.enable"></label>

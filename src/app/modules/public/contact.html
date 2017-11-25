@@ -14,31 +14,25 @@
             <form>
                 <div class="row">
                     <div class="col s6">
-                        <div class="input-field">
-                            <input type="text" class="validate" ng-model="contact.name" id="name"
-                                   required="required"/>
-                            <label translate="contact.label.name" for="name"></label>
-                        </div>
-                        <div class="input-field">
-                            <input type="email" class="validate" ng-model="contact.email" required="required"
-                                   id="email"/>
-                            <label translate="contact.label.email" for="email"></label>
-                        </div>
-                        <div class="input-field">
-                            <select  ng-model="contact.subject" material-select watch>
-                                <option value="" disabled selected translate="contact.label.subject"></option>
-                                <option value="service" translate="contact.ph.subject.line2"></option>
-                                <option value="suggestions" translate="contact.ph.subject.line3"></option>
-                                <option value="product" translate="contact.ph.subject.line4"></option>
-                            </select>
-                        </div>
+                        <input type="text" class="validate" ng-model="contact.name" id="name"
+                               required="required"/>
+                        <label translate="contact.label.name" for="name"></label>
+
+                        <input type="email" class="validate" ng-model="contact.email" required="required"
+                               id="email"/>
+                        <label translate="contact.label.email" for="email"></label>
+
+                        <select ng-model="contact.subject" material-select watch>
+                            <option value="" disabled selected translate="contact.label.subject"></option>
+                            <option value="service" translate="contact.ph.subject.line2"></option>
+                            <option value="suggestions" translate="contact.ph.subject.line3"></option>
+                            <option value="product" translate="contact.ph.subject.line4"></option>
+                        </select>
                     </div>
                     <div class="col s6">
-                        <div class="input-field">
-                            <label translate="contact.label.message" for="message"></label>
-                            <textarea ng-model="contact.message" class="materialize-textarea"
-                                      required="required" id="message"></textarea>
-                        </div>
+                        <label translate="contact.label.message" for="message"></label>
+                        <textarea ng-model="contact.message" class="materialize-textarea"
+                                  required="required" id="message"></textarea>
                     </div>
                 </div>
                 <div class="row">

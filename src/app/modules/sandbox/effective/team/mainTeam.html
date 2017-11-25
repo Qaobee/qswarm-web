@@ -1,35 +1,41 @@
 <div class="container">
     <!-- body start-->
     <div class="row"></div>
-    
+
     <!-- entete start -->
     <title-page-bar icon="group" title="mainTeam.title"></title-page-bar>
-    
+
     <filter-calendar meta="meta"></filter-calendar>
-    
+
     <v-tabs class="tabs" horizontal active="activeTabIndex">
-        <v-tab class="tab" ng-click="changeTabDefault(0)"><a ng-href="" ng-class="{'secondary-color': activeTabIndex === 0}" translate="tabTeam.dashboard"></a></v-tab>
-        <v-tab class="tab" ng-click="changeTabDefault(1)"><a ng-href="" ng-class="{'secondary-color': activeTabIndex === 1}">{{'tabTeam.ListTeam' | translate }} ({{listTeamHome.length}})</a></v-tab>
+        <v-tab class="tab" ng-click="changeTabDefault(0)"><a ng-href=""
+                                                             ng-class="{'secondary-color': activeTabIndex === 0}"
+                                                             translate="tabTeam.dashboard"></a></v-tab>
+        <v-tab class="tab" ng-click="changeTabDefault(1)"><a ng-href=""
+                                                             ng-class="{'secondary-color': activeTabIndex === 1}">{{'tabTeam.ListTeam'
+            | translate }} ({{listTeamHome.length}})</a></v-tab>
     </v-tabs>
 
     <div class="row">
 
         <v-pages class="vPages--default" active="activeTabIndex">
             <v-page>
-                
+
                 <div class="col s12 m6 l6" style="margin-top:15px;">
-                    <widget-podium meta="meta" user="user" indicator="goalScored" nbitem="3" stataggregat="COUNT"></widget-podium>
+                    <widget-podium meta="meta" user="user" indicator="goalScored" nbitem="3"
+                                   stataggregat="COUNT"></widget-podium>
                 </div>
 
                 <div class="col s12 m6 l6" style="margin-top:15px;">
-                    <widget-podium meta="meta" user="user" indicator="totalPlayTime" nbitem="3" stataggregat="SUM"></widget-podium>
+                    <widget-podium meta="meta" user="user" indicator="totalPlayTime" nbitem="3"
+                                   stataggregat="SUM"></widget-podium>
                 </div>
             </v-page>
-            
-            
+
+
             <v-page>
                 <div class="col s8">
-                    <form class="forms forms-inline input-field">
+                    <form class="forms forms-inline">
                         <input type="text" id="queryTeam" class="grey lighten-4" ng-model="queryTeam">
                         <label for="queryTeam" translate="commons.buttons.filter"></label>
                     </form>
@@ -41,7 +47,8 @@
                         <i class="material-icons">add</i>
                     </a>
 
-                    <button ng-click="compare()" title="{{'mainEffective.buttons.compare' | translate}}" class="waves-effect waves-light btn accent-color">
+                    <button ng-click="compare()" title="{{'mainEffective.buttons.compare' | translate}}"
+                            class="waves-effect waves-light btn accent-color">
                         <i class="material-icons">recent_actors</i>
                     </button>
                 </div>
@@ -58,7 +65,8 @@
                                 </span>
                             </div>
                             <div class="card-action">
-                                <a href="#/private/viewTeam/{{team._id}}/false" class="waves-effect accent-text-color"><i
+                                <a href="#/private/viewTeam/{{team._id}}/false"
+                                   class="waves-effect accent-text-color"><i
                                         class="fa fa-bar-chart"></i></a>
                                 <div class="right">
                                     <input type="checkbox" ng-model="compareList[team._id]" name="compare"
@@ -76,9 +84,10 @@
                                 </span>
                             </div>
                             <div class="card-action">
-                                <a href="#/private/viewTeam/{{team._id}}/false" class="waves-effect accent-text-color"><i
+                                <a href="#/private/viewTeam/{{team._id}}/false"
+                                   class="waves-effect accent-text-color"><i
                                         class="fa fa-bar-chart"></i></a>
-                                
+
                                 <div class="right">
                                     <input type="checkbox" ng-model="compareList[team._id]" name="compare"
                                            ng-change="updateTeamToCompare(team._id)"

@@ -1,7 +1,7 @@
 <div class="container">
-<!-- body start-->
-    <div class="row"></div>   
-    
+    <!-- body start-->
+    <div class="row"></div>
+
     <!-- header start -->
     <div class="row blue-grey darken-2">
         <div class="col m1 hide-on-small-only center-align white-text">
@@ -10,78 +10,88 @@
         <!-- effective list -->
         <ul id="mainEffectiveList" class="dropdown-content">
             <li ng-repeat="effective in effectives track by $index">
-                <a href="#/private/effective/{{effective._id}}"><h6 class="blue-grey-text text-darken-2">{{effective.label}} - {{effective.categoryAge.label}}</h6></a>
+                <a href="#/private/effective/{{effective._id}}"><h6 class="blue-grey-text text-darken-2">
+                    {{effective.label}} - {{effective.categoryAge.label}}</h6></a>
                 <div class="divider"></div>
             </li>
         </ul>
         <div class="col m3 s12 center-align" ng-if="effectives.length > 1">
             <br>
-            <a class="dropdown-button waves-effect waves-light grey-text grey lighten-4 btn" style="font-size: small;" href="#!" data-activates="mainEffectiveList">
+            <a class="dropdown-button waves-effect waves-light grey-text grey lighten-4 btn" style="font-size: small;"
+               href="#!" data-activates="mainEffectiveList">
                 {{'mainEffective.buttons.dropdownEffective' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;
                 <i class="material-icons right">arrow_drop_down</i>
             </a>
         </div>
-        
+
         <div class="col m3 s12 center-align" ng-if="effectives.length === 1">
             <br>
             <h5>&nbsp;</h5>
         </div>
-        
-        
+
+
         <div class="col m6 s12 center-align">
             <br>
             <h5 class="white-text">{{'mainEffective.title' | translate }} {{currentEffective.label}}</h5>
         </div>
-        
+
         <div class="col m2 s6 right-align">
             <br>
-            <a href="#/private/addEffective/{{meta._id}}" class="white-text tooltipped" 
-                data-position="down" data-delay="20" data-tooltip="{{'mainEffective.buttons.addEffective' | translate }}">
-                    <i class="fa fa-plus-square-o fa-2x"></i>
+            <a href="#/private/addEffective/{{meta._id}}" class="white-text tooltipped"
+               data-position="down" data-delay="20"
+               data-tooltip="{{'mainEffective.buttons.addEffective' | translate }}">
+                <i class="fa fa-plus-square-o fa-2x"></i>
             </a>
 
-            <a href="#/private/updateEffective/{{currentEffective._id}}" class="white-text tooltipped" 
-                data-position="down" data-delay="20" data-tooltip="{{'mainEffective.buttons.updateEffective' | translate }}">
-                    <i class="fa fa-pencil-square-o  fa-2x"></i>
+            <a href="#/private/updateEffective/{{currentEffective._id}}" class="white-text tooltipped"
+               data-position="down" data-delay="20"
+               data-tooltip="{{'mainEffective.buttons.updateEffective' | translate }}">
+                <i class="fa fa-pencil-square-o  fa-2x"></i>
             </a>
         </div>
     </div>
     <!-- entete end -->
-        
+
     <div class="row">
         <!-- List player -->
         <div id="playerList" class="col s12">
 
             <!-- filter -->
             <div class="col s12">
-                <form class="forms forms-inline input-field">
+                <form class="forms forms-inline">
                     <input type="text" id="queryPlayer" class="grey lighten-4" ng-model="queryPlayer">
                     <label for="queryPlayer" translate="commons.buttons.filter"></label>
                 </form>
             </div>
             <div class="col s12 left-align">
-                <a href="#/private/addPlayer/{{meta._id}}" class="red-text text-lighten-1 tooltipped" data-position="down" data-delay="20" data-tooltip="{{'mainEffective.buttons.addPlayer' | translate }}">
+                <a href="#/private/addPlayer/{{meta._id}}" class="red-text text-lighten-1 tooltipped"
+                   data-position="down" data-delay="20"
+                   data-tooltip="{{'mainEffective.buttons.addPlayer' | translate }}">
                     <i class="fa fa-user-plus fa-2x"></i>
                 </a>
             </div>
-            <div class="col s12">    
+            <div class="col s12">
                 <ul class="collection">
-                    <li class="collection-item avatar col s12" ng-repeat="player in players track by $index | filter:queryPlayer | orderBy:'name'">
+                    <li class="collection-item avatar col s12"
+                        ng-repeat="player in players track by $index | filter:queryPlayer | orderBy:'name'">
                         <simple-avatar person="player" link="('#/private/viewPlayer/' + player._id)"></simple-avatar>
-                        <a href="#/private/viewPlayer/{{player._id}}" class="title red-text text-lighten-1">{{player.firstname}} {{player.name}}</a> 
+                        <a href="#/private/viewPlayer/{{player._id}}" class="title red-text text-lighten-1">{{player.firstname}}
+                            {{player.name}}</a>
                         <span class="title  hide-on-small-only">{{player.positionType}}</span>
                         <p>
-                            {{player.age}} {{'commons.format.ageYear' | translate }} - 
-                            {{player.status.height}} {{'commons.format.height' | translate }} / {{player.status.weight}} {{'commons.format.weight' | translate }}
+                            {{player.age}} {{'commons.format.ageYear' | translate }} -
+                            {{player.status.height}} {{'commons.format.height' | translate }} / {{player.status.weight}}
+                            {{'commons.format.weight' | translate }}
                         </p>
-                        <a href="#/private/playerStats/{{player._id}}" class="secondary-content btn-floating waves-effect waves-light red lighten-1">
-                            <i class="fa fa-bar-chart" ></i>
+                        <a href="#/private/playerStats/{{player._id}}"
+                           class="secondary-content btn-floating waves-effect waves-light red lighten-1">
+                            <i class="fa fa-bar-chart"></i>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-    
-<!-- body end-->
+
+    <!-- body end-->
 </div>

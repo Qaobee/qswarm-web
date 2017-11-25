@@ -1,13 +1,13 @@
 <div class="container">
-<!-- body start-->
+    <!-- body start-->
     <div class="row"></div>
-    
+
     <!-- Entete -->
     <div class="row">
         <div class="col s12">
             <div class="row colorMain white-text center-align">
                 <div ng-if="!addEffectiveTitle">
-                    <div class="col s1">    
+                    <div class="col s1">
                         <i class="material-icons md-36">mode_edit</i>
                     </div>
                     <div class="col s11">
@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div ng-if="addEffectiveTitle">
-                    <div class="col s1">    
+                    <div class="col s1">
                         <h5><i class="fa fa-plus-square-o"></i></h5>
                     </div>
                     <div class="col s11">
@@ -28,36 +28,42 @@
 
     <div class="row">
         <form name="effectiveCaracterSection" ng-submit="writeEffective()">
-            
+
             <div class="row">
                 <div class="col s12">
                     <!-- input field -->
-                    <div class="input-field col m2 s6">
-                        <label for="effectiveLabel">{{'effectiveLabels.effectiveLabel' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                    <div class="col m2 s6">
+                        <label>{{'effectiveLabels.effectiveLabel' | translate }} <span
+                                class="red-text text-lighten-1">*</span></label>
                     </div>
-                    <div class="input-field col m4 s6">
-                      <input ng-model="effective.label" name="effectiveLabel" type="text" class="validate left-align" 
-                             required
-                             ng-class="{ 'has-error' : effectiveCaracterSection.effectiveLabel.$invalid && !effectiveCaracterSection.effectiveLabel.$pristine }">
+                    <div class="col m4 s6">
+                        <input ng-model="effective.label" name="effectiveLabel" type="text" class="validate left-align"
+                               required
+                               ng-class="{ 'has-error' : effectiveCaracterSection.effectiveLabel.$invalid && !effectiveCaracterSection.effectiveLabel.$pristine }">
                         <span class="small red-text text-lighten-1"
-                                    ng-if="effectiveCaracterSection.effectiveLabel.$invalid && !effectiveCaracterSection.effectiveLabel.$pristine" translate="effectiveErrors.Label"></span>
+                              ng-if="effectiveCaracterSection.effectiveLabel.$invalid && !effectiveCaracterSection.effectiveLabel.$pristine"
+                              translate="effectiveErrors.Label"></span>
                     </div>
 
-                    <div class="input-field col m2 s6">
-                        <label for="effectiveCategoryAge">{{'effectiveLabels.effectiveCategoryAge' | translate }} <span class="red-text text-lighten-1">*</span></label>
+                    <div class="col m2 s6">
+                        <label>{{'effectiveLabels.effectiveCategoryAge' | translate }} <span
+                                class="red-text text-lighten-1">*</span></label>
                     </div>
-                    <div class="input-field col m4 s6">
-                        <select class="browser-default" ng-model="effective.categoryAge.code" name="effectiveCategoryAge"
-                                required ng-class="{ 'has-error' : effectiveCaracterSection.effectiveCategoryAge.$invalid && !effectiveCaracterSection.effectiveCategoryAge.$pristine }" 
+                    <div class="col m4 s6">
+                        <select class="browser-default" ng-model="effective.categoryAge.code"
+                                name="effectiveCategoryAge"
+                                required
+                                ng-class="{ 'has-error' : effectiveCaracterSection.effectiveCategoryAge.$invalid && !effectiveCaracterSection.effectiveCategoryAge.$pristine }"
                                 ng-options="p.code as p.label for p in listCategory">
                         </select>
                         <br>
                         <span class="small red-text text-lighten-1"
-                                ng-if="effectiveCaracterSection.effectiveCategoryAge.$invalid && !effectiveCaracterSection.effectiveCategoryAge.$pristine" translate="effectiveErrors.CategoryAge"></span>
+                              ng-if="effectiveCaracterSection.effectiveCategoryAge.$invalid && !effectiveCaracterSection.effectiveCategoryAge.$pristine"
+                              translate="effectiveErrors.CategoryAge"></span>
                     </div>
                 </div>
             </div>
-            
+
             <div class="row">
                 <!-- List players -->
                 <div class="col s12">
@@ -65,50 +71,56 @@
                         <li class="collection-header blue-grey-text text-darken-2">
                             <h5 class="card-title" translate="effectiveLabels.effectiveTabMembers"></h5>
                             <span class="small right-align">{{selectedPlayers.length}} {{'effectiveLabels.effectiveNbPlayers' | translate }}</span>
-                            <div class="input-field">
-                                <label for="query" translate="commons.buttons.filter"></label>
-                                <input type="text" class="grey lighten-4" id="query" ng-model="query">
-                            </div>
+                            <label for="query" translate="commons.buttons.filter"></label>
+                            <input type="text" class="grey lighten-4" id="query" ng-model="query">
                         </li>
                     </ul>
                 </div>
                 <div class="col s12 left-align">
-                    <a href ng-click="onClickAddPlayer()" class="red-text text-lighten-1 tooltipped" data-position="down" data-delay="20" data-tooltip="{{'mainEffective.buttons.addPlayer' | translate }}">
+                    <a href ng-click="onClickAddPlayer()" class="red-text text-lighten-1 tooltipped"
+                       data-position="down" data-delay="20"
+                       data-tooltip="{{'mainEffective.buttons.addPlayer' | translate }}">
                         <i class="fa fa-user-plus fa-2x"></i>
                     </a>
                 </div>
-                          
+
                 <div class="col s12">
                     <table class="bordered">
                         <body>
-                            <tr ng-repeat="player in persons | filter:query"
-                                selection-model
-                                selection-model-type="checkbox"
-                                selection-model-mode="multiple-additive"
-                                selection-model-selected-attribute="checked"
-                                selection-model-selected-items="selectedPlayers"
-                                selection-model-on-change="changed(player)"
-                                class="col m3 s12">
-                                <td><simple-avatar person="player" width="'40px'" link="('#/private/viewPlayer/' + player._id)"></simple-avatar></td>
-                                <td>                                    
-                                    <input type="checkbox" id="{{$index + 1}}"/> 
-                                    <label for="{{$index + 1}}"><span class="red-text text-lighten-1">{{player.name}} {{player.firstname}}</span></label>
-                                    <p class="blue-grey-text text-darken-2" style="margin-left:35px">{{player.positionType}}</p>
-                                </td>
-                            </tr>
+                        <tr ng-repeat="player in persons | filter:query"
+                            selection-model
+                            selection-model-type="checkbox"
+                            selection-model-mode="multiple-additive"
+                            selection-model-selected-attribute="checked"
+                            selection-model-selected-items="selectedPlayers"
+                            selection-model-on-change="changed(player)"
+                            class="col m3 s12">
+                            <td>
+                                <simple-avatar person="player" width="'40px'"
+                                               link="('#/private/viewPlayer/' + player._id)"></simple-avatar>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="{{$index + 1}}"/>
+                                <label for="{{$index + 1}}"><span class="red-text text-lighten-1">{{player.name}} {{player.firstname}}</span></label>
+                                <p class="blue-grey-text text-darken-2" style="margin-left:35px">
+                                    {{player.positionType}}</p>
+                            </td>
+                        </tr>
                         </body>
                     </table>
                 </div>
             </div>
-            
+
             <!-- actions buttons -->
             <div class="row">&nbsp;</div>
             <div class="col s12 center-align">
-                <a href="" class="btn red lighteen-1 white-text waves-effect waves-light center" ng-click="doTheBack()" translate="commons.buttons.cancel"></a>
-                <button class="btn green darken-1 waves-effect waves-light center" type="submit" ng-disabled="effectiveCaracterSection.$invalid" translate="commons.buttons.validate"></button>
+                <a href="" class="btn red lighteen-1 white-text waves-effect waves-light center" ng-click="doTheBack()"
+                   translate="commons.buttons.cancel"></a>
+                <button class="btn green darken-1 waves-effect waves-light center" type="submit"
+                        ng-disabled="effectiveCaracterSection.$invalid" translate="commons.buttons.validate"></button>
             </div>
         </form>
     </div>
-    
-<!-- body end-->
+
+    <!-- body end-->
 </div>
