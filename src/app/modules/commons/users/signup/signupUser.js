@@ -25,8 +25,8 @@
             });
         })
 
-        .controller('SignupUserCtrl', function ($rootScope, $scope, $log, $translatePartialLoader, single, $window,$routeParams,
-                                                $location, $translate, signupRestAPI, qeventbus, vcRecaptchaService) {
+        .controller('SignupUserCtrl', function ($rootScope, $scope, $log, $translatePartialLoader, single, $window, $routeParams,
+                                                $location, $translate, signupRestAPI, qeventbus, vcRecaptchaService, locationAPI) {
             $translatePartialLoader.addPart('user').addPart('commons');
             qeventbus.prepForBroadcast('menuItem', 'signup');
             $scope.single = single;
@@ -57,39 +57,45 @@
              * @description Test login and create account
              */
             $scope.usernameTest = function () {
-                signupRestAPI.usernameTest($scope.signup.account.login).success(function (data) {
+                signupRestAPI.usernameTest($scope.signup.account.login).then(function (data) {
                     if (data.status === true) {
                         toastr.warning($translate.instant('signupStartPage.form.messageControl.nonunique'));
                         vcRecaptchaService.reload($scope.widgetId);
                     } else {
-                        $scope.signup.plan = {levelPlan: single ? 'FREEMIUM' : $routeParams.teamPlan, activity: {_id: 'ACT-HAND'}};
+                        $scope.signup.plan = {
+                            levelPlan: single ? 'FREEMIUM' : $routeParams.teamPlan,
+                            activity: {_id: 'ACT-HAND'}
+                        };
                         $scope.signup.name = $scope.signup.name.capitalize(true);
                         $scope.signup.firstname = $scope.signup.firstname.capitalize(true);
-                        if (single) {
-                            signupRestAPI.registerUser($scope.signup).success(function (data2) {
-                                vcRecaptchaService.reload($scope.widgetId);
-                                if (data2 === null) {
-                                    toastr.error($translate.instant('signupStartPage.form.messageControl.unknown'));
-                                } else {
-                                    $log.debug("ererer coucouc");
-                                    delete $scope.signup;
-                                    delete $scope.passwdConfirm;
-                                    //$rootScope.user = data2.person;
-                                    $location.path('/signup/done');
-                                }
-                            }).error(function (error) {
-                                vcRecaptchaService.reload($scope.widgetId);
-                                if (error.code && error.code === 'CAPTCHA_EXCEPTION') {
-                                    toastr.error($translate.instant('signupStartPage.form.messageControl.' + error.code));
-                                } else {
-                                    $rootScope.errMessSend = true;
-                                    toastr.error(error.message);
-                                }
-                            });
-                        } else {
-                            $window.sessionStorage.signup = JSON.stringify($scope.signup);
-                            $location.path('/signup/club/structure');
-                        }
+                        locationAPI.getCountry().then(function (data) {
+                            $scope.signup.country = data.data.country;
+                            if (single) {
+                                signupRestAPI.registerUser($scope.signup).success(function (data2) {
+                                    vcRecaptchaService.reload($scope.widgetId);
+                                    if (data2 === null) {
+                                        toastr.error($translate.instant('signupStartPage.form.messageControl.unknown'));
+                                    } else {
+                                        $log.debug("ererer coucouc");
+                                        delete $scope.signup;
+                                        delete $scope.passwdConfirm;
+                                        //$rootScope.user = data2.person;
+                                        $location.path('/signup/done');
+                                    }
+                                }).error(function (error) {
+                                    vcRecaptchaService.reload($scope.widgetId);
+                                    if (error.code && error.code === 'CAPTCHA_EXCEPTION') {
+                                        toastr.error($translate.instant('signupStartPage.form.messageControl.' + error.code));
+                                    } else {
+                                        $rootScope.errMessSend = true;
+                                        toastr.error(error.message);
+                                    }
+                                });
+                            } else {
+                                $window.sessionStorage.signup = JSON.stringify($scope.signup);
+                                $location.path('/signup/club/structure');
+                            }
+                        });
                     }
                 });
                 return false;

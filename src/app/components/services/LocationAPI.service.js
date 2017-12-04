@@ -39,8 +39,14 @@
                             sensor: false
                         }
                     });
+                },
+                /**
+                 * @memberOf qaobee.components.services.locationAPI
+                 * @returns {HttpPromise}
+                 */
+                getCountry: function () {
+                    return $http.get('http://ipinfo.io');
                 }
-
             };
         });
 
