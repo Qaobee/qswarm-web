@@ -76,7 +76,7 @@
             'qaobee.user.billing.pay',
             'qaobee.user.billing',
             'qaobee.user.sso',
-            'qaobee.test'
+            'qaobee.cms'
         ])
 
 

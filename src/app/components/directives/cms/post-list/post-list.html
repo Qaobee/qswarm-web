@@ -1,0 +1,22 @@
+<div class="card cms-post-item" ng-repeat="p in posts">
+    <div class="card-image">
+        <featured-image media-id="p.featured_media" size="full"></featured-image>
+        <div class="overlay">
+            <span class="card-title" ng-bind-html="p.title.rendered"></span>
+        </div>
+    </div>
+    <div class="card-content">
+        <div class="row">
+            <div class="col s3 center">
+                <post-author author-id="p.author"></post-author>
+                <span class="post-date" ng-bind-html="formatDate(p.date)"></span>
+            </div>
+            <div class="col s9"><span ng-bind-html="p.excerpt.rendered"></span></div>
+        </div>
+    </div>
+
+    <div class="card-action">
+
+        <a href="#/blog/{{p.id}}" class="btn btn-sm secondary-color pull-right" translate="commons.buttons.read-more"></a>
+    </div>
+</div>

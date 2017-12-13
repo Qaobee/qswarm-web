@@ -1977,3 +1977,57 @@ span#top {
 .picker__footer .picker__clear, .picker__footer .picker__close:nth-child(0n+2) {
     display: none;
 }
+
+.cms-post-item .card-image {
+    max-height: 300px;
+    overflow: hidden;
+}
+
+.cms-post-item .card-action {
+    min-height: 70px;
+}
+
+.cms-post-item post-author {
+    width: 100%;
+}
+
+.cms-post-item post-author .post-author-image {
+    display: block;
+    margin: 0 auto;
+}
+
+.cms-post-item post-author .post-author-name {
+    font-weight: bold;
+}
+
+.cms-post-item .post-date .post-date-day {
+    font-weight: bold;
+    font-size: 2em;
+    color: #78BE78;
+}
+.cms-post-item .post-date .post-date-month:before {
+    content: '/';
+}
+
+.cms-post-item .post-date .post-date-month {
+    font-weight: bold;
+    font-size: 1em;
+    color: #37474F;
+}
+
+.cms-post-item .post-date .post-date-year {
+    font-weight: bold;
+    font-size: 1em;
+    color: #37474F;
+    display: block;
+}
+
+.cms-post-item .overlay {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    cursor: pointer;
+    height: 100px;
+}
