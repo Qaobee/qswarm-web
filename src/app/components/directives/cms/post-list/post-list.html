@@ -11,12 +11,11 @@
                 <post-author author-id="p.author"></post-author>
                 <span class="post-date" ng-bind-html="formatDate(p.date)"></span>
             </div>
-            <div class="col s9"><span ng-bind-html="p.excerpt.rendered"></span></div>
+            <div class="col s9"><div class="post-content" ng-bind-html="p.excerpt.rendered"></div></div>
         </div>
     </div>
 
     <div class="card-action">
-
         <a href="#/blog/{{p.id}}" class="btn btn-sm secondary-color pull-right" translate="commons.buttons.read-more"></a>
     </div>
 </div>

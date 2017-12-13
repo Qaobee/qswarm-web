@@ -12,6 +12,9 @@
             $routeProvider.when('/blog', {
                 controller: 'PostListCtrl',
                 templateUrl: 'app/modules/public/cms/postList.html'
+            }).when('/blog/:id', {
+                controller: 'PostDetailCtrl',
+                templateUrl: 'app/modules/public/cms/postDetail.html'
             });
         })
 
@@ -19,7 +22,12 @@
          * @class qaobee.public.public.cms.PostListCtrl
          * @description Main Blog controller
          */
-        .controller('PostListCtrl', function ($translatePartialLoader, $scope) {
+        .controller('PostListCtrl', function ($translatePartialLoader) {
             $translatePartialLoader.addPart('public');
+        })
+
+        .controller('PostDetailCtrl', function ($translatePartialLoader, $scope, $routeParams) {
+            $translatePartialLoader.addPart('public');
+            $scope.postId = $routeParams.id;
         });
 }());
