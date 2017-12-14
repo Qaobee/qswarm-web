@@ -2005,6 +2005,7 @@ posts-list .post-date .post-date-day {
     font-size: 2em;
     color: #78BE78;
 }
+
 posts-list .post-date .post-date-month:before {
     content: '/';
 }
@@ -2014,9 +2015,11 @@ posts-list .post-date .post-date-month {
     font-size: 1em;
     color: #37474F;
 }
+
 posts-list .post-content::first-letter {
     font-size: 1.5em;
 }
+
 posts-list .post-date .post-date-year {
     font-weight: bold;
     font-size: 1em;
@@ -2040,7 +2043,6 @@ post-detail .post-header {
     margin: -20px -11px -11px;
 }
 
-
 post-detail featured-image img {
     width: 100%;
 }
@@ -2049,8 +2051,9 @@ post-detail img.aligncenter {
     text-align: center;
     margin: 0 auto;
     display: block;
+    max-width: 100%;
+    height: auto;
 }
-
 
 post-detail post-author {
     width: 100%;
@@ -2072,6 +2075,7 @@ post-detail .post-date .post-date-day {
     font-size: 2em;
     color: #78BE78;
 }
+
 post-detail .post-date .post-date-month:before {
     content: '/';
 }
@@ -2089,10 +2093,15 @@ post-detail .post-date .post-date-year {
     display: block;
 }
 
-post-detail .post-content {
+posts-list .post-content p, post-detail .post-content p{
     margin-top: 50px;
+    text-align: justify;
 }
 
 post-detail .post-content::first-letter {
     font-size: 1.5em;
+}
+
+page-detail .post-content p {
+    text-align: justify;
 }

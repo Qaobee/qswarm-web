@@ -13,7 +13,8 @@
         /* qaobee shared directives */
         'qaobee.headerMenu',
         'ezfb',
-        'paramsRestAPI'
+        'paramsRestAPI',
+        'qaobee.cms.directives.pageDetail'
     ])
 
         .config(function ($routeProvider, ezfbProvider) {
@@ -35,9 +36,6 @@
             }).when('/contact', {
                 controller: 'ContactCtrl',
                 templateUrl: 'app/modules/public/contact.html'
-            }).when('/news', {
-                controller: 'NewsCtrl',
-                templateUrl: 'app/modules/public/news.html'
             }).when('/privacy-policy', {
                 controller: 'PrivacyCtrl',
                 templateUrl: 'app/modules/public/privacy-policy.html'
@@ -97,13 +95,6 @@
          * @description About page controller
          */
         .controller('AboutCtrl', function ($translatePartialLoader) {
-            $translatePartialLoader.addPart('public');
-        })
-        /**
-         * @class qaobee.public.public.NewsCtrl
-         * @description News page controller
-         */
-        .controller('NewsCtrl', function ($translatePartialLoader) {
             $translatePartialLoader.addPart('public');
         })
 
