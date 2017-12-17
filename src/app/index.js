@@ -30,6 +30,7 @@
             'webNotifications',
             'slideWrapper',
             'angular-intro',
+            'angular-timeline',
 
             /* qaobee shared services */
             'qaobee.utils',

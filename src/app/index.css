@@ -1978,6 +1978,45 @@ span#top {
     display: none;
 }
 
+@media only screen and (min-width: 768px) {
+  
+  .timeline:before {
+    left: 40px;
+  }
+
+  timeline-panel {
+    width: calc(100% - 85px);
+    width: -moz-calc(100% - 85px);
+    width: -webkit-calc(100% - 85px);
+  }
+
+  timeline-badge {
+    left: 15px;
+    margin-left: 0;
+    top: $top + 1;
+  }
+
+  timeline-panel {
+    float: right;
+  }
+
+  timeline-panel:before {
+    border-left-width: 0;
+    border-right-width: 15px;
+    left: -15px;
+    right: auto;
+    top: $top + 11px;
+  }
+
+  timeline-panel:after {
+    border-left-width: 0;
+    border-right-width: 14px;
+    left: -14px;
+    right: auto;
+    top: $top + 12px;
+  }
+}
+
 posts-list .card-image {
     max-height: 300px;
     overflow: hidden;
@@ -2007,7 +2046,7 @@ posts-list .post-date .post-date-day {
 }
 
 posts-list .post-date .post-date-month:before {
-    content: '/';
+    content: ' ';
 }
 
 posts-list .post-date .post-date-month {
