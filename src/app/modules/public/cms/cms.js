@@ -22,8 +22,9 @@
          * @class qaobee.public.public.cms.PostListCtrl
          * @description Main Blog controller
          */
-        .controller('PostListCtrl', function ($translatePartialLoader) {
+        .controller('PostListCtrl', function ($translatePartialLoader, $scope) {
             $translatePartialLoader.addPart('public');
+            $scope.parts = ['04'];
         })
 
         .controller('PostDetailCtrl', function ($translatePartialLoader, $scope, $routeParams) {

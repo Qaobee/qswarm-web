@@ -1,5 +1,5 @@
 <!-- START PRICING TABLE CONTAINER -->
-<div class="light-primary-color">
+<div class="secondary-color">
     <div class="row default-primary-color pricing">
         <div class="col s12  center-align accent-text-color">
             <h3 class="title" translate="pricing.titleTarif" ng-if="public==='true'"></h3>
@@ -11,18 +11,18 @@
     </div>
     <div class="row white pricing">
 
-        <div class="card col s12 m6 l3" ng-repeat="(plan, p) in plans">
-            <div class="card-title center-align" ng-class="getPlanView(plan).color">
+        <div class="card " ng-repeat="(plan, p) in plans">
+            <div ng-if="plan == 'FREEMIUM'" class="card-title center-align" ng-class="getPlanView(plan).color">
                 <i class="fa fa-fw fa-2x white-text" ng-class="getPlanView(plan).icon" style="padding:2px;"></i>&nbsp;
                 <h5 translate="{{'pricing.offers.' + plan + '.title'}}"></h5>
             </div>
-            <div class="card-title white dark-text-color" style="height:200px;">
+            <div ng-if="plan == 'FREEMIUM'" class="card-title white dark-text-color" style="height:200px;">
                 <span class="light-text-color activator">{{'pricing.offers.' + plan + '.desc' | translate}}
                     <i class="material-icons right">help</i></span>
                 <h4><b>{{p.price}} €</b><span translate="pricing.monthly"></span></h4>
                 <h5 class="right"><b>{{p.price_y}} €</b><span translate="pricing.yearly"></span></h5>
             </div>
-            <div class="card-reveal center-align">
+            <div ng-if="plan == 'FREEMIUM'" class="card-reveal center-align">
                 <span class="card-title" ng-class="getPlanView(plan).color">
                     <i class="fa fa-fw" ng-class="getPlanView(plan).icon" style="padding:2px;"></i>
                     &nbsp; {{'pricing.offers.' + plan + '.title' | translate}}<i
@@ -34,14 +34,18 @@
                    class="btn waves-effect waves-white" ng-class="getPlanView(plan).color">
                 </a>
                 <br><br>
+                {{plan}}
             </div>
 
-            <div class="card-action">
+            <div ng-if="plan == 'FREEMIUM'" class="card-action">
                 <a ng-href="{{getPlanView(plan).link}}" translate="commons.buttons.subscribe"
                    class="btn waves-effect waves-white" ng-class="getPlanView(plan).color">
                 </a>
+                
             </div>
         </div>
     </div>
 </div>
+
+<span ng-repeat="p in parts track by $index" ng-include="'app/modules/public/parts/'+p+'.html'"></span>
 

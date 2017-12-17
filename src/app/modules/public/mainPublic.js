@@ -57,7 +57,7 @@
             $translatePartialLoader.addPart('public');
             $translatePartialLoader.addPart('commons');
 
-            $scope.parts = ['01', '02', '04', '03', '05', '06', '07', '08'];
+            $scope.parts = ['01', '02', '04', '08'];
             $scope.toTop = false;
             // asu = Allow SignUp
             $rootScope.signupAvailable = true;
@@ -113,9 +113,10 @@
         .controller('PricingCtrl', function ($scope, qeventbus, $translatePartialLoader, paramsRestAPI, $log) {
             $translatePartialLoader.addPart('public');
             qeventbus.prepForBroadcast('menuItem', 'pricing');
+            $scope.parts = ['03', '05', '07'];
             $scope.params = {
                 FREEMIUM: {
-                    color: 'default-primary-color',
+                    color: 'dark-primary-color',
                     icon: 'fa-user',
                     link: '/#/signupStartCoach'
                 },
