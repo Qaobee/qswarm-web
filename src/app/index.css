@@ -151,28 +151,6 @@ main {
     box-shadow: none;
 }
 
-.landing {
-    max-height: 100%;
-    height: 100%;
-    width: 100%;
-    padding: 5vh 10vw 10vh 10vw;
-    text-align: center;
-    position: relative;
-    background: url("../assets/images/handball/Pricing.jpg") fixed center 40%;
-    background-size: cover;
-}
-
-.pricing {
-    background: url("../assets/images/handball/Pricing.jpg") fixed center 40%;
-    max-height: 100%;
-    height: 100%;
-    width: 100%;
-    padding: 5vh 10vw 5vh 10vw;
-    text-align: center;
-    background-size: cover;
-    position: relative;
-}
-
 .landing h2, .about-title h2 {
     text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.5),
     1px -1px 1px rgba(0, 0, 0, 0.5),
@@ -625,37 +603,6 @@ span.badge {
 
 #feedback-overview-description-text span {
     background: url(../assets/images/icons.png) -30px -34px no-repeat;
-}
-
-.fs-loader {
-    margin: 0;
-    padding: 0;
-    background: url(../assets/images/handball/Back02.jpeg) black no-repeat center fixed;
-    -webkit-background-size: cover;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    z-index: 999;
-    position: fixed;
-    top: 0;
-    left: 0;
-}
-
-.fs-loader h1 {
-
-    position: absolute;
-    top: 200px;
-    width: 100%;
-    color: white;
-    text-align: center;
-}
-
-/* http://codepen.io/anon/pen/JGQQwX */
-.fs-loader ul, .fs-loader li {
-    list-style: none;
-    position: relative;
-    padding: 0;
-    margin: 0;
 }
 
 .show-area {
@@ -2143,4 +2090,18 @@ post-detail .post-content::first-letter {
 
 page-detail .post-content p {
     text-align: justify;
+}
+
+.share-icons {
+    list-style-type:none;
+}
+
+.share-icons li {
+    margin-left:20px;
+    float:left; /*pour IE*/
+}
+.share-icons li a {
+    display:block;
+    float:left;
+    width:100px;
 }

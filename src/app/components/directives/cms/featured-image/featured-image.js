@@ -6,7 +6,8 @@
                 restrict: 'E',
                 scope: {
                     mediaId: '=',
-                    size: '@'
+                    size: '@',
+                    image : '='
                 },
                 templateUrl: 'app/components/directives/cms/featured-image/featured-image.html',
                 controller: function ($scope, cmsRestAPI) {

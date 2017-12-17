@@ -1,5 +1,4 @@
 <div class="row">
-    
     <timeline>
         <timeline-event ng-repeat="event in posts" side="right">
           <timeline-badge class="info">
@@ -10,18 +9,13 @@
                 <span class="post-date" ng-bind-html="formatDate(p.date)"></span>
                 <h5><span class="secondary-text-color" ng-bind-html="event.title.rendered"></span></h5>  
                 <div class="row">
-                    <div class="col s6"><featured-image media-id="event.featured_media"></featured-image></div>
+                    <div class="col s6"><featured-image media-id="event.featured_media" size="full" ng-if="event" image="image"></featured-image></div>
                     <div class="col s6 center-align">
                         <post-author author-id="event.author"></post-author>
                         <span ng-bind-html="event.excerpt.rendered"></span>
-                        <div>
-                            <br/>
-                            <a href="#/blog/{{event.id}}" class="btn-floating accent-color">
-                                <i class="material-icons">expand_more</i>
-                            </a>
-                            <br/>&nbsp;
-                            <br/>
-                        </div>
+                        <a href="#/blog/{{event.id}}" class="btn-floating accent-color" title="{{'commons.buttons.read-more' | translate}}">
+                            <i class="material-icons">expand_more</i>
+                        </a>
                     </div>
                 </div>
             </timeline-panel>

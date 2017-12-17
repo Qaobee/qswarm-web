@@ -1,6 +1,8 @@
 (function () {
     'use strict';
     angular.module('qaobee.cms.directives.postDetail', ['cmsRestAPI',
+        'ngSocial',
+        '720kb.socialshare',
         'qaobee.cms.directives.featuredImage',
         'qaobee.cms.directives.postAuthor'
     ])

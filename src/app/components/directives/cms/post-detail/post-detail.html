@@ -10,7 +10,7 @@
     </div>
 </div>
 <div class="post-header">
-    <featured-image media-id="post.featured_media" size="full" ng-if="post"></featured-image>
+    <featured-image media-id="post.featured_media" size="full" ng-if="post" image="image"></featured-image>
 </div>
 
 <div class="row" ng-if="post">
@@ -18,5 +18,44 @@
         <post-author author-id="post.author"></post-author>
         <span class="post-date" ng-bind-html="formatDate(post.date)"></span>
     </div>
-    <div class="col s9"><div class="post-content" ng-bind-html="post.content.rendered"></div></div>
+    <div class="col s9">
+        <div class="post-content" ng-bind-html="post.content.rendered"></div>
+        <ul class="share-icons">
+            <li>
+                <a href="#/blog/{{post.id}}"
+                   socialshare
+                   socialshare-provider="twitter"
+                   socialshare-text="{{post.title.rendered}}"
+                   socialshare-url="https://www.qaobee.com/#/blog/{{post.id}}"
+                   class="btn-floating btn-large waves-effect waves-light blue darken-1"><i
+                        class="fa fa-fw fa-2x fa-twitter"></i>
+                </a></li>
+            <li><a href="#/blog/{{post.id}}"
+                   socialshare
+                   socialshare-provider="facebook"
+                   socialshare-text="{{post.title.rendered}}"
+                   socialshare-mobileiframe="true"
+                   socialshare-url="https://www.qaobee.com/#/blog/{{post.id}}"
+                   class="btn-floating btn-large waves-effect waves-light blue darken-4"><i
+                    class="fa fa-fw fa-2x fa-facebook"></i>
+            </a></li>
+            <li><a href="#/blog/{{post.id}}"
+                   socialshare
+                   socialshare-provider="pinterest"
+                   socialshare-text="{{post.title.rendered}}"
+                   socialshare-url="https://www.qaobee.com/#/blog/{{post.id}}"
+                   class="btn-floating btn-large waves-effect waves-light deep-orange accent-4"><i
+                    class="fa fa-fw fa-2x fa-pinterest"></i>
+            </a></li>
+            <li><a href="#/blog/{{post.id}}"
+                   socialshare
+                   socialshare-provider="google"
+                   socialshare-text="{{post.title.rendered}}"
+                   socialshare-url="https://www.qaobee.com/#/blog/{{post.id}}"
+                   class="btn-floating btn-large waves-effect waves-light red"><i
+                    class="fa fa-fw fa-2x fa-google-plus"></i>
+            </a></li>
+        </ul>
+    </div>
+
 </div>
