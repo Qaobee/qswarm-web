@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('cmsRestAPI', []).value('cmsApiURL', 'http://support.qaobee.com/wp-json/wp/v2')
+    angular.module('cmsRestAPI', []).value('cmsApiURL', 'https://support.qaobee.com/wp-json/wp/v2')
 
         .factory('cmsRestAPI', function ($http, cmsApiURL) {
             return {
