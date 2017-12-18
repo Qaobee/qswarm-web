@@ -14,13 +14,13 @@
 </div>
 
 <div class="row" ng-if="post">
-    <div class="col s3 center">
+    <div class="col s3 center light-primary-color">
         <post-author author-id="post.author"></post-author>
         <span class="post-date" ng-bind-html="formatDate(post.date)"></span>
     </div>
     <div class="col s9">
-        <div class="post-content" ng-bind-html="post.content.rendered"></div>
-        <ul class="share-icons">
+        <br/>
+        <ul class="share-icons right">
             <li>
                 <a href="#/blog/{{post.id}}"
                    socialshare
@@ -56,6 +56,8 @@
                     class="fa fa-fw fa-2x fa-google-plus"></i>
             </a></li>
         </ul>
+        <br/>
+        <div class="post-content" ng-bind-html="post.content.rendered"></div>
     </div>
 
 </div>

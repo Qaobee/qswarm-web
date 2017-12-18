@@ -23,7 +23,6 @@
 
                     $scope.formatDate = function (d) {
                         var da = moment(d);
-                        $log.debug('[qaobee.cms pageDetail] formatDate', d, da);
                         return da.format('[<span class="post-date-day">]DD[</span><span class="post-date-month">]MM[</span><span class="post-date-year">]YYYY[</span>]');
                     }
                 }

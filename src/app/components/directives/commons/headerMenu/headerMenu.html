@@ -8,10 +8,10 @@
                                                   ng-click="menuItem = ''" alt="Qaobee"/></a>
             <div class="nav-wrapper">
                 <ul class="left hide-on-med-and-down nav-top-menu" ng-if=" menuItem !== 'signup'">
-                    <!--<li><a class="dropdown-header-button" href="javascript:void(0)"
+                    <li><a class="dropdown-header-button" href="javascript:void(0)"
                            data-activates="dropdown-header"><span
                             translate="navbar.concept"></span> <i class="material-icons right">arrow_drop_down</i></a>
-                    </li>-->
+                    </li>
                     <li><a href="#/pricing" translate="navbar.pricing"/></li>
                     <li><a href="#/about" translate="navbar.aboutUs"/></li>
                     <li><a href="#/blog" translate="navbar.news"/></li>
@@ -44,18 +44,16 @@
                         <a href="javascript:void(0)" class="white-text" translate="navbar.download"
                            ng-click="gotoAnchor('download')"></a>
                     </li>
-                    <!--<li ng-class="{'active' : menuItem === 'collect'}">
+                    <li ng-class="{'active' : menuItem === 'collect'}">
                         <a href="javascript:void(0)" class="white-text" translate="navbar.collect"
                            ng-click="gotoAnchor('collect')"></a>
-                    </li>-->
-                    <!--<li ng-class="{'active' : menuItem === 'progress'}">
+                    </li><li ng-class="{'active' : menuItem === 'progress'}">
                         <a href="javascript:void(0)" class="white-text" translate="navbar.progress"
                            ng-click="gotoAnchor('progress')"></a>
-                    </li>-->
-                    <!--<li ng-class="{'active' : menuItem === 'collaborate'}">
+                    </li><li ng-class="{'active' : menuItem === 'collaborate'}">
                         <a href="javascript:void(0)" class="white-text" translate="navbar.collaborate"
                            ng-click="gotoAnchor('collaborate')"></a>
-                    </li>-->
+                    </li>
                     <li ng-class="{'active' : menuItem === 'contact'}">
                         <a href="javascript:void(0)" class="white-text" translate="navbar.contact"
                            ng-click="gotoAnchor('contact')"></a>
@@ -99,6 +97,7 @@
     <li ng-class="{'active' : menuItem === 'collaborate'}">
         <a href="javascript:void(0)" translate="navbar.collaborate" ng-click="gotoAnchor('collaborate')"></a>
     </li>
+    
     <li ng-class="{'active' : menuItem === 'contact'}">
         <a href="javascript:void(0)" translate="navbar.contact" ng-click="gotoAnchor('contact')"></a>
     </li>

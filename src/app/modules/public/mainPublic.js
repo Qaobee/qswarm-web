@@ -12,12 +12,11 @@
         'ngRoute',
         /* qaobee shared directives */
         'qaobee.headerMenu',
-        'ezfb',
         'paramsRestAPI',
         'qaobee.cms.directives.pageDetail'
     ])
 
-        .config(function ($routeProvider, ezfbProvider) {
+        .config(function ($routeProvider) {
             $routeProvider.when('/', {
                 controller: 'PublicCtrl',
                 templateUrl: 'app/modules/public/mainPublic.html'
@@ -43,9 +42,7 @@
                 controller: 'LegalAgreementCtrl',
                 templateUrl: 'app/modules/public/legal-agreement.html'
             });
-            ezfbProvider.setInitParams({
-                appId: '239177912791979', version: 'v2.3'
-            });
+            
         })
 
         /**
@@ -57,7 +54,7 @@
             $translatePartialLoader.addPart('public');
             $translatePartialLoader.addPart('commons');
 
-            $scope.parts = ['01', '02', '04', '08'];
+            $scope.parts = ['01', '02', '04', '03','05', '07','08'];
             $scope.toTop = false;
             // asu = Allow SignUp
             $rootScope.signupAvailable = true;
@@ -116,7 +113,7 @@
             $scope.parts = ['03', '05', '07'];
             $scope.params = {
                 FREEMIUM: {
-                    color: 'dark-primary-color',
+                    color: 'accent-color',
                     icon: 'fa-user',
                     link: '/#/signupStartCoach'
                 },

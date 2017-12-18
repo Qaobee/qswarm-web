@@ -31,6 +31,7 @@
             'slideWrapper',
             'angular-intro',
             'angular-timeline',
+            '720kb.socialshare',
 
             /* qaobee shared services */
             'qaobee.utils',

@@ -151,6 +151,19 @@ main {
     box-shadow: none;
 }
 
+.pricing {
+    
+    background: #383838 url("../assets/images/handball/rsz_d5d4ex-large.jpg") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    height: calc(100vh - 64px);
+    width: 100%;
+    background-blend-mode: overlay;
+    margin: 0;
+    padding: 0;
+}
+
 .landing h2, .about-title h2 {
     text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.5),
     1px -1px 1px rgba(0, 0, 0, 0.5),
