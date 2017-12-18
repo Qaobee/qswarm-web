@@ -1,21 +1,23 @@
 <div class="row">
     <timeline>
         <timeline-event ng-repeat="event in posts" side="right">
-          <timeline-badge class="info">
-            <i class="material-icons">equalizer</i>
-          </timeline-badge>
-        
+            <timeline-badge class="info">
+                <i class="material-icons">equalizer</i>
+            </timeline-badge>
+
             <timeline-panel class="info default-text-color">
                 <span class="post-date" ng-bind-html="formatDate(p.date)"></span>
-                <h5><span class="secondary-text-color" ng-bind-html="event.title.rendered"></span></h5>  
+                <h5><span class="secondary-text-color" ng-bind-html="event.title.rendered"></span></h5>
                 <div class="row">
-                    <div class="col s6"><featured-image media-id="event.featured_media" size="full" ng-if="event" image="image"></featured-image></div>
+                    <div class="col s6">
+                        <featured-image media-id="event.featured_media" size="full" ng-if="event"
+                                        image="image"></featured-image>
+                    </div>
                     <div class="col s6 center-align">
                         <post-author author-id="event.author"></post-author>
                         <span ng-bind-html="event.excerpt.rendered"></span>
-                        <a href="#/blog/{{event.id}}" class="btn-floating accent-color" title="{{'commons.buttons.read-more' | translate}}">
-                            <i class="material-icons">expand_more</i>
-                        </a>
+                        <a href="#/blog/{{p.id}}" class="btn btn-sm accent-color"
+                           translate="commons.buttons.read-more"></a>
                     </div>
                 </div>
             </timeline-panel>
