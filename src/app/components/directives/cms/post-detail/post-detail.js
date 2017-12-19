@@ -12,26 +12,40 @@
                     postId: '='
                 },
                 templateUrl: 'app/components/directives/cms/post-detail/post-detail.html',
-                controller: function ($scope, $log, $location, cmsRestAPI) {
-                    var addCharacterEntities = {
+                controller: function ($scope, $log, $location, cmsRestAPI, Socialshare) {
+                    var characterEntities = {
                         '&amp;': '&',
                         '&gt;': '>',
                         '&lt;': '<',
                         '&quot;': '"',
                         '&#39;': "'",
-                        '&rsquo;' : "'"
+                        '&rsquo;': "'"
                     };
                     cmsRestAPI.getPostDetail($scope.postId).then(function (data) {
                         $scope.post = data.data;
                     });
 
-                    $scope.htmlDecode = function(value) {
-                        console.log(value)
-                        Object.keys(addCharacterEntities).forEach(function (k) {
-                            value = value.replaceAll(k, addCharacterEntities[k]);
+                    $scope.htmlDecode = function (value) {
+                        Object.keys(characterEntities).forEach(function (k) {
+                            value = value.replaceAll(k, characterEntities[k]);
                         });
                         return value;
-                    };;
+                    };
+
+                    $scope.facebook = function (post) {
+                        Socialshare.share({
+                            provider: 'facebook',
+                            attrs: {
+                                socialshareUrl: 'https://www.qaobee.com/#/blog/' + post.id,
+                                socialshareText: $scope.htmlDecode(post.title.rendered),
+                                socialshareMobileiframe: true,
+                                socialshareType:"share",
+                                socialshareVia:"283871748782976",
+                                socialshareDisplay: "popup",
+                                socialshareQuote: $scope.htmlDecode(post.title.rendered)
+                            }
+                        });
+                    };
 
                     $scope.doTheBack = function () {
                         $location.path('/blog');
@@ -39,7 +53,6 @@
 
                     $scope.formatDate = function (d) {
                         var da = moment(d);
-                        $log.debug('[qaobee.cms postDetail] formatDate', d, da);
                         return da.format('[<span class="post-date-day">]DD[</span><span class="post-date-month">]MM[</span><span class="post-date-year">]YYYY[</span>]');
                     }
                 }

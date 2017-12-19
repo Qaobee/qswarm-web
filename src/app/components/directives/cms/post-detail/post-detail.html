@@ -22,39 +22,35 @@
         <br/>
         <ul class="share-icons right">
             <li>
-                <a href="#/blog/{{post.id}}"
+                <button
                    socialshare
                    socialshare-provider="twitter"
                    socialshare-text="{{htmlDecode(post.title.rendered)}}"
                    socialshare-url="https://www.qaobee.com/#/blog/{{post.id}}"
                    class="btn-floating btn-large waves-effect waves-light blue darken-1"><i
                         class="fa fa-fw fa-2x fa-twitter"></i>
-                </a></li>
-            <li><a href="#/blog/{{post.id}}"
-                   socialshare
-                   socialshare-provider="facebook"
-                   socialshare-text="{{post.title.rendered}}"
-                   socialshare-mobileiframe="true"
-                   socialshare-url="https://www.qaobee.com/#/blog/{{post.id}}"
+                </button></li>
+            <li><button
+                   ng-click="facebook(post)"
                    class="btn-floating btn-large waves-effect waves-light blue darken-4"><i
                     class="fa fa-fw fa-2x fa-facebook"></i>
-            </a></li>
-            <li><a href="#/blog/{{post.id}}"
+            </button></li>
+            <li><button
                    socialshare
                    socialshare-provider="pinterest"
-                   socialshare-text="{{post.title.rendered}}"
+                   socialshare-text="{{htmlDecode(post.title.rendered)}}"
                    socialshare-url="https://www.qaobee.com/#/blog/{{post.id}}"
                    class="btn-floating btn-large waves-effect waves-light deep-orange accent-4"><i
                     class="fa fa-fw fa-2x fa-pinterest"></i>
-            </a></li>
-            <li><a href="#/blog/{{post.id}}"
+            </button></li>
+            <li><button
                    socialshare
                    socialshare-provider="google"
-                   socialshare-text="{{post.title.rendered}}"
+                   socialshare-text="{{htmlDecode(post.title.rendered)}}"
                    socialshare-url="https://www.qaobee.com/#/blog/{{post.id}}"
                    class="btn-floating btn-large waves-effect waves-light red"><i
                     class="fa fa-fw fa-2x fa-google-plus"></i>
-            </a></li>
+            </button></li>
         </ul>
         <br/>
         <div class="post-content" ng-bind-html="post.content.rendered"></div>

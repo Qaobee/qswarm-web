@@ -83,7 +83,7 @@
 
 
         .config(function ($translateProvider, $translatePartialLoaderProvider, $httpProvider, vcRecaptchaServiceProvider,
-                          $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, ChartJsProvider) {
+                          $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, ChartJsProvider, socialshareConfProvider) {
 
             if ('development' === EnvironmentConfig.name) {
                 tmhDynamicLocaleProvider.localeLocationPattern('../bower_components/angular-i18n/angular-locale_{{locale}}.js');
@@ -133,6 +133,23 @@
                 responsive: true,
                 maintainAspectRatio: false
             });
+
+            socialshareConfProvider.configure([
+                {
+                    'provider': 'twitter',
+                    'conf': {
+                        'popupHeight': 480,
+                        'popupWidth' : 640
+                    }
+                },
+                {
+                    'provider': 'facebook',
+                    'conf': {
+                        'popupHeight': 480,
+                        'popupWidth' : 640
+                    }
+                }
+            ]);
         })
         .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale, $window, $location) {
             $locale.id = $translate.proposedLanguage();
