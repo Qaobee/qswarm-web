@@ -13,10 +13,25 @@
                 },
                 templateUrl: 'app/components/directives/cms/post-detail/post-detail.html',
                 controller: function ($scope, $log, $location, cmsRestAPI) {
+                    var addCharacterEntities = {
+                        '&amp;': '&',
+                        '&gt;': '>',
+                        '&lt;': '<',
+                        '&quot;': '"',
+                        '&#39;': "'",
+                        '&rsquo;' : "'"
+                    };
                     cmsRestAPI.getPostDetail($scope.postId).then(function (data) {
                         $scope.post = data.data;
                     });
 
+                    $scope.htmlDecode = function(value) {
+                        console.log(value)
+                        Object.keys(addCharacterEntities).forEach(function (k) {
+                            value = value.replaceAll(k, addCharacterEntities[k]);
+                        });
+                        return value;
+                    };;
 
                     $scope.doTheBack = function () {
                         $location.path('/blog');

@@ -25,7 +25,7 @@
                 <a href="#/blog/{{post.id}}"
                    socialshare
                    socialshare-provider="twitter"
-                   socialshare-text="{{post.title.rendered}}"
+                   socialshare-text="{{htmlDecode(post.title.rendered)}}"
                    socialshare-url="https://www.qaobee.com/#/blog/{{post.id}}"
                    class="btn-floating btn-large waves-effect waves-light blue darken-1"><i
                         class="fa fa-fw fa-2x fa-twitter"></i>
