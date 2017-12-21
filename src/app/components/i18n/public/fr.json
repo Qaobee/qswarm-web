@@ -146,6 +146,11 @@
     "yearly" : " / an",
     "monthly" : " / mois",
     "offers": {
+      "FREETRIAL":{
+        "title": "Essai gratuit",
+        "desc": "Période d'essai gratuite pendant 1 mois",
+        "features": "Bénéficiez de l'ensemble des fonctionnalités de notre application gratuitement pendant un mois"
+      },    
       "FREEMIUM": {
         "title": "Individual",
         "desc": "1 seul utilisateur",

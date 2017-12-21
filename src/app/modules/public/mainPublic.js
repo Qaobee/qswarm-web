@@ -113,7 +113,7 @@
             $scope.parts = ['03', '05', '07'];
             $scope.params = {
                 FREEMIUM: {
-                    color: 'accent-color',
+                    color: 'secondary-text-color',
                     icon: 'fa-user',
                     link: '/#/signupStartCoach'
                 },
@@ -123,7 +123,7 @@
                     link: '/#/signupStartTeam/TEAMS'
                 },
                 TEAMM: {
-                    color: 'secondary-color',
+                    color: 'accent-color',
                     icon: 'fa-user-times',
                     link: '/#/signupStartTeam/TEAMM'
                 },

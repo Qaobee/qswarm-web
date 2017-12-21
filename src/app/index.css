@@ -159,7 +159,7 @@ main {
     background-size: cover;
     height: calc(100vh - 64px);
     width: 100%;
-    background-blend-mode: overlay;
+    background-blend-mode: luminosity;
     margin: 0;
     padding: 0;
 }
