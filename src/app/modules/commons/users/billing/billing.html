@@ -59,6 +59,38 @@
                         </button>
                     </div>
                 </div>
+                <table class="light-primary-color" ng-if="plan.invoices">
+                    <thead>
+                    <tr><!-- TODO : i18n -->
+                        <th>id</th>
+                        <th>Montant</th>
+                        <th>Payé le</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr ng-repeat="invoice in paginate(plan.invoices, 10, plan.invoicePage) track by $index">
+                        <td>{{invoice.id}}</td>
+                        <td>{{invoice.amountDue / 100}} €</td>
+                        <td>{{ invoice.date * 1000 | date:'short' }}</td>
+                        <td><span class="fa fa-2x fa-fw fa-sq"
+                                  ng-class="{'fa-check-square-o green-text text-darken-3' : invoice.paid, 'fa-exclamation-triangle red-text text-darken-3' : !invoice.paid}"></span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <pagination ng-if="plan.invoices"
+                            page="plan.invoicePage"
+                            page-size="10"
+                            total="plan.invoices.length"
+                            show-prev-next="true"
+                            use-simple-prev-next="false"
+                            dots="...."
+                            hide-if-empty="true"
+                            adjacent="2"
+                            scroll-top="false"></pagination>
+
             </div>
         </div>
     </div>

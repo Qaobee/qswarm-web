@@ -77,13 +77,24 @@
             };
 
             $scope.user = user;
-            $scope.user.account.listPlan.forEach(function (p) {
-                $log.debug('[qaobee.user.billing] - BillingCtrl', p);
-                if (p.endPeriodDate > 0) {
-                    p.formatedEndTrialDate = $filter('date')(p.endPeriodDate);
-                }
-                p.inTrial = p.endPeriodDate > 0 && p.endPeriodDate > moment().valueOf();
+            $scope.user.account.listPlan.forEach(function (p, index) {
+                $log.debug('[qaobee.user.billing] - BillingCtrl', index, p);
+                paymentAPI.getInvoices(index).then(function(invoices) {
+                    $log.debug('[qaobee.user.billing] - BillingCtrl - invoices', invoices);
+
+                    p.invoices = invoices.data;
+                    p.invoicePage = 1;
+                    if (p.endPeriodDate > 0) {
+                        p.formatedEndTrialDate = $filter('date')(p.endPeriodDate);
+                    }
+                    p.inTrial = p.endPeriodDate > 0 && p.endPeriodDate > moment().valueOf();
+                });
             });
+
+            $scope.paginate = function (array, page_size, page_number) {
+                --page_number; // because pages logically start with 1, but technically with 0
+                return array.slice(page_number * page_size, (page_number + 1) * page_size);
+            };
 
         });
 }());

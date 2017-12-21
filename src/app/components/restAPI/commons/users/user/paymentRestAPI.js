@@ -33,6 +33,17 @@
                         url: paymentURL + '/unsubscribe/' + planId,
                         method: 'GET'
                     });
+                },
+                /**
+                 *
+                 * @param planId
+                 * @returns {*}
+                 */
+                getInvoices: function (planId) {
+                    return $http({
+                        url: paymentURL + '/invoices/' + planId,
+                        method: 'GET'
+                    });
                 }
 
             };
