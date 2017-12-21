@@ -1,51 +1,31 @@
 <!-- START PRICING TABLE CONTAINER -->
-<div class="pricing ">
-    <div class="valign-wrapper">
-        <div class="valign">
-            <div class="row">
-                <div class="col s12  center white-text">
-                    <h3 class="title" translate="pricing.descTarif"></h3>
-                </div>
+<div class="pricing">
+    <div class="center">
+        
+        <div class="row container">
+            <div class="card-panel dark-primary-color">
+                <h4 class="card-title center-align " translate="pricing.offers.FREETRIAL.desc"></h4>
+                <h5 class="light-text-color">{{'pricing.offers.FREETRIAL.features' | translate}}</h5>
+                <br/>
+            
+            
+            <div class="card-panel white primary-text-color" ng-repeat="(plan, p) in plans">
+                <h4 class="card-title center-align accent-text-color" translate="{{'pricing.offers.' + plan + '.title'}}"></h4>
+                <h5><b>{{p.price}} €</b><span translate="pricing.monthly"></span> <b>{{p.price_y}} €</b><span translate="pricing.yearly"></span></h5>
+                <br/>
+                <img src="../assets/images/handball/scshApp06.png" style="width: 20%" class="responsive-img">
+                <img src="../assets/images/handball/scshApp02.png" style="width: 20%" class="responsive-img">
+                <img src="../assets/images/handball/scshApp04.png" style="width: 20%" class="responsive-img">
+                <br/><br/>
+                <a ng-href="{{getPlanView(plan).link}}" class="btn waves-effect waves-white accent-color" translate="commons.buttons.subscribe">
+                    <i class="material-icons large">check_circle</i>
+                </a>
             </div>
-            <div class="row container">
-                <div class="card " ng-repeat="(plan, p) in plans">
-                    <div ng-if="plan == 'FREEMIUM'" class="card-title center-align" ng-class="getPlanView(plan).color">
-                        <i class="fa fa-fw fa-2x white-text" ng-class="getPlanView(plan).icon" style="padding:2px;"></i>&nbsp;
-                        <h5 translate="{{'pricing.offers.' + plan + '.title'}}"></h5>
-                    </div>
-                    <div ng-if="plan == 'FREEMIUM'" class="card-title white dark-text-color center-align" style="height:200px;">
-                        <span class="light-text-color activator">{{'pricing.offers.' + plan + '.desc' | translate}}
-                            <i class="material-icons right">help</i></span>
-                        <h4><b>{{p.price}} €</b><span translate="pricing.monthly"></span></h4>
-                        <h5 class="center"><b>{{p.price_y}} €</b><span translate="pricing.yearly"></span></h5>
-                    </div>
-                    <div ng-if="plan == 'FREEMIUM'" class="card-reveal center-align">
-                        <span class="card-title" ng-class="getPlanView(plan).color">
-                            <i class="fa fa-fw" ng-class="getPlanView(plan).icon" style="padding:2px;"></i>
-                            &nbsp; {{'pricing.offers.' + plan + '.title' | translate}}<i
-                                class="material-icons right">close</i></span>
-                        <br><br>
-                        <h6 class=" light-text-color" translate="{{'pricing.offers.' + plan + '.features'}}"></h6>
-                        <br><br>
-                        <a ng-href="{{getPlanView(plan).link}}" translate="commons.buttons.subscribe"
-                           class="btn waves-effect waves-white" ng-class="getPlanView(plan).color">
-                        </a>
-                        <br><br>
-                        {{plan}}
-                    </div>
-
-                    <div ng-if="plan == 'FREEMIUM'" class="card-action center-align">
-                        <a ng-href="{{getPlanView(plan).link}}" translate="commons.buttons.subscribe"
-                           class="btn waves-effect waves-white" ng-class="getPlanView(plan).color">
-                        </a>
-
-                    </div>
-                </div>
-            </div>
+            </div>    
         </div>
     </div>
 </div>
 
 
-<span ng-repeat="p in parts track by $index" ng-include="'app/modules/public/parts/'+p+'.html'"></span>
+<span class ="hide-on-med-and-down" ng-repeat="p in parts track by $index" ng-include="'app/modules/public/parts/'+p+'.html'"></span>
 
