@@ -67,6 +67,10 @@
       "activity": "Activité",
       "trial": "En période d'essai",
       "trialEnded": "Période d'essai terminée",
+      "invoiceId": "Numéro de facture",
+      "invoiceAmount": "Montant",
+      "invoiceDate": "Date",
+      "invoiceStatus": "Statut",    
       "pay": {
         "title": "Souscrire",
         "content": "Vous êtes sur le point de souscrire à une offre Qaobee.",
