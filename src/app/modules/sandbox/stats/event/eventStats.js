@@ -51,6 +51,17 @@
                 startDateLabel: "",
                 endDateLabel: ""
             };
+        
+            if (user.eventStatTabId) {
+                $scope.activeTabIndex = user.eventStatTabId;
+            } else {
+                $scope.activeTabIndex = 0;
+            }
+            
+            /* keep in memory tab by default */
+            $scope.changeTabDefault = function (tabId) {
+                user.eventStatTabId = tabId;
+            };
 
             // return button
             $scope.doTheBack = function () {
@@ -87,7 +98,7 @@
                             $scope.teamVisitor = true;
                         }
                         var listField = ['_id', 'name', 'firstname', 'avatar', 'status'];
-                        $scope.stats = [];
+                        
                         effectiveSrv.getPersons(data.players, listField).then(function (players) {
                             $scope.players = players;
                             $scope.players = $scope.players.sortBy(function (n) {
@@ -252,6 +263,32 @@
                                         });
                                         $scope.players[i].stats.actAttNeg = a.value;
                                     });
+                                }
+                            });
+                            
+                            listFieldsGroupBy = ['owner', 'code'];
+                            statsRestAPI.getListDetailValue({
+                                listIndicators: ['goalConceded', 'goalScored', 'stopGKAtt','stopGKDef'],
+                                listOwners: data.players,
+                                startDate: $scope.collecte.startDate,
+                                endDate: $scope.collecte.endDate,
+                                aggregat: 'COUNT',
+                                listFieldsGroupBy: listFieldsGroupBy
+                            }).success(function (listDetailValue) {
+                                if (angular.isArray(listDetailValue) && listDetailValue.length > 0) {
+                                    
+                                    $scope.stats = listDetailValue.sortBy(function (n) {
+                                        return n.chrono;
+                                    });
+                                    
+                                    listDetailValue.forEach(function (a) {
+                                        var mm = moment().minute(Math.floor(a.chrono/60));
+                                        var ss = moment().second((a.chrono-(mm.minute()*60)));
+                                        var timeChrono = moment(mm).format('mm')+':'+moment(ss).format('ss');
+                                        a.chrono = timeChrono;
+                                    });
+                                    
+                                    
                                 }
                             });
                             

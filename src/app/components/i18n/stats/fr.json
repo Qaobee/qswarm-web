@@ -33,7 +33,8 @@
       "positive": "positives",
       "negative": "négatives",
       "attack": "Actions offensives",
-      "defense": "Actions défensives"
+      "defense": "Actions défensives",
+      "timeline": "Timeline"    
     },
     "resumeTab": {
       "shoot": "Tirs",
