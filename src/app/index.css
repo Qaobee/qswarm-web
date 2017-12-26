@@ -359,8 +359,8 @@ button, input, optgroup, select, textarea {
 }
 
 .tabs .tab a {
-    color: #ef5350 !important;
-    background-color: #ffffff;
+    color: #ffffff !important;
+    background-color: #37474F;
 }
 
 .tabs .tab a:hover {
@@ -369,7 +369,7 @@ button, input, optgroup, select, textarea {
 }
 
 .tabs .tab .active {
-    background-color: #646464;
+    background-color: #37474F;
     color: #ffffff !important;
 }
 

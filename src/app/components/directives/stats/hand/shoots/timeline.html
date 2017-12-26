@@ -1,0 +1,163 @@
+<div class="row">&nbsp;</div>
+
+<div class="row">
+    <div class="col s12 dark-text-color left"><h4><i class="fa fa-clock-o"></i> {{'stats.label.timelineShoot' | translate }}</h4><hr></div>
+    <div class="row">&nbsp;</div>
+    <div class="col s12 accent-text-color center"><h5 translate="stats.label.firstPeriod"></h5></div>
+    <table class="bordered">
+        <thead>
+            <tr class="dark-primary-color">
+                <th class="center-align">5'</th>
+                <th class="center-align">10'</th>
+                <th class="center-align">15'</th>
+                <th class="center-align">20'</th>
+                <th class="center-align">25'</th>
+                <th class="center-align">30'</th>
+            </tr>
+        </thead>
+        <body> 
+            <tr class="light-primary-color">
+                <td class="left-align  light-primary-color light-text-color" style="vertical-align: top;">
+                    <h6 ng-repeat="goal in interval5">
+                        <small>{{goal.chrono}}</small>
+                        <i class="fa fa-futbol-o" ng-class="{'secondary-text-color' : goal.code === 'goalScored', 'accent-text-color' : goal.code === 'goalConceded'}"></i>
+                        <small> - {{goal.firstname}} {{goal.name}}</small>
+                    </h6>
+                </td>
+                
+                <td class="left-align  white light-text-color" style="vertical-align: top;">
+                    <h6 ng-repeat="goal in interval10">
+                        <small>{{goal.chrono}}</small>
+                        <i class="fa fa-futbol-o" ng-class="{'secondary-text-color' : goal.code === 'goalScored', 'accent-text-color' : goal.code === 'goalConceded'}"></i>
+                        <small> - {{goal.firstname}} {{goal.name}}</small>
+                    </h6>
+                </td>
+                
+                <td class="left-align  light-primary-color light-text-color" style="vertical-align: top;">
+                    <h6 ng-repeat="goal in interval15">
+                        <small>{{goal.chrono}}</small>
+                        <i class="fa fa-futbol-o" ng-class="{'secondary-text-color' : goal.code === 'goalScored', 'accent-text-color' : goal.code === 'goalConceded'}"></i>
+                        <small> - {{goal.firstname}} {{goal.name}}</small>
+                    </h6>
+                </td>
+                
+                <td class="left-align  white light-text-color" style="vertical-align: top;">
+                    <h6 ng-repeat="goal in interval20">
+                        <small>{{goal.chrono}}</small>
+                        <i class="fa fa-futbol-o" ng-class="{'secondary-text-color' : goal.code === 'goalScored', 'accent-text-color' : goal.code === 'goalConceded'}"></i>
+                        <small> - {{goal.firstname}} {{goal.name}}</small>
+                    </h6>
+                </td>
+                
+                <td class="left-align  light-primary-color light-text-color" style="vertical-align: top;">
+                    <h6 ng-repeat="goal in interval25">
+                        <small>{{goal.chrono}}</small>
+                        <i class="fa fa-futbol-o" ng-class="{'secondary-text-color' : goal.code === 'goalScored', 'accent-text-color' : goal.code === 'goalConceded'}"></i>
+                        <small> - {{goal.firstname}} {{goal.name}}</small>
+                    </h6>
+                </td>
+                
+                <td class="left-align  white light-text-color" style="vertical-align: top;">
+                    <h6 ng-repeat="goal in interval30">
+                        <small>{{goal.chrono}}</small>
+                        <i class="fa fa-futbol-o" ng-class="{'secondary-text-color' : goal.code === 'goalScored', 'accent-text-color' : goal.code === 'goalConceded'}"></i>
+                        <small> - {{goal.firstname}} {{goal.name}}</small>
+                    </h6>
+                </td>
+            </tr>
+        </body>
+    </table>
+    <br>
+    <div class="col s12 accent-text-color center"><h5 translate="stats.label.secondPeriod"></h5></div>
+    
+    <table class="highlight">
+        <thead>
+            <tr class="dark-primary-color">
+                <th class="center-align">35'</th>
+                <th class="center-align">40'</th>
+                <th class="center-align">45'</th>
+                <th class="center-align">50'</th>
+                <th class="center-align">55'</th>
+                <th class="center-align">60'</th>
+            </tr>
+        </thead>
+        <body>
+            <tr class="light-primary-color">
+                <td class="left-align  light-primary-color light-text-color" style="vertical-align: top;">
+                    <h6 ng-repeat="goal in interval35">
+                        <small>{{goal.chrono}}</small>
+                        <i class="fa fa-futbol-o" ng-class="{'secondary-text-color' : goal.code === 'goalScored', 'accent-text-color' : goal.code === 'goalConceded'}"></i>
+                        <small> - {{goal.firstname}} {{goal.name}}</small>
+                    </h6>
+                </td>
+                
+                <td class="left-align  white light-text-color" style="vertical-align: top;">
+                    <h6 ng-repeat="goal in interval40">
+                        <small>{{goal.chrono}}</small>
+                        <i class="fa fa-futbol-o" ng-class="{'secondary-text-color' : goal.code === 'goalScored', 'accent-text-color' : goal.code === 'goalConceded'}"></i>
+                        <small> - {{goal.firstname}} {{goal.name}}</small>
+                    </h6>
+                </td>
+                
+                <td class="left-align  light-primary-color light-text-color" style="vertical-align: top;">
+                    <h6 ng-repeat="goal in interval45">
+                        <small>{{goal.chrono}}</small>
+                        <i class="fa fa-futbol-o" ng-class="{'secondary-text-color' : goal.code === 'goalScored', 'accent-text-color' : goal.code === 'goalConceded'}"></i>
+                        <small> - {{goal.firstname}} {{goal.name}}</small>
+                    </h6>
+                </td>
+                
+                <td class="left-align  white light-text-color" style="vertical-align: top;">
+                    <h6 ng-repeat="goal in interval50">
+                        <small>{{goal.chrono}}</small>
+                        <i class="fa fa-futbol-o" ng-class="{'secondary-text-color' : goal.code === 'goalScored', 'accent-text-color' : goal.code === 'goalConceded'}"></i>
+                        <small> - {{goal.firstname}} {{goal.name}}</small>
+                    </h6>
+                </td>
+                
+                <td class="left-align  light-primary-color light-text-color" style="vertical-align: top;">
+                    <h6 ng-repeat="goal in interval55">
+                        <small>{{goal.chrono}}</small>
+                        <i class="fa fa-futbol-o" ng-class="{'secondary-text-color' : goal.code === 'goalScored', 'accent-text-color' : goal.code === 'goalConceded'}"></i>
+                        <small> - {{goal.firstname}} {{goal.name}}</small>
+                    </h6>
+                </td>
+                
+                <td class="left-align  white light-text-color" style="vertical-align: top;">
+                    <h6 ng-repeat="goal in interval60">
+                        <small>{{goal.chrono}}</small>
+                        <i class="fa fa-futbol-o" ng-class="{'secondary-text-color' : goal.code === 'goalScored', 'accent-text-color' : goal.code === 'goalConceded'}"></i>
+                        <small> - {{goal.firstname}} {{goal.name}}</small>
+                    </h6>
+                </td>
+            </tr>
+        </body>
+    </table>
+</div>
+
+<!--
+<timeline>
+    <timeline-event ng-repeat="event in shoots" side="right">
+        <timeline-badge class="info" ng-if="event.code === 'goalScored'">
+            <i class="material-icons md-48">center_focus_strong</i>
+        </timeline-badge>
+
+        <timeline-badge class="warning" ng-if="event.code !== 'goalScored'">
+            <i class="material-icons md-48">center_focus_strong</i>
+        </timeline-badge>
+
+        <timeline-panel class="info default-text-color">
+
+            <h5><span class="secondary-text-color">{{event.chrono}}</span></h5>
+            <div class="row">
+                <div class="col s3">
+                    Score : {{event.scoreUs}} - {{event.scoreThem}}
+                </div>
+                <div class="col s9" ng-if="event.code === 'goalScored'">
+                    <span>{{event.firstname}} {{event.name}}</span>
+                </div>
+            </div>
+        </timeline-panel>
+    </timeline-event>
+</timeline>
+-->
