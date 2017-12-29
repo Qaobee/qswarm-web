@@ -45,7 +45,7 @@
                  * @returns {HttpPromise}
                  */
                 getCountry: function () {
-                    return $http.get('http://ipinfo.io');
+                    return $http.get('https://ipinfo.io');
                 }
             };
         });
