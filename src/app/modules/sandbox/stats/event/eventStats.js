@@ -51,6 +51,17 @@
                 startDateLabel: "",
                 endDateLabel: ""
             };
+        
+            if (user.eventStatTabId) {
+                $scope.activeTabIndex = user.eventStatTabId;
+            } else {
+                $scope.activeTabIndex = 0;
+            }
+            
+            /* keep in memory tab by default */
+            $scope.changeTabDefault = function (tabId) {
+                user.eventStatTabId = tabId;
+            };
 
             // return button
             $scope.doTheBack = function () {
@@ -79,6 +90,10 @@
                         
                         $scope.collecte.startDateLabel = moment(data.startDate).format('LLLL');
                         $scope.collecte.endDateLabel = moment(data.endDate).format('LLLL');
+                        
+                        $scope.goalScored = 0;
+                        $scope.goalConceded = 0;
+                        
                         if ($scope.collecte.event.owner.teamId === $scope.collecte.event.participants.teamHome._id) {
                             $scope.teamHome = true;
                             $scope.teamVisitor = false;
@@ -87,11 +102,15 @@
                             $scope.teamVisitor = true;
                         }
                         var listField = ['_id', 'name', 'firstname', 'avatar', 'status'];
-                        $scope.stats = [];
+                        
                         effectiveSrv.getPersons(data.players, listField).then(function (players) {
                             $scope.players = players;
                             $scope.players = $scope.players.sortBy(function (n) {
-                                return n.positionType;
+                                return n.name;
+                            });
+                            
+                            qeventbus.prepForBroadcast('playerList', {
+                                playerList: $scope.players
                             });
                             $scope.players.forEach(function (player) {
                                 if (angular.isDefined(player.status.positionType)) {
@@ -107,13 +126,22 @@
                                     yellowCard: 0,
                                     exclTmp: 0,
                                     redCard: 0,
-                                    holder: 0,
+                                    holder: '',
                                     totalPlayTime : 0,
                                     actAttPos : 0,
                                     actAttNeg : 0,
                                     actDefPos : 0,
                                     actDefNeg : 0,
-                                    note : 0
+                                    note : 0,
+                                    duelLoose : 0,
+                                    duelWon : 0,
+                                    forceDef : 0,
+                                    interceptionOk : 0,
+                                    looseball : 0,
+                                    marcher : 0,
+                                    neutralization : 0,
+                                    passDec : 0,
+                                    penaltyConceded : 0
                                 };
                             });
                             $scope.instance.refresh();
@@ -142,119 +170,74 @@
                             });
                             
                             /* Appel stats API */
-                            
                             listFieldsGroupBy = ['owner', 'code'];
-                            statsRestAPI.getStatGroupBy({
-                                listIndicators: ['originShootAtt', 'goalScored', 'yellowCard',
-                                    'exclTmp', 'redCard', 'originShootDef', 'goalConceded',
-                                    'actDefPos', 'actDefNeg', 'actAttPos', 'actAttNeg', 'holder'],
+                            statsRestAPI.getListDetailValue({
+                                listIndicators: ['originShootAtt', 'impactShootAtt', 'goalScored', 'yellowCard',
+                                                 'exclTmp', 'redCard', 'originShootDef', 'impactShootDef','goalConceded', 'impactShootDef', 'holder', 
+                                                 'neutralization', 'forceDef', 'contre', 'interceptionOk',
+                                                 'penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition',
+                                                 'penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec',
+                                                 'forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt'
+                                                ],
                                 listOwners: data.players,
                                 startDate: $scope.collecte.startDate,
                                 endDate: $scope.collecte.endDate,
                                 aggregat: 'COUNT',
                                 listFieldsGroupBy: listFieldsGroupBy
-                            }).success(function (dataShoot) {
-                                if (angular.isArray(dataShoot) && dataShoot.length > 0) {
-                                    dataShoot.forEach(function (a) {
+                            }).success(function (dataStats) {
+                                if (angular.isArray(dataStats) && dataStats.length > 0) {
+                                    
+                                    $scope.stats = dataStats.sortBy(function (n) {
+                                        return n.chrono;
+                                    });
+                                    
+                                    dataStats.forEach(function (a) {
                                         var i = -1;
-                                        a._id.owner.forEach(function (b) {
+                                        a.owner.forEach(function (b) {
                                             i = $scope.players.findIndex(function (n) {
                                                 return n._id === b;
                                             });
                                         });
-                                        $scope.players[i].stats[a._id.code] += a.value;
+                                        
+                                        if(a.code ==='goalScored') {
+                                            $scope.players[i].stats['goalScored'] = $scope.players[i].stats['goalScored']+1;
+                                            $scope.goalScored++;
+                                            a.scoreUs = $scope.goalScored;
+                                        }else{
+                                            if(a.code ==='originShootAtt') {
+                                                $scope.players[i].stats['originShootAtt'] = $scope.players[i].stats['originShootAtt']+1;
+                                            }else{
+                                                if(a.code ==='goalConceded') {
+                                                    $scope.players[i].stats['goalConceded'] = $scope.players[i].stats['goalConceded']+1;
+                                                    $scope.goalConceded++;
+                                                }else{
+                                                    if(a.code ==='originShootDef') {
+                                                        $scope.players[i].stats['originShootDef'] = $scope.players[i].stats['originShootDef']+1;
+                                                    }else{
+                                                        $scope.players[i].stats[a.code] += a.value;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        
+                                        if(a.code ==='neutralization' || a.code ==='forceDef' || a.code ==='contre' || a.code ==='interceptionOk') {
+                                            $scope.players[i].stats.actDefPos += a.value;
+                                        }
+                                        
+                                        if(a.code ==='penaltyConceded' || a.code ==='interceptionKo' || a.code ==='duelLoose' || a.code ==='badPosition') {
+                                            $scope.players[i].stats.actDefNeg += a.value;
+                                        }
+                                        
+                                        if(a.code ==='penaltyObtained' || a.code ==='exclTmpObtained' || a.code ==='shift' || a.code ==='duelWon' || a.code ==='passDec') {
+                                            $scope.players[i].stats.actAttPos += a.value;
+                                        }
+                                        
+                                        if(a.code ==='forceAtt' || a.code ==='marcher' || a.code ==='doubleDribble' || a.code ==='looseball' || a.code ==='foot' || a.code ==='zone' || a.code ==='stopGKAtt') {
+                                            $scope.players[i].stats.actAttNeg = a.value;
+                                        }
                                     });
                                 }
                             });
-
-                            /* ALL PERS-ACT-DEF-POS */
-                            statsRestAPI.getStatGroupBy({
-                                listIndicators: ['neutralization', 'forceDef', 'contre', 'interceptionOk'],
-                                listOwners: data.players,
-                                startDate: $scope.collecte.startDate,
-                                endDate: $scope.collecte.endDate,
-                                aggregat: 'COUNT',
-                                listFieldsGroupBy: listFieldsGroupBy
-                            }).success(function (dataActDefPos) {
-                                if (angular.isArray(dataActDefPos) && dataActDefPos.length > 0) {
-                                    dataActDefPos.forEach(function (a) {
-                                        var i = -1;
-                                        a._id.owner.forEach(function (b) {
-                                            i = $scope.players.findIndex(function (n) {
-                                                return n._id === b;
-                                            });
-                                        });
-                                        $scope.players[i].stats.actDefPos += a.value;
-                                    });
-                                }
-                            });
-
-                            /* ALL PERS-ACT-DEF-NEG */
-                            statsRestAPI.getStatGroupBy({
-                                listIndicators: ['penaltyConceded', 'interceptionKo', 'duelLoose', 'badPosition'],
-                                listOwners: data.players,
-                                startDate: $scope.collecte.startDate,
-                                endDate: $scope.collecte.endDate,
-                                aggregat: 'COUNT',
-                                listFieldsGroupBy: listFieldsGroupBy
-                            }).success(function (dataActDefNeg) {
-                                if (angular.isArray(dataActDefNeg) && dataActDefNeg.length > 0) {
-                                    dataActDefNeg.forEach(function (a) {
-                                        var i = -1;
-                                        a._id.owner.forEach(function (b) {
-                                            i = $scope.players.findIndex(function (n) {
-                                                return n._id === b;
-                                            });
-                                        });
-                                        $scope.players[i].stats.actDefNeg += a.value;
-                                    });
-                                }
-                            });
-
-                            /* ALL PERS-ACT-OFF-POS */
-                            statsRestAPI.getStatGroupBy({
-                                listIndicators: ['penaltyObtained', 'exclTmpObtained', 'shift', 'duelWon', 'passDec'],
-                                listOwners: data.players,
-                                startDate: $scope.collecte.startDate,
-                                endDate: $scope.collecte.endDate,
-                                aggregat: 'COUNT',
-                                listFieldsGroupBy: listFieldsGroupBy
-                            }).success(function (dataActAttPos) {
-                                if (angular.isArray(dataActAttPos) && dataActAttPos.length > 0) {
-                                    dataActAttPos.forEach(function (a) {
-                                        var i = -1;
-                                        a._id.owner.forEach(function (b) {
-                                            i = $scope.players.findIndex(function (n) {
-                                                return n._id === b;
-                                            });
-                                        });
-                                        $scope.players[i].stats.actAttPos += a.value;
-                                    });
-                                }
-                            });
-
-                            /* ALL PERS-ACT-OFF-NEG */
-                            statsRestAPI.getStatGroupBy({
-                                listIndicators: ['forceAtt', 'marcher', 'doubleDribble', 'looseball', 'foot', 'zone', 'stopGKAtt'],
-                                listOwners: data.players,
-                                startDate: $scope.collecte.startDate,
-                                endDate: $scope.collecte.endDate,
-                                aggregat: 'COUNT',
-                                listFieldsGroupBy: listFieldsGroupBy
-                            }).success(function (dataActAttNeg) {
-                                if (angular.isArray(dataActAttNeg) && dataActAttNeg.length > 0) {
-                                    dataActAttNeg.forEach(function (a) {
-                                        var i = -1;
-                                        a._id.owner.forEach(function (b) {
-                                            i = $scope.players.findIndex(function (n) {
-                                                return n._id === b;
-                                            });
-                                        });
-                                        $scope.players[i].stats.actAttNeg = a.value;
-                                    });
-                                }
-                            });
-                            
                         });
 
                         $scope.ownersId.push(data.eventRef._id);

@@ -33,7 +33,8 @@
       "positive": "positives",
       "negative": "négatives",
       "attack": "Actions offensives",
-      "defense": "Actions défensives"
+      "defense": "Actions défensives",
+      "timeline": "Timeline"    
     },
     "resumeTab": {
       "shoot": "Tirs",
@@ -142,7 +143,10 @@
       "outside": "Sortie",
       "exclTmpObtained": "2 minutes",
       "exclusionTempoObtained": "2 minutes",
-      "playTime": "Temps de jeu"
+      "playTime": "Temps de jeu",
+      "firstPeriod": "Première Période",
+      "secondPeriod": "Seconde période",
+      "timelineShoot": "Timeline des buts"    
     }
   }
 }

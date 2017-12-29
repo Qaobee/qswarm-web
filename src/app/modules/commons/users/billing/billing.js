@@ -41,18 +41,14 @@
              * @param planId
              */
             $scope.pay = function (planId) {
-                $log.debug('[qaobee.user.billing] - pay', planId);
                 $location.path('/private/billing/pay/' + planId);
             };
 
             $scope.agree = function () {
-                $log.debug('[qaobee.user.billing] - agree', $scope.planId);
-
                 if (angular.isDefined($scope.planId)) {
                     $scope.inProgress = true;
                     paymentAPI.unsubscribe($scope.planId).then(function (data) {
                         $scope.inProgress = false;
-                        $log.debug('[qaobee.user.billing] - agree', data);
                         delete $scope.planId;
                         $window.location.reload();
                     }, function (data) {
@@ -69,7 +65,6 @@
              */
             $scope.unsubscribe = function (planId) {
                 $scope.planId = planId;
-                $log.debug('[qaobee.user.billing] - unsubscribe', planId);
                 angular.element('#unsubscribeModal').modal({
                     dismissible: false
                 });
@@ -78,9 +73,7 @@
 
             $scope.user = user;
             $scope.user.account.listPlan.forEach(function (p, index) {
-                $log.debug('[qaobee.user.billing] - BillingCtrl', index, p);
                 paymentAPI.getInvoices(index).then(function(invoices) {
-                    $log.debug('[qaobee.user.billing] - BillingCtrl - invoices', invoices);
 
                     p.invoices = invoices.data;
                     p.invoicePage = 1;

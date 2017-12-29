@@ -58,9 +58,6 @@
                                     listShootSeqId.push(e._id.shootSeqId);
                                 });
                                 
-                                $log.debug("search",search);
-                                $log.debug("data",dataOri);
-                                $log.debug("listShootSeqId",listShootSeqId);
                                 search = {};
                                 search = {
                                     listIndicators: ['goalScored'],

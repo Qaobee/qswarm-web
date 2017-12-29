@@ -73,6 +73,7 @@
             'qaobee.widget.statsSanction',
             'qaobee.widget.statsGoals',
             'qaobee.widget.statsPlayerUse',
+            'qaobee.widget.timelineShoot',
             'qaobee.user.mainProfile',
             'qaobee.notifications',
             'qaobee.user.billing.pay',
