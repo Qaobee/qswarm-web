@@ -1,9 +1,9 @@
 <div class="row">&nbsp;</div>
 
 <div class="row">
-    <div class="col s12 dark-text-color left"><h4><i class="fa fa-clock-o"></i> {{'stats.label.timelineShoot' | translate }}</h4><hr></div>
-    <div class="row">&nbsp;</div>
-    <div class="col s12 accent-text-color center"><h5 translate="stats.label.firstPeriod"></h5></div>
+    <div class="col s12 dark-text-color left"><h4><i class="fa fa-clock-o"></i> {{'stats.label.timelineShoot' | translate }} <span class="accent-text-color right">{{goalConceded1st + goalConceded2nd}}</span><span class="secondary-text-color right">{{goalScored1st + goalScored2nd}} -&nbsp;</span></h4><hr></div>
+    <div class="col s12 center-align"><h4></h4></div>
+    <div class="col s12 dark-text-color center"><h5>{{'stats.label.firstPeriod' | translate }} :<span class="secondary-text-color"> {{goalScored1st}} - </span> <span class="accent-text-color">{{goalConceded1st}}</span></h5></div>
     <table class="bordered">
         <thead>
             <tr class="dark-primary-color">
@@ -68,7 +68,7 @@
         </body>
     </table>
     <br>
-    <div class="col s12 accent-text-color center"><h5 translate="stats.label.secondPeriod"></h5></div>
+    <div class="col s12 dark-text-color center"><h5>{{'stats.label.secondPeriod' | translate }} :<span class="secondary-text-color"> {{goalScored2nd}} - </span> <span class="accent-text-color">{{goalConceded2nd}}</span></h5></div>
     
     <table class="highlight">
         <thead>
@@ -133,6 +133,17 @@
             </tr>
         </body>
     </table>
+</div>
+
+<div class="row">
+    <div class="col s12"><button class="accent-color right" ng-click="changeToBar()">Histogramme</button> <button class="accent-color right" ng-click="changeToLine()">Courbe</button></div>
+    <div class="col s12">
+        <canvas id="radar" class="chart-base" chart-type="type" chart-options="radarOpts"
+                chart-legend="series" chart-series="series" chart-data="data" 
+                chart-labels="labels" chart-colors="colors"
+                style="position: relative; height:36vh; width:80vw">
+            </canvas>
+    </div>
 </div>
 
 <!--
