@@ -130,7 +130,7 @@
                     $scope.$on('qeventbus:login', function () {
                         $scope.user = qeventbus.data;
                         $scope.endTrial = 999;
-                        $log.debug('[headerMenu] qeventbus:login', $scope.user.account, $location.path());
+                        
                         $scope.hideTrial = true;
                         if($scope.user.account.status === 'TRIAL'){
                             $scope.hideTrial = false;
@@ -138,7 +138,7 @@
                                 $scope.intrial = true;
                                 var endDate = moment(plan.endPeriodDate);
                                 $scope.endTrial = moment.duration(endDate.diff(moment())).asDays() - 1;
-                                $log.debug('[headerMenu] qeventbus:login', $scope.endTrial, endDate, moment());
+                        
                                 if($scope.endTrial < 0) {
                                     $scope.endTrial = 0;
                                     $scope.notpaid = true;
@@ -148,7 +148,7 @@
                                     count: $filter('number')($scope.endTrial, 0),
                                     intCount: $scope.endTrial
                                 };
-                                $log.debug('[headerMenu] qeventbus:login', $scope.trialCountVal);
+                        
                             });
                         }
                         $scope.loadMetaInfos();

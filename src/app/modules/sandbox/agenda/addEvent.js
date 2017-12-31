@@ -128,8 +128,7 @@
                         eventsRestAPI.addEvent($scope.event).success(function (event) {
                             $scope.event = event;
                             toastr.success($filter('translate')('addEvent.toastSuccess', {
-                                label: $scope.event.label,
-                                effective: effective.categoryAge.label
+                                label: $scope.event.label
                             }));
 
                             $window.history.back();

@@ -109,7 +109,7 @@
                                     </thead>
                                     <tbody>
                                     <tr ng-repeat="player in players | filter:{$:'!goalkeeper'}">
-                                        <td><a href="#/private/viewPlayer/{{player._id}}" class="accent-text-color">{{player.name}} {{player.firstname}}</a></td>
+                                        <td><a href="#/private/viewPlayer/{{player._id}}" class="accent-text-color">{{player.status.squadnumber}} - {{player.name}} {{player.firstname}}</a></td>
                                         <td class="center-align"><span ng-if="player.stats.holder!==''"><i class="fa fa-star-o"></i></span></td>
                                         <td class="center-align"><span ng-if="player.stats.totalPlayTime>0">{{player.stats.totalPlayTime/60 | number : 0}} '</span></td>
                                         <td class="center-align">

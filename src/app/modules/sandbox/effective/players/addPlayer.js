@@ -128,8 +128,7 @@
                             personSrv.addEffectiveMember(person, $scope.meta.sandbox.effectiveDefault).then(function (effective) {
                                 toastr.success($filter('translate')('addPlayer.toastSuccess', {
                                     firstname: person.firstname,
-                                    name: person.name,
-                                    effective: effective.categoryAge.label
+                                    name: person.name
                                 }));
 
                                 $window.history.back();
@@ -137,8 +136,7 @@
                         } else {
                             toastr.success($filter('translate')('addPlayer.toastSuccess', {
                                 firstname: person.firstname,
-                                name: person.name,
-                                effective: user.newEffective.categoryAge.label
+                                name: person.name
                             }));
 
                             $window.history.back();
