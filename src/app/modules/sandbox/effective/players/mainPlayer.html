@@ -85,12 +85,12 @@
                 </div>
             </v-page>
             <v-page>
-                <div class="col m8 s12">
-                    <form class="forms forms-inline">
+                <form class="forms forms-inline">
+                    <div class="col m8 s12 input-field">
                         <input type="text" id="queryPlayer" class="grey lighten-4" ng-model="queryPlayer">
-                        <label for="queryPlayer" translate="commons.buttons.filter"></label>
-                    </form>
-                </div>
+                        <label for="queryPlayer" translate="commons.buttons.search"></label>
+                    </div>
+                </form>    
 
                 <div class="col m4 s12 center-align">
                     <br>
@@ -112,6 +112,8 @@
                     <li class="col l3 m6 s12" ng-repeat="player in players | filter:queryPlayer">
                         <div class="card white primary-text-color">
                             <div class="card-content center-align" style="height:48px;">
+                                <span>#{{player.status.squadnumber}}</span>
+                                <br>
                                 <span class="card-title"><a href="#/private/viewPlayer/{{player._id}}"
                                                             class="primary-text-color">
                                     {{player.firstname}} {{player.name}}</a>

@@ -34,13 +34,13 @@
 
 
             <v-page>
-                <div class="col s8">
-                    <form class="forms forms-inline">
-                        <input type="text" id="queryTeam" class="grey lighten-4" ng-model="queryTeam">
-                        <label for="queryTeam" translate="commons.buttons.filter"></label>
-                    </form>
-                </div>
-
+                <form class="forms forms-inline">
+                    <div class="col m8 s12 input-field">
+                        <input type="text" id="queryTeam" class="light-primary-color" ng-model="queryTeam">
+                        <label for="queryTeam" translate="commons.buttons.search"></label>
+                    </div>
+                </form>    
+                
                 <div class="col s4 center-align">
                     <br>
                     <a href="#/private/addTeam/{{false}}" class="waves-effect waves-light btn accent-color">

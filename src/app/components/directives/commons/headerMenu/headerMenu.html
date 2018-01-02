@@ -209,14 +209,14 @@
         <div class="modal-content white">
             <div class="row ">
                 <div class="col s12 input-field">
-                    <input id="modalloginfield" type="text" class="validate" ng-model="signin.login" required>
+                    <input id="modalloginfield" type="text" class="validate" ng-model="signin.login" required autocomplete="username">
                     <label for="modalloginfield">
                         {{'modal.login.label.login' | translate }}
                         <span class="accent-text-color">*</span>
                     </label>
                 </div>
                 <div class="col s12 input-field">
-                    <input id="modal-password" type="password" class="validate" ng-model="signin.passwd" required autocomplete>
+                    <input id="modal-password" type="password" class="validate" ng-model="signin.passwd" required autocomplete="current-password">
                     <label for="modal-password">{{'modal.login.label.password' | translate }}
                         <span class="accent-text-color">*</span>
                     </label>

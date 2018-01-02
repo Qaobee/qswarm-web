@@ -23,8 +23,8 @@
                                     class="accent-text-color">*</span></label>
                         </div>
                         <div class="col s8">
-                            <input id="EventStartDate" name="EventStartDate" type="text"
-                                   input-date
+                            <input input-date id="EventStartDate" name="EventStartDate" type="text"
+                                   disable = "disable"
                                    format="{{'commons.format.date.label' | translate}}"
                                    months-full="{{ ('commons.format.date.listMonth' | translate).split(',')}}"
                                    months-short="{{ ('commons.format.date.listMonthShort' | translate).split(',')}}"
@@ -38,7 +38,7 @@
                                    close="('commons.format.date.close' | translate)"
                                    select-years="3"
                                    ng-model="startDate" required
-                                   class="datepicker"
+                                   container=""
                                    ng-class="{ 'has-error' : eventForm.EventStartDate.$invalid && !eventForm.EventStartDate.$pristine }"/>
                         </div>
                         <div class="small accent-text-color col s12"
@@ -50,8 +50,9 @@
                                     class="accent-text-color">*</span></label>
                         </div>
                         <div class="col s8">
-                            <input id="EventStartHours" input-clock data-twelvehour="false"
-                                   data-donetext="{{'commons.buttons.validate' | translate}}" type="text"
+                            <input id="EventStartHours" input-clock data-twelvehour="false" type="text"
+                                   donetext="{{'commons.format.date.validate' | translate}}"
+                                   cleartext="" 
                                    data-autoclose
                                    ng-model="startHours" required
                                    ng-class="{ 'has-error' : eventForm.EventStartHours.$invalid && !eventForm.EventStartHours.$pristine }"/>
@@ -162,7 +163,7 @@
                         <button type="submit" translate="commons.buttons.validate"
                                 ng-disabled="eventForm.$invalid"
                                 ng-class="{'btn waves-effect waves-white disabled': eventForm.$invalid, 
-                                           'btn waves-effect waves-white accent-color': !eventForm.$invalid}">
+                                           'btn waves-effect waves-white secondary-color': !eventForm.$invalid}">
                         </button>
                     </div>
                 </div>

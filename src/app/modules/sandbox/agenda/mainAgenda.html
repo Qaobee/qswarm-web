@@ -11,12 +11,12 @@
     <div class="row center">
 
         <!-- filter -->
-        <div class="col m8 s12">
-            <form class="forms forms-inline">
-                <input type="text" id="query" class="grey lighten-4" ng-model="query">
-                <label for="query" translate="commons.buttons.filter"></label>
-            </form>
-        </div>
+        <form class="forms forms-inline">
+            <div class="col m8 s12 input-field">
+                <input type="text" id="query" class="light-primary-color" ng-model="query">
+                <label for="query" translate="commons.buttons.search"></label>    
+            </div>
+        </form>
         <div class="col m4 s12 center-align">
             <br>
             <a href="#/private/addEvent/{{effectiveId}}" class="waves-effect waves-light btn accent-color">

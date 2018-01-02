@@ -62,7 +62,8 @@
       "accept": "Accept",
       "refuse": "Refuse",
       "read-more": "Learn more",
-      "subscribe": "Subscribe"
+      "subscribe": "Subscribe",
+      "search": "Search"   
     },
     "settings": {
       "activity": {

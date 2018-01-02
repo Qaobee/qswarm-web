@@ -15,7 +15,8 @@
         "listWeekdaysShort": "Dim,Lun,Mar,Mer,Jeu,Ven,Sam",
         "today": "",
         "clear": "Effacer",
-        "close": "Fermer"
+        "close": "Fermer",
+        "validate": "OK"  
       },
       "hours": {
         "pattern": "HH:i",
@@ -59,7 +60,8 @@
       "accept": "Accepter",
       "refuse": "Refuser",
       "read-more": "En savoir plus",
-      "subscribe": "Souscrire"
+      "subscribe": "Essayer",
+      "search": "Rechercher"   
     },
     "legals" : {
       "gcu": "Accèpter les <a href=\"#/legal-agreement\" target=\"_blank\">CGU</a> et la <a href=\"#/privacy-policy\" target=\"_blank\">politique de respect de la vie privée</a>"
