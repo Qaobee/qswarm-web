@@ -113,6 +113,7 @@
                             $scope.hGround.clear();
                         }
                         $scope.sequence = {};
+                        
                         var search = {
                             listIndicators: [$scope.indicator.impactShoot, $scope.indicator.originShoot, $scope.indicator.stopGK, $scope.indicator.goalType, 'pole'],
                             listOwners: $scope.ownersId,
@@ -122,6 +123,7 @@
                             listFieldsGroupBy: ['owner', 'code', 'shootSeqId', 'value']
                         };
                         statsRestAPI.getStatGroupBy(search).success(function (dataOri) {
+
                             if (dataOri && dataOri.length) {
                                 dataOri.forEach(function (s) {
                                     if (!$scope.sequence.hasOwnProperty(s._id.shootSeqId)) {
@@ -150,12 +152,15 @@
                                         });
                                     }
                                 });
+                                
                                 Object.keys($scope.goalSerie).forEach(function (k) {
                                     $scope.hGoal.add.Point($scope.goalSerie[k].x * $scope.dimsGoal.width / 24, $scope.goalSerie[k].y * $scope.dimsGoal.height / 18, $scope.goalSerie[k].count);
                                 });
                                 Object.keys($scope.groundSerie).forEach(function (k) {
                                     $scope.hGround.add.Point($scope.groundSerie[k].x * $scope.dimsGround.width / 24, $scope.groundSerie[k].y * $scope.dimsGround.height / 18, $scope.groundSerie[k].count);
                                 });
+                                
+                                
 
                                 imageMapResize();
                             }

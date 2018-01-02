@@ -144,8 +144,9 @@
                                     penaltyConceded : 0
                                 };
                             });
-                            $scope.instance.refresh();
+                            
                             var listFieldsGroupBy = ['owner'];
+                            
                             var search = {
                                 listIndicators: ['totalPlayTime'],
                                 listOwners: data.players,
@@ -236,13 +237,17 @@
                                             $scope.players[i].stats.actAttNeg = a.value;
                                         }
                                     });
+                                    
+                                    $timeout(function() {
+                            $scope.ownersId.push(data.eventRef._id);
+                            qeventbus.prepForBroadcast('ownersId', {
+                                ownersId: $scope.ownersId
+                            });
+                            
+                            //$scope.instance.refresh();
+                        });
                                 }
                             });
-                        });
-
-                        $scope.ownersId.push(data.eventRef._id);
-                        qeventbus.prepForBroadcast('ownersId', {
-                            ownersId: $scope.ownersId
                         });
                     }
                 });

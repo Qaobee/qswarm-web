@@ -67,13 +67,13 @@
             
             <v-tabs class="tabs"  active="activeTabIndex">
                 <v-tab class="tab" ng-click="changeTabDefault(0)">
-                    <a ng-href="" ng-class="{'accent-color': activeTabIndex === 0}"><h5><i class="fa fa-file-text-o"></i></h5></a>
+                    <a ng-href="" ng-class="{'accent-color': activeTabIndex === 0}"><h5><i class="fa fa-bullseye"></i></h5></a>
                 </v-tab>
                 <v-tab class="tab" ng-click="changeTabDefault(1)">
-                    <a ng-href="" ng-class="{'accent-color': activeTabIndex === 1}"><h5><i class="fa fa-clock-o"></i></h5></a>
+                    <a ng-href="" ng-class="{'accent-color': activeTabIndex === 1}"><h5><i class="fa fa-file-text-o"></i></h5></a>
                 </v-tab>
                 <v-tab class="tab" ng-click="changeTabDefault(2)">
-                    <a ng-href="" ng-class="{'accent-color': activeTabIndex === 2}"><h5><i class="fa fa-bullseye"></i></h5></a>
+                    <a ng-href="" ng-class="{'accent-color': activeTabIndex === 2}"><h5><i class="fa fa-clock-o"></i></h5></a>
                 </v-tab>
                 <v-tab class="tab" ng-click="changeTabDefault(3)">
                     <a ng-href="" ng-class="{'accent-color': activeTabIndex === 3}"><h5><i class="fa fa-area-chart"></i></h5></a>
@@ -85,6 +85,70 @@
             <div class="row">
 
                 <v-pages class="vPages--default" active="activeTabIndex">
+                    <v-page>
+                        <goal-heat-map meta="meta" owners-id="ownersId" datas="assets/heatmap.json"
+                           start-date="collecte.startDate" end-date="collecte.endDate" 
+                           instance="instance"
+                           is-team="true"></goal-heat-map>
+
+                        <!-- Stats shoot efficiency Start -->
+                        <div class="row">
+                            <div class="col s12 left-align grey-text text-ligthen-2">
+                                <h5>
+                                    <small translate="stats.efficiency.efficiency"></small>
+                                </h5>
+                            </div>
+
+                            <div class="col s12 m6 l3" style="margin-top:15px;">
+                                <widget-efficiency-player meta="meta" user="user"></widget-efficiency-player>
+                            </div>
+
+                            <div class="col s12 m6 l3" style="margin-top:15px;">
+                                <widget-efficiency-player meta="meta" user="user" values="['BACKLEFT9', 'CENTER9', 'BACKRIGHT9']"
+                                                          widget-title="'stats.efficiency.efficiency9m'"></widget-efficiency-player>
+                            </div>
+
+                            <div class="col s12 m6 l3" style="margin-top:15px;">
+                                <widget-efficiency-player meta="meta" user="user"
+                                                          values="['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING']"
+                                                          widget-title="'stats.efficiency.efficiency6m'"></widget-efficiency-player>
+                            </div>
+
+                            <div class="col s12 m6 l3" style="margin-top:15px;">
+                                <widget-efficiency-player meta="meta" user="user" values="['PENALTY']"
+                                                          widget-title="'stats.efficiency.efficiency7m'"></widget-efficiency-player>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12 left-align grey-text text-ligthen-2">
+                                <h5>
+                                    <small translate="stats.efficiency.efficiencyGoalkeeper"></small>
+                                    <h6 class ="primary-text-color" translate="stats.efficiency.efficiencyGoalkeeperDesc"></h6>
+                                </h5>
+                            </div>
+                            <div class="col s12 m6 l3" style="margin-top:15px;">
+                                <widget-efficiency-goalkeeper meta="meta" user="user"></widget-efficiency-goalkeeper>
+                            </div>
+
+                            <div class="col s12 m6 l3" style="margin-top:15px;">
+                                <widget-efficiency-goalkeeper meta="meta" user="user" values="['BACKLEFT9', 'CENTER9', 'BACKRIGHT9']"
+                                                          widget-title="'stats.efficiency.efficiency9m'"></widget-efficiency-goalkeeper>
+                            </div>
+
+                            <div class="col s12 m6 l3" style="margin-top:15px;">
+                                <widget-efficiency-goalkeeper meta="meta" user="user"
+                                                          values="['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING']"
+                                                          widget-title="'stats.efficiency.efficiency6m'"></widget-efficiency-goalkeeper>
+                            </div>
+
+                            <div class="col s12 m6 l3" style="margin-top:15px;">
+                                <widget-efficiency-goalkeeper meta="meta" user="user" values="['PENALTY']"
+                                                          widget-title="'stats.efficiency.efficiency7m'"></widget-efficiency-goalkeeper>
+                            </div>
+                        </div>
+                        <!-- Stats shoot efficiency end -->
+                    </v-page>
                     <v-page>
                         <!-- Stats participants Start -->
                         <div class="row" ng-if="players.length > 0">
@@ -172,71 +236,6 @@
                     
                     <v-page>
                         <stats-timeline-shoot></stats-timeline-shoot>
-                    </v-page>
-                    
-                    <v-page>
-                        <goal-heat-map meta="meta" owners-id="ownersId" datas="assets/heatmap.json"
-                           start-date="collecte.startDate" end-date="collecte.endDate" 
-                           instance="instance"
-                           is-team="true"></goal-heat-map>
-
-                        <!-- Stats shoot efficiency Start -->
-                        <div class="row">
-                            <div class="col s12 left-align grey-text text-ligthen-2">
-                                <h5>
-                                    <small translate="stats.efficiency.efficiency"></small>
-                                </h5>
-                            </div>
-
-                            <div class="col s12 m6 l3" style="margin-top:15px;">
-                                <widget-efficiency-player meta="meta" user="user"></widget-efficiency-player>
-                            </div>
-
-                            <div class="col s12 m6 l3" style="margin-top:15px;">
-                                <widget-efficiency-player meta="meta" user="user" values="['BACKLEFT9', 'CENTER9', 'BACKRIGHT9']"
-                                                          widget-title="'stats.efficiency.efficiency9m'"></widget-efficiency-player>
-                            </div>
-
-                            <div class="col s12 m6 l3" style="margin-top:15px;">
-                                <widget-efficiency-player meta="meta" user="user"
-                                                          values="['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING']"
-                                                          widget-title="'stats.efficiency.efficiency6m'"></widget-efficiency-player>
-                            </div>
-
-                            <div class="col s12 m6 l3" style="margin-top:15px;">
-                                <widget-efficiency-player meta="meta" user="user" values="['PENALTY']"
-                                                          widget-title="'stats.efficiency.efficiency7m'"></widget-efficiency-player>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col s12 left-align grey-text text-ligthen-2">
-                                <h5>
-                                    <small translate="stats.efficiency.efficiencyGoalkeeper"></small>
-                                    <h6 class ="primary-text-color" translate="stats.efficiency.efficiencyGoalkeeperDesc"></h6>
-                                </h5>
-                            </div>
-                            <div class="col s12 m6 l3" style="margin-top:15px;">
-                                <widget-efficiency-goalkeeper meta="meta" user="user"></widget-efficiency-goalkeeper>
-                            </div>
-
-                            <div class="col s12 m6 l3" style="margin-top:15px;">
-                                <widget-efficiency-goalkeeper meta="meta" user="user" values="['BACKLEFT9', 'CENTER9', 'BACKRIGHT9']"
-                                                          widget-title="'stats.efficiency.efficiency9m'"></widget-efficiency-goalkeeper>
-                            </div>
-
-                            <div class="col s12 m6 l3" style="margin-top:15px;">
-                                <widget-efficiency-goalkeeper meta="meta" user="user"
-                                                          values="['BACKLEFT6', 'CENTER6', 'BACKRIGHT6', 'LWING', 'RWING']"
-                                                          widget-title="'stats.efficiency.efficiency6m'"></widget-efficiency-goalkeeper>
-                            </div>
-
-                            <div class="col s12 m6 l3" style="margin-top:15px;">
-                                <widget-efficiency-goalkeeper meta="meta" user="user" values="['PENALTY']"
-                                                          widget-title="'stats.efficiency.efficiency7m'"></widget-efficiency-goalkeeper>
-                            </div>
-                        </div>
-                        <!-- Stats shoot efficiency end -->
                     </v-page>
                     
                     <v-page>
