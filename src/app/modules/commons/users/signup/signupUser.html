@@ -14,7 +14,7 @@
 
             <!-- Firstname & Name -->
             <div class="col m1 hide-on-small-only">&nbsp;</div>
-            <div class="col s12 m4">
+            <div class="col s12 m4 input-field">
                 <input id="firstname" name="firstname" type="text" class="validate" ng-model="signup.firstname" required
                        tabindex="1"
                        ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
@@ -26,7 +26,7 @@
 
             <div class="col m2 hide-on-small-only">&nbsp;</div>
 
-            <div class="col s12 m4">
+            <div class="col s12 m4 input-field">
                 <input id="name" name="name" type="text" class="validate" ng-model="signup.name" required tabindex="2"
                        ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
                 <label for="name" class="mandatory" translate="signupStartPage.form.label.name"></label>
@@ -41,7 +41,7 @@
         <div class="row container">
             <!-- Login & e-Mail -->
             <div class="col m1 hide-on-small-only">&nbsp;</div>
-            <div class="col s12 m4">
+            <div class="col s12 m4 input-field">
                 <input id="login" name="login" type="text" class="validate" ng-model="signup.account.login" required
                        tabindex="3" ng-pattern="'[a-zA-Z0-9_\-]{3,}'">
                 <label for="login" class="mandatory" translate="signupStartPage.form.label.login"></label>
@@ -52,7 +52,7 @@
 
             <div class="col m2 hide-on-small-only">&nbsp;</div>
 
-            <div class="col s12 m4">
+            <div class="col s12 m4 input-field">
                 <input type="text" name="email" id="email" ng-model="signup.contact.email"
                        ng-pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
                        tabindex="4">
@@ -68,7 +68,7 @@
         <div class="row container">
             <!-- Password & confirm -->
             <div class="col m1 hide-on-small-only">&nbsp;</div>
-            <div class="col s12 m4">
+            <div class="col s12 m4 input-field">
                 <input id="password" type="password" class="validate" ng-model="signup.account.passwd" required
                        tabindex="5">
                 <label for="password" class="mandatory" translate="signupStartPage.form.label.password"></label>
@@ -87,7 +87,7 @@
 
             <div class="col m2 hide-on-small-only">&nbsp;</div>
 
-            <div class="col s12 m4">
+            <div class="col s12 m4 input-field">
                 <input id="passwordConfirm" name="passwordConfirm" type="password" class="validate"
                        ng-model="passwdConfirm" required tabindex="6" passwd-check="password">
                 <label for="passwordConfirm" class="mandatory"
