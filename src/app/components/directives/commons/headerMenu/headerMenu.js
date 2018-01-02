@@ -242,6 +242,7 @@
                     $scope.openForgotPwd = function () {
                         delete($scope.infos);
                         angular.element('#modalLogin').modal('close');
+                        angular.element('#modalForgotPwd').modal();
                         angular.element('#modalForgotPwd').modal('open');
                     };
 
@@ -250,6 +251,7 @@
                             if (data.status === true) {
                                 delete($scope.infos);
                                 angular.element('#modalForgotPwd').modal('close');
+                                angular.element('#modalForgotPwdOK').modal();
                                 angular.element('#modalForgotPwdOK').modal('open');
                             } else {
                                 toastr.warning(data.message);
