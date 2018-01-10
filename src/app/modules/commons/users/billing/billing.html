@@ -10,18 +10,17 @@
         <div class="col s12">
             <div class="row">
                 <div class="col m2 center-align" translate="billingPage.label.activity"></div>
-                <div class="col m1 center-align" translate="billingPage.label.product"></div>
+                <div class="col m2 center-align" translate="billingPage.label.product"></div>
                 <div class="col m2 center-align" translate="billingPage.label.price"></div>
                 <div class="col m2 center-align" translate="billingPage.label.billingnumber"></div>
                 <div class="col m2 center-align" translate="billingPage.label.billingdate"></div>
                 <div class="col m2 center-align" translate="billingPage.label.pay.cardNumber"></div>
-                <div class="col m1 center-align"></div>
             </div>
             <div ng-repeat="plan in user.account.listPlan track by $index" class="row light-primary-color">
                 <div class="col m2 center-align">
                     <h6 translate="{{plan.activity.label}}"></h6>
                 </div>
-                <div class="col m1 center-align accent-text-color">
+                <div class="col m2 center-align accent-text-color">
                     <h6>{{plan.levelPlan}}<br/>
                         <span ng-if="plan.inTrial">
                             <small translate="{{'billingPage.label.status.' + plan.status}}"
@@ -51,24 +50,33 @@
                     <div class="col m2 center-align" ng-if="plan.status === 'canceled'"></div>
                     <div class="col m2 center-align"><span ng-bind="'xxxx xxxx xxxx ' + plan.cardInfo.last4"></span>
                     </div>
-                    <div class="col m1 center-align">
+                    <div class="col m12">
                         <button ng-click="unsubscribe($index)"
-                                class="btn-floating waves-effect waves-white accent-color">
+                                title="{{'billingPage.label.pay.unsubscribe.button' | translate}}"
+                                class="btn waves-effect waves-white accent-color">
                             <div class="progress" ng-if="inProgress">
                                 <div class="indeterminate"></div>
                             </div>
-                            <i class="material-icons">cancel</i>
+                            <i class="fa fa-close"></i>
                             {{'billingPage.label.pay.unsubscribe.button' | translate}}
                         </button>
+                        <span class="accent-text-color pull-right"
+                              title="Voir les factures"
+                              ng-click="showInvoices[$index] = !showInvoices[$index]"
+                              style="cursor: pointer"
+                        ><i class="fa fa-fw"
+                            ng-class="{'fa-chevron-down':!showInvoices[$index],'fa-chevron-up':showInvoices[$index]}"></i>
+                        </span>
                     </div>
                 </div>
-                <table class="light-primary-color" ng-if="plan.invoices">
+                <table class="light-primary-color" ng-if="plan.invoices && showInvoices[$index]">
                     <thead>
                     <tr>
                         <th translate="billingPage.label.invoiceId"></th>
                         <th translate="billingPage.label.invoiceAmount"></th>
                         <th translate="billingPage.label.invoiceDate"></th>
                         <th translate="billingPage.label.invoiceStatus"></th>
+                        <th></th>
                     </tr>
                     </thead>
 
@@ -79,6 +87,11 @@
                         <td>{{ invoice.date * 1000 | date:'short' }}</td>
                         <td><span class="fa fa-2x fa-fw fa-sq"
                                   ng-class="{'fa-check-square-o green-text text-darken-3' : invoice.paid, 'fa-exclamation-triangle red-text text-darken-3' : !invoice.paid}"></span>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm waves-effect waves-white dark-primary-color"
+                                    ng-click="openReceipt($parent.$index, invoice.id)"><i class="fa fa-fw fa-search"></i>
+                            </button>
                         </td>
                     </tr>
                     </tbody>
@@ -117,22 +130,68 @@
                             translate="billingPage.label.pay.title"></button>
                 </div>
                 <span ng-if="plan.status !== 'open' && plan.status !== 'canceled'">
-                        <div class="col s2 center-align"><span ng-bind="plan.amountPaid"></span> €</div>
-                        <div class="col s4 center-align" ng-if="plan.status!=='trialing' && plan.status!=='canceled'">{{plan.paidDate | date}}</div>
-                    <div>
-                        <span ng-bind="'xxxx xxxx xxxx ' + plan.cardInfo.last4" class="col s6 center-align"></span>
-                        <button ng-click="unsubscribe($index)"
-                                class="btn waves-effect waves-white secondary-color pull-right">
-                            <div class="progress" ng-if="inProgress">
-                                <div class="indeterminate"></div>
-                            </div>
-                            {{'billingPage.label.pay.unsubscribe.button' | translate}}
-                        </button>
-                    </div>
+                    <div class="col s2 center-align"><span ng-bind="plan.amountPaid"></span> €</div>
+                    <div class="col s4 center-align" ng-if="plan.status!=='trialing' && plan.status!=='canceled'">{{plan.paidDate | date}}</div>
+                    <span ng-bind="'xxxx xxxx xxxx ' + plan.cardInfo.last4" class="col s6 center-align"></span>
+
                     <div class="col s6 center-align" ng-if="plan.status==='canceled'"></div>
                     <div class="col s6 center-align" ng-if="plan.status==='trialing'"
                          translate="billingPage.label.trial"></div>
-                        <div class="col s6 center-align"><small>{{plan.paymentId}}</small></div>
+                    <div class="col s12 center-align"><small>{{plan.paymentId}}</small></div>
+                    <button ng-click="unsubscribe($index)"
+                            title="{{'billingPage.label.pay.unsubscribe.button' | translate}}"
+                            class="col s6 btn waves-effect waves-white accent-color">
+                        <div class="progress" ng-if="inProgress">
+                            <div class="indeterminate"></div>
+                        </div>
+                        <i class="fa fa-close"></i>
+                        {{'billingPage.label.pay.unsubscribe.button' | translate}}
+                    </button>
+
+                        <button class="col s6 waves-effect waves-white btn dark-primary-color pull-right"
+                                title="Voir les factures"
+                                ng-click="showInvoices[$index] = !showInvoices[$index]"
+                        >
+                        <i class="fa fa-fw"
+                           ng-class="{'fa-chevron-down':!showInvoices[$index],'fa-chevron-up':showInvoices[$index]}"></i>
+                            Factures
+                    </button>
+
+                    <table class="light-primary-color" ng-if="plan.invoices && showInvoices[$index]">
+                    <thead>
+                    <tr>
+                        <th translate="billingPage.label.invoiceAmount"></th>
+                        <th translate="billingPage.label.invoiceDate"></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr ng-repeat="invoice in paginate(plan.invoices, 10, plan.invoicePage) track by $index">
+                        <td>{{invoice.amountDue / 100}} €</td>
+                        <td>{{ invoice.date * 1000 | date:'short' }}</td>
+                        <td><span class="fa fa-2x fa-fw fa-sq"
+                                  ng-class="{'fa-check-square-o green-text text-darken-3' : invoice.paid, 'fa-exclamation-triangle red-text text-darken-3' : !invoice.paid}"></span>
+                        </td>
+                        <td>
+                           <button class="btn btn-sm waves-effect waves-white dark-primary-color"
+                                   ng-click="openReceipt($parent.$index, invoice.id)"><i class="fa fa-fw fa-search"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <pagination ng-if="plan.invoices"
+                            page="plan.invoicePage"
+                            page-size="10"
+                            total="plan.invoices.length"
+                            show-prev-next="true"
+                            use-simple-prev-next="false"
+                            dots="...."
+                            hide-if-empty="true"
+                            adjacent="2"
+                            scroll-top="false"></pagination>
                 </span>
             </div>
         </div>
@@ -150,3 +209,4 @@
                 translate="commons.buttons.validate"></button>
     </div>
 </div>
+<script>$('.collapsible').collapsible();</script>

@@ -44,6 +44,17 @@
                         url: paymentURL + '/invoices/' + planId,
                         method: 'GET'
                     });
+                },
+                /**
+                 *
+                 * @param planId
+                 * @param invoiceId
+                 */
+                getInvoice: function (planId, invoiceId) {
+                    return $http({
+                        url: paymentURL + '/invoice/' + planId + '/' + invoiceId,
+                        method: 'GET'
+                    });
                 }
 
             };
