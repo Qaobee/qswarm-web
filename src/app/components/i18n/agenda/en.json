@@ -5,7 +5,7 @@
     "buttons": {
       "addEvent": "Add event",
       "updateEvent": "Update event",
-      "dropdownEffective": "Change workforce"
+      "dropdownEffective": "Change squad"
     },
     "eventType": {
       "cup": "Cup",

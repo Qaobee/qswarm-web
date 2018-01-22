@@ -1,49 +1,49 @@
 {
   "mainEffective": {
-    "title": "Workforce management",
+    "title": "Squad management",
     "buttons": {
-      "addEffective": "Add workforce",
-      "updateEffective": "Edit workforce",
-      "effectiveDefault": "Choose a default workforce",
+      "addEffective": "Add squad",
+      "updateEffective": "Edit squad",
+      "effectiveDefault": "Choose a default squad",
       "addPlayer": "Add player",
       "viewPlayer": "View player sheet",
       "addTeamHome": "Add team",
       "addTeamAdversary": "Add opponent",
-      "viewStatsEffective": "Workforce stats",
-      "dropdownEffective": "Change workforce",
+      "viewStatsEffective": "Squad stats",
+      "dropdownEffective": "Change squad",
       "compare": "Compare"
     }
   },
   "addEffective": {
-    "title": "Add a workforce",
-    "toastSuccess": "Workforce {{effective}} was added",
-    "toastError": "Error, workforce can't be create"
+    "title": "Add a squad",
+    "toastSuccess": "Squad {{effective}} was added",
+    "toastError": "Error, squad can't be create"
   },
   "updateEffective": {
-    "title": "Update workforce",
-    "toastSuccess": "Workforce {{effective}} was updated",
-    "toastError": "Error, workforce can't be updated"
+    "title": "Update squad",
+    "toastSuccess": "Squad {{effective}} was updated",
+    "toastError": "Error, squad can't be updated"
   },
   "effectiveLabels": {
-    "effectiveAvatar": "Drag and drop avatar here",
+    "effectiveAvatar": "Drag and drop picture here",
     "effectiveCategoryAge": "Age category",
     "effectiveTabMembers": "My player list",
     "effectiveTabCoachs": "Coaches",
     "effectiveTabTeams": "My team list",
-    "effectiveTeamsHome": "Workforce team list",
+    "effectiveTeamsHome": "Squad's team list",
     "effectiveTeamsAdversary": "Opponents",
     "effectiveTeamEnable": "Team Enabled",
     "effectiveTeamNotEnable": "Team disabled",
     "effectivePlaceHolderMembers": "Add a player",
-    "effectiveLabel": "Workforce Label",
+    "effectiveLabel": "Squad Label",
     "effectiveNbPlayers": "Player(s) selected",
     "effectiveTabPlayerColPlayer": "Player",
     "effectiveTabPlayerColPosition": "Position"
   },
   "effectiveErrors": {
-    "Label": "Workforce's label is mandatory",
+    "Label": "Squad's label is mandatory",
     "LabelTooShort": "Label is too short",
-    "CategoryAge": "Workforce age category is mandatory"
+    "CategoryAge": "Squad age category is mandatory"
   },
   "tabEffectif": {
     "dashboard": "Dashboard",
@@ -52,20 +52,20 @@
   "mainPlayer": {
     "title": "Players",
     "buttons": {
-      "addEffective": "Add workforce",
-      "updateEffective": "Edit workforce",
+      "addEffective": "Add squad",
+      "updateEffective": "Edit squad",
       "addPlayer": "Add player",
       "viewPlayer": "View player sheet",
       "addTeamHome": "Add team",
       "addTeamAdversary": "Add opponent",
-      "viewStatsEffective": "View workforce's stats",
-      "dropdownEffective": "Change workforce",
+      "viewStatsEffective": "View squad's stats",
+      "dropdownEffective": "Change squad",
       "compare": "Compare"
     }
   },
   "addPlayer": {
     "title": "Add a player",
-    "toastSuccess": "{{firstname}} {{name}} was added to the workforce {{effective}}",
+    "toastSuccess": "{{firstname}} {{name}} was added to the squad {{effective}}",
     "toastError": "Error, player {{firstname}} {{name}} can't be created"
   },
   "updatePlayer": {
@@ -126,7 +126,7 @@
     "ListTeam": "Team's list"
   },
   "addTeam": {
-    "titleHome": "Add team for workforce",
+    "titleHome": "Add team for squad",
     "titleAdversary": "Add opponent for team",
     "toastSuccess": "{{label}} was added",
     "toastError": "Error, team {{label}} can't be created"
