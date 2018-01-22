@@ -25,6 +25,7 @@
     "gulp": "~3.9.1",
     "gulp-angular-filesort": "~1.1.1",
     "gulp-angular-templatecache": "~1.8.0",
+    "gulp-angular-translate-extract": "^0.1.8",
     "gulp-autoprefixer": "~3.0.2",
     "gulp-eslint": "~1.0.0",
     "gulp-filter": "~3.0.1",

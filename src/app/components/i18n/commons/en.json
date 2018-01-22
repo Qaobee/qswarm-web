@@ -13,9 +13,10 @@
         "listWeekdaysFull": "Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday",
         "listWeekdaysLetter": "S,M,T,W,T,F,S",
         "listWeekdaysShort": "Sun,Mon,Tue,Wed,Thu,Fri,Sat",
-        "today": "",
+        "today": "Today",
         "clear": "Clear",
-        "close": "Close"
+        "close": "Close",
+        "validate": "OK"
       },
       "hours": {
         "pattern": "HH:i",
@@ -46,14 +47,11 @@
       "share": "Share",
       "pdfExport": "Export to PDF"
     },
-    "legals" : {
-      "gcu": "Accept the <a href=\"#/legal-agreement\" target=\"_blank\">GCU</a> and the <a href=\"#/privacy-policy\" target=\"_blank\">privacy policy</a>"
-    },
     "buttons": {
-      "validate": "Validate",
+      "validate": "Submit",
       "cancel": "Cancel",
       "close": "Close",
-      "back": "Return",
+      "back": "Back",
       "next": "Next",
       "previous": "Previous",
       "filter": "Filter",
@@ -62,8 +60,11 @@
       "accept": "Accept",
       "refuse": "Refuse",
       "read-more": "Learn more",
-      "subscribe": "Subscribe",
-      "search": "Search"   
+      "subscribe": "Try",
+      "search": "Search"
+    },
+    "legals": {
+      "gcu": "Accept the <a href=\"#/legal-agreement\" target=\"_blank\">GCU</a> and the <a href=\"#/privacy-policy\" target=\"_blank\">privacy policy</a>"
     },
     "settings": {
       "activity": {

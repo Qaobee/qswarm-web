@@ -6,14 +6,14 @@
     "teams": "My teams",
     "training": "Training",
     "championship": "Competition",
-    "calendar": "Agenda",
+    "calendar": "Calendar",
     "notification": "Messages",
     "search": "Search",
     "search-event": "Event",
     "search-player": "Player",
     "settings": "Settings",
-    "signup": "Inscription",
-    "profil": "Profil",
+    "signup": "Register",
+    "profil": "Profile",
     "notifications": {
       "title": "Notifications",
       "mark-as-read": "Mark as read",
@@ -41,7 +41,7 @@
     "contact": "Contact",
     "download": "Download",
     "collect": "Collect",
-    "progress": "Progress",
+    "progress": "Analyze",
     "collaborate": "Collaborate",
     "aboutUs": "About us",
     "news": "News"
@@ -55,12 +55,12 @@
         "forgotpasswd": "Forgot password?",
         "forgotpasswdmess": "These are things that happen, give us your login and we will reset it for you!",
         "title": "Log on to <b>Qaobee</b>",
-        "forgotpasswdcancel": "Wait, I remember now!",
-        "messageControl": {
-          "unregistreduser": {
-            "title": "Your account is not activated.",
-            "content": "our account is not activated. Take a look at your mail-box or click on 'validate' to re-emit an email."
-          }
+        "forgotpasswdcancel": "Wait, I remember now!"
+      },
+      "messageControl": {
+        "unregistreduser": {
+          "title": "Your account is not active yet",
+          "content": "Your account has not been activated yet. Check your email or click 'submit' to send back an email"
         }
       }
     }

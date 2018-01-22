@@ -1,11 +1,11 @@
 {
   "mainAgenda": {
-    "title": "Planning",
-    "next_event": "Next events",
+    "title": "Calendar",
+    "next_event": "My events",
     "buttons": {
       "addEvent": "Add event",
       "updateEvent": "Update event",
-      "dropdownEffective": "Change effective"
+      "dropdownEffective": "Change workforce"
     },
     "eventType": {
       "cup": "Cup",
@@ -16,22 +16,22 @@
     }
   },
   "addEvent": {
-    "title": "create event",
-    "toastSuccess": "Event {{label}} has been created",
-    "toastError": "Error, event can't create"
+    "title": "Create event",
+    "toastSuccess": "Event {{label}} created",
+    "toastError": "Error, event can't be created"
   },
   "updateEvent": {
     "title": "Update event",
-    "toastSuccess": "Event {{label}} was updated",
-    "toastError": "Error, event can't update"
+    "toastSuccess": "Event {{label}} updated",
+    "toastError": "Error, event can't be updated"
   },
   "eventLabels": {
     "Team": "Select my team",
-    "Adversary": "Choice adversary",
-    "Type": "Event type",
-    "selectType": "Choice Event Type",
+    "Adversary": "Choose an opponent",
+    "Type": "Event's type",
+    "selectType": "Choose an event type",
     "Label": "Label",
-    "LabelPlaceHolder": "1st journey... League Cup...",
+    "LabelPlaceHolder": "1st day... League Cup...",
     "StartDate": "Start date",
     "EndDate": "End date",
     "StartHour": "Start hour",
@@ -41,16 +41,16 @@
     "Visitor": "Outside",
     "SectionIdentity": "Event",
     "SectionActorsHome": "My team",
-    "SectionActorsAdversary": "Adversary",
-    "SectionPlaning": "Planning",
+    "SectionActorsAdversary": "Opponent",
+    "SectionPlaning": "Calendar",
     "SectionPlace": "Location"
   },
   "eventErrors": {
-    "Type": "Event type mandatory",
-    "Label": "Event label mandatory",
-    "StartDate": "Event start date mandatory",
-    "StartHour": "Event hour mandatory",
-    "teamHome": "Team mandatory",
-    "adversary": "Adversary mandatory"
+    "Type": "Event's type is mandatory",
+    "Label": "Event's label is mandatory",
+    "StartDate": "Event's start date is mandatory",
+    "StartHour": "Event's start hour is mandatory",
+    "teamHome": "Team is mandatory",
+    "adversary": "Opponent is mandatory"
   }
 }

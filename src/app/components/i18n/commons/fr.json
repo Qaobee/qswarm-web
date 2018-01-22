@@ -13,10 +13,10 @@
         "listWeekdaysFull": "Dimanche,Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi",
         "listWeekdaysLetter": "D,L,M,M,J,V,S",
         "listWeekdaysShort": "Dim,Lun,Mar,Mer,Jeu,Ven,Sam",
-        "today": "",
+        "today": "Aujourd'hui",
         "clear": "Effacer",
         "close": "Fermer",
-        "validate": "OK"  
+        "validate": "OK"
       },
       "hours": {
         "pattern": "HH:i",

@@ -12,6 +12,7 @@ var conf = require('./gulp/conf');
 var gulpNgConfig = require('gulp-ng-config');
 var jsdoc = require("gulp-jsdoc");
 var util = require("gulp-util");
+var angularTranslate = require("gulp-angular-translate-extract");
 /**
  *  This will load all js or coffee files in the gulp directory
  *  in order to load all gulp tasks
@@ -54,4 +55,12 @@ gulp.task('docker', ['clean', 'conf-docker'], function () {
 gulp.task('jsdoc', [], function () {
     return gulp.src(conf.paths.src + '/**/*.js')
         .pipe(jsdoc('./build/docs/jsdoc'))
+});
+
+gulp.task('translate', function () {
+    return gulp.src(conf.paths.src + '/**/*.js')
+        .pipe(angularTranslate({
+            lang: ['fr'], nullEmpty: true, safeMode: true
+        }));
+        //.. 
 });

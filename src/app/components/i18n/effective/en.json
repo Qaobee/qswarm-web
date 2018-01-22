@@ -1,84 +1,84 @@
 {
   "mainEffective": {
-    "title": "Effective management",
+    "title": "Workforce management",
     "buttons": {
-      "addEffective": "Add effective",
-      "updateEffective": "Edit effective",
-      "effectiveDefault": "Choose default effective",
+      "addEffective": "Add workforce",
+      "updateEffective": "Edit workforce",
+      "effectiveDefault": "Choose a default workforce",
       "addPlayer": "Add player",
-      "addTeamHome": "Add team",
-      "addTeamAdversary": "Add adversary",
       "viewPlayer": "View player sheet",
-      "viewStatsEffective": "View stats of effective",
-      "dropdownEffective": "Change effective",
+      "addTeamHome": "Add team",
+      "addTeamAdversary": "Add opponent",
+      "viewStatsEffective": "Workforce stats",
+      "dropdownEffective": "Change workforce",
       "compare": "Compare"
     }
   },
   "addEffective": {
-    "title": "Add an effectif",
-    "toastSuccess": "Effective {{effective}} was added",
-    "toastError": "Error, effective can't be create"
+    "title": "Add a workforce",
+    "toastSuccess": "Workforce {{effective}} was added",
+    "toastError": "Error, workforce can't be create"
   },
   "updateEffective": {
-    "title": "Update effective",
-    "toastSuccess": "Effective {{effective}} was updated",
-    "toastError": "Error, effective can't be update"
+    "title": "Update workforce",
+    "toastSuccess": "Workforce {{effective}} was updated",
+    "toastError": "Error, workforce can't be updated"
   },
   "effectiveLabels": {
     "effectiveAvatar": "Drag and drop avatar here",
-    "effectiveCategoryAge": "Category Age",
+    "effectiveCategoryAge": "Age category",
     "effectiveTabMembers": "My player list",
-    "effectiveTabCoachs": "Coachs",
+    "effectiveTabCoachs": "Coaches",
     "effectiveTabTeams": "My team list",
-    "effectiveTeamsHome": "Effective Team list",
-    "effectiveTeamsAdversary": "Adversaries",
-    "effectiveTeamEnable": "Team Enable",
-    "effectiveTeamNotEnable": "Team disable",
+    "effectiveTeamsHome": "Workforce team list",
+    "effectiveTeamsAdversary": "Opponents",
+    "effectiveTeamEnable": "Team Enabled",
+    "effectiveTeamNotEnable": "Team disabled",
     "effectivePlaceHolderMembers": "Add a player",
-    "effectiveLabel": "Effective Label",
+    "effectiveLabel": "Workforce Label",
     "effectiveNbPlayers": "Player(s) selected",
     "effectiveTabPlayerColPlayer": "Player",
     "effectiveTabPlayerColPosition": "Position"
   },
   "effectiveErrors": {
-    "Label": "Effective label is mandatory",
+    "Label": "Workforce's label is mandatory",
     "LabelTooShort": "Label is too short",
-    "CategoryAge": "Effective age category is mandatory"
+    "CategoryAge": "Workforce age category is mandatory"
   },
   "tabEffectif": {
     "dashboard": "Dashboard",
     "Listplayer": "Players list"
   },
   "mainPlayer": {
-    "title": "Effective's players",
+    "title": "Players",
     "buttons": {
-      "addEffective": "Add effective",
-      "updateEffective": "Edit effective",
+      "addEffective": "Add workforce",
+      "updateEffective": "Edit workforce",
       "addPlayer": "Add player",
-      "addTeamHome": "Add team",
-      "addTeamAdversary": "Add adversary",
       "viewPlayer": "View player sheet",
-      "viewStatsEffective": "View stats of effective",
-      "dropdownEffective": "Change effective",
+      "addTeamHome": "Add team",
+      "addTeamAdversary": "Add opponent",
+      "viewStatsEffective": "View workforce's stats",
+      "dropdownEffective": "Change workforce",
       "compare": "Compare"
     }
   },
   "addPlayer": {
-    "title": "Add a person",
-    "toastSuccess": "{{firstname}} {{name}} was added to the effective {{effective}}",
-    "toastError": "Error, player {{firstname}} {{name}} can't be create"
+    "title": "Add a player",
+    "toastSuccess": "{{firstname}} {{name}} was added to the workforce {{effective}}",
+    "toastError": "Error, player {{firstname}} {{name}} can't be created"
   },
   "updatePlayer": {
     "title": "Update player",
     "toastSuccess": "{{firstname}} {{name}} was updated",
-    "toastError": "Error, player {{firstname}} {{name}} can't be update"
+    "toastError": "Error, player {{firstname}} {{name}} can't be updated"
   },
   "viewPlayer": {
-    "title": "Player sheet of",
+    "title": "Player's sheet of",
     "buttons": {
       "updatePlayer": "Edit player",
       "viewStatsPlayer": "View player's stats",
-      "returnViewPlayer": "Return"
+      "returnViewPlayer": "Back"
     }
   },
   "playerLabels": {
@@ -90,9 +90,9 @@
     "playerGenderM": "Male",
     "playerGenderF": "Female",
     "playerBirthdate": "Birthdate",
-    "playerBirthCity": "BirthCity",
+    "playerBirthCity": "Birth city",
     "playerNationality": "Nationality",
-    "playerCaracterSection": "Player characteristics",
+    "playerCaracterSection": "Characteristics",
     "playerPositionType": "Position",
     "playerWeight": "Weight (lb)",
     "playerHeight": "Height (in)",
@@ -114,41 +114,41 @@
     "Name": "Name is mandatory",
     "BirthDate": "Birthdate is mandatory",
     "Gender": "Gender is mandatory",
-    "emailDirty": "Mail format invalid",
+    "emailDirty": "Invalid e-mail format",
     "PositionType": "Position is mandatory",
     "wrong-char": "Wrong chars"
   },
   "mainTeam": {
-    "title": "Teams of effective"
+    "title": "My teams"
   },
   "tabTeam": {
     "dashboard": "Dashboard",
     "ListTeam": "Team's list"
   },
   "addTeam": {
-    "titleHome": "Add team for effective",
-    "titleAdversary": "Add adversary for team ",
+    "titleHome": "Add team for workforce",
+    "titleAdversary": "Add opponent for team",
     "toastSuccess": "{{label}} was added",
-    "toastError": "Error, team {{label}} can't be create"
+    "toastError": "Error, team {{label}} can't be created"
   },
   "updateTeam": {
     "titleHome": "Update team",
-    "titleAdversary": "Update adversary",
+    "titleAdversary": "Update opponent",
     "toastSuccess": "{{label}} was updated",
-    "toastError": "Error, the team {{label}} can't be update"
+    "toastError": "Error, the team {{label}} can't be updated"
   },
   "teamLabels": {
-    "teamSheet" : "Team sheet",  
+    "teamSheet": "Team's sheet",
     "label": "Label",
-    "enable": "Activate",
-    "disable": "Disactivate",
+    "enable": "Enabled",
+    "disable": "Disabled",
     "activation": "Activation",
-    "status": "Choice status",
-    "teamsAdversary": "Adversary list"
+    "status": "Select status",
+    "teamsAdversary": "Opponent list"
   },
   "teamErrors": {
-    "label": "Team label id mandatory",
-    "activation": "Activate or desactivate team"
+    "label": "Team's label is mandatory",
+    "activation": "Enable or disable team"
   },
   "compare": {
     "player-max": "You can select at most {{max}} players",

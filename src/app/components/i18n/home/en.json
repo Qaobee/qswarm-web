@@ -1,52 +1,55 @@
 {
   "intro": {
     "step1": {
-      "title": "Bienvenue sur Qaobee !",
-      "desc": "Prenons quelques instants pour découvrir les principales fonctionnalités de l'application."
+      "title": "Welcome to Qaobee !",
+      "desc": "Let's take a few moments to discover the main features of the application."
     },
     "step2": {
-      "title": "Restez à l'affût",
-      "desc": "Les notifications ..."
+      "title": "Stay tuned",
+      "desc": "Notifications ..."
     },
     "step3": {
-      "title": "Planifiez vos matchs !",
-      "desc": "Les événements ..."
+      "title": "Plan your games!",
+      "desc": "Events ..."
     },
     "step4": {
-      "title": "Consultez vos stats !",
-      "desc": "Les collectes ..."
+      "title": "Check your stats!",
+      "desc": "Collects ..."
     },
     "step5": {
-      "title": "Félicitations !",
-      "desc": "Bientôt vous serez incollable sur les stats de vos joueurs.",
-      "desc2": "Rendez-vous sur Google play store et téléchargez notre application de collecte pour tablette ou smartphone."
+      "title": "Congratulations !",
+      "desc": "Soon you will be unbeatable on the stats of your players.",
+      "desc2": "Visit Google Play Store and download our collect app for tablet or smartphone."
     }
   },
   "dashboard": {
     "event": "Next event",
-    "stats": "Statistics event",
+    "stats": "Event's stats",
     "player": "Statistics player",
-    "teams": "Statistics team",
+    "teams": "Team\"s stats",
     "widgetTopScored": {
-      "title": "Top buteurs"
+      "title": "Top scorers"
     },
     "widgetTopUsed": {
       "title": "More used"
+    },
+    "widgetTopHolder": {
+      "title": "The most established"
     },
     "widgetNotifications": {
       "title": "Notifications"
     },
     "widgetEfficiencyGB": {
-      "title": "Global Efficiency Shoot"
+      "title": "Shooting efficiency"
     },
     "widgetEfficiencyNine": {
-      "title": "9 meter Efficiency Shoot"
+      "title": "9 meters efficiency"
     },
     "widgetEfficiencySeven": {
-      "title": "7 meter Efficiency Shoot"
+      "title": "7 meters efficiency"
     },
     "widgetEfficiencySix": {
-      "title": "6 meter Efficiency Shoot"
+      "title": "6 meters efficiency"
     },
     "actionTitle": {
       "defaultScreen": "Default dashboard"
@@ -54,6 +57,6 @@
   },
   "notifications": {
     "nodata": "No news, good news!",
-    "more": "see more"
+    "more": "See more"
   }
 }

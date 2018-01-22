@@ -1,13 +1,13 @@
 {
   "collecte": {
-      "title": "Mes collectes",
-      "eventType": {
-          "cup": "Coupe",
-          "championship": "Championnat",
-          "friendlyGame": "Match amical",
-          "training": "Entraînement",
-          "other": "Autre"
-        },
-      "empty": "Aucune collecte sur la période"
-    }
+    "title": "My collects",
+    "eventType": {
+      "cup": "Cup",
+      "championship": "Championship",
+      "friendlyGame": "Friendly game",
+      "training": "Trainning",
+      "other": "Other"
+    },
+    "empty": "No collect during this period."
+  }
 }
