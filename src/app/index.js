@@ -85,13 +85,7 @@
 
         .config(function ($translateProvider, $translatePartialLoaderProvider, $httpProvider, vcRecaptchaServiceProvider,
                           $logProvider, EnvironmentConfig, tmhDynamicLocaleProvider, ChartJsProvider, socialshareConfProvider) {
-
-            if ('development' === EnvironmentConfig.name) {
-                tmhDynamicLocaleProvider.localeLocationPattern('../bower_components/angular-i18n/angular-locale_{{locale}}.js');
-            } else {
-                tmhDynamicLocaleProvider.localeLocationPattern('i18n/angular-locale_{{locale}}.js');
-            }
-
+            tmhDynamicLocaleProvider.localeLocationPattern('../bower_components/angular-i18n/angular-locale_{{locale}}.js');
             $translateProvider.useLoader('$translatePartialLoader', {
                 urlTemplate: 'app/components/i18n/{part}/{lang}.json'
             });
@@ -140,14 +134,14 @@
                     'provider': 'twitter',
                     'conf': {
                         'popupHeight': 480,
-                        'popupWidth' : 640
+                        'popupWidth': 640
                     }
                 },
                 {
                     'provider': 'facebook',
                     'conf': {
                         'popupHeight': 480,
-                        'popupWidth' : 640
+                        'popupWidth': 640
                     }
                 }
             ]);
@@ -160,7 +154,7 @@
             });
             $rootScope.$on('$locationChangeSuccess', function () {
                 $log.debug('qswarmWeb index - run - $locationChangeSuccess', $location.path());
-                if($rootScope.user && !$location.path().match(/\/private\/billing.*/) && !$location.path().match(/\/sso/) ) {
+                if ($rootScope.user && !$location.path().match(/\/private\/billing.*/) && !$location.path().match(/\/sso/)) {
                     $log.debug('qswarmWeb index - run - $locationChangeSuccess', $rootScope.user.account.status);
                     switch ($rootScope.user.account.status) {
                         case 'NOT_PAID':
