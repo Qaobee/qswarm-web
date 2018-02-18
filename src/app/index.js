@@ -153,20 +153,20 @@
                 $translate.refresh();
             });
             $rootScope.$on('$locationChangeSuccess', function () {
-                $log.debug('qswarmWeb index - run - $locationChangeSuccess', $location.path());
-                if ($rootScope.user && !$location.path().match(/\/private\/billing.*/) && !$location.path().match(/\/sso/)) {
-                    $log.debug('qswarmWeb index - run - $locationChangeSuccess', $rootScope.user.account.status);
-                    switch ($rootScope.user.account.status) {
-                        case 'NOT_PAID':
-                            $location.path('/private/billing');
-                            break;
-                        case 'TRIAL_ENDED':
-                            $location.path('/private/billing');
-                            break;
-                        default:
-                            break;
-                    }
-                }
+                /* MODE GRATUIT, A DECOMMENTER SI REACTIVATION PAYANT */
+                //if ($rootScope.user && !$location.path().match(/\/private\/billing.*/) && !$location.path().match(/\/sso/)) {
+                //    $log.debug('qswarmWeb index - run - $locationChangeSuccess', $rootScope.user.account.status);
+                //    switch ($rootScope.user.account.status) {
+                //        case 'NOT_PAID':
+                //            $location.path('/private/billing');
+                //            break;
+                //        case 'TRIAL_ENDED':
+                //            $location.path('/private/billing');
+                //            break;
+                //        default:
+                //            break;
+                //    }
+                //}
                 $window.ga('send', 'pageview', $location.path());
             });
             if (top.location.href !== self.location.href) {

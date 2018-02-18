@@ -12,7 +12,7 @@ var conf = require('./gulp/conf');
 var gulpNgConfig = require('gulp-ng-config');
 var jsdoc = require("gulp-jsdoc");
 var util = require("gulp-util");
-var angularTranslate = require("gulp-angular-translate-extract");
+
 /**
  *  This will load all js or coffee files in the gulp directory
  *  in order to load all gulp tasks

@@ -132,6 +132,7 @@
                         $scope.endTrial = 999;
                         
                         $scope.hideTrial = true;
+                        /*
                         if($scope.user.account.status === 'TRIAL'){
                             $scope.hideTrial = false;
                             angular.forEach($scope.user.account.listPlan, function (plan) {
@@ -151,8 +152,16 @@
                         
                             });
                         }
+                        */
                         $scope.loadMetaInfos();
                         
+                        // is it his first visit?
+                        qeventbus.prepForBroadcast('notifications', {});
+                        if($location.path() === '/') {
+                            $location.path('/private');
+                        }
+                        
+                        /* MODE GRATUIT, A DECOMMENTER SI REACTIVATION PAYANT
                         switch ( $scope.user.account.status) {
                             case 'NOT_PAID':
                                 $scope.notpaid = true;
@@ -170,6 +179,7 @@
                                     $location.path('/private');
                                 }
                         }
+                        */
                     });
 
                     $scope.$on('qeventbus:title', function () {
@@ -190,6 +200,7 @@
                                 }
                             });
                         }
+                        /* MODE GRATUIT, A DECOMMENTER SI REACTIVATION PAYANT
                         $scope.notpaid = data.account.listPlan.filter(function (n) {
                                 return n.status === 'notpaid';
                             }).length > 0;
@@ -197,6 +208,7 @@
                         if ($scope.notpaid) {
                             $location.path('/private/billing');
                         }
+                        */
                         $rootScope.user = data;
                         $scope.user = data;
                     });
