@@ -8,34 +8,6 @@
     </div>
 
     <form ng-submit="usernameTest()" name="signupStartPageForm">
-        <div class="row container">
-
-            <!-- Firstname & Name -->
-            <div class="col m1 hide-on-small-only">&nbsp;</div>
-            <div class="col s12 m4 input-field">
-                <input id="firstname" name="firstname" type="text" class="validate" ng-model="signup.firstname" required
-                       tabindex="1" autocomplete="on given-name"
-                       ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
-                <label for="firstname" class="mandatory" translate="signupStartPage.form.label.firstname"></label>
-                <span class="small colorAccent-text invalid"
-                      ng-if="signupStartPageForm.firstname.$error.pattern"
-                      translate="signupStartPage.form.messageControl.badchars"></span>
-            </div>
-
-            <div class="col m2 hide-on-small-only">&nbsp;</div>
-
-            <div class="col s12 m4 input-field">
-                <input id="name" name="name" type="text" class="validate" ng-model="signup.name" required 
-                       tabindex="2" autocomplete="on family-name"
-                       ng-pattern="'[a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]+'">
-                <label for="name" class="mandatory" translate="signupStartPage.form.label.name"></label>
-                <span class="small colorAccent-text invalid"
-                      ng-if="signupStartPageForm.name.$error.pattern"
-                      translate="signupStartPage.form.messageControl.badchars"></span>
-            </div>
-
-            <div class="col m1 hide-on-small-only">&nbsp;</div>
-        </div>
 
         <div class="row container">
             <!-- Login & e-Mail -->
@@ -88,7 +60,7 @@
 
             <div class="col s12 m4 input-field">
                 <input id="passwordConfirm" name="passwordConfirm" type="password" class="validate"
-                       ng-model="passwdConfirm" required tabindex="6" passwd-check="password" autocomplete="on new-password">>
+                       ng-model="passwdConfirm" required tabindex="6" passwd-check="password" autocomplete="on new-password">
                 <label for="passwordConfirm" class="mandatory"
                        translate="signupStartPage.form.label.passwordConfirm"></label>
                 <span ng-if="signupStartPageForm.passwordConfirm.$dirty && signupStartPageForm.passwordConfirm.$error.pwmatch"
