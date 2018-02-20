@@ -66,8 +66,8 @@
                             levelPlan: single ? 'FREEMIUM' : $routeParams.teamPlan,
                             activity: {_id: 'ACT-HAND'}
                         };
-                        $scope.signup.name = $scope.signup.name.capitalize(true);
-                        $scope.signup.firstname = $scope.signup.firstname.capitalize(true);
+                        //$scope.signup.name = $scope.signup.name.capitalize(true);
+                        //$scope.signup.firstname = $scope.signup.firstname.capitalize(true);
                         locationAPI.getCountry().then(function (data) {
                             $scope.signup.country = data.data.country;
                             if (single) {
