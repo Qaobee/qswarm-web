@@ -23,10 +23,11 @@
         ])
         .directive('headerMenu', function (qeventbus, $rootScope, $translate, $location, $window, anchorSmoothScroll,
                                            $translatePartialLoader, $filter, signupRestAPI, userRestAPI, $sce, $log,
-                                           seasonsRestAPI) {
+                                           seasonsRestAPI, $locale) {
             return {
                 restrict: 'AE',
                 controller: function ($scope) {
+                    moment.locale($locale.id);
                     $translatePartialLoader.addPart('commons').addPart('menu').addPart('user').addPart('home');
                     $scope.desktop = !$rootScope.isMobile;
                     $scope.hideTrial = false;

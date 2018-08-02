@@ -174,6 +174,7 @@
                             return;
                         }
                         $scope.periodicityActive = filterCalendarSrv.getDefault(moment($scope.meta.season.startDate), moment($scope.meta.season.endDate));
+                        console.log($scope.periodicityActive, moment.locale())
                         $scope.updateDatas(noUpdt);
                     }
 

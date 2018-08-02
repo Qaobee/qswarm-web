@@ -145,10 +145,13 @@
             ]);
         })
         .run(function ($rootScope, $translate, $log, $locale, tmhDynamicLocale, $window, $location) {
+            console.debug('run')
             $locale.id = $translate.proposedLanguage();
             tmhDynamicLocale.set($locale.id);
+            moment.locale($locale.id);
             $rootScope.$on('$translatePartialLoaderStructureChanged', function () {
                 $translate.refresh();
+                moment.locale($locale.id);
             });
             $rootScope.$on('$locationChangeSuccess', function () {
                 /* MODE GRATUIT, A DECOMMENTER SI REACTIVATION PAYANT */
@@ -175,12 +178,11 @@
 
         /**
          * @class qaobee.qswarmweb
-         * @description Contrôleur principal
+         * @description Main controller
          */
         .controller('MainCtrl', function ($rootScope, $scope, $window, $translatePartialLoader, qeventbus, $timeout,
                                           EnvironmentConfig, $templateRequest, $sce, $compile) {
             $translatePartialLoader.addPart('public').addPart('feedback');
-            moment.locale($window.navigator.language);
             $scope.loaded = false;
             $scope.feedbackOptions = {
                 ajaxURL: EnvironmentConfig.apiEndPoint + '/api/1/commons/feedback/send',
