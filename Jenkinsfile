@@ -15,7 +15,7 @@ node {
         stage("Build $version") {
             sh 'rm -fr node_modules'
             sh 'rm -fr bower_components'
-            sh 'npm cache clean'
+            sh 'npm cache clean --force'
             sh 'bower cache clean'
             sh 'npm install'
             sh 'bower install'
