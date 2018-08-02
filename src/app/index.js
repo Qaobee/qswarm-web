@@ -92,14 +92,12 @@
             $translateProvider.useLoaderCache(EnvironmentConfig.useLoaderCache);
             $translateProvider.useSanitizeValueStrategy('escapeParameters');
             $logProvider.debugEnabled(EnvironmentConfig.debugEnabled);
-            $translateProvider.registerAvailableLanguageKeys(['fr', 'en', 'de'], {
-                'fr_FR': 'fr',
-                'en_US': 'en',
-                'en_UK': 'en',
-                'de_DE': 'de',
-                'de_CH': 'de'
+            $translateProvider.registerAvailableLanguageKeys(['fr', 'en'], {
+                'fr_*': 'fr',
+                'en_*': 'en',
+                '*': 'en'
             });
-            $translateProvider.determinePreferredLanguage();
+            $translateProvider.determinePreferredLanguage().fallbackLanguage('en');
             vcRecaptchaServiceProvider.setSiteKey(EnvironmentConfig.captchaKey);
             vcRecaptchaServiceProvider.setTheme('light');
             vcRecaptchaServiceProvider.setType('image');
