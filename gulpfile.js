@@ -51,9 +51,10 @@ gulp.task('docker', ['clean', 'conf-docker'], function () {
     gulp.start('build');
 });
 
-gulp.task('jsdoc', [], function () {
-    return gulp.src(conf.paths.src + '/**/*.js')
-        .pipe(jsdoc('./build/docs/jsdoc'))
+gulp.task('jsdoc', function (cb) {
+    var config = require('./jsdocConfig.json');
+    gulp.src(['README.md', './src/**/*.js'], {read: false})
+        .pipe(jsdoc(config, cb));
 });
 
 gulp.task('translate', function () {
