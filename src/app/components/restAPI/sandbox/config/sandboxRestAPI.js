@@ -143,13 +143,13 @@
                 },
                 
                 /**
-                 * @description desactivate an user to one sandbox
+                 * @description deactivate an user to one sandbox
                  * @memberOf qaobee.components.restAPI.sandbox.config.sbShareRestAPI
-                 * @function desactivateMemberToSandbox
+                 * @function deactivateMemberToSandbox
                  * @request {JsonObject} request : contains user Id et sandbox Id
                  * @returns {Object} com.qaobee.hive.business.model.sandbox
                  */
-                desactivateMemberToSandbox: function (request) {
+                deactivateMemberToSandbox: function (request) {
                     return $http({
                         url: sbShareAPIURL + '/desactivateMember',
                         method: 'POST',

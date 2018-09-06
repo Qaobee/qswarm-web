@@ -86,7 +86,7 @@
 
 
                 if (member.status === 'activated') {
-                    sandboxRestAPI.desactivateMemberToSandbox(request).success(function (data) {
+                    sandboxRestAPI.deactivateMemberToSandbox(request).success(function (data) {
                         $scope.sandbox = data;
                         toastr.success($filter('translate')('sbMemberMngtPage.messageControl.memberRemove', {
                             firstname: member.person.firstname,
