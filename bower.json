@@ -80,6 +80,9 @@
       "main": [
         "css/font-awesome.css"
       ]
+    },
+    "angular-intro.js" : {
+      "main": ["build/angular-intro.min.js"]
     }
   }
 }
