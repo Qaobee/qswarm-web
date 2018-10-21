@@ -21,7 +21,8 @@
     "title": "Share workspace",
     "label": {
       "byUser": "Search for user",
-      "byMail": "Fill in the email address of your coworkers"
+      "byMail": "Fill in the email address of your coworkers",
+      "hint": "Enter a valid email address ant hit \"Enter\" key to validate it."
     },
     "messageControl": {
       "success": "The invitations were sent well",

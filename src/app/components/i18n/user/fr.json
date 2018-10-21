@@ -21,7 +21,8 @@
     "title": "Partager espace de travail",
     "label": {
       "byUser": "Cherchez un utilisateur",
-      "byMail": "Renseignez l'adresse mail de vos collaborateurs"
+      "byMail": "Renseignez l'adresse mail de vos collaborateurs",
+      "hint": "Saisissez l'adresse email et validez la avec la touche \"Entrée\""
     },
     "messageControl": {
       "success": "Les invitations ont été bien envoyées",

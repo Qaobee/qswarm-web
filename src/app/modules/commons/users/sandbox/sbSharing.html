@@ -1,46 +1,50 @@
 <div class="container primary-text-color">
 
     <!-- space between header menu and body-->
-    <div class="row"><div class="col s12">&nbsp;</div></div>
+    <div class="row">
+        <div class="col s12">&nbsp;</div>
+    </div>
 
     <!-- Entete -->
     <title-page-bar icon="share" title="sbSharingPage.title"></title-page-bar>
 
     <div class="row">
-        
-        <form name="sharingListForm" class="col s12" novalidate>
-        
-        <div class="row">
-            <div class="col s12 valign-wrapper">
-                <i class="material-icons left accent-text-color md-36">people</i>
-                <h5 translate="sbSharingPage.label.byMail"></h5>
-            </div>
-        </div>
-        <div class="row">
-            <chips ng-model="sharingList" render="render(data)" class="col s12">
-                <chip-tmpl >
-                    <div class="default-chip valign-wrapper">
-                        <i class="material-icons prefix" remove-chip="deleteChip(data)">contact_mail</i>
-                        &nbsp;{{chip.email}}&nbsp;
-                        <i class="material-icons prefix accent-text-color" remove-chip="deleteChip(data)">backspace</i>
-                    </div>
-                </chip-tmpl>
-                <input chip-control class="light-primary-color" required />
-            </chips>
-        </div>
-            
-        <!-- actions buttons -->
-        <div class="row">
-            <div class="col s12 center-align">
 
-                <button type="submit" translate="commons.buttons.validate"
-                        ng-click="sendInvitation()"
-                        ng-class="{'btn disabled': sharingList.length === 0, 
+        <form name="sharingListForm" class="col s12" novalidate>
+
+            <div class="row">
+                <div class="col s12 valign-wrapper">
+                    <i class="material-icons left accent-text-color md-36">people</i>
+                    <h5 translate="sbSharingPage.label.byMail"></h5>
+                </div>
+            </div>
+            <div class="row">
+                <p translate="sbSharingPage.label.hint"></p>
+                <chips ng-model="sharingList" render="render(data)" class="col s12">
+                    <chip-tmpl>
+                        <div class="default-chip valign-wrapper">
+                            <i class="material-icons prefix" remove-chip="deleteChip(data)">contact_mail</i>
+                            &nbsp;{{chip.email}}&nbsp;
+                            <i class="material-icons prefix accent-text-color"
+                               remove-chip="deleteChip(data)">backspace</i>
+                        </div>
+                    </chip-tmpl>
+                    <input chip-control class="light-primary-color" required/>
+                </chips>
+            </div>
+
+            <!-- actions buttons -->
+            <div class="row">
+                <div class="col s12 center-align">
+
+                    <button type="submit" translate="commons.buttons.validate"
+                            ng-click="sendInvitation()"
+                            ng-class="{'btn disabled': sharingList.length === 0,
                          'btn waves-effect waves-white accent-color': sharingList.length !== 0}">
 
-                </button>
+                    </button>
+                </div>
             </div>
-        </div>
-        </form>  
+        </form>
     </div>
 </div>

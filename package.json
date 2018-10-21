@@ -12,7 +12,7 @@
   "scripts": {
     "test": "gulp test",
     "build": "gulp",
-    "watch": "gulp serve"
+    "dev": "gulp serve"
   },
   "devDependencies": {
     "browser-sync": "~2.9.11",
