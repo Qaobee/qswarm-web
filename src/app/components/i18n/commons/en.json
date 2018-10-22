@@ -61,7 +61,8 @@
       "refuse": "Refuse",
       "read-more": "Learn more",
       "subscribe": "Try",
-      "search": "Search"
+      "search": "Search",
+      "delete": "Delete"
     },
     "legals": {
       "gcu": "Accept the <a href=\"#/legal-agreement\" target=\"_blank\">GCU</a> and the <a href=\"#/privacy-policy\" target=\"_blank\">privacy policy</a>"

@@ -61,7 +61,8 @@
       "refuse": "Refuser",
       "read-more": "En savoir plus",
       "subscribe": "Essayer",
-      "search": "Rechercher"   
+      "search": "Rechercher",
+      "delete": "Supprimer"
     },
     "legals" : {
       "gcu": "Accèpter les <a href=\"#/legal-agreement\" target=\"_blank\">CGU</a> et la <a href=\"#/privacy-policy\" target=\"_blank\">politique de respect de la vie privée</a>"

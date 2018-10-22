@@ -52,5 +52,14 @@
     "StartHour": "Event's start hour is mandatory",
     "teamHome": "Team is mandatory",
     "adversary": "Opponent is mandatory"
+  },
+  "eventDetail" : {
+    "confirmPopup" : {
+      "title": "Delete",
+      "main": "What do you want to suppress?",
+      "collect": "Collect and its associated statistics related to this event",
+      "event": "Event, collect and its associated statistics",
+      "toastSuccess": "Deletion successful"
+    }
   }
 }

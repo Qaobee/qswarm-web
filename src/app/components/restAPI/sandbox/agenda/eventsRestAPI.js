@@ -14,7 +14,7 @@
                 /**
                  * @description Retrieve all events match to parameters filter
                  * @function
-                 * @memberOf qaobee.components.restAPI.sandbox.agenda.eventRestAPI
+                 * @memberOf qaobee.components.restAPI.sandbox.agenda.eventsRestAPI
                  * @param   {Object}     request  request
                  * @returns {Array}    list of events
                  */
@@ -29,7 +29,7 @@
                 /**
                  * @description Retrieve Event by this Id
                  * @function getEvent()
-                 * @memberOf qaobee.components.restAPI.sandbox.agenda.eventRestAPI
+                 * @memberOf qaobee.components.restAPI.sandbox.agenda.eventsRestAPI
                  * @param   {String} id Event id
                  * @returns {Object} event com.qaobee.hive.business.model.sandbox.agenda.event;
                  */
@@ -41,7 +41,7 @@
                 },
 
                 /**
-                 * @memberOf qaobee.components.restAPI.sandbox.agenda.eventRestAPI
+                 * @memberOf qaobee.components.restAPI.sandbox.agenda.eventsRestAPI
                  * @function addEvent()
                  * @description add event
                  * @param {event} event : event to add
@@ -56,7 +56,7 @@
                 },
 
                 /**
-                 * @memberOf qaobee.components.restAPI.sandbox.agenda.eventRestAPI
+                 * @memberOf qaobee.components.restAPI.sandbox.agenda.eventsRestAPI
                  * @function updateEvent()
                  * @description update a event
                  * @param {SB_Event}  event : event to update
@@ -67,6 +67,20 @@
                         url: eventsAPIURL + '/update',
                         method: 'POST',
                         data: event
+                    });
+                },
+
+                /**
+                 * @memberOf qaobee.components.restAPI.sandbox.agenda.eventsRestAPI
+                 * @function deleteEvent()
+                 * @description delete an event
+                 * @param {string} id : Event's id
+                 * @returns {Object} contains delete count
+                 */
+                deleteEvent: function (id) {
+                    return $http({
+                        url: eventsAPIURL + '?_id=' + id,
+                        method: 'DELETE'
                     });
                 }
             };

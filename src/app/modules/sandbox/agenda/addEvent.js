@@ -122,8 +122,7 @@
 
                 /* get effective */
                 effectiveRestAPI.getEffective($scope.effectiveId).success(function (data) {
-                    var effective = data;
-                    if (angular.isDefined(effective)) {
+                    if (angular.isDefined(data)) {
                         /* add event */
                         eventsRestAPI.addEvent($scope.event).success(function (event) {
                             $scope.event = event;

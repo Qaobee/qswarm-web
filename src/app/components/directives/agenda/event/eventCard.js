@@ -9,10 +9,10 @@
      * @copyright &lt;b&gt;QaoBee&lt;/b&gt;.
      *
      */
-
     angular.module('eventCard', ['collecteRestAPI'])
 
-        .directive('eventCard', function ($translatePartialLoader, collecteRestAPI, qeventbus, $document, $timeout) {
+        .directive('eventCard', function (
+            $translatePartialLoader, collecteRestAPI, eventsRestAPI, qeventbus, $document, $timeout, $log, $filter) {
             return {
                 restrict: 'E',
                 scope: {
@@ -20,8 +20,7 @@
                     hasCompare: '=?'
                 },
                 controller: function ($scope) {
-                    $translatePartialLoader.addPart('commons');
-                    $translatePartialLoader.addPart('agenda');
+                    $translatePartialLoader.addPart('commons').addPart('agenda');
                     $scope.compareList = {};
                     $scope.isCollected = false;
                     $scope.mapShow = false;
@@ -78,6 +77,7 @@
 
                     collecteRestAPI.getListCollectes(requestCollecte).success(function (data) {
                         if (data && data.length > 0) {
+                            $log.debug('getListCollectes', requestCollecte, data);
                             $scope.isCollected = true;
                             $scope.collectId = data[0]._id;
                         }
@@ -108,6 +108,33 @@
                         }, 0);
                         angular.element('#modalEvent-' + $scope.event._id).modal('open');
                     };
+
+                    $scope.delCollect = function (id) {
+                        collecteRestAPI.deleteCollect(id).success(function (data) {
+                            $log.debug('delCollect', data);
+                            qeventbus.prepForBroadcast('event.reload', {});
+                            toastr.success($filter('translate')('eventDetail.confirmPopup.toastSuccess'));
+                            angular.element('#modalConfirmDelete').modal('close');
+                        });
+                    };
+
+                    $scope.delEvent = function (id) {
+                        eventsRestAPI.deleteEvent(id).success(function (data) {
+                            $log.debug('deleteEvent', data);
+                            qeventbus.prepForBroadcast('event.reload', {});
+                            toastr.success($filter('translate')('eventDetail.confirmPopup.toastSuccess'));
+                            angular.element('#modalConfirmDelete').modal('close');
+                        });
+                    };
+
+                    $scope.delete = function () {
+                        angular.element('#modalConfirmDelete-' + $scope.event._id).modal('open');
+                    };
+
+                    $scope.closeConfimModale = function () {
+                        angular.element('#modalConfirmDelete').modal('close');
+                    }
+
                 }, link: function () {
                     angular.element('.modal').modal();
                 },

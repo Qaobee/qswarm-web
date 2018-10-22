@@ -13,7 +13,6 @@
                         class="fa fa-bar-chart"></i></a>
             </span>
         </h5>
-
         <div class="card-content" style="height:48px;">&nbsp; {{event.participants.teamHome.label}} <br/> &nbsp;
             {{event.participants.teamVisitor.label}}
         </div>
@@ -21,6 +20,9 @@
             <small>{{event.startDate}}</small>
             <a ng-if="mapShow" class="waves-effect waves-light accent-text-color right" ng-click="openMap()">
                 <i class="material-icons">location_on</i>
+            </a>
+            <a class="waves-effect waves-light accent-text-color right" ng-click="delete()">
+                <i class="material-icons">delete_forever</i>
             </a>
             <span ng-if="hasCompare" ng-if="isCollected" class="right">&nbsp;
                 <input type="checkbox" ng-model="compareList[event._id]" name="compare"
@@ -44,5 +46,41 @@
     <div class="modal-footer center-align">
         <button class="modal-action modal-close waves-effect waves-light btn accent-color"
                 translate="commons.buttons.close"></button>
+    </div>
+</div>
+
+<!-- Modal RenewPwd OK ! -->
+<div id="modalConfirmDelete-{{event._id}}" class="modal light-primary-color">
+    <div class="modal-header center-align">
+        <h5>
+            <span class="fa fa-warning"></span>
+            <span translate="eventDetail.confirmPopup.title"></span>
+        </h5>
+    </div>
+    <div class="modal-content white">
+        <h5 translate="eventDetail.confirmPopup.main"></h5>
+        <div class="row">
+            <div class="col s6 center-align">
+                <p translate="eventDetail.confirmPopup.collect"></p>
+                <button type="submit" class="btn waves-effect waves-white accent-color"
+                        ng-click="delCollect(event._id)" translate="commons.buttons.delete">
+                </button>
+            </div>
+            <div class="col s6 center-align">
+                <p translate="eventDetail.confirmPopup.event"></p>
+                <button type="submit" class="btn waves-effect waves-white accent-color"
+                        ng-click="delEvent(event._id)" translate="commons.buttons.delete">
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div class="row center">
+        <div class="col s12">&nbsp;</div>
+        <div class="col s12">
+            <button ng-click="closeConfimModale()"
+               class="modal-action modal-close waves-effect waves-white btn light-primary-color"
+               translate="commons.buttons.cancel"></button>
+        </div>
     </div>
 </div>

@@ -73,6 +73,20 @@
                         method: 'POST',
                         data: collecte
                     });
+                },
+
+                /**
+                 * @memberOf qaobee.components.restAPI.sandbox.stats.collecteRestAPI
+                 * @function deleteCollect()
+                 * @description delete a collect
+                 * @param {string} id : collect's id
+                 * @returns {Object} contains delete count
+                 */
+                deleteCollect: function (id) {
+                    return $http({
+                        url: collecteAPIURL + '/?eventId=' + id,
+                        method: 'DELETE'
+                    });
                 }
             };
         });

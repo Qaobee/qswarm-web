@@ -52,5 +52,14 @@
     "StartHour": "L'heure de l'événement est obligatoire",
     "teamHome": "Le choix de son équipe est obligatoire",
     "adversary": "L'adversaire est obligatoire"
+  },
+  "eventDetail" : {
+    "confirmPopup" : {
+      "title": "Suppression",
+      "main": "Que voulez-vous supprimer?",
+      "collect": "La collecte et ses statistiques associées à cet événement",
+      "event": "L'événement, la collecte et les statistiques associés",
+      "toastSuccess": "Suppression réussie"
+    }
   }
 }

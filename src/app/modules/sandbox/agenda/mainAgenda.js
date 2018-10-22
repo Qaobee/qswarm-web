@@ -77,6 +77,10 @@
                 }
             };
 
+            $scope.$on('qeventbus:event.reload', function () {
+                $scope.getEvents(moment($scope.periodicityActive.startDate, 'DD/MM/YYYY').valueOf(), moment($scope.periodicityActive.endDate, 'DD/MM/YYYY').valueOf());
+            });
+
             $scope.$on('qeventbus:event.compare', function () {
                 $scope.compareList[qeventbus.data.id] = qeventbus.data.value;
                 $scope.updateEventToCompare(qeventbus.data.id);
@@ -122,6 +126,7 @@
                     });
                 });
             };
+
             $scope.getEffectives();
         });
 }());
