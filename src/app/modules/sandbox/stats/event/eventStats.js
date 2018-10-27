@@ -108,10 +108,13 @@
                             $scope.players = $scope.players.sortBy(function (n) {
                                 return n.name;
                             });
-                            
-                            qeventbus.prepForBroadcast('playerList', {
+
+                            $scope.ownersId.push(data.eventRef._id);
+                            qeventbus.prepForBroadcast('timeline', {
+                                ownersId: $scope.ownersId,
                                 playerList: $scope.players
                             });
+                            
                             $scope.players.forEach(function (player) {
                                 if (angular.isDefined(player.status.positionType)) {
                                     player.positionType = $filter('translate')('stats.positionType.value.' + player.status.positionType);
@@ -237,15 +240,14 @@
                                             $scope.players[i].stats.actAttNeg = a.value;
                                         }
                                     });
-                                    
+
                                     $timeout(function() {
-                            $scope.ownersId.push(data.eventRef._id);
-                            qeventbus.prepForBroadcast('ownersId', {
-                                ownersId: $scope.ownersId
-                            });
-                            
-                            //$scope.instance.refresh();
-                        });
+                                        qeventbus.prepForBroadcast('ownersId', {
+                                            ownersId: $scope.ownersId
+                                        });
+                                        
+                                        //$scope.instance.refresh();
+                                    });
                                 }
                             });
                         });

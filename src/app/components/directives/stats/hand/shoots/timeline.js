@@ -12,7 +12,7 @@
 
     angular.module('qaobee.widget.timelineShoot', ['statsRestAPI', 'qaobee.eventbus'])
 
-        .directive('statsTimelineShoot', function ($translatePartialLoader, statsRestAPI, qeventbus, $q, effectiveSrv, filterCalendarSrv, $log, $filter) {
+        .directive('statsTimelineShoot', function ($translatePartialLoader, statsRestAPI, qeventbus, $q, filterCalendarSrv, $filter) {
             return {
                 restrict: 'AE',
                 scope: {
@@ -81,20 +81,14 @@
                     var getStats = function () {
                         var deferred = $q.defer();
                         var search = {};
-                        
-                        var listId = [];
-
-                        $scope.players.forEach(function (e) {
-                            listId.push(e._id);
-                        });
 
                         search = {
                             listIndicators: ['goalScored', 'goalConceded'],
-                            listOwners: listId,
+                            listOwners: $scope.ownersId,
                             startDate: $scope.periodicityActive.startDate.valueOf(),
                             endDate: $scope.periodicityActive.endDate.valueOf(),
                             aggregat: 'COUNT',
-                            listFieldsGroupBy: ['owner', 'code']
+                            listFieldsGroupBy: ['code']
                         };
 
                         statsRestAPI.getListDetailValue(search).success(function (dataOri) {
@@ -263,8 +257,6 @@
                                 $scope.data.push($scope.tsgScored);
                                 $scope.data.push($scope.tsgConceded);
                                 
-                                $log.debug('data',$scope.data);
-                                
                             } else {
                                 $scope.noStat = false;
                                 deferred.reject('getStats -> problem for : ' + search);
@@ -289,11 +281,13 @@
                         }
                     });
 
-                    $scope.$on('qeventbus:playerList', function () {
+                    $scope.$on('qeventbus:timeline', function () {
+                        $scope.ownersId = qeventbus.data.ownersId;
                         $scope.players = qeventbus.data.playerList;
-                        $log.debug('statsTimelineShoot - players',$scope.players);
                         buildGraph();
                     });
+
+                    
 
                     $timeout(function () {
                         if (angular.isDefined(filterCalendarSrv.getValue())) {
