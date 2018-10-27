@@ -124,13 +124,18 @@
 
                 <div class="row">
                     <div class="col m1 s4">
-                        <label>{{'playerLabels.playerNationality'
+                        <label for="playerPositionType">{{'playerLabels.playerPositionType'
                             | translate }} <span class="accent-text-color">*</span></label>
                     </div>
-                    <div class="col m4 s12">
-                        <select class="browser-default" ng-model="player.nationality" name="playerNationality"
-                                ng-options="c as c.label for c in countryList track by c._id">
+                    <div class="col m4 s8">
+                        <select class="browser-default" ng-model="player.status.positionType.code" required
+                                ng-class="{'has-error' : playerCaracterSection.playerPositionType.$invalid && !playerCaracterSection.playerPositionType.$pristine}"
+                                name="playerPositionType" id="playerPositionType"
+                                ng-options="p.code as p.label for p in positionsType">
                         </select>
+                        <span class="small accent-text-color"
+                              ng-if="playerCivilSection.playerPositionType.$invalid && !playerCivilSection.playerPositionType.$pristine"
+                              translate="playerErrors.PositionType"></span>
                     </div>
 
                     <div class="col m1 hide-on-small-only">&nbsp;</div>
@@ -195,29 +200,6 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col m1 s4">
-                        <label for="playerPositionType">{{'playerLabels.playerPositionType'
-                            | translate }} <span class="accent-text-color">*</span></label>
-                    </div>
-                    <div class="col m4 s8">
-                        <select class="browser-default" ng-model="player.status.positionType" required
-                                ng-class="{'has-error' : playerCaracterSection.playerPositionType.$invalid && !playerCaracterSection.playerPositionType.$pristine}"
-                                name="playerPositionType" id="playerPositionType"
-                                ng-options="p.code as p.label for p in positionsType">
-                        </select>
-                        <span class="small accent-text-color"
-                              ng-if="playerCivilSection.playerPositionType.$invalid && !playerCivilSection.playerPositionType.$pristine"
-                              translate="playerErrors.PositionType"></span>
-                    </div>
-
-                    <div class="col m1 hide-on-small-only">&nbsp;</div>
-
-                    <div class="col m6 s12">&nbsp;</div>
-
-                </div>
-
-
                 <div class="row light-primary-color">
                     <div class="col m5 s12">
                         <div class="row">
@@ -262,17 +244,17 @@
                             <div class="col s12 left-align">
                                 <input name="laterality" class="with-gap" type="radio" id="playerLateralityA"
                                        value="{{'playerLabels.playerLateralityA' | translate }}"
-                                       ng-model="player.status.laterality"/>
+                                       ng-model="player.status.laterality.code"/>
                                 <label for="playerLateralityA" translate="playerLabels.playerLateralityA"></label>
 
                                 <input name="laterality" class="with-gap" type="radio" id="playerLateralityL"
-                                       value="{{'playerLabels.playerLateralityL' | translate }}"
-                                       ng-model="player.status.laterality"/>
+                                       value="left-handed"
+                                       ng-model="player.status.laterality.code"/>
                                 <label for="playerLateralityL" translate="playerLabels.playerLateralityL"></label>
 
                                 <input name="laterality" class="with-gap" type="radio" id="playerLateralityR"
-                                       value="{{'playerLabels.playerLateralityR' | translate }}"
-                                       ng-model="player.status.laterality"/>
+                                       value="right-handed"
+                                       ng-model="player.status.laterality.code"/>
                                 <label for="playerLateralityR" translate="playerLabels.playerLateralityR"></label>
                             </div>
                         </div>

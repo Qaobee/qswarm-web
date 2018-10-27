@@ -14,7 +14,7 @@
         <div class="row center valign-wrapper" ng-if="noStat">
             <div class="col s1 valign">&nbsp;</div>
             <div class="col s5 left-align light-text-color"><h6 translate="stats.resumeTab.frequence"></h6></div>
-            <div class="col s5 light-primary-color valign"><h5>{{totalPlayTime/60/nbGoal | number : 2}} '</h5> </div>
+            <div class="col s5 light-primary-color valign"><h5>{{(totalPlayTime/nbGoal/100 | number : 2)}} '</h5> </div>
             <div class="col s1 valign">&nbsp;</div>
         </div>
         <div class="row center valign-wrapper" ng-if="noStat">

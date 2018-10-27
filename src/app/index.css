@@ -1927,7 +1927,6 @@ span#top {
   timeline-badge {
     left: 15px;
     margin-left: 0;
-    top: $top + 1;
   }
 
   timeline-panel {
@@ -1939,7 +1938,6 @@ span#top {
     border-right-width: 15px;
     left: -15px;
     right: auto;
-    top: $top + 11px;
   }
 
   timeline-panel:after {
@@ -1947,7 +1945,6 @@ span#top {
     border-right-width: 14px;
     left: -14px;
     right: auto;
-    top: $top + 12px;
   }
 }
 

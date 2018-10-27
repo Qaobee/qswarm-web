@@ -129,7 +129,7 @@
                             $scope.players = players;
                             $scope.players.forEach(function (e) {
                                 if (angular.isDefined(e.status.positionType)) {
-                                    e.positionType = $filter('translate')('stats.positionType.value.' + e.status.positionType);
+                                    e.positionType = $filter('translate')('stats.positionType.value.' + e.status.positionType.code);
                                 } else {
                                     e.positionType = '';
                                 }

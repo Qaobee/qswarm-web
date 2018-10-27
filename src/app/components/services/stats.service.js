@@ -152,5 +152,4 @@
                 countAllInstanceIndicators: countAllInstanceIndicators
             };
         });
-
 }());
