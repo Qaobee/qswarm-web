@@ -65,11 +65,11 @@
     "heat": "^1.0.0",
     "image-map-resizer": "^1.0.3",
     "angular-payments": "*",
+    "intro.js": "^2.9.3",
     "angular-intro.js": "^3.3.0",
 
     "angular-timeline": "^1.7.0",
-    "angular-socialshare": "angularjs-socialshare#^2.3.11",
-    "intro.js": "^2.9.3"
+    "angular-socialshare": "angularjs-socialshare#^2.3.11"
   },
   "resolutions": {
     "lodash": "^3.0.1",
