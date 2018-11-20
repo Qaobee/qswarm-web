@@ -43,7 +43,13 @@
     "SectionActorsHome": "Mon équipe",
     "SectionActorsAdversary": "Adversaire",
     "SectionPlaning": "Planification",
-    "SectionPlace": "Localisation"
+    "SectionPlace": "Localisation",
+    "labels": {
+      "championship": "Championnat",
+      "cup": "Coupe",
+      "friendlyGame" : "Match amical"
+
+    }
   },
   "eventErrors": {
     "Type": "La type d'événement est obligatoire",

@@ -16,12 +16,11 @@
                  * @function getDetail
                  * @description Récupération de la saison en cours d'une activité
                  * @param {String} activityId : le code de l'activité
-                 * @param {String} countryId : le code pays du user
                  * @returns {Object} com.qaobee.hive.business.model.commons.settings.Season
                  */
-                getSeasonCurrent: function (activityId, countryId) {
+                getSeasonCurrent: function (activityId) {
                     return $http({
-                        url: seasonsApiURL + '/current/?activityId=' + activityId + '&countryId=' + countryId,
+                        url: seasonsApiURL + '/current/?activityId=' + activityId,
                         method: 'GET'
                     });
                 },

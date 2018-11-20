@@ -88,7 +88,7 @@
 
             /* Retrieve list of event type */
             $scope.getListEventType = function () {
-                activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.sandbox.activityId, $scope.meta.sandbox.structure.country._id, 'listEventType').success(function (data) {
+                activityCfgRestAPI.getParamFieldList(moment().valueOf(), $scope.meta.sandbox.activityId, 'CNTR-250-FR-FRA', 'listEventType').success(function (data) {
                     $scope.listEventType = data.sortBy(function (n) {
                         return n.order;
                     });
@@ -139,7 +139,7 @@
             /* Format event */
             $scope.checkAndformatEvent = function () {
                 /* Convert start event to long */
-                var start = moment($scope.startDate, 'DD/MM/YYYY');
+                var start = moment($scope.startDate, $filter('translate')('commons.format.date.moment'));
                 start.hour(moment($scope.startHours, 'HH').hour());
                 start.minutes(moment($scope.startHours, 'm mm').minutes());
                 $scope.event.startDate = moment(start).valueOf();

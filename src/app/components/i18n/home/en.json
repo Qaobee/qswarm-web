@@ -1,5 +1,9 @@
 {
   "intro": {
+    "next" : "Next",
+    "prev" : "Previous",
+    "cancel":"Skip",
+    "done": "Thank you",
     "step1": {
       "title": "Welcome to Qaobee !",
       "desc": "Let's take a few moments to discover the main features of the application."

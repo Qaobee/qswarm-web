@@ -115,10 +115,10 @@
                 exitOnOverlayClick: true,
                 exitOnEsc: true,
                 showProgress: true,
-                nextLabel: '<span>Suivant</span>',
-                prevLabel: '<span>Précédent</span>',
-                skipLabel: 'Annuler',
-                doneLabel: 'Merci'
+                nextLabel: '<span>' +  $filter('translate')('intro.next')  +'</span>',
+                prevLabel: '<span>' +  $filter('translate')('intro.prev')  +'</span>',
+                skipLabel: $filter('translate')('intro.cancel'),
+                doneLabel: $filter('translate')('intro.done')
             };
 
             /**
@@ -127,7 +127,7 @@
              * @returns {boolean}
              */
             $scope.launchIntroJs = function () {
-                return $scope.user.account.firstConnexion;
+                return $scope.user.account.firstConnexion || true;
             };
             /**
              * Get effective

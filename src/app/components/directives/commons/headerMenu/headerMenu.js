@@ -108,7 +108,7 @@
                                     season: null
                                 };
                                 $scope.structure = data.data.structure;
-                                seasonsRestAPI.getSeasonCurrent($scope.meta.sandbox.activityId, $rootScope.user.country._id).then(function (season) {
+                                seasonsRestAPI.getSeasonCurrent($scope.meta.sandbox.activityId).then(function (season) {
                                     $scope.meta.season = season.data;
                                 });
                             }

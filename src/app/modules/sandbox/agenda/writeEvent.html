@@ -24,7 +24,7 @@
                         </div>
                         <div class="col s8">
                             <input input-date id="EventStartDate" name="EventStartDate" type="text"
-                                   disable = "disable"
+                                   disable="disable"
                                    format="{{'commons.format.date.label' | translate}}"
                                    months-full="{{ ('commons.format.date.listMonth' | translate).split(',')}}"
                                    months-short="{{ ('commons.format.date.listMonthShort' | translate).split(',')}}"
@@ -52,7 +52,7 @@
                         <div class="col s8">
                             <input id="EventStartHours" input-clock data-twelvehour="false" type="text"
                                    donetext="{{'commons.format.date.validate' | translate}}"
-                                   cleartext="" 
+                                   cleartext=""
                                    data-autoclose
                                    ng-model="startHours" required
                                    ng-class="{ 'has-error' : eventForm.EventStartHours.$invalid && !eventForm.EventStartHours.$pristine }"/>
@@ -85,7 +85,8 @@
                                     required id="EventType" ng-change="changeEventType()"
                                     ng-class="{ 'has-error' : eventForm.eventType.$invalid && !eventForm.eventType.$pristine }">
                                 <option value="" selected translate="eventLabels.selectType" disabled></option>
-                                <option ng-repeat="p in listEventType track by $index" value="{{p.code}}">{{p.label}}
+                                <option ng-repeat="p in listEventType track by $index" value="{{p.code}}">{{
+                                    'eventLabels.labels.' + p.code | translate}}
                                 </option>
                             </select>
                             <span class="small accent-text-color"

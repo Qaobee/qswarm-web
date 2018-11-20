@@ -66,8 +66,10 @@
     "image-map-resizer": "^1.0.3",
     "angular-payments": "*",
     "angular-intro.js": "^3.3.0",
+
     "angular-timeline": "^1.7.0",
-    "angular-socialshare": "angularjs-socialshare#^2.3.11"
+    "angular-socialshare": "angularjs-socialshare#^2.3.11",
+    "intro.js": "^2.9.3"
   },
   "resolutions": {
     "lodash": "^3.0.1",
@@ -81,8 +83,10 @@
         "css/font-awesome.css"
       ]
     },
-    "angular-intro.js" : {
-      "main": ["build/angular-intro.min.js"]
+    "angular-intro.js": {
+      "main": [
+        "build/angular-intro.min.js"
+      ]
     }
   }
 }
