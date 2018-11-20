@@ -2089,3 +2089,34 @@ page-detail .post-content p {
     float:left;
     width:100px;
 }
+
+.avatar-wrapper {
+    position: relative;
+    height: 120px;
+}
+.avatar {
+    position: absolute;
+    margin-top: 10px;
+    width: 200px;
+    height: 100px;
+    top: 0;
+    left: 0;
+    display: block;
+}
+
+.avatar avatar {
+    position: absolute;
+    top:0;
+    left: 50%;
+    right: 50%;
+    width: 150px;
+    height: 90px;
+    transform: translate(-50%, 0);
+}
+.avatar span {
+    color: #666;
+    position: absolute;
+    top:80px;
+    width: 100%;
+    left: 0;
+}
