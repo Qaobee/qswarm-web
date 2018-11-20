@@ -85,13 +85,13 @@
          * @return ageCheck form validation
          *
          */
-        .directive('ageCheck', function () {
+        .directive('ageCheck', function ($filter) {
             return {
                 require: 'ngModel',
                 link: function (scope, elem, attr, ngModel) {
                     ngModel.$parsers.unshift(function (value) {
                         if (angular.isDefined(value)) {
-                            var valid = moment(value, "DD/MM/YYYY").add(scope.$eval(attr.minAge), 'y').isBefore(moment());
+                            var valid = moment(value, $filter('translate')('commons.format.date.moment')).add(scope.$eval(attr.minAge), 'y').isBefore(moment());
                             ngModel.$setValidity('ageCheck', valid);
                             return valid ? value : undefined;
                         }

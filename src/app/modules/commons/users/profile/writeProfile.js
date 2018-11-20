@@ -66,7 +66,7 @@
                     .pickadate('picker')
                     .set('select', $scope.user.birthdate.valueOf());
             });
-        
+
             $scope.temp = {};
             $scope.temp.optionsAdr = {
                 types: 'geocode'
@@ -91,7 +91,7 @@
 
             // Surveillance de la modification du champ adresse par l'utilisateur
             $scope.$watch('temp.addr', function (newValue) {
-                if (angular.isUndefined(newValue) || newValue === '' || angular.equals({}, newValue) || newValue.length === 1) {
+                if (angular.isUndefined(newValue) || '' === newValue + '' || angular.equals({}, newValue) || newValue.length === 1) {
                     $scope.user.address = {};
                 }
             });
@@ -105,7 +105,7 @@
             $scope.updateProfilUser = function () {
                 var updUser = {};
                 angular.copy($scope.user, updUser);
-                updUser.birthdate = moment($scope.user.birthdate, 'DD/MM/YYYY').valueOf();
+                updUser.birthdate = moment($scope.user.birthdate, $filter('translate')('commons.format.date.moment')).valueOf();
                 delete updUser.isAdmin;
 
 
