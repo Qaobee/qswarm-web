@@ -69,7 +69,7 @@
                         //$scope.signup.name = $scope.signup.name.capitalize(true);
                         //$scope.signup.firstname = $scope.signup.firstname.capitalize(true);
                         locationAPI.getCountry().then(function (data) {
-                            $scope.signup.country = data.data.country;
+                            $scope.signup.country = data.data.countryCode;
                             if (single) {
                                 signupRestAPI.registerUser($scope.signup).success(function (data2) {
                                     vcRecaptchaService.reload($scope.widgetId);
